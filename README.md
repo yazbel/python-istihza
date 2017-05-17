@@ -27,13 +27,13 @@ konu açarak aklınızdaki soruları sorabilirsiniz. Topluluk size yardım etmek
 
 Birçok şekilde yardım edebilirsiniz:
 
-- Belgelerde değişiklik yaparak çekme isteği(pull request) gönderebilirsiniz. Yazım yanlışları ve küçük hatalar için
+- Belgelerde değişiklik yaparak çekme isteği (pull request) gönderebilirsiniz. Yazım yanlışları ve küçük hatalar için
 GitHub arayüzünü kullanabilirsiniz ancak daha büyük ve karmaşık düzeltmeler için veri havuzunu bilgisayarınıza çekmeli,
 daha sonrasında düzeltmeleri yapıp çekme isteği göndermelisiniz. Her iki durumda da kısa ve öz bir
-işleme mesajı(commit message) yazdığınıza emin olmalısınız.
+işleme mesajı (commit message) yazdığınıza emin olmalısınız.
 
 - Eğer bir yanlış gördünüz ancak bir sebepten ötürü düzeltmeyi kendiniz yapmak istemediyseniz, bu hatayı bildirerek de
-yardım edebilirsiniz. Bunun için veri havuzunun [konular(issues)](https://github.com/yazbel/python-istihza/issues)
+yardım edebilirsiniz. Bunun için veri havuzunun [konular (issues)](https://github.com/yazbel/python-istihza/issues)
 dizininde bir konu açın, başlık ve açıklama kısmına ilgili metinleri yazın ve gönderin. Başlık kısmının kısa ve öz
 olmasına dikkat edin.
 
