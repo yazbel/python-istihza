@@ -577,7 +577,7 @@ ise şu::
         def hareket_et(self):
             print('yeni hareket_et() metodu')
            
-Eğer taban sınıfta ``hareket_et()`` adlı bir sınıf olmasaydı, ``Asker()`` adlı
+Eğer taban sınıfta ``hareket_et()`` adlı bir metot olmasaydı, ``Asker()`` adlı
 alt sınıf, taban sınıftan miras alınan öteki metot ve niteliklerle birlikte bir
 de ``hareket_et()`` adlı yeni bir örnek metoduna sahip olmuş olacaktı. Ancak
 taban sınıfta zaten ``hareket_et()`` adlı bir örnek metodu olduğu için, alt
