@@ -88,7 +88,7 @@ Curses ile işlem yapmadan önce mutlaka ekranın tanıtılması gerekiyor::
 
     ekran = curses.initscr()
 
-Yazıyı ekrana yerleştirmek için satır ve sütun numaralarını yazabileceğimiz gibi, Terminal ekran boyutunun ölçülerini referans alarak da yapabiliriz::
+Yazıyı ekrana yerleştirmek için satır ve sütun numaralarını yazabileceğimiz gibi, Terminal ekran boyutunun ölçülerini referans alarak bazı özel durumlarda ne yapılması gerektiğini belirtebiliriz::
 
     boyutlar = ekran.getmaxyx()
 
@@ -134,7 +134,7 @@ Sürekli y eksenin ortasında bulunan ama x ekseni boyunca hareket eden bir “h
 
 **Kodların Açıklamaları:**
 
-Modülleri programın içine aktarılır::
+Modülleri programın içine aktaralım::
 
     import curses
     import time
@@ -163,7 +163,7 @@ Ekranı tazeleyelim::
 
         ekran.refresh()
 
-`time.sleep()` fonksiyonu tanımlamadığınızda ne olacağını görmek için yoruma alın::
+`time.sleep()` fonksiyonunu tanımlamadığınızda ne olacağını görmek için yoruma alın::
 
         time.sleep(0.05)
 
@@ -220,7 +220,7 @@ Her zamanki gibi önce ekranı tanıtalım::
 
     ekran = curses.initscr()
 
-Ekranın max. boyutlarını alalım::
+Ekranın maksimum boyutlarını alalım::
 
     boyutlar = ekran.getmaxyx()
 
@@ -266,7 +266,7 @@ Döngüyle birlikte *x* ve *y*'nin değerleri *dusey* ve *yatay* değişkenlerin
         if y == boyutlar[0] - 1:
             dusey = -1
 
-Şayet *y* minimum değerine ulaşırsa, *dusey*' değişkenini 1'e eşitleriz. Böylece pozitif y yönünde hareket edebiliriz::
+Şayet *y* minimum değerine ulaşırsa, *dusey*' değişkeni 1'e eşitlenir. Böylece pozitif y yönünde hareket edebiliriz::
         
         elif y == 0:
             dusey = 1
@@ -281,7 +281,7 @@ Döngüyle birlikte *x* ve *y*'nin değerleri *dusey* ve *yatay* değişkenlerin
         elif x == 0:
             yatay = 1
 
-Ekranda bir tuşa bastığımız zaman programdan çıkabilmemiz için, *q* değişkeninin bütün harflerini temsil etmesini sağlayalım::
+Ekranda bir tuşa bastığımız zaman programdan çıkabilmemiz için, *q* değişkeninin bütün harfleri temsil etmesini sağlayalım::
 
         q = ekran.getch()
 
@@ -368,7 +368,7 @@ Döngü her başa sardığında `clear()` ile yine ekranı temizleyelim::
     
         ekran.clear()
 
-Ekranın y, x konumuna "hello world!" stringini kalın olacak şekilde ekleyelim::
+Ekranın y, x konumuna "hello world!" stringini kalın harfli olacak şekilde ekleyelim::
 
         ekran.addstr(y, x, "hello world!", curses.A_BOLD)
 
@@ -474,13 +474,13 @@ Herhangi bir renklendirme işlemine geçmeden önce renklendirmeyi başlatmamız
 
     curses.start_color()
 
-Şimdi renk çiftlerini ve sıralarını oluşturmaya geçebiliriz::
+Şimdi renk çiftlerini sıralarını belirterek oluşturmaya geçebiliriz::
 
     curses.init_pair(1, curses.COLOR_GREEN, curses.COLOR_BLACK)
     curses.init_pair(2, curses.COLOR_CYAN, curses.COLOR_BLACK)
     curses.init_pair(3, curses.COLOR_RED, curses.COLOR_BLACK)
 
-Yine bastığımız tuşun ekranda yansıma oluşturmasını iptal edelim::
+Yine bastığımız tuşun ekranda yansıma oluşturmasın::
 
     curses.noecho()
 
@@ -659,7 +659,7 @@ Gördüğünüz gibi ilk olarak hep ekranı tanımlıyoruz::
     curses.init_pair(2, curses.COLOR_CYAN, curses.COLOR_BLACK)
     curses.init_pair(3, curses.COLOR_RED, curses.COLOR_BLACK)
 
-Bastığımız tuşlar yine ekranda gölge oluşturmasın::
+Bastığımız tuşlar yine ekranda yansıma oluşturmasın::
 
     curses.noecho()
 
@@ -679,7 +679,7 @@ Bu sefer kalınlaştırma işlemini bir tuş yardımıyla yapacağız. Bunun iç
 
     reverse = 0
 
-*b* tuşuna basılınca iki ayrı işlem yapılsın: Metin kalınlaştırılmışsa inceltilsin, yok eğer inceltilmişse kalınlaştırılsın. Bunun işlem için bir liste oluşturalım::
+*b* tuşuna basılınca iki ayrı işlem yapılsın: Metin kalınlaştırılmışsa inceltilsin, yok eğer inceltilmişse kalınlaştırılsın. Bu işlem için bir liste oluşturalım::
 
     b = [curses.A_NORMAL, curses.A_BOLD]
 
@@ -871,7 +871,7 @@ Yine önce ekranı tanımlayalım::
     curses.init_pair(2, curses.COLOR_CYAN, curses.COLOR_BLACK)
     curses.init_pair(3, curses.COLOR_RED, curses.COLOR_BLACK)
 
-Bastığımız tuşlar yine ekranda gölge oluşturmasın::
+Bastığımız tuşlar yine ekranda yansıma oluşturmasın::
 
     curses.noecho()
 
@@ -883,7 +883,7 @@ Animasyonumuzun ekranda görüntülenmesinin gecikmemesi için yine `nodelay()`'
 
     ekran.nodelay(1)
 
-Bu sefer kalınlaştırma işlemini bir tuş yardımıyla yapacağız. Bunun için *bold* isimli bir değişken oluşturalım ve değerini 0 yapalım::
+Bu sefer de kalınlaştırma işlemini bir tuş yardımıyla yapacağız. Bunun için *bold* isimli bir değişken oluşturalım ve değerini 0 yapalım::
 
     bold = 0
 
@@ -891,7 +891,7 @@ Bu sefer kalınlaştırma işlemini bir tuş yardımıyla yapacağız. Bunun iç
 
     reverse = 0
 
-*b* tuşuna basılınca iki ayrı işlem yapılsın: Metin kalınlaştırılmışsa inceltilsin, yok eğer inceltilmişse kalınlaştırılsın. Bunun işlem için bir liste oluşturalım::
+*b* tuşuna basılınca iki ayrı işlem yapılsın: Metin kalınlaştırılmışsa inceltilsin, yok eğer inceltilmişse kalınlaştırılsın. Bu işlem için bir liste oluşturalım::
 
     b = [curses.A_NORMAL, curses.A_BOLD]
 
@@ -919,7 +919,7 @@ Ekranı temizleyelim yine::
 
         ekran.clear()
 
-*"hello world!* yazısını tuşlara basılınca aktif hale getirilecek biçimlendirme özellikleriyle birlikte ekrana ekleyelim::
+*"hello world!* yazısını, tuşlara basılınca aktif hale getirilecek biçimlendirme özellikleriyle birlikte ekrana ekleyelim::
 
         ekran.addstr(y, x, "hello world!", 
                      curses.color_pair(g) | b[bold] | r[reverse])
@@ -1191,7 +1191,7 @@ karakteri ekrana eklemek istediğimizde sorun çıkmasın::
         karakterler.remove(num1)
         karakterler.remove(num2)
 
-Şimdi de, *ESC* tuşuna basılmadığı sürece çalışan bir döngü oluşturalım. `chr(27)`'nin `"\n"`'e eşit olduğunu hatırlayalım::
+Şimdi de, *ESC* tuşuna basılmadığı sürece çalışan bir döngü oluşturalım::
 
     while q != 27
 
@@ -1233,7 +1233,7 @@ Ayrıca x'in değeri bir önceki satırın bittiği x değerine eşitlenmeye ça
                         x = xy[len(xy) - 1][1]
                         xy.pop(len(xy) - 1)
 
-Bu işlemi yapılırken bir sıra hatası oluşmasını bekliyoruz, bu durumda x'in değeri maksimum x değerine eşitlensin::
+Bu işlem yapılırken bir sıra hatası oluşmasını bekliyoruz, bu durumda x'in değeri maksimum x değerine eşitlensin::
 
                     except IndexError:
                         x = boyutlar[1] - 1
