@@ -113,7 +113,7 @@ Herhangi bir tuşa basılınca ekran sonlansın::
 Örnek-2:
 =========
 
-Sürekli y eksenin ortasında bulunan ama x ekseni boyunca hareket eden bir “hello world!” yazısı oluşturalım.
+Sürekli y ekseninin ortasında bulunan ama x ekseni boyunca hareket eden bir “hello world!” yazısı oluşturalım.
 
 **Kodlar**::
 
@@ -163,7 +163,7 @@ Ekranı tazeleyelim::
 
         ekran.refresh()
 
-`time.sleep()` fonksiyonunu tanımlamadığınızda ne olacağını görmek için yoruma alın::
+`time.sleep()` fonksiyonunu tanımlamadığınızda ne olacağını görmek için fonksiyonu yoruma alın::
 
         time.sleep(0.05)
 
@@ -380,22 +380,22 @@ Ekranı tazeleyelim::
 
         q = ekran.getch()
 
-Şayet kullanıcı *w* tuşuna basarsa ve *y* değeri 0'dan büyükse, *y*'nin değeri 1 birim azalsın::
+Şayet kullanıcı *w* tuşuna basarsa ve *y*'nin değeri 0'dan büyükse, *y*'nin değeri 1 birim azalsın::
     
         if q == ord("w") and y > 0:
             y -= 1
 
-Şayet kullanıcı *s* tuşuna basarsa ve *y* maksimum değerinden küçükse, *y*'nin değeri 1 birim arttırılsın::
+Şayet kullanıcı *s* tuşuna basarsa ve *y*'nin değeri maksimum değerinden küçükse, *y*'nin değeri 1 birim arttırılsın::
     
         elif q == ord("s") and y < boyutlar[0] - 1:
             y += 1
 
-Şayet kullanıcı *a* tuşuna basarsa ve *x* değeri 0'dan büyükse, *x*'in değeri 1 birim azalsın::
+Şayet kullanıcı *a* tuşuna basarsa ve *x*'in değeri 0'dan büyükse, *x*'in değeri 1 birim azalsın::
 
         elif q == ord("a") and x > 0:
             x -= 1
  
-Şayet kulanıcı *d* tuşuna basarsa ve *x* değeri maksimum değerinden küçükse; *x*'in değeri 1 birim arttırılsın::
+Şayet kulanıcı *d* tuşuna basarsa ve *x*'in değeri maksimum değerinden küçükse; *x*'in değeri 1 birim arttırılsın::
 
         elif q == ord("d") and x < boyutlar[1] - len("hello world!") - 1:
             x += 1
@@ -480,7 +480,7 @@ Herhangi bir renklendirme işlemine geçmeden önce renklendirmeyi başlatmamız
     curses.init_pair(2, curses.COLOR_CYAN, curses.COLOR_BLACK)
     curses.init_pair(3, curses.COLOR_RED, curses.COLOR_BLACK)
 
-Yine bastığımız tuşun ekranda yansıma oluşturmasın::
+Yine bastığımız herhangi bir tuş ekranda yansıma oluşturmasın::
 
     curses.noecho()
 
@@ -516,7 +516,7 @@ Ekranın *y* ve *x* konumuna *"hello world!"* yazısını yerleştirelim. Aşağ
 
         ekran.addstr(y, x, "hello world!", curses.color_pair(g))
 
-İmleci ekranın en sonuna götürelim. Bu fonksiyonu kullanmadığımız zaman oluşacak olan farkı görebilmek için yoruma alın::
+İmleci ekranın en sonuna götürelim. Bu fonksiyonu kullanmadığımız zaman oluşacak olan farkı görebilmek için fonksiyonu yoruma alın::
 
         ekran.move(boyutlar[0] - 1, boyutlar[1] - 1)
     
@@ -524,7 +524,7 @@ Ekranı tazeleyelim::
   
         ekran.refresh()
 
-q bütün tuşları temsil ediyor olsun::
+*q* bütün tuşları temsil ediyor olsun::
  
         q = ekran.getch()
 
@@ -542,7 +542,7 @@ q bütün tuşları temsil ediyor olsun::
 
         elif q == ord("s") and y < boyutlar[0] - 1:
         
-Yukarıdaki koşul altında şayet *y*, maksimum değerinden 2 birim küçükse ve *x*'de maksimum değere ulaşmışsa, hiç bir işlem yapılmasın::
+Yukarıdaki koşul altında şayet *y* maksimum değerinden 2 birim küçükse ve *x*'de maksimum değere ulaşmışsa, hiç bir işlem yapılmasın::
 
             if y == boyutlar[0] - 2 and x == boyutlar[1] - len("hello world!"):
                 pass
@@ -707,7 +707,7 @@ Ekranı temizleyelim yine::
 
         ekran.clear()
 
-*"hello world!* yazısını tuşlara basılınca aktif hale getirilecek biçimlendirme özellikleriyle birlikte ekrana ekleyelim::
+*"hello world!* yazısını ilgili tuşlara basılınca aktif hale gelecek biçimlendirme özellikleriyle birlikte ekrana ekleyelim::
 
         ekran.addstr(y, x, "hello world!", 
                      curses.color_pair(g) | b[bold] | r[reverse])
@@ -919,7 +919,7 @@ Ekranı temizleyelim yine::
 
         ekran.clear()
 
-*"hello world!* yazısını, tuşlara basılınca aktif hale getirilecek biçimlendirme özellikleriyle birlikte ekrana ekleyelim::
+*"hello world!* yazısını, ilgili tuşlara basılınca aktif hale gelecek biçimlendirme özellikleriyle birlikte ekrana ekleyelim::
 
         ekran.addstr(y, x, "hello world!", 
                      curses.color_pair(g) | b[bold] | r[reverse])
@@ -1185,7 +1185,7 @@ Her Türkçe karakteri ekledikten sonra, x'in konumunu 1 birim arttıralım ki y
 
         x += 1
 
-Daha sonra da karakterler listesinden bu tuşu temsil eden değerler silelim ki, bir sonraki Türkçe
+Daha sonra da karakterler listesinden bu tuşu temsil eden değerleri silelim ki, bir sonraki Türkçe
 karakteri ekrana eklemek istediğimizde sorun çıkmasın::
 
         karakterler.remove(num1)
@@ -1212,7 +1212,7 @@ Eğer bir satırın sonuna gelinmişse, *xy* satır listesine bu satırı ekleye
         if boyutlar[1] - x == 1:
             xy.append((y, x - 1))
 
-Aynı zamanda y değişkeninin değeri 1 artsın ki bir alt satıra, x değişkeninin değeri de 0'a eşitlensin ki satır başına geçelim::
+Aynı zamanda y değişkeninin değeri 1 birim artsın ki bir alt satıra, x değişkeninin değeri de 0'a eşitlensin ki satır başına geçelim::
 
             y += 1
             x = 0
