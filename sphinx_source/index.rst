@@ -73,6 +73,7 @@ istihza.com
     paketler
     regex
     sqlite
+    curses
     
 ------------------
 
