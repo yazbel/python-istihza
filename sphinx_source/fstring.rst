@@ -1,3 +1,4 @@
+.. author:: Buğra İşgüzar <biisguzar@gmail.com>
 .. meta:: :description: Bu bölümde Python'daki f-string yapısından ve özelliklerinden 
            söz edeceğiz. 
           :keywords: python, f-string, formatted string
@@ -8,38 +9,38 @@
 f-string
 ****************
 
-Daha önceki bölümlerde **format()** fonksiyonu karakter dizilerini nasıl biçimlendirebileceğimizi görmüştük. 3.6 sürümü ile Python'a eklenen f-string yapısı da buna benzer bir şekilde çalışıyor. Öncelikle format() fonksiyonunu nasıl kullanıyorduk bir hatırlayalım.::
+Daha önceki bölümlerde **format()** fonksiyonuyla karakter dizilerini nasıl biçimlendirebileceğimizi görmüştük. 3.6 sürümü ile Python'a eklenen f-string yapısı da buna benzer bir şekilde çalışıyor. Öncelikle format() fonksiyonunu nasıl kullandığımızı hatırlayalım::
 
         isim = 'Buğra'
         print('Selam {kime}!'.format(kime=isim))
 
-Burada öncelikle *isim* adında bir değişken tanımladık ve bu değişkene *Buğra* değerini atadık. Daha sonra da *'Selam {isim}!'* diye bir karakter dizisini ekrana yazdırdık. Ama format() fonksiyonunu kullanarak Python'a yazdırma işlemini yapmadan önce karakter dizimizdeki *kime* kısımını *isim* değişkeninin değeri ile değiştirmesi gerektiğini söyledik.
+Burada öncelikle *isim* adında bir değişken tanımladık ve bu değişkene *Buğra* değerini atadık. Daha sonra da *'Selam {isim}!'* diye bir karakter dizisini ekrana yazdırdık. format() fonksiyonunu kullanarak Python'a yazdırma işlemini yapmadan önce karakter dizimizdeki *kime* kısımını *isim* değişkeninin değeri ile değiştirmesi gerektiğini söyledik.
 
-format() fonksiyonumuz kendisine verdiğimiz değerleri kapsama alanı içerisinde uygun yerlere yerleştirir. hatırlarsanız format() fonksiyonunu ilgilendiren kısımları süslü parantezlerin içine yazıyorduk. Yukarıdaki örneği şu şekilde de yapabiliriz::
+format() fonksiyonumuz kendisine verdiğimiz değerleri kapsama alanı içerisinde uygun yerlere yerleştirir. Hatırlarsanız format() fonksiyonunu ilgilendiren kısımları süslü parantezlerin içine yazıyorduk. Yukarıdaki örneği şu şekilde de yapabiliriz::
 
         isim = 'Buğra'
         print('Selam {}!'.format(isim))
 
-Bu sefer format() fonksiyonuna belirli bir yer göstermediğimiz için sırasıyla ilgili alanlara verdiğimiz parametreleri dolduracak. Zaten bir parametre ve bir alan olduğu için yukarıdaki örnekle aynı çıktıyı alacağız. format() fonksiyonunu bukadar hatırlamak yeter, hadi f-string'lere geçelim!
+Bu sefer format() fonksiyonuna belirli bir yer göstermediğimiz için sırasıyla ilgili alanlara verdiğimiz parametreleri dolduracak. Zaten bir parametre ve bir alan olduğu için yukarıdaki örnekle aynı çıktıyı alacağız. format() fonksiyonunu bu kadar hatırlamak yeter, hadi f-string'lere geçelim!
 
 Kullanım
 ********
 
-String nedir hepimiz biliyoruz, Türkçeye karakter dizisi olarak çeviriyoruz. Bu yapıya da f-string diyoruz çünkü bu yapıyı kullanmak istediğimiz stringin (karakter dizisinin) başına **f** ekliyoruz. Yani bir ön ek ekleyerek Python'a artık onun normal, sıradan bir karakter dizisi olmadığını, işleme tabii tutulacağını söylüyoruz.::
+String nedir hepimiz biliyoruz, Türkçeye karakter dizisi olarak çeviriyoruz. Bu yapıya da f-string diyoruz çünkü bu yapıyı kullanmak istediğimiz stringin (karakter dizisinin) başına **f** ekliyoruz. Yani bir ön ek ekleyerek Python'a artık onun normal, sıradan bir karakter dizisi olmadığını ve bir ön işlemden geçmesi gerektiğini belirtiyoruz.::
 
         "Selam Dünya!" # Normal bir karakter dizisi
         f"Selam Dünya!" # Bu artık bir f-string
 
-.. note:: f-string'leri kullanabilmeniz için Python 3.6 ya da daha yeni bir sürüm kullanmanız gerektiğiniz unutmayın!
+.. note:: f-string'leri kullanabilmeniz için Python 3.6 ya da daha yeni bir sürüm kullanmamız gerektiğini unutmayalım!
 
-Bu örnekte f-string'imizin normal bir karakter dizisinden farkı yok gibi görünüyor. Ve aslında evet, çünkü biz f-string'in özelliklerinden yararlanmadık, o normal bir string durumunda. Yukarıda format() fonksiyonu için yazdığımız örneği bir de f-string için yazalım.::
+Bu örnekte f-string'imizin normal bir karakter dizisinden farkı yok gibi görünüyor. Aslında şuanlık bir farkı yok. Çünkü biz **f-string**'in özelliklerini henüz kullanmadık. Yukarıda format() fonksiyonu için yazdığımız örneği bir de f-string için yazalım.::
 
         isim = 'Buğra'
         print(f'Selam {isim}!')
 
-Bu örneği de çalıştırdığınızda yukarıdakiler ile aynı çıktıyı verdiğini göreceksiniz. Ama çok daha düzenli bir görünümle elde ettik bu sefer aynı çıktıyı. format() fonksiyonuna ilgileneceği kısımları -işlem yapacağı kısımları- süslü parantezler ile belirttiğimizi biliyoruz. f-string için de aynı şey geçerli ancak ufak bir farkla. Artık harici bir işlem yapılıp karakter dizimiz düzenlenmiyor, işlemler doğrudan karakter dizimiz içinde gerçekleştirilip yerini kendi alıyor!
+Bu örneği de çalıştırdığınızda yukarıdaki örneklerin çıktılarıyla aynı çıktıyı verdiğini göreceksiniz. Ama çok daha düzenli bir görünümle elde ettik bu sefer aynı çıktıyı. format() fonksiyonuna ilgileneceği kısımları -işlem yapacağı kısımları- süslü parantezler ile belirttiğimizi biliyoruz. f-string için de aynı şey geçerli ancak ufak bir farkla. Artık harici bir işlem yapılıp karakter dizimiz düzenlenmiyor, işlemler doğrudan karakter dizimiz içinde gerçekleştirilip yerini kendi alıyor!
 
-Bir örnek daha hazırlayalım üzeinde ilerleyelim.::
+Bir örnek daha hazırlayalım ve üzerinde konuşalım.::
 
         >>> isim = 'Buğra'
         >>> yas = 18
@@ -54,7 +55,7 @@ Aynı örneği format() fonksiyonu ile de yazıp arasındaki farka bakalım.::
 
 Yazabileceğim en basit haliyle yazdım -değişken isimleri kullanmadan-, yani değişkenleri sırasıyla ilgili yerleye yerleştirecek. Buna rağmen f-string örneğimizdekinden çok daha uzun oldu ve okunabilirlik azaldı.
 
-Aynı zamanda f-string'lerin içinde Python işlemleri de yapabiliriz. Evet, karakter dizisinin içinde Python yazmak.::
+Aynı zamanda f-string'lerin içinde Python işlemleri de yapabiliriz.::
         >>> birinci_rakam = 5
         >>> ikinci_rakam = 3
         >>> f'Rakamların toplamı {birinci_rakam + ikinci_rakam} eder.'
