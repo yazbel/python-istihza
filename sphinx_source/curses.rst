@@ -8,7 +8,7 @@
 Curses Nedir?
 **************
 
-Curses kütüphanesi, metin tabanlı terminaller için terminalden bağımsız bir ekran boyama ve klavye kullanımı kolaylığı sağlar; Bu tip terminaller, VT100s, Linux konsolu ve çeşitli programlar tarafından simüle edilmiş terminallerdir. Ekran terminalleri imleci hareket ettirmek, ekranı kaydırmak ve alanları silmek gibi bazı genel işlemleri yapabilmek için çeşitli kontrol kodlarını destekler. Farklı terminaller geniş ölçüde değişik kodlar kullanırlar ve genellikle kendi küçük tuhaflıkları vardır.
+Curses kütüphanesi, metin tabanlı terminaller için terminalden bağımsız bir ekran boyama ve klavye kullanımı kolaylığı sağlar. Bu tip terminaller, VT100s, Linux konsolu ve çeşitli programlar tarafından simüle edilmiş terminallerdir. Ekran terminalleri imleci hareket ettirmek, ekranı kaydırmak ve alanları silmek gibi bazı genel işlemleri yapabilmek için çeşitli kontrol kodlarını destekler. Farklı terminaller geniş ölçüde değişik kodlar kullanırlar ve genellikle kendi küçük tuhaflıkları vardır.
 
 Curses kütüphanesi oldukça temel işlevsellikler sunar, programcıya, örtüşmeyen çoklu metin pencerelerini içeren ekranların soyutlanmasını sağlar. Bir pencerenin içerikleri çeşitli şekillerde değişebilir - bir metin girme, bu metni silme, bu metnin görüntüsünü değiştirme - ve Curses kütüphanesi doğru çıktıyı oluşturabilmek için terminale hangi kontrol kodlarının gönderilmesi gerektiğini çözer. Curses; düğmeler, onay kutuları, veya diyaloglar gibi kullanıcı arayüzü konseptleri sağlamaz; eğer bu gibi özelliklere ihtiyacınız varsa, Urwid gibi bir kullanıcı arayüzü kütüphanesini kullanmayı düşünün.
 
