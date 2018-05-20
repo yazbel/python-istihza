@@ -71,6 +71,7 @@ Hadi sadece toplama işlemi yapan bir hesap makinesi yapalım.::
                 )
 
 Kullanıcının girdiği sayıları toplayan bir hesap makinesi yaptık. Az önce f-string'lerin içinde Python yazabildiğimizi öğrenmiştik. Bu bilgimizi de kullanıp bu basit programı daha güncel hale getirelim.::
+
         >>> f'Sayıların toplamı { int(input("Birinci sayıyı girin: ")) + int(input("İkinci sayıyı girin: ")) } eder.'
         Birinci sayıyı girin: 10
         İkinci sayıyı girin: 7
