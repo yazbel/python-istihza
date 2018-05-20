@@ -79,4 +79,4 @@ Kullanıcının girdiği sayıları toplayan bir hesap makinesi yaptık. Az önc
 
 Kullanıcıdan girdileri f-string'in içinde alarak tek satırlık bir hesap makinesi yazmış olduk.
 
-.. note:: f-string'in içinde Python yazmak herzaman en iyi yol olmayabilir.
+.. note:: f-string'in içinde Python yazmak her zaman en iyi yol olmayabilir.
