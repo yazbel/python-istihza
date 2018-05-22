@@ -420,7 +420,7 @@ Bir kez oluşturulduğunda, çalışan iş parçacıkları semafor'un `acquire()
 Bağlanmış semaforun kullanılması, elde edildiğinden daha fazla serbest bırakılması gibi bir programlama hatasını tespit edememe şansını azaltır.
 
 Event (Olay) Nesneleri
-===============
+======================
 
 Bu, iş parçacıkları arasındaki iletişim için en basit mekanizmadır: Bir iş parçacığı bir olayı sinyal eder ve diğer iş parçacığı da bunu bekler.
 
