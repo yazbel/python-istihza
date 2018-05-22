@@ -87,9 +87,9 @@ Ayrı iş parçacıkları için örneğin değeri değişik olacaktır.
 İş Parçacığı (Thread) Nesneleri
 ================================
 
-İş parçacığı (thread) sınıfı, ayrı iş parçacıklarını kontrol eden bir etkinliği temsil eder. Bu etkinliği belirtmek için iki yol vardır: yapıcıya çağrılabilir bir nesne atamak veya bir alt sınıfta `run()` metodunu iptal etmek. Yapıcı dışında hiçbir metot bir alt sınıfta iptal edilmemelidir. Başka bir deyişle, bu sınıfın sadece `__init__()` ve `run()` metotları iptal edilir.
+İş parçacığı (thread) sınıfı, ayrı iş parçacıklarını kontrol eden bir etkinliği temsil eder. Bu etkinliği belirtmek için iki yol vardır: yapıcıya, çağrılabilir bir nesne atamak veya bir alt sınıfta `run()` metodunu iptal etmek. Yapıcı dışında hiçbir metot bir alt sınıfta iptal edilmemelidir. Başka bir deyişle, bu sınıfın sadece `__init__()` ve `run()` metotları iptal edilir.
 
-Bir iş parçacığı (thread) nesnesi oluşturulduğunda, bu nesnenin etkinliği iş parçacığının `start()` metodu çağrılarak başlatılmalıdır. Bu ayrılmış bir iş parçacığının kontrolündeki `run()` metodunu çalıştırır.
+Bir iş parçacığı (thread) nesnesi oluşturulduğunda, bu nesnenin etkinliği, iş parçacığının `start()` metodu çağrılarak başlatılmalıdır. Bu ayrılmış bir iş parçacığının kontrolündeki `run()` metodunu çalıştırır.
 
 Bir iş parçacığı (thread) başlatıldığında, iş parçacığı 'canlanmış' olarak kabul edilir. Normalde bu iş parçacığının `run()` metodu sonlandığında, iş parçacığının canlılığı da sonlanır - veya yürütülemeyen bir beklenti yükseltilir-. İş parçacığının canlı olup olmadığını `is_alive()` metodu test eder.
 
@@ -97,7 +97,7 @@ Diğer iş parçacıkları, bir iş parçacığının `join()` metodunu çağır
 
 Bir iş parçacığının bir ismi vardır ve ismi yapıcıya atanabilir ve 'name' özelliği vasıtasıyla okunabilir veya değiştirilebilir.
 
-Bir iş parçacığı *daemon iş parçacığı (=daemon thread)* olarak işaretlenir. Bu işaretin önemi, sadece daemon iş parçacığı kaldığında bütün Python programının sonlanmasıdır. İşaretin başlangıç değeri oluşturulmuş olan iş parçacığından miras alınır. İşaret, daemon özelliği (property) veya daemon'un yapıcı argümanı tarafından ayarlanabilir.
+Bir iş parçacığı *daemon iş parçacığı (=daemon thread)* olarak işaretlenir. Bu işaretin önemi, sadece daemon iş parçacığı kaldığında bütün Python programının sonlanmasıdır. İşaretin başlangıç değeri, oluşturulmuş olan iş parçacığından miras alınır. İşaret, daemon özelliği (property) veya daemon'un yapıcı argümanı tarafından ayarlanabilir.
 
 **Not:** Daemon iş parçacıkları bilgisayar kapatıldığında ani bir şekilde sonlanır. Açılmış dosyalar, veritabanı hareketleri gibi birçok kaynak, düzgün bir şekilde serbest bırakılmayabilir. Eğer iş parçacıklarının düzgün bir şekilde durmasını istiyorsanız, onları non-daemonic (daemonic olmayacak şekilde) ayarlayın ve Event gibi uygun bir sinyal mekanizması kullanın.
 
@@ -112,7 +112,7 @@ Kukla iş parçacığı nesnelerinin (dummy thread objects) oluşturulma ihtimal
 
 	    **group:** Değeri, `None` olmalıdır. `ThreadGroupClass` uygulandığında, gelecekteki genişletme için saklanır.
 
-	    **target:** Değeri, `run()` metodu tarafından çalıştırılan, çağrılabilir bir nesnedir. Değeri ön tanımlı olarak `None` olur ve      değeri `None` olursa hiçbir şeyin çağrılmayacağı anlamına gelir.
+	    **target:** Değeri, `run()` metodu tarafından çalıştırılan, çağrılabilir bir nesnedir. Değeri ön tanımlı olarak `None` olur ve değeri `None` olursa hiçbir şeyin çağrılmayacağı anlamına gelir.
 
 	    **name:** İş parçacığının ismidir. Ön tanımlı değeri özel olarak "Thread-N" biçiminden yapılmıştır. Buradaki N'nin değeri küçük ondalık bir sayıdır.
 
@@ -714,7 +714,7 @@ yukarıda olduğu gibi iş parçacığını tanımladığımızda, t1 ve t2 iş 
 
 **Kodların Açıklamaları:**
 
-Bu örneği çalıştırdığınızda, göreceksiniz ki, *entry* widgetine yazı yazdığınızda *button* widgeti beliriyor, *entry* widgeti boş olduğunda ise ortadan kayboluyor. Bu işlem basit bir denetleme işlemidir ve tahmin edeceğiniz gibi fonksiyonun içindeki `while` döngüsü bu işe yarıyor. *t1* isimli `threading` örneğini oluşturduktan sonra onun *daemon* özelliğinin değerini `True` olarak değiştirdiğimizi görüyorsunuz. Bu işlemi yapmaktaki amacımız, programı sonlandırdığımızda, geriye sadece *daemonic* iş parçacıklarının kalmasını sağlamak ve böylece program çıkmamızı sağlamak. Eğer bu *daemon* özelliğini aktif hale getirmemiş olsaydık, `tkinter` penceresini kapattığımız halde, programın sonlanmadığını görürdük. `t1.join(1)` kodu da, bu iş parçacığının 1 saniye sonrası sonlanmasını istediğimizi belirtir.
+Bu örneği çalıştırdığınızda, göreceksiniz ki, *entry* widgetine yazı yazdığınızda *button* widgeti beliriyor, *entry* widgeti boş olduğunda ise ortadan kayboluyor. Bu işlem basit bir denetleme işlemidir ve tahmin edeceğiniz gibi fonksiyonun içindeki `while` döngüsü bu işe yarıyor. *t1* isimli `threading` örneğini oluşturduktan sonra onun *daemon* özelliğinin değerini `True` olarak değiştirdiğimizi görüyorsunuz. Bu işlemi yapmaktaki amacımız, programı sonlandırdığımızda, geriye sadece *daemonic* iş parçacıklarının kalmasını sağlamak ve böylece programdan çıkmamızı sağlamak. Eğer bu *daemon* özelliğini aktif hale getirmemiş olsaydık, `tkinter` penceresini kapattığımız halde, programın sonlanmadığını görürdük. `t1.join(1)` kodu da, bu iş parçacığının 1 saniye sonrası sonlanmasını istediğimizi belirtir.
 
 **Örnek-5:**
 
