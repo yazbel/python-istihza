@@ -5,7 +5,7 @@
 .. highlight:: python3
 
 *******************************************
-threading - İş Parçacığı Tabanlı Benzerlik
+threading - İş Parçacığı Tabanlı Paralellik
 *******************************************
 
 **Kaynak Kodu:** https://hg.python.org/cpython/file/3.5/Lib/threading.py
