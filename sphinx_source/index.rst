@@ -75,6 +75,7 @@ istihza.com
     regex
     sqlite
     curses
+    threading
     
 ------------------
 
