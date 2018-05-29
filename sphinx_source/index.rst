@@ -76,6 +76,7 @@ istihza.com
     sqlite
     curses
     threading
+    django_1
     
 ------------------
 
