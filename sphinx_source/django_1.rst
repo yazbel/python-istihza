@@ -1,11 +1,11 @@
 *****************************************
 İLK DJANGO PROJENİ YAZ, part 1
 *****************************************
-Bir örnekle öğrenmeye başlayalım. Bu örnek basit bir anket uygulaması olacak.
+Bir örnekle öğrenmeye başlayalım. Bu örnekte basit bir anket uygulaması oluşturacağız.
 Uygulama iki kısımdan oluşacak:
 	*Anketlerin oylanması için herkese açık bir site 
 	*Anketleri düzenlemek veya ekleyip silmek için bir admin paneli
-Senin Djangoyu yüklediğini varsayıyoruz. Bir komut isteminde aşağıdaki komutu çalıştırarak Djangonun yüklü olup olmadığına ve Django sürümüne ulaşabilirsin::
+Senin Djangoyu yüklediğini varsayıyoruz. Komut isteminde aşağıdaki komutu çalıştırarak Djangonun yüklü olup olmadığına ve Django sürümüne ulaşabilirsin::
 
 	python -m django --version
 
@@ -40,7 +40,7 @@ mysite/wsgi.py: WSGI uyumlu web sunucuları için projenize hizmet edecek bir gi
 Geliştirme sunucusu
 *************************
 
-Şimdi django projenin çalışıp çalışmadığını kontrol edelim. Komut satırında dışarıdaki mysite dizinine gidin ve aşağıdaki kodu çalıştırın::
+Şimdi django projemizin çalışıp çalışmadığını kontrol edelim. Komut satırında dışarıdaki mysite dizinine gidin ve aşağıdaki kodu çalıştırın::
 
 	python manage.py runserver
 
@@ -58,7 +58,7 @@ Geliştirme sunucusu
 	Starting development server at http://127.0.0.1:8000/
 	Quit the server with CONTROL-C.
 
-..Not:: Veritabanıyla ilgili uyarıyı dikkate almayın.
+..Note:: Veritabanıyla ilgili uyarıyı dikkate almayın.
 
 Django geliştirme sunucusunu başlattınız.
 
@@ -66,7 +66,7 @@ Kullanılan portu değiştirme
 *******************************
 
 "runserver" komutu geliştirme sunucusu için standart olarak 8000 portunu kullanır. 
-Eğer bu portu portu değiştirmek isterseniz bunu komuta argüman olarak verin. Mesela aşağıdaki komut 8080 portunda geliştirme sunucusunu çalıştırıyor::
+Eğer bu portu değiştirmek isterseniz bunu komuta argüman olarak verin. Mesela aşağıdaki komut 8080 portunda geliştirme sunucusunu çalıştırıyor::
 
 	python manage.py  runserver 8080
 
@@ -76,11 +76,11 @@ Eğer sunucunun IP adresini değiştirmek isterseniz port ile birlikte belirtin.
 
 Yukarıda yazdığımız kodda 0'ın anlamı 0.0.0.0 (Yani bir kısaltma).
 
-Bir anket uygulaması oluştur
-***********************************
+Bir anket uygulaması oluşturalım
+***************************************
 
-Artık proje ortamınız kuruldu. Çalışmaya başlayabilirsiniz.
-Django'da yazdığınız her uygulama bir python paketinden oluşur ve Django'da bir uygulamanın dizini otomatik olarak oluşturulur. Bu sayede dizin oluşturmakla uğraşacağınız zamanda kod yazabilirsiniz.
+Artık proje ortamımız kuruldu. Çalışmaya başlayabiliriz.
+Django'da yazdığımız her uygulama bir python paketinden oluşur ve Django'da uygulamanın dizini otomatik olarak oluşturulur. Bu sayede dizin oluşturmakla uğraşacağımız zamanda kod yazabiliriz.
 Bir uygulama oluşturmak için komut satırında manage.py ile aynı dizine gelin ve şu komutu yazın::
 
 	python manage.py startapp polls
@@ -95,17 +95,17 @@ Bir uygulama oluşturmak için komut satırında manage.py ile aynı dizine geli
 	    models.py
 	    tests.py
 	    views.py
-Bu dizin anket uygulamanızın merkezi olacak.
+Bu dizin anket uygulamamızın merkezi olacak.
 
-İlk view'ını yaz
-*****************
+İlk view'ımızı yazalım
+**************************
 
 Hadi yazmaya başlayalım. Şimdi polls/views.py açın ve şu kodları yazın::
 	from django.http import HttpResponse
 	def index(request):
 	    return HttpResponse("Hello, world. You're at the polls index.")
 Bu Django'da yazılabilecek en basit view. Artık bu view ı çağırabilmek için bir URL haritasına ihtiyacımız var ve URL haritası için de URL şemasına.
-polls dizininde urls.py isimli bir dosya oluşturarak uygulamanın URL şemasını da oluşturmuş oluruz.(Klasik yöntemle oluşturun.) Uygulama dizininiz son olarak şöyle görünmeli::
+polls dizininde urls.py isimli bir dosya oluşturarak uygulamanın URL şemasını da oluşturmuş oluruz.(Dosya Gezgininden kendiniz urls.py isimli bir python modülü oluşturun.)  Uygulama dizini son olarak şöyle görünmeli::
 	polls/
 	    __init__.py
 	    admin.py
