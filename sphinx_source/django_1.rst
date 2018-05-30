@@ -7,6 +7,7 @@
 İLK DJANGO PROJENİ YAZ, part 1
 *****************************************
 **Kaynak Kodu:** https://docs.djangoproject.com/en/2.0/intro/tutorial01/
+
 Bir örnekle öğrenmeye başlayalım. Bu örnekte basit bir anket uygulaması oluşturacağız.
 Uygulama iki kısımdan oluşacak:
 	*Anketlerin oylanması için herkese açık bir site 
