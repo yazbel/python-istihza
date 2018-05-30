@@ -143,7 +143,7 @@ Burada oluşturduğumuz URL şemasını gerçek Url şemasında tanıtmanın vak
 	    path('admin/', admin.site.urls),
 	]
 
- Artık index view'ını bir dizine bağladınız. Test etmenin vakti geldi. Komut satırında şu kodu çalıştırın::
+Artık index view'ını bir dizine bağladınız. Test etmenin vakti geldi. Komut satırında şu kodu çalıştırın::
 
 	python manage.py runserver
 
