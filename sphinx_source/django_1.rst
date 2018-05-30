@@ -65,7 +65,7 @@ Geliştirme sunucusu
 	Starting development server at http://127.0.0.1:8000/
 	Quit the server with CONTROL-C.
 
-..Note:: Veritabanıyla ilgili uyarıyı dikkate almayın.
+.. Note:: Veritabanıyla ilgili uyarıyı dikkate almayın.
 
 Django geliştirme sunucusunu başlattınız.
 
