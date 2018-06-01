@@ -10,8 +10,8 @@
 
 Bir örnekle öğrenmeye başlayalım. Bu örnekte basit bir anket uygulaması oluşturacağız.
 Uygulama iki kısımdan oluşacak:
-	1. Anketlerin oylanması için herkese açık bir site 
-	2. Anketleri düzenlemek veya ekleyip silmek için bir admin paneli
+	#. Anketlerin oylanması için herkese açık bir site 
+	#. Anketleri düzenlemek veya ekleyip silmek için bir admin paneli
 Senin Djangoyu yüklediğini varsayıyoruz. Komut isteminde aşağıdaki komutu çalıştırarak Djangonun yüklü olup olmadığına ve Django sürümüne ulaşabilirsin::
 
 	python -m django --version
