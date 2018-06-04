@@ -3,15 +3,19 @@
    :keywords: python, django, çeviri
    
 .. highlight:: python3
+
 *****************************************
 İLK DJANGO PROJENİ YAZ, part 1
 *****************************************
+
 **Kaynak Kodu:** https://docs.djangoproject.com/en/2.0/intro/tutorial01/
 
 Bir örnekle öğrenmeye başlayalım. Bu örnekte basit bir anket uygulaması oluşturacağız.
 Uygulama iki kısımdan oluşacak:
+
 	#. Anketlerin oylanması için herkese açık bir site 
 	#. Anketleri düzenlemek veya ekleyip silmek için bir admin paneli
+
 Senin Djangoyu yüklediğini varsayıyoruz. Komut isteminde aşağıdaki komutu çalıştırarak Djangonun yüklü olup olmadığına ve Django sürümüne ulaşabilirsin::
 
 	python -m django --version
@@ -93,6 +97,7 @@ Bir uygulama oluşturmak için komut satırında `manage.py` ile aynı dizine ge
 	python manage.py startapp polls
 
 `polls` isimli bir dizin oluşturulacak. Bakaklım içinde neler var::
+	
 	polls/
 	    __init__.py
 	    admin.py
@@ -102,16 +107,21 @@ Bir uygulama oluşturmak için komut satırında `manage.py` ile aynı dizine ge
 	    models.py
 	    tests.py
 	    views.py
+
 Bu dizin anket uygulamamızın merkezi olacak.
 
 İlk view'ımızı yazalım
 =======================
+
 Hadi yazmaya başlayalım. Şimdi `polls/views.py` açın ve şu kodları yazın::
+
 	from django.http import HttpResponse
 	def index(request):
 	    return HttpResponse("Hello, world. You're at the polls index.")
+
 Bu Django'da yazılabilecek en basit view. Artık bu view ı çağırabilmek için bir URL haritasına ihtiyacımız var ve URL haritası için de URL şemasına.
 polls dizininde `urls.py` isimli bir dosya oluşturarak uygulamanın URL şemasını da oluşturmuş oluruz.(Dosya Gezgininden kendiniz urls.py isimli bir python modülü oluşturun.)  Uygulama dizini son olarak şöyle görünmeli::
+
 	polls/
 	    __init__.py
 	    admin.py
