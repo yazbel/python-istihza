@@ -46,6 +46,7 @@ istihza.com
     karakter_dizilerinin_metotlari2
     karakter_dizilerinin_metotlari3
     karakter_dizilerini_bicimlendirmek
+    fstring
     listeler_ve_demetler
     listelerin_ve_demetlerin_metotlari
     sayma_sistemleri
@@ -75,6 +76,8 @@ istihza.com
     sqlite
     curses
     threading
+    django_1
+    timeit
     
 ------------------
 
