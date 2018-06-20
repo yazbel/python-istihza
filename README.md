@@ -18,6 +18,28 @@ Hatta bu gelişime siz de dahil olabilirsiniz!
 
 Bu arada proje sonlandığında bu belgede istihza.com'a verilen bağlantıların çalışmayabileceğini de unutmamalısınız.
 
+## Belgeleri inşa etme
+
+Buradaki belgeler [reStructuredText] kullanılarak yazılmış, [Sphinx] kullanılarak derlenmiştir.
+Belgeleri derlemek için öncelikle Sphinx'i kurmalısınız.
+Sphinx'i Ubuntu'da şu komutla kurabilirsiniz:
+
+```shell
+# Python 3 için
+$ apt install python3-sphinx
+# Python 2 için
+$ apt install python-sphinx
+```
+
+Şimdi şu komutla belgeleri inşa edebilirsiniz:
+
+```shell
+# UNIX ortamında
+$ make html
+# Windows ortamında
+> .\make.bat html
+```
+
 ## Nasıl yardım alabilirim?
 
 Her zaman [YazBel forumu](https://forum.yazbel.com/)nun [Python kategorisi](https://forum.yazbel.com/c/python)nde bir
@@ -42,3 +64,6 @@ olmasına dikkat edin.
 [`LICENSE`](https://github.com/yazbel/belgeler/blob/master/python/LICENSE) dosyasında da belirtildiği üzere bu
 belgelerin lisansı **Creative Commons Atıf-GayriTicari-AynıLisanslaPaylaş 3.0 Yerelleştirilmemiş (CC BY-NC-SA 3.0)**
 lisansıdır. Daha fazla bilgi için lütfen dosyanın içeriğine bakınız.
+
+[reStructuredText]: http://docutils.sourceforge.net/rst.html
+[Sphinx]: http://www.sphinx-doc.org/
