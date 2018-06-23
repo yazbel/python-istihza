@@ -7,13 +7,14 @@ timeit - Küçük Kod Parçalarının Çalışma Sürelerini Ölçme
 ********************************************************
 
 **Kaynak Kodu:** https://github.com/python/cpython/blob/3.5/Lib/timeit.py
+**Belge Kaynağı:** https://docs.python.org/3.5/library/timeit.html
 
-Bu modül küçük kod parçalarının çalışma sürelerini ölçmeyi sağlar. Hem komut satırı ara yüzüne hem de çağrılabilir bir ara yüze sahiptir. Çalışma sürelerini ölçmek için birçok ortak tuzaktan kaçınır. Tim Peters'in O'Reilly tarafından yayımlanan Python Cookbook kitabının "Algoritmalar" bölümünün girişine de göz atın.
+Bu modül küçük kod parçalarının çalışma sürelerini ölçmeyi sağlar. Hem komut satırı arayüzüne hem de çağrılabilir bir arayüze sahiptir. Çalışma sürelerini ölçmek için birçok ortak tuzaktan kaçınır. Tim Peters'in O'Reilly tarafından yayımlanan Python Cookbook kitabının "Algoritmalar" bölümünün girişine de göz atın.
 
 Temel Örnekler
 ==============
 
-Takip eden örnek, komut satırı ara yüzünün üç değişik deyimi nasıl karşılaştırdığını gösteriyor::
+Takip eden örnek, komut satırı arayüzünün üç değişik deyimi nasıl karşılaştırdığını gösteriyor::
 
     python3 -m timeit '"-".join(str(n) for n in range(100))'
     10000 loops, best of 3: 29 usec per loop
@@ -24,7 +25,7 @@ Takip eden örnek, komut satırı ara yüzünün üç değişik deyimi nasıl ka
     python3 -m timeit '"-".join(map(str, range(100)))'
     10000 loops, best of 3: 20 usec per loop
 
-Bu, Python ara yüzünden şu kodlarla gerçekleştirilebilir::
+Bu, Python arayüzünden şu kodlarla gerçekleştirilebilir::
 
     import timeit
 
@@ -37,9 +38,9 @@ Bu, Python ara yüzünden şu kodlarla gerçekleştirilebilir::
     timeit.timeit('"-".join(map(str, range(100)))', number=10000)
     0.2151021940001101
 
-timeit sadece komut satırı ara yüzü kullanıldığında yineleme sayısını otomatik olarak belirleyecektir. Örnekler bölümünde gelişmiş örnekler bulabilirsiniz.
+timeit sadece komut satırı arayüzü kullanıldığında yineleme sayısını otomatik olarak belirleyecektir. Örnekler bölümünde gelişmiş örnekler bulabilirsiniz.
 
-Python Ara Yüzü
+Python Arayüzü
 ===============
 
 Modül, üç kolaylık fonksiyonu ve bir topluluk sınıfı tanımlar:
@@ -104,10 +105,10 @@ Modül, üç kolaylık fonksiyonu ve bir topluluk sınıfı tanımlar:
 
 	Standart geri izinin avantajı, derlenen şablondaki kaynak çizgilerinin görüntülenecek olmasıdır. İsteğe bağlı *file* argümanı geri izinin nereye gönderileceğini belirler, varsayılan değeri `sys.stderr`'dir.
 
-Komut Satırı Ara Yüzü
+Komut Satırı Arayüzü
 =====================
 
-Bir program olarak komut satırı ara yüzünden çağrılırken şu yapı kullanılır::
+Bir program olarak komut satırı arayüzünden çağrılırken şu yapı kullanılır::
 
     python -m timeit [-n N] [-r N] [-u U] [-s S] [-t] [-c] [-h] [statement ...]
 
@@ -172,7 +173,7 @@ Sadece başlangıçta bir kez çalıştırılmak üzere bir setup (kurulum) ifad
     python -m timeit -s 'text = "sample string"; char="g"' 'text.find(char)'
     10000000 loops, best of 3: 0.178 usec per loop
 
-Python ara yüzü için::
+Python arayüzü için::
 	
     import timeit
 
@@ -206,7 +207,7 @@ Sonraki örnekler çok satırlı ifadelerin zaman ölçümünün nasıl yapılac
     python -m timeit 'if hasattr(int, "__bool__"): pass'
     1000000 loops, best of 3: 0.479 usec per loop
 
-Python ara yüzü için::
+Python arayüzü için::
 
     import timeit
 
@@ -281,7 +282,7 @@ Bir diğer seçenek şimdiki global ad alanı içerisinde çalıştırılacak `g
     python -m timeit '"".join(("a", "b"))'
     10000000 loops, best of 3: 0.109 usec per loop
 
-Python ara yüzü için::
+Python arayüzü için::
 
     import timeit
   
