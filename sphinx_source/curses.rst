@@ -1311,7 +1311,7 @@ Aşağıdaki kodlar Türkçe karakterleri eklemekle ilgilidir. Daha önce belirt
         elif q == 197:
             ekran.addstr(y, x, "", curses.color_pair(1))
 
-Aşağıdaki kodlarda hangi koşullarda ekrana Türkçe karakterlerin ekleneceği tanımlanmıştır. Türkçe karakterler doğrudan unicode karakteri olarak eklenecektir::
+Aşağıdaki kodlarda hangi koşullarda ekrana Türkçe karakterlerin ekleneceği tanımlanmıştır. Türkçe karakterler doğrudan unicode karakteri olarak eklenecektir:
 
 Küçük *"ç"* harfinin eklenmesini sağlayan koşul::
 
