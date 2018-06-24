@@ -77,6 +77,7 @@ istihza.com
     curses
     threading
     django_1
+    timeit
     
 ------------------
 
