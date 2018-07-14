@@ -31,7 +31,7 @@ anahtar değer ilişkisinden çok sadece değer alır.
 
 JSON modülünde 4 ana fonksiyon bulunuyor. Bunlardan ikisi 
 python ile JSON oluşturmaya yararken diğer ikisi json 
-verilerini çözmeye çözmeye yarar. Json oluşturan fonksiyonlar şu
+verilerini çözmeye çözmeye yarar. JSON oluşturan fonksiyonlar şu
 ikisi:
 
 #.json.dump
@@ -55,7 +55,7 @@ parametreleri neredeyse aynı. Aralarındaki fark ise şu:
 
 O yüzden python.org sitesinden alınan şu örneklerde `dump`
 yerine `dumps` fonksiyonu kullanılmış.Eğer `dump` fonksiyonunu
-kullancaksanız jsona dönüşmesini istediğiniz ifadeden sonra
+kullancaksanız JSON'a dönüşmesini istediğiniz ifadeden sonra
 dosyayı bulunduran değişkeni yazın.
 ::
 
@@ -183,7 +183,7 @@ yapmak için sadece anahtarları aldı.
 **object_pairs_hook**
 object_pairs_hook, object_hook ile benzer görevler yapıyor.
 İkisi arasında öncelik object_pairs_hookta. Eğer anahtar değer
-ilişkisinden oluşan bir json verisiyse object_pairs_hook
+ilişkisinden oluşan bir JSON verisiyse object_pairs_hook
 değilse object_hook parametresi kullanılır.
 ::
 
