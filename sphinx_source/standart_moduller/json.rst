@@ -106,7 +106,7 @@ Eğer 0, negatif sayı veya boş karakter dizisi(`""`) ise her öğeyi yeni
 satıra basar. None(varsayılan) ise dip dibe bir çıktı verir.
 Pozitif bir sayı verildiğinde onu boşluk sayısı kabul ederek 
 girintileme yapar. Karakter dizisi ifadesine şu ikisi yeterince açık
-bir örnek:`\t`,`\n`
+bir örnek: `\t`, `\n`
 
 .. Note:: Karakter dizisi kullanımı 3.2 sürümü itibari ile başladı.
 
@@ -154,6 +154,7 @@ kullanır. Verilen değer tuple tipinde olmalıdır. Varsayılan olarak
 
 json.load ve json.loads
 ***********************
+
 Bu iki fonksiyon da dump ve dumps'a çok benziyor.
 Hatta farkları bile neredeyse aynı. load fonksiyonu sadece 
 dosyadaki JSON verilerini Python verisine çevirirken 
@@ -171,6 +172,7 @@ Buraya birkaç örnek kod yazalım.
 Şimdi de sıra fonksiyonların aldığı parametrelerde.
 
 **object_hook**
+
 Döndürülen değerin veri tipini değitirmenizi sağlar. Bunu 
 bir kod ile açıklayalım.
 ::
@@ -182,6 +184,7 @@ Gördüğünüz gibi çıktıyı liste tipinde verdi. Ancak bunu
 yapmak için sadece anahtarları aldı.
 
 **object_pairs_hook**
+
 object_pairs_hook, object_hook ile benzer görevler yapıyor.
 İkisi arasında öncelik object_pairs_hook'ta. Eğer anahtar değer
 ilişkisinden oluşan bir JSON verisiyse, object_pairs_hook
@@ -194,6 +197,7 @@ değilse, object_hook parametresi kullanılır.
     ['Fırat', 'Özgül']
 
 **parse_int**
+
 int tipindeki değerlerin python koduna dönüştürülürken hangi
 tipin kullanılması gerektiğini belirler. Bunu bir kodla
 açıklamak daha kolay olur sanıyorum::
@@ -202,6 +206,7 @@ açıklamak daha kolay olur sanıyorum::
     {'Satılan': 54.0, 'Kalan': 46.0}
 
 **parse_float**
+
 parse_int parametresinin yaptığını float tipindeki sayılar
 için yapar.
 ::
