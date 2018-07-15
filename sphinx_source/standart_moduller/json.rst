@@ -3,9 +3,9 @@
     :keywords: JSON
 .. highlight:: py3
 
-****
-JSON
-****
+***********
+json Modülü
+***********
 
 JSON farklı diller arasında iletişimi sağlamak için geliştirilmiş
 basit bir veri formatıdır. Bu veri formatı Python'daki sözlük ve 
