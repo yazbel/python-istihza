@@ -1,6 +1,6 @@
 .. meta::
-    :description: Bu bölümde json sınıfının fonksiyonları anlatılıyor.
-    :keywords: Json
+    :description: Bu bölümde JSON modülünün fonksiyonları anlatılıyor.
+    :keywords: JSON
 .. highlight:: py3
 
 ****
@@ -8,36 +8,36 @@ JSON
 ****
 
 JSON farklı diller arasında iletişimi sağlamak için geliştirilmiş
-basit bir veri formatıdır. Bu veri formatı pythondaki sözlük ve 
-listelere çok benzer. İki tür kullanımı vardır. Birincisi anahtar
-değer mantıyla çalışır.
+basit bir veri formatıdır. Bu veri formatı Python'daki sözlük ve 
+listelere çok benzer. İki tür kullanımı vardır. Birincisi anahtar-değer mantıyla çalışır.
 ::
 
     {
-    "Ad": "Fırat",
-    "Soyad": "Özgül"
+        "Ad": "Fırat",
+        "Soyad": "Özgül"
     }
 
-JSON ifadelerinde her element arasında virgül olmalıdır. Anahtar ve değer ikilisi 
+JSON ifadelerinde her öğe arasında virgül olmalıdır. Anahtar ve değer ikilisi 
 arasında ise iki nokta kullanılır.
 
 İkinci kullanımı ise liste tipine çok benzer. Bu kullanımda 
-anahtar değer ilişkisinden çok sadece değer alır.
+anahtar-değer değil, sadece değer verilir.
+::
 
     {
-    "Fırat",
-    "Özgül"
+        "Fırat",
+        "Özgül"
     }
 
 JSON modülünde 4 ana fonksiyon bulunuyor. Bunlardan ikisi 
-python ile JSON oluşturmaya yararken diğer ikisi json 
-verilerini çözmeye çözmeye yarar. JSON oluşturan fonksiyonlar şu
-ikisi:
+Python ile JSON oluşturmaya yararken diğer ikisi JSON 
+verilerini çözmeye yarar. JSON oluşturan fonksiyonlar şu
+ikisidir:
 
 #.json.dump
 #.json.dumps
 
-JSON verilerini çözen iki fonksiyon ise şunlar:
+JSON verilerini çözen iki fonksiyon ise şunlardır:
 
 #.json.load
 #.json.loads
@@ -55,7 +55,7 @@ parametreleri neredeyse aynı. Aralarındaki fark ise şu:
 
 O yüzden python.org sitesinden alınan şu örneklerde `dump`
 yerine `dumps` fonksiyonu kullanılmış.Eğer `dump` fonksiyonunu
-kullancaksanız JSON'a dönüşmesini istediğiniz ifadeden sonra
+kullanacaksanız JSON'a dönüşmesini istediğiniz ifadeden sonra
 dosyayı bulunduran değişkeni yazın.
 ::
 
@@ -81,13 +81,13 @@ ne işe yaradığını öğrenmekte.
 
 **skipkeys**
 
-Normalde python json oluştururken anahtar veya değer basit tipte
+Normalde Python, JSON oluştururken anahtar veya değer basit tipte
 (str,int,float...) değilse `TypeError` hatası verir.
-Eğer bu parametre `True` (Varsayılan `False` ) ise hata vermek yerine o ikiliyi atlar.
+Eğer bu parametre `True` (Varsayılan `False`) ise hata vermek yerine o ikiliyi atlar.
 
 **ensure_ascii**
 
-Eğer bu parametre `True` (varsayılan olarak) ise çıktıda ascii
+Eğer bu parametre `True` (varsayılan olarak) ise çıktıda ASCII
 tablosuna uymayan karakterlerden kaçınır. `False` ise buna dikkat etmez.
 
 ::
@@ -100,15 +100,15 @@ tablosuna uymayan karakterlerden kaçınır. `False` ise buna dikkat etmez.
 
 **indent**
 
-Eğer negatif olmayan bir tamsayı veya bir string ise
+Eğer negatif olmayan bir tamsayı veya bir karakter dizisi ise
 girintileme sayesinde daha güzel bir çıktı almanızı sağlar.
-Eğer 0, negatif sayı veya boş string(`""`) ise her elementi yeni 
-satıra basar.None(Varsayılan) ise dip dibe bir çıktı verir.
+Eğer 0, negatif sayı veya boş karakter dizisi(`""`) ise her öğeyi yeni 
+satıra basar. None(varsayılan) ise dip dibe bir çıktı verir.
 Pozitif bir sayı verildiğinde onu boşluk sayısı kabul ederek 
-girintileme yapar. String ifadesine şu ikisi yeterince açık
+girintileme yapar. Karakter dizisi ifadesine şu ikisi yeterince açık
 bir örnek:`\t`,`\n`
 
-.. Note::String kullanımı 3.2 sürümü itibari ile başladı.
+.. Note:: Karakter dizisi kullanımı 3.2 sürümü itibari ile başladı.
 
 ::
 
@@ -144,9 +144,9 @@ bir örnek:`\t`,`\n`
 
 **separators**
 
-Bu parametre verilen değeri elementler arasında ayraç olarak 
-kullanır. Verilen değer tuple tipinte olmalıdır. Varsayılan olarak
-şu kullanılır:`(",",": ")`
+Bu parametre verilen değeri öğeler arasında ayraç olarak 
+kullanır. Verilen değer tuple tipinde olmalıdır. Varsayılan olarak
+şu kullanılır: `(",",": ")`
 ::
 
     >>> json.dumps({"Elma":42,"Armut":25,"kiraz":65},separators=("?","!"))
@@ -154,11 +154,11 @@ kullanır. Verilen değer tuple tipinte olmalıdır. Varsayılan olarak
 
 json.load ve json.loads
 ***********************
-Bu iki fonksiyon da dump ve dumps gibi çok benziyor.
+Bu iki fonksiyon da dump ve dumps'a çok benziyor.
 Hatta farkları bile neredeyse aynı. load fonksiyonu sadece 
-dosyadaki JSON verilerini python verisine çevirirken 
+dosyadaki JSON verilerini Python verisine çevirirken 
 loads fonksiyonu veriyi parametre olarak alıyor. dump
-ve dumps'da olduğu gibi parametreleri tamamen aynı.
+ve dumps'ta olduğu gibi parametreleri tamamen aynı.
 
 Buraya birkaç örnek kod yazalım.
 ::
@@ -168,7 +168,7 @@ Buraya birkaç örnek kod yazalım.
     >>> json.loads('["\\u00fcz\\u00fcm"]')
     ['üzüm']
 
-Şimdi de sıra fonksiyonların aldığı parametrelerinde.
+Şimdi de sıra fonksiyonların aldığı parametrelerde.
 
 **object_hook**
 Döndürülen değerin veri tipini değitirmenizi sağlar. Bunu 
@@ -177,14 +177,15 @@ bir kod ile açıklayalım.
 
     >>> json.loads('{"mezuniyet": "üniversite", "Bölüm": "Tıp"}',object_hook=list)
     ['mezuniyet', 'Bölüm']
+
 Gördüğünüz gibi çıktıyı liste tipinde verdi. Ancak bunu 
 yapmak için sadece anahtarları aldı.
 
 **object_pairs_hook**
 object_pairs_hook, object_hook ile benzer görevler yapıyor.
-İkisi arasında öncelik object_pairs_hookta. Eğer anahtar değer
-ilişkisinden oluşan bir JSON verisiyse object_pairs_hook
-değilse object_hook parametresi kullanılır.
+İkisi arasında öncelik object_pairs_hook'ta. Eğer anahtar değer
+ilişkisinden oluşan bir JSON verisiyse, object_pairs_hook
+değilse, object_hook parametresi kullanılır.
 ::
 
     >>> json.loads('{"Ad": "Fırat", "Soyad": "Özgül"}',object_pairs_hook=str)
