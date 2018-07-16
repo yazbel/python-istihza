@@ -34,13 +34,13 @@ Python ile JSON oluşturmaya yararken diğer ikisi JSON
 verilerini çözmeye yarar. JSON oluşturan fonksiyonlar şu
 ikisidir:
 
-#.json.dump
-#.json.dumps
+    #. json.dump
+    #. json.dumps
 
 JSON verilerini çözen iki fonksiyon ise şunlardır:
 
-#.json.load
-#.json.loads
+    #. json.load
+    #. json.loads
 
 json.dump ve json.dumps
 ************************
@@ -106,7 +106,7 @@ Eğer 0, negatif sayı veya boş karakter dizisi(`""`) ise her öğeyi yeni
 satıra basar. None(varsayılan) ise dip dibe bir çıktı verir.
 Pozitif bir sayı verildiğinde onu boşluk sayısı kabul ederek 
 girintileme yapar. Karakter dizisi ifadesine şu ikisi yeterince açık
-bir örnek: `\t`, `\n`
+bir örnek: `\\t`, `\\n`
 
 .. Note:: Karakter dizisi kullanımı 3.2 sürümü itibari ile başladı.
 
@@ -146,7 +146,9 @@ bir örnek: `\t`, `\n`
 
 Bu parametre verilen değeri öğeler arasında ayraç olarak 
 kullanır. Verilen değer tuple tipinde olmalıdır. Varsayılan olarak
-şu kullanılır: `(",",": ")`
+şu kullanılır: `(",", ": ")`
+Ancak indent parametresi `None` değerindeyse ilk virgül değeri de iki 
+nokta gibi sonuna boşluk alır. Yani şu şekilde olur: `(", ", ": ")`
 ::
 
     >>> json.dumps({"Elma":42,"Armut":25,"kiraz":65},separators=("?","!"))
@@ -155,11 +157,11 @@ kullanır. Verilen değer tuple tipinde olmalıdır. Varsayılan olarak
 json.load ve json.loads
 ***********************
 
-Bu iki fonksiyon da dump ve dumps'a çok benziyor.
+Bu iki fonksiyon da dump ve dumps gibi birbirine çok benziyor.
 Hatta farkları bile neredeyse aynı. load fonksiyonu sadece 
 dosyadaki JSON verilerini Python verisine çevirirken 
 loads fonksiyonu veriyi parametre olarak alıyor. dump
-ve dumps'ta olduğu gibi parametreleri tamamen aynı.
+ve dumps'da olduğu gibi parametreleri tamamen aynı.
 
 Buraya birkaç örnek kod yazalım.
 ::
@@ -186,9 +188,9 @@ yapmak için sadece anahtarları aldı.
 **object_pairs_hook**
 
 object_pairs_hook, object_hook ile benzer görevler yapıyor.
-İkisi arasında öncelik object_pairs_hook'ta. Eğer anahtar değer
-ilişkisinden oluşan bir JSON verisiyse, object_pairs_hook
-değilse, object_hook parametresi kullanılır.
+İkisi arasında öncelik object_pairs_hook'da. Eğer anahtar değer
+ilişkisinden oluşan bir JSON verisiyse object_pairs_hook
+değilse object_hook parametresi kullanılır.
 ::
 
     >>> json.loads('{"Ad": "Fırat", "Soyad": "Özgül"}',object_pairs_hook=str)
@@ -198,7 +200,7 @@ değilse, object_hook parametresi kullanılır.
 
 **parse_int**
 
-int tipindeki değerlerin python koduna dönüştürülürken hangi
+int tipindeki değerlerin Python koduna dönüştürülürken hangi
 tipin kullanılması gerektiğini belirler. Bunu bir kodla
 açıklamak daha kolay olur sanıyorum::
 
