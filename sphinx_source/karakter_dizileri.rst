@@ -482,7 +482,7 @@ Python ``for`` döngüsünün ilk turunda şöyle bir işlem gerçekleştirir::
     print("isminizin {}. harfi: {}".format(1, isim[1]))
     
 .. figure:: ../images/misc/string_index.png
-   :target: _images/string_index.png
+   :target: _images/misc/string_index.png
    :align: right
    :figwidth: 300px
    :width: 300px

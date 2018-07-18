@@ -384,7 +384,7 @@ karakterlerin eşleştirilmesi yoluyla oluşturulmuştur. Mors sisteminde farkl�
 sinyaller (tıpkı bizim sistemimizde olduğu gibi) farklı harflere karşılık gelir:
 
     .. image:: ../images/misc/morse.png
-       :target: _images/morse.png
+       :target: _images/misc/morse.png
        :align: center 
        :width: 400px
        :height: 400px

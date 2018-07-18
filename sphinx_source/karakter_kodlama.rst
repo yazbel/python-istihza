@@ -217,7 +217,7 @@ eşleştirildiği basit bir tablodan ibarettir. Bu tabloyu
 http://www.asciitable.com/ adresinde görebilirsiniz:
 
 .. image:: ../images/misc/asciifull.png
-   :target: _images/asciifull.png
+   :target: _images/misc/asciifull.png
    :align: center 
    :width: 400px
    :height: 300px

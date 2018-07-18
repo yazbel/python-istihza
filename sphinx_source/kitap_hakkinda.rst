@@ -93,8 +93,9 @@ Bu kitabın amacı, kitabı okuyanlara Python programlama dilini doğru ve ayrı
 bir şekilde öğretmek olduğu kadar, bu programlama dilini öğretirken düzgün ve
 anlaşılır bir Türkçe de kullanmaktır. Bu bakımdan, kitapta bulabileceğiniz kod
 hatalarıyla birlikte, kitaptaki anlatım, yazım ve noktalama hatalarını da
-`yazara iletirseniz <ozgulfirat@gmail.com]>`__, istihza.com projesine önemli bir
-katkıda bulunmuş olursunuz.
+`GitHub'daki veri havuzunda <https://github.com/yazbel/python-istihza>`_ düzelterek ya da
+`bir konu açarak <https://github.com/yazbel/python-istihza/issues/new>`_ istihza.com projesine önemli bir katkıda
+bulunmuş olursunuz.
 
 .. seealso:: Projeye bu şekilde katkıda bulunanların listesini
  :doc:`katkida_bulunanlar` başlıklı sayfada görebilirsiniz.
@@ -107,7 +108,7 @@ Kullanım Koşulları
 ********************
 
 Bu kitaptaki bilgiler, istihza.com'un öteki kısımları gibi, `Creative Commons
-lisansı <[http://creativecommons.org/licenses/by-nc-sa/3.0>`__ altındadır. Bu
+lisansı <http://creativecommons.org/licenses/by-nc-sa/3.0>`__ altındadır. Bu
 lisansa göre, bu kitaptaki bütün bilgilerden herkes ücretsiz olarak
 yararlanabilir. Eğer isterseniz burada gördüğünüz belgelerin çıktısını alabilir,
 tanıdığınız veya tanımadığınız herkesle gönül rahatlığıyla paylaşabilirsiniz.
