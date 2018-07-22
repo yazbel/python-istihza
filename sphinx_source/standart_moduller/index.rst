@@ -42,3 +42,4 @@ bir genişlemiş olacak.
     datetime
     time
     json
+    sched
