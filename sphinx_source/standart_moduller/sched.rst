@@ -70,6 +70,14 @@ scheduler.run()
 ***************
 
 Sıradaki fonksiyonları hazırlandığı şekilde çalıştırır.
+Tek parametresi olan `blocking` eğer `False` ise ilk çalışacak 
+fonksiyonun çalışmasına kalan süreyi döndürür.
+
+scheduler.queue
+****************
+Bu değişken scheduler nesnelerinin sahip olduğu ve bizim 
+kullanabileceğimiz tek değişken. Daha önce sıraya eklenmiş 
+Event nesnelerini tutuyor.
 
 Örnekler
 ********
