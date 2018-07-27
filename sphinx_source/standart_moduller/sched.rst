@@ -11,13 +11,13 @@ sched modülü
 Bu modülün amacı belirli fonksiyonları sırayla çalıştırmaktır.
 Modülün içinde scheduler diye bir sınıf mevcut.
 (Sınıfın adı dikkat ettiyseniz küçük harfle başlıyor.)
-Bu modülü kullanmadan önce scheduler sınıfından bir örnek
+Bu modülü kullanmadan önce `scheduler` sınıfından bir örnek
 oluşturmalısınız::
 
     import sched
     s=sched.scheduler()
 
-Örneğimizi bu şekilde oluştuabiliriz. Ancak bu şekilde
+Örneğimizi bu şekilde oluşturabiliriz. Ancak bu şekilde
 oluşturmamız bize daha sonra sorun teşkil edebilir.
 Bu sınıfın iki tane parametresi var. Bunlardan ilki: `timefunc`.
 Bu parametrenin varsayılan değeri `time.monotonic`. Örnek oluşturulurken 
@@ -40,11 +40,11 @@ Bu metod çalıştırılacak fonksiyonların sıraya eklenmesini sağlıyor.
 İkincisi önceliğini belirliyor. Eğer aynı zamanda çalışacak 
 fonksiyonlar varsa önceliğine göre çalıştırılır. Üçüncüsü
 çalışacak fonksiyon. Diğer ikisi isimli parametre. Bunlardan 
-`argument`olan eğer varsa demet olarak fonksiyonun parametrelerini alıyor.
+`argument` olan eğer varsa demet olarak fonksiyonun parametrelerini alıyor.
 Diğerinin adı da tahmin edeceğiniz üzere `kwargs`. Değeri de
 sözlük olarak fonksiyonun isimli parametreleri.
 
-scheduler sınıfının delayfunc parametresi burada kullanılıyor.
+`scheduler` sınıfının `delayfunc` parametresi burada kullanılıyor.
 
 scheduler.enterabs()
 ********************
@@ -52,7 +52,7 @@ scheduler.enterabs()
 Bu metod `enter` metodundan çok da farklı değil. Tek farkı ilk
 değeri bekleme süresini değil çalışacağı süreyi belirliyor.
 
-scheduler sınıfının timefunc parametresi burada kullanılıyor.
+`scheduler` sınıfının `timefunc` parametresi burada kullanılıyor.
 
 scheduler.cancel()
 ******************
@@ -75,9 +75,10 @@ fonksiyonun çalışmasına kalan süreyi döndürür.
 
 scheduler.queue
 ****************
-Bu değişken scheduler nesnelerinin sahip olduğu ve bizim 
+
+Bu değişken `scheduler` nesnelerinin sahip olduğu ve bizim 
 kullanabileceğimiz tek değişken. Daha önce sıraya eklenmiş 
-Event nesnelerini tutuyor.
+`Event` nesnelerini tutuyor.
 
 Örnekler
 ********
@@ -108,10 +109,10 @@ Anlatım biraz kafa karıştırıcı oldu. Ancak şimdi birkaç
     Zaman: 1532176269.6955397 ,Birinci
     1532176269.7111597
 
-Çalışmaya başladıktan 5 saniye sonra İkinci, Üçüncü ve Dördüncü 
-çalıştı. İkinci ve dördüncünün sırası aynıydı. O yüzden 
-tanımlanma sıralarına bakıldı. Üçüncünün öncelik sırası 
-2 olduğu için onlardan daha sonra yazıldı. Birinici onlardan 5 
+Çalışmaya başladıktan 5 saniye sonra "İkinci", "Üçüncü" ve "Dördüncü" 
+çalıştı. "İkinci" ve "Dördüncü"nün sırası aynıydı. O yüzden 
+tanımlanma sıralarına bakıldı. "Üçüncü"nün öncelik sırası 
+2 olduğu için onlardan daha sonra yazıldı. "Birinci" onlardan 5 
 saniye sonra yani çalışmaya başladıktan 10 saniye sonra çalıştı.
 
 Bir başka örnek::
@@ -136,9 +137,9 @@ Bir başka örnek::
 
 `if` bloğunda eğer sıra boşsa çalışmasını söyledik.
 Sıra boş olduğu için altındaki fonksiyonlar çalışacaktır.
-İlk önce 5 saniye sonra bir kere `yazdır` fonksiyonu çalışacak.
+İlk önce 5 saniye sonra bir kere `yazdır` fonksiyonu çalışacaktır.
 Daha sonra çalışmaya başladıktan 6 saniye sonra ikinci
-`yazdır` fonksiyonu çalışacak. Çıktısı ilkiyle aynı olur.
+`yazdır` fonksiyonu çalışacaktır. Çıktısı ilkiyle aynı olur.
 Ancak hemen sonra çalışan `değiştir` fonksiyonu ile `yazdırılacak_değer`
 değiştiği için 10. saniyede çalışan `yazdır` fonksiyonu 
 farklı bir çıktı veriyor.
@@ -157,5 +158,5 @@ farklı bir çıktı veriyor.
     s.enter(5,1,çıktı)
     s.run()
 
-Her iki saniyede bir aynı kod çalışacak. 
-Eğer ikiyi değiştirirseniz süreyi de düzenlemiş olursunuz.
+Her iki saniyede bir aynı kod çalışacaktır.
+Eğer `2`'yi değiştirirseniz süreyi de düzenlemiş olursunuz.
