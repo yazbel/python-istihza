@@ -3,7 +3,7 @@
    :keywords: python, modül, import, timeit
 
 ********************************************************
-timeit - Küçük Kod Parçalarının Çalışma Sürelerini Ölçme
+timeit Modülü
 ********************************************************
 
 **Kaynak Kodu:** https://github.com/python/cpython/blob/3.5/Lib/timeit.py
