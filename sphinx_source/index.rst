@@ -74,10 +74,7 @@ istihza.com
     paketler
     regex
     sqlite
-    curses
-    threading
     django_1
-    timeit
     
 ------------------
 
