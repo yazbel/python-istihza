@@ -175,7 +175,7 @@ Buraya birkaç örnek kod yazalım.
 
 **object_hook**
 
-Döndürülen değerin veri tipini değitirmenizi sağlar. Bunu 
+Döndürülen değerin veri tipini değiştirmenizi sağlar. Bunu 
 bir kod ile açıklayalım.
 ::
 
