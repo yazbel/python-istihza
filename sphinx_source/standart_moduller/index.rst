@@ -43,3 +43,6 @@ bir genişlemiş olacak.
     time
     json
     sched
+    threading
+    timeit
+    curses
