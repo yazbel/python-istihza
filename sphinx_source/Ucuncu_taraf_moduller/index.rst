@@ -3,4 +3,4 @@
 *********************
 
 .. toctree::
-	django_1
+	django_modülü/index
