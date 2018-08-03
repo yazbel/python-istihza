@@ -2,9 +2,9 @@
    :description: Bu bölümde timeit modülünü inceleyeceğiz. 
    :keywords: python, modül, import, timeit
 
-********************************************************
+*************
 timeit Modülü
-********************************************************
+*************
 
 **Kaynak Kodu:** https://github.com/python/cpython/blob/3.5/Lib/timeit.py
 **Belge Kaynağı:** https://docs.python.org/3.5/library/timeit.html
