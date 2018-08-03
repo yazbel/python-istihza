@@ -1,36 +1,36 @@
 .. meta::
-   :description: Bu bölümde django ile site yapmaya başlayacağız.
-   :keywords: python, django, çeviri
+   :description: Bu bÃ¶lÃ¼mde django ile site yapmaya baÅŸlayacaÄŸÄ±z.
+   :keywords: python, django, Ã§eviri
    
 .. highlight:: python3
 
-*****************************************
-İLK DJANGO PROJENİ YAZ, part 1
-*****************************************
+******************************
+Ä°LK DJANGO PROJENÄ° YAZ, part 1
+******************************
 
 **Kaynak Kodu:** https://docs.djangoproject.com/en/2.0/intro/tutorial01/
 
-Bir örnekle öğrenmeye başlayalım. Bu örnekte basit bir anket uygulaması oluşturacağız.
-Uygulama iki kısımdan oluşacak:
+Bir Ã¶rnekle Ã¶ÄŸrenmeye baÅŸlayalÄ±m. Bu Ã¶rnekte basit bir anket uygulamasÄ± oluÅŸturacaÄŸÄ±z.
+Uygulama iki kÄ±sÄ±mdan oluÅŸacak:
 
-	#. Anketlerin oylanması için herkese açık bir site 
-	#. Anketleri düzenlemek veya ekleyip silmek için bir admin paneli
+	#. Anketlerin oylanmasÄ± iÃ§in herkese aÃ§Ä±k bir site 
+	#. Anketleri dÃ¼zenlemek veya ekleyip silmek iÃ§in bir admin paneli
 
-Senin Djangoyu yüklediğini varsayıyoruz. Komut isteminde aşağıdaki komutu çalıştırarak Djangonun yüklü olup olmadığına ve Django sürümüne ulaşabilirsin::
+Senin Djangoyu yÃ¼klediÄŸini varsayÄ±yoruz. Komut isteminde aÅŸaÄŸÄ±daki komutu Ã§alÄ±ÅŸtÄ±rarak Djangonun yÃ¼klÃ¼ olup olmadÄ±ÄŸÄ±na ve Django sÃ¼rÃ¼mÃ¼ne ulaÅŸabilirsin::
 
 	python -m django --version
 
-Eğer Django yüklüyse yüklü olan versiyonu görmelisin. Eğer değilse "No module named django" yazısı ile karşılaşmalısın.
+EÄŸer Django yÃ¼klÃ¼yse yÃ¼klÃ¼ olan versiyonu gÃ¶rmelisin. EÄŸer deÄŸilse "No module named django" yazÄ±sÄ± ile karÅŸÄ±laÅŸmalÄ±sÄ±n.
 
-Bir proje oluştur
+Bir proje oluÅŸtur
 ==================
 
-Komut satırında cd komutuyla komutunuzu saklamak istediğiniz dizine gidin ve aşağıdaki kodu çalıştırın::
+Komut satÄ±rÄ±nda cd komutuyla komutunuzu saklamak istediÄŸiniz dizine gidin ve aÅŸaÄŸÄ±daki kodu Ã§alÄ±ÅŸtÄ±rÄ±n::
 
 	django-admin startproject mysite
 
-Bu kod bulunduğunuz dizinde mysite dizinini yaratacak.
-Şimdi `startproject` komutunun oluşturduklarına bakalım::
+Bu kod bulunduÄŸunuz dizinde mysite dizinini yaratacak.
+Åimdi `startproject` komutunun oluÅŸturduklarÄ±na bakalÄ±m::
 
 	mysite/
 	    manage.py
@@ -40,22 +40,22 @@ Bu kod bulunduğunuz dizinde mysite dizinini yaratacak.
 	        urls.py
 	        wsgi.py
 
-En dışardaki `mysite/` dizini, projeniz için sadece bir kapsayıcıdır. Adı Django için önemli değil. Beğendiğiniz herhangi bir şeye yeniden adlandırabilirsiniz.
-`manage.py`: Komut satırından django projesiyle etkileşime geçmenizi sağlayan bir programdır.
-İçerideki `mysite/` dizini , projeniz için gerçek bir python paketidir.
-`mysite/init.py`: Boş bir python dosyasıdır. mysite/ dizininin python paketi olmasını sağlar.
-`mysite/setting.py`: Django projesinin ayarları ile ilgili bir dosya.
-`mysite/urls.py`: Projeniz için URL'leri barındıran dosya.
-`mysite/wsgi.py`: WSGI uyumlu web sunucuları için projenize hizmet edecek bir giriş noktası.
+En dÄ±ÅŸardaki `mysite/` dizini, projeniz iÃ§in sadece bir kapsayÄ±cÄ±dÄ±r. AdÄ± Django iÃ§in Ã¶nemli deÄŸil. BeÄŸendiÄŸiniz herhangi bir ÅŸeye yeniden adlandÄ±rabilirsiniz.
+`manage.py`: Komut satÄ±rÄ±ndan django projesiyle etkileÅŸime geÃ§menizi saÄŸlayan bir programdÄ±r.
+Ä°Ã§erideki `mysite/` dizini , projeniz iÃ§in gerÃ§ek bir python paketidir.
+`mysite/init.py`: BoÅŸ bir python dosyasÄ±dÄ±r. mysite/ dizininin python paketi olmasÄ±nÄ± saÄŸlar.
+`mysite/setting.py`: Django projesinin ayarlarÄ± ile ilgili bir dosya.
+`mysite/urls.py`: Projeniz iÃ§in URL'leri barÄ±ndÄ±ran dosya.
+`mysite/wsgi.py`: WSGI uyumlu web sunucularÄ± iÃ§in projenize hizmet edecek bir giriÅŸ noktasÄ±.
 
-Geliştirme sunucusu
+GeliÅŸtirme sunucusu
 ====================
 
-Şimdi django projemizin çalışıp çalışmadığını kontrol edelim. Komut satırında dışarıdaki `mysite` dizinine gidin ve aşağıdaki kodu çalıştırın::
+Åimdi django projemizin Ã§alÄ±ÅŸÄ±p Ã§alÄ±ÅŸmadÄ±ÄŸÄ±nÄ± kontrol edelim. Komut satÄ±rÄ±nda dÄ±ÅŸarÄ±daki `mysite` dizinine gidin ve aÅŸaÄŸÄ±daki kodu Ã§alÄ±ÅŸtÄ±rÄ±n::
 
 	python manage.py runserver
 
-Çıktı olarak şunu görmelisin::
+Ã‡Ä±ktÄ± olarak ÅŸunu gÃ¶rmelisin::
 
 	Performing system checks...
 
@@ -69,34 +69,34 @@ Geliştirme sunucusu
 	Starting development server at http://127.0.0.1:8000/
 	Quit the server with CONTROL-C.
 
-.. Note:: Veritabanıyla ilgili uyarıyı dikkate almayın.
+.. Note:: VeritabanÄ±yla ilgili uyarÄ±yÄ± dikkate almayÄ±n.
 
-Django geliştirme sunucusunu başlattınız.
+Django geliÅŸtirme sunucusunu baÅŸlattÄ±nÄ±z.
 
-Kullanılan portu değiştirme
+KullanÄ±lan portu deÄŸiÅŸtirme
 ============================
 
-`runserver` komutu geliştirme sunucusu için standart olarak 8000 portunu kullanır. 
-Eğer bu portu değiştirmek isterseniz bunu komuta argüman olarak verin. Mesela aşağıdaki komut 8080 portunda geliştirme sunucusunu çalıştırıyor::
+`runserver` komutu geliÅŸtirme sunucusu iÃ§in standart olarak 8000 portunu kullanÄ±r. 
+EÄŸer bu portu deÄŸiÅŸtirmek isterseniz bunu komuta argÃ¼man olarak verin. Mesela aÅŸaÄŸÄ±daki komut 8080 portunda geliÅŸtirme sunucusunu Ã§alÄ±ÅŸtÄ±rÄ±yor::
 
 	python manage.py  runserver 8080
 
-Eğer sunucunun IP adresini değiştirmek isterseniz port ile birlikte belirtin. Örnek olarak kullanılabilir tüm IP'leri dinlemek istiyorsanız şu kodu çalıştırın::
+EÄŸer sunucunun IP adresini deÄŸiÅŸtirmek isterseniz port ile birlikte belirtin. Ã–rnek olarak kullanÄ±labilir tÃ¼m IP'leri dinlemek istiyorsanÄ±z ÅŸu kodu Ã§alÄ±ÅŸtÄ±rÄ±n::
 
 	python manage.py runserver 0:8000
 
-Yukarıda yazdığımız kodda 0'ın anlamı 0.0.0.0 (Yani bir kısaltma).
+YukarÄ±da yazdÄ±ÄŸÄ±mÄ±z kodda 0'Ä±n anlamÄ± 0.0.0.0 (Yani bir kÄ±saltma).
 
-Bir anket uygulaması oluşturalım
+Bir anket uygulamasÄ± oluÅŸturalÄ±m
 =================================
 
-Artık proje ortamımız kuruldu. Çalışmaya başlayabiliriz.
-Django'da yazdığımız her uygulama bir python paketinden oluşur ve Django'da uygulamanın dizini otomatik olarak oluşturulur. Bu sayede dizin oluşturmakla uğraşacağımız zamanda kod yazabiliriz.
-Bir uygulama oluşturmak için komut satırında `manage.py` ile aynı dizine gelin ve şu komutu yazın::
+ArtÄ±k proje ortamÄ±mÄ±z kuruldu. Ã‡alÄ±ÅŸmaya baÅŸlayabiliriz.
+Django'da yazdÄ±ÄŸÄ±mÄ±z her uygulama bir python paketinden oluÅŸur ve Django'da uygulamanÄ±n dizini otomatik olarak oluÅŸturulur. Bu sayede dizin oluÅŸturmakla uÄŸraÅŸacaÄŸÄ±mÄ±z zamanda kod yazabiliriz.
+Bir uygulama oluÅŸturmak iÃ§in komut satÄ±rÄ±nda `manage.py` ile aynÄ± dizine gelin ve ÅŸu komutu yazÄ±n::
 
 	python manage.py startapp polls
 
-`polls` isimli bir dizin oluşturulacak. Bakaklım içinde neler var::
+`polls` isimli bir dizin oluÅŸturulacak. BakaklÄ±m iÃ§inde neler var::
 	
 	polls/
 	    __init__.py
@@ -108,19 +108,19 @@ Bir uygulama oluşturmak için komut satırında `manage.py` ile aynı dizine gelin v
 	    tests.py
 	    views.py
 
-Bu dizin anket uygulamamızın merkezi olacak.
+Bu dizin anket uygulamamÄ±zÄ±n merkezi olacak.
 
-İlk view'ımızı yazalım
+Ä°lk view'Ä±mÄ±zÄ± yazalÄ±m
 =======================
 
-Hadi yazmaya başlayalım. Şimdi `polls/views.py` açın ve şu kodları yazın::
+Hadi yazmaya baÅŸlayalÄ±m. Åimdi `polls/views.py` aÃ§Ä±n ve ÅŸu kodlarÄ± yazÄ±n::
 
 	from django.http import HttpResponse
 	def index(request):
 	    return HttpResponse("Hello, world. You're at the polls index.")
 
-Bu Django'da yazılabilecek en basit view. Artık bu view ı çağırabilmek için bir URL haritasına ihtiyacımız var ve URL haritası için de URL şemasına.
-polls dizininde `urls.py` isimli bir dosya oluşturarak uygulamanın URL şemasını da oluşturmuş oluruz.(Dosya Gezgininden kendiniz urls.py isimli bir python modülü oluşturun.)  Uygulama dizini son olarak şöyle görünmeli::
+Bu Django'da yazÄ±labilecek en basit view. ArtÄ±k bu view Ä± Ã§aÄŸÄ±rabilmek iÃ§in bir URL haritasÄ±na ihtiyacÄ±mÄ±z var ve URL haritasÄ± iÃ§in de URL ÅŸemasÄ±na.
+polls dizininde `urls.py` isimli bir dosya oluÅŸturarak uygulamanÄ±n URL ÅŸemasÄ±nÄ± da oluÅŸturmuÅŸ oluruz.(Dosya Gezgininden kendiniz urls.py isimli bir python modÃ¼lÃ¼ oluÅŸturun.)  Uygulama dizini son olarak ÅŸÃ¶yle gÃ¶rÃ¼nmeli::
 
 	polls/
 	    __init__.py
@@ -133,7 +133,7 @@ polls dizininde `urls.py` isimli bir dosya oluşturarak uygulamanın URL şemasını 
 	    views.py
 	    urls.py
 
-Şimdi de yeni oluşturduğumuz polls dizinindeki urls.py dosyasında şu kodlar yazılı olmalı::
+Åimdi de yeni oluÅŸturduÄŸumuz polls dizinindeki urls.py dosyasÄ±nda ÅŸu kodlar yazÄ±lÄ± olmalÄ±::
 
 	from django.urls import path
 	from . import views
@@ -142,7 +142,7 @@ polls dizininde `urls.py` isimli bir dosya oluşturarak uygulamanın URL şemasını 
 	    path('', views.index, name='index'),
 	]
 
-Burada oluşturduğumuz URL şemasını gerçek Url şemasında tanıtmanın vakti geldi. Bunun için mysite dizinindeki urls.py dosyasında include fonksiyonunu içe aktarıp  url listesini aktarmada kullanacağız. Sonuç olarak mysite dizinindeki urls.py dosyanız şu hale gelmeli::
+Burada oluÅŸturduÄŸumuz URL ÅŸemasÄ±nÄ± gerÃ§ek Url ÅŸemasÄ±nda tanÄ±tmanÄ±n vakti geldi. Bunun iÃ§in mysite dizinindeki urls.py dosyasÄ±nda include fonksiyonunu iÃ§e aktarÄ±p  url listesini aktarmada kullanacaÄŸÄ±z. SonuÃ§ olarak mysite dizinindeki urls.py dosyanÄ±z ÅŸu hale gelmeli::
 
 	from django.contrib import admin
 	from django.urls import include, path
@@ -152,8 +152,8 @@ Burada oluşturduğumuz URL şemasını gerçek Url şemasında tanıtmanın vakti geldi. 
 	    path('admin/', admin.site.urls),
 	]
 
-Artık index view'ını bir dizine bağladınız. Test etmenin vakti geldi. Komut satırında şu kodu çalıştırın::
+ArtÄ±k index view'Ä±nÄ± bir dizine baÄŸladÄ±nÄ±z. Test etmenin vakti geldi. Komut satÄ±rÄ±nda ÅŸu kodu Ã§alÄ±ÅŸtÄ±rÄ±n::
 
 	python manage.py runserver
 
-`include()` fonksiyonu diğer URL şemalarına ulaşmamıza izin verir. Django include ile karşılaştığında eşleşen URL'yi kalan işlemler için verilen URL şemasına gönderir.
+`include()` fonksiyonu diÄŸer URL ÅŸemalarÄ±na ulaÅŸmamÄ±za izin verir. Django include ile karÅŸÄ±laÅŸtÄ±ÄŸÄ±nda eÅŸleÅŸen URL'yi kalan iÅŸlemler iÃ§in verilen URL ÅŸemasÄ±na gÃ¶nderir.
