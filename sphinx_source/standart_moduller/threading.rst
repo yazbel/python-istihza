@@ -4,9 +4,9 @@
 
 .. highlight:: python3
 
-******************
+****************
 threading Modülü
-******************
+****************
 
 **Kaynak Kodu:** https://hg.python.org/cpython/file/3.5/Lib/threading.py
 
