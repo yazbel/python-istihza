@@ -55,9 +55,8 @@ Ardından terminalin ilk işletim modunu yüklemek için `endwin()`'i çağırı
 
 Şimdi yavaş yavaş örnekler üzerinde curses modülünü daha iyi anlamaya çalışalım.
 
-**********
 Örnekler:
-**********
+=========
 
 
 Örnek-1:
