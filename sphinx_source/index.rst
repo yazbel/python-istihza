@@ -74,7 +74,6 @@ istihza.com
     paketler
     regex
     sqlite
-    django_1
     
 ------------------
 
