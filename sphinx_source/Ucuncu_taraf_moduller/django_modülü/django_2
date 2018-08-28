@@ -1,5 +1,5 @@
 .. meta::
-   :description: Bu bölümde django APIsini öğreneceğiz.
+   :description: Bu bölümde django API'sını öğreneceğiz.
    :keywords: python, django, çeviri
    
 .. highlight:: python3
@@ -15,10 +15,10 @@ Veritabanı Kurulumu
 değerini `Europe/Istanbul`  yaparak İstanbul'a ayarlayın.
 
 ..Note:: Dosyanın en başındaki INSTALLED_APPS ayarına dikkat edin.
-         Projenizde kullandığınız appleri tutar. Yeni bir app 
+         Projenizde kullandığınız appları tutar. Yeni bir app 
          kullanacağınız zaman bu listeye eklemelisiniz. 
 
-Varsayılan olarak gelen appler şunlardır::
+Varsayılan olarak gelen applar şunlardır::
 
     django.contrib.admin -->Admin panelini oluşturur.
     django.contrib.auth --> Bir kimlik doğrulama sistemi.
@@ -27,7 +27,7 @@ Varsayılan olarak gelen appler şunlardır::
     django.contrib.messages --> Bir mesajlaşma frameworku
     django.contrib.staticfiles-->Statik dosyaları yönetmek için bir framework.
 
-Bu applerden bazıları en az bir veritabanı kullanıyor. Ancak bu veritabanlarının kullanılamilmesi için bir 
+Bu applardan bazıları en az bir veritabanı kullanıyor. Ancak bu veritabanlarının kullanılabilmesi için bir 
 tablo oluşturmalıyız. O tablo da şu komutla oluşuyor::
 
     python manage.py migrate
@@ -75,11 +75,11 @@ Modellerin Aktifleştirilmesi
 Model kodları Django'ya bazı bilgiler verir. 
 Django bu bilgilerle şunları yapabilir:
 
-    #. Uygulama için bir veritabanı şeması oluşturmak
-    #. Question ve Choice objeleri için bir veritabanı erişim API si oluşturmak.
+    #. Uygulama için bir veritabanı şeması oluşturmak. 
+    #. Question ve Choice objeleri için bir veritabanı erişim API'sı oluşturmak.
 
 Fakat önce polls uygulamasını projeye yüklemeliyiz.
-Projeye yüklemek için  setting.py dosyasını açıp 
+Projeye yüklemek için  **setting.py** dosyasını açıp 
 INSTALLED_APPS  ayarını düzenlemeliyiz. Bu listeye 
 **polls/apps.py** dosyasındaki PollsConfig sınıfını referans 
 olarak ekleyelim. **setting.py** dosyasındaki INSTALLED_APPS 
@@ -109,12 +109,12 @@ Talimatlara benzer şeyler görmelisiniz::
         - Add field question to choice
 
 `makemigrations` komutu ile ürettiğimiz modellerde değişiklik 
-yaptığımızı(Aynı zamanda yeni modeller ürettiğimizi de) ve 
-değişikliklerin migration olarak edpolanmasını istediğimizi 
+yaptığımızı (Aynı zamanda yeni modeller ürettiğimizi de) ve 
+değişikliklerin migration olarak depolanmasını istediğimizi 
 söyledik. Migrationlar senin modellerindeki değişiklerin 
 depolanma şeklidir(ve bu yüzden veritabanı şeması). 
 İstersen yeni modelinin migrationunu okuyabilirsin. 
-Migration polls/migrations/0001_inital.py isimli dosyada. 
+Migration **polls/migrations/0001_inital.py** isimli dosyada. 
 Endişelenmeyin, bu dosyayı her zaman okumak zorunda değilsiniz. 
 Django bu dosyayı yapar fakat insan tarafından düzenlenebilir olarak 
 tasarlanmıştır. "`migrate`" komutu, senin veritabanı 
@@ -201,7 +201,7 @@ uzmanlaşmıştır. Eğiticinin daha sonraki bir bölümünde bunları
 daha ayrıntılı bir şekilde ele alacağız, ancak şimdilik, model 
 değişikliklerini yapmak için üç adımlı kılavuzu hatırlayın:
 
-    - Modeli değiştirin (models.py de)
+    - Modeli değiştirin (**models.py** de)
     - `python manage.py makemigrations` komutunu çalıştırarak bu değişiklikler için  migration oluşturun.
     - `python manage.py migrate` komutunu çalıştırarak bu değişiklikleri veritabanına uygulayın.
 
@@ -214,7 +214,7 @@ Etkileşimli kabuğu çağırmak için şu komutu kullanın::
     python manage.py shell
 
 Basitçe `python` yazmak yerine bunu kullanıyoruz. Çünkü manage.py dosyası kullanacağımız django dosyalarını içe aktarıyor.
-Kabuğa girdikten sonra veritabanı API'sini keşfedin::
+Kabuğa girdikten sonra veritabanı API'sını keşfedin::
 
 
     >>> from polls.models import Choice, Question  # Az önce yazdığımız model sınıflarını içe aktar.
@@ -252,7 +252,7 @@ Kabuğa girdikten sonra veritabanı API'sini keşfedin::
     <QuerySet [<Question: Question object (1)>]>
 
 Bir dakika! <Question: Question object (1)> bu nesne 
-ilişkisi hiç yararlı değil. Question modeline (polls/models.py dosyasında) 
+ilişkisi hiç yararlı değil. Question modeline (**polls/models.py** dosyasında) 
 __str__() metodunu ekleyelim(Choice modeline de)::
 
     from django.db import models
