@@ -3,9 +3,9 @@
 
 .. highlight:: py3
 
-******************
+*****************
 Bu Kitap Hakkında
-******************
+*****************
 
 Elinizdeki kitap, Python programlama dili için kapsamlı bir Türkçe kaynak
 oluşturma projesi olan `istihza.com <http://www.istihza.com/hakkinda.html>`__'un
@@ -25,7 +25,7 @@ projesinin bir ürünü olan `Türkçe çevirisini
 zor gelecektir.
 
 Bu Kitabı Nereden İndirebilirim?
-**********************************
+********************************
 
 Bu kitabı İnternet üzerinden takip edebileceğiniz gibi, `depodan
 <http://indir.istihza.com/belgeler/py3>`__ PDF veya EPUB biçimlerinde
@@ -37,7 +37,7 @@ takip etmeniz veya bu mümkün değilse, PDF/EPUB belgelerini sık sık yeniden
 indirmeniz daha mantıklı olacaktır.
 
 Bu Kitaptan Nasıl Yararlanabilirim?
-************************************
+***********************************
 
 Elinizdeki kitap, epey uzun ve ayrıntılı makalelerden oluşuyor. Dolayısıyla bu
 kitabı elinize alıp bir roman gibi okumaya çalışırsanız, sıkılıp öğrenme
@@ -69,7 +69,7 @@ düşürmeyin. Eğer bir konuyu anlamadıysanız, okuyup geçin. Okuyup geçmek 
 sinmiyorsa, aşağıda belirttiğimiz şekilde yardım isteyin.
 
 Nereden Yardım Alabilirim?
-***************************
+**************************
 
 Bu kitapta Python programlama diline ilişkin konuları olabildiğince temiz ve
 anlaşılır bir dille anlatmaya çalıştık. Ancak yine de bazı konular zihninizde
@@ -87,7 +87,7 @@ değişimi görmek, bilgi düzeyinizdeki artışı takip etmek ve hatta yeni şe
 öğrenmek için bulunmaz bir fırsattır.
 
 Projeye Nasıl Yardımcı Olabilirim?
-*************************************
+**********************************
 
 Bu kitabın amacı, kitabı okuyanlara Python programlama dilini doğru ve ayrıntılı
 bir şekilde öğretmek olduğu kadar, bu programlama dilini öğretirken düzgün ve
@@ -105,7 +105,7 @@ soruları cevaplamaya çalışmaktır. Bu şekilde hem projeye destek olmuş, he
 başkalarına yardım etmiş, hem de kendi bilginizi artırmış olursunuz.
 
 Kullanım Koşulları
-********************
+******************
 
 Bu kitaptaki bilgiler, istihza.com'un öteki kısımları gibi, `Creative Commons
 lisansı <http://creativecommons.org/licenses/by-nc-sa/3.0>`__ altındadır. Bu
