@@ -1,7 +1,7 @@
 ﻿.. meta::
    :description: Python Programlama Dili için Türkçe Kaynak
    :keywords: Python, 3, 3.x, belgelendirme, Türkçe, kaynak
-   
+
 .. title:: Python Programlama Dili
 
 *************
@@ -13,21 +13,21 @@ istihza.com
     <div class="title">
         Python Programlama Dili
     </div>
-            
+
 .. raw:: html
 
     <div class="description">
         Python 3 için Türkçe Kılavuz
     </div>
-        
+
 .. raw:: html
 
     <button class="toctoggle">+</button>
-        
+
 .. toctree::
-    
+
     kitap_hakkinda
-    python_hakkinda 
+    python_hakkinda
     kurulum
     calistirma
     etkilesimli_python
@@ -74,7 +74,7 @@ istihza.com
     paketler
     regex
     sqlite
-    
+
 ------------------
 
 .. raw:: html
@@ -82,17 +82,17 @@ istihza.com
     <div class="title">
         Standart Kütüphane
     </div>
-            
+
 .. raw:: html
 
     <div class="description">
         Standart Kütüphanedeki Bazı Önemli Modüller
     </div>
-    
+
 .. toctree::
 
     standart_moduller/index
-    
+
 ------------------
 
 .. raw:: html
@@ -118,14 +118,14 @@ istihza.com
     <div class="title">
         Katkıda Bulunanlar
     </div>
-            
+
 .. raw:: html
 
     <div class="description">
         Belgelerdeki Hataları Düzeltenler
     </div>
-    
+
 .. toctree::
-    
+
     katkida_bulunanlar
-    
+
