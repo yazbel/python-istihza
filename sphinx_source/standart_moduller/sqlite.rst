@@ -1503,7 +1503,7 @@ Bölüm Soruları
 
 #. Aşağıdaki resimde yapılmaya çalışılan şey nedir?
 
-    .. figure:: ../images/misc/sql.jpg
+    .. figure:: ../../images/misc/sql.jpg
         :align: center
 
 #. ``sqlite3.connect('kitaplar.sqlite')`` boş bir veritabanının mı
