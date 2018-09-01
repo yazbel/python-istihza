@@ -5,9 +5,9 @@
 
 .. highlight:: none
 
-******************
+***************
 Python Hakkında
-******************
+***************
 
 Eğer yaşamınızın bir döneminde herhangi bir programlama dili ile az veya çok
 ilgilendiyseniz, Python adını duymuş olabilirsiniz. Önceden bir programlama dili
@@ -109,7 +109,7 @@ Sözün özü, pek çok farklı sebepten, başka bir programlama dilini değil d
 Python programlama dilini öğrenmek istiyor olabilirsiniz.
 
 Python Nasıl Telaffuz Edilir?
-******************************
+*****************************
 
 Python programlama dili üzerine bu kadar söz söyledik. Peki yabancı bir kelime
 olan *python*'ı nasıl telaffuz edeceğimizi biliyor muyuz?
@@ -155,7 +155,7 @@ kendi işletim sisteminize uyarlayabilirsiniz.
  genellikle bu işletim sistemlerinden alınmış olacaktır.
 
 Farklı Python Sürümleri
-************************
+***********************
 
 Eğer daha önce Python programlama dili ile ilgili araştırma yaptıysanız, şu anda
 piyasada iki farklı Python serisinin olduğu dikkatinizi çekmiş olmalı. |today|
@@ -193,7 +193,7 @@ hangi seriye ait sürümlerden birini kullandığınızı bilmeniz, yazacağın�
 programın kaderi açısından büyük önem taşır.
 
 Hangi Seriyi Öğrenmeliyim?
-*************************************
+**************************
 
 Dediğimiz gibi, şu anda piyasada iki farklı Python serisi var: Python3 ve
 Python2. Peki acaba hangi seriye ait bir sürümü öğrenmelisiniz?
