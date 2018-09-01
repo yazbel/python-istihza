@@ -108,21 +108,3 @@ istihza.com
 .. toctree::
 
    Ucuncu_taraf_moduller/index
-
-------------------
-
-.. raw:: html
-
-    <div class="title">
-        Katkıda Bulunanlar
-    </div>
-
-.. raw:: html
-
-    <div class="description">
-        Belgelerdeki Hataları Düzeltenler
-    </div>
-
-.. toctree::
-
-    katkida_bulunanlar
