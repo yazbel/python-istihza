@@ -36,13 +36,13 @@ bir genişlemiş olacak.
 
 .. toctree::
 
-    os
-    sys
-    random
     datetime
+    random
+    os
     time
-    json
-    sched
-    threading
-    timeit
     curses
+    threading
+    sched
+    json
+    timeit
+    sys
