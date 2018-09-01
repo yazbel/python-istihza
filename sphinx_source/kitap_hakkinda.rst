@@ -17,9 +17,9 @@ Bu Kitabı Nereden İndirebilirim?
 ********************************
 
 Bu kitabı İnternet üzerinden takip edebileceğiniz gibi, `depodan <http://indir.istihza.com/belgeler/py3>`__ PDF veya EPUB biçimlerinde bilgisayarınıza da indirebilirsiniz.
-Ancak bu kitabın henüz yazılma aşamasında olduğunu ve içeriğinin sık sık güncellendiğini aklınızdan çıkarmayın.
-Dolayısıyla, bilgisayarınıza indirdiğiniz PDF ve EPUB belgeleri güncelliğini çabucak yitirecektir.
-O yüzden, eğer mümkünse, kitabı çevrim içi kaynağından takip etmeniz veya bu mümkün değilse, PDF/EPUB belgelerini sık sık yeniden indirmeniz daha mantıklı olacaktır.
+Ancak bu kitabın içeriğinin sık sık güncellendiğini aklınızdan çıkarmayın.
+Dolayısıyla, bilgisayarınıza indirdiğiniz PDF belgesi güncelliğini çabucak yitirecektir.
+O yüzden, eğer mümkünse, kitabı çevrim içi kaynağından takip etmeniz veya bu mümkün değilse, PDF belgesini sık sık yeniden indirmeniz daha mantıklı olacaktır.
 
 Bu Kitaptan Nasıl Yararlanabilirim?
 ***********************************
