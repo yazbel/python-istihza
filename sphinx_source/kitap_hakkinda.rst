@@ -62,7 +62,7 @@ Projeye Nasıl Yardımcı Olabilirim?
 **********************************
 
 Bu kitabın amacı, kitabı okuyanlara Python programlama dilini doğru ve ayrıntılı bir şekilde öğretmek olduğu kadar, bu programlama dilini öğretirken düzgün ve anlaşılır bir Türkçe de kullanmaktır.
-Bu bakımdan, kitapta bulabileceğiniz kod hatalarıyla birlikte, kitaptaki anlatım, yazım ve noktalama hatalarını da `GitHub'daki veri havuzunda <https://github.com/yazbel/python-istihza>`_ düzelterek ya da `bir konu açarak <https://github.com/yazbel/python-istihza/issues/new>`_ istihza.com projesine önemli bir katkıda bulunmuş olursunuz.
+Bu bakımdan, kitapta bulabileceğiniz kod hatalarıyla birlikte, kitaptaki anlatım, yazım ve noktalama hatalarını da `GitHub'daki veri havuzunda <https://github.com/yazbel/python-istihza>`_ düzelterek ya da `GitHub'da bir konu açarak <https://github.com/yazbel/python-istihza/issues/new>`_ bu projeye önemli bir katkıda bulunmuş olursunuz.
 
 .. seealso:: Projeye bu şekilde katkıda bulunanların listesini :doc:`katkida_bulunanlar` başlıklı sayfada görebilirsiniz.
 
@@ -75,5 +75,5 @@ Kullanım Koşulları
 Bu kitaptaki bilgiler `Creative Commons lisansı <http://creativecommons.org/licenses/by-nc-sa/3.0>`__ altındadır.
 Bu lisansa göre, bu kitaptaki bütün bilgilerden herkes ücretsiz olarak yararlanabilir.
 Eğer isterseniz burada gördüğünüz belgelerin çıktısını alabilir, tanıdığınız veya tanımadığınız herkesle gönül rahatlığıyla paylaşabilirsiniz.
-Ancak bu belgeleri başka bir yerde kullanacaksanız, istihza.com adresini kaynak olarak göstermeli ve bu belgeleri kesinlikle satmamalısınız.
+Ancak bu belgeleri başka bir yerde kullanacaksanız, yine bu lisans altında kullanmalı ve bu belgeleri kesinlikle satmamalısınız.
 Arzu ederseniz belgeleri çoğaltıp **ücretsiz olarak** dağıtabilirsiniz.
