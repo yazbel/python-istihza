@@ -84,7 +84,7 @@ istihza.com
 .. raw:: html
 
     <div class="description">
-        Standart Kütüphanedeki Bazı Önemli Modüller
+        Standart Kütüphanedeki Modüller için Türkçe Kaynak
     </div>
 
 .. toctree::
