@@ -4,9 +4,9 @@
 
 .. title:: Python Programlama Dili
 
-***********************
-Python Programlama Dili
-***********************
+***********
+istihza.com
+***********
 
 .. raw:: html
 
