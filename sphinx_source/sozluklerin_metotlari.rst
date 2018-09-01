@@ -34,34 +34,34 @@ tipi olduğunu söylemiştik. Bir sözlüğü normal yollardan ekrana yazdırır
 size hem anahtarları hem de bunlara karşılık gelen değerleri verecektir. Ama
 eğer bir sözlüğün sadece anahtarlarını almak isterseniz ``keys()`` metodundan
 yararlanabilirsiniz::
-    
+
     >>> sözlük = {"a": 0,
     ...           "b": 1,
     ...           "c": 2,
     ...           "d": 3}
     >>> print(sözlük.keys())
-    
+
     dict_keys(['b', 'c', 'a', 'd'])
-    
+
 Gördüğünüz gibi, ``sözlük.keys()`` komutu bize bir `dict_keys` nesnesi veriyor.
 Bu nesneyi programınızda kullanabilmek için isterseniz, bunu listeye, demete
 veya karakter dizisine dönüştürebilirsiniz::
-        
+
     >>> liste = list(sözlük.keys())
     >>> liste
-    
+
     ['b', 'c', 'a', 'd']
-    
+
     >>> demet = tuple(sözlük.keys())
     >>> demet
-    
+
     ('b', 'c', 'a', 'd')
 
     >>> kardiz = "".join(sözlük.keys())
     >>> kardiz
-    
+
     'bcad'
-    
+
 Son örnekte sözlük anahtarlarını karakter dizisine dönüştürmek için ``str()``
 fonksiyonunu değil, karakter dizilerinin ``join()`` adlı metodunu kullandığımıza
 dikkat edin. Çünkü ``tuple()`` ve ``list()`` fonksiyonlarının aksine ``str()``
@@ -69,59 +69,59 @@ fonksiyonu, sözlükteki anahtarların nasıl bir ölçüte göre karakter dizis
 çevrileceğine dair bir kural içermez. Zira siz bu sözlük anahtarlarını pek çok
 farklı şekilde karakter dizisine çevirebilirsiniz. Örneğin öğeleri karakter
 dizisi içine yerleştirirken öğelerin arasına virgül koymak isteyebilirsiniz::
-    
+
     >>> kardiz = ', '.join(sözlük.keys())
     >>> kardiz
-    
+
     'b, c, a, d'
-    
+
 Eğer sözlük anahtarlarını ``str()`` fonksiyonu yardımıyla karakter dizisine
-dönüştürmeye kalkışırsanız beklemediğiniz bir çıktı alırsınız.    
+dönüştürmeye kalkışırsanız beklemediğiniz bir çıktı alırsınız.
 
 values()
 *********
 
 ``keys()`` metodu bir sözlüğün anahtarlarını veriyor. Bir sözlüğün değerlerini
 ise ``values()`` metodu verir::
-    
+
     >>> sözlük
     {'b': 1, 'c': 2, 'a': 0, 'd': 3}
-    
+
     >>> print(sözlük.values())
-    
+
     dict_values([1, 2, 0, 3])
-    
+
 Gördüğünüz gibi, bu metottan bir `dict_values` nesnesi alıyoruz. Tıpkı
 ``keys()`` metodunda olduğu gibi, ``values()`` metodunda da bu çıktıyı başka
 veri tiplerine dönüştürme imkanına sahibiz::
 
     >>> liste = list(sözlük.values())
     >>> liste
-    
+
     [1, 2, 0, 3]
-    
+
     >>> demet = tuple(sözlük.values())
     >>> demet
-    
+
     (1, 2, 0, 3)
-    
+
 Yalnız bu verileri karakter dizisine dönüştürmeye çalıştığınızda ufak bir
 problemle karşılacaksınız::
-    
+
     >>> kardiz = "".join(sözlük.values())
-    
+
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
     TypeError: sequence item 0: expected str instance, int found
-    
+
 Bunun sebebi, sözlükteki değerlerin `int` tipinde olmasıdır. Bildiğiniz gibi,
 sadece aynı tip verileri birbiriyle birleştirebiliriz. Eğer birleştirmek
 istediğimiz veriler birbirinden farklı tipte ise, bunları birleştirmeden önce
 bir dönüştürme işlemi yapmamız gerekir::
-    
+
     >>> kardiz = "".join([str(i) for i in sözlük.values()])
     >>> kardiz
-    
+
     '1203'
 
 Gördüğünüz gibi, sözlükteki değerlerin her birini, tek bir liste üreteci içinde
@@ -129,27 +129,27 @@ karakter dizisine dönüştürdük ve ortaya çıkan listeyi karakter dizilerini
 ``join()`` metodu yardımıyla, öğelerin arasında hiçbir boşluk bırakmadan
 `kardiz` adlı bir karakter dizisi içine yerleştirdik. Elbette eğer isteseydik bu
 öğelerin her birinin arasına bir virgül de koyabilirdik::
-    
+
     >>> kardiz = ", ".join([str(i) for i in sözlük.values()])
     >>> kardiz
-    
+
     '1, 2, 0, 3'
-    
+
 items()
 ********
 
 Bu metot, bir sözlüğün hem anahtarlarını hem de değerlerini aynı anda almamızı
 sağlar::
-    
+
     >>> sözlük.items()
-    
+
     dict_items([('a', 0), ('c', 2), ('b', 1)])
-    
+
 Gördüğünüz gibi, tek bir liste içinde iki öğeli demetler halinde hem anahtarları
 hem de değerleri görebiliyoruz. Bu metot sıklıkla ``for`` döngüleri ile birlikte
 kullanılarak bir sözlüğün anahtar ve değerlerinin manipüle edilebilmesini
 sağlar::
-    
+
     >>> for anahtar, değer in sözlük.items():
     ...     print("{} = {}".format(anahtar, değer))
     ...
@@ -158,7 +158,7 @@ sağlar::
     b = 1
 
 get()
-******    
+******
 
 Bu metot sözlüklerin en kullanışlı metotlarından biridir. Bu metot pek çok
 durumda işinizi bir hayli kolaylaştırır.
@@ -181,21 +181,21 @@ Peki ya kullanıcı sözlükte tanımlı olmayan bir kelime yazarsa ne olacak? �
 bir durumda programımız hata verecektir. Programımız için doğru yol, hata
 vermektense, kullanıcıyı kelimenin sözlükte olmadığı konusunda
 bilgilendirmektir. Bunu klasik bir yaklaşımla şu şekilde yapabiliriz::
-    
+
 	ing_sözlük = {"dil": "language", "bilgisayar": "computer", "masa": "table"}
 
 	sorgu = input("Lütfen anlamını öğrenmek istediğiniz kelimeyi yazınız:")
 
 	if sorgu not in ing_sözlük:
 	    print("Bu kelime veritabanımızda yoktur!")
-	    
+
 	else:
 	    print(ing_sözlük[sorgu])
 
 Ama açıkçası bu pek verimli bir yaklaşım sayılmaz. Yukarıdaki yöntem yerine
 sözlüklerin ``get()`` metodundan faydalanabiliriz. Bakalım bunu nasıl
 yapıyoruz::
-    
+
 	ing_sözlük = {"dil": "language", "bilgisayar": "computer", "masa": "table"}
 
 	sorgu = input("Lütfen anlamını öğrenmek istediğiniz kelimeyi yazınız:")
@@ -215,7 +215,7 @@ Gelin isterseniz bununla ilgili bir örnek daha yapalım.
 Diyelim ki bir havadurumu programı yazmak istiyoruz. Bu programda kullanıcı bir
 şehir adı girecek. Program da girilen şehre ait havadurumu bilgilerini ekrana
 yazdıracak. Bu programı klasik yöntemle şu şekilde yazabiliriz::
-    
+
 	#!/usr/bin/env python3
 
 	soru = input("Şehrinizin adını tamamı küçük harf olacak şekilde yazın:")
@@ -234,24 +234,24 @@ yazdıracak. Bu programı klasik yöntemle şu şekilde yazabiliriz::
 
 Yukarıdaki, gayet geçerli bir yöntemdir. Ama biz istersek bu kodları "get"
 metodu yardımıyla çok daha verimli ve sade bir hale getirebiliriz::
-    
+
 	#!/usr/bin/env python3
 
 	soru = input("Şehrinizin adını tamamı küçük harf olacak şekilde yazın:")
 
-	cevap = {"istanbul": "gök gürültülü ve sağanak yağışlı", 
+	cevap = {"istanbul": "gök gürültülü ve sağanak yağışlı",
                  "ankara": "açık ve güneşli", "izmir": "bulutlu"}
 
 	print(cevap.get(soru, "Bu şehre ilişkin havadurumu bilgisi bulunmamaktadır."))
-    
+
 clear()
 ********
 
 Sözlüklerin, inceleyeceğimiz ilk metodu ``clear()``. Bu kelime İngilizce'de
 "temizlemek" anlamına gelir. Görevi sözlükteki öğeleri temizlemektir. Yani içi
 dolu bir sözlüğü bu metot yardımıyla tamamen boşaltabiliriz::
-    
-	>>> lig = {"şampiyon": "Adana Demirspor", "ikinci": "Mersin İdman Yurdu", 
+
+	>>> lig = {"şampiyon": "Adana Demirspor", "ikinci": "Mersin İdman Yurdu",
     ... "üçüncü": "Adana Gençlerbirliği"}
 
 İsterseniz sözlüğümüzü boşaltmadan önce bu sözlükle biraz çalışalım:
@@ -260,7 +260,7 @@ Sözlüğümüzün öğelerine şöyle ulaşıyoruz::
 
 	>>> lig
 
-	{'şampiyon': 'Adana Demirspor', 'ikinci': 'Mersin İdman Yurdu', 
+	{'şampiyon': 'Adana Demirspor', 'ikinci': 'Mersin İdman Yurdu',
      'üçüncü': 'Adana Gençlerbirliği'}
 
 Eğer bu sözlüğün öğelerine tek tek erişmek istersek şöyle yapıyoruz::
@@ -288,7 +288,7 @@ kullanarak bu sözlüğün bütün öğelerini sildik. Ama tabii ki bu şekilde 
 silmiş olmadık. Boş da olsa bellekte hâlâ "lig" adlı bir sözlük duruyor. Eğer
 siz "lig"i ortadan kaldırmak isterseniz "del" adlı bir parçacıktan yararlanmanız
 gerekir::
-    
+
 	>>> del lig
 
 Kontrol edelim::
@@ -413,7 +413,7 @@ basılıyordu. Bu metodun sözlüklerdeki kullanımı da az çok buna benzer. Am
 burada farkı olarak, ``pop`` metodunu argümansız bir şekilde kullanamıyoruz.
 Yani ``pop`` metodunun parantezi içinde mutlaka bir sözlük öğesi belirtmeliyiz::
 
-	>>> sepet = {"meyveler": ("elma", "armut"), "sebzeler": ("pırasa", "fasulye"), 
+	>>> sepet = {"meyveler": ("elma", "armut"), "sebzeler": ("pırasa", "fasulye"),
 	... "içecekler": ("su", "kola", "ayran")}
 
 	>>> sepet.pop("meyveler")
@@ -471,8 +471,8 @@ ne işe yaradığını doğrudan bir örnek üzerinde görelim::
 Bu komut yardımıyla sözlüğümüz içinde "içecekler" adlı bir anahtar oluşturduk.
 Bu anahtarın değeri ise `("su", "kola")` oldu... Bir de şuna bakalım::
 
-	>>> sepet.setdefault("meyveler", ("erik", "çilek")) 
-	
+	>>> sepet.setdefault("meyveler", ("erik", "çilek"))
+
 	('elma', 'armut')
 
 Gördüğünüz gibi, sözlükte zaten "meyveler" adlı bir anahtar bulunduğu için,

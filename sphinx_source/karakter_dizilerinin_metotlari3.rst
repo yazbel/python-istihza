@@ -65,7 +65,7 @@ Peki yukarıda nasıl bir süreç işledi de biz istediğimiz sonucu elde edebil
 Dilerseniz yukarıdaki kodlara biraz daha yakından bakalım. Mesela
 `çeviri_tablosu` adlı değişkenin çıktısına bakarak ``str.maketrans()`` metodunun
 alttan alta neler karıştırdığını görelim::
-    
+
     kaynak = "şçöğüıŞÇÖĞÜİ"
     hedef  = "scoguiSCOGUI"
 
@@ -75,7 +75,7 @@ alttan alta neler karıştırdığını görelim::
 
 Bu kodları çalıştırdığımızda şöyle bir çıktı alıyoruz::
 
-    {214: 79, 231: 99, 220: 85, 199: 67, 304: 73, 305: 105, 
+    {214: 79, 231: 99, 220: 85, 199: 67, 304: 73, 305: 105,
     286: 71, 246: 111, 351: 115, 252: 117, 350: 83, 287: 103}
 
 Bu çıktı size tamamen anlamsız görünmüş olabilir. Ama aslında son derece anlamlı
@@ -86,18 +86,18 @@ görmüştük)
 Gördüğünüz gibi, tamamen sayılardan oluşan bir çıktı bu. Burada birbirlerinden
 virgül ile ayrılmış sayı çiftleri görüyoruz. Bu sayı çiftlerini daha net
 görebilmek için bu çıktıyı derli toplu bir hale getirelim::
-    
-    {214: 79, 
-     231: 99, 
-     220: 85, 
-     199: 67, 
-     304: 73, 
-     305: 105, 
-     286: 71, 
-     246: 111, 
-     351: 115, 
-     252: 117, 
-     350: 83, 
+
+    {214: 79,
+     231: 99,
+     220: 85,
+     199: 67,
+     304: 73,
+     305: 105,
+     286: 71,
+     246: 111,
+     351: 115,
+     252: 117,
+     350: 83,
      287: 103}
 
 Bu şekilde sanırım çıktımız biraz daha anlam kazandı. Gördüğünüz gibi, iki nokta
@@ -114,22 +114,22 @@ anlayabildiği tek şey sayılardır. Mesela siz klavyeden 'a' harfini girdiğin
 bilgisayar bunu `97` olarak algılar. Ya da siz 'i' harfi girdiğinizde,
 bilgisayarın gördüğü tek şey `105` sayısıdır... Bu durumu Python'daki ``chr()``
 adlı özel bir fonksiyon yardımıyla teyit edebiliriz. Dikkatlice inceleyin::
-    
+
     >>> chr(97)
-    
+
     'a'
-    
+
     >>> chr(105)
-    
+
     'i'
-    
+
     >>> chr(65)
-    
+
     'A'
 
 Gördüğünüz gibi, gerçekten de her sayı bir karaktere karşılık geliyor.
 İsterseniz bir de yukarıdaki sayı grubundaki sayıları denetleyelim::
-    
+
     for i in 214, 231, 220, 199, 304, 305, 286, 246, 351, 252, 350, 287:
         print(i, chr(i))
 
@@ -183,27 +183,27 @@ Yukarıdaki ve yukarıdan bir önceki kodların çıktılarını bir araya getir
     Ö   O
     ç   c
     Ü   U
-    Ç   C   
+    Ç   C
     İ   I
     ı   i
-    Ğ   G   
+    Ğ   G
     ö   o
     ş   s
     ü   u
-    Ş   S  
+    Ş   S
     ğ   g
 
-Bütün bu söylediklerimizden şu sonuç çıkıyor: 
+Bütün bu söylediklerimizden şu sonuç çıkıyor:
 
 ``çeviri_tablosu = str.maketrans(kaynak, hedef)`` satırı, `kaynak` ve `hedef`
 olarak adlandırdığımız karakter dizilerini birleştirip, bu değişkenler içindeki
 herbir karakteri birbiriyle eşleştiriyor. Yani aşağıdaki gibi bir işlem
 yapıyor::
-    
+
     çeviri_tablosu = {"Ö": "O",
                       "ç": "c",
                       "Ü": "U",
-                      "Ç": "C",   
+                      "Ç": "C",
                       "İ": "I",
                       "ı": "i",
                       "Ğ": "G",
@@ -223,11 +223,11 @@ olsa tanımamız bizim için faydalı olacaktır.
 
 Dediğim gibi, yukarıda `çeviri_tablosu` adıyla gösterdiğimiz şey bir sözlüktür.
 Bu sözlüğün nasıl çalıştığını görmek için şöyle bir kod yazalım::
-    
+
     çeviri_tablosu = {"Ö": "O",
                       "ç": "c",
                       "Ü": "U",
-                      "Ç": "C",   
+                      "Ç": "C",
                       "İ": "I",
                       "ı": "i",
                       "Ğ": "G",
@@ -247,11 +247,11 @@ Gördüğünüz gibi, sözlük içinde geçen `"Ö"` adlı öğeyi parantez içi
 belirttiğimiz zaman, Python bize bu öğenin karşısındaki değeri veriyor. Sözlük
 içinde `"Ö"` öğesinin karşılığı `"O"` harfi olduğu için de çıktımız `"O"`
 oluyor. Bir de şunlara bakalım::
-    
+
     çeviri_tablosu = {"Ö": "O",
                       "ç": "c",
                       "Ü": "U",
-                      "Ç": "C",   
+                      "Ç": "C",
                       "İ": "I",
                       "ı": "i",
                       "Ğ": "G",
@@ -298,9 +298,9 @@ Bütün bu anlattıklarımızdan sonra şu satırları gayet iyi anlamış olmal
 
 Burada Python, `kaynak` ve `hedef` adlı değişkenler içindeki karakter dizilerini
 birer birer eşleştirerek bize bir sözlük veriyor. Bu sözlükte::
-    
-    "ş" harfi "s" harfine; 
-    "ç" harfi "c" harfine; 
+
+    "ş" harfi "s" harfine;
+    "ç" harfi "c" harfine;
     "ö" harfi "o" harfine;
     "ğ" harfi "g" harfine;
     "ü" harfi "u" harfine;
@@ -333,30 +333,30 @@ uyguluyor olmamız, yani ``str.maketrans()`` yazıyor olmamız sizi şaşırtmı
 olabilir. Eğer anlamanızı kolaylaştıracaksa;
 
 ::
-    
+
     çeviri_tablosu = str.maketrans(kaynak, hedef)
-    
+
 satırını şu şekilde de yazabilirsiniz::
-    
+
     çeviri_tablosu = ''.maketrans(kaynak, hedef)
-    
+
 Yani ``maketrans()`` metodunu boş bir karakter dizisi üzerine de
 uygulayabilirsiniz. Neticede ``maketrans()`` karakter dizilerinin bir metodudur.
 Bu metot hangi karakter dizisi üzerine uygulandığıyla değil, parametre olarak
 hangi değerleri aldığıyla (bizim örneğimizde `kaynak` ve `hedef`) ilgilenir.
 Dolayısıyla bu metodu ilgili-ilgisiz her türlü karakter dizisine
 uygulayabilirsiniz::
-    
+
     çeviri_tablosu = 'mahmut'.maketrans(kaynak, hedef)
     çeviri_tablosu = 'zalim dünya!'.maketrans(kaynak, hedef)
 
 Ama tabii dikkat dağıtmamak açısından en uygun hareket, bu karakter dizisini
 `str` üzerine uygulamak olacaktır::
-    
+
     çeviri_tablosu = str.maketrans(kaynak, hedef)
-    
-Bu küçük ayrıntıya da dikkati çektiğimize göre yolumuza devam edebiliriz... 
-    
+
+Bu küçük ayrıntıya da dikkati çektiğimize göre yolumuza devam edebiliriz...
+
 Yukarıda verdiğimiz örnek vasıtasıyla ``str.maketrans()`` ve ``translate()``
 adlı metotları epey ayrıntılı bir şekilde incelemiş olduk. Dilerseniz pratik
 olması açısından bir örnek daha verelim:
@@ -371,7 +371,7 @@ problemden bahsediyor:
     unutuyorum ve bir metne bakarak yazıyorsam gözüm ekranda olmuyor. Bir
     paragrafı yazıp bitirdikten sonra ekranda bir karakter salatası görünce çok
     bozuluyorum.
-    
+
 İşte böyle bir durumda yukarıdaki iki metodu kullanarak o karakter salatasını
 düzeltebilirsiniz. Karakter salatamız şu olsun:
 
@@ -390,48 +390,48 @@ Burada amacımız yanlışlıkla q klavye düzeninde yazıldığı için karman 
 hale gelmiş metni düzgün bir şekilde f klavye düzenine dönüştürmek. Yani burada
 çıkış noktamız (kaynağımız) `q_klavye_düzeni` iken, varış noktamız (hedefimiz)
 `f_klavye_düzeni`. Buna göre çeviri tablomuzu oluşturabiliriz::
-    
+
     çeviri_tablosu = str.maketrans(q_klavye_düzeni, f_klavye_düzeni)
 
 Tıpkı bir önceki örnekte olduğu gibi, burada da `çeviri_tablosu` adlı değişkeni
 ``print()`` fonksiyonunu kullanarak yazdırırsanız şöyle bir çıktıyla
 karşılaşırsınız::
-    
-    {231: 46, 
-     287: 113, 
-     44 : 120, 
-     46 : 44, 
-     305: 110, 
-     246: 98, 
-     351: 121, 
-     97 : 117, 
-     98 : 231, 
-     99 : 118, 
-     100: 101, 
-     101: 287, 
-     102: 97, 
-     103: 252, 
-     104: 116, 
-     105: 351, 
-     106: 107, 
-     107: 109, 
-     108: 108, 
-     109: 115, 
-     110: 122, 
-     111: 104, 
-     112: 112, 
-     113: 102, 
-     114: 305, 
-     115: 105, 
-     116: 111, 
-     117: 114, 
-     118: 99, 
-     119: 103, 
-     120: 246, 
-     121: 100, 
+
+    {231: 46,
+     287: 113,
+     44 : 120,
+     46 : 44,
+     305: 110,
+     246: 98,
+     351: 121,
+     97 : 117,
+     98 : 231,
+     99 : 118,
+     100: 101,
+     101: 287,
+     102: 97,
+     103: 252,
+     104: 116,
+     105: 351,
+     106: 107,
+     107: 109,
+     108: 108,
+     109: 115,
+     110: 122,
+     111: 104,
+     112: 112,
+     113: 102,
+     114: 305,
+     115: 105,
+     116: 111,
+     117: 114,
+     118: 99,
+     119: 103,
+     120: 246,
+     121: 100,
      122: 106,
      252: 119}
-    
+
 Tahmin edebileceğiniz gibi, bu sözlükte iki nokta üst üste işaretinin solundaki
 sayılar `q_klavye_düzeni` adlı değişken içindeki karakterleri; sağındaki sayılar
 ise `f_klavye_düzeni` adlı değişken içindeki karakterleri temsil ediyor.
@@ -452,7 +452,7 @@ Kodları topluca görelim::
 
     print(metin.translate(çeviri_tablosu))
 
-Ne elde ettiniz? 
+Ne elde ettiniz?
 
 Yukarıdaki iki örnekte de gördüğümüz gibi, ``str.maketrans()`` metodu kaynak ve
 hedef karakter dizilerini alıp bunları birleştirerek bize bir sözlük veri
@@ -463,7 +463,7 @@ veriyor.
 Eğer isterseniz, sözlüğü ``str.maketrans()`` metoduna oluşturtmak yerine,
 kendiniz de bir sözlük oluşturarak ``str.maketrans()`` metoduna parametre olarak
 atayabilirsiniz. Örneğin::
-    
+
     metin = "Bfjflrk öa kdhsı yteua idjslyd bdcusldvdj ks?"
 
     sözlük = {"q": "f",
@@ -536,7 +536,7 @@ sesli harfleri silin desem, nasıl bir kod yazarsınız?
     gerçek böyle olsa da, Python programlama dilinin pek çok yerde bir yılan
     figürü ile temsil edilmesi neredeyse bir gelenek halini almıştır
     diyebiliriz.
-    
+
 Aklınıza ilk olarak şöyle bir kod yazmak gelebilir::
 
     metin = """Bu programlama dili Guido Van Rossum adlı Hollandalı bir
@@ -557,7 +557,7 @@ Aklınıza ilk olarak şöyle bir kod yazmak gelebilir::
     for i in metin:
         if not i in sesli_harfler:
             yeni_metin += i
-        
+
     print(yeni_metin)
 
 Burada öncelikle `metin` adlı bir değişken tanımlayarak metnimizi bu değişken
@@ -583,7 +583,7 @@ orijinal metin içindeki bütün sesli harfleri ayıklamış oluyoruz.
 Yukarıdaki, gayet doğru ve geçerli bir yöntemdir. Böyle bir kod yazmanızın
 hiçbir sakıncası yok. Ama eğer isterseniz aynı işi ``str.maketrans()`` ve
 ``translate()`` metotları yardımıyla da halledebilirsiniz::
-    
+
     metin = """Bu programlama dili Guido Van Rossum adlı Hollandalı bir
     programcı tarafından 90'lı yılların başında geliştirilmeye başlanmıştır.
     Çoğu insan, isminin Python olmasına bakarak, bu programlama dilinin, adını
@@ -594,7 +594,7 @@ hiçbir sakıncası yok. Ama eğer isterseniz aynı işi ``str.maketrans()`` ve
     her ne kadar gerçek böyle olsa da, Python programlama dilinin pek çok yerde
     bir yılan figürü ile temsil edilmesi neredeyse bir gelenek halini almıştır
     diyebiliriz."""
-    
+
     silinecek = "aeıioöuüAEIİOÖUÜ"
 
     çeviri_tablosu = str.maketrans('', '', silinecek)
@@ -603,7 +603,7 @@ hiçbir sakıncası yok. Ama eğer isterseniz aynı işi ``str.maketrans()`` ve
 
 Burada da öncelikle metnimizi bir karakter dizisi içine yerleştirdik. Daha sonra
 da şu kodu yazdık::
-    
+
     silinecek = "aeıioöuüAEIİOÖUÜ"
 
 Bu kodlar yardımıyla, metin içinden çıkarmak istediğimiz harfleri tek tek
@@ -619,20 +619,20 @@ yüzden o iki parametrenin yerine birer tane boş karakter dizisi yerleştiriyor
 Bu noktada `çeviri_tablosu` adlı değişkeni yazdırarak neler olup bittiğini daha
 net görebilirsiniz::
 
-    {214: None, 
-     97 : None, 
-     101: None, 
-     65 : None, 
-     105: None, 
-     111: None, 
-     304: None, 
-     305: None, 
-     220: None, 
-     117: None, 
-     246: None, 
-     73 : None, 
-     79 : None, 
-     252: None, 
+    {214: None,
+     97 : None,
+     101: None,
+     65 : None,
+     105: None,
+     111: None,
+     304: None,
+     305: None,
+     220: None,
+     117: None,
+     246: None,
+     73 : None,
+     79 : None,
+     252: None,
      85 : None,
      69 : None}
 
@@ -646,7 +646,7 @@ Bu kodlarda iki nokta üst üste işaretinin solundaki karakterlerin ``None`` il
 eşleşmesini sağlayan şey, ``str.maketrans()`` metoduna verdiğimiz üçüncü
 parametredir. Eğer o parametreyi yazmazsak, yani kodlarımızı şu şekle getirirsek
 `çeviri_tablosu` değişkeninin çıktısı farklı olacaktır::
-    
+
     metin = """Bu programlama dili Guido Van Rossum adlı Hollandalı bir
     programcı tarafından 90'lı yılların başında geliştirilmeye başlanmıştır.
     Çoğu insan, isminin Python olmasına bakarak, bu programlama dilinin, adını
@@ -657,7 +657,7 @@ parametredir. Eğer o parametreyi yazmazsak, yani kodlarımızı şu şekle geti
     her ne kadar gerçek böyle olsa da, Python programlama dilinin pek çok yerde
     bir yılan figürü ile temsil edilmesi neredeyse bir gelenek halini almıştır
     diyebiliriz."""
-    
+
     silinecek = "aeıioöuüAEIİOÖUÜ"
 
     çeviri_tablosu = str.maketrans('', '')
@@ -684,7 +684,7 @@ anlayabilmek için daha basit bir örnek verelim::
     çeviri_tablosu = str.maketrans(kaynak, hedef, silinecek)
 
     print(metin.translate(çeviri_tablosu))
-    
+
 Burada 'C' ve 'Y' harflerini sırasıyla 'c' ve 'y' harfleriyle eşleştirdik. Bu
 nedenle orijinal metin içindeki 'C' ve 'Y' harfleri yerlerini sırasıyla 'c' ve
 'y' harflerine bıraktı. Silinecek karakterler olarak ise 'e', 'ı', 'a' ve boşluk
@@ -700,7 +700,7 @@ denetleyeceğiz. Peki 'alfabetik' ne demek?
 Eğer bir karakter dizisi içinde yalnızca alfabe harfleri ('a', 'b', 'c' gibi...)
 varsa o karakter dizisi için 'alfabetik' diyoruz. Bir örnekle bunu
 doğrulayalım::
-    
+
 	>>> a = "kezban"
 	>>> a.isalpha()
 
@@ -721,7 +721,7 @@ Bu metot da ``isalpha()`` metoduna benzer. Bunun yardımıyla bir karakter
 dizisinin sayısal olup olmadığını denetleyebiliriz. Sayılardan oluşan karakter
 dizilerine 'sayı değerli karakter dizileri' adı verilir. Örneğin şu bir 'sayı
 değerli karakter dizisi'dir::
-    
+
 	>>> a = "12345"
 
 Metodumuz yardımıyla bunu doğrulayabiliriz::
@@ -739,7 +739,7 @@ Hemen kontrol edelim::
 	>>> b.isdigit()
 
 	False
-	
+
 isalnum()
 =============
 
@@ -755,7 +755,7 @@ Sayısal karakter dizileri, sayılardan oluşan karakter dizileridir.
 Alfanümerik karakter dizileri ise bunun birleşimidir. Yani sayı ve harflerden
 oluşan karakter dizilerine alfanümerik karakter dizileri adı verilir. Örneğin şu
 karakter dizisi alfanümerik bir karakter dizisidir::
-    
+
 	>>> a = "123abc"
 
 İsterseniz hemen bu yeni metodumuz yardımıyla bunu doğrulayalım::
@@ -766,7 +766,7 @@ karakter dizisi alfanümerik bir karakter dizisidir::
 
 Eğer denetleme sonucunda `True` alıyorsak, o karakter dizisi alfanümeriktir. Bir
 de şuna bakalım::
-    
+
 	>>> b = "123abc>"
 	>>> b.isalnum()
 
@@ -787,19 +787,19 @@ isdecimal()
 Bu metot yardımıyla bir karakter dizisinin ondalık sayı cinsinden olup
 olmadığını denetliyoruz. Mesela aşağıdaki örnek ondalık sayı cinsinden bir
 karakter dizisidir::
-    
+
     >>> a = "123"
     >>> a.isdecimal()
-    
+
     True
 
 Ama şu ise kayan noktalı (*floating-point*) sayı cinsinden bir karakter dizisidir::
 
     >>> a = "123.3"
     >>> a.isdecimal()
-    
+
     False
-    
+
 Dolayısıyla ``a.isdecimal()`` komutu `False` çıktısı verir...
 
 
@@ -813,23 +813,23 @@ olamayacağını denetlememizi sağlar. Hatırlarsanız değişkenler konusundan
 bahsederken, değişken adı belirlemenin bazı kuralları olduğunu söylemiştik. Buna
 göre, örneğin, değişken adları bir sayı ile başlayamıyordu. Dolayısıyla şöyle
 bir değişken adı belirleyemiyoruz::
-    
+
     >>> 1a = 12
 
 Dediğimiz gibi, değişkenler birer tanımlayıcıdır. Dolayısıyla bir değişken
 adının geçerli olup olmadığını ``isidentifier()`` metodu yardımıyla
 denetleyebiliriz::
-    
+
     >>> "1a".isidentifier()
-    
+
     False
 
 Demek ki ``"1a"`` ifadesini herhangi bir tanımlayıcı adı olarak kullanamıyoruz.
 Yani bu ada sahip bir değişken, fonksiyon adı veya modül adı oluşturamıyoruz.
 Ama mesela ``"liste1"`` ifadesi geçerli bir tanımlayıcıdır. Hemen denetleyelim::
-    
+
     >>> "liste1".isidentifier()
-    
+
     True
 
 isnumeric()
@@ -838,13 +838,13 @@ isnumeric()
 Bu metot bir karakter dizisinin nümerik olup olmadığını denetler. Yani bu metot
 yardımıyla bir karakter dizisinin sayı değerli olup olmadığını
 denetleyebiliriz::
-    
+
     >>> "12".isnumeric()
-    
+
     True
-    
+
     >>> "dasd".isnumeric()
-    
+
     False
 
 isspace()
@@ -854,25 +854,25 @@ Bu metot yardımıyla bir karakter dizisinin tamamen boşluklardan oluşup
 oluşmadığını denetleyebiliriz. Eğer karakter dizimiz boşluklardan oluşuyorsa bu
 metot `True` çıktısı verecek, ama eğer karakter dizimizin içinde bir tane bile
 boşluk harici karakter varsa bu metot `False` çıktısı verecektir::
-    
+
     >>> a = " "
     >>> a.isspace()
-    
+
     True
-    
+
     >>> a = "              "
     >>> a.isspace()
-    
+
     True
-    
+
     >>> a = "" #karakter dizimiz tamamen boş. İçinde boşluk karakteri bile yok...
-    >>> a.isspace() 
-    
+    >>> a.isspace()
+
     False
-    
+
     >>> a = "fd"
     >>> a.isspace()
-    
+
     False
 
 
@@ -883,9 +883,9 @@ Hatırlarsanız önceki derslerimizde `\\n`, `\\t`, `\\r` ve buna benzer
 karakterlerden söz etmiştik. Örneğin `\\n` karakterinin 'satır başı' anlamına
 geldiğini ve bu karakterin görevinin karakter dizisini bir alt satıra almak
 olduğunu söylemiştik. Örnek verelim::
-    
+
     >>> print("birinci satır\nikinci satır")
-    
+
     birinci satır
     ikinci satır
 
@@ -900,20 +900,20 @@ karakterler' (*printable characters*) olarak adlandırılır. İşte başlıkta
 gördüğünüz ``isprintable()`` metodu da karakterlerin bu yönünü sorgular. Yani
 bir karakterin basılabilen bir karakter mi yoksa basılmayan bir karakter mi
 olduğunu söyler bize. Örneğin::
-    
+
     >>> karakter = "a"
     >>> karakter.isprintable()
-    
+
     True
 
 Demek ki `"a"` karakteri basılabilen bir karaktermiş. Bir de şuna bakalım::
 
     >>> karakter = "\n"
     >>> karakter.isprintable()
-    
+
     False
 
-Demek ki `\\n` karakteri gerçekten de basılamayan bir karaktermiş. 
+Demek ki `\\n` karakteri gerçekten de basılamayan bir karaktermiş.
 
 Basılamayan karakterlerin listesini görmek için http://www.asciitable.com/
 adresini ziyaret edebilirsiniz. Listedeki ilk `32` karakter (`0`'dan başlayarak

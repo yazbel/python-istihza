@@ -1,11 +1,11 @@
 .. meta::
    :description: Python 3.x'te karakter dizileri
-   :keywords: python, string, karakter dizisi, metotlar, capitalize, center, 
-              count, encode, endswith, expandtabs, find, format, format_map, 
-              index, isalnum, isalpha, isdecimal, isdigit, isidentifier, islower, 
-              isnumeric, isprintable, isspace, istitle, isupper, join, ljust, 
-              lower, lstrip, maketrans, partition, replace, rfind, rindex, rjust, 
-              rpartition, rsplit, rstrip, split, splitlines, startswith, strip, 
+   :keywords: python, string, karakter dizisi, metotlar, capitalize, center,
+              count, encode, endswith, expandtabs, find, format, format_map,
+              index, isalnum, isalpha, isdecimal, isdigit, isidentifier, islower,
+              isnumeric, isprintable, isspace, istitle, isupper, join, ljust,
+              lower, lstrip, maketrans, partition, replace, rfind, rindex, rjust,
+              rpartition, rsplit, rstrip, split, splitlines, startswith, strip,
               swapcase, title, translate, upper, zfill
 
 .. highlight:: py3
@@ -78,20 +78,20 @@ dizilerine erişmenin birkaç farklı yolu vardır. Örneğin::
 Burada değeri `"karakter dizisi"` olan `nesne` adlı bir değişken tanımladık.
 Yazdığımız programlarda bu değişkene erişmek için, değişkenin adını kullanmamız
 yeterlidir. Örneğin::
-    
+
     >>> print(nesne)
 
-Bu komut bize karakter dizisinin tamamını verecektir. 
+Bu komut bize karakter dizisinin tamamını verecektir.
 
 Bir karakter dizisini yukarıda gördüğümüz gibi kendimiz tanımlayabiliriz. Bunun
 dışında, mesela ``input()`` fonksiyonuyla kullanıcıdan aldığımız verilerin de
 birer karakter dizisi olacağını biliyoruz::
-    
+
     veri = input("Herhangi bir şey: ")
 
 Tıpkı kendi tanımladığımız karakter dizilerinde olduğu gibi, kullanıcıdan gelen
 karakter dizilerini de aşağıdaki komut yardımıyla ekranda görüntüleyebiliriz::
-    
+
     print(veri)
 
 Bu komut da bize `veri` değişkeninin tuttuğu karakter dizisinin tamamını
@@ -105,16 +105,16 @@ böylece bu dizinin öğelerine tek tek de erişebiliriz::
 
 ``for`` döngüsüyle elde ettiğimiz bu etkiyi şu kodlar yardımıyla da elde
 edebileceğimizi gayet iyi biliyor olmalısınız::
-    
+
     print(*nesne, sep="\n")
 
 Önceki derslerde verdiğimiz örneklerden de bildiğiniz gibi, karakter dizilerinin
 öğelerine yukarıdaki yöntemlerle tek tek erişebilmemiz sayesinde herhangi bir
 işlemi karakter dizilerinin bütün öğelerine bir çırpıda uygulayabiliyoruz.
 Mesela::
-    
+
     nesne = "123456789"
-    
+
     for n in nesne:
         print(int(n) * 2)
 
@@ -128,7 +128,7 @@ o anda elinizde olan verinin tipini bilmeniz çok önemlidir. Eğer kendi
 yazdığınız veya mesela ``input()`` fonksiyonundan gelen bir verinin karakter
 dizisi olduğunu bilmezseniz yukarıdaki kodları şu şekilde yazma gafletine
 düşebilirsiniz::
-    
+
     nesne = "123456789"
 
     for n in nesne:
@@ -155,7 +155,7 @@ ne kadar yıkıcı sonuçlar doğuracabileceğini düşünün. Yukarıdaki progr
 sırasında hiçbir hata vermeyeceği için, siz programınızın düzgün çalıştığını
 zannederek hayatınıza devam edeceksiniz. Ama belki de yukarıdaki sinsi hata
 yüzünden, programınızı kullanan bir şirket veri, zaman ve para kaybına
-uğrayacak. 
+uğrayacak.
 
 Yukarıdaki örneklerde bir şey daha dikkatinizi çekmiş olmalı: Gördüğünüz gibi,
 karakter dizisinin öğelerine erişirken bu öğelerin tamamını elde ediyoruz.
@@ -191,7 +191,7 @@ göstermeye çalışalım::
 
 Burada değeri `"Python"` olan `kardiz` adlı bir değişken tanımladık. Şimdi bu
 karakter dizisinin ilk öğesine erişeceğiz::
-    
+
     >>> kardiz[0]
 
     'P'
@@ -206,7 +206,7 @@ arasından sadece birini `2` ile çarpmak istediğimizi düşünelim::
 
     >>> nesne = "123456789"
     >>> int(nesne[1]) * 2
-    
+
     4
 
 Burada da öncelikle `nesne` değişkeninin birinci sırasında yer alan öğeyi
@@ -221,7 +221,7 @@ Elbette yukarıdaki kodları şöyle de yazabilirdik::
     >>> nesne = "123456789"
     >>> sayı = int(nesne[1])
     >>> sayı * 2
-    
+
     4
 
 Belki farkındasınız, belki de değilsiniz, ama aslında şu noktada karakter
@@ -235,67 +235,67 @@ karakter dizisinin birinci (yani aslında ikinci) öğesini alabildik.
 Bu yapının mantığını kavramak için şu örnekleri dikkatlice inceleyin::
 
     >>> kardiz = "Python"
-    
+
     >>> kardiz[0]
-    
+
     'P'
-    
+
     >>> kardiz[1]
-    
+
     'y'
-    
+
     >>> kardiz[3]
-    
+
     'h'
-    
+
     >>> kardiz[5]
-    
+
     'n'
-    
+
     >>> kardiz[2]
-    
+
     't'
-    
+
     >>> kardiz[4]
-    
+
     'o'
-    
+
     >>> nesne = "123456789"
-    
+
     >>> nesne[0]
-    
+
     '1'
-    
+
     >>> nesne[1]
-    
+
     '2'
-    
+
     >>> nesne[2]
-    
+
     '3'
-    
+
     >>> nesne[3]
-    
+
     '4'
-    
+
     >>> nesne[4]
-    
+
     '5'
-    
+
     >>> nesne[5]
-    
+
     '6'
-    
+
     >>> nesne[6]
-    
+
     '7'
-    
+
     >>> nesne[7]
-    
+
     '8'
-    
+
     >>> nesne[8]
-    
+
     '9'
 
 Burada şöyle bir formül yazabiliriz::
@@ -312,7 +312,7 @@ Asla unutmayın, Python saymaya her zaman `0`'dan başlar. Dolayısıyla bir
 karakter dizisinin ilk öğesinin sırası `0`'dır. Eğer ilk öğeye ulaşayım derken
 `1` sayısını kullanırsanız ulaştığınız öğe ilk öğe değil, ikinci öğe olacaktır.
 Bu ayrıntıyı gözden kaçırmamaya dikkat etmelisiniz.
-   
+
 Karakter dizilerinin öğelerine tek tek erişirken dikkat etmemiz gereken önemli
 noktalardan biri de, öğe sırası belirtirken, karakter dizisinin toplam uzunluğu
 dışına çıkmamaktır. Yani mesela `7` karakterlik bir karakter dizimiz varsa, bu
@@ -320,25 +320,25 @@ karakter dizisinin son öğesinin sırası `6` olacaktır. Çünkü biliyorsunuz
 saymaya `0`'dan başlıyor. Dolayısıyla ilk karakterin sırası `0` olacağı için,
 `7` karakterlik bir karakter dizisinde son öğenin sırası `6` olacaktır.
 Örneğin::
-    
+
     >>> kardiz = "istihza"
     >>> len(kardiz)
-    
+
     7
 
 Gördüğünüz gibi, `"istihza"` adlı karakter dizisinin uzunluğu `7`. Yani bu
 karakter dizisi içinde `7` adet karakter var. Bu karakter dizisini incelemeye
 devam edelim::
-    
+
     >>> kardiz[0]
-    
+
     'i'
 
 Dediğimiz gibi, karakter dizisinin ilk öğesinin sırası `0`. Dolayısıyla son
 öğenin sırası `6` olacaktır::
-    
+
     >>> kardiz[6]
-    
+
     'a'
 
 Bu durumu şöyle formüle edebiliriz::
@@ -349,7 +349,7 @@ Yani;
 
     Bir karakter dizisinin uzunluğunun `1` eksiği, o karakter dizisinin son
     öğesini verir.
-    
+
 Yukarıdaki formülü eğer şöyle yazsaydık hata alırdık::
 
     >>> kardiz[len(kardiz)]
@@ -368,18 +368,18 @@ ulaşmak istersek bu değerin 1 eksiğini almamız gerekiyor. Yani
 istersek öğe sırası olarak eksi değerli sayıları da kullanabiliriz. Eğer bir
 karakter dizisine öğe sırası olarak eksi değerli bir sayı verirsek Python o
 karakter dizisini sondan başa doğru okumaya başlayacaktır. Yani::
-    
+
     >>> kardiz[-1]
-    
+
     'a'
 
 Gördüğünüz gibi `-1` sayısı karakter dizisini tersten okuyup, sondan başa doğru
 ilk öğeyi veriyor. Dolayısıyla, yukarıda anlattığımız ``len(kardiz)-1``
 yönteminin yanısıra, `-1` sayısını kullanarak da karakter dizilerinin son
 karakterini elde edebiliyoruz. Bir de şuna bakalım::
-    
+
     >>> kardiz[-2]
-    
+
     'z'
 
 Dediğimiz gibi, eksi değerli sayılar karakter dizisindeki karakterleri sondan
@@ -396,15 +396,15 @@ bir kez daha tekrar edelim.
 
     >>> kardiz = "istihza"
     >>> kardiz[7]
-    
+
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
     IndexError: string index out of range
-    
+
 ...veya::
 
     >>> kardiz[-8]
-    
+
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
     IndexError: string index out of range
@@ -416,7 +416,7 @@ Gördüğünüz gibi, ``kardiz[0]``, ``kardiz[1]``, ``kardiz[2]``, vb. komutlarl
 karakter dizisinin öğelerine erişebiliyoruz. Burada öğe sıralarını tek tek
 yazmak yerine ``range()`` fonksiyonunu kullanarak da öğelere tek tek
 erişebilirsiniz::
-    
+
     for i in range(7):
         print(kardiz[i])
 
@@ -426,17 +426,17 @@ döngüsüne alıyoruz. Böylece Python ``kardiz[öğe_sırası]`` gibi bir yap�
 `öğe_sırası` yerine ``range(7)`` aralığındaki bütün sayıları (yani `0`, `1`,
 `2`, `3`, `4`, `5`, `6` sayılarını) tek tek uyguluyor.
 
-Burada aklınıza hemen şöyle bir soru gelmiş olabilir: 
+Burada aklınıza hemen şöyle bir soru gelmiş olabilir:
 
     Biz kendi tanımladığımız karakter dizisinin uzunluğunun toplam `7` karakter
     olduğunu bildiğimiz için yukarıdaki örnekte ``range()`` fonksiyonunu
     ``range(7)`` şeklinde kullanabildik. Ama başka kaynaktan gelen bir karakter
     dizisinin uzunluğunu nasıl bileceğiz?
-    
+
 Aslında bu sorunun cevabı çok basit. Uzunluğunu bilmediğiniz karakter dizileri
 için ``range()`` fonksiyonuyla birlikte ``len()`` fonksiyonundan
 yararlanabilirsiniz. Nasıl mı? Hemen bir örnek verelim::
-    
+
     for karakter in range(len(kardiz)):
         print(kardiz[karakter])
 
@@ -452,7 +452,7 @@ bırakmış oluyoruz. Karakter dizisinin uzunluğu ne ise (``len(kardiz)``), Pyt
 
 Yukarıdaki durumu daha iyi anlayabilmek için bir örnek daha verelim. Diyelim ki
 kullanıcıya ismini sorup, kendisine şöyle bir çıktı vermek istiyorsunuz::
-    
+
     isminizin 1. harfi ...
     isminizin 2. harfi ...
     isminizin 3. harfi ...
@@ -469,7 +469,7 @@ Gördüğünüz gibi, kullanıcının girdiği kelimenin uzunluğu kaç ise o sa
 olarak ``range()`` fonksiyonuna atanıyor. Diyelim ki kullanıcı Ferhat ismini
 girmiş olsun. Bu kelimede toplam `6` karakter var. Dolayısıyla Python ``for``
 satırını şöyle yorumlayacaktır::
-    
+
     for i in range(6):
         ...
 
@@ -480,15 +480,15 @@ Python ``for`` döngüsünün ilk turunda şöyle bir işlem gerçekleştirir::
 İkinci turda ise şöyle bir işlem::
 
     print("isminizin {}. harfi: {}".format(1, isim[1]))
-    
+
 .. figure:: ../images/misc/string_index.png
    :target: _images/misc/string_index.png
    :align: right
    :figwidth: 300px
    :width: 300px
    :height: 159px
-   
-   Annenizin kızlık soyadının 0. harfi [`kaynak <http://pic.twitter.com/u1IE6Mma>`_]     
+
+   Annenizin kızlık soyadının 0. harfi [`kaynak <http://pic.twitter.com/u1IE6Mma>`_]
 
 Bu döngü `6` sayısına gelene kadar devam eder. Burada `i` adlı değişkenin
 değerinin her döngüde nasıl değiştiğine dikkat edin. Python `i` adını verdiğimiz
@@ -501,7 +501,7 @@ Yalnız bu kodların çıktısında iki nokta dikkatinizi çekmiş olmalı. Biri
 '`0.` harf' çok yapay duran bir ifade. Onun yerine ilk harfi '1. harf' olarak
 adlandırmamız çok daha mantıklı olacaktır. Bunun için kodlarınıza şu basit
 eklemeyi yapabilirsiniz::
-    
+
     isim = input("isminiz: ")
 
     for i in range(len(isim)):
@@ -527,31 +527,31 @@ Bu bölümde karakter dizilerini 'dilimlemekten' söz edeceğiz. Peki 'dilimleme
 derken neyi kastediyoruz? Aslında burada gerçek anlamda 'karpuz gibi
 dilimlemekten' söz ediyoruz... Şu örnek, ne demek istediğimizi daha net ortaya
 koyacaktır::
-    
+
     >>> site = "www.istihza.com"
     >>> site[4:11]
-    
+
     'istihza'
-    
+
     >>> site[12:16]
-    
+
     'com'
-    
+
     >>> site[0:3]
-    
+
     'www'
 
 Gördüğünüz gibi, karakter dizisine köşeli parantez içinde bazı değerler vererek
 bu karakter dizisini dilim dilim ayırdık. Peki bunu nasıl yaptık? Yukarıdaki
 örneklerde şöyle bir yapı gözümüze çarpıyor::
-    
+
     karakter_dizisi[alınacak_ilk_öğenin_sırası:alınacak_son_öğenin_sırasının_bir_fazlası]
 
 Bu formülü çok basit bir örneğe uygulayalım::
 
     >>> karakter_dizisi = "istanbul"
     >>> karakter_dizisi[0:3]
-    
+
     'ist'
 
 Burada alacağımız ilk öğenin sıra numarası `0`. Yani `"istanbul"` karakter
@@ -591,7 +591,7 @@ Bütün bu anlattıklarımızı daha iyi anlayabilmek için bir örnek daha vere
 
 Burada beş adet atasözü verdik. Bizim görevimiz, bu atasözlerinin sonunda
 bulunan ünlem işaretlerini ortadan kaldırmak::
-    
+
     for ata in ata1, ata2, ata3, ata4, ata5:
         print(ata[0:-1])
 
@@ -605,7 +605,7 @@ yapacağız?
 O da çok basit bir işlem::
 
     for ata in ata1, ata2, ata3, ata4, ata5:
-        print(ata[0:-1] + ".") 
+        print(ata[0:-1] + ".")
 
 Gördüğünüz gibi, son karakter olan ünlem işaretini attıktan sonra onun yerine
 bir nokta işareti koymak için yaptığımız tek şey, dilimlediğimiz karakter
@@ -614,23 +614,23 @@ dizisine, artı işareti (`+`) yardımıyla bir `.` karakteri eklemekten ibarett
 Böylece karakter dizilerini nasıl dilimleyeceğimizi öğrenmiş olduk. Bu konuyu
 kapatmadan önce dilimlemeye ilişkin bazı ayrıntılardan söz edelim. Diyelim ki
 elimizde şöyle bir karakter dizisi var::
-    
+
     >>> kardiz = "Sana Gül Bahçesi Vadetmedim"
 
 Bu karakter dizisi içinden sadece 'Sana' kısmını dilimlemek için şöyle bir şey
 yazabileceğimizi biliyorsunuz::
-    
+
     >>> kardiz[0:4]
-    
+
     'Sana'
 
 Burada `0.` karakterden `4.` karaktere kadar olan kısmı dilimlemiş oluyoruz.
 Python bize bu tür durumlarda şöyle bir kolaylık sağlar: Eğer karakter dizisi
 içinden alınan ilk karakterin sırasını gösteren sayı `0` ise, bu sayıyı
 belirtmesek de olur. Yani ``kardiz[0:4]`` kodunu şöyle de yazabiliriz::
-    
+
     >>> kardiz[:4]
-    
+
     'Sana'
 
 Gördüğünüz gibi, ilk sıra sayısını yazmazsak Python ilk sayıyı `0` kabul ediyor.
@@ -639,7 +639,7 @@ Gördüğünüz gibi, ilk sıra sayısını yazmazsak Python ilk sayıyı `0` ka
 çalışalım::
 
     >>> kardiz[17:27]
-    
+
     'Vadetmedim'
 
 Burada da `17.` karakter ile `27.` karakter arasında kalan bütün karakterleri
@@ -647,9 +647,9 @@ dilimledik. Tıpkı, alacağımız ilk karakterin sırası `0` olduğunda bu say
 belirtmemize gerek olmadığı gibi, alacağımız son karakterin sırası karakter
 dizisinin sonuncu karakterine denk geliyorsa o sayıyı da yazmamıza gerek yok.
 Yani yukarıdaki ``kardiz[17:27]`` kodunu şöyle de yazabiliriz::
-    
+
     >>> kardiz[17:]
-    
+
     'Vadetmedim'
 
 Python'daki bu dilimleme özelliğini kullanarak karakter dizilerini istediğiniz
@@ -669,19 +669,19 @@ Karakter Dizilerini Ters Çevirmek
 Eğer amacınız bir karakter dizisini ters çevirmek, yani karakter dizisi içindeki
 her bir öğeyi tersten yazdırmaksa biraz önce öğrendiğimiz dilimleme yöntemini
 kullanabilirsiniz. Dikkatlice bakın::
-    
+
     >>> kardiz[::-1]
-    
+
     'midemtedaV iseçhaB lüG anaS'
 
 Gördüğünüz gibi, `"Sana Gül Bahçesi Vadetmedim"` adlı karakter dizisi içindeki
 bütün karakterler sondan başa doğru ekrana dizildi.
 
-Aslında bu komutla Python'a şöyle bir emir vermiş oluyoruz: 
+Aslında bu komutla Python'a şöyle bir emir vermiş oluyoruz:
 
     `kardiz` değişkeni içindeki bütün karakterleri, en son karakterden ilk
     karaktere kadar sondan başa doğru tek tek ekrana yazdır!
-    
+
 Bildiğiniz gibi, eğer almak istediğimiz karakter, dizi içindeki ilk karakterse
 bu karakterin dizi içindeki sırasını belirtmemize gerek yok. Aynı şekilde, eğer
 almak istediğimiz karakter, dizi içindeki son karakterse, bu karakterin de dizi
@@ -693,7 +693,7 @@ Eğer bir karakter dizisinin tamamının değil de, sadece belli bir kısmının
 istediğiniz ilk ve son karakterlerin sırasını parantez içinde belirtmek
 olacaktır. Mesela yukarıdaki karakter dizisinde sadece 'Gül' kelimesini ters
 çevirmek istersek şöyle bir şey yazabiliriz::
-    
+
     >>> kardiz[7:4:-1]
 
     'lüG'
@@ -701,21 +701,21 @@ olacaktır. Mesela yukarıdaki karakter dizisinde sadece 'Gül' kelimesini ters
 Yukarıdaki örnek, karakter dizisi dilimlemeye ilişkin olarak bize bazı başka
 ipuçları da veriyor. Gördüğünüz gibi, köşeli parantez içinde toplam üç adet
 parametre kullanabiliyoruz. Yani formülümüz şöyle::
-    
+
     kardiz[ilk_karakter:son_karakter:atlama_sayısı]
 
 Bir örnek verelim::
 
     >>> kardiz = "istanbul"
     >>> kardiz[0:8:1]
-    
+
     'istanbul'
 
 Burada `"istanbul"` adlı karakter dizisinin bütün öğelerini birer birer ekrana
 döktük. Bir de şuna bakalım::
-    
+
     >>> kardiz[0:8:2]
-    
+
     'itnu'
 
 Burada ise `"istanbul"` adlı karakter dizisinin bütün öğelerini ikişer ikişer
@@ -726,19 +726,19 @@ Python'ın kuralları gereğince yukarıdaki kodu şöyle yazabileceğimizi de
 biliyorsunuz::
 
     >>> kardiz[::2]
-    
+
     'itnu'
 
 Eğer karakter dizisini ters çevirmek istiyorsak, yukarıdaki örneği eksi değerli
 bir atlama sayısı ile yazmamız gerekir::
-    
+
     >>> kardiz = "istanbul"
     >>> kardiz[::-1]
-    
+
     'lubnatsi'
-    
+
     >>> kardiz[::-2]
-    
+
     'lbas'
 
 Dediğimiz gibi, yukarıdaki yöntemi kullanarak karakter dizilerini ters
@@ -754,14 +754,14 @@ Gelelim bu fonksiyonun nasıl kullanılacağına... Önce şöyle bir deneme yap
 Gördüğünüz gibi, bu fonksiyonu düz bir şekilde kullandığımızda bize bir
 'reversed' nesnesi vermekle yetiniyor. Buna benzer bir olguyla ``range()``
 fonksiyonunda da karşılaşmıştık::
-    
+
     >>> range(10)
-    
+
     range(0, 10)
 
 Hatırlarsanız, ``range(10)`` gibi bir komutun içeriğini görebilmek için bu komut
 üzerinde bir ``for`` döngüsü kurmamız gerekiyordu::
-    
+
     for i in range(10):
         print(i)
 
@@ -776,7 +776,7 @@ Aynı durum ``reversed()`` fonksiyonu için de geçerlidir::
 
 ...veya::
 
-    print(*reversed("Sana Gül Bahçesi Vadetmedim"), sep="") 
+    print(*reversed("Sana Gül Bahçesi Vadetmedim"), sep="")
 
 Dilimleme veya ``reversed()`` fonksiyonunu kullanma yöntemlerinden hangisi
 kolayınıza geliyorsa onu tercih edebilirsiniz.
@@ -787,9 +787,9 @@ Karakter Dizilerini Alfabe Sırasına Dizmek
 Python'da karakter dizilerinin öğelerine tek tek ulaşma, öğeleri dilimleme ve
 ters çevirmenin yanısıra, bu öğeleri alfabe sırasına dizmek de mümkündür. Bunun
 için ``sorted()`` adlı bir fonksiyondan yararlanacağız::
-    
+
     >>> sorted("kitap")
-    
+
     ['a', 'i', 'k', 'p', 't']
 
 Nasıl ``input()`` fonksiyonu çıktı olarak bir karakter dizisi ve ``len()``
@@ -808,12 +808,12 @@ Ama tabii eğer isterseniz bu çıktıyı alıştığınız biçimde alabilirsin
 Bir örnek daha verelim::
 
     >>> sorted("elma")
-    
+
     ['a', 'e', 'l', 'm']
 
 Gördüğünüz gibi, ``sorted()`` fonksiyonunu kullanmak çok kolay, ama aslında bu
 fonksiyonun önemli bir problemi var. Dikkatlice bakın::
-    
+
     >>> sorted("çiçek")
 
     ['e', 'i', 'k', 'ç', 'ç']
@@ -827,7 +827,7 @@ Bu sorunu aşmak için şöyle bir yöntem deneyebilirsiniz::
     >>> locale.setlocale(locale.LC_ALL, "Turkish_Turkey.1254") #Windows için
     >>> locale.setlocale(locale.LC_ALL, "tr_TR") #GNU/Linux için
     >>> sorted("çiçek", key=locale.strxfrm)
-    
+
     ['ç', 'ç', 'e', 'i', 'k']
 
 Burada ``locale`` adlı bir modülden yararlandık. ``locale`` de tıpkı ``sys``,
@@ -853,16 +853,16 @@ yöntem pek çok durumda işinize yarar. Ancak bu yöntem tek bir yerde işe yar
 Dikkatlice bakın::
 
     >>> sorted("afgdhkıi", key=locale.strxfrm)
-    
+
     ['a', 'd', 'f', 'g', 'h', 'i', 'ı', 'k']
 
 Gördüğünüz gibi, bu yöntem 'i' harfini 'ı' harfinden önce getiriyor. Halbuki
 Türk alfabesine göre bunun tersi olmalıydı. Buna benzer problemlerle İngiliz
 alfabesi dışındaki pek çok alfabede karşılaşırsınız. Dolayısıyla bu sadece
-Türkçeye özgü bir sorun değil. 
+Türkçeye özgü bir sorun değil.
 
 Bu soruna karşı şöyle bir kod da yazabilirsiniz::
-    
+
     >>> harfler = "abcçdefgğhıijklmnoöprsştuüvyz"
     >>> çevrim = {i: harfler.index(i) for i in harfler}
     >>> sorted("afgdhkıi", key=çevrim.get)
@@ -871,17 +871,17 @@ Bu soruna karşı şöyle bir kod da yazabilirsiniz::
 
 Gördüğünüz gibi burada ilk iş olarak Türk alfabesindeki bütün harfleri `harfler`
 adlı bir değişkene atadık. Daha sonra ise şöyle bir kod yazdık::
-    
+
     >>> çevrim = {i: harfler.index(i) for i in harfler}
 
 Burada henüz öğrenmediğimiz bir yapı var, ama ne olup bittiğini daha iyi anlamak
 için bu `çevrim` değişkeninin içeriğini kontrol etmeyi deneyebilirsiniz::
-    
+
     >>> print(çevrim)
 
-    {'ğ': 8, 'ı': 10, 'v': 26, 'g': 7, 'ş': 22, 'a': 0, 'c': 2, 'b': 1, 'e': 5, 
-    'd': 4, 'ç': 3, 'f': 6, 'i': 11, 'h': 9, 'k': 13, 'j': 12, 'm': 15, 'l': 14, 
-    'o': 17, 'n': 16, 'p': 19, 's': 21, 'r': 20, 'u': 24, 't': 23, 'ö': 18, 
+    {'ğ': 8, 'ı': 10, 'v': 26, 'g': 7, 'ş': 22, 'a': 0, 'c': 2, 'b': 1, 'e': 5,
+    'd': 4, 'ç': 3, 'f': 6, 'i': 11, 'h': 9, 'k': 13, 'j': 12, 'm': 15, 'l': 14,
+    'o': 17, 'n': 16, 'p': 19, 's': 21, 'r': 20, 'u': 24, 't': 23, 'ö': 18,
     'y': 27, 'z': 28, 'ü': 25}
 
 Bu çıktıya dikkatlice bakarsanız, her bir harfin bir sayıya karşılık gelecek
@@ -891,7 +891,7 @@ harfi `6` ile eşleşmiş. Yine dikkatlice bakarsanız, biraz önce bize sorun
 Evet, doğru tahmin ettiniz. Harfleri sayılarla eşleştirerek, Python'ın harfler
 yerine sayıları sıralamasını sağlayacağız. Bunu da yine `key` parametresini
 kullanarak yapıyoruz::
-    
+
     >>> sorted("afgdhkıi", key=çevrim.get)
 
 Bu yapıyı daha iyi anlayabilmek için kendi kendinize bazı denemeler yapın. Eğer
@@ -912,18 +912,18 @@ Elimizde şöyle bir karakter dizisi olduğunu düşünün::
 
     >>> meyve = "elma"
 
-Amacımız bu karakter dizisinin ilk harfini büyütmek olsun. 
+Amacımız bu karakter dizisinin ilk harfini büyütmek olsun.
 
 Bunun için dilimleme yönteminden yararlanabileceğimizi biliyorsunuz::
 
     >>> "E" + meyve[1:]
-    
+
     'Elma'
 
 Burada "E" harfi ile, `meyve` değişkeninin ilk harfi dışında kalan bütün
 harfleri birleştirdik.
 
-Bir örnek daha verelim. 
+Bir örnek daha verelim.
 
 Elimizde şöyle dört adet internet sitesi adresi olsun::
 
@@ -935,7 +935,7 @@ Elimizde şöyle dört adet internet sitesi adresi olsun::
 Bizim amacımız bu adreslerin her birinin baş tarafına `http://` ifadesini
 eklemek. Bunun için de yine karakter dizisi birleştirme işlemlerinden
 yararlanabiliriz. Dikkatlice inceleyin::
-    
+
     site1 = "www.google.com"
     site2 = "www.istihza.com"
     site3 = "www.yahoo.com"
@@ -946,7 +946,7 @@ yararlanabiliriz. Dikkatlice inceleyin::
 
 Eğer `www.` kısımlarını atmak isterseniz karakter dizisi birleştirme işlemleri
 ile birlikte dilimleme yöntemini de kullanmanız gerekir::
-    
+
     for i in site1, site2, site3, site4:
         print("http://", i[4:], sep="")
 
@@ -957,19 +957,19 @@ görünüyor. Esasında öyle de denebilir. Ancak burada önemli bir ayrıntı v
 Yukarıdaki örneklerde gördüğümüz değişiklikler kalıcı değildir. Yani aslında bu
 değişikliklerin orijinal karakter dizisi üzerinde hiçbir etkisi yoktur. Gelin
 isterseniz bunu teyit edelim::
-    
+
     >>> kardiz = "istihza"
     >>> "İ" + kardiz[1:]
-    
+
     'İstihza'
 
 Dediğimiz gibi, sanki burada `"istihza"` karakter dizisini `"İstihza"` karakter
 dizisine çevirmişiz gibi duruyor. Ama aslında öyle değil::
-    
+
     >>> print(kardiz)
-    
+
     istihza
-    
+
 Gördüğünüz gibi, `kardiz` değişkeninin orijinalinde hiçbir değişiklik yok.
 Ayrıca burada ``"İ" + kardiz[1:]`` satırı ile elde ettiğiniz sonuca tekrar
 ulaşmanızın imkanı yok. Bu değişiklik kaybolmuş durumda. Peki bunun sebebi
@@ -989,7 +989,7 @@ karakter dizisi üzerinde artık değişiklik yapamazsınız. Eğer bir karakter
 üzerinde değişiklik yapmanız gerekiyorsa, yapabileceğiniz tek şey o karakter
 dizisini yeniden tanımlamaktır. Mesela yukarıdaki örnekte `kardiz` değişkeninin
 tuttuğu karakter dizisini değiştirmek isterseniz şöyle bir kod yazabilirsiniz::
-    
+
     >>> kardiz = "İ" + kardiz[1:]
     >>> print(kardiz)
 
@@ -1000,15 +1000,15 @@ burada aslında bambaşka bir `kardiz` değişkeni daha tanımlıyoruz. Yani ilk
 `kardiz` değişkeni ile sonraki `kardiz` değişkeni aynı şeyler değil. Bunu teyit
 etmek için önceki derslerimizde gördüğümüz ``id()`` fonksiyonundan
 yararlanabilirsiniz::
-    
+
     >>> kardiz = "istihza"
     >>> id(kardiz)
-    
+
     3075853248
-    
+
     >>> kardiz = "İ" + kardiz[1:]
     >>> id(kardiz)
-    
+
     3075853280
 
 Gördüğünüz gibi, ilk `kardiz` değişkeni ile sonraki `kardiz` değişkeni farklı
@@ -1022,11 +1022,11 @@ değişiyormuş gibi bir etki elde ediyoruz. Bu da bizi memnun etmeye yetiyor...
 Yukarıdaki örnekte karakter dizisinin baş kısmı üzerinde değişiklik yaptık. Eğer
 karakter dizisinin ortasında kalan bir kısmı değiştirmek isterseniz de şöyle bir
 şey yazabilirsiniz::
-    
+
     >>> kardiz = "istihza"
     >>> kardiz = kardiz[:3] + "İH" + kardiz[5:]
     >>> kardiz
-    
+
     'istİHza'
 
 Gördüğünüz gibi, yukarıdaki kodlarda karakter dizilerini dilimleyip
@@ -1047,15 +1047,15 @@ gereken bir program yazıyorsunuz. Yani mesela amacınız 'istanbul' kelimesi
 içinde geçen 'i', 'a' ve 'u' harflerini bir yerde, 's', 't', 'n', 'b' ve 'l'
 harflerini ise ayrı bir yerde toplamak. Bunun için şöyle bir program
 yazabilirsiniz::
-    
+
     sesli_harfler = "aeıioöuü"
     sessiz_harfler = "bcçdfgğhjklmnprsştvyz"
-    
+
     sesliler = ""
     sessizler = ""
-    
+
     kelime = "istanbul"
-    
+
     for i in kelime:
         if i in sesli_harfler:
             sesliler += i
@@ -1067,17 +1067,17 @@ yazabilirsiniz::
 
 Burada öncelikle şu kodlar yardımıyla Türkçedeki sesli ve sessiz harfleri
 belirliyoruz::
-    
+
     sesli_harfler = "aeıioöuü"
-    sessiz_harfler = "bcçdfgğhjklmnprsştvyz" 
+    sessiz_harfler = "bcçdfgğhjklmnprsştvyz"
 
 Ardından da, sesli ve sessiz harflerini ayıklayacağımız kelimedeki sesli harfler
 ve sessiz harfler için boş birer karakter dizisi tanımlıyoruz::
-    
+
     sesliler = ""
     sessizler = ""
-    
-Programımız içinde ilgili harfleri, o harfin ait olduğu değişkene atayacağız. 
+
+Programımız içinde ilgili harfleri, o harfin ait olduğu değişkene atayacağız.
 
 Kelimemiz `"istanbul"`::
 
@@ -1120,20 +1120,20 @@ dir()
 Python'daki bir nesnenin özellikleri hakkında bilgi edinme imkanı verecek.
 Mesela karakter dizilerinin bize hangi metotları sunduğunu görmek için bu
 fonksiyonu şöyle kullanabiliriz::
-    
+
     >>> dir(str)
-    
-    ['__add__', '__class__', '__contains__', '__delattr__', '__doc__', '__eq__', 
-    '__format__', '__ge__', '__getattribute__', '__getitem__', '__getnewargs__', 
-    '__gt__', '__hash__', '__init__', '__iter__', '__le__', '__len__', '__lt__', 
-    '__mod__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', 
-    '__repr__', '__rmod__', '__rmul__', '__setattr__', '__sizeof__', '__str__', 
-    '__subclasshook__', 'capitalize', 'center', 'count', 'encode', 'endswith', 
-    'expandtabs', 'find', 'format', 'format_map', 'index', 'isalnum', 'isalpha', 
-    'isdecimal', 'isdigit', 'isidentifier', 'islower', 'isnumeric', 'isprintable', 
-    'isspace', 'istitle', 'isupper', 'join', 'ljust', 'lower', 'lstrip', 
-    'maketrans', 'partition', 'replace', 'rfind', 'rindex', 'rjust', 'rpartition', 
-    'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 'strip', 'swapcase', 
+
+    ['__add__', '__class__', '__contains__', '__delattr__', '__doc__', '__eq__',
+    '__format__', '__ge__', '__getattribute__', '__getitem__', '__getnewargs__',
+    '__gt__', '__hash__', '__init__', '__iter__', '__le__', '__len__', '__lt__',
+    '__mod__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__',
+    '__repr__', '__rmod__', '__rmul__', '__setattr__', '__sizeof__', '__str__',
+    '__subclasshook__', 'capitalize', 'center', 'count', 'encode', 'endswith',
+    'expandtabs', 'find', 'format', 'format_map', 'index', 'isalnum', 'isalpha',
+    'isdecimal', 'isdigit', 'isidentifier', 'islower', 'isnumeric', 'isprintable',
+    'isspace', 'istitle', 'isupper', 'join', 'ljust', 'lower', 'lstrip',
+    'maketrans', 'partition', 'replace', 'rfind', 'rindex', 'rjust', 'rpartition',
+    'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 'strip', 'swapcase',
     'title', 'translate', 'upper', 'zfill']
 
 İngilizcede 'karakter dizisi'nin karşılığının *string*, bu kelimenin
@@ -1146,13 +1146,13 @@ sayılar. Biz Python'da sayıların tam sayılar (*integer*), kayan noktalı say
 (*float*) ve karmaşık sayılar (*complex*) olarak üçe ayrıldığını da biliyoruz.
 Örnek olması açısından ``dir()`` fonksiyonunu bir de sırasıyla, tam sayılar,
 kayan noktalı sayılar ve karmaşık sayılar üzerinde de uygulayalım::
-    
-    >>> dir(int)    
-    
+
+    >>> dir(int)
+
     >>> dir(float)
 
     >>> dir(complex)
-   
+
 Gördüğünüz gibi, ``dir()`` fonksiyonunu kullanmak için, metotlarını listelemek
 istediğimiz nesneyi alıp ``dir()`` fonksiyonuna parametre olarak veriyoruz.
 Örneğin yukarıda karakter dizileri için `str`; tam sayılar için `int`; kayan
@@ -1163,7 +1163,7 @@ parametrelerini kullandık.
 nesnenin adını kullanmak değil. Mesela karakter dizilerinin metotlarını
 sorgulamak için 'str' kelimesini kullanabileceğimiz gibi, herhangi bir karakter
 dizisini de kullanabiliriz. Yani::
-    
+
     >>> dir("")
 
 Burada ``dir()`` fonksiyonuna parametre olarak boş bir karakter dizisi verdik.
@@ -1174,24 +1174,24 @@ Aynı etkiyi dilersek şöyle de elde edebiliriz::
 
     >>> a = "karakter"
     >>> dir(a)
-    
+
 Karakter dizilerinin metotlarını listelemek için, siz hangi yöntem kolayınıza
 geliyorsa onu kullanabilirsiniz. Bu satırların yazarı genellikle şu yöntemi
 kullanıyor::
-    
+
     >>> dir("")
 
 ``dir("")`` komutunun çıktısından da göreceğiniz gibi, karakter dizilerinin epey
 metodu var. Metot listesi içinde bizi ilgilendirenler başında veya sonunda `_`
 işareti olmayanlar. Yani şunlar::
-    
+
     >>> for i in dir(""):
     ...     if "_" not in i[0]:
     ...         print(i)
     ...
 
 Bu arada bu metotları listelemek için nasıl bir kod kullandığımıza dikkat edin::
-    
+
     for i in dir(""):
         if "_" not in i[0]:
             print(i)
@@ -1200,14 +1200,14 @@ Burada ``dir("")`` komutunun içerdiği her bir metoda tek tek bakıyoruz. Bu
 metotlar içinde, ilk harfi `_` karakteri olmayan bütün metotları listeliyoruz.
 Böylece istediğimiz listeyi elde etmiş oluyoruz. İsterseniz ilgilendiğimiz
 metotların sayısını da çıktıya ekleyebiliriz::
-    
+
     sayaç = 0
 
     for i in dir(""):
         if "_" not in i[0]:
             sayaç += 1
             print(i)
-        
+
     print("Toplam {} adet metot ile ilgileniyoruz.".format(sayaç))
 
 Burada da, ilk karakteri `_` olmayan her bir metot için `sayaç` değişkeninin
@@ -1240,7 +1240,7 @@ yararlanabilirsiniz. Bu fonksiyonun adı ``enumerate()``.
 Gelelim bu fonksiyonun nasıl kullanılacağına... Önce şöyle bir deneme yapalım::
 
     >>> enumerate("istihza")
-    
+
     <enumerate object at 0x00E3BC88>
 
 Tıpkı ``reversed()`` fonksiyonunun bir 'reversed' nesnesi vermesi gibi, bu
@@ -1284,7 +1284,7 @@ Gördüğünüz gibi, gerçekten de bu fonksiyon bize bir öğe (mesela 'i' harf
 Hatırlarsanız, ``enumerate()`` fonksiyonunu öğrenmeden önce, ``dir("")``
 komutundan elde ettiğimiz çıktıları şu şekilde numaralandırabileceğimizi
 söylemiştik::
-    
+
     sayaç = 0
 
     for i in dir(""):
@@ -1294,7 +1294,7 @@ söylemiştik::
 
 Ama artık ``enumerate()`` fonksiyonunu öğrendiğimize göre, aynı işi çok daha
 verimli bir şekilde gerçekleştirebiliriz::
-    
+
     for sıra, metot in enumerate(dir("")):
         print(sıra, metot)
 
@@ -1303,7 +1303,7 @@ verimli bir şekilde gerçekleştirebiliriz::
 öğelerin her birini ayrı bir değişkene (`sıra` ve `metot`) atamış oluyoruz.
 Böylece bu çıktıyı manipüle etmek bizim için daha kolay oluyor. Mesela bu
 özelliği kullanarak metot ve sıra numarasının yerlerini değiştirebiliriz::
-    
+
     >>> for sıra, metot in enumerate(dir("")):
     ...     print(metot, sıra)
     ...
@@ -1315,7 +1315,7 @@ Böylece bu çıktıyı manipüle etmek bizim için daha kolay oluyor. Mesela bu
     __eq__ 5
     __format__ 6
     __ge__ 7
-    
+
     (...)
 
 Pratik olması açısından şöyle bir örnek daha verelim::
@@ -1329,7 +1329,7 @@ Pratik olması açısından şöyle bir örnek daha verelim::
     3 __delattr__ 11
     4 __doc__ 7
     5 __eq__ 6
-    
+
     (...)
 
 Burada, ``dir("")`` ile elde ettiğimiz metotların sırasını (`sıra`), bu
@@ -1339,7 +1339,7 @@ metotların adlarını (`metot`) ve her bir metodun kaç karakterden oluştuğun
 Bu arada, gördüğünüz gibi, ``enumerate()`` fonksiyonu numaralandırmaya `0`'dan
 başlıyor. Elbette eğer isterseniz bu fonksiyonun numaralandırmaya kaçtan
 başlayacağını kendiniz de belirleyebilirsiniz. Dikkatlice bakın::
-    
+
     >>> for sıra, harf in enumerate("istihza", 1):
     ...     print(sıra, harf)
     ...
@@ -1372,14 +1372,14 @@ kabuğa ``help()`` yazıp `Enter` düğmesine basıyoruz::
     >>> help()
 
     Welcome to Python 3.3!  This is the interactive help utility.
-    
+
     If this is your first time using Python, you should definitely check out
     the tutorial on the Internet at http://docs.python.org/3.3/tutorial/.
-    
+
     Enter the name of any module, keyword, or topic to get help on writing
     Python programs and using Python modules.  To quit this help utility and
     return to the interpreter, just type "quit".
-    
+
     To get a list of available modules, keywords, or topics, type "modules",
     "keywords", or "topics".  Each module also comes with a one-line summary
     of what it does; to list the modules whose summaries contain a given word
@@ -1393,11 +1393,11 @@ Gördüğünüz gibi, Python bu komutu verdiğimizde özel bir yardım ekranı a
 bize. Bu ekranda `>>>` yerine `help>` ifadesinin olduğuna dikkat edin. Mesela
 ``dir()`` fonksiyonu hakkında bilgi almak için `help>` ifadesinden hemen sonra,
 hiç boşluk bırakmadan, şu komutu verebiliriz::
-    
+
     help> dir
 
 Bu komut bize şu çıktıyı veriyor::
-    
+
     Help on built-in function dir in module builtins:
 
     dir(...)
@@ -1410,7 +1410,7 @@ Bu komut bize şu çıktıyı veriyor::
         the default dir() logic is used and returns:
           for a module object: the module's attributes.
           for a class object:  its attributes, and recursively the attributes of its bases.
-          for any other object: its attributes, its class's attributes, and 
+          for any other object: its attributes, its class's attributes, and
           recursively the attributes of its class's base classes.
 
 Gördüğünüz gibi, ``dir()`` fonksiyonunun ne işe yaradığı ve nasıl kullanıldığı
@@ -1440,7 +1440,7 @@ anlattık. İkincisi ise doğrudan etkileşimli kabukta şu komutu kullanmaktır
 ::
 
     >>> help(dir)
-    
+
     Help on built-in function dir in module builtins:
 
     dir(...)
@@ -1453,7 +1453,7 @@ anlattık. İkincisi ise doğrudan etkileşimli kabukta şu komutu kullanmaktır
         the default dir() logic is used and returns:
           for a module object: the module's attributes.
           for a class object:  its attributes, and recursively the attributes of its bases.
-          for any other object: its attributes, its class's attributes, and 
+          for any other object: its attributes, its class's attributes, and
           recursively the attributes of its class's base classes.
 
 Gördüğünüz gibi, 'help' ekranını açmadan, doğrudan etkileşimli kabuk üzerinden
@@ -1465,36 +1465,36 @@ olarak yazabiliyoruz.
 
 Böylece ``dir()``, ``enumerate()`` ve ``help()`` adlı üç önemli fonksiyonu da
 geride bırakmış olduk. Dilerseniz şimdi karakter dizilerine dair birkaç ufak not
-düşelim. 
+düşelim.
 
 Notlar
 ********
 
 Hatırlarsanız döngüleri anlatırken şöyle bir örnek vermiştik::
-    
+
     tr_harfler = "şçöğüİı"
     a = 0
 
     while a < len(tr_harfler):
         print(tr_harfler[a], sep="\n")
         a += 1
-        
+
 Bu kodların ``for`` döngüsü ile yazılabilecek olan şu kodlara alternatif
 olduğundan söz etmiştik::
-    
+
     tr_harfler = "şçöğüİı"
-    
+
     for tr_harf in tr_harfler:
         print(tr_harf)
-        
+
 Yukarıdaki ``while`` örneğini verirken, henüz karakter dizilerinin öğelerine tek
 tek nasıl erişebileceğimizi öğrenmemiştik. Ama artık bu konuyu da öğrendiğimiz
 için yukarıdaki ``while`` döngüsünü rahatlıkla anlayabiliyoruz::
-    
+
     while a < len(tr_harfler):
         print(tr_harfler[a], sep="\n")
         a += 1
-        
+
 Burada yaptığımız şey şu: `a` değişkeninin değeri `tr_harfler` değişkeninin
 uzunluğundan (``len(tr_harfler)``) küçük olduğu müddetçe `a` değişkeninin
 değerini `1` sayı artırıp yine `a` değişkenine gönderiyoruz (``a += 1``).
@@ -1506,47 +1506,47 @@ değerini `1` sayı artırıp yine `a` değişkenine gönderiyoruz (``a += 1``).
 Yine hatırlarsanız, önceki derslerimizde `sys` adlı bir modül içindeki `version`
 adlı bir değişkenden söz etmiştik. Bu değişken bize kullandığımız Python'ın
 sürümünü bir karakter dizisi olarak veriyordu::
-    
+
     >>> import sys
     >>> sys.version
-    
+
 Buradan şu çıktıyı alıyoruz:
 
 .. parsed-literal::
-    
+
     |version3-string|
-    
+
 Bu çıktıda, kullandığımız Python sürümünün dışında başka birtakım bilgiler de
 var. İşte biz eğer istersek, bu bölümde öğrendiğimiz bilgileri kullanarak bu
 karakter dizisinin istediğimiz kısmını, mesela sadece sürüm bilgisini karakter
 dizisinin içinden dilimleyip alabiliriz::
-    
+
     >>> sys.version[:5]
-    
+
 .. parsed-literal::
-    
-    |version3| 
-    
+
+    |version3|
+
 Elbette, yukarıdaki karakter dizisini elde etmek için, kullanması ve yönetmesi
 daha kolay bir araç olan `version_info` değişkeninden de yararlanabilirdiniz::
-    
+
     >>> '{}.{}.{}'.format(sys.version_info.major, sys.version_info.minor, sys.version_info.micro)
 
 .. parsed-literal::
 
     |version3|
-    
+
 Ancak burada şöyle bir sorun olduğunu biliyorsunuz: Python'ın 2.7 öncesi
 sürümlerinde `version_info`'nun `major`, `minor` ve `micro` gibi nitelikleri
 yok. Dolayısıyla 2.7 öncesi sürümlerde `version_info`'yu kullanırken hata
 almamak için ``try... except`` bloklarından yararlanabileceğimizi görmüştük.
 Ancak `version_info`'yu bütün Python sürümlerinde güvenli bir şekilde
 kullanmanın başka bir yöntemi daha var. Dikkatlice bakın::
-    
+
     >>> major = sys.version_info[0]
     >>> minor = sys.version_info[1]
     >>> micro = sys.version_info[2]
-    
+
     >>> print(major, minor, micro, sep=".")
 
 .. parsed-literal::
@@ -1557,7 +1557,7 @@ Bu yöntem bütün Python sürümlerinde çalışır. Dolayısıyla, farklı Pyt
 sürümlerinde çalışmasını tasarladığınız programlarınızda sürüm kontrolünü
 `sys.version_info`'nun `major`, `minor` veya `micro` nitelikleri ile yapmak
 yerine yukarıdaki yöntemle yapabilirsiniz::
-    
+
     if sys.version_info[1] < 3:
         print("Kullandığınız Python sürümü eski!")
 

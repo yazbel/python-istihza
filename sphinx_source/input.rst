@@ -1,8 +1,8 @@
 .. meta::
    :description: Bu bölümde kullanıcıdan nasıl veri alabileceğimizi öğreneceğiz.
-   :keywords: python, input fonksiyonu, tip dönüştürme, int, float, str, complex, 
+   :keywords: python, input fonksiyonu, tip dönüştürme, int, float, str, complex,
     eval, exec, format
-   
+
 .. highlight:: python3
 
 ******************************
@@ -17,7 +17,7 @@ Mesela şimdiye kadar öğrendiklerimizi kullanarak ancak şöyle bir program
 yazabildik::
 
     isim = "Mübeccel"
-    
+
     print("Merhaba", isim, end="!\n")
 
 Bu programı çalıştırdığımızda şöyle bir çıktı alacağımızı biliyorsunuz::
@@ -52,9 +52,9 @@ bir fonksiyondur. Esasında biz bu fonksiyonu ilk kez burada görmüyoruz. Windo
 ve GNU/Linux kullanıcıları, yazdıkları bir programı çift tıklayarak
 çalıştırabilmek için bu fonksiyonu kullandıklarını hatırlıyor olmalılar. Mesela
 şu programı ele alalım::
-    
+
     #!/usr/bin/env python3
-    
+
     kartvizit = """
     İstihza Anonim Şirketi
     Fırat Özgül
@@ -102,7 +102,7 @@ kullanacağız.
 Dilerseniz lafı daha fazla uzatmadan örnek bir program yazalım::
 
     isim = input("İsminiz nedir? ")
-    
+
     print("Merhaba", isim, end="!\n")
 
 Bu programı kaydedip çalıştırdığınızda, sorulan soruya verdiğiniz cevaba göre
@@ -114,9 +114,9 @@ Görüyorsunuz ya, tıpkı daha önce gördüğümüz fonksiyonlarda olduğu gib
 fonksiyona verilen parametre, kullanıcıdan veri alınırken kullanıcıya sorulacak
 soruyu gösteriyor. Gelin isterseniz bir örnek daha yapalım elimizin alışması
 için::
-    
+
     yaş = input("Yaşınız: ")
-    
+
     print("Demek", yaş, "yaşındasın.")
     print("Genç mi yoksa yaşlı mı olduğuna karar veremedim.")
 
@@ -126,18 +126,18 @@ programcılık faaliyetlerimizi çok sesli bir hale getirebileceğiz. Mesela ön
 bölümlerden birinde yazdığımız, daire alanı hesaplayan programı hatırlarsınız. O
 zaman henüz dosyalarımızı kaydetmeyi ve ``input()`` fonksiyonunu öğrenmediğimiz
 için o programı etkileşimli kabukta şu şekilde yazmıştık::
-    
+
     >>> çap = 16
     >>> yarıçap = çap / 2
     >>> pi = 3.14159
     >>> alan = pi * (yarıçap * yarıçap)
     >>> alan
-    
+
     201.06176
 
 Ama artık hem dosyalarımızı kaydetmeyi biliyoruz, hem de ``input()``
 fonksiyonunu öğrendik. Dolayısıyla yukarıdaki programı şu şekilde yazabiliriz::
-    
+
     #Kullanıcıdan dairenin çapını girmesini istiyoruz.
     çap = input("Dairenin çapı: ")
 
@@ -149,7 +149,7 @@ fonksiyonunu öğrendik. Dolayısıyla yukarıdaki programı şu şekilde yazabi
     #pi sayımız sabit
     pi = 3.14159
 
-    #Yukarıdaki bilgileri kullanarak artık 
+    #Yukarıdaki bilgileri kullanarak artık
     #dairenin alanını hesaplayabiliriz
     alan = pi * (yarıçap * yarıçap)
 
@@ -191,16 +191,16 @@ Diyelim ki kullanıcıdan aldığı sayının karesini hesaplayan bir program ya
 istiyoruz. Öncelikle şöyle bir şey deneyelim::
 
     sayı = input("Lütfen bir sayı girin: ")
-    
+
     #Girilen sayının karesini bulmak için sayı değişkeninin 2.
-    #kuvvetini alıyoruz. Aynı şeyi pow() fonksiyonu ile de 
+    #kuvvetini alıyoruz. Aynı şeyi pow() fonksiyonu ile de
     #yapabileceğimizi biliyorsunuz. Örn.: pow(sayı, 2)
     print("Girdiğiniz sayının karesi: ", sayı ** 2)
 
 Bu kodları çalıştırdığımız zaman, programımız kullanıcıdan bir sayı girmesini
 isteyecek, ancak kullanıcı bir sayı girip `Enter` tuşuna bastığında şöyle bir
 hata mesajıyla karşılaşacaktır::
-    
+
     Traceback (most recent call last):
       File "test.py", line 5, in <module>
         print("Girdiğiniz sayının karesi: ", sayı ** 2)
@@ -221,13 +221,13 @@ Hatırlayacaksınız, geçen derslerden birinde ``len()`` fonksiyonunu anlatırk
     Biz henüz kullanıcıdan nasıl veri alacağımızı bilmiyoruz. Ama şimdilik şunu
     söyleyebiliriz: Python'da kullanıcıdan herhangi bir veri aldığımızda, bu
     veri bize bir karakter dizisi olarak gelecektir.
-    
+
 Gelin isterseniz yukarıda anlattığımız durumu teyit eden bir program yazalım::
 
     #Kullanıcıdan herhangi bir veri girmesini istiyoruz
     sayı = input("Herhangi bir veri girin: ")
-    
-    #Kullanıcının girdiği verinin tipini bir 
+
+    #Kullanıcının girdiği verinin tipini bir
     #değişkene atıyoruz
     tip = type(sayı)
 
@@ -245,7 +245,7 @@ Geçen derslerde şöyle bir şey daha söylemiştik:
     Python'da, o anda elinizde bulunan bir verinin hangi tipte olduğunu bilmek
     son derece önemlidir. Çünkü bir verinin ait olduğu tip, o veriyle neler
     yapıp neler yapamayacağınızı belirler.
-    
+
 Şu anda karşı karşıya olduğumuz durum da buna çok güzel bir örnektir. Eğer o
 anda elimizde bulunan verinin tipini bilmezsek tıpkı yukarıda olduğu gibi, o
 veriyi programımızda kullanmaya çalışırken programımız hata verir ve çöker.
@@ -261,7 +261,7 @@ Yukarıdaki programda neler olup bittiğini daha iyi anlayabilmek için Python'�
 etkileşimli kabuğunda şu işlemleri yapabiliriz::
 
     >>> "23" ** 2
-    
+
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
     TypeError: unsupported operand type(s) for ** or pow(): 'str' and 'int'
@@ -277,11 +277,11 @@ alma işlemi yalnızca sayılarla yapılabileceği için de hata vermekten başk
 Ancak bazen öyle durumlarla karşılaşırsınız ki, programınız hiçbir hata vermez,
 ama elde edilen sonuç aslında tamamen beklentinizin dışındadır. Mesela şu basit
 örneği inceleyelim::
-    
+
     sayı1 = input("Toplama işlemi için ilk sayıyı girin: ")
     sayı2 = input("Toplama işlemi için ikinci sayıyı girin: ")
-    
-    print(sayı1, "+", sayı2, "=", sayı1 + sayı2) 
+
+    print(sayı1, "+", sayı2, "=", sayı1 + sayı2)
 
 Bu kodları çalıştırdığımızda şöyle bir manzarayla karşılaşırız:
 
@@ -298,9 +298,9 @@ bitiştirdi. Çünkü, dediğim gibi, ``input()`` fonksiyonunun kullanıcıdan a
 karşılaştığı zaman karakter dizileri arasında bir birleştirme işlemi
 gerçekleştirir. Tıpkı ilk derslerimizde etkileşimli kabukta verdiğimiz şu
 örnekte olduğu gibi::
-    
+
     >>> "23" + "23"
-    
+
     2323
 
 Bu son örnekten ayrıca şunu çıkarıyoruz: Yazdığınız bir programın herhangi bir
@@ -312,7 +312,7 @@ Peki yukarıdaki gibi durumlarla karşılaşmamak için ne yapacağız?
 İşte bu noktada devreye tip dönüştürücü adını verdiğimiz birtakım fonksiyonlar
 girecek.
 
-int() 
+int()
 =========
 
 Dediğimiz gibi, ``input()`` fonksiyonundan gelen veri her zaman bir karakter
@@ -323,12 +323,12 @@ yararlanacağız. Gelin isterseniz Python'ın etkileşimli kabuğunda bu fonksiy
 bir kaç deneme yaparak bu fonksiyonun ne işe yaradığını ve nasıl kullanıldığını
 anlamaya çalışalım. Zira etkileşimli kabuk bu tür deneme işlemleri için biçilmiş
 kaftandır::
-    
+
     >>> karakter_dizisi = "23"
     >>> sayı = int(karakter_dizisi)
     >>> print(sayı)
 
-    23 
+    23
 
 Burada öncelikle `"23"` adlı bir karakter dizisi tanımladık. Ardından da
 ``int()`` fonksiyonunu kullanarak bu karakter dizisini bir tamsayıya (*integer*)
@@ -341,7 +341,7 @@ dönüştürülebilmesi için o verinin sayı değerli bir veri olması gerekir.
 `"23"`, sayı değerli bir karakter dizisidir. Ama mesela `"elma"` sayı değerli
 bir karakter dizisi değildir. Bu yüzden `"elma"` karakter dizisi sayıya
 dönüştürülemez::
-    
+
     >>> karakter_dizisi = "elma"
     >>> sayı = int(karakter_dizisi)
 
@@ -362,7 +362,7 @@ programlarda bu duruma özellikle dikkat etmemiz gerekiyor.
 Bu kodların hata vereceğini biliyoruz. Ama artık, öğrendiğimiz ``int()``
 dönüştürücüsünü kullanarak programımızı hata vermeyecek şekilde yeniden
 yazabiliriz::
-    
+
     veri = input("Lütfen bir sayı girin: ")
 
     #input() fonksiyonundan gelen karakter dizisini
@@ -370,26 +370,26 @@ yazabiliriz::
     sayı = int(veri)
 
     print("Girdiğiniz sayının karesi: ", sayı ** 2)
-    
-Artık programımız hatasız bir şekilde çalışıyor. 
+
+Artık programımız hatasız bir şekilde çalışıyor.
 
 Bir de öteki örneğimizi ele alalım::
 
     sayı1 = input("Toplama işlemi için ilk sayıyı girin: ")
     sayı2 = input("Toplama işlemi için ikinci sayıyı girin: ")
-    
-    print(sayı1, "+", sayı2, "=", sayı1 + sayı2) 
+
+    print(sayı1, "+", sayı2, "=", sayı1 + sayı2)
 
 Bu kodların beklediğimiz çıktıyı vermeyeceğini biliyoruz. Ama eğer bu kodları
 şöyle yazarsak işler değişir::
-    
+
     v1 = input("Toplama işlemi için ilk sayıyı girin: ")
     v2 = input("Toplama işlemi için ikinci sayıyı girin: ")
-    
+
     sayı1 = int(v1) #v1 adlı karakter dizisini sayıya dönüştürüyoruz.
     sayı2 = int(v2) #v2 adlı karakter dizisini sayıya dönüştürüyoruz.
-    
-    print(sayı1, "+", sayı2, "=", sayı1 + sayı2) 
+
+    print(sayı1, "+", sayı2, "=", sayı1 + sayı2)
 
 Gördüğünüz gibi, ``input()`` fonksiyonundan gelen karakter dizilerini sayıya
 dönüştürerek istediğimiz çıktıyı alabiliyoruz.
@@ -402,15 +402,15 @@ değildir. Gördüğünüz gibi, ``int()`` fonksiyonu sayı değerli verileri (m
 karakter dizilerini) tam sayıya dönüştürüyor. Bunun bir de tersi mümkündür. Yani
 karakter dizisi olmayan verileri karakter dizisine dönüştürmemiz de mümkündür.
 Bu işlem için ``str()`` adlı başka bir tip dönüştürücüden yararlanıyoruz::
-    
+
     >>> sayı = 23
     >>> kardiz = str(sayı)
     >>> print(kardiz)
-    
+
     23
-    
+
     >>> print(type(kardiz))
-    
+
     <class 'str'>
 
 Gördüğünüz gibi, bir tam sayı olan `23`'ü ``str()`` adlı bir fonksiyondan
@@ -425,7 +425,7 @@ Python bilginiz ve tecrübeniz arttıkça bunların hangi durumlar olduğunu ken
 de göreceksiniz. Mesela biz daha şimdiden, sayıları karakter dizisine çevirmemiz
 gereken bir durumla karşılaştık. Hatırlarsanız, ``len()`` fonksiyonunu
 anlatırken, bu fonksiyonun sayılarla birlikte kullanılamayacağını söylemiştik::
-    
+
     >>> len(12343423432)
 
     Traceback (most recent call last):
@@ -454,7 +454,7 @@ olduğu bilgisini elde etmiş oluyoruz.
 Bu arada elbette yukarıdaki işlemi tek satırda da halledebilirsiniz::
 
     >>> len(str(12343423432))
-    
+
     11
 
 Bu şekilde iç içe geçmiş fonksiyonlar yazdığımızda, Python fonksiyonları içten
@@ -471,14 +471,14 @@ Hatırlarsanız ilk bölümlerde sayılardan söz ederken tamsayıların (*integ
 dışında kayan noktalı sayıların (*float*) da olduğundan söz etmiştik. İşte eğer
 bir tamsayıyı veya sayı değerli bir karakter dizisini kayan noktalı sayıya
 dönüştürmek istersek ``float()`` adlı başka bir dönüştürücüden yararlanacağız::
-    
+
     >>> a = 23
     >>> type(a)
-    
+
     <class 'int'>
-    
+
     >>> float(a)
-    
+
     23.0
 
 
@@ -489,13 +489,13 @@ Aynı şeyi, sayı değerli karakter dizileri üzerine uygulamak da mümkündür
 
     >>> b = "23"
     >>> type(b)
-    
+
     <class 'str'>
-    
+
     >>> float(b)
-    
+
     23.0
-    
+
 complex()
 =============
 
@@ -503,20 +503,20 @@ Sayılardan söz ederken, eğer matematikle çok fazla içli dışlı değilseni
 karşılaşmayacağınız, 'karmaşık sayı' adlı bir sayı türünden de bahsetmiştik.
 Karmaşık sayılar Python'da 'complex' ifadesiyle gösteriliyor. Mesela şunun bir
 karmaşık sayı olduğunu biliyoruz::
-    
+
     >>> 12+0j
 
 Kontrol edelim::
 
     >>> type(12+0j)
-    
+
     <class 'complex'>
 
 İşte eğer herhangi bir sayıyı karmaşık sayıya dönüştürmeniz gerekirse
 ``complex()`` adlı bir fonksiyondan yararlanabilirsiniz. Örneğin::
-    
+
     >>> complex(15)
-    
+
     (15+0j)
 
 Böylece Python'daki bütün sayı dönüştürücüleri öğrenmiş olduk.
@@ -527,14 +527,14 @@ bilgilerimizi sağlamlaştırmaya çalışalım.
 ::
 
     >>> a = 56
-    
+
 Bu sayı bir tamsayıdır. İngilizce olarak ifade etmek gerekirse, *integer*. Bunun
 bir tamsayı olduğunu şu şekilde teyit edebileceğimizi gayet iyi biliyorsunuz::
-    
+
     >>> type(a)
 
     <class 'int'>
-    
+
 Burada aldığımız `<class int>` çıktısı, bize `a` değişkeninin tuttuğu sayının
 bir tamsayı olduğunu söylüyor. 'int' ifadesi, *integer* (tamsayı) kelimesinin
 kısaltmasıdır.
@@ -545,7 +545,7 @@ Bir de şu sayıya bakalım::
     >>> type(b)
 
     <class 'float'>
-    
+
 Bu çıktı ise bize `34.5` sayısının bir kayan noktalı sayı olduğunu söylüyor.
 *float* kelimesi *Floats* veya *Floating Point Number* ifadesinin kısaltmasıdır.
 Yani 'kayan noktalı sayı' demektir.
@@ -557,7 +557,7 @@ uygulayabileceğimizi biliyorsunuz. Mesela bir örnek vermek gerekirse::
     >>> type(meyve)
 
     <class 'str'>
-    
+
 Gördüğünüz gibi, ``type()`` fonksiyonu bize `meyve` adlı değişkenin değerinin
 bir 'str' yani *string* yani karakter dizisi olduğunu bildirdi.
 
@@ -568,11 +568,11 @@ yapabileceğimizi öğrendik. Mesela::
 
 `sayı` adlı değişkenin tuttuğu verinin değeri bir tamsayıdır. Biz bu tamsayıyı
 kayan noktalı sayıya dönüştürmek istiyoruz. Yapacağımız işlem çok basit::
-    
+
     >>> float(sayı)
 
     45.0
-    
+
 Gördüğünüz gibi, `45` adlı tamsayıyı, `45.0` adlı bir kayan noktalı sayıya
 dönüştürdük. Şimdi ``type(45.0)`` komutu bize `<class ‘float'>` çıktısını
 verecektir.
@@ -583,61 +583,61 @@ Mesela kayan noktalı sayımız, `56.5` olsun::
     >>> int(56.5)
 
     56
-    
+
 Yukarıdaki örneği tabii ki şöyle de yazabiliriz::
 
     >>> a = 56.5
     >>> int(a)
 
     56
-    
+
 Dönüştürme işlemini sayılar arasında yapabileceğimiz gibi, sayılar ve karakter
 dizileri arasında da yapabiliriz. Örneğin şu bir karakter dizisidir::
-    
+
     >>> nesne = "45"
 
 Yukarıdaki değeri tırnak içinde belirttiğimiz için bu değer bir karakter
 dizisidir. Şimdi bunu bir tamsayıya çevireceğiz::
-    
+
     >>> int(nesne)
 
     45
-    
+
 Dilersek, aynı karakter dizisini kayan noktalı sayıya da çevirebiliriz::
 
     >>> float(nesne)
 
     45.0
-    
+
 Hatta bir sayıyı karakter dizisine de çevirebiliriz. Bunun için *string*
 (karakter dizisi) kelimesinin kısaltması olan `str` ifadesini kullanacağız::
-    
+
     >>> s = 6547
     >>> str(s)
 
     '6547'
-    
+
 Bir örnek de kayan noktalı sayılarla yapalım::
 
     >>> s = 65.7
     >>> str(s)
 
     '65.7'
-    
+
 Yalnız şunu unutmayın: Bir karakter dizisinin sayıya dönüştürülebilmesi için o
 karakter dizisinin sayı değerli olması lazım. Yani `"45"` değerini sayıya
 dönüştürebiliriz. Çünkü `"45"` değeri, tırnaklardan ötürü bir karakter dizisi de
 olsa, neticede sayı değerli bir karakter dizisidir. Ama mesela `"elma"` karakter
 dizisi böyle değildir. Dolayısıyla, şöyle bir maceraya girişmek bizi hüsrana
 uğratacaktır::
-    
+
     >>> nesne = "elma"
     >>> int(nesne)
 
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
     ValueError: invalid literal for int() with base 10: 'elma'
-    
+
 Gördüğünüz gibi, Python böyle bir işlem denemesi karşısında hata veriyor...
 
 Bu bölümde pek çok yeni şey öğrendik. Bu bölümün en önemli getirisi ``input()``
@@ -656,42 +656,42 @@ karakter dizisini sayıya dönüştürmemiz gerekiyor. Dönüştürme işlemleri
 kullandığımız fonksiyonlar şunlardı:
 
     ``int()``
-        Sayı değerli bir karakter dizisini veya kayan noktalı sayıyı tamsayıya 
+        Sayı değerli bir karakter dizisini veya kayan noktalı sayıyı tamsayıya
         (*integer*) çevirir.
-        
+
     ``float()``
-        Sayı değerli bir karakter dizisini veya tamsayıyı kayan noktalı sayıya 
+        Sayı değerli bir karakter dizisini veya tamsayıyı kayan noktalı sayıya
         (*float*) çevirir.
-        
+
     ``str()``
         Bir tamsayı veya kayan noktalı sayıyı karakter dizisine (*string*) çevirir.
-    
+
     ``complex()``
-        Herhangi bir sayıyı veya sayı değerli karakter dizisini karmaşık sayıya 
+        Herhangi bir sayıyı veya sayı değerli karakter dizisini karmaşık sayıya
         (*complex*) çevirir.
-        
+
 Ayrıca bu bölümde öğrendiklerimiz, şöyle önemli bir tespitte bulunmamıza da
 olanak tanıdı:
 
     Her tamsayı ve/veya kayan noktalı sayı bir karakter dizisine
     dönüştürülebilir. Ama her karakter dizisi tamsayıya ve/veya kayan noktalı
     sayıya dönüştürülemez.
-    
+
 Örneğin, `5654` gibi bir tamsayıyı veya `543.34` gibi bir kayan noktalı sayıyı
 ``str()`` fonksiyonu yardımıyla karakter dizisine dönüştürebiliriz::
-    
+
     >>> str(5654)
     >>> str(543.34)
-    
+
 `"5654"` veya `"543.34"` gibi bir karakter dizisini ``int()`` veya ``float()``
 fonksiyonu yardımıyla tamsayıya ya da kayan noktalı sayıya da dönüştürebiliriz::
-    
+
     >>> int("5654")
     >>> int("543.34")
 
     >>> float("5654")
     >>> float("543.34")
-    
+
 Ama `"elma"` gibi bir karakter dizisini ne ``int()`` ne de ``float()``
 fonksiyonuyla tamsayıya veya kayan noktalı sayıya dönüştürebiliriz! Çünkü
 `"elma"` verisi sayı değerli değildir.
@@ -703,7 +703,7 @@ kapılar da açacak.
 Önceki derslerimizin birinde verdiğimiz doğalgaz faturası hesaplayan programı
 hatırlarsınız. İşte artık ``input()`` fonksiyonu sayesinde bu doğalgaz faturası
 hesaplama programını da daha ilginç bir hale getirebiliriz::
-    
+
     #Her bir ayın kaç gün çektiğini tanımlıyoruz
     ocak = mart = mayıs = temmuz = ağustos = ekim = aralık = 31
     nisan = haziran = eylül = kasım = 30
@@ -741,7 +741,7 @@ didikleyelim.
 ayların kaç gün çektiğini gösteren değişkenlerimizi tanımladık. Burada her bir
 değişkeni tek tek tanımlamak yerine değişkenleri topluca tanımladığımıza dikkat
 edin. İsteseydik tabii ki yukarıdaki kodları şöyle de yazabilirdik::
-    
+
     #Her bir ayın kaç gün çektiğini tanımlıyoruz
     ocak    = 31
     şubat   = 28
@@ -778,7 +778,7 @@ edin. İsteseydik tabii ki yukarıdaki kodları şöyle de yazabilirdik::
 
     print("günlük sarfiyatınız: \t", günlükSarfiyat, " metreküp\n",
     "tahmini fatura tutarı: \t", fatura, " TL", sep="")
-    
+
 Ama tabii ki, değişkenleri tek tek tanımlamak yerine topluca tanımlamak, daha az
 kod yazmanızı sağlamasının yanısıra, programınızın çalışma performansı açısından
 da daha iyidir. Yani değişkenleri bu şekilde tanımladığınızda programınız daha
@@ -831,10 +831,10 @@ karşılaşmıştık. İşte şimdi bu önemli fonksiyonun ne işe yaradığın�
 çalışacağız. Ancak ``eval()`` fonksiyonunu anlatmaya başlamadan önce şu uyarıyı
 yapalım:
 
-.. raw:: html 
+.. raw:: html
 
     <div class="raw">eval() ŞEYTANİ GÜÇLERİ OLAN BİR FONKSİYONDUR!</div>
-    
+
 .. raw:: latex
 
     \begin{center}{\color{red}\textbf{eval() ŞEYTANİ GÜÇLERİ OLAN BİR FONKSİYONDUR!}}\end{center}
@@ -848,7 +848,7 @@ Dilerseniz işe basit bir ``eval()`` örneği vererek başlayalım::
     print("""
     Basit bir hesap makinesi uygulaması.
 
-    İşleçler: 
+    İşleçler:
 
         +   toplama
         -   çıkarma
@@ -899,7 +899,7 @@ fonksiyonu yardımıyla bu ``46 / 2`` komutunu işletiyoruz. Bu işlemin sonucun
 Eğer burada ``eval()`` fonksiyonunu kullanmazsak, programımız, kullanıcının
 girdiği ``45 * 76`` komutunu hiçbir işleme sokmadan dümdüz ekrana basacaktır.
 Yani::
-    
+
     print("""
     Basit bir hesap makinesi uygulaması.
 
@@ -947,7 +947,7 @@ Bu komut şöyle bir çıktı vermiş olmalı::
 Gördüğünüz gibi, yazdığımız program, kullanıcının girdiği Python komutunun
 işletilmesine sebep oldu. Bu noktada, 'Eee, ne olmuş!' demiş olabilirsiniz.
 Gelin bir de şuna bakalım. Şimdi programı tekrar çalıştırıp şu cevabı verin::
-    
+
     open("deneme.txt", "w")
 
 Bu cevap, bilgisayarınızda `deneme.txt` adlı bir dosya oluşturulmasına sebep
@@ -958,7 +958,7 @@ rastgele Python komutlarını çalıştırma imkanı verdiğiniz için programı
 aritmetik işlemleri hesaplamak için kullanılmayabilir. Böyle bir durumda kötü
 niyetli (ve bilgili) bir kullanıcı size çok büyük zarar verebilir. Mesela
 kullanıcının, yukarıdaki programa şöyle bir cevap verdiğini düşünün::
-    
+
     __import__("os").system("dir")
 
 Burada anlamadığınız şeyleri şimdilik bir kenara bırakıp, bu komutun sonuçlarına
@@ -1044,7 +1044,7 @@ Python kodlarını işletebilirsiniz.
 
 Örneğin ``eval()`` fonksiyonu bir karakter dizisi içindeki değişken tanımlama
 işlemini yerine getiremez. Yani ``eval()`` ile şöyle bir şey yapamazsınız::
-    
+
     >>> eval("a = 45")
 
 Ama ``exec()`` ile böyle bir işlem yapabilirsiniz::
@@ -1054,7 +1054,7 @@ Ama ``exec()`` ile böyle bir işlem yapabilirsiniz::
 Böylece `a` adlı bir değişken tanımlamış olduk. Kontrol edelim::
 
     >>> print(a)
-    
+
     45
 
 ``eval()`` ve ``exec()`` fonksiyonları özellikle kullanıcıdan alınan verilerle
@@ -1065,10 +1065,10 @@ makinesi yaparken ``eval()`` fonksiyonundan yararlanabilirsiniz.
 
 Aynı şekilde mesela insanlara Python programlama dilini öğreten bir program
 yazıyorsanız ``exec()`` fonksiyonunu şöyle kullanabilirsiniz::
-    
+
     d1 = """
 
-    Python'da ekrana çıktı verebilmek için print() adlı bir 
+    Python'da ekrana çıktı verebilmek için print() adlı bir
     fonksiyondan yararlanıyoruz. Bu fonksiyonu şöyle kullanabilirsiniz:
 
     >>> print("Merhaba Dünya")
@@ -1084,9 +1084,9 @@ yazıyorsanız ``exec()`` fonksiyonunu şöyle kullanabilirsiniz::
     d2 = """
 
     Gördüğünüz gibi print() fonksiyonu, kendisine
-    parametre olarak verilen değerleri ekrana basıyor. 
+    parametre olarak verilen değerleri ekrana basıyor.
 
-    Böylece ilk dersimizi tamamlamış olduk. Şimdi bir 
+    Böylece ilk dersimizi tamamlamış olduk. Şimdi bir
     sonraki dersimize geçebiliriz."""
 
     print(d2)
@@ -1121,19 +1121,19 @@ noktada Python'daki küçük ama önemli bir konuya değinelim bu bölümü kapa
 Burada belli ki adres çubuğuna `fdkgd.com <http://www.fdkgd.com>`_ diye bir URL
 yazmışız, ama böyle bir internet adresi olmadığı için, kullandığımız internet
 tarayıcısı bize şöyle bir mesaj vermiş::
-    
+
     Hata! Google Chrome fdkgd.com sitesini bulamadı
 
 Şimdi de `dadasdaf.com <http://dadasdaf.com/>`_ adresini arayalım...
 
 Yine böyle bir adres olmadığı için, bu defa tarayıcımız bize şöyle bir uyarı
 gösterecek::
-    
+
     Hata! Google Chrome dadasdaf.com sitesini bulamadı
 
 Gördüğünüz gibi, hata mesajlarında değişen tek yer, aradığımız sitenin adresi.
 Yani internet tarayıcımız bu hata için şöyle bir taslağa sahip::
-    
+
     Hata! Google Chrome ... sitesini bulamadı
 
 Burada `...` ile gösterdiğimiz yere, bulunamayan URL yerleştiriliyor. Peki böyle
@@ -1152,7 +1152,7 @@ programı rahatlıkla yazabiliyoruz.
 
 Peki ya biz kullanıcının girdiği internet adresini mesela tırnak içinde
 göstermek istersek ne olacak? Yani örneğin şöyle bir çıktı vermek istersek::
-    
+
     Hata! Google Chrome 'fdsfd.com' sitesini bulamadı
 
 Bunun için yine karakter dizisi birleştirme yönteminden yararlanabilirsiniz::
@@ -1187,37 +1187,37 @@ Görüyorsunuz ya, biraz önce karakter dizisi birleştirme yöntemini kullanara
 gerçekleştirdiğimiz işlemi, çok daha basit bir yolla gerçekleştirme imkanı
 sunuyor bize bu ``format()`` denen araç...
 
-Peki ``format()`` nasıl çalışıyor? 
+Peki ``format()`` nasıl çalışıyor?
 
 Bunu anlamak için şu basit örneklere bir bakalım::
 
     >>> print("{} ve {} iyi bir ikilidir".format("Python", "Django"))
-    
+
     'Python ve Django iyi bir ikilidir'
 
     >>> print("{} {}'yi seviyor!".format("Ali", "Ayşe"))
-    
+
     'Ali Ayşe'yi seviyor!'
-    
+
     >>> print("{} {} yaşında bir {}dur".format("Ahmet", "18", "futbolcu"))
-    
+
     'Ahmet 18 yaşında bir futbolcudur'
 
 Elbette bu örnekleri şöyle de yazabilirdik::
 
     >>> metin = "{} ve {} iyi bir ikilidir"
     >>> metin.format("Python", "Django")
-    
+
     'Python ve Django iyi bir ikilidir'
 
     >>> metin = "{} {}'yi seviyor!"
     >>> metin.format("Ali", "Ayşe")
-    
+
     'Ali Ayşe'yi seviyor!'
-    
+
     >>> metin = "{} {} yaşında bir {}dur"
     >>> metin.format("Ahmet", "18", "futbolcu")
-    
+
     'Ahmet 18 yaşında bir futbolcudur'
 
 Burada taslak metni doğrudan ``format()`` metoduna parametre olarak vermeden
@@ -1234,23 +1234,23 @@ dilekçe oluşturan bir program yazmak istiyorsunuz.
 
 Dilekçe taslağımız şu şekilde olsun::
 
-                                                            tarih: 
+                                                            tarih:
 
     T.C.
     ... ÜNİVERSİTESİ
     ... Fakültesi Dekanlığına
 
 
-    Fakülteniz ..........Bölümü ......... numaralı öğrencisiyim. Ekte sunduğum 
-    belgede belirtilen mazeretim gereğince ....... Eğitim-Öğretim Yılı  ......... 
+    Fakülteniz ..........Bölümü ......... numaralı öğrencisiyim. Ekte sunduğum
+    belgede belirtilen mazeretim gereğince ....... Eğitim-Öğretim Yılı  .........
     yarıyılında öğrenime ara izni (kayıt dondurma) istiyorum.
 
         Bilgilerinizi ve gereğini arz ederim.
-        
+
         İmza
-        
+
     Ad-Soyadı       :
-    T.C. Kimlik No. : 
+    T.C. Kimlik No. :
     Adres           :
     Tel.            :
     Ekler           :
@@ -1260,7 +1260,7 @@ eksiksiz bir dilekçe ortaya çıkarmak.
 
 Kullanıcıdan bilgi alma kısmı kolay. ``input()`` fonksiyonunu kullanarak gerekli
 bilgileri kullanıcıdan alabileceğimizi biliyorsunuz::
-    
+
     tarih           = input("tarih: ")
     üniversite      = input("üniversite adı: ")
     fakülte         = input("fakülte adı: ")
@@ -1284,7 +1284,7 @@ denediğinizde siz de göreceksiniz ki, bu tür yöntemleri kullanarak yukarıda
 dilekçe taslağını doldurmak inanılmaz zor ve vakit alıcı olacaktır. Halbuki
 bunların hiçbirine gerek yok. Çünkü Python bize bu tür durumlarda kullanılmak
 üzere çok pratik bir araç sunuyor. Şimdi çok dikkatlice inceleyin şu kodları::
-    
+
     dilekçe = """
                                                         tarih: {}
 
@@ -1332,14 +1332,14 @@ bunların hiçbirine gerek yok. Çünkü Python bize bu tür durumlarda kullanı
 
 Bu kodlara (ve bundan önceki örneklere) bakarak birkaç tespitte bulunalım:
 
-    #. Taslak metinde kullanıcıdan alınacak bilgilerin olduğu yerlere birer `{}` 
-       işareti yerleştirdik. 
-    
-    #. Taslaktaki eksiklikleri tamamlayacak verileri ``input()`` fonksiyonu 
+    #. Taslak metinde kullanıcıdan alınacak bilgilerin olduğu yerlere birer `{}`
+       işareti yerleştirdik.
+
+    #. Taslaktaki eksiklikleri tamamlayacak verileri ``input()`` fonksiyonu
        yardımıyla kullanıcıdan tek tek aldık.
-    
-    #. Son olarak, ``print()`` fonksiyonu yardımıyla metni tam bir şekilde ekrana 
-       çıktı olarak verdik. 
+
+    #. Son olarak, ``print()`` fonksiyonu yardımıyla metni tam bir şekilde ekrana
+       çıktı olarak verdik.
 
 Şimdi son tespitimizi biraz açıklayalım. Gördüğünüz gibi, ``print()`` fonksiyonu
 içinde ``dilekçe.format()`` gibi bir yapı var. Burada `dilekçe` değişkenine
@@ -1361,13 +1361,13 @@ verdiğimiz örneklere geri dönelim.
 
 Burada kullanıcının gireceği internet adresinin yerini tutması için `{}`
 işaretlerinden yararlanarak şöyle bir karakter dizisi oluşturduk::
-    
+
     "Hata! Google Chrome {} sitesini bulamadı"
-    
+
 Gördüğünüz gibi, `{}` işareti karakter dizisi içinde URL'nin geleceği yeri
 tutuyor. Bu `{}` işaretinin yerine neyin geleceğini ``format()`` metodunun
 parantezleri içinde belirtiyoruz. Dikkatlice bakın::
-    
+
     print("Hata! Google Chrome {} sitesini bulamadı".format(url))
 
 Elbette eğer istersek yukarıdaki örneği şöyle de yazabilirdik::
@@ -1387,17 +1387,17 @@ Bunun dışında şu örnekleri de vermiştik::
 
     >>> metin = "{} ve {} iyi bir ikilidir"
     >>> metin.format("Python", "Django")
-    
+
     'Python ve Django iyi bir ikilidir
 
     >>> metin = "{} {}'yi seviyor!"
     >>> metin.format("Ali", "Ayşe")
-    
+
     'Ali Ayşe'yi seviyor!'
-    
+
     >>> metin = "{} {} yaşında bir {}dur"
     >>> metin.format("Ahmet", "18", "futbolcu")
-    
+
     'Ahmet 18 yaşında bir futbolcudur'
 
 Burada da, gördüğüz gibi, öncelikle bir karakter dizisi tanımlıyoruz. Bu

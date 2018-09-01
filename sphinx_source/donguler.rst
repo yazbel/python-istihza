@@ -1,7 +1,7 @@
 .. meta::
    :description: Bu bölümde döngülerden bahsedeceğiz.
    :keywords: python, döngüler, loops, for, while
-   
+
 .. highlight:: python3
 
 *****************
@@ -27,7 +27,7 @@ geçerlidir::
 
     else:
         print("Ne yazık ki tuttuğum sayı bu değildi...")
-    
+
 Burada `tuttuğum_sayı` adlı bir değişken belirledik. Bu değişkenin değeri `23`.
 Kullanıcıdan tuttuğumuz sayıyı tahmin etmesini istiyoruz. Eğer kullanıcının
 verdiği cevap `tuttuğum_sayı` değişkeninin değeriyle aynıysa (yani `23` ise),
@@ -53,7 +53,7 @@ sağlayabileceğimizi, yani programlarımızı bir döngü içine nasıl sokabil
 öğreneceğiz.
 
 Python'da programlarımızı tekrar tekrar çalıştırabilmek için döngü adı verilen
-bazı ifadelerden yararlanacağız. 
+bazı ifadelerden yararlanacağız.
 
 Python'da iki tane döngü bulunur: ``while`` ve ``for``
 
@@ -88,7 +88,7 @@ ifadesi programımıza şöyle bir anlam katıyor:
 Gördüğünüz gibi cümlemiz henüz eksik. Yani belli ki bunun bir de devamı olacak.
 Ayrıca ``while`` ifadesinin sonundaki `:` işaretinden anladığımız gibi, bundan
 sonra gelecek satır girintili yazılacak. Devam edelim::
-    
+
 	a = 1
 
 	while a == 1:
@@ -98,7 +98,7 @@ Burada Python'a şu emri vermiş olduk:
 
 	`a` değişkeninin değeri `1` olduğu sürece, ekrana 'bilgisayar çıldırdı!'
 	yazısını dök!
-	
+
 Bu programı çalıştırdığımızda Python verdiğimiz emre sadakatle uyacak ve `a`
 değişkeninin değeri `1` olduğu müddetçe de bilgisayarımızın ekranına 'bilgisayar
 çıldırdı!' yazısını dökecektir. Programımızın içinde `a` değişkeninin değeri `1`
@@ -123,7 +123,7 @@ Gelin isterseniz bu soyut ifadeleri biraz somutlaştıralım.
 
 Burada normal bir şekilde `a` değişkenine `1` değerini atadık. Şimdi devam
 ediyoruz::
-    
+
 	a = 1
 
 	while a < 10:
@@ -131,10 +131,10 @@ ediyoruz::
 ``while`` ile verdiğimiz ilk örnekte ``while a == 1`` gibi bir ifade
 kullanmıştık. Bu ifade;
 
-    `a`'nın değeri `1` olduğu müddetçe... 
-    
-gibi bir anlama geliyordu. 
-    
+    `a`'nın değeri `1` olduğu müddetçe...
+
+gibi bir anlama geliyordu.
+
 ``while a < 10`` ifadesi ise;
 
     `a`'nın değeri `10`'dan küçük olduğu müddetçe...
@@ -143,7 +143,7 @@ anlamına gelir. İşte burada programımızın sonsuz döngüye girmesini engel
 bir ölçüt koymuş olduk. Buna göre, `a` değişkeninin şimdiki değeri `1`'dir. Biz,
 `a`'nın değeri `10`'dan küçük olduğu müddetçe bir işlem yapacağız. Devam
 edelim::
-    
+
 	a = 1
 
 	while a < 10:
@@ -161,14 +161,14 @@ yukarıdaki kodları yazarak Python'a şu emri vermiş olduk:
 	çıldırdı!' yazısını bas!
 
 `a` değişkeninin değeri `1`. Yani `10`'dan küçük. Dolayısıyla Python'ın ekrana o
-çıktıyı basmasını engelleyecek herhangi bir şey yok... 
+çıktıyı basmasını engelleyecek herhangi bir şey yok...
 
 Şimdi bu problemi nasıl aşacağımızı görelim::
 
 	a = 1
 
-	while a < 10: 
-	    a += 1 
+	while a < 10:
+	    a += 1
 	    print("bilgisayar yine çıldırdı!")
 
 Burada ``a += 1`` satırını ekledik kodlarımızın arasına. `+=` işlecini
@@ -182,10 +182,10 @@ bozulacaktır. Gelin isterseniz bu kodları Python'ın nasıl algıladığına b
 bakalım:
 
 #. Python öncelikle ``a = 1`` satırını görüyor ve `a`'nın değerini `1`
-   yapıyor. 
+   yapıyor.
 
 #. Daha sonra `a`'nın değeri `10`'dan küçük olduğu müddetçe...
-   (``while a < 10``) satırını görüyor. 
+   (``while a < 10``) satırını görüyor.
 
 #. Ardından `a`'nın değerini, `1` artırıyor (``a += 1``) ve `a`'nın değeri `2`
    oluyor.
@@ -194,15 +194,15 @@ bakalım:
    çıktıyı veriyor.
 
 #. İlk döngüyü bitiren Python başa dönüyor ve `a`'nın değerinin `2` olduğunu
-   görüyor. 
+   görüyor.
 
-#. `a`'nın değerini yine `1` artırıyor ve `a`'yı `3` yapıyor. 
+#. `a`'nın değerini yine `1` artırıyor ve `a`'yı `3` yapıyor.
 
 #. `a`'nın değeri hâlâ `10`'dan küçük olduğu için ekrana yine ilgili çıktıyı
-   veriyor. 
+   veriyor.
 
 #. İkinci döngüyü de bitiren Python yine başa dönüyor ve `a`'nın
-   değerinin `3` olduğunu görüyor. 
+   değerinin `3` olduğunu görüyor.
 
 #. Yukarıdaki adımları tekrar eden Python, `a`'nın değeri `9` olana kadar
    ilerlemeye devam ediyor.
@@ -246,7 +246,7 @@ uygulayalım::
 
     while anahtar == 1:
         soru = input("Yapmak istediğiniz işlemin numarasını girin (Çıkmak için q): ")
-        
+
         if soru == "q":
             print("çıkılıyor...")
             anahtar = 0
@@ -280,7 +280,7 @@ uygulayalım::
             print(sayı10, "sayısının karekökü = ", sayı10 ** 0.5)
 
         else:
-            print("Yanlış giriş.") 
+            print("Yanlış giriş.")
             print("Aşağıdaki seçeneklerden birini giriniz:", giriş)
 
 Burada ilave olarak şu satırları görüyorsunuz::
@@ -289,7 +289,7 @@ Burada ilave olarak şu satırları görüyorsunuz::
 
     while anahtar == 1:
         soru = input("Yapmak istediğiniz işlemin numarasını girin (Çıkmak için q): ")
-        
+
         if soru == "q":
             print("çıkılıyor...")
             anahtar = 0
@@ -314,18 +314,18 @@ tanımlıyoruz, ardından bu değişkenin değeri aynı kaldığı müddetçe pr
 değişkene başka bir değer atıyoruz. Burada `anahtar` değişkenine atadığımız `1`
 ve `0` değerleri tamamen tesadüfidir. Yani siz bu değerleri istediğiniz gibi
 değiştirebilirsiniz. Mesela yukarıdaki kodları şöyle de yazabilirsiniz::
-    
+
     anahtar = "hoyda bre!"
-    
-    #anahtar'ın değeri 'hoyda bre!' olduğu müddetçe aşağıdaki bloğu 
+
+    #anahtar'ın değeri 'hoyda bre!' olduğu müddetçe aşağıdaki bloğu
     #çalıştırmaya devam et.
-    while anahtar == "hoyda bre!": 
+    while anahtar == "hoyda bre!":
         soru = input("Yapmak istediğiniz işlemin numarasını girin (Çıkmak için q): ")
-    
+
         if soru == "q":
             print("çıkılıyor...")
-            anahtar = "dur yolcu!" 
-            #anahtar'ın değeri artık 'hoyda bre!' değil, 'dur yolcu' 
+            anahtar = "dur yolcu!"
+            #anahtar'ın değeri artık 'hoyda bre!' değil, 'dur yolcu'
             #olduğu için döngüden çık ve böylece programı sona erdirmiş ol.
 
 Gördüğünüz gibi, amaç herhangi bir değişkene herhangi bir değer atamak ve o
@@ -337,10 +337,10 @@ Yukarıda verdiğimiz son örnekte önce `anahtar` adlı bir değişken atayıp,
 ``while`` döngüsünün işleyişini bu değişkenin değerine göre yapılandırdık. Ama
 aslında yukarıdaki kodları çok daha basit bir şekilde de yazabiliriz. Dikkatlice
 bakın::
-    
+
     while True:
         soru = input("Yapmak istediğiniz işlemin numarasını girin (Çıkmak için q): ")
-        
+
         if soru == "q":
             print("çıkılıyor...")
             break
@@ -360,7 +360,7 @@ Bu yapıyı hesap makinemize uygulayalım::
 
     while True:
         soru = input("Yapmak istediğiniz işlemin numarasını girin (Çıkmak için q): ")
-        
+
         if soru == "q":
             print("çıkılıyor...")
             break
@@ -394,7 +394,7 @@ Bu yapıyı hesap makinemize uygulayalım::
             print(sayı10, "sayısının karekökü = ", sayı10 ** 0.5)
 
         else:
-            print("Yanlış giriş.") 
+            print("Yanlış giriş.")
             print("Aşağıdaki seçeneklerden birini giriniz:", giriş)
 
 Bu yapı sayesinde `anahtar` gibi bir değişken atama zorunluluğundan kurtulmuş
@@ -402,8 +402,8 @@ olduk. Yukarıdaki kodların nasıl çalıştığını açıklayalım:
 
 `while True` ifadesi şöyle bir anlama gelir:
 
-    `True` olduğu müddetçe... 
-    
+    `True` olduğu müddetçe...
+
 Peki ne `True` olduğu müddetçe? Burada neyin `True` olması gerektiğini
 belirtmediğimiz için, aslında bu kod parçası şu anlama geliyor:
 
@@ -411,7 +411,7 @@ belirtmediğimiz için, aslında bu kod parçası şu anlama geliyor:
 
 Eğer yukarıdaki açıklamayı biraz bulanık bulduysanız şu örneği
 inceleyebilirsiniz::
-    
+
     while True:
         print("Bilgisayar çıldırdı!")
 
@@ -426,7 +426,7 @@ emri veriyoruz. Python da bu emrimizi sadakatle yerine getiriyor. Böyle bir
 durumda sonsuz döngüyü engellemek için programımızın bir yerinde Python'a bu
 döngüden çıkmasını sağlayacak bir emir vermemiz gerekiyor. Biz hesap makinesi
 programımızda bu döngüyü şu şekilde kırdık::
-    
+
     if soru == "q":
         print("çıkılıyor...")
         break
@@ -442,24 +442,24 @@ Bu yapıyı daha iyi anlayabilmek için şöyle basit bir örnek daha verelim::
 
     #Aksi belirtilmediği sürece kullanıcıya
     #aşağıdaki soruyu sormaya devam et!
-    while True: 
+    while True:
         soru = input("Nasılsınız, iyi misiniz?")
-        
+
         #Eğer kullanıcı 'q' tuşuna basarsa...
-        if soru == "q": 
+        if soru == "q":
             break #döngüyü kır ve programdan çık.
 
-Görüyorsunuz, aslında mantık gayet basit: 
+Görüyorsunuz, aslında mantık gayet basit:
 
     Bir döngü oluştur ve bu döngüden çıkmak istediğinde, programın bir yerinde
     bu döngüyü sona erdirecek bir koşul meydan getir.
-    
-Bu mantığı yukarıdaki örneğe şu şekilde uyguladık: 
+
+Bu mantığı yukarıdaki örneğe şu şekilde uyguladık:
 
     `while True:` ifadesi yardımıyla bir döngü oluştur ve kullanıcı bu döngüden
     çıkmak istediğinde (yani `q` tuşuna bastığında), döngüyü kır ve programı
     sona erdir.
-    
+
 Gelin isterseniz bu konuyu daha net kavramak için bir örnek daha verelim::
 
     tekrar = 1
@@ -484,11 +484,11 @@ kullandığımıza dikkat edin. Aslında programın mantığı çok basit:
    misiniz?' sorusunu soruyoruz (``input("Nasılsınız, iyi misiniz?")``).
 
 #. `tekrar` değişkeninin değeri `3`'ü aştığında ``bool(tekrar <= 3)`` ifadesi
-   artık `False` değeri verdiği için programımız sona eriyor. 
-   
+   artık `False` değeri verdiği için programımız sona eriyor.
+
 Yukarıdaki uygulamada Python'ın alttan alta neler çevirdiğini daha iyi görmek
 için bu uygulamayı şöyle yazmayı deneyin::
-    
+
     tekrar = 1
 
     while tekrar <= 3:
@@ -543,7 +543,7 @@ Yukarıdaki kodları şu şekilde Türkçeye çevirebiliriz:
     `2`'ye tam bölünüp bölünmediğini kontrol et. Eğer ``a modülüs 2`` değeri `0`
     ise (``if a % 2 == 0``), yani `a`'nın değeri bir çift sayı ise, bu değeri
     ekrana yazdır.
-    
+
 Gördüğünüz gibi, ``while`` döngüsü son derece kullanışlı bir araçtır. Üstelik
 kullanımı da son derece kolaydır. Bu döngüyle bol bol pratik yaparak bu döngüyü
 rahatça kullanabilecek duruma gelebilirsiniz.
@@ -559,7 +559,7 @@ Etrafta yazılmış Python programlarının kaynak kodlarını incelediğinizde,
 ``for`` döngüsü geçmeyen bir program kolay kolay bulamazsınız. Belki ``while``
 döngüsünün kullanılmadığı programlar vardır. Ancak ``for`` döngüsü Python'da o
 kadar yaygındır ve o kadar geniş bir kullanım alanına sahiptir ki, hemen hemen
-bütün Python programları bu ``for`` döngüsünden en az bir kez yararlanır. 
+bütün Python programları bu ``for`` döngüsünden en az bir kez yararlanır.
 
 Peki nedir bu ``for`` döngüsü denen şey?
 
@@ -567,7 +567,7 @@ Peki nedir bu ``for`` döngüsü denen şey?
 olduğu gibi, programlarımızın birden fazla sayıda çalışmasını sağlar. Ancak
 ``for`` döngüsü ``while`` döngüsüne göre biraz daha yeteneklidir. ``while``
 döngüsü ile yapamayacağınız veya yaparken çok zorlanacağınız şeyleri ``for``
-döngüsü yardımıyla çok kolay bir şekilde halledebilirsiniz. 
+döngüsü yardımıyla çok kolay bir şekilde halledebilirsiniz.
 
 Yalnız, söylediğimiz bu cümleden, ``for`` döngüsünün ``while`` döngüsüne bir
 alternatif olduğu sonucunu çıkarmayın. Evet, ``while`` ile yapabildiğiniz bir
@@ -580,7 +580,7 @@ mantığı birbirinden farklıdır.
 Dikkatlice bakın::
 
     tr_harfler = "şçöğüİı"
-    
+
     for harf in tr_harfler:
         print(harf)
 
@@ -588,7 +588,7 @@ Burada öncelikle `tr_harfler` adlı bir değişken tanımladık. Bu değişken 
 özgü harfleri tutuyor. Daha sonra bir ``for`` döngüsü kurarak, `tr_harfler` adlı
 değişkenin her bir öğesini tek tek ekrana yazdırdık.
 
-Peki bu ``for`` döngüsünü nasıl kurduk? 
+Peki bu ``for`` döngüsünü nasıl kurduk?
 
 ``for`` döngülerinin söz dizimi şöyledir::
 
@@ -602,7 +602,7 @@ Bu söz dizimini Türkçe olarak şöyle ifade edebiliriz::
 
 Bu soyut yapıları kendi örneğimize uygulayarak durumu daha net anlamaya
 çalışalım::
-    
+
     tr_harfler adlı değişken içindeki herbir öğeyi harf olarak adlandır:
         ve harf olarak adlandırılan bu öğeleri ekrana yazdır.
 
@@ -610,7 +610,7 @@ Yukarıdaki örnekte bir ``for`` döngüsü yardımıyla `tr_harfler` adlı değ
 içindeki herbir öğeyi ekrana yazdırdık. Esasında ``for`` döngüsünün
 yeteneklerini düşündüğümüzde bu örnek pek heyecan verici değil. Zira aynı işi
 aslında ``print()`` fonksiyonu ile de yapabilirdik::
-    
+
     tr_harfler = "şçöğüİı"
     print(*tr_harfler, sep="\n")
 
@@ -638,7 +638,7 @@ Bu arada, biraz önce 'üzerinde döngü kurulabilecek veri tipleri' diye bir
 kavramdan söz ettik. Örneğin karakter dizileri, üzerinde döngü kurulabilecek bir
 veri tipidir. Ama sayılar öyle değildir. Yani sayılar üzerinde döngü kuramayız.
 Mesela::
-    
+
     >>> sayılar = 123456789
     >>> for sayı in sayılar:
     ...     print(sayı)
@@ -655,7 +655,7 @@ Gelin isterseniz ``for`` döngüsü ile bir örnek daha vererek durumu iyice
 anlamaya çalışalım::
 
     sayılar = "123456789"
-    
+
     for sayı in sayılar:
         print(int(sayı) * 2)
 
@@ -671,17 +671,17 @@ yazdığımız kod bloğunu bu öğelere tek tek uyguluyor.
 `in` ifadesini de tanıyorsunuz. Biz bu ifadeyi 'Aitlik İşleçleri' konusunu
 işlerken de görmüştük. Hatırlarsanız `in` işleci bir öğenin bir veri tipi içinde
 bulunup bulunmadığını sorguluyordu. Mesela::
-    
+
     >>> a = "istihza.com"
     >>> "h" in a
-    
+
     True
 
 `"h"` öğesi `"istihza.com"` adlı karakter dizisi içinde geçtiği için ``"h" in
 a`` kodu `True` çıktısı veriyor. Bir de şuna bakın::
-    
+
     >>> "b" in a
-    
+
     False
 
 `"b"` öğesi `"istihza.com"` karakter dizisi içinde bulunmuyor. Dolayısıyla ``"b"
@@ -691,9 +691,9 @@ in a`` sorgulaması `False` çıktısı veriyor.
 in filanca:`` yazdığımızda aslında şöyle bir şey demiş oluyoruz:
 
     `filanca` içinde `falanca` adını verdiğimiz herbir öğe için...
-    
+
 Yani şu kod::
-    
+
     for s in "istihza":
         print(s)
 
@@ -701,11 +701,11 @@ Yani şu kod::
 
     `"istihza"` karakter dizisi içinde `s` adını verdiğimiz herbir öğe için:
         `s` öğesini ekrana basma işlemi gerçekleştir!
-        
+
 Ya da şu kod::
 
     sayılar = "123456789"
-    
+
     for i in sayılar:
         if int(i) > 3:
             print(i)
@@ -754,7 +754,7 @@ verelim:
 
 Örneğin kullanıcıya bir parola belirletirken, belirlenecek parolanın `8`
 karakterden uzun, `3` karakterden kısa olmamasını sağlayalım::
-    
+
     while True:
         parola = input("Bir parola belirleyin: ")
 
@@ -763,7 +763,7 @@ karakterden uzun, `3` karakterden kısa olmamasını sağlayalım::
 
         elif len(parola) > 8 or len(parola) < 3:
             print("parola 8 karakterden uzun 3 karakterden kısa olmamalı")
-            
+
         else:
             print("Yeni parolanız", parola)
             break
@@ -815,7 +815,7 @@ yazdığınızda, ``eval()`` fonksiyonunu kontrolsüz bir şekilde kullandığı
 önemli bir güvenlik açığına sebep olmuş oluyorsunuz. Gelin isterseniz bu derste
 öğrendiğimiz bilgileri de kullanarak yukarıdaki ``eval()`` fonksiyonu için basit
 bir kontrol mekanizması kuralım::
-    
+
     izinli_karakterler = "0123456789+-/*= "
 
     print("""
@@ -839,14 +839,14 @@ bir kontrol mekanizması kuralım::
         if veri == "q":
             print("çıkılıyor...")
             break
-    
+
         for s in veri:
             if s not in izinli_karakterler:
                 print("Neyin peşindesin?!")
                 quit()
-                
+
         hesap = eval(veri)
-    
+
         print(hesap)
 
 Burada öncelikle programımızı bir ``while`` döngüsü içine aldık. Böylece
@@ -861,7 +861,7 @@ Bu programda bizi özellikle ilgilendiren kısım şu::
         if s not in izinli_karakterler:
             print("Neyin peşindesin?!")
             quit()
-            
+
     hesap = eval(veri)
 
 Gördüğünüz gibi, ilk olarak `izinli_karakterler` adlı bir değişken tanımladık.
@@ -906,7 +906,7 @@ range Fonksiyonu
 *range* kelimesi İngilizcede 'aralık' anlamına gelir. Biz Python'da ``range()``
 fonksiyonunu belli bir aralıkta bulunan sayıları göstermek için kullanıyoruz.
 Örneğin::
-    
+
     >>> for i in range(0, 10):
     ...     print(i)
     ...
@@ -938,7 +938,7 @@ Eğer ``range()`` fonksiyonunun ilk parametresi `0` olacaksa, bu parametreyi
 belirtmesek de olur. Yani mesela `0`'dan `10`'a kadar olan sayıları
 listeleyeceksek ``range()`` fonksiyonunu şöyle yazmamız yeterli olacaktır::
 
-    >>> for i in range(10): 
+    >>> for i in range(10):
     ...     print(i)
 
 ``range()`` fonksiyonunun `ilk_sayı` parametresi verilmediğinde Python ilk
@@ -946,7 +946,7 @@ parametreyi `0` olarak alır. Yani ``range(10)`` gibi bir kodu Python ``range(0,
 10)`` olarak algılar. Elbette, eğer aralıktaki ilk sayı `0`'dan farklı olacaksa
 bu sayıyı açık açık belirtmek gerekir::
 
-    >>> for i in range(3, 20): 
+    >>> for i in range(3, 20):
     ...     print(i)
 
 Burada `3`'ten itibaren `20`'ye kadar olan sayılar ekrana dökülecektir.
@@ -954,18 +954,18 @@ Burada `3`'ten itibaren `20`'ye kadar olan sayılar ekrana dökülecektir.
 Hatırlarsanız, biraz önce, kullanıcının `3` karakterden kısa, `8` karakterden
 uzun parola belirlemesini engelleyen bir uygulama yazmıştık. O uygulamayı
 ``range()`` fonksiyonunu kullanarak da yazabiliriz::
-    
+
     while True:
         parola = input("parola belirleyin: ")
-        
+
         if not parola:
             print("parola bölümü boş geçilemez!")
-        
+
         elif len(parola) in range(3, 8): #eğer parolanın uzunluğu 3 ile 8 karakter
             #aralığında ise...
             print("Yeni parolanız", parola)
             break
-        
+
         else:
             print("parola 8 karakterden uzun 3 karakterden kısa olmamalı")
 
@@ -977,14 +977,14 @@ belirleyebilirsiniz. Aşağıdaki kodları dikkatlice inceleyin::
         if i == 2:
             print("parolayı 3 kez yanlış girdiniz.",
             "Lütfen 30 dakika sonra tekrar deneyin!")
-        
+
         elif not parola:
             print("parola bölümü boş geçilemez!")
-        
+
         elif len(parola) in range(3, 8):
             print("Yeni parolanız", parola)
             break
-        
+
         else:
             print("parola 8 karakterden uzun 3 karakterden kısa olmamalı")
 
@@ -994,21 +994,21 @@ uyarısı gösterilecektir. Daha önce de birkaç yerde ifade ettiğimiz gibi, e
 yukarıdaki kodların çalışma mantığını anlamakta zorlanıyorsanız, programın uygun
 yerlerine ``print()`` fonksiyonu yerleştirerek arka planda Python'ın neler
 çevirdiğini daha net görebilirsiniz. Örneğin::
-    
+
     for i in range(3):
         print(i)
         parola = input("parola belirleyin: ")
         if i == 2:
             print("parolayı 3 kez yanlış girdiniz.",
             "Lütfen 30 dakika sonra tekrar deneyin!")
-        
+
         elif not parola:
             print("parola bölümü boş geçilemez!")
-        
+
         elif len(parola) in range(3, 8):
             print("Yeni parolanız", parola)
             break
-        
+
         else:
             print("parola 8 karakterden uzun 3 karakterden kısa olmamalı")
 
@@ -1019,22 +1019,22 @@ giriyor.
 ``range()`` fonksiyonunun yetenekleri yukarıda anlattıklarımızla sınırlı
 değildir. Bu fonksiyonun bazı başka maharetleri de bulunur. Hatırlarsanız
 yukarıda bu fonksiyonun formülünü şöyle vermiştik::
-    
+
     range(ilk_sayı, son_sayı)
 
 Buna göre ``range()`` fonksiyonu iki parametre alıyor. Ama aslında bu
 fonksiyonun üçüncü bir parametresi daha vardır. Buna göre formülümüzü
 güncelleyelim::
-    
+
     range(ilk_sayı, son_sayı, atlama_değeri)
 
 Formüldeki son parametre olan `atlama_değeri`, aralıktaki sayıların kaçar kaçar
 ilerleyeceğini gösterir. Yani::
-    
+
     >>> for i in range(0, 10, 2):
     ...     print(i)
     ...
-    
+
     0
     2
     4
@@ -1049,7 +1049,7 @@ Bu arada, bir şey dikkatinizi çekmiş olmalı:
 ``range()`` fonksiyonu üç farklı parametre alan bir fonksiyon. Eğer ilk
 parametre `0` olacaksa bu parametreyi belirtmek zorunda olmadığımızı biliyoruz.
 Yani::
-    
+
     >>> range(10)
 
 Python bu kodu ``range(0, 10)`` olarak algılayıp buna göre değerlendiriyor.
@@ -1059,7 +1059,7 @@ belirtmemiz gerekiyor. Eğer burada bütün parametreleri belirtmezsek Python ha
 sayının hangi parametreye karşılık geldiğini anlayamaz. Yani mesela `0`'dan
 `10`'a kadar olan sayıları ikişer ikişer atlayarak ekrana dökmek için şöyle bir
 şey yazmaya çalıştığımızı düşünün::
-    
+
     >>> for i in range(10, 2):
     ...     print(i)
 
@@ -1070,7 +1070,7 @@ Dolayısıyla da Python bu durumda sizin `10`'dan `2`'ye kadar olan sayıları
 listelemek istediğinizi zannedecek, ``range()`` fonksiyonuyla bu şekilde geriye
 doğru sayamayacağımız için de boş bir çıktı verecektir. Bu yüzden, Python’un
 şaşırmaması için yukarıdaki örneği şu şekilde yazmalıyız::
-    
+
     >>> for i in range(0, 10, 2):
     ...     print(i)
 
@@ -1079,7 +1079,7 @@ istiyorsak, parantez içinde, gerekli bütün parametreleri belirtmeliyiz.
 
 Gördüğünüz gibi, ``range()`` fonksiyonunu kullanarak belirli bir aralıktaki
 sayıları alabiliyoruz. Peki bu sayıları tersten alabilir miyiz? Elbette::
-    
+
     >>> for i in range(10, 0, -1):
     ...     print(i)
     ...
@@ -1099,7 +1099,7 @@ tersten alacağımız için, ilk parametre 10, ikinci parametre ise `0`. Üçün
 parametre olarak ise eksi değerli bir sayı veriyoruz. Eğer sayıları hem tersten,
 hem de mesela 3'er 3'er atlayarak yazmak isterseniz şöyle bir komut
 verebilirsiniz::
-    
+
     >>> for i in range(10, 0, -3):
     ...     print(i)
     ...
@@ -1119,19 +1119,19 @@ için yıldızlı parametrelerden de yararlanabiliriz. ``print()`` fonksiyonunu
 incelediğimiz derste yıldızlı parametrelerin nasıl kullanıldığını göstermiştik.
 Dilerseniz şimdi bu parametre tipini ``range()`` fonksiyonuna nasıl
 uygulayabileceğimizi görelim::
-    
+
     >>> print(*range(10))
-    
+
     0 1 2 3 4 5 6 7 8 9
 
 ``print()`` fonksiyonunun `sep` parametresi yardımıyla bu çıktıyı istediğiniz
 gibi düzenleyebileceğinizi biliyorsunuz. Mesela çıktıdaki sayıları
 birbirlerinden virgülle ayırmak için şöyle bir komut verebiliyoruz::
-    
+
     >>> print(*range(10), sep=", ")
 
     0, 1, 2, 3, 4, 5, 6, 7, 8, 9
-    
+
 Böylece ``range()`` fonksiyonunu enine boyuna incelemiş ve bu fonksiyonun ne işe
 yaradığını, nasıl kullanılacağını anlamamızı sağlayan örnekler vermiş olduk.
 Artık başka bir konuyu geçebiliriz.
@@ -1150,35 +1150,35 @@ Hatırlarsanız yukarıda şöyle bir örnek vermiştik::
 
     while True:
         parola = input("parola belirleyin: ")
-        
+
         if not parola:
             print("parola bölümü boş geçilemez!")
-        
+
         elif len(parola) in range(3, 8): #eğer parolanın uzunluğu 3 ile 8 karakter
             #aralığında ise...
             print("Yeni parolanız", parola)
             break
-        
+
         else:
             print("parola 8 karakterden uzun 3 karakterden kısa olmamalı")
 
 Burada mesela eğer kullanıcı parolayı boş bırakırsa 'parola bölümü boş
 geçilemez!' uyarısı gösteriyoruz. Şimdi o ``if`` bloğunu şöyle yazdığımızı
 düşünün::
-    
+
     while True:
         parola = input("parola belirleyin: ")
-        
+
         if not parola:
             pass
-            
+
         elif len(parola) in range(3, 8): #eğer parolanın uzunluğu 3 ile 8 karakter
             #aralığında ise...
             print("Yeni parolanız", parola)
             break
-        
+
         else:
-            print("parola 8 karakterden uzun 3 karakterden kısa olmamalı") 
+            print("parola 8 karakterden uzun 3 karakterden kısa olmamalı")
 
 Burada, eğer kullanıcı parolayı boş bırakırsa programımız hiçbir şey yapmadan
 yoluna devam edecektir. Yani burada ``pass`` deyimi yardımıyla programımıza şu
@@ -1186,18 +1186,18 @@ emri vermiş oluyoruz:
 
     Eğer kullanıcı parolayı boş geçerse görmezden gel. Hiçbir şey yapmadan
     yoluna devam et!
-    
+
 Başka bir örnek daha verelim::
 
     while True:
         sayı = int(input("Bir sayı girin: "))
-        
+
         if sayı == 0:
             break
-        
+
         elif sayı < 0:
             pass
-        
+
         else:
             print(sayı)
 
@@ -1214,16 +1214,16 @@ yazıyorsunuz. Programın gidişatına göre, bir noktada yapmanız gereken bir 
 var, ama henüz ne yapacağınıza karar vermediniz. Böyle bir durumda ``pass``
 deyiminden yararlanabilirsiniz. Mesela birtakım ``if`` deyimleri yazmayı
 düşünüyor olun::
-    
+
     if .....:
         böyle yap
-        
+
     elif .....:
         şöyle yap
-        
+
     else:
         pass
-        
+
 Burada henüz ``else`` bloğunda ne yapılacağına karar vermemiş olduğunuz için,
 oraya bir ``pass`` koyarak durumu şimdilik geçiştiriyorsunuz. Program son haline
 gelene kadar oraya bir şeyler yazmış olacaksınız.
@@ -1239,7 +1239,7 @@ break Deyimi
 Python’da ``break`` özel bir deyimdir. Bu deyim yardımıyla, devam eden bir
 süreci kesintiye uğratabiliriz. Bu deyimin kullanıldığı basit bir örnek
 verelim::
-    
+
     >>> while True:
     ...     parola = input("Lütfen bir parola belirleyiniz:")
     ...     if len(parola) < 5:
@@ -1248,7 +1248,7 @@ verelim::
     ...         print("Parolanız belirlendi!")
     ...         break
 
-    
+
 Burada, eğer kullanıcının girdiği parolanın uzunluğu `5` karakterden azsa,
 `Parola 5 karakterden az olmamalı!` uyarısı gösterilecektir. Eğer kullanıcı `5`
 karakterden uzun bir parola belirlemişse, kendisine 'Parolanız belirlendi!'
@@ -1269,15 +1269,15 @@ continue Deyimi
 
 ``continue`` ilginç bir deyimdir. İsterseniz ``continue`` deyimini anlatmaya
 çalışmak yerine bununla ilgili bir örnek verelim::
-    
+
     while True:
         s = input("Bir sayı girin: ")
         if s == "iptal":
             break
-        
+
         if len(s) <= 3:
             continue
-        
+
         print("En fazla üç haneli bir sayı girebilirsiniz.")
 
 Burada eğer kullanıcı klavyede `iptal` yazarsa programdan çıkılacaktır. Bunu; ::
@@ -1319,7 +1319,7 @@ Karakter Dizilerinin İçeriğini Karşılaştırma
 ================================================
 
 Diyelim ki elinizde şöyle iki farklı metin var::
-    
+
     ilk_metin = "asdasfddgdhfjfdgdşfkgjdfklgşjdfklgjdfkghdfjghjklsdhajlsdhjkjhkhjjh"
     ikinci_metin = "sdfsuıdoryeuıfsjkdfhdjklghjdfklruseldhfjlkdshfljskeeuf"
 
@@ -1328,7 +1328,7 @@ değişken içinde bulunmayan öğeleri ayıklamak istiyorsunuz. Yani bu iki met
 içeriğini karşılaştırıp, farklı öğeleri bulmayı amaçlıyorsunuz. Bu işlem için,
 bu bölümde öğrendiğimiz döngülerden ve daha önce öğrendiğimiz başka araçlardan
 yararlanabilirsiniz. Şimdi dikkatlice bakın::
-    
+
     ilk_metin = "asdasfddgdhfjfdgdşfkgjdfklgşjdfklgjdfkghdfjghjklsdhajlsdhjkjhkhjjh"
     ikinci_metin = "sdfsuıdoryeuıfsjkdfhdjklghjdfklruseldhfjlkdshfljskeeuf"
 
@@ -1337,34 +1337,34 @@ yararlanabilirsiniz. Şimdi dikkatlice bakın::
             print(s)
 
 Bu kodları bir dosyaya kaydedip çalıştırdığımızda şu çıktıyı alıyoruz::
-    
+
     a
     a
     ş
     ş
     a
-    
+
 Demek ki `ilk_metin` adlı değişkende olup da `ikinci_metin` adlı değişkende
-olmayan öğeler bunlarmış... 
+olmayan öğeler bunlarmış...
 
 Bu kodlarda anlayamayacağınız hiçbir şey yok. Ama dilerseniz biz yine de bu
-kodları tek tek inceleyelim. 
+kodları tek tek inceleyelim.
 
 İlk olarak değişkenlerimizi tanımladık::
-    
+
     ilk_metin = "asdasfddgdhfjfdgdşfkgjdfklgşjdfklgjdfkghdfjghjklsdhajlsdhjkjhkhjjh"
-    ikinci_metin = "sdfsuıdoryeuıfsjkdfhdjklghjdfklruseldhfjlkdshfljskeeuf"  
+    ikinci_metin = "sdfsuıdoryeuıfsjkdfhdjklghjdfklruseldhfjlkdshfljskeeuf"
 
 Amacımız `ilk_metin`'de olan, ama `ikinci_metin`'de olmayan öğeleri görmek.
 Bunun için `ilk_metin`'deki öğeleri **tek tek** `ikinci_metin`'deki öğelerle
 karşılaştırmamız gerekiyor. Tahmin edebileceğiniz gibi, bir metnin bütün
 öğelerine tek tek bakabilmenin en iyi yolu ``for`` döngülerini kullanmaktır. O
 halde döngümüzü yazalım::
-    
+
     for s in ilk_metin: #ilk_metin'deki, 's' adını verdiğimiz bütün öğeler için
         if not s in ikinci_metin: #eğer 's' adlı bu öğe ikinci_metin'de yoksa
             print(s) #'s' adlı öğeyi ekrana bas
-   
+
 Gördüğünüz gibi, döngüleri (``for``), bool işleçlerini (`not`) ve aitlik
 işleçlerini (`in`) kullanarak, istediğimiz şeyi rahatlıkla yapabiliyoruz. Burada
 kullandığımız ``if`` deyimi, bir önceki satırda ``for`` döngüsü ile üzerinden
@@ -1379,16 +1379,16 @@ Elbette yukarıda yaptığımız işlemin tersini yapmak da mümkündür. Biz yu
 kodlarda `ilk_metin`'de olan, ama `ikinci_metin`'de olmayan öğeleri süzdük. Eğer
 istersek `ikinci_metin`'de olan, ama `ilk_metin`'de olmayan öğeleri de
 süzebiliriz. Mantığımız yine aynı::
-    
+
     ilk_metin = "asdasfddgdhfjfdgdşfkgjdfklgşjdfklgjdfkghdfjghjklsdhajlsdhjkjhkhjjh"
     ikinci_metin = "sdfsuıdoryeuıfsjkdfhdjklghjdfklruseldhfjlkdshfljskeeuf"
-    
+
     for s in ikinci_metin: #ikinci_metin'deki, 's' adını verdiğimiz bütün öğeler için
         if not s in ilk_metin: #eğer 's' adlı bu öğe ilk_metin'de yoksa
             print(s) #'s' adlı öğeyi ekrana bas
 
-Bu da bize şu çıktıyı veriyor::    
-           
+Bu da bize şu çıktıyı veriyor::
+
     u
     ı
     o
@@ -1409,14 +1409,14 @@ değiştirmek oldu. Kullandığımız mantık ise değişmedi.
 
 Bu arada, yukarıdaki çıktıda bizi rahatsız eden bir durum var. Çıktıda bazı
 harfler birbirini tekrar ediyor. Aslında temel olarak sadece şu harfler var::
-    
+
     u
     ı
     o
     r
     y
     e
- 
+
 Ama metin içinde bazı harfler birden fazla sayıda geçtiği için, doğal olarak
 çıktıda da bu harfler birden fazla sayıda görünüyor. Ama tabii ki, eğer biz
 istersek farklı olan her harften yalnızca bir tanesini çıktıda görmeyi de tercih
@@ -1424,9 +1424,9 @@ edebiliriz. Bunun için şöyle bir kod yazabiliriz::
 
     ilk_metin = "asdasfddgdhfjfdgdşfkgjdfklgşjdfklgjdfkghdfjghjklsdhajlsdhjkjhkhjjh"
     ikinci_metin = "sdfsuıdoryeuıfsjkdfhdjklghjdfklruseldhfjlkdshfljskeeuf"
-    
+
     fark = ""
-    
+
     for s in ikinci_metin:
         if not s in ilk_metin:
             if not s in fark:
@@ -1435,12 +1435,12 @@ edebiliriz. Bunun için şöyle bir kod yazabiliriz::
 
 Burada da anlayamayacağımız hiçbir şey yok. Bu kodlardaki bütün parçaları
 tanıyoruz. Herzamanki gibi öncelikle değişkenlerimizi tanımladık::
-    
+
     ilk_metin = "asdasfddgdhfjfdgdşfkgjdfklgşjdfklgjdfkghdfjghjklsdhajlsdhjkjhkhjjh"
     ikinci_metin = "sdfsuıdoryeuıfsjkdfhdjklghjdfklruseldhfjlkdshfljskeeuf"
-    
+
 Daha sonra `fark` adlı boş bir karakter dizisi tanımlıyoruz. Metinler içindeki
-farklı karakter dizilerini `fark` adlı bu karakter dizisi içinde depolayacağız. 
+farklı karakter dizilerini `fark` adlı bu karakter dizisi içinde depolayacağız.
 
 Ardından da ``for`` döngümüzü yazıyoruz::
 
@@ -1449,7 +1449,7 @@ Ardından da ``for`` döngümüzü yazıyoruz::
             if not s in fark:   # eğer 's' fark'ta da yoksa
                 fark += s       # bu öğeyi fark değişkenine ekle
     print(fark)                 # fark değişkenini ekrana bas
-    
+
 Uyguladığımız mantığın ne kadar basit olduğunu görüyorsunuz. Bu kodlarda basitçe
 şu işlemleri yapıyoruz:
 
@@ -1460,23 +1460,23 @@ Uyguladığımız mantığın ne kadar basit olduğunu görüyorsunuz. Bu kodlar
 
 Bu kodlarda dikkatimizi çeken ve üzerinde durmamız gereken bazı noktalar var.
 Burada özellikle `fark` değişkenine öğe ekleme işlemini nasıl yaptığımıza dikkat
-edin. 
+edin.
 
 Python programlama dilinde önceden oluşturduğumuz bir karakter dizisini başka
 bir karakter dizisi ile birleştirdiğimizde bu işlem ilk oluşturduğumuz karakter
 dizisini etkilemez. Yani::
-    
+
     >>> a = 'istihza'
     >>> a + '.com'
-    
+
     'istihza.com'
 
 Burada sanki `a` adlı özgün karakter dizisini değiştirmişiz ve 'istihza.com'
 değerini elde etmişiz gibi görünüyor. Ama aslında `a`'nın durumunda hiçbir
 değişiklik yok::
-    
+
     >>> a
-    
+
     'istihza'
 
 Gördüğünüz gibi, `a` değişkeninin değeri hâlâ `'istihza'`. Bu durumun nedeni,
@@ -1485,49 +1485,49 @@ karakter dizisini birleştirdiğinizde birleşen karakter dizileri üzerinde
 herhangi bir değişiklik olmaz. Bu durumda yapabileceğimiz tek şey, karakter
 dizisine eklemek istediğimiz öğeyi de içeren yeni bir karakter dizisi
 oluşturmaktır. Yani::
-    
+
     >>> a = 'istihza'
     >>> a = a + '.com'
     >>> print(a)
-    
+
     istihza.com
 
 Burada sanki değeri `'istihza'` olan `a` adlı bir değişkene `'.com'` değerini
 eklemişiz gibi görünüyor, ama aslında biz burada `a` değişkenini yok edip,
 `'istihza.com'` değerini içeren, `a` adlı başka bir değişken tanımladık. Bu
 durumu nasıl teyit edeceğinizi biliyorsunuz::
-    
+
     >>> a = 'istihza'
     >>> id(a)
-    
+
     15063200
-    
+
     >>> a = a + '.com'
     >>> id(a)
-    
+
     15067960
-    
+
 Burada ``id()`` fonksiyonunu kullanarak karakter dizilerinin kimliklerini
 sorguladık. Gördüğünüz gibi, isimleri aynı da olsa, aslında ortada iki farklı
 `a` değişkeni var. Kimlik numaralarının farklı olmasından anladığımıza göre, ilk
 başta tanımladığımız `a` değişkeni ile ``a = a + '.com'`` satırıyla
-oluşturduğumuz `a` değişkeni birbirinden farklı. 
+oluşturduğumuz `a` değişkeni birbirinden farklı.
 
 Bu arada, eğer istersek yukarıdaki değer atama işlemini, önceki bölümlerde
 öğrendiğimiz değer atama işleçleri yardımıyla kısaltabileceğimizi de
 biliyorsunuz::
-    
+
     >>> a += '.com'
-    
+
 İşte `ilk_metin` ile `ikinci_metin` değişkenleri arasındaki farklı harfleri
 yalnızca birer kez yazdırmak için kullandığımız kodlarda da yukarıdaki işlemi
 yaptık::
-    
+
     ilk_metin = "asdasfddgdhfjfdgdşfkgjdfklgşjdfklgjdfkghdfjghjklsdhajlsdhjkjhkhjjh"
     ikinci_metin = "sdfsuıdoryeuıfsjkdfhdjklghjdfklruseldhfjlkdshfljskeeuf"
-    
+
     fark = ''
-    
+
     for s in ikinci_metin:
         if not s in ilk_metin:
             if not s in fark:
@@ -1549,18 +1549,18 @@ işimizi görmemize yetiyor...
 
 Programın başındaki ve sonundaki `fark` değişkenlerinin aslında birbirinden
 farklı olduğunu teyit etmek için şu kodları kullanabilirsiniz::
-    
+
     ilk_metin = "asdasfddgdhfjfdgdşfkgjdfklgşjdfklgjdfkghdfjghjklsdhajlsdhjkjhkhjjh"
     ikinci_metin = "sdfsuıdoryeuıfsjkdfhdjklghjdfklruseldhfjlkdshfljskeeuf"
-    
+
     fark = ""
     print("fark'ın ilk tanımlandığı zamanki kimlik numarası: ", id(fark))
-    
+
     for s in ikinci_metin:
         if not s in ilk_metin:
             if not s in fark:
                 fark += s
-    
+
     print("fark'ın program sonundaki kimlik numarası: ", id(fark))
 
 Gördüğünüz gibi, gerçekten de ortada iki farklı `fark` değişkeni var. Bu durumu
@@ -1597,7 +1597,7 @@ karşılaştıracağımıza dair bir örnek verelim.
 Esasında karakter dizilerinin içeriğini birbirleriyle nasıl karşılaştırıyorsak,
 dosyaların içeriğini de benzer şekilde karşılaştırabiliriz. Mesela içeriği şu
 olan `isimler1.txt` adlı bir dosyamız olduğunu varsayalım::
-    
+
     Ahmet
     Mehmet
     Sevgi
@@ -1617,7 +1617,7 @@ olan `isimler1.txt` adlı bir dosyamız olduğunu varsayalım::
 
 Yine içeriği şu olan bir de `isimler2.txt` adlı başka bir dosya daha olduğunu
 düşünelim::
-    
+
     Gürsel
     Mehmet
     Sevgi
@@ -1641,24 +1641,24 @@ düşünelim::
 Amacımız bu iki dosyanın içeriğini karşılaştırıp, farklı öğeleri ortaya sermek.
 Dediğimiz gibi, bir önceki örnekte izlediğimiz yolu burada da takip edebiliriz.
 Dikkatlice bakın::
-    
+
     d1 = open("isimler1.txt") # dosyayı açıyoruz
     d1_satırlar = d1.readlines() # satırları okuyoruz
-    
+
     d2 = open("isimler2.txt")
     d2_satırlar = d2.readlines()
-    
+
     for i in d2_satırlar:
         if not i in d1_satırlar:
             print(i)
-            
+
     d1.close()
     d2.close()
-            
+
 Gerçekten de mantığın bir önceki örnekle tamamen aynı olduğunu görüyorsunuz. Biz
 henüz Python'da dosyaların nasıl işleneceğini öğrenmedik, ama daha önce
 gördüğümüz ``open()`` fonksiyonu yardımıyla en azından dosyaları açabilecek
-kadar biliyoruz dosya işlemlerinin nasıl yürütüleceğini... 
+kadar biliyoruz dosya işlemlerinin nasıl yürütüleceğini...
 
 Burada farklı olarak ``readlines()`` adlı bir metot görüyoruz. Biz burada bu
 metodun ayrıntılarına inmeyeceğiz, ama şimdilik dosya içeriğinin satırlar
@@ -1667,41 +1667,41 @@ halinde okunmasını sağladığını bilelim yeter.
 Bu arada, eğer çıktıda Türkçe karakterleri düzgün görüntüleyemiyorsanız
 ``open()`` fonksiyonunun `encoding` adlı bir parametresi vasıtasıyla içeriği
 `UTF-8` olarak kodlayabilirsiniz::
-    
+
     d1 = open("isimler1.txt", encoding="utf-8") # dosyayı açıyoruz
     d1_satırlar = d1.readlines() # satırları okuyoruz
-    
+
     d2 = open("isimler2.txt", encoding="utf-8")
     d2_satırlar = d2.readlines()
-    
+
     for i in d2_satırlar:
         if not i in d1_satırlar:
             print(i)
-            
+
     d1.close()
     d2.close()
-            
+
 Bu şekilde Türkçe karakterleri düzgün bir şekilde görüntüleyebiliyor olmanız
 lazım. Eğer Windows'ta Türkçe karakterleri hala düzgün görüntüleyemiyorsanız
 `encoding` parametresinde 'utf-8' yerine 'cp1254' adlı dil kodlamasını
 kullanmayı deneyebilirsiniz::
-    
+
     encoding = "cp1254"
 
 Yukarıdaki örneklerde bir içerik karşılaştırması yapıp, **farklı** öğeleri
 ayıkladık. Aynı şekilde **benzer** öğeleri ayıklamak da mümkündür. Bu işlemin
 nasıl yapılacağını az çok tahmin ettiğinizi zannediyorum::
-    
-    d1 = open("isimler1.txt") 
+
+    d1 = open("isimler1.txt")
     d1_satırlar = d1.readlines()
-    
+
     d2 = open("isimler1.txt")
     d2_satırlar = d2.readlines()
-    
+
     for i in d2_satırlar:
         if i in d1_satırlar:
             print(i)
-            
+
     d1.close()
     d2.close()
 
@@ -1710,7 +1710,7 @@ doğal olarak, ``if i in d2_satırlar`` kodunu kullandığımıza dikkat edin.
 
 Dosyalar üzerinde yaptığımız işlemleri tamamladıktan sonra ``close()`` metodu
 ile bunları kapatmayı unutmuyoruz::
-    
+
     d1.close()
     d2.close()
 
@@ -1718,10 +1718,10 @@ Karakter Dizisindeki Karakterleri Sayma
 =========================================
 
 Yukarıdaki örneklerde içerik karşılaştırmaya ilişkin birkaç örnek verdik. Şimdi
-yine bilgilerimizi pekiştirmek için başka bir konuya ilişkin örnekler verelim. 
+yine bilgilerimizi pekiştirmek için başka bir konuya ilişkin örnekler verelim.
 
 Mesela elimizde şöyle bir metin olduğunu varsayalım::
-    
+
     Bu programlama dili Guido Van Rossum adlı Hollandalı bir programcı
     tarafından 90’lı yılların başında geliştirilmeye başlanmıştır. Çoğu insan,
     isminin Python olmasına aldanarak, bu programlama dilinin, adını piton
@@ -1733,10 +1733,10 @@ Mesela elimizde şöyle bir metin olduğunu varsayalım::
     figürü ile temsil edilmesi neredeyse bir gelenek halini almıştır.
 
 Yapmamız gereken bir istatistik çalışması gereğince bu metinde her harfin kaç
-kez geçtiğini hesaplamanız gerekiyor. 
+kez geçtiğini hesaplamanız gerekiyor.
 
 Bunun için şöyle bir program yazabiliriz::
-    
+
     metin = """Bu programlama dili Guido Van Rossum adlı Hollandalı bir programcı
     tarafından 90’lı yılların başında geliştirilmeye başlanmıştır. Çoğu insan,
     isminin Python olmasına aldanarak, bu programlama dilinin, adını piton
@@ -1746,36 +1746,36 @@ Bunun için şöyle bir program yazabiliriz::
     gösterisinden esinlenerek adlandırmıştır. Ancak her ne kadar gerçek böyle olsa
     da, Python programlama dilinin pek çok yerde bir yılan figürü ile temsil
     edilmesi neredeyse bir gelenek halini almıştır."""
-    
+
     harf = input("Sorgulamak istediğiniz harf: ")
-    
+
     sayı = ''
-    
+
     for s in metin:
         if harf == s:
             sayı += harf
-    
+
     print(len(sayı))
-   
+
 Burada öncelikle metnimizi bir değişken olarak tanımladık. Ardından da
-kullanıcıya hangi harfi sorgulamak istediğini sorduk. 
+kullanıcıya hangi harfi sorgulamak istediğini sorduk.
 
 Bu kodlarda tanımladığımız `sayı` adlı değişken, sorgulanan harfi, metinde
 geçtiği sayıda içinde barındıracaktır. Yani mesela metin `5` tane `a` harfi
 varsa `sayı` değişkeninin değeri `aaaaa` olacaktır.
 
 Sonraki satırlarda ``for`` döngümüzü tanımlıyoruz::
-    
+
     for s in metin:         # metin içinde 's' adını verdiğimiz herbir öğe için
         if harf == s:       # eğer kullanıcıdan gelen harf 's' ile aynıysa
             sayı += harf    # kullanıcıdan gelen bu harfi sayı değişkenine yolla
-            
+
 Dediğimiz gibi, `sayı` değişkeni, sorgulanan harfi, metinde geçtiği sayıda
 barındırıyor. Dolayısıyla bir harfin metinde kaç kez geçtiğini bulmak için
 `sayı` değişkeninin uzunluğunu yazdırmamız yeterli olacaktır::
-    
+
     print(len(sayı))
-    
+
 Dilerseniz yukarıdaki programı yazmak için daha farklı bir mantık da
 kullanabilirsiniz. Dikkatlice bakın::
 
@@ -1788,17 +1788,17 @@ kullanabilirsiniz. Dikkatlice bakın::
     gösterisinden esinlenerek adlandırmıştır. Ancak her ne kadar gerçek böyle olsa
     da, Python programlama dilinin pek çok yerde bir yılan figürü ile temsil
     edilmesi neredeyse bir gelenek halini almıştır."""
-    
+
     harf = input("Sorgulamak istediğiniz harf: ")
-    
+
     sayı = 0
-    
+
     for s in metin:
         if harf == s:
             sayı += 1
-    
+
     print(sayı)
-    
+
 Burada `sayı` değişkeninin ilk değeri `0` olarak belirledik. Döngü içinde de,
 sorgulanan harfin metin içinde her geçişinde `sayı` değişkeninin değerini `1`
 sayı artırdık. Dolayısıyla sorgulanan harfin metinde kaç kez geçtiğini bulmak
@@ -1809,28 +1809,28 @@ Dosya içindeki Karakterleri Sayma
 
 Dilerseniz bir önceki örnekte kullandığımız metnin program içinde bir değişken
 değil de, mesela bir dosyadan okunan bir metin olduğunu varsayalım şimdi::
-   
+
     hakkında = open("hakkında.txt", encoding="utf-8")
-    
+
     harf = input("Sorgulamak istediğiniz harf: ")
-    
+
     sayı = 0
-    
+
     for karakter_dizisi in hakkında:
         for karakter in karakter_dizisi:
             if harf == karakter:
                 sayı += 1
     print(sayı)
-    
+
     hakkında.close()
-    
+
 Burada yaptığımız ilk iş elbette dosyamızı açmak oldu::
-    
+
     hakkında = open("hakkında.txt", encoding="utf-8")
 
 Bu komutla, `hakkında.txt` adlı dosyayı `UTF-8` kodlaması ile açtık. Daha sonra
 kullanıcıya, sorgulamak istediği harfi soruyoruz::
-    
+
     harf = input("Sorgulamak istediğiniz harf: ")
 
 Ardından da sorgulanan harfin dosyada kaç kez geçtiği bilgisini tutacak olan
@@ -1838,7 +1838,7 @@ Ardından da sorgulanan harfin dosyada kaç kez geçtiği bilgisini tutacak olan
 
     sayı = 0
 
-Sıra geldi ``for`` döngümüzü tanımlamaya::  
+Sıra geldi ``for`` döngümüzü tanımlamaya::
 
     for karakter_dizisi in hakkında:
         for karakter in karakter_dizisi:
@@ -1849,7 +1849,7 @@ Bu döngüyü anlamakta bir miktar zorlanmış olabilirsiniz. Her zaman söyledi
 gibi, Python'da bir kod parçasını anlamanın en iyi yöntemi, gerekli yerlere
 ``print()`` fonksiyonları yerleştirerek, programın verdiği çıktıları
 incelemektir::
-    
+
     for karakter_dizisi in hakkında:
         print(karakter_dizisi)
         #for karakter in karakter_dizisi:
@@ -1862,37 +1862,37 @@ hizmet etmeyen satırları da yorum içine alarak etkisizleştirdiğimize dikkat
 edin.
 
 Çıktıya baktığımız zaman, şöyle bir durumla karşılaşıyoruz::
-    
+
     Bu programlama dili Guido Van Rossum adlı Hollandalı bir programcı
-    
+
     tarafından 90’lı yılların başında geliştirilmeye başlanmıştır. Çoğu insan,
-    
+
     isminin Python olmasına aldanarak, bu programlama dilinin, adını piton
-    
+
     yılanından aldığını düşünür. Ancak zannedildiğinin aksine bu programlama dilinin
-    
+
     adı piton yılanından gelmez. Guido Van Rossum bu programlama dilini, The Monty
-    
+
     Python adlı bir İngiliz komedi grubunun, Monty Python’s Flying Circus adlı
-    
+
     gösterisinden esinlenerek adlandırmıştır. Ancak her ne kadar gerçek böyle olsa
-    
+
     da, Python programlama dilinin pek çok yerde bir yılan figürü ile temsil
-    
+
     edilmesi neredeyse bir gelenek halini almıştır.
-    
+
 Burada herbir satır ayrı bir karakter dizisidir. Eğer herbir satırın ayrı bir
 karakter dizisi olduğunu daha net bir şekilde görmek istiyorsanız ``repr()``
 adlı özel bir fonksiyondan yararlanabilirsiniz::
-    
+
     for karakter_dizisi in hakkında:
         print(repr(karakter_dizisi))
         #for karakter in karakter_dizisi:
         #    if harf == karakter:
         #        sayı += 1
-   
+
 Bu kodlar bu kez şöyle bir çıktı verir::
-  
+
     'Bu programlama dili Guido Van Rossum adlı Hollandalı bir programcı\n'
     'tarafından 90’lı yılların başında geliştirilmeye başlanmıştır. Çoğu insan,\n'
     'isminin Python olmasına aldanarak, bu programlama dilinin, adını piton\n'
@@ -1902,7 +1902,7 @@ Bu kodlar bu kez şöyle bir çıktı verir::
     'gösterisinden esinlenerek adlandırmıştır. Ancak her ne kadar gerçek böyle olsa\n'
     'da, Python programlama dilinin pek çok yerde bir yılan figürü ile temsil\n'
     'edilmesi neredeyse bir gelenek halini almıştır.'
-    
+
 Bu çıktıya çok dikkatlice bakın. ``repr()`` fonksiyonu sayesinde Python'ın
 alttan alta neler çevirdiğini bariz bir biçimde görüyoruz. Karakter dizisinin
 başlangıç ve bitişini gösteren tırnak işaretleri ve `\\n` kaçış dizilerinin
@@ -1919,21 +1919,21 @@ harfin karşısına `'Bu programlama dili Guido Van Rossum adlı Hollandalı bir
 programcı\n'` adlı karakter dizisini çıkaracaktır. Dolayısıyla bizim bir seviye
 daha alta inerek, ilk ``for`` döngüsünden elde edilen değişken üzerinde başka bir
 ``for`` döngüsü daha kurmamız gerekiyor. Bu yüzden şöyle bir kod yazıyoruz::
-	
+
     for karakter_dizisi in hakkında:
         for karakter in karakter_dizisi:
         	...
-        	
+
 Böylece iç içe iki ``for`` döngüsü oluşturmuş oluyoruz. İsterseniz bu anlattığımız
 şeyleri daha net görmek için yine ``print()`` fonksiyonundan
 yararlanabilirsiniz::
-	
+
 	hakkında = open("hakkında.txt", encoding="utf-8")
-	
+
 	harf = input("Sorgulamak istediğiniz harf: ")
-	
+
 	sayı = 0
-	
+
 	for karakter_dizisi in hakkında:
 	    for karakter in karakter_dizisi:
 		print(karakter)
@@ -1951,14 +1951,14 @@ değişkeninin değerini `1` sayı artırıyoruz. Böylece en elimizde sorgulana
 harfin metin içinde kaç kez geçtiği bilgisi olmuş oluyor.
 
 Son olarak da, ilk başta açtığımız dosyayı kapatıyoruz::
-    
+
     hakkında.close()
 
 Nihayet bir konunun daha sonuna ulaştık. Döngüler ve döngülerle ilişkili
 araçları da epey ayrıntılı bir şekilde incelediğimize göre gönül rahatlığıyla
 bir sonraki konuya geçebiliriz.
 
-            
 
-    
+
+
 

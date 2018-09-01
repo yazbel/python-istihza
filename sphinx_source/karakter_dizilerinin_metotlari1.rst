@@ -20,7 +20,7 @@ istediğimiz gibi eğip bükebileceğiz.
 
 Geçen bölümün sonlarına doğru, bir karakter dizisinin hangi metotlara sahip
 olduğunu şu komut yardımıyla listeleyebileceğimizi öğrenmiştik::
-    
+
     >>> dir("")
 
 Bu komutu verdiğinizde aldığınız çıktıdan da gördüğünüz gibi, karakter
@@ -55,16 +55,16 @@ Peki bu metodu nasıl kullanacağız? Hemen bir örnek verelim::
 Burada `"elma"` değerini taşıyan `kardiz` adlı bir karakter dizisi tanımladık.
 Şimdi bu karakter dizisinin içinde geçen `"e"` harfini `"E"` ile değiştirelim.
 Dikkatlice bakın::
-    
+
     >>> kardiz.replace("e", "E")
-    
+
     'Elma'
 
 Gördüğünüz gibi, ``replace()`` son derece yararlı ve kullanımı oldukça kolay bir
 metot. Bu arada bu ilk metodumuz sayesinde Python'daki metotların nasıl
 kullanılacağı konusunda da bilgi edinmiş olduk. Yukarıdaki örneklerin bize
 gösterdiği gibi şöyle bir formülle karşı karşıyayız::
-    
+
     karakter_dizisi.metot(parametre)
 
 Metotlar karakter dizilerinden nokta ile ayrılır. Python'da bu yönteme 'noktalı
@@ -72,22 +72,22 @@ gösterim' (*dot notation*) adı verilir.
 
 Bu arada metotların görünüş ve kullanım olarak fonksiyonlara ne kadar
 benzediğine dikkat edin. Tıpkı fonksiyonlarda olduğu gibi, metotlar da birtakım
-parametreler alabiliyor. 
+parametreler alabiliyor.
 
 Yukarıdaki örnekte, ``replace()`` metodunun iki farklı parametre aldığını
 görüyoruz. Bu metoda verdiğimiz ilk parametre değiştirmek istediğimiz karakter
 dizisini gösteriyor. İkinci parametre ise birinci parametrede belirlediğimiz
 karakter dizisinin yerine ne koyacağımızı belirtiyor. Yani ``replace()`` metodu
 şöyle bir formüle sahiptir::
-    
+
     karakter_dizisi.replace(eski_karakter_dizisi, yeni_karakter_dizisi)
 
 Gelin isterseniz elimizin alışması için ``replace()`` metoduyla birkaç örnek
 daha verelim::
-    
+
     >>> kardiz = "memleket"
     >>> kardiz.replace("ket", "KET")
-    
+
     'memleKET'
 
 Burada gördüğünüz gibi, ``replace()`` metodu aynı anda birden fazla karakteri
@@ -100,13 +100,13 @@ yerine geçecek yeni karakter dizisini gösterdiğini söylemiştik. Aslında
 karakter dizisi içindeki karakterlerin kaç tanesinin değiştirileceğini gösterir.
 Eğer bu parametreyi belirtmezsek ``replace()`` metodu ilgili karakterlerin
 tamamını değiştirir. Yani::
-    
+
     >>> kardiz = "memleket"
-    
+
     >>> kardiz.replace("e", "")
-    
+
     'mmlkt'
-    
+
 Gördüğünüz gibi, ``replace()`` metodunu iki parametre ile kullanıp üçüncü
 parametreyi belirtmediğimizde, `"memleket"` kelimesi içindeki bütün `"e"`
 harfleri boş karakter dizisi ile değiştiriliyor (yani bir anlamda siliniyor).
@@ -114,7 +114,7 @@ harfleri boş karakter dizisi ile değiştiriliyor (yani bir anlamda siliniyor).
 Şimdi şu örneğe bakalım::
 
     >>> kardiz.replace("e", "", 1)
-    
+
     'mmleket'
 
 Burada ``replace()`` metodunu üçüncü bir parametre ile birlikte kullandık.
@@ -123,13 +123,13 @@ tek bir `"e"` harfini sildi.
 
 Bu üçüncü parametreyi, silmek istediğiniz harf sayısı kadar artırabilirsiniz.
 Mesela::
-    
+
     >>> kardiz.replace("e", "", 2)
-    
+
     'mmlket'
-    
+
     >>> kardiz.replace("e", "", 3)
-    
+
     'mmlkt'
 
 Burada ilk örnekte üçüncü parametre olarak `2` sayısını kullandığımız için,
@@ -142,11 +142,11 @@ Karakter dizileri konusunun ilk bölümünde 'değiştirilebilirlik' (*mutabilit
 söylediğimiz gibi, karakter dizileri değiştirilemeyen veri tipleridir.
 Dolayısıyla eğer bir karakter dizisi üzerinde değişiklik yapmak istiyorsanız, o
 karakter dizisini baştan tanımlamalısınız. Örneğin::
-    
+
     >>> meyve = "elma"
     >>> meyve = meyve.replace("e", "E")
     >>> meyve
-    
+
     'Elma'
 
 Böylece ``replace()`` metodunu incelemiş olduk. Sırada üç önemli metot var.
@@ -162,14 +162,14 @@ yer alan bütün kelimelerin ilk harfini nasıl alırız?
 
     >>> kardiz = "İstanbul Büyükşehir Belediyesi"
 
-Yani diyorum ki burada `"İBB"` gibi bir çıktıyı nasıl elde ederiz? 
+Yani diyorum ki burada `"İBB"` gibi bir çıktıyı nasıl elde ederiz?
 
 Sadece bu karakter dizisi söz konusu ise, elbette karakter dizilerinin
 dilimlenme özelliğinden yararlanarak, `kardiz` değişkeni içindeki `"İ"`, `"B"`,
 ve `"B"` harflerini tek tek alabiliriz::
-    
+
     >>> print(kardiz[0], kardiz[9], kardiz[20], sep="")
-    
+
     İBB
 
 Ancak bu yöntemin ne kadar kullanışsız olduğu ortada. Çünkü bu metot yalnızca
@@ -183,16 +183,16 @@ metodun adı ``split()``.
 Bu metodun görevi karakter dizilerini belli noktalardan bölmektir. Zaten *split*
 kelimesi Türkçede 'bölmek, ayırmak' gibi anlamlara gelir. İşte bu metot, üzerine
 uygulandığı karakter dizilerini parçalarına ayırır. Örneğin::
-    
+
     >>> kardiz = "İstanbul Büyükşehir Belediyesi"
     >>> kardiz.split()
-    
+
     ['İstanbul', 'Büyükşehir', 'Belediyesi']
 
 Gördüğünüz gibi bu metot sayesinde `"İstanbul Büyükşehir Belediyesi"` adlı
 karakter dizisini kelimelere bölmeyi başardık. Eğer bu çıktı üzerine bir ``for``
 döngüsü uygularsak şöyle bir sonuç elde ederiz::
-    
+
     >>> for i in kardiz.split():
     ...     print(i)
     ...
@@ -211,7 +211,7 @@ Burada kullanıcı hangi kurum adını girerse girsin, bu kurum adının her
 kelimesinin ilk harfi ekrana dökülecektir. Örneğin kullanıcı burada `"Türkiye
 Büyük Millet Meclisi"` ifadesini girmişse ``split()`` metodu öncelikle bu
 ifadeyi alıp şu şekle dönüştürür::
-    
+
     ['Türkiye', 'Büyük', 'Millet', 'Meclisi']
 
 Daha sonra biz bu çıktı üzerinde bir ``for`` döngüsü kurarsak bu kelime grubunun
@@ -226,18 +226,18 @@ karakter dizilerini bölerken boşluk karakterini ölçüt alacaktır. Yani kara
 dizisi içinde karşılaştığı her boşluk karakterinde bir bölme işlemi
 uygulayacaktır. Ama bazen istediğimiz şey, bir karakter dizisini boşluklardan
 bölmek değildir. Mesela şu örneğe bakalım::
-    
+
     >>> kardiz = "Bolvadin, Kilis, Siverek, İskenderun, İstanbul"
 
 Eğer bu karakter dizisi üzerine ``split()`` metodunu parametresiz olarak
 uygularsak şöyle bir çıktı elde ederiz::
-    
+
     ['Bolvadin,', 'Kilis,', 'Siverek,', 'İskenderun,', 'İstanbul']
 
 ``split()`` metoduna herhangi bir parametre vermediğimiz için bu metot karakter
 dizisi içindeki kelimeleri boşluklardan böldü. Bu yüzden karakter dizisi
 içindeki virgül işaretleri de bölünen kelimeler içinde görünüyor::
-    
+
     >>> kardiz = kardiz.split()
     >>> for i in kardiz:
     ...     print(i)
@@ -265,13 +265,13 @@ karakter dizisini boşluklardan değil de virgüllerden bölsek çok daha anlaml
 çıktı elde edebiliriz.
 
 Dikkatlice inceleyin::
-    
+
     >>> kardiz = "Bolvadin, Kilis, Siverek, İskenderun, İstanbul"
     >>> kardiz = kardiz.split(",")
     >>> print(kardiz)
 
     ['Bolvadin', ' Kilis', ' Siverek', ' İskenderun', ' İstanbul']
-    
+
     >>> for i in kardiz:
     ...     print(i)
     ...
@@ -286,7 +286,7 @@ bu kez boşluklardan değil virgüllerden böldü. Peki bunu nasıl başardı? A
 bu sorunun cevabı gayet net bir şekilde görünüyor. Dikkat ederseniz yukarıdaki
 örnekte ``split()`` metoduna parametre olarak virgül karakter dizisini verdik.
 Yani şöyle bir şey yazdık::
-    
+
     kardiz.split(",")
 
 Bu sayede ``split()`` metodu karakter dizisini virgüllerden bölmeyi başardı.
@@ -294,23 +294,23 @@ Tahmin edebileceğiniz gibi, ``split()`` metoduna hangi parametreyi verirseniz b
 metot ilgili karakter dizisini o karakterin geçtiği yerlerden bölecektir. Yani
 mesela siz bu metoda `"l"` parametresini verirseniz, bu metot da 'l' harfi geçen
 yerden karakter dizisini bölecektir::
-    
+
     >>> kardiz.split("l")
-    
+
     ['Bo', 'vadin, Ki', 'is, Siverek, İskenderun, İstanbu', '']
-    
+
     >>> for i in kardiz.split("l"):
     ...     print(i)
     ...
     Bo
     vadin, Ki
     is, Siverek, İskenderun, İstanbu
-    
+
 Eğer parametre olarak verdiğiniz değer karakter dizisi içinde hiç geçmiyorsa
 karakter dizisi üzerinde herhangi bir değişiklik yapılmaz::
-    
+
     >>> kardiz.split("z")
-    
+
     ['Bolvadin, Kilis, Siverek, İskenderun, İstanbul']
 
 Aynı şey, ``split()`` metodundan önce öğrendiğimiz ``replace()`` metodu için de
@@ -321,15 +321,15 @@ almıyorsa herhangi bir işlem yapılmaz.
 veya tek parametre ile kullanılır. Ama aslında bu metot ikinci bir parametre
 daha alır. Bu ikinci parametre, karakter dizisinin kaç kez bölüneceğini
 belirler::
-    
+
     >>> kardiz = "Ankara Büyükşehir Belediyesi"
-    
+
     >>> kardiz.split(" ", 1)
-    
+
     ['Ankara', 'Büyükşehir Belediyesi']
-    
+
     >>> kardiz.split(" ", 2)
-    
+
     ['Ankara', 'Büyükşehir', 'Belediyesi']
 
 Gördüğünüz gibi, ilk örnekte kullandığımız `1` sayısı sayesinde bölme işlemi
@@ -339,7 +339,7 @@ etkisiyle karakter dizimiz iki kez bölme işlemine maruz kaldı.
 Elbette, ``split()`` metodunun ikinci parametresini kullanabilmek için ilk
 parametreyi de mutlaka yazmanız gerekir. Aksi halde Python ne yapmaya
 çalıştığınızı anlayamaz::
-    
+
     >>> kardiz.split(2)
 
     Traceback (most recent call last):
@@ -357,7 +357,7 @@ virgül.
 
     >>> arkadaşlar = "Ahmet, Mehmet, Kezban, Mualla, Süreyya, Veli"
     >>> arkadaşlar.split(",", 3)
-    
+
     ['Ahmet', ' Mehmet', ' Kezban', ' Mualla, Süreyya, Veli']
 
 Burada da bölme ölçütü olarak virgül karakterini kullandık ve `arkadaşlar` adlı
@@ -367,7 +367,7 @@ karakter dizisi üzerine `3` kez bölme işlemi uyguladık. İlk bölme işlemi
 karakter dizisinin geri kalanını oluşturan `"Mualla, Süreyya, Veli"` kısmı ise
 herhangi bir bölme işlemine tabi tutulmadan tek parça olarak kaldı.
 
-``split()`` metoduyla son bir örnek verip yolumuza devam edelim. 
+``split()`` metoduyla son bir örnek verip yolumuza devam edelim.
 
 Bildiğiniz gibi `sys` modülünün `version` değişkeni bize bir karakter dizisi
 veriyor:
@@ -375,28 +375,28 @@ veriyor:
 .. parsed-literal::
 
     |version3-string|
-    
+
 Bu karakter dizisi içinden yalnızca sürüm kısmını ayıklamak için karakter
 dizilerinin dilimlenme özelliğinden yararlanabiliyoruz:
 
 .. parsed-literal::
-   
+
     >>> sürüm = sys.version
     >>> print(sürüm[:5])
-    
+
     |py3|
-    
+
 Bu işlemin bir benzerini ``split()`` metoduyla da yapabiliriz. Dikkatlice
 inceleyin:
 
 .. parsed-literal::
-    
+
     >>> sürüm = sys.version
     >>> sürüm.split()
-    
-    ['3.3.0', '(v3.3.0:bd8afb90ebf2,', 'Sep', '29', '2012,', '10:55:48)', 
+
+    ['3.3.0', '(v3.3.0:bd8afb90ebf2,', 'Sep', '29', '2012,', '10:55:48)',
      '[MSC', 'v.1600', '32', 'bit', '(Intel)]']
-     
+
 Gördüğünüz gibi, ``sys.version`` komutuna ``split()`` metodunu uyguladığımızda,
 üzerinde işlem yapması çok daha kolay olan bir veri tipi elde ediyoruz. Bu veri
 tipinin adı 'liste'. Önceki derslerimizde öğrendiğimiz ``dir()`` fonksiyonunun
@@ -411,9 +411,9 @@ Yukarıdaki örnekten de gördüğünüz gibi, ``sys.version`` komutunun çıkt�
 listenin ilk öğesi, kullandığımız Python serisinin sürüm numarasını verecektir:
 
 .. parsed-literal::
-    
+
     >>> print(sürüm.split()[0])
-    
+
     |py3|
 
 Böylece ``split()`` metodunu öğrenmiş olduk. Gelelim ``rsplit()`` metoduna...
@@ -423,7 +423,7 @@ Böylece ``split()`` metodunu öğrenmiş olduk. Gelelim ``rsplit()`` metoduna..
 sağa, ``rsplit()`` metodunun ise sağdan sola doğru okumasıdır. Şu örnekleri
 dikkatlice inceleyerek bu iki metot arasındaki farkı bariz bir şekilde
 görebilirsiniz::
-    
+
     >>> kardiz.split(" ", 1)
 
     ['Ankara', 'Büyükşehir Belediyesi']
@@ -446,15 +446,15 @@ dizisini satır satır ayırmak için kullanabiliriz. Mesela elinizde uzun bir m
 olduğunu ve amacınızın bu metin içindeki herbir satırı ayrı ayrı almak olduğunu
 düşünün. İşte ``splitlines()`` metoduyla bu amacınızı gerçekleştirebilirsiniz.
 Hemen bir örnek verelim::
-    
-    metin = """Python programlama dili Guido Van Rossum adlı Hollandalı bir programcı 
-    tarafından 90'lı yılların başında geliştirilmeye başlanmıştır. Çoğu insan, isminin 
-    Python olmasına bakarak, bu programlama dilinin, adını piton yılanından aldığını 
-    düşünür. Ancak zannedildiğinin aksine bu programlama dilinin adı piton yılanından 
-    gelmez. Guido Van Rossum bu programlama dilini, The Monty Python adlı bir İngiliz 
-    komedi grubunun, Monty Python's Flying Circus adlı gösterisinden esinlenerek 
-    adlandırmıştır. Ancak her ne kadar gerçek böyle olsa da, Python programlama 
-    dilinin pek çok yerde bir yılan figürü ile temsil edilmesi neredeyse bir gelenek 
+
+    metin = """Python programlama dili Guido Van Rossum adlı Hollandalı bir programcı
+    tarafından 90'lı yılların başında geliştirilmeye başlanmıştır. Çoğu insan, isminin
+    Python olmasına bakarak, bu programlama dilinin, adını piton yılanından aldığını
+    düşünür. Ancak zannedildiğinin aksine bu programlama dilinin adı piton yılanından
+    gelmez. Guido Van Rossum bu programlama dilini, The Monty Python adlı bir İngiliz
+    komedi grubunun, Monty Python's Flying Circus adlı gösterisinden esinlenerek
+    adlandırmıştır. Ancak her ne kadar gerçek böyle olsa da, Python programlama
+    dilinin pek çok yerde bir yılan figürü ile temsil edilmesi neredeyse bir gelenek
     halini almıştır diyebiliriz."""
 
     print(metin.splitlines())
@@ -463,15 +463,15 @@ Hemen bir örnek verelim::
 
 Bu programı çalıştırdığınızda şöyle bir çıktı alırsınız::
 
-    ['Python programlama dili Guido Van Rossum adlı Hollandalı bir programcı ', 
-    "tarafından 90'lı yılların başında geliştirilmeye başlanmıştır. Çoğu insan, 
-    isminin", 'Python olmasına bakarak, bu programlama dilinin, adını piton 
-    yılanından aldığını ', 'düşünür. Ancak zannedildiğinin aksine bu programlama 
-    dilinin adı piton yılanından ', 'gelmez. Guido Van Rossum bu programlama 
-    dilini, The Monty Python adlı bir İngiliz ', "komedi grubunun, Monty Python's 
-    Flying Circus adlı gösterisinden esinlenerek ", 'adlandırmıştır. Ancak her ne 
-    kadar gerçek böyle olsa da, Python programlama ', 'dilinin pek çok yerde bir 
-    yılan figürü ile temsil edilmesi neredeyse bir gelenek ', 'halini almıştır 
+    ['Python programlama dili Guido Van Rossum adlı Hollandalı bir programcı ',
+    "tarafından 90'lı yılların başında geliştirilmeye başlanmıştır. Çoğu insan,
+    isminin", 'Python olmasına bakarak, bu programlama dilinin, adını piton
+    yılanından aldığını ', 'düşünür. Ancak zannedildiğinin aksine bu programlama
+    dilinin adı piton yılanından ', 'gelmez. Guido Van Rossum bu programlama
+    dilini, The Monty Python adlı bir İngiliz ', "komedi grubunun, Monty Python's
+    Flying Circus adlı gösterisinden esinlenerek ", 'adlandırmıştır. Ancak her ne
+    kadar gerçek böyle olsa da, Python programlama ', 'dilinin pek çok yerde bir
+    yılan figürü ile temsil edilmesi neredeyse bir gelenek ', 'halini almıştır
     diyebiliriz.']
 
 Gördüğünüz gibi, metnimiz `Enter` tuşuna bastığımız noktalardan bölündü. Biz
@@ -485,15 +485,15 @@ daha anlamlı görünecek.
 ``splitlines()`` metodu yukarıdaki gibi parametresiz olarak kullanılabileceği
 gibi, bir adet parametre ile de kullanılabilir. Bunu bir örnek üzerinde
 gösterelim::
-    
-    metin = """Python programlama dili Guido Van Rossum adlı Hollandalı bir programcı 
-    tarafından 90'lı yılların başında geliştirilmeye başlanmıştır. Çoğu insan, isminin 
-    Python olmasına bakarak, bu programlama dilinin, adını piton yılanından aldığını 
-    düşünür. Ancak zannedildiğinin aksine bu programlama dilinin adı piton yılanından 
-    gelmez. Guido Van Rossum bu programlama dilini, The Monty Python adlı bir İngiliz 
-    komedi grubunun, Monty Python's Flying Circus adlı gösterisinden esinlenerek 
-    adlandırmıştır. Ancak her ne kadar gerçek böyle olsa da, Python programlama 
-    dilinin pek çok yerde bir yılan figürü ile temsil edilmesi neredeyse bir gelenek 
+
+    metin = """Python programlama dili Guido Van Rossum adlı Hollandalı bir programcı
+    tarafından 90'lı yılların başında geliştirilmeye başlanmıştır. Çoğu insan, isminin
+    Python olmasına bakarak, bu programlama dilinin, adını piton yılanından aldığını
+    düşünür. Ancak zannedildiğinin aksine bu programlama dilinin adı piton yılanından
+    gelmez. Guido Van Rossum bu programlama dilini, The Monty Python adlı bir İngiliz
+    komedi grubunun, Monty Python's Flying Circus adlı gösterisinden esinlenerek
+    adlandırmıştır. Ancak her ne kadar gerçek böyle olsa da, Python programlama
+    dilinin pek çok yerde bir yılan figürü ile temsil edilmesi neredeyse bir gelenek
     halini almıştır diyebiliriz."""
 
     print(metin.splitlines(True))
@@ -502,15 +502,15 @@ gösterelim::
 
 Bu programı çalıştırdığımızda şuna benzer bir sonuç elde ederiz::
 
-    ['Python programlama dili Guido Van Rossum adlı Hollandalı bir programcı \n', 
-    "tarafından 90'lı yılların başında geliştirilmeye başlanmıştır. Çoğu insan, 
-    isminin \n", 'Python olmasına bakarak, bu programlama dilinin, adını piton 
-    yılanından aldığını \n', 'düşünür. Ancak zannedildiğinin aksine bu programlama 
-    dilinin adı piton yılanından \n', 'gelmez. Guido Van Rossum bu programlama 
-    dilini, The Monty Python adlı bir İngiliz \n', "komedi grubunun, Monty 
-    Python's Flying Circus adlı gösterisinden esinlenerek \n", 'adlandırmıştır. 
-    Ancak her ne kadar gerçek böyle olsa da, Python programlama \n', 'dilinin pek 
-    çok yerde bir yılan figürü ile temsil edilmesi neredeyse bir gelenek \n', 
+    ['Python programlama dili Guido Van Rossum adlı Hollandalı bir programcı \n',
+    "tarafından 90'lı yılların başında geliştirilmeye başlanmıştır. Çoğu insan,
+    isminin \n", 'Python olmasına bakarak, bu programlama dilinin, adını piton
+    yılanından aldığını \n', 'düşünür. Ancak zannedildiğinin aksine bu programlama
+    dilinin adı piton yılanından \n', 'gelmez. Guido Van Rossum bu programlama
+    dilini, The Monty Python adlı bir İngiliz \n', "komedi grubunun, Monty
+    Python's Flying Circus adlı gösterisinden esinlenerek \n", 'adlandırmıştır.
+    Ancak her ne kadar gerçek böyle olsa da, Python programlama \n', 'dilinin pek
+    çok yerde bir yılan figürü ile temsil edilmesi neredeyse bir gelenek \n',
     'halini almıştır diyebiliriz.']
 
 .. highlight:: py3
@@ -561,7 +561,7 @@ Google açısından, aradığınız kelimeyi büyük ya da küçük harfle yazma
         print("şehir: istanbul")
 
     else:
-        print("Aradığınız kişi veritabanında yok!") 
+        print("Aradığınız kişi veritabanında yok!")
 
 Bu programın doğru çalışabilmesi için kullanıcının, örneğin, Ahmet Öz adlı
 kişiyi ararken büyük-küçük harfe dikkat etmesi gerekir. Eğer kullanıcı Ahmet Öz
@@ -600,7 +600,7 @@ için olasılıkları girmeye çalışmak eziyetten başka bir şey değildir...
         print("şehir: istanbul")
 
     else:
-        print("Aradığınız kişi veritabanında yok!") 
+        print("Aradığınız kişi veritabanında yok!")
 
 Artık kullanıcı 'ahmet öz' de yazsa, 'Ahmet Öz' de yazsa, hatta 'AhMeT öZ' de
 yazsa programımız doğru çalışacaktır. Peki bu nasıl oluyor? Elbette ``lower()``
@@ -611,25 +611,25 @@ dizisindeki bütün harfleri küçük harfe çeviriyor. Örneğin::
 
     >>> kardiz = "ELMA"
     >>> kardiz.lower()
-    
+
     'elma'
-    
+
     >>> kardiz = "arMuT"
     >>> kardiz.lower()
-    
+
     'armut'
-    
+
     >>> kardiz = "PYTHON PROGRAMLAMA"
     >>> kardiz.lower()
-    
+
     'python programlama'
 
 Eğer karakter dizisi zaten tamamen küçük harflerden oluşuyorsa bu metot hiçbir
 işlem yapmaz::
-    
+
     >>> kardiz = "elma"
     >>> kardiz.lower()
-    
+
     'elma'
 
 İşte verdiğimiz örnek programda da ``lower()`` metodunun bu özelliğinden
@@ -639,17 +639,17 @@ kullanıcıdan gelen veriyi yakalayabilecektir.
 
 Gördüğünüz gibi, son derece kolay ve kullanışlı bir metot bu. Ama bu metodun bir
 problemi var. Şu örneği dikkatlice inceleyin::
-    
+
     >>> il = "İSTANBUL"
     >>> print(il.lower())
-    
+
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
       File "C:\Python33\lib\encodings\cp857.py", line 19, in encode
         return codecs.charmap_encode(input,self.errors,encoding_map)[0]
     UnicodeEncodeError: 'charmap' codec can't encode character '\u0307' in position
     1: character maps to <undefined>
-    
+
 Buradaki problem 'İ' harfinden kaynaklanıyor. Python programlama dili bu harfi
 Türkçeye uygun bir şekilde küçültemediği için yukarıdaki hatayı alıyoruz.
 Yukarıdaki hatanın tam olarak ne anlama geldiğini birkaç bölüm sonra
@@ -657,18 +657,18 @@ anlayacaksınız. Biz şimdilik sadece Python'ın 'İ' harfini Türkçeye uygun 
 küçültemediğini bilelim yeter.
 
 Bir de şu örneğe bakalım::
-    
+
     >>> il = "ADIYAMAN"
     >>> print(il.lower())
-    
+
     adiyaman
 
 Gördüğünüz gibi, Python programlama dili 'I' harfini de düzgün küçültemiyor. 'I'
 harfinin küçük biçimi 'ı' olması gerekirken, bu metot 'I' harfini 'i' diye
 küçültüyor. Yani::
-    
+
     >>> "I".lower()
-    
+
     'i'
 
 Peki bu durumda ne yapacağız? Elimiz kolumuz bağlı oturacak mıyız? Elbette
@@ -680,8 +680,8 @@ rahatlıkla çözebiliriz::
 
     iller = iller.replace("I", "ı").replace("İ", "i").lower()
     print(iller)
-    
-Bu kodlarla yaptığımız şey çok basit: 
+
+Bu kodlarla yaptığımız şey çok basit:
 
     #. İlk ``replace()`` metoduyla karakter dizisi içinde geçen bütün 'I'
        harflerini, 'ı' ile değiştiriyoruz.
@@ -691,8 +691,8 @@ Bu kodlarla yaptığımız şey çok basit:
        harflerini küçültmüş olduk. Ancak öteki harfler henüz küçülmedi. O yüzden de
        karakter dizimiz üzerine bir de ``lower()`` metodunu uyguluyoruz. Böylece
        bütün harfler düzgün bir şekilde küçülmüş oluyor.
-    #. Bu kodlarda farklı metotları uç uca nasıl eklediğimize dikkat edin.   
-    
+    #. Bu kodlarda farklı metotları uç uca nasıl eklediğimize dikkat edin.
+
 Bu örnek size şunu göstermiş olmalı: Aslında programlama dediğimiz şey gerçekten
 de çok basit parçaların uygun bir şekilde birleştirilmesinden ibaret. Tıpkı bir
 yap-bozun parçalarını birleştirmek gibi...
@@ -712,7 +712,7 @@ harfleri küçültüyorduk. ``upper()`` metodu ise bu harfleri büyütmemizi sa�
 
     >>> kardiz = "kalem"
     >>> kardiz.upper()
-    
+
     'KALEM'
 
 ``lower()`` metodunu anlatırken, kullanıcıdan gelen verileri belli bir düzene
@@ -748,7 +748,7 @@ harfle girmesine bağlıdır. Örneğin programımız 'ADANA' cevabını kabul e
 ama mesela 'Adana' cevabını kabul etmeyecektir. Bunu engellemek için ``lower()``
 metodunu kullanabileceğimizi biliyoruz. Bu sorunu çözmek için aynı şekilde
 ``upper()`` metodunu da kullanabiliriz::
-    
+
     şehir = input("Hava durumunu öğrenmek için bir şehir adı girin: ")
 
     şehir = şehir.upper()
@@ -777,28 +777,28 @@ Dikkatlice inceleyin::
 
     >>> kardiz = "istanbul"
     >>> kardiz.upper()
-    
+
     'ISTANBUL'
- 
+
 ``lower()`` metodu Türkçe'deki 'I' harfini 'i' şeklinde küçültüyordu.
 ``upper()`` metodu ise 'i' harfini yanlış olarak 'I' şeklinde büyütüyor. Elbette
 bu sorun da çözülemeyecek gibi değil. Burada da ``lower()`` metodu için
 uyguladığımız yöntemin bir benzerini uygulayacağız::
-    
+
     iller = "istanbul, izmir, siirt, mersin"
-    
+
     iller = iller.replace("i", "İ").upper()
     print(iller)
 
 Bu kodlarla, önce karakter dizisi içinde geçen 'i' harflerini 'İ' ile
 değiştiriyoruz. Böylece şöyle bir şey elde etmiş oluyoruz::
-    
+
     İstanbul, İzmİr, sİİrt, mersİn
 
 Gördüğünüz gibi öteki harfler eski hallerinde kaldı. Öteki harfleri de
 büyütebilmek için karakter dizisine ``upper()`` metodunu uygulamamız yeterli
 olacaktır.
-    
+
 Bir sorunun daha üstesinden geldiğimize göre kendimizden emin bir şekilde bir
 sonraki metodumuzu incelemeye geçebiliriz.
 
@@ -822,15 +822,15 @@ Hemen bir örnek verelim::
 
     >>> kardiz = "istihza"
     >>> kardiz.islower()
-    
+
     True
 
 `"istihza"` tamamen küçük harflerden oluşan bir karakter dizisi olduğu için
 ``islower()`` sorgusu `True` çıktısı veriyor. Bir de şuna bakalım::
-    
+
     >>> kardiz = "Ankara"
     >>> kardiz.islower()
-    
+
     False
 
 `"Ankara"` ise içinde bir adet büyük harf barındırdığı için ``islower()``
@@ -840,7 +840,7 @@ Yazdığınız programlarda, örneğin, kullanıcıdan gelen verinin sadece kü�
 harflerden oluşmasını istiyorsanız bu metottan yararlanarak kullanıcıdan gelen
 verinin gerçekten tamamen küçük harflerden oluşup oluşmadığını
 denetleyebilirsiniz::
-    
+
     veri = input("Adınız: ")
 
     if not veri.islower():
@@ -850,17 +850,17 @@ denetleyebilirsiniz::
 Bildiğiniz gibi, ``upper()`` metodu bir karakter dizisini tamamen büyük
 harflerden oluşacak şekle getiriyordu. ``isupper()`` metodu ise bir karakter
 dizisinin tamamen büyük harflerden oluşup oluşmadığını sorguluyor::
-    
+
     >>> kardiz = "İSTİHZA"
     >>> kardiz.isupper()
-    
+
     True
-    
+
     >>> kardiz = "python"
     >>> kardiz.isupper()
-    
+
     False
-    
+
 Tıpkı ``islower()`` metodunda olduğu gibi, ``isupper()`` metodunu da
 kullanıcıdan gelen verinin büyük harfli mi yoksa küçük harfli mi olduğunu
 denetlemek için kullanabilirsiniz.
@@ -869,7 +869,7 @@ denetlemek için kullanabilirsiniz.
 yerlerde tamamı büyük harflerden oluşan kelimelerle yazması kaba bir davranış
 olarak kabul edilir. Kullanıcıların tamamı büyük harflerden oluşan kelimeler
 kullanmasını engellemek için yukarıdaki metotlardan yararlanabilirsiniz::
-    
+
     veri = input("mesajınız: ")
     böl = veri.split()
 
@@ -900,7 +900,7 @@ sorgulayabiliyoruz. Yani örneğin::
 
     >>> kardiz = "istihza"
     >>> kardiz.endswith("a")
-    
+
     True
 
 Burada, değeri `"istihza"` olan `kardiz` adlı bir karakter dizisi tanımladık.
@@ -908,9 +908,9 @@ Daha sonra da ``kardiz.endswith("a")`` ifadesiyle bu karakter dizisinin `"a"`
 karakteri ile bitip bitmediğini sorguladık. Gerçekten de `"istihza"` karakter
 dizisinin sonunda `"a"` karakteri bulunduğu için Python bize `True` cevabı
 verdi. Bir de şuna bakalım::
-    
+
     >>> kardiz.endswith("z")
-    
+
     False
 
 Bu defa da `False` çıktısı aldık. Çünkü karakter dizimiz 'z' harfiyle bitmiyor.
@@ -967,14 +967,14 @@ Bu metot, biraz önce gördüğümüz ``endswith()`` metodunun yaptığı işin 
 tersini yapar. Hatırlarsanız ``endswith()`` metodu bir karakter dizisinin hangi
 karakter veya karakterlerle bittiğini denetliyordu. ``startswith()`` metodu ise
 bir karakter dizisinin hangi karakter veya karakterlerle başladığını denetler::
-    
+
     >>> kardiz = "python"
     >>> kardiz.startswith("p")
-    
+
     True
-    
+
     >>> kardiz.startswith("a")
-    
+
     False
 
 Gördüğünüz gibi, eğer karakter dizisi gerçekten belirtilen karakterle başlıyorsa
@@ -1001,7 +1001,7 @@ Bu metodun gerçek hayatta nasıl kullanılabileceğine dair bir örnek verelim:
 
 Burada 'p' harfiyle başlayan bütün dosyaları listeledik. Elbette aynı etkiyi şu
 şekilde de elde edebilirsiniz::
-    
+
     for i in d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11:
         if i[0] == "p":
             print(i)
@@ -1009,14 +1009,14 @@ Burada 'p' harfiyle başlayan bütün dosyaları listeledik. Elbette aynı etkiy
 Sadece tek bir harfi sorguluyorsanız yukarıdaki yöntem de en az ``startswith()``
 metodunu kullanmak kadar pratiktir. Ama birden fazla karakteri sorguladığınız
 durumlarda elbette ``startswith()`` çok daha mantıklı bir tercih olacaktır::
-    
+
     for i in d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11:
         if i.startswith("py"):
             print(i)
 
 Yukarıda yazdığımız kodu dilimleme tekniğinden yararlanarak yeniden yazmak
 isterseniz şöyle bir şeyler yapmanız gerekiyor::
-    
+
     for i in d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11:
         if i[:2] == "py":
             print(i)

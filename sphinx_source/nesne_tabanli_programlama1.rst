@@ -1,9 +1,9 @@
-.. meta:: :description: Bu bölümde nesne tabanlı programlamadan söz edeceğiz. 
-          :keywords: python, python3, nesne, oop, sınıf, class, miras alma, 
+.. meta:: :description: Bu bölümde nesne tabanlı programlamadan söz edeceğiz.
+          :keywords: python, python3, nesne, oop, sınıf, class, miras alma,
            inheritance, nesne yönelimli programlama, nesne tabanlı programlama,
            object oriented programming, self, instantiation, instance, örnek,
            örneklendirme, örnekleme
-           
+
 .. highlight:: py3
 
 ***********************************
@@ -25,7 +25,7 @@ Giriş
 Şimdiye kadar Python programlama dili ile ilgili olarak gördüğümüz konulardan
 öğrendiğimiz çok önemli bir bilgi var: Aslına bakarsak, bu programlama dilinin
 bütün felsefesi, 'bir kez yazılan kodların en verimli şekilde tekrar tekrar
-kullanılabilmesi,' fikrine dayanıyor. 
+kullanılabilmesi,' fikrine dayanıyor.
 
 Şimdi bir geriye dönüp baktığımızda, esasında bu fikrin izlerini ta ilk
 derslerimize kadar sürebiliyoruz. Mesela değişkenleri ele alalım. Değişkenleri
@@ -39,7 +39,7 @@ Aynı fikrin fonksiyonlar ve geçen bölümde incelediğimiz modüller için de 
 olduğunu bariz bir şekilde görebilirsiniz. Gömülü fonksiyonlar, kendi
 tanımladığımız fonksiyonlar, hazır modüller, üçüncü şahıs modülleri hep belli
 bir karmaşık süreci basitleştirme, bir kez tanımlanan bir prosedürün tekrar
-tekrar kullanılabilmesini sağlama amacı güdüyor. 
+tekrar kullanılabilmesini sağlama amacı güdüyor.
 
 İşte bu fikir nesne tabanlı programlama ve dolayısıyla 'sınıf' (*class*) adı
 verilen özel bir veri tipi için de geçerlidir. Bu bölümde, bunun neden ve nasıl
@@ -60,7 +60,7 @@ zorunda mıyım?
 Bu sorunun kısa cevabı, eğer iyi bir programcı olmak istiyorsanız nesne tabanlı
 programlamayı öğrenmek zorundasınız, olacaktır.
 
-Uzun cevap ise şu: 
+Uzun cevap ise şu:
 
 Nesne tabanlı programlama, pek çok yazılım geliştirme yönteminden yalnızca
 biridir. Siz bu yöntemi, yazdığınız programlarda kullanmak zorunda değilsiniz.
@@ -120,26 +120,26 @@ hatta fonksiyonlar hep birer veri tipidir. Bu tiplerin, verileri çeşitli
 sınıflar da, tıpkı yukarıda saydığımız öteki veri tipleri gibi, verileri
 manipüle etmemizi sağlayan bir veri tipidir.
 
-Peki bu bölümde ele alacağımız 'sınıf' (*class*) veri tipi ne işe yarar? 
+Peki bu bölümde ele alacağımız 'sınıf' (*class*) veri tipi ne işe yarar?
 
 Dilerseniz bunu basit bir örnek üzerinde anlatmaya çalışalım.
 
 Diyelim ki, kullanıcının girdiği bir kelimedeki sesli harfleri sayan bir kod
 yazmak istiyorsunuz. Bu amacı gerçekleştirebilmek için yazabileceğiniz en basit
 kod herhalde şu olacaktır::
-    
+
     sesli_harfler = 'aeıioöuü'
     sayaç = 0
-    
+
     kelime = input('Bir kelime girin: ')
-    
+
     for harf in kelime:
         if harf in sesli_harfler:
             sayaç += 1
-          
+
     mesaj = '{} kelimesinde {} sesli harf var.'
     print(mesaj.format(kelime, sayaç))
-    
+
 Düzgün bir şekilde çalışan, gayet basit kodlardır bunlar. Ayrıca amacımızı da
 kusursuz bir şekilde yerine getirir. Üstelik kodlardaki bütün öğeler tek bir
 isim/etki alanı (*namespace*, *scope*) içinde bulunduğu için, bunlara erişimde
@@ -160,19 +160,19 @@ getirebiliriz::
 
     sesli_harfler = 'aeıioöuü'
     sayaç = 0
-    
+
     kelime = input('Bir kelime girin: ')
-    
+
     def seslidir(harf):
         return harf in sesli_harfler
-    
+
     for harf in kelime:
         if seslidir(harf):
             sayaç += 1
-          
+
     mesaj = '{} kelimesinde {} sesli harf var.'
     print(mesaj.format(kelime, sayaç))
-    
+
 Burada, kontrol ettiğimiz harfin `sesli_harfler` adlı değişken içinde bulunup
 bulunmamasına göre `True` veya `False` çıktısı veren, ``seslidir()`` adlı bir
 fonksiyon tanımladık. Eğer kontrol ettiğimiz harf `sesli_harfler` değişkeni
@@ -184,25 +184,25 @@ tekrar kullanma imkanı verecek.
 
 Eğer yukarıdaki kodları daha da genel amaçlı bir hale getirmek istersek, sayacı
 artıran kodları da bir fonksiyon içine almayı düşünebiliriz::
-    
+
     sesli_harfler = 'aeıioöuü'
     sayaç = 0
-    
+
     kelime = input('Bir kelime girin: ')
-    
+
     def seslidir(harf):
         return harf in sesli_harfler
-        
+
     def artır():
         global sayaç
         for harf in kelime:
             if seslidir(harf):
-                sayaç += 1     
+                sayaç += 1
         return sayaç
-          
+
     mesaj = '{} kelimesinde {} sesli harf var.'
     print(mesaj.format(kelime, artır()))
-       
+
 Hatırlarsanız, ilk başta yazdığımız kodların en büyük avantajının, kodlarda
 geçen bütün öğelerin tek bir isim/etki alanında bulunması olduğunu söylemiştik.
 Bu sayede bütün öğelere her yerden erişebiliyorduk. Yukarıdaki kodlarda ise
@@ -212,33 +212,33 @@ birden fazla isim/etki alanı var:
        global isim/etki alanı.
     #. ``seslidir()`` fonksiyonunun lokal isim/etki alanı.
     #. ``artır()`` fonksiyonunun lokal isim/etki alanı.
-    
+
 Bildiğiniz gibi, global isim alanında bulunan değişkenlere her yerden
 **ulaşabiliyoruz**. Ancak bunları her yerden **değiştiremiyoruz**. Yani mesela
 global isim alanında bulunan `sayaç` değişkeninin değerini, ``seslidir()``
 fonksiyonu içinden görüntüleyebiliriz.
 
 Bunu teyit edelim::
-    
+
     sesli_harfler = 'aeıioöuü'
     sayaç = 0
-    
+
     kelime = input('Bir kelime girin: ')
-    
+
     def seslidir(harf):
         print('sayaç değişkeninin değeri şu anda: ', sayaç)
         return harf in sesli_harfler
-        
+
     def artır():
         global sayaç
         for harf in kelime:
             if seslidir(harf):
-                sayaç += 1     
+                sayaç += 1
         return sayaç
-          
+
     mesaj = '{} kelimesinde {} sesli harf var.'
     print(mesaj.format(kelime, artır()))
-    
+
 Gördüğünüz gibi, global isim alanındaki `sayaç` değişkeninin değerini
 ``seslidir()`` fonksiyonu içinde kullanabildik. Ama eğer bu değişken üzerinde
 değişiklik yapacaksak ilave adımlar atmak zorundayız. Dolayısıyla, mesela
@@ -246,7 +246,7 @@ değişiklik yapacaksak ilave adımlar atmak zorundayız. Dolayısıyla, mesela
 değişkeni üzerinde değişiklik yapabilmek için ``global`` deyimini kullanmamız
 gerekiyor. Bu şekilde, global isim alanında bulunan `sayaç` adlı değişkenin
 değerini artırabiliyoruz.
-    
+
 Dikkat ederseniz, ``artır()`` fonksiyonunda iki tane global değişken var:
 `sayaç` ve `kelime`. Ama biz bunlardan yalnızca `sayaç` değişkenini global
 olarak belirledik. Öbür global değişkenimiz `kelime` için ise bu işlemi
@@ -257,24 +257,24 @@ belirlemek zorunda değiliz.
 Ancak bildiğiniz gibi, ``global`` deyimini kullanmak pek tavsiye edilen bir şey
 değil. Eğer siz de bu deyimi kullanmak istemezseniz, yukarıdaki kodları şu
 şekilde yazmayı yeğleyebilirsiniz::
-    
+
     sesli_harfler = 'aeıioöuü'
     sayaç = 0
-    
+
     kelime = input('Bir kelime girin: ')
-    
+
     def seslidir(harf):
         return harf in sesli_harfler
-        
+
     def artır(sayaç):
         for harf in kelime:
             if seslidir(harf):
-                sayaç += 1     
+                sayaç += 1
         return sayaç
-          
+
     mesaj = '{} kelimesinde {} sesli harf var.'
     print(mesaj.format(kelime, artır(sayaç)))
-    
+
 Gördüğünüz gibi, bu kodlarda ``global`` deyimini kullanmak yerine, ``artır()``
 fonksiyonuna verdiğimiz `sayaç` parametresi üzerinden global isim alanıyla
 iletişim kurarak, `sayaç` değişkenini manipüle edebildik. Sadece değerini
@@ -283,56 +283,56 @@ kalmadı.
 
 Bu arada, tabii ki, ``artır()`` fonksiyonunda parametre olarak kullandığımız
 kelime `sayaç` olmak zorunda değil. Kodlarımızı mesela şöyle de yazabilirdik::
-    
+
     sesli_harfler = 'aeıioöuü'
     sayaç = 0
-    
+
     kelime = input('Bir kelime girin: ')
-    
+
     def seslidir(harf):
         return harf in sesli_harfler
-        
+
     def artır(n):
         for harf in kelime:
             if seslidir(harf):
-                n += 1     
+                n += 1
         return n
-          
+
     mesaj = '{} kelimesinde {} sesli harf var.'
     print(mesaj.format(kelime, artır(sayaç)))
-        
+
 Önemli olan, ``artır()`` fonksiyonunun, bizim global isim alanıyla iletişim
 kurmamızı sağlayacak bir parametre alması. Bu parametrenin adının ne olduğunun
 bir önemi yok.
 
 Yukarıdaki kodlarda birkaç değişiklik daha yaparak, bu kodları iyice
 genişletilebilir hale getirebiliriz::
-     
+
     sesli_harfler = 'aeıioöuü'
     sayaç = 0
-    
+
     def kelime_sor():
         return input('Bir kelime girin: ')
-    
+
     def seslidir(harf):
         return harf in sesli_harfler
-    
+
     def artır(sayaç, kelime):
         for harf in kelime:
             if seslidir(harf):
                 sayaç += 1
         return sayaç
-    
+
     def ekrana_bas(kelime):
         mesaj = "{} kelimesinde {} sesli harf var."
         print(mesaj.format(kelime, artır(sayaç, kelime)))
-    
+
     def çalıştır():
         kelime = kelime_sor()
         ekrana_bas(kelime)
-    
+
     çalıştır()
-    
+
 Bu kodlarda, fonksiyonlara verdiğimiz parametreler yardımıyla, farklı
 fonksiyonların lokal etki alanlarında yer alan öğeler arasında nasıl iletişim
 kurduğumuza dikkat edin. Bir önceki kodlarda global etki alanında bulunan
@@ -392,9 +392,9 @@ aktaracağımızı inceleyelim.
 
 Şimdi, `sayac.py` programının bulunduğu dizin altında Python komut satırını
 başlatalım ve orada şu komutu vererek `sayac` modülünü içe aktaralım::
-    
+
     >>> import sayac
-    
+
 Bu komutu verdiğimiz anda, `sayac.py` programı çalışmaya başlayacaktır. Ancak
 bizim istediğimiz şey bu değil. Biz `sayac.py` programının çalışmaya başlamasını
 istemiyoruz. Bizim istediğimiz şey, bu `sayac.py` dosyasını bağımsız bir program
@@ -415,33 +415,33 @@ olarak aktararak, ilgili modül içindeki işlevleri kullanabilirsiniz.
 Diyelim ki biz, yukarıda yazdığımız `sayac.py` adlı dosya içindeki kodların
 düzgün çalışıp çalışmadığını kontrol etmek istiyoruz. Bunun için `sayac.py`
 dosyasındaki kodlarda şu değişikliği yapalım::
-    
+
     sesli_harfler = 'aeıioöuü'
     sayaç = 0
-    
+
     def kelime_sor():
         return input('Bir kelime girin: ')
-    
+
     def seslidir(harf):
         return harf in sesli_harfler
-    
+
     def artır(sayaç, kelime):
         for harf in kelime:
             if seslidir(harf):
                 sayaç += 1
         return sayaç
-    
+
     def ekrana_bas(kelime):
         mesaj = "{} kelimesinde {} sesli harf var."
         print(mesaj.format(kelime, artır(sayaç, kelime)))
-    
+
     def çalıştır():
         kelime = kelime_sor()
         ekrana_bas(kelime)
-    
+
     if __name__ == '__main__':
         çalıştır()
-        
+
 Gördüğünüz gibi, burada ``çalıştır()`` fonksiyonunu ``if __name__ ==
 '__main__'`` bloğuna aldık. Buna göre, eğer `__name__` niteliğinin değeri
 `'__main__'` ise ``çalıştır()`` fonksiyonu işlemeye başlayacak. Aksi halde
@@ -455,12 +455,12 @@ Dolayısıyla da ``çalıştır()`` fonksiyonu işlemeye başlar.
 
 Şimdi de etkileşimli kabuğu tekrar açın ve şu komutu vererek modülü içe
 aktarın::
-    
+
     >>> import sayac
-    
+
 Bu defa programımız çalışmaya başlamadı. Çünkü bu kez, programımızı bir modül
 olarak içe aktardığımız için, `__name__` niteliğinin değeri `'__main__'` değil,
-ilgili modülün adı oldu (yani bizim örneğimizde `sayac`). 
+ilgili modülün adı oldu (yani bizim örneğimizde `sayac`).
 
 Böylece `__name__` niteliğinin farklı durumlarda farklı bir değere sahip
 olmasından yararlanarak, programınızın farklı durumlarda farklı tepkiler
@@ -468,26 +468,26 @@ vermesini sağlamış olduk.
 
 `sayac` modülünü içe aktardıktan sonra, bu modülün içinde neler olduğunu nasıl
 kontrol edebileceğinizi biliyorsunuz::
-    
+
     >>> dir(sayac)
-    
-    ['__builtins__', '__cached__', '__doc__', '__file__', '__loader__', 
-     '__name__', '__package__', '__spec__', 'artır', 'ekrana_bas', 
+
+    ['__builtins__', '__cached__', '__doc__', '__file__', '__loader__',
+     '__name__', '__package__', '__spec__', 'artır', 'ekrana_bas',
      'kelime_sor', 'sayaç', 'sesli_harfler', 'seslidir', 'çalıştır']
-     
+
 Bu listede, `sayac` modülüne ait bütün nitelik ve fonksiyonları görebiliyoruz.
 Bunları, başka modüllerde olduğu gibi kullanma imkanına sahibiz.
 
 Mesela bu listede görünen ``seslidir()`` fonksiyonunu kullanalım::
-    
+
     >>> sayac.seslidir('ö')
-    
+
     True
-    
+
     >>> sayac.seslidir('ç')
-    
+
     False
-    
+
 Gördüğünüz gibi, `sayac.py` içinde tanımladığımız ``seslidir()`` fonksiyonunu,
 rastgele harflerin birer sesli harf olup olmadığını denetlemek için de
 kullanabiliyoruz. Bu şekilde aynı zamanda ``seslidir()`` fonksiyonunun düzgün
@@ -495,15 +495,15 @@ bir şekilde çalışıp çalışmadığını, sesli olan ve olmayan harfleri ba
 şekilde birbirinden ayırt edip edemediğini de test etmiş oluyoruz.
 
 Devam edelim::
-    
+
     >>> sayac.sesli_harfler
-    
+
     'aeıioöuü'
-    
+
 Modüllerin ne kadar faydalı araçlar olabileceğini bu örnek gayet net bir şekilde
 gösteriyor. Eğer ileride sesli harfleri kullanmamızı gerektiren başka bir
 program yazacak olursak, bu harfleri yeniden tanımlamak yerine, `sayac.py`
-dosyasından içe aktarabiliriz. 
+dosyasından içe aktarabiliriz.
 
 Bütün bu örnekler sayesinde, sınıfları daha iyi anlamamızı sağlayacak altyapıyı
 oluşturmuş, bir yandan da eski bilgilerimizi pekiştirmiş olduk. Dilerseniz,
@@ -518,33 +518,33 @@ kodların bize ne gibi faydalar sağlıyor olabileceğine dair fikir yürütmeye
 kısımlar ise yanınıza kâr kalsın.
 
 ::
-    
-    class HarfSayacı:      
+
+    class HarfSayacı:
         def __init__(self):
             self.sesli_harfler = 'aeıioöuü'
             self.sayaç = 0
-            
+
         def kelime_sor(self):
             return input('Bir kelime girin: ')
-            
+
         def seslidir(self, harf):
             return harf in self.sesli_harfler
-            
+
         def artır(self):
             for harf in self.kelime:
                 if self.seslidir(harf):
-                    self.sayaç += 1             
+                    self.sayaç += 1
             return self.sayaç
-            
+
         def ekrana_bas(self):
             mesaj = "{} kelimesinde {} sesli harf var."
             sesli_harf_sayısı = self.artır()
             print(mesaj.format(self.kelime, sesli_harf_sayısı))
-            
+
         def çalıştır(self):
             self.kelime = self.kelime_sor()
             self.ekrana_bas()
-    
+
     if __name__ == '__main__':
         sayaç = HarfSayacı()
         sayaç.çalıştır()
@@ -554,8 +554,8 @@ yolu, anlamadığınız kısmı kodlardan çıkarıp, kodları bir de o şekilde
 çalıştırmaktır. Mesela yukarıdaki `__init__`, `self` ve `class` gibi öğelerin
 ismini değiştirin, bunları kodlardan çıkarın veya başka bir yere koyun. Elde
 ettiğiniz sonuçları gözlemleyerek bu kodlar hakkında en azından bir fikir sahibi
-olabilirsiniz. 
-        
+olabilirsiniz.
+
 Gelin isterseniz, henüz yukarıdaki kodları anlayabilecek kadar sınıf bilgisine
 sahip olmasak da, bu kodları şöyle bir üstünkörü gözden geçirerek, bu kodların
 programcılık deneyimimiz açısından bize ne gibi bir katkı sunuyor olabileceğini
@@ -570,36 +570,36 @@ arasındaki ilişki gayet net bir şekilde görünüyor. Eğer ileride bu sayaca
 bir işlev eklemek istersek, neyi nereye yerleştirmemiz gerektiği çok açık.
 Mesela ilerde bu kodlara sesli harflerle birlikte bir de sessiz harf denetim
 işlevi eklemek istersek, gerekli değişiklikleri kolayca yapabiliriz::
-    
-    class HarfSayacı:      
+
+    class HarfSayacı:
         def __init__(self):
             self.sesli_harfler = 'aeıioöuü'
             self.sessiz_harfler = 'bcçdfgğhjklmnprsştvyz'
             self.sayaç_sesli = 0
             self.sayaç_sessiz = 0
-            
+
         def kelime_sor(self):
             return input('Bir kelime girin: ')
-            
+
         def seslidir(self, harf):
             return harf in self.sesli_harfler
-        
+
         def sessizdir(self, harf):
             return harf in self.sessiz_harfler
-            
+
         def artır(self):
             for harf in self.kelime:
                 if self.seslidir(harf):
-                    self.sayaç_sesli += 1 
+                    self.sayaç_sesli += 1
                 if self.sessizdir(harf):
                     self.sayaç_sessiz += 1
             return (self.sayaç_sesli, self.sayaç_sessiz)
-            
+
         def ekrana_bas(self):
             sesli, sessiz = self.artır()
             mesaj = "{} kelimesinde {} sesli {} sessiz harf var."
             print(mesaj.format(self.kelime, sesli, sessiz))
-            
+
         def çalıştır(self):
             self.kelime = self.kelime_sor()
             self.ekrana_bas()
@@ -607,7 +607,7 @@ işlevi eklemek istersek, gerekli değişiklikleri kolayca yapabiliriz::
     if __name__ == '__main__':
         sayaç = HarfSayacı()
         sayaç.çalıştır()
-    
+
 Ayrıca sınıflı kodlarda, farklı etki alanları ile iletişim kurmak, sınıfsız
 kodlara kıyasla daha zahmetsizdir. Sınıflı ve sınıfsız kodlarda fonksiyonlara
 verdiğimiz parametreleri birbirleri ile kıyaslayarak bu durumu kendiniz de
@@ -615,7 +615,7 @@ görebilirsiniz.
 
 Sınıflı yapıların daha pek çok avantajlı yönü vardır. İşte biz bu bölümde
 bunları size tek tek göstermeye çalışacağız.
-    
+
 Sınıf Tanımlamak
 ******************
 
@@ -644,45 +644,45 @@ Amacınız ne olursa olsun, atmanız gereken ilk adım, ilgili sınıfı tanıml
 olmalıdır. Zira fonksiyonlarda olduğu gibi, bir sınıfı kullanabilmek için de
 öncelikle o sınıfı tanımlamamız gerekiyor. Mesela, yukarıda bahsettiğimiz işe
 uygun olarak, `Çalışan` adlı bir sınıf tanımlayalım::
-    
+
     class Çalışan:
         pass
-        
+
 Yukarıdaki, boş bir sınıf tanımıdır. Hatırlarsanız fonksiyonları tanımlamak için
 `def` adlı bir ifadeden yararlanıyorduk. İşte sınıfları tanımlamak için de
 `class` adlı bir ifadeden yararlanıyoruz. Bu ifadenin ardından gelen
 `Çalışan` kelimesi ise bu sınıfın adıdır.
 
 Eğer arzu ederseniz, yukarıdaki sınıfı şu şekilde de tanımlayabilirsiniz::
-    
+
     class Çalışan():
         pass
-        
+
 Yani sınıf adından sonra parantez kullanmayabileceğiniz gibi, kullanabilirsiniz
 de. Her ikisi de aynı kapıya çıkar. Ayrıca sınıf adlarında, yukarıda olduğu gibi
 büyük harf kullanmak ve birden fazla kelimeden oluşan sınıf adlarının ilk
 harflerini büyük yazıp bunları birleştirmek adettendir. Yani::
-    
+
     class ÇalışanSınıfı():
         pass
-        
+
 Veya parantezsiz olarak::
-    
+
     class ÇalışanSınıfı:
         pass
-        
+
 Gördüğünüz gibi sınıf tanımlamak fonksiyon tanımlamaya çok benziyor.
 Fonksiyonları tanımlarken nasıl `def` deyimini kullanıyorsak, sınıfları
 tanımlamak için de `class` deyimini kullanıyoruz.
 
 Örnek olması açısından, yukarıda bahsettiğimiz 'Asker' grubu için de bir sınıf
 tanımlayalım::
-    
+
     class Asker:
         pass
-        
+
 ... veya::
-    
+
     class Asker():
         pass
 
@@ -695,13 +695,13 @@ Sınıf Nitelikleri
 Yukarıda, boş bir sınıfı nasıl tanımlayacağımızı öğrendik. Elbette
 tanımladığımız sınıflar hep boş kalmayacak. Bu sınıflara birtakım nitelikler
 ekleyerek bu sınıfları kullanışlı hale getirebiliriz. Mesela::
-    
+
     class Çalışan():
         kabiliyetleri = []
         unvanı = 'işçi'
-        
+
 Burada `unvanı` ve `kabiliyetleri` adlı iki değişken tanımladık. Teknik
-dilde bu değişkenlere 'sınıf niteliği' (*class attribute*) adı verilir. 
+dilde bu değişkenlere 'sınıf niteliği' (*class attribute*) adı verilir.
 
 Biraz önce, sınıf tanımlamayı öğrenirken sınıf tanımlamanın fonksiyon
 tanımlamaya çok benzediğini söylemiştik. Gerçekten de öyledir. Ancak
@@ -710,29 +710,29 @@ bulunur. Bildiğiniz gibi, bir fonksiyonu tanımladıktan sonra, o fonksiyonun
 işlemeye başlaması için, o fonksiyonun mutlaka çağrılması gerekir. Çağrılmayan
 fonksiyonlar çalışmaz. Mesela yukarıdaki sınıfa benzeyen şöyle bir fonksiyon
 tanımladığımızı düşünün::
-    
+
     def çalışan():
         kabiliyetleri = []
         unvanı = 'işçi'
-        
+
         print(kabiliyetleri)
         print(unvanı)
-        
+
 Bu fonksiyonun çalışması için, kodlarımızın herhangi bir yerinde bu fonksiyonu
 çağırmamız lazım::
-    
+
     çalışan()
-    
+
 Ancak sınıflar farklıdır. Bunu görmek için yukarıdaki fonksiyonu bir sınıf
 haline getirelim::
-    
+
     class Çalışan():
         kabiliyetleri = []
         unvanı = 'işçi'
-        
+
         print(kabiliyetleri)
         print(unvanı)
-        
+
 Bu kodları mesela `deneme.py` adlı bir dosyaya kaydedip çalıştırdığınızda,
 `unvanı` ve `kabiliyetleri` değişkenlerinin değerinin ekrana
 basıldığını göreceksiniz.
@@ -742,22 +742,22 @@ geçerlidir. Yani yukarıdaki kodların `deneme.py` adlı bir dosyada bulunduğu
 varsayarsak, bu modülü şu komutla içe aktardığımızda, sınıfı kodlarımızın
 herhangi bir yerinde çağırmamış olmamıza rağmen sınıf içeriği çalışmaya
 başlayacaktır::
-    
+
     >>> import deneme
-    
+
     []
     işçi
 
 Eğer sınıf niteliklerinin ne zaman çalışacağını kendiniz kontrol etmek
 isterseniz, bu nitelikleri sınıf dışında kullanabilirsiniz::
-    
+
     class Çalışan():
         kabiliyetleri = []
         unvanı = 'işçi'
-    
+
     print(Çalışan.kabiliyetleri)
     print(Çalışan.unvanı)
-    
+
 Burada ``Çalışan()`` adlı sınıfın niteliklerine nasıl eriştiğimize dikkat edin.
 Gördüğünüz gibi, sınıf niteliklerine erişmek için doğrudan sınıfın adını
 parantezsiz bir şekilde kullanıyoruz. Eğer sınıf adlarını parantezli bir şekilde
@@ -770,14 +770,14 @@ Hatırlarsanız, bu bölüme başlarken, nesne tabanlı programlama yaklaşımı
 tanımlamak gerektiğinde son derece kullanışlı olduğunu söylemiştik. Gelin
 isterseniz yukarıdaki ``Çalışan()`` sınıfına birkaç nitelik daha ekleyerek bu
 iddiamızı destekleyelim::
-    
+
     class Çalışan():
         kabiliyetleri = []
         unvanı = 'işçi'
         maaşı = 1500
         memleketi = ''
         doğum_tarihi = ''
-        
+
 Burada belli `kabiliyetleri`, `unvanı`, `maaşı`, `memleketi` ve `doğum_tarihi`
 olan bir ``Çalışan()`` sınıfı tanımladık. Yani 'Çalışan' adlı bir grubun ortak
 niteliklerini belirledik. Elbette her çalışanın memleketi ve doğum tarihi farklı
@@ -787,17 +787,17 @@ birer karakter dizisi olacağını belirten bir işaret olması için yalnızca
 
 Yukarıda tanımladığımız sınıf niteliklerine, doğrudan sınıf adını kullanarak
 erişebileceğimizi biliyorsunuz::
-    
+
     print(Çalışan.maaşı)
     print(Çalışan.memleketi)
     print(Çalışan.doğum_tarihi)
-    
+
 Eğer isterseniz bu sınıfa yeni sınıf nitelikleri de ekleyebilirsiniz::
-    
+
     Çalışan.isim = 'Ahmet'
     Çalışan.yaş = 40
-    
-Gayet güzel... 
+
+Gayet güzel...
 
 Ancak burada şöyle bir sorun var: Biz yukarıdaki gibi doğrudan sınıf adını
 kullanarak öğelere eriştiğimizde kodlarımız tek kullanımlık olmuş oluyor. Yani
@@ -807,18 +807,18 @@ Ama biz, mantıken, sınıf içinde belirtilen özellikleri taşıyan, Ahmet, Me
 Veli, Selim, Selin ve buna benzer, istediğimiz sayıda çalışan
 oluşturabilmeliyiz. Peki ama nasıl?
 
-Sınıfların Örneklenmesi 
+Sınıfların Örneklenmesi
 ************************
 
 Biraz önce şöyle bir sınıf tanımlamıştık::
-    
+
     class Çalışan():
         kabiliyetleri = []
         unvanı = 'işçi'
         maaşı = 1500
         memleketi = ''
         doğum_tarihi = ''
-        
+
 Daha önce de söylediğimiz gibi, sınıflar belli birtakım ortak özelliklere sahip
 gruplar tanımlamak için biçilmiş kaftandır. Burada da, herbir çalışan için ortak
 birtakım nitelikler tanımlayan ``Çalışan()`` adlı bir sınıf oluşturduk. Ancak
@@ -827,18 +827,18 @@ bu sınıfı temel alarak, bu sınıfta belirtilen nitelikleri taşıyan birden 
 sınıf üyesi meydana getirebilmemiz lazım.
 
 Şimdi dikkatlice bakın::
-    
+
     class Çalışan():
         kabiliyetleri = []
         unvanı = 'işçi'
         maaşı = 1500
         memleketi = ''
         doğum_tarihi = ''
-        
+
     ahmet = Çalışan()
-    
+
 Burada sınıfımızı `ahmet` adlı bir değişkene atadık.
-    
+
 İşte bu işleme teknik dilde 'örnekleme' veya 'örneklendirme' (*instantiation*)
 adı verilir. Bu işlemi fonksiyon çağırma ile kıyaslayabiliriz: Python
 programlama dilinde bir fonksiyonu kullanışlı hale getirme işlemine 'çağırma',
@@ -846,32 +846,32 @@ bir sınıfı kullanışlı hale getirme işlemine ise 'örnekleme' adı veriyor
 
 Örnekleme kavramını daha iyi anlayabilmek için başka bir sınıf daha
 oluşturalım::
-    
+
     class Asker():
         rütbesi = 'Er'
         standart_teçhizat = ['G3', 'kasatura', 'süngü', 'el bombası']
         gücü = 60
         birliği = ''
-        
+
 Burada da belli birtakım niteliklere sahip ``Asker()`` adlı bir sınıf
 tanımladık. Bu sınıfın niteliklerine doğrudan sınıf adını kullanarak
 erişebileceğimizi biliyorsunuz::
-    
+
     Asker.rütbesi
     Asker.standart_teçhizat
     Asker.gücü
     Asker.birliği
-    
+
 Ama bu sınıfın bir işe yarayabilmesi için, bu sınıfa bir 'referans' oluşturmamız
 lazım, ki daha sonra bu sınıfa bu referans üzerinden atıfta bulunabilelim. Yani
 bu sınıfı çağırırken buna bir isim vermeliyiz, ki bu isim üzerinden sınıfa ve
 niteliklerine erişebilelim.
-    
+
 Mesela bu sınıfa daha sonra atıfta bulunabilmek amacıyla, bu sınıf için `mehmet`
 adlı bir referans noktası oluşturalım::
-    
+
     mehmet = Asker()
-    
+
 İşte, teknik olarak ifade etmemiz gerekirse, sınıfları bir isme atama işlemine
 örnekleme (veya örneklendirme) adı veriyoruz.
 
@@ -885,11 +885,11 @@ bir deyişle 'örneği'dir (*instance*). `mehmet`'in, ``Asker()`` adlı sınıf�
  özellikle dikkatinizi çekmek isterim. Türkçede 'örnek' kelimesi ile
  karşıladığımız 'instance' kavramı, nesne tabanlı programlamanın önemli teknik
  kavramlarından biridir.
- 
+
 Biz bir sınıfı çağırdığımızda (yani ``Asker()`` veya ``Çalışan()`` komutunu
 verdiğimizde), o sınıfı örneklemiş oluyoruz. Örneklediğimiz sınıfı bir değişkene
 atadığımızda ise o sınıfın bir örneğini çıkarmış, yani o sınıfın bütün
-özelliklerini taşıyan bir üye meydana getirmiş oluyoruz. 
+özelliklerini taşıyan bir üye meydana getirmiş oluyoruz.
 
 Bu arada, elbette bu teknik terimleri ezberlemek zorunda değilsiniz. Ancak nesne
 tabanlı programlamaya ilişkin metinlerde bu terimlerle sık sık
@@ -903,7 +903,7 @@ nesne tabanlı programlama, pek çok çetrefilli teknik kavramı bünyesinde
 barındıran bir sistemdir. Bu nedenle öğrenciler bu konuya ilişkin bir şeyler
 okurken, muğlak kavramların arasında kaybolup konunun esasını gözden
 kaçırabiliyor. Eğer nesne tabanlı programlamaya ilişkin kavramları hakkıyla
-anlarsanız, bu yaklaşıma dair önemli bir engeli aşmışsınız demektir. 
+anlarsanız, bu yaklaşıma dair önemli bir engeli aşmışsınız demektir.
 
 Öte yandan, nesne tabanlı programlamaya ilişkin kavramları anlamak sadece Türkçe
 okuyup yazanlar için değil, aynı zamanda İngilizce bilip ilgili makaleleri özgün
@@ -915,17 +915,17 @@ Dolayısıyla, bir kavramdan bahsederken onun aslının ne olduğunu da belirtme
 sağlayacaktır.
 
 Ne diyorduk? Eğer elimizde şöyle bir kod varsa::
-    
+
     class Sipariş():
         firma = ''
         miktar = 0
         sipariş_tarihi = ''
         teslim_tarihi = ''
         stok_adedi = 0
-        
-        
-    jilet = Sipariş()   
-    
+
+
+    jilet = Sipariş()
+
 Burada `class`, sınıfı tanımlamamıza yarayan bir öğedir. Tıpkı fonksiyonlardaki
 `def` gibi, sınıfları tanımlamak için de `class` adlı bir parçacığı
 kullanıyoruz.
@@ -935,46 +935,46 @@ parantezsiz olarak kullanma imkanına sahibiz.
 
 Sınıfın gövdesinde tanımladığımız şu değişkenler birer sınıf niteliğidir (*class
 atribute*)::
-    
+
     firma = ''
     miktar = 0
     sipariş_tarihi = ''
     teslim_tarihi = ''
-    stok_adedi = 0    
+    stok_adedi = 0
 
 ``jilet = Sipariş()`` komutunu verdiğimizde ise, biraz önce tanımladığımız
 sınıfı örnekleyip (*instantiation*), bunu `jilet` adlı bir örneğe (*instance*)
 atamış oluyoruz. Yani `jilet`, ``Sipariş()`` adlı sınıfın bir örneği olmuş
 oluyor. Bir sınıftan istediğimiz sayıda örnek çıkarabiliriz::
-    
+
     kalem = Sipariş()
     pergel = Sipariş()
-    çikolata = Sipariş()   
-    
+    çikolata = Sipariş()
+
 Bu şekilde ``Sipariş()`` sınıfını üç kez örneklemiş, yani bu sınıfın bütün
 özelliklerini taşıyan üç farklı üye meydana getirmiş oluyoruz.
-    
+
 Bu sınıf örneklerini kullanarak, ilgili sınıfın niteliklerine (*attribute*)
 erişebiliriz::
-    
+
     kalem = Sipariş()
-    
+
     kalem.firma
     kalem.miktar
     kalem.sipariş_tarihi
     kalem.teslim_tarihi
     kalem.stok_adedi
-    
+
 Bildiğiniz gibi, eriştiğimiz bu nitelikler birer sınıf niteliği olduğu için,
 sınıfı hiç örneklemeden, bu niteliklere doğrudan sınıf adı üzerinden de
 erişebilirdik::
-    
+
     Sipariş.firma
     Sipariş.miktar
     Sipariş.sipariş_tarihi
     Sipariş.teslim_tarihi
     Sipariş.stok_adedi
-    
+
 Özellikle, örneklenmesine gerek olmayan, yalnızca bir kez çalışacak sınıflarda,
 sınıf niteliklerine örnekler üzerinden değil de doğrudan sınıf adı üzerinden
 erişmek daha pratik olabilir. Ancak yukarıda olduğu gibi, tek bir sınıftan,
@@ -988,44 +988,44 @@ Gelin şimdi yukarıda öğrendiklerimizi kullanarak ufak tefek uygulama çalı�
 yapalım.
 
 Sınıfımız şu olsun::
-    
+
     class Sipariş():
         firma = ''
         miktar = 0
         sipariş_tarihi = ''
         teslim_tarihi = ''
         stok_adedi = 0
-        
+
 Bildiğiniz gibi, ufak tefek kod çalışmaları yapmak için Python'ın etkileşimli
 kabuğu son derece uygun bir ortamdır. O halde yukarıdaki sınıfı `sipariş.py`
 adlı bir dosyaya kaydedelim, bu dosyanın bulunduğu konumda bir etkileşimli
 kabuk ortamı açalım ve `sipariş.py` dosyasını bir modül olarak içe aktaralım::
-    
+
     >>> import sipariş
-    
+
 Böylece `sipariş` modülü içindeki nitelik ve metotlara erişim sağladık. Bunu
 teyit edelim::
-    
+
     >>> dir(sipariş)
-    
-    ['Sipariş', '__builtins__', '__cached__', '__doc__', '__file__', 
+
+    ['Sipariş', '__builtins__', '__cached__', '__doc__', '__file__',
      '__loader__', '__name__', '__package__', '__spec__']
-     
+
 ``Sipariş()`` adlı sınıfı listenin en başında görebilirsiniz. O halde gelin bu
 sınıfı örnekleyerek kullanılabilir hale getirelim::
-    
+
     >>> gofret = sipariş.Sipariş()
-    
+
 Elbette ``Sipariş()`` adlı sınıf `sipariş` adlı modül içinde bulunduğundan, bu
 sınıfa `sipariş` önekiyle erişiyoruz. Tabii biz isteseydik modülü şu şekilde de
 içe aktarabilirdik::
-    
+
     >>> from sipariş import Sipariş
-    
+
 Böylece ``Sipariş()`` sınıfına öneksiz olarak erişebilirdik::
-    
+
     >>> gofret = Sipariş()
-    
+
 Ancak mevcut isim alanını kirletmemek ve bu alanı nereden geldiği belli olmayan
 birtakım nitelik ve metotlarla doldurmamak için biz ``import modül_adı``
 biçimini tercih ediyoruz. Aksi halde, bu kodları okuyanlar, ``Sipariş()`` adlı
@@ -1038,100 +1038,100 @@ kodlarımıza tekrar bakmak istediğimizde kendi işimizi kolaylaştırmış olu
 Neyse... Lafı daha fazla dolandırmadan kaldığımız yerden devam edelim...
 
 Sınıfımızı şu şekilde içe aktarmış ve örneklemiştik::
-    
+
     >>> import sipariş
     >>> gofret = sipariş.Sipariş()
-    
+
 Gelin şimdi bir de `gofret` örneğinin (*instance*) içeriğini kontrol edelim::
-    
+
     >>> dir(gofret)
-    
-    ['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', 
-     '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', 
-     '__hash__', '__init__', '__le__', '__lt__', '__module__', '__ne__', 
-     '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', 
-     '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'firma', 
+
+    ['__class__', '__delattr__', '__dict__', '__dir__', '__doc__',
+     '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__',
+     '__hash__', '__init__', '__le__', '__lt__', '__module__', '__ne__',
+     '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__',
+     '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'firma',
      'miktar', 'sipariş_tarihi', 'stok_adedi', 'teslim_tarihi']
-     
+
 Gördüğünüz gibi, sınıf içinde tanımladığımız bütün sınıf nitelikleri (`firma`,
 `miktar`, `sipariş_tarihi`, `stok_adedi` ve `teslim_tarihi`) bu liste içinde
-var. 
+var.
 
 Bu sınıf niteliklerinden, adı `firma` olanı kullanarak siparişin hangi firmadan
 yapılacağını belirleyebiliriz::
-    
+
     >>> gofret.firma = 'Öz İstihza ve Şerikleri Gıda, Ticaret Anonim Şirketi'
-    
+
 Böylece, sınıf içindeki bir niteliğe yeni bir değer atamış olduk. İsterseniz
 şipariş miktarını da belirleyelim::
-    
+
     >>> gofret.miktar = 1000
-    
+
 Öteki sınıf niteliklerini de ihtiyacınıza göre ayarlayabilir, hatta bu sınıfa
 yeni nitelikler de ekleyebilirsiniz.
 
 Gelin isterseniz pratik olması bakımından bir örnek daha verelim.
 
 Elimizde şöyle bir sınıf olsun::
-    
+
     class Çalışan():
         kabiliyetleri = []
         unvanı = 'işçi'
         maaşı = 1500
         memleketi = ''
         doğum_tarihi = ''
-        
+
 Burada `kabiliyetleri`, `unvanı`, `maaşı`, `memleketi` ve `doğum_tarihi` adlı
 beş adet değişken tanımladık. Teknik dilde bu değişkenlere 'sınıf niteliği'
 (*class attribute*) adı verildiğini biliyorsunuz.
 
 ``Çalışan()`` sınıfı içindeki niteliklere erişmek için birkaç tane örnek
 çıkaralım::
-    
+
     ahmet = Çalışan()
     mehmet = Çalışan()
     ayşe = Çalışan()
-    
+
 Bu şekilde ``Çalışan()`` sınıfının üç farklı örneğini oluşturmuş olduk. Bu
 sınıfın niteliklerine, oluşturduğumuz bu örnekler üzerinden erişebiliriz::
-    
+
     print(ahmet.kabiliyetleri)
     print(ahmet.unvanı)
-    
+
     print(mehmet.maaşı)
     print(mehmet.memleketi)
-    
+
     print(ayşe.kabiliyetleri)
     print(ayşe.doğum_tarihi)
 
 Çıkardığımız örnekler aracılığıyla sınıf nitelikleri üzerinde değişiklik de
 yapabiliyoruz::
-    
+
     ahmet.kabiliyetleri.append('prezantabl')
-        
+
 Şimdi burada bir duralım. Çünkü burada çok sinsi bir sorunla karşı karşıyayız.
 Dikkatlice bakın.
 
 ``Çalışan()`` sınıfı için bir `ahmet` örneği oluşturalım::
-    
+
     ahmet = Çalışan()
-    
+
 Buna 'prezantabl' kabiliyetini ekleyelim::
-    
+
     ahmet.kabiliyetleri.append('prezantabl')
-    
+
 Bu kabiliyetin eklendiğini teyit edelim::
-    
+
     print(ahmet.kabiliyetleri)
-    
+
 Şimdi ``Çalışan()`` sınıfının bir başka örneğini oluşturalım::
-    
+
     selim = Çalışan()
-    
+
 Bu örneğin kabiliyetlerini kontrol edelim::
-    
+
     print(selim.kabiliyetleri)
-    
+
 Gördüğünüz gibi, yalnızca `ahmet` örneğine eklemek istediğimiz 'prezantabl'
 kabiliyeti `selim` örneğine de eklenmiş. Ancak normal şartlarda arzu edilen bir
 şey değildir bu. Zira bu durum aslında programımızdaki bir tasarım hatasına
@@ -1152,10 +1152,10 @@ olabilir veya olmayabilir. Önemli olan, sınıf niteliklerinin bu özelliğinin
 farkında olmanız ve kodlarınızı bu bilgi çerçevesinde yazmanızdır. Mesela
 yukarıdaki örnekte `kabiliyetleri` listesine eklenen öğelerin bütün örneklere
 yansıması istediğimiz bir şey değil. Ama eğer sınıfımız şöyle olsaydı::
-    
+
     class Çalışan():
         personel_listesi = []
-        
+
 Burada `personel_listesi` adlı bir sınıf niteliği tanımladık. Eğer bu listenin,
 personele eklenen bütün elemanları barındırmasını planlıyorsak bu listenin her
 örneklemede büyümesi elbette istediğimiz bir şey olacaktır.
@@ -1163,7 +1163,7 @@ personele eklenen bütün elemanları barındırmasını planlıyorsak bu listen
 Peki o halde biz değerinin her örnekte ortak değil de her örneğe özgü olmasını
 istediğimiz nitelikleri nasıl tanımlayacağız? Elbette sınıf nitelikleri yerine
 örnek nitelikleri denen başka bir kavramdan yararlanarak...
-        
+
 Örnek Nitelikleri
 ******************
 
@@ -1183,29 +1183,29 @@ niteliklerini içeriyordu. Mesela yukarıda tanımladığımız ``Çalışan()``
 içindeki `unvanı` ve `kabiliyetleri` adlı değişkenlerin birer sınıf
 niteliği olduğunu biliyoruz.
 
-Sınıf nitelikleri dışında, Python'da bir de örnek nitelikleri bulunur. 
+Sınıf nitelikleri dışında, Python'da bir de örnek nitelikleri bulunur.
 
 Bildiğiniz gibi, Python'da sınıf niteliklerini tanımlamak için yapmamız gereken
 tek şey, sınıf tanımının hemen altına bunları alelade birer değişken gibi
 yazmaktan ibarettir::
-    
+
     class Sınıf():
         sınıf_niteliği1 = 0
         sınıf_niteliği2 = 1
-        
+
 Örnek niteliklerini tanımlamak için ise iki yardımcı araca ihtiyacımız var:
-``__init__()`` fonksiyonu ve `self`. 
+``__init__()`` fonksiyonu ve `self`.
 
 Bu iki aracı şu şekilde kullanıyoruz::
-    
+
     class Çalışan():
         def __init__(self):
             self.kabiliyetleri = []
-            
+
 Bu arada, ``__init__()`` fonksiyonunun nasıl yazıldığına dikkat ediyoruz. `init`
 kelimesinin sağında ve solunda ikişer adet alt çizgi (`_`) bulunduğunu gözden
 kaçırmıyoruz. Ayrıca, ``__init__()`` fonksiyonunu `def` ifadesine bitişik
-yazmamaya da bilhassa özen gösteriyoruz.     
+yazmamaya da bilhassa özen gösteriyoruz.
 
 'init' kelimesinin solunda ve sağında bulunan alt çizgiler sizi sakın
 ürkütmesin. Aslında ``__init__()``, alelade bir fonksiyondan başka bir şey
@@ -1220,52 +1220,52 @@ olacaksınız.
 
 Hatırlarsanız, sınıf niteliklerini anlatırken bunların önemli bir özelliğinin,
 sınıfın çağrılmasına gerek olmadan çalışmaya başlaması olduğunu söylemiştik::
-    
+
     class Çalışan():
         selam = 'merhaba'
         print(selam)
-        
+
 Bu kodları çalıştırdığımız anda ekrana 'merhaba' çıktısı verilecektir. Örnek
 nitelikleri ise farklıdır::
-    
+
     class Çalışan():
         def __init__(self):
             self.kabiliyetleri = []
             print(self.kabiliyetleri)
-            
+
 Bu kodları çalıştırdığınızda herhangi bir çıktı almazsınız. Bu kodların çıktı
 verebilmesi için sınıfımızı mutlaka örneklememiz lazım::
-    
+
     class Çalışan():
         def __init__(self):
             self.kabiliyetleri = []
             print(self.kabiliyetleri)
-            
+
     Çalışan()
-    
+
 Çünkü `self.kabiliyetleri` bir sınıf niteliği değil, bir örnek niteliğidir.
 Örnek niteliklerine erişebilmek için de ilgili sınıfı mutlaka örneklememiz
 gerekir. Ayrıca sınıf niteliklerinin aksine, örnek niteliklerine sınıf adları
 üzerinden erişemeyiz. Yani `self.kabiliyetleri` adlı örnek niteliğine erişmeye
 yönelik şöyle bir girişim bizi hüsrana uğratacaktır::
-    
+
     Çalışan.kabiliyetleri
-    
+
 Bu örnek niteliğine erişmek için örneklendirme mekanizmasından yararlanmamız
 lazım::
-    
-    Çalışan().kabiliyetleri #parantezlere dikkat!   
-    
+
+    Çalışan().kabiliyetleri #parantezlere dikkat!
+
 Gelin isterseniz, örneklendirme işlemini daha kullanışlı bir hale getirmek için,
 örneklendirdiğimiz sınıfı bir örneğe atayalım, yani bu sınıfın bir örneğini
 çıkaralım::
-                
+
     ahmet = Çalışan()
 
 ``ahmet = Çalışan()`` kodu yardımıyla, ``Çalışan`` sınıfının bir örneğini
 çıkardık ve buna `ahmet` adını verdik. İşte tam bu anda ``__init__()``
 fonksiyonu çalışmaya başladı ve `ahmet` örneği için, `kabiliyetleri` adlı boş
-bir örnek niteliği oluşturdu. 
+bir örnek niteliği oluşturdu.
 
 Peki yukarıda kodlarımızı yazarken ``__init__()`` fonksiyonuna parametre olarak
 verdiğimiz ve `kabiliyetleri` listesinin başında kullandığımız `self` kelimesi
@@ -1277,37 +1277,37 @@ sınıfın örneklerini temsil eder. Peki 'self kelimesinin bir sınıfın örne
 temsil ediyor olması' ne anlama geliyor?
 
 Bildiğiniz gibi, bir sınıfın örneğini şu şekilde çıkarıyoruz::
-    
+
     ahmet = Çalışan()
-    
+
 Bu `ahmet` örneğini kullanarak, ``Çalışan()`` sınıfının içindeki `kabiliyetleri`
 adlı örnek niteliğine sınıf dışından erişebiliriz::
-    
+
     print(ahmet.kabiliyetleri)
-    
+
 İşte `self` kelimesi, yukarıdaki kodda yer alan `ahmet` kelimesini temsil
 ediyor. Yani ``ahmet.kabiliyetleri`` şeklinde bir kod yazabilmemizi sağlayan
 şey, ``__init__()`` fonksiyonu içinde belirttiğimiz `self` kelimesidir. Eğer bu
 kelimeyi kullanmadan şöyle bir kod yazarsak::
-    
+
     class Çalışan():
         def __init__():
             kabiliyetleri = []
-            
+
 ...artık aşağıdaki kodlar yardımıyla `kabiliyetleri` niteliğine erişemeyiz::
-            
+
     ahmet = Çalışan()
     print(ahmet.kabiliyetleri)
 
 Şimdi aynı kodları bir de şöyle yazalım::
-    
+
     class Çalışan():
         def __init__(self):
             kabiliyetleri = []
-            
+
     ahmet = Çalışan()
     print(ahmet.kabiliyetleri)
-    
+
 Burada ``__init__()`` fonksiyonunda ilk parametre olarak `self`'i belirttik. Ama
 `kabiliyetleri` niteliğinin başına `self` eklemedik. Dolayısıyla yazdığımız
 kodlar yine hata verdi. Çünkü, ``ahmet.kabiliyetleri`` şeklinde
@@ -1319,18 +1319,18 @@ için kullanmıyoruz. Bunları aynı zamanda sınıf niteliklerine erişmek içi
 kullanabiliyoruz. Dolayısıyla eğer yukarıdaki sınıf tanımı içinde,
 `self.kabiliyetleri` adlı *örnek niteliği*'nin yanısıra `personel` adlı bir
 *sınıf niteliği* de bulunsaydı::
-    
+
     class Çalışan():
         personel = ['personel']
-        
+
         def __init__(self):
             self.kabiliyetleri = []
-            
+
 Şu kodları yazdığımızda::
-            
+
     ahmet = Çalışan()
-    print(ahmet.personel)  
-    
+    print(ahmet.personel)
+
 ...o sınıf niteliğine erişebilirdik. Ancak eğer ``__init__()`` fonksiyonu
 altındaki `kabiliyetleri` niteliğine erişmek istiyorsak, bu niteliğin başına
 `self` kelimesini getirerek, bu niteliği bir *örnek niteliği* haline getirmeli
@@ -1350,10 +1350,10 @@ bir *örnek niteliği* bulmaya çalışır. Eğer bulamazsa, Python bu kez
 hata verir...
 
 Gelin isterseniz bu mekanizmayı teyit edelim::
-    
+
     class Çalışan():
         kabiliyetleri = ['sınıf niteliği']
-        
+
         def __init__(self):
             self.kabiliyetleri = ['örnek niteliği']
 
@@ -1362,10 +1362,10 @@ niteliğimiz var. Python'da hem sınıf niteliklerine, hem de örnek nitelikleri
 örnek isimleri üzerinden erişebileceğimizi söylemiştik. Yani eğer örneğimizin
 ismi `ahmet` ise, hem `kabiliyetleri` adlı sınıf niteliğine hem de
 `self.kabiliyetleri` adlı örnek niteliğine aynı şekilde erişiyoruz::
-            
+
     ahmet = Çalışan()
     print(ahmet.kabiliyetleri)
-    
+
 Peki ama acaba yukarıdaki kodlar bize örnek niteliğini mi verir, yoksa sınıf
 niteliğini mi?
 
@@ -1378,25 +1378,25 @@ kodları çalıştırarak siz de bu durumu teyit edebilirsiniz. Zira bu kodlar b
 verecektir...
 
 Peki ya siz sınıf niteliği olan `kabiliyetleri` listesine erişmek isterseniz ne
-olacak? 
-    
+olacak?
+
 İşte bunun için, sınıf örneğini değil de, sınıf adını kullanacaksınız::
-    
+
     class Çalışan():
         kabiliyetleri = ['sınıf niteliği']
-        
+
         def __init__(self):
             self.kabiliyetleri = ['örnek niteliği']
-    
+
     #sınıf niteliğine erişmek için
     #sınıf adını kullanıyoruz
     print(Çalışan.kabiliyetleri)
-    
+
     #örnek niteliğine erişmek için
     #örnek adını kullanıyoruz
     ahmet = Çalışan()
     print(ahmet.kabiliyetleri)
-       
+
 Ancak elbette, aynı adı taşıyan bir sınıf niteliği ile bir örnek niteliğini aynı
 sınıf içinde tanımlamak daha baştan iyi bir fikir değildir, ama yazdığınız bir
 sınıf yanlışlıkla aynı ada sahip sınıf ve örnek nitelikleri tanımlamanız
@@ -1410,15 +1410,15 @@ Ayrıca bu `self` kelimesini de, örnek niteliğinin bulunduğu fonksiyonun
 parametre listesinde ilk sıraya yerleştirmiş olmalıyız. Unutmayın, örnek
 nitelikleri sadece fonksiyonlar içinde tanımlanabilir. Fonksiyon dışında örnek
 niteliği tanımlayamazsınız. Yani şöyle bir şey yazamazsınız::
-    
+
     class Çalışan():
         self.n = 0
-        
+
         def __init__(self):
-            self.kabiliyetleri = []    
-            
+            self.kabiliyetleri = []
+
 Çünkü `self` kelimesi ancak ve ancak, içinde geçtiği fonksiyonun parametre
-listesinde ilk sırada kullanıldığında anlam kazanır. 
+listesinde ilk sırada kullanıldığında anlam kazanır.
 
 Bu noktada size çok önemli bir bilgi verelim: Python sınıflarında örnek
 niteliklerini temsil etmesi için kullanacağınız kelimenin `self` olması şart
@@ -1428,7 +1428,7 @@ Mesela::
     class Çalışan():
         def __init__(falanca):
             falanca.kabiliyetleri = []
-        
+
 Dediğimiz gibi, `self` kelimesi, bir sınıfın örneklerini temsil ediyor. Siz
 sınıf örneklerini hangi kelimenin temsil edeceğini kendiniz de
 belirleyebilirsiniz. Mesela yukarıdaki örnekte, ``__init__()`` fonksiyonunun ilk
@@ -1437,11 +1437,11 @@ kelimesi ile temsil edilmesini sağlamış olduk. Python'da bu konuya ilişkin k
 şudur: Sınıf içindeki bir fonksiyonun ilk parametresi ne ise, o fonksiyon
 içindeki örnek niteliklerini temsil eden kelime de odur. Örneğin, eğer şöyle bir
 sınıf tanımlamışsak::
-    
+
     class XY():
         def __init__(a, b, c):
             a.örnek_niteliği = []
-            
+
 Burada ``__init__()`` fonksiyonunun ilk parametresi `a` olduğu için, örnek
 niteliğini temsil eden kelime de `a` olur. Dolayısıyla `örnek_niteliği` adlı
 örnek niteliğimizin başına da önek olarak bu `a` kelimesini getiriyoruz.
@@ -1449,12 +1449,12 @@ niteliğini temsil eden kelime de `a` olur. Dolayısıyla `örnek_niteliği` adl
 ``__init__()`` fonksiyonunun ilk parametresi `a` olarak belirlendikten sonra,
 bu fonksiyon içindeki bütün örnek nitelikleri, önek olarak `a` kelimesini
 alacaktır::
-    
+
     class XY():
         def __init__(a, b, c):
             a.örnek_niteliği1 = []
             a.örnek_niteliği2 = 23
-            a.örnek_niteliği3 = 'istihza'          
+            a.örnek_niteliği3 = 'istihza'
 
 ANCAK! Her ne sebeple olursa olsun, örnek niteliklerini temsil etmek için `self`
 dışında bir kelime kullanmayın. Python bu kelimeyi bize dayatmasa da, `self`
@@ -1467,21 +1467,21 @@ için, ilgili fonksiyonun parametre listesinde ilk sırada belirtiliyor olması
 lazım. Zaten bu yüzden, dediğimiz gibi, `self` kelimesinin Python açısından bir
 özelliği yoktur. Yani şöyle bir kod yazmamızın, Python söz dizimi açısından
 hiçbir sakıncası bulunmaz::
-    
+
     class Çalışan():
         def __init__(osman):
             osman.kabiliyetleri = []
-            
+
 Çünkü Python, örnek niteliklerini temsil eden kelimenin ne olduğuyla asla
 ilgilenmez. Python için önemli olan tek şey, temsil işi için herhangi bir
 kelimenin belirlenmiş olmasıdır. Tabii, biz, daha önce de ısrarla söylediğimiz
 gibi, örnek niteliklerini `self` dışında bir kelime ile temsil etmeye teşebbüs
 etmeyeceğiz ve kodlarımızı şu şekilde yazmaktan şaşmayacağız::
-    
+
     class Çalışan():
         def __init__(self):
             self.kabiliyetleri = []
-    
+
 İşte yukarıdaki kodda gördüğümüz `self` parametresi ve `self` öneki,
 birbirlerine bağımlı kavramlardır. Fonksiyonun ilk parametresi ne ise, örnek
 niteliklerinin öneki de o olacaktır.
@@ -1489,49 +1489,49 @@ niteliklerinin öneki de o olacaktır.
 Bu arada, örnek niteliklerini anlatmaya başlamadan önce sınıf niteliklerine
 ilişkin sinsi bir durumdan söz etmiştik hatırlarsanız. Buna göre, eğer elimizde
 şöyle bir kod varsa::
-    
+
     class Çalışan():
         kabiliyetleri = []
-        
+
 Biz bu sınıf içindeki `kabiliyetleri` listesine ekleme yaptığımızda, bu durum o
 sınıfın bütün örneklerini etkiliyordu.
 
 Yukarıdaki kodları `deneme.py` adlı bir dosyaya kaydettiğimizi varsayarsak::
-    
+
     >>> import deneme
     >>> ahmet = deneme.Çalışan()
     >>> ahmet.kabiliyetleri.append('konuşkan')
     >>> ahmet.kabiliyetleri
-    
+
     ['konuşkan']
-    
+
     >>> mehmet = deneme.Çalışan()
     >>> print(mehmet.kabiliyetleri)
-    
+
     ['konuşkan']
-    
+
 İşte bu durumu önlemek için örnek metotlarından yararlanabiliyoruz::
-    
+
     class Çalışan():
         def __init__(self):
             self.kabiliyetleri = []
-    
+
 
 Yukarıdaki kodları yine `deneme.py` adlı bir dosyaya kaydettiğimizi
 varsayarsak::
-    
+
     >>> import deneme
     >>> ahmet = deneme.Çalışan()
     >>> ahmet.kabiliyetleri.append('konuşkan')
     >>> ahmet.kabiliyetleri
-    
+
     ['konuşkan']
-    
+
     >>> mehmet = deneme.Çalışan()
     >>> print(mehmet.kabiliyetleri)
-    
+
     []
-      
+
 Gördüğünüz gibi, `ahmet` örneğine eklediğimiz 'konuşkan' öğesi, olması gerektiği
 gibi, `mehmet` örneğinde bulunmuyor. Birazdan bu konu üzerine birkaç kelam daha
 edeceğiz.
@@ -1545,32 +1545,32 @@ kullanarak az çok anlamlı bir şeyler yazmaya çalışalım. Böylece hem şim
 kadar öğrendiklerimizi gözden geçirmiş ve pekiştirmiş oluruz, hem de bu bölümde
 ele alacağımız 'örnek metotları' (*instance methods*) kavramını anlamamız
 kolaylaşır::
-    
+
     class Çalışan():
         personel = []
-        
+
         def __init__(self, isim):
             self.isim = isim
             self.kabiliyetleri = []
             self.personele_ekle()
-            
+
         def personele_ekle(self):
             self.personel.append(self.isim)
             print('{} adlı kişi personele eklendi'.format(self.isim))
-            
+
         def personeli_görüntüle(self):
             print('Personel listesi:')
             for kişi in self.personel:
                 print(kişi)
-            
+
         def kabiliyet_ekle(self, kabiliyet):
             self.kabiliyetleri.append(kabiliyet)
-            
+
         def kabiliyetleri_görüntüle(self):
             print('{} adlı kişinin kabiliyetleri:'.format(self.isim))
             for kabiliyet in self.kabiliyetleri:
                 print(kabiliyet)
-                
+
 Sınıfımızı tanımladık. Gelin isterseniz bu kodları açıklamaya başlamadan önce
 nasıl kullanacağımızı görelim.
 
@@ -1582,19 +1582,19 @@ etmek için etkileşimli kabuğu sıklıkla kullanacaksınız.
 O halde, yukarıdaki kodları barındıran dosyanın bulunduğu dizin altında bir
 etkileşimli kabuk oturumu başlatalım ve dosya adının `çalışan.py` olduğunu
 varsayarak kodlarımızı bir modül şeklinde içe aktaralım::
-    
+
     >>> import çalışan
-    
+
 Daha sonra sınıfımızın iki farklı örneğini çıkaralım::
-            
+
     >>> ç1 = çalışan.Çalışan('Ahmet')
-    
+
     Ahmet adlı kişi personele eklendi
-    
+
     >>> ç2 = çalışan.Çalışan('Mehmet')
-    
+
     Mehmet adlı kişi personele eklendi
-    
+
 Bu şekilde `çalışan` adlı modül içindeki ``Çalışan()`` adlı sınıfı sırasıyla
 `'Ahmet'` ve `'Mehmet'` parametreleri ile çağırarak `ç1` ve `ç2` adlı iki farklı
 sınıf örneği oluşturmuş olduk. Bu arada, sınıfımızı örneklediğimiz anda
@@ -1605,56 +1605,56 @@ sınıf örneği oluşturmuş olduk. Bu arada, sınıfımızı örneklediğimiz 
 ``__init__()`` fonksiyonu içinden çağırdığımız için, sınıfımızı
 örneklediğimiz anda hem personelin kendisi personel listesine eklendi, hem
 de bu kişinin personele eklendiğine dair bir mesaj gösterildi.
-    
+
 Tanımladığımız sınıfın niteliklerine, çıkardığımız örnekler üzerinden
 erişebiliriz::
-    
+
     >>> ç1.isim
-    
+
     'Ahmet'
-    
+
     >>> ç2.isim
-    
+
     'Mehmet'
-    
+
 Yine bu örnekler üzerinden, bu nitelikleri değiştirebiliriz de::
-    
+
     >>> ç1.isim = 'Mahmut'
     >>> ç1.personel[0] = 'Mahmut'
-    
+
 Böylece ilk çalışanın ismini 'Mahmut' olarak değiştirdik::
-    
+
     >>> ç1.isim
-    
+
     'Mahmut'
-    
+
     >>> ç1.personel
-    
+
     ['Mahmut', 'Mehmet']
-    
+
 Tanımladığımız sınıf içindeki fonksiyonları kullanarak, çalışanlarımıza birkaç
 kabiliyet ekleyelim::
-    
+
     >>> ç1.kabiliyet_ekle('prezantabl')
     >>> ç1.kabiliyet_ekle('konuşkan')
-    
+
 `ç1` örneğinin kabiliyetlerini görüntüleyelim::
-    
+
     >>> ç1.kabiliyetleri_görüntüle()
-    
+
     Mahmut adlı kişinin kabiliyetleri:
     prezantabl
     konuşkan
-    
+
 Şimdi de `ç2` örneğine bir kabiliyet ekleyelim ve eklediğimiz kabiliyeti
 görüntüleyelim::
-    
+
     >>> ç2.kabiliyet_ekle('girişken')
     >>> ç2.kabiliyetleri_görüntüle()
-    
+
     Mehmet adlı kişinin kabiliyetleri:
     girişken
-    
+
 Gördüğünüz gibi, bir sınıf örneğine eklediğimiz kabiliyet öteki sınıf
 örneklerine karışmıyor. Bu, örnek niteliklerinin sınıf niteliklerinden önemli
 bir farkıdır. Zira sınıf nitelikleri bir sınıfın bütün örnekleri tarafından
@@ -1663,9 +1663,9 @@ sonra daha ayrıntılı olarak söz edeceğiz. Biz şimdilik okumaya devam edeli
 
 Sınıf örneklerimizin herhangi biri üzerinden personel listesine de
 ulaşabileceğimizi biliyoruz::
-    
+
     >>> ç1.personeli_görüntüle()
-    
+
     Personel listesi:
     Mahmut
     Mehmet
@@ -1676,42 +1676,42 @@ Yukarıda anlattıklarımız sınıflar hakkında size epey fikir vermiş olmal�
 daha da derinlemesine anlayabilmek için, artık bu sınıfı incelemeye geçebiliriz.
 
 Sınıfımızı önümüze alalım::
-    
+
     class Çalışan():
         personel = []
-    
+
         def __init__(self, isim):
             self.isim = isim
             self.kabiliyetleri = []
             self.personele_ekle()
-    
+
         def personele_ekle(self):
             self.personel.append(self.isim)
             print('{} adlı kişi personele eklendi'.format(self.isim))
-    
+
         def personeli_görüntüle(self):
             print('Personel listesi:')
             for kişi in self.personel:
                 print(kişi)
-    
+
         def kabiliyet_ekle(self, kabiliyet):
             self.kabiliyetleri.append(kabiliyet)
-    
+
         def kabiliyetleri_görüntüle(self):
             print('{} adlı kişinin kabiliyetleri:'.format(self.isim))
             for kabiliyet in self.kabiliyetleri:
                 print(kabiliyet)
-   
+
 Burada öncelikle her zamanki gibi sınıfımızı tanımlıyoruz::
-    
+
     class Çalışan():
         ...
-        
+
 Daha sonra bu sınıfa `personel` adlı bir sınıf niteliği ekliyoruz::
-    
+
     class Çalışan():
         personel = []
-        
+
 Sınıf niteliklerinin özelliği, o sınıfın bütün örnekleri tarafından paylaşılıyor
 olmasıdır. Yani herhangi bir örneğin bu nitelik üzerinde yaptığı değişiklik,
 öteki örneklere de yansıyacaktır. Hele bir de bu sınıf niteliği, listeler gibi
@@ -1731,12 +1731,12 @@ devam edelim...
 
 Sınıfımızı ve sınıf niteliğimizi tanımladıktan sonra ``__init__()`` adlı özel
 fonksiyonumuzu oluşturuyoruz::
-    
+
     def __init__(self, isim):
         self.isim = isim
         self.kabiliyetleri = []
         self.personele_ekle()
-        
+
 Bu fonksiyonun özelliği, sınıfın örneklenmesi ile birlikte otomatik olarak
 çalıştırılacak olmasıdır. Biz burada, `self.isim` ve `self.kabiliyetleri` adlı
 iki adet örnek niteliği tanımladık. Bu örnek niteliklerine sınıfımızın her
@@ -1744,9 +1744,9 @@ tarafından erişebileceğiz.
 
 Yukarıda, tanımladığımız sınıfı nasıl kullanacağımızı gösterirken, ``Çalışan()``
 sınıfını şu şekilde örneklediğimizi hatırlıyorsunuz::
-    
+
     >>> ç1 = çalışan.Çalışan('Ahmet')
-    
+
 Burada sınıfımızı `'Ahmet'` adlı bir argümanla örneklediğimize dikkatinizi
 çekmek isterim. İşte bu argüman, biraz önce ``__init__()`` fonksiyonunu
 tanımlarken belirttiğimiz `isim` parametresine karşılık geliyor. Dolayısıyla,
@@ -1755,9 +1755,9 @@ fonksiyonunun parametreleri olarak tanımlıyoruz.
 
 Daha sonra bu `isim` parametresini, ``__init__()`` fonksiyonunun gövdesi içinde
 bir örnek niteliği haline getiriyoruz::
-    
+
     self.isim = isim
-    
+
 Bunu yapmamızın gerekçesi, `isim` parametresini sınıfımızın başka bölgelerinde
 de kullanabilmek. `self` kelimesini parametremizin başına yerleştirerek, bu
 parametreyi sınıfın başka yerlerinden de erişilebilir hale getiriyoruz.
@@ -1767,9 +1767,9 @@ dönüştürdükten sonra `self.kabiliyetleri` adlı bir başka örnek niteliği
 tanımlıyoruz. Bu liste, sınıf örneklerine eklediğimiz kabiliyetleri tutacak.
 
 Bunun ardından şöyle bir kod görüyoruz::
-    
+
     self.personele_ekle()
-    
+
 Burada, ``personele_ekle()`` adlı bir örnek metoduna (*instance method*) atıfta
 bulunuyoruz. Örnek metotları, bir sınıfın örnekleri vasıtasıyla çağrılabilen
 fonksiyonlardır. Bu fonksiyonların ilk parametresi her zaman `self` kelimesidir.
@@ -1778,7 +1778,7 @@ kullanıyoruz. Tıpkı yukarıdaki örnekte olduğu gibi...
 
 Bir örnek metodu olduğunu söylediğimiz ``personele_ekle()`` fonksiyonunu şu
 şekilde tanımladık::
-    
+
     def personele_ekle(self):
         self.personel.append(self.isim)
         print('{} adlı kişi personele eklendi'.format(self.isim))
@@ -1797,7 +1797,7 @@ yazabilirdiniz::
     def personele_ekle(self):
         Çalışan.personel.append(self.isim)
         print('{} adlı kişi personele eklendi'.format(self.isim))
-        
+
 Bir öncekinden farklı olarak, bu defa sınıf niteliğine doğrudan sınıf adını
 (`Çalışan`) kullanarak eriştik.
 
@@ -1810,20 +1810,20 @@ kodu ile (yani yine `self` kelimesini kullanarak) çağırdığımızı hatırl�
 
 ``personele_ekle()`` fonksiyonunun ardından arka arkaya üç fonksiyon daha
 tanımladık::
-    
+
     def personeli_görüntüle(self):
         print('Personel listesi:')
         for kişi in self.personel:
             print(kişi)
-        
+
     def kabiliyet_ekle(self, kabiliyet):
         self.kabiliyetleri.append(kabiliyet)
-        
+
     def kabiliyetleri_görüntüle(self):
         print('{} adlı kişinin kabiliyetleri:'.format(self.isim))
         for kabiliyet in self.kabiliyetleri:
             print(kabiliyet)
-            
+
 Bu fonksiyonlar da, tıpkı ``personele_ekle()`` gibi, birer örnek metodudur. Bu
 örnek metotlarının da ilk parametrelerinin hep `self` olduğuna dikkat ediyoruz.
 Örnek metotlarına sınıf dışından örnek isimleri (`ahmet`, `mehmet` gibi)
@@ -1835,23 +1835,23 @@ aracılığıyla eriştiğimizi biliyorsunuz.
 Bu noktaya kadar epey konuştuk, epey örnek verdik. Sınıflar hakkında yeterince
 bilgi sahibi olduğumuza göre, nihayet en başta verdiğimiz harf sayacı kodlarını
 rahatlıkla anlayabilecek düzeye eriştik::
-    
+
     class HarfSayacı:
         def __init__(self):
             self.sesli_harfler = 'aeıioöuü'
             self.sessiz_harfler = 'bcçdfgğhjklmnprsştvyz'
             self.sayaç_sesli = 0
             self.sayaç_sessiz = 0
-    
+
         def kelime_sor(self):
             return input('Bir kelime girin: ')
-    
+
         def seslidir(self, harf):
             return harf in self.sesli_harfler
-    
+
         def sessizdir(self, harf):
             return harf in self.sessiz_harfler
-    
+
         def artır(self):
             for harf in self.kelime:
                 if self.seslidir(harf):
@@ -1859,82 +1859,82 @@ rahatlıkla anlayabilecek düzeye eriştik::
                 if self.sessizdir(harf):
                     self.sayaç_sessiz += 1
             return (self.sayaç_sesli, self.sayaç_sessiz)
-    
+
         def ekrana_bas(self):
             sesli, sessiz = self.artır()
             mesaj = "{} kelimesinde {} sesli {} sessiz harf var."
             print(mesaj.format(self.kelime, sesli, sessiz))
-    
+
         def çalıştır(self):
             self.kelime = self.kelime_sor()
             self.ekrana_bas()
-    
+
     if __name__ == '__main__':
         sayaç = HarfSayacı()
         sayaç.çalıştır()
-        
+
 Gelin isterseniz bu kodlara da şöyle bir bakalım...
 
 Burada sınıfımızı şu şekilde tanımladık::
-    
+
     class HarfSayacı:
         ...
-        
+
 Sınıf adını parantezli bir şekilde yazabileceğimizi de biliyorsunuz::
-    
+
     class HarfSayacı():
         ...
-        
+
 Daha sonra, ``__init__()`` fonksiyonu içinde dört adet örnek niteliği
 tanımladık::
-    
+
     self.sesli_harfler = 'aeıioöuü'
     self.sessiz_harfler = 'bcçdfgğhjklmnprsştvyz'
     self.sayaç_sesli = 0
     self.sayaç_sessiz = 0
-    
+
 Bunların birer örnek niteliği olduğunu, başlarına getirdiğimiz `self`
 kelimesinden anlıyoruz. Çünkü bildiğiniz gibi, `self` kelimesi, ilgili sınıfın
 örneklerini temsil ediyor. Bir sınıf içinde örnek niteliklerine ve örnek
 metotlarına hep bu `self` kelimesi aracılığıyla erişiyoruz.
-        
+
 Bu sınıf içinde, ilk parametreleri `self` olan şu örnek metotlarını görüyoruz::
-    
+
     def kelime_sor(self):
         ...
-        
+
     def seslidir(self, harf):
         ...
-        
+
     def sessizdir(self, harf):
         ...
-        
+
     def artır(self):
         ...
-        
+
     def ekrana_bas(self):
         ...
-        
+
     def çalıştır(self):
         ...
 
 Sınıfla birlikte bütün örnek değişkenlerini ve örnek metotlarını tanımladıktan
 sonra programımızı çalıştırma aşamasına geliyoruz::
-    
+
     if __name__ == '__main__':
         sayaç = HarfSayacı()
         sayaç.çalıştır()
-        
+
 Buna göre, eğer programımız bağımsız olarak çalıştırılıyorsa öncelikle
 ``HarfSayacı()`` adlı sınıfı örneklendiriyoruz::
-    
+
     sayaç = HarfSayacı()
-    
+
 Daha sonra da `sayaç` örneği üzerinden ``HarfSayacı()`` adlı sınıfın
-``çalıştır()`` metoduna erişerek programımızı başlatıyoruz. 
+``çalıştır()`` metoduna erişerek programımızı başlatıyoruz.
 
 Böylece, Python'da nesne tabanlı programlama ve sınıflara dair öğrenmemiz
 gereken bütün temel bilgileri edinmiş olduk. Şu ana kadar öğrendikleriniz
 sayesinde, etrafta göreceğiniz sınıflı kodların büyük bölümünü anlayabilecek
 durumdasınız. Bir sonraki bölümde, nesne tabanlı programlamanın ayrıntılarına
-inmeye başlayacağız. 
+inmeye başlayacağız.

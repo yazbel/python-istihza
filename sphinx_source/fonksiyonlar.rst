@@ -1,5 +1,5 @@
 .. meta::
-   :description: Bu bölümde fonksiyonlar konusunu inceleyeceğiz. 
+   :description: Bu bölümde fonksiyonlar konusunu inceleyeceğiz.
    :keywords: python, fonksiyon
 
 .. highlight:: py3
@@ -46,25 +46,25 @@ fonksiyonların görünüşüne ve yapısına dair herhalde şu tespitleri yapab
 
     #. Her fonksiyonun bir adı bulunur ve fonksiyonlar sahip oldukları bu
        adlarla anılır. (``print`` fonksiyonu, ``open`` fonksiyonu, ``type``
-       fonksiyonu, ``input`` fonksiyonu, ``len`` fonksiyonu vb.)  
-    
+       fonksiyonu, ``input`` fonksiyonu, ``len`` fonksiyonu vb.)
+
     #. Şekil olarak, her fonksiyonun isminin yanında birer parantez işareti
        bulunur. (``open()``, ``print()``, ``input()``, ``len()`` vb.)
-    
+
     #. Bu parantez işaretlerinin içine, fonksiyonlara işlevsellik kazandıran
        bazı parametreler yazılır. (``open(dosya_adı)``, ``print("Merhaba Zalim
-       Dünya!")``, ``len("kahramanmaraş")`` vb.)    
-       
+       Dünya!")``, ``len("kahramanmaraş")`` vb.)
+
     #. Fonksiyonlar farklı sayıda parametre alabilir. Örneğin ``print()``
        fonksiyonu toplam `256` adet parametre alabilirken, ``input()`` fonksiyonu
-       yalnızca tek bir parametre alır.    
-    
+       yalnızca tek bir parametre alır.
+
     #. Fonksiyonların isimli ve isimsiz parametreleri vardır. ``print()``
        fonksiyonundaki `sep`, `end` ve `file` parametreleri isimli parametrelere
        örnekken, mesela ``print("Merhaba Dünya!")`` kodunda `Merhaba Dünya!`
        parametresi isimsiz bir parametredir. Aynı şekilde ``input("Adınız: ")``
        gibi bir kodda `Adınız:` parametresi isimsiz bir parametredir.
-    
+
     #. Fonksiyonların, isimli ve isimsiz parametreleri dışında, bir de
        varsayılan değerli parametreleri vardır. Örneğin ``print()`` fonksiyonunun
        `sep`, `end` ve `file` parametreleri varsayılan değerli parametrelere birer
@@ -73,7 +73,7 @@ fonksiyonların görünüşüne ve yapısına dair herhalde şu tespitleri yapab
        parametrelere, belirli değerleri öntanımlı olarak kendisi atayacaktır. Tabii
        eğer istersek, varsayılan değerli parametrelere kendimiz de başka birtakım
        değerler verebiliriz.
-    
+
 Fonksiyon kavramının tam olarak ne olduğunu henüz bilmiyor da olsak, şimdiye
 kadar öğrendiğimiz fonksiyonlara bakarak fonksiyonlar hakkında yukarıdaki
 çıkarımları yapabiliyoruz. Demek ki aslında fonksiyonlar hakkında alttan alta
@@ -92,8 +92,8 @@ istersek şöyle bir tanımlama yapabiliriz:
     toplayabiliriz. Python'daki 'fonksiyon' kavramı başka programlama dillerinde
     'rutin' veya 'prosedür' olarak adlandırılır. Gerçekten de fonksiyonlar
     rutin olarak tekrar edilen görevleri veya prosedürleri tek bir ad/çatı
-    altında toplayan araçlardır.** 
-    
+    altında toplayan araçlardır.**
+
 Dilerseniz yukarıdaki soyut ifadeleri basit bir örnek üzerinde somutlaştırmaya
 çalışalım. Örneğin ``print()`` fonksiyonunu ele alalım.
 
@@ -103,21 +103,21 @@ kullanıcının girdiği parametreleri ekrana çıktı olarak vermektir. Her ne 
 aslında bu fonksiyon, ekrana çıktı vermenin yanısıra, başka bir takım ilave
 işlemler de yapar. Yani bu fonksiyon, aslında aldığı parametreleri sadece ekrana
 çıktı olarak vermekle yetinmez. Örneğin şu komutu inceleyelim::
-    
+
     >>> print("Fırat", "Özgül", "1980", "Adana")
 
 Burada ``print()`` fonksiyonu toplam dört adet parametre alıyor. Fonksiyonumuz,
 görevi gereği, bu parametreleri ekrana çıktı olarak verecek. Bu komutu
 çalıştırdığımızda şöyle bir çıktı alıyoruz::
-    
+
     Fırat Özgül 1980 Adana
 
 Dikkat ederseniz, burada salt bir 'ekrana çıktı verme' işleminden fazlası var.
 Zira ``print()`` fonksiyonu aldığı parametreleri şu şekilde de ekrana
 verebilirdi::
-    
+
     FıratÖzgül1980Adana
-    
+
 Veya şu şekilde::
 
     F
@@ -147,11 +147,11 @@ Gelin isterseniz ne demek istediğimizi biraz daha açıklayalım:
 ``print()`` fonksiyonunun yukarıdaki komutu nasıl algıladığını önceki
 derslerimizde öğrenmiştik. Yukarıdaki komut Python tarafından şu şekilde
 algılanıyor::
-    
-    >>> print("Fırat", "Özgül", "1980", "Adana", sep=" ", end="\n", 
+
+    >>> print("Fırat", "Özgül", "1980", "Adana", sep=" ", end="\n",
     ... file=sys.stdout, flush=False)
-    
-Yani ``print()`` fonksiyonu; 
+
+Yani ``print()`` fonksiyonu;
 
 #. Kendisine verilen `"Fırat"`, `"Özgül"`, `"1980"` ve `"Adana"`
    parametrelerini ekrana basıyor,
@@ -163,11 +163,11 @@ Yani ``print()`` fonksiyonu;
    bastıktan sonra bir alt satıra geçiyor,
 
 #. `file=sys.stdout` parametresinin etkisiyle, çıktı konumu olarak komut
-   ekranını kullanıyor. Yani çıktıları ekrana veriyor.  
+   ekranını kullanıyor. Yani çıktıları ekrana veriyor.
 
 #. `flush=False` parametresinin etkisiyle, çıktılar ekrana gönderilmeden önce
    tamponda bekletiliyor.
-    
+
 Eğer ``print()`` gibi bir fonksiyon olmasaydı, yukarıda listediğimiz bütün bu
 işlemleri kendimiz yapmak zorunda kalacaktık. Yani ekranda göstermek istediğimiz
 ifadeleri ekrana çıktı olarak vermenin yanısıra, bunların ekranda nasıl
@@ -187,7 +187,7 @@ geçebiliyoruz.
 Bu açıdan bakıldığında fonksiyonlar değişkenlere benzer. Bildiğiniz gibi, her
 defasında bir değeri tekrar tekrar yazmak yerine bir değişkene atayarak o değere
 kolayca erişebiliyoruz. Örneğin::
-    
+
     >>> kurum = "Sosyal Sigortalar Kurumu"
 
 Burada tanımladığımız `kurum` adlı değişken sayesinde, 'Sosyal Sigortalar
@@ -204,7 +204,7 @@ daha somutlaştırmaya çalışalım:
 
 Hatırlarsanız 'Kullanıcıyla Veri Alışverişi' başlıklı bölümde şöyle bir örnek
 vermiştik::
-    
+
     isim    = "Fırat"
     soyisim = "Özgül"
     işsis   = "Ubuntu"
@@ -279,7 +279,7 @@ fonksiyonunu şu şekilde kullanabilseydik...
 ... ve bu komut bize şu çıktıyı verebilseydi...
 
 ::
-    
+
     ------------------------------
     isim           :  Mehmet
     soyisim        :  Öztaban
@@ -303,7 +303,7 @@ Fonksiyon Tanımlamak ve Çağırmak
 
 Bir önceki bölümde, ``kayıt_oluştur()`` adlı hayali bir fonksiyondan söz
 etmiştik. Tasarımıza göre bu fonksiyon şu şekilde kullanılacak::
-    
+
     kayıt_oluştur("Ahmet", "Gür", "Pardus", "İzmir")
 
 Bu komutu verdiğimizde ise şöyle bir çıktı almayı planlıyoruz::
@@ -329,12 +329,12 @@ fonksiyonu aşağıdaki şekilde tanımlamalıyız::
 
     def kayıt_oluştur(isim, soyisim, işsis, şehir):
         print("-"*30)
-        
+
         print("isim           : ", isim)
         print("soyisim        : ", soyisim)
         print("işletim sistemi: ", işsis)
         print("şehir          : ", şehir)
-        
+
         print("-"*30)
 
 İlk bakışta bu kodlar size hiçbir şey ifade etmemiş olabilir. Ama hiç endişe
@@ -347,22 +347,22 @@ tıpkı ``print()`` veya ``input()`` gibi, ``kayıt_oluştur()`` adlı 'ev yapı
 bir fonksiyon var. Dolayısıyla bu yeni fonksiyonumuzu, daha önce öğrendiğimiz
 fonksiyonları nasıl kullanıyorsak aynı şekilde kullanabiliriz. Yani aşağıdaki
 gibi komutlar yazabiliriz::
-    
+
     kayıt_oluştur("Fırat", "Özgül", "Ubuntu", "İstanbul")
     kayıt_oluştur("Mehmet", "Öztaban", "Debian", "Ankara")
 
 Yalnız fonksiyonumuzu tanımlayıp bitirdikten sonra, bu fonksiyonu kullanırken,
 kodlarımızın hizalamasına dikkat ediyoruz. Fonksiyonu kullanmak için yazdığımız
 kodları `def` ifadesinin hizasına getiriyoruz. Yani::
-    
+
     def kayıt_oluştur(isim, soyisim, işsis, şehir):
         print("-"*30)
-        
+
         print("isim           : ", isim)
         print("soyisim        : ", soyisim)
         print("işletim sistemi: ", işsis)
         print("şehir          : ", şehir)
-        
+
         print("-"*30)
 
     kayıt_oluştur("Fırat", "Özgül", "Ubuntu", "İstanbul")
@@ -377,15 +377,15 @@ Gördüğünüz gibi, yukarıdaki yöntem sayesinde kodlarımızdaki tekrar eden
 ortadan kalktı. Yukarıdaki fonksiyonun bize nasıl bir kolaylık sağladığını daha
 net görebilmek için, fonksiyon kullanarak sadece şu `11` satırla elde ettiğimiz
 çıktıyı, fonksiyon kullanmadan elde etmeyi deneyebilirsiniz::
-    
+
     def kayıt_oluştur(isim, soyisim, işsis, şehir):
         print("-"*30)
-        
+
         print("isim           : ", isim)
         print("soyisim        : ", soyisim)
         print("işletim sistemi: ", işsis)
         print("şehir          : ", şehir)
-        
+
         print("-"*30)
 
     kayıt_oluştur("Fırat", "Özgül", "Ubuntu", "İstanbul")
@@ -403,25 +403,25 @@ baktığınızda neler görüyorsunuz?
 
    def kayıt_oluştur(isim, soyisim, işsis, şehir):
         print("-"*30)
-        
+
         print("isim           : ", isim)
         print("soyisim        : ", soyisim)
         print("işletim sistemi: ", işsis)
         print("şehir          : ", şehir)
-        
+
         print("-"*30)
-    
+
    kayıt_oluştur("Fırat", "Özgül", "Ubuntu", "İstanbul")
 
-Bu kodları incelediğinizde şu noktalar dikkatinizi çekiyor olmalı: 
+Bu kodları incelediğinizde şu noktalar dikkatinizi çekiyor olmalı:
 
-#. Kodlar `def` adlı bir ifade ile başlamış. 
+#. Kodlar `def` adlı bir ifade ile başlamış.
 
-#. Bunun ardından 'kayıt_oluştur' ifadesini görüyoruz. 
+#. Bunun ardından 'kayıt_oluştur' ifadesini görüyoruz.
 
-#. Bu ifadeyi, içinde birtakım kelimeler barındıran bir parantez çifti izliyor. 
+#. Bu ifadeyi, içinde birtakım kelimeler barındıran bir parantez çifti izliyor.
 
-#. Parantezin içinde, `isim`, `soyisim`, `işsis` ve `şehir` adlı değerler var. 
+#. Parantezin içinde, `isim`, `soyisim`, `işsis` ve `şehir` adlı değerler var.
 
 #. `def` ile başlayan bu satır iki nokta üst üste işareti ile son buluyor.
 
@@ -429,21 +429,21 @@ Bu kodları incelediğinizde şu noktalar dikkatinizi çekiyor olmalı:
 
 #. ``kayıt_oluştur("Fırat", "Özgül", "Ubuntu", "İstanbul")`` satırı önceki
    satırlara göre girintisiz yazılmış.
-    
+
 Eğer bu kodlara dikkatlice bakacak olursanız, aslında bu kodların topu topu iki
 parçadan oluştuğunu göreceksiniz. İsterseniz yukarıdaki yapıyı biraz
 sadeleştirelim::
-    
+
     def kayıt_oluştur(parametre1, parametre2, parametre3, parametre4):
         (...)
-    
+
     kayıt_oluştur(parametre1, parametre2, parametre3, parametre4)
 
 Bu yapının ilk parçası şudur::
 
     def kayıt_oluştur(parametre1, parametre2, parametre3, parametre4):
         (...)
-    
+
 İkinci parçası ise şu::
 
     kayıt_oluştur(parametre1, parametre2, parametre3, parametre4)
@@ -467,13 +467,13 @@ göre bir fonksiyon önce tanımlanır;
 Aslında biz şimdiye kadar gördüğümüz ``print()``, ``type()``, ``open()`` vb.
 fonksiyonlarda bu 'fonksiyon çağrısı' kısmıyla zaten tanışmıştık. Zira şu komut
 tam anlamıyla bir fonksiyon çağrısıdır (yani bir fonksiyon çağırma işlemidir)::
-    
+
     print("Fırat", "Özgül", "Adana", 32)
 
 Gördüğünüz gibi, yukarıdaki komutun yapı olarak şu komuttan hiçbir farkı yok::
 
     kayıt_oluştur("Fırat", "Özgül", "Ubuntu", "İstanbul")
-    
+
 Bu iki fonksiyon arasındaki tek fark, ``print()`` fonksiyonunu Python
 geliştiricilerinin; ``kayıt_oluştur()`` fonksiyonunu ise sizin tanımlamış
 olmanızdır.
@@ -508,7 +508,7 @@ karşı karşıya olduğumuzu anlamak zihninizde biraz daha kolaylaşır.
 Dedik ki, bir fonksiyonun ilk parçasına 'fonksiyon tanımı' (*function
 definition*) adı verilir. Bir fonksiyonu tanımlamak için `def` adlı bir
 parçacıktan yararlanıyoruz. Örneğin::
-    
+
     def bir_fonksiyon():
         (...)
 
@@ -519,13 +519,13 @@ tanımladıktan sonra, çağırırken bu adı kullanacağız.
 ``def bir_fonksiyon():`` ifadesinin sonundaki iki nokta işaretinden de tahmin
 edebileceğiniz gibi, sonraki satıra yazacağımız kodlar girintili olacak. Yani
 mesela::
-    
+
     def selamla():
         print("Elveda Zalim Dünya!")
-        
+
 Yukarıda ``selamla()`` adlı bir fonksiyon tanımlamış olduk. Bu fonksiyonun
 görevi ekrana `Elveda Zalim Dünya!` çıktısı vermektir.
-        
+
 Bu noktada şöyle bir soru akla geliyor: Acaba fonksiyon gövdesindeki kısım için
 ne kadarlık bir girinti oluşturacağız?
 
@@ -533,7 +533,7 @@ Girintilemeye ilişkin olarak önceki derslerde bahsettiğimiz bütün kurallar
 burada da geçerlidir. Fonksiyon gövdesine, `def` ifadesinden itibaren `4` (dört)
 boşlukluk bir girinti veriyoruz. `def` ifadesinden itibaren girintili olarak
 yazdığımız kısmın tamamı o fonksiyonun gövdesini oluşturur ve bütünüyle o
-fonksiyona aittir. 
+fonksiyona aittir.
 
 Bu kodlarla yaptığımız şey bir fonksiyon tanımlama işlemidir. Eğer bu kodları
 bir dosyaya kaydedip çalıştırırsak herhangi bir çıktı almayız. Çünkü henüz
@@ -618,17 +618,17 @@ listesi ortaya çıkarabiliriz:
    oluşturur. Doğal olarak, bir fonksiyonun gövdesindeki bütün kodlar o
    fonksiyona aittir. Girintinin dışına çıkıldığı anda fonksiyon tanımı da sona
    erer.
-    
+
 Fonksiyonlarla ilgili öğrendiklerimizi toparladığımıza göre, gelin isterseniz
 fonksiyonlarla ilgili bir örnek yaparak, bu yapıyı daha iyi anlamaya çalışalım::
-    
+
     def sistem_bilgisi_göster():
         import sys
         print("\nSistemde kurulu Python'ın;")
         print("\tana sürüm numarası:", sys.version_info.major)
         print("\talt sürüm numarası:", sys.version_info.minor)
         print("\tminik sürüm numarası:", sys.version_info.micro)
-        
+
         print("\nKullanılan işletim sisteminin;")
         print("\tadı:", sys.platform)
 
@@ -646,34 +646,34 @@ ve bu modül içindeki değişkenlerden yararlandığımızı görüyorsunuz. Bu
 #. `platform`: Kullanılan işletim sisteminin adı (Örn. 'win32' veya 'linux2')
 
 Yukarıda tanımladığımız fonksiyonu nasıl çağıracağımızı biliyorsunuz::
-    
+
     sistem_bilgisi_göster()
-    
+
 Bu fonksiyon tanımı ve çağrısını eksiksiz bir program içinde gösterelim::
-    
+
     def sistem_bilgisi_göster():
         import sys
         print("\nSistemde kurulu Python'ın;")
         print("\tana sürüm numarası:", sys.version_info.major)
         print("\talt sürüm numarası:", sys.version_info.minor)
         print("\tminik sürüm numarası:", sys.version_info.micro)
-        
+
         print("\nKullanılan işletim sisteminin;")
-        print("\tadı:", sys.platform)  
-        
+        print("\tadı:", sys.platform)
+
     sistem_bilgisi_göster()
-    
+
 Bu kodları bir dosyaya kaydedip çalıştırdığımızda şuna benzer bir çıktı
 alacağız::
-    
+
     Sistemde kurulu Python'ın;
             ana sürüm numarası: 3
             alt sürüm numarası: 3
             minik sürüm numarası: 0
-    
+
     Kullanılan işletim sisteminin;
             adı: linux
-            
+
 Demek ki bu kodların çalıştırıldığı sistem Python'ın 3.3.0 sürümünün kurulu
 olduğu bir GNU/Linux işletim sistemi imiş...
 
@@ -695,24 +695,24 @@ kadarki bilgilerimizi kullanarak şöyle bir şey yazabiliriz::
     print(çıktı.format(sayı, sayı**2))
 
 Yukarıdaki programı çalıştırdığımızda şöyle bir çıktı elde edeceğiz::
-    
+
     12 sayısının karesi 144 sayısıdır
 
 Gayet güzel. Şimdi şöyle bir durum hayal edin: Diyelim ki büyük bir program
 içinde, farklı farklı yerlerde yukarıdaki işlemi tekrar tekrar yapmak
 istiyorsunuz. Böyle bir durumda şöyle bir şey yazmanız gerekebilir::
-    
+
     sayı = 12
     çıktı = "{} sayısının karesi {} sayısıdır"
     print(çıktı.format(sayı, sayı**2))
-    
+
     ####programla ilgili başka kodlar###
-    
+
     sayı = 15
     print(çıktı.format(sayı, sayı**2))
-    
+
     ###programla ilgili başka kodlar###
-    
+
     sayı = 29
     print(çıktı.format(sayı, sayı**2))
 
@@ -724,7 +724,7 @@ bulup hepsinin üzerinde tek tek değişiklik yapmanız gerekir. Mesela `çıkt�
 değişkenin içeriğini değiştirmek isterseniz, yaptığınız değişiklik programınızın
 pek çok kısmını etkileyebilir. Örneğin, `çıktı` değişkenini şu şekle
 getirdiğinizi düşünün::
-    
+
     çıktı = "{} sayısının karesi {}, karekökü {} sayısıdır"
 
 Böyle bir durumda, program içinde geçen bütün ``print(çıktı.format(sayı,
@@ -735,7 +735,7 @@ fonksiyonlar çok iyi bir çözümdür.
 
 Yukarıda bahsettiğimiz kare bulma işlemi için şu şekilde basit bir fonksiyon
 tanımlayabiliriz::
-    
+
     def kare_bul():
         sayı = 12
         çıktı = "{} sayısının karesi {} sayısıdır"
@@ -761,20 +761,20 @@ değildir.
 
 Bu kodları bir dosyaya kaydedip çalıştırdığımızda alacağımız çıktı şu
 olacaktır::
-    
+
     12 sayısının karesi 144 sayısıdır
 
 ``kare_bul()`` adlı fonksiyonu bir kez tanımladıktan sonra bu fonksiyonu
 programınız içinde gereken her yerde çağırabilirsiniz::
-    
+
     kare_bul()
-    
+
     ####programla ilgili başka kodlar###
-    
+
     kare_bul()
-    
+
     ###programla ilgili başka kodlar###
-    
+
     kare_bul()
 
 Gördüğünüz gibi ``kare_bul()`` adlı bu fonksiyon bizi pek çok zahmetten
@@ -800,12 +800,12 @@ Dikkatlice bakın::
     def kare_bul(sayı):
         çıktı = "{} sayısının karesi {} sayısıdır"
         print(çıktı.format(sayı, sayı**2))
-    
+
 Fonksiyona parametre olarak nasıl bir isim verdiğinizin önemi yoktur. Parantez
 içine parametre olarak istediğiniz kelimeyi yazabilirsiniz. Önemli olan,
 parantez içinde fonksiyonun kaç parametre alacağını gösteren bir işaret
 olmasıdır. Mesela yukarıdaki fonksiyonu şöyle de tanımlayabilirdik::
-    
+
     def kare_bul(i):
         çıktı = "{} sayısının karesi {} sayısıdır"
         print(çıktı.format(i, i**2))
@@ -836,18 +836,18 @@ hesaplanacaktır. Örneğin::
 Yine bu fonksiyonu programınız içinde gereken her yerde çağırabilirsiniz::
 
     kare_bul(17)
-    
+
     ####programla ilgili başka kodlar###
-    
+
     kare_bul(21)
-    
+
     ###programla ilgili başka kodlar###
-    
+
     kare_bul(54354)
 
 Fonksiyonu oluşturan kodlarda herhangi bir değişiklik yapmak istediğinizde
 sadece fonksiyon tanımının gövdesini değiştirmeniz yeterli olacaktır. Örneğin::
-    
+
     def kare_bul(sayı):
         çıktı = "{} sayısının karesi {}, karekökü ise {} sayısıdır"
         print(çıktı.format(sayı, sayı**2, sayı**0.5))
@@ -865,16 +865,16 @@ buluruz?
 'Elbette ``len()`` fonksiyonunu kullanarak!' dediğinizi duyar gibiyim. Gerçekten
 de Python'da bir karakter dizisinin uzunluğunu bulmanın en iyi yolu ``len()``
 fonksiyonunu kullanmaktır::
-    
+
     >>> len("istihza")
-    
+
     7
 
 Peki ya Python'da ``len()`` diye bir fonksiyon olmasaydı ne yapacaktınız? Böyle
 bir durumda, karakter dizilerinin uzunluğunu ölçmek için sizin bir yöntem icat
 etmeniz gerekecekti. Mesela 'istihza' kelimesinin kaç karakterden oluştuğunu
 bulmak için şöyle bir kod yazacaktınız::
-    
+
     c = 0
     for s in "istihza":
         c += 1
@@ -904,7 +904,7 @@ Ne kadar verimsiz bir yöntem, değil mi?
 Halbuki hiç bu tür şeylerle uğraşmaya gerek yok. Eğer Python bize ``len()``
 fonksiyonu gibi bir fonksiyon vermemiş olsaydı, kendi ``len()`` fonksiyonumuzu
 icat edebilirdik. Dikkatlice bakın::
-    
+
     def uzunluk(öğe):
         c = 0
         for s in öğe:
@@ -914,14 +914,14 @@ icat edebilirdik. Dikkatlice bakın::
 Böylece adı `uzunluk` olan bir fonksiyon tanımlamış olduk. Artık bir öğenin
 uzunluğunu hesaplamak istediğimizde, bütün o kodları her defasında tekrar tekrar
 yazmak yerine sadece ``uzunluk()`` fonksiyonunu kullanabiliriz::
-    
+
     uzunluk("istihza")
     uzunluk("Afyonkarahisar")
     uzunluk("Tarım ve Köyişleri Bakanlığı")
-    
+
 Üstelik bu fonksiyon yalnızca karakter dizilerinin değil öteki veri tiplerinin
 de uzunluğunu hesaplayabilir::
-    
+
     liste = ["ahmet", "mehmet", "veli"]
     uzunluk(liste)
 
@@ -932,7 +932,7 @@ bizi. Örneğin Python geliştiricilerinin ``len()`` gibi bir fonksiyon tanımla
 olmaları sayesinde, bir karakter dizisinin uzunluğunu hesaplamak için kendi
 kendimize yöntem icat etmek zorunda kalmıyoruz. Ama eğer kendi yöntemimizi icat
 etmemiz gerekirse, istediğimiz işlevi yerine getiren bir fonksiyon tanımlamamız
-da mümkün. 
+da mümkün.
 
 Böylece temel olarak fonksiyonların ne işe yaradığını, neye benzediğini, nasıl
 tanımlandığını ve nasıl çağrıldığını incelemiş olduk. Şimdi fonksiyonların biraz
@@ -952,7 +952,7 @@ O halde hemen yola koyulalım.
 Parametrenin ne olduğunu biliyorsunuz. Bunlar fonksiyon tanımlarken parantez
 içinde belirttiğimiz, fonksiyon gövdesinde yapılan işin değişken öğelerini
 gösteren parçalardır. Mesela::
-    
+
     def kopyala(kaynak_dosya, hedef_dizin):
         çıktı = "{} adlı dosya {} adlı dizin içine kopyalandı!"
         print(çıktı.format(kaynak_dosya, hedef_dizin))
@@ -967,7 +967,7 @@ Bildiğiniz gibi, parametrelere ne ad verdiğinizin hiçbir önemi yok. Elbette
 parametrenin görevine uygun bir isim vermeniz fonksiyonunuzun okunaklılığını
 artıracaktır. Ama tabii ki bu fonksiyonu pekala şu parametrelerle de
 tanımlayabilirdik::
-    
+
     def kopyala(a, b):
         çıktı = "{} adlı dosya {} adlı dizin içine kopyalandı!"
         print(çıktı.format(a, b))
@@ -1028,12 +1028,12 @@ Python'da şöyle bir fonksiyon tanımlayabileceğimizi biliyoruz::
 
     def kayıt_oluştur(isim, soyisim, işsis, şehir):
         print("-"*30)
-        
+
         print("isim           : ", isim)
         print("soyisim        : ", soyisim)
         print("işletim sistemi: ", işsis)
         print("şehir          : ", şehir)
-        
+
         print("-"*30)
 
 Yukarıda tanımladığımız bu fonksiyonu şu şekilde çağırabiliriz::
@@ -1042,12 +1042,12 @@ Yukarıda tanımladığımız bu fonksiyonu şu şekilde çağırabiliriz::
 
 Bu fonksiyonda, yazdığımız parametrelerin sırası büyük önem taşır. Mesela
 yukarıdaki fonksiyonu şöyle çağırdığımızı düşünün::
-    
+
     kayıt_oluştur("Debian", "Ankara", "Öz", "Ahmet")
 
 Eğer fonksiyon parametrelerini bu sırayla kullanırsak aldığımız çıktı hatalı
 olacaktır::
-    
+
     ------------------------------
     isim           :  Debian
     soyisim        :  Ankara
@@ -1066,12 +1066,12 @@ Bir önceki bölümde verdiğimiz şu örneği yeniden ele alalım::
 
     def kayıt_oluştur(isim, soyisim, işsis, şehir):
         print("-"*30)
-        
+
         print("isim           : ", isim)
         print("soyisim        : ", soyisim)
         print("işletim sistemi: ", işsis)
         print("şehir          : ", şehir)
-        
+
         print("-"*30)
 
 Bu fonksiyonu çağırırken parametrelerin sırasını doğru vermenin, alacağımız
@@ -1079,13 +1079,13 @@ Bu fonksiyonu çağırırken parametrelerin sırasını doğru vermenin, alacağ
 özellikle parametre sayısının çok olduğu fonksiyonlarda parametre sırasını
 akılda tutmak zor olabilir. Böyle durumlarda parametreleri isimleri ile birlikte
 kullanmayı tercih edebiliriz::
-    
+
     kayıt_oluştur(soyisim="Öz", isim="Ahmet", işsis="Debian", şehir= "Ankara")
 
 Böylece fonksiyon parametrelerini istediğimiz sıra ile kullanabiliriz. Ancak
 burada dikkat etmemiz gereken bazı noktalar var. Python'da isimli bir
 parametrenin ardından sıralı bir parametre gelemez. Yani şu kullanım yanlıştır::
-    
+
     kayıt_oluştur(soyisim="Öz", isim="Ahmet", "Debian", "Ankara")
 
 Bu kodlar bize şu hatayı verir::
@@ -1102,14 +1102,14 @@ Varsayılan Değerli Parametreler
 Şimdiye kadar karşılaştığımız fonksiyonlarda bir şey dikkatinizi çekmiş olmalı.
 Mesela ``print()`` fonksiyonunu ele alalım. Bildiğiniz gibi, bu fonksiyonu en
 basit şekilde şöyle kullanıyoruz::
-    
+
     print("Fırat", "Özgül")
 
 Evet, ``print()`` fonksiyonunu bu şekilde kullanabiliyoruz, ancak bildiğiniz
 gibi, aslında bu fonksiyonun bazı özel parametreleri de var. Daha önceki
 derslerimizden hatırlayacağınız gibi, biz yukarıdaki komutu verdiğimizde aslında
 Python bunu şu şekilde algılıyor::
-    
+
     print("Fırat", "Özgül", sep=" ", end="\n", file=sys.stdout, flush=False)
 
 Yani biz görmesek de aslında her ``print()`` çağrısı `sep`, `end`, `file` ve
@@ -1128,7 +1128,7 @@ değerli parametreler içeren fonksiyonları nasıl tanımlayabiliriz?
 
     def kur(kurulum_dizini="/usr/bin/"):
         print("Program {} dizinine kuruldu!".format(kurulum_dizini))
-    
+
 Burada ``kur()`` adlı bir fonksiyon tanımladık. Bu fonksiyonun görevi,
 yazdığımız bir programı, kullanıcının bilgisayarındaki bir dizine kurmak ve
 programın hangi dizine kurulduğu konusunda kullanıcıyı bilgilendirmek. Bu
@@ -1151,7 +1151,7 @@ fonksiyonunu şöyle çağırmalıyız::
 
 ``kur()`` fonksiyonunu yukarıdaki gibi çağırdığımızda Python bize şöyle bir
 çıktı verir::
-    
+
     Program C:\Users\firat dizinine kuruldu!
 
 Bu örnek size, varsayılan değerli parametreler belirlemenin ne kadar faydalı
@@ -1163,7 +1163,7 @@ belirlemek zorunda kalmadan bir sonraki kurulum adımına geçebiliyorlar...
 Elbette eğer isterseniz kullanıcılarınızı bir kurulum dizini belirlemeye
 zorlamak da isteyebilirsiniz. Bunun için yine varsayılan değerli parametrelerden
 yararlanabilirsiniz::
-    
+
     def kur(kurulum_dizini=''):
         if not kurulum_dizini:
             print("Lütfen programı hangi dizine kurmak istediğinizi belirtin!")
@@ -1176,18 +1176,18 @@ olursa, kullanıcı herhangi bir kurulum dizini belirtmemiş demektir. Eğer
 kullanıcı herhangi bir kurulum dizini belirtmezse `kurulum_dizini`
 parametresinin bool değeri `False` olacaktır. Bu özelliği dikkate alarak
 fonksiyon gövdesinde şu kodları kullanabiliyoruz::
-    
+
     if not kurulum_dizini:
         print("Lütfen programı hangi dizine kurmak istediğinizi belirtin!")
-    
+
 Böylece, `kurulum_dizini` parametresinin bool değeri `False` olursa
 kullanıcılarımıza şöyle bir uyarı gösteriyoruz::
-    
+
     "Lütfen programı hangi dizine kurmak istediğinizi belirtin!"
 
 Dolayısıyla kuruluma başlayabilmek için ``kur()`` fonksiyonunun şöyle
 çalıştırılmasını zorunlu tutuyoruz::
-    
+
     kur("C:\\Users\\istihza")
 
 Buna benzer durumlarla pek çok kez karşılaşmış olmalısınız. Özellikle
@@ -1199,7 +1199,7 @@ verdiğimiz yapı kullanıcıya böyle bir özgürlük de sağlıyor.
 
 Rastgele Sayıda İsimsiz Parametre Belirleme
 ===========================================
-    
+
 Şimdiye kadar öğrendiğimiz pek çok fonksiyonun toplam kaç parametre alabileceği
 bellidir. Örneğin ``input()`` fonksiyonu yalnızca tek bir parametre alabilir.
 Eğer bu fonksiyona birden fazla parametre verirsek Python bize bir hata mesajı
@@ -1209,15 +1209,15 @@ parametre sayısı (teknik olarak 256 ile sınırlı olsa da) pratik olarak nere
 sınırsızdır.
 
 Peki acaba biz kendimiz, sınırsız parametre alabilen fonksiyonlar üretebilir
-miyiz? 
+miyiz?
 
 Bu sorunun cevabı 'evet' olacaktır. Şimdi şu örneğe dikkatlice bakın::
-    
+
     def fonksiyon(*parametreler):
         print(parametreler)
-        
+
     fonksiyon(1, 2, 3, 4, 5)
-    
+
 Bu kodları çalıştırdığımızda şu çıktıyı alacağız::
 
     (1, 2, 3, 4, 5)
@@ -1232,69 +1232,69 @@ Yukarıdaki kodların verdiği çıktının bir demet olduğuna dikkatinizi çek
 isterim. Bu bilgiye sahip olduktan sonra, bu tür fonksiyonları demet işleme
 kurallarına göre istediğiniz şekilde manipüle edebilirsiniz.
 
-Peki böyle bir fonksiyon tanımlamak ne işimize yarar? 
+Peki böyle bir fonksiyon tanımlamak ne işimize yarar?
 
 Mesela bu yapıyı kullanarak şöyle bir fonksiyon yazabilirsiniz::
-    
+
     def çarp(*sayılar):
         sonuç = 1
         for i in sayılar:
             sonuç *= i
         print(sonuç)
-        
+
 Bu fonksiyon kendisine verilen bütün parametreleri birbiriyle çarpar. Örneğin::
-    
+
     çarp(1, 2, 3, 4)
-    
+
 Bu kodun çıktısı `24` olacaktır. Gördüğünüz gibi, fonksiyonumuza istediğimiz
-sayıda parametre vererek bu sayıların birbiriyle çarpılmasını sağlayabiliyoruz. 
+sayıda parametre vererek bu sayıların birbiriyle çarpılmasını sağlayabiliyoruz.
 
 Aslında burada kullandığımız `*` işareti size hiç yabancı değil. Hatırlarsanız
 ``print()`` fonksiyonundan bahsederken şuna benzer bir kullanım örneği
 vermiştik::
-    
+
     >>> print(*'TBMM', sep='.')
-    
+
     T.B.M.M
-    
+
 Burada `*` işareti, eklendiği parametreyi öğelerine ayırıyor. `sep` parametresi
 ise `*` işaretinin birbirinden ayırdığı öğelerin arasına birer '.' karakteri
-ekliyor. 
+ekliyor.
 
 Bu işaretin etkilerini şu örneklerde daha net görebilirsiniz::
-    
+
     >>> liste = ["Ahmet", "Mehmet", "Veli"]
     >>> print(*liste)
-    
+
     Ahmet Mehmet Veli
 
     >>> sözlük = {"a": 1, "b": 2}
     >>> print(*sözlük)
-    
+
     a b
-    
+
 Gördüğünüz gibi, `*` işareti herhangi bir öğeyi alıp, bunu parçalarına ayırıyor.
 İşte bu `*` işaretini fonksiyon tanımlarken kullandığımızda ise bu işlemin tam
 tersi gerçekleşiyor. Yani fonksiyon tanımında parametrenin soluna `*`
 getirdiğimizde, bu fonksiyon çağrılırken verilen argümanlar tek bir değişken
 içinde bir demet olarak toplanıyor. Zaten bu konunun başında verdiğimiz şu
 örnekte de bu durum açıkça görünüyor::
-    
+
     def fonksiyon(*parametreler):
         print(parametreler)
-        
+
     fonksiyon(1, 2, 3, 4, 5)
-    
+
 Bu fonksiyonu çağırdığımızda şu çıktı veriliyor::
-    
+
     (1, 2, 3, 4, 5)
-    
+
 Aynen söylediğimiz gibi, ``fonksiyon()`` adlı fonksiyona argüman olarak
 verdiğimiz her bir öğenin (`1`, `2`, `3`, `4`, `5`) tek bir demet içinde
-toplandığını görüyorsunuz. 
+toplandığını görüyorsunuz.
 
 Yıldızlı parametreler, tanımladığınız fonksiyonun parametre sayısını herhangi
-bir şekilde sınırlamak istemediğiniz durumlarda çok işinize yarar. 
+bir şekilde sınırlamak istemediğiniz durumlarda çok işinize yarar.
 
 Elbette `*` işaretiyle birlikte kullanacağınız parametrenin adı olarak,
 Python'ın değişken adlandırma kurallarına uygun bütün kelimeleri
@@ -1302,35 +1302,35 @@ belirleyebilirsiniz. Mesela biz yukarıda 'parametreler' adını tercih ettik. A
 Python dünyasında `*` işaretiyle birlikte kullanılacak parametrenin adı
 geleneksel olarak, 'argümanlar' anlamında 'args'tır. Yani Python programcıları
 genellikle yukarıdaki gibi bir fonksiyonu şöyle tanımlar::
-    
+
     def fonksiyon(*args):
         ...
-        
+
 `*` işareti ile birlikte kullanılacak parametrenin adını 'args' yapmak bir
 zorunluluk olmamakla birlikte, başka Python programcılarının kodlarınızı daha
 kolay anlayabilmesi açısından bu geleneği devam ettirmenizi tavsiye ederim.
 Yazdığımız kodlarda Python programlama dilinin geleneklerine bağlı kalmak
 çoğunlukla iyi bir alışkanlıktır.
-       
+
 
 Rastgele Sayıda İsimli Parametre Belirleme
 ==========================================
 
 Bir önceki başlık altında, fonksiyon tanımlarken rastgele sayıda isimsiz
 parametrelerin nasıl belirleneceğini tartıştık. Aynı bu şekilde, rastgele sayıda
-**isimli** parametre belirlemek de mümkündür. 
+**isimli** parametre belirlemek de mümkündür.
 
 Örneğin::
-    
+
     def fonksiyon(**parametreler):
         print(parametreler)
-    
+
     fonksiyon(isim="Ahmet", soyisim="Öz", meslek="Mühendis", şehir="Ankara")
-    
+
 Bu kodları çalıştırdığımızda şöyle bir çıktı alıyoruz::
-    
+
     {'şehir': 'Ankara', 'isim': 'Ahmet', 'soyisim': 'Öz', 'meslek': 'Mühendis'}
-    
+
 Gördüğünüz gibi, fonksiyonu tanımlarken parametremizin sol tarafına
 yerleştirdiğimiz `**` işareti, bu fonksiyonu çağırırken yazdığımız isimli
 parametrelerin bize bir sözlük olarak verilmesini sağlıyor. Bu yapının bize bir
@@ -1344,80 +1344,80 @@ tanımlamıştık::
 
     def kayıt_oluştur(isim, soyisim, işsis, şehir):
         print("-"*30)
-        
+
         print("isim           : ", isim)
         print("soyisim        : ", soyisim)
         print("işletim sistemi: ", işsis)
         print("şehir          : ", şehir)
-        
+
         print("-"*30)
-        
+
 Bu fonksiyon bize toplam dört adet parametre kullanarak, isim, soyisim, işletim
 sistemi ve şehir bilgilerinden meydana gelen bir kayıt oluşturma imkanı
 sağlıyor. Bu fonksiyonda kullanıcının girebileceği bilgiler sınırlı. Ama bir de
 şöyle bir fonksiyon yazdığımızı düşünün::
-    
+
     def kayıt_oluştur(**bilgiler):
         print("-"*30)
-        
+
         for anahtar, değer in bilgiler.items():
             print("{:<10}: {}".format(anahtar, değer))
-        
+
         print("-"*30)
-        
+
     kayıt_oluştur(ad="Fırat", soyad="Özgül", şehir="İstanbul", tel="05333213232")
 
 Bu fonksiyonu çalıştırdığımızda şu çıktıyı alacağız::
-    
+
     tel       : 05333213232
     ad        : Fırat
     şehir     : İstanbul
     soyad     : Özgül
-    
+
 Gördüğünüz gibi, `**` işaretlerini kullanmamız sayesinde hem adlarını hem de
 değerlerini kendimiz belirlediğimiz bir kişi veritabanı oluşturma imkanı elde
 ediyoruz. Üstelik bu veritabanının, kişiye ait kaç farklı bilgi içereceğini de
-tamamen kendimiz belirleyebiliyoruz. 
+tamamen kendimiz belirleyebiliyoruz.
 
 ..
     def kayıt_oluştur(**bilgiler):
         print("-"*30)
-        
+
         uzunluk = len(max(bilgiler.keys()))
-        
+
         for anahtar, değer in bilgiler.items():
             print("{0:<{1}}: {2}".format(anahtar, uzunluk+2, değer))
-        
+
         print("-"*30)
-        
+
     kayıt_oluştur(ad="Fırat", soyad="Özgül", şehir="İstanbul", tel="05333213232")
 
 Tıpkı `*` işaretlerinin betimlediği parametrenin geleneksel olarak 'args'
 şeklinde adlandırılması gibi, `**` işaretlerinin betimlediği parametre de
 geleneksel olarak 'kwargs' şeklinde adlandırılır. Dolayısıyla yukarıdaki gibi
 bir fonksiyonu Python programcıları şöyle tanımlar::
-    
+
     def kayıt_oluştur(**kwargs):
         ...
 
 `**` işaretli parametreler pek çok farklı durumda işinize yarayabilir veya
 işinizi kolaylaştırabilir. Mesela `*` ve `**` işaretlerini kullanarak şöyle bir
 program yazabilirsiniz::
-    
+
     def karşılık_bul(*args, **kwargs):
         for sözcük in args:
             if sözcük in kwargs:
                 print("{} = {}".format(sözcük, kwargs[sözcük]))
             else:
                 print("{} kelimesi sözlükte yok!".format(sözcük))
-        
-    
+
+
     sözlük = {"kitap"      : "book",
               "bilgisayar" : "computer",
               "programlama": "programming"}
-            
-    karşılık_bul("kitap", "bilgisayar", "programlama", "fonksiyon", **sözlük)  
-    
+
+    karşılık_bul("kitap", "bilgisayar", "programlama", "fonksiyon", **sözlük)
+
 Burada tanımladığımız ``karşılık_bul()`` adlı fonksiyon, kendisine verilen
 parametreleri (`*args`), bir sözlük içinde arayarak (`**sözlük`) karşılıklarını
 bize çıktı olarak veriyor. Eğer verilen parametre sözlükte yoksa, ilgili
@@ -1442,13 +1442,13 @@ belirliyor. Bizim amacımız bu fonksiyona bir de `start` adında isimli bir
 parametre ekleyerek ``print()`` fonksiyonunun işlevini genişleten başka bir
 fonksiyon yazmak. Bu yeni parametre, karakter dizilerinin **en başına** hangi
 karakterin geleceğini belirleyecek.
-        
+
 Şimdi bu amacımızı gerçekleştirecek kodlarımızı yazalım::
 
     def bas(*args, start='', **kwargs):
         for öğe in args:
             print(start+öğe, **kwargs)
-    
+
     bas('öğe1', 'öğe2', 'öğe3', start="#.")
 
 ``print()`` fonksiyonunun işlevini genişleten yeni fonksiyonumuzun adı
@@ -1456,7 +1456,7 @@ karakterin geleceğini belirleyecek.
 görecek. Ancak ``bas()`` fonksiyonu, ``print()`` fonksiyonuna ek olarak, sahip
 olduğu `start` adlı bir isimli parametre sayesinde, kendisine verilen
 parametrelerin **en başına** istediğimiz herhangi bir karakteri eklemek
-olanağı da verecek bize. 
+olanağı da verecek bize.
 
 ``bas()`` fonksiyonunun ilk parametresi olan `*args` sayesinde kullanıcıya
 istediği kadar parametre verme imkanı tanıyoruz. Daha sonra da ilave `start`
@@ -1468,24 +1468,24 @@ halihazırda sahip olduğu `sep`, `end`, `file` ve `flush` parametrelerinin
 ``bas()`` fonksiyonunda da aynı şekilde kullanılmasını sağlıyor. `**kwargs`
 şeklinde bir tanımlama sayesinde, ``print()`` fonksiyonunun isimli
 parametrelerini tek tek belirtip tanımlamak zorunda kalmıyoruz::
-    
+
     def bas(*args, start='', **kwargs):
         for öğe in args:
             print(start+öğe, **kwargs)
-    
+
     f = open("te.txt", "w")
-    
+
     bas('öğe1', 'öğe2', 'öğe3', start="#.", end="", file=f)
-    
+
 Eğer elimizde `**kwargs` gibi bir imkan olmasaydı yukarıdaki fonksiyonu şu
 şekilde tanımlamamız gerekirdi::
-    
+
     import sys
-    
+
     def bas(*args, start='', sep=' ', end='\n', file=sys.stdout, flush=False):
         for öğe in args:
             print(start+öğe, sep=sep, end=end, file=file, flush=flush)
-            
+
 Gördüğünüz gibi, ``print()`` fonksiyonunun bütün isimli parametrelerini ve
 bunların öntanımlı değerlerini tanımlamak zorunda kaldık. Eğer günün birinde
 Python geliştiricileri ``print()`` fonksiyonuna bir başka isimli parametre daha
@@ -1501,18 +1501,18 @@ Bu bölümde ``return`` adlı bir deyimden söz edeceğiz. Özellikle Python
 programlama dilini öğrenmeye yeni başlayanlar bu deyimin ne işe yaradığını
 anlamakta zorlanabiliyor. Biz burada bu deyimi anlaşılır hale getirebilmek için
 elimizden geleni yapacağız. Öncelikle çok basit bir örnek verelim::
-    
+
     def ismin_ne():
         isim = input("ismin ne? ")
         print(isim)
 
 Bu çok basit bir fonksiyon. Bu fonksiyonu nasıl çağıracağımızı biliyoruz::
-    
+
     ismin_ne()
-    
+
 Fonksiyonu bu şekilde çağırdıktan sonra, fonksiyon tanımında yer alan
 ``input()`` fonksiyonu sayesinde kullanıcıya ismi sorulacak ve verdiği cevap
-ekrana basılacaktır. 
+ekrana basılacaktır.
 
 Yukarıdaki fonksiyonun tek işlevi kullanıcıdan aldığı isim bilgisini ekrana
 basmaktır. Aldığınız bu veriyi başka yerlerde kullanamazsınız. Bu fonksiyonu
@@ -1524,50 +1524,50 @@ ekrana basmak olmasını istemeyebilirsiniz.
 isim bilgisini başka bir karakter dizisi içinde kullanmak isteyebilirsiniz.
 Diyelim ki amacınız ``ismin_ne()`` fonksiyonuyla aldığınız ismi şu karakter
 dizisi içine aşağıdaki şekilde yerleştirmek::
-    
+
     Merhaba Fırat. Nasılsın?
-    
+
 Bildiğimiz yöntemi kullanarak bu amacımızı gerçekleştirmeye çalışalım::
-    
+
     print("Merhaba {}. Nasılsın?".format(ismin_ne()))
-    
+
 Buradan şöyle bir çıktı alıyoruz::
-    
+
     ismin ne? Fırat
     Fırat
     Merhaba None. Nasılsın?
-    
+
 Gördüğünüz gibi, istediğimiz şeyi elde edemiyoruz. Çünkü dediğimiz gibi,
 yukarıdaki fonksiyonun tek görevi kullanıcıdan aldığı çıktıyı ekrana basmaktır.
 Bu fonksiyondan gelen çıktıyı başka yerde kullanamayız. Eğer kullanmaya
-çalışırsak yukarıdaki gibi hiç beklemediğimiz bir sonuç alırız. 
+çalışırsak yukarıdaki gibi hiç beklemediğimiz bir sonuç alırız.
 
 Bu arada, çıktıda `None` diye bir şey gördüğünüze dikkat edin. Yukarıdaki
 fonksiyonu şu şekilde çağırarak bunu daha net görebilirsiniz::
-    
+
     print(ismin_ne())
-    
+
 Buradan şu çıktıyı alıyoruz::
-    
+
     ismin ne? Fırat
     Fırat
     None
-    
+
 Bu çıktının ne anlama geldiğini birazdan açıklayacağız. Ama öncelikle başka bir
-konudan söz edelim. 
+konudan söz edelim.
 
 Biraz önce söylediğimiz gibi, yukarıda tanımladığımız ``ismin_ne()`` adlı
 fonksiyonun tek görevi kullanıcıdan aldığı isim bilgisini ekrana basmaktır.
 Şimdi bu fonksiyonu bir de şöyle tanımlayalım::
-    
+
     def ismin_ne():
         isim = input("ismin ne? ")
         return isim
-        
-Şimdi de bu fonksiyonu çağıralım::        
-    
+
+Şimdi de bu fonksiyonu çağıralım::
+
     ismin_ne()
-    
+
 Gördüğünüz gibi, fonksiyonu çağırdığımızda yalnızca fonksiyon gövdesindeki
 ``input()`` fonksiyonu çalıştı, ama bu fonksiyondan gelen veri ekrana çıktı
 olarak verilmedi. Çünkü biz burada herhangi bir ekrana basma ('print') işlemi
@@ -1577,7 +1577,7 @@ Peki bu ne anlama geliyor?
 
 *return* kelimesi İngilizcede 'iade etmek, geri vermek, döndürmek' gibi anlamlar
 taşır. İşte yukarıdaki örnekte de ``return`` deyiminin yaptığı iş budur. Yani bu
-deyim bize fonksiyondan bir değer 'döndürür'. 
+deyim bize fonksiyondan bir değer 'döndürür'.
 
 Eğer tanımladığımız bir fonksiyonda ``return`` deyimini kullanarak herhangi bir
 değer döndürmezsek, Python fonksiyondan hususi bir değerin döndürülmediğini
@@ -1586,13 +1586,13 @@ ilk ``ismin_ne()`` fonksiyonunu ``print(ismin_ne())`` şeklinde çağırdığım
 ekranda `None` değerinin görünmesinin nedeni budur.
 
 Peki bir fonksiyon içinde herhangi bir veriyi ekrana basmayıp ``return`` deyimi
-yardımıyla döndürmemizin bize ne faydası var? 
+yardımıyla döndürmemizin bize ne faydası var?
 
 Aslında bunun cevabı çok açık. Bir fonksiyon içinde bir değeri döndürmek yerine
 ekrana bastığınızda o fonksiyonun işlevini alabildiğine kısıtlamış oluyorsunuz.
 Fonksiyonunuzun tek işlevi bir değeri ekrana basmak oluyor. Şu örnekte de
 gösterdiğimiz gibi, bu değeri daha sonra başka ortamlarda kullanamıyoruz::
-    
+
     def ismin_ne():
         isim = input("ismin ne? ")
         print(isim)
@@ -1601,15 +1601,15 @@ gösterdiğimiz gibi, bu değeri daha sonra başka ortamlarda kullanamıyoruz::
 
 Ama eğer, mesela yukarıdaki fonksiyonda `isim` değişkenini basmak yerine
 döndürürsek işler değişir::
-    
+
     def ismin_ne():
         isim = input("ismin ne? ")
         return isim
-    
+
     print("Merhaba {}. Nasılsın?".format(ismin_ne()))
 
 Bu kodları çalıştırdığımızda şu çıktıyı alıyoruz::
-    
+
     ismin ne? Fırat
     Merhaba Fırat. Nasılsın?
 
@@ -1618,10 +1618,10 @@ fonksiyondan `isim` değerini döndürmüş olmamız sayesinde bu değerle isted
 işlemi gerçekleştirebiliyoruz. Yani bu değeri sadece ekrana basmakla
 sınırlamıyoruz kendimizi. Hatta fonksiyondan döndürdüğümüz değeri başka bir
 değişkene atama imkanına dahi sahibiz bu şekilde::
-    
+
     ad = ismin_ne()
     print(ad)
-    
+
 Eğer fonksiyondan değer döndürmek yerine bu değeri ekrana basmayı tercih
 etseydik yukarıdaki işlemi yapamazdık.
 
@@ -1630,31 +1630,31 @@ etseydik yukarıdaki işlemi yapamazdık.
 Bu deyim, içinde bulunduğu fonksiyonun çalışma sürecini kesintiye uğratır. Yani
 ``return`` deyimini kullandığınız satırdan sonra gelen hiçbir kod çalışmaz.
 Basit bir örnek verelim::
-    
+
     def fonk():
         print(3)
         return
         print(5)
-        
+
     fonk()
-    
+
 Bu kodları çalıştırdığınızda yalnızca ``print(3)`` satırının çalıştığını,
 ``print(5)`` satırına ise hiç ulaşılmadığını göreceksiniz. İşte bu durumun
 sebebi, Python'ın kodları ``return`` satırından itibaren okumayı bırakmasıdır.
 Bu özellikten çeşitli şekillerde yararlanabilirsiniz. Örneğin::
-    
+
     def fonk(n):
         if n < 0:
             return 'eksi değerli sayı olmaz!'
         else:
             return n
-        
+
     f = fonk(-5)
     print(f)
-    
+
 Burada eğer fonksiyona parametre olarak eksi değerli bir sayı verilirse Python
 bize bir uyarı verecek ve fonksiyonun çalışmasını durduracaktır.
-            
+
 Örnek bir Uygulama
 *******************
 
@@ -1663,27 +1663,27 @@ yazalım. Bir yandan da yeni şeyler öğrenerek bilgimize bilgi katalım.
 
 Amacımız belli miktarda ve belli aralıkta rastgele sayılar üreten bir program
 yazmak. Örneğin programımız şu şekilde altı adet rastgele sayı üretebilecek::
-    
+
     103, 298, 152, 24, 91, 285
-    
+
 Ancak programımız bu sayıları üretirken her sayıdan yalnızca bir adet üretecek.
-Yani aynı seride bir sayıdan birden fazla bulunamayacak. 
+Yani aynı seride bir sayıdan birden fazla bulunamayacak.
 
 Dilerseniz öncelikle kodlarımızı görelim::
-        
+
     import random
-    
+
     def sayı_üret(başlangıç=0, bitiş=500, adet=6):
         sayılar = set()
-        
+
         while len(sayılar) < adet:
             sayılar.add(random.randrange(başlangıç, bitiş))
-        
+
         return sayılar
-        
+
 Esasında bu kodların (neredeyse) tamamını anlayabilecek kadar Python bilgisine
 sahipsiniz. Burada anlamamış olabileceğiniz tek şey `random` modülüdür. O yüzden
-gelin isterseniz bu modülden biraz söz edelim. 
+gelin isterseniz bu modülden biraz söz edelim.
 
 Biz henüz modül kavramını bilmiyoruz. Ama buraya gelene kadar birkaç konu
 altında modüllerle ilgili bazı örnekler de yapmadık değil. Örneğin şimdiye kadar
@@ -1695,103 +1695,103 @@ tıpkı `os` ve `sys` gibi, `random` da Python programlama dili bünyesinde bulu
 modüllerden biridir. Bu modülün içinde, rastgele sayılar üretmemizi sağlayacak
 bazı fonksiyonlar bulunur. İşte ``randrange()`` de bu fonksiyonlardan biridir.
 Dilerseniz bu fonksiyonun nasıl kullanıldığını anlamak için etkileşimli kabukta
-birkaç deneme çalışması yapalım. 
+birkaç deneme çalışması yapalım.
 
 `random` modülünün içindeki araçları kullanabilmek için öncelikle bu modülü içe
 aktarmalıyız::
-    
+
     >>> import random
 
 Acaba bu modülün içinde neler varmış?
 
 ::
-    
+
     >>> dir(random)
 
-    ['BPF', 'LOG4', 'NV_MAGICCONST', 'RECIP_BPF', 'Random', 
-    'SG_MAGICCONST', 'SystemRandom', 'TWOPI', '_BuiltinMethodType', 
-    '_MethodType', '_Sequence', '_Set', '__all__', '__builtins__', 
-    '__cached__', '__doc__', '__file__', '__initializing__', 
+    ['BPF', 'LOG4', 'NV_MAGICCONST', 'RECIP_BPF', 'Random',
+    'SG_MAGICCONST', 'SystemRandom', 'TWOPI', '_BuiltinMethodType',
+    '_MethodType', '_Sequence', '_Set', '__all__', '__builtins__',
+    '__cached__', '__doc__', '__file__', '__initializing__',
     '__loader__', '__name__', '__package__', '_acos', '_ceil',
-    '_cos', '_e', '_exp', '_inst', '_log', '_pi', '_random', '_sha512', 
-    '_sin', '_sqrt', '_test', '_test_generator', '_urandom', '_warn', 
-    'betavariate', 'choice', 'expovariate', 'gammavariate', 'gauss', 
-    'getrandbits', 'getstate', 'lognormvariate', 'normalvariate', 
-    'paretovariate', 'randint', 'random', 'randrange', 'sample', 
-    'seed', 'setstate', 'shuffle', 'triangular', 'uniform', 
+    '_cos', '_e', '_exp', '_inst', '_log', '_pi', '_random', '_sha512',
+    '_sin', '_sqrt', '_test', '_test_generator', '_urandom', '_warn',
+    'betavariate', 'choice', 'expovariate', 'gammavariate', 'gauss',
+    'getrandbits', 'getstate', 'lognormvariate', 'normalvariate',
+    'paretovariate', 'randint', 'random', 'randrange', 'sample',
+    'seed', 'setstate', 'shuffle', 'triangular', 'uniform',
     'vonmisesvariate', 'weibullvariate']
-    
+
 Gördüğünüz gibi bu modülün içinde epey araç var. Gelin isterseniz bu araçlardan
 en sık kullanılanlarını tanıyalım.
 
 Örneğin `random` modülü içinde bulunan ``sample()`` adlı fonksiyon herhangi bir
 dizi içinden istediğimiz sayıda rastgele numune almamızı sağlar::
-    
+
     >>> liste = ["ahmet", "mehmet", "sevgi", "sevim", "selin", "zeynep", "selim"]
     >>> random.sample(liste, 2)
-    
+
     ['sevim', 'ahmet']
-    
+
 Gördüğünüz gibi, yedi kişilik bir isim listesinden `2` adet rastgele numune
 aldık. Aynı işlemi tekrarlayalım::
-    
+
     >>> random.sample(liste, 2)
-    
+
     ['sevgi', 'zeynep']
-    
+
     >>> random.sample(liste, 5)
-    
+
     ['selin', 'zeynep', 'ahmet', 'selim', 'mehmet']
-    
+
 Numune alma işlemi tamamen rastgeledir. Ayrıca gördüğünüz gibi, listeden
 istediğimiz sayıda numune alabiliyoruz.
 
 `random` modülü içinde bulunan ``shuffle()`` adlı başka bir fonksiyon, bir dizi
 içindeki öğelerin sırasını rastgele bir şekilde karıştırmamızı sağlar::
-    
-    >>> liste = ["ahmet", "mehmet", "sevgi", "sevim", 
+
+    >>> liste = ["ahmet", "mehmet", "sevgi", "sevim",
     ... "selin", "zeynep", "selim"]
     >>> random.shuffle(liste)
-    
+
 ``shuffle()`` fonksiyonu liste öğelerini yine aynı liste içinde değiştirdi.
 Değişikliği görmek için listeyi ekrana basabilirsiniz::
-    
+
     >>> liste
-    
-    ['selim', 'selin', 'ahmet', 'mehmet', 
+
+    ['selim', 'selin', 'ahmet', 'mehmet',
     'sevim', 'sevgi', 'zeynep']
 
 `random` modülü içinde bulunan bir başka fonksiyon ise ``randrange()``
 fonksiyonudur. Bu fonksiyon, belli bir aralıkta rastgele sayılar üretmemizi
 sağlar::
-    
+
     >>> random.randrange(0, 500)
-    
+
     156
-    
+
 Burada `0` ile `500` arasında rastgele bir sayı ürettik.
 
 Gördüğünüz gibi `random` son derece faydalı olabilecek bir modüldür. Dilerseniz
 şimdi `random` fonksiyonunu bir kenara bırakıp kodlarımıza geri dönelim::
-    
+
     import random
-    
+
     def sayı_üret(başlangıç=0, bitiş=500, adet=6):
         sayılar = set()
-        
+
         while len(sayılar) < adet:
             sayılar.add(random.randrange(başlangıç, bitiş))
-        
+
         return sayılar
-        
+
 Burada ilk satırın ne iş yaptığını öğrendik. Bu satır yardımıyla `random`
 modülünü içe aktarıyoruz.
 
 Sonraki satırda fonksiyonumuzu tanımlamaya başlıyoruz::
-    
+
     def sayı_üret(başlangıç=0, bitiş=500, adet=6):
         ...
-        
+
 Fonksiyonumuzun adı `sayı_üret`. Bu fonksiyon toplam üç farklı parametre alıyor.
 Bunlar `başlangıç`, `bitiş` ve `adet`. Dikkat ederseniz bu parametrelerin her
 birinin bir varsayılan değeri var. Dolayısıyla ``sayı_üret()`` fonksiyonu
@@ -1800,48 +1800,48 @@ olacaktır.
 
 Gelelim fonksiyon gövdesine...
 
-İlk olarak `sayılar` adlı bir küme tanımlıyoruz. 
+İlk olarak `sayılar` adlı bir küme tanımlıyoruz.
 
 Bildiğiniz gibi, kümeler içinde öğeler her zaman tektir. Yani bir küme içinde
 aynı öğeden yalnızca bir adet bulunabilir. Kümelerin bu özelliği bizim
 yazdığımız program için oldukça uygun. Çünkü biz de ürettiğimiz rastgele
 sayıların benzersiz olmasını istiyoruz. Bu benzersizliği sağlayabilecek en uygun
-veri tipi kümelerdir. 
+veri tipi kümelerdir.
 
 Bir sonraki satırda bir ``while`` döngüsü görüyoruz::
-    
+
     while len(sayılar) < adet:
         sayılar.add(random.randrange(başlangıç, bitiş))
-        
+
 Bu döngüye göre, `sayılar` değişkeninin uzunluğu `adet` parametresinin
 değerinden az olduğu müddetçe, `sayılar` adlı değişkene `başlangıç` ve `bitiş`
 parametrelerinin gösterdiği değerler arasından rastgele sayılar eklemeye devam
 edeceğiz. Örneğin kullanıcı fonksiyonumuzu parametresiz olarak çağırdıysa,
 yukarıdaki döngü şu şekilde işleyecektir::
-    
+
     while len(sayılar) < 6:
         sayılar.add(random.randrange(0, 500))
-        
+
 Buna göre, `sayılar` değişkeninin uzunluğu `6`'dan az olduğu müddetçe bu
 değişkene `0` ile `500` arasında rastgele sayılar eklemeye devam edeceğiz.
 Böylelikle `sayılar` değişkeni içinde birbirinden farklı toplam `6` sayı olmuş
-olacak. 
+olacak.
 
 Fonksiyonun son satırında ise şu kodu görüyoruz::
-    
+
     return sayılar
-    
+
 Bu kod yardımıyla, belirtilen miktardaki sayıları tutan `sayılar` adlı değişkeni
 fonksiyondan döndürüyoruz. Yani fonksiyonumuz dış dünyaya `sayılar` adlı bir
 değişken veriyor... Bu değişkeni bu şekilde döndürdükten sonra istediğimiz gibi
 kullanabiliriz. Mesela::
-    
+
     for i in range(100):
         print(sayı_üret())
-        
-  
+
+
 Buradan şuna benzer bir çıktı alacaksınız::
-    
+
     {34, 144, 211, 468, 58, 286}
     {41, 170, 395, 113, 178, 29}
     {161, 195, 452, 271, 212, 324}
@@ -1864,23 +1864,23 @@ parametresiz olarak çalıştırdığımız için, Python `başlangıç`, `biti�
 parametrelerinin öntanımlı değerlerini kullandı (sırasıyla `0`, `500` ve `6`).
 
 İstersek biz fonksiyonumuzu farklı parametrelerle çağırabiliriz::
-    
+
     print(sayı_üret(0, 100, 10))
-    
+
 Bu kodlar bize `0` ile `100` arasından `10` adet rastgele sayı seçer::
-    
+
     {3, 4, 9, 11, 13, 47, 50, 53, 54, 61}
 
 Eğer çıktının küme parantezleri arasında görünmesini istemiyorsanız elbette
 çıktıyı keyfinize göre biçimlendirebilirsiniz::
-    
+
     print(*sayı_üret(100, 1500, 20), sep='-')
-    
+
 Bu şekilde, `100` ile `1500` arası sayılardan rastgele `20` adet seçip her bir
 sayının arasına bir tane `-` işareti yerleştirdik::
-    
+
     352-1251-1366-1381-1350-330-203-842-269-285-816
-    -658-643-308-1174-152-594-522-1214-959    
+    -658-643-308-1174-152-594-522-1214-959
 
 Fonksiyonların Kapsamı ve global Deyimi
 ****************************************
@@ -1888,11 +1888,11 @@ Fonksiyonların Kapsamı ve global Deyimi
 Elimizde şöyle bir kod olduğunu düşünelim::
 
     x = 0
-    
+
     def fonk():
         x = 1
         return x
-        
+
 Bu kodlarda, fonksiyonun dışında `x` adlı bir değişken var. Fonksiyonun içinde
 de yine `x` adını taşıyan başka bir değişken var. Fonksiyonumuzun görevi bu `x`
 değişkenini döndürmek.
@@ -1900,26 +1900,26 @@ değişkenini döndürmek.
 Bu noktada size şöyle bir soru sormama izin verin: Acaba fonksiyon içinde
 tanımladığımız `x` değişkeni, fonksiyon dışındaki `x` değişkeninin değerini
 değiştiriyor mu? Bu sorunun cevabını şu kodlarla verelim::
-    
+
     x = 0
-    
+
     def fonk():
         x = 1
         return x
-    
+
     print('fonksiyon içindeki x: ', fonk())
     print('fonksiyon dışındaki x: ', x)
 
 Bu kodları çalıştırdığımızda şu çıktıyı alacağız::
-    
+
     fonksiyon içindeki x:  1
     fonksiyon dışındaki x:  0
-    
+
 Gördüğünüz gibi fonksiyon içindeki ve fonksiyon dışındaki aynı adlı değişkenler
 birbirine karışmıyor. Bunun sebebi, Python'daki 'isim alanı' (*namespace*) adlı
-bir kavramdır. 
+bir kavramdır.
 
-Peki isim alanı ne demek? 
+Peki isim alanı ne demek?
 
 Python'da değişkenlerin, fonksiyonların ve daha sonra göreceğiniz gibi
 sınıfların bir kapsamı vardır. Bu kapsama Python'da 'isim alanı' adı verilir.
@@ -1927,21 +1927,21 @@ Dolayısıyla Python'da her nesnenin, geçerli ve etkin olduğu bir isim alanı
 bulunur. Örneğin yukarıdaki kodlarda fonksiyon dışındaki `x` değişkeni ana isim
 alanında yer alan 'global' bir değişkendir. Fonksiyon içindeki `x` değişkeni ise
 ``fonk()`` değişkeninin isim alanı içinde yer alan 'lokal' bir değişkendir. Bu
-iki değişken, adları aynı da olsa, birbirlerinden farklı iki nesnedir. 
+iki değişken, adları aynı da olsa, birbirlerinden farklı iki nesnedir.
 
 Bir de şu örneklere bakalım::
-        
+
     x = []
     print('x\'in ilk hali:', x)
-    
+
     def değiştir():
         print('x\'i değiştiriyoruz...')
         x.append(1)
         return x
-    
+
     değiştir()
     print('x\'in son hali: ', x)
-    
+
 Burada ise daha farklı bir durum söz konusu. Fonksiyon içinde ``append()``
 metodunu kullanarak yaptığımız ekleme işlemi fonksiyon dışındaki listeyi de
 etkiledi. Peki ama bu nasıl oluyor?
@@ -1949,56 +1949,56 @@ etkiledi. Peki ama bu nasıl oluyor?
 Python herhangi bir nesneye göndermede bulunduğumuzda, yani o nesnenin
 değerini talep ettiğimizde aradığımız nesneyi ilk önce mevcut isim alanı içinde
 arar. Eğer aranan nesneyi mevcut isim alanı içinde bulamazsa yukarıya doğru
-bütün isim alanlarını tek tek kontrol eder. 
+bütün isim alanlarını tek tek kontrol eder.
 
 Birkaç örnek verelim::
-        
+
     def fonk():
         print(x)
-        
+
     fonk()
-    
+
 Tahmin edebileceğiniz gibi, bu kodlar şu hatayı verecektir::
-    
+
     Traceback (most recent call last):
       File "deneme.py", line 4, in <module>
         fonk()
       File "deneme.py", line 2, in fonk
         print(x)
-    NameError: global name 'x' is not defined 
-    
+    NameError: global name 'x' is not defined
+
 Bu hatanın sebebi, `x` adlı bir değişkenin tanımlanmamış olmasıdır. Bu hatayı
 gidermek için şöyle bir kod yazabiliriz::
-    
+
     x = 0
-    
+
     def fonk():
         print(x)
-        
-    fonk()    
-    
-Bu kod global alandaki `x` değişkeninin değerini verecektir. 
+
+    fonk()
+
+Bu kod global alandaki `x` değişkeninin değerini verecektir.
 
 Yukarıdaki örnekte, biz ``print()`` ile `x`'in değerini sorguladığımızda Python
 öncelikle ``fonk()`` adlı fonksiyonun isim alanına baktı. Orada `x`'i
 bulamayınca bu kez global alana yönelip, orada bulduğu `x`'in değerini yazdırdı.
 
 Bu durumu daha net anlayabilmek için şu kodları inceleyelim::
-    
+
     x = 0
-    
+
     def fonk():
         x = 10
         print(x)
-        
+
     fonk()
     print(x)
-    
+
 Bu kodları çalıştırdığımızda `10` çıktısını alırız. Çünkü Python, dediğimiz
 gibi, öncelikle mevcut isim alanını kontrol ediyor. `x` değişkenini mevcut isim
 alanında bulduğu için de global alana bakmasına gerek kalmıyor.
 
-Yalnız burada dikkat etmemiz gereken bazı şeyler var. 
+Yalnız burada dikkat etmemiz gereken bazı şeyler var.
 
 Dediğimiz gibi, global isim alanındaki nesnelerin değerini lokal isim
 alanlarından sorgulayabiliyoruz. Ancak istediğimiz şey global isim alanındaki
@@ -2006,29 +2006,29 @@ nesnelerin değerini değiştirmekse bazı kavramlar arasındaki farkları iyi
 anlamamız gerekiyor.
 
 Python'da bir nesnenin değerini değiştirmekle, o nesneyi yeniden tanımlamak
-farklı kavramlardır. 
+farklı kavramlardır.
 
 **Eğer bir nesne değiştirilebilir bir nesne ise**, o nesnenin değerini, lokal
 isim alanlarından değiştirebilirsiniz::
-    
+
     x = set()
 
     def fonk():
         x.add(10)
         return x
-        
+
     print(fonk())
 
 **Ama eğer bir nesne değiştirilemez bir nesne ise**, o nesnenin değerini zaten
 normalde de değiştiremezsiniz. Değiştirmiş gibi yapmak için ise o nesneyi
 yeniden tanımlamanız gerektiğini biliyorsunuz::
-    
+
     >>> isim = 'Fırat'
     >>> isim += ' Özgül'
     >>> print(isim)
-    
+
     Fırat Özgül
-    
+
 Burada yaptığımız şey, karakter dizisinin değerini değiştirmekten ziyade bu
 karakter dizisini yeniden tanımlamaktır. Çünkü bildiğiniz gibi karakter dizileri
 değiştirilemeyen veri tipleridir.
@@ -2039,83 +2039,83 @@ değiştiremeyeceğiniz gibi, yeniden tanımlayamazsınız da...
 ::
 
     isim = 'Fırat'
-    
+
     def fonk():
         isim += ' Özgül'
         return isim
-        
+
     print(fonk())
-    
+
 Bu kodları çalıştırdığınızda Python size bir hata mesajı gösterecektir.
 
 Aynı durum değiştirilebilir nesneler için de geçerlidir::
-    
+
     isim_listesi = []
-    
+
     def fonk():
         isim_listesi += ['Fırat Özgül', 'Orçun Kunek']
         return isim_listesi
-        
+
     print(fonk())
-    
+
 Değiştirilebilen bir veri tipi olan listeleri, fonksiyon içinde yeniden
 tanımlayamazsınız. Ancak tabii isterseniz listeleri değişikliğe
 uğratabilirsiniz::
-    
+
     isim_listesi = []
-    
+
     def fonk():
         isim_listesi.extend(['Fırat Özgül', 'Orçun Kunek'])
         return isim_listesi
-        
+
     print(fonk())
 
 Bu kodlar düzgün bir şekilde çalışıp, fonksiyon dışındaki `isim_listesi` adlı
 listeyi değişikliğe uğratacaktır. Ancak şu kodlar hata verecektir::
-    
+
     isim_listesi = []
-    
+
     def fonk():
         isim_listesi += ['Fırat Özgül', 'Orçun Kunek']
         return isim_listesi
-        
+
     print(fonk())
-    
+
 İşte Python programlama dili bu tür durumlar için çözüm olacak bir araç sunar
 bize. Bu aracın adı `global`.
 
 Gelin isterseniz bu `global` adlı deyimin nasıl kullanılacağına bakalım önce...
 
 Şu kodların hata vereceğini biliyorsunuz::
-    
+
     isim = 'Fırat'
-    
+
     def fonk():
         isim += ' Özgül'
         return isim
-        
+
     print(fonk())
-    
+
 Ama bu kodlara şöyle bir ekleme yaparsanız işler değişir::
-    
+
     isim = 'Fırat'
-    
+
     def fonk():
         global isim
         isim += ' Özgül'
         return isim
-        
+
     print(fonk())
-    
+
 Burada ``fonk()`` adlı fonksiyonun ilk satırında şöyle bir kod görüyoruz::
-    
+
     global isim
-    
+
 İşte bu satır, `isim` adlı değişkenin global alana taşınmasını sağlıyor. Böylece
-global alanda bulunan `isim` adlı değişkeni değişikliğe uğratabiliyoruz. 
+global alanda bulunan `isim` adlı değişkeni değişikliğe uğratabiliyoruz.
 
 `global` deyimi her ne kadar ilk bakışta çok faydalı bir araçmış gibi görünse de
 aslında programlarımızda genellikle bu deyimi kullanmaktan kaçınmamız iyi bir
 fikir olacaktır. Çünkü bu deyim aslında global alanı kirletmemize neden oluyor.
 Global değişkenlerin lokal isim alanlarında değişikliğe uğratılması, eğer
-dikkatsiz davranırsanız programlarınızın hatalı çalışmasına yol açabilir. 
+dikkatsiz davranırsanız programlarınızın hatalı çalışmasına yol açabilir.

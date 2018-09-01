@@ -1,12 +1,12 @@
-.. meta:: 
-    :description: Bu bölümde Python'ın etkileşimli kabuğundan söz edeceğiz. 
+.. meta::
+    :description: Bu bölümde Python'ın etkileşimli kabuğundan söz edeceğiz.
     :keywords: etkileşimli, kabuk, Python, işleçler, aritmetik, type, str,
-     string, fonksiyon, değişkenler, len 
+     string, fonksiyon, değişkenler, len
 
 .. highlight:: py3
 
-******************* 
-Etkileşimli Python 
+*******************
+Etkileşimli Python
 *******************
 
 Şu ana kadar öğrendiklerimiz sayesinde Python programlama dilinin farklı
@@ -42,7 +42,7 @@ için, Python size bir hata mesajı gösterecektir. Mesela Python'ın etkileşim
 kabuğunda ``cd Desktop`` komutunu verirseniz şöyle bir hata alırsınız::
 
     >>> cd Desktop
-    
+
       File "<stdin>", line 1
         cd Desktop
                  ^
@@ -88,7 +88,7 @@ Siz bu farklı yöntemler arasından, kolayınıza hangisi geliyorsa onu
 seçebilirsiniz. Bu satırların yazarı, Windows'ta 2 numaralı; GNU/Linux'ta ise 3
 numaralı seçeneği tercih ediyor.
 
-Etkileşimli Kabukta İlk Adımlar 
+Etkileşimli Kabukta İlk Adımlar
 *******************************
 
 Python'da etkileşimli kabuğu nasıl çalıştıracağımızı ve bu ortamı nasıl terk
@@ -108,8 +108,8 @@ verecektir.
 İsterseniz basit bir deneme yapalım. `>>>` işaretinden hemen sonra, hiç boşluk
 bırakmadan şu komutu yazalım::
 
-    >>> "Merhaba Zalim Dünya!" 
-    
+    >>> "Merhaba Zalim Dünya!"
+
 Bu arada yukarıdaki kodlar içinde görünen `>>>` işaretini siz yazmayacaksınız.
 Bu işareti etkileşimli kabuğun görünümünü temsil etmek için yerleştirdik oraya.
 Siz `"Merhaba Zalim Dünya!"` satırını yazdıktan sonra doğruca `Enter` düğmesine
@@ -124,9 +124,9 @@ Böylece yarım yamalak da olsa ilk Python programımızı yazmış olduk...
 Muhtemelen bu kod, içinizde en ufak bir heyecan dahi uyandırmamıştır. Hatta
 böyle bir kod yazmak size anlamsız bile gelmiş olabilir. Ama aslında şu küçücük
 kod parçası bile bize Python programlama dili hakkında çok önemli ipuçları
-veriyor. Gelin isterseniz bu tek satırlık kodu biraz inceleyelim... 
+veriyor. Gelin isterseniz bu tek satırlık kodu biraz inceleyelim...
 
-Karakter Dizilerine Giriş 
+Karakter Dizilerine Giriş
 ==========================
 
 Dediğimiz gibi, yukarıda yazdığımız küçücük kod parçası sizi heyecanlandırmamış
@@ -159,7 +159,7 @@ gösterdik. Bu da çok önemli bir bilgidir. Eğer bu cümleyi tırnak içine al
 programımız hata verecektir::
 
     >>> Merhaba Zalim Dünya!
-    
+
       File "<stdin>", line 1
         Merhaba Zalim Dünya!
                     ^
@@ -197,36 +197,36 @@ noktalarından biridir bu söylediğimiz şey...
 
 Dilerseniz biz karakter dizilerine elimizin alışması için birkaç örnek verelim::
 
-    >>> "Elma" 
-    
-    'Elma' 
-    
-    >>> "Guido Van Rossum" 
-    
-    'Guido Van Rossum' 
-    
-    >>> "Python programlama dili" 
-    
-    'Python programlama dili' 
-    
-    >>> "ömnhbgfgh" 
-    
-    'ömnhbgfgh' 
-    
-    >>> "$5&" 
-    
-    '$5&' 
-    
-    >>> "" 
-    
-    '' 
-    
-    >>> " " 
-    
-    ' ' 
-    
-    >>> " " 
-    
+    >>> "Elma"
+
+    'Elma'
+
+    >>> "Guido Van Rossum"
+
+    'Guido Van Rossum'
+
+    >>> "Python programlama dili"
+
+    'Python programlama dili'
+
+    >>> "ömnhbgfgh"
+
+    'ömnhbgfgh'
+
+    >>> "$5&"
+
+    '$5&'
+
+    >>> ""
+
+    ''
+
+    >>> " "
+
+    ' '
+
+    >>> " "
+
     ' '
 
 Yukarıdaki örneklerin hepsi birer karakter dizisidir. Dikkat ettiyseniz
@@ -240,8 +240,8 @@ Eğer herhangi bir verinin karakter dizisi olup olmadığı konusunda tereddüt�
 varsa, ``type()`` adlı bir fonksiyondan yararlanarak o verinin tipini
 sorgulayabilirsiniz. Bu fonksiyonu şöyle kullanıyoruz::
 
-    >>> type("Elma") 
-    
+    >>> type("Elma")
+
     <class 'str'>
 
 .. note:: Bu 'fonksiyon' kelimesinin kafanızı karıştırmasına izin vermeyin.
@@ -275,8 +275,8 @@ bazı şeyler yapamayacak durumda değiliz. Mesela şu anki bilgilerimizi ve gö
 görmez size tanıdık gelecek bazı basit parçaları kullanarak, karakter dizilerini
 birbirleriyle birleştirebiliriz::
 
-    >>> "istihza" + ".com" 
-    
+    >>> "istihza" + ".com"
+
     'istihza.com'
 
 Burada `+` işaretini kullanarak karakter dizilerini nasıl birleştirebildiğimize
@@ -284,16 +284,16 @@ dikkat edin. İki karakter dizisini `+` işareti ile birleştirdiğimizde karakt
 dizilerinin arasında boşluk olmadığına özellikle dikkatinizi çekmek isterim. Bu
 durumu şu örnekte daha net görebiliriz::
 
-    >>> "Fırat" + "Özgül" 
-    
+    >>> "Fırat" + "Özgül"
+
     'FıratÖzgül'
 
 Gördüğünüz gibi, bu iki karakter dizisi, arada boşluk olmadan birbiriyle
 bitiştirildi. Araya boşluk eklemek için birkaç farklı yöntemden
 yararlanabilirsiniz::
 
-    >>> "Fırat" + " " + "Özgül" 
-    
+    >>> "Fırat" + " " + "Özgül"
+
     'Fırat Özgül'
 
 Burada iki karakter dizisi arasına bir adet boşluk karakteri yerleştirdik. Aynı
@@ -308,8 +308,8 @@ Bu arada, karakter dizilerini birleştirmek için mutlaka `+` işareti kullanmak
 zorunda değilsiniz. Siz `+` işaretini kullanmasanız da Python sizin karakter
 dizilerini birleştirmek istediğinizi anlayacak kadar zekidir::
 
-    >>> "www" "." "google" "." "com" 
-    
+    >>> "www" "." "google" "." "com"
+
     'www.google.com'
 
 Ancak gördüğünüz gibi, `+` işaretini kullandığınızda kodlarınız daha okunaklı
@@ -318,20 +318,20 @@ oluyor.
 `+` işareti dışında karakter dizileri ile birlikte `*` (çarpı) işaretini de
 kullanabiliriz. O zaman şöyle bir etki elde ederiz::
 
-    >>> "w" * 3 
-    
-    'www' 
-    
-    >>> "yavaş " * 2 
-    
-    'yavaş yavaş ' 
-    
-    >>> "-" * 10 
-    
+    >>> "w" * 3
+
+    'www'
+
+    >>> "yavaş " * 2
+
+    'yavaş yavaş '
+
+    >>> "-" * 10
+
     '----------'
-    
-    >>> "uzak" + " " * 5 + "çok uzak..." 
-    
+
+    >>> "uzak" + " " * 5 + "çok uzak..."
+
     'uzak     çok uzak...'
 
 Gördüğünüz gibi, çok basit parçaları bir araya getirerek karmaşık çıktılar elde
@@ -350,7 +350,7 @@ bulunur. Ancak bu işaretleri karakter dizileri ile birlikte kullanamıyoruz.
 Karakter dizilerini sonraki bir bölümde bütün ayrıntılarıyla inceleyeceğiz. O
 yüzden şimdilik bu konuya bir ara verelim.
 
-Sayılara Giriş 
+Sayılara Giriş
 ===============
 
 Dedik ki, Python'da birtakım veri tipleri bulunur ve karakter dizileri de bu
@@ -361,20 +361,20 @@ dışında, biraz önce aritmetik işleçler vesilesiyle sözünü ettiğimiz, b
 Herhalde sayıların ne anlama geldiğini tarif etmeye gerek yok. Bunlar bildiğimiz
 sayılardır. Mesela::
 
-    >>> 23 
-    
-    23 
-    
-    >>> 4567 
-    
-    4567 
-    
-    >>> 2.3 
-    
-    2.3 
-    
-    >>> (10+2j) 
-    
+    >>> 23
+
+    23
+
+    >>> 4567
+
+    4567
+
+    >>> 2.3
+
+    2.3
+
+    >>> (10+2j)
+
     (10+2j)
 
 Python'da sayıların farklı alt türleri bulunur. Mesela tamsayılar, kayan noktalı
@@ -394,35 +394,35 @@ karşınıza çıkmaz.
 Sayıları temel olarak öğrendiğimize göre etkileşimli kabuğu basit bir hesap
 makinesi niyetine kullanabiliriz::
 
-    >>> 5 + 2 
-    
-    7 
-    
-    >>> 25 * 25 
-    
-    625 
-    
-    >>> 5 / 2 
-    
-    2.5 
-    
-    >>> 10 - 3 
-    
+    >>> 5 + 2
+
+    7
+
+    >>> 25 * 25
+
+    625
+
+    >>> 5 / 2
+
+    2.5
+
+    >>> 10 - 3
+
     7
 
 Yukarıdaki örneklerde kullandığımız aritmetik işleçlerden biraz önce
 bahsetmiştik. O yüzden bunlara yabancılık çektiğinizi zannetmiyorum. Ama biz
 yine de bu işleçleri ve görevlerini şöylece sıralayalım:
 
-    +-------------+------------------+ 
+    +-------------+------------------+
     | İşleç       | Görevi           |
-    +=============+==================+ 
+    +=============+==================+
     | `+`         | toplama          |
-    +-------------+------------------+ 
+    +-------------+------------------+
     | `-`         | çıkarma          |
-    +-------------+------------------+ 
+    +-------------+------------------+
     | `*`         | çarpma           |
-    +-------------+------------------+ 
+    +-------------+------------------+
     | `/`         | bölme            |
     +-------------+------------------+
 
@@ -432,47 +432,47 @@ Daha önce de dediğimiz gibi, tırnak işaretleri karakter dizilerinin ayırt e
 özelliğidir. Python'da tırnak içinde gösterdiğiniz her şey bir karakter
 dizisidir. Mesela şu örneklere bakalım::
 
-    >>> 34657 
-    
+    >>> 34657
+
     34657
 
 Bu bir sayıdır. Peki ya şu?
 
 ::
 
-    >>> "34657" 
-    
+    >>> "34657"
+
     '34657'
 
 Bu ise bir karakter dizisidir. Dilerseniz biraz önce öğrendiğimiz ``type()``
 fonksiyonu yardımıyla bu verilerin tipini sorgulayalım::
 
-    >>> type(34657) 
-    
+    >>> type(34657)
+
     <class 'int'>
 
 Buradaki 'int' ifadesi İngilizce "*integer*", yani tamsayı kelimesinin
 kısaltmasıdır. Demek ki `34657` sayısı bir tamsayı imiş. Bir de şuna bakalım::
 
-    >>> type("34657") 
-    
-    <class 'str'> 
-    
+    >>> type("34657")
+
+    <class 'str'>
+
 Gördüğünüz gibi, `34657` sayısını tırnak içine aldığımızda bu sayı artık sayı
 olma özelliğini yitiriyor ve bir karakter dizisi oluyor. Şu anda bu çok önemsiz
 bir ayrıntıymış gibi gelebilir size, ama aslında son derece önemli bir konudur
 bu. Bu durumun etkilerini şu örneklerde görebilirsiniz::
 
-    >>> 23 + 65 
-    
+    >>> 23 + 65
+
     88
 
 Burada normal bir şekilde iki sayıyı birbiriyle topladık.
 
 Bir de şuna bakın::
 
-    >>> "23" + "65" 
-    
+    >>> "23" + "65"
+
     '2365'
 
 Burada ise Python iki karakter dizisini yan yana yazmakla yetindi; yani bunları
@@ -487,7 +487,7 @@ Bu bilgi, özellikle aritmetik işlemlerde büyük önem taşır. Bunu dilerseni
 örnekler üzerinde gösterelim::
 
     >>> 45 + "45"
-    
+
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
     TypeError: unsupported operand type(s) for +: 'int' and 'str'
@@ -499,8 +499,8 @@ ile herhangi bir aritmetik işlem yapılamaz.
 
 Bir de şuna bakalım::
 
-    >>> 45 + 45 
-    
+    >>> 45 + 45
+
     90
 
 Bu kodlar ise düzgün çalışır. Çünkü burada iki sayıyı aritmetik işleme soktuk ve
@@ -508,16 +508,16 @@ başarılı olduk.
 
 Son olarak şu örneği verelim::
 
-    >>> "45" + "45" 
-    
+    >>> "45" + "45"
+
     '4545'
 
 Burada `+` işlecinin toplama anlamına gelmediğine dikkat edin. Bu işleç burada
 iki karakter dizisini birleştirme görevi üstleniyor. Yani yukarıdaki örneğin şu
 örnekten hiçbir farkı yoktur::
 
-    >>> "istihza." + "com" 
-    
+    >>> "istihza." + "com"
+
     'istihza.com'
 
 Bu iki örnekte de yaptığımız şey karakter dizilerini birbiriyle birleştirmektir.
@@ -530,8 +530,8 @@ birer sayı ise `+` işleci bu değerleri birbiriyle aritmetik olarak topluyor.
 bir karakter dizisi ile karşılaşırsa, o karakter dizisini, verilen sayı kadar
 tekrarlar. Örneğin::
 
-    >>> "w" * 3 
-    
+    >>> "w" * 3
+
     'www'
 
 Burada `*` işleci bir karakter dizisi (`"w"`) ve bir sayı (`3`) arasında işlem
@@ -540,8 +540,8 @@ karakter dizisini `3` kez tekrarlıyor.
 
 Bir de şuna bakalım::
 
-    >>> 25 * 3 
-    
+    >>> 25 * 3
+
     75
 
 Burada ise `*` işleci iki adet sayı arasında işlem yaptığı için bu değerleri
@@ -560,7 +560,7 @@ nedeninin karakter dizileri ile sayıları birbirine karıştırmanız olduğunu
 göreceksiniz. O yüzden burada öğrendiğiniz hiçbir bilgi kırıntısını baştan
 savmamanızı (ve sabırsızlık ya da acelecilik etmemenizi) tavsiye ederim.
 
-Değişkenler 
+Değişkenler
 ============
 
 Şimdi şöyle bir durum düşünün: Diyelim ki sisteme kayıt için kullanıcı adı ve
@@ -573,7 +573,7 @@ kullanıcı adı ve parolanın uzunluğunu tek tek denetlemek olmalı.
 
 Mesela kullanıcı şöyle bir kullanıcı adı belirlemiş olsun::
 
-    firat_ozgul_1980 
+    firat_ozgul_1980
 
 .. highlight:: none
 
@@ -626,8 +626,8 @@ Dikkatlice bakın::
 
     16
 
-    >>> len("rT%65#$hGfUY56123") 
-    
+    >>> len("rT%65#$hGfUY56123")
+
     17
 
 Demek ki `"firat_ozgul_1980"` adlı karakter dizisinde `16`;
@@ -653,8 +653,8 @@ değerli bir veri gönderiyor. Gelin isterseniz bunu teyit edelim::
 ``len()`` fonksiyonunun bize sayı değerli bir veri göndermesi sayesinde bu
 fonksiyondan elde ettiğimiz değerleri birbiriyle toplayabiliyoruz::
 
-    >>> len("firat_ozgul_1980") + len("rT%65#$hGfUY56123") 
-    
+    >>> len("firat_ozgul_1980") + len("rT%65#$hGfUY56123")
+
     33
 
 Eğer ``len()`` fonksiyonu bize sayı değil de mesela karakter dizisi verseydi,
@@ -681,10 +681,10 @@ Biraz önce şöyle bir örnek vermiştik::
 
     16
 
-    >>> len("rT%65#$hGfUY56123") 
-    
-    17 
-    
+    >>> len("rT%65#$hGfUY56123")
+
+    17
+
     >>> len("firat_ozgul_1980") + len("rT%65#$hGfUY56123")
 
 Bu kodlar, istediğimiz şeyi gayet güzel yerine getiriyor. Ama sizce de
@@ -713,16 +713,16 @@ işlemleri için kullanıldığı sonucunu çıkarıyoruz.
 sayesinde artık ne zaman `5` sayısına ihtiyaç duysak bu `n` değişkenini
 çağırmamız yeterli olacaktır::
 
-    >>> n 
-    
+    >>> n
+
     5
 
-    >>> n * 10 
-    
+    >>> n * 10
+
     50
-    
-    >>> n / 2 
-    
+
+    >>> n / 2
+
     2.5
 
 Gördüğünüz gibi, `5` değerini bir değişkene atadıktan sonra, bu `5` değerini
@@ -732,14 +732,14 @@ adlı bir değişken tanımladıktan sonra, artık ne zaman `5` sayısına ihtiy
 duysak `n` değişkenini çağırmamız yeterli olacaktır. Python o `5` değerini
 otomatik olarak yerine koyar.
 
-Şimdi de `pi` adlı başka bir değişken tanımlayalım:: 
+Şimdi de `pi` adlı başka bir değişken tanımlayalım::
 
     >>> pi = 3.14
 
-Bu `pi` değişkeninin değeri ile `n` değişkeninin değerini toplayalım:: 
+Bu `pi` değişkeninin değeri ile `n` değişkeninin değerini toplayalım::
 
-    >>> pi + n 
-    
+    >>> pi + n
+
     8.14
 
 Gördüğünüz gibi, değerleri her defasında tekrar yazmak yerine bunları bir
@@ -748,7 +748,7 @@ yöntem.
 
 Aynı şeyi programımız için de yapabiliriz::
 
-    >>> kullanıcı_adı = "firat_ozgul_1980" 
+    >>> kullanıcı_adı = "firat_ozgul_1980"
     >>> parola = "rT%65#$hGfUY56123"
 
 `=` işaretini kullanarak ilgili değerlere artık birer ad verdiğimiz, yani bu
@@ -756,21 +756,21 @@ değerleri birer değişkene atadığımız için, bu değerleri kullanmamız ge
 yerlerde değerlerin kendisini uzun uzun yazmak yerine, belirlediğimiz
 değişken adlarını kullanabiliriz. Mesela::
 
-    >>> len(kullanıcı_adı) 
-    
-    16 
-    
-    >>> len(parola) 
-    
-    17 
-    
-    >>> len(kullanıcı_adı) + len(parola) 
-    
+    >>> len(kullanıcı_adı)
+
+    16
+
+    >>> len(parola)
+
+    17
+
+    >>> len(kullanıcı_adı) + len(parola)
+
     33
-    
+
     >>> k_adı_uzunluğu = len(kullanıcı_adı)
     >>> type(k_adı_uzunluğu)
-    
+
     <class 'int'>
 
 Gördüğünüz gibi, değişken kullanımı işlerimizi bir hayli kolaylaştırıyor.
@@ -797,7 +797,7 @@ yanlıştır::
 
 \3. Değişken adları ya bir alfabe harfiyle ya da `_` işaretiyle başlamalıdır::
 
-    >>> _değer = 4568 
+    >>> _değer = 4568
     >>> değer = 4568
 
 \4. Değişken adları içinde Türkçe karakterler kullanabilirsiniz. Ancak ileride
@@ -810,29 +810,29 @@ karakter kullanmaktan kaçınmak isteyebilirsiniz.
     'continue', 'def', 'del', 'elif', 'else', 'except', 'finally', 'for',
     'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not',
     'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield']
-    
+
 Bunlar Python'da özel anlam ifade eden kelimelerdir. Etkileşimli kabuk zaten bu
-kelimeleri değişken adı olarak kullanmanıza izin vermez. Örneğin:: 
+kelimeleri değişken adı olarak kullanmanıza izin vermez. Örneğin::
 
     >>> elif = "hoş kız"
-    
+
       File "<stdin>", line 1
         elif = "hoş kız"
            ^
     SyntaxError: invalid syntax
-    
+
     >>> as = "kare"
 
       File "<stdin>", line 1
         as = "kare"
          ^
     SyntaxError: invalid syntax
-    
+
     >>> False = 45
-    
+
       File "<stdin>", line 1
     SyntaxError: assignment to keyword
-    
+
 Ama ilerde göreceğimiz gibi, programlarınızı bir dosyaya yazarken bu kelimeleri
 değişken adı olarak kullanmaya çalışırsanız programınız tespit etmesi çok güç
 hatalar üretecektir.
@@ -841,10 +841,10 @@ Bu arada elbette yukarıdaki listeyi bir çırpıda ezberlemeniz beklenmiyor siz
 Python programlama dilini öğrendikçe özel kelimeleri bir bakışta tanıyabilecek
 duruma geleceksiniz. Ayrıca eğer isterseniz şu komutları vererek, istediğiniz
 her an yukarıdaki listeye ulaşabilirsiniz::
-    
+
     >>> import keyword
     >>> keyword.kwlist
-    
+
     ['False', 'None', 'True', 'and', 'as', 'assert', 'break', 'class',
     'continue', 'def', 'del', 'elif', 'else', 'except', 'finally', 'for',
     'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not',
@@ -855,18 +855,18 @@ Size bir soru: Acaba bu listede kaç tane kelime var?
 Bu soru karşısında listedeki kelimeleri tek tek elle saymaya kalkışan
 arkadaşlarıma teessüflerimi iletiyorum... Bu tür işler için hangi aracı
 kullanabileceğimizi artık çok iyi biliyor olmalısınız::
-    
+
     >>> len(keyword.kwlist)
-    
+
     33
 
 Bu kodları şöyle yazabileceğimizi de biliyorsunuz::
-    
+
     >>> yasaklı_kelimeler = keyword.kwlist
     >>> len(yasaklı_kelimeler)
-    
+
     33
-    
+
 Bu arada, yukarıdaki kodların bir kısmını henüz anlayamamış olabilirsiniz. Hiç
 endişe etmeyin. Yukarıdaki kodları vermemizin sebebi değişken adı olarak
 kullanılamayacak kelimelere kısa yoldan nasıl ulaşabileceğinizi gösterebilmek
@@ -875,22 +875,22 @@ düzeye geleceksiniz.
 
 Yukarıda verdiğimiz kodların çıktısından anladığımıza göre, toplam `33` tane
 kelime varmış değişken adı belirlerken kullanmaktan kaçınmamız gereken...
-    
+
 \6. Yukarıdaki kelimeler dışında, Python programlama diline ait fonksiyon ve
 benzeri araçların adlarını da değişken adı olarak kullanmamalısınız. Örneğin
 yazdığınız programlarda değişkenlerinize `type` veya `len` adı vermeyin. Çünkü
 'type' ve 'len' Python'a ait iki önemli fonksiyonun adıdır. Eğer mesela bir
 değişkene `type` adını verirseniz, o programda artık ``type()`` fonksiyonunu
 kullanamazsınız::
-    
+
     >>> type = 3456
 
 Bu örnekte `type` adında bir değişken tanımladık. Şimdi mesela `"elma"`
 kelimesinin tipini denetlemek için ``type()`` fonksiyonunu kullanmaya
 çalışalım::
-    
+
     >>> type("elma")
-    
+
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
     TypeError: 'int' object is not callable
@@ -902,15 +902,15 @@ kullanılamaz hale getirdiniz.
 Bu durumdan kurtulmak için etkileşimli kabuğu kapatıp tekrar açabilirsiniz. Ya
 da eğer etkileşimli kabuğu kapatmak istemiyorsanız şu komut yardımıyla `type`
 değişkenini ortadan kaldırmayı da tercih edebilirsiniz::
-    
+
     >>> del type
 
 Böylece, (tahmin edebileceğiniz gibi *delete* (silmek) kelimesinin kısaltması
 olan) ``del`` komutuyla `type` değişkenini silmiş oldunuz. Artık 'type' kelimesi
 yine ``type()`` fonksiyonunu çağıracak::
-    
+
     >>> type("elma")
-    
+
     <class 'str'>
 
 \7. Değişken adlarını belirlerken, değişkeni oluşturan kelimeler arasında boşluk
@@ -929,35 +929,35 @@ Ya da şöyle::
 \8. Değişken adları belirlerken, değişken adının, değişkenin değerini
 olabildiğince betimlemesine dikkat etmemiz kodlarımızın okunaklılığını
 artıracaktır. Örneğin::
-    
+
     >>> personel_sayısı = 45
- 
-Yukarıdaki, tanımladığı değere uygun bir değişken adıdır. Şu ise kurallara 
+
+Yukarıdaki, tanımladığı değere uygun bir değişken adıdır. Şu ise kurallara
 uygun bir değişken adı olsa da yeterince betimleyici değildir::
-    
+
     >>> sayı = 45
 
 \9. Değişken adları ne çok kısa, ne de çok uzun olmalıdır. Mesela şu değişken
 adı, kodları okuyan kişiye, değişken değerinin anlamı konusunda pek fikir
 vermez::
-    
+
     >>> a = 345542353
 
 Şu değişken adı ise gereksiz yere uzundur::
-    
+
     >>> türkiye_büyük_millet_meclisi_milletvekili_sayısı = 550
 
 Değişken adlarının uzunluğunu makul seviyede tutmak esastır::
-    
+
     >>> tbmm_mv_sayısı = 550
-    
+
 Yukarıda verdiğimiz bütün bu örnekler bize, Python'da değişkenlerin, değerlere
 atanmış adlardan ibaret olduğunu gösteriyor. Değişkenler, yazdığımız
 programlarda bize çok büyük kolaylık sağlar. Mesela `123432456322` gibi bir
 sayıyı ya da `"Türkiye Cumhuriyeti Çalışma ve Sosyal Güvenlik Bakanlığı"` gibi
 bir karakter dizisini gerektiği her yerde tek tek elle yazmak yerine, bunları
 birer değişkene atayarak, gerektiğinde sadece bu değişken adını kullanmak çok
-daha mantıklı bir iştir. 
+daha mantıklı bir iştir.
 
 Ayrıca zaten ileride kullanıcıdan veri almaya başladığınızda, aldığınız bu
 verileri, yazdığınız programda kullanabilmek için mutlaka bir değişkene atamanız
@@ -974,11 +974,11 @@ ilişkin çok önemli bazı yeni bilgilerle tanıştıralım.
 Diyelim ki aylık yol masrafımızı hesaplayan bir program yazmak istiyoruz.
 Elimizdeki verilerin şunlar olduğunu varsayalım:
 
-1. Cumartesi-Pazar günleri çalışmıyoruz. 
+1. Cumartesi-Pazar günleri çalışmıyoruz.
 
-2. Dolayısıyla ayda `22` gün çalışıyoruz. 
+2. Dolayısıyla ayda `22` gün çalışıyoruz.
 
-3. Evden işe gitmek için kullandığımız vasıtanın ücreti `1.5` TL 
+3. Evden işe gitmek için kullandığımız vasıtanın ücreti `1.5` TL
 
 4. İşten eve dönmek için kullandığımız vasıtanın ücreti `1.4` TL
 
@@ -991,8 +991,8 @@ bilgilere göre aylık yol masrafımızı hesaplamak için şöyle bir formül
 
 Dilerseniz hemen bunu bir Python programı haline getirelim::
 
-    >>> 22 * (1.5 + 1.4) 
-    
+    >>> 22 * (1.5 + 1.4)
+
     63.8
 
 Demek ki bir ayda `63.8` TL'lik bir yol masrafımız varmış.
@@ -1017,8 +1017,8 @@ giriyoruz. Örneğin çalışılan gün sayısına karşılık gelen `22` değer
 yerde daha kullanmak istesek aynı sayıyı tekrar elle doğrudan kendimiz girmek
 zorundayız. Mesela yılda kaç gün çalıştığımızı hesaplayalım::
 
-    >>> 22 * 12 
-    
+    >>> 22 * 12
+
     264
 
 Gördüğünüz gibi, burada da `22` sayısına ihtiyaç duyduk. Aslında değerleri bu
@@ -1029,11 +1029,11 @@ kullanmak daha mantıklı olacaktır. Yani tıpkı kullanıcı ve parola örneğ
 olduğu gibi, burada da verileri öncelikle bir değişkene atamak çok daha akıllıca
 bir iştir::
 
-    >>> gün = 22 
-    >>> gidiş_ücreti = 1.5 
-    >>> dönüş_ücreti = 1.4 
-    >>> gün * (gidiş_ücreti + dönüş_ücreti) 
-    
+    >>> gün = 22
+    >>> gidiş_ücreti = 1.5
+    >>> dönüş_ücreti = 1.4
+    >>> gün * (gidiş_ücreti + dönüş_ücreti)
+
     63.8
 
 Bütün değerleri birer değişkene atadığımız için, artık bu değişkenleri
@@ -1041,32 +1041,32 @@ istediğimiz yerde kullanabiliriz. Mesela yılda toplam kaç gün çalıştığ�
 bulmak istersek, ilgili değeri elle yazmak yerine, yukarıda tanımladığımız `gün`
 değişkenini kullanabiliriz::
 
-    >>> gün * 12 
-    
+    >>> gün * 12
+
     264
 
 İlerleyen zamanda aylık çalışılan gün sayısı değişirse sadece `gün` değişkeninin
 değerini değiştirmemiz yeterli olacaktır::
 
-    >>> gün = 23 
-    >>> gün * (gidiş_ücreti + dönüş_ücreti) 
-    
-    66.7 
-    
-    >>> gün * 12 
-    
+    >>> gün = 23
+    >>> gün * (gidiş_ücreti + dönüş_ücreti)
+
+    66.7
+
+    >>> gün * 12
+
     276
 
 Eğer bu şekilde değişken atamak yerine, değerleri gerektiği her yerde elle
 yazsaydık, bu değerlerde herhangi bir değişiklik yapmamız gerektiğinde program
 içinde geçen ilgili bütün değerleri bulup tek tek değiştirmemiz gerekecekti::
 
-    >>> 23 * (1.6 + 1.5) 
-    
-    71.3 
-    
-    >>> 23 * 12 
-    
+    >>> 23 * (1.6 + 1.5)
+
+    71.3
+
+    >>> 23 * 12
+
     276
 
 Değişken kavramı şu anda gözünüze pek anlamlı görünmemiş olabilir. Ama
@@ -1096,26 +1096,26 @@ Bir dairenin alan formülü (pi)r\ :sup:`2`'dir::
 
 Son olarak `alan` değişkeninin değerini ekrana yazdırabiliriz::
 
-    >>> alan 
-    
+    >>> alan
+
     201.06176
 
 Böylece bir dairenin alanını yaklaşık olarak hesaplamış olduk. Dilerseniz
 programımızı bir de derli toplu olarak görelim::
 
-    >>> çap = 16 
-    >>> yarıçap = çap / 2 
-    >>> pi = 3.14159 
-    >>> alan = pi * (yarıçap * yarıçap) 
-    >>> alan 
-    
+    >>> çap = 16
+    >>> yarıçap = çap / 2
+    >>> pi = 3.14159
+    >>> alan = pi * (yarıçap * yarıçap)
+    >>> alan
+
     201.06176
 
 Görüyorsunuz ya, değişkenler işimizi nasıl da kolaylaştırıyor. Eğer yukarıdaki
 programda değişken kullanmasaydık kodlarımız şöyle görünecekti::
 
-    >>> 3.14159 * ((16/2) * (16/2)) 
-    
+    >>> 3.14159 * ((16/2) * (16/2))
+
     201.06176
 
 Bu kodlar tek kullanımlıktır. Eğer yukarıdaki örnekte mesela dairenin çapını
@@ -1134,16 +1134,16 @@ Python'da toplama (`+`), çıkarma (`-`), çarpma (`*`), bölme (`/`) ve değer 
 daha öğrenmemizi gerektiriyor...
 
 Yukarıdaki şu örneğe tekrar bakalım::
-    
+
     alan = pi * (yarıçap * yarıçap)
 
 Burada `yarıçap` değişkeninin karesini alabilmek için bu değeri kendisiyle
 çarptık. Aslında gayet mantıklı ve makul bir yöntem. Kare bulmak için değeri
 kendisiyle çarpıyoruz. Eğer bir sayının küpünü bulmak isteseydik o sayıyı üç kez
 kendisiyle çarpacaktık::
-    
+
     >>> 3 * 3 * 3
-    
+
     27
 
 Peki ya bir sayının mesela beşinci kuvvetini hesaplamak istersek ne yapacağız? O
@@ -1153,34 +1153,34 @@ Elbette bir sayının herhangi bir kuvvetini hesaplamak için o sayıyı kendisi
 kuvvetince çarpmayacağız. Python'da bu tür 'kuvvet hesaplamaları' için ayrı bir
 işleç (ve fonksiyon) bulunur.
 
-Öncelikle kuvvet hesaplarını yapmamızı sağlayan işleçten söz edelim. 
+Öncelikle kuvvet hesaplarını yapmamızı sağlayan işleçten söz edelim.
 
 Python'da `**` adlı bir işleç bulunur. Bu işlecin görevi bir sayının kuvvetini
 hesaplamamızı sağlamaktır. Örneğin bir sayının `2.` kuvvetini, ya da başka bir
 deyişle karesini hesaplamak istersek şöyle bir kod yazabiliriz::
-    
+
     >>> 12 ** 2
-    
+
     144
 
 Burada `12` sayısının `2.` kuvvetini, yani karesini hesapladık. Bu bilgiyi
 yukarıdaki formüle uygulayalım::
-    
+
     >>> alan = pi * (yarıçap ** 2)
 
 Bu işleci herhangi bir sayının herhangi bir kuvvetini hesaplamak için
 kullanabiliriz elbette. Mesela `23` sayısının küpünü (yani `3.` kuvvetini)
 hesaplayalım::
-    
+
     >>> 23 ** 3
-    
+
     12167
 
 Aynı işleçten, bir sayının karekökünü hesaplamak için de yararlanabilirsiniz.
 Neticede bir sayının `0.5`'inci kuvveti, o sayının kareköküdür::
-    
+
     >>> 144 ** 0.5
-    
+
     12.0
 
 Gördüğünüz gibi, kuvvet hesaplama işlemleri için bu işleç son derece kullanışlı
@@ -1201,17 +1201,17 @@ kullanmıştık. ``pow()`` fonksiyonu ise toplam üç farklı parametre alır. A
 genellikle bu fonksiyon yalnızca iki parametre ile kullanılır.
 
 Bu fonksiyonu şöyle kullanıyoruz::
-    
+
     >>> pow(12, 2)
-    
+
     144
-    
+
     >>> pow(23, 3)
-    
+
     12167
-    
+
     >>> pow(144, 0.5)
-    
+
     12.0
 
 Gördüğünüz gibi, ``pow()`` fonksiyonunun ilk parametresi asıl sayıyı, ikinci
@@ -1223,23 +1223,23 @@ birbirinden virgül ile ayırdığımızı gözden kaçırmayın.
 Dediğimiz gibi, ``pow()`` fonksiyonu, pek kullanılmayan üçüncü bir parametre
 daha alır. Bu fonksiyonun üçüncü parametresi şöyle kullanılır. Dikkatlice
 bakın::
-    
+
     >>> pow(16, 2, 2)
-    
+
     0
 
-Bu komut şu anlama gelir: 
+Bu komut şu anlama gelir:
 
     `16` sayısının `2`'nci kuvvetini hesapla ve çıkan sayıyı `2`'ye bölüp, bölme
     işleminden kalan sayıyı göster!
 
 `16` sayısının `2.` kuvveti `256` sayısıdır. `256` sayısını `2`'ye böldüğümüzde,
-bölme işleminin kalanı `0`'dır. Yani `256` sayısı `2`'ye tam bölünür... 
+bölme işleminin kalanı `0`'dır. Yani `256` sayısı `2`'ye tam bölünür...
 
 Bir örnek daha verelim::
-    
+
     >>> pow(11, 3, 4)
-    
+
     3
 
 Demek ki, `11` sayısının `3.` kuvveti olan `1331` sayısı `4`'e bölündüğünde,
@@ -1254,7 +1254,7 @@ Değişkenlere Dair Bazı İpuçları
 Değişkenin ne demek olduğunu öğrendiğimize göre, değişkenlere dair bazı ufak
 ipuçları verebiliriz.
 
-Aynı Değere Sahip Değişkenler Tanımlama 
+Aynı Değere Sahip Değişkenler Tanımlama
 ........................................
 
 Şimdi size şöyle bir soru sormama izin verin: Acaba aynı değere sahip iki
@@ -1263,74 +1263,74 @@ değişkeni nasıl belirleyeceğiz?
 
 Aklınıza şöyle bir çözüm gelmiş olabilir::
 
-    >>> a = 4 
+    >>> a = 4
     >>> b = 4
 
 Böylece ikisi de `4` değerine sahip `a` ve `b` adlı iki farklı değişken
 tanımlamış olduk. Bu tamamen geçerli bir yöntemdir. Ancak Python'da bu işlemi
 yapmanın daha kolay bir yolu var. Bakalım::
 
-    >>> a = b = 4 
-    
+    >>> a = b = 4
+
 Bu kodlar bir öncekiyle tamamen aynı işlevi görür. Yani her iki kod da `4`
 değerine sahip `a` ve `b` değişkenleri tanımlamamızı sağlar::
-    
-    >>> a 
-    
-    4 
-    
-    >>> b 
-    
+
+    >>> a
+
+    4
+
+    >>> b
+
     4
 
 Bu bilgiyi kullanarak mesela bir yıl içindeki her bir ayın çektiği gün sayısını
 ay adlarına atayabilirsiniz::
 
-    >>> ocak = mart = mayıs = temmuz = ağustos = ekim = aralık = 31 
-    >>> nisan = haziran = eylül = kasım = 30 
+    >>> ocak = mart = mayıs = temmuz = ağustos = ekim = aralık = 31
+    >>> nisan = haziran = eylül = kasım = 30
     >>> şubat = 28
 
 Böylece bir çırpıda değeri `31` olan yedi adet değişken, değeri `30` olan dört
 adet değişken, değeri `28` olan bir adet değişken tanımlamış olduk. Bu
 değişkenlerin değerine nasıl ulaşacağınızı biliyorsunuz::
 
-    >>> ocak 
-    
-    31 
-    >>> haziran 
-    
-    30 
-    
-    >>> şubat 
-    
-    28 
-    
-    >>> mayıs 
-    
-    31 
-    
-    >>> ekim 
-    
-    31 
-    
+    >>> ocak
+
+    31
+    >>> haziran
+
+    30
+
+    >>> şubat
+
+    28
+
+    >>> mayıs
+
+    31
+
+    >>> ekim
+
+    31
+
     >>> eylül
-    
+
     30
 
 Eğer Python'ın aynı anda birden fazla değişkene tek bir değer atama özelliği
 olmasaydı yukarıdaki kodları şöyle yazmamız gerekirdi::
 
-    >>> ocak = 31 
-    >>> şubat = 28 
-    >>> mart = 31 
-    >>> nisan = 30 
-    >>> mayıs = 31 
-    >>> haziran = 30 
-    >>> temmuz = 31 
-    >>> ağustos = 31 
-    >>> eylül = 30 
+    >>> ocak = 31
+    >>> şubat = 28
+    >>> mart = 31
+    >>> nisan = 30
+    >>> mayıs = 31
+    >>> haziran = 30
+    >>> temmuz = 31
+    >>> ağustos = 31
+    >>> eylül = 30
     >>> ekim = 31
-    >>> kasım = 30 
+    >>> kasım = 30
     >>> aralık = 31
 
 Bu değişkenleri nasıl bir program içinde kullanacağınız tamamen sizin hayal
@@ -1346,7 +1346,7 @@ Demek ki bir ayda toplam `346` m\ :sup:`3` doğalgaz harcamışız.
 Fatura tutarı `273.87` TL imiş. Yani `346` m\ :sup:`3` doğalgaz tüketmenin
 bedeli `273.87` TL. Buna göre değişkenlerimizi tanımlayalım::
 
-    >>> aylık_sarfiyat = 346 
+    >>> aylık_sarfiyat = 346
     >>> fatura_tutarı = 273.87
 
 Bu bilgiyi kullanarak doğalgazın birim fiyatını hesaplayabiliriz. Formülümüz
@@ -1354,8 +1354,8 @@ Bu bilgiyi kullanarak doğalgazın birim fiyatını hesaplayabiliriz. Formülüm
 
     >>> birim_fiyat = fatura_tutarı / aylık_sarfiyat
 
-    >>> birim_fiyat 
-    
+    >>> birim_fiyat
+
     0.7915317919075144
 
 Demek ki doğalgazın m\ :sup:`3` fiyatı (vergilerle birlikte yaklaşık) `0.79`
@@ -1363,25 +1363,25 @@ TL'ye karşılık geliyormuş.
 
 Bu noktada günlük ortalama doğalgaz sarfiyatımızı da hesaplamamız gerekiyor::
 
-    >>> günlük_sarfiyat = aylık_sarfiyat / mart 
+    >>> günlük_sarfiyat = aylık_sarfiyat / mart
     >>> günlük_sarfiyat
-   
+
     11.161290322580646
 
 Demek ki Mart ayında günlük ortalama `11` m\ :sup:`3` doğalgaz tüketmişiz.
 
 Bütün bu bilgileri kullanarak Nisan ayında gelecek faturayı tahmin edebiliriz::
 
-    >>> nisan_faturası = birim_fiyat * günlük_sarfiyat * nisan 
+    >>> nisan_faturası = birim_fiyat * günlük_sarfiyat * nisan
     >>> nisan_faturası
 
     265.03548387096777
 
 Şubat ayı faturası ise şöyle olabilir::
 
-    >>> şubat_faturası = birim_fiyat * günlük_sarfiyat * şubat 
+    >>> şubat_faturası = birim_fiyat * günlük_sarfiyat * şubat
     >>> şubat_faturası
-    
+
     247.36645161290326
 
 Burada farklı değişkenlerin değerini değiştirerek daha başka işlemler de
@@ -1393,13 +1393,13 @@ kolaylaştırıyor.
 
 Değişkenlerle ilgili bir ipucu daha verelim...
 
-Değişkenlerin Değerini Takas Etme 
+Değişkenlerin Değerini Takas Etme
 ..................................
 
 Diyelim ki, işyerinizdeki personelin unvanlarını tuttuğunuz bir veritabanı var
 elinizde. Bu veritabanında şuna benzer ilişkiler tanımlı::
 
-    >>> osman = "Araştırma Geliştirme Müdürü" 
+    >>> osman = "Araştırma Geliştirme Müdürü"
     >>> mehmet = "Proje Sorumlusu"
 
 İlerleyen zamanda işvereniniz sizden Osman ve Mehmet'in unvanlarını
@@ -1412,14 +1412,14 @@ getirebilirsiniz. Dikkatlice bakın::
     >>> osman, mehmet = mehmet, osman
 
 Böylece tek hamlede bu iki kişinin unvanlarını takas etmiş oldunuz. Gelin
-isterseniz değişkenlerin son durumuna bakalım:: 
+isterseniz değişkenlerin son durumuna bakalım::
 
-    >>> osman 
-    
-    'Proje Sorumlusu 
-    
-    >>> mehmet 
-    
+    >>> osman
+
+    'Proje Sorumlusu
+
+    >>> mehmet
+
     'Araştırma Geliştirme Müdürü'
 
 Gördüğünüz gibi, `osman` değişkeninin değerini `mehmet`'e; `mehmet` değişkeninin
@@ -1429,7 +1429,7 @@ Yukarıdaki yöntem Python'ın öteki diller üzerinde önemli bir üstünlüğ�
 programlama dillerinde bu işlemi yapmak için geçici bir değişken tanımlamanız
 gerekir. Yani mesela::
 
-    >>> osman = "Araştırma Geliştirme Müdürü" 
+    >>> osman = "Araştırma Geliştirme Müdürü"
     >>> mehmet = "Proje Sorumlusu"
 
 Elimizdeki değerler bunlar. Biz şimdi Osman'ın değerini Mehmet'e; Mehmet'in
@@ -1447,12 +1447,12 @@ takas sırasında bu değeri kaybetmeyeceğiz.
 
 Şimdi elimizde iki tane Araştırma Geliştirme Müdürü olmuş oldu::
 
-    >>> mehmet 
-    
-    'Araştırma Geliştirme Müdürü' 
-    
-    >>> osman 
-    
+    >>> mehmet
+
+    'Araştırma Geliştirme Müdürü'
+
+    >>> osman
+
     'Araştırma Geliştirme Müdürü'
 
 Gördüğünüz gibi, ``mehmet = osman`` kodunu kullanarak `mehmet` değişkeninin
@@ -1466,20 +1466,20 @@ içinde tuttuğumuz `"Proje Sorumlusu"` değerini verebiliriz::
 Böylece istediğimiz takas işlemini gerçekleştirmiş olduk. Son durumu kontrol
 edelim::
 
-    >>> osman 
-    
-    'Proje Sorumlusu 
-    
-    >>> mehmet 
-    
+    >>> osman
+
+    'Proje Sorumlusu
+
+    >>> mehmet
+
     'Araştırma Geliştirme Müdürü'
 
 Basit bir işlem için ne kadar büyük bir zaman kaybı, değil mi? Ama dediğimiz
 gibi, Python'da bu şekilde geçici bir değişken atamakla uğraşmamıza hiç gerek
 yok. Sadece şu formülü kullanarak değişkenlerin değerini takas edebiliriz::
 
-    a, b = b, a 
-    
+    a, b = b, a
+
 Bu şekilde `a` değişkeninin değerini `b` değişkenine; `b` değişkeninin değerini
 ise `a` değerine vermiş oluyoruz. Eğer bu işlemi geri alıp her şeyi eski haline
 döndürmek istersek, tahmin edebileceğiniz gibi yine aynı yöntemden
@@ -1495,16 +1495,16 @@ Hazır lafı geçmişken, ``len()`` fonksiyonunun bazı kısıtlamalarından sö
 Dediğimiz gibi, bu fonksiyonu kullanarak karakter dizileri içinde toplam kaç
 adet karakter bulunduğunu hesaplayabiliyoruz. Örneğin::
 
-    >>> kelime = "muvaffakiyet" 
-    >>> len(kelime) 
-    
+    >>> kelime = "muvaffakiyet"
+    >>> len(kelime)
+
     12
 
 Yalnız bu ``len()`` fonksiyonunu sayıların uzunluğunu ölçmek için
 kullanamıyoruz::
 
     >>> len(123456)
-    
+
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
     TypeError: object of type 'int' has no len()
@@ -1530,8 +1530,8 @@ bilmemiz gerekir.
 ``len()`` fonksiyonu ile ilgili bu durumu da bir kenara not ettikten sonra
 yolumuza kaldığımız yerden devam edelim.
 
-Etkileşimli Kabuğun Hafızası 
-**************************** 
+Etkileşimli Kabuğun Hafızası
+****************************
 
 Bir önceki bölümde Python'ın etkileşimli kabuğunun nasıl kullanılacağına dair
 epey örnek verdik ve etkileşimli kabuk üzerinden Python'ın bazı temel araçlarına
@@ -1541,29 +1541,29 @@ kabuğunun bir başka yeteneğinden daha söz edelim.
 Etkileşimli kabukta `_` adlı işaret (alt çizgi işareti), yapılan son işlemin
 veya girilen son öğenin değerini tutma işlevi görür. Yani::
 
-    >>> 2345 + 54355 
-    
+    >>> 2345 + 54355
+
     56700
 
 Eğer bu işlemin ardından ``_`` komutunu verirsek şöyle bir çıktı alırız::
 
-    >>> _ 
-    
+    >>> _
+
     56700
 
 Gördüğünüz gibi, ``_`` komutu son girilen öğeyi hafızasında tutuyor. Bu
 özellikten çeşitli şekillerde yararlanabilirsiniz::
 
-    >>> _ + 15 
-    
-    56715 
-    
+    >>> _ + 15
+
+    56715
+
 Burada ``_`` komutunun değeri bir önceki işlemin sonucu olan `56715` değeri
 olduğu için, ``_`` komutuna `15` eklediğimizde `56715` değerini elde ediyoruz.
 ``_`` komutunun değerini tekrar kontrol edelim::
 
-    >>> _ 
-    
+    >>> _
+
     56715
 
 Gördüğünüz gibi, ``_`` komutunun değeri artık `56715` sayısıdır...
@@ -1571,16 +1571,16 @@ Gördüğünüz gibi, ``_`` komutunun değeri artık `56715` sayısıdır...
 ``_`` komutu yalnızca sayıları değil, karakter dizilerini de hafızasında
 tutabilir::
 
-    >>> "www" 
-    
-    'www' 
-    
-    >>> _ 
-    
-    'www' 
-    
-    >>> _ + ".istihza.com" 
-    
+    >>> "www"
+
+    'www'
+
+    >>> _
+
+    'www'
+
+    >>> _ + ".istihza.com"
+
     'www.istihza.com'
 
 Bu işaret öyle çok sık kullanılan bir araç değildir, ama zaman zaman işinizi

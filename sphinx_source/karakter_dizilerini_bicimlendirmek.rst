@@ -44,7 +44,7 @@ Bu amaca ulaşmak için ilk denememizi yapalım::
 Buradan elde ettiğimiz çıktı ihtiyacımızı kısmen karşılıyor. Ama çıktı tam
 istediğimiz gibi değil. Çünkü normalde isme bitişik olması gereken üç nokta
 işareti, isimden bir boşluk ile ayrılmış. Yani biz şöyle bir çıktı isterken::
-    
+
     Abdul...
 
 Şöyle bir çıktı elde ediyoruz::
@@ -81,7 +81,7 @@ Yazdığınız programda kullanıcıya bir parola soruyorsunuz. Amacınız bu pa
 programınızda belirlediğiniz ölçütlere uyup uymadığını tespit etmek. Eğer
 kullanıcı tarafından belirlenen parola uygunsa ona şu çıktıyı göstermek
 istiyorsunuz (parolanın `b5tY6g` olduğunu varsayalım)::
-    
+
     Girdiğiniz parola (b5tY6g) kurallara uygun bir paroladır!
 
 Bu çıktıyı elde etmek için şöyle bir kod yazabilirsiniz::
@@ -98,14 +98,14 @@ Bir de uzun ve karmaşık bir metnin içine dışarıdan değerler yerleştirmen
 gereken şöyle bir metinle karşı karşıya olduğunuzu düşünün::
 
     Sayın .........
-    
-    .... tarihinde yapmış olduğunuz, ........ hakkındaki başvurunuz incelemeye alınmıştır. 
-    
-    Size .... işgünü içinde cevap verilecektir. 
-    
-    
+
+    .... tarihinde yapmış olduğunuz, ........ hakkındaki başvurunuz incelemeye alınmıştır.
+
+    Size .... işgünü içinde cevap verilecektir.
+
+
     Saygılarımızla,
-    
+
     ......
 
 Böyle bir metin içine dışarıdan değer yerleştirmek için karakter dizisi
@@ -116,9 +116,9 @@ işleri büsbütün zorlaştırdığı bu tür durumlarda Python'ın size sundu�
 dizisi biçimlendirme' araçlarından yararlanabilirsiniz.
 
 Bunun için biz bu bölümde iki farklı yöntemden söz edeceğiz:
-    
-#. `%` işareti ile biçimlendirme 
-#. ``format()`` metodu ile biçimlendirme. 
+
+#. `%` işareti ile biçimlendirme
+#. ``format()`` metodu ile biçimlendirme.
 
 `%` işareti ile biçimlendirme, karakter dizisi biçimlendirmenin eski yöntemidir.
 Bu yöntem ağırlıklı olarak Python'ın 3.x sürümlerinden önce kullanılıyordu. Ama
@@ -142,9 +142,9 @@ olarak `%` işareti ile biçimlendirmeden söz edelim.
 Daha önce de söylediğimiz gibi, Python programlama dilinin 3.x sürümlerinden
 önce, bir karakter dizisini biçimlendirebilmek için `%` işaretinden
 yararlanıyorduk. Bununla ilgili basit bir örnek verelim::
-    
+
     parola = input("parola: ")
-    
+
     print("Girdiğiniz parola (%s) kurallara uygun bir paroladır!" %parola)
 
 Bu programı çalıştırıp parola girdiğinizde, yazdığınız parola çıktıda parantez
@@ -153,21 +153,21 @@ içinde görünecektir.
 Yukarıdaki yapıyı incelediğimizde iki nokta gözümüze çarpıyor:
 
 #. İlk olarak, karakter dizisinin içinde bir `%` işareti ve buna bitişik
-   olarak yazılmış bir `s` harfi görüyoruz.  
-   
+   olarak yazılmış bir `s` harfi görüyoruz.
+
 #. İkincisi, karakter dizisinin dışında `%parola` gibi bir ifade daha var.
 
 Rahatlıkla tahmin edebileceğiniz gibi, bu ifadeler birbiriyle doğrudan
 bağlantılıdır. Dilerseniz bu yapıyı açıklamaya geçmeden önce bir örnek daha
 verelim. Bu örnek sayesinde benim açıklamama gerek kalmadan karakter dizisi
 biçimlendirme mantığını derhal kavrayacağınızı zannediyorum::
-    
+
     print("%s ve %s iyi bir ikilidir!" %("Python", "Django"))
 
 Dediğim gibi, bu basit örnek karakter dizilerinin nasıl biçimlendirildiğini
 gayet açık bir şekilde gösteriyor. Dilerseniz yapıyı şöyle bir inceleyelim:
 
-#. Python'da `%s` yapısı, karakter dizisi içinde bir yer tutma vazifesi görür. 
+#. Python'da `%s` yapısı, karakter dizisi içinde bir yer tutma vazifesi görür.
 
 #. `%s` yapısı bir anlamda değişkenlere benzer. Tıpkı değişkenlerde olduğu
    gibi, `%s` yapısının değeri değişebilir.
@@ -182,12 +182,12 @@ gayet açık bir şekilde gösteriyor. Dilerseniz yapıyı şöyle bir inceleyel
 
 #. Eğer karakter dizisi içindeki `%s` işaretlerinin sayısı ile karakter
    dizisi dışında bu işaretlere karşılık gelen değerlerin sayısı birbirini
-   tutmazsa Python bize bir hata mesajı gösterecektir. Mesela:    
+   tutmazsa Python bize bir hata mesajı gösterecektir. Mesela:
 
    .. parsed-literal::
 
         >>> print("Benim adım %s, soyadım %s" %"istihza")
-        
+
         Traceback (most recent call last):
             File "<stdin>", line 1, in <module>
         TypeError: not enough arguments for format string
@@ -232,7 +232,7 @@ yerleştiriyor.
 Hatırlarsanız önceki derslerimizde basit bir hesap makinesi örneği vermiştik.
 İşte şimdi öğrendiklerimizi o programa uygularsak karakter dizisi
 biçimlendiricileri üzerine epey pratik yapmış oluruz::
-    
+
     giriş = """
         (1) topla
         (2) çıkar
@@ -255,12 +255,12 @@ biçimlendiricileri üzerine epey pratik yapmış oluruz::
         elif soru == "1":
             sayı1 = int(input("Toplama işlemi için ilk sayıyı girin: "))
             sayı2 = int(input("Toplama işlemi için ikinci sayıyı girin: "))
-            
+
             #İlk %s'ye karşılık gelen değer   : sayı1
             #İkinci %s'ye karşılık gelen değer: sayı2
             #Üçüncü %s'ye karşılık gelen değer: sayı1 + sayı2
             print("%s + %s = %s" %(sayı1, sayı2, sayı1 + sayı2))
-            
+
         elif soru == "2":
             sayı3 = int(input("Çıkarma işlemi için ilk sayıyı girin: "))
             sayı4 = int(input("Çıkarma işlemi için ikinci sayıyı girin: "))
@@ -278,7 +278,7 @@ biçimlendiricileri üzerine epey pratik yapmış oluruz::
 
         elif soru == "5":
             sayı9 = int(input("Karesini hesaplamak istediğiniz sayıyı girin: "))
-            
+
             #İlk %s'ye karşılık gelen değer   : sayı9
             #İkinci %s'ye karşılık gelen değer: sayı9 ** 2
             print("%s sayısının karesi = %s" %(sayı9, sayı9 ** 2))
@@ -296,7 +296,7 @@ aynı zamanda 'yüzde' (`%`) anlamına da geliyor. O halde size şöyle bir soru
 sorayım: Acaba `0`'dan `100`'e kadar olan sayıların başına birer yüzde işareti
 koyarak bu sayıları nasıl gösterirsiniz? `%0`, `%1`, `%10`, `%15` gibi... Önce
 şöyle bir şey deneyelim::
-    
+
     >>> for i in range(100):
     ...     print("%s" %i)
     ...
@@ -340,14 +340,14 @@ kullandık::
 
 Ama eğer istersek bundan daha karmaşık biçimlendirme işlemleri de
 gerçekleştirebiliriz. Şu örneğe bakın::
-    
+
     >>> for i in dir(str):
     ...     print("%15s" %i)
 
 Gördüğünüz gibi `%` ile `s` işaretleri arasına bir sayı yerleştirdik. Bu sayı,
 biçimlendirilecek karakter dizisinin toplam kaç karakterlik yer kaplayacağını
 gösteriyor. Durumu daha net görebilmeniz için şöyle bir örnek verelim::
-    
+
     >>> print("|%15s|" %"istihza")
 
     |        istihza|
@@ -357,28 +357,28 @@ karakter dizisinin nasıl ve ne şekilde hizalandığını daha belirgin bir şe
 görebiliyoruz. Aslında yukarıdaki örneğin yaptığı iş size hiç yabancı değil.
 Aynı etkiyi, karakter dizisi metotlarından ``rjust()`` ile de yapabileceğimizi
 biliyorsunuz::
-    
+
     >>> print("istihza".rjust(15))
 
 Aynen yukarıdaki çıktıyı ``rjust()`` metodunu kullanarak elde etmek için ise
 şöyle bir şey yazabilirsiniz::
-    
+
     >>> print("|%s|" %"istihza".rjust(15))
-    
+
     |        istihza|
 
 Yukarıdaki örnekte `"istihza"` karakter dizisini sağa doğru yasladık. Sola
 yaslamak için ise negatif sayılardan yararlanabilirsiniz::
-    
+
     >>> print("|%-15s|" %"istihza")
 
     |istihza        |
 
 Tıpkı biraz önce verdiğimiz örnekteki gibi, aynı etkiyi ``ljust()`` metoduyla da
 elde edebilirsiniz::
-    
+
     >>> print("|%s|" %"istihza".ljust(15))
-    
+
     |istihza        |
 
 Gördüğünüz gibi, `%s` yapısını farklı şekillerde kullanarak epey karmaşık
@@ -403,7 +403,7 @@ nasıl elde edebiliriz?
 Burada bütün değişkenler tek bir değere sahip olacak. Örneğin değişkenimiz
 `Python Programlama Dili` ise yukarıdaki şablon şöyle bir `HTML` sayfası
 üretecek::
-    
+
     <html>
         <head>
             <title> Python Programlama Dili </title>
@@ -430,8 +430,8 @@ Aklınıza ilk olarak şöyle bir çözüm gelmiş olabilir::
     </html>
     """
 
-    print(sayfa % ("Python Programlama Dili", 
-                   "Python Programlama Dili", 
+    print(sayfa % ("Python Programlama Dili",
+                   "Python Programlama Dili",
                    "Python Programlama Dili"))
 
 Bu gayet makul ve doğru bir çözümdür. Ancak gördüğünüz gibi yukarıdaki kodlarda
@@ -440,7 +440,7 @@ Programlama Dili"`) üç kez tekrar ediyoruz. En baştan beri söylediğimiz gib
 kod yazarken tekrarlardan olabildiğince kaçınmaya çalışmamız programımızın
 performansını artıracaktır. Burada da tekrardan kaçınmak amacıyla şöyle bir kod
 yazmayı tercih edebiliriz. Dikkatlice inceleyin::
-    
+
     sayfa = """
     <html>
         <head>
@@ -459,14 +459,14 @@ yazmayı tercih edebiliriz. Dikkatlice inceleyin::
 Gördüğünüz gibi, yukarıdaki kodlar bizi aynı karakter dizisini tekrar tekrar
 yazma zahmetinden kurtardı. Peki ama nasıl? Gelin isterseniz bu yapıyı daha iyi
 anlayabilmek için daha basit bir örnek verelim::
-    
+
     print("depoda %(miktar)s kilo %(ürün)s kaldı" %{"miktar": 25,
                                                     "ürün": "elma"})
 
 Burada şöyle bir yapıyla karşı karşıyayız::
 
     "%(değişken_adı)s" % {"değişken_adı": "değişken_değeri"}
-    
+
 `{"değişken_adı": "değişken_değeri"}` yapısıyla önceki derslerimizde
 karşılaşmıştınız. Dolayısıyla bu yapının temel olarak ne işe yaradığını
 biliyorsunuz. Hatta bu yapının adının 'sözlük' olduğunu da öğrenmiştiniz. İşte
@@ -512,7 +512,7 @@ biçim düzenleyicisiyle birlikte kullanılabilecek tek karakter `s` değildir. 
 ifadesinin kısaltmasıdır. Yani aslında `%s` yapısı Python'da özel olarak
 karakter dizilerini temsil eder.
 
-Peki bu ne demek oluyor? 
+Peki bu ne demek oluyor?
 
 Bir karakter dizisi içinde `%s` yapısını kullandığımızda, dışarıda buna karşılık
 gelen değerin de bir karakter dizisi veya karakter dizisine çevrilebilecek bir
@@ -532,7 +532,7 @@ d
 Bir önceki başlıkta gördüğümüz `s` harfi nasıl karakter dizilerini temsil
 ediyorsa, `d` harfi de sayıları temsil eder. İsterseniz küçük bir örnekle
 açıklamaya çalışalım durumu::
-    
+
     >>> print("Şubat ayı bu yıl %d gün çekiyor" %28)
 
     Şubat ayı bu yıl 28 gün çekiyor.
@@ -540,7 +540,7 @@ açıklamaya çalışalım durumu::
 Gördüğünüz gibi, `%` işaretiyle birlikte bu defa `s` yerine `d` harfini
 kullandık. Buna uygun olarak da dış tarafta `28` sayısını kullandık. Peki
 yukarıdaki ifadeyi şöyle de yazamaz mıydık? ::
-    
+
     >>> print("Şubat ayı bu yıl %s gün çekiyor" %28)
 
 Elbette yazabilirdik. Bu kod da bize doğru çıktı verecektir. Çünkü daha önce de
@@ -548,9 +548,9 @@ dediğimiz gibi, `s` harfi karakter dizilerini ve karakter dizisine çevrilebile
 değerleri temsil eder. Python'da sayılar karakter dizisine çevrilebildiği için
 `%s` gibi bir yapıyı hata almadan kullanabiliyoruz. Ama mesela şöyle bir şey
 yazamayız::
-    
+
     >>> print("Şubat ayı bu yıl %d gün çekiyor" %"yirmi sekiz")
-    
+
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
     TypeError: %d format: a number is required, not str
@@ -562,9 +562,9 @@ Doğrusunu söylemek gerekirse, `d` harfi aslında tam sayı (*integer*) değerl
 temsil eder. Eğer bu harfin kullanıldığı bir karakter dizisinde değer olarak
 mesela bir kayan noktalı sayı (*float*) verirsek, bu değer tamsayıya
 çevrilecektir. Bunun ne demek olduğunu hemen bir örnekle görelim::
-    
+
     >>> print("%d" %13.5)
-    
+
     13
 
 Gördüğünüz gibi, `%d` ifadesi, `13.5` sayısının ondalık kısmını çıktıda
@@ -580,11 +580,11 @@ kısmını almak istiyor olabilirsiniz. Örneğin kullanıcı `23.8` gibi bir sa
 girmişse, siz bu sayıda ihtiyacınız olan `23` kısmını almak isteyebilirsiniz.
 İşte bu `%d` işaretinden yararlanarak, kullanıcının girdiği ondalık sayının
 sadece tam sayı kısmını çekebilirsiniz::
-    
+
     sayı = input("sayı: ")
 
     print("%d" %float(sayı))
-    
+
 Elbette Python'da bir ondalık sayının sadece taban kısmını almanın başka
 yöntemleri de vardır. Ama yukarıda verdiğimiz örnek bir ondalık sayının sadece
 tabanını almanın gayet basit ve etkili bir yoludur.
@@ -595,35 +595,35 @@ tabanını almanın gayet basit ve etkili bir yoludur.
     >>> print("|%7d|" %23)
 
     |     23|
-    
+
     >>> print("|%-7d|" %23)
-    
+
     |23     |
 
 veya::
 
     >>> print("%(sayı)d" % {"sayı": 23})
-    
+
     23
 
 `%s` yapısına ek olarak, sayının kaplayacağı alandaki boşluklara birer `0` da
 yerleştirebilirsiniz::
-    
+
     >>> print("%05d" %23)
 
     00023
 
 ...veya::
-    
+
     >>> print("%.5d" %23)
-    
+
     00023
 
 Hatta hem sayının kaplayacağı boşluk miktarını hem de bu boşlukların ne
 kadarının `0` ile doldurulacağını da belirleyebilirsiniz::
-    
+
     >>> print("%10.5d" %23)
-    
+
          00023
 
 Burada `23` sayısının toplam `10` boşlukluk bir yer kaplamasını ve bu `10` adet
@@ -633,7 +633,7 @@ istedik.
 Bir de şuna bakalım::
 
     >>> print("%010.d" %23)
-    
+
     0000000023
 
 Burada ise `23` sayısının toplam `10` boşlukluk bir yer kaplamasını ve bu `10`
@@ -646,7 +646,7 @@ metoduyla da yapabileceğimizi biliyorsunuz::
     >>> "23".zfill(10)
 
     '0000000023'
-    
+
 Yukarıdaki kullanımlar ilk bakışta gözünüze karışık görünmüş olabilir. Ama eğer
 yeterince pratik yaparsanız, aslında bu biçimlerin hiç de o kadar karmaşık
 olmadığını anlarsınız. İsterseniz bu biçimlerle neler yapabileceğimizi şöyle bir
@@ -656,51 +656,51 @@ kısaca tarif edelim:
 karakterin en temel kullanımı şöyledir::
 
     >>> "%d" %10
-    
+
     '10'
 
 `d` harfi ile `%` işareti arasına bir pozitif veya negatif sayı getirerek,
 temsil edilecek sayının toplam kaç boşluktan oluşan bir alan içine
 yerleştirileceğini belirleyebiliyoruz::
-    
+
     >>> "%5d" %10
-    
+
     '   10'
 
 Burada `10` sayısını toplam `5` boşlukluk bir alan içine yerleştirdik.
 Gördüğünüz gibi, bir pozitif sayı kullandığımızda, sayımız kendisine ayrılan
 alan içinde sağa yaslanıyor. Eğer bu sayıyı sola yaslamak istersek negatif
 sayılardan yararlanabiliriz::
-    
+
     >>> "%-5d" %10
-    
+
     '10   '
 
 Eğer sağa yasladığımız bir sayının sol tarafını sıfırla doldurmak istersek,
 hizalama miktarını belirtmek için kullandığımız sayının soluna bir sıfır
 ekleyebiliriz::
-    
+
     >>> "%05d" %10
-    
+
     '00010'
 
 Aynı etkiyi şu şekilde de elde edebilirsiniz::
 
     >>> "%.5d" %10
-    
+
     '00010'
 
 Eğer nokta işaretinden önce bir sayı belirtirseniz, karakter dizisi o
 belirttiğiniz sayı kadar sağa yaslanacaktır. Yani::
-    
+
     >>> "%10.5d" %10
-    
+
     '     00010'
 
 ... veya sola::
 
     >>> "%-10.5d" %10
-    
+
     '00010     '
 
 Her iki şekilde de, karakter dizisini toplam `10` boşluktan oluşan bir alan
@@ -724,59 +724,59 @@ Bu harf *octal* (sekizli) kelimesinin kısaltmasıdır. Adından da anlaşılaca
 gibi, sekizli düzendeki sayıları temsil eder. Dolayısıyla bu harfi kullanarak
 onlu düzendeki bir sayıyı sekizli düzendeki karşılığına dönüştürebilirsiniz.
 Örneğin::
-    
+
     >>> print("%i sayısının sekizli düzendeki karşılığı %o sayısıdır." %(10, 10))
-    
+
     10 sayısının sekizli düzendeki karşılığı 12 sayısıdır.
 
 .. note:: `%d` yapısını anlatırken gösterdiğimiz ileri düzey biçimlendirme
           tekniklerinin tamamını `%o` ile de kullanabilirsiniz.
-          
-x 
+
+x
 ------
 
 Bu harf *hexadecimal*, yani onaltılı düzendeki sayıları temsil eder.
 Dolayısıyla bu harfi kullanarak onlu düzendeki bir sayıyı onaltılı düzendeki
 karşılığına çevirebilirsiniz::
-    
+
     >>> print("%i sayısının onaltılı düzendeki karşılığı %x sayısıdır." %(20, 20))
-    
+
     20 sayısının onaltılı düzendeki karşılığı 14 sayısıdır.
 
 Buradaki 'x' küçük harf olarak kullanıldığında, onaltılı düzende harfle
 gösterilen sayılar da küçük harfle temsil edilecektir::
-    
+
     >>> print("%i sayısının onaltılı düzendeki karşılığı %x sayısıdır." %(10, 10))
-    
+
     10 sayısının onaltılı düzendeki karşılığı a sayısıdır.
 
 .. note:: `%d` yapısını anlatırken gösterdiğimiz ileri düzey biçimlendirme
           tekniklerinin tamamını `%x` ile de kullanabilirsiniz.
 
-X 
+X
 ------
 
 Bu da tıpkı `x` harfinde olduğu gibi, onaltılı düzendeki sayıları temsil eder.
 Ancak bunun farkı, harfle gösterilen onaltılı sayıları büyük harfle temsil
 etmesidir::
-    
+
     >>> print("%i sayısının onaltılı düzendeki karşılığı %X sayısıdır." %(10, 10))
-    
+
     10 sayısının onaltılı düzendeki karşılığı A sayısıdır.
 
 .. note:: `%d` yapısını anlatırken gösterdiğimiz ileri düzey biçimlendirme
           tekniklerinin tamamını `%X` ile de kullanabilirsiniz.
 
-f 
+f
 -----
 
 Python'da karakter dizilerini biçimlendirirken `s` harfinden sonra en çok
 kullanılan harf `f` harfidir. Bu harf İngilizce'deki *float*, yani 'kayan
 noktalı sayı' kelimesinin kısaltmasıdır. Adından da anlaşılacağı gibi, karakter
 dizileri içindeki kayan noktalı sayıları temsil etmek için kullanılır. ::
-    
+
     >>> print("Dolar %f TL olmuş..." %1.4710)
-    
+
     Dolar 1.471000 TL olmuş...
 
 Bu çıktı sizi biraz şaşırtmış olabilir. Çünkü gördüğünüz gibi, çıktıda bizim
@@ -785,9 +785,9 @@ eklemediğimiz haneler var.
 Python'da bir karakter dizisi içindeki sayıyı `%f` yapısı ile kayan noktalı
 sayıya çevirdiğimizde noktadan sonra öntanımlı olarak `6` hane yer alacaktır.
 Yani mesela::
-    
+
     >>> print("%f" %10)
-    
+
     10.000000
 
 Gördüğünüz gibi, gerçekten de `10` tam sayısı `%f` yapısı ile kayan noktalı
@@ -796,16 +796,16 @@ sayıya dönüştürüldüğünde noktadan sonra `6` adet sıfıra sahip oluyor.
 Başka bir örnek daha verelim::
 
     >>> print("%f"%23.6)
-    
+
     23.600000
 
 Bu örnek, `%f` yapısının, kayan noktalı sayıların noktadan sonraki hane sayısını
 da `6`'ya tamamladığını gösteriyor. Ama elbette biz istersek, daha önce
 öğrendiğimiz teknikleri kullanarak, noktadan sonra kaç hane olacağını
 belirleyebiliriz::
-    
+
     >>> print("%.2f" % 10)
-    
+
     10.00
 
 `%f` yapısında, `%` ile `f` arasına `.2` gibi bir ifade yerleştirerek noktadan
@@ -814,20 +814,20 @@ sonra `2` hane olmasını sağladık.
 .. note:: Daha önce gösterdiğimiz ileri düzey biçimlendirme tekniklerini `%f`
           ile de kullanabilirsiniz.
 
-c 
+c
 -----
 
 Bu harf de Python'daki önemli karakter dizisi biçimlendiricilerinden biridir. Bu
 harf tek bir karakteri temsil eder::
-    
+
     >>> print("%c" %"a")
-    
+
     a
 
 Ama::
 
     >>> print("%c" %"istihza")
-    
+
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
     TypeError: %c requires int or char
@@ -839,13 +839,13 @@ sayısı birden fazla olduğunda bu komut hata veriyor.
 karakterleri de gösterebilmesidir::
 
     >>> print("%c" %65)
-    
+
     A
 
 ASCII tablosunda 65 sayısı 'A' harfine karşılık geldiği için yukarıdaki komutun
 çıktısı 'A' harfini gösteriyor. Eğer isterseniz `c` harfini kullanarak bütün
 ASCII tablosunu ekrana dökebilirsiniz::
-    
+
     >>> for i in range(128):
     ...     print("%s ==> %c" %(i, i))
 
@@ -867,7 +867,7 @@ Dikkatlice inceleyin::
 Burada, gördüğünüz gibi, karakter dizisi metotlarını bir tablo görünümü içinde
 ekrana yazdırdık. Şu satırlar yardımıyla tablodaki sütun sayısını `3` olarak
 belirledik::
-    
+
     if sıra % 3 == 0:
         print("\n", end="")
 
@@ -884,7 +884,7 @@ Bununla ilgili bir örnek daha verelim::
 Burada `0`'dan `20`'ye kadar olan sayıların onlu, sekizli ve onaltılı düzendeki
 karşılıklarını bir tablo görünümü içinde ekrana çıktı verdik. Bu arada, eğer
 isterseniz yukarıdaki kodları şöyle de yazabileceğinizi biliyorsunuz::
-    
+
     for i in range(20):
         print("%(deger)5d%(deger)5o%(deger)5x" %({"deger": i}))
 
@@ -911,7 +911,7 @@ alalım.
 ``format()`` metodunu en basit şekilde şöyle kullanıyoruz::
 
     >>> print("{} ve {} iyi bir ikilidir!".format("Django", "Python"))
-    
+
     Django ve Python iyi bir ikilidir!
 
 Gördüğünüz gibi, eski yöntemdeki `%` işaretine karşılık, yeni yöntemde `{}`
@@ -944,11 +944,11 @@ Bu konuyu daha iyi anlayabilmek için bir örnek daha verelim::
     isim_soyisim = input("İsim ve soyisim: ")
     bilet_sayısı = input("Bilet sayısı: ")
 
-    print("""{} noktasından {} noktasına, 14:30 hareket saatli 
-    sefer için {} adına {} adet bilet ayrılmıştır!""".format(kalkış, 
-                                                             varış, 
-                                                             isim_soyisim, 
-                                                             bilet_sayısı)) 
+    print("""{} noktasından {} noktasına, 14:30 hareket saatli
+    sefer için {} adına {} adet bilet ayrılmıştır!""".format(kalkış,
+                                                             varış,
+                                                             isim_soyisim,
+                                                             bilet_sayısı))
 
 Gördüğünüz gibi, `{}` işaretleri karakter dizisi içinde bir 'yer tutma' görevi
 görüyor. Tutulan bu yerlere nelerin geleceğini ``format()`` metodunun
@@ -964,7 +964,7 @@ Elbette eğer isterseniz yukarıdaki örneği şu şekilde de yazabilirsiniz::
     metin = "{} noktasından {} noktasına, 14:30 hareket saatli \
     sefer için {} adına {} adet bilet ayrılmıştır!"
 
-    print(metin.format(kalkış, varış, isim_soyisim, bilet_sayısı)) 
+    print(metin.format(kalkış, varış, isim_soyisim, bilet_sayısı))
 
 Ancak yaygın olarak kullanılan yöntem, karakter dizisini herhangi bir değişkene
 atamadan, doğrudan ``format()`` metoduna bağlamaktır. Elbette hangi yöntem
@@ -982,7 +982,7 @@ yazmak da mümkündür::
     bilet_sayısı = input("Bilet sayısı: ")
 
     print(kalkış, "noktasından", varış, "noktasına, 14:30 hareket saatli \
-    sefer için", isim_soyisim, "adına", bilet_sayısı, "adet bilet ayrılmıştır!") 
+    sefer için", isim_soyisim, "adına", bilet_sayısı, "adet bilet ayrılmıştır!")
 
 Tıpkı daha önce verdiğimiz örnekte olduğu gibi, burada da ``format()`` metodunu
 kullanmak karakter dizilerini birleştirme yöntemine göre daha mantıklı ve kolay
@@ -991,17 +991,17 @@ sadece karakter dizisi birleştirme yöntemleriyle biçimlendirmeye çalışmak 
 süre sonra tam bir eziyet halini alabilir. O yüzden, 'Ben ``format()`` metodunu
 öğrenmesem de olur,' diye düşünmeyin sakın. Mesela şöyle bir programı
 ``format()`` metodu kullanmadan yazmaya çalışmak hiç akıl kârı değildir::
-    
+
     kodlama  = "utf-8"
     site_adı = "Python Programlama Dili"
     dosya    = open("deneme.html", "w", encoding=kodlama)
     içerik   = """
     <html>
 
-    <head> 
-        <meta http-equiv="Content-Type" content="text/html; charset={}" /> 
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset={}" />
         <title>{}</title>
-    </head> 
+    </head>
 
     <body>
         <h1>istihza.com web sitesine hoş geldiniz!</h1>
@@ -1016,7 +1016,7 @@ süre sonra tam bir eziyet halini alabilir. O yüzden, 'Ben ``format()`` metodun
     dosya.close()
 
 Burada şu satırın bir kısmı hariç bütün kodları anlayabilecek düzeydesiniz::
-    
+
     dosya  = open("deneme.html", "w", encoding=kodlama)
 
 Bu kodlarla, `deneme.html` adlı bir dosya oluşturduğumuzu biliyorsunuz. Daha
@@ -1035,28 +1035,28 @@ parantezleriyle, karakter dizisi dışındaki değerleri teker teker ve sırası
 eşleştirecektir. Ama isterseniz küme parantezleri içine birer sayı yazarak,
 karakter dizisi dışındaki değerlerin hangi sırayla kullanılacağını
 belirleyebilirsiniz. Örneğin::
-    
+
     >>> "{0} {1}".format("Fırat", "Özgül")
-    
+
     'Fırat Özgül'
 
 Küme parantezleri içinde sayı kullanabilme imkanı sayesinde değerlerin sırasını
 istediğiniz gibi düzenleyebilirsiniz::
-    
+
     >>> "{1} {0}".format("Fırat", "Özgül")
-    
+
     'Özgül Fırat'
 
 Hatta bu özellik sayesinde değerleri bir kez yazıp, birden fazla sayıda tekrar
 edebilirsiniz::
-    
+
     >>> "{0} {1} ({1} {0})".format("Fırat", "Özgül")
-    
+
     'Fırat Özgül (Özgül Fırat)'
 
 Dolayısıyla, `{}` işaretleri içinde öğelerin sırasını da belirterek, biraz önce
 verdiğimiz `HTML` sayfası örneğini şu şekilde yazabilirsiniz::
-    
+
     kodlama  = "utf-8"
     site_adı = "Python Programlama Dili"
     dosya    = open("deneme.html", "w", encoding=kodlama)
@@ -1087,7 +1087,7 @@ içinde iki kez yazmak zorunda kalmadık.
 Yukarıdaki örnekler bize, ``format()`` metodunun parametrelerine sıra numarasına
 göre erişebileceğimizi gösteriyor. Biz aynı zamanda bu metodun parametrelerine
 isme göre de erişebiliriz. Çok basit bir örnek::
-    
+
     print("{dil} dersleri".format(dil="python"))
 
 Bu yöntemi kullanarak, aynı değişkeni birkaç farklı yerde kullanabilirsiniz::
@@ -1118,7 +1118,7 @@ de yapabiliriz.
 Dikkatlice bakın::
 
     >>> print("{:>15}".format("istihza"))
-    
+
             istihza
 
 Bu gösterim gözünüze oldukça yabancı ve karışık gelmiş olabilir. Ama aslında hiç
@@ -1132,11 +1132,11 @@ sayısı ise bu hizalama işleminin 15 karakterlik bir alan ile ilgili olduğunu
 söylüyor. Bu şekilde karakter dizisini `15` karakterlik bir alan içine
 yerleştirip karakter dizisini sağa yasladık. Yukarıdaki çıktıyı daha iyi
 anlayabilmek için kodları şöyle de yazabilirsiniz::
-    
+
     >>> print("|{:>15}|".format("istihza"))
 
     |       istihza|
-    
+
 Gördüğünüz gibi, karakter dizimiz, kendisine ayrılan `15` karakterlik alan
 içinde sağa yaslanmış vaziyette duruyor.
 
@@ -1151,9 +1151,9 @@ Bu defa `<` adlı işaretten yararlandığımıza dikkat edin.
 
 Yukarıdaki yöntemi kullanarak, karakter dizilerini sola veya sağa yaslamanın
 yanısıra, kendilerine ayrılan alan içinde ortalayabilirsiniz de::
-    
+
     >>> print("|{:^15}|".format("istihza"))
-    
+
     |    istihza    |
 
 Gördüğünüz gibi, python3 ile gelen ``format()`` metodunu hizalama işlemleri için
@@ -1170,7 +1170,7 @@ kullanırken üç farklı işaretten yararlanıyoruz:
 Yukarıdaki işaretler, yaptıkları işi çağrıştırdıkları için, bunları akılda
 tutmak çok zor olmasa gerek. Mesela örnek olması açısından, eski biçimlendirme
 yönteminin son kısmında verdiğimiz şu örneği::
-    
+
     for sıra, karakter in enumerate(dir(str)):
         if sıra % 3 == 0:
             print("\n", end="")
@@ -1201,20 +1201,20 @@ ve dönüştürme işlemleri yapabiliriz.
 s
 -----
 
-Bu harf karakter dizilerini temsil eder. 
+Bu harf karakter dizilerini temsil eder.
 
 Yalnız bu biçimlendirici karakterlerin `{}` işaretleri içindeki kullanımı ilk
 bakışta gözünüze biraz karışık gelebilir::
-    
+
     >>> print("{:s}".format("karakter dizisi"))
-    
+
     karakter dizisi
 
 Bu arada, harfleri `{}` yapısının içinde nasıl kullandığımıza dikkat edin.
 Gördüğünüz gibi biçimlendirme karakterini kullanırken, karakterin sol tarafına
 bir adet `:` işareti de yerleştiriyoruz. Bir örnek verelim::
-    
-    print("{:s} ve {:s} iyi bir ikilidir!".format("Python", "Django")) 
+
+    print("{:s} ve {:s} iyi bir ikilidir!".format("Python", "Django"))
 
 Yalnız, `s` harfi karakter dizilerini temsil ettiği için, `{}` işaretleri
 arasında bu harfi kullandığımızda, ``format()`` metodunun alabileceği
@@ -1222,9 +1222,9 @@ parametreyi karakter dizisiyle sınırlandırmış oluruz. Dolayısıyla bu harf
 kullandıktan sonra ``format()`` metodu içinde sadece karakter dizilerini
 kullanabiliriz. Eğer sayı kullanırsak Python bize bir hata mesajı
 gösterecektir::
-    
+
     >>> print("{:s}".format(12))
-    
+
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
     ValueError: Unknown format code 's' for object of type 'int'
@@ -1232,7 +1232,7 @@ gösterecektir::
 Bu yüzden, eğer amacınız ``format()`` metoduna parametre olarak karakter dizisi
 vermekse, `{}` işaretleri içinde herhangi bir harf kullanmamak daha akıllıca
 olabilir::
-    
+
     print("{} ve {} iyi bir ikilidir!".format("Python", "Django"))
 
 c
@@ -1240,7 +1240,7 @@ c
 
 Bu harf `0` ile `256` arası sayıların ASCII tablosundaki karşılıklarını temsil
 eder::
-    
+
     >>> print("{:c}".format(65))
 
     A
@@ -1251,11 +1251,11 @@ d
 Bu harf sayıları temsil eder::
 
     >>> print("{:d}".format(65))
-    
+
     65
-    
+
 Eğer sayı dışında bir değer kullanırsanız Python size bir hata mesajı gösterir::
-    
+
     >>> print("{:d}".format("65"))
 
     Traceback (most recent call last):
@@ -1286,16 +1286,16 @@ X
 
 Tıpkı `x` harfinde olduğu gibi, bu harf de onlu düzendeki sayıları onaltılı
 düzendeki karşılıklarına çevirir::
-    
+
     >>> "{:X}".format(65)
-    
+
     '41'
 
 Peki `x` ile `X` harfi arasında ne fark var? Fark şudur: `x`; onaltılı düzende
 harfle gösterilen sayıları küçük harf şeklinde temsil eder. `X` işareti bu
 sayıları büyük harf şeklinde temsil eder. Bu ikisi arasındaki farkı daha net
 görmek için şöyle bir kod yazabilirsiniz::
-    
+
     >>> for i in range(20):
     ...     print("{:x}{:10X}".format(i, i))
     ...
@@ -1327,9 +1327,9 @@ b
 ---
 
 Bu işaret, onlu düzendeki sayıları ikili düzendeki karşılıklarına çevirir::
-    
+
     >>> "{:b}".format(2)
-    
+
     '10'
 
 f
@@ -1337,9 +1337,9 @@ f
 
 Bu işaret, eski biçimlendirme yöntemini anlatırken gösterdiğimiz `f` işaretiyle
 benzer bir işleve sahiptir::
-    
+
     print("{:.2f}".format(50))
-    
+
     50.00
 
 
@@ -1348,9 +1348,9 @@ benzer bir işleve sahiptir::
 
 `:` işaretini `,` işareti (basamak ayracı) ile birlikte kullanarak, sayıları
 basamaklarına ayırabilirsiniz::
-    
+
     >>> "{:,}".format(1234567890)
-    
+
     '1,234,567,890'
 
 Böylece Python'da karakter dizisi biçimlendirmenin hem eski hem de yeni

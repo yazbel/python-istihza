@@ -1,11 +1,11 @@
 .. meta:: :description: Bu bölümde Python programlama dilinin farklı işletim
-           sistemlerine nasıl kurulacağını anlatacağız. 
-          :keywords: python, python2, python3, kurulum, kaynaktan, Windows, GNU, 
+           sistemlerine nasıl kurulacağını anlatacağız.
+          :keywords: python, python2, python3, kurulum, kaynaktan, Windows, GNU,
            Linux, root, configure, prefix, home, ev, path, yol
 
-.. highlight:: none 
+.. highlight:: none
 
-********************** 
+**********************
 Python Nasıl Kurulur?
 **********************
 
@@ -22,14 +22,14 @@ Dilerseniz öncelikle GNU/Linux kullanıcılarının durumuna bakalım:
  Ayrıca bu bölümler farklı kullanıcı gruplarına hitap ediyor olsa da, aslında bu
  bölümlerin birbirini tamamlayıcı nitelikte olduğunu göreceksiniz.
 
-GNU/Linux Kullanıcıları 
+GNU/Linux Kullanıcıları
 ***********************
 
 GNU/Linux dağıtımlarına Python programlama dilini kurarken bazı noktaları göz
 önünde bulundurmamız gerekiyor. İşte bu bölümde bu önemli noktaların neler
 olduğunu inceleyeceğiz.
 
-Kurulu Python Sürümü 
+Kurulu Python Sürümü
 ====================
 
 Hemen hemen bütün GNU/Linux dağıtımlarında Python programlama dili kurulu olarak
@@ -39,12 +39,12 @@ Ancak burada şöyle bir durum var:
 
 Daha önce de belirttiğimiz gibi, şu anda piyasada iki farklı Python serisi
 bulunuyor. Bunlardan birinin Python'ın 2.x serisi, ötekinin ise 3.x serisi
-olduğunu biliyorsunuz. 
+olduğunu biliyorsunuz.
 
 Sisteminizde kurulu olan Python sürümünü denetlemek için komut satırında
 öncelikle şu komutu vermeyi deneyin (büyük 'V' ile)::
-    
-    python -V 
+
+    python -V
 
 Eğer bu komuttan `Python 2.x.y` şeklinde bir çıktı alıyorsanız, yani x ve y'den
 önceki kısım 2 ile başlıyorsa sisteminizde Python2 kuruludur.
@@ -58,26 +58,26 @@ kurulu vaziyettedir.
 Kullandığınız GNU/Linux dağıtımında durumun ne olduğunu denetlemek için
 yukarıdaki komutu bir de ``python3 -V`` şeklinde çalıştırmayı deneyebilirsiniz.
 Eğer bu komut size bir hata mesajı yerine bir sürüm numarası veriyorsa
-sisteminizde Python3 de kuruludur. 
+sisteminizde Python3 de kuruludur.
 
 Sisteminizdeki Python sürümlerine ilişkin daha kesin bir rapor için ise şu
 komutu kullanabilirsiniz::
-    
-    ls -g {,/usr{,/local}}/bin | grep python 
+
+    ls -g {,/usr{,/local}}/bin | grep python
 
 Buradan aldığınız çıktıyı inceleyerek de sisteminizde birden fazla Python
 sürümünün kurulu olup olmadığını görebilirsiniz. [Bununla ilgili bir
 tartışma için bkz. http://goo.gl/RnRRc]
 
 Ayrıca kullandığınız GNU/Linux dağıtımında ``whereis python`` gibi bir komut
-vererek de sistemde kurulu Python sürümleri hakkında bilgi edinebilirsiniz. 
+vererek de sistemde kurulu Python sürümleri hakkında bilgi edinebilirsiniz.
 
 Eğer sisteminizde Python3 kuruluysa  ve siz de kurulu olan Python3 sürümünden
 memnunsanız herhangi bir şey yapmanıza gerek yok. Farklı bir Python sürümü
 kurmaya çalışmadan yolunuza devam edebilirsiniz.
 
-Paket Deposundan Kurulum 
-========================= 
+Paket Deposundan Kurulum
+=========================
 
 Sistemlerinde öntanımlı olarak herhangi bir Python3 sürümü kurulu olmayan veya
 sistemlerinde kurulu öntanımlı Python3 sürümünden memnun olmayan GNU/Linux
@@ -95,7 +95,7 @@ Yazılım Merkezi aracılığıyla veya doğrudan şu komutla kurabilir::
 
 Bu komut, Python3'ü bütün bağımlılıkları ile beraber bilgisayarınıza kuracaktır.
 
-Kaynaktan Kurulum 
+Kaynaktan Kurulum
 =========================
 
 Peki ya kullandığınız dağıtımın depolarında Python3 yoksa veya depodaki Python3
@@ -109,24 +109,24 @@ veya Python3'ü yetkisiz kullanıcı olarak kurmak. Normal şartlar altında eğ
 kullandığınız sistemde `root` haklarına sahipseniz Python3'ü yetkili kullanıcı
 olarak kurmanızı tavsiye ederim.
 
-root Hakları İle Kurulum 
------------------------------ 
+root Hakları İle Kurulum
+-----------------------------
 
 Python'ı kurmadan önce sistemimizde bulunması gereken bazı programlar var.
 Aslında bu programlar olmadan da Python kurulabilir, ancak eğer bu programları
 kurmazsanız Python'ın bazı özelliklerinden yararlanamazsınız. Bu programlar
 şunlardır:
 
-    #. tcl-dev 
-    #. tk-dev 
-    #. zlib1g-dev 
-    #. ncurses-dev 
+    #. tcl-dev
+    #. tk-dev
+    #. zlib1g-dev
+    #. ncurses-dev
     #. libreadline-dev
-    #. libdb-dev 
-    #. libgdbm-dev 
-    #. libzip-dev 
-    #. libssl-dev 
-    #. libsqlite3-dev 
+    #. libdb-dev
+    #. libgdbm-dev
+    #. libzip-dev
+    #. libssl-dev
+    #. libsqlite3-dev
     #. libbz2-dev
     #. liblzma-dev
 
@@ -140,9 +140,9 @@ bağımlılık kurmanız gerekiyor olabilir.
 
 Ubuntu'da yukarıdaki paketlerin hepsini şu komutla kurabilirsiniz::
 
-    sudo apt-get install tcl-dev tk-dev 
-    zlib1g-dev ncurses-dev libreadline-dev 
-    libdb-dev libgdbm-dev libzip-dev libssl-dev 
+    sudo apt-get install tcl-dev tk-dev
+    zlib1g-dev ncurses-dev libreadline-dev
+    libdb-dev libgdbm-dev libzip-dev libssl-dev
     libsqlite3-dev libbz2-dev liblzma-dev
 
 .. note:: Farklı GNU/Linux dağıtımlarında, Python3'ü kaynaktan derleme
@@ -151,11 +151,11 @@ Ubuntu'da yukarıdaki paketlerin hepsini şu komutla kurabilirsiniz::
 
 Yukarıdaki programları kurduktan sonra |download| adresine gidiyoruz. Bu
 adreste, üzerinde 'Python-|py3|.tar.xz' yazan bağlantıya tıklayarak
-sıkıştırılmış kurulum dosyasını bilgisayarımıza indiriyoruz.  
+sıkıştırılmış kurulum dosyasını bilgisayarımıza indiriyoruz.
 
 Daha sonra bu sıkıştırılmış dosyayı açıyoruz. Açılan klasörün içine girip, orada
 ilk olarak şu komutu veriyoruz::
-    
+
     ./configure
 
 Bu komut, Python programlama dilinin sisteminize kurulabilmesi için gereken
@@ -171,7 +171,7 @@ yer alan `configure` adlı bir betiği çalıştırmanızı sağlıyor. Eğer ya
 arayacak ve bulamayacağı için de hata verecektir.
 
 ``./configure`` komutu hatasız olarak tamamlandıktan sonra ikinci olarak şu
-komutu veriyoruz:: 
+komutu veriyoruz::
 
     make
 
@@ -194,8 +194,8 @@ bağlı olarak biraz uzun sürebilir.
 ``make`` komutu tamamlandıktan sonra, komut çıktısının son satırlarına doğru
 şöyle bir uyarı mesajı görebilirsiniz::
 
-    Python build finished, but the necessary bits 
-    to build these modules were not found: [burada 
+    Python build finished, but the necessary bits
+    to build these modules were not found: [burada
     eksik olan modül veya modüllerin adları sıralanır]
 
 Burada Python, sistemimizde bazı paketlerin eksik olduğu konusunda bizi
@@ -208,7 +208,7 @@ Gerekli paketi ya da paketleri kurduktan sonra ``make`` komutunu tekrar
 komutun tamamlanması birincisi kadar uzun sürmez. Eğer bu komutu ikinci kez
 çalıştırdığınızda yukarıdaki uyarı mesajı kaybolduysa şu komutla yolunuza devam
 edebilirsiniz::
-    
+
     sudo make altinstall
 
 Daha önce kaynaktan program derlemiş olan GNU/Linux kullanıcılarının eli,
@@ -228,9 +228,9 @@ ayrıntıyı kesinlikle gözden kaçırmamalısınız.
 
 Derleme aşamalarının hiçbirinde herhangi bir hata mesajı almadıysanız kurulum
 başarıyla gerçekleşmiş ve sisteminize Python programlama dilinin 3.x sürümü
-kurulmuş demektir. 
+kurulmuş demektir.
 
-Yetkisiz Kullanıcı Olarak Kurulum 
+Yetkisiz Kullanıcı Olarak Kurulum
 ---------------------------------
 
 Elbette ``sudo make altinstall`` komutunu verip Python'ı kurabilmek için `root`
@@ -280,7 +280,7 @@ Python'ı bu şekilde ev dizininiz altında bir klasöre kurduğunuzda Python il
 ilgili bütün dosyaların bu klasör içinde yer aldığını göreceksiniz. Bu klasörü
 dikkatlice inceleyip neyin nerede olduğuna aşinalık kazanmaya çalışın. Eğer
 mümkünse `root` hakları ile kurulmuş bir Python sürümünü inceleyerek, dosyaların
-iki farklı kurulum türünde nerelere kopyalandığını karşılaştırın. 
+iki farklı kurulum türünde nerelere kopyalandığını karşılaştırın.
 
 Böylece Python programlama dilini bilgisayarımıza nasıl kuracağımızı öğrenmiş
 olduk. Ama bu noktada bir uyarı yapmadan geçmeyelim: Python özellikle bazı
@@ -315,14 +315,14 @@ edebiliriz.
 Kurduğumuz yeni Python'ı nasıl çalıştıracağımızı biraz sonra göreceğiz. Ama önce
 Windows kullanıcılarının Python3'ü nasıl kuracaklarına bakalım.
 
-Windows Kullanıcıları 
+Windows Kullanıcıları
 **********************
 
 Windows sürümlerinin hiçbirinde Python kurulu olarak gelmez. O yüzden Windows
-kullanıcıları, Python'ı sitesinden indirip kuracak. 
+kullanıcıları, Python'ı sitesinden indirip kuracak.
 
-Bunun için öncelikle http://www.python.org/downloads adresine gidiyoruz. 
-        
+Bunun için öncelikle http://www.python.org/downloads adresine gidiyoruz.
+
 Bu adrese gittiğinizde, üzerinde 'Download Python |py3|' ve 'Download |py2|’
 yazan, yan yana iki düğme göreceksiniz. Daha önce de söylediğimiz gibi, eğer bir
 Python sürüm numarası '2' ile başlıyorsa o sürüm 2.x serisine, yok eğer '3' ile
@@ -368,12 +368,12 @@ kurulum yaptığınızı varsayacağım.
  kurulum esnasında internetten indirip kuran, 1MB'dan küçük bir kurulum programı
  içerir. Dolayısıyla eğer kurulumu bu dosyadan yapacaksanız, kesintisiz bir
  internet bağlantısına ihtiyacınız olacak.
- 
+
 .. warning:: Eğer Windows'ta Python'ı kurmaya çalışırken hata alıyorsanız,
  muhtemelen işletim sisteminiz güncel değildir. Örneğin Windows 7'de Python
  kurabilmeniz için, SP1 (Service Pack 1) kurulu olmalıdır. Windows
  güncellemelerini kurduktan sonra Python'ı kurmayı tekrar deneyin.
- 
+
 Python Kurulum ve Çalışma Dizini
 *********************************
 

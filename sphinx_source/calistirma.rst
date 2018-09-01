@@ -1,12 +1,12 @@
 .. meta:: :description: Bu bölümde Python programlama dilinin farklı işletim
            sistemlerinde nasıl çalıştırılacağını öğreneceğiz.
           :keywords: python, python2, python3, nasıl çalıştırılır, kaynaktan
-           kurulum, yol, path, yola ekleme, gnu linux, windows, py 
+           kurulum, yol, path, yola ekleme, gnu linux, windows, py
 
 .. highlight:: none
 
 **************************
-Python Nasıl Çalıştırılır? 
+Python Nasıl Çalıştırılır?
 **************************
 
 Bir önceki bölümde, Python'ı farklı platformlara nasıl kuracağımızı bütün
@@ -14,19 +14,19 @@ ayrıntılarıyla anlattık. Bu bölümde ise kurduğumuz bu Python programını
 GNU/Linux'ta hem de Windows'ta nasıl çalıştıracağımızı göreceğiz. Öncelikle
 GNU/Linux kullanıcılarının Python'ı nasıl çalıştıracağına bakalım.
 
-GNU/Linux Kullanıcıları 
+GNU/Linux Kullanıcıları
 *************************
 
 Geçen bölümlerde gördüğünüz gibi, Python3'ü GNU/Linux sistemleri üzerine farklı
 şekillerde kurabiliyoruz. Bu bölümde, her bir kurulum türü için Python3'ün nasıl
 çalıştırılacağını ayrı ayrı inceleyeceğiz.
 
-Kurulu Python3'ü Kullananlar 
+Kurulu Python3'ü Kullananlar
 ==============================
 
 Eğer sisteminizde zaten Python3 kurulu ise komut satırında yalnızca şu komutu
 vererek Python3'ü başlatabilirsiniz::
-    
+
     python
 
 Ancak daha önce de dediğimiz gibi, |today| tarihi itibariyle pek çok GNU/Linux
@@ -42,7 +42,7 @@ zaten kurulu durumda olabilir. O yüzden yukarıdaki komutu bir de ``python3``
 Örneğin Ubuntu GNU/Linux dağıtımının **12.10** sürümünden itibaren ``python``
 komutu Python2'yi; ``python3`` komutu ise Python3'ü çalıştırıyor.
 
-Python3'ü Depodan Kuranlar 
+Python3'ü Depodan Kuranlar
 ============================
 
 Dediğimiz gibi, |today| tarihi itibariyle GNU/Linux dağıtımlarında öntanımlı
@@ -72,26 +72,26 @@ Bu aşamada işlerin nerede ters gitmiş olabileceğine dair birkaç ipucu verel
     #. Python3 kurulurken paket yöneticinizin herhangi bir hata vermediğinden,
        programın sisteminize başarıyla kurulduğundan emin olun. Bunun için
        Python3'ün kurulu paketler listesinde görünüp görünmediğini
-       denetleyebilirsiniz. 
-    
+       denetleyebilirsiniz.
+
     #. ``python3`` komutunu doğru verdiğinize emin olun. Python programlama
        diline özellikle yeni başlayanların en sık yaptığı hatalardan biri *python*
        kelimesini yanlış yazmaktır. *Python* yerine yanlışlıkla *pyhton*, *pyton*
        veya *phyton* yazmış olabilirsiniz. Ayrıca ``python3`` komutunun tamamen
        küçük harflerden oluştuğuna dikkat edin. *Python* ve *python* bilgisayar
-       açısından aynı şeyler değildir. 
-    
+       açısından aynı şeyler değildir.
+
     #. Kullandığınız dağıtımın Python3 paketini adlandırma politikası yukarıda
        anlattığımızdan farklı olabilir. Yani sizin kullandığınız dağıtım, belki de
        Python3 paketini farklı bir şekilde adlandırmıştır. Eğer durum böyleyse,
        dağıtımınızın yardım kaynaklarını (wiki, forum, irc, yardım belgeleri, kullanıcı
        listeleri, vb.) kullanarak ya da `istihza.com/forum
        <http://www.istihza.com/forum>`_ adresinde sorarak Python3'ün nasıl
-       çalıştırılacağını öğrenmeyi deneyebilirsiniz. 
-       
+       çalıştırılacağını öğrenmeyi deneyebilirsiniz.
+
 Gelelim Python3'ü kaynaktan derlemiş olanların durumuna...
 
-Python3'ü root Olarak Derleyenler 
+Python3'ü root Olarak Derleyenler
 ====================================
 
 Eğer Python3'ü önceki bölümlerde anlattığımız şekilde kaynaktan `root` hakları
@@ -153,7 +153,7 @@ yazılmıştır. Bu yüzden, sistemdeki öntanımlı Python sürümünün ne old
 dolayısıyla ``python`` komutunun hangi Python sürümünü çalıştırdığı çok
 önemlidir. Çünkü sisteminizdeki hayati bazı araçlar, ``python`` komutunun
 çalıştırdığı Python sürümüne bel bağlamış durumdadır. Dolayısıyla sizin bu
-``python`` komutunun çalıştırdığı Python sürümüne dokunmamanız gerekir. 
+``python`` komutunun çalıştırdığı Python sürümüne dokunmamanız gerekir.
 
 Mesela eğer kullandığınız işletim sisteminde ``python`` komutu Python'ın 2.x
 sürümlerinden birini çalıştırıyorsa sembolik bağlar veya başka araçlar
@@ -171,7 +171,7 @@ dökeceksiniz...
 Aynı şekilde, kullandığınız dağıtımda ``python3`` komutunun öntanımlı olarak
 belirli bir Python sürümünü başlatıp başlatmadığı da önemlidir. Yukarıda
 ``python`` komutu ile ilgili söylediklerimiz ``python3`` ve buna benzer başka
-komutlar için de aynen geçerli. 
+komutlar için de aynen geçerli.
 
 Örneğin, Ubuntu GNU/Linux dağıtımında ``python`` komutu sistemde kurulu olan
 Python 2.x sürümünü; ``python3`` komutu ise sistemde kurulu olan Python 3.x
@@ -183,12 +183,12 @@ Python3 sürümünü çalıştırmak için ``py3`` gibi bir komut tercih ettik.
 önce şu komutun çıktısını iyice inceleyebilirsiniz::
 
     ls -g {,/usr{,/local}}/bin | grep python
-    
+
 Bu komut iki farklı Python sürümünün kurulu olduğu sistemlerde şuna benzer bir
 çıktı verir (çıktı kırpılmıştır):
 
 .. parsed-literal::
-    
+
     dh_python2
     dh_python3
     pdb2.7 -> ../lib/python2.7/pdb.py
@@ -228,7 +228,7 @@ bir programı kaynaktan derlemeye karar vermişseniz...
 Bu ciddi uyarıyı da yaptığımıza göre gönül rahatlığıyla yolumuza devam
 edebiliriz.
 
-Python3'ü Ev Dizinine Kuranlar 
+Python3'ü Ev Dizinine Kuranlar
 ================================
 
 Eğer Python3'ü kısıtlı kullanıcı hakları ile derleyip ev dizininize kurduysanız
@@ -294,10 +294,10 @@ ise yukarıdaki komutu ona göre değiştirmelisiniz.
 \5. Daha sonra `$HOME/python/bin/python`\ |major| adlı dosyaya
 `$HOME/python/bin/` dizini altından mesela `py3` gibi bir sembolik bağ verin:
 
-    .. parsed-literal:: 
-    
+    .. parsed-literal::
+
         ln -s $HOME/python/bin/python\ |major-noformat| $HOME/python/bin/py3
-        
+
 \6. Bilgisayarınızı yeniden başlatın.
 
 \7. Artık hangi konumda bulunursanız bulunun, şu komutu vererek Python3'ü
@@ -313,7 +313,7 @@ Burada da eğer yukarıdaki komut Python3'ü çalıştırmanızı sağlamıyorsa
 
 Python3'ü başarıyla kurup çalıştırabildiğinizi varsayarak yolumuza devam edelim.
 
-GNU/Linux'ta Farklı Sürümleri Birlikte Kullanmak 
+GNU/Linux'ta Farklı Sürümleri Birlikte Kullanmak
 ==================================================
 
 Daha önce de dediğimiz gibi, şu anda piyasada iki farklı Python serisi
@@ -339,14 +339,14 @@ GNU/Linux'ta Python'ı nasıl çalıştıracağımızı ve farklı Python sürü
 arada nasıl kullanacağımızı öğrendiğimize göre, Windows kullanıcılarının
 durumuna bakabiliriz.
 
-Windows Kullanıcıları 
+Windows Kullanıcıları
 **********************
 
 Windows kullanıcıları Python3'ü iki şekilde başlatabilir:
 
     1. *Başlat > Tüm Programlar > Python*\ |major-italic|\ *> Python (Command
-       Line)* yolunu takip ederek. 
-    
+       Line)* yolunu takip ederek.
+
     2. Komut satırında ``python`` komutunu vererek.
 
 Eğer birinci yolu tercih ederseniz, Python'ın size sunduğu komut satırına
@@ -358,8 +358,8 @@ olacaktır. O yüzden komut satırına bu şekilde ulaşmak yerine ikinci seçen
 tercih etmenizi tavsiye ederim. Bunun için önceki bölümlerde gösterdiğimiz
 şekilde komut satırına ulaşın ve orada şu komutu çalıştırın::
 
-    python 
-    
+    python
+
 Bu komutu verdiğinizde şuna benzer bir ekranla karşılaşacaksınız:
 
 .. container:: screenshot
@@ -376,7 +376,7 @@ Python'ı kendiniz YOL'a eklemeniz gerekiyor.
 ``python`` komutunu başarıyla çalıştırabildiğinizi varsayarak yolumuza devam
 edelim.
 
-Windows'ta Farklı Sürümleri Birlikte Kullanmak 
+Windows'ta Farklı Sürümleri Birlikte Kullanmak
 ==================================================
 
 Daha önce de dediğimiz gibi, şu anda piyasada iki farklı Python serisi
@@ -401,13 +401,13 @@ Python, bilgisayarımızdaki farklı Python sürümlerini çalıştırabilmemiz 
 Py programını çalıştırmak için, daha önce gösterdiğimiz şekilde sistem komut
 satırına ulaşıyoruz ve orada şu komutu veriyoruz::
 
-    py 
+    py
 
 Bu komutu verdiğinizde (teorik olarak) sisteminize en son kurduğunuz Python
 sürümü çalışmaya başlayacaktır. Ancak bu her zaman böyle olmayabilir. Ya da
 aldığınız çıktı beklediğiniz gibi olmayabilir. O yüzden bu komutu verdiğinizde
 hangi sürümün başladığına dikkat edin.
-    
+
 Eğer sisteminizde birden fazla Python sürümü kurulu ise, bu betik yardımıyla
 istediğiniz sürümü başlatabilirsiniz. Mesela sisteminizde hem Python'ın 2.x
 sürümlerinden biri, hem de Python'ın 3.x sürümlerinden biri kurulu ise, şu komut
@@ -417,8 +417,8 @@ yardımıyla Python 2.x'i başlatabilirsiniz::
 
 Python 3.x'i başlatmak için ise şu komutu veriyoruz::
 
-    py -3 
-    
+    py -3
+
 Eğer sisteminizde birden fazla Python2 veya birden fazla Python3 sürümü kurulu
 ise, ana ve alt sürüm numaralarını belirterek istediğiniz sürüme
 ulaşabilirsiniz::
@@ -426,17 +426,17 @@ ulaşabilirsiniz::
     py -2.6
 
 ::
-    
+
     py -2.7
-    
+
 ::
 
-    py -3.4 
+    py -3.4
 
 ::
 
     py -3.5
-    
+
 Bu arada dikkat ettiyseniz, Python programlarını başlatabilmek için hem
 ``python`` hem de ``py`` komutunu kullanma imkanına sahibiz. Eğer sisteminizde
 tek bir Python sürümü kurulu ise, Python'ı başlatmak için ``python`` komutunu
@@ -488,7 +488,7 @@ Biz bu kitapta şunları varsayacağız:
 Bu kitaptan yararlanırken, bu varsayımları göz önünde bulundurmalı, eğer
 bunlardan farklı komutlar kullanıyorsanız, kodlarınızı ona göre ayarlamalısınız.
 
-Sistem Komut Satırı ve Python Komut Satırı 
+Sistem Komut Satırı ve Python Komut Satırı
 *********************************************
 
 Buraya kadar Python programlama dilini nasıl çalıştıracağımız konusundaki bütün

@@ -1,5 +1,5 @@
 .. meta::
-   :description: Bu bölümde timeit modülünü inceleyeceğiz. 
+   :description: Bu bölümde timeit modülünü inceleyeceğiz.
    :keywords: python, modül, import, timeit
 
 *************
@@ -50,7 +50,7 @@ Modül, üç kolaylık fonksiyonu ve bir topluluk sınıfı tanımlar:
     Verili ifadeyle, kurulum koduyla ve timer fonksiyonuyla bir Timer örneği oluşturun ve onun 	`timeit()` yöntemini çalıştırma sayıları ile çalıştırın. İsteğe bağlı globals bağımsız değişkeni, kodun çalıştırılacağı ad alanını belirtir.
 
     Sürüm 3.5'de değiştirildi: İsteğe bağlı globals bağımsız değişkeni eklendi.
-	
+
 **timeit.repeat(stmt='pass', setup='pass', timer=<default timer>, repeat=3, number=1000000, globals=None)**
 
     Verili ifadeyle, kurulum koduyla ve timer fonksiyonuyla bir Timer örneği oluşturun ve onun 	`repeat()` yöntemini tekrarlanma sayısı ve çalıştırma sayıları ile çalıştırın.  İsteğe bağlı globals bağımsız değişkeni, kodun çalıştırılacağı ad alanını belirtir.
@@ -86,11 +86,11 @@ Modül, üç kolaylık fonksiyonu ve bir topluluk sınıfı tanımlar:
     **repeat(repeat=3, number=1000000)**
 
 	`timeit()`'i bir kaç kez çağırır.
-	
+
 	Bu `timeit()`'i tekrar çağıran, sonuçları listeleyen bir kolaylık fonksiyonudur. Birinci argüman `timeit()`'in kaç kez çağrılacağını belirler. İkinci parametre ise `timeit()`'in argümanıdır.
 
 	**Not:** Sonuç vektörlerinden alınan değerlerin aritmetik ortalamasını ve standart sapmasını rapor olarak sunmada cazip bir yöntemdir. Ancak bu çok kullanışlı değildir. Tipik bir durumda, en küçük değer, makinenin verili kod parçasını ne kadar hızlı şekilde çalıştırdığına dair zayıf bir göstergedir; sonuç vektörleri içindeki yüksek değerler Python'ın hızının değişkenliğinden kaynaklanmaz, ancak diğer işlemlerin 	tutarlı zamanlama çalışmasına karışmasından kaynaklanır. Yani en düşük değer sizin ilgilenmeniz gereken tek değer olabilir. Ondan sonra, bütün vektöre bakıp istatistik yerine sağ duyuya başvurabilirsiniz.
-	
+
     **print_exc(file=name)**
 
         Zamanlama kodunun geri izini bastırmaya yardımcı olur.
@@ -125,7 +125,7 @@ Takip eden seçenekler::
     -s S, --setup=S
 
 	Bir kez ilksel olarak çalıştırılacak ifadeyi (varsayılan değeri `pass`) belirler.
-	
+
     -p, --process
 
 	Duvar saati zamanını değil de, işlem zamanını ölçer. Varsayılan değeri `time.perf_counter()` yerine `time.process_time()`'dir.
@@ -153,7 +153,7 @@ Takip eden seçenekler::
     -h -help
 
 	Kısa bir kullanım mesajı bastırır ve sonlanır.
-		
+
 Çok satırlı ifadeler, her bir satırı ayrı bir ifade argümanı olacak şekilde verilebilir; girintili çizgiler, bir argümanın tırnak işaretleri içine alınarak ve önde gelen boşluklarla kullanılabilir.
 
 Şayet *-n* değeri girilmezse, uygun döngü sayısı, toplam süre 0.2 saniye olana kadar onun üstleri olacak şekilde hesaplanır.
@@ -174,7 +174,7 @@ Sadece başlangıçta bir kez çalıştırılmak üzere bir setup (kurulum) ifad
     10000000 loops, best of 3: 0.178 usec per loop
 
 Python arayüzü için::
-	
+
     import timeit
 
     timeit.timeit('char in text', setup='text = "sample string"; char = "g"')
@@ -285,10 +285,10 @@ Bir diğer seçenek şimdiki global ad alanı içerisinde çalıştırılacak `g
 Python arayüzü için::
 
     import timeit
-  
+
     timeit.timeit('"a" + "b"', number=1000000)
     0.018340642998737167
- 
+
     timeit.timeit('"{}{}".format("a", "b")', number=1000000)
     0.3770097929991607
 

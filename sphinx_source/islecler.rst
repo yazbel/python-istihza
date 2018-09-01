@@ -1,8 +1,8 @@
 .. meta::
    :description: Bu bölümde işleçleri inceleyeceğiz.
-   :keywords: python, işlec, bool, aritmetik, True, False, eşit, eşit değil, 
+   :keywords: python, işlec, bool, aritmetik, True, False, eşit, eşit değil,
     karşılaştırma, değer atama, aitlik, kimlik
-   
+
 .. highlight:: python3
 
 *********
@@ -24,23 +24,23 @@ Bu bölümün konusu işleçler. Peki nedir bu 'işleç' denen şey?
 değerler arasında bir ilişki kuran işaretlerdir. Bir işlecin sağında ve solunda
 bulunan değerlere ise işlenen (*operand*) adı veriyoruz.
 
-.. note:: Türkçede işleç yerine operatör, işlenen yerine de operant dendiğine 
-          tanık olabilirsiniz. 
+.. note:: Türkçede işleç yerine operatör, işlenen yerine de operant dendiğine
+          tanık olabilirsiniz.
 
-Biz bu bölümde işleçleri altı başlık altında inceleyeceğiz: 
+Biz bu bölümde işleçleri altı başlık altında inceleyeceğiz:
 
-    #. Aritmetik İşleçler 
-    
+    #. Aritmetik İşleçler
+
     #. Karşılaştırma İşleçleri
-    
+
     #. Bool İşleçleri
-    
+
     #. Değer Atama İşleçleri
-    
+
     #. Aitlik İşleçleri
-    
+
     #. Kimlik İşleçleri
-    
+
 Gördüğünüz gibi, işlememiz gereken konu çok, gitmemiz gereken yol uzun. O halde
 hiç vakit kaybetmeden, aritmetik işleçlerle yolculuğumuza başlayalım.
 
@@ -62,7 +62,7 @@ bazılarını öğrenmiştik. İsterseniz bunları şöyle bir hatırlayalım:
    +------+---------+
    | `**` | kuvvet  |
    +------+---------+
-    
+
 Bu işleçlere aritmetik işleçler adı verilir. Aritmetik işleçler; matematikte
 kullanılan ve sayılarla aritmetik işlemler yapmamızı sağlayan yardımcı
 araçlardır.
@@ -70,7 +70,7 @@ araçlardır.
 Dilerseniz bu tanımı bir örnekle somutlaştıralım::
 
     >>> 45 + 33
-    
+
     78
 
 Burada `45` ve `33` değerlerine işlenen (*operand*) adı verilir. Bu iki değer
@@ -80,7 +80,7 @@ arasında yer alan `+` işareti ise bir işleçtir (*operator*). Dikkat ederseni
 Bir örnek daha verelim::
 
     >>> 23 * 46
-    
+
     1058
 
 Burada da `23` ve `46` değerleri birer işlenendir. Bu iki değer arasında yer
@@ -91,9 +91,9 @@ Ancak bir noktaya özellikle dikkatinizi çekmek istiyorum. Daha önceki
 derslerimizde de değindiğimiz gibi, `+` ve `*` işleçleri Python'da birden fazla
 anlama gelir. Örneğin yukarıdaki örnekte `+` işleci, işlenenler arasında bir
 toplama ilişkisi kuruyor. Ama aşağıdaki durum biraz farklıdır::
-    
+
     >>> "istihza" + ".com"
-    
+
     'istihza.com'
 
 Burada `+` işleci işlenenler (`"istihza"` ve `".com"`) arasında bir birleştirme
@@ -102,15 +102,15 @@ ilişkisi kuruyor.
 Tıpkı `+` işlecinde olduğu gibi, `*` işleci de Python'da birden fazla anlama
 gelir. Bu işlecin, çarpma ilişkisi kurma işlevi dışında tekrar etme ilişkisi
 kurma işlevi de vardır. Yani::
-    
+
     >>> "hızlı " * 2
-    
+
     'hızlı hızlı '
 
 ...veya::
 
     >>> "-" * 30
-    
+
     '------------------------------'
 
 Burada `*` işlecinin, sayılar arasında çarpma işlemi yapmak dışında bir görev
@@ -118,19 +118,19 @@ Burada `*` işlecinin, sayılar arasında çarpma işlemi yapmak dışında bir 
 
 Python'da bu tür farklar, yazacağınız programın sağlıklı çalışabilmesi açısından
 büyük önem taşır. O yüzden bu tür farklara karşı her zaman uyanık olmamız
-gerekiyor. 
+gerekiyor.
 
 `+` ve `*` işleçlerinin aksine `/` ve `-` işleçleri ise işlenenler arasında
 sadece bölme ve çıkarma ilişkisi kurar. Bu işleçler tek işlevlidir::
-    
+
     >>> 25 / 4
-    
+
     6.25
-    
+
     >>> 10 - 5
-    
+
     5
-    
+
 Önceki derslerde gördüğümüz ve yukarıda da tekrar ettiğimiz dört adet temel
 aritmetik işlece şu iki aritmetik işleci de ekleyelim:
 
@@ -138,20 +138,20 @@ aritmetik işlece şu iki aritmetik işleci de ekleyelim:
    | `%`  | modülüs                    |
    +------+----------------------------+
    | `//` | taban bölme                |
-   +------+----------------------------+ 
+   +------+----------------------------+
 
-İlk önce modülüsün ne olduğunu ve ne işe yaradığını anlamaya çalışalım. 
+İlk önce modülüsün ne olduğunu ve ne işe yaradığını anlamaya çalışalım.
 
 Şu bölme işlemine bir bakın:
 
 .. image:: ../images/misc/bolme.png
     :align: center
-    
+
 Burada `02` sayısı bölme işleminin kalanıdır. İşte modülüs denen işleç de bölme
 işleminden kalan bu değeri gösterir. Yani::
-    
+
     >>> 30 % 4
-    
+
     2
 
 Gördüğünüz gibi modülüs işleci (`%`) gerçekten de bölme işleminden kalan sayıyı
@@ -161,7 +161,7 @@ Mesela bu bilgiyi kullanarak bir sayının tek mi yoksa çift mi olduğunu tespi
 edebiliriz::
 
     sayı = int(input("Bir sayı girin: "))
-    
+
     if sayı % 2 == 0:
         print("Girdiğiniz sayı bir çift sayıdır.")
     else:
@@ -169,9 +169,9 @@ edebiliriz::
 
 Eğer bir sayı `2`'ye bölündüğünde kalan değer `0` ise o sayı çifttir. Aksi halde
 o sayı tektir. Mesela::
-    
+
     >>> 14 % 2
-    
+
     0
 
 Gördüğünüz gibi, bir çift sayı olan `14`'ü `2`'ye böldüğümüzde kalan sayı `0`
@@ -180,7 +180,7 @@ oluyor. Çünkü çift sayılar `2`'ye tam bölünürler.
 Bir de şuna bakalım::
 
     >>> 15 % 2
-    
+
     1
 
 Bir tek sayı olan `15` ise `2`'ye bölündüğünde kalan sayı `1` oluyor. Yani `15`
@@ -194,22 +194,22 @@ geliştirirken dahi işinize yarayacağından emin olabilirsiniz.
 Elbette modülüs işlecini bir sayının yalnızca `2`'ye tam bölünüp bölünmediğini
 denetlemek için kullanmıyoruz. Bu işleci kullanarak herhangi bir sayının
 herhangi bir sayıya tam bölünüp bölünmediğini de denetleyebilirsiniz. Örneğin::
-    
+
     >>> 45 % 4
-    
+
     1
-    
+
     >>> 36 % 9
-    
+
     0
 
 Bu bilgiyi kullanarak mesela şöyle bir program yazabilirsiniz::
-    
+
     bölünen = int(input("Bir sayı girin: "))
     bölen = int(input("Bir sayı daha girin: "))
-    
+
     şablon = "{} sayısı {} sayısına tam".format(bölünen, bölen)
-    
+
     if bölünen % bölen == 0:
         print(şablon, "bölünüyor!")
     else:
@@ -218,10 +218,10 @@ Bu bilgiyi kullanarak mesela şöyle bir program yazabilirsiniz::
 Programımız, kullanıcının girdiği ilk sayının ikinci sayıya tam bölünüp
 bölünmediğini hesaplıyor ve sonuca göre kullanıcıyı bilgilendiriyor. Bu kodlarda
 özellikle şu satıra dikkat edin::
-    
+
     if bölünen % bölen == 0:
         ...
-        
+
 Programımızın temelini bu kod oluşturuyor. Çünkü bir sayının bir sayıya tam
 bölünüp bölünmediğini bu kodla belirliyoruz. Eğer bir sayı başka bir sayıya
 bölündüğünde kalan değer, yani modülüs `0` ise, o sayı öbür sayıya tam bölünüyor
@@ -230,13 +230,13 @@ demektir.
 Ayrıca bir sayının son basamağını elde etmek için de modülüsten
 yararlanabilirsiniz. Herhangi bir tamsayı `10`'a bölündüğünde kalan (yani
 modülüs), bölünen sayının son basamağı olacaktır::
-    
+
     >>> 65 % 10
-    
+
     5
-    
+
     >>> 543 % 10
-    
+
     3
 
 Programlama tecrübeniz arttıkça, aslında modülüsün ne kadar faydalı bir araç
@@ -248,9 +248,9 @@ sıra geldi taban bölme işlecini açıklamaya...
 Öncelikle şu örneği inceleyelim::
 
     >>> 5 / 2
-    
+
     2.5
-    
+
 Burada, bildiğimiz bölme işlecini (`/`) kullanarak basit bir bölme işlemi
 yaptık. Elde ettiğimiz sonuç doğal olarak `2.5`.
 
@@ -258,9 +258,9 @@ Matematikte bölme işleminin sonucunun kesirli olması durumuna 'kesirli bölme
 adı verilir. Bunun tersi ise tamsayılı bölme veya taban bölmedir. Eğer herhangi
 bir sebeple kesirli bölme işlemi değil de taban bölme işlemi yapmanız gerekirse
 `//` işlecinden yararlanabilirsiniz::
-    
+
     >>> 5 // 2
-    
+
     2
 
 Gördüğünüz gibi, `//` işleci sayesinde bölme işleminin sonucu kesirli değil,
@@ -269,26 +269,26 @@ tamsayı olarak elde ediliyor.
 Yukarıda yaptığımız taban bölme işlemi şununla aynı anlama gelir::
 
     >>> int(5 / 2)
-    
+
     2
-    
+
 Daha açık ifade etmemiz gerekirse::
 
     >>> a = 5 / 2
     >>> a
-    
+
     2.5
-    
+
     >>> int(a)
-    
+
     2
 
 Burada olan şu: ``5 / 2`` işleminin sonucu bir kayan noktalı sayıdır (`2.5`).
 Bunu şu şekilde teyit edebiliriz::
-    
+
     >>> a = 5 / 2
     >>> type(a)
-    
+
     <class 'float'>
 
 Buradaki `float` çıktısının *floating point number*, yani kayan noktalı sayı
@@ -296,86 +296,86 @@ anlamına geldiğini biliyorsunuz.
 
 Bu kayan noktalı sayının sadece tabanını elde etmek için bu sayıyı tamsayıya
 (*integer*) çevirmemiz yeterli olacaktır. Yani::
-    
+
     >>> int(a)
-    
+
     2
 
 Bu arada yeri gelmişken ``round()`` adlı bir gömülü fonksiyondan bahsetmeden
 geçmeyelim. Eğer bir sayının değerini yuvarlamanız gerekirse ``round()``
 fonksiyonundan yararlanabilirsiniz. Bu fonksiyon şöyle kullanılır::
-    
+
     >>> round(2.55)
-    
+
     3
 
 Gördüğünüz gibi, ``round()`` fonksiyonuna parametre olarak bir sayı veriyoruz.
 Bu fonksiyon da bize o sayının yuvarlanmış halini döndürüyor. Bu fonksiyonu
 kullanarak yuvarlanacak sayının noktadan sonraki hassasiyetini de
 belirleyebilirsiniz. Örneğin::
-    
+
     >>> round(2.55, 1)
-    
+
     2.5
 
 Burada ikinci parametre olarak `1` sayısını verdiğimiz için, noktadan sonraki
 bir basamak görüntüleniyor. Bir de şuna bakalım::
-    
+
     >>> round(2.68, 1)
-    
+
     2.7
 
 Burada da yuvarlama işlemi yapılırken noktadan sonra bir basamak korunuyor. Eğer
 `1` sayısı yerine `2` sayısını kullanırsanız, yukarıdaki örnek şu çıktıyı
 verir::
-    
+
     >>> round(2.68, 2)
-    
+
     2.68
 
 ``round()`` fonksiyonunun çalışma prensibini anlamak için kendi kendinize
 örnekler yapabilirsiniz.
 
-Şimdiye kadar öğrendiğimiz ve yukarıdaki tabloda andığımız bir başka aritmetik 
+Şimdiye kadar öğrendiğimiz ve yukarıdaki tabloda andığımız bir başka aritmetik
 işleç de kuvvet işleci (`**`) idi. Mesela bu işleci kullanarak bir sayının
 karesini hesaplayabileceğimizi biliyorsunuz::
-    
+
     >>> 25 ** 2
-    
+
     625
-    
+
 Bir sayının `2.` kuvveti o sayının karesidir. Bir sayının `0.5.` kuvveti ise o
 sayının kareköküdür::
-    
+
     >>> 625 ** 0.5
-    
+
     25.0
 
 Bu arada, eğer karekökün kayan noktalı sayı cinsinden olması hoşunuza
 gitmediyse, bu sayıyı ``int()`` fonksiyonu ile tam sayıya çevirebileceğinizi
 biliyorsunuz::
-    
+
     >>> int(625 ** 0.5)
-    
+
     25
 
 Kuvvet hesaplamaları için `**` işlecinin yanısıra ``pow()`` adlı bir
 fonksiyondan da yararlanabileceğimizi öğrenmiştik::
-    
+
     >>> pow(25, 2)
-    
+
     625
 
 Bildiğiniz gibi ``pow()`` fonksiyonu aslında toplam üç parametre alabiliyor::
-    
+
     >>> pow(25, 2, 5)
-    
+
     0
 
 Bu işlemin şununla aynı anlama geliyor::
-    
+
     >>> (25 ** 2) % 5
-    
+
     0
 
 Yani ``pow(25, 2, 5)`` gibi bir komut verdiğimizde, `25` sayısının `2.`
@@ -396,27 +396,27 @@ sıralayabiliriz:
    | `==` | eşittir                      |
    +------+------------------------------+
    | `!=` | eşit değildir                |
-   +------+------------------------------+  
+   +------+------------------------------+
    | `>`  | büyüktür                     |
-   +------+------------------------------+ 
+   +------+------------------------------+
    | `<`  | küçüktür                     |
    +------+------------------------------+
    | `>=` | büyük eşittir                |
-   +------+------------------------------+ 
+   +------+------------------------------+
    | `<=` | küçük eşittir                |
    +------+------------------------------+
-   
+
 Bu işleçlerin hiçbiri size yabancı değil, zira bunların hepsini aslında daha
 önceki derslerde verdiğimiz örneklerde kullanmıştık. Burada da bunlarla ilgili
 basit bir örnek vererek yolumuza devam edelim::
-    
+
     parola = "xyz05"
-    
+
     soru = input("parolanız: ")
-    
+
     if soru == parola:
         print("doğru parola!")
-        
+
     elif soru != parola:
         print("yanlış parola!")
 
@@ -434,10 +434,10 @@ kullanıldığını biliyorsunuz. Basit bir örnek verelim::
 
     sayı = input("sayı: ")
 
-    if int(sayı) <= 100: 
+    if int(sayı) <= 100:
         print("sayı 100 veya 100'den küçük")
 
-    elif int(sayı) >= 100: 
+    elif int(sayı) >= 100:
         print("sayı 100 veya 100'den büyük")
 
 Böylece karşılaştırma işleçlerini de incelemiş olduk. O halde gelelim bool
@@ -466,14 +466,14 @@ Burada `a` adlı bir değişken tanımladık. Bu değişkenin değeri `1`. Şimd
 değişkenin değerini sorgulayalım::
 
     >>> a == 1 #a değeri 1'e eşit mi?
-    
+
     True
 
 Gördüğünüz gibi, `a == 1` sorgusu `True` (Doğru) çıktısı veriyor. Çünkü `a`
 değişkeninin değeri gerçekten de `1`. Bir de şunu deneyelim::
-    
+
     >>> a == 2
-    
+
     False
 
 Burada da `a` değişkeninin değerinin `2` sayısına eşdeğer olup olmadığını
@@ -492,35 +492,35 @@ ve boş veri tipleri `False`'tur. Bunlar dışında kalan her şey ise `True`'du
 Bu durumu ``bool()`` adlı özel bir fonksiyondan yararlanarak teyit edebiliriz::
 
     >>> bool(3)
-    
+
     True
-    
+
     >>> bool("elma")
-    
+
     True
-    
+
     >>> bool(" ")
-    
+
     True
-    
+
     >>> bool("     ")
-    
+
     True
-    
+
     >>> bool("fdsdfsdg")
-    
+
     True
-    
+
     >>> bool("0")
-    
+
     True
-    
+
     >>> bool(0)
-    
+
     False
-    
+
     >>> bool("")
-    
+
     False
 
 Gördüğünüz gibi, gerçekten de `0` sayısının ve boş karakter dizilerinin bool
@@ -543,9 +543,9 @@ ile ilgili çok önemli bir konuya değinelim.
 Belki kendiniz de farketmişsinizdir; bool değerleri Python'da koşul belirten
 ``if``, ``elif`` ve ``else`` deyimlerinin de temelini oluşturur. Şu örneği ele
 alalım mesela::
-    
+
     isim = input("İsminiz: ")
-    
+
     if isim == "Ferhat":
         print("Ne güzel bir isim bu!")
     else:
@@ -572,7 +572,7 @@ ifadelerin bool değerlerine bakarak yerine getirir. Dolayısıyla yukarıdaki
     isim bu!` çıktısı ver! Ama eğer ``isim == "Ferhat"`` ifadesinin bool değeri
     `True` dışında herhangi bir şey ise (yani `False` ise), `... ismini pek
     sevmem!` çıktısı ver!
-    
+
 Koşul bildiren deyimlerle bool değerleri arasındaki ilişkiyi daha iyi anlamak
 için bir örnek daha verelim:
 
@@ -580,25 +580,25 @@ Hatırlarsanız içi boş veri tiplerinin bool değerinin her zaman `False` olac
 söylemiştik. Yani::
 
     >>> a = ""
-    
+
     >>> bool(a)
-    
+
     False
 
 Herhangi bir değere sahip veri tiplerinin bool değeri ise her zaman `True` olur
 (`0` hariç)::
-    
+
     >>> a = "gdfg"
-    
+
     >>> bool(a)
-    
+
     True
 
 İçi boş veri tiplerinin bool değerinin her zaman `False` olacağı bilgisini
 kullanarak şöyle bir uygulama yazabiliriz::
-    
+
     kullanıcı = input("Kullanıcı adınız: ")
-    
+
     if bool(kullanıcı) == True:
         print("Teşekkürler!")
     else:
@@ -608,7 +608,7 @@ Burada şöyle bir emir verdik:
 
     "Eğer `kullanıcı` değişkeninin bool değeri `True` ise `Teşekkürler!` çıktısı
     ver! Değilse `Kullanıcı adı alanı boş bırakılamaz!` uyarısını göster!
-    
+
 Eğer kullanıcı, kullanıcı adına herhangi bir şey yazdıktan sonra `Enter` tuşuna
 basarsa `kullanıcı` değişkeni, kullanıcının girdiği değeri gösterecek ve böylece
 ``bool(kullanıcı)`` komutu `True` çıktısı verecektir. Bu sayede de kodlarımızın
@@ -622,9 +622,9 @@ değişkeni boş kalacağı için (yani ``kullanıcı = ""`` gibi bir durum orta
 Yalnız bu noktada şöyle bir uyarı yapalım. Yukarıdaki komutlar sözdizimi
 açısından tamamen doğru olsa da, etrafta yukarıdakine benzer bir kullanımı pek
 görmezsiniz. Aynı iş için genellikle şöyle bir şeyler yazılır::
-    
+
     kullanıcı = input("Kullanıcı adınız: ")
-    
+
     if kullanıcı:
         print("Teşekkürler!")
 
@@ -639,9 +639,9 @@ Bool işleçleri, bool değerlerinden birini elde etmemizi sağlayan işleçlerd
 işleçler şunlardır:
 
     `and`
-        
+
     `or`
-        
+
     `not`
 
 Eğer mantık dersleri aldıysanız bu işleçler size hiç yabancı gelmeyecektir. Eğer
@@ -649,7 +649,7 @@ lisede mantık dersleri almadıysanız veya aldığınız derslerden hiçbir şe
 hatırlamıyorsanız, yine de ziyanı yok. Biz burada bu işleçleri bütün
 ayrıntılarıyla inceleyeceğiz.
 
-Önce `and` ile başlayalım... 
+Önce `and` ile başlayalım...
 
 Türkçe söylemek gerekirse `and` 've' anlamına gelir. Peki bu `and` ne işimize
 yarar? Çok basit bir örnek verelim:
@@ -664,7 +664,7 @@ bahsetmiştik:
     erişebilirsiniz. Ama eğer kullanıcı adınız ve parolanız doğru değilse
     hesabınıza erişemezsiniz. Yani e.posta hesabınıza erişmeniz, kullanıcı adı
     ve parolayı doğru girme koşuluna bağlıdır.
-    
+
 Burada çok önemli bir nokta var. Kullanıcının Gmail sistemine girebilmesi için
 hem kullanıcı adını hem de parolayı doğru yazması gerekiyor. Yani kullanıcı adı
 veya paroladan herhangi biri yanlış ise sisteme giriş mümkün olmayacaktır.
@@ -674,13 +674,13 @@ kullanarak şöyle yazabiliyoruz::
 
     kullanıcı_adı = input("Kullanıcı adınız: ")
     parola = input("Parolanız: ")
-    
+
     if kullanıcı_adı == "aliveli":
         if parola == "12345678":
             print("Programa hoşgeldiniz")
         else:
             print("Yanlış kullanıcı adı veya parola!")
-            
+
     else:
         print("Yanlış kullanıcı adı veya parola!")
 
@@ -696,15 +696,15 @@ kullanıcı adını hem de parolayı doğru girmesi gerekiyor. Kullanıcı adı 
 paroladan herhangi biri yanlışsa sisteme girişe izin verilmiyor. Ancak
 yukarıdaki yöntem dolambaçlıdır. Halbuki aynı işlevi yerine getirmenin,
 Python'da çok daha kolay bir yolu var. Bakalım::
-    
+
     kullanıcı_adı = input("Kullanıcı adınız: ")
     parola = input("Parolanız: ")
 
     if kullanıcı_adı == "aliveli" and parola == "12345678":
         print("Programa hoşgeldiniz")
-        
+
     else:
-        print("Yanlış kullanıcı adı veya parola!") 
+        print("Yanlış kullanıcı adı veya parola!")
 
 Burada `and` işlecini nasıl kullandığımızı görüyorsunuz. Bu işleci kullanarak
 iki farklı ifadeyi birbirine bağladık. Böylece kullanıcının sisteme girişini hem
@@ -715,8 +715,8 @@ anlamına geliyor. Bu işleci daha iyi anlayabilmek için şu cümleler arasınd
 farkı düşünün:
 
     a. Toplantıya Ali ve Veli katılacak.
-    
-    b. Toplantıya Ali veya Veli katılacak. 
+
+    b. Toplantıya Ali veya Veli katılacak.
 
 İlk cümlede 've' bağlacı kullanıldığı için, bu cümlenin gereğinin yerine
 getirilebilmesi, hem Ali'nin hem de Veli'nin toplantıya katılmasına bağlıdır.
@@ -734,15 +734,15 @@ bakalım::
     >>> a = 23
     >>> b = 10
     >>> a == 23
-    
+
     True
-    
+
     >>> b == 10
-    
+
     True
-    
+
     >>> a == 23 and b == 10
-    
+
     True
 
 Burada değeri `23` olan bir adet `a` değişkeni ve değeri `10` olan bir adet `b`
@@ -758,15 +758,15 @@ Bir de şuna bakalım::
     >>> a = 23
     >>> b = 10
     >>> a == 23
-    
+
     True
-    
+
     >>> b == 54
-    
+
     False
-    
+
     >>> a == 23 and b == 54
-    
+
     False
 
 Burada ise `a` değişkenin değeri `23`'tür. Dolayısıyla ``a == 23`` ifadesi
@@ -781,7 +781,7 @@ Tahmin edebileceğiniz gibi, `and` işleci en yaygın ``if`` deyimleriyle birlik
 kullanılır. Mesela yukarıda kullanıcıdan kullanıcı adı ve parola alırken de bu
 `and` işlecinden yararlanmıştık.
 
-Gelelim `or` işlecine... 
+Gelelim `or` işlecine...
 
 Tıpkı `and` gibi bir bool işleci olan `or`'un Türkçede karşılığı 'veya'dır.
 Yukarıda 'Toplantıya Ali veya Veli katılacak.' cümlesini tartışırken aslında bu
@@ -791,32 +791,32 @@ sahip olması gerekiyordu. `or` işlecinin `True` çıktısı verebilmesi için 
 `or` işleciyle bağlanan önermelerden herhangi birinin `True` çıktısı vermesi
 yeterli olacaktır. Söylediğimiz bu şeyleri birkaç örnek üzerinde
 somutlaştıralım::
-    
+
     >>> a = 23
     >>> b = 10
     >>> a == 23
-    
+
     True
-    
+
     >>> b == 10
-    
+
     True
-    
+
     >>> a == 11
-    
+
     False
-    
+
     >>> a == 11 or b == 10
-    
+
     True
-    
+
 Gördüğünüz gibi, ``a == 11`` ifadesinin bool değeri `False` olduğu halde, ``b ==
 10`` ifadesinin bool değeri `True` olduğu için ``a == 11 or b == 10`` ifadesi
 `True` değerini veriyor.
 
 `and` ve `or` işleçlerini öğrendiğimize göre, bir sınavdan alınan notların harf
 karşılıklarını gösteren bir uygulama yazabiliriz::
-    
+
     x = int(input("Notunuz: "))
 
     if x > 100 or x < 0:
@@ -841,7 +841,7 @@ Bu programda eğer kullanıcı `100`'den büyük ya da `0`'dan küçük bir say�
 `Böyle bir not yok` uyarısı alacaktır. 0-100 arası notlarda ise, her bir not
 aralığına karşılık gelen harf görüntülecektir. Eğer isterseniz yukarıdaki
 kodları şu şekilde de kısaltabilirsiniz::
-    
+
     x = int(input("Notunuz: "))
 
     if x > 100 or x < 0:
@@ -872,15 +872,15 @@ Hatta yukarıdaki kodları şöyle de yazabilirsiniz::
     if x > 100 or x < 0:
         print("Böyle bir not yok")
 
-    #90 sayısı x'ten küçük veya x'e eşit, 
+    #90 sayısı x'ten küçük veya x'e eşit,
     #x sayısı 100'den küçük veya 100'e eşit ise,
-    #Yani x, 90 ile 100 arasında bir sayı ise 
-    elif 90 <= x <= 100: 
+    #Yani x, 90 ile 100 arasında bir sayı ise
+    elif 90 <= x <= 100:
         print("A aldınız.")
 
-    #80 sayısı x'ten küçük veya x'e eşit, 
+    #80 sayısı x'ten küçük veya x'e eşit,
     #x sayısı 89'dan küçük veya 89'a eşit ise,
-    #Yani x, 80 ile 89 arasında bir sayı ise 
+    #Yani x, 80 ile 89 arasında bir sayı ise
     elif 80 <= x <= 89:
         print("B aldınız.")
 
@@ -898,20 +898,20 @@ kod arasında sadece mantık farkı var.
 
 Son bool işlecimiz `not`. Bu kelimenin İngilizce'deki anlamı 'değil'dir. Bu
 işleci şöyle kullanıyoruz::
-    
+
     >>> a = 23
     >>> not a
-    
+
     False
-    
+
     >>> a = ""
     >>> not a
-    
+
     True
 
 Bu işleç, özellikle kullanıcı tarafından bir değişkene veri girilip
 girilmediğini denetlemek için kullanılabilir. Örneğin::
-    
+
     parola = input("parola: ")
 
     if not parola:
@@ -924,34 +924,34 @@ Dolayısıyla, yukarıdaki gibi bir örnekte, kullanıcı parolayı boş geçti�
 ``not parola`` kodu `True` verecek ve böylece ekrana `"Parola boş bırakılamaz!"`
 karakter dizisi yazdırılacaktır. Eğer yukarıdaki örneğin mantığını kavramakta
 zorluk çekiyorsanız şu örnekleri incelemenizi öneririm::
-    
+
     >>> parola = ""
     >>> bool(parola)
-    
+
     False
-    
+
     >>> bool(not parola)
-    
+
     True
-    
+
     >>> parola = "1243"
     >>> bool(parola)
-    
+
     True
-    
+
     >>> bool(not parola)
-    
+
     False
 
 Aslında yukarıdaki örneklerde şuna benzer sorular sormuş gibi oluyoruz::
 
     >>> parola = ""
     >>> bool(parola) #parola boş bırakılmamış, değil mi?
-    
+
     >>> False #Hayır, parola boş bırakılmış.
-    
+
     >>> bool(not parola) #parola boş bırakılmış, değil mi?
-    
+
     >>> True #Evet, parola boş bırakılmış
 
 Kendi kendinize pratik yaparak bu işlecin görevini daha iyi anlayabilirsiniz.
@@ -965,10 +965,10 @@ Değer Atama İşleçleri
 Bu noktaya kadar yaptığımız çalışmalarda sadece tek bir değer atama işleci
 gördük. Bu işleç `=` işlecidir. Adından da anlaşılacağı gibi, bu işlecin görevi
 bir değişkene değer atamaktır. Mesela::
-    
+
     >>> a = 23
 
-Burada `=` işleci `a` değişkenine `23` değerini atama işlevi görüyor. 
+Burada `=` işleci `a` değişkenine `23` değerini atama işlevi görüyor.
 
 Python'daki tek değer atama işleci elbette `=` değildir. Bunun dışında başka
 değer atama işleçleri de bulunur. Tek tek inceleyelim:
@@ -986,16 +986,16 @@ lazım? Tabii ki şunu:
 
     >>> a = a + 5
     >>> print(a)
-    
+
     28
 
 Burada yaptığımız şey çok basit: `a` değişkeninin taşıdığı değere `5` ilave
 ediyoruz ve daha sonra bu değeri tekrar `a` değişkenine atıyoruz. Aynı işlemi
 çok daha kolay bir şekilde de yapabiliriz::
-    
+
     >>> a += 5
     >>> print(a)
-    
+
     28
 
 Bu kod, yukarıdakiyle tamamen aynı anlama gelir. Ama bir önceki koda göre çok
@@ -1007,11 +1007,11 @@ yapacaktır.
 
 Bir önceki `+=` işleci toplama işlemi yapıp, ortaya çıkan değeri tekrar aynı
 değişkene atıyordu. `-=` işleci de buna benzer bir işlem gerçekleştirir::
-    
+
     >>> a = 23
     >>> a -= 5
     >>> print(a)
-    
+
     18
 
 Yukarıdaki kullanım şununla tamamen aynıdır::
@@ -1019,7 +1019,7 @@ Yukarıdaki kullanım şununla tamamen aynıdır::
     >>> a = 23
     >>> a = a - 5
     >>> print(a)
-    
+
     18
 
 Ancak tıpkı `+=` işlecinde olduğu gibi, `-=` işleci de alternatifine göre daha
@@ -1032,7 +1032,7 @@ Bu işlecin çalışma mantığı da yukarıdaki işleçlerle aynıdır::
     >>> a = 30
     >>> a /= 3
     >>> print(a)
-    
+
     10
 
 Yukarıdaki işlem de şununla tamamen aynıdır::
@@ -1040,7 +1040,7 @@ Yukarıdaki işlem de şununla tamamen aynıdır::
     >>> a = 30
     >>> a = a / 3
     >>> print(a)
-    
+
     10
 
 **\*= işleci**
@@ -1050,7 +1050,7 @@ Bu da ötekiler gibi, çarpma işlemi yapıp, bu işlemin sonucunu aynı değiş
     >>> a = 20
     >>> a *= 2
     >>> print(a)
-    
+
     40
 
 Bu işlecin eşdeğeri de şudur::
@@ -1058,7 +1058,7 @@ Bu işlecin eşdeğeri de şudur::
     >>> a = 20
     >>> a = a * 2
     >>> print(a)
-    
+
     40
 
 **%= işleci**
@@ -1068,7 +1068,7 @@ Bu işlecimiz ise bölme işleminden kalan sayıyı aynı değişkene atar::
     >>> a = 40
     >>> a %= 3
     >>> print(a)
-    
+
     1
 
 Bu işleç de şuna eşdeğerdir::
@@ -1076,18 +1076,18 @@ Bu işleç de şuna eşdeğerdir::
     >>> a = 40
     >>> a = a % 3
     >>> print(a)
-    
+
     1
 
 **\**= işleci**
 
 Bu işlecin ne yaptığını tahmin etmek zor değil. Bu işlecimiz, bir sayının
 kuvvetini hesapladıktan sonra çıkan değeri aynı değişkene atıyor::
-    
+
     >>> a = 12
     >>> a **= 2
     >>> print(a)
-    
+
     144
 
 Eşdeğeri::
@@ -1095,18 +1095,18 @@ Eşdeğeri::
     >>> a = 12
     >>> a = a ** 2
     >>> print(a)
-    
+
     144
 
 **//= işleci**
 
 Değer atama işleçlerinin sonuncusu olan `//=` işlecinin görevi ise taban bölme
 işleminin sonucunu aynı değişkene atamaktır::
-    
+
     >>> a = 5
     >>> a //= 2
     >>> print(a)
-    
+
     2
 
 Eşdeğeri::
@@ -1114,37 +1114,37 @@ Eşdeğeri::
     >>> a = 5
     >>> a = a // 2
     >>> print(a)
-    
+
     2
 
-Bu işleçler arasından, özellikle `+=` ve `-=` işleçleri işinize bir hayli yarayacak. 
+Bu işleçler arasından, özellikle `+=` ve `-=` işleçleri işinize bir hayli yarayacak.
 
 Bu arada eğer bu işleçleri kullanırken mesela `+=` mi yoksa `=+` mı yazacağınızı
 karıştırıyorsanız, şöyle düşünebilirsiniz::
-    
+
     >>> a = 5
     >>> a += 5
     >>> print(a)
-    
+
     10
 
 Burada, değeri `5` olan bir `a` değişkenine `5` daha ekleyip, çıkan sonucu
 tekrar `a` değişkenine atadık. Böylece değeri `10` olan bir `a` değişkeni elde
 ettik. `+=` işlecinin doğru kullanımı yukarıdaki gibidir. Bir de yukarıdaki
 örneği şöyle yazmayı deneyelim::
-    
+
     >>> a = 5
     >>> a =+ 5
     >>> print(a)
-    
+
     5
 
-Burada `+` işleci ile `=` işlecinin yerini değiştirdik. 
+Burada `+` işleci ile `=` işlecinin yerini değiştirdik.
 
 ``a =+ 5`` satırına dikkatlice bakın. Aslında burada yaptığımız şeyin ``a = +5``
 işlemi olduğunu, yani `a` değişkenine `+5` gibi bir değer verdiğimizi
 göreceksiniz. Durum şu örnekte daha net görünecektir::
-    
+
     >>> a = 5
     >>> a =- 5
     >>> print(a)
@@ -1164,11 +1164,11 @@ Python'da bir tane aitlik işleci bulunur. Bu işleç de `in` işlecidir. Bu iş
 
     >>> a = "abcd"
     >>> "a" in a
-    
+
     True
-    
+
     >>> "f" in a
-    
+
     False
 
 Gördüğünüz gibi, `in` adlı bu işleç, bir öğenin, veri tipi içinde bulunup
@@ -1191,7 +1191,7 @@ Peki bir nesnenin kimlik numarasına nasıl ulaşırız?
 Python'da bu işi yapmamızı sağlayacak ``id()`` adlı bir fonksiyon bulunur
 (İngilizcedeki *identity* (kimlik) kelimesinin kısaltması). Şimdi bir örnek
 üzerinde bu ``id()`` fonksiyonunu nasıl kullanacağımıza bakalım::
-    
+
     >>> a = 100
     >>> id(a)
 
@@ -1204,12 +1204,12 @@ Bir de şu örneklere bakalım::
 
     >>> a = 50
     >>> id(a)
-    
+
     505494576
-    
+
     >>> kardiz = "Elveda Zalim Dünya!"
     >>> id(kardiz)
-    
+
     14461728
 
 Gördüğünüz gibi, Python'daki her nesnenin kimliği eşşiz, tek ve benzersizdir.
@@ -1217,7 +1217,7 @@ Gördüğünüz gibi, Python'daki her nesnenin kimliği eşşiz, tek ve benzersi
 Yukarıda verdiğimiz ilk örnekte bir `a` değişkeni tanımlayıp bunun değerini
 `100` olarak belirlemiş ve ``id(a)`` komutuyla da bu nesnenin kimlik numarasına
 ulaşmıştık. Yani::
-    
+
     >>> a = 100
     >>> id(a)
     137990748
@@ -1239,16 +1239,16 @@ Ama bir de şu örneklere bakalım::
 
     >>> a = 1000
     >>> id(a)
-    
+
     15163440
-    
+
     >>> b = 1000
     >>> id(b)
-    
+
     14447040
-    
+
     >>> id(1000)
-    
+
     15163632
 
 Bu defa Python `a` değişkeninin tuttuğu `1000` sayısı, `b` değişkeninin tuttuğu
@@ -1264,9 +1264,9 @@ kimlik işlecini kullanmaktır. Deneyelim::
     >>> a is 1000
 
     False
-    
+
     >>> b is 1000
-    
+
     False
 
 Gördüğünüz gibi, Python `False` (Yanlış) çıktısını suratımıza bir tokat gibi
@@ -1304,14 +1304,14 @@ Burada `is` işleci `a` değişkeninin tuttuğu veri ile `1000` sayısının ayn
 kimlik numarasına sahip olup olmadığını sorgularken, `==` işleci `a`
 değişkeninin tuttuğu verinin `1000` olup olmadığını denetliyor. Yani `is`
 işlecinin yaptığı şey kabaca şu oluyor::
-    
+
     >>> id(a) == id(1000)
 
     False
 
 Şimdiye kadar denediğimiz örnekler hep sayıydı. Şimdi isterseniz bir de karakter
 dizilerinin durumuna bakalım::
-    
+
     >>> a = "python"
     >>> a is "python"
 
@@ -1319,7 +1319,7 @@ dizilerinin durumuna bakalım::
 
 Burada `True` çıktısını aldık. Bir de `==` işleci ile bir karşılaştırma
 yapalım::
-    
+
     >>> a == "python"
 
     True
@@ -1353,11 +1353,11 @@ mekanizmasının işleyişi gereğince 'ufak' nesneleri önbelleğe alırken 'b�
 nesneler için her defasında yeni bir depolama işlemi yapıyor. Peki ufak ve büyük
 kavramlarının ölçütü nedir? İsterseniz Python açısından ufak kavramının
 sınırının ne olabileceğini şöyle bir kod yardımıyla sorgulayabiliriz::
-    
+
     >>> for k in range(-1000, 1000):
     ...     for v in range(-1000, 1000):
-    ...         if k is v:       
-    ...             print(k)  
+    ...         if k is v:
+    ...             print(k)
 
 .. note:: Burada henüz öğrenmediğimiz şeyler var. Bunları birkaç bölüm sonra
           ayrıntılı bir şekilde inceleyeceğiz.
@@ -1375,20 +1375,20 @@ Burada aldığımız sonuca göre şöyle bir denetleme işlemi yapalım::
     >>> a is 256
 
     True
-    
+
     >>> a = 257
     >>> a is 257
 
     False
-    
+
     >>> a = -5
     >>> a is -5
-    
+
     True
-    
+
     >>> a = -6
     >>> a is -6
-    
+
     False
 
 Böylece Python'daki kimlik işleçlerini de incelemiş olduk. Belki programcılık
@@ -1437,7 +1437,7 @@ yazdırabileceğimizi biliyorsunuz artık.
 Biz burada bütün seçenekleri tek bir değişken içine yerleştirdik. Esasında her
 bir seçenek için ayrı bir değişken tanımlamak da mümkündür. Yani aslında
 yukarıdaki kodları şöyle de yazabiliriz::
-    
+
     seçenek1 = "(1) topla"
     seçenek2 = "(2) çıkar"
     seçenek3 = "(3) çarp"
@@ -1451,7 +1451,7 @@ Yalnız burada dikkat ederseniz, seçenekler hep yan yana diziliyor. Eğer
 programınızda yukarıdaki şekli kullanmak isterseniz, bu seçeneklerin yan yana
 değil de, alt alta görünmesini sağlamak için, önceki derslerimizde öğrendiğimiz
 `sep` parametresini kullanabilirsiniz::
-    
+
     seçenek1 = "(1) topla"
     seçenek2 = "(2) çıkar"
     seçenek3 = "(3) çarp"
@@ -1527,7 +1527,7 @@ Bu kodları çalıştırdığımızda, ekranda giriş paragrafımız görünecek
 kullanıcıya, yapmak istediği işlemin ne olduğu sorulacaktır. Henüz kodlarımız
 eksik olduğu için, kullanıcı hangi sayıyı girerse girsin, programımız hiç bir iş
 yapmadan kapanacaktır. O halde yolumuza devam edelim::
-    
+
 	if soru == "1":
 
 Böylece ilk ``if`` deyimimizi tanımlamış olduk. Buradaki yazım şekline çok
@@ -1535,7 +1535,7 @@ dikkat edin. Bu kodlarla Python'a şu emri vermiş oluyoruz:
 
 	Eğer `soru` adlı değişkenin değeri `1` ise, yani eğer kullanıcı klavyede `1`
 	tuşuna basarsa...
-	
+
 ``if`` deyimlerinin en sonuna `:` işaretini koymayı unutmuyoruz. Python'a yeni
 başlayanların en çok yaptığı hatalardan birisi, sondaki bu `:` işaretini koymayı
 unutmalarıdır. Bu işaret bize çok ufak bir ayrıntıymış gibi görünse de Python
@@ -1550,13 +1550,13 @@ programımızda kullanıcı klavyeden `1`, `2`, `3`, `4`, `5` veya `6` değerler
 herhangi birini seçebilir. Biz yukarıdaki kod yardımıyla, eğer kullanıcı
 klavyede `1` tuşuna basarsa ne yapılacağını belirleyeceğiz. O halde devam
 edelim::
-    
+
 	if soru == "1":
 	    sayı1 = int(input("Toplama işlemi için ilk sayıyı girin: "))
 	    sayı2 = int(input("Toplama işlemi için ikinci sayıyı girin: "))
 	    print(sayı1, "+", sayı2, "=", sayı1 + sayı2)
 
-Böylece ilk ``if`` bloğumuzu tanımlamış olduk. 
+Böylece ilk ``if`` bloğumuzu tanımlamış olduk.
 
 .. highlight:: none
 
@@ -1571,11 +1571,11 @@ kullanarak dört vuruşluk bir girinti oluşturabilirsiniz. Bu girintiler, ilk
 satırda belirlediğimiz ``if`` deyimiyle gösterilecek işlemlere işaret ediyor.
 Dolayısıyla burada yazılan kodları Pythoncadan Türkçeye çevirecek olursak şöyle
 bir şey elde ederiz::
-    
+
 	eğer sorunun değeri '1' ise:
 	    Toplama işlemi için ilk sayı girilsin. Bu değere 'sayı1' diyelim.
 	    Sonra ikinci sayı girilsin. Bu değere de 'sayı2' diyelim.
-	    En son, 'sayı1', '+' işleci, 'sayı2', '=' işleci ve 'sayı1 + sayı2' 
+	    En son, 'sayı1', '+' işleci, 'sayı2', '=' işleci ve 'sayı1 + sayı2'
 	    ekrana yazdırılsın...
 
 .. highlight:: py3
@@ -1654,7 +1654,7 @@ biliyorsunuz:
 
     Eğer kullanıcının girdiği değer yukarıdaki bloklardan hiç birine uymuyorsa
     bu `else` bloğunu işlet!
-    
+
 gibi bir emir vermiş oluyoruz bu ``else`` bloğu yardımıyla. Mesela kullanıcımız
 `1`, `2`, `3`, `4`, `5` veya `6` seçeneklerini girmek yerine `7` yazarsa, bu
 blok işletilecek.
@@ -1703,7 +1703,7 @@ Gelin isterseniz son kez kodlarımızı topluca bir görelim::
         print(sayı10, "sayısının karekökü = ", sayı10 ** 0.5)
 
     else:
-        print("Yanlış giriş.") 
+        print("Yanlış giriş.")
         print("Aşağıdaki seçeneklerden birini giriniz:", giriş)
 
 Genel olarak baktığımızda, bütün programın aslında basit bir 'if, elif, else'
@@ -1711,7 +1711,7 @@ yapısından ibaret olduğunu görüyoruz. Ayrıca bu kodlardaki simetriye de
 dikkatinizi çekmek isterim. Gördüğünüz gibi her 'paragraf' bir ``if``, ``elif``
 veya ``else`` bloğundan oluşuyor ve her blok kendi içinde girintili bir yapı
 sergiliyor. Temel olarak şöyle bir şeyle karşı karşıyayız::
-    
+
 	Eğer böyle bir durum varsa:
 	    şöyle bir işlem yap
 
@@ -1733,12 +1733,12 @@ faydayı sağlamış olacaksınız.
 
 Sürüme Göre İşlem Yapan Program
 ================================
-    
+
 Bildiğiniz gibi, şu anda piyasada iki farklı Python serisi bulunuyor: Python2 ve
 Python3. Daha önce de söylediğimiz gibi, Python'ın 2.x serisi ile çalışan bir
 program Python'ın 3.x serisi ile muhtemelen çalışmayacaktır. Aynı şekilde bunun
 tersi de geçerlidir. Yani 3.x ile çalışan bir program 2.x ile büyük ihtimalle
-çalışmayacaktır. 
+çalışmayacaktır.
 
 Bu durum, yazdığınız programların farklı Python sürümleri ile çalıştırılma
 ihtimaline karşı bazı önlemler almanızı gerektirebilir. Örneğin yazdığınız bir
@@ -1752,7 +1752,7 @@ engelleyecek özellikler içeriyor olabilir. Örneğin ``print()`` fonksiyonunun
 `flush` adlı parametresi dile `3.3` sürümü ile birlikte eklendi. Dolayısıyla bu
 parametreyi kullanan bir program, kullanıcının `3.3` veya daha yüksek bir Python
 sürümü kullanmasını gerektirir. Böyle bir durumda, programınızı çalıştıran
-Python sürümünün en düşük `3.3` olmasını temin etmeniz gerekir. 
+Python sürümünün en düşük `3.3` olmasını temin etmeniz gerekir.
 
 Peki bunu nasıl yapacaksınız?
 
@@ -1775,17 +1775,17 @@ biliyoruz. İşte yukarıda bahsettiğimiz programda da bu `sys` modülünden
 yararlanacağız.
 
 Bu iş için, `version` değişkenine çok benzeyen `version_info` adlı bir
-değişkeni kullanacağız. 
+değişkeni kullanacağız.
 
 Bu değişkenin nasıl kullanıldığına etkileşimli kabukta beraberce bakalım...
 
 `sys` modülü içindeki araçları kullanabilmek için öncelikle bu modülü içe
 aktarmamız gerektiğini biliyorsunuz::
-    
+
     >>> import sys
 
 Şimdi de bu modül içindeki `version_info` adlı değişkene erişelim::
-    
+
     >>> sys.version_info
 
 Bu komut bize şöyle bir çıktı verir:
@@ -1793,9 +1793,9 @@ Bu komut bize şöyle bir çıktı verir:
 .. parsed-literal::
 
     |version-info3|
-    
+
 Gördüğünüz gibi, bu değişken de bize tıpkı `version` adlı değişken gibi,
-kullandığımız Python sürümü hakkında bilgi veriyor. 
+kullandığımız Python sürümü hakkında bilgi veriyor.
 
 Ben yukarıdaki komutu Python3'te verdiğinizi varsaydım. Eğer yukarıdaki komutu
 Python3 yerine Python2'de verseydik şöyle bir çıktı alacaktık:
@@ -1823,27 +1823,27 @@ numarasını verir. Çıktıda bir de `micro` adlı bir değer var. Bu da kullan
 Python serisinin en alt sürüm numarasını verir.
 
 Bu değere şu şekilde erişiyoruz::
-    
+
     >>> sys.version_info.major
 
 Öteki değerlere de aynı şekilde ulaşıyoruz::
-    
+
     >>> sys.version_info.minor
     >>> sys.version_info.micro
 
 İşte bu çıktılardaki `major` (ve yerine göre bununla birlikte `minor` ve
 `micro`) değerini kullanarak, programımızın hangi Python sürümü ile
 çalıştırılması gerektiğini kontrol edebiliriz. Şimdi programımızı yazalım::
-    
+
     import sys
-    
+
     _2x_metni = """
     Python'ın 2.x sürümlerinden birini kullanıyorsunuz.
-    Programı çalıştırabilmek için sisteminizde Python'ın 
+    Programı çalıştırabilmek için sisteminizde Python'ın
     3.x sürümlerinden biri kurulu olmalı."""
-    
+
     _3x_metni = "Programa hoşgeldiniz."
-    
+
     if sys.version_info.major < 3:
         print(_2x_metni)
     else:
@@ -1853,22 +1853,22 @@ Gelin isterseniz öncelikle bu kodları biraz inceleyelim.
 
 İlk olarak modülümüzü içe aktarıyoruz. Bu modül içindeki araçları
 kullanabilmemiz için bunu yapmamız şart::
-    
+
     import sys
 
 Ardından Python'ın 2.x sürümlerinden herhangi birini kullananlar için bir uyarı
 metni oluşturuyoruz::
-    
+
     _2x_metni = """
     Python'ın 2.x sürümlerinden birini kullanıyorsunuz.
-    Programı çalıştırabilmek için sisteminizde Python'ın 
+    Programı çalıştırabilmek için sisteminizde Python'ın
     3.x sürümlerinden biri kurulu olmalı."""
-    
+
 Bildiğiniz gibi Python'da değişken adları bir sayıyla başlamaz. O yüzden
 değişken isminin başına bir tane alt çizgi işareti koyduğumuza dikkat edin.
 
 Bu da Python3 kullanıcıları için::
-    
+
     _3x_metni = "Programa hoşgeldiniz."
 
 Artık sürüm kontrolü kısmına geçebiliriz. Eğer major parametresinin değeri 3'ten
@@ -1889,7 +1889,7 @@ dilin farklı sürümlerine dair son derece önemli bazı bilgiler veriyor.
 
 Eğer bu programı Python'ın 3.x sürümlerinden biri ile çalıştırdıysanız şu
 çıktıyı alacaksınız::
-    
+
     Programa hoşgeldiniz.
 
 Ama eğer bu programı Python'ın 2.x sürümlerinden biri ile çalıştırdıysanız,
@@ -1897,7 +1897,7 @@ beklentinizin aksine, şöyle bir hata mesajı alacaksınız::
 
       File "test.py", line 5
     SyntaxError: Non-ASCII character '\xc4' in file test.py on line 6, but no
-    encoding declared; see http://www.python.org/peps/pep-0263.html for details    
+    encoding declared; see http://www.python.org/peps/pep-0263.html for details
 
 Biz `_2x_metni` adlı değişkenin ekrana basılmasını beklerken Python bize bir
 hata mesajı gösterdi. Aslında siz bu hata mesajına hiç yabancı değilsiniz. Bunu
@@ -1909,7 +1909,7 @@ karakterleri kullanırken bazı ilave işlemler yapmamız gerekiyordu.
 Burada ilk olarak karakter kodlamasını `UTF-8` olarak değiştirmemiz gerekiyor.
 Bunun nasıl yapılacağını biliyorsunuz. Programımızın ilk satırına şu kodu
 ekliyoruz::
-    
+
     # -*- coding: utf-8 -*-
 
 Bu satır Python3 için gerekli değil. Çünkü Python3'te öntanımlı karakter
@@ -1920,19 +1920,19 @@ karakterler yüzünden çökmesini önlüyoruz.
 
 Ama burada bir problem daha var. Programımız Türkçe karakterler yüzünden
 çökmüyor çökmemesine ama, bu defa da Türkçe karakterleri düzgün göstermiyor::
-    
+
     Python'Ä±n 2.x sÃ¼rÃ¼mlerinden birini kullanÄ±yorsunuz.
     ProgramÄ± Ã§alÄ±ÅŸtÄ±rabilmek iÃ§in sisteminizde Python'Ä±n
     3.x sÃ¼rÃ¼mlerinden biri kurulu olmalÄ±.
- 
+
 Programımızı Python'ın 2.x sürümlerinden biri ile çalıştıranların uyarı mesajını
 düzgün bir şekilde görüntüleyebilmesini istiyorsanız, Türkçe karakterler içeren
 karakter dizilerinin en başına bir 'u' harfi eklemelisiniz. Yani `_2x_metni`
 adlı değişkeni şöyle yazmalısınız::
-    
+
     _2x_metni = u"""
     Python'ın 2.x sürümlerinden birini kullanıyorsunuz.
-    Programı çalıştırabilmek için sisteminizde Python'ın 
+    Programı çalıştırabilmek için sisteminizde Python'ın
     3.x sürümlerinden biri kurulu olmalı."""
 
 Bu karakter dizisinin en başına bir 'u' harfi ekleyerek bu karakter dizisini
@@ -1948,24 +1948,24 @@ satırının kullandığı yazı tipinin Türkçe karakterleri gösterememesinde
 kaynaklanıyordur. Bu problemi çözmek için MS-DOS komut satırının başlık çubuğuna
 sağ tıklayıp 'özellikler' seçeneğini seçerek yazı tipini 'Lucida Console' olarak
 değiştirin. Bu işlemin ardından da komut satırında şu komutu verin::
-    
+
     chcp 1254
 
-Böylece Türkçe karakterleri düzgün görüntüleyebilirsiniz. 
+Böylece Türkçe karakterleri düzgün görüntüleyebilirsiniz.
 
 .. note:: MS-DOS'taki Türkçe karakter problemi hakkında daha ayrıntılı bilgi
           için http://goo.gl/eRY1P adresindeki makalemizi inceleyebilirsiniz.
 
 Şimdiye kadar anlattıklarımızdan öğrendiğiniz gibi, `sys` modülü içinde sürüm
 denetlemeye yarayan iki farklı değişken var. Bunlardan biri `version`, öbürü ise
-`version_info`. 
+`version_info`.
 
 Python3'te bu değişkenlerin şu çıktıları verdiğiniz biliyoruz:
 
 **version**:
 
 .. parsed-literal::
-    
+
     |version3-string|
 
 **version_info**:
@@ -1986,11 +1986,11 @@ işlemler yapıp, kullanılan Python sürümünü kontrol edebiliyoruz.
 `version` değişkeni bize bir karakter dizisi verdiği için, bu değişkenin
 değerini kullanarak herhangi bir aritmetik işlem yapamıyoruz. Mesela
 `version_info` değişkeniyle yukarıda yaptığımız büyüktür-küçüktür sorgulamasını
-`version` değişkeniyle tabii ki yapamayız. 
+`version` değişkeniyle tabii ki yapamayız.
 
 Yukarıdaki örnekte seriler arası sürüm kontrolünü nasıl yapacağımızı gördük.
 Bunun için kullandığımız kod şuydu::
-    
+
     if sys.version_info.major < 3:
         ...
 
@@ -1999,7 +1999,7 @@ Peki aynı serinin farklı sürümlerini denetlemek istersek ne yapacağız? Mes
 Python'ın `3.2` sürümünü sorgulamak istersek nasıl bir kod kullanacağız?
 
 Bunun için şöyle bir şey yazabiliriz::
-    
+
     if sys.version_info.major == 3 and sys.version_info.minor == 2:
         ...
 
@@ -2010,7 +2010,7 @@ koşulun gerçekleşmesi, ana sürümün `3` **ve** alt sürümün `2` olmasına
 
 Yukarıdaki işlem için `version` değişkenini de kullanabilirdik. Dikkatlice
 bakın::
-    
+
     if "3.2" in sys.version:
         ...
 
@@ -2022,15 +2022,15 @@ bir çıktı veriyor:
     |version3-string|
 
 İşte biz burada `in` işlecini kullanarak, `version` değişkeninin verdiği
-karakter dizisi içinde '3.2' diye bir ifade aradık. 
+karakter dizisi içinde '3.2' diye bir ifade aradık.
 
 Bu konuyu daha iyi anlamak için kendi kendinize bazı denemeler yapmanızı tavsiye
 ederim. Ne kadar çok örnek kod yazarsanız, o kadar çok tecrübe kazanırsınız.
 
-    
 
 
-    
+
+
 
 
 

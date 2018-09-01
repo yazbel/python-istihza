@@ -1,6 +1,6 @@
 .. meta::
-   :description: Python programlama dili hakkında neler biliyorsunuz? 
-   :keywords: Python, python2, python3, hakkında, telaffuz, yardım, 
+   :description: Python programlama dili hakkında neler biliyorsunuz?
+   :keywords: Python, python2, python3, hakkında, telaffuz, yardım,
     kaynaklar, farklı python sürümleri
 
 .. highlight:: none
@@ -22,7 +22,7 @@ hakkında acaba neler biliyorsunuz?
 İşte biz bu ilk bölümde, fazla teknik ayrıntıya kaçmadan, Python hakkında kısa
 kısa bilgiler vererek Python'ın ne olduğunu ve bununla neler yapabileceğinizi
 anlatmaya çalışacağız.
-    
+
 Python Nedir?
 *************
 
@@ -45,7 +45,7 @@ Dediğimiz gibi, Python bir programlama dilidir. Üstelik pek çok dile kıyasla
 programlama deneyiminiz olmamışsa, programlama maceranıza Python’la başlamayı
 tercih edebilirsiniz.
 
-Neden Programlama Öğrenmek İsteyeyim? 
+Neden Programlama Öğrenmek İsteyeyim?
 *************************************
 
 Günlük yaşamınıza şöyle bir bakın. Gerek iş yerinizde olsun, gerek evde
@@ -76,11 +76,11 @@ belgelerinizi birleştirip işinizi görecek programı kendiniz yazabilirsiniz.
 Elbette Python'la yapabilecekleriniz yukarıda verdiğimiz basit örneklerle
 sınırlı değildir. Python'ı kullanarak masaüstü programlama, oyun programlama,
 taşınabilir cihaz programlama, web programlama ve ağ programlama gibi pek çok
-alanda çalışmalar yürütebilirsiniz. 
+alanda çalışmalar yürütebilirsiniz.
 
 Neden Python?
 *************
-    
+
 Python programlarının en büyük özelliklerinden birisi, C ve C++ gibi dillerin
 aksine, derlenmeye gerek olmadan çalıştırılabilmeleridir. Python'da derleme
 işlemi ortadan kaldırıldığı için, bu dille oldukça hızlı bir şekilde program
@@ -174,7 +174,7 @@ içinde pek çok Python programı yazıldı ve insanların kullanımına sunuldu
 anda piyasada Python'ın 2.x serisinden bir sürümle yazılmış pek çok program
 bulunuyor. 3.x serisi ise ancak son yıllarda yaygınlık kazanmaya başladı.
 
-.. note:: Biz bu kitapta kolaylık olsun diye Python'ın 3.x serisini Python3; 
+.. note:: Biz bu kitapta kolaylık olsun diye Python'ın 3.x serisini Python3;
     2.x serisini ise Python2 olarak adlandıracağız.
 
 Python3, Python2'ye göre hem çok daha güçlüdür, hem de Python2'nin hatalarından
@@ -191,18 +191,18 @@ yeni seriyi geliştirmeyi sürdürecek.
 Farklı Python serilerinin var olmasından ötürü, Python ile program yazarken
 hangi seriye ait sürümlerden birini kullandığınızı bilmeniz, yazacağınız
 programın kaderi açısından büyük önem taşır.
-    
-Hangi Seriyi Öğrenmeliyim? 
+
+Hangi Seriyi Öğrenmeliyim?
 *************************************
 
 Dediğimiz gibi, şu anda piyasada iki farklı Python serisi var: Python3 ve
 Python2. Peki acaba hangi seriye ait bir sürümü öğrenmelisiniz?
 
-**[Kısa cevap]** 
+**[Kısa cevap]**
 
 Python3'ü öğrenmelisiniz.
 
-**[Uzun cevap]** 
+**[Uzun cevap]**
 
 Eğer Python programlama diline yeni başlıyorsanız Python3'ü öğrenmeniz daha
 doğru olacaktır. Ama eğer Python programlama dilini belirli bir proje üzerinde

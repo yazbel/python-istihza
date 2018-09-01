@@ -1,7 +1,7 @@
 ﻿.. meta::
    :description: Bu bölümde django ile site yapmaya başlayacağız.
    :keywords: python, django, çeviri
-   
+
 .. highlight:: python3
 
 ******************************
@@ -13,7 +13,7 @@
 Bir örnekle öğrenmeye başlayalım. Bu örnekte basit bir anket uygulaması oluşturacağız.
 Uygulama iki kısımdan oluşacak:
 
-	#. Anketlerin oylanması için herkese açık bir site 
+	#. Anketlerin oylanması için herkese açık bir site
 	#. Anketleri düzenlemek veya ekleyip silmek için bir admin paneli
 
 Senin Djangoyu yüklediğini varsayıyoruz. Komut isteminde aşağıdaki komutu çalıştırarak Djangonun yüklü olup olmadığına ve Django sürümüne ulaşabilirsin::
@@ -76,7 +76,7 @@ Django geliştirme sunucusunu başlattınız.
 Kullanılan portu değiştirme
 ============================
 
-`runserver` komutu geliştirme sunucusu için standart olarak 8000 portunu kullanır. 
+`runserver` komutu geliştirme sunucusu için standart olarak 8000 portunu kullanır.
 Eğer bu portu değiştirmek isterseniz bunu komuta argüman olarak verin. Mesela aşağıdaki komut 8080 portunda geliştirme sunucusunu çalıştırıyor::
 
 	python manage.py  runserver 8080
@@ -97,7 +97,7 @@ Bir uygulama oluşturmak için komut satırında `manage.py` ile aynı dizine ge
 	python manage.py startapp polls
 
 `polls` isimli bir dizin oluşturulacak. Bakaklım içinde neler var::
-	
+
 	polls/
 	    __init__.py
 	    admin.py
@@ -146,7 +146,7 @@ Burada oluşturduğumuz URL şemasını gerçek Url şemasında tanıtmanın vak
 
 	from django.contrib import admin
 	from django.urls import include, path
-	
+
 	urlpatterns = [
 	    path('polls/', include('polls.urls')),
 	    path('admin/', admin.site.urls),

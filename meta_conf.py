@@ -30,7 +30,7 @@ html_use_smartypants    = True
 html_show_sourcelink    = False
 html_theme_options      = {'nosidebar': True}
 
-#latex output  
+#latex output
 latex_paper_size        = 'a4'
 latex_font_size         = '11pt'
 latex_elements          = {'inputenc'       : r'\usepackage[utf8]{inputenc}',
@@ -38,9 +38,9 @@ latex_elements          = {'inputenc'       : r'\usepackage[utf8]{inputenc}',
                            'fontpkg'        : r'\usepackage[defaultsans]{droidsans}',
                            'babel'          : r'\usepackage[english]{babel}',
                            'classoptions'   : ',openany'}
-                           
+
 latex_preamble          = u'''
-\\usepackage[none]{hyphenat} 
+\\usepackage[none]{hyphenat}
 \\usepackage{pdfpages}
 \\renewcommand*\\familydefault{\\sfdefault}
 \\def\verbatim@font{\\normalfont\\sffamily}

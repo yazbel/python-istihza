@@ -84,7 +84,7 @@ Yani herhangi bir öğeyi karakter dizisi olarak tanımlayabilmek için yapmamı
 gereken tek şey o öğeyi tırnak içine almaktı. Herhangi bir öğeyi (tek, çift veya
 üç) tırnak içine aldığımızda karakter dizimizi tanımlamış oluyoruz. Liste
 tanımlamak için de buna benzer bir şey yapıyoruz. Dikkatlice bakın::
-    
+
     >>> liste = ["öğe1", "öğe2", "öğe3"]
 
 Gördüğünüz gibi, liste tanımlamak da son derece kolay. Bir liste elde etmek
@@ -96,10 +96,10 @@ olmadığından emin olmak için ``type()`` fonksiyonundan yararlanabileceğimiz
 söylemiştik. Eğer bir nesne ``type()`` fonksiyonuna `<class 'str'>` cevabı
 veriyorsa o nesne bir karakter dizisidir. Listeler için de buna benzer bir
 sorgulama yapabiliriz::
-    
+
     >>> liste = ["öğe1", "öğe2", "öğe3"]
     >>> type(liste)
-    
+
     <class 'list'>
 
 Bu çıktıdan anlıyoruz ki, liste veri tipi ``type()`` fonksiyonuna `<class
@@ -112,7 +112,7 @@ Yukarıda tanımladığımız `liste` adlı listeye baktığımızda dikkatimizi
 üç adet karakter dizisi barındırdığını görüyoruz. Gerçekten de listeler, bir
 veya daha fazla veri tipini içinde barındıran kapsayıcı bir veri tipidir. Mesela
 şu listeye bir bakalım::
-    
+
     >>> liste = ["Ahmet", "Mehmet", 23, 65, 3.2]
 
 Gördüğünüz gibi, liste içinde hem karakter dizileri (`"Ahmet"`, `"Mehmet"`), hem
@@ -124,9 +124,9 @@ Dahası, listelerin içinde başka listeler de bulunabilir::
 
 Bu `liste` adlı değişkenin tipini sorgularsak şöyle bir çıktı alacağımızı
 biliyorsunuz::
-    
+
     >>> type(liste)
-    
+
     <class 'list'>
 
 Bir de şunu deneyelim::
@@ -158,7 +158,7 @@ başka bir liste de yer alabiliyor. Örneğin burada listemizin öğelerinden bi
 Hatırlarsanız karakter dizilerinin belirleyici özelliği tırnak işaretleri idi.
 Yukarıdaki örneklerden de gördüğünüz gibi listelerin belirleyici özelliği de
 köşeli parantezlerdir. Mesela::
-    
+
     >>> karakter = ""
 
 Bu boş bir karakter dizisidir. Şu ise boş bir liste::
@@ -169,8 +169,8 @@ Tıpkı karakter dizilerinde olduğu gibi, listelerle de iki şekilde
 karşılaşabilirsiniz:
 
     #. Listeyi kendiniz tanımlamış olabilirsiniz.
-    
-    #. Liste size başka bir kaynaktan gelmiş olabilir. 
+
+    #. Liste size başka bir kaynaktan gelmiş olabilir.
 
 Yukarıdaki örneklerde bir listeyi kendimizin nasıl tanımlayacağımızı öğrendik.
 Peki listeler bize başka hangi kaynaktan gelebilir?
@@ -201,10 +201,10 @@ Bu komut bize şu çıktıyı vermişti::
 Artık bu çıktı size çok daha anlamlı geliyor olmalı. Gördüğünüz gibi çıktımız
 köşeli parantezler arasında yer alıyor. Yani aslında yukarıdaki çıktı bir liste.
 Dilerseniz bunu nasıl teyit edebileceğinizi biliyorsunuz::
-    
+
     >>> komut = dir(str)
     >>> type(komut)
-    
+
     <class 'list'>
 
 Gördüğünüz gibi, tıpkı ``input()`` fonksiyonundan gelen verinin bir karakter
@@ -215,7 +215,7 @@ biliyoruz. Bu şey, karakter dizilerinin ``split()`` adlı metodudur::
 
     >>> kardiz = "İstanbul Büyükşehir Belediyesi"
     >>> kardiz.split()
-    
+
     ['İstanbul', 'Büyükşehir', 'Belediyesi']
 
 Görüyorsunuz, ``split()`` metodunun çıktısı da köşeli parantezler içinde yer
@@ -238,16 +238,16 @@ Eğer bu ifade bir karakter dizisi ise ilk harfi şu şekilde alabilirsiniz::
 
     >>> kardiz = "İstanbul Büyükşehir Belediyesi"
     >>> kardiz[0]
-    
+
     'İ'
 
 Ama eğer bu ifade bir liste ise yukarıdaki yöntem size farklı bir sonuç verir::
 
     >>> liste = kardiz.split()
     >>> liste[0]
-    
+
     'İstanbul'
-    
+
 Çünkü `"İstanbul Büyükşehir Belediyesi"` adlı karakter dizisinin ilk öğesi `"İ"`
 karakteridir, ama `['İstanbul', 'Büyükşehir', 'Belediyesi']` adlı listenin ilk
 öğesi `"İ"` karakteri değil, `"İstanbul"` kelimesidir.
@@ -268,10 +268,10 @@ tipi arasında önemli benzerlikler de vardır. Örneğin karakter dizilerini
 işlerken öğrendiğimiz pek çok fonksiyonu listelerle birlikte de
 kullanabilirsiniz. Mesela karakter dizilerini incelerken öğrendiğimiz ``len()``
 fonksiyonu listelerin boyutunu hesaplamada da kullanılabilir::
-    
+
     >>> diller = ["İngilizce", "Fransızca", "Türkçe", "İtalyanca", "İspanyolca"]
     >>> len(diller)
-    
+
     5
 
 Karakter dizileri karakterlerden oluşan bir veri tipi olduğu için ``len()``
@@ -282,7 +282,7 @@ fonksiyonu liste içindeki veri tiplerinin sayısını söylüyor.
 ``len()`` fonksiyonu dışında, ``range()`` fonksiyonuyla listeleri de birlikte
 kullanabilirsiniz. Mesela herhangi bir kaynaktan size şunlar gibi iki öğeli
 listeler geliyor olabilir::
-    
+
     [0, 10]
     [6, 60]
     [12, 54]
@@ -290,9 +290,9 @@ listeler geliyor olabilir::
 
 Bu iki öğeli listeleri tek bir liste içinde topladığımızı düşünürsek şöyle bir
 kod yazabiliriz::
-    
+
     sayılar = [[0, 10], [6, 60], [12, 54], [67, 99]]
-    
+
     for i in sayılar:
         print(*range(*i))
 
@@ -302,7 +302,7 @@ ayırarak inceleyebilirsiniz.
 Burada öncelikle bir ``for`` döngüsü oluşturduk. Bu sayede `sayılar` adlı
 listedeki öğelerin üzerinden tek tek geçebileceğiz. Eğer döngü içinde sadece
 öğeleri ekrana yazdırıyor olsaydık şöyle bir kodumuz olacaktı::
-    
+
     for i in sayılar:
         print(i)
 
@@ -317,7 +317,7 @@ Bu kod bize şöyle bir çıktı verecektir::
 listelerde görünen ilk sayılar ``range()`` fonksiyonunun ilk parametresi, ikinci
 sayılar ise ikinci parametresi olacak. Yani her döngüde şöyle bir şey elde
 etmemiz gerekiyor::
-    
+
     range(0, 10)
     range(6, 60)
     range(12, 54)
@@ -326,7 +326,7 @@ etmemiz gerekiyor::
 Aslında kodlarımızı şöyle yazarak yukarıdaki çıktıyı elde edebilirdik::
 
     sayılar = [[0, 10], [6, 60], [12, 54], [67, 99]]
-    
+
     for i in sayılar:
         print(range(i[0], i[1]))
 
@@ -338,15 +338,15 @@ ibaret. Ancak ilk derslerimizden hatırlayacağınız gibi, bunu yapmanın daha 
 bir yolu var. Bildiğiniz gibi, öğelerden oluşan dizileri ayrıştırmak için yıldız
 işaretinden yararlanabiliyoruz. Dolayısıyla yukarıdaki kodları şöyle yazmak daha
 pratik olabilir::
-    
+
     sayılar = [[0, 10], [6, 60], [12, 54], [67, 99]]
-    
+
     for i in sayılar:
         print(range(*i))
 
 Gördüğünüz gibi, `i` değişkeninin soluna bir yıldız ekleyerek bu değişken
 içindeki değerleri ayrıştırdık ve şöyle bir çıktı elde ettik::
-    
+
     range(0, 10)
     range(6, 60)
     range(12, 54)
@@ -355,15 +355,15 @@ içindeki değerleri ayrıştırdık ve şöyle bir çıktı elde ettik::
 Hatırlarsanız, ``range(0, 10)`` gibi bir kod yazdığımızda Python bize `0` ile
 `10` arasındaki sayıları doğrudan göstermiyordu. Aralıktaki sayıları görmek için
 ``range()`` fonksiyonunun çıktısını bir döngü içine almalıyız::
-    
+
     for i in range(0, 10):
         print(i)
 
 ``range(0, 10)`` çıktısını görmek için döngü kurmak yerine yine yıldız
 işaretinden yararlanabiliyoruz. Örneğin::
-    
+
     >>> print(*range(0, 10))
-    
+
     0 1 2 3 4 5 6 7 8 9
 
 Aynı şeyi yukarıdaki kodlara da uygularsak şöyle bir şey elde ederiz::
@@ -392,7 +392,7 @@ Yukarıdaki örneklerden de gördüğünüz gibi liste oluşturmak için öğele
 belirleyip bunları köşeli parantezler içine almamız yeterli oluyor. Bu yöntemin
 dışında, liste oluşturmanın bir yöntemi daha bulunur. Mesela elimizde şöyle bir
 karakter dizisi olduğunu düşünelim::
-    
+
     >>> alfabe = "abcçdefgğhıijklmnoöprsştuüvyz"
 
 Sorumuz şu olsun: 'Acaba bu karakter dizisini listeye nasıl çeviririz?'
@@ -401,9 +401,9 @@ Karakter dizilerini anlatırken ``split()`` adlı bir metottan söz etmiştik. B
 metot karakter dizilerini belli bir ölçüte göre bölmemizi sağlıyordu.
 ``split()`` metoduyla elde edilen verinin bir liste olduğunu biliyorsunuz.
 Örneğin::
-    
+
     >>> isimler = "ahmet mehmet cem"
-    
+
     >>> isimler.split()
 
     ['ahmet', 'mehmet', 'cem']
@@ -415,53 +415,53 @@ olması gerekiyor. Mesela yukarıdaki `isimler` adlı karakter dizisi belli bir
 parça arasında bir boşluk karakteri var. Dolayısıyla ``split()`` metodu bu
 karakter dizisini boşluklardan bölebiliyor. Aynı şey şu karakter dizisi için de
 geçerlidir::
-    
+
     >>> isimler = "elma, armut, çilek"
 
 Bu karakter dizisini oluşturan her bir parça arasında bir adet virgül ve bir
 adet boşluk karakteri var. Dolayısıyla biz bu karakter dizisini ``split()``
 metodunu kullanarak "virgül + boşluk karakteri" ölçütüne göre bölebiliriz::
-    
+
     >>> isimler.split(", ")
-    
+
     ['elma', 'armut', 'çilek']
 
 Ancak bölümün başında tanımladığımız `alfabe` adlı karakter dizisi biraz
 farklıdır::
-    
+
     >>> alfabe = "abcçdefgğhıijklmnoöprsştuüvyz"
 
 Gördüğünüz gibi, bu karakter dizisi tek bir parçadan oluşuyor. Dolayısıyla bu
 karakter dizisini öğelerine bölmemizi sağlayacak bir ölçüt yok. Yani bu karakter
 dizisini şu şekilde bölemeyiz::
-    
+
     >>> alfabe.split()
-    
+
     ['abcçdefgğhıijklmnoöprsştuüvyz']
 
 Elbette bu karakter dizisini isterseniz farklı şekillerde bölebilirsiniz.
 Mesela::
-    
+
     >>> alfabe.split("i")
-    
+
     ['abcçdefgğhı', 'jklmnoöprsştuüvyz']
 
 Gördüğünüz gibi, biz burada `alfabe` karakter dizisini "i" harfinden bölebildik.
 Ama istediğimiz şey bu değil. Biz aslında şöyle bir çıktı elde etmek istiyoruz::
-    
-    ['a', 'b', 'c', 'ç', 'd', 'e', 'f', 'g', 'ğ', 'h', 'ı', 'i', 'j', 
-     'k', 'l', 'm', 'n', 'o', 'ö', 'p', 'r', 's', 'ş', 't', 'u', 'ü', 
+
+    ['a', 'b', 'c', 'ç', 'd', 'e', 'f', 'g', 'ğ', 'h', 'ı', 'i', 'j',
+     'k', 'l', 'm', 'n', 'o', 'ö', 'p', 'r', 's', 'ş', 't', 'u', 'ü',
      'v', 'y', 'z']
 
 Yani bizim amacımız, `alfabe` karakter dizisi içindeki her bir öğeyi birbirinden
 ayırmak. İşte Türk alfabesindeki harflerden oluşan bu karakter dizisini,
 ``list()`` adlı bir fonksiyondan yararlanarak istediğimiz şekilde bölebiliriz::
-    
+
     >>> harf_listesi = list(alfabe)
     >>> print(harf_listesi)
-    
-    ['a', 'b', 'c', 'ç', 'd', 'e', 'f', 'g', 'ğ', 'h', 'ı', 'i', 'j', 
-     'k', 'l', 'm', 'n', 'o', 'ö', 'p', 'r', 's', 'ş', 't', 'u', 'ü', 
+
+    ['a', 'b', 'c', 'ç', 'd', 'e', 'f', 'g', 'ğ', 'h', 'ı', 'i', 'j',
+     'k', 'l', 'm', 'n', 'o', 'ö', 'p', 'r', 's', 'ş', 't', 'u', 'ü',
      'v', 'y', 'z']
 
 Böylece ``list()`` fonksiyonu yardımıyla bu karakter dizisini tek hamlede
@@ -479,10 +479,10 @@ dizilerini listeye çevirmek durumunda kalabilirsiniz.
 ``list()`` fonksiyonu da tıpkı ``str()``, ``int()`` ve ``float()`` fonksiyonları
 gibi bir dönüştürme fonksiyonudur. Örneğin ``int()`` fonksiyonunu kullanarak
 sayı değerli karakter dizilerini sayıya dönüştürebiliyoruz::
-    
+
     >>> k = "123"
     >>> int(k)
-    
+
     123
 
 Bu dönüştürme işlemi sayesinde sayılar üzerinde aritmetik işlem yapma imkanımız
@@ -498,7 +498,7 @@ için de kullanılabilir::
 
     >>> li = list()
     >>> print(li)
-    
+
     []
 
 Yukarıdaki kodlardan gördüğünüz gibi, boş bir liste oluşturmak için ``liste =
@@ -508,14 +508,14 @@ Yukarıdaki kodlardan gördüğünüz gibi, boş bir liste oluşturmak için ``l
 aralığını ekrana basmasını sağlamaktır. Bildiğiniz gibi, ``range()`` fonksiyonu
 tek başına bir sayı aralığını ekrana dökmez. Bu fonksiyon bize yalnızca şöyle
 bir çıktı verir::
-    
+
     >>> range(10)
-    
+
     range(0, 10)
 
 Bu sayı aralığını ekrana dökmek için ``range()`` fonksiyonu üzerinde bir ``for``
 döngüsü kurmamız gerekir::
-    
+
     >>> for i in range(10):
     ...     print(i)
     ...
@@ -532,29 +532,29 @@ döngüsü kurmamız gerekir::
 
 Bu bölümde verdiğimiz örneklerde aynı işi şöyle de yapabileceğimizi
 öğrenmiştik::
-    
+
     >>> print(*range(10))
-    
+
     0 1 2 3 4 5 6 7 8 9
 
 Bu görevi yerine getirmenin üçüncü bir yolu da ``list()`` fonksiyonunu
 kullanmaktır::
-    
+
     >>> list(range(10))
-    
+
     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 Aslında burada yaptığımız şey ``range(10)`` ifadesini bir listeye dönüştürmekten
 ibarettir. Burada `range` türünde bir veriyi `list` türünde bir veriye
 dönüştürüyoruz::
-    
+
     >>> type(range(10))
-    
+
     <class 'range'>
-    
+
     >>> li = list(range(10))
     >>> type(li)
-    
+
     <class 'list'>
 
 Gördüğünüz gibi, yukarıdaki üç yöntem de aralıktaki sayıları ekrana döküyor.
@@ -572,18 +572,18 @@ Listelerin Öğelerine Erişmek
 
 Tıpkı karakter dizilerinde olduğu gibi, listelerde de her öğenin bir sırası
 vardır. Hatırlarsanız karakter dizilerinin öğelerine şu şekilde ulaşıyorduk::
-    
+
     >>> kardiz = "python"
     >>> kardiz[0]
-    
+
     'p'
 
 Bu bölümdeki birkaç örnekte de gördüğünüz gibi, listelerin öğelerine ulaşırken
 de aynı yöntemi kullanabiliyoruz::
-    
+
     >>> meyveler = ["elma", "armut", "çilek", "kiraz"]
     >>> meyveler[0]
-    
+
     'elma'
 
 Yalnız yöntem aynı olsa da yukarıdaki iki çıktı arasında bazı farklar olduğunu
@@ -619,10 +619,10 @@ Dediğimiz gibi, liste öğelerine ulaşmak için kullandığımız yöntem, kar
 dizilerinin öğelerine ulaşmak için kullandığımız yöntemle aynı. Aslında karakter
 dizileri ile listeler arasındaki benzerlik bununla sınırlı değildir.
 Benzerlikleri birkaç örnek üzerinde gösterelim::
-    
+
     >>> meyveler = ["elma", "armut", "çilek", "kiraz"]
     >>> meyveler[-1]
-    
+
     'kiraz'
 
 Karakter dizilerinde olduğu gibi, öğe sırasını eksi değerli bir sayı
@@ -632,7 +632,7 @@ yaptığımızda liste öğeleri sondan başa doğru okunuyor. Dolayısıyla
 ::
 
     >>> meyveler[0:2]
-    
+
     ['elma', 'armut']
 
 Karakter dizileri konusunu işlerken öğrendiğimiz dilimleme yöntemi listeler için
@@ -646,7 +646,7 @@ yazabiliyoruz::
 
 Bu bölümün başında da söylediğimiz gibi, liste adlı veri tipi, içinde başka bir
 liste de barındırabilir. Buna şöyle bir örnek vermiştik::
-    
+
     >>> liste = ["Ali", "Veli", ["Ayşe", "Nazan", "Zeynep"], 34, 65, 33, 5.6]
 
 Bu listedeki öğeler şunlardır::
@@ -662,9 +662,9 @@ Bu listedeki öğeler şunlardır::
 Gördüğünüz gibi, bu liste içinde `['Ayşe', 'Nazan', 'Zeynep']` gibi bir liste
 daha var. Bu liste ana listenin öğelerinden biridir ve bu da öteki öğeler gibi
 tek öğelik bir yer kaplar. Yani::
-    
+
     >>> len(liste)
-    
+
     7
 
 Bu çıktıdan anlıyoruz ki, listemiz toplam `7` öğeden oluşuyor. Listenin `2.`
@@ -674,23 +674,23 @@ tek tek sayılmıyor. Peki böyle bir liste içindeki gömülü listenin öğele
 etmek istersek ne yapacağız? Yani mesela içe geçmiş listenin tamamını değil de,
 örneğin sadece `"Ayşe"` öğesini almak istersek ne yapmamız gerekiyor? Dikkatlice
 bakın::
-    
+
     >>> liste[2][0]
-    
+
     'Ayşe'
-    
+
 "Nazan" öğesini almak için::
 
     >>> liste[2][1]
-    
+
     'Nazan'
 
 "Zeynep" öğesini almak için::
 
     >>> liste[2][2]
-    
+
     'Zeynep'
-    
+
 Gördüğünüz gibi, iç içe geçmiş listelerin öğelerini almak oldukça basit.
 Yapmamız gereken tek şey, gömülü listenin önce ana listedeki konumunu, ardından
 da almak istediğimiz öğenin gömülü listedeki konumunu belirtmektir.
@@ -699,43 +699,43 @@ da almak istediğimiz öğenin gömülü listedeki konumunu belirtmektir.
 
     >>> yeni_liste = liste[2]
     >>> yeni_liste
-    
+
     ['Ayşe', 'Nazan', 'Zeynep']
-    
+
 Böylece bu listenin öğelerine normal bir şekilde ulaşabiliriz::
 
     >>> yeni_liste[0]
-    
+
     'Ayşe'
-    
+
     >>> yeni_liste[1]
-    
+
     'Nazan'
-    
+
     >>> yeni_liste[2]
-    
+
     'Zeynep'
 
 Eğer bir listenin öğelerine erişmeye çalışırken, varolmayan bir sıra sayısı
 belirtirseniz Python size bir hata mesajı gösterecektir::
-    
+
     >>> liste = range(10)
     >>> print(len(liste))
-    
+
     10
 
 Burada ``range()`` fonksiyonundan yararlanarak `10` öğeli bir liste tanımladık.
 Bu listenin son öğesinin şu formüle göre bulunabileceğini karakter dizileri
 konusundan hatırlıyor olmalısınız::
-    
+
     >>> liste[len(liste)-1]
-    
+
     9
 
 Demek ki bu listenin son öğesi `9` sayısı imiş... Bir de şunu deneyelim::
 
     >>> liste[10]
-    
+
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
     IndexError: range object index out of range
@@ -751,7 +751,7 @@ Hatırlarsanız karakter dizilerinden söz ederken bunların değiştirilemez
 (*immutable*) bir veri tipi olduğunu söylemiştik. Bu özellikten ötürü, bir
 karakter dizisi üzerinde değişiklik yapmak istediğimizde o karakter dizisini
 yeniden oluşturuyoruz. Örneğin::
-    
+
     >>> kardiz = "istihza"
     >>> kardiz = "İ" + kardiz[1:]
     >>> kardiz
@@ -762,29 +762,29 @@ Listeler ise değiştirilebilen (*mutable*) bir veri tipidir. Dolayısıyla list
 üzerinde doğrudan değişiklik yapabiliriz. Bir liste üzerinde değişiklik
 yapabilmek için o listeyi yeniden tanımlamamıza gerek yok. Şu örneği dikkatlice
 inceleyin::
-    
+
     >>> renkler = ["kırmızı", "sarı", "mavi", "yeşil", "beyaz"]
     >>> print(renkler)
-    
+
     ['kırmızı', 'sarı', 'mavi', 'yeşil', 'beyaz']
-    
+
     >>> renkler[0] = "siyah"
     >>> print(renkler)
-    
+
     ['siyah', 'sarı', 'mavi', 'yeşil', 'beyaz']
 
 Liste öğelerini nasıl değiştirdiğimize çok dikkat edin. Yukarıdaki örnekte
 `renkler` adlı listenin `0.` öğesini değiştirmek istiyoruz. Bunun için şöyle bir
 formül kullandık::
-    
+
     renkler[öğe_sırası] = yeni_öğe
 
 Örnek olması açısından, aynı listenin 2. sırasındaki `"mavi"` adlı öğeyi `"mor"`
 yapalım bir de::
-    
+
     >>> renkler[2] = "mor"
     >>> print(renkler)
-    
+
     ['siyah', 'sarı', 'mor', 'yeşil', 'beyaz']
 
 Gördüğünüz gibi, listeler üzerinde değişiklik yapmak son derece kolay. Sırf bu
@@ -794,7 +794,7 @@ edilebileceğini gösterecek güçtedir.
 Liste öğelerini değiştirmeye çalışırken, eğer var olmayan bir sıra numarasına
 atıfta bulunursanız Python size ``IndexError`` tipinde bir hata mesajı
 gösterecektir::
-    
+
     >>> renkler[10] = "pembe"
 
     Traceback (most recent call last):
@@ -803,11 +803,11 @@ gösterecektir::
 
 Sıra numaralarını kullanarak listeler üzerinde daha ilginç işlemler de
 yapabilirsiniz. Mesela şu örneğe bakın::
-    
+
     >>> liste = [1, 2, 3]
     >>> liste[0:len(liste)] = 5, 6, 7
     >>> print(liste)
-    
+
     [5, 6, 7]
 
 Burada `liste` adlı listenin bütün öğelerini bir çırpıda değiştirdik. Peki bunu
@@ -825,7 +825,7 @@ dizisinin ilk öğesine karşılık geliyorsa o sıra numarasını belirtmeyebil
 Aynı şekilde eğer sıra numarası bir karakter dizisinin son öğesine karşılık
 geliyorsa o sıra numarasını da belirtmeyebiliriz. Bu kural listeler için de
 geçerlidir. Dolayısıyla yukarıdaki örneği şöyle de yazabilirdik::
-    
+
     >>> liste[:] = 5, 6, 7
 
 Sıra numaralarını kullanarak gerçekten son derece enteresan işlemler
@@ -838,28 +838,28 @@ Listeye Öğe Eklemek
 Listeler büyüyüp küçülebilen bir veri tipidir. Yani Python'da bir listeye
 istediğiniz kadar öğe ekleyebilirsiniz. Diyelim ki elimizde şöyle bir liste
 var::
-    
+
     >>> liste = [2, 4, 5, 7]
 
 Bu listeye yeni bir öğe ekleyebilmek için şöyle bir kod yazabiliriz::
 
     >>> liste + [8]
-    
+
     [2, 4, 5, 7, 8]
-    
+
 Bu örnek, bize listeler hakkında önemli bir bilgi veriyor. Python'da `+` işareti
 kullanarak bir listeye öğe ekleyecekseniz, eklediğiniz öğenin de liste olması
 gerekiyor. Mesela bir listeye doğrudan karakter dizilerini veya sayıları
 ekleyemezsiniz::
-    
+
     >>> liste + 8
-    
+
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
     TypeError: can only concatenate list (not "int") to list
-    
+
     >>> liste + "8"
-    
+
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
     TypeError: can only concatenate list (not "str") to list
@@ -882,11 +882,11 @@ Diyelim ki elimizde şöyle iki adet liste var::
 
 Bu iki farklı listeyi tek bir liste haline getirmek için şöyle bir kod
 yazabiliriz::
-    
+
     >>> programlama_dilleri = derlenen_diller + yorumlanan_diller
-    
+
     ['C', 'C++', 'C#', 'Java', 'Python', 'Perl', 'Ruby']
-    
+
 Bu işlemin sonucunu görelim::
 
     >>> print(programlama_dilleri)
@@ -898,7 +898,7 @@ Programcılık maceranız boyunca listeleri birleştirmenizi gerektiren pek çok
 farklı durumla karşılaşabilirsiniz. Örneğin şöyle bir durum düşünün: Diyelim ki
 kullanıcı tarafından girilen sayıların ortalamasını hesaplayan bir program
 yazmak istiyorsunuz. Bunun için şöyle bir kod yazabilirsiniz::
-    
+
     sayılar = 0
 
     for i in range(10):
@@ -915,7 +915,7 @@ göstermek isterseniz nasıl bir kod yazarsınız?
 Eğer böyle bir şeyi karakter dizileri ile yazmaya kalkışırsanız epey eziyet
 çekersiniz. Ama şöyle bir kod yardımıyla istediğiniz şeyi basit bir şekilde elde
 edebilirsiniz::
-    
+
     sayılar = 0
     notlar = []
 
@@ -933,7 +933,7 @@ halinde elimizde bulunmuş oluyor.
 
 Bu arada, yukarıdaki kodlarda dikkatinizi bir şey çekmiş olmalı. Kullanıcıdan
 gelen verileri `notlar` adlı listeye gönderirken şöyle bir kod yazdık::
-    
+
     notlar += [veri]
 
 Buradaki ``[veri]`` ifadesine dikkat edin. Bu kod yardımıyla kullanıcıdan gelen
@@ -950,7 +950,7 @@ Elinizde şöyle bir karakter dizisi olduğunu düşünün::
 Diyelim ki siz bu karakter dizisindeki bütün öğeleri tek tek bir listeye atmak
 istiyorsunuz. Bu iş için ``list()`` fonksiyonunu kullanabileceğimizi daha önce
 söylemiştik::
-    
+
     >>> liste = list(alfabe)
 
 Peki ``list()`` fonksiyonu bu karakter dizisinin öğelerini listeye atarken nasıl
@@ -973,7 +973,7 @@ atar.
 ``for`` döngülerini işlerken, bu döngünün sayılar üzerinde çalışmayacağını
 söylemiştik. Çünkü sayılar, karakter dizilerinin aksine, üzerinde döngü
 kurulabilen bir veri tipi değildir. Bunu bir örnek üzerinde tekrar görelim::
-    
+
     >>> for i in 12345:
     ...     print(i)
     ...
@@ -984,25 +984,25 @@ kurulabilen bir veri tipi değildir. Bunu bir örnek üzerinde tekrar görelim::
 
 Gördüğünüz gibi, `12345` sayısı üzerinde döngü kuramıyoruz. Aynı hata mesajını
 ``list()`` fonksiyonunda da görürsünüz::
-    
+
     >>> list(12345)
-    
+
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
     TypeError: 'int' object is not iterable
 
 Dediğimiz gibi, tıpkı ``for`` döngüsünde olduğu gibi, ``list()`` fonksiyonu da
 ancak, üzerinde döngü kurulabilen nesneler üzerinde çalışabilir. Mesela::
-    
+
     >>> list("12345")
-    
+
     ['1', '2', '3', '4', '5']
-        
+
 Bu bilgilerin ışığında, yukarıda yazdığımız kodların şu şekilde yazılması
 halinde Python'ın bize hata mesajı göstereceğini söyleyebiliriz::
-    
+
     notlar = []
-    
+
     for i in range(10):
         veri = int(input("{}. not: ".format(i+1)))
         notlar += list(veri)
@@ -1017,7 +1017,7 @@ Peki kullanıcıdan gelen `veri` değerini sayıya dönüştürmeden, karakter d
 biçiminde ``list()`` fonksiyonuna parametre olarak verirsek ne olur? Bu durumda
 ``list()`` fonksiyonu çalışır, ama istediğimiz gibi bir sonuç vermez. Şu kodları
 dikkatlice inceleyin::
-    
+
     notlar = []
 
     for i in range(10):
@@ -1031,10 +1031,10 @@ eklenir, ancak çift ve daha fazla haneli sayılar ise listeye parça parça
 eklenir. Örneğin `234` sayısını girdiğinizde listeye `2`, `3` ve `4` sayıları
 tek tek eklenir. Çünkü, yukarıda da dediğim gibi, ``list()`` fonksiyonu, aslında
 karakter dizileri üzerine bir ``for`` döngüsü kurar. Yani::
-    
+
     >>> for i in "234":
     ...     print(i)
-    
+
     2
     3
     4
@@ -1046,7 +1046,7 @@ Peki bu sorunun üstesinden nasıl geleceğiz? Aslında bu sorunun çözümü ç
 basittir. Eğer bir verinin listeye parça parça değil de, bir bütün olarak
 eklenmesini istiyorsanız `[]` işaretlerinden yararlanabilirsiniz. Tıpkı şu
 örnekte olduğu gibi::
-    
+
     liste = []
 
     while True:
@@ -1054,7 +1054,7 @@ eklenmesini istiyorsanız `[]` işaretlerinden yararlanabilirsiniz. Tıpkı şu
 
         if sayı == "q":
             break
-        
+
         sayı = int(sayı)
 
         if sayı not in liste:
@@ -1080,7 +1080,7 @@ Bir listeden öğe silmek için `del` adlı ifadeden yararlanabilirsiniz. Örne�
     >>> liste = [1, 5, 3, 2, 9]
     >>> del liste[-1]
     >>> liste
-    
+
     [1, 5, 3, 2]
 
 Listeleri Silmek
@@ -1090,7 +1090,7 @@ Python'da listeleri tamamen silmek de mümkündür. Örneğin::
 
     >>> liste = [1, 5, 3, 2, 9]
     >>> del liste
-    >>> liste 
+    >>> liste
 
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
@@ -1102,37 +1102,37 @@ Listeleri Kopyalamak
 Diyelim ki, yazdığınız bir programda, varolan bir listeyi kopyalamak, yani aynı
 listeden bir tane daha üretmek istiyorsunuz. Mesela elimizde şöyle bir liste
 olsun::
-    
+
     >>> li1 = ["elma", "armut", "erik"]
 
 Amacımız bu listeden bir tane daha oluşturmak. İlk olarak aklınıza şöyle bir
 yöntem gelmiş olabilir::
-    
+
     >>> li2 = li1
 
 Gerçekten de bu yöntem bize aynı öğelere sahip iki liste verdi::
 
     >>> print(li1)
-    
+
     ["elma", "armut", "erik"]
-    
+
     >>> print(li2)
-    
+
     ["elma", "armut", "erik"]
 
 Gelin şimdi ilk listemiz olan `li1` üzerinde bir değişiklik yapalım. Mesela bu
 listenin `"elma"` olan ilk öğesini `"karpuz"` olarak değiştirelim::
-    
+
     >>> li1[0] = "karpuz"
     >>> print(li1)
-    
+
     ["karpuz", "armut", "erik"]
 
 Gördüğünüz gibi, `li1` adlı listenin ilk öğesini başarıyla değiştirdik. Şimdi şu
 noktada, `li2` adlı öbür listemizin durumunu kontrol edelim::
-    
+
     >>> print(li2)
-    
+
     ["karpuz", "armut", "erik"]
 
 O da ne! Biz biraz önce `li1` üzerinde değişiklik yapmıştık, ama görünüşe göre
@@ -1146,34 +1146,34 @@ Hatırlarsanız, listelerin değiştirilebilir (*mutable*) bir veri tipi olduğu
 söylemiştik. Listeler bu özellikleriyle karakter dizilerinden ayrılıyor. Zira
 biraz önce `li1` ve `li2` üzerinde yaptığımız işlemin bir benzerini karakter
 dizileri ile yaparsak farklı bir sonuç alırız. Dikkatlice bakın::
-    
+
     >>> a = "elma"
 
 Burada, değeri `"elma"` olan `a` adlı bir karakter dizisi tanımladık. Şimdi bu
 karakter dizisini kopyalayalım::
-    
+
     >>> b = a
 
     >>> a
-    
-    'elma'
-    
-    >>> b
-    
+
     'elma'
 
-Böylece aynı değere sahip iki farklı karakter dizimiz olmuş oldu. 
+    >>> b
+
+    'elma'
+
+Böylece aynı değere sahip iki farklı karakter dizimiz olmuş oldu.
 
 Şimdi `a` adlı
 karakter dizisi üzerinde değişiklik yapalım. Ama biz biliyoruz ki, bir karakter
 dizisini değiştirmenin tek yolu, o karakter dizisini yeniden tanımlamaktır::
-    
+
     >>> a = "E" + a[1:]
-    
+
     >>> a
-    
+
     'Elma'
-    
+
 Burada yaptığımız şeyin bir 'değişiklik' olmadığına dikkatinizi çekmek isterim.
 Çünkü aslında biz burada varolan `a` adlı değişken üzerinde bir değişiklik
 yapmak yerine, yine `a` adı taşıyan başka bir değişken oluşturuyoruz.
@@ -1183,7 +1183,7 @@ Peki bu 'değişiklikten' öbür karakter dizisi etkilendi mi?
 ::
 
     >>> b
-    
+
     'elma'
 
 Gördüğünüz gibi, bu değişiklik öteki karakter dizisini etkilememiş. Bunun
@@ -1196,18 +1196,18 @@ Yukarıda `a` ve `b` adlı iki değişken var. Bunların kimliklerini kontrol
 edelim::
 
     >>> id(a)
-    
+
     15182784
-    
+
     >>> id(b)
-    
+
     15181184
 
 Gördüğünüz gibi, bu iki değişken farklı kimlik numaralarına sahip. Bu durumu şu
 şekilde de teyit edebileceğimizi biliyorsunuz::
-    
+
     >>> id(a) == id(b)
-    
+
     False
 
 Demek ki gerçekten de ``id(a)`` ile ``id(b)`` birbirinden farklıymış. Yani
@@ -1220,7 +1220,7 @@ ikinci bir nesne daha oluşturuyor. Bu nedenle birbirinden kopyalanan karakter
 dizilerinin biri üzerinde yapılan herhangi bir işlem öbürünü etkilemiyor. Ama
 listelerde (ve değiştirilebilir bütün veri tiplerinde) durum farklı. Şimdi şu
 örneklere dikkatlice bakın::
-    
+
     >>> liste1 = ["ahmet", "mehmet", "özlem"]
 
 Bu listeyi kopyalayalım::
@@ -1228,29 +1228,29 @@ Bu listeyi kopyalayalım::
     >>> liste2 = liste1
 
 Elimizde aynı öğelere sahip iki liste var::
-    
+
     >>> liste1
-    
+
     ['ahmet', 'mehmet', 'özlem']
-    
+
     >>> liste2
-    
+
     ['ahmet', 'mehmet', 'özlem']
 
 Bu listelerin kimlik numaralarını kontrol edelim::
 
     >>> id(liste1)
-    
+
     14901376
-    
+
     >>> id(liste2)
-    
+
     14901376
-    
+
     >>> id(liste1) == id(liste2)
-    
+
     True
-    
+
 Gördüğünüz gibi, `liste1` ve `liste2` adlı listeler aynı kimlik numarasına
 sahip. Yani bu iki nesne birbiriyle aynı. Dolayısıyla birinde yaptığınız
 değişiklik öbürünü de etkiler. Eğer birbirinden kopyalanan listelerin birbirini
@@ -1259,66 +1259,66 @@ etkilemesini istemiyorsanız, önünüzde birkaç seçenek var.
 İlk seçeneğe göre şöyle bir kod yazabilirsiniz:
 
 Önce özgün listemizi oluşturalım::
-    
+
     >>> liste1 = ["ahmet", "mehmet", "özlem"]
-    
+
 Şimdi bu listeyi kopyalayalım::
-    
+
     >>> liste2 = liste1[:]
-    
-Burada `liste1`'i kopyalarken, listeyi baştan sona dilimlediğimize dikkat edin. 
-    
+
+Burada `liste1`'i kopyalarken, listeyi baştan sona dilimlediğimize dikkat edin.
+
 Bakalım `liste1`'deki değişiklik öbürünü de etkiliyor mu::
-    
+
     >>> liste1[0] = "veli"
     >>> liste1
-    
+
     ['veli', 'mehmet', 'özlem']
-    
+
     >>> liste2
-    
+
     ['ahmet', 'mehmet', 'özlem']
-    
+
 Gördüğünüz gibi, `liste1`'de yaptığımız değişiklik `liste2`'ye yansımadı. Demek
-ki yöntemimiz işe yaramış. 
+ki yöntemimiz işe yaramış.
 
 Aynı işi yapmak için kullanabileceğimiz ikinci yöntem ise ``list()``
 fonksiyonunu kullanmaktır:
 
 Önce özgün listemizi görelim::
-    
+
     >>> liste1 = ["ahmet", "mehmet", "özlem"]
-    
+
 Şimdi bu listeyi kopyalayalım::
-    
+
     >>> liste2 = list(liste1)
-    
+
 Artık elimizde birbirinin kopyası durumunda iki farklı liste var::
-    
+
     >>> liste2
-    
+
     ['ahmet', 'mehmet', 'özlem']
-    
+
     >>> liste1
-    
+
     ['ahmet', 'mehmet', 'özlem']
 
 Şimdi `liste2` üzerinde bir değişiklik yapalım::
-    
+
     >>> liste2[0] = 'veli'
-    
+
 `liste2`'yi kontrol edelim::
-    
+
     >>> liste2
 
     ['veli', 'mehmet', 'özlem']
-    
+
 Bakalım `liste1` bu değişiklikten etkilenmiş mi::
 
     >>> liste1
 
-    ['ahmet', 'mehmet', 'özlem']    
-    
+    ['ahmet', 'mehmet', 'özlem']
+
 Gördüğünüz gibi, her şey yolunda. Dilerseniz bu nesnelerin birbirinden farklı
 olduğunu ``id()`` fonksiyonu aracılığıyla teyit edebileceğinizi biliyorsunuz.
 
@@ -1340,7 +1340,7 @@ bir örnek ile liste üreteçleri konusuna giriş yapalım::
 Burada 0'dan 1000'e kadar olan sayıları tek satırda bir liste haline getirdik.
 Bu kodların söz dizimine çok dikkat edin. Aslında yukarıdaki kod şu şekilde de
 yazılabilir::
-    
+
     liste = []
 
     for i in range(1000):
@@ -1351,13 +1351,13 @@ aralığında bütün sayıları bu boş listeye teker teker gönderdik. Böylec
 0'dan 1000'e kadar olan sayıları tutan bir liste olmuş oldu. Aynı iş için liste
 üreteçlerini kullandığımızda ise bu etkiyi çok daha kısa bir yoldan halletmiş
 oluyoruz. Liste üreteçlerini kullandığımız kodu tekrar önümüze alalım::
-    
+
     liste = [i for i in range(1000)]
 
 Gördüğünüz gibi, burada önceden boş bir liste tanımlamamıza gerek kalmadı.
 Ayrıca bu kodlarda ``for`` döngüsünün parantezler içine alınarak nasıl
 sadeleştirildiğine de dikkatinizi çekmek isterim. Şu kod::
-    
+
     for i in range(1000):
         liste += [i]
 
@@ -1370,7 +1370,7 @@ işlevi görür. Yani liste üreteçleri ile elde edeceğiniz sonucu başka ara�
 da elde edebilirsiniz. Mesela yukarıdaki kodların yaptığı işlevi yerine getirmek
 için başka bir seçenek olarak ``list()`` fonksiyonundan da yararlanabileceğimizi
 biliyorsunuz::
-    
+
     liste = list(range(1000))
 
 Bu basit örneklerde liste üreteçlerini kullanmanın erdemi pek göze çarpmıyor.
@@ -1381,7 +1381,7 @@ halledebilirsiniz.
 
 Örneğin 0 ile 1000 arasındaki çift sayıları listelemek için liste üreteçlerini
 kullanmak, alternatiflerine göre daha makul bir tercih olabilir::
-    
+
     liste = [i for i in range(1000) if i % 2 == 0]
 
 Aynı işi ``for`` döngüsü ile yapmak için şöyle bir kod yazmamız gerekir::
@@ -1424,7 +1424,7 @@ listeye nasıl alabiliriz? Yani şöyle bir çıktıyı nasıl elde ederiz?
             tümü += [z]
 
     print(tümü)
-    
+
 Liste üreteçleri ise daha kısa bir çözüm sunar::
 
     liste = [[1, 2, 3],
@@ -1447,7 +1447,7 @@ Oyuncunun bu oyunu kazanabilmesi için, X veya O işaretlerinden birisinin oyun
 tahtası üzerinde belli konumlarda bulunması gerekiyor. Yani mesela X işaretinin
 oyunu kazanabilmesi için bu işaretin oyun tahtası üzerinde şu şekilde bir
 dizilime sahip olması gerekir::
-    
+
      O   X   O
 
     ___  X   O
@@ -1462,31 +1462,31 @@ Bunun için öncelikle oyun tahtası üzerinde hangi dizilim şekillerinin galib
 getireceğini gösteren bir liste hazırlayabilirsiniz. Mesela yukarıdaki gibi 3x3
 boyutundaki bir oyun tahtasında X işaretinin oyunu kazanabilmesi için şu
 dizilimlerden herhangi birine sahip olması gerekir::
-    
+
     [0, 0], [1, 0], [2, 0]
-     
+
      X  ___  ___
-      
+
      X  ___  ___
-     
+
      X  ___  ___
-     
-     
+
+
     [0, 1], [1, 1], [2, 1]
-     
+
      ___  X  ___
-     
+
      ___  X  ___
-     
+
      ___  X  ___
-     
-     
+
+
     [0, 2], [1, 2], [2, 2]
-     
+
      ___  ___  X
-     
+
      ___  ___  X
-     
+
      ___  ___  X
 
     [0, 0], [0, 1], [0, 2]
@@ -1495,7 +1495,7 @@ dizilimlerden herhangi birine sahip olması gerekir::
     ___  ___  ___
 
     ___  ___  ___
-    
+
 
     [1, 0], [1, 1], [1, 2]
 
@@ -1503,37 +1503,37 @@ dizilimlerden herhangi birine sahip olması gerekir::
 
      X    X    X
     ___  ___  ___
-    
-    
+
+
     [2, 0], [2, 1], [2, 2]
 
     ___  ___  ___
-    
+
     ___  ___  ___
 
      X    X    X
-     
-    
+
+
     [0, 0], [1, 1], [2, 2]
-     
+
      X   ___  ___
-     
+
      ___  X   ___
-      
+
      ___  ___  X
-     
-     
+
+
      [0, 2], [1, 1], [2, 0]
-     
+
      ___  ___  X
-     
+
      ___  X  ___
-     
+
      X  ___  ___
 
 Aynı dizilimler O işareti için de geçerlidir. Dolayısıyla bu kazanma ölçütlerini
 şöyle bir liste içinde toplayabilirsiniz::
-    
+
     kazanma_ölçütleri = [[[0, 0], [1, 0], [2, 0]],
                          [[0, 1], [1, 1], [2, 1]],
                          [[0, 2], [1, 2], [2, 2]],
@@ -1541,7 +1541,7 @@ Aynı dizilimler O işareti için de geçerlidir. Dolayısıyla bu kazanma ölç
                          [[1, 0], [1, 1], [1, 2]],
                          [[2, 0], [2, 1], [2, 2]],
                          [[0, 0], [1, 1], [2, 2]],
-                         [[0, 2], [1, 1], [2, 0]]] 
+                         [[0, 2], [1, 1], [2, 0]]]
 
 Oyun sırasında X veya O işaretlerinin aldığı konumu bu kazanma ölçütleri ile
 karşılaştırarak oyunu kimin kazandığını tespit edebilirsiniz. Yani
@@ -1571,21 +1571,21 @@ bir liste olduğunu düşünün::
 
 Bir de şöyle bir liste::
 
-    liste2 = [1, 27, 88, 98, 50, 9, 28, 45, 54, 66, 61, 23, 10, 33, 
-              22, 12, 6, 99, 63, 26, 87, 25, 77, 5, 16, 93, 99, 44, 
-              59, 69, 34, 10, 60, 92, 61, 44, 5, 3, 23, 99, 79, 51, 
-              89, 63, 53, 31, 76, 41, 49, 10, 88, 63, 55, 43, 40, 71, 
-              16, 49, 78, 41, 35, 97, 33, 76, 25, 81, 15, 99, 64, 20, 
-              33, 6, 89, 81, 44, 53, 59, 75, 27, 15, 64, 36, 72, 78, 
-              34, 36, 20, 41, 41, 75, 56, 30, 86, 46, 9, 42, 21, 64, 
-              26, 52, 77, 65, 64, 12, 38, 1, 35, 20, 73, 71, 37, 35, 
+    liste2 = [1, 27, 88, 98, 50, 9, 28, 45, 54, 66, 61, 23, 10, 33,
+              22, 12, 6, 99, 63, 26, 87, 25, 77, 5, 16, 93, 99, 44,
+              59, 69, 34, 10, 60, 92, 61, 44, 5, 3, 23, 99, 79, 51,
+              89, 63, 53, 31, 76, 41, 49, 10, 88, 63, 55, 43, 40, 71,
+              16, 49, 78, 41, 35, 97, 33, 76, 25, 81, 15, 99, 64, 20,
+              33, 6, 89, 81, 44, 53, 59, 75, 27, 15, 64, 36, 72, 78,
+              34, 36, 20, 41, 41, 75, 56, 30, 86, 46, 9, 42, 21, 64,
+              26, 52, 77, 65, 64, 12, 38, 1, 35, 20, 73, 71, 37, 35,
               72, 38, 100, 52, 16, 49, 79]
 
 Burada amacınız `liste1` içinde yer alan iç içe geçmiş listelerden hangisinin
 `liste2` içindeki sayıların alt kümesi olduğunu, yani `liste2` içindeki
 sayıların, `liste1` içindeki üçlü listelerden hangisiyle birebir eşleştiğini
 bulmak. Bunun için şöyle bir kod yazabiliriz::
-    
+
     for i in liste1:
         ortak = [z for z in i if z in liste2]
         if len(ortak) == len(i):
@@ -1594,10 +1594,10 @@ bulmak. Bunun için şöyle bir kod yazabiliriz::
 Bu kodlar ilk bakışta gözünüze çok karmaşık gelmiş olabilir. Ama aslında hiç de
 karmaşık değildir bu kodlar. Şimdi bu kodları Türkçe'ye çevirelim:
 
-\1. satır: `liste1` adlı listedeki her bir öğeye `i` adını verelim 
+\1. satır: `liste1` adlı listedeki her bir öğeye `i` adını verelim
 
-\2. satır: `i` içindeki, `liste2`'de de yer alan her bir öğeye de `z` adını verelim ve 
-bunları `ortak` adlı bir listede toplayalım. 
+\2. satır: `i` içindeki, `liste2`'de de yer alan her bir öğeye de `z` adını verelim ve
+bunları `ortak` adlı bir listede toplayalım.
 
 \3. satır: eğer `ortak` adlı listenin uzunluğu `i` değişkeninin uzunluğu ile aynıysa
 
@@ -1658,7 +1658,7 @@ olacaktır. O yüzden tahtayı oluşturmada listeleri kullanmayı tercih edeceğ
 Gördüğünüz gibi, burada iç içe geçmiş üç adet listeden oluşan bir liste var.
 ``print(tahta)`` komutunu kullanarak bu listeyi ekrana yazdırırsanız listenin
 yapısı daha belirgin bir şekilde ortaya çıkacaktır::
-    
+
     [['___', '___', '___'], ['___', '___', '___'], ['___', '___', '___']]
 
 Oyun tahtasını oluşturduğumuza göre, şimdi yapmamız gereken şey bu oyun
@@ -1715,7 +1715,7 @@ Bu kodları çalıştırdığımızda şöyle bir çıktı elde ederiz::
 
 Gördüğünüz gibi, iç içe geçmiş üç adet listeden oluşan `tahta` adlı liste
 içindeki bu iç listeler ekrana döküldü. Bir de şuna bakın::
-    
+
     tahta = [["___", "___", "___"],
              ["___", "___", "___"],
              ["___", "___", "___"]]
@@ -1723,7 +1723,7 @@ içindeki bu iç listeler ekrana döküldü. Bir de şuna bakın::
     for i in tahta:
         print(*i)
 
-Bu kodlar çalıştırıldığında şu çıktıyı verir:: 
+Bu kodlar çalıştırıldığında şu çıktıyı verir::
 
     ___ ___ ___
     ___ ___ ___
@@ -1732,7 +1732,7 @@ Bu kodlar çalıştırıldığında şu çıktıyı verir::
 Bu defa liste yapısını değil, listeyi oluşturan öğelerin kendisini görüyoruz.
 Yıldız işaretinin, birlikte kullanıldığı öğeler üzerinde nasıl bir etkiye sahip
 olduğunu yine önceki derslerimizden hatırlıyorsunuz. Mesela şu örneğe bakın::
-    
+
     kardiz = "istihza"
 
     for i in kardiz:
@@ -1770,7 +1770,7 @@ Dediğim gibi, kodların bu bölümünde, hangi durumda oyunun biteceğini ve
 kazananın kim olacağını tespit edebilmemiz gerekiyor. Mesela oyun sırasında
 şöyle bir görüntü ortaya çıkarsa hemen oyunu durdurup "O KAZANDI!" gibi bir
 çıktı verebilmemiz lazım::
-    
+
      O   O   O
 
     ___  X   X
@@ -1787,33 +1787,33 @@ Veya şöyle bir durumda "X KAZANDI!" diyebilmeliyiz::
 
 Yukarıdaki iki örnek üzerinden düşünecek olursak, herhangi bir işaretin şu
 konumlarda bulunması o işaretin kazandığını gösteriyor::
-    
-    yukarıdan aşağıya 0; soldan sağa 0 
-    yukarıdan aşağıya 1; soldan sağa 0 
-    yukarıdan aşağıya 2; soldan sağa 0 
+
+    yukarıdan aşağıya 0; soldan sağa 0
+    yukarıdan aşağıya 1; soldan sağa 0
+    yukarıdan aşağıya 2; soldan sağa 0
 
 veya::
 
-    yukarıdan aşağıya 0; soldan sağa 0 
-    yukarıdan aşağıya 0; soldan sağa 1 
+    yukarıdan aşağıya 0; soldan sağa 0
+    yukarıdan aşağıya 0; soldan sağa 1
     yukarıdan aşağıya 0; soldan sağa 2
 
 İşte bizim yapmamız gereken şey, bir işaretin oyun tahtası üzerinde hangi
 konumlarda bulunması halinde oyunun biteceğini tespit etmek. Yukarıdaki
 örnekleri göz önüne alarak bunun için şöyle bir liste hazırlayabiliriz::
-    
+
     kazanma_ölçütleri = [[[0, 0], [1, 0], [2, 0]],
                          [[0, 0], [0, 1], [0, 2]]]
 
 Burada iki adet listeden oluşan, `kazanma_ölçütleri` adlı bir listemiz var.
 Liste içinde, her biri üçer öğeden oluşan şu listeleri görüyoruz::
-    
+
     [[0, 0], [1, 0], [2, 0]]
     [[0, 0], [0, 1], [0, 2]]
 
 Bu listeler de kendi içinde ikişer öğeli bazı listelerden oluşuyor. Mesela ilk
 liste içinde şu listeler var::
-    
+
     [0, 0], [1, 0], [2, 0]
 
 İkinci liste içinde ise şu listeler::
@@ -1842,7 +1842,7 @@ koordinatlarda bulunduğunda, ilgili işaretin oyunu kazandığını ilan edip o
 Yukarıdaki açıklamalardan da anlayacağınız gibi, X ve O işaretlerinin oyun
 tahtasındaki konumu, oyunun gidişatı açısından önem taşıyor. O yüzden şu şekilde
 iki farklı liste daha tanımlamamızda fayda var::
-    
+
     x_durumu = []
     o_durumu = []
 
@@ -1859,15 +1859,15 @@ ve oyun süresince bu böyle devam edebilmeli.
 Bu sürekliliği sağlamak için şöyle bir kod yazabiliriz::
 
     sıra = 1
-    
+
     while True:
         if sıra % 2 == 0:
             işaret = "X".center(3)
         else:
-            işaret = "O".center(3) 
-        
+            işaret = "O".center(3)
+
         sıra += 1
-        
+
         print()
         print("İŞARET: {}\n".format(işaret))
 
@@ -1882,7 +1882,7 @@ Yukarıdaki kodları bu şekilde çalıştırdığınızda X ve O harflerinin ç
 şekilde ekrandan geçtiğini göreceksiniz. Eğer ekranda son hız akıp giden bu
 verileri yavaşlatmak ve neler olup bittiğini daha net görmek isterseniz
 yukarıdaki kodları şöyle yazabilirsiniz::
-    
+
     from time import sleep
 
     sıra = 1
@@ -1891,11 +1891,11 @@ yukarıdaki kodları şöyle yazabilirsiniz::
         if sıra % 2 == 0:
             işaret = "X".center(3)
         else:
-            işaret = "O".center(3) 
+            işaret = "O".center(3)
         sıra += 1
-        
+
         print()
-        print("İŞARET: {}\n".format(işaret)) 
+        print("İŞARET: {}\n".format(işaret))
         sleep(0.3)
 
 Bu kodlarda henüz öğrenmediğimiz parçalar var. Ama şimdilik bu bilmediğiniz
@@ -1918,7 +1918,7 @@ döngüde bir X, bir O oluşunu daha net bir şekilde görebiliyoruz.
         y = input("soldan sağa [1, 2, 3]: ".ljust(30))
         if y == "q":
             break
-        
+
         x = int(x)-1
         y = int(y)-1
 
@@ -1928,7 +1928,7 @@ doğru olan düzlemdeki konumu, `y` değişkeni ise soldan sağa doğru olan
 düzlemdeki konumu depolayacak. Oyunda kullanıcının girebileceği değerler 1, 2
 veya 3 olacak. Mesela oyuncu O işareti için yukarıdan aşağıya 1; soldan sağa 2
 değerini girmişse şöyle bir görüntü elde edeceğiz::
-    
+
     ___  O  ___
 
     ___ ___ ___
@@ -1950,7 +1950,7 @@ sağlamamız gerekiyor. Bunun için x ve y değerlerinden 1 çıkarıyoruz.
 Kullanıcıdan gerekli konum bilgilerini aldığımıza göre, bu bilgilere dayanarak X
 ve O işaretlerini oyun tahtası üzerine yerleştirebiliriz. Şimdi şu kodları
 dikkatlice inceleyin::
-    
+
         print("\n"*15)
 
         if tahta[x][y] == "___":
@@ -1987,9 +1987,9 @@ dikkat edin::
 Mesela oyuncu yukarıdan aşağıya 1; soldan sağa 2 sayısını girmişse, kullanıcıdan
 gelen sayılardan 1 çıkardığımız için, Python yukarıdaki kodu şöyle
 değerlendirecektir::
-    
+
         tahta[0][1] = işaret
-    
+
 Yani `tahta` adlı liste içindeki ilk listenin ikinci sırasına ilgili işaret
 yerleştirilecektir.
 
@@ -2043,23 +2043,23 @@ yazmazsak, yanlış konum girildiğinde işaret sırası O'a geçecektir.
             işaret = "X".center(3)
         else:
             işaret = "O".center(3)
-            
+
         print()
         print("İŞARET: {}\n".format(işaret))
-        
+
         x = input("yukarıdan aşağıya [1, 2, 3]: ".ljust(30))
         if x == "q":
             break
-        
+
         y = input("soldan sağa [1, 2, 3]: ".ljust(30))
         if y == "q":
             break
-        
+
         x = int(x)-1
         y = int(y)-1
-        
+
         print("\n"*15)
-        
+
         if tahta[x][y] == "___":
             tahta[x][y] = işaret
             if işaret == "X".center(3):
@@ -2072,7 +2072,7 @@ yazmazsak, yanlış konum girildiğinde işaret sırası O'a geçecektir.
 
 Gördüğünüz gibi epey kod yazmışız. Kodlarımızı topluca incelediğimize göre
 yazmaya devam edebiliriz::
-    
+
     for i in tahta:
          print("\t".expandtabs(30), *i, end="\n"*2)
 
@@ -2090,12 +2090,12 @@ belirlememiz gerekiyor. Dikkatlice inceleyin::
             quit()
         if len(x) == len(i):
             print("X KAZANDI!")
-            quit() 
+            quit()
 
 Bu kodları anlayabilmek için en iyi yol uygun yerlere ``print()`` fonksiyonları
 yerleştirerek çıktıları incelemektir. Mesela bu kodları şöyle yazarak `o` ve `x`
 değişkenlerinin değerlerini izleyebilirsiniz::
-    
+
     for i in kazanma_ölçütleri:
         o = [z for z in i if z in o_durumu]
         x = [z for z in i if z in x_durumu]
@@ -2144,23 +2144,23 @@ Kodlarımızın son hali şöyle oldu::
             işaret = "X".center(3)
         else:
             işaret = "O".center(3)
-            
+
         print()
         print("İŞARET: {}\n".format(işaret))
-        
+
         x = input("yukarıdan aşağıya [1, 2, 3]: ".ljust(30))
         if x == "q":
             break
-        
+
         y = input("soldan sağa [1, 2, 3]: ".ljust(30))
         if y == "q":
             break
-        
+
         x = int(x)-1
         y = int(y)-1
-        
+
         print("\n"*15)
-        
+
         if tahta[x][y] == "___":
             tahta[x][y] = işaret
             if işaret == "X".center(3):
@@ -2170,21 +2170,21 @@ Kodlarımızın son hali şöyle oldu::
             sıra += 1
         else:
             print("\nORASI DOLU! TEKRAR DENEYİN\n")
-        
+
         for i in tahta:
              print("\t".expandtabs(30), *i, end="\n"*2)
 
         for i in kazanma_ölçütleri:
             o = [z for z in i if z in o_durumu]
             x = [z for z in i if z in x_durumu]
-            
+
             if len(o) == len(i):
                 print("O KAZANDI!")
                 quit()
             if len(x) == len(i):
                 print("X KAZANDI!")
                 quit()
-                
+
 Gördüğünüz gibi, sadece şu ana kadar öğrendiğimiz bilgileri kullanarak bir oyun
 yazabilecek duruma geldik. Burada küçük parçaları birleştirerek bir bütüne nasıl
 ulaştığımızı özellikle görmenizi isterim. Dikkat ederseniz, yukarıdaki programda
@@ -2192,7 +2192,7 @@ sadece karakter dizileri, sayılar, listeler ve birkaç fonksiyon var. Nasıl
 sadece 7 nota ile müzik şaheserleri meydana getirilebiliyorsa, yalnızca 4-5 veri
 tipi ile de dünyayı ayağa kaldıracak programlar da yazılabilir.
 
-Listeleri temel olarak incelediğimize göre biraz da demetlerden söz edebiliriz. 
+Listeleri temel olarak incelediğimize göre biraz da demetlerden söz edebiliriz.
 
 Demetler
 **********
@@ -2209,11 +2209,11 @@ edici özelliği tırnak işaretleri, listelerin ayırt edici özelliği ise kö
 parantez işaretleri ise, demetlerin ayırt edici özelliği de normal parantez
 işaretleridir. Dolayısıyla bir demet tanımlamak için normal parantez
 işaretlerinden yararlanacağız::
-    
+
     >>> demet = ("ahmet", "mehmet", 23, 45)
-    
+
     >>> type(demet)
-    
+
     <class 'tuple'>
 
 Gördüğünüz gibi, karakter dizilerinin ``type()`` sorgusuna `str`, listelerin ise
@@ -2222,25 +2222,25 @@ veriyor.
 
 Yalnız, dediğimiz gibi Python'da demet tanımlamanın birden fazla yolu vardır.
 Mesela yukarıdaki demeti şöyle de tanımlayabiliriz::
-    
+
     >>> demet = "ahmet", "mehmet", 23, 45
-    
+
 Gördüğünüz gibi, parantez işaretlerini kullanmadan, öğeleri yalnızca virgül
-işareti ile ayırdığımızda da elde ettiğimiz şey bir demet oluyor. 
+işareti ile ayırdığımızda da elde ettiğimiz şey bir demet oluyor.
 
 Demet oluşturmak için ``tuple()`` adlı bir fonksiyondan da yararlanabilirsiniz.
 Bu fonksiyon, liste oluşturan ``list()`` fonksiyonuna çok benzer::
-    
+
     >>> tuple('abcdefg')
-    
+
     ('a', 'b', 'c', 'd', 'e', 'f', 'g')
-    
+
 Bu fonksiyonu kullanarak başka veri tiplerini demete dönüştürebilirsiniz::
-    
+
     >>> tuple(["ahmet", "mehmet", 34, 45])
-    
+
     ('ahmet', 'mehmet', 34, 45)
-    
+
 Burada, `["ahmet", "mehmet", 34, 45]` adlı bir listeyi ``tuple()`` fonksiyonu
 yardımıyla demete dönüştürdük.
 
@@ -2249,31 +2249,31 @@ Tek Öğeli bir Demet Tanımlamak
 
 Tek öğeli bir karakter dizisi oluşturabilmek için şu yolu izliyorduk
 hatırlarsanız::
-    
+
     >>> kardiz = 'A'
-    
+
 Bu tek öğeli bir karakter dizisidir. Bir de tek öğeli bir liste tanımlayalım::
-    
+
     >>> liste = ['ahmet']
-    
+
 Bu da tek öğeli bir listedir. Gelin bir de tek öğeli bir demet oluşturmaya
 çalışalım::
-    
+
     >>> demet = ('ahmet')
-    
+
 Bu şekilde tek öğeli bir demet oluşturduğunuzu zannediyorsunuz, ama aslında
 oluşturduğunuz şey basit bir karakter dizisinden ibaret! Gelin kontrol edelim::
-    
+
     >>> type(demet)
-    
+
     <class 'str'>
-    
+
 Python programlama dilinde tek öğeli bir demet oluşturma işlemi biraz
 'tuhaf'tır. Eğer tek öğeye sahip bir demet oluşturacaksak şöyle bir şey
 yazmalıyız::
-    
+
     >>> demet = ('ahmet',)
-    
+
 veya::
 
     >>> demet = 'ahmet',
@@ -2288,20 +2288,20 @@ Demetlerin Öğelerine Erişmek
 
 Eğer bir demet içinde yer alan herhangi bir öğeye erişmek isterseniz, karakter
 dizileri ve listelerden hatırladığınız yöntemi kullanabilirsiniz::
-    
+
     >>> demet = ('elma', 'armut', 'kiraz')
     >>> demet[0]
-    
+
     'elma'
-    
+
     >>> demet[-1]
-    
+
     'kiraz'
-    
+
     >>> demet[:2]
-    
+
     ('elma', 'armut')
-    
+
 Gördüğünüz gibi, daha önce öğrendiğimiz indeksleme ve dilimleme kuralları aynen
 demetler için de geçerli.
 
@@ -2314,60 +2314,60 @@ veri tipi arasındaki en önemli fark, listelerin değiştirilebilir (*mutable*)
 veri tipi iken, demetlerin değiştirilemez (*immutable*) bir veri tipi olmasıdır.
 Yani tıpkı karakter dizileri gibi, demetler de bir kez tanımlandıktan sonra
 bunların üzerinde değişiklik yapmak mümkün değildir::
-    
+
     >>> demet = ('elma', 'armut', 'kiraz')
     >>> demet[0] = 'karpuz'
-    
+
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
     TypeError: 'tuple' object does not support item assignment
-    
+
 Gördüğünüz gibi, demetin herhangi bir öğesini değiştirmeye çalıştığımızda Python
-bize bir hata mesajı gösteriyor. 
-    
+bize bir hata mesajı gösteriyor.
+
 Bu bakımdan, eğer programın akışı esnasında üzerinde değişiklik yapmayacağınız
 veya değişiklik yapılmasını istemediğiniz birtakım veriler varsa ve eğer siz bu
 verileri liste benzeri bir taşıyıcı içine yerleştirmek istiyorsanız, listeler
 yerine demetleri kullanabilirsiniz. Ayrıca demetler üzerinde işlem yapmak
 listelere kıyasla daha hızlıdır. Dolayısıyla, performans avantajı nedeniyle de
-listeler yerine demetleri kullanmak isteyebilirsiniz. 
+listeler yerine demetleri kullanmak isteyebilirsiniz.
 
 Tahmin edebileceğiniz gibi, tıpkı karakter dizilerinde olduğu gibi, önceden
 tanımlanmış bir demetin üzerinde değişiklik yapabilmek için, örneğin bir demetle
 başka bir demeti birleştirmek için o demeti yeniden tanımlamak da mümkündür::
-    
+
     >>> demet = ('ahmet', 'mehmet')
     >>> demet = demet + ('selin',)
-    
+
 Eğer sadece ``demet + ('selin',)`` demiş olsaydık özgün demet üzerinde herhangi
 bir değişiklik yapmış olmayacaktık. Siz bu olguya karakter dizilerinden de
 aşinasınız. O yüzden, özgün demet üzerinde herhangi bir değişiklik yapabilmek
 için, daha doğrusu özgün demet üzerinde bir değişiklik yapmış gibi görünebilmek
 için, özgün demeti sıfırdan tanımlamamız gerekiyor...
-    
+
 Burada ayrıca 'ahmet' ve 'mehmet' öğelerinden oluşan bir demete 'selin' öğesini
 nasıl eklediğimize de dikkat edin. Asla unutmamalısınız: Python programlama
 dilinde sadece aynı tür verileri birbiriyle birleştirebilirsiniz. Mesela
 yukarıdaki örnekte 'selin' adlı öğeyi `demet` adlı demete bir karakter dizisi
 olarak ekleyemezsiniz::
-    
+
     >>> demet = demet + 'selin'
-    
+
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
     TypeError: can only concatenate tuple (not "str") to tuple
 
 Bu arada, yukarıdaki kodu şöyle yazdığınızda da aslında bir demetle karakter
 dizisini birleştirmeye çalışıyor olduğunuza dikkat edin::
-    
+
     >>> demet = demet + ('selin')
-    
+
 Hatırlarsanız, tek öğeli bir demet tanımlayabilmek için parantez içindeki tek
 öğenin yanına bir virgül işareti yerleştirmemiz gerekiyordu. Aksi halde demet
 değil, karakter dizisi tanımlamış oluyorduk. Zaten bir Python programcısı
 olarak, demetler üzerinde çalışırken en sık yapacağınız hata da demet
 tanımlamaya çalışırken yanlışlıkla karakter dizisi tanımlamak olacaktır.
-    
+
 Dediğimiz ve yukarıda da örneklerle gösterdiğimiz gibi, bir demeti yeni baştan
 tanımlayarak da o demet üzerinde değişiklik yapmış etkisi elde edebilirsiniz.
 Ancak elbette bir araya topladığınız veriler üzerinde sık sık değişiklikler
@@ -2383,9 +2383,9 @@ programların ayar (*conf*) dosyalarında bu veri tipi sıklıkla kullanılır.
 `settings.py` adlı ayar dosyasında pek çok değer bir demet olarak saklanır.
 Mesela bir Django projesinde web sayfalarının şablonlarını (*template*) hangi
 dizin altında saklayacağınızı belirlediğiniz ayar şöyle görünür::
-    
+
     TEMPLATE_DIRS = ('/home/projects/djprojects/blog/templates',)
-    
+
 Burada, şablon dosyalarının hangi dizinde yer alacağını bir demet içinde
 gösteriyoruz. Bu demet içine birden fazla dizin adı yazabilirdik. Ama biz bütün
 şablon dosyalarını tek bir dizin altında tutmayı tercih ettiğimiz için tek öğeli
@@ -2393,9 +2393,9 @@ bir demet tanımlamışız. Bu arada, daha önce de söylediğimiz gibi, demetle
 ilgili en sık yapacağınız hata, tek öğeli demet tanımlamaya çalışırken aslında
 yanlışlıkla bir karakter dizisi tanımlamak olacaktır. Örneğin yukarıdaki
 `TEMPLATE_DIRS` değişkenini şöyle yazsaydık::
-    
+
     TEMPLATE_DIRS = ('/home/projects/djprojects/blog/templates')
-    
+
 Aslında bir demet değil, alelade bir karakter dizisi tanımlamış olurduk...
 
 

@@ -1,11 +1,11 @@
 .. meta:: :author: Buğra İşgüzar <biisguzar@gmail.com>
-          :description: Bu bölümde Python'daki f-string yapısından ve özelliklerinden 
-           söz edeceğiz. 
+          :description: Bu bölümde Python'daki f-string yapısından ve özelliklerinden
+           söz edeceğiz.
           :keywords: python, f-string, formatted string
-           
+
 .. highlight:: py3
 
-**************** 
+****************
 f-string
 ****************
 

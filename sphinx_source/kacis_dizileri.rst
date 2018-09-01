@@ -1,12 +1,12 @@
-.. meta:: :description: Bu bölümde Python'daki kaçış dizilerinden (escape sequences) 
-           söz edeceğiz. 
-          :keywords: python, kaçış dizileri, escape sequences, satır başı, tab, 
-           sekme 
-           
+.. meta:: :description: Bu bölümde Python'daki kaçış dizilerinden (escape sequences)
+           söz edeceğiz.
+          :keywords: python, kaçış dizileri, escape sequences, satır başı, tab,
+           sekme
+
 .. highlight:: py3
 
-**************** 
-Kaçış Dizileri 
+****************
+Kaçış Dizileri
 ****************
 
 Python'da karakter dizilerini tanımlayabilmek için tek, çift veya üç tırnak
@@ -14,7 +14,7 @@ işaretlerinden faydalandığımızı geçen bölümde öğrenmiştik. Python bi
 karakter dizisi olup olmadığına bu tırnak işaretlerine bakarak karar verdiği
 için, tek, çift ve üç tırnak işaretleri Python açısından özel bir önem taşıyor.
 Zira Python'ın gözünde bir başlangıç tırnağı ile bitiş tırnağı arasında yer alan
-her şey bir karakter dizisidir. 
+her şey bir karakter dizisidir.
 
 Örneğin ilk olarak bir `"` işareti koyup ardından `"elma` şeklinde devam
 ettiğinizde, Python ilk tırnağı gördükten sonra karakter dizisini
@@ -23,7 +23,7 @@ tanımlayabilmek için ikinci bir tırnak işareti aramaya başlar. Siz `"elma"`
 karakter dizisi oluşturur.
 
 Bu noktada size şöyle bir soru sormama izin verin: Acaba tırnak işaretleri
-herhangi bir metin içinde kaç farklı amaçla kullanılabilir? 
+herhangi bir metin içinde kaç farklı amaçla kullanılabilir?
 
 İsterseniz bu sorunun cevabını örnekler üzerinde vermeye çalışalım:
 
@@ -33,12 +33,12 @@ Burada tırnak işaretlerini, bir başkasının sözlerini aktarmak için kullan
 
     'book' kelimesi Türkçede 'kitap' anlamına gelir.
 
-Burada ise tırnak işaretlerini bazı kelimeleri vurgulamak için kullandık. 
+Burada ise tırnak işaretlerini bazı kelimeleri vurgulamak için kullandık.
 
 Bir de şuna bakalım:
 
-    Yarın Adana'ya gidiyorum. 
-    
+    Yarın Adana'ya gidiyorum.
+
 Burada da tırnak işaretini, çekim eki olan '-(y)a' ile özel isim olan 'Adana'
 kelimesini birbirinden ayırmak için kesme işareti görevinde kullandık.
 
@@ -97,9 +97,9 @@ tırnakla ya da üç tırnakla başlayabiliriz::
 
     >>> 'Ahmet, "Bugün sinemaya gidiyorum," dedi.'
 
-... veya:: 
+... veya::
 
-    >>> """Ahmet, "Bugün sinemaya gidiyorum," dedi.""" 
+    >>> """Ahmet, "Bugün sinemaya gidiyorum," dedi."""
 
 Böylece karakter dizisini başlatan işaret 'Bugün sinemaya gidiyorum,' cümlesinin
 başındaki ve sonundaki işaretlerden farklı olduğu için, Python okuma esnasında
@@ -126,7 +126,7 @@ durumdan haberdar etmemize yarayan araçlardır.
 Python'da pek çok kaçış dizisi bulunur. Biz burada bu kaçış dizilerini tek tek
 inceleyeceğiz. O halde hemen işe koyulalım.
 
-Ters Taksim (\\) 
+Ters Taksim (\\)
 *****************
 
 Yukarıda verdiğimiz örneklerde, çift tırnakla gösterdiğimiz karakter dizilerinin
@@ -142,14 +142,14 @@ Dilerseniz, kaçış dizisi kavramını açıklamaya geçmeden önce bununla ilg
 birkaç örnek verelim. Bu sayede ne ile karşı karşıya olduğumuz, zihnimizde biraz
 daha belirginleşebilir::
 
-    >>> print('Yarın Adana\'ya gidiyorum.') 
-    
+    >>> print('Yarın Adana\'ya gidiyorum.')
+
     Yarın Adana'ya gidiyorum.
 
 Bir örnek daha verelim::
 
     >>> print("\"book\" kelimesi Türkçede \"kitap\" anlamına gelir.")
-    
+
     "book" kelimesi Türkçede "kitap" anlamına gelir.
 
 Burada da cümle içinde çift tırnak işaretlerini kullandığımız halde, `\\`
@@ -158,7 +158,7 @@ işaretleri sayesinde karakter dizilerini yine çift tırnakla tanımlayabildik.
 Bir de şu örneğe bakalım::
 
     >>> print("Python programlama dilinin adı \"piton\" yılanından gelmez")
-    
+
 Bütün bu örneklerde, karakter dizisini hem çift tırnakla tanımlayıp hem de
 karakter dizisi içinde çift tırnak işaretlerini kullandığımız halde, herhangi
 bir hata almadığımızı görüyorsunuz. Yukarıdaki kodlarda hata almamızı önleyen
@@ -173,7 +173,7 @@ Hatırlarsanız önceki sayfalarda şöyle bir karakter dizisi ile karşılaşm�
         print('İstanbul'un 5 günlük hava durumu tahmini')
                           ^
     SyntaxError: invalid syntax
-    
+
 Burada da 'İstanbul'un' kelimesi içinde geçen tırnak işareti nedeniyle karakter
 dizisini tek tırnak kullanarak tanımlayamıyorduk. Bu karakter dizisini hatasız
 bir şekilde tanımlayabilmek için ya çift tırnak ya da üç tırnak kullanmamız
@@ -187,8 +187,8 @@ gerekiyordu::
 
     >>> print("""İstanbul'un 5 günlük hava durumu tahmini""")
 
-    İstanbul'un 5 günlük hava durumu tahmini 
-    
+    İstanbul'un 5 günlük hava durumu tahmini
+
 Tıpkı önceki örneklerde olduğu gibi, yukarıdaki karakter dizisini de aslında tek
 tırnakla tanımlayıp hata oluşmasını önleyebiliriz. Hemen görelim::
 
@@ -259,10 +259,10 @@ de bu kaçış dizisinin nasıl kullanılacağına dair örnekler vermiş olduk.
 dizisini, uzun karakter dizilerini bölmek için de kullanabiliriz. Şimdi şu
 örneği dikkatlice inceleyin::
 
-    >>> print("Python 1990 yılında Guido Van Rossum \ 
-    ... tarafından geliştirilmeye başlanmış, oldukça \ 
-    ... güçlü ve yetenekli bir programlama dilidir.") 
-    
+    >>> print("Python 1990 yılında Guido Van Rossum \
+    ... tarafından geliştirilmeye başlanmış, oldukça \
+    ... güçlü ve yetenekli bir programlama dilidir.")
+
     Python 1990 yılında Guido Van Rossum tarafından geliştirilmeye
     başlanmış, oldukça güçlü ve yetenekli bir programlama dilidir.
 
@@ -284,7 +284,7 @@ sırada, yani `\\` kaçış dizisini koyup `Enter` tuşuna bastığımızda `>>>
 işaretinin `...` işaretine dönüştüğünü görüyorsunuz. Bu işaretin, Python'ın bize
 verdiği bir 'Yazmaya devam et!' mesajı olduğunu biliyorsunuz.
 
-Satır Başı (\\n) 
+Satır Başı (\\n)
 *****************
 
 Python'daki en temel kaçış dizisi biraz önce örneklerini verdiğimiz `\\`
@@ -298,11 +298,11 @@ satır başı karakteri olduğunu söylemiştik.
 
 Satır başı karakterini ilk öğrendiğimizde bu karakteri anlatırken bazı örnekler
 de vermiştik::
-    
-    >>> print("birinci satır\nikinci satır\nüçüncü satır") 
-    
-    birinci satır 
-    ikinci satır 
+
+    >>> print("birinci satır\nikinci satır\nüçüncü satır")
+
+    birinci satır
+    ikinci satır
     üçüncü satır
 
 Gördüğünüz gibi, `\\n` adlı kaçış dizisi, bir alt satıra geçilmesini sağlıyor.
@@ -314,9 +314,9 @@ karakteri' denen özel bir karakter dizisi ortaya çıkarıyor.
 Gelin bu kaçış dizisi ile ilgili bir örnek verelim. Şimdi şu kodları dikkatlice
 inceleyin::
 
-    >>> başlık = "Türkiye'de Özgür Yazılımın Geçmişi" 
-    >>> print(başlık, "\n", "-"*len(başlık), sep="") 
-    
+    >>> başlık = "Türkiye'de Özgür Yazılımın Geçmişi"
+    >>> print(başlık, "\n", "-"*len(başlık), sep="")
+
     Türkiye'de Özgür Yazılımın Geçmişi
     ----------------------------------
 
@@ -326,16 +326,16 @@ koyduğumuz çizgiler başlığın uzunluğunu aşmıyor. Yazdığımız program
 uzunluğu kadar çizgiyi başlığın altına ekliyor. Bu programda başlık ne olursa
 olsun, programımız çizgi uzunluğunu kendisi ayarlayacaktır. Örneğin::
 
-    >>> başlık = "Python Programlama Dili" 
+    >>> başlık = "Python Programlama Dili"
     >>> print(başlık, "\n", "-"*len(başlık), sep="")
 
-    Python Programlama Dili 
-    ----------------------- 
-    
-    >>> başlık = "Alışveriş Listesi" 
+    Python Programlama Dili
+    -----------------------
+
+    >>> başlık = "Alışveriş Listesi"
     >>> print(başlık, "\n", "-"*len(başlık), sep="")
 
-    Alışveriş Listesi 
+    Alışveriş Listesi
     -----------------
 
 Gelin isterseniz bu kodlardaki ``print()`` satırını şöyle bir inceleyelim.
@@ -368,11 +368,11 @@ Yukarıdaki kodlarda ``print()`` fonksiyonunun son parametresi ise `sep=''`. Pek
 bu ne işe yarıyor? Her zaman olduğu gibi, bu kod parçasının ne işe yaradığını
 anlamak için programı bir de o kodlar olmadan çalıştırmayı deneyebilirsiniz::
 
-    >>> print(başlık, "\n", "-"*len(başlık)) 
-    
-    Alışveriş Listesi 
+    >>> print(başlık, "\n", "-"*len(başlık))
+
+    Alışveriş Listesi
       -----------------
-    
+
 Gördüğünüz gibi, `başlık` değişkeninin tam altına gelmesi gereken çizgi
 işaretleri sağa kaymış. Bunun nedeni `sep` parametresinin öntanımlı değerinin
 bir adet boşluk karakteri olmasıdır. `sep` parametresinin öntanımlı değeri
@@ -383,13 +383,13 @@ karakter dizisi yerleştiriyoruz. Böylece çizgiler çıktıda sağa kaymıyor.
 
 Satır başı karakteri, programlama maceramız sırasında en çok kullanacağımız
 kaçış dizilerinden biri ve hatta belki de birincisidir. O yüzden bu kaçış
-dizisini çok iyi öğrenmenizi tavsiye ederim. 
+dizisini çok iyi öğrenmenizi tavsiye ederim.
 
 Ayrıca bu kaçış dizisini (ve tabii öteki kaçış dizilerini) tanıyıp öğrenmeniz,
 yazacağınız programların selameti açısından da büyük önem taşır. Eğer bir
 karakter dizisi içinde geçen kaçış dizilerini ayırt edemezseniz Python size hiç
 beklemediğiniz çıktılar verebilir. Hatta yazdığınız programlar kaçış dizilerini
-tanımıyor olmanızdan ötürü bir anda hata verip çökebilir. Peki ama nasıl? 
+tanımıyor olmanızdan ötürü bir anda hata verip çökebilir. Peki ama nasıl?
 
 Şimdi şu örneğe dikkatlice bakın:
 
@@ -399,14 +399,14 @@ kullanmanız gerekiyor. Mesela bu dosyayı, tam adresiyle birlikte
 kullanıcılarınıza göstermek istiyorsunuz.
 
 İlk denememizi yapalım::
-    
+
     >>> print("C:\nisan\masraflar.txt")
-    
+
 Buradan şöyle bir çıktı aldık::
 
     C:
-    isan\masraflar.txt    
-    
+    isan\masraflar.txt
+
 Gördüğünüz gibi, bu çıktıyı normal yollardan vermeye çalıştığımızda Python bize
 hiç de beklemediğimiz bir çıktı veriyor. Peki ama neden?
 
@@ -437,13 +437,13 @@ karakter dizisi içindeki gizli kaçış dizilerini gözden kaçırmak, bazı du
 çok daha yıkıcı sonuçlara yol açabilir. Mesela yukarıdaki sorunlu dizin adını
 ekrana yazdırmak yerine ``open()`` fonksiyonunu kullanarak, bu karakter dizisi
 içinde belirttiğimiz `masraflar.txt` adlı dosyayı açmaya çalıştığımızı düşünün::
-    
+
     >>> open("C:\nisan\masraflar.txt")
-    
+
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
     OSError: [Errno 22] Invalid argument: 'C:\nisan\\masraflar.txt'
-    
+
 Eğer sorunun gözden kaçan bir kaçış dizisinden kaynaklandığını farkedemezseniz,
 bu sorunu çözebilmek için saatlerinizi ve hatta günlerinizi harcamak zorunda
 kalabilirsiniz. Çünkü yukarıdaki hata mesajı sorunun nedenine dair hiçbir şey
@@ -453,38 +453,38 @@ atabilirsiniz.
 
 Diyelim ki sorunun '\\nisan' ifadesinin başındaki `\\n` karakterlerinin Python
 tarafından bir kaçış dizisi olarak algılanmasından kaynaklandığını farkettiniz.
-Peki bu sorunu nasıl çözeceksiniz? 
+Peki bu sorunu nasıl çözeceksiniz?
 
 Bu sorunun birkaç farklı çözüm yolu var. Biz şimdilik sadece ikisini göreceğiz.
-Bu bölümün sonuna vardığınızda öteki çözüm yolunu da öğrenmiş olacaksınız. 
+Bu bölümün sonuna vardığınızda öteki çözüm yolunu da öğrenmiş olacaksınız.
 
 Yukarıdaki problemi, ilgili kaçış dizisi içindeki ters taksim işaretini
 çiftleyerek çözebilirsiniz::
-    
+
     >>> open("C:\\nisan\masraflar")
-    
+
 Tabii tutarlılık açısından karakter dizisi içindeki bütün ters taksim
 işaretlerini çiftlemek mantıklı olacaktır::
-    
+
     >>> open("C:\\nisan\\masraflar")
-    
+
 Bunun dışında, bu örnek için, dizin adlarını ters taksim yerine düz taksim
 işaretiyle ayırmayı tercih edebilirsiniz::
-    
+
     >>> open("C:/nisan/masraflar")
-    
+
 Dediğimiz gibi, üçüncü (ve aslında daha kullanışlı olan) yöntemi biraz sonra
 inceleyeceğiz. Biz şimdilik kaçış dizilerini anlatmaya devam edelim.
 
-Sekme (\\t) 
+Sekme (\\t)
 ************
 
 Python'da `\\` işareti sadece 'n' harfiyle değil, başka harflerle de
 birleşebilir. Örneğin `\\` işaretini 't' harfiyle birleştirerek yine özel bir
 anlam ifade eden bir kaçış dizisi elde edebiliriz::
 
-    >>> print("abc\tdef") 
-    
+    >>> print("abc\tdef")
+
     abc def
 
 Burada `\\t` adlı kaçış dizisi, `"abc"` ifadesinden sonra sanki `Tab` (sekme)
@@ -506,13 +506,13 @@ istediğimizde `\\t` adlı kaçış dizisinden yararlanabiliyoruz.
 
 Tıpkı `\\n` kaçış dizisinde olduğu gibi, karakter dizilerinde `\\t` kaçış
 dizisinin varlığına karşı da uyanık olmalıyız::
-    
+
     >>> open("C:\nisan\masraflar\toplam_masraf.txt")
 
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
     OSError: [Errno 22] Invalid argument: 'C:\nisan\\masraflar\toplam_masraf.txt'
-    
+
 Burada da `\\n` ile yaşadığımız soruna benzer bir durum var. Biz
 `toplam_masraf.txt` adlı bir dosyaya atıfta bulunmaya çalışıyoruz, ama Python bu
 ifadenin başındaki 't' harfinin, kendisinden önce gelen `\\` işareti ile
@@ -520,9 +520,9 @@ birleşmesinden ötürü, bunu `\\t` kaçış dizisi olarak algılıyor ve ona g
 davranıyor.
 
 Belki yukarıdaki kodları şöyle yazarsak durumu anlamak daha kolay olabilir::
-    
+
     >>> print("C:\nisan\masraflar\toplam_masraf.txt")
-    
+
     C:
     isan\masraflar	oplam_masraf.txt
 
@@ -530,25 +530,25 @@ Gördüğünüz gibi, Python `\\n` kaçış dizisini gördüğü noktada alt sat
 geçiyor ve `\\t` kaçış dizisini gördüğü noktada da önceki ve sonraki öğeler
 arasında bir sekme boşluğu bırakıyor. Bu durumu engellemek için ne yapmanız
 gerektiğini biliyorsunuz: Ya ters taksim işaretlerini çiftleyeceksiniz::
-    
+
     >>> print("C:\\nisan\\masraflar\\toplam_masraf.txt")
-    
+
 Ya da dizin adı ayracı olarak düz taksim işaretini kullanacaksınız::
 
-    >>> print("C:/nisan/masraflar/toplam_masraf.txt")    
-    
+    >>> print("C:/nisan/masraflar/toplam_masraf.txt")
+
 Daha önce de söylediğimiz gibi, üçüncü ve daha pratik olan yolu biraz sonra
 göreceğiz. Şimdilik sadece biraz sabır...
 
-Zil Sesi (\\a) 
+Zil Sesi (\\a)
 *****************
 
 `\\` işaretinin birleştiğinde farklı bir anlam türettiği bir başka harf de 'a'
 harfidir. `\\` işareti 'a' harfiyle birleşerek !bip! benzeri bir zil sesi
 üretilmesini sağlayabilir::
 
-    >>> print("\a") 
-    
+    >>> print("\a")
+
     !bip!
 
 İsterseniz yukarıdaki komutu şu şekilde yazarak, kafa şişirme katsayısını
@@ -567,7 +567,7 @@ karşı da uyanık olmalıyız. Burada da mesela 'C:\\aylar' gibi bir dizin adı
 tanımlamaya çalışırken aslında `\\a` kaçış dizisini oluşturuyor olabilirsiniz
 farkında olmadan.
 
-Aynı Satır Başı (\\r) 
+Aynı Satır Başı (\\r)
 *************************
 
 Bu kaçış dizisi, bir karakter dizisinde aynı satırın en başına dönülmesini
@@ -575,16 +575,16 @@ sağlar. Bu kaçış dizisinin işlevini tanımına bakarak anlamak biraz zor ol
 O yüzden dilerseniz bu kaçış dizisinin ne işe yaradığını bir örnek üzerinde
 göstermeye çalışalım::
 
-    >>> print("Merhaba\rZalim Dünya!") 
-    
+    >>> print("Merhaba\rZalim Dünya!")
+
     Zalim Dünya!
 
 Burada olan şey şu: Normal şartlar altında, ``print()`` fonksiyonu içine
 yazdığımız bir karakter dizisindeki bütün karakterler soldan sağa doğru tek tek
 ekrana yazdırılır::
 
-    >>> print("Merhaba Zalim Dünya!") 
-    
+    >>> print("Merhaba Zalim Dünya!")
+
     Merhaba Zalim Dünya!
 
 Ancak eğer karakter dizisinin herhangi bir yerine `\\r` adlı kaçış dizisini
@@ -592,8 +592,8 @@ yerleştirirsek, bu kaçış dizisinin bulunduğu konumdan itibaren **aynı** sa
 başına dönülecek ve `\\r` kaçış dizisinden sonra gelen bütün karakterler satır
 başındaki karakterlerin üzerine yazacaktır. Şu örnek daha açıklayıcı olabilir::
 
-    >>> print("Merhaba\rDünya") 
-    
+    >>> print("Merhaba\rDünya")
+
     Dünyaba
 
 Burada, `"Merhaba"` karakter dizisi ekrana yazdırıldıktan sonra `\\r` kaçış
@@ -606,15 +606,15 @@ karakteri (`"ba"`) dışarda kalıyor. Böylece ortaya `"Dünyaba"` gibi bir şe
 
 Önceki kaçış dizilerinde olduğu gibi, bu kaçış dizisini de farkında olmadan
 karakter dizisi içinde kullanırsanız beklemediğiniz çıktılar alırsınız::
-    
+
     >>> print("C:\ülke\türkiye\iller\rize\nüfus.txt")
-    
+
     izeülke	ürkiye\iller
     üfus.txt
-    
-Burada farkında olmadan sadece bir değil, üç kaçış dizisi birden oluşturduk!    
 
-Düşey Sekme (\\v) 
+Burada farkında olmadan sadece bir değil, üç kaçış dizisi birden oluşturduk!
+
+Düşey Sekme (\\v)
 ********************
 
 Eğer `\\` işaretini 'v' harfiyle birlikte kullanırsak düşey sekme denen şeyi
@@ -622,67 +622,67 @@ elde ederiz. Hemen bir örnek verelim::
 
     >>> print("düşey\vsekme")
 
-    düşey 
+    düşey
          sekme
 
 Yalnız bu `\\v` adlı kaçış dizisi her işletim sisteminde çalışmayabilir.
 Dolayısıyla, birden fazla platform üzerinde çalışmak üzere tasarladığınız
 programlarınızda bu kaçış dizisini kullanmanızı önermem.
 
-İmleç Kaydırma (\\b) 
+İmleç Kaydırma (\\b)
 *********************
 
 `\\` kaçış dizisinin, biraraya geldiğinde özel bir anlam kazandığı bir başka
 harf de b'dir. `\\b` kaçış dizisinin görevi, imleci o anki konumundan sola
 kaydırmaktır. Bu tanım pek anlaşılır değil. O yüzden bir örnek verelim::
-    
+
     >>> print("yahoo.com\b")
-    
+
 Bu kodu çalıştırdığınızda herhangi bir değişiklik görmeyeceksiniz. Ama aslında
 en sonda gördüğümüz `\\b` kaçış dizisi, imleci bir karakter sola kaydırdı.
 Dikkatlice bakın::
-    
+
     >>> print("yahoo.com\b.uk")
-    
+
 Gördüğünüz gibi, `\\b` kaçış dizisinin etkisiyle imleç bir karakter sola kaydığı
 için, 'com' kelimesinin son harfi silindi ve bunun yerine `\\b` kaçış dizisinden
 sonra gelen `.uk` karakterleri yerleştirildi. Dolayısıyla biz de şu çıktıyı
 aldık::
-    
+
     yahoo.co.uk
-    
-Bir örnek daha verelim... 
+
+Bir örnek daha verelim...
 
 Bildiğiniz gibi, ``print()`` fonksiyonu, kendisine verilen parametreler arasına
 birer boşluk yerleştirir::
-    
+
     >>> print('istihza', '.', 'com')
-    
+
     istihza . com
-    
+
 Biz bu öğeleri birbirine bitiştirmek için şöyle bir yol izleyebileceğimizi
 biliyoruz::
-    
+
     >>> print('istihza', '.', 'com', sep='')
-    
+
     istihza.com
-    
+
 İşte aynı etkiyi `\\b` kaçış dizisini kullanarak da elde edebiliriz::
-    
+
     >>> print('istihza', '\b.', '\bcom')
-    
+
     istihza.com
-    
+
 Gördüğünüz gibi, `\\b` kaçış dizisi, '.' ve 'com' parametrelerinden önce imleci
 birer karakter sola kaydırdığı için, parametreler arasındaki boşluk karakterleri
 ortadan kalktı.
 
 Bu kaçış dizisini kullanarak şöyle gereksiz işler peşinde de koşabilirsiniz::
-    
+
     >>> print('istihza\b\b\bsn')
 
     istisna
-    
+
 Burada `\\b` kaçış dizisini üst üste birkaç kez kullanarak imleci birkaç
 karakter sola kaydırdık ve 'sn' harflerini 'hz' harflerinin üzerine bindirdik.
 Böylece 'istihza' kelimesi 'istisna' kelimesine dönüşmüş oldu...
@@ -701,12 +701,12 @@ programlar tespit etmesi çok güç hatalar üretebilir.
 Örneğin şöyle bir çıktı vermek istediğinizi düşünün:
 
     Dosya konumu: C:\\users\\zeynep\\gizli\\dosya.txt
-    
+
 Bu çıktıyı normal yollardan vermeye çalışırsak Python bize bir hata mesajı
 gösterecektir::
-    
+
     >>> print("Dosya konumu: C:\users\zeynep\gizli\dosya.txt")
-    
+
       File "<stdin>", line 1
     SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in
     position 16-18: truncated \uXXXX escape
@@ -719,32 +719,32 @@ harflerin, sayıların ve bilgisayar ekranında gördüğümüz öteki bütün i
 her biri için tek ve benzersiz bir numaranın tanımlandığı bir sistemdir. Bu
 sistemde, 'kod konumu' (*code point*) adı verilen bu numaralar özel bir şekilde
 gösterilir. Örneğin 'ı' harfi UNICODE sisteminde şu şekilde temsil edilir::
-    
+
     u+0131
-    
+
 Aynı şekilde 'a' harfi bu sistemde şu kod konumu ile gösterilir::
-    
+
     u+0061
-    
+
 Python programlama dilinde ise, yukarıdaki kod konumu düzeni şöyle gösterilir::
-    
+
     \\u0131
-    
+
 Gördüğünüz gibi, Python UNICODE sistemindeki her bir kod konumunu gösterebilmek
 için, önce `\\u` şeklinde bir kaçış dizisi tanımlıyor, ardından UNICODE
 sisteminde `+` işaretinden sonra gelen sayıyı bu kaçış dizisinin hemen
 sağına ekliyor. Gelin kendi kendimize birkaç deneme çalışması yapalım::
-    
+
     >>> '\u0130'
-    
+
     'İ'
-    
+
     >>> '\u0070'
-    
+
     'p'
-    
+
     >>> "\ufdsf"
-    
+
       File "<stdin>", line 1
     SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in
     position 0-4: truncated \uXXXX escape
@@ -756,7 +756,7 @@ Bu hata mesajının, biraz önce ``print("Dosya konumu:
 C:\users\zeynep\gizli\dosya.txt")`` kodunu yazdıktan sonra aldığımız hata ile
 aynı olduğuna dikkat edin. Tıpkı `\\ufdsf` örneğinde olduğu gibi, `\\users`
 ifadesi de varolan bir UNICODE kod konumuna karşılık gelmediği için, Python'ın
-hata vermekten başka çaresi kalmıyor. 
+hata vermekten başka çaresi kalmıyor.
 
 Biz bu örnekte 'users' kelimesini kullanmaya çalışıyoruz, ama 'u' harfinden
 hemen önce gelen `\\` kaçış dizisi nedeniyle, hiç farkında olmadan Python
@@ -765,22 +765,22 @@ yüzden, böyle can sıkıcı hatalarla karşılaşmamak için olası kaçış d
 karşı her zaman uyanık olmamız gerekiyor.
 
 Pekı biz bu kaçış dizisi yüzünden, yazdığımız programlarda `Dosya konumu:
-C:\\users\\zeynep\\gizli\\dosya.txt")` gibi bir çıktı veremeyecek miyiz? 
+C:\\users\\zeynep\\gizli\\dosya.txt")` gibi bir çıktı veremeyecek miyiz?
 
 Verebileceğimizi, ama bunun bir yolu yordamı olduğunu biliyorsunuz. Biz yine de
 tekrar edelim::
-    
+
     >>> print("Dosya konumu: C:\\users\\zeynep\\gizli\\dosya.txt")
-    
+
     Dosya konumu: C:\users\zeynep\gizli\dosya.txt
-    
+
 Gördüğünüz gibi, karakter dizisi içinde geçen bütün `\\` işaretlerini
 çiftleyerek sorunumuzu çözdük. Buradaki gibi bir sorunla karşılaşmamak için,
 dizin adlarını ayırırken ters taksim işareti yerine düz taksim işaretini
 kullanmayı da tercih edebilirsiniz::
-    
+
    >>> print("Dosya konumu: C:/users/zeynep/gizli/dosya.txt")
-   
+
 Biraz sonra bu sorunu halletmenin üçüncü ve daha kolay bir yönteminden daha söz
 edeceğiz. Ama biz şimdilik bu kaçış dizisini bir kenara bırakıp başka bir kaçış
 dizisini incelemeye geçelim.
@@ -793,16 +793,16 @@ aynı anlama gelir. Bu kaçış dizisi de, tıpkı `\\u` gibi, UNICODE kod konum
 temsil etmek için kullanılır. Ancak `\U` ile gösterilen kod konumları `\u` ile
 gösterilenlere göre biraz daha uzundur. Örneğin, hatırlarsanız `\u` kaçış
 dizisini kullanarak 'ı' harfinin UNICODE kod konumunu şöyle temsil ediyorduk::
-    
+
     >>> '\u0131'
-    
+
     'ı'
-    
+
 Eğer aynı kod konumunu `\U` adlı kaçış dizisi ile göstermek istersek şöyle bir
 şey yazmamız gerekir::
-    
+
     >>> '\U00000131'
-    
+
 Gördüğünüz gibi, burada `\\U` kaçış dizisinden sonra gelen kısım toplam 8
 haneli bir sayıdan oluşuyor. `\u` kaçış dizisinde ise bu kısmı toplam 4 haneli
 bir sayı olarak yazıyorduk. İşte `\\u` kaçış dizisi ile `\U` kaçış dizisi
@@ -820,21 +820,21 @@ edeceğiz, ama bu sistemle ilgili ufak bir bilgi daha verelim.
 UNICODE sisteminde her karakterin tek ve benzersiz bir kod konumu olduğu gibi,
 tek ve benzersiz bir de uzun adı vardır. Örneğin 'a' harfinin UNICODE
 sistemindeki uzun adı şudur::
-    
+
     LATIN SMALL LETTER A
-    
+
 Bir karakterin UNICODE sistemindeki uzun adını öğrenmek için `unicodedata` adlı
 bir modülden yararlanabilirsiniz::
-    
+
     >>> import unicodedata
     >>> unicodedata.name('a')
-    
+
     LATIN SMALL LETTER A
-    
+
     >>> unicodedata.name('Ş')
-    
+
     LATIN CAPITAL LETTER S WITH CEDILLA
-    
+
 Bu arada, daha önce de söylediğimiz gibi, bu 'modül' kavramına şimdilik
 takılmayın. İlerde modülleri ayrıntılı olarak inceleyeceğiz. Şimdilik
 `unicodedata` denen şeyin, (tıpkı daha önce örneklerini gördüğümüz `os`, `sys`
@@ -846,21 +846,21 @@ UNICODE sistemindeki uzun adını elde edebileceğimizi bilelim yeter.
 imkanı verir bize. Bu kaçış dizisini, karakterlerin UNICODE sistemindeki uzun
 adları ile birlikte kullanarak asıl karakterleri elde edebiliriz. Dikkatlice
 bakın::
-    
+
     >>> print("\N{LATIN SMALL LETTER A}")
-    
+
     a
-    
+
     >>> print("\N{LATIN CAPITAL LETTER S WITH CEDILLA}")
-    
+
     ş
-    
+
     >>> print("\Nisan")
-    
+
       File "<stdin>", line 1
     SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in
     position 0-1: malformed \N character escape
-    
+
 Gördüğünüz gibi, herhangi bir karşılığı olmayan bir uzun ad belirttiğimizde
 Python bize bir hata mesajı gösteriyor. Çünkü Python `\\N` kaçış dizisinin hemen
 ardından `{` işaretinin getirilmesini ve sonra da UNICODE sistemi dahilinde
@@ -891,16 +891,16 @@ Onaltılı Karakter (\\x)
 **************************
 
 'x' harfi de `\\` işareti ile birleştiğinde özel anlam kazanarak bir kaçış
-dizisi meydana getirir. 
+dizisi meydana getirir.
 
 `\\x` kaçış dizisini kullanarak, onaltılı
 (*hexadecimal*) sayma sistemindeki bir sayının karakter karşılığını
 gösterebilirsiniz. Dikkatlice bakın::
-    
+
     >>> "\x41"
-    
+
     'A'
-    
+
 Onaltılı sayma sistemindeki `41` sayısı 'A' harfine karşılık gelir. Eğer hangi
 karakterlerin hangi sayılara karşılık geldiğini merak ediyorsanız
 http://www.ascii.cl/ adresindeki tabloyu inceleyebilirsiniz. Bu tabloda 'hex'
@@ -908,30 +908,30 @@ sütunu altında gösterilen sayılar onaltılı sayılar olup, 'symbol' sütunu
 gösterilen karakterlere karşılık gelirler. Örneğin 'hex' sütunundaki `4E` sayısı
 'symbol' sütunundaki 'N' harfine karşılık gelir. Bu durumu Python'la da teyit
 edebilirsiniz::
-    
+
     >>>"\x4E"
-    
+
     N
-    
+
 Eğer sayılarla karakterler arasındaki bağlantının tam olarak ne olduğunu
 bilmiyorsanız hiç endişe etmeyin. Birkaç bölüm sonra sayılarla karakterler
 arasında nasıl bir bağ olduğunu gayet ayrıntılı bir şekilde anlatacağız. Biz
 şimdilik yalnızca `\\x` karakter dizisinin özel bir kaçış dizisine karşılık
 geldiğini ve bu kaçış dizisini karakter dizileri içinde kullanırken dikkatli
 olmamız gerektiğini bilelim yeter::
-    
+
     >>> print("C:\Users\Ayşe\xp_dosyaları")
 
       File "<stdin>", line 1
-    SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in 
+    SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in
     position 2-4: truncated \UXXXXXXXX escape
-    
+
 Gördüğünüz gibi, Python `\\x` ifadesinden sonra onaltılı bir sayı belirtmenizi
 bekliyor. Halbuki biz burada `\\x` ifadesini 'xp_dosyaları' adlı dizini
 gösterebilmek için kullanmıştık. Ama görünüşe göre yanlışlıkla Python için özel
 bir anlam ifade eden bir karakter dizisi oluşturmuşuz...
 
-Etkisizleştirme (r) 
+Etkisizleştirme (r)
 *********************
 
 Dediğimiz gibi, Python'daki en temel kaçış dizisi `\\` işaretidir. Bu işaret
@@ -948,8 +948,8 @@ yaradığını inceleyelim:
 Bildiğimiz yoldan bu çıktıyı vermeye çalışırsak neler olacağını adınız gibi
 biliyorsunuz::
 
-    >>> print("Kurulum dizini: C:\aylar\nisan\toplam masraf") 
-    
+    >>> print("Kurulum dizini: C:\aylar\nisan\toplam masraf")
+
     Kurulum dizini: C:ylar
     isan	oplam masraf
 
@@ -962,20 +962,20 @@ Python tabii ki, karakter dizisi içinde geçen '**\\a**\ ylar', '**\\n**\ isan'
 `\\a` karakterlerini görünce bir !bip! sesi çıkarıyor, `\\n` karakterlerini
 görünce satır başına geçiyor ve `\\t` karakterlerini görünce de `Tab` tuşuna
 basılmış gibi bir tepki veriyor. Sonuç olarak da yukarıdaki gibi bir çıktı
-üretiyor. 
+üretiyor.
 
 Daha önce bu durumu şöyle bir kod yazarak engellemiştik::
 
-    >>> print("Kurulum dizini: C:\\aylar\\nisan\\toplam masraf") 
-    
+    >>> print("Kurulum dizini: C:\\aylar\\nisan\\toplam masraf")
+
     Kurulum dizini: C:\aylar\nisan\toplam masraf
 
 Burada, `\\` işaretlerinin her birini çiftleyerek sorunun üstesinden geldik.
 Yukarıdaki yöntem doğru ve kabul görmüş bir çözümdür. Ama bu sorunun üstesinden
 gelmenin çok daha basit ve pratik bir yolu var. Bakalım::
 
-    >>> print(r"Kurulum dizini: C:\aylar\nisan\toplam masraf") 
-    
+    >>> print(r"Kurulum dizini: C:\aylar\nisan\toplam masraf")
+
     Kurulum dizini: C:\aylar\nisan\toplam masraf
 
 Gördüğünüz gibi, karakter dizisinin baş kısmının dış tarafına bir adet `r` harfi
@@ -987,9 +987,9 @@ dizisinin dışına yerleştiriliyor.
 Bu kaçış dizisinin tam olarak nasıl işlediğini görmek için dilerseniz bir örnek
 daha verelim::
 
-    >>> print("Kaçış dizileri: \, \n, \t, \a, \\, r") 
+    >>> print("Kaçış dizileri: \, \n, \t, \a, \\, r")
 
-    Kaçış dizileri: \, 
+    Kaçış dizileri: \,
     , 	, , \, r
 
 Burada da Python bizim yapmak istediğimiz şeyi anlayamadı ve karakter dizisi
@@ -998,14 +998,14 @@ dizilerinin işlevlerini yerine getirmesine izin verdi. Tıpkı biraz önceki
 örnekte olduğu gibi, istersek kaçış dizilerini çiftleyerek bu sorunu
 aşabiliriz::
 
-    >>> print("Kaçış dizileri: \\, \\n, \\t, \\a, \\\, r") 
-    
+    >>> print("Kaçış dizileri: \\, \\n, \\t, \\a, \\\, r")
+
     Kaçış dizileri: \, \n, \t, \a, \\, r
 
 Ama tabii ki bunun çok daha kolay bir yöntemi olduğunu biliyorsunuz::
 
-    >>> print(r"Kaçış dizileri: \, \n, \t, \a, \\, r") 
-    
+    >>> print(r"Kaçış dizileri: \, \n, \t, \a, \\, r")
+
     Kaçış dizileri: \, \n, \t, \a, \\, r
 
 Gördüğünüz gibi, karakter dizisinin başına getirdiğimiz `r` kaçış dizisi,
@@ -1023,14 +1023,14 @@ bulunabilir. Tek sayıda `\\` işareti kullanıldığında karakter dizisini bit
 tırnak işareti etkisizleşeceği için çakışma sorunu ortaya çıkar. Bu
 etkisizleşmeyi, karakter dizisinin başına koyduğunuz 'r' kaçış dizisi de
 engelleyemez. Yani::
-    
+
     >>> print("Kaçış dizisi: \")
 
 Bu şekilde bir tanımlama yaptığımızda Python bize bir hata mesajı gösterir.
 Çünkü kapanış tırnağının hemen öncesine yerleştirdiğimiz `\\` kaçış dizisi,
 Python'ın karakter dizisini kapatan tırnak işaretini görmezden gelmesine yol
 açarak bu tırnağı etkisizleştiriyor. Böylece sanki karakter dizisini tanımlarken
-kapanış tırnağını hiç yazmamışız gibi bir sonuç ortaya çıkıyor:: 
+kapanış tırnağını hiç yazmamışız gibi bir sonuç ortaya çıkıyor::
 
     >>> print("Kaçış dizisi: \")
       File "<stdin>", line 1
@@ -1039,26 +1039,26 @@ kapanış tırnağını hiç yazmamışız gibi bir sonuç ortaya çıkıyor::
     SyntaxError: EOL while scanning string literal
 
 Üstelik bu durumu, `r` adlı kaçış dizisi de engelleyemiyor::
-    
+
     >>> print(r"Kaçış dizisi: \")
       File "<stdin>", line 1
         print(r"Kaçış dizisi: \")
                                    ^
     SyntaxError: EOL while scanning string literal
-  
+
 Çözüm olarak birkaç farklı yöntemden yararlanabilirsiniz. Mesela karakter
 dizisini kapatmadan önce karakter dizisinin sonundaki `\\` işaretinin sağına bir
 adet boşluk karakteri yerleştirmeyi deneyebilirsiniz::
-    
+
     >>> print("Kaçış dizisi: \ ")
 
 Veya kaçış dizisini çiftleyebilirsiniz::
-    
+
     >>> print("Kaçış dizisi: \\")
 
 Ya da karakter dizisi birleştirme yöntemlerinden herhangi birini
 kullanabilirsiniz::
-    
+
     >>> print("Kaçış dizisi: " + "\\")
     >>> print("Kaçış dizisi:", "\\")
     >>> print("Kaçış dizisi: " "\\")
@@ -1078,11 +1078,11 @@ gördükleri noktada mevcut sayfayı sona erdirip yeni bir sayfaya geçer.
 
 Bu kaçış dizisinin tam olarak ne işe yaradığını test etmek için şu kodları
 çalıştırın::
-    
+
     >>> f = open("deneme.txt", "w")
     >>> print("deneme\fdeneme", file=f)
     >>> f.close()
-    
+
 Şimdi bu kodlarla oluşturduğunuz `deneme.txt` adlı dosyayı LibreOffice veya
 Microsoft Word gibi bir programla açın. 'deneme' satırlarının iki farklı sayfaya
 yazdırıldığını göreceksiniz. Bu arada, eğer Microsoft Word dosyayı açarken bir
@@ -1094,11 +1094,11 @@ dizisine karşı da uyanık olmalısınız. Çünkü bu kaçış dizisi de bekle
 çıktılar almanıza yol açabilir. Mesela şu örneğe bir bakalım::
 
     >>> "\fırat"
-    
+
     '\x0cırat'
-    
-Gördüğünüz gibi, siz aslında '\\fırat' yazmak isterken, Python bu kelimenin baş 
-tarafındaki `\\f` karakter dizisini bir kaçış dizisi olarak değerlendirip ona 
+
+Gördüğünüz gibi, siz aslında '\\fırat' yazmak isterken, Python bu kelimenin baş
+tarafındaki `\\f` karakter dizisini bir kaçış dizisi olarak değerlendirip ona
 göre bir çıktı verdi.
 
 Bütün bu anlattıklarımızın ardından, kaçış dizilerinin, birleştirildikleri
@@ -1125,7 +1125,7 @@ bölümde öğrendiğimiz kaçış dizilerini şöyle bir topluca görelim:
 +--------------+----------------------------------------------+
 | Kaçış Dizisi | Anlamı                                       |
 +==============+==============================================+
-| `\\'`        | Karakter dizisi içinde tek tırnak işaretini  | 
+| `\\'`        | Karakter dizisi içinde tek tırnak işaretini  |
 |              | kullanabilmemizi sağlar.                     |
 +--------------+----------------------------------------------+
 | `\\"`        | Karakter dizisi içinde çift tırnak işaretini |

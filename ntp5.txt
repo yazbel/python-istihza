@@ -1,21 +1,21 @@
 ::
 
     import tkinter
-    
+
     class Uygulama(tkinter.Tk):
         pass
-    
+
     uyg = Uygulama()
     uyg.mainloop()
 
-Burada miras alma mekanizmasını nasıl kullandığımıza dikkat edin. 
+Burada miras alma mekanizmasını nasıl kullandığımıza dikkat edin.
 
 `tkinter` modülünün ``Tk()`` sınıfını ``Uygulama()`` adlı sınıf içinden miras
 aldık. Böylece ``Tk()`` bir taban sınıf, ``Uygulama()`` ise bir alt sınıf olmuş
 oldu.
 
 Bu ``Uygulama()`` adlı alt sınıfı `uyg` adıyla örnekledikten sonra da ``Tk()``
-sınıfının ``mainloop()`` adlı metoduna `uyg` örneği üzerinden eriştik. 
+sınıfının ``mainloop()`` adlı metoduna `uyg` örneği üzerinden eriştik.
 
 
 Yukarıdaki kodlarda ``Uygulama()`` adlı sınıf içinde tanımlanmış bir
@@ -25,16 +25,16 @@ Yukarıdaki kodlarda ``Uygulama()`` adlı sınıf içinde tanımlanmış bir
 devralıyor. ``Uygulama()`` sınıfının ``Tk()`` sınıfından hangi metot ve
 nitelikleri miras aldığını merak ediyorsanız yukarıdaki kodları şu şekilde
 yazabilirsiniz::
-    
+
     import tkinter
-    
+
     class Uygulama(tkinter.Tk):
         pass
-            
+
     uyg = Uygulama()
     print(dir(uyg))
     uyg.mainloop()
-    
+
 Bu kodları çalıştırdığınızda, komut ekranında, içinde pek çok nitelik ve metot
 barındıran bir liste çıktısı göreceksiniz. Demek ki, ``Uygulama()`` sınıfı
 ``Tk()`` sınıfından epey bir şey miras almış...
@@ -64,7 +64,7 @@ yapmazsak, taban sınıftaki nitelik ve metotlar olduğu gibi alt sınıflara
 aktarılacaktır.
 
 Mesela::
-    
+
     class Asker(Oyuncu):
         pass
 
@@ -78,32 +78,32 @@ metotlarının ``Asker()`` sınıfı tarafından miras alınmasını sağlar. Bu
 ``Asker()`` sınıfına da o şekilde devredilir.
 
 Taban sınıfımızın şu şekilde tanımlandığını biliyoruz::
-    
+
     class Oyuncu():
         def __init__(self, isim, rütbe):
             self.isim = isim
             self.rütbe = rütbe
             self.güç = 0
-    
+
         def hareket_et(self):
             print('hareket ediliyor...')
-            
+
         def puan_kazan(self):
             print('puan kazanıldı')
-            
+
         def puan_kaybet(self):
             print('puan kaybedildi')
-        
+
 Dolayısıyla bu taban sınıfta hangi nitelik ve metotlar hangi değerlere sahipse
 aşağıdaki ``Asker()``, ``İşçi()`` ve ``Yönetici()`` sınıfları da o değerlere
 sahip olacaktır::
-    
+
     class Asker(Oyuncu):
         pass
-        
+
     class İşçi(Oyuncu):
         pass
-        
+
     class Yönetici(Oyuncu):
         pass
 
@@ -116,11 +116,11 @@ yeni nitelik ve metotlar ekleneceğini öğreneceğiz.
 Hiç vakit kaybetmeden örneklerimize geçelim...
 
 Hatırlarsanız bir önceki başlıkta şöyle bir kod yazmıştık::
-    
+
     class Asker(Oyuncu):
         pass
-        
-       
+
+
 Burada ``Oyuncu()`` sınıfını bütünüyle alt sınıfa aktardık. Peki ya biz bir
 taban sınıfı olduğu gibi miras almak yerine, bazı nitelikleri üzerinde
 değişiklik yaparak miras almak istersek ne olacak? Mesela taban sınıf içinde
@@ -131,40 +131,40 @@ nitelik eklemek de isteyebiliriz. Diyelim ki biz ``Asker()`` sınıfı için bir
 `memleket` niteliği tanımlamak istiyoruz. Peki bu durumda ne yapacağız?
 
 İşte bunun için ``Asker()`` sınıfını şu şekilde yazabiliriz::
-    
+
     class Asker(Oyuncu):
         memleket = 'Arpaçbahşiş'
-    
+
 Burada ``Asker()`` sınıfına `memleket` adlı bir sınıf niteliği eklemiş olduk.
 Dolayısıyla ``Asker()`` sınıfı, ``Oyuncu()`` adlı taban sınıftan miras alınan
 bütün nitelik ve metotlarla birlikte bir de `memleket` niteliğine sahip olmuş
 oldu::
-    
+
     >>> asker = Asker('Ahmet', 'binbaşı')
     >>> asker.isim
-    
+
     'Ahmet'
-    
+
     >>> asker.memleket
-    
+
     'Arpaçbahşiş'
-    
+
 Elbette, bu niteliği öbür alt sınıflarda tanımlamadığımız için bu nitelik
 yalnızca ``Asker()`` sınıfına özgüdür.
 
 Aynı şekilde, bir taban sınıftan türeyen bir alt sınıfa yeni bir sınıf metodu,
-örnek metodu veya statik metot da ekleyebiliriz::    
-    
+örnek metodu veya statik metot da ekleyebiliriz::
+
     class Asker(Oyuncu):
         memleket = 'Arpaçbahşiş'
-        
+
         def örnek_metodu(self):
             pass
-            
+
         @classmethod
         def sınıf_metodu(cls):
             pass
-        
+
         @staticmethod
         def statik_metot():
             pass
@@ -172,34 +172,34 @@ Aynı şekilde, bir taban sınıftan türeyen bir alt sınıfa yeni bir sınıf 
 **Kural şu**: Eğer alt sınıfa eklenen herhangi bir nitelik veya metot taban
 sınıfta zaten varsa, alt sınıfa eklenen nitelik ve metotlar taban sınıftaki
 metot ve niteliklerin yerine geçecektir. Yani diyelim ki taban sınıfımız şu::
-    
+
     class Oyuncu():
         def __init__(self, isim, rütbe):
             self.isim = isim
             self.rütbe = rütbe
             self.güç = 0
-    
+
         def hareket_et(self):
             print('hareket ediliyor...')
-            
+
         def puan_kazan(self):
             print('puan kazanıldı')
-            
+
         def puan_kaybet(self):
             print('puan kaybedildi')
-            
+
 Bu sınıfın nitelik ve metotlarını miras yoluyla devralan ``Asker()`` sınıfımız
 ise şu::
-    
+
     class Asker(Oyuncu):
         pass
-        
+
 Şimdi bu sınıf içinde ``hareket_et()`` adlı bir örnek metodu tanımlayalım::
-    
-    class Asker(Oyuncu):       
+
+    class Asker(Oyuncu):
         def hareket_et(self):
             print('yeni hareket_et() metodu')
-           
+
 Eğer taban sınıfta ``hareket_et()`` adlı bir sınıf olmasaydı, ``Asker()`` adlı
 alt sınıf, taban sınıftan miras alınan öteki metot ve niteliklerle birlikte bir
 de ``hareket_et()`` adlı yeni bir örnek metoduna sahip olmuş olacaktı. Ancak
@@ -218,63 +218,63 @@ sınıfı içinde 70, ``Yönetici()`` sınıfı içinde ise 50 ile göstermek is
 nasıl bir yol takip etmemiz gerektiği konusunda bir fikrimiz yok. İsterseniz şu
 ana kadar bildiğimiz yöntemleri kullanarak bu amacımızı gerçekleştirmeyi bir
 deneyelim::
-    
+
     class Oyuncu():
         def __init__(self, isim, rütbe):
             self.isim = isim
             self.rütbe = rütbe
             self.güç = 0
-    
+
         def hareket_et(self):
             print('hareket ediliyor...')
-            
+
         def puan_kazan(self):
             print('puan kazanıldı')
-            
+
         def puan_kaybet(self):
             print('puan kaybedildi')
-            
+
     class Asker(Oyuncu):
         def __init__(self, isim, rütbe):
             self.güç = 100
-            
+
     class İşçi(Oyuncu):
         def __init__(self, isim, rütbe):
             self.güç = 70
-            
+
     class Yönetici(Oyuncu):
         def __init__(self, isim, rütbe):
             self.güç = 50
-    
+
 Bu kodları bu şekilde yazıp çalıştırdığımızda `self.güç` değerinin herbir alt
 sınıf için istediğimiz değere sahip olduğunu görürüz. Ancak burada şöyle bir
 sorun var. Bu kodları bu şekilde yazarak `self.isim` ve `self.rütbe`
 değişkenlerini kaybettik.
 
 Mesela::
-    
+
     >>> import oyuncular
     >>> asker = oyuncular.Asker('Ahmet', 'Er')
     >>> asker.rütbe
-    
+
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
-    AttributeError: 'Asker' object has no attribute 'rütbe'   
-    
+    AttributeError: 'Asker' object has no attribute 'rütbe'
+
 Bu sorunu çözmek için alt sınıflarımızı şu şekilde yazabiliriz::
-    
+
     class Asker(Oyuncu):
         def __init__(self, isim, rütbe):
             self.isim = isim
             self.rütbe = rütbe
             self.güç = 100
-            
+
     class İşçi(Oyuncu):
         def __init__(self, isim, rütbe):
             self.isim = isim
             self.rütbe = rütbe
             self.güç = 70
-            
+
     class Yönetici(Oyuncu):
         def __init__(self, isim, rütbe):
             self.isim = isim
@@ -286,68 +286,68 @@ tanımladık. Bu küçük örnekte pek sorun olmayabilir, ama taban sınıfın
 ``__init__()`` metodunun içinde çok daha karmaşık işlemlerin yapıldığı
 durumlarda yukarıdaki yaklaşım hiç de pratik olmayacaktır. Ayrıca eğer miras
 alma işlemini, içeriğini bilmediğiniz veya başka bir dosyada bulunan bir
-sınıftan yapıyorsanız yukarıdaki yöntem tamamen kullanışsız olacaktır. 
+sınıftan yapıyorsanız yukarıdaki yöntem tamamen kullanışsız olacaktır.
 
 Bu arada, elbette taban sınıftaki bir niteliği, örnekleme sırasında değiştirme
 imkanına sahibiz. Yani taban ve alt sınıfların şöyle tanımlanmış olduğunu
 varsayarsak::
-    
+
     class Oyuncu():
         def __init__(self, isim, rütbe):
             self.isim = isim
             self.rütbe = rütbe
             self.güç = 0
-    
+
         def hareket_et(self):
             print('hareket ediliyor...')
-            
+
         def puan_kazan(self):
             print('puan kazanıldı')
-            
+
         def puan_kaybet(self):
             print('puan kaybedildi')
-            
+
     class Asker(Oyuncu):
         pass
-        
+
     class İşçi(Oyuncu):
         pass
-        
+
     class Yönetici(Oyuncu):
         pass
-        
+
 Herbir alt sınıfın `güç` değişkenini şu şekilde değiştirebiliriz::
-    
+
     >>> import oyuncular
     >>> asker = oyuncular.Asker('Ahmet', 'Er')
     >>> asker.güç
-    
+
     0
-    
+
 Gördüğünüz gibi şu anda askerin gücü 0. Bunu 100 yapalım::
-    
+
     >>> asker.güç = 100
     >>> asker.güç
-    
+
     100
-    
+
 Aynı şeyi öteki ``İşçi()`` ve ``Yönetici()`` sınıflarının örnekleri üzerinde de
 yapabiliriz. Ama bizim istediğimiz bu değil. Biz, ``Asker()`` sınıfı
 örneklendiğinde gücü 100, ``İşçi()`` sınıfı örneklendiğinde gücü 70,
 ``Yönetici()`` sınıfı örneklendiğinde ise gücü 50 olsun istiyoruz.
-      
+
 Gelin yine Tkinter paketini kullanarak bir örnek verelim...
 
 Geçen bölümde Tkinter'i kullanarak şöyle bir kod yazmıştık::
-    
+
     import tkinter
-    
+
     class Uygulama(tkinter.Tk):
         pass
-    
+
     uyg = Uygulama()
     uyg.mainloop()
-    
+
 Bu kodu çalıştırdığımızda, öntanımlı olarak başlık çubuğu üzerinde 'Tk' yazan,
 200x200 piksel boyutlarında boş bir pencere elde ederiz.
 
@@ -362,17 +362,17 @@ iki metodun öntanımlı değerlerini değiştirmemiz gerekir.\ [#]_
 Tıpkı yukarıda ``Asker()``, ``İşçi()`` ve ``Yönetici()`` sınıflarının örnekleri
 üzerinde yaptığımız gibi, ``Uygulama()`` örneğini kullanarak da ``title()`` ve
 ``geometry()`` metotlarının değerini değiştirebiliriz elbette::
-    
+
     import tkinter
-    
+
     class Uygulama(tkinter.Tk):
         pass
-    
+
     uyg = Uygulama()
     uyg.title('istihza')
     uyg.geometry('500x500')
-    uyg.mainloop()    
-    
+    uyg.mainloop()
+
 Ancak bizim istediğimiz bu değil. Biz başlık çubuğunun ve pencere boyutunun
 değerini doğrudan sınıf içinde değiştirmek istiyoruz. Böylece ``Uygulama()``
 sınıfını örneklediğimiz anda başlık çubuğu ve pencere boyutu bizim istediğimiz
@@ -381,15 +381,15 @@ sınıfını örneklediğimiz anda başlık çubuğu ve pencere boyutu bizim ist
 Mevcut bilgilerimizi kullanarak bir deneme yapalım::
 
     import tkinter
-    
+
     class Uygulama(tkinter.Tk):
         def __init__(self):
             self.title('istihza')
             self.geometry('500x500')
-    
+
     uyg = Uygulama()
-    uyg.mainloop()  
-    
+    uyg.mainloop()
+
 Ancak bu kodlar çalışmayacaktır. Çünkü, biz burada `tkinter` modülünün ``Tk()``
 adlı sınıfının ``__init__()`` metodunu silip yerine kendi ``__init__()``
 metodumuzu yerleştirmiş olduk. Bu şekilde, ``Tk()`` sınıfının, Tkinter ilk
@@ -401,11 +401,11 @@ kopyalarsak kodlarımız çalışır::
 
     import _tkinter, tkinter, sys
     from tkinter import wantobjects
-    
+
     class Uygulama(tkinter.Tk):
         def __init__(self, screenName=None, baseName=None, className='Tk',
                      useTk=1, sync=0, use=None):
-    
+
             self.master = None
             self.children = {}
             self._tkloaded = 0
@@ -417,31 +417,31 @@ kopyalarsak kodlarımız çalışır::
                 if ext not in ('.py', '.pyc', '.pyo'):
                     baseName = baseName + ext
             interactive = 0
-            self.tk = _tkinter.create(screenName, baseName, className, 
-                                      interactive, wantobjects, 
+            self.tk = _tkinter.create(screenName, baseName, className,
+                                      interactive, wantobjects,
                                       useTk, sync, use)
             if useTk:
                 self._loadtk()
             if not sys.flags.ignore_environment:
                 self.readprofile(baseName, className)
-            
+
             #Bunlar da bizim asıl __init__ metoduna eklediğimiz değerler
             self.title('istihza')
             self.geometry('500x500')
-    
+
     uyg = Uygulama()
-    uyg.mainloop() 
-    
+    uyg.mainloop()
+
 Sondaki şu iki satırı biz ekledik::
-    
+
     self.title('istihza')
     self.geometry('500x500')
-   
+
 Böylece boş pencerenin başlık çubuğu 'istihza', boyutları ise 500x500 olmuş
 oldu. Ancak yukarıdaki kodların hiç de akıllıca olmadığı gün gibi ortada...
 Yukarıdaki özelliği çok daha temiz ve mantıklı bir şekilde elde etmenin bir yolu
 var. İşte o yolun adı ``super()``.
-            
+
 super()
 ============
 
@@ -449,114 +449,114 @@ super()
 üzerinde değişiklik yaparken, mevcut özellikleri de muhafaza etmemizi sağlar.
 
 Hatırlarsanız yukarıda şöyle bir örnek vermiştik::
-    
+
     class Oyuncu():
         def __init__(self, isim, rütbe):
             self.isim = isim
             self.rütbe = rütbe
             self.güç = 0
-    
+
         def hareket_et(self):
             print('hareket ediliyor...')
-            
+
         def puan_kazan(self):
             print('puan kazanıldı')
-            
+
         def puan_kaybet(self):
             print('puan kaybedildi')
-            
+
     class Asker(Oyuncu):
         def __init__(self, isim, rütbe):
             self.güç = 100
-            
+
 Bu kodlarda, ``Oyuncu()`` adlı taban sınıfı miras alan ``Asker()`` sınıfı,
 ``__init__()`` metodu içinde `self.güç` değerini yeniden tanımlıyor. Ancak bu
 şekilde taban sınıfın ``__init__()`` metodu silindiği için, `self.isim` ve
 `self.rütbe` değişkenlerini kaybediyoruz. İşte bu sorunu ``super()`` ile
-çözebiliriz. 
+çözebiliriz.
 
 Dikkatlice bakın::
-              
+
     class Asker(Oyuncu):
         def __init__(self, isim, rütbe):
             super().__init__(isim, rütbe)
             self.güç = 100
-            
+
 Burada ``__init__()`` metodu içinde şöyle bir satır kullandığımızı
 görüyorsunuz::
-    
+
     super().__init__(isim, rütbe)
-    
+
 İşte bu satır, miras alınan taban sınıfın ``__init__()`` metodu içindeki
 kodların, miras alan alt sınıfın ``__init__()`` metodu içine aktarılmasını
 sağlıyor. Böylece hem taban sınıfın ``__init__()`` metodu içindeki `self.isim`
 ve `self.rütbe` niteliklerini korumuş, hem de `self.güç` adlı yeni bir nitelik
 eklemiş oluyoruz::
-    
+
     >>> asker = oyuncular.Asker('Ahmet', 'Er')
     >>> asker.isim
-    
+
     'Ahmet'
-    
+
     >>> asker.rütbe
-    
+
     'Er'
-    
+
     >>> asker.güç
-    
+
     100
-    
+
 Bu bilgiyi öteki alt sınıflara da uygulayalım::
-    
+
     class Oyuncu():
         def __init__(self, isim, rütbe):
             self.isim = isim
             self.rütbe = rütbe
             self.güç = 0
-            
+
         def hareket_et(self):
             print('hareket ediliyor...')
-            
+
         def puan_kazan(self):
             print('puan kazanıldı')
-            
+
         def puan_kaybet(self):
             print('puan kaybedildi')
-    
+
     class Asker(Oyuncu):
         def __init__(self, isim, rütbe):
             super().__init__(isim, rütbe)
             self.güç = 100
-           
+
     class İşçi(Oyuncu):
         def __init__(self, isim, rütbe):
             super().__init__(isim, rütbe)
             self.güç = 70
-            
+
     class Yönetici(Oyuncu):
         def __init__(self, isim, rütbe):
             super().__init__(isim, rütbe)
             self.güç = 20
-            
+
 Eğer taban sınıfın ``__init__()`` metodundaki parametre listesini alt sınıfta da
 tek tek tekrar etmek sizi rahatsız ediyorsa yukarıdaki kodları şöyle de
 yazabilirsiniz::
-    
+
     class Asker(Oyuncu):
         def __init__(self, *arglar):
             super().__init__(*arglar)
             self.güç = 100
-           
+
     class İşçi(Oyuncu):
         def __init__(self, *arglar):
             super().__init__(*arglar)
             self.güç = 70
-            
+
     class Yönetici(Oyuncu):
         def __init__(self, *arglar):
             super().__init__(*arglar)
             self.güç = 20
-            
+
 Yıldızlı parametreleri önceki derslerimizden hatırlıyor olmalısınız. Bildiğiniz
 gibi, tek yıldızlı parametreler bir fonksiyonun bütün konumlu (*positional*)
 argümanlarını, parametrelerin parantez içinde geçtiği sırayı dikkate alarak bir
@@ -565,34 +565,34 @@ sınıfta isimli (*keyword*) argümanlar da olsaydı, o zaman da çift yıldızl
 argümanları kullanabilirdik.
 
 Tek ve çift yıldızlı argümanlar genellikle şu şekilde gösterilir::
-    
+
     class Asker(Oyuncu):
         def __init__(self, *args, **kwargs):
             super().__init__(*args, **kwargs)
             self.güç = 100
-            
+
 Böylece konumlu argümanları bir demet içinde, isimli argümanları ise bir sözlük
 içinde toplamış oluyoruz.
 
 Bu arada, ``super()`` fonksiyonu, Python programlama diline sonradan eklenmiş
 bir özelliktir. Bu fonksiyon gelmeden önce yukarıdaki işlemi şu şekilde
 yapıyorduk::
-    
+
     class Asker(Oyuncu):
         def __init__(self, isim, rütbe):
             Oyuncu.__init__(self, isim, rütbe)
             self.güç = 100
-            
+
 veya::
-    
+
     class Asker(Oyuncu):
         def __init__(self, *args):
             Oyuncu.__init__(self, *args)
-            self.güç = 100    
-            
+            self.güç = 100
+
 Gördüğünüz gibi, eski yöntemde taban sınıfın adını iki kez kullanmamız
 gerekiyor. Ayrıca ``__init__()`` fonksiyonunun parametre listesinde ilk sıraya
-yine `self` kelimesini de eklemek zorunda kalıyoruz. 
+yine `self` kelimesini de eklemek zorunda kalıyoruz.
 
 İsterseniz yukarıda gösterdiğimiz eski yöntemi kullanmaya devam edebilirsiniz
 elbette. Ancak ``super()`` fonksiyonunu kullanmak eski yönteme göre biraz daha
@@ -601,37 +601,37 @@ pratiktir.
 Gelelim Tkinter'li örneğimize... ``super()`` fonksiyonunu öğrenmeden önce,
 Tkinter'le oluşturduğumuz pencerenin başlığını ve boyutlarını değiştirmek için
 şöyle bir yol denemiştik::
-    
+
     import tkinter
-    
+
     class Uygulama(tkinter.Tk):
         def __init__(self):
             self.title('istihza')
             self.geometry('500x500')
 
     uyg = Uygulama()
-    uyg.mainloop() 
-    
+    uyg.mainloop()
+
 Bu yöntemle, taban sınıfın özgün ``__init__()`` metodunu silip bunun yerine
 kendi ``__init__()`` metodumuzu tanımladığımız için yukarıdaki kodlar
 çalışmıyordu. Ama artık bu sorunu nasıl çözeceğimizi biliyoruz::
-        
+
     import tkinter
-    
+
     class Uygulama(tkinter.Tk):
         def __init__(self):
             super().__init__()
             self.title('istihza')
             self.geometry('500x500')
-    
+
     uyg = Uygulama()
-    uyg.mainloop() 
-    
+    uyg.mainloop()
+
 Burada ``super().__init__()`` satırı yardımıyla ``tkinter.Tk()`` adlı taban
 sınıfın ``__init__()`` metodunu silip yeniden tanımlamak yerine, bu metodun
 yalnızca ``self.title()`` ve ``self.geometry()`` adlı metotlarını değişikliğe
 uğratıp geri kalan özelliklerini aynen devraldık. Böylece başlık çubuğunda
-'istihza' yazan, 500x500 ölçülerinde bir pencere elde ettik. 
+'istihza' yazan, 500x500 ölçülerinde bir pencere elde ettik.
 
 Elbette ``super()`` fonksiyonunu yalnızca ``__init__()`` fonksiyonu içinde
 kullanmak zorunda değiliz. Bu fonksiyonu başka fonksiyonlar içinde de
@@ -640,20 +640,20 @@ kullanabiliriz. Dilerseniz yine Tkinter'le ilgili bir örnek verelim.
 Tkinter modülü içinde ``Misc()`` adlı bir sınıf ve bu sınıf içinde de ``bell()``
 adlı bir metot bulunur. ``Tk()`` sınıfı ``Misc()`` adlı bu sınıfı miras aldığı
 için, ``Misc()`` sınıfının ``bell()`` metodunu ``Tk()`` sınıfı içinden
-kullanabiliriz. 
+kullanabiliriz.
 
 ``bell()`` metodunun görevi bir zil sesi çıkarmaktır::
-    
+
     import tkinter
-    
+
     class Uygulama(tkinter.Tk):
         def __init__(self):
             super().__init__()
             self.bell()
-     
+
     uyg = Uygulama()
-    uyg.mainloop() 
-    
+    uyg.mainloop()
+
 Bu kodları çalıştırdığınızda, açılan pencere ile birlikte bir de zil sesi
 duyacaksınız.
 
@@ -665,25 +665,25 @@ Bu isteğimizi şu şekilde gerçekleştirebiliriz::
 
     import tkinter
     from tkinter.messagebox import showwarning
-    
+
     class Uygulama(tkinter.Tk):
         def __init__(self):
             super().__init__()
             self.bell()
             showwarning('Dikkat', 'Bir terslik var!')
-     
+
     uyg = Uygulama()
-    uyg.mainloop() 
-    
+    uyg.mainloop()
+
 Burada `tkinter` paketi ile birlikte, bu paket içindeki `messagebox` modülünün
 `showwarning` adlı sınıfını da kullandığımıza dikkat edin. Bu sınıf,
 kullanıcılarımıza bir uyarı mesajı gösterebilmemizi sağlıyor.
 
 Elbette bu sınıfı kullanabilmek için öncelikle bunu içe aktarmalıyız. Bu işlemi
 şu satırla gerçekleştirdik::
-    
+
     from tkinter.messagebox import showwarning
-    
+
 Daha sonra hem ``bell()`` metodunu hem de `showwarning()` sınıfını art arda
 kullanarak kullanıcılarımıza sesli ve görüntülü bir uyarı gösterdik.
 
@@ -691,22 +691,22 @@ kullanarak kullanıcılarımıza sesli ve görüntülü bir uyarı gösterdik.
 yapabiliriz.
 
 Dikkatlice bakın::
-    
+
     import tkinter
     from tkinter.messagebox import showwarning
-    
+
     class Uygulama(tkinter.Tk):
         def __init__(self):
             super().__init__()
             self.bell()
-            
+
         def bell(self):
             super().bell()
             showwarning('Dikkat', 'Bir terslik var!')
-     
+
     uyg = Uygulama()
-    uyg.mainloop()   
-    
+    uyg.mainloop()
+
 Belki bir-iki satır daha fazla kod yazdık, ama bu şekilde çok daha temiz bir
 kod yapısı elde ettiğimiz kesin.
 
@@ -716,7 +716,7 @@ görüyorsunuz. Esasında ``__init__()`` metoduna nasıl atıfta bulunuyorsak
 
 
 
- 
+
 .. [#] ``title()`` ve ``geometry()`` metotlarını, `tkinter` paketi içindeki
  `__init__.py` adlı dosyada yer alan ``Wm`` adlı sınıfta bulabilirsiniz. Bu
  metotlar ``Wm()`` sınıfı içinde ``wm_title()`` ve ``wm_geometry()`` adlarıyla

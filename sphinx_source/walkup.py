@@ -1,7 +1,7 @@
 import os
 
 def walk_up(bottom):
-	""" 
+	"""
 	from https://gist.github.com/1098474
 	"""
 
@@ -23,7 +23,7 @@ def walk_up(bottom):
 	yield bottom, dirs, nondirs
 
 	new_path = os.path.realpath(os.path.join(bottom, '..'))
-	
+
 	if new_path == bottom:
 		return
 

@@ -1,6 +1,6 @@
-.. meta:: :description: Bu bölümde Python3 Kılavuzu'ndan söz edeceğiz. 
+.. meta:: :description: Bu bölümde Python3 Kılavuzu'ndan söz edeceğiz.
           :keywords: python, python3, türkçe kaynak, programlama dili, forum
-           
+
 .. highlight:: py3
 
 ******************
@@ -11,7 +11,7 @@ Elinizdeki kitap, Python programlama dili için kapsamlı bir Türkçe kaynak
 oluşturma projesi olan `istihza.com <http://www.istihza.com/hakkinda.html>`__'un
 bir ürünüdür. Bu kitabın amacı, herhangi bir sebeple Python programlama diline
 ilgi duyan, bu programlama dilini öğrenmek isteyen kişilere bu dili
-olabildiğince hızlı, ayrıntılı ve kolay bir şekilde öğretmektir. 
+olabildiğince hızlı, ayrıntılı ve kolay bir şekilde öğretmektir.
 
 Bu kitabın hedef kitlesi, programlamayı hiç bilmeyen kişilerdir. Bu sebeple, bu
 kitapta ders konularını olabildiğince ayrıntılı ve basitleştirilmiş bir şekilde
