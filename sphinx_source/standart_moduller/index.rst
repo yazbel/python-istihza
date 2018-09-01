@@ -36,6 +36,7 @@ bir genişlemiş olacak.
 
 .. toctree::
 
+    regex
     datetime
     random
     os
