@@ -72,7 +72,6 @@ Python Programlama Dili
     nesne_tabanli_programlama6
     nesne_tabanli_programlama7
     paketler
-    sqlite
 
 ------------------
 

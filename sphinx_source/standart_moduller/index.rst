@@ -39,6 +39,7 @@ bir genişlemiş olacak.
     regex
     datetime
     random
+    sqlite
     os
     time
     curses
