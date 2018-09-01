@@ -12,9 +12,6 @@ Bu kitabın amacı, herhangi bir sebeple Python programlama diline ilgi duyan, b
 
 Bu kitabın hedef kitlesi, programlamayı hiç bilmeyen kişilerdir.
 Bu sebeple, bu kitapta ders konularını olabildiğince ayrıntılı ve basitleştirilmiş bir şekilde ele almaya çalıştık.
-Ancak eğer geçmişten gelen bir programlama deneyiminiz varsa, üstelik programlamaya ilişkin kavramlara da aşinaysanız, bu kitabı sıkıcı bulabilirsiniz.
-Öyle bir durumda, bu belgelerin yerine, Python programlama diline ait `resmi kılavuzun <https://docs.python.org/3/>`__, yine istihza.com projesinin bir ürünü olan `Türkçe çevirisini <http://www.istihza.com/resmi/py3]>`__ takip etmeyi tercih edebilirsiniz.
-Fakat öğreneceğiniz ilk programlama dili Python ise, resmi kılavuzu anlamak size epey zor gelecektir.
 
 Bu Kitabı Nereden İndirebilirim?
 ********************************
@@ -75,7 +72,7 @@ Bu şekilde hem projeye destek olmuş, hem başkalarına yardım etmiş, hem de 
 Kullanım Koşulları
 ******************
 
-Bu kitaptaki bilgiler, istihza.com'un öteki kısımları gibi, `Creative Commons lisansı <http://creativecommons.org/licenses/by-nc-sa/3.0>`__ altındadır.
+Bu kitaptaki bilgiler `Creative Commons lisansı <http://creativecommons.org/licenses/by-nc-sa/3.0>`__ altındadır.
 Bu lisansa göre, bu kitaptaki bütün bilgilerden herkes ücretsiz olarak yararlanabilir.
 Eğer isterseniz burada gördüğünüz belgelerin çıktısını alabilir, tanıdığınız veya tanımadığınız herkesle gönül rahatlığıyla paylaşabilirsiniz.
 Ancak bu belgeleri başka bir yerde kullanacaksanız, istihza.com adresini kaynak olarak göstermeli ve bu belgeleri kesinlikle satmamalısınız.
