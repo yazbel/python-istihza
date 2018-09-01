@@ -120,7 +120,7 @@ istihza.com
 .. raw:: html
 
     <div class="description">
-        Belgelerdeki Hataları Düzeltenler
+        Belgelerin Gelişmesine ve Hatalardan Arınmasına Yardımcı Olanlar
     </div>
 
 .. toctree::
