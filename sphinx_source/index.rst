@@ -126,4 +126,3 @@ Python Programlama Dili
 .. toctree::
 
     katkida_bulunanlar
-
