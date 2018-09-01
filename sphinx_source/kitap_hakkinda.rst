@@ -7,7 +7,7 @@
 Bu Kitap Hakkında
 *****************
 
-Elinizdeki kitap, Python programlama dili için kapsamlı bir Türkçe kaynak oluşturma projesi olan `istihza.com <http://www.istihza.com/hakkinda.html>`__'un bir ürünüdür.
+Elinizdeki kitap, Python programlama dili için kapsamlı bir Türkçe kaynak oluşturma projesi olan `yazbel.com <https://yazbel.com/>`__'un bir ürünüdür.
 Bu kitabın amacı, herhangi bir sebeple Python programlama diline ilgi duyan, bu programlama dilini öğrenmek isteyen kişilere bu dili olabildiğince hızlı, ayrıntılı ve kolay bir şekilde öğretmektir.
 
 Bu kitabın hedef kitlesi, programlamayı hiç bilmeyen kişilerdir.
@@ -16,7 +16,7 @@ Bu sebeple, bu kitapta ders konularını olabildiğince ayrıntılı ve basitle�
 Bu Kitabı Nereden İndirebilirim?
 ********************************
 
-Bu kitabı İnternet üzerinden takip edebileceğiniz gibi, `depodan <http://indir.istihza.com/belgeler/py3>`__ PDF veya EPUB biçimlerinde bilgisayarınıza da indirebilirsiniz.
+Bu kitabı İnternet üzerinden takip edebileceğiniz gibi, PDF biçiminde bilgisayarınıza da `indirebilirsiniz <https://belgeler.yazbel.com/python-istihza.pdf>`__.
 Ancak bu kitabın içeriğinin sık sık güncellendiğini aklınızdan çıkarmayın.
 Dolayısıyla, bilgisayarınıza indirdiğiniz PDF belgesi güncelliğini çabucak yitirecektir.
 O yüzden, eğer mümkünse, kitabı çevrim içi kaynağından takip etmeniz veya bu mümkün değilse, PDF belgesini sık sık yeniden indirmeniz daha mantıklı olacaktır.
@@ -51,7 +51,7 @@ Nereden Yardım Alabilirim?
 Bu kitapta Python programlama diline ilişkin konuları olabildiğince temiz ve anlaşılır bir dille anlatmaya çalıştık.
 Ancak yine de bazı konular zihninizde tam olarak yer etmeyebilir.
 Üstelik kimi zaman, bir konuyu daha iyi anlayabilmek ya da bir sorunun üstesinden gelebilmek için bilen birilerinin yardımına da ihtiyaç duyabilirsiniz.
-İşte böyle durumlarda istihza.com'un `forum alanına <http://www.istihza.com/forum>`_ uğrayarak başka Python programcılarından yardım isteyebilirsiniz.
+İşte böyle durumlarda yazbel.com'un `forum alanına <https://forum.yazbel.com/>`_ uğrayarak başka Python programcılarından yardım isteyebilirsiniz.
 
 Forum alanı hem bilgi edinmek, hem de bildiklerinizi paylaşmak için oldukça elverişli bir ortamdır.
 Foruma ilk girişiniz muhtemelen yardım istemek için olacaktır.
