@@ -17,7 +17,7 @@ istihza.com
 .. raw:: html
 
     <div class="description">
-        Python 3 için Türkçe Kılavuz
+        Python 3 için Türkçe Kaynak
     </div>
 
 .. raw:: html
