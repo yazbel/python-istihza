@@ -29,7 +29,7 @@ Ancak her ne kadar gerçek böyle olsa da, Python programlama dilinin pek çok y
 
 Dediğimiz gibi, Python bir programlama dilidir.
 Üstelik pek çok dile kıyasla öğrenmesi kolay bir programlama dilidir.
-Bu yüzden, eğer daha önce hiç programlama deneyiminiz olmamışsa, programlama maceranıza Python’la başlamayı tercih edebilirsiniz.
+Bu yüzden, eğer daha önce hiç programlama deneyiminiz olmamışsa, programlama maceranıza Python'la başlamayı tercih edebilirsiniz.
 
 Neden Programlama Öğrenmek İsteyeyim?
 *************************************
