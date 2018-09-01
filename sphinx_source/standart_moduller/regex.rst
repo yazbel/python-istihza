@@ -1,5 +1,5 @@
 .. meta::
-   :description: Python'da düzenli ifadeler (regular expressions) 
+   :description: Python'da düzenli ifadeler (regular expressions)
    :keywords: Python, python3, regex, düzenli ifadeler, regular expressions
 
 *****************
@@ -67,7 +67,7 @@ kodu yazıyoruz::
     >>> dir(re)
 
 Tabii yukarıdaki ``dir(re)`` komutunu yazmadan önce ``import re`` şeklinde
-modülümüzü içe aktarmış olmamız gerekiyor. 
+modülümüzü içe aktarmış olmamız gerekiyor.
 
 Gördüğünüz gibi, `re` modülü içinde epey metot/fonksiyon var. Biz bu sayfada ve
 ilerleyen sayfalarda, yukarıdaki metotların/fonksiyonların en sık
@@ -138,11 +138,11 @@ Bu çıktı, düzenli ifade kalıbının karakter dizisi ile eşleştiğini bild
 yanısıra, bize başka birtakım bilgiler daha veriyor. Mesela bu çıktıdaki `span`
 parametresi, aradığımız 'python' karakter dizisinin, `a` değişkeninin 0. ila 6.
 karakterleri arasında yer aldığını söylüyor bize. Yani::
-    
+
     >>> a[0:6]
-    
+
     'python'
-    
+
 Ayrıca yukarıdaki çıktıda gördüğümüz `match` parametresi de bize eşleşen
 ifadenin 'python' olduğu bilgisini veriyor.
 
@@ -155,7 +155,7 @@ de Python burada "None" çıktısı veriyor. Eğer yukarıdaki komutu şöyle ya
 "None" çıktısını biz de görebiliriz::
 
     >>> print(re.match("Java", a))
-    
+
     None
 
 Gördüğünüz gibi, ENTER tuşuna bastıktan sonra "None" çıktısı geldi. Demek ki
@@ -182,14 +182,14 @@ Aslında ``match()`` metodunun yaptığı bu işi, karakter dizilerinin ``split(
 metodu yardımıyla da yapabiliriz::
 
     >>> a.split()[0] == "python"
-    
+
     True
 
 Demek ki `a` değişkeninin en başında "python" ifadesi varmış. Bir de şuna
 bakalım::
 
     >>> a.split()[0] == "güçlü"
-    
+
     False
 
 Veya aynı işi sadece ``startswith()`` metodunu kullanarak dahi yapabiliriz::
@@ -205,15 +205,15 @@ metotları ``match()`` metodundan çok daha hızlı çalışacaktır.
 
     >>> sorgu = "1234567890"
     >>> re.match("1", sorgu)
-    
-    <_sre.SRE_Match object; span=(0, 1), match='1'>   
-    
+
+    <_sre.SRE_Match object; span=(0, 1), match='1'>
+
     >>> re.match("1234", sorgu)
-    
+
     <_sre.SRE_Match object; span=(0, 4), match='1234'>
-    
+
     >>> re.match("124", sorgu)
-    
+
 İsterseniz şimdiye kadar öğrendiğimiz şeyleri şöyle bir gözden geçirelim:
 
 #. Düzenli ifadeler Python'ın çok güçlü araçlarından biridir.
@@ -242,17 +242,17 @@ Döndürülen bu eşleşme nesnesi bize `span` ve `match` parametreleri aracıl�
 eşleşen karakter dizisinin sorgu dizisi içindeki yerini ve eşleşen dizinin ne
 olduğu söylüyor. `span` paramtresinin değerine ``span()`` adlı bir metot
 yardımıyla erişebiliyoruz. Örneğin::
-    
+
     >>> import re
     >>> sorgu = 'Bin kunduz'
     >>> eşleşme = re.match('Bin', sorgu)
     >>> eşleşme
-    
+
     <_sre.SRE_Match object; span=(0, 3), match='Bin'>
-    
+
     >>> eşleşme.span()
     (0, 3)
-    
+
 Ancak, ``match()`` metodu ile bulunan şeyin ne olduğunu eşleşme nesnesinin
 `match` parametresine bakarak görebilsek de, bu değeri bir kod yardımıyla
 alamıyoruz. Çünkü eşleşme nesnelerinin ``span()`` metoduna benzeyen bir
@@ -260,11 +260,11 @@ alamıyoruz. Çünkü eşleşme nesnelerinin ``span()`` metoduna benzeyen bir
 
 Ama istersek tabii ki bulunan şeyi de programatik olarak alma imkânımız var.
 Bunun için ``group()`` adlı bir başka metottan yararlanacağız::
-    
+
     >>> kardiz = "perl, python ve ruby yüksek seviyeli dillerdir."
     >>> eşleşme = re.match("perl", kardiz)
     >>> eşleşme.group()
-    
+
     'perl'
 
 Burada, ``re.match("perl", kardiz)`` komutunu bir değişkene atadık.
@@ -273,7 +273,7 @@ elde ediyorduk. İşte burada değişkene atadığımız şey aslında bu eşle�
 nesnesinin kendisi oluyor. Bu durumu şu şekilde teyit edebilirsiniz::
 
     >>> type(eşleşme)
-    
+
     <class '_sre.SRE_Match'>
 
 Gördüğünüz gibi, `eşleşme` değişkeninin tipi bir eşleşme nesnesi (*match
@@ -289,7 +289,7 @@ isterseniz bir örnek daha yapıp bu konuyu kapatalım::
     >>> iddia = "Adana memleketlerin en güzelidir!"
     >>> nesne = re.match("Adana", iddia)
     >>> nesne.group()
-    
+
     'Adana'
 
 Peki, eşleştirmek istediğimiz düzenli ifade kalıbı bulunamazsa ne olur? Öyle bir
@@ -341,12 +341,12 @@ Hatırlarsanız, ``match()`` metodunu anlatırken şöyle bir örnek vermiştik:
 Yukarıdaki kod, karakter dizisinin başında bir eşleşme bulamadığı için bize
 `None` değeri döndürüyordu. Ama eğer aynı işlemi şöyle yaparsak, daha farklı bir
 sonuç elde ederiz::
-    
+
     >>> a = "Python güçlü bir dildir"
     >>> re.search("güçlü", a)
-    
+
  <_sre.SRE_Match object; span=(7, 12), match='güçlü'>
- 
+
 Gördüğünüz gibi, ``search()`` metodu "güçlü" kelimesini buldu. Çünkü
 ``search()`` metodu, ``match()`` metodunun aksine, bir karakter dizisinin sadece
 baş tarafına bakmakla yetinmiyor, karakter dizisinin geneli üzerinde bir arama
@@ -359,12 +359,12 @@ bu şeyin ne olduğunu görüntüleyebiliriz::
     >>> kardiz = "Python güçlü bir dildir"
     >>> nesne = re.search("güçlü", kardiz)
     >>> nesne.span()
-    
+
     (7, 12)
-    
+
     >>> nesne.group()
-    
-    'güçlü'   
+
+    'güçlü'
 
 Şimdiye kadar hep karakter dizileri üzerinde çalıştık. İsterseniz biraz da
 listeler üzerinde örnekler verelim.
@@ -407,24 +407,24 @@ dikkat edin. Ayrıca ``search()`` metoduna parametre olarak bir karakter dizisi
 değil, bayt dizisi verdiğimizi de gözden kaçırmayın::
 
     re.search(b'programlama', i)
-    
+
 Siz isterseniz bu kodları biraz daha geliştirebilirsiniz::
 
     import re
     from urllib.request import urlopen
-    
+
     kelime = input("istihza.com'da aramak istediğiniz kelime: ")
-    
+
     f = urlopen("http://www.istihza.com")
     data = str(f.read())
-    
+
     nesne = re.search(kelime, data)
-    
+
     if nesne:
         print("kelime bulundu:", nesne.group())
     else:
         print("kelime bulunamadı!:", kelime)
-        
+
 Burada, kullanıcıdan aldığımız kelimeyi ``search()`` metoduna göndermeden önce,
 siteden okuduğumuz verileri ``str()`` metodu yardımıyla karakter dizisine
 dönüştürdüğümüze dikkat edin. Böylece kullanıcıdan gelen karakter dizisini bayt
@@ -443,7 +443,7 @@ olduğunu görürüz. İşte bu bölümde ``findall()`` adlı bu önemli metodu 
 çalışacağız.
 
 Önce şöyle bir metin alalım elimize::
-    
+
     metin = """Guido Van Rossum Python'ı geliştirmeye 1990 yılında başlamış... Yani
     aslında Python için nispeten yeni bir dil denebilir. Ancak Python'un çok uzun
     bir geçmişi olmasa da, bu dil öteki dillere kıyasla kolay olması, hızlı olması,
@@ -456,7 +456,7 @@ olduğunu görürüz. İşte bu bölümde ``findall()`` adlı bu önemli metodu 
 Bu metin içinde geçen bütün "Python" kelimelerini bulmak istiyoruz::
 
     print(re.findall("Python", metin))
-    
+
     ['Python', 'Python', 'Python', 'Python', 'Python', 'Python']
 
 Gördüğünüz gibi, metinde geçen bütün "Python" kelimelerini bir çırpıda liste
@@ -486,10 +486,10 @@ ayıklıyoruz. Eğer karakter dizisini yukarıdaki şekilde listeye dönüştür
 
     >>> nesne = re.search("Python", metin)
     >>> print(nesne.group())
-    
+
     Python
 
-Bu şekilde metinde geçen sadece ilk "Python" kelimesini alabiliyoruz. 
+Bu şekilde metinde geçen sadece ilk "Python" kelimesini alabiliyoruz.
 
 Metakarakterler
 *****************
@@ -504,7 +504,7 @@ Esasında bu, düzenli ifadelerin en temel özelliğidir. Yani "python" karakter
 dizisini bir düzenli ifade sayacak olursak (ki zaten öyledir), bu düzenli ifade
 en başta kendisiyle eşleşecektir. Bu ne demek? Şöyle ki: Eğer aradığınız şey
 "python" karakter dizisi ise, kullanmanız gereken düzenli ifade de "python"
-olacaktır. 
+olacaktır.
 
 Diyoruz ki: "Düzenli ifadeler en başta kendileriyle eşleşirler". Buradan şu
 anlam çıkıyor: Demek ki bir de kendileriyle eşleşmeyen düzenli ifadeler var.
@@ -513,9 +513,9 @@ sonra ne demek istediğimizi daha açık anlayacaksınız. Artık gerçek anlam�
 düzenli ifadelere giriş yapıyoruz!
 
 Öncelikle, elimizde aşağıdaki gibi bir liste olduğunu varsayalım::
-    
-    >>> liste = ["özcan", "mehmet", "süleyman", "selim",    
-    ... "kemal", "özkan", "esra", "dündar", "esin",    
+
+    >>> liste = ["özcan", "mehmet", "süleyman", "selim",
+    ... "kemal", "özkan", "esra", "dündar", "esin",
     ... "esma", "özhan", "özlem"]
 
 Diyelim ki, biz bu liste içinden "özcan", "özkan" ve "özhan" öğelerini
@@ -1014,7 +1014,7 @@ durumları kapsıyor. Bunu daha iyi anlayabilmek için önceden verdiğimiz
     sat
     saat
     saaat
-    
+
     >>> for i in yeniliste:
     ...     if re.match("sa+t",i):
     ...         print(i)
@@ -1121,7 +1121,7 @@ başındaki veriyi sorgulamaktır. Yani aslında match() metodunun
 varsayılan olarak yerine getirdiği işlevi bu metakarakter yardımıyla
 açıkça belirterek yerine getirebiliyoruz. Şu örneğe bakalım::
 
-    >>> a = ['23BH56', 'TY76Z', '4Y7UZ', 'TYUDZ',    
+    >>> a = ['23BH56', 'TY76Z', '4Y7UZ', 'TYUDZ',
     ... '34534', '1agAY54']
     >>> for i in a:
     ...     if re.search("[A-Z]+[0-9]",i):
@@ -1295,7 +1295,7 @@ Gördüğünüz gibi, "^" işareti bir karakter dizisinin nasıl başlayacağın
 belirlerken, "$" işareti aynı karakter dizisinin nasıl biteceğini
 belirliyor. Hatta istersek bu metakarakterleri birlikte de
 kullanabiliriz::
-    
+
     >>> for i in liste:
     ...     if re.search("^at$",i):
     ...         print(i)
@@ -1393,12 +1393,12 @@ almak istiyoruz. Bunun için şöyle bir şey yazabiliriz::
 
     import re
     from urllib.request import urlopen
-    
+
     url = "http://belgeler.istihza.com/py3/index.html"
     f = urlopen(url)
-    
+
     regex = 'href=".+html">.+</a>'
-    
+
     for i in f:
          nesne = re.search(regex, str(i, 'utf-8'))
          if nesne:
@@ -1436,7 +1436,7 @@ Burada yaptığımız şey şu:
    olduğunu görüyoruz: href="kitap_hakkinda.html">Bu Kitap Hakk\xc4\xb1nda</a>
    Dolayısıyla aslında düzenli ifade kalıbımızı yazarken yaptığımız şey,
    düzenli ifademizi kaynakta görünen şablona uydurmak...
-   
+
 #. Ayrıca çıktıdaki Türkçe karakterlerin düzgün görünmesi için de bayt
    dizilerini karakter dizisine dönüştürürken 'utf-8' kodlamasını kullandık.
 
@@ -1460,32 +1460,32 @@ Dilerseniz en başta verdiğimiz kodlara tekrar dönelim::
 
     import re
     from urllib.request import urlopen
-    
+
     url = "http://belgeler.istihza.com/py3/index.html"
     f = urlopen(url)
-    
+
     regex = 'href=".+html">.+</a>'
-    
+
     for i in f:
          nesne = re.search(regex, str(i, 'utf-8'))
          if nesne:
                  print(nesne.group())
 
 Şimdi bu kodlarda şu değişikliği yapıyoruz::
-    
+
     import re
     from urllib.request import urlopen
-    
+
     url = "http://belgeler.istihza.com/py3/index.html"
     f = urlopen(url)
-    
+
     çıktı = "Başlık: {};\nBağlantı: {}\n"
     regex = 'href="(.+html)">(.+)</a>'
-    
+
     for i in f:
          nesne = re.search(regex, str(i, 'utf-8'))
          if nesne:
-                 print(çıktı.format(nesne.group(2), 
+                 print(çıktı.format(nesne.group(2),
                                     nesne.group(1)))
 
 Kodlarda yaptığımız değişikliklere dikkat edin ve anlamaya çalışın. Bazı
@@ -1518,37 +1518,37 @@ kullanacağız. İsterseniz ilk olarak şöyle basit bir örnek verelim::
     >>> kardiz = "python bir programlama dilidir"
     >>> nesne = re.search("(python) (bir) (programlama) (dilidir)", kardiz)
     >>> print(nesne.group())
-    
+
     python bir programlama dilidir
 
 Burada düzenli ifade kalıbımızı nasıl grupladığımıza dikkat edin.
 ``print(nesne.group())`` komutunu verdiğimizde eşleşen karakter dizileri ekrana
 döküldü. Şimdi bu grupladığımız bölümlere tek tek erişelim::
-    
+
     >>> nesne.group(0)
-    
+
     'python bir programlama dilidir'
 
 Gördüğünüz gibi, "0" indeksi eşleşen karakter dizisinin tamamını veriyor. Bir de
 şuna bakalım::
 
     >>> nesne.group(1)
-    
+
     'python'
 
 Burada 1 numaralı grubun öğesi olan "python"u aldık. Gerisinin nasıl olacağını
 tahmin edebilirsiniz::
 
     >>> nesne.group(2)
-   
+
     'bir'
-    
+
     >>> nesne.group(3)
-    
+
     'programlama'
-    
+
     >>> nesne.group(4)
-    
+
     'dilidir'
 
 Bu metodun bize ilerde ne büyük kolaylıklar sağlayacağını az çok tahmin
@@ -1565,37 +1565,37 @@ groups() metodu
 Bu metot, bize kullanabileceğimiz bütün grupları bir demet halinde sunar::
 
     >>> nesne.groups()
-    
+
     ('python', 'bir', 'programlama', 'dilidir')
 
 Şimdi isterseniz bir önceki bölümde yaptığımız örneğe geri dönelim::
-        
+
     import re
     from urllib.request import urlopen
-    
+
     url = "http://belgeler.istihza.com/py3/index.html"
     f = urlopen(url)
-    
+
     çıktı = "Başlık: {};\nBağlantı: {}\n"
     regex = 'href="(.+html)">(.+)</a>'
-    
+
     for i in f:
          nesne = re.search(regex, str(i, 'utf-8'))
          if nesne:
-                 print(çıktı.format(nesne.group(2), 
+                 print(çıktı.format(nesne.group(2),
                                     nesne.group(1)))
 
 Bu kodlarda son satırı şöyle değiştirelim::
-    
+
     import re
     from urllib.request import urlopen
-    
+
     url = "http://belgeler.istihza.com/py3/index.html"
     f = urlopen(url)
-    
+
     çıktı = "Başlık: {};\nBağlantı: {}\n"
     regex = 'href="(.+html)">(.+)</a>'
-    
+
     for i in f:
          nesne = re.search(regex, str(i, 'utf-8'))
          if nesne:
@@ -1671,7 +1671,7 @@ olarak "_" karakterini bulmak için kullanılır. Şu örneğe bakalım::
 
     >>> a = "abc123_$%+"
     >>> print(re.search("\w*", a).group())
-    
+
     abc123_
 
 "\\w" özel dizisinin hangi karakterleri eşlediğine dikkat edin. Bu özel dizi şu
@@ -1728,7 +1728,7 @@ varsayıyoruz::
 
 Amacımız bu dosyada yer alan isim ve telefon numaralarını "isim > telefon
 numarası" şeklinde almak::
-    
+
     import re
     dosya = open("adres.txt")
     for i in dosya.readlines():
@@ -1745,7 +1745,7 @@ Elimizde şu adresteki yığın var:
 `http://www.istihza.com/denemeler/yigin.txt <http://www.istihza.com/denemeler/yigin.txt>`_
 
 Yapmanız gereken, bu yığın içindeki gizli mesajı düzenli ifadeleri
-kullanarak bulmak... 
+kullanarak bulmak...
 
 Düzenli İfadelerin Derlenmesi
 *****************************
@@ -1765,7 +1765,7 @@ kullanmak oldukça faydalı olacaktır.
 
 Basit bir örnekle başlayalım::
 
-    >>> liste = ["Python2.7", "Python3.2", "Python3.3",    
+    >>> liste = ["Python2.7", "Python3.2", "Python3.3",
     ... "Python3.4", "Java"]
     >>> derli = re.compile("[A-Za-z]+[0-9]\.[0-9]")
     >>> for i in liste:
@@ -1809,9 +1809,9 @@ kelimesini arıyorsanız, alacağınız çıktılar arasında "Python" olmayacak
 Çünkü "python" ve "Python" birbirlerinden farklı iki karakter dizisidir. İşte
 `re.IGNORECASE` veya kısaca `re.I` adlı derleme seçenekleri bize büyük-küçük
 harfe dikkat etmeden arama yapma imkanı sağlar. Hemen bir örnek verelim::
-    
+
     import re
-    
+
     metin = """Programlama dili, programcının bir bilgisayara ne yapmasını
     istediğini anlatmasının standartlaştırılmış bir yoludur. Programlama
     dilleri, programcının bilgisayara hangi veri üzerinde işlem yapacağını,
@@ -1820,7 +1820,7 @@ harfe dikkat etmeden arama yapma imkanı sağlar. Hemen bir örnek verelim::
     programlama dili yapılmıştır. Bunlardan bazıları: Pascal, Basic, C, C#,
     C++, Java, Cobol, Perl, Python, Ada, Fortran, Delphi programlama
     dilleridir."""
-    
+
     derli = re.compile("programlama",re.IGNORECASE)
     print(derli.findall(metin))
 
@@ -1863,7 +1863,7 @@ Bu kod şu çıktıyı verecektir::
 Bunun sebebi, "." metakarakterinin `"\\n"` (yeni satır) kaçış dizisini dikkate
 almamasıdır. Bu yüzden bu kaçış dizisinin ötesine geçip orada arama yapmıyor.
 Ama şimdi biz ona bu yeteneği de kazandıracağız::
-    
+
     >>> derle = re.compile("Python.*", re.DOTALL)
     >>> nesne = derle.search(a)
     >>> if nesne:
@@ -1942,17 +1942,17 @@ metin de, mesela, metin3 şeklinde tekrar kopyalanmalıdır. Bundan sonraki
 yeni bir değişiklik de bu metin3 üzerinden yapılacaktır... Bu durum bu
 şekilde uzar gider... Metni tekrar tekrar kopyalamak yerine, düzenli
 ifadeleri kullanarak şöyle bir çözüm de üretebiliriz::
-    
+
     import re
-    
+
     derle = re.compile("çile[kğ]", re.IGNORECASE)
-    
+
     def degistir(nesne):
         a = {"çileğ":"eriğ", "Çileğ":"Eriğ", "Çilek":"Erik", "çilek":"erik"}
         b = nesne.group().split()
         for i in b:
             return a[i]
-    
+
     print(derle.sub(degistir, metin))
 
 Gördüğünüz gibi, ``sub()`` metodu, argüman olarak bir fonksiyon da alabiliyor.
@@ -2016,7 +2016,7 @@ bulduğumuz bütün "çilek" ve çeşnilerini alıyoruz. Karakter dizilerinin
 çıktıyı liste haline getirip daha kolay manipüle etmek. Burada ``for i in b:
 print(i)`` komutunu verirseniz ``group()`` metodu yardımıyla ne bulduğumuzu
 görebilirsiniz::
-    
+
     çileğ
     çilek
     çileğ
@@ -2086,11 +2086,11 @@ kodların son satırını şöyle değiştirebilirsiniz::
 
     ab = derle.subn(degistir, metin)
     print("Toplam {} değişiklik yapılmıştır.".format(ab[1]))
-    
+
 Yani::
-    
+
     import re
-    
+
     metin = """Karadeniz Ereğlisi denince akla ilk olarak kömür ve demir-çelik
     gelir. Kokusu ve tadıyla dünyaya nam salmış meşhur Osmanlı çileği ise ismini
     verdiği festival günleri dışında pek hatırlanmaz. Oysa Çin'den Arnavutköy'e
@@ -2106,15 +2106,15 @@ Yani::
     olduğunu söyleyen Ayşe Özhan da çocukluğundan bu yana çilek bahçesinde
     çalışıyor. Her sabah 04.00'te kalkan Özhan, çileklerini özenle suluyor. Kasım
     başında ektiği çilek fideleri haziran başında meyve veriyor."""
-    
+
     derle = re.compile("çile[kğ]", re.IGNORECASE)
-    
+
     def degistir(nesne):
         a = {"çileğ":"eriğ", "Çileğ":"Eriğ", "Çilek":"Erik", "çilek":"erik"}
         b = nesne.group().split()
         for i in b:
             return a[i]
-    
+
     ab = derle.subn(degistir, metin)
     print("Toplam {} değişiklik yapılmıştır.".format(ab[1]))
 
