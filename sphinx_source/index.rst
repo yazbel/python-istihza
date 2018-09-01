@@ -102,7 +102,7 @@ istihza.com
 .. raw:: html
 
     <div class="description">
-        Bazı Önemli Üçüncü Taraf Modüller
+        Üçüncü Taraf Modüller için Türkçe Kaynak
     </div>
 
 .. toctree::
