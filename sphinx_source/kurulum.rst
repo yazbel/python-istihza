@@ -3,9 +3,9 @@
 
 .. highlight:: none
 
-**********************
+*********************
 Python Nasıl Kurulur?
-**********************
+*********************
 
 Python ile program yazabilmemiz için bu programlama dilinin bilgisayarımızda kurulu olması gerekiyor.
 Bu programlama dilini kurmanızın gerekip gerekmediği, kullandığınız işletim sistemine bağlıdır.
@@ -60,7 +60,7 @@ Eğer sisteminizde Python3 kuruluysa  ve siz de kurulu olan Python3 sürümünde
 Farklı bir Python sürümü kurmaya çalışmadan yolunuza devam edebilirsiniz.
 
 Paket Deposundan Kurulum
-=========================
+========================
 
 Sistemlerinde öntanımlı olarak herhangi bir Python3 sürümü kurulu olmayan veya sistemlerinde kurulu öntanımlı Python3 sürümünden memnun olmayan GNU/Linux kullanıcılarının, Python3'ü elde etmek için tercih edebileceği iki yol var:
 Birincisi ve benim size önereceğim yol, öncelikle kullandığınız dağıtımın paket yöneticisini kontrol etmenizdir.
@@ -74,7 +74,7 @@ Dolayısıyla Ubuntu kullanıcıları, eğer sistemlerinde zaten kurulu değilse
 Bu komut, Python3'ü bütün bağımlılıkları ile beraber bilgisayarınıza kuracaktır.
 
 Kaynaktan Kurulum
-=========================
+=================
 
 Peki ya kullandığınız dağıtımın depolarında Python3 yoksa veya depodaki Python3 sürümü eskiyse ve siz daha yeni bir Python3 sürümü kullanmak istiyorsanız ne yapacaksınız?
 
@@ -84,7 +84,7 @@ Python3'ü `root` hakları ile kurmak veya Python3'ü yetkisiz kullanıcı olara
 Normal şartlar altında eğer kullandığınız sistemde `root` haklarına sahipseniz Python3'ü yetkili kullanıcı olarak kurmanızı tavsiye ederim.
 
 root Hakları İle Kurulum
------------------------------
+------------------------
 
 Python'ı kurmadan önce sistemimizde bulunması gereken bazı programlar var.
 Aslında bu programlar olmadan da Python kurulabilir, ancak eğer bu programları kurmazsanız Python'ın bazı özelliklerinden yararlanamazsınız.
@@ -231,7 +231,7 @@ Kurduğumuz yeni Python'ı nasıl çalıştıracağımızı biraz sonra görece�
 Ama önce Windows kullanıcılarının Python3'ü nasıl kuracaklarına bakalım.
 
 Windows Kullanıcıları
-**********************
+*********************
 
 Windows sürümlerinin hiçbirinde Python kurulu olarak gelmez.
 O yüzden Windows kullanıcıları, Python'ı sitesinden indirip kuracak.
@@ -277,7 +277,7 @@ Ben bu kitapta sizin 'Install Now' yazan kısma tıklayarak kurulum yaptığın�
     Windows güncellemelerini kurduktan sonra Python'ı kurmayı tekrar deneyin.
 
 Python Kurulum ve Çalışma Dizini
-*********************************
+********************************
 
 Python programlama dilini, kullandığımız işletim sistemine nasıl kurabileceğimizi bilmek kadar önemli bir konu da Python'ı hangi dizine kurduğumuzu bilmektir.
 Zira programcılık maceramız boyunca karşılaşacağımız bazı sorunlar, Python'ın kurulu olduğu dizine gitmemizi gerektirecek, üstelik kendi yazdığımız bazı programlarda da Python'ın kurulu olduğu dizinde çeşitli işlemler yapmak ihtiyacı duyacağız.
