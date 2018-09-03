@@ -52,7 +52,6 @@ Sisteminizdeki Python sürümlerine ilişkin daha kesin bir rapor için ise şu 
     ls -g {,/usr{,/local}}/bin | grep python
 
 Buradan aldığınız çıktıyı inceleyerek de sisteminizde birden fazla Python sürümünün kurulu olup olmadığını görebilirsiniz.
-[Bununla ilgili bir tartışma için bkz. http://goo.gl/RnRRc]
 
 Ayrıca kullandığınız GNU/Linux dağıtımında ``whereis python`` gibi bir komut vererek de sistemde kurulu Python sürümleri hakkında bilgi edinebilirsiniz.
 
@@ -112,8 +111,6 @@ Ubuntu'da yukarıdaki paketlerin hepsini şu komutla kurabilirsiniz::
 
     sudo apt-get install tcl-dev tk-dev zlib1g-dev ncurses-dev libreadline-dev libdb-dev libgdbm-dev libzip-dev libssl-dev libsqlite3-dev libbz2-dev liblzma-dev
 
-.. note:: Farklı GNU/Linux dağıtımlarında, Python3'ü kaynaktan derleme işleminden önce halihazırda kurulu olması gereken paketlerin listesi için http://goo.gl/zfLpX adresindeki tabloyu inceleyebilirsiniz.
-
 Yukarıdaki programları kurduktan sonra |download| adresine gidiyoruz.
 Bu adreste, üzerinde 'Python-|py3|.tar.xz' yazan bağlantıya tıklayarak sıkıştırılmış kurulum dosyasını bilgisayarımıza indiriyoruz.
 
@@ -164,9 +161,6 @@ Böylece yeni kurduğunuz Python, sistemdeki eski Python3 sürümünü silip üz
 Eğer ``make altinstall`` yerine ``make install`` komutunu verirseniz sisteminizde zaten varolan eski bir Python3 sürümüne ait dosya ve dizinlerin üzerine yazıp silerek o sürümü kullanılamaz hale getirebilirsiniz.
 Bu da sistemde beklenmedik problemlerin ortaya çıkmasına yol açabilir.
 Bu önemli ayrıntıyı kesinlikle gözden kaçırmamalısınız.
-
-.. seealso:: Python3'ün kaynaktan kurulumu ile ilgili bir tartışma için bkz.
-    http://www.istihza.com/forum/viewtopic.php?f=50&t=544
 
 Derleme aşamalarının hiçbirinde herhangi bir hata mesajı almadıysanız kurulum başarıyla gerçekleşmiş ve sisteminize Python programlama dilinin 3.x sürümü kurulmuş demektir.
 
@@ -238,11 +232,11 @@ O yüzden Windows kullanıcıları, Python'ı sitesinden indirip kuracak.
 
 Bunun için öncelikle http://www.python.org/downloads adresine gidiyoruz.
 
-Bu adrese gittiğinizde, üzerinde 'Download Python |py3|' ve 'Download |py2|’ yazan, yan yana iki düğme göreceksiniz.
+Bu adrese gittiğinizde, üzerinde 'Download Python |py3|' yazan bir düğme göreceksiniz.
 Daha önce de söylediğimiz gibi, eğer bir Python sürüm numarası '2' ile başlıyorsa o sürüm 2.x serisine, yok eğer '3' ile başlıyorsa 3.x serisine aittir.
-Dolayısıyla ilk düğme Python3 sürümünü, ikinci düğme ise Python2 sürümünü içerir.
+Dolayısıyla bu düğme Python3 sürümünü içerir.
 
-Biz bu kitapta Python’ın 3.x serisini anlatacağımız için (yeni Python sürümleri çıktığında o düğmeler üzerinde yazan sürüm numaraları değişecek de olsa), '3' ile başlayan sürüm numarasını içeren düğmeye tıklamaya özen gösteriyoruz.
+Bu düğmeye tıklıyoruz.
 Bu düğmeye tıkladığınızda bilgisayarınıza `.exe` uzantılı kurulum dosyası inecek.
 Bu dosyaya çift tıklayarak kurulum programını başlatabilirsiniz.
 
