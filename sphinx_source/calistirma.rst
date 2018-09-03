@@ -66,7 +66,7 @@ Bu aşamada işlerin nerede ters gitmiş olabileceğine dair birkaç ipucu verel
 
     #. Kullandığınız dağıtımın Python3 paketini adlandırma politikası yukarıda anlattığımızdan farklı olabilir.
        Yani sizin kullandığınız dağıtım, belki de Python3 paketini farklı bir şekilde adlandırmıştır.
-       Eğer durum böyleyse, dağıtımınızın yardım kaynaklarını (wiki, forum, irc, yardım belgeleri, kullanıcı listeleri, vb.) kullanarak ya da `istihza.com/forum <http://www.istihza.com/forum>`_ adresinde sorarak Python3'ün nasıl çalıştırılacağını öğrenmeyi deneyebilirsiniz.
+       Eğer durum böyleyse, dağıtımınızın yardım kaynaklarını (wiki, forum, irc, yardım belgeleri, kullanıcı listeleri, vb.) kullanarak ya da `forum.yazbel.com <https://forum.yazbel.com/>`_ adresinde sorarak Python3'ün nasıl çalıştırılacağını öğrenmeyi deneyebilirsiniz.
 
 Gelelim Python3'ü kaynaktan derlemiş olanların durumuna...
 
@@ -145,26 +145,26 @@ Bu komut iki farklı Python sürümünün kurulu olduğu sistemlerde şuna benze
 
     dh_python2
     dh_python3
-    pdb2.7 -> ../lib/python2.7/pdb.py
-    pdb3.2 -> ../lib/python3.2/pdb.py
+    pdb\ |major-minor2| -> ../lib/python\ |major-minor2|\ /pdb.py
+    pdb\ |major-minor3| -> ../lib/python\ |major-minor3|\ /pdb.py
     py3versions -> ../share/python3/py3versions.py
-    *python -> python2.7*
-    *python2 -> python2.7*
-    python2.7
-    *python3 -> python3.2*
-    python3.2 -> python3.2mu
-    python3.2mu
-    python3mu -> python3.2mu
+    *python -> python*\ |major-minor2-italic|
+    *python2 -> python*\ |major-minor2-italic|
+    python\ |major-minor2|
+    *python3 -> python*\ |major-minor3-italic|
+    python\ |major-minor3| -> python\ |major-minor3|\ mu
+    python\ |major-minor3|\ mu
+    python3mu -> python\ |major-minor3|\ mu
     pyversions -> ../share/python/pyversions.py
 
 Yatık harflerle gösterdiğimiz kısımlara dikkat edin.
-Gördüğünüz gibi ``python`` ve ``python2`` komutları bu sistemde Python'ın 2.7 sürümünü çalıştırıyor.
-``python3`` komutu ise Python'ın 3.2 sürümünü...
+Gördüğünüz gibi ``python`` ve ``python2`` komutları bu sistemde Python'ın |major-minor2| sürümünü çalıştırıyor.
+``python3`` komutu ise Python'ın |major-minor3| sürümünü...
 Dolayısıyla yukarıdaki çıktıyı aldığımız bir sistemde kendi kurduğumuz Python sürümlerine 'python', 'python2' veya 'python3' gibi isimler vermekten kaçınmalıyız.
 
 Sözün özü, bir GNU/Linux kullanıcısı olarak sistemdeki öntanımlı hiçbir Python sürümünü silmemeli, öntanımlı sürüme ulaşan komutları değiştirmemelisiniz.
 Eğer mesela sisteminizde ``python3`` komutu halihazırda bir Python sürümünü çalıştırıyorsa, siz yeni kurduğunuz Python sürümüne ulaşmak için öntanımlı adla çakışmayacak başka bir komut adı kullanın.
-Yani örneğin sisteminizde ``python3`` komutu Python'ın `3.2` sürümünü çalıştırıyorsa, siz yeni kurduğunuz sürümü çalıştırmak için ``py3`` gibi bir sembolik bağ oluşturun.
+Yani örneğin sisteminizde ``python3`` komutu Python'ın |major-minor3-code| sürümünü çalıştırıyorsa, siz yeni kurduğunuz sürümü çalıştırmak için ``py3`` gibi bir sembolik bağ oluşturun.
 Bırakın öntanımlı komut (``python``, ``python3`` vb.) öntanımlı Python sürümünü çalıştırmaya devam etsin.
 
 Asla unutmayın.
@@ -241,7 +241,7 @@ Elbette eğer sizin sisteminizdeki dosyanın adı `.bash_profile` veya `.bashrc`
         py3
 
 Burada da eğer yukarıdaki komut Python3'ü çalıştırmanızı sağlamıyorsa, bazı şeyleri eksik veya yanlış yapmış olabilirsiniz.
-Yardım almak için `istihza.com/forum <http://www.istihza.com/forum>`_ adresine uğrayabilirsiniz.
+Yardım almak için `forum.yazbel.com <https://forum.yazbel.com/>`_ adresine uğrayabilirsiniz.
 
 Python3'ü başarıyla kurup çalıştırabildiğinizi varsayarak yolumuza devam edelim.
 
@@ -268,7 +268,7 @@ Windows Kullanıcıları
 
 Windows kullanıcıları Python3'ü iki şekilde başlatabilir:
 
-    1. *Başlat > Tüm Programlar > Python*\ |major-italic|\ *> Python (Command Line)* yolunu takip ederek.
+    1. *Başlat > Tüm Programlar > Python*\ |major-italic| *> Python* |major-italic| yolunu takip ederek.
 
     2. Komut satırında ``python`` komutunu vererek.
 
@@ -276,7 +276,7 @@ Eğer birinci yolu tercih ederseniz, Python'ın size sunduğu komut satırına d
 Ancak Python komut satırına bu şekilde ulaştığınızda bazı kısıtlamalarla karşı karşıya kalırsınız.
 Doğrudan Python'ın komut satırına ulaşmak yerine önce MS-DOS komut satırına ulaşıp, oradan Python komut satırına ulaşmak özellikle ileride yapacağınız çalışmalar açısından çok daha mantıklı olacaktır.
 O yüzden komut satırına bu şekilde ulaşmak yerine ikinci seçeneği tercih etmenizi tavsiye ederim.
-Bunun için önceki bölümlerde gösterdiğimiz şekilde komut satırına ulaşın ve orada şu komutu çalıştırın::
+Bunun için komut satırına ulaşın ve orada şu komutu çalıştırın::
 
     python
 
@@ -287,7 +287,7 @@ Bu komutu verdiğinizde şuna benzer bir ekranla karşılaşacaksınız:
     |screenshotwin|
 
 Eğer bu komut yukarıdakine benzer bir ekran yerine bir hata mesajı verdiyse kurulum sırasında bazı adımları eksik veya yanlış yapmış olabilirsiniz.
-Yukarıdaki komut çalışmıyorsa, muhtemelen kurulum sırasında *Add python*\ |major-italic| *to path* kutucuğunu işaretlemeyi unutmuşsunuzdur.
+Yukarıdaki komut çalışmıyorsa, muhtemelen kurulum sırasında *Add Python* |major-minor3-italic| *to PATH* kutucuğunu işaretlemeyi unutmuşsunuzdur.
 Eğer öyleyse, kurulum dosyasını tekrar çalıştırıp, ilgili adımı gerçekleştirmeniz veya Python'ı kendiniz YOL'a eklemeniz gerekiyor.
 
 ``python`` komutunu başarıyla çalıştırabildiğinizi varsayarak yolumuza devam edelim.
@@ -311,7 +311,7 @@ Python, bilgisayarımızdaki farklı Python sürümlerini çalıştırabilmemiz 
 .. note:: Py programı yalnızca Windows'a özgüdür.
     GNU/Linux'ta böyle bir program bulunmaz.
 
-Py programını çalıştırmak için, daha önce gösterdiğimiz şekilde sistem komut satırına ulaşıyoruz ve orada şu komutu veriyoruz::
+Py programını çalıştırmak için, sistem komut satırına ulaşıyoruz ve orada şu komutu veriyoruz::
 
     py
 
@@ -388,6 +388,6 @@ Ancak programlamaya yeni başlayanların çok sık yaptığı bir hata var:
 Sistem komut satırı ile Python komut satırını birbirine karıştırmak.
 
 Asla unutmayın, kullandığınız işletim sisteminin komut satırı ile Python'ın komut satırı birbirinden farklı iki ortamdır.
-Yani Windows'ta ``cmd``, Ubuntu'da ise `Ctrl+Alt+T` ile ulaştığınız ortam sistem komut satırı iken, bu ortamı açıp ``python3`` (veya ``python`` ya da ``py3``) komutu vererek ulaştığınız ortam Python'ın komut satırıdır.
+Yani Windows'ta ``cmd``, Ubuntu'da ise `Ctrl+Alt+T` ile ulaştığınız ortam, sistem komut satırı iken, bu ortamı açıp ``python3`` (veya ``python`` ya da ``py3``) komutu vererek ulaştığınız ortam Python'ın komut satırıdır.
 Sistem komut satırında sistem komutları (mesela ``cd``, ``ls``, ``dir``, ``pwd``) verilirken, Python komut satırında, biraz sonra öğrenmeye başlayacağımız Python komutları verilir.
 Dolayısıyla ``python3`` (veya ``python`` ya da ``py3``) komutunu verdikten sonra ulaştığınız ortamda ``cd Desktop`` ve ``ls`` gibi sistem komutlarını kullanmaya çalışmanız sizi hüsrana uğratacaktır.
