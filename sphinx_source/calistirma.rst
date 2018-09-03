@@ -12,13 +12,13 @@ Bu bölümde ise kurduğumuz bu Python programını hem GNU/Linux'ta hem de Wind
 Öncelikle GNU/Linux kullanıcılarının Python'ı nasıl çalıştıracağına bakalım.
 
 GNU/Linux Kullanıcıları
-*************************
+***********************
 
 Geçen bölümlerde gördüğünüz gibi, Python3'ü GNU/Linux sistemleri üzerine farklı şekillerde kurabiliyoruz.
 Bu bölümde, her bir kurulum türü için Python3'ün nasıl çalıştırılacağını ayrı ayrı inceleyeceğiz.
 
 Kurulu Python3'ü Kullananlar
-==============================
+============================
 
 Eğer sisteminizde zaten Python3 kurulu ise komut satırında yalnızca şu komutu vererek Python3'ü başlatabilirsiniz::
 
@@ -34,7 +34,7 @@ O yüzden yukarıdaki komutu bir de ``python3`` şeklinde vermeyi deneyebilirsin
 Örneğin Ubuntu GNU/Linux dağıtımının **12.10** sürümünden itibaren ``python`` komutu Python2'yi; ``python3`` komutu ise Python3'ü çalıştırıyor.
 
 Python3'ü Depodan Kuranlar
-============================
+==========================
 
 Dediğimiz gibi, |today| tarihi itibariyle GNU/Linux dağıtımlarında öntanımlı Python sürümü ağırlıklı olarak Python2'dir.
 Dolayısıyla ``python`` komutu Python'ın 2.x sürümlerini çalıştırır.
@@ -71,7 +71,7 @@ Bu aşamada işlerin nerede ters gitmiş olabileceğine dair birkaç ipucu verel
 Gelelim Python3'ü kaynaktan derlemiş olanların durumuna...
 
 Python3'ü root Olarak Derleyenler
-====================================
+=================================
 
 Eğer Python3'ü önceki bölümlerde anlattığımız şekilde kaynaktan `root` hakları ile derlediyseniz ``python3`` komutu çalışmayacaktır.
 Bunun yerine şu komutu kullanmanız gerekecek:
@@ -109,7 +109,7 @@ Tabii bu komutu yetkili kullanıcı olarak vermeniz gerektiğini söylememe herh
 Bu komutu verdikten sonra artık sadece ``py3`` komutu ile Python programlama dilini başlatabilirsiniz.
 
 Çok Önemli Bir Uyarı
----------------------
+--------------------
 
 Bir önceki adımda anlattığımız gibi Python3'ü resmi sitesinden indirip kendiniz derlediniz.
 Gayet güzel.
@@ -175,7 +175,7 @@ Hele ki bir programı kaynaktan derlemeye karar vermişseniz...
 Bu ciddi uyarıyı da yaptığımıza göre gönül rahatlığıyla yolumuza devam edebiliriz.
 
 Python3'ü Ev Dizinine Kuranlar
-================================
+==============================
 
 Eğer Python3'ü kısıtlı kullanıcı hakları ile derleyip ev dizininize kurduysanız yukarıdaki komutlar Python'ı çalıştırmanızı sağlamayacaktır.
 Python3'ü ev dizinine kurmuş olan kullanıcılar Python3'ü çalıştırabilmek için, öncelikle komut satırı aracılığıyla Python3'ü kurdukları dizine, oradan da o dizin altındaki `bin/` klasörüne ulaşacak ve orada şu komutu verecek:
@@ -246,7 +246,7 @@ Yardım almak için `istihza.com/forum <http://www.istihza.com/forum>`_ adresine
 Python3'ü başarıyla kurup çalıştırabildiğinizi varsayarak yolumuza devam edelim.
 
 GNU/Linux'ta Farklı Sürümleri Birlikte Kullanmak
-==================================================
+================================================
 
 Daha önce de dediğimiz gibi, şu anda piyasada iki farklı Python serisi bulunuyor:
 Python2 ve Python3.
@@ -264,7 +264,7 @@ Ama eğer sisteminizde Python2 bile kurulu değilse, ki bu çok çok düşük bi
 GNU/Linux'ta Python'ı nasıl çalıştıracağımızı ve farklı Python sürümlerini bir arada nasıl kullanacağımızı öğrendiğimize göre, Windows kullanıcılarının durumuna bakabiliriz.
 
 Windows Kullanıcıları
-**********************
+*********************
 
 Windows kullanıcıları Python3'ü iki şekilde başlatabilir:
 
@@ -293,7 +293,7 @@ Eğer öyleyse, kurulum dosyasını tekrar çalıştırıp, ilgili adımı gerç
 ``python`` komutunu başarıyla çalıştırabildiğinizi varsayarak yolumuza devam edelim.
 
 Windows'ta Farklı Sürümleri Birlikte Kullanmak
-==================================================
+==============================================
 
 Daha önce de dediğimiz gibi, şu anda piyasada iki farklı Python serisi bulunuyor:
 Python2 ve Python3.
@@ -352,7 +352,7 @@ Böylece Python'la ilgili en temel bilgileri edinmiş olduk.
 Bu bölümde öğrendiklerimiz sayesinde Python programlama dilini bilgisayarımıza kurabiliyor ve bu programlama dilini başarıyla çalıştırabiliyoruz.
 
 Hangi Komut Hangi Sürümü Çalıştırıyor?
-***************************************
+**************************************
 
 Artık Python programlama dilinin bilgisayarımıza nasıl kurulacağını ve bu programlama dilinin nasıl çalıştırılacağını biliyoruz.
 Ancak konunun öneminden ötürü, tekrar vurgulayıp, cevabını bilip bilmediğinizden emin olmak istediğimiz bir soru var:
@@ -381,7 +381,7 @@ Biz bu kitapta şunları varsayacağız:
 Bu kitaptan yararlanırken, bu varsayımları göz önünde bulundurmalı, eğer bunlardan farklı komutlar kullanıyorsanız, kodlarınızı ona göre ayarlamalısınız.
 
 Sistem Komut Satırı ve Python Komut Satırı
-*********************************************
+******************************************
 
 Buraya kadar Python programlama dilini nasıl çalıştıracağımız konusundaki bütün bilgileri edindik.
 Ancak programlamaya yeni başlayanların çok sık yaptığı bir hata var:
