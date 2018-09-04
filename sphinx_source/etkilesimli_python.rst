@@ -197,10 +197,6 @@ Dilerseniz biz karakter dizilerine elimizin alışması için birkaç örnek ver
 
     ' '
 
-    >>> " "
-
-    ' '
-
 Yukarıdaki örneklerin hepsi birer karakter dizisidir.
 Dikkat ettiyseniz yukarıdaki karakter dizilerinin hepsinin ortak özelliği tırnak içinde gösteriliyor olmasıdır.
 Dediğimiz gibi, tırnak işaretleri karakter dizilerinin ayırt edici özelliğidir.
@@ -215,7 +211,7 @@ Bu fonksiyonu şöyle kullanıyoruz::
     <class 'str'>
 
 .. note:: Bu 'fonksiyon' kelimesinin kafanızı karıştırmasına izin vermeyin.
-    İlerde fonksiyonları oldukça ayrıntılı bir şekilde inceleyeceğimiz için, ``type()`` ifadesinin bir fonksiyon olduğunu bilmeniz şimdilik yeterli olacaktır.
+    İleride fonksiyonları oldukça ayrıntılı bir şekilde inceleyeceğimiz için, ``type()`` ifadesinin bir fonksiyon olduğunu bilmeniz şimdilik yeterli olacaktır.
     Üstelik fonksiyon konusunu ayrıntılı bir şekilde anlatma vakti geldiğinde siz fonksiyonlara dair pek çok şeyi zaten öğrenmiş olacaksınız.
 
 Burada amacımız `"Elma"` adlı öğenin tipini denetlemek.
@@ -231,7 +227,7 @@ O halde yukarıdaki çıktıya bakarak, `"Elma"` öğesinin bir karakter dizisi 
 Mesela `"½{656$#gfd"` ifadesinin hangi sınıfa girdiğini kontrol etmekle başlayabilirsiniz.
 
 Peki karakter dizileri ile neler yapabiliriz?
-Şu anda Python bilgimiz kısıtlı olduğu için karakter dizileri ile çok fazla şey yapamayız, ama ilerde bilgimiz arttıkça, karakter dizileriyle sıkı fıkı olacağız.
+Şu anda Python bilgimiz kısıtlı olduğu için karakter dizileri ile çok fazla şey yapamayız, ama ileride bilgimiz arttıkça, karakter dizileriyle sıkı fıkı olacağız.
 
 Esasında, henüz bilgimiz kısıtlı da olsa karakter dizileriyle yine de ufak tefek bazı şeyler yapamayacak durumda değiliz.
 Mesela şu anki bilgilerimizi ve görür görmez size tanıdık gelecek bazı basit parçaları kullanarak, karakter dizilerini birbirleriyle birleştirebiliriz::
@@ -721,9 +717,9 @@ Ancak ileride beklenmedik uyum sorunları çıkması ihtimaline karşı değişk
 
 \5. Aşağıdaki kelimeleri değişken adı olarak kullanamazsınız::
 
-    ['False', 'None', 'True', 'and', 'as', 'assert', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else',
-    'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or', 'pass',
-    'raise', 'return', 'try', 'while', 'with', 'yield']
+    ['False', 'None', 'True', 'and', 'as', 'assert', 'async', 'await', 'break', 'class', 'continue', 'def', 'del',
+    'elif', 'else', 'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal',
+    'not', 'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield']
 
 Bunlar Python'da özel anlam ifade eden kelimelerdir.
 Etkileşimli kabuk zaten bu kelimeleri değişken adı olarak kullanmanıza izin vermez.
@@ -748,7 +744,7 @@ Etkileşimli kabuk zaten bu kelimeleri değişken adı olarak kullanmanıza izin
       File "<stdin>", line 1
     SyntaxError: assignment to keyword
 
-Ama ilerde göreceğimiz gibi, programlarınızı bir dosyaya yazarken bu kelimeleri değişken adı olarak kullanmaya çalışırsanız programınız tespit etmesi çok güç hatalar üretecektir.
+Ama ileride göreceğimiz gibi, programlarınızı bir dosyaya yazarken bu kelimeleri değişken adı olarak kullanmaya çalışırsanız programınız tespit etmesi çok güç hatalar üretecektir.
 
 Bu arada elbette yukarıdaki listeyi bir çırpıda ezberlemeniz beklenmiyor sizden.
 Python programlama dilini öğrendikçe özel kelimeleri bir bakışta tanıyabilecek duruma geleceksiniz.
@@ -757,9 +753,9 @@ Ayrıca eğer isterseniz şu komutları vererek, istediğiniz her an yukarıdaki
     >>> import keyword
     >>> keyword.kwlist
 
-    ['False', 'None', 'True', 'and', 'as', 'assert', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else',
-    'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or', 'pass',
-    'raise', 'return', 'try', 'while', 'with', 'yield']
+    ['False', 'None', 'True', 'and', 'as', 'assert', 'async', 'await', 'break', 'class', 'continue', 'def', 'del',
+    'elif', 'else', 'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal',
+    'not', 'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield']
 
 Size bir soru:
 Acaba bu listede kaç tane kelime var?
@@ -769,21 +765,21 @@ Bu tür işler için hangi aracı kullanabileceğimizi artık çok iyi biliyor o
 
     >>> len(keyword.kwlist)
 
-    33
+    35
 
 Bu kodları şöyle yazabileceğimizi de biliyorsunuz::
 
     >>> yasaklı_kelimeler = keyword.kwlist
     >>> len(yasaklı_kelimeler)
 
-    33
+    35
 
 Bu arada, yukarıdaki kodların bir kısmını henüz anlayamamış olabilirsiniz.
 Hiç endişe etmeyin.
 Yukarıdaki kodları vermemizin sebebi değişken adı olarak kullanılamayacak kelimelere kısa yoldan nasıl ulaşabileceğinizi gösterebilmek içindir.
 Bir-iki bölüm sonra burada yazdığımız kodları rahatlıkla anlayabilecek düzeye geleceksiniz.
 
-Yukarıda verdiğimiz kodların çıktısından anladığımıza göre, toplam `33` tane kelime varmış değişken adı belirlerken kullanmaktan kaçınmamız gereken...
+Yukarıda verdiğimiz kodların çıktısından anladığımıza göre, toplam `35` tane kelime varmış değişken adı belirlerken kullanmaktan kaçınmamız gereken...
 
 \6. Yukarıdaki kelimeler dışında, Python programlama diline ait fonksiyon ve benzeri araçların adlarını da değişken adı olarak kullanmamalısınız.
 Örneğin yazdığınız programlarda değişkenlerinize `type` veya `len` adı vermeyin.
@@ -846,11 +842,11 @@ Mesela şu değişken adı, kodları okuyan kişiye, değişken değerinin anlam
 
 Şu değişken adı ise gereksiz yere uzundur::
 
-    >>> türkiye_büyük_millet_meclisi_milletvekili_sayısı = 550
+    >>> türkiye_büyük_millet_meclisi_milletvekili_sayısı = 600
 
 Değişken adlarının uzunluğunu makul seviyede tutmak esastır::
 
-    >>> tbmm_mv_sayısı = 550
+    >>> tbmm_mv_sayısı = 600
 
 Yukarıda verdiğimiz bütün bu örnekler bize, Python'da değişkenlerin, değerlere atanmış adlardan ibaret olduğunu gösteriyor.
 Değişkenler, yazdığımız programlarda bize çok büyük kolaylık sağlar.
@@ -948,9 +944,9 @@ Eğer bu şekilde değişken atamak yerine, değerleri gerektiği her yerde elle
     276
 
 Değişken kavramı şu anda gözünüze pek anlamlı görünmemiş olabilir.
-Ama programlarımızı ilerde dosyaya kaydettiğimiz zaman bu değişkenler çok daha kullanışlı araçlar olarak karşımıza çıkacaktır.
+Ama programlarımızı ileride dosyaya kaydettiğimiz zaman bu değişkenler çok daha kullanışlı araçlar olarak karşımıza çıkacaktır.
 
-Dilerseniz bir örnek daha yaparak yukarıdaki bilgilerin kafamıza iyice yerleşmesiniz sağlayalım.
+Dilerseniz bir örnek daha yaparak yukarıdaki bilgilerin kafamıza iyice yerleşmesini sağlayalım.
 Mesela bir dairenin alanını (yaklaşık olarak) hesaplayan bir program yazalım.
 
 Öncelikle `çap` adlı bir değişken tanımlayarak dairenin çapını belirleyelim::
@@ -1019,7 +1015,8 @@ Eğer bir sayının küpünü bulmak isteseydik o sayıyı üç kez kendisiyle �
     27
 
 Peki ya bir sayının mesela beşinci kuvvetini hesaplamak istersek ne yapacağız?
-O sayıyı beş kez kendisiyle mi çarpacağız? Bu ne kadar vasat bir yöntem, değil mi?
+O sayıyı beş kez kendisiyle mi çarpacağız?
+Bu ne kadar vasat bir yöntem, değil mi?
 
 Elbette bir sayının herhangi bir kuvvetini hesaplamak için o sayıyı kendisiyle kuvvetince çarpmayacağız.
 Python'da bu tür 'kuvvet hesaplamaları' için ayrı bir işleç (ve fonksiyon) bulunur.
