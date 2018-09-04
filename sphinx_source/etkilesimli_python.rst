@@ -4,9 +4,9 @@
 
 .. highlight:: py3
 
-*******************
+******************
 Etkileşimli Python
-*******************
+******************
 
 Şu ana kadar öğrendiklerimiz sayesinde Python programlama dilinin farklı sistemlere nasıl kurulacağını ve nasıl çalıştırılacağını biliyoruz.
 Dolayısıyla Python'ı bir önceki bölümde anlattığımız şekilde çalıştırdığımız zaman şuna benzer bir ekranla karşılaşacağımızın farkındayız:
@@ -108,7 +108,7 @@ Ama aslında şu küçücük kod parçası bile bize Python programlama dili hak
 Gelin isterseniz bu tek satırlık kodu biraz inceleyelim...
 
 Karakter Dizilerine Giriş
-==========================
+=========================
 
 Dediğimiz gibi, yukarıda yazdığımız küçücük kod parçası sizi heyecanlandırmamış olabilir, ama aslında bu kod Python programlama dili ve bu dilin yapısı hakkında çok önemli bilgileri içinde barındırıyor.
 
@@ -304,7 +304,7 @@ Karakter dizilerini sonraki bir bölümde bütün ayrıntılarıyla inceleyeceğ
 O yüzden şimdilik bu konuya bir ara verelim.
 
 Sayılara Giriş
-===============
+==============
 
 Dedik ki, Python'da birtakım veri tipleri bulunur ve karakter dizileri de bu veri tiplerinden yalnızca biridir.
 Veri tipi olarak karakter dizilerinin dışında, biraz önce aritmetik işleçler vesilesiyle sözünü ettiğimiz, bir de 'sayı' (*number*) adlı bir veri tipi vardır.
@@ -504,7 +504,7 @@ Bu bilgiler size önemsizmiş gibi gelebilir, ama aslında karakter dizileri ile
 O yüzden burada öğrendiğiniz hiçbir bilgi kırıntısını baştan savmamanızı (ve sabırsızlık ya da acelecilik etmemenizi) tavsiye ederim.
 
 Değişkenler
-============
+===========
 
 Şimdi şöyle bir durum düşünün:
 Diyelim ki sisteme kayıt için kullanıcı adı ve parola belirlenmesini isteyen bir program yazıyorsunuz.
@@ -692,7 +692,7 @@ Mesela::
 Gördüğünüz gibi, değişken kullanımı işlerimizi bir hayli kolaylaştırıyor.
 
 Değişken Adı Belirleme Kuralları
----------------------------------
+--------------------------------
 
 Python programlama dilinde, değişken adı olarak belirleyebileceğimiz kelime sayısı neredeyse sınırsızdır.
 Yani hemen hemen her kelimeyi değişken adı olarak kullanabiliriz.
@@ -860,7 +860,7 @@ Ayrıca zaten ileride kullanıcıdan veri almaya başladığınızda, aldığın
 O yüzden Python'daki değişken kavramını şimdiden iyi tanıyıp anlamakta büyük fayda var.
 
 Uygulama Örnekleri
------------------------
+------------------
 
 Gelin isterseniz yukarıda verdiğimiz bilgileri pekiştirmek için birkaç ufak alıştırma yapalım, alıştırma yaparken de sizi yine Python programlama diline ilişkin çok önemli bazı yeni bilgilerle tanıştıralım.
 
@@ -1114,12 +1114,12 @@ Dediğimiz gibi, ``pow()`` fonksiyonu genellikle sadece iki parametre ile kullan
 Üçüncü parametrenin kullanım alanı oldukça dardır.
 
 Değişkenlere Dair Bazı İpuçları
---------------------------------
+-------------------------------
 
 Değişkenin ne demek olduğunu öğrendiğimize göre, değişkenlere dair bazı ufak ipuçları verebiliriz.
 
 Aynı Değere Sahip Değişkenler Tanımlama
-........................................
+.......................................
 
 Şimdi size şöyle bir soru sormama izin verin:
 Acaba aynı değere sahip iki değişkeni nasıl tanımlayabiliriz?
@@ -1250,7 +1250,7 @@ Gördüğünüz gibi, aynı anda birden fazla değişken tanımlayabilmek işler
 Değişkenlerle ilgili bir ipucu daha verelim...
 
 Değişkenlerin Değerini Takas Etme
-..................................
+.................................
 
 Diyelim ki, işyerinizdeki personelin unvanlarını tuttuğunuz bir veritabanı var elinizde.
 Bu veritabanında şuna benzer ilişkiler tanımlı::
