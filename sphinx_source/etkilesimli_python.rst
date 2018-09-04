@@ -232,9 +232,9 @@ Peki karakter dizileri ile neler yapabiliriz?
 Esasında, henüz bilgimiz kısıtlı da olsa karakter dizileriyle yine de ufak tefek bazı şeyler yapamayacak durumda değiliz.
 Mesela şu anki bilgilerimizi ve görür görmez size tanıdık gelecek bazı basit parçaları kullanarak, karakter dizilerini birbirleriyle birleştirebiliriz::
 
-    >>> "istihza" + ".com"
+    >>> "yazbel" + ".com"
 
-    'istihza.com'
+    'yazbel.com'
 
 Burada `+` işaretini kullanarak karakter dizilerini nasıl birleştirebildiğimize dikkat edin.
 İki karakter dizisini `+` işareti ile birleştirdiğimizde karakter dizilerinin arasında boşluk olmadığına özellikle dikkatinizi çekmek isterim.
@@ -463,9 +463,9 @@ Burada `+` işlecinin toplama anlamına gelmediğine dikkat edin.
 Bu işleç burada iki karakter dizisini birleştirme görevi üstleniyor.
 Yani yukarıdaki örneğin şu örnekten hiçbir farkı yoktur::
 
-    >>> "istihza." + "com"
+    >>> "yazbel." + "com"
 
-    'istihza.com'
+    'yazbel.com'
 
 Bu iki örnekte de yaptığımız şey karakter dizilerini birbiriyle birleştirmektir.
 
@@ -815,15 +815,15 @@ Artık 'type' kelimesi yine ``type()`` fonksiyonunu çağıracak::
 \7. Değişken adlarını belirlerken, değişkeni oluşturan kelimeler arasında boşluk bırakılamaz.
 Yani şu kullanım yanlıştır::
 
-    >>> kullanıcı adı = "istihza"
+    >>> kullanıcı adı = "yazbel"
 
 Yukarıdaki değişkeni şu şekilde tanımlayabiliriz::
 
-    >>> kullanıcı_adı = "istihza"
+    >>> kullanıcı_adı = "yazbel"
 
 Ya da şöyle::
 
-    >>> kullanıcıAdı = "istihza"
+    >>> kullanıcıAdı = "yazbel"
 
 \8. Değişken adları belirlerken, değişken adının, değişkenin değerini olabildiğince betimlemesine dikkat etmemiz kodlarımızın okunaklılığını artıracaktır.
 Örneğin::
@@ -1412,9 +1412,9 @@ Gördüğünüz gibi, ``_`` komutunun değeri artık `56715` sayısıdır...
 
     'www'
 
-    >>> _ + ".istihza.com"
+    >>> _ + ".yazbel.com"
 
-    'www.istihza.com'
+    'www.yazbel.com'
 
 Bu işaret öyle çok sık kullanılan bir araç değildir, ama zaman zaman işinizi epey kolaylaştırır.
 Yalnız, unutmamamız gereken şey, bu özelliğin sadece etkileşimli kabuk ortamında geçerli olmasıdır.
