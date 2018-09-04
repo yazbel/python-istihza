@@ -48,7 +48,7 @@ Bu komutun ardından şuna benzer bir ekranla karşılaşmış olmalısınız:
 
 .. container:: screenshot
 
-    |screenshotlin|
+    |python-screenshot-lin|
 
 Eğer yukarıdaki ekranı gördüyseniz Python'la programlama yapmaya hazırsınız demektir.
 Değilse, geriye dönüp işlerin nerede ters gittiğini bulmaya çalışabilirsiniz.
@@ -78,12 +78,12 @@ Bunun yerine şu komutu kullanmanız gerekecek:
 
 .. parsed-literal::
 
-    python\ |major-noformat|
+    python\ |major-minor3|
 
-.. note:: Kurduğunuz Python3 sürümünün |major| olduğunu varsayıyorum.
+.. note:: Kurduğunuz Python3 sürümünün |major-minor3-code| olduğunu varsayıyorum.
     Eğer farklı bir Python3 sürümü kurduysanız, elbette başlatıcı komut olarak o sürümün adını kullanmanız gerekecektir.
     Mesela: ``python3.0`` veya ``python3.1``.
-    Bu arada |pycommand| komutunda |ext-noformat| sayısının rakamları arasında bir adet nokta işareti olduğunu gözden kaçırmıyoruz...
+    Bu arada |command3-code| komutunda |major-minor3-space| sayısının rakamları arasında bir adet nokta işareti olduğunu gözden kaçırmıyoruz...
 
 Tıpkı paket deposundan kurulumda olduğu gibi, eğer yukarıdaki komut Python'ı çalıştırmanızı sağlamıyorsa, kurulum esnasında bazı şeyler ters gitmiş olabilir.
 Örneğin kaynaktan kurulumun herhangi bir aşamasında bir hata almış olabilirsiniz ve bu da Python'ın kurulumunu engellemiş olabilir.
@@ -96,14 +96,14 @@ Böylece sadece ``py3`` komutunu vererek Python3'ü başlatabilirsiniz.
 
 Peki bunu nasıl yapacağız?
 
-Python kaynaktan derlendiğinde çalıştırılabilir dosya `/usr/local/bin/` dizini içine `Python`\ |major| (veya kurduğunuz Python3 sürümüne bağlı olarak `Python3.0` ya da `Python3.1`) adıyla kopyalanır.
-Bu nedenle Python3'ü çalıştırabilmek için |pycommand| komutunu kullanmamız gerekir.
-Python3'ü çalıştırabilmek için mesela sadece ``py3`` gibi bir komut kullanmak istiyorsak yapacağımız tek şey `/usr/local/bin/` dizini içindeki `python`\ |major| adlı dosyaya `/usr/bin` dizini altından, `py3` adlı bir sembolik bağ oluşturmak olacaktır.
+Python kaynaktan derlendiğinde çalıştırılabilir dosya `/usr/local/bin/` dizini içine `Python`\ |major-minor3-code| (veya kurduğunuz Python3 sürümüne bağlı olarak `Python3.0` ya da `Python3.1`) adıyla kopyalanır.
+Bu nedenle Python3'ü çalıştırabilmek için |command3-code| komutunu kullanmamız gerekir.
+Python3'ü çalıştırabilmek için mesela sadece ``py3`` gibi bir komut kullanmak istiyorsak yapacağımız tek şey `/usr/local/bin/` dizini içindeki `python`\ |major-minor3-code| adlı dosyaya `/usr/bin` dizini altından, `py3` adlı bir sembolik bağ oluşturmak olacaktır.
 Bunun için ``ln`` komutunu kullanacağız:
 
 .. parsed-literal::
 
-    ln -s /usr/local/bin/python\ |major-noformat| /usr/bin/py3
+    ln -s /usr/local/bin/python\ |major-minor3| /usr/bin/py3
 
 Tabii bu komutu yetkili kullanıcı olarak vermeniz gerektiğini söylememe herhalde gerek yoktur.
 Bu komutu verdikten sonra artık sadece ``py3`` komutu ile Python programlama dilini başlatabilirsiniz.
@@ -182,7 +182,7 @@ Python3'ü ev dizinine kurmuş olan kullanıcılar Python3'ü çalıştırabilme
 
 .. parsed-literal::
 
-    ./python\ |major-noformat|
+    ./python\ |major-minor3|
 
 Diyelim ki Python3'ü `$HOME/python` adlı dizine kurdunuz.
 Önce şu komutla `$HOME/python/bin` adlı dizine ulaşıyoruz::
@@ -193,15 +193,15 @@ Ardından da şu komutu veriyoruz:
 
 .. parsed-literal::
 
-    ./python\ |major-noformat|
+    ./python\ |major-minor3|
 
 .. note:: Komutun başındaki `./` işaretinin ne işe yaradığını artık adınız gibi biliyorsunuz...
 
-.. note:: Elbette ben burada kurduğunuz Python sürümünün |major-noformat| olduğunu varsaydım.
+.. note:: Elbette ben burada kurduğunuz Python sürümünün |major-minor3| olduğunu varsaydım.
     Eğer farklı bir sürüm kurduysanız yukarıdaki komutu ona göre yazmanız gerekiyor.
 
 Eğer isterseniz bu şekilde çalışmaya devam edebilirsiniz.
-Ancak her defasında Python'ın kurulu olduğu dizin altına gelip orada ./python\ |major-noformat| komutunu çalıştırmak bir süre sonra eziyete dönüşecektir.
+Ancak her defasında Python'ın kurulu olduğu dizin altına gelip orada ./python\ |major-minor3| komutunu çalıştırmak bir süre sonra eziyete dönüşecektir.
 İşlerinizi kolaylaştırmak için şu işlemleri takip etmelisiniz:
 
 \1. ev dizininizin altında bulunan `.profile` (veya kullandığınız dağıtıma göre `.bash_profile` ya da `.bashrc`) adlı dosyayı açın.
@@ -226,11 +226,11 @@ Dosyada yaptığımız değişikliğin etkin hale gelebilmesi için şu komutu v
 
 Elbette eğer sizin sisteminizdeki dosyanın adı `.bash_profile` veya `.bashrc` ise yukarıdaki komutu ona göre değiştirmelisiniz.
 
-\5. Daha sonra `$HOME/python/bin/python`\ |major| adlı dosyaya `$HOME/python/bin/` dizini altından mesela `py3` gibi bir sembolik bağ verin:
+\5. Daha sonra `$HOME/python/bin/python`\ |major-minor3-code| adlı dosyaya `$HOME/python/bin/` dizini altından mesela `py3` gibi bir sembolik bağ verin:
 
     .. parsed-literal::
 
-        ln -s $HOME/python/bin/python\ |major-noformat| $HOME/python/bin/py3
+        ln -s $HOME/python/bin/python\ |major-minor3| $HOME/python/bin/py3
 
 \6. Bilgisayarınızı yeniden başlatın.
 
@@ -268,7 +268,7 @@ Windows Kullanıcıları
 
 Windows kullanıcıları Python3'ü iki şekilde başlatabilir:
 
-    1. *Başlat > Tüm Programlar > Python*\ |major-italic| *> Python* |major-italic| yolunu takip ederek.
+    1. *Başlat > Tüm Programlar > Python*\ |major-minor3-italic| *> Python* |major-minor3-italic| yolunu takip ederek.
 
     2. Komut satırında ``python`` komutunu vererek.
 
@@ -284,7 +284,7 @@ Bu komutu verdiğinizde şuna benzer bir ekranla karşılaşacaksınız:
 
 .. container:: screenshot
 
-    |screenshotwin|
+    |python-screenshot-win|
 
 Eğer bu komut yukarıdakine benzer bir ekran yerine bir hata mesajı verdiyse kurulum sırasında bazı adımları eksik veya yanlış yapmış olabilirsiniz.
 Yukarıdaki komut çalışmıyorsa, muhtemelen kurulum sırasında *Add Python* |major-minor3-italic| *to PATH* kutucuğunu işaretlemeyi unutmuşsunuzdur.

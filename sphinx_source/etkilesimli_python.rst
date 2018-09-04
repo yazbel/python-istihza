@@ -13,7 +13,7 @@ Dolayısıyla Python'ı bir önceki bölümde anlattığımız şekilde çalış
 
 .. container:: screenshot
 
-    |screenshotlin|
+    |python-screenshot-lin|
 
 Biz şimdiye kadar bu ekrana Python komut satırı demeyi tercih ettik.
 Dilerseniz bundan sonra da bu adı kullanmaya devam edebilirsiniz.

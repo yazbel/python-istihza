@@ -719,7 +719,7 @@ yazılmış tüm modüllerde bulunur. Bu niteliği şu şekilde kullanıyoruz:
 
     >>> os.__file__
 
-    'C:\\Python\ |ext-noformat|\ \\lib\\os.py'
+    'C:\\Python\ |major-minor3-space|\ \\lib\\os.py'
 
 İşte buradan aldığımız çıktı bize ``os`` modülünün kaynak dosyasının nerede
 olduğunu gösteriyor. Hemen çıktıda görünen konuma gidelim ve `os.py` dosyasını

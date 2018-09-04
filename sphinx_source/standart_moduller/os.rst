@@ -1075,13 +1075,13 @@ Eğer bu komutu Windows'ta verdiyseniz şu çıktıyı alırsınız:
 
 .. parsed-literal::
 
-    'C:\\Python\ |ext-noformat|\ \\lib\\ntpath.py'
+    'C:\\Python\ |major-minor3-space|\ \\lib\\ntpath.py'
 
 Ama eğer bu komutu GNU/Linux'ta verdiyseniz şuna benzer bir çıktı alırsınız:
 
 .. parsed-literal::
 
-    '/home/python\ |ext-noformat|\ /lib/python\ |major-noformat|\ /posixpath.py'
+    '/home/python\ |major-minor3-space|\ /lib/python\ |major-minor3|\ /posixpath.py'
 
 Gördüğünüz gibi, ``__file__``, `os.path` üzerinde kullanılabiliyor. Yukarıdaki
 çıktılardan anladığımıza göre `os.path` niteliği Windows'ta `ntpath`,

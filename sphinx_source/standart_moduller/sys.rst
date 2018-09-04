@@ -196,7 +196,7 @@ kullanabilirsiniz:
 
     >>> sys.executable
 
-    C:\\Python\ |ext-noformat|\ python.exe
+    C:\\Python\ |major-minor3-space|\ python.exe
 
 sys.getwindowsversion()
 ==========================
@@ -355,7 +355,7 @@ sürüm numarasını verir:
 
     >>> sys.winver
 
-    |major-noformat|
+    |major-minor3|
 
 .. warning:: Bu nitelik yalnızca Windows'ta çalışır; GNU/Linux'ta tanımlı
     değildir.

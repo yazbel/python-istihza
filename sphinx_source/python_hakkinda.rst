@@ -110,10 +110,10 @@ Farklı Python Sürümleri
 ***********************
 
 Eğer daha önce Python programlama dili ile ilgili araştırma yaptıysanız, şu anda piyasada iki farklı Python serisinin olduğu dikkatinizi çekmiş olmalı.
-|today| tarihi itibariyle piyasada olan en yeni Python sürümleri Python |py2| ve Python |py3|\ |sonek3|.
+|today| tarihi itibariyle piyasada olan en yeni Python sürümleri Python |version2| ve Python |version3|\ |suffix3|.
 
-Eğer bir Python sürümü 2 sayısı ile başlıyorsa (mesela |py2|), o sürüm Python 2.x serisine aittir.
-Yok eğer bir Python sürümü 3 sayısı ile başlıyorsa (mesela |py3|), o sürüm Python 3.x serisine aittir.
+Eğer bir Python sürümü 2 sayısı ile başlıyorsa (mesela |version2|), o sürüm Python 2.x serisine aittir.
+Yok eğer bir Python sürümü 3 sayısı ile başlıyorsa (mesela |version3|), o sürüm Python 3.x serisine aittir.
 
 Peki neden piyasada iki farklı Python sürümü var ve bu bizim için ne anlama geliyor?
 

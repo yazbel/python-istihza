@@ -384,7 +384,7 @@ dizilerinin dilimlenme özelliğinden yararlanabiliyoruz:
     >>> sürüm = sys.version
     >>> print(sürüm[:5])
 
-    |py3|
+    |version3|
 
 Bu işlemin bir benzerini ``split()`` metoduyla da yapabiliriz. Dikkatlice
 inceleyin:
@@ -414,7 +414,7 @@ listenin ilk öğesi, kullandığımız Python serisinin sürüm numarasını ve
 
     >>> print(sürüm.split()[0])
 
-    |py3|
+    |version3|
 
 Böylece ``split()`` metodunu öğrenmiş olduk. Gelelim ``rsplit()`` metoduna...
 

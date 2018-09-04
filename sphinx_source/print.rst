@@ -837,10 +837,10 @@ verebilirsiniz::
     >>> os.getcwd()
 
 Bu komutun çıktısında hangi dizinin adı görünüyorsa, `deneme.txt` dosyası da o
-dizinin içindedir. Mesela bendeki çıktı |lin_home|\ `/Desktop`. Demek ki
+dizinin içindedir. Mesela bendeki çıktı |lin-home-code|\ `/Desktop`. Demek ki
 oluşturduğum `deneme.txt` adlı dosya masaüstündeymiş. Ben bu komutları Ubuntu
 üzerinde verdim. Eğer Windows üzerinde verseydim şuna benzer bir çıktı
-alacaktım: |win_home|\ `\\Desktop`
+alacaktım: |win-home-code|\ `\\Desktop`
 
 \3. Ardından da normal bir şekilde ``print()`` fonksiyonumuzu çalıştırdık. Ama
 gördüğünüz gibi ``print()`` fonksiyonu bize herhangi bir çıktı vermedi. Çünkü,

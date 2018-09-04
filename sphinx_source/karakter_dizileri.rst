@@ -1551,7 +1551,7 @@ kullanmanın başka bir yöntemi daha var. Dikkatlice bakın::
 
 .. parsed-literal::
 
-    |py3|
+    |version3|
 
 Bu yöntem bütün Python sürümlerinde çalışır. Dolayısıyla, farklı Python
 sürümlerinde çalışmasını tasarladığınız programlarınızda sürüm kontrolünü

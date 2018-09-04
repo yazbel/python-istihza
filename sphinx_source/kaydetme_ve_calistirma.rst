@@ -132,8 +132,8 @@ olabilir:
 
 #. Asla unutmayın, Python'ın etkileşimli kabuğunu başlatmak için hangi komutu
    kullanıyorsanız, `randevu.py` dosyasını çalıştırmak için de aynı komutu
-   kullanacaksınız. Yani eğer Python'ın etkileşimli kabuğunu |pycommand| gibi bir
-   komutla çalıştırıyorsanız, programınızı da |pycommand| ``randevu.py`` şeklinde
+   kullanacaksınız. Yani eğer Python'ın etkileşimli kabuğunu |command3-code| gibi bir
+   komutla çalıştırıyorsanız, programınızı da |command3-code| ``randevu.py`` şeklinde
    çalıştırmanız gerekir. Aynı şekilde, eğer etkileşimli kabuğu mesela ``python``
    (veya ``py3``) gibi bir komutla çalıştırıyorsanız, programınızı da ``python
    randevu.py`` (veya ``py3 randevu.py``) şeklinde çalıştırmalısınız. Neticede
@@ -164,7 +164,7 @@ kolaylaştıracaktır.
 
 Python programlama dilini öğrenmeye yeni başlayan Windows kullanıcıları için en
 uygun metin düzenleyici IDLE'dır. *Başlat > Tüm Programlar > Python*\
-|major-noformat| *> IDLE (Python GUI)* yolunu takip ederek IDLE'a
+|major-minor3| *> IDLE (Python GUI)* yolunu takip ederek IDLE'a
 ulaşabilirsiniz.
 
 IDLE'ı açtığınızda şöyle bir ekranla karşılaşacaksınız:

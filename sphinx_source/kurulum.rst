@@ -111,8 +111,8 @@ Ubuntu'da yukarıdaki paketlerin hepsini şu komutla kurabilirsiniz::
 
     sudo apt-get install tcl-dev tk-dev zlib1g-dev ncurses-dev libreadline-dev libdb-dev libgdbm-dev libzip-dev libssl-dev libsqlite3-dev libbz2-dev liblzma-dev
 
-Yukarıdaki programları kurduktan sonra |download| adresine gidiyoruz.
-Bu adreste, üzerinde 'Python-|py3|.tar.xz' yazan bağlantıya tıklayarak sıkıştırılmış kurulum dosyasını bilgisayarımıza indiriyoruz.
+Yukarıdaki programları kurduktan sonra |download-ftp| adresine gidiyoruz.
+Bu adreste, üzerinde 'Python-|version3|.tar.xz' yazan bağlantıya tıklayarak sıkıştırılmış kurulum dosyasını bilgisayarımıza indiriyoruz.
 
 Daha sonra bu sıkıştırılmış dosyayı açıyoruz.
 Açılan klasörün içine girip, orada ilk olarak şu komutu veriyoruz::
@@ -232,7 +232,7 @@ O yüzden Windows kullanıcıları, Python'ı sitesinden indirip kuracak.
 
 Bunun için öncelikle http://www.python.org/downloads adresine gidiyoruz.
 
-Bu adrese gittiğinizde, üzerinde 'Download Python |py3|' yazan bir düğme göreceksiniz.
+Bu adrese gittiğinizde, üzerinde 'Download Python |version3|' yazan bir düğme göreceksiniz.
 Daha önce de söylediğimiz gibi, eğer bir Python sürüm numarası '2' ile başlıyorsa o sürüm 2.x serisine, yok eğer '3' ile başlıyorsa 3.x serisine aittir.
 Dolayısıyla bu düğme Python3 sürümünü içerir.
 
@@ -240,12 +240,12 @@ Bu düğmeye tıklıyoruz.
 Bu düğmeye tıkladığınızda bilgisayarınıza `.exe` uzantılı kurulum dosyası inecek.
 Bu dosyaya çift tıklayarak kurulum programını başlatabilirsiniz.
 
-.. note:: Eğer indireceğiniz Python sürümünün mimarisini ve sürümünü kendiniz seçmek isterseniz |download| adresinden kendinize uygun olan sürümü bulup indirebilirsiniz.
+.. note:: Eğer indireceğiniz Python sürümünün mimarisini ve sürümünü kendiniz seçmek isterseniz |download-ftp| adresinden kendinize uygun olan sürümü bulup indirebilirsiniz.
 
 Kurulum dosyasına çift tıkladığınızda karşınıza ilk gelen ekranda, pencerenin alt tarafında şu kutucukları göreceksiniz:
 
     #. Install launcher for all users (recommended)
-    #. Add Python |major-noformat| to PATH
+    #. Add Python |major-minor3| to PATH
 
 Burada ilk kutucuk zaten seçilidir.
 Bunu bu şekilde bırakabilirsiniz.
@@ -281,7 +281,7 @@ Ayrıca bazı durumlarda, o anda çalışan Python sürümünün hangi konumdan 
 
 Python'ın, işletim sisteminizde hangi dizine kurulduğu, Python'ı nasıl kurduğunuza bağlı olarak farklılık gösterir.
 
-GNU/Linux dağıtımlarında Python genellikle `/usr/lib/python`\ |major| dizininde kurulur.
+GNU/Linux dağıtımlarında Python genellikle `/usr/lib/python`\ |major-minor3-code| dizininde kurulur.
 Ama elbette, eğer siz Python'ı kaynaktan derlediyseniz, derleme sırasında `configure` betiğine verdiğiniz `--prefix` parametresi yardımıyla Python'ın kurulum dizinini kendiniz de belirlemiş olabilirsiniz.
 
 Windows'ta Python programlama dilini aynen bu kitapta gösterdiğimiz şekilde kurduysanız, Python ``%LOCALAPPDATA%\Programs\Python`` dizini içine kurulacaktır.
