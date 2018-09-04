@@ -1,5 +1,6 @@
-.. meta:: :description: Bu bölümde Python programlama dilinin farklı işletim sistemlerinde nasıl çalıştırılacağını öğreneceğiz.
-          :keywords: python, python2, python3, nasıl çalıştırılır, kaynaktan kurulum, yol, path, yola ekleme, gnu linux, windows, py
+.. meta::
+    :description: Bu bölümde Python programlama dilinin farklı işletim sistemlerinde nasıl çalıştırılacağını öğreneceğiz.
+    :keywords: python, python2, python3, nasıl çalıştırılır, kaynaktan kurulum, yol, path, yola ekleme, gnu linux, windows, py
 
 .. highlight:: none
 

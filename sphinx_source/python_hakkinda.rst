@@ -1,6 +1,6 @@
 .. meta::
-   :description: Python programlama dili hakkında neler biliyorsunuz?
-   :keywords: Python, python2, python3, hakkında, telaffuz, yardım, kaynaklar, farklı python sürümleri
+    :description: Python programlama dili hakkında neler biliyorsunuz?
+    :keywords: Python, python2, python3, hakkında, telaffuz, yardım, kaynaklar, farklı python sürümleri
 
 .. highlight:: none
 

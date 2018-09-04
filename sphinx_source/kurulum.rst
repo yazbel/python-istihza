@@ -1,5 +1,6 @@
-.. meta:: :description: Bu bölümde Python programlama dilinin farklı işletim sistemlerine nasıl kurulacağını anlatacağız.
-          :keywords: python, python2, python3, kurulum, kaynaktan, Windows, GNU, Linux, root, configure, prefix, home, ev, path, yol
+.. meta::
+    :description: Bu bölümde Python programlama dilinin farklı işletim sistemlerine nasıl kurulacağını anlatacağız.
+    :keywords: python, python2, python3, kurulum, kaynaktan, Windows, GNU, Linux, root, configure, prefix, home, ev, path, yol
 
 .. highlight:: none
 

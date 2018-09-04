@@ -1,5 +1,6 @@
-.. meta:: :description: Bu bölümde Python3 Kılavuzu'ndan söz edeceğiz.
-          :keywords: python, python3, türkçe kaynak, programlama dili, forum
+.. meta::
+    :description: Bu bölümde Python3 Kılavuzu'ndan söz edeceğiz.
+    :keywords: python, python3, türkçe kaynak, programlama dili, forum
 
 .. highlight:: py3
 
