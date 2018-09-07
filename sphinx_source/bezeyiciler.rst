@@ -14,7 +14,7 @@ ve kendinize özgü decoratorların nasıl oluşturabileceğinizi anlayacağız.
 Python'daki herşey objedir, fonksiyonlar dahil. Ama nasıl?
 Pythonda fonksiyonlar first-class'tır, yani bu da demek oluyor ki
 fonksiyonlar bir değişken tarafından referanslanabilir, listelere eklenebilir,
-argumen olarak alınabilir vb. Python'da ki sayılarda birer first-class objedir.
+argüman olarak alınabilir vb. Python'da ki sayılarda birer first-class objedir.
 Yani sayılarda yapabileceğiniz herşeyi (Metodları hariç, çünkü fonksiyon objeleri
 ile sayı objeleri aynı objeler değildir.) yapabilirsiniz. Şimdi örneklere başlayalım.
 
@@ -60,7 +60,7 @@ olursak, mrbDunya ile dunyaci fonksiyonun lokasyonları aynı değil. Çünkü i
 belleğin farklı bir yerindeki fonksiyon, başka fonksiyona yönlendiriyor. Yani 0x7f41c77cebf8 olan bir fonksiyon aslında
 0x7f576e924bf8 lokasyonundaki bir fonksiyonu çağırıyor. Şimdi sonrakine geçelim.
 
-Fonksiyonlar argumen olarak verilebilir
+Fonksiyonlar argüman olarak verilebilir
 ****
 Örnek olarak::
    
@@ -131,7 +131,7 @@ daha okunabilir bir şekilde çağırabilirmiyiz? Tabiki::
 
 Yukardaki program ile bir önceki programımız ile aynı çıktıyı verecektir.
 Mantık aynı: fonksiyonu al, çağır. Fakat bu sefer fonksiyon tanımlandıktan sonra
-hemen argument olarak verip, çağırıyoruz. Peki decoratorlara argumen verebilirmiyiz?::
+hemen argüman olarak verip, çağırıyoruz. Peki decoratorlara argüman verebilirmiyiz?::
    
    def baslik(fonksiyon):
       def wrapper(basligimiz):
