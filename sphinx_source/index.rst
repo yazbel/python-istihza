@@ -61,6 +61,7 @@ istihza.com
     sozluklerin_metotlari
     kumeler_ve_dondurulmus_kumeler
     fonksiyonlar
+    bezeleyiciler
     gomulu_fonksiyonlar
     ileri_fonksiyonlar
     moduller
