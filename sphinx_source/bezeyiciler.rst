@@ -3,23 +3,22 @@
    :keywords: python, fonksiyonlar, decoratorlar, bezeyiciler
 .. highlight:: py3
 
-*********************************************
 Fonksiyonlarda Bezeyicilerin (Decorator) Kullanımı
-*********************************************
+**************************************************
 
 Bu bölüme kadar fonksiyonları nasıl kullanabileceğimizi işlemiştik. 
 Bu yazıda decoratorların nasıl çalıştığını, decoratorların ne olduğunu ve
 ve kendinize özgü decoratorların nasıl oluşturabileceğinizi anlayacağız.
 
-Python'daki herşey objedir, fonksiyonlar dahil. Ama nasıl?
+Python'daki her şey objedir, fonksiyonlar dahil. Ama nasıl?
 Pythonda fonksiyonlar first-class'tır, yani bu da demek oluyor ki
 fonksiyonlar bir değişken tarafından referanslanabilir, listelere eklenebilir,
 argüman olarak alınabilir vb. Python'da ki sayılarda birer first-class objedir.
-Yani sayılarda yapabileceğiniz herşeyi (Metodları hariç, çünkü fonksiyon objeleri
+Yani sayılarda yapabileceğiniz her şeyi (Metodları hariç, çünkü fonksiyon objeleri
 ile sayı objeleri aynı objeler değildir.) yapabilirsiniz. Şimdi örneklere başlayalım.
 
 Fonksiyonlar diğer değişkenler tarafından referanslanabilir
-****
+***********************************************************
 
 Python'da "Merhaba, dünya!" yazdıran bir fonksiyon örneği::
    
@@ -46,22 +45,19 @@ Niye olduğunu bi bakalım. mrbDunya'yı çağırmadan yazdırırsak ne olur?::
 
    print(mrbDunya)
 
-Çıktısı <function mrbDunya at 0x7f7ffe024c80> şeklinde birşey olacaktır. Çıktısı bize demeye çalışıyor ki, 
+Çıktısı `<function mrbDunya at 0x7f7ffe024c80>` şeklinde birşey olacaktır. Çıktısı bize demeye çalışıyor ki, 
 mrbDunya fonksiyonu belleğin belleğin 0x7f7ffe024c80 lokasyonunda bulunmaktadır. Muhtemelen 0x7f7ffe024c80
 çıktısı aynı olmayacaktır çünkü sizin bilgisayarda o fonksiyon belleğinizin farklı bir lokasyonunda depolanmış
 olabilir. Şimdi mrbDunya fonksiyonun nerde olduğunu bildiğimize göre dunyacı fonksiyonunada bi' bakalım::
 
    print(dunyaci)
 
-Çıktı <function mrbDunya at 0x7f41c77cebf8>. Garip değil mi? Normalde function mrbDunya olmaması gerek çünkü
-fonksiyonumuzun adı mrbDunya değil. İşler sandığımız gibi dönmüyor. Python "dunyaci = mrbDunya" yerinde mrbDunya
-bellekte mrbDunya fonksiyonuna yönlendirdi. O yüzden Python onu mrbDunya fonksiyonu olarak gördü. Fakat dikkatli
-olursak, mrbDunya ile dunyaci fonksiyonun lokasyonları aynı değil. Çünkü iki fonksiyonun aynı yerde olması mümkün değil.
-belleğin farklı bir yerindeki fonksiyon, başka fonksiyona yönlendiriyor. Yani 0x7f41c77cebf8 olan bir fonksiyon aslında
-0x7f576e924bf8 lokasyonundaki bir fonksiyonu çağırıyor. Şimdi sonrakine geçelim.
+Çıktı `<function mrbDunya at 0x7f41c77cebf8>`. Garip değil mi? Normalde `<function mrbDunya at 0x7f41c77cebf8>` olmaması gerek çünkü fonksiyonumuzun adı mrbDunya değil. İşler sandığımız gibi dönmüyor. Python "dunyaci = mrbDunya" yerinde mrbDunya
+bellekteki mrbDunya fonksiyonuna yönlendirdi, yani `0x7f41c77cebf8`'e. O yüzden Python onu mrbDunya fonksiyonu olarak gördü. Fakat dikkatli olursak, mrbDunya ile dunyaci fonksiyonun lokasyonları aynı değil. Çünkü iki fonksiyonun aynı yerde olması 
+mümkün değil. Belleğin farklı bir yerindeki fonksiyon, başka fonksiyona yönlendiriyor. Yani 0x7f41c77cebf8 olan bir fonksiyon aslında 0x7f576e924bf8 lokasyonundaki bir fonksiyonu çağırıyor. Şimdi sonrakine geçelim.
 
 Fonksiyonlar argüman olarak verilebilir
-****
+***************************************
 Örnek olarak::
    
    def fonksiyonCagir(fonksiyon):
@@ -77,7 +73,7 @@ Python fonksiyon = mrbDunya yaptı ve onu çağırınca 0x7f576e924bf8 lokasyonu
 
 
 Fonksiyonların içinde fonksiyon oluşturulabilir
-****
+***********************************************
 Örnek Olarak::
    
    def merhabaDe():
@@ -92,9 +88,8 @@ fonksiyonu *merhabaDe* fonksiyonun içinde tanımlanıp çağrılıyor.
 Eğer *merhabaci* fonksiyonunu *merhabaDe* fonksiyonun dışında çağırmaya çalışırsak, Python
 bize bir hata verecektir çünkü *merhabaci* fonksiyonu *merhabaDe* fonksiyonun dışında tanımlanmamıştır.
 
-**************************************
 Decoratorlar
-**************************************
+************
 
 Decoratorlar, fonksiyonlarımızı veya objelerimizi modifiye etmemizi sağlayan çağrılabilir objelerdir.
 
