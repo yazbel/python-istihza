@@ -7,15 +7,15 @@ Fonksiyonlarda Bezeyicilerin (Decorator) Kullanımı
 **************************************************
 
 Bu bölüme kadar fonksiyonları nasıl kullanabileceğimizi işlemiştik. 
-Bu yazıda decoratorların nasıl çalıştığını, decoratorların ne olduğunu ve
-ve kendinize özgü decoratorların nasıl oluşturabileceğinizi anlayacağız.
+Bu yazıda bezeyicilerin nasıl çalıştığını, bezeyicilerin ne olduğunu ve
+ve kendinize özgü bezeyicileri nasıl oluşturabileceğimizi anlayacağız.
 
-Python'daki her şey objedir, fonksiyonlar dahil. Ama nasıl?
-Pythonda fonksiyonlar first-class'tır, yani bu da demek oluyor ki
+Python'daki her şey nesnedir, fonksiyonlar dahil. Ama nasıl?
+Pythonda fonksiyonlar birinci-sınıf'tır, yani bu da demek oluyor ki
 fonksiyonlar bir değişken tarafından referanslanabilir, listelere eklenebilir,
-argüman olarak alınabilir vb. Python'da ki sayılarda birer first-class objedir.
-Yani sayılarda yapabileceğiniz her şeyi (Metodları hariç, çünkü fonksiyon objeleri
-ile sayı objeleri aynı objeler değildir.) yapabilirsiniz. Şimdi örneklere başlayalım.
+argüman olarak alınabilir vb. Python'da ki sayılarda birer birinci-sınıf nesnedir.
+Yani sayılarda yapabileceğiniz her şeyi (Metodları hariç, çünkü fonksiyon nesneleri
+ile sayı nesneleri aynı nesne değildir.) yapabilirsiniz. Şimdi örneklere başlayalım.
 
 Fonksiyonlar diğer değişkenler tarafından referanslanabilir
 ***********************************************************
@@ -88,26 +88,26 @@ fonksiyonu *merhabaDe* fonksiyonun içinde tanımlanıp çağrılıyor.
 Eğer *merhabaci* fonksiyonunu *merhabaDe* fonksiyonun dışında çağırmaya çalışırsak, Python
 bize bir hata verecektir çünkü *merhabaci* fonksiyonu *merhabaDe* fonksiyonun dışında tanımlanmamıştır.
 
-Decoratorlar
+Bezeleyiciler (Decoratorlar)
 ************
 
-Decoratorlar, fonksiyonlarımızı veya objelerimizi modifiye etmemizi sağlayan çağrılabilir objelerdir.
+Bezeleyiciler, fonksiyonlarımızı veya nesnelerimizi modifiye etmemizi sağlayan çağrılabilir nesnelerdir.
 
 Çağrılabilir objeleri örnek verecek olursak, fonksiyonlar ve objeleri örnek verebiliriz.
 
 Bunu bir örnek ile anlayalım::
 
-   def decoratorFonksiyon(fonksiyon):
+   def bezeleyiciFonksiyon(fonksiyon):
       def wrapper():
          print("Wrapper fonksiyonumuz başladı")
-         fonksiyon() # Decorator ile aldığımız fonksiyonu çağırıyoruz
+         fonksiyon() # Bezeleyici ile aldığımız fonksiyonu çağırıyoruz
          print("Wrapper fonksiyonu bitti.")
       return wrapper
 
    def merhaba():
       print("Merhaba!")
 
-   merhaba = decoratorFonksiyon(merhaba)
+   merhaba = bezeleyiciFonksiyon(merhaba)
 
    merhaba()
 
@@ -115,10 +115,10 @@ Bunu bir örnek ile anlayalım::
    # Merhaba!
    # Wrapper fonksiyonu bitti.
 
-Şeklinde bir programımız olacaktır. Peki bu decorator fonksiyonları
+Şeklinde bir programımız olacaktır. Peki bu bezeleyici fonksiyonları
 daha okunabilir bir şekilde çağırabilirmiyiz? Tabiki::
    
-   @decoratorFonksiyon
+   @bezeleyiciFonksiyon
    def merhaba():
       print("Merhaba!")
 
@@ -126,7 +126,7 @@ daha okunabilir bir şekilde çağırabilirmiyiz? Tabiki::
 
 Yukardaki program ile bir önceki programımız ile aynı çıktıyı verecektir.
 Mantık aynı: fonksiyonu al, çağır. Fakat bu sefer fonksiyon tanımlandıktan sonra
-hemen argüman olarak verip, çağırıyoruz. Peki decoratorlara argüman verebilirmiyiz?::
+hemen argüman olarak verip, çağırıyoruz. Peki bezeyicilere argüman verebilirmiyiz?::
    
    def baslik(fonksiyon):
       def wrapper(basligimiz):
@@ -142,5 +142,5 @@ hemen argüman olarak verip, çağırıyoruz. Peki decoratorlara argüman verebi
    # Python 3.7
    # Python 3.7 ile dataclasses gibi birçok güzel özellik eklendi.
 
-Gördüğümüz kadarıyla oldukça basit. Decoratorlara ne işe diye soracak isek, bazı fonksiyonlara istediğiniz
+Gördüğümüz kadarıyla oldukça basit. bezeyiciler ne işe diye soracak isek, bazı fonksiyonlara istediğiniz
 özelliği eklemede veya Flask gibi frameworklerde kullanıldığını unutmayın. Hadi sonraki dersimize geçelim :)
