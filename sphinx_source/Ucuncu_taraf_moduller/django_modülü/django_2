@@ -20,9 +20,9 @@ değerini `Europe/Istanbul`  yaparak İstanbul'a ayarlayın.
 
 Varsayılan olarak gelen uygulamalar şunlardır::
 
-    django.contrib.admin --> Admin panelini oluşturur.
+    django.contrib.admin --> Yönetici panelini oluşturur.
     django.contrib.auth --> Bir kimlik doğrulama sistemi.
-    django.contrib.contenttypes --> İçerik türleri için bir framework
+    django.contrib.contenttypes --> İçerik türleri için bir framework.
     django.contrib.sessions --> Bir oturum frameworku
     django.contrib.messages --> Bir mesajlaşma frameworku
     django.contrib.staticfiles --> Statik dosyaları yönetmek için bir framework.
@@ -61,7 +61,7 @@ değişkenlere sahip. Bu veritabanı alanlarının her biri bir
 Field sınıfı ile ilişkili. Mesela CharField karakter 
 dizilerini , DateTimeFields tarih ve zamanı veritabanına 
 eklemek için. Bu sistem Django'nun her alanın hangi veri 
-tipini tuttuğu anlamasını sağlar.Bazı Field sınıfları 
+tipini tuttuğunu anlamasını sağlar. Bazı Field sınıfları 
 zorunlu olarak parametreye ihtiyaç duyuyor. Buna en iyi 
 örnek olan CharField sınıfı max_lenght değeri olmadan 
 çalışmıyor.Field sınıfları isteğe bağlı parametrelere de 
@@ -194,7 +194,7 @@ uğraşmadan kontrol eder. Şimdi `migrate` komutunu tekrar
 kullanarak hangi uygulamaların uygulandığını izler) ve bunları 
 veritabanınıza karşı çalıştırır - temel olarak modelinize yaptığınız 
 değişiklikleri veritabanındaki şema ile senkronize eder. 
-Göçler çok güçlüdür ve zamanla, projenizi geliştirirken, veritabanınızı 
+Migrationlar çok güçlüdür ve zamanla, projenizi geliştirirken, veritabanınızı 
 veya tablolarınızı silmenize ve yenilerini oluşturmanıza gerek kalmadan 
 modellerinizi değiştirmenize izin verir - 
 veri kaybetmeden veritabanınızı canlı hale getirme konusunda 
@@ -211,7 +211,7 @@ değişikliklerini yapmak için üç adımlı kılavuzu hatırlayın:
 API ile oynayalım
 *****************
 
-Şimdi etkileşimli kabuğa atlayıp Djangonun sunduğu API ile uğraşalım. 
+Şimdi etkileşimli kabuğa atlayıp Django'nun sunduğu API ile uğraşalım. 
 Etkileşimli kabuğu çağırmak için şu komutu kullanın::
 
     python manage.py shell
@@ -251,7 +251,7 @@ Kabuğa girdikten sonra veritabanı API'ını keşfedin::
     >>> q.question_text = "What's up?"
     >>> q.save()
     
-    # objects.all (), veritabanındaki tüm Quetionları görüntüler.
+    # objects.all(), veritabanındaki tüm Quetionları görüntüler.
     >>> Question.objects.all()
     <QuerySet [<Question: Question object (1)>]>
 
@@ -291,7 +291,7 @@ Bunu kanıtlamak için özel bir yöntem ekleyelim::
         def was_published_recently(self):
             return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
 
-Python standart kütüphanesinden datetime modülünü ve Djangonun
+Python standart kütüphanesinden datetime modülünü ve Django'nun
 saat dilimleri ile ilgili kütüphanesinden timezone modülünü içe 
 aktaralım.
 
@@ -305,7 +305,7 @@ kabuk açalım:`python manage.py shell`
     >>> Question.objects.all()
     <QuerySet [<Question: What's up?>]>
 
-    # Djangonun içinde veritabanı araması için zengin bir API var.
+    # Django'nun içinde veritabanı araması için zengin bir API var.
     >>> Question.objects.filter(id=1)
     <QuerySet [<Question: What's up?>]>
     >>> Question.objects.filter(question_text__startswith='What')
@@ -371,13 +371,13 @@ kabuk açalım:`python manage.py shell`
     >>> c = q.choice_set.filter(choice_text__startswith='Just hacking')
     >>> c.delete()
 
-Admin Paneli
+Yönetici Paneli
 ************
 
-Bir admin kullanıcısı oluşturalım
+Bir yönetici kullanıcısı oluşturalım
 ==================================
 
-Admin paneline giriş yapmak için bir süper kullanıcıya ihtiyacımız
+Yönetici paneline giriş yapmak için bir süper kullanıcıya ihtiyacımız
 var. Komut satırında şu kodu çalıştıralım::
 
     python manage.py createsuperuser
@@ -401,22 +401,22 @@ Son olarak şifrenizi girin. Sizden iki kere şifre isteyecek
 Geliştirme Sunucusunu Başlatın
 ==============================
 
-Djangoda admin paneli varsayılan olarak aktiftir. Geliştirme
+Django'da yönetici paneli varsayılan olarak aktiftir. Geliştirme
 sunucusunu başlatılım ve onu biraz araştıralım::
 
     python manage.py runserver
 
 Şimdi tarayıcınızı açın ve yerel alan adınızda "`/admin/`" sayfasına
 gidin.(Mesela şöyle `http://127.0.0.1:8000/admin/`) Şöyle bir
-admin sayfası görüyor olmalısın:
+yönetici sayfası görüyor olmalısın:
 
 .. image:: https://docs.djangoproject.com/en/2.0/_images/admin01.png
 
-Admin Paneline Giriş yapalım
+Yönetici Paneline Giriş yapalım
 =============================
 
-Şimdi oluşturduğun süper kullanıcı ile admin paneline giriş yap.
-Admin panelinin anasayfasını görüyor olmalısın:
+Şimdi oluşturduğun süper kullanıcı ile yönetici paneline giriş yap.
+Yönetici panelinin anasayfasını görüyor olmalısın:
 
 .. image:: https://docs.djangoproject.com/en/2.0/_images/admin02.png
 
@@ -428,11 +428,11 @@ kullanıcılar. Django tarafından gönderilen kimlik doğrulama
 Anket uygulamamızı admin panelinden kontrol edelim
 ===================================================
 
-Fakat bizim anket uygulamamız nerede? Admin panelinin
+Fakat bizim anket uygulamamız nerede? Yönetici panelinin
 anasayfasında gözükmüyor.
 
 Bu sorunu çözmek için yapmanız gereken tek şey:
-Admin paneline Question objelerimizin admin panelindeen 
+Yönetici paneline Question objelerimizin admin panelindeen 
 düzenlenebildiğini söylemek. Bunu yapmak için **poll/admin.py**
 dosyasını açıp şu kodla düzenlemek::
 
@@ -440,10 +440,10 @@ dosyasını açıp şu kodla düzenlemek::
     from .models import Question
     admin.site.register(Question)
 
-Admin panelinin işlevselliğini keşfedelim
+Yönetici panelinin işlevselliğini keşfedelim
 ==========================================
 
-Question objelerini kaydettiğimize göre admin panelinin
+Question objelerini kaydettiğimize göre yönetici panelinin
 anasayfası şu şekilde gözükmeli:
 
 .. image:: https://docs.djangoproject.com/en/2.0/_images/admin03t.png
