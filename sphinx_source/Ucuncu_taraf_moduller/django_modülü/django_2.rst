@@ -36,7 +36,7 @@ tablo oluşturmalıyız. O tablo da şu komutla oluşuyor::
 Model oluşturalım
 ******************
 
-Şimdi modellerini tanımlayacağız.
+Şimdi modellerimizi tanımlayacağız.
 Anket uygulamamızda iki tane model olacak: Question(Soru), Choice(Seçenek). 
 Question modeli bir soru ve yayınlama tarihi içerecek. Choice modeli ise iki alandan 
 oluşacak: Bir yazı alanı ve oy çetelesi. Her Choice bir Question ile ilişkili olacak.
@@ -59,11 +59,11 @@ Burada iki model oluşturduk. Bu modeller django.db.models.Model
 sınıfını miras alıyor ve veritabanı alanını temsil eden 
 değişkenlere sahip. Bu veritabanı alanlarının her biri bir 
 Field sınıfı ile ilişkili. Mesela CharField karakter 
-dizilerini , DateTimeFields tarih ve zamanı veritabanına 
+dizilerini , DateTimeField tarih ve zamanı veritabanına 
 eklemek için. Bu sistem Django'nun, her alanın hangi veri 
 tipini tuttuğunu anlamasını sağlar. Bazı Field sınıfları 
 zorunlu olarak parametreye ihtiyaç duyuyor. Buna en iyi 
-örnek olan CharField sınıfı max_lenght değeri olmadan 
+örnek olan CharField sınıfı max_length değeri olmadan 
 çalışmıyor.Field sınıfları isteğe bağlı parametrelere de 
 sahip.Mesela votes değerinin default parametresi-ki biz 
 bu örnekte 0 olarak ayarladık-buna bir örnek.Son olarak 
