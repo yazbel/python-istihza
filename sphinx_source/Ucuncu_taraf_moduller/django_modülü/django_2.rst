@@ -96,7 +96,7 @@ son hali şöyle olmalı::
         'django.contrib.staticfiles',
     ]
 
-Artık Django polls isimli uygulamamızı projeye eklediğimizi biliyor. 
+Artık Django, polls isimli uygulamamızı projeye eklediğimizi biliyor. 
 Şimdi farklı bir komutu çalıştıralım::
 
     python manage.py makemigrations polls
