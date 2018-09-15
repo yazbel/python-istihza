@@ -77,7 +77,7 @@ Model kodları Django'ya bazı bilgiler verir.
 Django bu bilgilerle şunları yapabilir:
 
     #. Uygulama için bir veritabanı şeması oluşturmak. 
-    #. Question ve Choice objeleri için bir veritabanı erişim API'ı oluşturmak.
+    #. Question ve Choice nesneleri için bir veritabanı erişim API'ı oluşturmak.
 
 Fakat önce polls uygulamasını projeye yüklemeliyiz.
 Projeye yüklemek için  **setting.py** dosyasını açıp 
@@ -223,11 +223,11 @@ Kabuğa girdikten sonra veritabanı API'ını keşfedin::
 
     >>> from polls.models import Choice, Question  # Az önce yazdığımız model sınıflarını içe aktar.
      
-    #Henüz sistemde Question objesi yok.
+    #Henüz sistemde Question nesnesi yok.
     >>> Question.objects.all()
     <QuerySet []>
     
-    # Yeni bir Question objesi oluştur.
+    # Yeni bir Question nesnesi oluştur.
     # Varsayılan ayarlar dosyasında saat dilimleri desteği etkinleştirilmiştir, bu nedenle
     # Django pub_date değişkeni için tzinfo ile bir tarih bekler. timezone.now()'ı kullanın.
     # datetime.datetime.now () yerine ve doğru olanı yapacağız.
@@ -311,7 +311,7 @@ kabuk açalım:`python manage.py shell`
     >>> Question.objects.filter(question_text__startswith='What')
     <QuerySet [<Question: What's up?>]>
 
-    # Bu yıl paylaşılan question objelerini bulalım.
+    # Bu yıl paylaşılan question nesnelerini bulalım.
     >>> from django.utils import timezone
     >>> current_year = timezone.now().year
     >>> Question.objects.get(pub_date__year=current_year)
@@ -335,10 +335,10 @@ kabuk açalım:`python manage.py shell`
     >>> q.was_published_recently()
     True
 
-    # Question objemize birkaç Choice objesi oluşturalım.
+    # Question nesnemize birkaç Choice nesnesi oluşturalım.
     >>> q = Question.objects.get(pk=1)
 
-    # Bu Question objesine hiçbir Choice objesi bağlı değil(şimdilik)
+    # Bu Question nesnesine hiçbir Choice nesnesi bağlı değil(şimdilik)
     >>> q.choice_set.all()
     <QuerySet []>
 
@@ -349,11 +349,11 @@ kabuk açalım:`python manage.py shell`
     <Choice: The sky>
     >>> c = q.choice_set.create(choice_text='Just hacking again', votes=0)
 
-    # Choice objelerinin Question objelerine erişimi var.
+    # Choice nesnelerinin Question nesnelerine erişimi var.
     >>> c.question
     <Question: What's up?>
 
-    # Ve tam tersi: Question objelerinin de Choice nesnelerine erişimi var.
+    # Ve tam tersi: Question nesnelerinin de Choice nesnelerine erişimi var.
     >>> q.choice_set.all()
     <QuerySet [<Choice: Not much>, <Choice: The sky>, <Choice: Just hacking again>]>
     >>> q.choice_set.count()
@@ -362,12 +362,12 @@ kabuk açalım:`python manage.py shell`
     # API, ihtiyaç duyduğunuz kadarıyla ilişkileri otomatik olarak takip eder.
     # İlişkileri ayırmak için çift alt çizgi kullanın.
     # Bu, istediğiniz kadar derin bir seviyede çalışır. Sınır yok.
-    # Bir Question objesi için bu yıl yayımlanan tüm Choice objelerini bulalım.
+    # Bir Question nesnesi için bu yıl yayımlanan tüm Choice nesnelerini bulalım.
     # (Yukarıda Oluşturduğumuz current_year değişkenini kullanalım).
     >>> Choice.objects.filter(question__pub_date__year=current_year)
     <QuerySet [<Choice: Not much>, <Choice: The sky>, <Choice: Just hacking again>]>
 
-    # delete() fonksiyonunu kullanarak bir Choice objesini silelim.
+    # delete() fonksiyonunu kullanarak bir Choice nesnesini silelim.
     >>> c = q.choice_set.filter(choice_text__startswith='Just hacking')
     >>> c.delete()
 
@@ -425,14 +425,14 @@ Birkaç düzenlenebilen içerik türü görmelisiniz: gruplar ve
 kullanıcılar. Django tarafından gönderilen kimlik doğrulama 
 çerçevesi `django.contrib.auth` tarafından sağlanmıştır.
 
-Anket uygulamamızı admin panelinden kontrol edelim
+Anket uygulamamızı yönetici panelinden kontrol edelim
 ===================================================
 
 Fakat bizim anket uygulamamız nerede? Yönetici panelinin
 anasayfasında gözükmüyor.
 
 Bu sorunu çözmek için yapmanız gereken tek şey:
-Yönetici paneline Question objelerimizin admin panelindeen 
+Yönetici paneline Question nesnelerimizin yönetici panelinden 
 düzenlenebildiğini söylemek. Bunu yapmak için **poll/admin.py**
 dosyasını açıp şu kodla düzenlemek::
 
@@ -443,19 +443,19 @@ dosyasını açıp şu kodla düzenlemek::
 Yönetici panelinin işlevselliğini keşfedelim
 ==========================================
 
-Question objelerini kaydettiğimize göre yönetici panelinin
+Question nesnelerini kaydettiğimize göre yönetici panelinin
 anasayfası şu şekilde gözükmeli:
 
 .. image:: https://docs.djangoproject.com/en/2.0/_images/admin03t.png
 
-`Question` yazısına tıkla. Şimdi Question objelerinin değiştirme
-sayfasındasın. Bu sayfa veritabanındaki tüm Question objelerini
+`Question` yazısına tıkla. Şimdi Question nesnelerinin değiştirme
+sayfasındasın. Bu sayfa veritabanındaki tüm Question nesnelerini
 gösterir ve değiştirmek için birini seçmeni sağlar. Şu an daha 
-önce oluşturduğumuz "What’s up?" objesi var:
+önce oluşturduğumuz "What’s up?" nesnesi var:
 
 .. image:: https://docs.djangoproject.com/en/2.0/_images/admin04t.png
 
-Düzenlemek için “What’s up?” objesine tıkla:
+Düzenlemek için “What’s up?” nesnesine tıkla:
 
 .. image:: https://docs.djangoproject.com/en/2.0/_images/admin05t.png
 
@@ -467,10 +467,10 @@ Burada birkaç not:
 
 Alt tarafta birkaç ayar bulunuyor:
 
-- Save – Değişiklikleri kaydeder ve değişiklik listesi sayfasına obje tipini ekler.
+- Save – Değişiklikleri kaydeder ve değişiklik listesi sayfasına nesne tipini ekler.
 - Save and continue editing – Değişiklikleri kaydeder ve sayfayı yeniden yükler.
 - Save and add another – Değişiklikleri kaydeder ve yeni bir yükleme sayfası açar.
-- Delete – Gösterilen objeyi siler.
+- Delete – Gösterilen nesneyi siler.
 
 
 “Date Publised” değeri, part 1'de oluşturduğunuz zamanla uyuşmuyorsa 
@@ -481,7 +481,7 @@ kontrol edin.
 
 “Today” ve “Now” kısayollarını tıklayarak “Date Published” değerini değiştirin. 
 Ardından “Save and continue editing” i tıklayın. Daha sonra sağ üstteki 
-"History" i tıklayın. Bu objede yapılan tüm değişiklikleri, değişikliği yapan 
+"History" i tıklayın. Bu nesnede yapılan tüm değişiklikleri, değişikliği yapan 
 kişinin yaptığı zamanı ve kullanıcı adıyla listeleyen bir sayfa görürsünüz:
 
 .. image:: https://docs.djangoproject.com/en/2.0/_images/admin06t.png
