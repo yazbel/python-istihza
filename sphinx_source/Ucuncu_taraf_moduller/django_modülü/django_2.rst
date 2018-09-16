@@ -116,9 +116,8 @@ söyledik. Migrationlar senin modellerindeki değişiklerin
 depolanma şeklidir(ve bu yüzden veritabanı şeması). 
 İstersen yeni modelinin migrationunu okuyabilirsin. 
 Migration **polls/migrations/0001_inital.py** isimli dosyada. 
-Endişelenmeyin, bu dosyayı her zaman okumak zorunda değilsiniz. 
-Django bu dosyayı yapar fakat insan tarafından düzenlenebilir olarak 
-tasarlanmıştır. "`migrate`" komutu, senin veritabanı 
+Endişelenmeyin, bu dosyayı her zaman okumak zorunda değilsiniz.  
+"`migrate`" komutu, senin veritabanı 
 şemanı otomatik olarak yönetmek için  migrationsları çalıştırır. 
 Birazdan bu konuya tekrar geleceğiz. Ama önce migrationun çalıştırdığı 
 SQL dosyasına bakalım. "`sqlmigrate`" komutuna migration adını 
