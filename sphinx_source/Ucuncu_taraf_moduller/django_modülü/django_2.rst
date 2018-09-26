@@ -118,8 +118,8 @@ depolanma şeklidir(ve bu yüzden veritabanı şeması).
 Migration **polls/migrations/0001_inital.py** isimli dosyada. 
 Endişelenmeyin, bu dosyayı her zaman okumak zorunda değilsiniz.  
 "`migrate`" komutu, senin veritabanı 
-şemanı otomatik olarak yönetmek için  migrationsları çalıştırır. 
-Birazdan bu konuya tekrar geleceğiz. Ama önce migrationun çalıştırdığı 
+şemanı otomatik olarak yönetmek için  migrationları çalıştırır.
+Birazdan bu konuya tekrar geleceğiz. Ama önce migrationın çalıştırdığı 
 SQL dosyasına bakalım. "`sqlmigrate`" komutuna migration adını 
 parametre olarak verin ve SQL çıktısını alın::
 
