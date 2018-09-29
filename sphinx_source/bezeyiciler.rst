@@ -89,7 +89,7 @@ Eğer *merhabaci* fonksiyonunu *merhabaDe* fonksiyonun dışında çağırmaya �
 bize bir hata verecektir çünkü *merhabaci* fonksiyonu *merhabaDe* fonksiyonun dışında tanımlanmamıştır.
 
 Bezeleyiciler (Decoratorlar)
-************
+****************************
 
 Bezeleyiciler, fonksiyonlarımızı veya nesnelerimizi modifiye etmemizi sağlayan çağrılabilir nesnelerdir.
 
