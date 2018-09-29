@@ -13,8 +13,8 @@ ve kendimize özgü bezeyicileri nasıl oluşturabileceğimizi anlayacağız.
 Python'daki her şey nesnedir, fonksiyonlar dahil. Ama nasıl?
 Pythonda fonksiyonlar birinci sınıftır, yani bu da demek oluyor ki
 fonksiyonlar bir değişken tarafından referanslanabilir, listelere eklenebilir,
-argüman olarak alınabilir vb. Python'daki sayılarda birer birinci sınıf nesnedir.
-Yani sayılarda yapabileceğiniz her şeyi (Metodları hariç, çünkü fonksiyon nesneleri
+argüman olarak alınabilir vb. Python'daki sayılar da birer birinci sınıf nesnedir.
+Yani sayılar da yapabileceğiniz her şeyi (Metodları hariç, çünkü fonksiyon nesneleri
 ile sayı nesneleri aynı nesne değildir.) yapabilirsiniz. Şimdi örneklere başlayalım.
 
 Fonksiyonlar diğer değişkenler tarafından referanslanabilir
