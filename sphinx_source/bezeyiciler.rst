@@ -116,7 +116,7 @@ Bunu bir örnek ile anlayalım::
    # Wrapper fonksiyonu bitti.
 
 Şeklinde bir programımız olacaktır. Peki bu bezeleyici fonksiyonları
-daha okunabilir bir şekilde çağırabilirmiyiz? Tabiki::
+daha okunabilir bir şekilde çağırabilir miyiz? Tabiki::
    
    @bezeleyiciFonksiyon
    def merhaba():
@@ -126,7 +126,7 @@ daha okunabilir bir şekilde çağırabilirmiyiz? Tabiki::
 
 Yukardaki program ile bir önceki programımız ile aynı çıktıyı verecektir.
 Mantık aynı: fonksiyonu al, çağır. Fakat bu sefer fonksiyon tanımlandıktan sonra
-hemen argüman olarak verip, çağırıyoruz. Peki bezeyicilere argüman verebilirmiyiz?::
+hemen argüman olarak verip, çağırıyoruz. Peki bezeyicilere argüman verebilir miyiz?::
    
    def baslik(fonksiyon):
       def wrapper(basligimiz):
