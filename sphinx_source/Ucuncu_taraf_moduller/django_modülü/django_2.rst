@@ -188,7 +188,7 @@ uğraşmadan kontrol eder. Şimdi `migrate` komutunu tekrar
 
     python manage.py migrate
 
-`migrate` komutu daha önce uygulanmayan tüm migartionsları alır 
+`migrate` komutu daha önce uygulanmayan tüm migartionları alır 
 (Django, veritabanınızda django_migrations adlı özel bir tablo 
 kullanarak hangi uygulamaların uygulandığını izler) ve bunları 
 veritabanınıza karşı çalıştırır - temel olarak modelinize yaptığınız 
