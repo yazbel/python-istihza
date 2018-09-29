@@ -22,16 +22,16 @@ Fonksiyonlar diğer değişkenler tarafından referanslanabilir
 
 Python'da "Merhaba, dünya!" yazdıran bir fonksiyon örneği::
    
-   def mrbDunya():
+   def mrb_dunya():
       print("Merhaba, dünya!")
 
-   mrbDunya()
+   mrb_dunya()
 
    # Çıktı: Merhaba, dünya!
 
 Biz bu fonksiyonu başka bir değişkene referanslayarak, o değişkenin merhaba dünya demesini sağlayabiliriz::
 
-   dunyaci = mrbDunya
+   dunyaci = mrb_dunya
    
 Şimdide dunyaci fonksiyonunu çağıralım::
 
@@ -41,19 +41,19 @@ Biz bu fonksiyonu başka bir değişkene referanslayarak, o değişkenin merhaba
 
 Gördüğümüz kadarıyla dunyaci fonksiyonuda "Merhaba, dünya!" çıktısını verdi. Niye?
 
-Niye olduğunu bi bakalım. mrbDunya'yı çağırmadan yazdırırsak ne olur?::
+Niye olduğunu bi bakalım. mrb_dunya'yı çağırmadan yazdırırsak ne olur?::
 
-   print(mrbDunya)
+   print(mrb_dunya)
 
-Çıktısı `<function mrbDunya at 0x7f7ffe024c80>` şeklinde birşey olacaktır. Çıktısı bize demeye çalışıyor ki, 
-mrbDunya fonksiyonu belleğin belleğin 0x7f7ffe024c80 lokasyonunda bulunmaktadır. Muhtemelen 0x7f7ffe024c80
+Çıktısı `<function mrb_dunya at 0x7f7ffe024c80>` şeklinde birşey olacaktır. Çıktısı bize demeye çalışıyor ki, 
+mrb_dunya fonksiyonu belleğin belleğin 0x7f7ffe024c80 lokasyonunda bulunmaktadır. Muhtemelen 0x7f7ffe024c80
 çıktısı aynı olmayacaktır çünkü sizin bilgisayarda o fonksiyon belleğinizin farklı bir lokasyonunda depolanmış
-olabilir. Şimdi mrbDunya fonksiyonun nerde olduğunu bildiğimize göre dunyacı fonksiyonunada bi' bakalım::
+olabilir. Şimdi mrb_dunya fonksiyonun nerde olduğunu bildiğimize göre dunyacı fonksiyonunada bi' bakalım::
 
    print(dunyaci)
 
-Çıktı `<function mrbDunya at 0x7f41c77cebf8>`. Garip değil mi? Normalde `<function mrbDunya at 0x7f41c77cebf8>` olmaması gerek çünkü fonksiyonumuzun adı mrbDunya değil. İşler sandığımız gibi dönmüyor. Python "dunyaci = mrbDunya" yerinde mrbDunya
-bellekteki mrbDunya fonksiyonuna yönlendirdi, yani `0x7f41c77cebf8`'e. O yüzden Python onu mrbDunya fonksiyonu olarak gördü. Fakat dikkatli olursak, mrbDunya ile dunyaci fonksiyonun lokasyonları aynı değil. Çünkü iki fonksiyonun aynı yerde olması 
+Çıktı `<function mrb_dunya at 0x7f41c77cebf8>`. Garip değil mi? Normalde `<function mrb_dunya at 0x7f41c77cebf8>` olmaması gerek çünkü fonksiyonumuzun adı mrb_dunya değil. İşte işler sandığımız gibi olmuyor. Python "dunyaci = mrb_dunya" yerinde mrb_dunya
+bellekteki mrb_dunya fonksiyonuna yönlendirdi, yani `0x7f41c77cebf8`'e. O yüzden Python onu mrb_dunya fonksiyonu olarak gördü. Fakat dikkatli olursak, mrb_dunya ile dunyaci fonksiyonun lokasyonları aynı değil. Çünkü iki fonksiyonun aynı yerde olması 
 mümkün değil. Belleğin farklı bir yerindeki fonksiyon, başka fonksiyona yönlendiriyor. Yani 0x7f41c77cebf8 olan bir fonksiyon aslında 0x7f576e924bf8 lokasyonundaki bir fonksiyonu çağırıyor. Şimdi sonrakine geçelim.
 
 Fonksiyonlar argüman olarak verilebilir
@@ -65,10 +65,10 @@ Fonksiyonlar argüman olarak verilebilir
 
       fonksiyon()
 
-   fonksiyon(mrbDunya)
+   fonksiyon(mrb_dunya)
 
 Bu programın çıktısı sırayla "Fonksiyon çağrılıyor!" "Merhaba, dünya!" yazdırmak olacaktır. Yukarda gösterdiğimiz gibi
-Python fonksiyon = mrbDunya yaptı ve onu çağırınca 0x7f576e924bf8 lokasyonundaki (mrbDunya'nın lokasyonundaki) fonksiyonu
+Python fonksiyon = mrb_dunya yaptı ve onu çağırınca 0x7f576e924bf8 lokasyonundaki (mrb_dunya'nın lokasyonundaki) fonksiyonu
 çağırdı.
 
 
@@ -97,7 +97,7 @@ Bezeleyiciler, fonksiyonlarımızı veya nesnelerimizi modifiye etmemizi sağlay
 
 Bunu bir örnek ile anlayalım::
 
-   def bezeleyiciFonksiyon(fonksiyon):
+   def bezeleyici(fonksiyon):
       def wrapper():
          print("Wrapper fonksiyonumuz başladı")
          fonksiyon() # Bezeleyici ile aldığımız fonksiyonu çağırıyoruz
@@ -107,7 +107,7 @@ Bunu bir örnek ile anlayalım::
    def merhaba():
       print("Merhaba!")
 
-   merhaba = bezeleyiciFonksiyon(merhaba)
+   merhaba = bezeleyici(merhaba)
 
    merhaba()
 
@@ -118,7 +118,7 @@ Bunu bir örnek ile anlayalım::
 Şeklinde bir programımız olacaktır. Peki bu bezeleyici fonksiyonları
 daha okunabilir bir şekilde çağırabilir miyiz? Tabiki::
    
-   @bezeleyiciFonksiyon
+   @bezeleyici
    def merhaba():
       print("Merhaba!")
 
