@@ -114,7 +114,7 @@ yaptığımızı (Aynı zamanda yeni modeller ürettiğimizi de) ve
 değişikliklerin migration olarak depolanmasını istediğimizi 
 söyledik. Migrationlar senin modellerindeki değişiklerin 
 depolanma şeklidir(ve bu yüzden veritabanı şeması). 
-İstersen yeni modelinin migrationunu okuyabilirsin. 
+İstersen yeni modelinin migrationını okuyabilirsin. 
 Migration **polls/migrations/0001_inital.py** isimli dosyada. 
 Endişelenmeyin, bu dosyayı her zaman okumak zorunda değilsiniz.  
 "`migrate`" komutu, senin veritabanı 
@@ -166,11 +166,11 @@ Aşağıdakilere dikkat et:
       (Bu davranış geçersiz kılınabilir.)
     - Birincil anahtarlar(ID) otomatik olarak eklenir.
       (Bu da geçersiz kılınabilir.)
-    - Düzenlenirken  Django foreign key alanının adına "_id" 
+    - Düzenlenirken  Django, foreign key alanının adına "_id" 
       ekler.(Evet, bunu da geçersiz kılabilirsiniz.)
     - Yabancı anahtar ilişkisi bir FOREIGN KEY kısıtlaması 
       ile açık hale getirilmiştir. DEFERRABLE parçaları hakkında 
-      endişelenmeyin; Bu sadece PostgreSQL'in yabancı anahtarını 
+      endişelenmeyin; Bu sadece PostgreSQL'in yabancı anahtarı 
       işlemin sonuna kadar zorlamamasını söylüyor.
     - Kullandığınız veritabanına göre düzenlenmiştir. Bu yüzden 
       auto_increment(MySQL), serial(PostgreSQL) gibi veritabanına 
