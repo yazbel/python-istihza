@@ -188,7 +188,7 @@ uğraşmadan kontrol eder. Şimdi `migrate` komutunu tekrar
 
     python manage.py migrate
 
-`migrate` komutu daha önce uygulanmayan tüm migartionları alır 
+`migrate` komutu daha önce uygulanmayan tüm migrationları alır 
 (Django, veritabanınızda django_migrations adlı özel bir tablo 
 kullanarak hangi uygulamaların uygulandığını izler) ve bunları 
 veritabanınıza karşı çalıştırır - temel olarak modelinize yaptığınız 
@@ -236,7 +236,7 @@ Kabuğa girdikten sonra veritabanı API'ını keşfedin::
     # Oluşturduğumuz nesneyi veritabanına kaydedelim. Bunun için save() methodunu kullanmalısın.
     >>> q.save()
     
-    # Şimdi bir ID e sahip.
+    # Şimdi bir ID'ye sahip.
     >>> q.id
     1
     
@@ -246,7 +246,7 @@ Kabuğa girdikten sonra veritabanı API'ını keşfedin::
     >>> q.pub_date
     datetime.datetime(2012, 2, 26, 13, 0, 0, 775217, tzinfo=<UTC>)
     
-    # Öznitelikleri değiştirip save() methodunu çağıralım.
+    # Öznitelikleri değiştirip save() metodunu çağıralım.
     >>> q.question_text = "What's up?"
     >>> q.save()
     
