@@ -233,7 +233,7 @@ Kabuğa girdikten sonra veritabanı API'ını keşfedin::
     >>> from django.utils import timezone
     >>> q = Question(question_text="What's new?", pub_date=timezone.now())
     
-    # Oluşturduğumuz nesneyi veritabanına kaydedelim. Bunun için save() methodunu kullanmalısın.
+    # Oluşturduğumuz nesneyi veritabanına kaydedelim. Bunun için save() metodunu kullanmalısın.
     >>> q.save()
     
     # Şimdi bir ID'ye sahip.
@@ -250,7 +250,7 @@ Kabuğa girdikten sonra veritabanı API'ını keşfedin::
     >>> q.question_text = "What's up?"
     >>> q.save()
     
-    # objects.all(), veritabanındaki tüm Quetionları görüntüler.
+    # objects.all(), veritabanındaki tüm Questionları görüntüler.
     >>> Question.objects.all()
     <QuerySet [<Question: Question object (1)>]>
 
@@ -362,7 +362,7 @@ kabuk açalım:`python manage.py shell`
     # İlişkileri ayırmak için çift alt çizgi kullanın.
     # Bu, istediğiniz kadar derin bir seviyede çalışır. Sınır yok.
     # Bir Question nesnesi için bu yıl yayımlanan tüm Choice nesnelerini bulalım.
-    # (Yukarıda Oluşturduğumuz current_year değişkenini kullanalım).
+    # (Yukarıda oluşturduğumuz current_year değişkenini kullanalım).
     >>> Choice.objects.filter(question__pub_date__year=current_year)
     <QuerySet [<Choice: Not much>, <Choice: The sky>, <Choice: Just hacking again>]>
 
