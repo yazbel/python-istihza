@@ -381,7 +381,7 @@ var. Komut satırında şu kodu çalıştıralım::
 
     python manage.py createsuperuser
 
-İstediğiniz kullanıcı adını girin ve entere basın::
+İstediğiniz kullanıcı adını girin ve entera basın::
 
     Username: admin
 
@@ -401,7 +401,7 @@ Geliştirme Sunucusunu Başlatın
 ==============================
 
 Django'da yönetici paneli varsayılan olarak aktiftir. Geliştirme
-sunucusunu başlatılım ve onu biraz araştıralım::
+sunucusunu başlatalım ve onu biraz araştıralım::
 
     python manage.py runserver
 
@@ -472,7 +472,7 @@ Alt tarafta birkaç ayar bulunuyor:
 - Delete – Gösterilen nesneyi siler.
 
 
-“Date Publised” değeri, part 1'de oluşturduğunuz zamanla uyuşmuyorsa 
+“Date Published” değeri, part 1'de oluşturduğunuz zamanla uyuşmuyorsa 
 muhtemelen TIME_ZONE ayarı için doğru değeri ayarlamamışsınız. 
 Değiştirin, sayfayı yeniden yükleyin ve doğru değerin görünüp görünmediğini 
 kontrol edin.
