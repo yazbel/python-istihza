@@ -480,8 +480,8 @@ kontrol edin.
 
 “Today” ve “Now” kısayollarını tıklayarak “Date Published” değerini değiştirin. 
 Ardından “Save and continue editing” i tıklayın. Daha sonra sağ üstteki 
-"History" i tıklayın. Bu nesnede yapılan tüm değişiklikleri, değişikliği yapan 
-kişinin yaptığı zamanı ve kullanıcı adıyla listeleyen bir sayfa görürsünüz:
+"History"yi tıklayın. Bu nesnede yapılan tüm değişiklikleri, değişikliği yapan 
+kişinin değişiklik yaptığı zaman ve kullanıcı adıyla listeleyen bir sayfa görürsünüz:
 
 .. image:: https://docs.djangoproject.com/en/2.0/_images/admin06t.png
 
