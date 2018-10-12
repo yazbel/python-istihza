@@ -36,7 +36,7 @@ Hatırlayacaksınız, karakter dizilerinin ``str.maketrans()`` ve
 ``translate()`` adlı metotlarını anlatırken, Türkçeye özgü karakterleri ve
 bunların noktasız karşılıklarını içeren `çeviri_tablosu` adını verdiğimiz şöyle
 bir değişken tanımlamıştık::
-    
+
     çeviri_tablosu = {"Ö": "O",
                       "ç": "c",
                       "Ü": "U",
@@ -48,9 +48,9 @@ bir değişken tanımlamıştık::
                       "ş": "s",
                       "ü": "u",
                       "Ş": "S",
-                      "ğ": "g"} 
-  
-    
+                      "ğ": "g"}
+
+
 Burada `çeviri_tablosu` değişkeni içinde gösterdiğimiz biçimin Python'daki
 adının 'sözlük' olduğunu da ifade etmiştik. İşte bu bölümde, orada şöyle bir
 değinip geçtiğimiz bu veri tipini çok daha ayrıntılı bir şekilde ele alma
@@ -58,7 +58,7 @@ imkanımız olacak.
 
 Hem eski bilgilerimize dayanarak, hem de yukarıda anlattıklarımızdan yola
 çıkarak sözlük veri tipinin ne olduğuna dair halihazırda kafamızda bir fikir
-oluşmuş olduğunu söyleyebiliriz. 
+oluşmuş olduğunu söyleyebiliriz.
 
 Sözlükler öteki veri tiplerine kıyasla biraz farklı bir görünüşe sahip bir veri
 tipidir. Biz birazdan sözlüklerin yapısını derinlemesine inceleyeceğiz.
@@ -87,7 +87,7 @@ aklınıza gelen şeye çok benzer. Mesela gerçek hayatta 'kitap' kelimesinin
 Bu manzara bize 'kitap' kelimesinin karşılığının '*book*' olduğunu açık bir
 şekilde gösteriyor. Eğer bu durumu Python'daki sözlük veri tipiyle göstermek
 isteseydik şöyle bir şey yazacaktık::
-    
+
     >>> kelimeler = {"kitap": "book"}
 
 Burada, içeriği sözlük veri tipi olan `kelimeler` adlı bir değişken tanımladık.
@@ -105,9 +105,9 @@ Esasında sözlük dediğimiz şey en basit haliyle şöyle görünür::
 
 Bu örnek boş bir sözlüktür. İsterseniz yukarıdaki veri tipinin gerçekten de bir
 sözlük olduğunu kanıtlayalım::
-    
+
     >>> type(sözlük)
-    
+
     <class 'dict'>
 
 Sözlüklerin Python programlama dilindeki teknik karşılığı ``dict`` ifadesidir.
@@ -123,9 +123,9 @@ nedeniyle bir sözlükteki öğe sayısı konusunda tereddüte kapılabilir, ör
 yukarıdaki sözlüğün `2` öğeden oluştuğu yanılgısına düşebilir. O halde bu
 noktada size şöyle bir soru sormama izin verin: Acaba bu sözlükte kaç öğe var?
 Hemen bakalım::
-    
+
     >>> len(kelimeler)
-    
+
     1
 
 Demek ki elimizdeki veri tipi bir adet öğeye sahip bir sözlükmüş. Gördüğünüz
@@ -135,31 +135,31 @@ almıyoruz. Bu ikisi tek bir sözlük öğesi oluşturuyor. Hatırlarsanız, lis
 öğeleri birbirinden ayırmak için virgül işaretlerinden yararlanıyorduk.
 Sözlüklerde de birden fazla öğeyi birbirinden ayırmak için virgül işaretlerinden
 yararlanacağız::
-    
+
     >>> kelimeler = {"kitap": "book", "bilgisayar": "computer"}
 
 Bir önceki örnek tek öğeliydi. Bu sözlük ise `2` öğeye sahiptir::
 
     >>> len(kelimeler)
-    
+
     2
 
 İlk derslerimizden bu yana sürekli olarak vurguladığımız gibi, Python
 programlama dilinde doğru kod yazmak kadar okunaklı kod yazmak da çok önemlidir.
 Mesela bir sözlüğü şöyle tanımladığımızda kodlarımızın pek okunaklı olmayacağını
 söyleyebiliriz::
-    
-    sözlük = {"kitap": "book", "bilgisayar": "computer", "programlama": "programming", 
+
+    sözlük = {"kitap": "book", "bilgisayar": "computer", "programlama": "programming",
     "dil": "language", "defter": "notebook"}
 
 Teknik olarak baktığımızda bu kodlarda hiçbir problem yok. Ancak sözlükleri
 böyle sağa doğru uzayacak şekilde tanımladığımızda okunaklılığı azaltmış
 oluyoruz. Bu yüzden yukarıdaki sözlüğü şöyle yazmayı tercih edebiliriz::
-    
-     sözlük = {"kitap"      : "book", 
-               "bilgisayar" : "computer", 
-               "programlama": "programming", 
-               "dil"        : "language", 
+
+     sözlük = {"kitap"      : "book",
+               "bilgisayar" : "computer",
+               "programlama": "programming",
+               "dil"        : "language",
                "defter"     : "notebook"}
 
 Bu şekilde sözlükteki öğeler arasındaki ilişki daha belirgin, yazdığınız kodlar
@@ -180,15 +180,15 @@ Yukarıdaki örneklerden bir sözlüğün en basit şekilde nasıl tanımlanaca�
 Hemen basit bir örnek verelim. Daha önce tanımladığımız şu sözlüğe bir bakalım
 mesela::
 
-     sözlük = {"kitap"      : "book", 
-               "bilgisayar" : "computer", 
-               "programlama": "programming", 
-               "dil"        : "language", 
+     sözlük = {"kitap"      : "book",
+               "bilgisayar" : "computer",
+               "programlama": "programming",
+               "dil"        : "language",
                "defter"     : "notebook"}
 
 Bu sözlükte birtakım Türkçe kelimeler ve bunların İngilizce karşılıkları var.
 Şimdi mesela bu sözlükteki 'kitap' adlı öğeye erişelim::
-    
+
     print(sözlük["kitap"])
 
 Bu kodları çalıştırdığımızda şöyle bir çıktı alırız::
@@ -197,12 +197,12 @@ Bu kodları çalıştırdığımızda şöyle bir çıktı alırız::
 
 Yukarıdaki örnekten anladığımız gibi, sözlük öğelerine erişmek için şöyle bir
 formül kullanıyoruz::
-    
+
     sözlük[sözlük_öğesinin_adı]
 
 Aynı şekilde `sözlük` değişkeni içindeki 'bilgisayar' öğesinin karşılığını almak
 istersek şöyle bir kod yazıyoruz::
-    
+
     print(sözlük["bilgisayar"])
 
 Bu da bize `"computer"` çıktısını veriyor.
@@ -229,7 +229,7 @@ Oradaki tablomuz şöyleydi::
 
 Mesela bu sözlükteki `"Ö"` öğesinin karşılığını elde etmek için şöyle bir kod
 yazdığımızı gayet iyi hatırlıyorsunuz::
-    
+
     print(çeviri_tablosu["Ö"])
 
 Bu kodları bir dosyaya kaydedip çalıştırdığımızda şöyle bir çıktı alıyorduk::
@@ -255,7 +255,7 @@ Sözlüğün öteki öğelerini ise şu şekilde alabiliyoruz::
 
 Ancak kod tekrarından kaçınmak için yukarıdaki kodları şu şekilde sadeleştirme
 imkanımızın da olduğunu biliyorsunuz::
-    
+
     for i in çeviri_tablosu:
         print(çeviri_tablosu[i])
 
@@ -266,7 +266,7 @@ sağ tarafındaki değerleri elde edebiliyoruz.
 Eğer bir sözlük içinde bulunmayan bir öğeye erişmeye çalışırsak Python bize
 ``KeyError`` tipinde bir hata mesajı verecektir. Mesela yukarıdaki sözlüğü temel
 alacak olursak şöyle bir sorgu hata verecektir::
-    
+
     >>> print(çeviri_tablosu["Z"])
 
     Traceback (most recent call last):
@@ -280,7 +280,7 @@ mesajı göstermekten başka çaresi kalmıyor.
 Sözlükler ile ilgili epey bilgi edindik. Dilerseniz bu öğrendiklerimizi örnek
 bir uygulama üzerinde somutlaştırmaya çalışalım. Mesela Python'daki sözlükleri
 kullanarak basit bir telefon defteri uygulaması yazalım::
-    
+
     telefon_defteri = {"ahmet öz" : "0532 532 32 32",
                        "mehmet su": "0543 543 42 42",
                        "seda naz" : "0533 533 33 33",
@@ -294,7 +294,7 @@ kullanarak basit bir telefon defteri uygulaması yazalım::
 
 Burada öncelikle isimler ve telefon numaralarından oluşan, sözlük veri tipinde
 bir telefon defteri oluşturduk::
-    
+
     telefon_defteri = {"ahmet öz" : "0532 532 32 32",
                        "mehmet su": "0543 543 42 42",
                        "seda naz" : "0533 533 33 33",
@@ -315,14 +315,14 @@ cevap için bir şablon oluşturuyoruz::
 
 Mesela kullanıcı `"ahmet öz"` ismini sorgulamışsa ona şöyle bir cevap
 vereceğiz::
-    
+
     "ahmet öz adlı kişinin telefon numarası 0532 532 32 32"
 
 Eğer aranan isim telefon defterinde varsa, bir önceki adımda tanımladığımız
 cevap şablonuna göre kullanıcıyı bilgilendiriyoruz. Ama eğer eğer isim defterde
 yoksa, programımız hata veriyor. Bunu önlemek için şöyle bir kod
 yazabilirsiniz::
-    
+
     telefon_defteri = {"ahmet öz" : "0532 532 32 32",
                        "mehmet su": "0543 543 42 42",
                        "seda naz" : "0533 533 33 33",
@@ -384,7 +384,7 @@ için şöyle bir tanım verebiliriz:
     Sözlükler; anahtar ve değer çiftlerinin birbirleriyle eşleştirildiği bir
     veri tipidir. Dolayısıyla sözlükler bu anahtar ve değer çiftleri arasında
     birebir ilişki kurar.
-    
+
 Mesela yukarıdaki örnekte `"kitap"` öğesi anahtar, `"book"` öğesi ise değerdir.
 İşte sözlük dediğimiz şey, bu anahtar ve değer çifti arasında birebir ilişki
 kuran bir veri tipidir. Yani sözlük adlı veri tipi, bir anahtarı bir değerle
@@ -395,9 +395,9 @@ görebiliyoruz.
 
 Yukarıdaki örneklerde tanımladığımız sözlüklerde sadece karakter dizilerini
 kullandık. Ama aslında sözlükler farklı veri tiplerinden oluşabilir. Mesela::
-    
+
     sözlük = {"sıfır": 0,
-              "bir"  : 1, 
+              "bir"  : 1,
               "iki"  : 2,
               "üç"   : 3,
               "dört" : 4,
@@ -405,14 +405,14 @@ kullandık. Ama aslında sözlükler farklı veri tiplerinden oluşabilir. Mesel
 
 Burada sözlük içinde hem sayıları hem de karakter dizilerini kullandık. Aynı
 şekilde sözlük içinde listelere de yer verebiliriz::
-    
+
     sözlük = {"Ahmet Özkoparan": ["İstanbul", "Öğretmen", 34],
               "Mehmet Yağız"   : ["Adana", "Mühendis", 40],
               "Seda Bayrak"    : ["İskenderun", "Doktor", 30]}
 
 Mesela bu sözlükte `"Seda Bayrak"` adlı kişinin bilgilerine ulaşmak istersek
 şöyle bir kod yazabiliriz::
-    
+
     print(sözlük["Seda Bayrak"])
 
 Bu kod bize şöyle bir çıktı verecektir::
@@ -428,11 +428,11 @@ tanımlayabiliriz::
     kişiler = {"Ahmet Özkoparan": {"Memleket": "İstanbul",
                                    "Meslek"  : "Öğretmen",
                                    "Yaş"     : 34},
-                                  
+
                "Mehmet Yağız"   : {"Memleket": "Adana",
                                    "Meslek"  : "Mühendis",
                                    "Yaş"     : 40},
-                
+
                "Seda Bayrak"    : {"Memleket": "İskenderun",
                                    "Meslek"  : "Doktor",
                                    "Yaş"     : 30}}
@@ -446,7 +446,7 @@ Böylece şöyle kodlar yazabiliriz::
 Yukarıdaki yapının benzerini listeler konusundan hatırlıyor olmalısınız. İç içe
 geçmiş listelerin öğelerine ulaşırken de buna benzer bir sözdiziminden
 yararlanıyorduk. Örneğin::
-    
+
     liste = [["Ahmet", "Mehmet", "Ayşe"],
              ["Sedat", "Serkan", "Selin"],
              ["Zeynep", "Nur", "Eda"]]
@@ -454,26 +454,26 @@ yararlanıyorduk. Örneğin::
 Burada bir liste içinde iç içe geçmiş üç farklı liste ile karşı karşıyayız.
 Mesela ilk listenin ilk öğesi olan `"Ahmet"` adlı öğeye erişmek istersek şöyle
 bir kod yazmamız gerekiyor::
-    
+
     print(liste[0][0])
 
 İşte iç içe geçmiş sözlüklerin öğelerine ulaşmak için de buna benzer bir kod
 yazmamız gerekiyor. Örneğin `kişiler` adlı sözlükteki `"Mehmet Yağız"` adlı
 kişinin yaşına ulaşmak istersek şöyle bir şey yazacağız::
-    
+
     print(kişiler["Mehmet Yağız"]["Yaş"])
 
 Gelin isterseniz `kişiler` adlı sözlüğü kullanarak basit bir irtibat listesi
 uygulaması yazalım. Böylece sözlüklere elimizi alıştırmış oluruz::
-    
+
     kişiler = {"Ahmet Özkoparan": {"Memleket": "İstanbul",
                                    "Meslek"  : "Öğretmen",
                                    "Yaş"     : 34},
-                                  
+
                "Mehmet Yağız"   : {"Memleket": "Adana",
                                    "Meslek"  : "Mühendis",
                                    "Yaş"     : 40},
-                
+
                "Seda Bayrak"    : {"Memleket": "İskenderun",
                                    "Meslek"  : "Doktor",
                                    "Yaş"     : 30}}
@@ -485,7 +485,7 @@ uygulaması yazalım. Böylece sözlüklere elimizi alıştırmış oluruz::
 
     ayrıntı = input("Memleket/Meslek/Yaş? ")
 
-    print(kişiler[arama][ayrıntı]) 
+    print(kişiler[arama][ayrıntı])
 
 Tıpkı bir önceki telefon defteri uygulamamız gibi, bu irtibat listesi uygulaması
 da geliştirilmeye açıktır. Ancak henüz bu iki uygulamayı geliştirmemizi
@@ -494,43 +494,43 @@ için sözlüklere dair öğrenmemiz gereken başka şeyler de var.
 
 Sözlüklerin öteki veri tiplerinden önemli bir farkı, sözlük içinde yer
 alan öğelerin herhangi bir sıralama mantığına sahip olmamasıdır. Yani sözlükteki
-öğeler açısından 'sıra' diye bir kavram yoktur. 
+öğeler açısından 'sıra' diye bir kavram yoktur.
 
 Örneğin bir liste, demet veya karakter dizisi içindeki öğelere; bu öğelerin o
 liste, demet veya karakter dizisi içindeki sıralarına göre erişebilirsiniz::
-    
+
     >>> liste = ["Ahmet", "Mehmet", "Zeynep"]
     >>> liste[0]
-    
+
     'Ahmet'
-    
+
     >>> liste[-1]
-    
+
     'Zeynep'
-    
+
 Ancak sözlükler açısından böyle bir şey söz konusu değildir::
 
     >>> sözlük = {'elma': 'apple',
     ...           'armut': 'pear',
     ...           'çilek': 'strawberry'}
     >>> sözlük[0]
-    
+
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
     KeyError: 0
-    
+
 Gördüğünüz gibi, sözlükler üzerinde sıralamaya dayalı bir sorgulama yapmaya
 çalıştığımızda Python bize bir hata mesajı gösteriyor.
 
 Bu durumun etkilerini şurada da görebilirsiniz:
 
 Dikkatlice bakın::
-    
+
     >>> sözlük = {'a': '0', 'b': '1', 'c': '2'}
     >>> sözlük
-    
+
     {'a': '0', 'c': '2', 'b': '1'}
-    
+
 Bu çıktıyı iyi inceleyin. Göreceğiniz gibi, çıktıda görünen öğeler bizim sözlüğü
 tanımladığımız sıradaki gibi değil. Biz sözlüğü 'a', 'b' ve 'c' şeklinde
 sıralayarak tanımladık, ama çıktı 'a', 'c' ve 'b' şeklinde oldu. O yüzden
@@ -561,35 +561,35 @@ Bu formülü bir örnek üzerinden somutlaştıralım::
 
 Böylece sözlüğe, anahtarı `"Ahmet"`, değeri ise `"Adana"` olan bir öğe eklemiş
 olduk. Sözlüğümüzün son durumunu kontrol edelim::
-    
+
     >>> print(sözlük)
-    
+
     {'Ahmet': 'Adana'}
 
 Gördüğünüz gibi, "Ahmet" öğesi sözlüğe eklendi. Artık bu öğeye normal yollardan
 ulaşabiliriz::
-    
+
     >>> print(sözlük["Ahmet"])
-    
+
     Adana
 
 Elimiz alışsın diye sözlüğe öğe eklemeye devam edelim::
 
     >>> sözlük["Mehmet"] = "İstanbul"
     >>> sözlük
-    
+
     {'Ahmet': 'Adana', 'Mehmet': 'İstanbul'}
-    
+
     >>> sözlük["Seda"] = "Mersin"
     >>> sözlük
-    
+
     {'Ahmet': 'Adana', 'Mehmet': 'İstanbul', 'Seda': 'Mersin'}
-    
+
     >>> sözlük["Eda"] = "Tarsus"
     >>> sözlük
-    
+
     {'Ahmet': 'Adana', 'Eda': 'Tarsus', 'Mehmet': 'İstanbul', 'Seda': 'Mersin'}
-     
+
 Özellikle son çıktıya dikkatlice bakın. Sözlüğe en son `"Eda"` öğesini
 eklemiştik. Ama sözlüğü ekrana bastığımızda bu öğenin sözlüğün sonuna değil
 ortasına bir yere yerleştiğini görüyoruz. Bu durumun, sözlüklerin sırasız bir
@@ -598,58 +598,58 @@ veri tipi olmasından kaynaklandığını biliyorsunuz.
 Gelin pratik olması açısından birkaç örnek daha verelim.
 
 Elimizde şöyle bir sözlük olsun::
-    
+
     >>> personel = {"Mehmet Öz": "AR-GE Müdürü",
     ...             "Samet Söz": "Genel Direktör",
     ...             "Sedat Gün": "Proje Müdürü"}
-    
+
 Şimdi bu sözlüğe ``"Turgut Özben": "Mühendis"`` anahtar-değer çiftini
 ekleyelim::
 
-    >>> personel["Turgut Özben"] = "Mühendis"    
+    >>> personel["Turgut Özben"] = "Mühendis"
 
 Sözlüğümüzün son halini görelim::
-    
+
     >>> print(personel)
 
-    {'Samet Söz': 'Genel Direktör', 'Mehmet Öz': 'AR-GE Müdürü', 'Turgut Özben': 
+    {'Samet Söz': 'Genel Direktör', 'Mehmet Öz': 'AR-GE Müdürü', 'Turgut Özben':
     'Mühendis', 'Sedat Gün': 'Proje Müdürü'}
-    
+
 Gördüğünüz gibi eklemek istediğimiz öğe sözlüğe eklenmiş. Ancak bu öğenin
 sözlüğün en sonuna değil, sözlük içine rastgele bir şekilde yerleştirildiğine
 dikkatinizi çekmek isterim. Çünkü, dediğimiz gibi, sözlükler sırasız bir veri
-tipidir.   
+tipidir.
 
-Gelin bu konuyu daha iyi anlamak için bir örnek daha verelim. 
+Gelin bu konuyu daha iyi anlamak için bir örnek daha verelim.
 
 Önce `notlar` adında boş bir sözlük tanımlayalım::
-    
+
     >>> notlar = {}
-    
+
 Bu sözlüğe öğrencilerin sınavdan aldıkları notları ekleyeceğiz::
-    
+
     >>> notlar["Ahmet"] = 45
     >>> notlar["Mehmet"] = 77
     >>> notlar["Seda"] = 98
     >>> notlar["Deniz"] = 95
     >>> notlar["Ege"] = 95
     >>> notlar["Zeynep"] = 100
-    
+
 Sözlüğümüzün son halini görelim::
-    
+
     >>> print(notlar)
-    
+
     {'Seda': 98, 'Ege': 95, 'Mehmet': 77, 'Zeynep': 100, 'Deniz': 95, 'Ahmet': 45}
-    
+
 Bu noktada sözlüklerin önemli bir özelliğinden bahsetmemiz uygun olacak. Bir
-sözlüğe değer olarak bütün veri tiplerini verebiliriz. Yani:: 
+sözlüğe değer olarak bütün veri tiplerini verebiliriz. Yani::
 
     >>> sözlük = {}
     >>> sözlük = {'a': 1}
     >>> sözlük = {'a': (1,2,3)}
     >>> sözlük = {'a': 'kardiz'}
     >>> sözlük = {'a': [1,2,3]}
-    
+
 Gördüğünüz gibi, sözlükler değer olarak her türlü veri tipini kabul ediyor. Ama
 durum sözlük anahtarları açısından böyle değildir. Yani sözlüklere anahtar
 olarak her veri tipini atayamayız. Bir değerin 'anahtar' olabilmesi için, o
@@ -674,79 +674,79 @@ Dolayısıyla bir sözlüğe ancak şu veri tiplerini ekleyebiliriz:
 Şu kodları dikkatlice inceleyin:
 
 Önce boş bir sözlük oluşturalım::
-    
+
     >>> sözlük = {}
-    
+
 Bu sözlüğe anahtar olarak bir demet ekleyelim::
-    
+
     >>> l = (1,2,3)
     >>> sözlük[l] = 'falanca'
     >>> sözlük
-    
+
     {(1, 2, 3): 'falanca'}
-    
+
 Bir sayı ekleyelim::
-    
+
     >>> l = 45
     >>> sözlük[l] = 'falanca'
     >>> sözlük
-    
+
     {45: 'falanca', (1, 2, 3): 'falanca'}
-    
+
 Bir karakter dizisi ekleyelim::
-    
+
     >>> l = 'kardiz'
     >>> sözlük[l] = 'falanca'
     >>> sözlük
-    
+
     {'kardiz': 'falanca', 45: 'falanca', (1, 2, 3): 'falanca'}
 
 Yukarıdakiler, değiştirilemeyen veri tipleri olduğu için sözlüklere anahtar
-olarak eklenebildi. 
+olarak eklenebildi.
 
 Bir de şunlara bakalım:
 
 Sözlüğümüze anahtar olarak bir liste eklemeye çalışalım::
-    
+
     >>> l = [1,2,3]
     >>> sözlük[l] = 'falanca'
-    
+
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
     TypeError: unhashable type: 'list'
 
 Kümemize bir sözlük eklemeye çalışalım::
-    
+
     >>> l = {"a": 1, "b": 2, "c": 3}
     >>> sözlük[l] = 'falanca'
-    
+
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
     TypeError: unhashable type: 'dict'
-    
+
 Sözlüklerle çalışırken sözlüklerin bu özelliğine karşı uyanık olmalıyız.
-    
+
 Sözlük Öğeleri Üzerinde Değişiklik Yapmak
 *****************************************
 
 Sözlükler değiştirilebilir veri tipleridir. Dolayısıyla sözlükler üzerinde
-rahatlıkla istediğimiz değişikliği yapabiliriz. 
+rahatlıkla istediğimiz değişikliği yapabiliriz.
 
 Sözlükler üzerinde değişiklik yapma işlemi, biraz önce öğrendiğimiz, sözlüklere
 yeni öğe ekleme işlemiyle aynıdır. Dikkatlice bakın::
-    
-    >>> notlar = {'Seda': 98, 'Ege': 95, 'Mehmet': 77, 
+
+    >>> notlar = {'Seda': 98, 'Ege': 95, 'Mehmet': 77,
     ... 'Zeynep': 100, 'Deniz': 95, 'Ahmet': 45}
 
 Sözlüğümüz bu. Şimdi bu sözlükteki 'Ahmet' adlı kişinin `45` olan notunu `65`
 olarak değiştirelim::
-    
+
     >>> notlar["Ahmet"] = 65
     >>> print(notlar)
 
     {'Seda': 98, 'Ege': 95, 'Mehmet': 77, 'Zeynep': 100, 'Deniz': 95, 'Ahmet': 65}
-    
-Gördüğünüz gibi Ahmet'in notu `65` olarak değişmiş...    
+
+Gördüğünüz gibi Ahmet'in notu `65` olarak değişmiş...
 
 Sözlük Üreteçleri (*Dictionary Comprehensions*)
 ************************************************
@@ -759,88 +759,88 @@ listeler oluşturabiliyorduk. Aynı şey sözlükler için de geçerlidir. Tıpk
 
 Örneğin elimizde, Türkçe alfabedeki harfleri içeren `harfler` adlı şöyle bir
 liste olduğunu düşünün::
-    
+
     >>> harfler = 'abcçdefgğhıijklmnoöprsştuüvyz'
-    
+
 Amacımız bu harflerin her birine bir numara vermek. Yani nihai olarak şöyle bir
 sözlük elde etmek istiyoruz::
-    
-    {'ğ': 8, 
-     'v': 26, 
-     'ş': 22, 
-     'u': 24, 
-     't': 23, 
-     'ö': 18, 
-     'ı': 10, 
-     'p': 19, 
-     's': 21, 
-     'r': 20, 
-     'ü': 25, 
-     'y': 27, 
-     'ç': 3, 
-     'z': 28, 
-     'e': 5, 
-     'd': 4, 
-     'g': 7, 
-     'f': 6, 
-     'a': 0, 
-     'c': 2, 
-     'b': 1, 
-     'm': 15, 
-     'l': 14, 
-     'o': 17, 
-     'n': 16, 
-     'i': 11, 
-     'h': 9, 
-     'k': 13, 
+
+    {'ğ': 8,
+     'v': 26,
+     'ş': 22,
+     'u': 24,
+     't': 23,
+     'ö': 18,
+     'ı': 10,
+     'p': 19,
+     's': 21,
+     'r': 20,
+     'ü': 25,
+     'y': 27,
+     'ç': 3,
+     'z': 28,
+     'e': 5,
+     'd': 4,
+     'g': 7,
+     'f': 6,
+     'a': 0,
+     'c': 2,
+     'b': 1,
+     'm': 15,
+     'l': 14,
+     'o': 17,
+     'n': 16,
+     'i': 11,
+     'h': 9,
+     'k': 13,
      'j': 12}
-     
+
 Bunun için birkaç farklı yöntemden yararlanabiliriz. Örneğin::
-    
+
     >>> sözlük = {}
     >>> for i in harfler:
     ...     sözlük[i] = harfler.index(i)
-    
+
 veya::
 
     >>> sözlük = {}
     >>> for i in range(len(harfler)):
-    ...     sözlük[harfler[i]] = i    
+    ...     sözlük[harfler[i]] = i
 
 İşte bu işlemleri sözlük üreteçlerini kullanarak çok daha hızlı ve pratik bir
 şekilde halledebiliriz. Dikkatlice bakın::
-    
+
     >>> sözlük = {i: harfler.index(i) for i in harfler}
-    
+
 Bir örnek daha verelim. Diyelim ki elinizde şöyle bir isim listesi var::
 
     isimler = ["ahmet", "mehmet", "fırat", "zeynep", "selma", "abdullah", "cem"]
-    
+
 Amacınız, bu isimleri ve her bir ismin kaç harften oluştuğunu gösteren bir
 sözlük elde etmek. Yani nihai olarak şöyle bir şey olsun istiyorsunuz elinizde::
-    
-    {'zeynep': 6, 
-     'cem': 3, 
-     'abdullah': 8, 
-     'ahmet': 5, 
-     'mehmet': 6, 
-     'fırat': 5, 
-     'selma': 5}   
-     
-İşte bu görev için de sözlük üreteçlerinden yararlanabilirsiniz::     
+
+    {'zeynep': 6,
+     'cem': 3,
+     'abdullah': 8,
+     'ahmet': 5,
+     'mehmet': 6,
+     'fırat': 5,
+     'selma': 5}
+
+İşte bu görev için de sözlük üreteçlerinden yararlanabilirsiniz::
 
     >>> isimler = ["ahmet", "mehmet", "fırat", "zeynep", "selma", "abdullah", "cem"]
     >>> sözlük = {i: len(i) for i in isimler}
     >>> sözlük
-    
+
     {'zeynep': 6, 'cem': 3, 'abdullah': 8, 'ahmet': 5, 'mehmet': 6, 'fırat': 5, 'selma': 5}
-    
+
 Bildiğiniz gibi sözlükler, her biri birbirinden `:` işareti ile ayrılan birtakım
 anahtar-değer çiftlerinden oluşuyor. İşte yukarıdaki sözlük üreteci yapısında
 biz `:` işaretinin sol tarafına `isimler` adlı listedeki her bir öğeyi; sağ
 tarafına da bu öğelerin uzunluklarını bir çırpıda ekliyoruz.
 
-   
+
 
 
 

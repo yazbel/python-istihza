@@ -1,12 +1,15 @@
 .. meta::
-   :description: Bu bölümde curses modülünü inceleyeceğiz. 
+   :description: Bu bölümde curses modülünü inceleyeceğiz.
    :keywords: python, modül, import, curses
 
 .. highlight:: python3
 
-**************
-Curses Nedir?
-**************
+*************
+curses Modülü
+*************
+
+curses Nedir?
+=============
 
 Curses kütüphanesi, metin tabanlı terminaller için terminalden bağımsız bir ekran boyama ve klavye kullanımı kolaylığı sağlar. Bu tip terminaller, VT100s, Linux konsolu ve çeşitli programlar tarafından simüle edilmiş terminallerdir. Ekran terminalleri imleci hareket ettirmek, ekranı kaydırmak ve alanları silmek gibi bazı genel işlemleri yapabilmek için çeşitli kontrol kodlarını destekler. Farklı terminaller geniş ölçüde değişik kodlar kullanırlar ve genellikle kendi küçük tuhaflıkları vardır.
 
@@ -52,9 +55,8 @@ Ardından terminalin ilk işletim modunu yüklemek için `endwin()`'i çağırı
 
 Şimdi yavaş yavaş örnekler üzerinde curses modülünü daha iyi anlamaya çalışalım.
 
-**********
 Örnekler:
-**********
+=========
 
 
 Örnek-1:
@@ -150,7 +152,7 @@ Yine ekranımızın maksimum boyutlarını tanımlayalım::
 Yazının terminal ekranında, bir animasyon gibi hareket etmesini istiyorsak, bir for döngüsü içinde sütun ve satırları anlık olarak değiştirebiliriz::
 
     for i in range(boyutlar[1] - len("hello world!")):
-    
+
 Ekranı temizleyelim::
 
         ekran.clear()
@@ -158,7 +160,7 @@ Ekranı temizleyelim::
 Sürekli y ekseninin ortasında olan ve x ekseninin i parametresine göre değişen *"hello world!"* yazısını kalın harflerle ekrana hareketli bir şekilde bastıralım::
 
         ekran.addstr(int(boyutlar[0]/2), i, "hello world!", curses.A_BOLD)
- 
+
 Ekranı tazeleyelim::
 
         ekran.refresh()
@@ -233,11 +235,11 @@ Döngü değişkenini tanımlıyoruz. Bu değişken basılan her tuşu temsil ed
     q = -1
 
 Döngüyle birlikte değişecek olan ekran satır ve sütun değerlerini ilk etapta 0 olarak belirliyoruz::
-    
+
     x, y = 0, 0
 
 Satır ve sütunların değerleri, biri düşey diğeri yataya müdahele edecek değişkenlere göre değiştirilecek. Bu yüzden *dusey* ve *yatay* isminde iki tane değişken oluşturalım::
-    
+
     dusey, yatay = 1, 1
 
 Şimdi döngümüzü oluşturmaya geçelim::
@@ -262,17 +264,17 @@ Döngüyle birlikte *x* ve *y*'nin değerleri *dusey* ve *yatay* değişkenlerin
         x += yatay
 
 Şayet *y* maksimum değerine ulaşırsa, *dusey* değişkeni -1'e eşitlenir. Böylece negatif y yönünde hareket edebiliriz::
- 
+
         if y == boyutlar[0] - 1:
             dusey = -1
 
 Şayet *y* minimum değerine ulaşırsa, *dusey*' değişkeni 1'e eşitlenir. Böylece pozitif y yönünde hareket edebiliriz::
-        
+
         elif y == 0:
             dusey = 1
 
 Şayet *x* maksimum değerine ulaşırsa, *yatay* değişkeni -1'e eşitlenir. Böylece negatif x yönünde hareket edebiliriz::
-    
+
         if x == boyutlar[1] - len("hello world!") - 1:
             yatay = -1
 
@@ -348,7 +350,7 @@ Yine ekran boyutlarını alalım::
     boyutlar = ekran.getmaxyx()
 
 Hareketi sağlamak için `nodelay()` fonksiyonunun değerini 1 olarak ayarlayalım::
- 
+
     ekran.nodelay(1)
 
 Her tuşu temsil edecek olan *q* değişkenimizi tanımlayalım::
@@ -363,9 +365,9 @@ değerlerini 0, 0 yazıyoruz::
 Şimdi döngümüzü oluşturmaya geçelim. *q* tuşuna basılmadığı sürece döngü devam etsin::
 
     while q != ord("q"):
-    
+
 Döngü her başa sardığında `clear()` ile yine ekranı temizleyelim::
-    
+
         ekran.clear()
 
 Ekranın y, x konumuna "hello world!" stringini kalın harfli olacak şekilde ekleyelim::
@@ -381,12 +383,12 @@ Ekranı tazeleyelim::
         q = ekran.getch()
 
 Şayet kullanıcı *w* tuşuna basarsa ve *y*'nin değeri 0'dan büyükse, *y*'nin değeri 1 birim azalsın::
-    
+
         if q == ord("w") and y > 0:
             y -= 1
 
 Şayet kullanıcı *s* tuşuna basarsa ve *y*'nin değeri maksimum değerinden küçükse, *y*'nin değeri 1 birim arttırılsın::
-    
+
         elif q == ord("s") and y < boyutlar[0] - 1:
             y += 1
 
@@ -394,7 +396,7 @@ Ekranı tazeleyelim::
 
         elif q == ord("a") and x > 0:
             x -= 1
- 
+
 Şayet kulanıcı *d* tuşuna basarsa ve *x*'in değeri maksimum değerinden küçükse; *x*'in değeri 1 birim arttırılsın::
 
         elif q == ord("d") and x < boyutlar[1] - len("hello world!") - 1:
@@ -493,7 +495,7 @@ Yine ekrandaki harekette bir gecikme olmaması için `nodelay()`'in parametresin
     ekran.nodelay(1)
 
 Yukarıda tanımladığımız renk çiftlerini kullanabilmek için bir değişken tanımlayalım. Bu değişken sayesinde renk çiftlerine, sıra numarası sayesinde erişebileceğiz::
-   
+
     g = 1
 
 Şimdi de her zamanki gibi her tuşu temsil edecek *q* değişkenimizi tanımlayalım::
@@ -509,7 +511,7 @@ Döngümüzü tanımlayalım. Döngü *q* tuşuna basılmadığı sürece devam 
     while q != ord("q"):
 
 Her zamanki gibi ekranımızı tamamen temizleyelim::
-    
+
         ekran.clear()
 
 Ekranın *y* ve *x* konumuna *"hello world!"* yazısını yerleştirelim. Aşağıdaki `curses.color_pair(g)`'deki *g* birazdan tanımlayacağımız tuşlara bastığımızda renk değiştirmeye yarayacak::
@@ -519,13 +521,13 @@ Ekranın *y* ve *x* konumuna *"hello world!"* yazısını yerleştirelim. Aşağ
 İmleci ekranın en sonuna götürelim. Bu fonksiyonu kullanmadığımız zaman oluşacak olan farkı görebilmek için fonksiyonu yoruma alın::
 
         ekran.move(boyutlar[0] - 1, boyutlar[1] - 1)
-    
+
 Ekranı tazeleyelim::
-  
+
         ekran.refresh()
 
 *q* bütün tuşları temsil ediyor olsun::
- 
+
         q = ekran.getch()
 
 `chr(49)`'dan `chr(52)`'ye kadar olan karakterler 1, 2 ve 3'tür. Şayet kullanıcı bu tuşlara basarsa *g* değişkeni değişecek ve böylece *"hello world!"* yazımız farklı renklere sahip olacak::
@@ -541,14 +543,14 @@ Ekranı tazeleyelim::
 Şayet kullanıcı *s* tuşuna basarsa ve *y*'nin değeri maksimum değerin 1 birim eksiğinden küçükse::
 
         elif q == ord("s") and y < boyutlar[0] - 1:
-        
+
 Yukarıdaki koşul altında şayet *y* maksimum değerinden 2 birim küçükse ve *x*'de maksimum değere ulaşmışsa, hiç bir işlem yapılmasın::
 
             if y == boyutlar[0] - 2 and x == boyutlar[1] - len("hello world!"):
                 pass
 
 Aksi taktirde, *y* değişkeninin değeri 1 birim artsın::
-        
+
             else:
                 y += 1
 
@@ -556,23 +558,23 @@ Aksi taktirde, *y* değişkeninin değeri 1 birim artsın::
 
         elif q == ord("a") and x > 0:
             x -= 1
- 
+
 Şayet kullanıcı *d* tuşuna basarsa ve *x*'in değeri maksimum değerden küçükse::
 
         elif q == ord("d") and x < boyutlar[1] - len("hello world!"):
-        
+
 Şayet yukarıdaki koşul altında *y*'nin ve *x*'in değerleri max değerlerinden 1 birim küçüğüne eşitse; hiç bir işlem yapılmasın::
 
             if y == boyutlar[0] - 1 and x == boyutlar[1] - len("hello world!") - 1:
                 pass
-        
+
 Aksi taktirde, *x* değişkeninin değeri 1 birim arttırılsın::
 
             else:
                 x += 1
-   
+
 `time.sleep()`'in neden kullanıldığını öğrenmek için bu fonksiyonun başına yorum satırı işareti getirin::
-    
+
         time.sleep(0.05)
 
 Ve programdan çıkıldığında terminal tekrar eski haline getirilsin::
@@ -608,7 +610,7 @@ Ve programdan çıkıldığında terminal tekrar eski haline getirilsin::
     x, y = 0, 0
     while q != ord("q"):
         ekran.clear()
-        ekran.addstr(y, x, "hello world!", 
+        ekran.addstr(y, x, "hello world!",
                      curses.color_pair(g) | b[bold] | r[reverse])
         ekran.move(boyutlar[0] - 1, boyutlar[1] - 1)
         ekran.refresh()
@@ -702,14 +704,14 @@ Yine ekrandaki her tuşu temsil eden bir *q* değişkeni oluşturalım::
 Yine *q* tuşuna basılınca sonlanan bir döngü oluşturalım::
 
     while q != ord("q"):
-    
+
 Ekranı temizleyelim yine::
 
         ekran.clear()
 
 *"hello world!* yazısını ilgili tuşlara basılınca aktif hale gelecek biçimlendirme özellikleriyle birlikte ekrana ekleyelim::
 
-        ekran.addstr(y, x, "hello world!", 
+        ekran.addstr(y, x, "hello world!",
                      curses.color_pair(g) | b[bold] | r[reverse])
 
 İmleci ekranın sağ alt köşesine yerleştirelim::
@@ -721,7 +723,7 @@ Ekranı tazeleyelim::
         ekran.refresh()
 
 *q* bütün tuşları temsil etsin::
-   
+
         q = ekran.getch()
 
 `chr(49)`'dan `chr(52)`'ye kadar olan karakterler 1, 2 ve 3'tür. Şayet kullanıcı bu tuşlara basarsa *g* değişkeni değişecek ve böylece *"hello world!"* yazımız farklı renklere sahip olacak::
@@ -730,10 +732,10 @@ Ekranı tazeleyelim::
             g = int(chr(q))
 
 Kullanıcı *b* tuşuna basarsa, *bold* değişkeninin değerini `1 - bold` yapalım. Böylece *bold* 0 iken *bold* 1 olur, *bold* 1 iken de *bold* 0 olur. Bu şekilde yukarıda tanımladığımız *b* listesinin iki elemanını da aktif hale getirmiş oluruz::
- 
+
         elif q == 98:
             bold = 1 - bold
-    
+
 Kullanıcı "r" tuşuna basarsa, *reverse*'in değeini `1 - reverse` yapalım. Yine aynı şekilde *reverse* 0 iken *reverse* 1 olur, *reverse* 1 iken de *reverse* 0 olur. Böylece yukarıda tanımladığımız *r* listesinin iki elemanını da aktif hale getiririz::
 
         elif q == 114:
@@ -747,12 +749,12 @@ Eğer kullanıcı *w* tuşuna basarsa ve *y*'nin değeri 0'dan büyükse, *y* de
 Şayet kullanıcı *s* tuşuna basarsa ve *y*'nin değeri maksimum değerin 1 birim eksiğinden küçükse::
 
         elif q == ord("s") and y < boyutlar[0] - 1:
-        
+
 Yukarıdaki koşul altında, şayet *y*, maksimum değerinden 2 birim küçükse ve *x*'de maksimum değere ulaşmışsa, hiç bir işlem yapılmasın::
 
             if y == boyutlar[0] - 2 and x == boyutlar[1] - len("hello world!"):
                 pass
-        
+
 Aksi taktirde, *y* değişkeninin değeri 1 birim arttırılsın::
 
             else:
@@ -766,7 +768,7 @@ Aksi taktirde, *y* değişkeninin değeri 1 birim arttırılsın::
 Şayet kullanıcı *d* tuşuna basarsa ve *x*'in değeri maksimum değerden küçükse::
 
         elif q == ord("d") and x < boyutlar[1] - len("hello world!"):
-        
+
 Yukarıdaki koşul altında, şayet *y*'nin ve *x*'in değerleri maksimum değerlerinden 1 birim küçüğüne eşitse, hiç bir işlem yapılmasın::
 
             if y == boyutlar[0] - 1 and x == boyutlar[1] - len("hello world!") - 1:
@@ -785,7 +787,7 @@ Ve programı yine terminali bozmayacak şekilde sonlandıralım::
 
     curses.endwin()
 
-Örnek-7: 
+Örnek-7:
 =========
 
 Yön tuşlarıyla hareket eden, "1, 2, 3" tuşlarıyla renkleri değişen, "b" tuşu ile kalınlaşıp inceleşen ve "r" tuşuyla arka plan rengi ön plan rengi haline gelen bir "hello world!" yazısı oluşturalım.
@@ -811,12 +813,12 @@ Yön tuşlarıyla hareket eden, "1, 2, 3" tuşlarıyla renkleri değişen, "b" t
     reverse = 0
     b = [curses.A_NORMAL, curses.A_BOLD]
     r = [curses.A_NORMAL, curses.A_REVERSE]
-    g = 0 
+    g = 0
     q = -1
     x, y = 0, 0
     while q != ord("q"):
         ekran.clear()
-        ekran.addstr(y, x, "hello world!", 
+        ekran.addstr(y, x, "hello world!",
                      curses.color_pair(g)| b[bold] | r[reverse])
         ekran.move(boyutlar[0] -1, boyutlar[1] - 1)
         ekran.refresh()
@@ -914,14 +916,14 @@ Yine ekrandaki her tuşu temsil eden bir *q* değişkeni oluşturalım::
 Yine *q* tuşuna basılınca sonlanan bir döngü oluşturalım::
 
     while q != ord("q"):
-    
+
 Ekranı temizleyelim yine::
 
         ekran.clear()
 
 *"hello world!* yazısını, ilgili tuşlara basılınca aktif hale gelecek biçimlendirme özellikleriyle birlikte ekrana ekleyelim::
 
-        ekran.addstr(y, x, "hello world!", 
+        ekran.addstr(y, x, "hello world!",
                      curses.color_pair(g) | b[bold] | r[reverse])
 
 İmleci ekranın sağ alt köşesine yerleştirelim::
@@ -933,7 +935,7 @@ Ekranı tazeleyelim::
         ekran.refresh()
 
 *q* bütün tuşları temsil etsin::
-   
+
         q = ekran.getch()
 
 `chr(49)`'dan `chr(52)`'ye kadar olan karakterler 1, 2 ve 3'tür. Şayet kullanıcı bu tuşlara basarsa *g* değişkeni değişecek ve böylece *"hello world!"* yazımız farklı renklere sahip olacak::
@@ -942,10 +944,10 @@ Ekranı tazeleyelim::
             g = int(chr(q))
 
 Kullanıcı *b* tuşuna basarsa, *bold* değişkeninin değerini `1 - bold` yapalım. Böylece *bold* 0 iken *bold* 1 olur, *bold* 1 iken de *bold* 0 olur. Bu şekilde yukarıda tanımladığımız *b* listesinin iki elemanını da aktif hale getirmiş oluruz::
- 
+
         elif q == 98:
             bold = 1 - bold
-    
+
 Kullanıcı "r" tuşuna basarsa, *reverse*'in değeini `1- reverse` yapalım. Yine aynı şekilde *reverse* 0 iken *reverse* 1 olur, *reverse* 1 iken de *reverse* 0 olur. Böylece yukarıda tanımladığımız *r* listesinin iki elemanını da aktif hale getiririz::
 
         elif q == 114:
@@ -959,12 +961,12 @@ Eğer kullanıcı yukarı ok tuşuna basarsa ve *y*'nin değeri 0'dan büyükse;
 Şayet kullanıcı aşağı ok tuşuna basarsa ve *y*'nin değeri maksimum değerin 1 birim eksiğinden küçükse::
 
         elif q == curses.KEY_DOWN and y < boyutlar[0] - 1:
-        
+
 Yukarıdaki koşul altında, şayet *y*, maksimum değerinden 2 birim küçükse ve *x*'de maksimum değere ulaşmışsa, hiç bir şey yapılmasın::
 
             if y == boyutlar[0] - 2 and x == boyutlar[1] - len("hello world!"):
                 pass
-        
+
 Aksi taktirde; *y* değişkeninin değeri 1 birim arttırılsın::
 
             else:
@@ -978,7 +980,7 @@ Aksi taktirde; *y* değişkeninin değeri 1 birim arttırılsın::
 Şayet kullanıcı sağ ok tuşuna basarsa ve *x*'in değeri maksimum değerden küçükse::
 
         elif q == curses.KEY_RIGHT and x < boyutlar[1] - len("hello world!"):
-        
+
 Yukarıdaki koşul altında, şayet *y*'nin ve *x*'in değerleri maksimum değerlerinden 1 birim küçüğüne eşitse, hiç bir şey yapılmasın::
 
             if y == boyutlar[0] - 1 and x == boyutlar[1] - len("hello world!") - 1:
@@ -1272,7 +1274,7 @@ Eğer kullanıcı sağ ok tuşuna basarsa ve *x* değişkeni maksimum değerine 
                 ekran.addstr(y, x, "", curses.color_pair(1))
 
 Eğer kullanıcı sol ok tuşuna basarsa, *x* değişkeninin değeri 0'a eşitse ve *y* değişkeninin değeri 0'a eşit değilse, *y* değişkeninin değeri 1 birim azaltılsın, *x* değişkeninin değeri 78 olarak ayarlansın, şayet hem *x* hem de*y* değişkeninin değeri 0'a eşitse hiç bir işlem yapılmasın. *x* değişkeninin değeri 0'a eşit değilse, *x* değişkenin değeri 1 birim azaltılsın ve ekranın *yx* konumuna boş bir string eklensin::
- 
+
         elif q == 260:
             if x == 0:
                 if y != 0:
@@ -1311,7 +1313,7 @@ Aşağıdaki kodlar Türkçe karakterleri eklemekle ilgilidir. Daha önce belirt
         elif q == 197:
             ekran.addstr(y, x, "", curses.color_pair(1))
 
-Aşağıdaki kodlarda hangi koşullarda ekrana Türkçe karakterlerin ekleneceği tanımlanmıştır. Türkçe karakterler doğrudan unicode karakteri olarak eklenecektir::
+Aşağıdaki kodlarda hangi koşullarda ekrana Türkçe karakterlerin ekleneceği tanımlanmıştır. Türkçe karakterler doğrudan unicode karakteri olarak eklenecektir:
 
 Küçük *"ç"* harfinin eklenmesini sağlayan koşul::
 
@@ -1467,7 +1469,7 @@ keyword.kwlist listesi içindeki Python'a özgü her bir özel ifade için, iki 
 Eğer yazdığımız yazı regex1'e veya regex2'ye uyuyorsa, ekrana bu yazı farklı bir renkle yazılsın. Buradaki `"\b" * (len(kw) + 1)` kod parçası *kw* ile temsil edilen kwlistteki her bir özel ifadeden sonra yeni eklenecek karakterin nereye eklenmesi gerektiğini belirtir. Mesela kwlistteki üç harflik bir özel ifade için 4. hücreye yeni bir karakter eklenmesini sağlar. Eğer bu kod parçasını yazıyı ekrana eklerken yazmazsak, yeni eklenen karakterler, özel karakterlerin üzerine yazılır::
 
         if regex1 or regex2:
-            ekran.addstr("{}{} ".format("\b" * (len(kw) + 1), kw), 
+            ekran.addstr("{}{} ".format("\b" * (len(kw) + 1), kw),
                          curses.color_pair(2))
 
 Ve *karakterler* stringimizin değerini boş bir string verisine eşitleyelim ki bir sonraki karakter için tekrar kullanabilelim::

@@ -1,11 +1,11 @@
 .. meta:: :author: Buğra İşgüzar <biisguzar@gmail.com>
-          :description: Bu bölümde Python'daki f-string yapısından ve özelliklerinden 
-           söz edeceğiz. 
+          :description: Bu bölümde Python'daki f-string yapısından ve özelliklerinden
+           söz edeceğiz.
           :keywords: python, f-string, formatted string
-           
+
 .. highlight:: py3
 
-**************** 
+****************
 f-string
 ****************
 
@@ -26,7 +26,7 @@ Bu sefer format() fonksiyonuna belirli bir yer göstermediğimiz için sırasıy
 Kullanım
 ********
 
-String nedir hepimiz biliyoruz, Türkçeye karakter dizisi olarak çeviriyoruz. Bu yapıya da f-string diyoruz çünkü bu yapıyı kullanmak istediğimiz stringin (karakter dizisinin) başına **f** ekliyoruz. Yani bir ön ek ekleyerek Python'a artık onun normal, sıradan bir karakter dizisi olmadığını ve bir ön işlemden geçmesi gerektiğini belirtiyoruz.::
+String nedir hepimiz biliyoruz, Türkçeye karakter dizisi olarak çeviriyoruz. Bu yapıya da f-string diyoruz çünkü bu yapıyı kullanmak istediğimiz stringin (karakter dizisinin) başına **f** veya **F** ekliyoruz. Yani bir ön ek ekleyerek Python'a artık onun normal, sıradan bir karakter dizisi olmadığını ve bir ön işlemden geçmesi gerektiğini belirtiyoruz.::
 
         "Selam Dünya!" # Normal bir karakter dizisi
         f"Selam Dünya!" # Bu artık bir f-string
@@ -38,7 +38,7 @@ Bu örnekte f-string'imizin normal bir karakter dizisinden farkı yok gibi gör�
         isim = 'Buğra'
         print(f'Selam {isim}!')
 
-Bu örneği de çalıştırdığınızda yukarıdaki örneklerin çıktılarıyla aynı çıktıyı verdiğini göreceksiniz. Ama çok daha düzenli bir görünümle elde ettik bu sefer aynı çıktıyı. format() fonksiyonuna ilgileneceği kısımları -işlem yapacağı kısımları- süslü parantezler ile belirttiğimizi biliyoruz. f-string için de aynı şey geçerli ancak ufak bir farkla. Artık harici bir işlem yapılıp karakter dizimiz düzenlenmiyor, işlemler doğrudan karakter dizimiz içinde gerçekleştirilip yerini kendi alıyor!
+Bu örneği de çalıştırdığınızda yukarıdaki örneklerin çıktılarıyla aynı çıktıyı verdiğini göreceksiniz. Ama çok daha düzenli bir görünümle elde ettik bu sefer aynı çıktıyı. format() fonksiyonuna ilgileneceği kısımları, işlem yapacağı kısımları, süslü parantezler ile belirttiğimizi biliyoruz. f-string için de aynı şey geçerli ancak ufak bir farkla. Artık harici bir işlem yapılıp karakter dizimiz düzenlenmiyor, işlemler doğrudan karakter dizimiz içinde gerçekleştirilip yerini kendi alıyor!
 
 Bir örnek daha hazırlayalım ve üzerinde konuşalım.::
 
@@ -53,7 +53,7 @@ Aynı örneği format() fonksiyonu ile de yazıp arasındaki farka bakalım.::
         >>> "Onun adı {} ve o {} yaşında.".format(isim, yas)
         'Onun adı Buğra ve o 18 yaşında.'
 
-Yazabileceğim en basit haliyle yazdım -değişken isimleri kullanmadan-, yani değişkenleri sırasıyla ilgili yerleye yerleştirecek. Buna rağmen f-string örneğimizdekinden çok daha uzun oldu ve okunabilirlik azaldı.
+Yukarıdaki kodu en basit haliyle değişken isimleri kullanmadan yazdım, yani değişkenleri sırasıyla ilgili yerlere yerleştirecek. Buna rağmen f-string örneğimizdekinden çok daha uzun oldu ve okunabilirlik azaldı.
 
 Aynı zamanda f-string'lerin içinde Python işlemleri de yapabiliriz.::
         >>> birinci_rakam = 5
@@ -70,7 +70,7 @@ Hadi sadece toplama işlemi yapan bir hesap makinesi yapalım.::
                 f'Sayıların toplamı {birinci_sayi+ikinci_sayi} eder.'
                 )
 
-Kullanıcının girdiği sayıları toplayan bir hesap makinesi yaptık. Az önce f-string'lerin içinde Python yazabildiğimizi öğrenmiştik. Bu bilgimizi de kullanıp bu basit programı daha güncel hale getirelim.::
+Kullanıcının girdiği sayıları toplayan bir hesap makinesi yaptık. Az önce f-string'lerin içinde Python kodu yazabildiğimizi öğrenmiştik. Bu bilgimizi de kullanıp bu basit programı daha güncel hale getirelim.::
 
         >>> f'Sayıların toplamı { int(input("Birinci sayıyı girin: ")) + int(input("İkinci sayıyı girin: ")) } eder.'
         Birinci sayıyı girin: 10
@@ -79,4 +79,4 @@ Kullanıcının girdiği sayıları toplayan bir hesap makinesi yaptık. Az önc
 
 Kullanıcıdan girdileri f-string'in içinde alarak tek satırlık bir hesap makinesi yazmış olduk.
 
-.. note:: f-string'in içinde Python yazmak her zaman en iyi yol olmayabilir.
+.. note:: f-string'in içinde Python kodu yazmak her zaman en iyi yol olmayabilir.

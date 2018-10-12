@@ -1,7 +1,7 @@
 .. meta::
    :description: Bu bölümde Python'daki koşul deyimlerinden söz edeceğiz.
    :keywords: python, if, elif, else
-   
+
 .. highlight:: python3
 
 *****************
@@ -51,14 +51,14 @@ Yukarıdaki tek sesli uygulamayı, ``input()`` fonksiyonunu kullanarak çok sesl
 bir hale nasıl getireceğimizi gayet iyi bildiğinize eminim::
 
     print("""Programa hoşgeldiniz!
-    
+
     Programımızı kullanabilmek için en az
     13 yaşında olmalısınız.""")
-    
+
     print("Lütfen yaşınızı girin.\n")
-    
+
     yaş = input("Yaşınız: \t")
-    
+
     print("Yaşınız: ", yaş)
 
 Tıpkı bir önceki uygulamada olduğu gibi, burada da yaptığımız şey çok basit. İlk
@@ -122,9 +122,9 @@ if
 Python programlama dilinde koşullu durumları belirtmek için üç adet deyimden
 yararlanıyoruz:
 
-* ``if`` 
-* ``elif`` 
-* ``else`` 
+* ``if``
+* ``elif``
+* ``else``
 
 İsterseniz önce ``if`` deyimi ile başlayalım...
 
@@ -144,12 +144,12 @@ Gelin isterseniz bu deyimi nasıl kullanacağımıza dair ufacık bir örnek ver
 işe başlayalım:
 
 Öncelikle elimizde şöyle bir değişken olsun::
-    
+
 	n = 255
 
 Yukarıda verdiğimiz değişkenin değerinin bir karakter dizisi değil, aksine bir
 sayı olduğunu görüyoruz. Şimdi bu değişkenin değerini sorgulayalım::
-    
+
 	if n > 10:
 
 Burada sayının 10'dan büyük olup olmadığına bakıyoruz.
@@ -163,7 +163,7 @@ kullanılıyor. Mesela 'küçüktür' demek isteseydik, `<` işaretini kullanaca
     | İşleç  | Anlamı            |
     +========+===================+
     | >      | büyüktür          |
-    +--------+-------------------+  
+    +--------+-------------------+
     | <      | küçüktür          |
     +--------+-------------------+
     | >=     | büyük eşittir     |
@@ -188,8 +188,8 @@ değer olarak `26` sayısını atadık. Ayrıca burada, değer atama işleminin 
 `Enter` tuşuna bastıktan sonra Python hiçbir şey yapmadan bir alt satıra geçti.
 Bir de şuna bakalım::
 
-    >>> a == 26 
-    
+    >>> a == 26
+
     True
 
 Burada ise yaptığımız şey `a` değişkeninin değerinin `26` olup olmadığını
@@ -215,7 +215,7 @@ Bunları yazmayı unutursak Python gözümüzün yaşına bakmayacaktır.
 Dedik ki, ``if n > 10:`` ifadesi, 'eğer n değişkeninin değeri 10'dan büyükse...'
 anlamına gelir. Bu ifadenin eksik olduğu apaçık ortada. Yani belli ki bu
 cümlenin bir de devamı olması gerekiyor. O halde biz de devamını getirelim::
-    
+
 	if n > 10:
 	    print("sayı 10'dan büyüktür!")
 
@@ -247,14 +247,14 @@ Eğer yukarıdaki ``if`` bloğunu bir metin düzenleyici içine değil de doğru
 etkileşimli kabuğa yazmışsanız bazı şeyler dikkatinizi çekmiş olmalı.
 Etkileşimli kabukta ``if sayı > 10:`` satırını yazıp `Enter` tuşuna bastığınızda
 şöyle bir görüntüyle karşılaşmış olmalısınız::
-    
+
 	>>> if n > 10:
 	...
 
 Dikkat ederseniz, `>>>` işareti, `...` işaretine dönüştü. Eğer bu noktada
 herhangi bir şey yazmadan `Enter` tuşuna basacak olursanız Python size şöyle bir
 hata mesajı verecektir::
-    
+
 	File "<stdin>", line 2
 	    ^
 	IndentationError: expected an indented block
@@ -264,7 +264,7 @@ beklerken, biz onun bu beklentisini karşılamamışız. Dolayısıyla bize yuka
 hata mesajını göstermiş. `...` işaretini gördükten sonra yapmamız gereken şey,
 dört kez boşluk (`Space`) tuşuna basarak girinti oluşturmak ve ``if`` bloğunun
 devamını yazmak olmalıydı. Yani şöyle::
-    
+
 	>>> if n > 10:
 	...      print("sayı 10'dan büyüktür!")
 	...
@@ -273,7 +273,7 @@ Gördüğünüz gibi, ``print()`` fonksiyonunu yazıp `Enter` tuşuna bastıktan
 yine `...` işaretini gördük. Python burada bizden yeni bir satır daha bekliyor.
 Ama bizim yazacak başka bir kodumuz olmadığı için tekrar `Enter` tuşuna
 basıyoruz ve nihai olarak şöyle bir görüntü elde ediyoruz::
-    
+
 	>>> if n > 10:
 	...      print("sayı 10'dan büyüktür!")
 	...
@@ -322,7 +322,7 @@ biliyorsunuz.
 
 Elbette yukarıdaki dönüştürme işlemini şöyle de yapabilirdik::
 
-    sayı = input("Bir sayı giriniz: ")    
+    sayı = input("Bir sayı giriniz: ")
     sayı = int(sayı)
 
 Burada önce ``input()`` fonksiyonuyla veriyi aldık, daha sonra bu veriyi ayrı
@@ -332,16 +332,16 @@ bir yerde sayıya dönüştürüp tekrar `sayı` adlı değişkene atadık.
 Mesela şöyle bir program taslağı yazabiliriz::
 
 	print("""
-	Dünyanın en gelişmiş e.posta hizmetine 
-	hoşgeldiniz. Yalnız hizmetimizden   
-	yararlanmak için önce sisteme giriş    
-	yapmalısınız.                        
+	Dünyanın en gelişmiş e.posta hizmetine
+	hoşgeldiniz. Yalnız hizmetimizden
+	yararlanmak için önce sisteme giriş
+	yapmalısınız.
 	""")
 
 	parola = input("Parola: ")
 
 	if parola == "12345678":
-	    print("Sisteme Hoşgeldiniz!") 
+	    print("Sisteme Hoşgeldiniz!")
 
 Gördüğünüz gibi, programın başında üç tırnak işaretlerinden yararlanarak uzun
 bir metni kullanıcıya gösterdik. Bu bölümü, kendiniz göze hoş gelecek bir
@@ -351,7 +351,7 @@ cevap olarak `"12345678"` yazarsa kullanıcıyı sisteme alıyoruz.
 Yukarıdaki örnekte, kullanıcının girdiği parola `"12345678"` ise kendisine
 `"Sisteme Hoşgeldiniz!"` mesajını gösteriyoruz. Mantık olarak bunun tersini
 yapmak da mümkündür. Yani::
-    
+
     if parola != "12345678":
         print("Ne yazık ki yanlış parola girdiniz!")
 
@@ -384,7 +384,7 @@ elif
 
 Python'da, ``if`` deyimleriyle birlikte kullanılan ve yine koşul belirten bir
 başka deyim de ``elif`` deyimidir. Buna şöyle bir örnek verebiliriz::
-    
+
 	yaş = int(input("Yaşınız: "))
 
 	if yaş == 18:
@@ -425,7 +425,7 @@ verin. Ne demek istediğimiz gayet net anlaşılacaktır.
 Bu durum ``if`` ile ``elif`` arasındaki çok önemli bir farktan kaynaklanır. Buna
 göre ``if`` bize olası bütün sonuçları listeler, ``elif`` ise sadece doğru olan
 ilk sonucu verir. Bu soyut tanımlamayı biraz daha somutlaştıralım::
-    
+
 	a = int(input("Bir sayı giriniz: "))
 
 	if a < 100:
@@ -448,7 +448,7 @@ ilk sonucu verir. Bu soyut tanımlamayı biraz daha somutlaştıralım::
 Yukarıdaki kodları çalıştırdığımızda, doğru olan bütün sonuçlar listelenecektir.
 Yani mesela kullanıcı `40` sayısını girmişse, ekrana verilecek çıktı şöyle
 olacaktır::
-    
+
 	verdiğiniz sayı 100'den küçüktür.
 	verdiğiniz sayı 50'den küçüktür.
 
@@ -456,7 +456,7 @@ olacaktır::
 
 Burada `40` sayısı hem `100`'den, hem de `50`'den küçük olduğu için iki sonuç da
 çıktı olarak verilecektir. Ama eğer yukarıdaki kodları şöyle yazarsak::
-    
+
 	a = int(input("Bir sayı giriniz: "))
 
 	if a < 100:
@@ -478,7 +478,7 @@ Burada `40` sayısı hem `100`'den, hem de `50`'den küçük olduğu için iki s
 
 Kullanıcının `40` sayısını girdiğini varsaydığımızda, bu defa programımımız
 yalnızca şu çıktıyı verecektir::
-    
+
 	verdiğiniz sayı 100'den küçüktür.
 
 Gördüğünüz gibi, ``elif`` deyimlerini kullandığımız zaman, ekrana yalnızca doğru
@@ -509,7 +509,7 @@ else
 ``elif`` idi. Bu bölümde ise koşul deyimlerinin sonuncusu olan ``else`` deyimini
 göreceğiz. Öğrendiğimiz şeyleri şöyle bir gözden geçirecek olursak, temel olarak
 şöyle bir durumla karşı karşıya olduğumuzu görürüz::
-    
+
 	if falanca:
 	    bu işlemi yap
 
@@ -532,7 +532,7 @@ sonucu listelemekle yetinecektir.
 Bu bölümde göreceğimiz ``else`` deyimi, yukarıdaki tabloya bambaşka bir boyut
 kazandırıyor. Dikkat ederseniz şimdiye kadar öğrendiğimiz deyimleri
 kullanabilmek için ilgili bütün durumları tanımlamamız gerekiyordu. Yani::
-    
+
 	eğer böyle bir durum varsa:
 	    bunu yap
 
@@ -579,7 +579,7 @@ deyimi, programımıza şu anlamı katıyor:
 Dikkat ederseniz yukarıdaki kodlarda ``if`` deyimlerini art arda sıralamak
 yerine ilk ``if``'ten sonra ``elif`` ile devam ettik. Peki şöyle bir şey
 yazarsak ne olur? ::
-    
+
 	soru = input("Bir meyve adı söyleyin bana:")
 
 	if soru == "elma":
@@ -598,17 +598,17 @@ Bu kodlar beklediğiniz sonucu vermeyecektir. İsterseniz yukarıdaki kodları
 çalıştırıp ne demek istediğimizi daha iyi anlayabilirsiniz. Eğer yukarıda olduğu
 gibi ``if`` deyimlerini art arda sıralar ve son olarak da bir ``else`` bloğu
 tanımlarsak, ekrana ilk bakışta anlamsız gibi görünen bir çıktı verilecektir::
-    
+
     evet, elma bir meyvedir...
     elma gerçekten bir meyve midir?
 
-Burada olan şey şu: 
+Burada olan şey şu:
 
 Soruya 'elma' cevabını verdiğimizi düşünelim. Bu durumda, Python ilk olarak ilk
 ``if`` bloğunu değerlendirecek ve soruya verdiğimiz cevap 'elma' olduğu için
 `evet, elma bir meyvedir...` çıktısını verecektir.
 
-``if`` ile ``elif`` arasındaki farkı anlatırken, hatırlarsanız art arda gelen ``if`` bloklarında Python'ın olası bütün sonuçları değerlendireceğini söylemiştik. İşte burada da böyle bir durum söz konusu. Gördüğünüz gibi, ilk ``if`` bloğundan sonra yine bir ``if`` bloğu geliyor. Bu nedenle Python olası bütün sonuçları değerlendirebilmek için blokları okumaya devam edecek ve sorunun cevabı 'karpuz' olmadığı için ikinci ``if`` bloğunu atlayacaktır. 
+``if`` ile ``elif`` arasındaki farkı anlatırken, hatırlarsanız art arda gelen ``if`` bloklarında Python'ın olası bütün sonuçları değerlendireceğini söylemiştik. İşte burada da böyle bir durum söz konusu. Gördüğünüz gibi, ilk ``if`` bloğundan sonra yine bir ``if`` bloğu geliyor. Bu nedenle Python olası bütün sonuçları değerlendirebilmek için blokları okumaya devam edecek ve sorunun cevabı 'karpuz' olmadığı için ikinci ``if`` bloğunu atlayacaktır.
 
 Sonraki blok yine bir ``if`` bloğu olduğu için Python kodları okumaya devam
 ediyor. Ancak sorunun cevabı 'armut' da olmadığı için, Python sonraki ``if``
@@ -624,7 +624,7 @@ sadece ``if soru == "armut"`` ifadesinin olduğu blok çalışır, ``else`` blo�
 çalışmaz. Çünkü dediğim gibi, eğer ``else`` bloğundan önce art arda gelen ``if``
 blokları varsa, ``else`` deyimi yalnızca kendisinden önceki son ``if`` bloğunu
 dikkate alır ve sanki yukarıdaki örnek şöyleymiş gibi davranır::
-    
+
 	if soru == "armut":
 	    print("evet, armut bir meyvedir...")
 
@@ -634,7 +634,7 @@ dikkate alır ve sanki yukarıdaki örnek şöyleymiş gibi davranır::
 Bu tür durumlarda ``else`` deyimi bir önceki ``if`` bloğundan önce gelen bütün
 ``if`` bloklarını görmezden gelir ve böylece şu anlamsız görünen çıktı elde
 edilir::
-    
+
     evet, elma bir meyvedir...
     elma gerçekten bir meyve midir?
 
@@ -645,7 +645,7 @@ için ekrana basılıyor.
 
 Yalnız bu dediğimizden, ``else`` ifadesi ``if`` ile birlikte kullanılmaz, anlamı
 çıkarılmamalı. Mesela şöyle bir örnek yapılabilir::
-    
+
 	soru = input("Programdan çıkmak istediğinize emin misiniz? \
 	Eminseniz 'e' harfine basın : ")
 
@@ -659,7 +659,7 @@ Burada eğer kullanıcının cevabı 'e' ise ``if`` bloğu işletilecek, eğer c
 dışında herhangi bir şey ise ``else`` bloğu çalışacaktır. Gayet mantıklı bir
 süreç. Ama eğer yukarıdaki örneğe bir ``if`` bloğu daha eklerseniz işler
 beklediğiniz gibi gitmez::
-    
+
     soru = input("Programdan çıkmak istediğinize emin misiniz? \
     Eminseniz 'e' harfine basın : ")
 
@@ -681,35 +681,35 @@ ikinci ``if`` bloğunu atlıyor ve böylece ``else`` bloğuna ulaşıyor. Bir ö
 gördüğünde sadece bir önceki ``if`` bloğunu dikkate aldığı ve kullanıcının
 cevabı da 'b' olmadığı için ekrana `Peki, biraz daha sohbet edelim!` çıktısını
 veriyor ve ilk bakışta tuhaf görünen şöyle bir çıktı üretiyor::
-    
+
     Güle güle!
     Peki, biraz daha sohbet edelim!
 
 Dolayısıyla, eğer programınızda bir ``else`` bloğuna yer verecekseniz, ondan
 önce gelen koşullu durumların ilkini ``if`` ile sonrakileri ise ``elif`` ile
 bağlayın. Yani::
-    
+
     if koşul_1:
         sonuç_1
-    
+
     elif koşul_2:
         sonuç_2
-        
+
     elif koşul_3:
         sonuç_3
-    
+
     else:
         sonuç_4
 
 Ama eğer ``else`` bloğundan önce sadece tek bir koşul bloğu yer alacaksa bunu
 ``if`` ile bağlayın. Yani::
-    
+
     if koşul_1:
         sonuç_1
-    
+
     else:
         sonuç_2
-        
+
 Programlarımızın doğru çalışması ve istediğimiz sonucu verebilmesi için bu tür
 ayrıntılara olabildiğince dikkat etmemiz gerekiyor. Neticede koşullu durumlar
 mantıkla ilgilidir. Dolayısıyla koşullu durumlarla muhatap olurken mantığınızı
@@ -717,7 +717,7 @@ hiçbir zaman devre dışı bırakmamalısınız.
 
 Bir önceki bölümde ``elif`` deyiminin tam olarak ne işe yaradığını anlamamızı
 sağlayacak bir örnek vereceğimizi söylemiştik. Şimdi bu örneğe bakalım::
-    
+
 	boy = int(input("boyunuz kaç cm?"))
 
 	if boy < 170:
@@ -768,31 +768,31 @@ tasarısından bahsetmiştik hatırlarsanız:
     Diyelim ki sisteme kayıt için kullanıcı adı ve parola belirlenmesini isteyen
     bir program yazıyorsunuz. Yazacağınız bu programda, belirlenebilecek
     kullanıcı adı ve parolanın toplam uzunluğu `40` karakteri geçmeyecek.
-    
+
 O zaman henüz koşullu durumları öğrenmemiş olduğumuz için, yukarıda
 bahsettiğimiz programın ancak şu kadarlık kısmını yazabilmiştik::
-    
+
     kullanıcı_adı = input("Kullanıcı adınız: ")
     parola        = input("Parolanız       : ")
-    
+
     toplam_uzunluk = len(kullanıcı_adı) + len(parola)
 
 Burada yapabildiğimiz tek şey, kullanıcıdan kullanıcı adı ve parola bilgilerini
 alıp, bu bilgilerin karakter uzunluğunu ölçebilmekti. Ama artık koşullu
 durumları öğrendiğimize göre bu programı eksiksiz olarak yazabiliriz. Şu kodları
 dikkatlice inceleyin::
-    
+
     kullanıcı_adı = input("Kullanıcı adınız: ")
     parola        = input("Parolanız       : ")
-    
+
     toplam_uzunluk = len(kullanıcı_adı) + len(parola)
-    
+
     mesaj = "Kullanıcı adı ve parolanız toplam {} karakterden oluşuyor!"
-    
+
     print(mesaj.format(toplam_uzunluk))
-    
+
     if toplam_uzunluk > 40:
-        print("Kullanıcı adınız ile parolanızın ", 
+        print("Kullanıcı adınız ile parolanızın ",
               "toplam uzunluğu 40 karakteri geçmemeli!")
     else:
         print("Sisteme hoşgeldiniz!")

@@ -8,7 +8,7 @@ json Modülü
 ***********
 
 JSON farklı diller arasında iletişimi sağlamak için geliştirilmiş
-basit bir veri formatıdır. Bu veri formatı Python'daki sözlük ve 
+basit bir veri formatıdır. Bu veri formatı Python'daki sözlük ve
 listelere çok benzer. İki tür kullanımı vardır. Birincisi anahtar-değer mantıyla çalışır.
 ::
 
@@ -17,10 +17,10 @@ listelere çok benzer. İki tür kullanımı vardır. Birincisi anahtar-değer m
         "Soyad": "Özgül"
     }
 
-JSON ifadelerinde her öğe arasında virgül olmalıdır. Anahtar ve değer ikilisi 
+JSON ifadelerinde her öğe arasında virgül olmalıdır. Anahtar ve değer ikilisi
 arasında ise iki nokta kullanılır.
 
-İkinci kullanımı ise liste tipine çok benzer. Bu kullanımda 
+İkinci kullanımı ise liste tipine çok benzer. Bu kullanımda
 anahtar-değer değil, sadece değer verilir.
 ::
 
@@ -29,8 +29,8 @@ anahtar-değer değil, sadece değer verilir.
         "Özgül"
     }
 
-JSON modülünde 4 ana fonksiyon bulunuyor. Bunlardan ikisi 
-Python ile JSON oluşturmaya yararken diğer ikisi JSON 
+JSON modülünde 4 ana fonksiyon bulunuyor. Bunlardan ikisi
+Python ile JSON oluşturmaya yararken diğer ikisi JSON
 verilerini çözmeye yarar. JSON oluşturan fonksiyonlar şu
 ikisidir:
 
@@ -45,7 +45,7 @@ JSON verilerini çözen iki fonksiyon ise şunlardır:
 json.dump ve json.dumps
 ************************
 
-Bu iki fonksiyonu birlikte yazmak istedim. Çünkü ikisinin 
+Bu iki fonksiyonu birlikte yazmak istedim. Çünkü ikisinin
 parametreleri neredeyse aynı. Aralarındaki fark ise şu:
 
     `dump` fonksiyonu çıktıyı illaki bir dosya içine aktarır.
@@ -102,9 +102,9 @@ tablosuna uymayan karakterlerden kaçınır. `False` ise buna dikkat etmez.
 
 Eğer negatif olmayan bir tamsayı veya bir karakter dizisi ise
 girintileme sayesinde daha güzel bir çıktı almanızı sağlar.
-Eğer 0, negatif sayı veya boş karakter dizisi(`""`) ise her öğeyi yeni 
+Eğer 0, negatif sayı veya boş karakter dizisi(`""`) ise her öğeyi yeni
 satıra basar. None(varsayılan) ise dip dibe bir çıktı verir.
-Pozitif bir sayı verildiğinde onu boşluk sayısı kabul ederek 
+Pozitif bir sayı verildiğinde onu boşluk sayısı kabul ederek
 girintileme yapar. Karakter dizisi ifadesine şu ikisi yeterince açık
 bir örnek: `\\t`, `\\n`
 
@@ -144,10 +144,10 @@ bir örnek: `\\t`, `\\n`
 
 **separators**
 
-Bu parametre verilen değeri öğeler arasında ayraç olarak 
+Bu parametre verilen değeri öğeler arasında ayraç olarak
 kullanır. Verilen değer tuple tipinde olmalıdır. Varsayılan olarak
 şu kullanılır: `(",", ": ")`
-Ancak indent parametresi `None` değerindeyse ilk virgül değeri de iki 
+Ancak indent parametresi `None` değerindeyse ilk virgül değeri de iki
 nokta gibi sonuna boşluk alır. Yani şu şekilde olur: `(", ", ": ")`
 ::
 
@@ -158,8 +158,8 @@ json.load ve json.loads
 ***********************
 
 Bu iki fonksiyon da dump ve dumps gibi birbirine çok benziyor.
-Hatta farkları bile neredeyse aynı. load fonksiyonu sadece 
-dosyadaki JSON verilerini Python verisine çevirirken 
+Hatta farkları bile neredeyse aynı. load fonksiyonu sadece
+dosyadaki JSON verilerini Python verisine çevirirken
 loads fonksiyonu veriyi parametre olarak alıyor. dump
 ve dumps'da olduğu gibi parametreleri tamamen aynı.
 
@@ -175,14 +175,14 @@ Buraya birkaç örnek kod yazalım.
 
 **object_hook**
 
-Döndürülen değerin veri tipini değitirmenizi sağlar. Bunu 
+Döndürülen değerin veri tipini değiştirmenizi sağlar. Bunu
 bir kod ile açıklayalım.
 ::
 
     >>> json.loads('{"mezuniyet": "üniversite", "Bölüm": "Tıp"}',object_hook=list)
     ['mezuniyet', 'Bölüm']
 
-Gördüğünüz gibi çıktıyı liste tipinde verdi. Ancak bunu 
+Gördüğünüz gibi çıktıyı liste tipinde verdi. Ancak bunu
 yapmak için sadece anahtarları aldı.
 
 **object_pairs_hook**

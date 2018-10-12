@@ -1,5 +1,5 @@
 .. meta::
-   :description: Bu bölümde önemli standart kütüphane modüllerini inceleyeceğiz. 
+   :description: Bu bölümde önemli standart kütüphane modüllerini inceleyeceğiz.
    :keywords: python, standart kütüphane modülleri
 
 .. highlight:: py3
@@ -32,14 +32,19 @@ Geçen bölümde, modüller konusundan söz ederken Python'daki standart kütüp
 modüllerine ve üçüncü şahıs modüllerine şöyle bir göz gezdirmiştik. Önümüzdeki
 bir kaç bölüm boyunca ise bazı önemli standart modülleri ve üçüncü şahıs
 modüllerini ayrıntılı olarak inceleyeceğiz. Bu sayede programcılık ufkumuz epey
-bir genişlemiş olacak. 
+bir genişlemiş olacak.
 
 .. toctree::
 
-    os
-    sys
-    random
+    regex
     datetime
+    random
+    sqlite
+    os
     time
-    json
+    curses
+    threading
     sched
+    json
+    timeit
+    sys

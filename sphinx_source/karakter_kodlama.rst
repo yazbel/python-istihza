@@ -65,7 +65,7 @@ ampulün loş ışık vermesini sağlayan düşük elektrik sinyallerini `0` ile
 etmiştik. Bu temsil işine de teknik olarak 'kodlama' (*encoding*) adı
 verildiğini söylemiştik. İşte bilgisayarlar açısından da benzer bir durum söz
 konusudur. Bilgisayarlarda da `0` volt ve `+5` volt değerleri sırasıyla ikili
-sayma sistemindeki `0` ve `1` sayıları halinde kodlanabilir. 
+sayma sistemindeki `0` ve `1` sayıları halinde kodlanabilir.
 
 Sözün özü ilk başta yalnızca iki farklı elektrik sinyali vardır. Elbette bu
 elektrik sinyalleri ile doğrudan herhangi bir işlem yapamayız. Mesela elektrik
@@ -113,12 +113,12 @@ Bu noktada şöyle bir soru akla geliyor: Tamam, sayıları karakterlere,
 karakterleri de sayılara dönüştüreceğiz. Ama peki hangi sayıları hangi
 karakterlere, hangi karakterleri de hangi sayılara dönüştüreceğiz? Yani mesela
 ikili sistemdeki `0` sayısı hangi karaktere, `1` sayısı hangi karaktere, `10`
-sayısı hangi karaktere karşılık gelecek? 
+sayısı hangi karaktere karşılık gelecek?
 
 Siz aslında bu sorunun cevabını da biliyorsunuz. Yine bir önceki bölümde
 anlattığımız gibi, hangi sayıların hangi karakterlere karşılık geleceğini,
 sayılarla karakterlerin eşleştirildiği birtakım tablolalar yardımıyla rahatlıkla
-belirleyebiliriz. 
+belirleyebiliriz.
 
 Bu iş ilk başta kulağa çok kolaymış gibi geliyor. Esasında iş kolaydır, ama
 şöyle bir problem var: Herkes aynı sayıları aynı karakterlerle eşleştirmiyor
@@ -147,7 +147,7 @@ birden fazla karakter eşleştirme tablosunun kullanıldığı olabiliyordu...
 
 Peki bu sorunun çözümü ne olabilir?
 
-Cevap elbette standartlaşma. 
+Cevap elbette standartlaşma.
 
 Standartlaşma ilerleme ve uygarlık açısından çok önemli bir kavramdır.
 Standartlaşma olmadan ilerleme ve uygarlık düşünülemez. Eğer standartlaşma diye
@@ -177,7 +177,7 @@ cevabını, en baştan başlayarak ve olabildiğince ayrıntılı bir şekilde v
 
 ASCII
 *******
-    
+
 Bilgisayarların iki farklı elektrik sinyali ile çalıştığını, bu iki farklı
 sinyalin de `0` ve `1` sayıları ile temsil edildiğini, bilgisayarla metin
 işlemleri yapabilmek için ise bu sayıların belli karakterlerle eşleştirilmesi
@@ -217,19 +217,19 @@ eşleştirildiği basit bir tablodan ibarettir. Bu tabloyu
 http://www.asciitable.com/ adresinde görebilirsiniz:
 
 .. image:: ../images/misc/asciifull.png
-   :target: _images/asciifull.png
-   :align: center 
+   :target: _images/misc/asciifull.png
+   :align: center
    :width: 400px
    :height: 300px
-   
+
 İsterseniz bu tabloyu Python yardımıyla kendiniz de oluşturabilirsiniz::
-    
+
     for i in range(128):
         if i % 4 == 0:
-            print("\n") 
-            
+            print("\n")
+
         print("{:<3}{:>8}\t".format(i, repr(chr(i))), sep="", end="")
-        
+
 .. note:: Bu kodlarda ``repr()`` fonksiyonu dışında bilmediğiniz ve
     anlayamayacağınız hiçbir şey yok. Biraz sonra ``repr()`` fonksiyonundan da
     bahsedeceğiz. Ama dilerseniz, bu fonksiyonun ne işe yaradığı konusunda en
@@ -244,24 +244,24 @@ Dolayısıyla ASCII 7 bitlik bir sistemdir.
 
 ASCII tablosunu şöyle bir incelediğimizde ilk 32 öğenin göze ilk başta anlamsız
 görünen birtakım karakterlerden oluştuğunu görüyoruz:
-    
+
    +------+----------+------+----------+-------+-----------+------+----------+
    | sayı | karakter | sayı | karakter | sayı  | karakter  | sayı | karakter |
    +======+==========+======+==========+=======+===========+======+==========+
    | 0    | '\\x00'  | 1    | '\\x01'  | 2     | '\\x02'   | 3    | '\\x03'  |
    +------+----------+------+----------+-------+-----------+------+----------+
    | 4    | '\\x04'  | 5    | '\\x05'  | 6     | '\\x06'   | 7    | '\\x07'  |
-   +------+----------+------+----------+-------+-----------+------+----------+ 
+   +------+----------+------+----------+-------+-----------+------+----------+
    | 8    | '\\x08'  | 9    | '\\t'    | 10    | '\\n'     | 11   | '\\x0b'  |
    +------+----------+------+----------+-------+-----------+------+----------+
    | 12   | '\\x0c'  | 13   | '\\r'    | 14    | '\\x0e'   | 15   | '\\x0f'  |
    +------+----------+------+----------+-------+-----------+------+----------+
    | 16   | '\\x10'  | 17   | '\\x11'  | 18    | '\\x12'   | 19   | '\\x13'  |
-   +------+----------+------+----------+-------+-----------+------+----------+ 
+   +------+----------+------+----------+-------+-----------+------+----------+
    | 20   | '\\x14'  | 21   | '\\x15'  | 22    | '\\x16'   | 23   | '\\x17'  |
    +------+----------+------+----------+-------+-----------+------+----------+
    | 24   | '\\x18'  | 25   | '\\x19'  | 26    | '\\x1a'   | 27   | '\\x1b'  |
-   +------+----------+------+----------+-------+-----------+------+----------+ 
+   +------+----------+------+----------+-------+-----------+------+----------+
    | 28   | '\\x1c'  | 29   | '\\x1d'  | 30    | '\\x1e'   | 31   | '\\x1f'  |
    +------+----------+------+----------+-------+-----------+------+----------+
 
@@ -290,7 +290,7 @@ gösterebiliriz (tablo http://tr.wikipedia.org/wiki/ASCII adresinden alıntıdı
    | Sayı | Karakter                    | Sayı   | Karakter                   |
    +======+=============================+========+============================+
    | 0    | boş                         | 16     | veri bağlantısından çık    |
-   +------+-----------------------------+--------+----------------------------+   
+   +------+-----------------------------+--------+----------------------------+
    | 1    | başlık başlangıcı           | 17     | aygıt denetimi 1           |
    +------+-----------------------------+--------+----------------------------+
    | 2    | metin başlangıcı            | 18     | aygıt denetimi 2           |
@@ -342,7 +342,7 @@ tahsis edilmiştir:
    | 44   | ','      | 45   | '-'      | 46    | '.'       | 47   | '/'      |
    +------+----------+------+----------+-------+-----------+------+----------+
    | 48   | '0'      | 49   | '1'      | 50    | '2'       | 51   | '3'      |
-   +------+----------+------+----------+-------+-----------+------+----------+ 
+   +------+----------+------+----------+-------+-----------+------+----------+
    | 52   | '4'      | 53   | '5'      | 54    | '6'       | 55   | '7'      |
    +------+----------+------+----------+-------+-----------+------+----------+
    | 56   | '8'      | 57   | '9'      | 58    | ':'       | 59   | ';'      |
@@ -386,7 +386,7 @@ tahsis edilmiştir:
 metin ihtiyaçlarımızın büyük bölümünü karşılayabiliriz. Yani ASCII adı verilen
 bu eşleştirme tablosu sayesinde bilgisayarların sayılarla birlikte karakterleri
 de işleyebilmesini sağlayabiliriz.
-   
+
 1960'lı yıllara gelindiğinde, bilgisayarlar 8 bit uzunluğundaki verileri
 işleyebiliyordu. Yani, ASCII sisteminin gerçeklendiği (yani hayata geçirildiği)
 bilgisayarlar 8 bitlik bir kapasiteye sahipti. Bu 8 bitin 7 biti karakterle
@@ -406,18 +406,18 @@ Bu sebepten, bu standart ile mesela Türkçeye özgü karakterleri gösteremeyiz
 Python'ın 2.x serisini kullanmış olanlar, ASCII'nin bu yetersizliğinin nelere
 sebep olduğunu gayet iyi bilir. Python'ın 2.x serisinde mesela doğrudan şöyle
 bir kod yazamayız::
-    
+
     print("Merhaba Şirin Baba!")
-    
+
 `"Merhaba Şirin Baba!` adlı karakter dizisinde geçen 'Ş' harfi ASCII dışı bir
 karakterdir. Yani bu harf ASCII ile temsil edilemez. O yüzden böyle bir kod
 yazıp bu kodu çalıştırdığımızda Python bize şöyle bir hata mesajı
 gösterecektir::
-    
+
         File "deneme.py", line 1
-    SyntaxError: Non-ASCII character '\xde' in file deneme.py on line 1, but no 
+    SyntaxError: Non-ASCII character '\xde' in file deneme.py on line 1, but no
     encoding declared; see http://www.python.org/peps/pep-0263.html for details
-    
+
 Aynen anlattığımız gibi, yukarıdaki hata mesajı da kodlar arasında ASCII olmayan
 bir karakter yer aldığından yakınıyor...
 
@@ -441,10 +441,10 @@ sistemin, doğrudan ASCII'yi veya ASCII'ye benzer başka bir sistemi temel alara
 çalışıyor olmasıdır. ASCII tablosunda görünen 128 karakter dışında kalan hiçbir
 karakter ASCII ile kodlanamayacağı için, özellikle farklı dillerin kullanıldığı
 bilgisayarlarda çalışan programlar kaçınılmaz olarak karakterlere ilişkin pek
-çok hata verecektir. Örneğin, karakter kodlamalarına ilişkin olarak yukarıda 
+çok hata verecektir. Örneğin, karakter kodlamalarına ilişkin olarak yukarıda
 bahsettiğimiz ayrıntılardan habersiz bir Amerikalı programcının yazdığı bir
 programa Türkçe veri girdiğinizde bu program bir anda tuhaf görünen hatalar
-verip çökecektir... 
+verip çökecektir...
 
 Genişletilmiş ASCII
 ===================
@@ -459,12 +459,12 @@ eşleştirilebilir. Ne de olsa::
 
     >>> 2**7
 
-    128   
-    
+    128
+
     >>> 2**8
-    
+
     256
-    
+
 İşte bu fazla bit, farklı kişi, kurum ve organizasyonlar tarafından, İngilizcede
 bulunmayan ama başka dillerde bulunan karakterleri temsil etmek için kullanıldı.
 Ancak elbette bu fazladan bitin sağladığı `128` karakter de dünyadaki bütün
@@ -480,25 +480,25 @@ tablosu ile aynı olduğunu göreceksiniz. 128. karakterden itibaren ise Türkç
 özgü harfler tanımlanır. Mesela bu tabloda 128. karakter Türkçedeki büyük 'ç'
 harfi iken, 159. karakter küçük 'ş' harfidir. Bu durumu şu Python kodları ile de
 teyit edebilirsiniz::
-    
+
     >>> "Ç".encode("cp857")
-    
+
     b'\x80'
-    
+
     >>> "ş".encode("cp857")
-    
+
     b'\x9f'
-    
+
 Bu arada bu sayıların onaltılı sayma düzenine göre olduğunu biliyorsunuz. Onlu
 düzende bunların karşılığı sırasıyla şudur::
-    
+
     >>> int("80", 16)
-    
+
     128
-    
+
     >>> int("9f", 16)
-    
-    159   
+
+    159
 
 Burada karakter dizilerinin ``encode()`` adlı metodunu kullandığımıza dikkat
 edin. Bu metot yardımıyla herhangi bir karakteri herhangi bir karakter kodlama
@@ -510,27 +510,27 @@ cp857 numaralı kod sayfasında 'Ç' ve 'ş' harfleri yer aldığı için, biz b
 harfleri o kod sayfasına göre kodlayabiliyoruz. Ama mesela ASCII kodlama
 sisteminde bu harfler bulunmaz. O yüzden bu harfleri ASCII sistemine göre
 kodlayamayız::
-    
+
     >>> "Ç".encode("ascii")
-    
-    Traceback (most recent call last): 
+
+    Traceback (most recent call last):
         File "<stdin>", line 1, in <module>
     UnicodeEncodeError: 'ascii' codec can't encode character '\xc7' in position
     0: ordinal not in range(128)
 
 .. highlight:: none
-    
+
 Tıpkı hata mesajında da söylendiği gibi::
-    
+
     Unicode Kodlama Hatası: 'ascii' kod çözücüsü, 0 konumundaki '\xc7' adlı
     karakteri kodlayamıyor. Sayı 0-128 aralığında değil.
-    
+
 Gerçekten de onlu sistemde `199` sayısına karşılık gelen bu onaltılı '\\xc7'
 sayısı ASCII'nin kapsadığı sayı aralığının dışında kalmakta, bu yüzden de ASCII
-kod çözücüsü ile kodlanamamaktadır. 
- 
+kod çözücüsü ile kodlanamamaktadır.
+
 .. highlight:: py3
-    
+
 Dediğimiz gibi, Microsoft Türkiye'ye gönderdiği bilgisayarlarda 857 numaralı kod
 sayfasını tanımlıyordu. Ama mesela Arapça konuşulan ülkelere gönderdiği
 bilgisayarlarda ise, http://msdn.microsoft.com/en-us/library/cc195061.aspx
@@ -542,7 +542,7 @@ birbirinden farklıdır. Bu farklılığın ne sonuç doğurabileceğini tahmin
 edebildiğinizi zannediyorum. Elbette, mesela kendi bilgisayarınızda yazdığınız
 bir metni Arapça konuşulan bir ülkedeki bilgisayara gönderdiğinizde, doğal
 olarak metin içindeki Türkçeye özgü karakterlerin yerinde başka karakterler
-belirecektir. 
+belirecektir.
 
 Bu bölümün başında da söylediğimiz gibi, Genişletilmiş ASCII sisteminde 128 ile
 256 aralığı için pek çok farklı karakter eşleştirme tabloları kullanılıyordu.
@@ -582,7 +582,7 @@ güvenli bir şekilde veri aktarımını sağlamak için atılmış en önemli v
 başarılı adımlardan bir tanesidir. Bu güçlü standart sayesinde uzun yıllar
 bilgisayarlar arası temel iletişim başarıyla sağlandı. Ancak bu standardın zayıf
 kaldığı nokta 7 bitlik olması ve boşta kalan 8. bitin tek başına dünyadaki bütün
-dilleri temsil etmeye yeterli olmamasıdır. 
+dilleri temsil etmeye yeterli olmamasıdır.
 
 1 Karakter == 1 Bayt
 ====================
@@ -596,38 +596,38 @@ bayt'ta da 8 bit vardır... Yani biz insanlar öyle olmasına karar verdiğimiz 
 
 Dediğimiz gibi ASCII standardı 7 bitlik bir sistemdir. Yani bu standartta en
 büyük sayı olan 127 yalnızca 7 bit ile gösterilebilir::
-    
+
     >>> bin(127)[2:]
-    
+
     '1111111'
-    
+
 127 sayısı 7 bit ile gösterilebilecek son sayıdır::
-    
+
     >>> (127).bit_length()
-    
+
     7
-    
+
     >>> (128).bit_length()
-    
+
     8
-    
+
 8 bitlik bir sistem olan Genişletilmiş ASCII ise 0 ile 255 arası sayıları temsil
 edebilir::
-    
+
     >>> bin(255)[2:]
-    
+
     '11111111'
-    
+
 255 sayısı 8 bit ile gösterilebilecek son sayıdır::
 
     >>> (255).bit_length()
-    
+
     8
-    
+
     >>> (256).bit_length()
-    
+
     9
-    
+
 Dolayısıyla ASCII'de ve Genişletilmiş ASCII'de 1 baytlık alana toplam 256
 karakter sığdırılabilir. Eğer daha fazla karakteri temsil etmek isterseniz 1
 bayttan fazla bir alana ihtiyaç duyarsınız.
@@ -652,7 +652,7 @@ alan ASCII gibi bir sistem bu pazarın karakter temsil ihtiyaçlarını %99 oran
 karşılıyordu. Ancak bilgisayarların ABD dışına çıkması ve ABD dışında da da
 yayılmaya başlamasının ardından, ASCII'nin yetersizlikleri de iyice görünür
 olmaya başladı. Çünkü ASCII tablosunda, İngilizce dışındaki dillerde bulunan
-aksanlı ve noktalı harflerin (é, ä, ö, ç gibi) hiçbiri bulunmuyordu. 
+aksanlı ve noktalı harflerin (é, ä, ö, ç gibi) hiçbiri bulunmuyordu.
 
 İlk zamanlarda insanlar aksanlı ve noktalı harfleri ASCII tablosundaki
 benzerleriyle değiştirerek kullanmaya razı olmuşlardı (é yerine e; ä yerine a; ö
@@ -684,7 +684,7 @@ karakterlere karşılık gelmesi nedeniyle düzgün görüntülenemez.
     http://en.wikipedia.org/wiki/Windows-1254 adresine; Windows-1250 adlı kod
     sayfası için ise http://en.wikipedia.org/wiki/Windows-1250 adresine
     bakabilirsiniz.
-    
+
 İşte nasıl 1960'lı yılların başında Bob Bemer ve arkadaşları bilgisayarlar
 arasında sağlıklı bir veri iletişimi sağlamak için kolları sıvayıp ASCII gibi
 bir çözüm ürettiyse, ASCII ve Genişletilmiş ASCII ile kodlanamayan karakterleri
@@ -710,7 +710,7 @@ olarak kullanılmaya da devam etmektedir. Bu sebeple ASCII ile halihazırda
 kodlanmış karakterler UNICODE standardında da aynı şekilde kodlanmıştır.
 Dolayısıyla ASCII UNICODE sisteminin bir alt kümesi olduğu için, ASCII ile
 uyumlu olan bütün sistemler otomatik olarak UNICODE ile de uyumludur. Ancak
-tabii bunun tersi geçerli değildir. 
+tabii bunun tersi geçerli değildir.
 
 UNICODE'un ASCII'den en önemli farkı, UNICODE'un ASCII'ye kıyasla çok daha büyük
 miktarda karakterin kodlanmasına izin vermesidir. ASCII yalnızca 128 karakterin
@@ -731,25 +731,25 @@ kodlamaz. UNICODE'un yaptığı şey karakterleri tanımlamaktan ibarettir.
 
 Unicode sisteminde her karakter tek ve benzersiz bir 'kod konumuna' (*code
 point*) karşılık gelir. Kod konumları şu formüle göre gösterilir::
-    
+
     U+sayının_onaltılı_değeri
-    
+
 Örneğin 'a' harfinin kod konumu şudur::
-    
+
     u+0061
-    
+
 Buradaki `0061` sayısı onaltılı bir sayıdır. Bunu onlu sayı sistemine
 çevirebilirsiniz::
-    
+
     >>> int("61", 16)
-    
+
     97
-    
-Hatırlarsanız 'a' harfinin ASCII tablosundaki karşılığı da `97` idi. 
+
+Hatırlarsanız 'a' harfinin ASCII tablosundaki karşılığı da `97` idi.
 
 Esasında ASCII ile UNICODE birbirleri ile karşılaştırılamayacak iki farklı
 kavramdır. Neticede ASCII bir kodlama biçimidir. UNICODE ise pek çok farklı
-kodlama biçimini içinde barındıran devasa bir sistemdir. 
+kodlama biçimini içinde barındıran devasa bir sistemdir.
 
 .. note:: Unicode standardına
     http://www.unicode.org/versions/Unicode6.2.0/UnicodeStandard-6.2.pdf adresinden
@@ -761,7 +761,7 @@ UTF-8 Kod Çözücüsü
 Dediğimiz gibi UNICODE devasa bir tablodan ibarettir. Bu tabloda karakterlere
 ilişkin birtakım bilgiler bulunur ve bu sistemde her karakter, kod konumları ile
 ifade edilir. UNICODE kendi başına karakterleri kodlamaz. Bu sistemde tanımlanan
-karakterleri kodlama işi kod çözücülerin görevidir. 
+karakterleri kodlama işi kod çözücülerin görevidir.
 
 UNICODE sistemi içinde UTF-1, UTF-7, UTF-8, UTF-16 ve UTF-32 adlı kod çözücüler
 bulunur. UTF-8, UNICODE sistemi içindeki en yaygın, en bilinen ve en kullanışlı
@@ -790,10 +790,10 @@ için::
 .. highlight:: py3
 
 karakter kodlayabiliriz. Bu durumu şu Python kodları ile de gösterebiliriz::
-    
+
     >>> for i in range(1, 5):
     ...     print("{} bayt kullanırsak toplam 2**{:<2} = {:,}".format(i, i*8, (2**(i*8))))
-    
+
 Görünüşe göre biz 4 baytlık bir sistem kullanırsak gelmiş geçmiş bütün
 karakterleri rahatlıkla temsil etmeye yetecek kadar alana sahip oluyoruz. Ancak
 burada şöyle bir durum var. Bildiğiniz gibi, 0 ile 256 aralığındaki karakterler
@@ -802,7 +802,7 @@ için ise 2 bayt yeter. Aynı şekilde 65,536 ile 16,777,216 aralığındaki say
 için de 3 bayt yeterli. Bu durumda eğer biz bütün karakterleri 4 bayt ile temsil
 edecek olursak, korkunç derece bir israfa düşmüş oluruz. Çünkü ASCII gibi bir
 kodlama sisteminde yalnızca 1 bayt ile temsil edilebilecek bir karakterin
-kapladığı alan bu sistemle boşu boşuna 4 kat artmış olacaktır. 
+kapladığı alan bu sistemle boşu boşuna 4 kat artmış olacaktır.
 
 Bu sorunun çözümü elbette sabit boyutlu karakter kodlama biçimleri yerine
 değişken boyutlu karakter kodlama biçimleri kullanmaktır. İşte UNICODE sistemi
@@ -815,12 +815,12 @@ Bu durumu bir örnek üzerinden göstermeye çalışalım::
 
     harfler = "abcçdefgğhıijklmnoöprsştuüvyz"
     for s in harfler:
-        print("{:<5}{:<15}{:<15}".format(s, 
-                                         str(s.encode("utf-8")), 
+        print("{:<5}{:<15}{:<15}".format(s,
+                                         str(s.encode("utf-8")),
                                          len(s.encode("utf-8"))))
 
 Buradan şuna benzer bir çıktı alıyoruz::
-        
+
     a    b'a'           1
     b    b'b'           1
     c    b'c'           1
@@ -850,72 +850,72 @@ Buradan şuna benzer bir çıktı alıyoruz::
     v    b'v'           1
     y    b'y'           1
     z    b'z'           1
-    
+
 Burada, ``s.encode("utf-8")`` komutunun 'baytlar' (`bytes`) türünden bir veri
 tipi verdiğine dikkat edin (baytlar veri tipini bir sonraki bölümde ayrıntılı
 olarak inceleyeceğiz). Karakter dizilerinin aksine baytların ``format()`` adlı
 bir metodu bulunmaz. Bu yüzden, bu veri tipini ``format()`` metoduna göndermeden
 önce ``str()`` fonksiyonu yardımıyla karakter dizisine dönüştürmemiz gerekiyor.
 Bu dönüştürme işlevini, alternatif olarak şu şekilde de yapabilirdik::
-    
-    print("{:<5}{!s:<15}{:<15}".format(s, 
-                                       s.encode("utf-8"), 
+
+    print("{:<5}{!s:<15}{:<15}".format(s,
+                                       s.encode("utf-8"),
                                        len(s.encode("utf-8"))))
 
 Hangi yöntemi seçeceğiniz paşa gönlünüze kalmış... Biz konumuza dönelim.
- 
+
 Yukarıdaki tabloda ilk sütun Türk alfabesindeki tek tek harfleri gösteriyor.
 İkinci sütun ise bu harflerin UTF-8 ile kodlandığında nasıl göründüğünü. Son
 sütunda ise UTF-8 ile kodlanan Türk harflerinin kaç baytlık yer kapladığını
 görüyoruz.
 
 Bu tabloyu daha iyi anlayabilmek için mesela buradaki 'ç' harfini ele alalım::
-    
+
     >>> 'ç'.encode('utf-8')
-    
+
     b'\xc3\xa7'
-    
+
 Burada Python'ın kendi yerleştirdiği karakterleri çıkarırsak ('b' ve '\\x'
 gibi) elimizde şu onaltılı sayı kalır::
-    
+
     c3a7
-    
+
 Bu onaltılı sayının onlu sistemdeki karşılığı şudur::
-    
+
     >>> int('c3a7', 16)
-    
+
     50087
-    
+
 `50087` sayısının ikili sayma sistemindeki karşılığı ise şudur::
-    
+
     >>> bin(50087)
-    
+
     '0b1100001110100111'
-    
+
 Gördüğünüz gibi, bu sayı 16 bitlik, yani 2 baytlık bir sayıdır. Bunu nasıl teyit
 edeceğinizi biliyorsunuz::
-    
+
     >>> (50087).bit_length()
-    
+
     16
-    
+
 http://www.fileformat.info/info/charset/UTF-8/list.htm adresine gittiğinizde de
-UTF-8 tablosunda 'ç' harfinin 'c3a7' sayısıyla eşleştirildiğini göreceksiniz. 
+UTF-8 tablosunda 'ç' harfinin 'c3a7' sayısıyla eşleştirildiğini göreceksiniz.
 
 Bir de UTF-8'in 'a' harfini nasıl temsil ettiğine bakalım::
-    
+
     >>> "a".encode("utf-8")
-    
+
     b'a'
-    
+
 'a' harfi standart ASCII harflerinden biri olduğu için Python doğrudan bu harfin
 kendisini gösteriyor. Eğer bu harfin hangi sayıya karşılık geldiğini görmek
 isterseniz şu kodu kullanabilirsiniz::
-    
+
     >>> ord("a")
-    
+
     97
-    
+
 Daha önce de söylediğimiz gibi, UNICODE sistemi ASCII ile uyumludur. Yani ASCII
 sisteminde tanımlanmış bir harf hangi sayı değerine sahipse, UNICODE içindeki
 bütün kod çözücüleri de o harf için aynı sayıyı kullanır. Yani mesela 'a' harfi
@@ -923,33 +923,33 @@ hem ASCII'de, hem UTF-8'de `97` sayısı ile temsil edilir. Bu sayı 256'dan kü
 olduğu için yalnızca 1 bayt ile temsil edilir. Ancak standart ASCII dışında
 kalan karakterler, farklı kod çözücüler tarafından farklı sayılarla
 eşleştirilecektir. Bununla ilgili şöyle bir çalışma yapabiliriz::
-    
+
     kod_çözücüler = ['UTF-8', 'cp1254', 'latin-1', 'ASCII']
-    
+
     harf = 'İ'
-    
+
     for kç in kod_çözücüler:
         try:
             print("'{}' karakteri {} ile {} olarak "
-                  "ve {} sayısıyla temsil edilir.".format(harf, kç, 
+                  "ve {} sayısıyla temsil edilir.".format(harf, kç,
                                                           harf.encode(kç),
-                                                          ord(harf))) 
+                                                          ord(harf)))
         except UnicodeEncodeError:
             print("'{}' karakteri {} ile temsil edilemez!".format(harf, kç))
-            
+
 Bu programı çalıştırdığımızda şuna benzer bir çıktı alırız::
 
     'İ' karakteri UTF-8 ile b'\xc4\xb0' olarak ve 304 sayısıyla temsil edilir
     'İ' karakteri cp1254 ile b'\xdd' olarak ve 304 sayısıyla temsil edilir.
     'İ' karakteri latin-1 ile temsil edilemez!
     'İ' karakteri ASCII ile temsil edilemez!
-    
+
 Bu ufak programı kullanarak hangi karakterin hangi kod çözücü ile nasıl temsil
 edildiğini (veya temsil edilip edilemediğini) görebilirsiniz.
 
 Eksik Karakterler ve encode Metodu
 ===================================
-    
+
 Dediğimiz ve örneklerden de gördüğümüz gibi, her karakter her kod çözücü ile
 çözülemeyebilir. Mesela Windows-1254 adlı kod sayfasında bulunan bir karakter
 Windows-1250 adlı kod sayfasında bulunamadığında, bulunmayan karakterin yerine
@@ -974,7 +974,7 @@ karakterin yerine neyin geleceği, tamamen aradaki yazılıma bağlıdır. Örne
 konusu olan bir Python programıysa, ilgili karakter bulunamadığında öntanımlı
 olarak bu karakterin yerine hiçbir şey koyulmaz. Onun yerine program çökmeye
 bırakılır... Ancak böyle bir durumda ne yapılacağını isterseniz kendiniz de
-belirleyebilirsiniz. 
+belirleyebilirsiniz.
 
 Bunun için karakter dizilerinin ``encode()`` metodunun `errors` adlı
 parametresinden yararlanacağız. Bu parametre dört farklı değer alabilir:
@@ -990,48 +990,48 @@ parametresinden yararlanacağız. Bu parametre dört farklı değer alabilir:
     +---------------------+--------------------------------------------------------------+
     | 'xmlcharrefreplace' | Temsil edilemeyen karakter yerine XML karşılığı koyulur      |
     +---------------------+--------------------------------------------------------------+
-    
-Bu parametreleri şöyle kullanıyoruz::  
-    
+
+Bu parametreleri şöyle kullanıyoruz::
+
     >>> "bu Türkçe bir cümledir.".encode("ascii", errors="strict")
-    
+
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
-    UnicodeEncodeError: 'ascii' codec can't encode character '\xfc' in 
+    UnicodeEncodeError: 'ascii' codec can't encode character '\xfc' in
     position 4: ordinal not in range(128)
-     
+
 'strict' zaten öntanımlı değerdir. Dolayısıyla eğer `errors` parametresine
 herhangi bir değer vermezsek Python sanki 'strict' değerini vermişiz gibi
 davranacak ve ilgili karakter kodlaması ile temsil edilemeyen bir karakter ile
 karşılaşıldığında hata verecektir::
-    
+
     >>> "bu Türkçe bir cümledir.".encode("ascii")
-    
+
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
-    UnicodeEncodeError: 'ascii' codec can't encode character '\xfc' in 
+    UnicodeEncodeError: 'ascii' codec can't encode character '\xfc' in
     position 4: ordinal not in range(128)
-     
+
 Gelelim öteki değerlerin ne yaptığına::
-    
+
     >>> "bu Türkçe bir cümledir.".encode("ascii", errors="ignore")
-    
-    b'bu Trke bir cmledir.'   
-    
+
+    b'bu Trke bir cmledir.'
+
 Gördüğünüz gibi, `errors` parametresine 'ignore' değerini verdiğimizde, temsil
 edilemeyen karakterler görmezden geliniyor::
-    
+
     >>> "bu Türkçe bir cümledir.".encode("ascii", errors="replace")
 
     b'bu T?rk?e bir c?mledir.'
-    
+
 Burada ise 'replace' değerini kullandık. Böylece temsil edilemeyen karakterlerin
 yerine birer `?` işareti koyuldu::
-    
+
     >>> "bu Türkçe bir cümledir.".encode("ascii", errors="xmlcharrefreplace")
-    
-    b'bu T&#252;rk&#231;e bir c&#252;mledir.'    
-    
+
+    b'bu T&#252;rk&#231;e bir c&#252;mledir.'
+
 Son olarak ise 'xmlcharrefreplace' değerinin ne yaptığını görüyoruz. Eğer
 `errors` parametresine 'xmlcharrefreplace' değerini verecek olursak, temsil
 edilemeyen her bir harf yerine o harfin XML karşılığı yerleştirilir. Bu değer,
@@ -1044,12 +1044,12 @@ Dosyalar ve Karakter Kodlama
 Dosyalar konusunu anlatırken, Python'da bir dosyanın ``open()`` fonksiyonu ile
 açılacağını söylemiştik. Bildiğiniz gibi ``open()`` fonksiyonunu şu şekilde
 kullanıyoruz::
-    
+
     >>> f = open(dosya_adı, dosya_açma_kipi)
-    
+
 Burada biz ``open()`` fonksiyonunu iki farklı parametre ile birlikte kullandık.
 Ancak aslında belirtmemiz gereken önemli bir parametresi daha var bu
-fonksiyonun. İşte bu parametrenin adı `encoding`'dir. 
+fonksiyonun. İşte bu parametrenin adı `encoding`'dir.
 
 Gelin şimdi bu parametrenin ne olduğuna ve nasıl kullanıldığına bakalım:
 
@@ -1061,12 +1061,12 @@ ile açılacağını belirtmemizi sağlar. Python'da dosyalar öntanımlı olara
 ``locale`` adlı bir modülün ``getpreferredencoding()`` adlı fonksiyonunun
 gösterdiği kod çözücü ile açılır. Siz de dosyalarınızın varsayılan olarak hangi
 kod çözücü ile açılacağını öğrenmek için şu komutları yazabilirsiniz::
-    
+
     >>> import locale
     >>> locale.getpreferredencoding()
-    
+
 İşte eğer siz `encoding` parametresini belirtmezseniz, dosyalarınız yukarıdaki
-çıktıda görünen kod çözücü ile açılacaktır. 
+çıktıda görünen kod çözücü ile açılacaktır.
 
 GNU/Linux dağıtımlarında bu çıktı çoğunlukla UTF-8 olacaktır. O yüzden
 GNU/Linux'ta dosyalarınız muhtemelen `encoding` belirtmeseniz bile düzgün
@@ -1075,9 +1075,9 @@ olacağı için, mesela UTF-8 ile kodlanmış dosyalarınızda özellikle Türk�
 karakterler düzgün görüntülenemeyecektir. O yüzden, dosyalarınızın hangi kod
 çözücü ile kodlanmış olduğunu ``open()`` fonksiyonuna vereceğiniz `encoding`
 parametresi aracılığıyla her zaman belirtmelisiniz::
-    
+
     >>> f = open(dosya, encoding='utf-8')
-    
+
 Diyelim ki açmak istediğiniz dosya cp1254 adlı kod çözücü ile kodlanmış olsun.
 Eğer siz bu dosyayı açarken cp1254 adlı kod çözücüyü değil de başka bir kod
 çözücüyü yazarsanız elbette dosyadaki karakterler düzgün görüntülenemeyecektir.
@@ -1086,29 +1086,29 @@ Eğer siz bu dosyayı açarken cp1254 adlı kod çözücüyü değil de başka b
 hiçbir kod çözücü belirtmediğiniz halde kullandığınız işletim sistemi öntanımlı
 olarak dosyaları açmak için cp1254 harici bir kod çözücüyü kullanıyorsa, dosyayı
 okuma esnasında şuna benzer bir hata alırsınız::
-    
+
     >>> f = open("belge.txt", encoding="utf-8")
     >>> f.read(50)
-    
+
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
       File "C:\Python33\lib\codecs.py", line 300, in decode
         (result, consumed) = self._buffer_decode(data, self.errors, final)
     UnicodeDecodeError: 'utf-8' codec can't decode byte 0xde in position 79: invalid
      continuation byte
-     
+
 Gördüğünüz gibi, dosyamız bizim kullanmaya çalıştığımız kod çözücüden (UTF-8)
 farklı bir kod çözücü ile (cp1254) kodlanmış olduğu için, doğal olarak
 karakterler doğru sayılarla eşleştirilemiyor. Bu da kaçınılmaz olarak yukarıdaki
 hatanın verilmesine sebep oluyor.
-     
+
 Aslında siz bu hatayı tanıyorsunuz. ``encode()`` metodunu anlatırken bunun ne
-olduğundan ve bu hataya karşı neler yapabileceğinizden söz etmiştik. 
+olduğundan ve bu hataya karşı neler yapabileceğinizden söz etmiştik.
 
 Hatırlarsanız bu tür hatalara karşı ne tepki verileceğini belirleyebilmek için
 ``encode()`` metodunda `errors` adlı bir parametreyi kullanabiliyorduk. İşte
 ``open()`` fonksiyonunda da aynı `errors` parametresi bulunur.
-     
+
 errors
 --------
 
@@ -1116,19 +1116,19 @@ Dediğimiz gibi, bir dosyanın doğru görüntülenebilmesi ve okunabilmesi içi
 sahip olduğu kodlama biçiminin doğru olarak belirtilmesi gerekir. Ama
 okuyacağınız dosyaların hangi kodlama sistemine sahip olduğunu doğru tahmin
 etmeniz her zaman mümkün olmayabilir. Böyle durumlarda, programınızın çökmesini
-önlemek için çeşitli stratejiler belirlemeniz gerekir. 
+önlemek için çeşitli stratejiler belirlemeniz gerekir.
 
 Bir önceki bölümde verdiğimiz örnekten de gördüğünüz gibi, eğer Python, açılmaya
 çalışılan dosyadaki karakterleri `encoding` parametresinde gösterilen kod çözücü
 ile çözemezse öntanımlı olarak bir hata mesajı üretip programdan çıkacaktır.
 Ancak sizin istediğiniz şey her zaman bu olmayabilir. Mesela dosyadaki
 karakterler doğru kodlanamasa bile programınızın çökmemesini tercih
-edebilirsiniz. İşte bunun için `errors` parametresinden yararlanacaksınız. 
+edebilirsiniz. İşte bunun için `errors` parametresinden yararlanacaksınız.
 
 Bu parametreyi ``encoding()`` metodundan hatırlıyorsunuz. Bu parametre orada
 nasıl kullanılıyorsa, ``open()`` fonksiyonunda da aynı şekilde kullanılır.
 Dikkatlice bakın::
-    
+
     >>> f = open(dosya_adı, encoding='utf-8', errors='strict')
 
 Bu zaten `errors` parametresinin öntanımlı değeridir. Dolayısıyla 'strict'
@@ -1136,35 +1136,35 @@ değerini belirtmeseniz de öntanımlı olarak bu değeri belirtmişsiniz gibi
 davranılacaktır.
 
 ::
-    
+
     >>> f = open(dosya_adı, encoding='utf-8', errors='ignore')
 
 Burada ise 'ignore' değerini kullanarak, Python'ın kodlanamayan karakterleri
 görmezden gelmesini sağlıyoruz.
 
 ::
-    
+
     >>> f = open(dosya_adı, encoding='utf-8', errors='replace')
-    
+
 'replace' değeri ise kodlanamayan karakterlerin yerine `\\ufffd` karakterini
 yerleştirecektir. Bu karakter işlev bakımından, ``encode()`` metodunu anlatırken
 gördüğümüz '?' işaretine benzer. Bu karaktere teknik olarak 'UNICODE Değiştirme
 Karakteri' (*UNICODE Replacement Character*) adı verilir. Bazı yerlerde bu
 karakteri elmas şeklinde siyah bir küp içine yerleştirilmiş soru işareti
 şeklinde görebilirsiniz.
-    
+
 Peki ``encode()`` metodunu anlatırken `errors` parametresi ile birlikte
 kullanabildiğimiz 'xmlcharrefreplace' değerini ``open()`` fonksiyonu ile
 birlikte kullanabilir miyiz?
 
 Hayır, ``open()`` fonksiyonu, `errors` parametresinde bu değerin kullanılmasına
-izin vermez.    
-    
+izin vermez.
+
 Konu ile ilgili Fonksiyonlar
 ****************************
 
 Bu bölümde, karakter kodlama işlemleri esnasında işimize yarayacak bazı
-fonksiyonları ele alacağız. 
+fonksiyonları ele alacağız.
 
 repr()
 ===========
@@ -1173,34 +1173,34 @@ repr()
 önceki derslerimizde de birkaç örnekte kullanmıştık. Belki o zaman bu
 fonksiyonun ne işe yaradığını deneme-yanılma yoluyla anlamış olabilirsiniz. Eğer
 henüz bu fonksiyonun görevini anlamadıysanız da mesele değil. Bu bölümde bu
-fonksiyonu ve işlevini ayrıntılı bir şekilde anlatmaya çalışacağız. 
+fonksiyonu ve işlevini ayrıntılı bir şekilde anlatmaya çalışacağız.
 
 Dilerseniz ``repr()`` fonksiyonunu anlatmaya bir örnek ile başlayalım.
 
 Şimdi Python'ın etkileşimli kabuğunu açarak şu kodu yazın::
 
     >>> "Python programlama dili"
-    
+
 Bu kodu yazıp `ENTER` düğmesine bastığınızda şöyle bir çıktı alacağınızı
 biliyorsunuz::
-    
+
     >>> 'Python programlama dili'
 
 Dikkat ettiyseniz, yukarıdaki kodların çıktısında karakter dizisi tırnak
 işaretleri içinde gösteriliyor. Eğer bu karakter dizisini ``print()`` fonksiyonu
 içine yazarsanız o tırnak işaretleri kaybolacaktır::
-    
+
     >>> print("Python programlama dili")
-    
+
     Python programlama dili
 
-Peki bu iki farklı çıktının sebebi ne? 
+Peki bu iki farklı çıktının sebebi ne?
 
-Python programlama dilinde nesneler iki farklı şekilde temsil edilir: 
+Python programlama dilinde nesneler iki farklı şekilde temsil edilir:
 
     #. Python'ın göreceği şekilde
-    #. Kullanıcının göreceği şekilde 
-    
+    #. Kullanıcının göreceği şekilde
+
 Yukarıdaki ilk kullanım, yazdığımız kodu Python programlama dilinin nasıl
 gördüğünü gösteriyor. İkinci kullanım ise aynı kodu bizim nasıl gördüğümüzü
 gösteriyor. Zaten bu yüzden, etkileşimli kabukta ``print()`` fonksiyonu içinde
@@ -1211,7 +1211,7 @@ görebilmek için bunları ``print()`` fonksiyonu içine yazmamız gerekiyor.
 Bu söylediklerimiz biraz karmaşık gelmiş olabilir. İsterseniz ne anlatmaya
 çalıştığımızı daha açık bir örnek üzerinde gösterelim. Şimdi tekrar etkileşimli
 kabuğu açıp şu kodu çalıştıralım::
-    
+
     >>> "birinci satır\n"
 
 Bu komut bize şu çıktıyı verdi::
@@ -1221,7 +1221,7 @@ Bu komut bize şu çıktıyı verdi::
 Şimdi aynı kodu bir de şöyle yazalım::
 
     >>> print("birinci satır\n")
-    
+
     birinci satır
 
 Gördüğünüz gibi, ilk kodun çıktısında satır başı karakteri (`\\n`) görünürken,
@@ -1233,7 +1233,7 @@ bizim bakış açımızı yansıtmasıdır.
 
 Peki bu bilgi bizim ne işimize yarar?
 
-Şimdi şöyle bir örnek düşünün: 
+Şimdi şöyle bir örnek düşünün:
 
 Diyelim ki elimizde şöyle bir değişken var::
 
@@ -1242,16 +1242,16 @@ Diyelim ki elimizde şöyle bir değişken var::
 Şimdi bu değişkeni ekrana çıktı olarak verelim::
 
     >>> print(a)
-    
+
     elma
 
 Gördüğünüz gibi, bu çıktıya bakarak, `a` değişkeninin tuttuğu karakter dizisinin
 son tarafında bir adet boşluk karakteri olduğunu anlayamıyoruz. Bu yüzden bu
 değişkeni şöyle bir program içinde kullanmaya çalıştığımızda neden bozuk bir
 çıktı elde ettiğimizi anlamak zor olabilir::
-    
+
     >>> print("{} kilo {} kaldı!".format(23, a))
-    
+
     23 kilo elma  kaldı!
 
 Gördüğünüz gibi, `"elma"` karakter dizisinin son tarafında bir boşluk olduğu
@@ -1261,12 +1261,12 @@ Bu boşluğu ``print()`` ile göremiyoruz, ama bu değişkeni ``print()`` olmada
 yazdırdığımızda o boşluk da görünür::
 
     >>> a
-    
+
     'elma '
 
 Bu sayede programınızdaki aksaklıkları giderme imkanı kazanmış olur, şu kodu
 yazarak gereksiz boşlukları atabilirsiniz::
-    
+
     >>> print("{} kilo {} kaldı!".format(23, a.strip()))
 
     23 kilo elma kaldı!
@@ -1275,7 +1275,7 @@ Daha önce de dediğimiz gibi, başında ``print()`` olmayan ifadeler, bir dosya
 yazılıp çalıştırıldığında çıktıda görünmez. O halde biz yukarıdaki özellikten
 yazdığımız programlarda nasıl yararlanacağız. İşte burada yardımımıza ``repr()``
 adlı bir fonksiyon yetişecek. Bu fonksiyonu şöyle kullanıyoruz::
-    
+
     print(repr("karakter dizisi\n"))
 
 Bu kodu bir dosyaya yazıp kaydettiğimizde şöyle bir çıktı alıyoruz::
@@ -1285,7 +1285,7 @@ Bu kodu bir dosyaya yazıp kaydettiğimizde şöyle bir çıktı alıyoruz::
 Gördüğünüz gibi hem tırnak işaretleri, hem de satır başı karakteri çıktıda
 görünüyor. Eğer ``repr()`` fonksiyonunu kullanmasaydık şöyle bir çıktı
 alacaktık::
-    
+
     karakter dizisi
 
 ``repr()`` fonksiyonu özellikle yazdığımız programlardaki hataları çözmeye
@@ -1299,7 +1299,7 @@ yararlanabiliriz.
     `istihza.com/blog/windows-python-3-2de-bir-hata.html
     <http://www.istihza.com/blog/windows-python-3-2de-bir-hata.html/>`_ adresindeki
     yazımızı okuyabilirsiniz.
-          
+
 Bütün bu açıklamalar bize şunu söylüyor: ``repr()`` fonksiyonu, bir karakter
 dizisinin Python tarafından nasıl temsil edildiğini gösterir. Yukarıda biz bu
 fonksiyonun nasıl kullanıldığına dair ayrıntıları verdik. Ancak bu fonksiyonun,
@@ -1308,72 +1308,72 @@ bir işlevi daha bulunur.
 
 Hatırlarsanız, ilk derslerimizde `r` adlı bir kaçış dizisinden söz etmiştik. Bu
 kaçış dizisini şöyle kullanıyorduk::
-    
+
     print(r"\n")
-    
+
 Bildiğiniz gibi, `\\n` kaçış dizisi bir alt satıra geçmemizi sağlıyor. İşte `r`
 adlı kaçış dizisi `\\n` kaçış dizisinin bu işlevini baskılayarak, bizim `\\n`
-kaçış dizisinin kendisini çıktı olarak verebilmemizi sağlıyor. 
+kaçış dizisinin kendisini çıktı olarak verebilmemizi sağlıyor.
 
 O halde bu noktada size şöyle bir soru sormama izin verin:
 
 Acaba bir değişkene atanmış kaçış dizilerinin işlevini nasıl baskılayabiliriz?
 Yani mesela elimizde şöyle bir değişken bulunuyor olsun::
-    
+
     yeni_satır = "\n"
-    
+
 Biz bu değişkenin değerini nasıl ekrana yazdıracağız?
 
 Eğer bunu doğrudan ``print()`` fonksiyonuna gönderirsek ne olacağını
 biliyorsunuz: Yeni satır karakteri işlevini yerine getirecek ve biz de yeni
 satır karakterinin kendisini değil, yaptığı işin sonucunu (yani satır başına
-geçildiğini) göreceğiz. 
+geçildiğini) göreceğiz.
 
 İşte bu tür durumlar için de ``repr()`` fonksiyonundan yararlanabilirsiniz::
-    
+
     print(repr('\n'))
-    
+
 Böylece satır başı karakterinin işlevi baskılanacak ve biz çıktıda bu karakterin
 kendisini göreceğiz.
-    
+
 Hatırlarsanız ASCII konusunu anlatırken şöyle bir örnek vermiştik::
-    
+
     for i in range(128):
         if i % 4 == 0:
-            print("\n") 
-            
+            print("\n")
+
         print("{:<3}{:>8}\t".format(i, repr(chr(i))), sep="", end="")
-        
+
 İşte burada, ``repr()`` fonksiyonunun yukarıda sözünü ettiğimiz işlevinden
 yararlanıyoruz. Eğer bu kodlarda ``repr()`` fonksiyonunu kullanmazsak, ASCII
 tablosunu oluşturan karakterler arasındaki `\\n`, `\\a`, `\\t` gibi kaçış
 dizileri ekranda görünmeyecek, bunun yerine bu kaçış dizileri doğrudan
 işlevlerini yerine getirecek, bu da bizim istediğimiz ASCII tablosunu üretmemize
 engel olacaktır.
-    
-ascii() 
+
+ascii()
 ===========
 
 ``ascii()`` fonksiyonu biraz önce öğrendiğimiz ``repr()`` fonksiyonuna çok
 benzer. Örneğin::
-    
+
     >>> repr("asds")
-    
+
     "'asds'"
-    
+
     >>> ascii("asds")
-    
+
     "'asds'"
-    
+
 Bu iki fonksiyon, `ASCII` tablosunda yer almayan karakterlere karşı tutumları
 yönünden birbirlerinden ayrılır. Örneğin::
-    
+
     >>> repr("İ")
-    
+
     "'İ'"
-    
+
     >>> ascii("İ")
-    
+
     "'\\u0130'"
 
 Gördüğünüz gibi, ``repr()`` fonksiyonu `ASCII` tablosunda yer almayan
@@ -1383,36 +1383,36 @@ karakterlerin UNICODE kod konumlarını (*code points*) gösteriyor.
 Bir örnek daha verelim::
 
     >>> repr("€")
-    
+
     "'€'"
-    
+
     >>> ascii("€")
-    
+
     "'\\u20ac'"
-    
+
 ``ascii()`` fonksiyonunun UNICODE kod konumlarını gösterme özelliğinin bir
 benzerini daha önce öğrendiğimiz ``encode()`` metodu yardımıyla da elde
 edebilirsiniz::
-    
+
     >>> "€".encode("unicode_escape")
-    
+
     b'\\u20ac'
-    
+
 Ancak ``ascii()`` fonksiyonunun `str` tipinde, ``encode()`` metodunun ise
 `bytes` tipinde bir çıktı verdiğine dikkat edin.
-    
-   
-ord() 
+
+
+ord()
 =========
 
 Bu fonksiyon, bir karakterin sayı karşılığını verir::
 
     >>> ord("\n")
-    
+
     10
-    
+
     >>> ord("€")
-    
+
     8364
 
 chr()
@@ -1421,11 +1421,11 @@ chr()
 Bu fonksiyon, bir sayının karakter karşılığını verir::
 
     >>> chr(10)
-    
+
     '\n'
-    
+
     >>> chr(8364)
-    
+
     '€'
 
 

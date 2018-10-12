@@ -1,33 +1,33 @@
 ﻿.. meta::
-   :description: Python Programlama Dili için Türkçe Kaynak
-   :keywords: Python, 3, 3.x, belgelendirme, Türkçe, kaynak
-   
+    :description: Python Programlama Dili için Türkçe Kaynak
+    :keywords: Python, 3, 3.x, belgelendirme, Türkçe, kaynak
+
 .. title:: Python Programlama Dili
 
-*************
+***********
 istihza.com
-*************
+***********
 
 .. raw:: html
 
     <div class="title">
         Python Programlama Dili
     </div>
-            
+
 .. raw:: html
 
     <div class="description">
-        Python 3 için Türkçe Kılavuz
+        Python 3 için Türkçe Kaynak
     </div>
-        
+
 .. raw:: html
 
     <button class="toctoggle">+</button>
-        
+
 .. toctree::
-    
+
     kitap_hakkinda
-    python_hakkinda 
+    python_hakkinda
     kurulum
     calistirma
     etkilesimli_python
@@ -72,12 +72,7 @@ istihza.com
     nesne_tabanli_programlama6
     nesne_tabanli_programlama7
     paketler
-    regex
-    sqlite
-    curses
-    threading
-    django_1
-    
+
 ------------------
 
 .. raw:: html
@@ -85,17 +80,17 @@ istihza.com
     <div class="title">
         Standart Kütüphane
     </div>
-            
+
 .. raw:: html
 
     <div class="description">
-        Standart Kütüphanedeki Bazı Önemli Modüller
+        Standart Kütüphanedeki Modüller için Türkçe Kaynak
     </div>
-    
+
 .. toctree::
 
     standart_moduller/index
-    
+
 ------------------
 
 .. raw:: html
@@ -107,7 +102,7 @@ istihza.com
 .. raw:: html
 
     <div class="description">
-        Bazı Önemli Üçüncü Taraf Modüller
+        Üçüncü Taraf Modüller için Türkçe Kaynak
     </div>
 
 .. toctree::
@@ -121,14 +116,13 @@ istihza.com
     <div class="title">
         Katkıda Bulunanlar
     </div>
-            
+
 .. raw:: html
 
     <div class="description">
-        Belgelerdeki Hataları Düzeltenler
+        Belgelerin Gelişmesine ve Hatalardan Arınmasına Yardımcı Olanlar
     </div>
-    
+
 .. toctree::
-    
+
     katkida_bulunanlar
-    

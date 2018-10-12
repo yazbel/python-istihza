@@ -23,11 +23,11 @@ Mesela şöyle bir program yazdığımızı düşünün::
     veri1 = input("Karekökünü hesaplamak istediğiniz sayı: ")
     karekök = int(veri1) ** 0.5
 
-    print(veri1, "sayısının karekökü: ", karekök) 
-    
+    print(veri1, "sayısının karekökü: ", karekök)
+
     veri2 = input("Karesini hesaplamak istediğiniz sayı: ")
     kare = int(veri2) ** 2
-    
+
     print(veri2, "sayısının karesi: ", kare)
 
 Bu kodlardaki sorunu anlamaya çalışmadan önce dilerseniz kodları şöyle bir
@@ -37,26 +37,26 @@ Gördüğünüz gibi, burada kullanıcının gireceği sayılara göre karekök 
 işlemleri yapıyoruz. Bu kodlarda gördüğümüz `**` işleci yardımıyla bir sayının
 herhangi bir kuvvetini hesaplayabileceğimizi biliyorsunuz. Mesela 21\
 :sup:`7`'nin kaç ettiğini hesaplamak için `**` işlecini kullanabiliyoruz::
-    
+
     >>> 21 ** 7
-    
+
     1801088541
 
 Yine bildiğiniz gibi, bu işleçten, bir sayının karesini hesaplamak için de
 yararlanabiliyoruz. Çünkü neticede bir sayının karesi, o sayının 2. kuvvetidir::
-    
+
     >>> 12 ** 2
-    
+
     144
 
 Aynı şekilde, eğer bir sayının, 0.5'inci kuvvetini hesaplarsak o sayının
 karekökünü bulmuş oluyoruz. (Bu bilgileri önceki konulardan hatırlıyor
 olmalısınız)::
-    
+
     >>> 144 ** 0.5
-    
+
     12
-    
+
 Kodlarımızı incelediğimize göre, bu programdaki aksaklıkları irdelemeye
 başlayabiliriz.
 
@@ -66,7 +66,7 @@ Bu program, kullanıcı sayı değerli bir veri girdiği müddetçe sorunsuz bir
 
 Örneğin kullanıcı yukarıdaki programa bir sayı yerine, (bilerek veya bilmeyerek)
 içinde harf barındıran bir veri girerse şuna benzer bir hata alır::
-    
+
     Traceback (most recent call last):
       File "deneme.py", line 2, in <module>
         karekök = int(veri1) ** 0.5
@@ -107,13 +107,13 @@ Biz bu bölümde hataları üç farklı başlık altında ele alacağız:
 Programcıdan kaynaklanan hatalar doğrudan doğruya programı yazan kişinin
 dikkatsizliğinden ötürü ortaya çıkan bariz hatalardır. Örneğin şu kod bir
 programcı hatası içerir::
-    
+
     >>> print "Merhaba Python!"
 
 Bu kodu çalıştırdığınızda şöyle bir hata mesajı görürsünüz::
 
     >>> print "Merhaba Python!"
-    
+
     File "<stdin>", line 1
        print "Merhaba Python!"
                              ^
@@ -137,7 +137,7 @@ formül hatası yapmış olabilirsiniz. Bu durumda programınız hiçbir şey yo
 gibi çalışır, ancak formül hatalı olduğu için hesaplamaların sonuçları
 yanlıştır. Örneğin daha önceki derslerimizde yazdığımız şu program yukarıdaki
 gibi bir kusur içerir::
-    
+
     sayı1 = input("Toplama işlemi için ilk sayıyı girin: ")
     sayı2 = input("Toplama işlemi için ikinci sayıyı girin: ")
 
@@ -161,14 +161,14 @@ Gelelim üçüncü kategori olan istisnalara (*exceptions*)...
 İstisnalar, adından da az çok anlaşılacağı gibi, bir programın çalışması
 sırasında ortaya çıkan, normalden farklı, istisnai durumlardır. Örneğin şu
 programa bakalım::
-    
+
     ilk_sayı = input("ilk sayı: ")
     ikinci_sayı = input("ikinci sayı: ")
 
     ilk_sayı = int(ilk_sayı)
     ikinci_sayı = int(ikinci_sayı)
 
-    print(ilk_sayı, "/", ikinci_sayı, "=", ilk_sayı / ikinci_sayı) 
+    print(ilk_sayı, "/", ikinci_sayı, "=", ilk_sayı / ikinci_sayı)
 
 Burada ilk sayıyı ikinci sayıya bölen bir program yazdık. Bu program her türlü
 bölme işlemini yapabilir. Ama burada hesaba katmamız gereken iki şey var:
@@ -180,7 +180,7 @@ bölme işlemini yapabilir. Ama burada hesaba katmamız gereken iki şey var:
    `23`, ikinci sayıya karşılık `0` yazabilir.
 
 İlk durumda programımız şöyle bir hata verir::
-    
+
     ilk sayı: 23
     ikinci sayı: fdsfd
     Traceback (most recent call last):
@@ -221,7 +221,7 @@ zorlamanıza gerek yok. Bu üç kavram çoğu zaman birbirinin yerine kullanıl�
 olsa, aslında aralarında bazı farklar olduğunu öğrenmişseniz bu bölüm amacına
 ulaşmış demektir.
 
-Konuyla ilgili temel bilgileri edindiğimize göre asıl meseleye geçebiliriz... 
+Konuyla ilgili temel bilgileri edindiğimize göre asıl meseleye geçebiliriz...
 
 try... except...
 *****************
@@ -253,7 +253,7 @@ olmayan bir veri girmesi halinde üretilecek hata bir ``ValueError``'dır.
 Dolayısıyla ``except`` bloğu içine yazacağımız hata türünün adı da
 ``ValueError`` olacaktır. O yüzden ``ValueError`` adlı hatayı yakalayabilmek
 için şu satırları yazdık::
-    
+
     except ValueError:
         print("Lütfen sadece sayı girin!")
 
@@ -262,17 +262,17 @@ Burada bu kodlarla Python'a şu emri vermiş olduk:
     Eğer ``try`` bloğu içinde belirtilen işlemler sırasında bir ``ValueError``
     ile karşılaşırsan bunu görmezden gel ve normal şartlar altında kullanıcıya
     göstereceğin hata mesajını gösterme. Onun yerine kullanıcıya ``Lütfen sadece
-    sayı girin!`` uyarısını göster. 
-    
+    sayı girin!`` uyarısını göster.
+
 Yukarıda Türkçeye çevirdiğimiz emri Pythoncada nasıl ifade ettiğimize dikkat
 edin. Temel olarak şöyle bir yapıyla karşı karşıyayız::
-        
+
     try:
         hata verebileceğini bildiğimiz kodlar
     except HataAdı:
         hata durumunda yapılacak işlem
 
-Gelin isterseniz bir örnek daha verelim. 
+Gelin isterseniz bir örnek daha verelim.
 
 Hatırlarsanız bir sayının `0`'a bölünmesinin mümkün olmadığını, böyle bir
 durumda programımızın hata vereceğini söylemiştik. Bu durumu teyit etmek için
@@ -315,7 +315,7 @@ veri girerse ``ValueError``, eğer bir sayıyı `0`'a bölmeye çalışırsa da
 nasıl yakalayacağız?
 
 Çok basit::
-    
+
     ilk_sayı    = input("ilk sayı: ")
     ikinci_sayı = input("ikinci sayı: ")
 
@@ -340,7 +340,7 @@ bir fikir sahibi olabilirler.
 Dediğimiz gibi, her hata için ayrı bir mesaj göstermek en iyisidir. Ama tabii
 dilerseniz hata türlerini gruplayıp hepsi için tek bir hata mesajı göstermeyi de
 tercih edebilirsiniz. Bunu nasıl yapacağımızı görelim::
-    
+
     ilk_sayı    = input("ilk sayı: ")
     ikinci_sayı = input("ikinci sayı: ")
 
@@ -359,13 +359,13 @@ virgülle ayırmaktır.
 Bu arada, gördüğünüz gibi yukarıdaki programlar sadece bir kez çalışıp
 kapanıyor. Ama biz bu programları tekrar tekrar nasıl çalıştırabileceğimizi
 gayet iyi biliyoruz::
-    
+
     while True:
         ilk_sayı = input("ilk sayı (Programdan çıkmak için q tuşuna basın): ")
-        
+
         if ilk_sayı == "q":
             break
-        
+
         ikinci_sayı = input("ikinci sayı: ")
 
         try:
@@ -389,13 +389,13 @@ try... except... as...
 Bildiğiniz gibi, Python bir programın çalışması esnasında hata üretirken çıktıda
 hata türünün adıyla birlikte kısa bir hata açıklaması veriyor. Yani mesela şöyle
 bir çıktı üretiyor::
-    
+
     ValueError: invalid literal for int() with base 10: 'f'
 
 Burada 'ValueError' hata türünün adı, 'invalid literal for int() with base 10:
 'f'' ise hatanın açıklamasıdır. Eğer istersek, yazdığımız programda bu hata
 açıklamasına erişebiliriz. Dikkatlice bakın::
-    
+
     ilk_sayı    = input("ilk sayı: ")
     ikinci_sayı = input("ikinci sayı: ")
 
@@ -408,7 +408,7 @@ açıklamasına erişebiliriz. Dikkatlice bakın::
 
 Bu programı çalıştırıp sayı değerli olmayan bir veri girersek hata çıktısı şöyle
 olacaktır::
-    
+
     invalid literal for int() with base 10: 'f'
 
 Gördüğünüz gibi, bu defa çıktıda hata türünün adı (``ValueError``) görünmüyor.
@@ -417,7 +417,7 @@ Onun yerine sadece hata açıklaması var.
 Diyelim ki kullanıcıya olası bir hata durumunda hem kendi yazdığınız hata
 mesajını, hem de özgün hata mesajını göstermek istiyorsunuz. İşte yukarıdaki
 yapı böyle durumlarda işe yarayabilir::
-    
+
     ilk_sayı    = input("ilk sayı: ")
     ikinci_sayı = input("ikinci sayı: ")
 
@@ -431,7 +431,7 @@ yapı böyle durumlarda işe yarayabilir::
 
 Bu arada, biraz önce yaptığımız gibi, hata türlerini grupladığınızda da bu
 yöntemi kullanabilirsiniz::
-    
+
     ilk_sayı    = input("ilk sayı: ")
     ikinci_sayı = input("ikinci sayı: ")
 
@@ -464,7 +464,7 @@ kısaca bu blokların ne işe yaradığından söz edeceğiz.
 Esasında biz bu ``else`` deyimini daha önce de 'koşullu ifadeler' konusunu
 işlerken görmüştük. Buradaki kullanımı da zaten hemen hemen aynıdır. Diyelim ki
 elimizde şöyle bir şey var::
-    
+
 	try:
 	    bölünen = int(input("bölünecek sayı: "))
 	    bölen = int(input("bölen sayı: "))
@@ -479,7 +479,7 @@ biliyoruz ki, bu kodları çalıştırdığımızda Python'ın verebileceği tek
 ``ValueError`` değildir. Eğer kullanıcı bir sayıyı 0'a bölmeye çalışırsa Python
 ``ZeroDivisionError`` adlı hatayı verecektir. Dolayısıyla bu hatayı da yakalamak
 için şöyle bir şey yazabiliriz::
-    
+
 	try:
 	    bölünen = int(input("bölünecek sayı: "))
 	    bölen = int(input("bölen sayı: "))
@@ -495,7 +495,7 @@ yakalamış oluruz. Bu kodların özelliği, ``except...`` bloklarının tek bir
 ``try...`` bloğu içine tıkıştırıyoruz. Bu blok içinde gerçekleşen hataları da
 daha sonra tek tek ``except...`` blokları yardımıyla yakalıyoruz. Ama eğer biz
 istersek bu kodlarda verilebilecek hataları gruplamayı da tercih edebiliriz::
-    
+
     try:
         bölünen = int(input("bölünecek sayı: "))
         bölen = int(input("bölen sayı: "))
@@ -540,7 +540,7 @@ try... except... finally...
 ``try... except... else...`` yapılarının dışında, Python'ın bize sunduğu bir
 başka yapı da ``try... except... finally...`` yapılarıdır. Bunu şöyle
 kullanıyoruz::
-    
+
 	try:
 	    ...bir takım işler...
 	except birHata:
@@ -586,7 +586,7 @@ altında hata vermeyecek olsa bile biz ona 'Python tarzı' bir hata mesajı
 göstermek isteyebiliriz. Böyle bir durumda ihtiyacımız olan şey Python'ın bize
 sunduğu ``raise`` adlı deyimdir. Bu deyim yardımıyla duruma özgü hata mesajları
 üretebiliriz. Bir örnek verelim::
-    
+
 	bölünen = int(input("bölünecek sayı: "))
 
 	if bölünen == 23:
@@ -623,7 +623,7 @@ gösteriyoruz.
 
 ``raise`` deyimini, bir hata mesajına ek olarak bir işlem yapmak istediğimizde
 de kullanabiliriz. Örneğin::
-    
+
 	try:
 	    bölünen = int(input("bölünecek sayı: "))
 	    bölen = int(input("bölen sayı: "))
@@ -655,7 +655,7 @@ Yukarıdaki kod yardımıyla sadece ``ZeroDivisionError`` adlı hatayı
 yakalayabiliriz. Eğer yazdığımız program başka bir hata daha veriyorsa, o hata
 mesajı yukarıdaki blokların kapsamı dışında kalacaktır. Ama eğer istersek
 yukarıdaki kodu şu şekilde yazarak olası bütün hataları yakalayabiliriz::
-    
+
 	try:
 	    ....birtakım işler...
 	except:
@@ -680,7 +680,7 @@ programımızdaki bütün hataları gizleyeceği için, programımızdaki potans
 aksaklıkları görme imkanımız olmaz. Dolayısıyla bu tür bir yapıdan olabildiğince
 kaçınmakta fayda var. Ancak elbette böyle bir kod yazmanızı gerektiren bir
 durumla da karşılaşabilirsiniz. Örneğin::
-    
+
     try:
         birtakım kodlar
     except ValueError:
@@ -700,27 +700,27 @@ yerine çalışmaya devam edebilecektir.
 ***************
 
 Hata yakalama konusunu bütün ayrıntılarıyla inceledik. Gelin şimdi isterseniz
-ufak bir örnek yapalım. 
+ufak bir örnek yapalım.
 
 Hatırlarsanız bir kaç bölüm önce şöyle bir uygulama yazmıştık::
-    
+
     import sys
-    
+
     _2x_metni = """
     Python'ın 2.x sürümlerinden birini kullanıyorsunuz.
     Programı çalıştırabilmek için sisteminizde Python'ın
     3.x sürümlerinden biri kurulu olmalı."""
-    
+
     _3x_metni = "Programa hoşgeldiniz."
-    
+
     if sys.version_info.major < 3:
         print(_2x_metni)
     else:
         print(_3x_metni)
-        
+
 Bu programın ne iş yaptığını biliyorsunuz. Bu program yardımıyla,
 kullanıcılarımızın bilgisayarlarındaki Python sürümünü kontrol edip,
-programımızın kullanılan sürüme göre tepki vermesini sağlıyoruz. 
+programımızın kullanılan sürüme göre tepki vermesini sağlıyoruz.
 
 Ancak burada çok ciddi bir problem var. Python'ın 2.7 öncesi sürümlerinde `sys`
 modülünün ``version_info()`` metodu farklı çıktılar verir. Mesela Python'ın 2.7
@@ -732,20 +732,20 @@ alamayacak, Python bu kullanıcalara şuna benzer bir hata mesajı göstererek
 programın çökmesine sebep olacaktır::
 
     AttributeError: 'tuple' object has no attribute 'major'
-    
+
 Python'ın 2.7 öncesi sürümlerinin kurulu olduğu bilgisayarlarda da programınızın
 en azından çökmemesi ve makul bir çıktı verebilmesi için yukarıdaki kodlar şöyle
 yazabilirsiniz::
-    
+
     import sys
-    
+
     _2x_metni = """
     Python'ın 2.x sürümlerinden birini kullanıyorsunuz.
     Programı çalıştırabilmek için sisteminizde Python'ın
     3.x sürümlerinden biri kurulu olmalı."""
-    
+
     _3x_metni = "Programa hoşgeldiniz."
-    
+
     try:
         if sys.version_info.major < 3:
             print(_2x_metni)
@@ -753,7 +753,7 @@ yazabilirsiniz::
             print(_3x_metni)
     except AttributeError:
         print(_2x_metni)
-        
+
 Gördüğünüz gibi, ``AttributeError`` adlı hatayı vereceğini bildiğimiz kısmı bir
 ``try... except`` bloğu içine aldık. Eğer programımız ``AttributeError``
 hatasını veriyorsa, programımızın çalıştırıldığı sistem Python'ın 2.7 sürümünden
@@ -764,4 +764,4 @@ Elbette yukarıdaki programı yazmanın çok daha düzgün yolları vardır. Ama
 hata yakalama yöntemlerinin buna benzer durumlarda da bir alternatif olarak
 kullanılabileceğini bilelim. Ayrıca, dediğimiz gibi, ``try... except`` blokları
 yukarıdaki sorunun çözümü için en uygun araçlar olmasa da, bazı durumlarda
-hatayı önlemenin makul tek yoludur. 
+hatayı önlemenin makul tek yoludur.

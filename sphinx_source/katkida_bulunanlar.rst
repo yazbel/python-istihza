@@ -9,7 +9,7 @@ Katkıda Bulunanlar
    -- Linus Torvalds
 
 Bu sayfada, Python3 belgelerine herhangi bir şekilde katkıda bulunanların
-isimleri bir liste halinde yer alıyor. 
+isimleri bir liste halinde yer alıyor.
 
 Lütfen siz de belgelerde gördüğünüz hataları ozgulfirat@gmail.com adresine
 iletmekten çekinmeyin. Katkılarınız, bu belgelerin hem daha az hata içermesini
@@ -21,72 +21,72 @@ hem de daha çok kişiye ulaşmasını sağlayacaktır.
 
 Barbaros Akkurt
 ================
-    
+
     - ``echo $HOME`` komutunun, `C:\\Users\\falanca` şeklinde gösterilen çıktısı
       `/home/istihza` olarak düzeltildi.
-      
+
 Şebnem Duyar
 ============
-    
-    - 'dahtaa' şeklinde yazılan 'daha' kelimesi düzeltildi.        
+
+    - 'dahtaa' şeklinde yazılan 'daha' kelimesi düzeltildi.
     - Bölme işleminde `30` olarak gösterilen değer `3` olarak değiştirildi.
     - `23 + 5` işleminin `27` olarak gösterilen sonucu `28` olarak düzeltildi.
 
 Onur Eker
 =============
-    
-    - Satırdaki kayma düzeltildi.                                                                 
-    - `b` değişkeninin `23` olarak verilen değeri `10` olarak düzeltildi.   
+
+    - Satırdaki kayma düzeltildi.
+    - `b` değişkeninin `23` olarak verilen değeri `10` olarak düzeltildi.
     - ``count()`` örneğinin açıklamasında `2` olarak belirtilen karakter sayısı
       `1` olarak düzeltildi.
 
-Emre Erözgün      
+Emre Erözgün
 =============
-    
-    - ``type()`` ile yazılan örnek ``int()`` ile yeniden yazıldı.                                                        
-    - Tamsayıya çevrilmesi unutulan öğeler sayıya çevrildi.        
+
+    - ``type()`` ile yazılan örnek ``int()`` ile yeniden yazıldı.
+    - Tamsayıya çevrilmesi unutulan öğeler sayıya çevrildi.
     - Hatalı çıktı veren `count()` örneği düzeltildi.
 
-Tayfun Yaşar  
+Tayfun Yaşar
 =============
-    
+
     - Koyulması unutulan küme parantezleri karakter dizisi içine yerleştirildi.
-        
-Metin Hırçın          
+
+Metin Hırçın
 ==============
-    
+
     - 'etkileşimli kabul' şeklinde yazılan ifade 'etkileşimli kabuk' olarak
-      düzeltildi.    
+      düzeltildi.
     - 'içidnde' şeklinde yazılan ifade 'içinde' olarak düzeltildi.
-    - 'görünmüyür' şeklinde yazılan ifade 'görünmüyor' olarak düzeltildi.                                                
+    - 'görünmüyür' şeklinde yazılan ifade 'görünmüyor' olarak düzeltildi.
     - 'öğrendikce' şeklinde yazılan ifade 'öğrendikçe' olarak düzeltildi.
     - 'dizilerinne' şeklinde yazılan ifade 'dizilerine' olarak düzeltildi.
     - Birbirinden ',' işareti ile ayrılan anahtar-değer çiftleri ':' işareti ile
-      ayrıldı.    
+      ayrıldı.
     - 'yanınıra' şeklinde yazılan ifade 'yanısıra' olarak düzeltildi.
-        
-Ahmet Öztekin  
+
+Ahmet Öztekin
 ==============
 
     - 'yukarı' şeklinde yazılan ifade 'yukarıda' olarak düzeltildi.
     - `rjust()` metodunun yanlış yazılan çıktısı düzeltildi.
-    - `l1` şeklinde yazılan değişken adı `li1` olarak düzeltildi.        
-        
-Mesut İdiz           
+    - `l1` şeklinde yazılan değişken adı `li1` olarak düzeltildi.
+
+Mesut İdiz
 ===============
 
     - 'farkedemezsiniz' şeklinde yazılan kelime 'farkedemezseniz' olarak
-      düzeltildi.                       
+      düzeltildi.
     - Unutulan bir 'a' harfi eklendi.
     - Cümle içinde "'=' işleci" ifadesinden sonra yazılan "sayı2" ifadesi doğru
-      yerine yerleştirildi. 
+      yerine yerleştirildi.
     - 'farlıdır' şeklinde yazılan kelime 'farklıdır' olarak düzeltildi.
 
 Levent Civa
 ============
 
     - 'ayrıntılılarıyla' şeklinde yazılan kelime 'ayrıntılarıyla' olarak
-      düzeltildi.   
+      düzeltildi.
     - Toplam karakter uzunluğuna ilişkin örnek koddaki mantık hatası giderildi.
 
 Fırat Ekinci
@@ -119,25 +119,25 @@ Erhan Paşaoğlu
       toplamaya çalışmamızdır' cümlesi 'Bunun sebebi bir sayı (45) ile bir
       karakter dizisini ("45") birbiriyle toplamaya çalışmamızdır' şeklinde
       düzeltilerek daha berrak bir hale getirildi.
-      
+
 Cemre Efe Karakaş
 ====================
 
     - ``split()`` olarak yazılan metot adı ``strip()`` olarak
       düzeltildi.
-      
+
 Salim Yıldırım
 =================
 
     - `falanca.png"` olarak yazılan karakter dizisi `"falanca.png"`
-      olarak düzeltildi.    
+      olarak düzeltildi.
     - 'tatlilar' şeklinde yazılan kelime 'tatlılar' olarak
       düzeltildi.
     - ``"{:,}.format(1234567890)`` olarak yazılan kod
       ``"{:,}".format(1234567890)`` olarak düzeltildi.
     - ``"{:b}.format(2)`` olarak yazılan kod ``"{:b}".format(2)``
       olarak düzeltildi.
-    - Belge güncellemesi esnasında yanlışlıkla paragraftan silinen kısım 
+    - Belge güncellemesi esnasında yanlışlıkla paragraftan silinen kısım
       tekrar eklendi.
 
 Çağatay Genlik
@@ -145,7 +145,7 @@ Salim Yıldırım
 
     - ``(50087).bit_length()`` kodunun `2` olarak gösterilen çıktısı
       `16` olarak düzeltildi.
-      
+
 Valeh Asadlı
 ===============
 
@@ -163,7 +163,7 @@ Halit Turan Arıcan
       olduğunu, yani bir bakıma ikili sayma sisteminde kaç basamağa sahip
       olduğunu gösteriyor,*" cümlesinde 'sıra' kelimeleri 'sütun' kelimeleri ile
       değiştirilerek ifade tarzının daha anlaşılır olması sağlandı.
-      
+
 Levent Güler
 ==============
 
@@ -177,20 +177,20 @@ Levent Güler
     - Yanlışlıkla ``st_size`` yerine yazılan ``st_mtime`` niteliği değiştirildi.
     - Karakter dizisinin sonuna eklenmesi unutulan satır başı karakteri
       (`'\\n'`) eklendi.
-    
+
 Yaşar Celep
 ============
 
     - 'onlu, sekizli ve onaltılı' şeklinde yazılması gerekirken 'onlu ve
       onaltılı' olarak belirtilen ifade düzeltildi.
-      
+
 Uğur Uyar
 ==========
 
     - '*print() fonksiyonu, kendisine verilen parametreler arasına birer nokta
       yerleştirir,*' cümlesi '*print() fonksiyonu, kendisine verilen parametreler
       arasına birer boşluk yerleştirir,*' olarak düzeltildi.
-      
+
 Serdar Çağlar
 ===============
 
@@ -200,7 +200,7 @@ Serdar Çağlar
     - ``print(çeviri_tablosu[i])`` yerine hatalı olarak ``print(i)`` şeklinde
       yazılan kod düzeltildi.
     - Uyarı üzerine, belge Python'ın en son sürümüne göre gözden geçirildi.
-      
+
 Ahmet Onur Yıldırım
 ====================
 
@@ -214,46 +214,46 @@ Ahmet Onur Yıldırım
     - Çıktıya eklenmesi unutulan `fonk8_` fonksiyonu eklendi.
     - Bazı GNU/Linux dağıtımlarında `webbrowser` modülünün ``open()``
       fonksiyonuna verilen websitesi adreslerinin 'http' önekiyle yazılması
-      gerektiğine dair bir not eklendi. 
+      gerektiğine dair bir not eklendi.
     - 'ayna' olarak yazılan kelime 'aynı' olarak düzeltildi.
     - Yanlışlıkla 'prezantabl' olarak yazılan liste öğesi 'konuşkan' olarak
       düzeltildi.
     - 'mimtarisi' olarak yazılan kelime 'mimarisi' olarak düzeltildi.
     - `%PROCESSOR_ARCHITECTURE` olarak yazılan çevre değişkeni
       `%PROCESSOR_ARCHITECTURE%` olarak düzeltildi.
-      
+
 Anıl İlginoğlu
 ===============
 
     - 'denene' olarak yazılan kelime 'deneme' olarak düzeltildi.
-    
+
 Hüseyin Ulaş Yeltürk
 =====================
 
     - 'listedindeki' olarak yazılan kelime 'listesindeki' olarak düzeltildi.
     - Yanlışlıkla çift yazılan 'teknik' kelimesi düzeltildi.
     - 'niteliği' olarak yazılan kelime 'niteliğin' olarak düzeltildi.
-    
+
 Nuri Acar
 =============
 
     - 'nitelğin' olarak yazılan kelime 'niteliğin' olarak düzeltildi.
-    
+
 Azat Fırat Çimen
 ===================
 
     - 'gün_sayısı' olarak yazılan değişken adı 'gün' olarak düzeltildi.
-    
+
 Aykut Kardaş
 ==============
 
     - `n` şeklinde yazılan kaçış dizisi, `\\n` olarak düzeltildi.
-    
+
 Sezer Bozkır
 ===============
 
     - 'derini' şeklinde yazılan kelime 'değerini' olarak düzeltildi.
-    
+
 Alican Uzunhan
 ================
 
@@ -269,10 +269,10 @@ Alican Uzunhan
     - 'konuları de' olarak yazılan ifade 'konuları da' olarak düzeltildi.
     - 'akrarırken' olarak yazılan kelime 'aktarırken' olarak düzeltildi.
     - `sa\\*t` olarak görünen düzenli ifade `sa*t` olarak düzeltildi.
-    - ``print(im)`` şeklinde yazılan ``print(veri)`` olarak düzeltildi. 
+    - ``print(im)`` şeklinde yazılan ``print(veri)`` olarak düzeltildi.
     - 'yardınıyla' olarak yazılan kelime 'yardımıyla' olarak düzeltildi.
     - 'Burada kadar' olarak yazılan ifade 'buraya kadar' olarak düzeltildi
-      
+
 Özgür Özer
 ==============
 
@@ -280,7 +280,7 @@ Alican Uzunhan
     - 'komutunun' olarak yazılan kelime 'komutun' olarak düzeltildi.
     - Yanlışlıkla iki kez yazılan 'bir' kelimesi teke indirildi.
     - 'fonksiyonun' olarak yazılan kelime 'fonksiyonunun' olarak düzeltildi.
-    
+
 Kerim Yıldız
 ==============
 
@@ -290,57 +290,57 @@ Muhammed Yılmaz
 =================
 
     - 'randrage' olarak yazılan fonksiyon adı 'randrange' olarak düzeltildi.
-    
+
 Ahmet Erdoğan
 ==============
 
     - ``print('a', 'b', end='')`` komutunun çıktı görünümü düzeltildi.
-    
+
 Abdurrahman Dursun
 ====================
-    
+
     - Cümlede yanlış yerde kullanılan 'end' ve 'sep' kelimeleri düzeltildi.
     - Yanlışlıkla 'alnımız dik' olarak yazılan ifade 'başımız dik' olarak
       düzeltildi.
     - Kendisinden önceki cümlede ifade edilen fikri tekrar eden gereksiz bir
       cümle paragraftan çıkarıldı.
     - Karakter dizisinin, unutulan kapatma tırnağı yerine koyuldu.
-    
+
 Tahir Uzelli
 =============
 
     - Yanlışlıkla '8 adet bir' şeklinde yazılan ifade '8 adet bit' olarak
       düzeltildi.
-      
+
 Mehmet Akbay
 ==============
 
     - Yanlışlıkla 'a1.txt' olarak belirtilen dosya adı 'hakkında.txt' olarak
       düzeltildi.
-      
+
 Mehmet Çelikyontar
 ====================
 
     - Yanlışlıkla 'satı1' olarak yazılan kelime 'satır1' olarak düzeltildi.
-    
+
 Savaş Zengin
 ==============
 
     - Kodlardaki eksik parantez düzeltildi.
     - ``[^A-Z-a-z_]`` düzenli ifadesi ``[^A-Za-z0-9_]`` olarak düzeltildi.
     - Kodlara yanlışlıkla fazladan eklenen `\\` işareti kaldırıldı.
-    
+
 Tuncay Güven
 ============
 
     - `python3.pdf` adlı belgenin yanlış yazılan indirme adresi düzeltildi.
-    
+
 Cafer Uluç
 ============
 
     - 'GNU-dışı' ifadesi 'GNU dışı' olarak düzeltildi.
     - 'websitesi' kelimesi 'web sitesi' olarak düzeltildi.
-    
+
 Nikita Türkmen
 ===============
 
@@ -349,11 +349,11 @@ Nikita Türkmen
       düzeltildi.
     - ``Çalışan.personel`` olarak belirtilmesi gerekirken ``personel`` olarak
       belirtilen değişken adı düzeltildi.
-      
+
 Axolotl Axolotl
 ================
 
-    - Yanlışlıkla 'yukarı' olarak yazılan kelime 'yukarıda' olarak düzeltildi. 
+    - Yanlışlıkla 'yukarı' olarak yazılan kelime 'yukarıda' olarak düzeltildi.
     - Kodlardaki yanlış girintileme düzeltildi.
     - Gereksiz bir virgül işareti kaldırıldı.
     - Yanlışlıkla 'olmadığını' olarak yazılan kelime 'oluşmadığını' olarak
@@ -386,4 +386,3 @@ Axolotl Axolotl
     - 'oyununun' olarak yazılan kelime 'oyunun' olarak düzeltildi.
     - 'O' olarak yazılması gerekirken 'Y' olarak yazılan karakter düzeltildi.
     - 'programımın' olarak yazılan kelime 'programın' olarak düzeltildi.
-   

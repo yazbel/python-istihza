@@ -1,8 +1,8 @@
 .. meta::
-   :description: Bu bölümde Python programlama dilinde yazdığımız kodlara nasıl 
+   :description: Bu bölümde Python programlama dilinde yazdığımız kodlara nasıl
     yorum ve açıklama cümleleri ekleyeceğimizi öğreneceğiz.
    :keywords: python, python2, python3, yorum, açıklama, comment out
-   
+
 .. highlight:: python3
 
 ***************************
@@ -11,16 +11,16 @@ Yorum ve Açıklama Cümleleri
 
 Python'la ilgili şimdiye kadar öğrendiğimiz bilgileri kullanarak yazabileceğimiz
 en karmaşık programlardan biri herhalde şöyle olacaktır::
-    
+
     isim    = "Fırat"
     soyisim = "Özgül"
     işsis   = "Ubuntu"
     şehir   = "İstanbul"
 
-    print("isim           : ", isim,    "\n", 
+    print("isim           : ", isim,    "\n",
           "soyisim        : ", soyisim, "\n",
           "işletim sistemi: ", işsis,   "\n",
-          "şehir          : ", şehir,   "\n", 
+          "şehir          : ", şehir,   "\n",
           sep="")
 
 Yukarıdaki kodları rahatlıkla anlayabildiğinizi zannediyorum. Ama isterseniz
@@ -78,7 +78,7 @@ Esasında yukarıdaki kodları şöyle de yazabilirdik::
     işsis = "Ubuntu"
     şehir = "İstanbul"
 
-    print("isim: ", isim, "\n", "soyisim: ", soyisim, "\n", 
+    print("isim: ", isim, "\n", "soyisim: ", soyisim, "\n",
     "işletim sistemi: ", işsis, "\n", "şehir: ", şehir, "\n", sep="")
 
 Ancak bu şekilde kod yapısı biraz karmaşık görünüyor. Ayrıca parantez içindeki
@@ -133,20 +133,20 @@ notlar ekleyeceğiz.
 
 Python'da yorumlar `#` işareti ile gösterilir. Mesela bu bölümün ilk başında
 verdiğimiz kodları yorumlarla destekleyelim::
-    
+
     isim    = "Fırat"
     soyisim = "Özgül"
     işsis   = "Ubuntu" #işletim sistemi
     şehir   = "İstanbul"
 
-    #isim, soyisim, işsis ve şehir adlı değişkenleri 
+    #isim, soyisim, işsis ve şehir adlı değişkenleri
     #alt alta, düzgün bir şekilde ekrana basıyoruz.
     #Uygun yerlerde alt satıra geçebilmek için "\n"
     #adlı kaçış dizisini kullanıyoruz.
-    print("isim           : ", isim,    "\n", 
+    print("isim           : ", isim,    "\n",
           "soyisim        : ", soyisim, "\n",
           "işletim sistemi: ", işsis,   "\n",
-          "şehir          : ", şehir,   "\n", 
+          "şehir          : ", şehir,   "\n",
           sep="") #parametreler arasında boşluk bırakmıyoruz.
 
 Burada dikkat edeceğimiz nokta her yorum satırının başına `#` işaretini koymayı
@@ -181,17 +181,17 @@ notlar eklememizi sağlamaktır. Ama bu işaret başka amaçlar için de
 kullanılabilir. Örneğin, diyelim ki yazdığımız programa bir özellik eklemeyi
 düşünüyoruz, ama henüz bu özelliği yeni sürüme eklemek istemiyoruz. O zaman
 şöyle bir şey yapabiliriz::
-    
+
     isim    = "Fırat"
     soyisim = "Özgül"
     işsis   = "Ubuntu"
     şehir   = "İstanbul"
     #uyruğu = "T.C"
 
-    print("isim           : ", isim,    "\n", 
+    print("isim           : ", isim,    "\n",
           "soyisim        : ", soyisim, "\n",
           "işletim sistemi: ", işsis,   "\n",
-          "şehir          : ", şehir,   "\n", 
+          "şehir          : ", şehir,   "\n",
           #"uyruğu        : ", uyruğu,  "\n",
           sep="")
 
@@ -223,7 +223,7 @@ Süsleme Amaçlı
 
 Bütün bunların dışında, isterseniz yorum işaretini kodlarınızı süslemek için
 dahi kullanabilirsiniz::
-    
+
     #######################################################
     #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
     #                    FALANCA v.1                      #
@@ -237,10 +237,10 @@ dahi kullanabilirsiniz::
     işsis   = "Ubuntu"
     şehir   = "İstanbul"
 
-    print("isim           : ", isim,    "\n", 
+    print("isim           : ", isim,    "\n",
           "soyisim        : ", soyisim, "\n",
           "işletim sistemi: ", işsis,   "\n",
-          "şehir          : ", şehir,   "\n", 
+          "şehir          : ", şehir,   "\n",
           sep="")
 
 Yani kısaca, Python'un görmesini, çalıştırmasını istemediğimiz her şeyi yorum

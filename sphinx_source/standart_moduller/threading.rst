@@ -1,12 +1,12 @@
 .. meta::
-   :description: Bu bölümde threading modülünü inceleyeceğiz. 
+   :description: Bu bölümde threading modülünü inceleyeceğiz.
    :keywords: python, modül, import, threading
 
 .. highlight:: python3
 
-*******************************************
-threading - İş Parçacığı Tabanlı Paralellik
-*******************************************
+****************
+threading Modülü
+****************
 
 **Kaynak Kodu:** https://hg.python.org/cpython/file/3.5/Lib/threading.py
 
@@ -59,7 +59,7 @@ Bu modül ayrıca aşağıdaki sabiti de tanımlar:
 **threading.TIMEOUT_MAX**
 
     `Lock.acquire()`, `RLock.acquire()`, `Condition.wait()` vb. gibi engelleyici fonksiyonların zaman aşımı parametreleri için maksimum değere izin verilir.
-	
+
     Sürüm 3.2'de gelmiştir.
 
 Bu modül aşağıdaki kısımda ayrıntıları verilen birkaç sınıfı tanımlar.
@@ -80,7 +80,7 @@ Ayrı iş parçacıkları için örneğin değeri değişik olacaktır.
 
 **class threading.local**
 
-    Yerel iş parçacığı verisini temsil eden sınıftır. 
+    Yerel iş parçacığı verisini temsil eden sınıftır.
 
     Daha fazla ayrıntı ve geniş örnekler için, *_threading_local* modülünün belge dizisine bakın.
 
@@ -119,7 +119,7 @@ Kukla iş parçacığı nesnelerinin (dummy thread objects) oluşturulma ihtimal
        	    **args:** Hedefin yürütülmesi için demet veri tipinde bir argümandır. Ön tanımlı olarak boş bir demet verisidir.
 
 	    **kwargs:** Hedefin yürütülmesi için sözlük veri tipinde bir anahtar kelime argümanıdır. Ön tanımlı olarak boş bir sözlük verisidir.
- 
+
  	    **daemon:** Eğer değeri `None` değilse, daemon, bir iş parçacığının bariz bir şekilde daemonic olup olmadığını ayarlar. Şayet değeri ön tanımlı olarak bırakılırsa (yani değeri `None` olursa), daemonic özellik o andaki aktif iş parçacığından miras alınır.
 
 	    Eğer bir alt sınıf yapıcıyı iptal ederse, iş parçacığı ile bir işlem yapmadan önce, temel sınıfın yapıcısının (`Thread.__init__()`'in) çalıştırılmış olduğundan emin olunması gerekir.
@@ -127,7 +127,7 @@ Kukla iş parçacığı nesnelerinin (dummy thread objects) oluşturulma ihtimal
   	    Sürüm 3.3.'de değiştirildi. Daemon argümanı eklendi.
 
 	**start()**
-	
+
             İş parçacığının etkinliğini başlatır.
 
             Her bir iş parçacığı için bir kez çağrılması gerekir. Ayrılmış iş parçacığı kontrolü içinde, `run()` metodunun çalıştırılmasını ayarlar.
@@ -137,7 +137,7 @@ Kukla iş parçacığı nesnelerinin (dummy thread objects) oluşturulma ihtimal
 	**run()**
 
 	    İş parçacığının etkinliğini temsil eder.
- 
+
 	    Bu metodu, bir alt sınıfta iptal edebilirsiniz. Standart `run()` metodu, *target* argümanı olarak bilinen nesnenin yapıcısına atanmış çağrılabilir nesneyi, varsa *args* ve kwargs* argümanlarından alınan ardışık ve anahtar kelimeli argümanlarla birlikte sırasıyla çalıştırır.
 
 	**join(timeout=None)**
@@ -145,7 +145,7 @@ Kukla iş parçacığı nesnelerinin (dummy thread objects) oluşturulma ihtimal
             İş parçacığı sonlana kadar bekler. Bu; `join()` metodu çağrılan iş parçacığı ya normal olarak, ya yürütülemeyen bir beklenti vasıtasıyla ya da seçeneğe bağlı zaman aşımı gerçekleşip sonlana kadar, çağrılan başka bir iş parçacığını bloke eder.
 
             *timeout* (zaman aşımı) argümanı hazır olduğunda ve değeri `None` olmadığında, işlemin zaman aşımını saniye olarak belirten, kayan noktalı bir sayı olmalıdır. `join()` her zaman `None` değerini geri döndürdüğü için, bir zaman aşımının gerçekleşip gerçekleşmediğine karar vermek için `join()` sonrasında `is_alive()` metodunu çağırın. Şayet iş parçacığı halen canlı ise, `join()`’in çağrılması zaman aşımına uğrar.
- 
+
             timeout argümanı hazır olmadığında ve değeri `None` olmadığında, işlem, iş parçacığı sonlana kadar bloke olacaktır.
 
             Bir iş parçacığı için birçok kez `join()` metodu çağrılabilir.
@@ -175,7 +175,7 @@ Kukla iş parçacığı nesnelerinin (dummy thread objects) oluşturulma ihtimal
         **daemon**
 
             Bir iş parçacığının, bir daemon iş parçacığı olup olmadığının belirleyen bir boolean (`True` veya `False`) değeridir. Bu özellik `start()` metodu çağrılmadan önce ayarlanmalıdır aksi halde bir `RuntimeError` hatası yükseltilir. Başlangıçtaki değeri, oluşturulan iş parçacığından miras alınır; ana iş parçacığı bir daemon iş parçacığı değildir, böylece ana iş parçacığı içinde oluşturulan bütün iş parçacıklarının daemon değeri ön tanımlı olarak `False` olur.
- 
+
             Geriye, cansız, daemon olmayan iş parçacıkları kaldığında, bütün Python programı sonlandırılır.
 
         **isDaemon()**
@@ -585,7 +585,7 @@ Thread'ı kullanmanın en kolay yolu; onu bir hedef fonksiyonuyla örnekleyip, `
     # -*- coding: utf-8 -*-
 
     import threading
-    
+
 
     def f():  # Thread'in iş fonksiyon.
         print("iş")
@@ -597,7 +597,7 @@ Thread'ı kullanmanın en kolay yolu; onu bir hedef fonksiyonuyla örnekleyip, `
 
 **Kodların Açıklamaları:**
 
-Yukarıdaki kodlarda, *f* isminde bir tane fonksiyon oluşturulmuş ve içine "iş" string verisini ekrana yazdıran bir *print()* fonksiyonu dahil edilmiştir. Daha sonra `for` döngüsünü kullanarak, dört tane iş parçacığı nesnesi örneği oluşturulmuştur. Bütün iş parçacıklarının hedef fonksiyonu, *f*'tir. Ve bu program çalıştırıldığında dört kere ekrana "iş" yazısı yazdırılır. 
+Yukarıdaki kodlarda, *f* isminde bir tane fonksiyon oluşturulmuş ve içine "iş" string verisini ekrana yazdıran bir *print()* fonksiyonu dahil edilmiştir. Daha sonra `for` döngüsünü kullanarak, dört tane iş parçacığı nesnesi örneği oluşturulmuştur. Bütün iş parçacıklarının hedef fonksiyonu, *f*'tir. Ve bu program çalıştırıldığında dört kere ekrana "iş" yazısı yazdırılır.
 
 **Örnek-2:**
 
@@ -668,7 +668,7 @@ Bu örnekteki şu kısma bir bakalım::
         time.sleep(2)
         print(threading.currentThread().getName(), "Bitiyor")
 
-*f()* fonksiyonu çağrıldığında, ismi neyse o şekilde "filanca Başlıyor" şeklinde bir yazı ekrana bastırılacak. Sonra 2 saniye bekledikten sonra "filanca Bitiyor" şeklinde bir yazı ekrana bastırılacak. 
+*f()* fonksiyonu çağrıldığında, ismi neyse o şekilde "filanca Başlıyor" şeklinde bir yazı ekrana bastırılacak. Sonra 2 saniye bekledikten sonra "filanca Bitiyor" şeklinde bir yazı ekrana bastırılacak.
 
 Ancak bu durumu iş parçacığı nesnesini tanımlarken değiştirebiliyoruz. Yani::
 
@@ -888,7 +888,7 @@ Sınıfı oluşturduk, örnekleri oluşturmadan önce kilidimizi oluşturalım::
             print("{} çalışıyor.".format(self.name))
             self.lock.acquire(blocking=True, timeout=1)
             print("{} çalışması bitti.".format(self.name))
-            
+
 
     __lock__ = threading.RLock()
     t1 = Thread(lock=__lock__)
@@ -928,8 +928,8 @@ Sınıfı oluşturduk, örnekleri oluşturmadan önce kilidimizi oluşturalım::
     t2 = Thread(lock=__lock__)
     t1.start()
     t2.start()
-    
-**Not:** Bu örnekte RLock kilidine sahip olan iş parçacığı *t1*'dir. Dolayısıyla kilidi sadece o açabilir. Bu örneği çalıştırdığınızda, *t1* iş parçacığının kilit edindiğini ama serbest bırakmadığını görüyoruz. Eğer *t1* bu kilidi serbest bıraksaydı, iş parçacıkları arasında bekleme süresi olmayacaktı. 
+
+**Not:** Bu örnekte RLock kilidine sahip olan iş parçacığı *t1*'dir. Dolayısıyla kilidi sadece o açabilir. Bu örneği çalıştırdığınızda, *t1* iş parçacığının kilit edindiğini ama serbest bırakmadığını görüyoruz. Eğer *t1* bu kilidi serbest bıraksaydı, iş parçacıkları arasında bekleme süresi olmayacaktı.
 
 
 **Örnek-8:**
@@ -1100,7 +1100,7 @@ Bu `run()` yönteminde aşağıdakiler yapılsın:
                 print("condition {} {}".format(
                     self.name,
                     "tarafından serbest bırakıldı."))
-    
+
 Ve son olarak `Condition()`, `Uretici()`, `Tüketici()` sınıflarından birer örnek ve boş bir liste oluşturalım. `Condition()` sınıfından oluşturduğumuz örnek ve listeyi `Uretici()` ve `Tuketici()` sınıflarından oluşturduğumuz örneklere argüman olarak yazalım. Sonra da iş parçacıklarını çalıştıralım::
 
     __condition__ = threading.Condition()

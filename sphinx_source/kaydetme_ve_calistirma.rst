@@ -6,7 +6,7 @@
 .. highlight:: py3
 
 ************************************
-Programları Kaydetme ve Çalıştırma 
+Programları Kaydetme ve Çalıştırma
 ************************************
 
 Bu noktaya kadar bütün işlerimizi Python'ın etkileşimli kabuğu üzerinden
@@ -41,7 +41,7 @@ olun, hem Windows hem de GNU/Linux başlığı altında yazılanları okumalıs�
 
 Dilerseniz önce GNU/Linux ile başlayalım:
 
-GNU/Linux 
+GNU/Linux
 *********
 
 Eğer kullandığınız sistem GNU/Linux'ta Unity veya GNOME masaüstü ortamı ise
@@ -54,15 +54,15 @@ kullanım kolaylığı ve sadeliği nedeniyle Kwrite önerilebilir.
 İşe yeni bir Gedit belgesi açarak başlayalım. Yeni bir Gedit belgesi açmanın en
 kolay yolu `Alt+F2` tuşlarına bastıktan sonra çıkan ekranda::
 
-    gedit 
-    
+    gedit
+
 yazıp `Enter` düğmesine basmaktır.
 
 Eğer Gedit yerine mesela Kwrite kullanıyorsanız, yeni bir Kwrite belgesi
 oluşturmak için `Alt+F2` tuşlarına bastıktan sonra::
 
-    kwrite 
-    
+    kwrite
+
 komutunu vermelisiniz. Elbette kullanacağınız metin düzenleyiciye, komut vermek
 yerine, dağıtımınızın menüleri aracılığıyla da ulaşabilirsiniz.
 
@@ -77,8 +77,8 @@ eksiksiz bir şekilde yazıyoruz:
 
 ::
 
-    tarih = "02.01.2012" 
-    gün = "Pazartesi" 
+    tarih = "02.01.2012"
+    gün = "Pazartesi"
     vakit = "öğleden sonra"
 
     print(tarih, gün, vakit, "buluşalım", end=".\n")
@@ -132,8 +132,8 @@ olabilir:
 
 #. Asla unutmayın, Python'ın etkileşimli kabuğunu başlatmak için hangi komutu
    kullanıyorsanız, `randevu.py` dosyasını çalıştırmak için de aynı komutu
-   kullanacaksınız. Yani eğer Python'ın etkileşimli kabuğunu |pycommand| gibi bir
-   komutla çalıştırıyorsanız, programınızı da |pycommand| ``randevu.py`` şeklinde
+   kullanacaksınız. Yani eğer Python'ın etkileşimli kabuğunu |command3-code| gibi bir
+   komutla çalıştırıyorsanız, programınızı da |command3-code| ``randevu.py`` şeklinde
    çalıştırmanız gerekir. Aynı şekilde, eğer etkileşimli kabuğu mesela ``python``
    (veya ``py3``) gibi bir komutla çalıştırıyorsanız, programınızı da ``python
    randevu.py`` (veya ``py3 randevu.py``) şeklinde çalıştırmalısınız. Neticede
@@ -150,11 +150,11 @@ edelim...
 Gördüğünüz gibi, kod dosyamızı çalıştırmak için ``python3`` komutundan
 yararlanıyoruz. Bu arada tekrar etmekte fayda var: Python'ın etkileşimli
 kabuğunu çalıştırmak için hangi komutu kullanıyorsanız, dosyaya kaydettiğiniz
-programlarınızı çalıştırmak için de aynı komutu kullanacaksınız. 
+programlarınızı çalıştırmak için de aynı komutu kullanacaksınız.
 
 Gelelim Windows kullanıcılarına...
 
-Windows  
+Windows
 ********
 
 Daha önce de söylediğimiz gibi, Python kodlarımızı yazmak için istediğimiz bir
@@ -164,13 +164,13 @@ kolaylaştıracaktır.
 
 Python programlama dilini öğrenmeye yeni başlayan Windows kullanıcıları için en
 uygun metin düzenleyici IDLE'dır. *Başlat > Tüm Programlar > Python*\
-|major-noformat| *> IDLE (Python GUI)* yolunu takip ederek IDLE'a
+|major-minor3| *> IDLE (Python GUI)* yolunu takip ederek IDLE'a
 ulaşabilirsiniz.
 
 IDLE'ı açtığınızda şöyle bir ekranla karşılaşacaksınız:
 
-    .. image:: ../images/idlegui/idle_main.png 
-        :align: center 
+    .. image:: ../images/idlegui/idle_main.png
+        :align: center
         :width: 65%
 
 Aslında bu ekran size bir yerlerden tanıdık geliyor olmalı. Dikkat ederseniz
@@ -195,15 +195,15 @@ Bir önceki ekranda sol üst köşede *File* [Dosya] menüsü görüyorsunuz. Or
 tıklayın ve menü içindeki *New Window* [Yeni Pencere] düğmesine basın. Şöyle bir
 ekranla karşılaşacaksınız:
 
-    .. image:: ../images/idlegui/idle_new.png 
-        :align: center 
+    .. image:: ../images/idlegui/idle_new.png
+        :align: center
         :width: 65%
 
 İşte Python kodlarımızı bu beyaz ekrana yazacağız. Şimdi bu ekrana şu satırları
 yazalım::
 
-    tarih = "02.01.2012" 
-    gün = "Pazartesi" 
+    tarih = "02.01.2012"
+    gün = "Pazartesi"
     vakit = "öğleden sonra"
 
     print(tarih, gün, vakit, "buluşalım", end=".\n")
@@ -216,8 +216,8 @@ kaydediyoruz.
 Bunun için IDLE'da *Run > Run Module* yolunu takip etmeniz veya kısaca `F5`
 tuşuna basmanız yeterli olacaktır. Bu iki yöntemden birini kullanarak
 programınızı çalıştırdığınızda şöyle bir çıktı elde edeceksiniz::
-    
-    02.01.2012 Pazartesi öğleden sonra buluşalım. 
+
+    02.01.2012 Pazartesi öğleden sonra buluşalım.
 
 Tebrikler! İlk Python programınızı yazıp çalıştırdınız... Eğer
 çalıştıramadıysanız veya yukarıdaki çıktı yerine bir hata mesajı aldıysanız

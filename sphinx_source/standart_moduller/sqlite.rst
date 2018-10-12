@@ -27,7 +27,7 @@ Vikipedi'de veritabanı şöyle tanımlanıyor:
     güncellenebilir, taşınabilir, birbirleri arasında tanımlı ilişkiler
     bulunabilen bilgiler kümesidir. Bir başka tanımı da, bir bilgisayarda
     sistematik şekilde saklanmış, programlarca işlenebilecek veri yığınıdır.*
-    
+
 Yukarıdaki tanım, veritabanının ne demek olduğunu gayet iyi ifade ediyor. Ama
 esasında bizim veritabanı tanımı üzerinde fazlaca durmamıza gerek yok. Biz her
 zaman olduğu gibi işin teknik boyutuyla değil, taktik boyutuyla ilgilenmeyi
@@ -125,7 +125,7 @@ Sqlitebrowser, Sqlite veritabanlarının içeriğini grafik bir arayüz aracıl�
 görüntüleyebilmemizi sağlayan bir program. Bu program sayesinde, veritabanı
 üzerinde yaptığınız çalışmanın doğru sonuç verip vermediğini teyit edebilir,
 elinizdeki veritabanının içeriğinde hangi verilerin olduğunu açık seçik
-görebilirsiniz. 
+görebilirsiniz.
 
 Bu programı indirmek için ziyaret etmemiz gereken adres
 http://sqlitebrowser.org/.
@@ -138,9 +138,9 @@ seçenek var. Öncelikle, bu program çoğu GNU/Linux dağıtımının paket dep
 zaten bulunur. Dolayısıyla bu programı dağıtımınızın paket deposu aracılığıyla
 rahatlıkla kurabilirsiniz. Mesela Ubuntu kullananlar şu komutla programı
 kurabilir::
-    
+
     sudo apt-get install sqlitebrowser
-    
+
 GNU/Linux kullanıcıları, eğer arzu ederlerse, programın kaynak kodlarını
 sitesinden indirip programı kendileri derlemeyi de tercih edebilir. Bunun için
 öncelikle http://sqlitebrowser.org/ adresine gidip `.tar.gz` uzantılı dosyayı
@@ -148,48 +148,48 @@ indirin.
 
 Bu programı derlemeye geçmeden önce şu bağımlılıkları kurmamız gerekiyor:
 
-    #. cmake 
-    #. libqt4-dev 
+    #. cmake
+    #. libqt4-dev
     #. libsqlite3-dev
-    
+
 Ubuntu'da ayrıca `build-essential` paketine de ihtiyacınız olacak. Ubuntu
 kullanıcıları şu komutu vererek Sqlitebrowser programının bütün bağımlılıklarını
 sistemlerine kurabilir::
-    
+
     sudo apt-get install build-essential cmake libqt4-dev libsqlite3-dev
-    
+
 Bağımlılıkları kurduktan sonra, indirdiğiniz `.tar.gz` dosyasını aşağıdaki
 komut yardımıyla açın::
-    
+
     tar zxvf sqlitebrowser-3.7.0.tar.gz
-    
+
 Ben burada indirdiğiniz program sürümünün 3.7.0 olduğunu varsaydım. Sizin
-indirdiğiniz sürüm farklıysa yukarıdaki komutu o sürüme göre vereceksiniz. 
-    
+indirdiğiniz sürüm farklıysa yukarıdaki komutu o sürüme göre vereceksiniz.
+
 Daha sonra şu komutu vererek, açtığınız klasörün içine girin::
-    
+
     cd sqlitebrowser-3.7.0
-    
-Yine, burada da klasör adı ve sürüm numarası sizde farklıysa komutu düzeltin. 
-    
+
+Yine, burada da klasör adı ve sürüm numarası sizde farklıysa komutu düzeltin.
+
 Ardından sırasıyla şu komutları verin (``cmake`` komutunun yanındaki nokta
 işaretine dikkat!!)::
-    
+
     cmake .
-    
+
 ::
-    
+
     make
-    
-:: 
+
+::
 
     sudo make install
-    
+
 Böylece Sqlitebrowser programını sisteminize kurmuş oldunuz. Programın
 kurulduğunu teyit etmek için şu komutu çalıştırın::
-    
+
     sqlitebrowser
-    
+
 Eğer program penceresi açıldıysa her şey yolunda demektir. Eğer programı
 çalıştıramadıysanız veya yukarıdaki komutları anlamakta ve işletmekte zorluk
 çekiyorsanız paket deponuzdaki Sqlitebrowser sürümü ile yola devam etmenizi
@@ -225,13 +225,13 @@ Yeni Bir Veritabanı Oluşturmak
 *******************************
 
 Bu bölümde `sqlite` adlı bir modül aracılığıyla yeni bir veritabanını nasıl
-oluşturacağımızı öğreneceğiz. 
+oluşturacağımızı öğreneceğiz.
 
 Yukarıda `sqlite` adlı bir modülden söz ettik. Dolayısıyla, tahmin
 edebileceğiniz gibi, bu modülü kullanabilmek için öncelikle modülü içe
 aktarmamız gerekiyor. Bu bölümün başında da söylediğimiz gibi, Sqlite, Python'ın
 2.5 sürümünden bu yana dilin bir parçasıdır::
-    
+
     >>> import sqlite3
 
 Python'da Sqlite veritabanı sistemine ait modül 'sqlite3' adını taşır. Bu
@@ -240,9 +240,9 @@ gerekiyor. Eğer bu isim size çok uzun geliyorsa veya modül adında sayıları
 harflerin birlikte bulunması nedeniyle hem sayı hem de harf girmeyi bir angarya
 olarak görüyorsanız elbette `sqlite3` modülünü farklı bir adla da içe
 aktarabileceğinizi biliyorsunuz. Mesela::
-    
+
     >>> import sqlite3 as sql
-    
+
 Veya::
 
     >>> import sqlite3 as lite
@@ -254,15 +254,15 @@ modülü ``import sqlite3`` şeklinde içe aktarmışız gibi davranacağım.
 Gelelim bu modül yardımıyla nasıl veritabanı oluşturulacağına... Bunun için
 `sqlite3` modülünün ``connect()`` adlı metodundan yararlanacağız. Bu metodu şu
 şekilde kullanıyoruz::
-    
+
     >>> vt = sqlite3.connect('veritabanı_adı')
 
 ``connect()`` metoduna verdiğimiz `varitabanı_adı` adlı argüman, kullanacağımız
 veritabanının adıdır. Eğer belirtilen isimde bir veritabanı sistemde
 bulunmuyorsa o adla yeni bir veritabanı oluşturulacaktır. Mesela::
-    
+
     >>> vt = sqlite3.connect('deneme.sqlite')
-    
+
 Eğer bu komutu verdiğiniz dizin içinde `deneme.sqlite` adlı bir veritabanı
 yoksa, bu ada sahip bir veritabanı oluşturulacaktır.
 
@@ -285,16 +285,16 @@ metoduna argüman olarak tam dosya yolu da verebilirdik::
 Bu komut yardımıyla sabit disk üzerinde bir Sqlite veritabanı dosyası oluşturmuş
 oluyoruz. Ancak isterseniz ``sqlite3`` ile geçici bir veritabanı da
 oluşturabilirsiniz::
-    
+
     >>> vt = sqlite3.connect(':memory:')
 
 Oluşturduğunuz bu geçici veritabanı sabit disk üzerinde değil RAM (bellek)
 üzerinde çalışır. Veritabanını kapattığınız anda da bu geçici veritabanı
 silinir. Eğer arzu ederseniz, RAM üzerinde değil, disk üzerinde de geçici
 veritabanları oluşturabilirsiniz. Bunun için de şöyle bir komut kullanıyoruz::
-    
+
     >>> vt = sqlite3.connect('')
-    
+
 Gördüğünüz gibi, disk üzerinde geçici bir veritabanı oluşturmak için boş bir
 karakter dizisi kullandık. Tıpkı ``:memory:`` kullanımında olduğu gibi, boş
 karakter dizisiyle oluşturulan geçici veritabanları da veritabanı bağlantısının
@@ -314,13 +314,13 @@ veritabanını o anda içinde bulunduğunuz dizin içinde oluşturuyor. Mesela M
 kullanıyor olsaydınız, oluşturulan veritabanlarının önceden tanımlanmış bir
 dizin içine atıldığını görecektiniz. Örneğin GNU/Linux sistemlerinde, MySQL
 veritabanları `/var/lib/mysql` gibi bir dizinin içinde tutulur.
-    
+
 Varolan Bir Veritabanıyla Bağlantı Kurmak
 ******************************************
 
 Biraz önce, `deneme.sqlite` adlı yeni bir Sqlite veritabanı oluşturmak için
 şöyle bir komut kullanmıştık::
-    
+
     >>> vt = sqlite3.connect('deneme.sqlite')
 
 Eğer bu komutu verdiğiniz dizin içinde `deneme.sqlite` adlı bir veritabanı
@@ -334,9 +334,9 @@ indirdiğimiz `kitaplar.sqlite` adlı veritabanına bağlanalım.
 
 Bu dosyanın bulunduğu konumda bir Python etkileşimli kabuk oturumu açtığımızı
 varsayarsak::
-    
+
     >>> vt = sqlite3.connect('kitaplar.sqlite')
-    
+
 komutunu kullanarak `kitaplar.sqlite` adlı veritabanıyla bağlantı kurabiliriz.
 
 İmleç Oluşturma
@@ -344,7 +344,7 @@ komutunu kullanarak `kitaplar.sqlite` adlı veritabanıyla bağlantı kurabiliri
 
 Yukarıda ``connect()`` metodunu kullanarak hem Sqlite ile nasıl veritabanı
 bağlantısı kuracağımızı hem de nasıl yeni bir veritabanı oluşturacağımızı
-öğrendik. 
+öğrendik.
 
 ``connect()`` metodu, bir veritabanı üzerinde işlem yapabilmemizin ilk adımıdır.
 Veritabanını oluşturduktan veya varolan bir veritabanı ile bağlantı kurduktan
@@ -352,7 +352,7 @@ sonra, veritabanı üzerinde işlem yapabilmek için sonraki adımda bir imleç
 oluşturmamız gerekir.
 
 İmleç oluşturmak için ``cursor()`` adlı bir metottan yararlanacağız::
-    
+
     >>> im = vt.cursor()
 
 İmleci oluşturduktan sonra artık önümüz iyice açılıyor. Böylece, yukarıda
@@ -365,21 +365,21 @@ Tablo Oluşturma
 Önceki bölümün sonunda söylediğimiz gibi, bir imleç nesnesi oluşturduktan sonra
 bunun ``execute()`` metodunu kullanarak SQL komutlarını işletebiliyoruz.
 
-Dilerseniz şimdi basit bir örnek yaparak neyin ne olduğunu anlamaya çalışalım. 
+Dilerseniz şimdi basit bir örnek yaparak neyin ne olduğunu anlamaya çalışalım.
 
 Öncelikle gerekli modülü içe aktaralım::
-    
+
     >>> import sqlite3
-    
+
 Şimdi de yeni bir veritabanı dosyası oluşturalım (veya varolan bir veritabanı
 dosyasına bağlanalım)::
-    
+
     >>> vt = sqlite3.connect('veritabani.sqlite')
-    
+
 Bu veritabanı üzerinde işlem yapabilmek için öncelikle imlecimizi oluşturalım::
-    
+
     >>> im = vt.cursor()
-    
+
 Şimdi de yukarıda oluşturduğumuz imlecin ``execute()`` adlı metodunu kullanarak
 veritabanı içinde bir tablo oluşturalım::
 
@@ -420,30 +420,30 @@ Bu arada, Sqlite tabloları oluştururken tablo adı ve sütun başlıklarında 
 karakter kullanmaktan kaçınmak iyi bir fikirdir. Ayrıca eğer tablo adı ve sütun
 başlıklarında birden fazla kelimeden oluşan etiketler kullanacaksanız bunları ya
 birbirine bitiştirin ya da tırnak içine alın. Örneğin::
-    
+
     import sqlite3
-    
+
     vt = sqlite3.connect('perso.sqlite')
     im = vt.cursor()
-    
+
     im.execute("""CREATE TABLE 'personel dosyasi'
     ('personel ismi', 'personel soyismi', memleket)""")
-    
+
 Ayrıca, ``execute()`` metoduna parametre olarak verilen SQL komutlarının alelade
 birer karakter dizisi olduğuna da dikkatinizi çekmek isterim. Bunlar
 Python'daki karakter dizilerinin bütün özelliklerini taşır. Mesela bu karakter
 dizisini ``execute()`` metoduna göndermeden önce bir değişkene atayabilirsiniz::
-    
+
     import sqlite3
-    
+
     vt = sqlite3.connect('perso.sqlite')
     im = vt.cursor()
-    
-    sql = """CREATE TABLE 'personel dosyasi' 
+
+    sql = """CREATE TABLE 'personel dosyasi'
     ('personel ismi', 'personel soyismi', memleket)"""
-    
+
     im.execute(sql)
-    
+
 Bu kodları kullanarak oluşturduğunuz `perso.sqlite` adlı veritabanı dosyasının
 içeriğini Sqlitebrowser programı yardımıyla görüntüleyip, gerçekten 'personel
 ismi', 'personel soyismi' ve 'memleket' sütunlarının oluşup oluşmadığını kontrol
@@ -451,25 +451,25 @@ edin.
 
 Bu arada, bu kodları ikinci kez çalıştırdığınızda şöyle bir hata mesajı
 alacaksınız::
-    
-    sqlite3.OperationalError: table 'personel dosyasi' already exists
-    
-Bu hata mesajını almanız gayet normal. Bunun üstesinden nasıl geleceğinizi
-öğrenmek için okumaya devam edin...  
 
-Şartlı Tablo Oluşturma 
+    sqlite3.OperationalError: table 'personel dosyasi' already exists
+
+Bu hata mesajını almanız gayet normal. Bunun üstesinden nasıl geleceğinizi
+öğrenmek için okumaya devam edin...
+
+Şartlı Tablo Oluşturma
 ***********************
 
 ``CREATE TABLE`` komutunu kullanarak tablo oluştururken şöyle bir problemle
 karşılaşmış olabilirsiniz. Diyelim ki şu kodları yazdınız::
-    
+
     import sqlite3
-    
+
     vt = sqlite3.connect('vt.sqlite')
-    
+
     im = vt.cursor()
     im.execute("CREATE TABLE personel (isim, soyisim, memleket)")
-    
+
 Bu kodları ilk kez çalıştırdığınızda, mevcut dizin altında `vt.sqlite` adlı bir
 veritabanı dosyası oluşturulacak ve bu veritabanı içinde 'isim', 'soyisim' ve
 'memleket' başlıklı sütunlara sahip, 'personel' adlı bir tablo meydana
@@ -477,9 +477,9 @@ getirilecektir.
 
 Ancak aynı kodları ikinci kez çalıştırdığınızda şöyle bir hata mesajı ile
 karşılaşacaksınız::
-    
+
     sqlite3.OperationalError: table personel already exists
-    
+
 Buradaki sorun, `vt.sqlite` dosyası içinde 'personel' adlı bir tablonun zaten
 bulunuyor olmasıdır. Bir veritabanı üzerinde işlem yaparken, aynı ada sahip iki
 tablo oluşturamayız. Bu hatayı önlemek için şartlı tablo oluşturma yönteminden
@@ -487,23 +487,23 @@ yararlanacağız. Bunun için kullanacağımız SQL komutu şudur: ``CREATE TABL
 NOT EXISTS``.
 
 Örneğimizi bu yeni bilgiye göre tekrar yazalım::
-    
+
     import sqlite3
-    
+
     vt = sqlite3.connect('vt.sqlite')
-    
+
     im = vt.cursor()
-    
-    sorgu = """CREATE TABLE IF NOT EXISTS personel 
+
+    sorgu = """CREATE TABLE IF NOT EXISTS personel
     (isim, soyisim, memleket)"""
-    
+
     im.execute(sorgu)
-    
+
 Bu kodları kaç kez çalıştırırsanız çalıştırın, programınız hata vermeden
 işleyecek; eğer veritabanında 'personel' adlı bir tablo yoksa oluşturacak,
 bu adla zaten bir tablo varsa da sessizce yoluna devam edecektir.
 
-Tabloya Veri Girme 
+Tabloya Veri Girme
 ********************
 
 Buraya kadar, `sqlite3` modülünü kullanarak nasıl bir veritabanı
@@ -512,24 +512,24 @@ yerleştireceğimizi öğrendik. Şimdi de oluşturduğumuz bu sütun başlıkla
 altını dolduracağız.
 
 Dikkatlice bakın::
-    
+
     import sqlite3
-    
+
     vt = sqlite3.connect('vt.sqlite')
     im = vt.cursor()
-    
+
     tablo_yap = """CREATE TABLE IF NOT EXISTS personel
     (isim, soyisim, memleket)"""
-    
+
     değer_gir = """INSERT INTO personel VALUES ('Fırat', 'Özgül', 'Adana')"""
-    
+
     im.execute(tablo_yap)
     im.execute(değer_gir)
-    
+
 .. warning:: Bu kodları çalıştırdıktan sonra, eğer veritabanının içeriğini
  Sqlitebrowser ile kontrol ettiyseniz verilerin veritabanına işlenmediğini
  göreceksiniz. Endişe etmeyin; birazdan bunun neden böyle olduğunu açıklayacağız.
-        
+
 Burada ``INSERT INTO tablo_adı VALUES`` adlı yeni bir SQL komutu daha
 öğreniyoruz. ``CREATE TABLE`` ifadesi Türkçe'de "TABLO OLUŞTUR" anlamına
 geliyor. ``INSERT INTO`` ise "... İÇİNE YERLEŞTİR" anlamına gelir. Yukarıdaki
@@ -583,7 +583,7 @@ ana kadar yaptığımız şeyleri bir gözden geçirelim:
   sağlıyor. Üçüncü komutumuz ise ``INSERT INTO ... VALUES ...``. Bu komut,
   oluşturduğumuz tabloya içerik eklememizi sağlıyor. Bunları şuna benzer bir
   şekilde kullandığımızı hatırlıyorsunuz:
-  
+
 ::
 
     im.execute("CREATE TABLE personel (isim, soyisim, memleket)")
@@ -595,7 +595,7 @@ tırnakla başladık. Dolayısıyla karakter dizisini yazarken iç taraftaki `F�
 Karakter dizileri içindeki manevra alanınızı genişletmek için, SQL komutlarını
 üç tırnak içinde yazmayı da tercih edebilirsiniz. Böylece karakter dizisi
 içindeki tek ve çift tırnakları daha rahat bir şekilde kullanabilirsiniz. Yani::
-    
+
     im.execute("""CREATE TABLE personel (isim, soyisim, memleket)""")
     im.execute("""INSERT INTO personel VALUES ("Fırat", "Özgül", "Adana")""")
 
@@ -608,16 +608,16 @@ Verilerin Veritabanına İşlenmesi
 Bir önceki bölümde bir Sqlite veritabanına nasıl veri gireceğimizi öğrendik. Ama
 aslında iş sadece veri girmeyle bitmiyor. Verileri veritabanına "işleyebilmek"
 için bir adım daha atmamız gerekiyor. Mesela şu örneğe bir bakalım::
-    
+
     import sqlite3
-    
+
     vt = sqlite3.connect("vt.sqlite")
-    
+
     im = vt.cursor()
-    im.execute("""CREATE TABLE IF NOT EXISTS 
+    im.execute("""CREATE TABLE IF NOT EXISTS
         personel (isim, soyisim, sehir, eposta)""")
-    
-    im.execute("""INSERT INTO personel VALUES 
+
+    im.execute("""INSERT INTO personel VALUES
         ("Orçun", "Kunek", "Adana", "okunek@gmail.com")""")
 
 Burada öncelikle `vt.sqlite` adlı bir veritabanı oluşturduk ve bu veritabanına
@@ -635,23 +635,23 @@ görebilirsiniz.
 Biz henüz sadece verileri girdik. Ama verileri veritabanına işlemedik. Bu
 girdiğimiz verileri veritabanına işleyebilmek için ``commit()`` adlı bir
 metottan yararlanacağız::
-    
+
     >>> vt.commit()
 
 Gördüğünüz gibi, ``commit()`` imlecin değil, bağlantı nesnesinin (yani burada
 ``vt`` değişkeninin) bir metodudur. Şimdi bu satırı da betiğimize ekleyelim::
-    
+
     import sqlite3
-    
+
     vt = sqlite3.connect("vt.sqlite")
-    
+
     im = vt.cursor()
-    im.execute("""CREATE TABLE IF NOT EXISTS 
+    im.execute("""CREATE TABLE IF NOT EXISTS
         personel (isim, soyisim, sehir, eposta)""")
-    
-    im.execute("""INSERT INTO personel VALUES 
+
+    im.execute("""INSERT INTO personel VALUES
         ("Orçun", "Kunek", "Adana", "okunek@gmail.com")""")
-        
+
     vt.commit()
 
 Bu son satırı da ekledikten sonra Sqlite veritabanı içinde şöyle bir tablo
@@ -662,7 +662,7 @@ oluşturmuş olduk:
     +==================+==================+==================+==================+
     | Orçun            | Kunek            | Adana            | okunek@gmail.com |
     +------------------+------------------+------------------+------------------+
-    
+
 Eğer ``vt.commit()`` satırını yazmazsak, veritabanı, tablo ve sütun başlıkları
 oluşturulur, ama sütunların içeriği veritabanına işlenmez.
 
@@ -671,48 +671,48 @@ Veritabanının Kapatılması
 
 Bir veritabanı üzerinde yapacağımız bütün işlemleri tamamladıktan sonra, prensip
 olarak, o veritabanını kapatmamız gerekir. Mesela şu kodları ele alalım::
-    
+
     import sqlite3
-    
+
     vt = sqlite3.connect("vt.sqlite")
-    
+
     im = vt.cursor()
-    im.execute("""CREATE TABLE IF NOT EXISTS 
+    im.execute("""CREATE TABLE IF NOT EXISTS
         personel (isim, soyisim, sehir, eposta)""")
-    
-    im.execute("""INSERT INTO personel VALUES 
+
+    im.execute("""INSERT INTO personel VALUES
         ("Orçun", "Kunek", "Adana", "okunek@gmail.com")""")
-        
+
     vt.commit()
     vt.close()
-    
-    
+
+
 Burada bütün işlemleri bitirdikten sonra veritabanını kapatmak için, ``close()``
 adlı bir metottan yararlandık::
-    
+
     vt.close()
-    
+
 Bu şekilde, veritabanının ilk açıldığı andan itibaren, işletim sisteminin
 devreye soktuğu kaynakları serbest bırakmış oluyoruz. Esasında programımız
 kapandığında, açık olan bütün Sqlite veritabanları da otomatik olarak kapanır.
-Ama yine de bu işlemi elle yapmak her zaman iyi bir fikirdir. 
+Ama yine de bu işlemi elle yapmak her zaman iyi bir fikirdir.
 
 Eğer üzerinde işlem yaptığınız veritabanının her şey bittikten sonra otomatik
 olarak kapanmasını garantilemek isterseniz, daha önce öğrendiğimiz `with`
 sözcüğünü kullanabilirsiniz::
-    
+
     import sqlite3
-    
+
     with sqlite3.connect('vt.sqlite') as vt:
         im = vt.cursor()
-    
-        im.execute("""CREATE TABLE IF NOT EXISTS personel 
+
+        im.execute("""CREATE TABLE IF NOT EXISTS personel
             (isim, soyisim, memleket)""")
-        im.execute("""INSERT INTO personel VALUES 
+        im.execute("""INSERT INTO personel VALUES
             ('Fırat', 'Özgül', 'Adana')""")
-    
-        vt.commit()   
-        
+
+        vt.commit()
+
 Bu şekilde `with` sözcüğünü kullanarak bir veritabanı bağlantısı açtığımızda,
 bütün işler bittikten sonra Python bizim için bağlantıyı otomatik olarak
 sonlandıracaktır.
@@ -723,43 +723,43 @@ Parametreli Sorgular
 Şu ana kadar verdiğimiz örneklerde, veritabanına girilecek verileri tek tek elle
 yerine koyduk. Örneğin::
 
-    im.execute("""INSERT INTO personel VALUES 
+    im.execute("""INSERT INTO personel VALUES
         ('Fırat', 'Özgül', 'Adana')""")
-    
+
 Ancak çoğu durumda veritabanına girilecek veriler harici kaynaklardan
 gelecektir. Basit bir örnek verelim::
-    
+
     import sqlite3
 
     with sqlite3.connect('vt.sqlite') as vt:
         im = vt.cursor()
-        
+
         veriler = [('Fırat', 'Özgül', 'Adana'),
                    ('Ahmet', 'Söz', 'Bolvadin'),
                    ('Veli', 'Göz', 'İskenderun'),
                    ('Mehmet', 'Öz', 'Kilis')]
-    
-        im.execute("""CREATE TABLE IF NOT EXISTS personel 
+
+        im.execute("""CREATE TABLE IF NOT EXISTS personel
             (isim, soyisim, memleket)""")
-        
+
         for veri in veriler:
-            im.execute("""INSERT INTO personel VALUES 
+            im.execute("""INSERT INTO personel VALUES
                 (?, ?, ?)""", veri)
-    
+
         vt.commit()
-        
+
 Burada veritabanına işlenecek veriler, `veriler` adlı bir değişkenden geliyor.
 Bu değişken içindeki verileri veritabanına nasıl yerleştirdiğimize dikkat edin::
-    
+
     for veri in veriler:
-        im.execute("""INSERT INTO personel VALUES 
+        im.execute("""INSERT INTO personel VALUES
             (?, ?, ?)""", veri)
-        
+
 Ayrıca her bir sütunun ('isim', 'soyisim', 'memleket') altına gelecek her bir
 değer için (mesela sırasıyla 'Fırat', 'Özgül', 'Adana') bir adet '?' işareti
 yerleştirdiğimizi de gözden kaçırmayın.
 
-Tablodaki Verileri Seçmek  
+Tablodaki Verileri Seçmek
 ***************************
 
 Yukarıda, bir veritabanına nasıl veri gireceğimizi ve bu verileri veritabanına
@@ -778,13 +778,13 @@ Dilerseniz önce bir tablo oluşturalım::
     vt = sqlite3.connect('vt.sqlite')
 
     im = vt.cursor()
-    
-    im.execute("""CREATE TABLE IF NOT EXISTS faturalar 
+
+    im.execute("""CREATE TABLE IF NOT EXISTS faturalar
     (fatura, miktar, ilk_odeme_tarihi, son_odeme_tarihi)""")
-    
+
 Şimdi bu tabloya bazı veriler ekleyelim::
 
-    im.execute("""INSERT INTO faturalar VALUES 
+    im.execute("""INSERT INTO faturalar VALUES
     ("Elektrik", 45, "23 Ocak 2010", "30 Ocak 2010")""")
 
 Verileri veritabanına işleyelim::
@@ -801,7 +801,7 @@ Yukarıdaki kodlar bize şöyle bir tablo verdi:
 
 Buraya kadar olan kısmı zaten biliyoruz. Bilmediğimiz ise bu veritabanından
 nasıl veri alacağımız. Onu da şöyle yapıyoruz::
-    
+
     im.execute("""SELECT * FROM faturalar""")
 
 Burada özel bir SQL komutu olan ``SELECT veri FROM tablo_adı`` komutundan
@@ -829,23 +829,23 @@ fetchall() Metodu
 ===================
 
 Biraz önce şöyle bir program yazmıştık::
-    
+
     import sqlite3
-    
+
     vt = sqlite3.connect('vt.sqlite')
-    
+
     im = vt.cursor()
-    
-    im.execute("""CREATE TABLE IF NOT EXISTS faturalar 
+
+    im.execute("""CREATE TABLE IF NOT EXISTS faturalar
     (fatura, miktar, ilk_odeme_tarihi, son_odeme_tarihi)""")
-    
-    im.execute("""INSERT INTO faturalar VALUES 
+
+    im.execute("""INSERT INTO faturalar VALUES
     ("Elektrik", 45, "23 Ocak 2010", "30 Ocak 2010")""")
-    
+
     vt.commit()
-    
+
     im.execute("""SELECT * FROM faturalar""")
-    
+
 Burada `vt.sqlite` adlı bir veritabanında 'faturalar' adlı bir tablo oluşturduk
 ve bu tabloya bazı veriler girdik. Daha sonra da ``SELECT`` adlı SQL komutu
 yardımıyla bu verileri seçtik. Şimdi de seçtiğimiz bu verileri veritabanından
@@ -869,27 +869,27 @@ Artık bu verileri rahatlıkla yazdırabiliriz::
 Dilerseniz betiğimizi topluca görelim::
 
     import sqlite3
-    
+
     vt = sqlite3.connect('vt.sqlite')
-    
+
     im = vt.cursor()
-    
-    im.execute("""CREATE TABLE IF NOT EXISTS faturalar 
+
+    im.execute("""CREATE TABLE IF NOT EXISTS faturalar
     (fatura, miktar, ilk_odeme_tarihi, son_odeme_tarihi)""")
-    
-    im.execute("""INSERT INTO faturalar VALUES 
+
+    im.execute("""INSERT INTO faturalar VALUES
     ("Elektrik", 45, "23 Ocak 2010", "30 Ocak 2010")""")
-    
+
     vt.commit()
-    
+
     im.execute("""SELECT * FROM faturalar""")
-    
+
     veriler = im.fetchall()
-    
+
     print(veriler)
-                
+
 Bu betiği ilk kez çalıştırdığımızda şöyle bir çıktı alırız::
-    
+
     [('Elektrik', 45, '23 Ocak 2010', '30 Ocak 2010')]
 
 Gördüğünüz gibi, veriler bir liste içinde demet halinde yer alıyor. Ama tabii
@@ -899,50 +899,50 @@ işletileceği için verilerin tabloya tekrar tekrar yazılacağını, bu verile
 alırken de çıktı listesinin büyüyeceğini unutmayın. Peki eğer siz bir veritabanı
 dosyasına verilerin yalnızca bir kez yazılmasını istiyorsanız ne yapacaksınız?
 Yani mesela yukarıdaki kodlarda şu sorgu yalnızca tek bir kez işletilsin::
-    
-    im.execute("""INSERT INTO faturalar VALUES 
+
+    im.execute("""INSERT INTO faturalar VALUES
     ("Elektrik", 45, "23 Ocak 2010", "30 Ocak 2010")""")
-    
+
 Böylece veritabanını her çalıştırdığınızda ``("Elektrik", 45, "23 Ocak 2010",
-"30 Ocak 2010")`` satırı dosyaya tekrar tekrar yazdırılmasın. 
+"30 Ocak 2010")`` satırı dosyaya tekrar tekrar yazdırılmasın.
 
 Bunu şu kodlarla halledebilirsiniz::
-    
+
     import sqlite3, os
-    
+
     dosya = 'vt.sqlite'
     dosya_mevcut = os.path.exists(dosya)
-    
+
     vt = sqlite3.connect(dosya)
     im = vt.cursor()
-    
-    im.execute("""CREATE TABLE IF NOT EXISTS faturalar 
+
+    im.execute("""CREATE TABLE IF NOT EXISTS faturalar
     (fatura, miktar, ilk_odeme_tarihi, son_odeme_tarihi)""")
-    
+
     if not dosya_mevcut:
-        im.execute("""INSERT INTO faturalar VALUES 
+        im.execute("""INSERT INTO faturalar VALUES
         ("Elektrik", 45, "23 Ocak 2010", "30 Ocak 2010")""")
         vt.commit()
-    
+
     im.execute("""SELECT * FROM faturalar""")
-    
+
     veriler = im.fetchall()
     print(veriler)
-    
+
 Burada kodlarımızın en başında `vt.sqlite` adlı bir veritabanının mevcut olup
 olmadığını kontrol ediyoruz (zira eğer ortada bir veritabanı dosyası yoksa, veri
 de yok demektir)::
-    
+
     dosya_mevcut = os.path.exists(dosya)
-    
+
 Eğer böyle bir dosya mevcut değilse (dolayısıyla veri mevcut değilse) ``INSERT
 INTO`` sorgusu işletilerek gerekli veriler yerine yerleştirilecek::
-    
+
     if not dosya_mevcut:
-        im.execute("""INSERT INTO faturalar VALUES 
+        im.execute("""INSERT INTO faturalar VALUES
         ("Elektrik", 45, "23 Ocak 2010", "30 Ocak 2010")""")
         vt.commit()
-        
+
 Eğer böyle bir dosya zaten mevcutsa bu sorgu işletilemeyecek, onun yerine
 doğrudan ``SELECT`` sorgusuna geçilecek. Böylece değerler veritabanına bir kez
 işlendikten sonra, programımız aynı verileri tekrar tekrar veritabanına
@@ -967,19 +967,19 @@ ettiğimiz ve bilgisayarımıza indirdiğimiz `kitaplar.sqlite` adlı örnek
 veritabanını kullanacağız.
 
 Öncelikle veritabanına bağlanalım ve bir imleç oluşturalım::
-    
+
     >>> import sqlite3
     >>> vt = sqlite3.connect('kitaplar.sqlite')
     >>> im = vt.cursor()
-    
+
 Şimdi bu veritabanındaki tabloyu seçeceğiz. Peki ama seçeceğimiz tablonun adını
 nereden bileceğiz? Hatırlarsanız, bir tablodaki bütün verileri seçebilmek için
 şu SQL sorgusunu kullanıyorduk::
-    
+
     "SELECT * FROM tablo_adı"
-    
+
 İşte bu sorguda 'tablo_adı' kısmına ne geleceğini bulabilmek için birkaç farklı
-yöntemden yararlanabiliriz. 
+yöntemden yararlanabiliriz.
 
 Bir veritabanında hangi tabloların olduğunu öğrenmek için Sqlitebrowser
 programını kullanabiliriz. Bir veritabanı dosyasını Sqlitebrowser ile açtıktan
@@ -994,28 +994,28 @@ kullanmaktır::
     >>> im = vt.cursor()
     >>> im.execute("SELECT name FROM sqlite_master")
     >>> im.fetchall()
-    
+
 Burada şu satıra dikkat edin::
-    
+
     >>> im.execute("SELECT name FROM sqlite_master")
 
 Bütün Sqlite veritabanlarında, ilgili veritabanının şemasını gösteren
 'sqlite_master' adlı bir tablo bulunur. İşte bu tabloyu sorgulayarak veritabanı
 hakkında bilgi edinebiliriz. Yukarıdaki örnekte, bu 'sqlite_master' tablosunun
 'name' (isim) niteliğini sorguladık. Bu sorgu bize şu cevabı verdi::
-    
+
     >>> im.fetchall()
-    
+
     [('kitaplar',)]
-    
+
 Demek ki `kitaplar.sqlite` adlı veritabanında 'kitaplar' adlı tek bir tablo
 varmış.
 
 Gelin şimdi bu bu tablodaki bütün verileri alalım::
-    
+
     >>> im.execute("SELECT * FROM kitaplar")
     >>> im.fetchall()
-    
+
 Bu şekilde tablo içinde ne kadar veri varsa hepsini ekrana yazdırdık. Ancak
 tabii ki, bir veritabanının tamamını bir anda yazdırmak her zaman iyi bir fikir
 olmayabilir. Eğer veritabanının içinde milyonlarca girdi varsa bütün verilerin
@@ -1037,122 +1037,122 @@ Bu metodun nasıl kullanılacağını 'kitaplar.sqlite' adlı örnek veritabanı
     >>> import sqlite3
     >>> vt = sqlite3.connect('kitaplar.sqlite')
     >>> im = vt.cursor()
-    
+
 Şimdi 'kitaplar' adlı tablodan bütün verileri seçelim::
-    
+
     >>> im.execute("""SELECT * FROM kitaplar""")
-    
+
     <sqlite3.Cursor object at 0x003C2D20>
-    
+
 Artık seçtiğimiz verileri tek tek almaya başlayabiliriz::
-    
+
     >>> im.fetchone()
-    
+
     ('UZMANLAR İÇİN PHP', 'Mehmet Şamlı', '33,00 TL')
-    
+
 Bir tane daha alalım::
-    
+
     >>> im.fetchone()
-    
+
     ('ADOBE AİR', 'Engin Yöğen', '28,00 TL')
-    
+
 İki tane daha...
 
 ::
-    
+
     >>> im.fetchone()
-    
+
     ('WEB TASARIM REHBERİ', 'Mustafa Aydemir', '38,50 TL')
-    
+
     >>> im.fetchone()
-    
+
     ('ORACLE 11g R2', 'Teoman Dinçel', '34,00 TL')
-    
+
 ``fetchone()``'ın gayet faydalı bir metot olduğu her halinden belli...
-    
+
 fetchmany() Metodu
 ===================
 
 Bu metot, bir veritabanından seçtiğiniz verilerin istediğiniz kadarını
 alabilmenize imkan tanır. Dikkatlice bakın::
-    
+
     >>> im.fetchmany(5)
-    
-    [('AS 3.0 İLE SUNUCU PROGRAMLAMA', 'Engin Yöğen', '24,00 TL'), 
-     ('HACKING INTERFACE', 'Hamza Elbahadır', '25,00 TL'), 
-     ('JAVA VE JAVA TEKNOLOJİLERİ', 'Tevfik Kızılören', '45,00 TL'), 
-     ('XML VE İLERİ XML TEKNOLOJİLERİ', 'Musa Çiçek', '24,50 TL'), 
+
+    [('AS 3.0 İLE SUNUCU PROGRAMLAMA', 'Engin Yöğen', '24,00 TL'),
+     ('HACKING INTERFACE', 'Hamza Elbahadır', '25,00 TL'),
+     ('JAVA VE JAVA TEKNOLOJİLERİ', 'Tevfik Kızılören', '45,00 TL'),
+     ('XML VE İLERİ XML TEKNOLOJİLERİ', 'Musa Çiçek', '24,50 TL'),
      ('GRAFİK&ANİMASYON', 'Anonim', '18,50 TL')]
-     
-Gördüğünüz gibi, beş öğeden oluşan bir liste elde ettik. 
+
+Gördüğünüz gibi, beş öğeden oluşan bir liste elde ettik.
 
 Böylece bir veritabanından seçilen verileri almanın farklı yöntemlerini öğrenmiş
 olduk. Bu metotların dışında, eğer arzu ederseniz `for` döngüsünden yararlanarak
 da veri çekebilirsiniz. Bunun için herhangi bir metot kullanmanıza gerek yok::
-    
+
     >>> for veri in im:
     ...     print(veri)
-    
-Gördüğünüz gibi, `for` döngüsünü doğrudan imleç üzerinde kuruyoruz. 
+
+Gördüğünüz gibi, `for` döngüsünü doğrudan imleç üzerinde kuruyoruz.
 
 Eğer amacınız alınacak verilerin sayısını sınırlamaksa yine `for` döngüsünden ve
 ``fetchone()`` metodundan birlikte yararlanabilirsiniz::
-    
+
     >>> for i in range(5):
     ...     print(im.fetchone())
-    
+
 Biraz sonra veri süzmeyi öğrendiğimizde, bir veritabanından veri seçip almanın
 daha verimli yollarını göreceğiz.
 
-Veri Süzme 
+Veri Süzme
 ***********
 
 Daha önce bir Sqlite veritabanında belli bir tablo içindeki bütün verileri
 seçmek için şu SQL komutunu kullanmamız gerektiğini öğrenmiştik::
-    
+
     SELECT * FROM tablo_adi
-    
+
 Ancak amacımız çoğu zaman bir tablo içindeki bütün verileri seçmek olmayacaktır.
 Programcılık maceramız boyunca genellikle yalnızca belli ölçütlere uyan verileri
 seçmek isteyeceğiz. Zira içinde milyonlarca veri barındırabilecek olan
-veritabanlarındaki verilerin tamamını seçmek akıl kârı değildir. 
+veritabanlarındaki verilerin tamamını seçmek akıl kârı değildir.
 
 Verileri süzme işini ``WHERE`` adlı bir SQL komutu yardımıyla
 gerçekleştireceğiz. Bu SQL komutunun sözdizimi şöyle::
-  
+
     SELECT * FROM tablo_adı WHERE sütun_başlığı = aranan_veri
-    
+
 Gördüğünüz gibi, bu sorguyu gerçekleştirebilmek için tablodaki sütun
 başlıklarını bilmemiz gerekiyor.
 
 Önceki sayfalarda, `kitaplar.sqlite` adlı veritabanımızdaki tabloların adını
 nasıl öğrenebileceğimizi anlatmıştık. Hatırlarsanız bu iş için şu komutu
 kullanıyorduk::
-    
+
     >>> im.execute("SELECT name FROM sqlite_master")
-    
+
 Bu şekilde, bütün Sqlite veritabanlarında bulunan 'sqlite_master' adlı özel bir
 tablonun 'name' niteliğini sorgulayarak, elimizdeki veritabanında bulunan
 tabloların adını elde edebiliyoruz. Adını öğrendiğimiz tablodaki sütun
 başlıklarını elde etmek için yine buna benzer bir komuttan yararlanacağız.
 Dikkatlice bakın::
-    
+
     >>> im.execute("SELECT sql FROM sqlite_master").fetchone()
-    
-    ('CREATE TABLE "kitaplar" 
+
+    ('CREATE TABLE "kitaplar"
     (\n\t`KitapAdi`\tTEXT,\n\t`Yazar`\tTEXT,\n\t`Fiyati`\tTEXT\n)',)
-    
+
 'sqlite_master' adlı tablonun 'sql' niteliğini sorguladığımızda, ilgili tabloyu
 oluşturmak için kullanılan SQL komutunu görüyoruz. Bu komuta dikkatli
 bakarsanız, tablonun 'KitapAdi', 'Yazar' ve 'Fiyati' olmak üzere üç sütundan
-oluştuğunu göreceksiniz. Elbette sütun adlarını öğrenmek için Sqlitebrowser 
-programını da kullanabileceğinizi artık biliyorsunuz. 
+oluştuğunu göreceksiniz. Elbette sütun adlarını öğrenmek için Sqlitebrowser
+programını da kullanabileceğinizi artık biliyorsunuz.
 
 Sütun adlarını öğrendiğimize göre gelin şimdi yazar adına göre veritabanında bir
 sorgu yapalım::
-    
+
     >>> im.execute("SELECT * FROM kitaplar WHERE Yazar = 'Fırat Özgül'")
-    
+
 Burada sorguyu nasıl kurduğumuza dikkat edin. Bu sorgunun ilk kısmı olan
 ``SELECT * FROM kitaplar`` ifadesini zaten daha önce öğrenmiştik. Yeni olan
 kısım ``WHERE Yazar = 'Fırat Özgül'``. Burada da anlaşılmayacak bir şey yok. Bu
@@ -1162,26 +1162,26 @@ bulunan bütün kayıtları seçiyoruz.
 Şimdi de seçtiğimiz bu verileri alalım::
 
     >>> im.fetchall()
-    
+
     ('HERYÖNÜYLE PYTHON', 'Fırat Özgül', '34,00 TL')
-    
+
 Gayet başarılı... Bu arada, verileri almak için ``fetchall()`` yerine `for`
 döngüsü kullanabileceğinizi de biliyorsunuz::
-    
+
     >>> for s in im:
     ...     print(s)
     ...
     ('HERYÖNÜYLE PYTHON', 'Fırat Özgül', '34,00 TL')
-    
+
 İmleç üzerinde `for` döngüsü kurabildiğimize göre yıldızlı parametrelerden de
 yararlanabileceğimizi tahmin etmişsinizdir::
-    
-    >>> print(*im)
-    
-    ('HERYÖNÜYLE PYTHON', 'Fırat Özgül', '34,00 TL')
-    
 
-Veritabanı Güvenliği 
+    >>> print(*im)
+
+    ('HERYÖNÜYLE PYTHON', 'Fırat Özgül', '34,00 TL')
+
+
+Veritabanı Güvenliği
 *********************
 
 Python'da veritabanları ve Sqlite konusunda daha fazla ilerlemeden önce çok
@@ -1212,21 +1212,21 @@ izin verilenden daha fazla bir miktarı yazmasını engellemeye çalışır.
 
 Yukarıdakine benzer bir şey veritabanı uygulamalarında da karşımıza çıkabilir.
 Şimdi şu örneğe bakalım::
-    
+
     import sqlite3
-    
+
     #vt.sqlite adlı bir veritabanı dosyası oluşturup
     #bu veritabanına bağlanıyoruz.
     db = sqlite3.connect("vt.sqlite")
-    
+
     #Veritabanı üzerinde istediğimiz işlemleri yapabilmek
     #için bir imleç oluşturmamız gerekiyor.
     im = db.cursor()
-    
-    #imlecin execute() metodunu kullanarak, veritabanı içinde 
+
+    #imlecin execute() metodunu kullanarak, veritabanı içinde
     #"kullanicilar" adlı bir tablo oluşturuyoruz. Bu tabloda
     #kullanıcı_adi ve parola olmak üzere iki farklı sütun var.
-    im.execute("""CREATE TABLE IF NOT EXISTS kullanicilar 
+    im.execute("""CREATE TABLE IF NOT EXISTS kullanicilar
         (kullanici_adi, parola)""")
 
     #Yukarıda oluşturduğumuz tabloya yerleştireceğimiz verileri
@@ -1247,17 +1247,17 @@ Yukarıdakine benzer bir şey veritabanı uygulamalarında da karşımıza çık
     #Yaptığımız değişikliklerin tabloya işlenebilmesi için
     #commit() metodunu kullanıyoruz.
     db.commit()
-    
+
     #Kullanıcıdan kullanıcı adı ve parola bilgilerini alıyoruz...
     kull = input("Kullanıcı adınız: ")
     paro = input("Parolanız: ")
-    
+
     #Burada yine bir SQL komutu işletiyoruz. Bu komut, kullanicilar
     #adlı tabloda yer alan kullanici_adi ve parola adlı sütunlardaki
-    #bilgileri seçiyor. 
-    im.execute("""SELECT * FROM kullanicilar WHERE 
+    #bilgileri seçiyor.
+    im.execute("""SELECT * FROM kullanicilar WHERE
     kullanici_adi = '%s' AND parola = '%s'"""%(kull, paro))
-    
+
     #Hatırlarsanız daha önce fetchall() adlı bir metottan
     #söz etmiştik. İşte bu fetchone() metodu da ona benzer.
     #fetchall() bütün verileri alıyordu, fetchone() ise
@@ -1266,10 +1266,10 @@ Yukarıdakine benzer bir şey veritabanı uygulamalarında da karşımıza çık
 
     #Eğer data adlı değişken False değilse, yani bu
     #değişkenin içinde bir değer varsa kullanıcı adı
-    #ve parola doğru demektir. Kullanıcıyı içeri alıyoruz. 
+    #ve parola doğru demektir. Kullanıcıyı içeri alıyoruz.
     if data:
         print("Programa hoşgeldin {}!".format(data[0]))
-    
+
     #Aksi halde kullanıcıya olumsuz bir mesaj veriyoruz.
     else:
         print("Parola veya kullanıcı adı yanlış!")
@@ -1291,13 +1291,13 @@ vermeyecektir. Ama acaba gerçekten öyle mi?
 
 Şimdi yukarıdaki programı tekrar çalıştırın. Kullanıcı adı ve parola
 sorulduğunda da her ikisi için şunu yazın::
-    
+
     x' OR '1' = '1
 
 O da ne! Program sizi içeri aldı... Hem de kullanıcı adı ve parola doğru
 olmadığı halde... Hatta şu kodu sadece kullanıcı adı kısmına girip parola
 kısmını boş bırakmanız da sisteme giriş hakkı elde etmenize yetecektir.::
-    
+
     x' OR '1' = '1' --
 
 İşte yukarıda gösterdiğimiz bu işleme "SQL sızdırma" (SQL injection) adı verilir.
@@ -1309,23 +1309,23 @@ Burada en basit şekliyle bool işleçlerinden biri olan ``or``'dan yararlanıyo
 ``or``'un nasıl işlediğini gayet iyi biliyorsunuz, ama ben yine de birkaç
 örnekle ``or``'un ne olduğunu ve ne yaptığını size hatırlatayım. Şu örneklere
 bakın::
-    
+
     >>> a = 21
-    
+
     >>> a == 22
-    
+
     False
-    
+
     >>> b = 13
-    
+
     >>> b == 13
-    
+
     True
 
     >>> if a == 22 and b == 13:
     ...     print("Merhaba!")
     ...
-    
+
     >>> if a == 22 or b == 13:
     ...     print("Merhaba!")
     ...
@@ -1342,34 +1342,34 @@ girişiminde ``or``'un bu özelliğinden faydalanıyoruz.
 Dilerseniz neler olup bittiğini daha iyi anlayabilmek için, sızdırılan kodu
 doğrudan ilgili satıra uygulayalım::
 
-    im.execute("""SELECT * FROM kullanicilar WHERE 
+    im.execute("""SELECT * FROM kullanicilar WHERE
     kullanici_adi = 'x' OR '1' = '1' AND parola = 'x' OR '1' = '1'""")
 
 Sanırım bu şekilde neler olup bittiği daha net görülüyor. Durumu biraz daha
 netleştirmek için Python'ı yardıma çağırabiliriz::
-    
+
     >>> kullanici_adi = 'ahmet123'
-    
+
     >>> parola = '12345678'
-    
+
     >>> kullanici_adi == 'x'
-    
+
     False
-    
+
     >>> '1' == '1'
-    
+
     True
-    
-    >>> kullanici_adi == 'x' or '1' == '1' 
-    
+
+    >>> kullanici_adi == 'x' or '1' == '1'
+
     True
-    
+
     >>> parola == 'x'
-    
+
     False
 
     >>> (kullanici_adi == 'x' or '1' == '1') and (parola == 'x' or '1' == '1')
-    
+
     True
 
 ``'1' == '1'`` ifadesi her zaman ``True`` değeri verecektir. Dolayısıyla
@@ -1381,8 +1381,8 @@ Yukarıda yaptığımız şey, '%s' ile gösterilen yerlere kötü niyetli bir S
 sızdırmaktan ibarettir. Burada zaten başlangıç ve bitiş tırnakları olduğu için
 sızdırılan kodda başlangıç ve bitiş tırnaklarını yazmıyoruz. O yüzden sızdırılan
 kod şöyle görünüyor::
-    
-    x' OR '1' = '1  
+
+    x' OR '1' = '1
 
 Gördüğünüz gibi, x'in başındaki ve 1'in sonundaki tırnak işaretleri koymuyoruz.
 
@@ -1394,8 +1394,8 @@ Python'da yazdığımız kodlara yorum eklemek için "#" işaretinden yararland�
 biliyorsunuz. İşte SQL kodlarına yorum eklemek için de "--" işaretlerinden
 yararlanılır. Şimdi dilerseniz yukarıdaki kodu doğrudan ilgili satıra
 uygulayalım ve ne olduğunu görelim::
-    
-    im.execute("""SELECT * FROM kullanicilar WHERE 
+
+    im.execute("""SELECT * FROM kullanicilar WHERE
     kullanici_adi = 'x' OR '1'='1' --AND parola = '%s'""")
 
 Burada yazdığımız "--" işareti ``AND parola = '%s'`` kısmının sistem tarafından
@@ -1415,35 +1415,35 @@ Peki SQL sızdırma girişimlerini nasıl önleyeceğiz? Bu girişime karşı
 alabileceğiniz başlıca önlem "%s" işaretlerini kullanmaktan kaçınmak olacaktır.
 Bu işaret yerine "?" işaretini kullanacaksınız. Yani yukarıdaki programı şöyle
 yazacağız::
-    
+
     import sqlite3
-    
+
     db = sqlite3.connect("vt.sqlite")
-    
+
     im = db.cursor()
-    
-    im.execute("""CREATE TABLE IF NOT EXISTS kullanicilar 
+
+    im.execute("""CREATE TABLE IF NOT EXISTS kullanicilar
         (kullanici_adi, parola)""")
-    
+
     veriler = [
                 ("ahmet123", "12345678"),
                 ("mehmet321", "87654321"),
                 ("selin456", "123123123")
               ]
-    
+
     for i in veriler:
         im.execute("""INSERT INTO kullanicilar VALUES (?, ?)""", i)
-    
+
     db.commit()
-    
+
     kull = input("Kullanıcı adınız: ")
     paro = input("Parolanız: ")
-    
+
     im.execute("""SELECT * FROM kullanicilar WHERE
     kullanici_adi = ? AND parola = ?""", (kull, paro))
-    
+
     data = im.fetchone()
-    
+
     if data:
         print("Programa hoşgeldin {}!".format(data[0]))
     else:
@@ -1456,7 +1456,7 @@ işinize yarayabilir. Örneğin kullanıcıdan alınacak verileri alfanümerik
 karakterlerle [`http://www.istihza.com/blog/alfanumerik-ne-demek.html/
 <http://www.istihza.com/blog/alfanumerik-ne-demek.html/>`_]
 sınırlayabilirsiniz::
-    
+
     if kull.isalnum() and paro.isalnum():
         im.execute("""SELECT * FROM kullanicilar WHERE
         kullanici_adi = '%s' AND parola = '%s'"""%(kull, paro))
@@ -1475,11 +1475,11 @@ taramak ve herhangi bir açık ortaya çıktığında da bunu derhal kapatmaya
 Bölüm Soruları
 *****************
 
-#. Bir veritabanı dosyasının var olup olmadığını nasıl tespit edersiniz? 
+#. Bir veritabanı dosyasının var olup olmadığını nasıl tespit edersiniz?
 
 #. Bir veritabanı içinde belli bir tablonun var olup olmadığını tespit edin.
    Eğer yoksa o tabloyu oluşturun, varsa herhangi bir işlem yapmayın.
-   
+
 #. Sqlite ile test amaçlı bir veritabanı oluşturun. Bu veritabanı dosyası,
    programınız kapanır kapanmaz ortadan kaybolmalı.
 
@@ -1487,42 +1487,42 @@ Bölüm Soruları
    oluşturup oluşturmadığını teyit edin::
 
     import sqlite3
-    
+
     vt = sqlite3.connect('vt.sqlite')
-    
+
     im = vt.cursor()
     im.execute("CREATE TABLE kullanıcılar (ad, soyad, doğumtarihi, eposta)")
-    
+
     vt.commit()
     vt.close()
 
    Eğer veritabanı içeriği beklediğiniz gibi değilse sebebini açıklayın.
-   
+
 #. Sqlite ile bir veritabanının oluşturulması ve bu veritabanına birtakım
    bilgiler girilebilmesi için sırasıyla hangi işlemlerin yapılması gerekir?
-   
+
 #. Aşağıdaki resimde yapılmaya çalışılan şey nedir?
 
-    .. figure:: ../images/misc/sql.jpg
+    .. figure:: ../../images/misc/sql.jpg
         :align: center
-        
+
 #. ``sqlite3.connect('kitaplar.sqlite')`` boş bir veritabanının mı
    oluşturulduğunu yoksa varolan `kitaplar.sqlite` adlı bir veritabanı dosyasına
    mı bağlandığınızı nasıl teyit edersiniz?
-   
+
 #. Sqlitebrowser programını ne şekilde kurdunuz? Eğer Ubuntu dışında bir
    GNU/Linux dağıtımına bu programı kurduysanız, programın kurulum aşamalarını
-   anlatın. 
-   
+   anlatın.
+
 #. ``cmake`` komutu ile birlikte kullandığımız ``.`` (nokta) işaretinin anlamı
    nedir?
-   
+
 #. Yazdığınız bir programı kullanan kişilerin, programınızı ilk kez
    çalıştırdıklarında karşılarında görmeleri gereken verileri veritabanına
    yerleştirmek için nasıl bir yöntem takip edebilirsiniz? Kullanıcılarınız
    programınızı ikinci kez çalıştırdığında bu verileri görmemeli.
-   
+
 #. Bir önceki soruda uyguladığınız yöntemin herhangi bir kısıtlaması var mı? Bu
    yöntem hangi durumlarda işe yaramaz?
-   
+
 #. Bir veritabanındaki bütün tabloların adını nasıl listelersiniz?

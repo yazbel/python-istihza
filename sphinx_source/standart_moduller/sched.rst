@@ -20,11 +20,11 @@ oluşturmalısınız::
 Örneğimizi bu şekilde oluşturabiliriz. Ancak bu şekilde
 oluşturmamız bize daha sonra sorun teşkil edebilir.
 Bu sınıfın iki tane parametresi var. Bunlardan ilki: `timefunc`.
-Bu parametrenin varsayılan değeri `time.monotonic`. Örnek oluşturulurken 
+Bu parametrenin varsayılan değeri `time.monotonic`. Örnek oluşturulurken
 bu parametreyi `time.time` olarak ayarlayalım. Bunun sebebini
 birazdan açıklayacağım. İkinci ve son parametre ise `delayfunc`.
 Bu parametrenin varsayılan değeri `time.sleep`. Bu parametreyi de
-kodun okunaklılığı açısından belirtelim. Sonuç olarak örneğimizi 
+kodun okunaklılığı açısından belirtelim. Sonuç olarak örneğimizi
 şu şekilde tanımlayalım::
 
     import sched, time
@@ -37,9 +37,9 @@ scheduler.enter()
 
 Bu metod çalıştırılacak fonksiyonların sıraya eklenmesini sağlıyor.
 5 tane parametresi var. İlki bekleme süresini belirliyor.
-İkincisi önceliğini belirliyor. Eğer aynı zamanda çalışacak 
+İkincisi önceliğini belirliyor. Eğer aynı zamanda çalışacak
 fonksiyonlar varsa önceliğine göre çalıştırılır. Üçüncüsü
-çalışacak fonksiyon. Diğer ikisi isimli parametre. Bunlardan 
+çalışacak fonksiyon. Diğer ikisi isimli parametre. Bunlardan
 `argument` olan eğer varsa demet olarak fonksiyonun parametrelerini alıyor.
 Diğerinin adı da tahmin edeceğiniz üzere `kwargs`. Değeri de
 sözlük olarak fonksiyonun isimli parametreleri.
@@ -57,7 +57,7 @@ değeri bekleme süresini değil çalışacağı süreyi belirliyor.
 scheduler.cancel()
 ******************
 
-`enter` veya `enterabs` ile sıraya eklenmiş fonksiyonları 
+`enter` veya `enterabs` ile sıraya eklenmiş fonksiyonları
 sıradan çıkarmayı sağlıyor.
 
 scheduler.empty()
@@ -70,14 +70,14 @@ scheduler.run()
 ***************
 
 Sıradaki fonksiyonları hazırlandığı şekilde çalıştırır.
-Tek parametresi olan `blocking` eğer `False` ise ilk çalışacak 
+Tek parametresi olan `blocking` eğer `False` ise ilk çalışacak
 fonksiyonun çalışmasına kalan süreyi döndürür.
 
 scheduler.queue
 ****************
 
-Bu değişken `scheduler` nesnelerinin sahip olduğu ve bizim 
-kullanabileceğimiz tek değişken. Daha önce sıraya eklenmiş 
+Bu değişken `scheduler` nesnelerinin sahip olduğu ve bizim
+kullanabileceğimiz tek değişken. Daha önce sıraya eklenmiş
 `Event` nesnelerini tutuyor.
 
 Örnekler
@@ -91,7 +91,7 @@ Anlatım biraz kafa karıştırıcı oldu. Ancak şimdi birkaç
     >>> s=sched.scheduler(time.time,time.sleep)
     >>> def zamanı_yazdır(sıra):
         print(f"Zaman: {time.time()} ,{sıra}")
-        
+
     >>> def farklı_zamanları_yazdır():
         print(time.time())
         s.enter(10,1,zamanı_yazdır,argument=("Birinci",))
@@ -100,7 +100,7 @@ Anlatım biraz kafa karıştırıcı oldu. Ancak şimdi birkaç
         s.enter(5,1,zamanı_yazdır,argument=("Dördüncü",))
         s.run()
         print(time.time())
-        
+
     >>> farklı_zamanları_yazdır()
     1532176259.627274
     Zaman: 1532176264.6953058 ,İkinci
@@ -109,10 +109,10 @@ Anlatım biraz kafa karıştırıcı oldu. Ancak şimdi birkaç
     Zaman: 1532176269.6955397 ,Birinci
     1532176269.7111597
 
-Çalışmaya başladıktan 5 saniye sonra "İkinci", "Üçüncü" ve "Dördüncü" 
-çalıştı. "İkinci" ve "Dördüncü"nün sırası aynıydı. O yüzden 
-tanımlanma sıralarına bakıldı. "Üçüncü"nün öncelik sırası 
-2 olduğu için onlardan daha sonra yazıldı. "Birinci" onlardan 5 
+Çalışmaya başladıktan 5 saniye sonra "İkinci", "Üçüncü" ve "Dördüncü"
+çalıştı. "İkinci" ve "Dördüncü"nün sırası aynıydı. O yüzden
+tanımlanma sıralarına bakıldı. "Üçüncü"nün öncelik sırası
+2 olduğu için onlardan daha sonra yazıldı. "Birinci" onlardan 5
 saniye sonra yani çalışmaya başladıktan 10 saniye sonra çalıştı.
 
 Bir başka örnek::
@@ -123,10 +123,10 @@ Bir başka örnek::
     def değişti():
         global yazdırılacak_değer
         yazdırılacak_değer="Merhaba Zalim Dünya"
-    
+
     def yazdır():
         print(yazdırılacak_değer)
-    
+
     suan=time.time()
     if(s.empty()):
         s.enterabs(suan+5,1,yazdır)
@@ -141,7 +141,7 @@ Sıra boş olduğu için altındaki fonksiyonlar çalışacaktır.
 Daha sonra çalışmaya başladıktan 6 saniye sonra ikinci
 `yazdır` fonksiyonu çalışacaktır. Çıktısı ilkiyle aynı olur.
 Ancak hemen sonra çalışan `değiştir` fonksiyonu ile `yazdırılacak_değer`
-değiştiği için 10. saniyede çalışan `yazdır` fonksiyonu 
+değiştiği için 10. saniyede çalışan `yazdır` fonksiyonu
 farklı bir çıktı veriyor.
 
 Şu şekilde fantastik bir döngü oluşturulabilir::

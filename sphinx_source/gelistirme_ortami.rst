@@ -1,7 +1,7 @@
 .. meta::
-   :description: Bu bölümde, program geliştirme işlerimiz için nasıl uygun bir 
+   :description: Bu bölümde, program geliştirme işlerimiz için nasıl uygun bir
     ortam hazırlayacağımızı öğreneceğiz
-   :keywords: Python, çalışma ortamı tavsiyesi, Windows, GNU/Linux, metin 
+   :keywords: Python, çalışma ortamı tavsiyesi, Windows, GNU/Linux, metin
     düzenleyici
 
 .. highlight:: py3
@@ -50,7 +50,7 @@ ekranı açabilirsiniz. Örneğin eğer o anda önünüzde 'İndirilenler' (veya
 ile gösterilen bölge) ``cmd`` yazarak `C:\\Users\\Kullanıcı\\Downloads>`
 konumunda bir komut ekranı açabilirsiniz.
 
-.. figure:: ../images/misc/explorer.png 
+.. figure:: ../images/misc/explorer.png
     :align: center
 
 İkinci olarak, çalışma kolaylığı açısından Windows'ta dosya uzantılarının her
@@ -73,17 +73,17 @@ her zaman görünür hale getirmenizi öneririm:
 
 #. Denetim masasında 'Görünüm ve Kişiselleştirme' seçeneğine tıklayın,
 
-#. Açılan menünün sağ tarafında 'Klasör Seçenekleri' satırına tıklayın, 
+#. Açılan menünün sağ tarafında 'Klasör Seçenekleri' satırına tıklayın,
 
 #. Açılan pencerede 'Görünüm' sekmesine tıklayın,
 
-#. 'Gelişmiş Ayarlar' listesinde 'Bilinen dosya türleri için uzantıları gizle' 
+#. 'Gelişmiş Ayarlar' listesinde 'Bilinen dosya türleri için uzantıları gizle'
    seçeneğinin yanındaki onay işaretini kaldırın,
 
 #. `Uygula` ve `Tamam` düğmelerine basarak bütün pencereleri kapatın,
 
-#. Artık bütün dosyalarınızın uzantısı da görüneceği için, uzantı değiştirme 
-   işlemlerini çok daha kolay bir şekilde halledebilirsiniz. 
+#. Artık bütün dosyalarınızın uzantısı da görüneceği için, uzantı değiştirme
+   işlemlerini çok daha kolay bir şekilde halledebilirsiniz.
 
 GNU/Linux Kullanıcıları
 ************************
@@ -95,12 +95,12 @@ satırı o dizin altında açılacaktır.
 Unity ve GNOME kullanıcılarının ise benzer bir kolaylığa ulaşmak için
 nautilus-open-terminal adlı betiği sistemlerine kurmaları gerekiyor. Eğer Ubuntu
 kullanıyorsanız bu betiği şu komutla kurabilirsiniz::
-    
+
     sudo apt-get install nautilus-open-terminal
-    
+
 Bu betiği kurduktan sonra bilgisayarınızı yeniden başlatın veya şu komutu
 verin::
-    
+
     killall nautilus
 
 Artık komut satırını hangi dizin altında başlatmak istiyorsanız o dizine sağ
@@ -128,14 +128,14 @@ gerekir:
 
 #. Girintilemede sekme yerine boşluk kullanmayı tercih edin [*Use spaces instead
    of tabs*]
-   
+
 #. Tercih edilen kodlama biçimini [*Preferred encoding*] utf-8 olarak ayarlayın.
 
 Özellikle son söylediğimiz 'kodlama biçimi' ayarı çok önemlidir. Bu ayarın
 yanlış olması halinde, yazdığınız programı çalıştırmak istediğinizde şöyle bir
 hata alabilirsiniz::
-    
-    SyntaxError: Non-UTF-8 code starting with '\xfe' in file deneme.py on line 1, 
+
+    SyntaxError: Non-UTF-8 code starting with '\xfe' in file deneme.py on line 1,
     but no encoding declared; see http://python.org/dev/peps/pep-0263/ for details
 
 Eğer yazdığınız bir program böyle bir hata mesajı üretiyorsa, ilk olarak metin
@@ -168,14 +168,14 @@ farklı seri halinde geliştiriliyor. Bunlardan birinin 2.x serisi, öbürünün
 3.x serisi olduğunu biliyoruz. Python'ın 2.x serisinde Türkçe karakterlerin
 gösterimi ile ilgili çok ciddi problemler vardı. Örneğin Python'ın 2.x serisinde
 şöyle bir kod yazamıyorduk::
-    
+
     print("Günaydın Şirin Baba!")
 
 Bu kodu bir dosyaya kaydedip, Python'ın 2.x serisine ait bir sürümle çalıştırmak
 istediğimizde Python bize şöyle bir hata mesajı veriyordu::
-    
-    SyntaxError: Non-ASCII character '\xc3' in file 
-    test.py on line 1, but no encoding declared; 
+
+    SyntaxError: Non-ASCII character '\xc3' in file
+    test.py on line 1, but no encoding declared;
     see http://www.python.org/peps/pep-0263.html for details
 
 Bunun sebebi, Python'ın 2.x sürümlerinde `ASCII` adlı kodlama biçiminin
@@ -213,8 +213,8 @@ kadar iyi değildir. Dolayısıyla zaman zaman Windows'ta `UTF-8` dışında ba�
 kodlama biçimini kullanmanız gerekebilir. Örneğin yazdığınız bir programda
 Türkçe karakterleri göremiyorsanız, programınızın ilk satırını şöyle
 düzenleyebilirsiniz::
-    
-    # -*- coding: cp1254 -*- 
+
+    # -*- coding: cp1254 -*-
 
 Burada `UTF-8` yerine `cp1254` adlı kodlama biçimini kullanmış oluyoruz. Windows
 işletim sisteminde `cp1254` adlı kodlama biçimi `UTF-8`'e kıyasla daha fazla
@@ -241,16 +241,16 @@ seçmeniz gerekir. Bunun için şu basamakları takip ediyoruz:
    sonra çıkıyoruz.
 #. Bu işlemin nasıl yapılacağını gösteren bir videoyu
    http://media.istihza.com/videos/ms-dos.swf adresinden izleyebilirsiniz.
-   
+
 Böylece MS-DOS komut satırı için Türkçe karakterleri gösterebilen bir yazı tipi
 belirlemiş olduk. Ancak bu, Türkçe karakterleri düzgün görüntülemeye
 yetmeyebilir. Eğer Türkçe karakterler hala düzgün görünmüyorsa, kullandığınız
 sistemde MS-DOS'un dil kodlaması Türkçe karakterleri görüntülemeye uygun
 olmayabilir. Türkçe karakterleri gösterebilen bir dil kodlaması belirlemek için
 komut satırında şu komutu verin::
-    
+
     chcp 1254
-    
+
 `CP1254`, Türkçe karakterleri de içeren bir dil kodlamasıdır. Bu komutu
 verdikten sonra artık Türkçe karakterleri düzgün görüntüleyebiliyor olmanız
 lazım.
@@ -267,7 +267,7 @@ sağlaması açısından büyük önem taşıyordu. Ancak yukarıda pratiğe yö
 Hatırlarsanız Python'la tanışmamızı sağlayan ilk örneğimiz ekrana basit bir
 `"Merhaba Zalim Dünya!"` cümlesi yazdırmaktı. Bu ilk örneği etkileşimli kabukta
 verdiğimizi hatırlıyorsunuz::
-    
+
     >>> "Merhaba Zalim Dünya!"
 
 Ama artık programlarımızı dosyaya kaydetmeyi öğrendiğimize göre bu kodları
@@ -289,7 +289,7 @@ Programlarımızı dosyadan çalıştırırken, ``print()`` fonksiyonu içine al
 ifadeler ekranda görünmeyecektir. Yukarıdaki örnek bu durumun bir göstergesidir.
 Dolayısıyla yukarıdaki ifadenin ekrana çıktı olarak verilebilmesi için o kodu
 şöyle yazmamız gerekiyor::
-    
+
     print("Merhaba Zalim Dünya!")
 
 Programınızı bu şekilde tekrar çalıştırdığınızda şöyle bir çıktı alıyoruz::
@@ -304,7 +304,7 @@ hesaplayan bir program yazmıştık.
 Orada elimizdeki verilerin şunlar olduğunu varsaymıştık:
 
 1. Cumartesi-Pazar günleri çalışmıyoruz.
-2. Dolayısıyla ayda `22` gün çalışıyoruz. 
+2. Dolayısıyla ayda `22` gün çalışıyoruz.
 3. Evden işe gitmek için kullandığımız vasıtanın ücreti `1.5` TL
 4. İşten eve dönmek için kullandığımız vasıtanın ücreti `1.4` TL
 
@@ -327,24 +327,24 @@ Tıpkı öncekiler gibi, bu programı da masaüstüne `deneme.py` adıyla kayded
 komut satırında masaüstünün bulunduğu konuma giderek ``python3 deneme.py``
 komutuyla programımızı çalıştıralım. Programı çalıştırdığımızda şöyle bir çıktı
 alıyoruz::
-    
+
     63.8
 
 Programımız gayet düzgün çalışıyor. Ancak gördüğünüz gibi, elde ettiğimiz çıktı
 çok yavan. Ama eğer isterseniz yukarıdaki programa daha profesyonel bir görünüm
 de kazandırabilirsiniz. Dikkatlice inceleyin::
-    
+
     gün = 22
     gidiş_ücreti = 1.5
     dönüş_ücreti = 1.4
 
     masraf = gün * (gidiş_ücreti + dönüş_ücreti)
 
-    print("-"*30) 
+    print("-"*30)
     print("çalışılan gün sayısı\t:", gün)
     print("işe gidiş ücreti\t:", gidiş_ücreti)
     print("işten dönüş ücreti\t:", dönüş_ücreti)
-    print("-"*30) 
+    print("-"*30)
 
     print("AYLIK YOL MASRAFI\t:", masraf)
 
@@ -365,8 +365,8 @@ kodların tamamını anlayabilecek kadar Python bilgimiz var. Bu kodlarda çok b
 parçaları bir araya getirerek istediğimiz çıktıyı nasıl elde ettiğimizi
 dikkatlice inceleyin. Mesela elde etmek istediğimiz çıktının görünüşünü
 güzelleştirmek için iki yerde şu satırı kullandık::
-    
-    print("-"*30) 
+
+    print("-"*30)
 
 Böylece `30` adet `-` işaretini yan yana basmış olduk. Bu sayede elde ettiğimiz
 çıktı daha derli toplu bir görünüme kavuştu. Ayrıca kodlarımız içinde `\\t` adlı
@@ -376,12 +376,12 @@ düzgün bir şekilde hizalanmış oldu.
 Bu arada, yukarıdaki kodlar sayesinde değişken kullanımının işlerimizi ne kadar
 kolaylaştırdığına da birebir tanık olduk. Eğer değişkenler olmasaydı yukarıdaki
 kodları şöyle yazacaktık::
-    
-    print("-"*30) 
+
+    print("-"*30)
     print("çalışılan gün sayısı\t:", 22)
     print("işe gidiş ücreti\t:", 1.5)
     print("işten dönüş ücreti\t:", 1.4)
-    print("-"*30) 
+    print("-"*30)
 
     print("AYLIK YOL MASRAFI\t:", 22 * (1.5 + 1.4))
 
@@ -392,25 +392,25 @@ değiştirmeye kalkışmanın ne kadar hataya açık bir yöntem olduğunu tahmi
 edebilirsiniz. Ama değişkenler sayesinde, sadece tek bir yerde değişiklik
 yaparak kodlarımızı güncel tutabiliriz. Mesela çalışılan gün sayısı `20`'ye
 düşmüş olsun::
-    
+
     gün = 20
     gidiş_ücreti = 1.5
     dönüş_ücreti = 1.4
 
     masraf = gün * (gidiş_ücreti + dönüş_ücreti)
 
-    print("-"*30) 
+    print("-"*30)
     print("çalışılan gün sayısı\t:", gün)
     print("işe gidiş ücreti\t:", gidiş_ücreti)
     print("işten dönüş ücreti\t:", dönüş_ücreti)
-    print("-"*30) 
+    print("-"*30)
 
     print("AYLIK YOL MASRAFI\t:", masraf)
 
 Gördüğünüz gibi, sadece en baştaki `gün` adlı değişkenin değerini değiştirerek
 istediğimiz sonucu elde ettik.
 
-Kendiniz isterseniz yukarıdaki örnekleri çeşitlendirebilirsiniz. 
+Kendiniz isterseniz yukarıdaki örnekleri çeşitlendirebilirsiniz.
 
 Gördüğünüz gibi, Python'da az da olsa işe yarar bir şeyler yazabilmek için çok
 şey bilmemize gerek yok. Sırf şu ana kadar öğrendiklerimizi kullanarak bile ufak

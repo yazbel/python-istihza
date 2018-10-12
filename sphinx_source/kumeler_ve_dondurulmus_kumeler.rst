@@ -1,7 +1,7 @@
 .. meta::
    :description: Bu bölümde kümeler ve dondurulmuş kümelerden söz edeceğiz.
    :keywords: python, küme, dondurulmuş küme
-       
+
 .. highlight:: py3
 
 *******************************
@@ -19,7 +19,7 @@ sağlayabilir.
 
 Bu bölümde kümeler dışında, bir de dondurulmuş kümelerden söz edeceğiz. Bu iki
 veri tipi birbiriyle ilişkilidir. O yüzden bu iki veri tipini tek bölümde ele
-alacağız. 
+alacağız.
 
 İsterseniz anlatmaya önce kümelerle başlayalım.
 
@@ -39,7 +39,7 @@ Küme Oluşturmak
 Kümelerin bize sunduklarından faydalanabilmek için elbette öncelikle bir küme
 oluşturmamız gerekiyor. Küme oluşturmak çok kolay bir işlemdir. Örneğin boş bir
 kümeyi şöyle oluşturuyoruz::
-    
+
     >>> boş_küme = set()
 
 Listeler, demetler ve sözlüklerin aksine kümelerin ayırt edici bir işareti
@@ -49,11 +49,11 @@ Yukarıdaki boş veri tipinin bir küme olduğunu nasıl teyit edeceğinizi
 biliyorsunuz::
 
     >>> type(boş_küme)
-    
+
     <class 'set'>
-    
+
 Gördüğünüz gibi, Python programlama dilinde kümeler `set` ifadesiyle
-gösteriliyor. 
+gösteriliyor.
 
 Yukarıda boş bir küme oluşturduk. İçinde öğe de barındıran kümeleri ise şu
 şekilde oluşturuyoruz::
@@ -64,13 +64,13 @@ Böylelikle, içinde öğe barındıran ilk kümemizi başarıyla oluşturduk. D
 ederseniz, küme oluştururken listelerden faydalandık. Gördüğünüz gibi `set()`
 fonksiyonu içindeki öğeler bir liste içinde yer alıyor. Dolayısıyla yukarıdaki
 tanımlamayı şöyle de yapabiliriz::
-    
+
 	>>> liste = ["elma", "armut", "kebap"]
 	>>> küme = set(liste)
 
 Bu daha temiz bir görüntü oldu. Elbette küme tanımlamak için mutlaka liste
 kullanmak zorunda değiliz. İstersek demetleri de küme haline getirebiliriz::
-    
+
 	>>> demet = ("elma", "armut", "kebap")
 	>>> küme = set(demet)
 
@@ -81,7 +81,7 @@ Hatta ve hatta karakter dizilerinden dahi küme yapabiliriz::
 
 Kullandığımız karakter dizisinin böyle uzun olmasına da gerek yok. Tek
 karakterlik dizilerden bile küme oluşturabiliriz::
-    
+
 	>>> kardiz = "a"
 	>>> küme = set(kardiz)
 
@@ -94,11 +94,11 @@ Ama sayılardan küme oluşturamayız::
 
 Peki sözlükleri kullanarak küme oluşturabilir miyiz? Elbette, neden olmasın? ::
 
-    >>> bilgi = {"işletim sistemi": "GNU", "sistem çekirdeği": "Linux", 
+    >>> bilgi = {"işletim sistemi": "GNU", "sistem çekirdeği": "Linux",
     ... "dağıtım": "Ubuntu GNU/Linux"}
-    
+
     >>> küme = set(bilgi)
-	
+
 Küme oluşturmanın son bir yönteminden daha söz edelim. En başta söylediğimiz
 gibi, listeler, demetler, sözlükler ve karakter dizilerinin aksine kümelerin `[
 ]`, `( )`, `{ }`, `' '` gibi ayırt edici bir işareti yoktur. Ama eğer istersek
@@ -106,19 +106,19 @@ sözlükleri oluşturmak için kullandığımız özel işaretleri küme oluştu
 kullanabiliriz. Dikkatlice bakın::
 
     >>> küme = {'Python', 'C++', 'Ruby', 'PHP'}
-    
+
 Gördüğünüz gibi, aslında sözlüklerin ayırt edici işareti olan süslü parantezleri
 kullanarak ve öğeleri birbirinden virgülle ayırarak da küme adlı veri tipini
 elde edebiliyoruz. Teyit edelim bunu::
-    
+
     >>> type(küme)
-    
-    <class 'set'> 
+
+    <class 'set'>
 
 Ancak bu yapıyı kullanarak boş bir küme oluşturamazsınız::
-    
+
     >>> küme = {}
-    
+
 Bu şekilde oluşturduğunuz şey bir küme değil, sözlük olacaktır::
 
     >>> type(küme)
@@ -131,30 +131,30 @@ biliyorsunuz::
     >>> küme = set(küme)
     >>> type(küme)
 
-    <class 'set'>    
+    <class 'set'>
 
 Böylece kümeleri nasıl oluşturacağımızı öğrendik. Eğer oluşturduğunuz kümeyi
 ekrana yazdırmak isterseniz, ne yapacağınızı biliyorsunuz. Tanımladığınız
 ``küme`` değişkenini kullanmanız yeterli olacaktır::
-    
+
 	>>> küme
 
 	{'işletim sistemi', 'sistem çekirdeği', 'dağıtım'}
 
 Bu arada, bir sözlüğü kümeye çevirdiğinizde, elbette sözlüğün yalnızca
 anahtarları kümeye eklenecektir. Sözlüğün değerleri ise böyle bir işlemin
-sonucunda ortadan kaybolur. 
+sonucunda ortadan kaybolur.
 
 Eğer bir sözlüğü kümeye çevirirken hem anahtarları hem de değerleri korumak
 gibi bir niyetiniz varsa şöyle bir şey yazabilirsiniz:
 
 Sözlüğümüz şu::
-    
-    >>> bilgi = {"işletim sistemi": "GNU", "sistem çekirdeği": "Linux", 
+
+    >>> bilgi = {"işletim sistemi": "GNU", "sistem çekirdeği": "Linux",
     ... "dağıtım": "Ubuntu GNU/Linux"}
-    
+
 Bu sözlükteki anahtar-değer çiftlerini bir küme içine, çift öğeli demetler
-olarak yerleştirebiliriz::    
+olarak yerleştirebiliriz::
 
     >>> liste = [(anahtar, değer) for anahtar, değer in bilgi.items()]
     >>> küme = set(liste)
@@ -162,7 +162,7 @@ olarak yerleştirebiliriz::
 Gördüğünüz gibi, liste üreteçlerini kullanarak önce bir liste oluşturuyoruz. Bu
 liste her bir anahtarı ve değeri tek tek bir demet içine yerleştiriyor. Daha
 sonra da bu listeyi ``set()`` fonksiyonuna göndererek kümemizi oluşturuyoruz.
-    
+
 Kümelerin Yapısı
 ==================
 
@@ -174,7 +174,7 @@ de biraz kümelerin yapısından bahsedelim.
 	>>> kardiz = "Python Programlama Dili"
 	>>> küme = set(kardiz)
 	>>> print(küme)
-	
+
 	{'g', 'D', 'a', ' ', 'o', 'n', 'm', 'l', 'i', 'h', 't', 'r', 'P', 'y'}
 
 Burada bir şey dikkatinizi çekmiş olmalı. Bir öğeyi küme olarak tanımlayıp
@@ -192,7 +192,7 @@ teke indirecektir.
 
     >>> liste = ["elma", "armut", "elma", "kebap", "şeker", "armut",
     ... "çilek", "ağaç", "şeker", "kebap", "şeker"]
-    
+
     >>> for i in set(liste):
     ...     print(i)
     ...
@@ -228,12 +228,12 @@ Kümelerin önemli bir özelliği de, tıpkı sözlükler gibi, herhangi bir şe
 'öğe sırası' kavramına sahip olmamasıdır.
 
 Dikkatlice bakın::
-    
+
     >>> arayüz_takımları = {'Tkinter', 'PyQT', 'PyGobject'}
     >>> arayüz_takımları
-    
+
     {'PyGobject', 'PyQT', 'Tkinter'}
-    
+
 Sözlüklerde karşılaştığımız durumun aynısının kümeler için de geçerli olduğuna
 dikkatinizi çekmek isterim. Gördüğünüz gibi, `arayüz_takımları` adlı kümenin
 öğeleri, öğe tanımlama sırasını çıktıda korumuyor. Biz 'Tkinter' öğesini kümenin
@@ -241,16 +241,16 @@ ilk sırasına yerleştirmiştik, ama bu öğe çıktıda en sona gitti... Aynen
 sözlüklerde olduğu gibi, kümelerde de öğelerin tanımlanma sırasına bel
 bağlayarak herhangi bir işlem yapamazsınız. Bu durumun bir yansıması olarak,
 küme öğelerine sıralarına göre de erişemezsiniz::
-    
+
     >>> arayüz_takımları[0]
 
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
-    TypeError: 'set' object does not support indexing    
-    
+    TypeError: 'set' object does not support indexing
+
 Tıpkı hata mesajında da söylendiği gibi, küme adlı veri tipi açısından öğe
-sırası diye bir kavram yoktur...    
-        
+sırası diye bir kavram yoktur...
+
 Esasında tek bir küme pek bir işe yaramaz. Kümeler ancak birden fazla olduğunda
 bunlarla yararlı işler yapabiliriz. Çünkü kümelerin en önemli özelliği, başka
 kümelerle karşılaştırılabilme kabiliyetidir. Yani mesela kümelerin kesişimini,
@@ -262,7 +262,7 @@ Küme Üreteçleri (*Set Comprehensions*)
 =======================================
 
 Bildiğiniz gibi liste üreteçleri, liste oluşturmanın kısa ve temiz bir yoludur.
-Aynı şekilde sözlük üreteçleri de sözlük oluşturmanın kısa ve temiz bir yoludur. 
+Aynı şekilde sözlük üreteçleri de sözlük oluşturmanın kısa ve temiz bir yoludur.
 
 İşte liste üreteçlerini ve sözlük üreteçlerini kullanarak nasıl tek satırda ve
 hızlı bir şekilde listeler ve sözlükler üretebiliyorsak, aynı şekilde küme
@@ -270,11 +270,11 @@ hızlı bir şekilde listeler ve sözlükler üretebiliyorsak, aynı şekilde k�
 üretebiliriz.
 
 Örneğin elimizde şöyle bir liste olduğunu düşünelim::
-    
-    import random 
-    
-    liste = [random.randint(0, 10000) for i in range(1000)]    
-    
+
+    import random
+
+    liste = [random.randint(0, 10000) for i in range(1000)]
+
 Bu arada, buradaki `random` adlı modüle şimdilik takılmayın. Birkaç bölüm sonra
 bu modülü inceleyeceğiz. Biz şimdilik `random`'un da tıpkı `sys` ve `os` gibi
 bir modül olduğunu ve rastgele sayılar üretmemizi sağladığını bilelim yeter.
@@ -282,30 +282,30 @@ Yukarıdaki kodlarda da bu modül `0` ile `10000` arasında rstgele `1000` adet
 sayı üretmemizi sağladı.
 
 Şimdi amacımız bu liste içinde yer alan sayılardan, değeri `100`'den küçük
-olanları bulmak. 
+olanları bulmak.
 
 Bunun için şu kodları kullanabiliriz::
-    
-    import random 
-    
+
+    import random
+
     liste = [random.randint(0, 10000) for i in range(1000)]
-    
+
     yüzden_küçük_sayılar = [i for i in liste if i < 100]
     print(yüzden_küçük_sayılar)
-    
+
 Ancak ortaya çıkan listede aynı sayılardan birkaç tane olabilir. İşte eğer
 birbirinin aynı olmayan sayılardan oluşmuş bir listeyi hızlı ve pratik bir
 şekilde elde etmek istiyorsanız küme üreteçlerini kullanabilirsiniz::
-    
-    import random 
-    
+
+    import random
+
     liste = [random.randint(0, 10000) for i in range(1000)]
-    
+
     küme = {i for i in liste if i < 100}
     print(küme)
-    
+
 Gördüğünüz gibi, küme üreteçlerinin sözdizimi, liste ve sözlük üreteçlerinin
-sözdizimine çok benziyor. 
+sözdizimine çok benziyor.
 
 Kümelerin Metotları
 ===================
@@ -315,19 +315,19 @@ biz bir veri tipinin metotlarını nasıl listeleyeceğimizi çok iyi biliyoruz.
 Nasıl liste için ``list()``; demet için ``tuple()``; sözlük için de ``dict()``
 fonksiyonlarını kullanıyorsak, kümeler için de ``set()`` adlı fonksiyondan
 yararlanacağız::
-    
+
     >>> dir(set)
 
-    ['__and__', '__class__', '__contains__', '__delattr__', '__doc__', 
-    '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', 
-    '__hash__', '__iand__', '__init__', '__ior__', '__isub__', '__iter__', 
-    '__ixor__', '__le__', '__len__', '__lt__', '__ne__', '__new__', 
-    '__or__', '__rand__', '__reduce__', '__reduce_ex__', '__repr__', 
-    '__ror__', '__rsub__', '__rxor__', '__setattr__', '__sizeof__', 
-    '__str__', '__sub__', '__subclasshook__', '__xor__', 'add', 
-    'clear','copy', 'difference', 'difference_update', 'discard', 
-    'intersection', 'intersection_update', 'isdisjoint', 'issubset', 
-    'issuperset', 'pop', 'remove', 'symmetric_difference', 
+    ['__and__', '__class__', '__contains__', '__delattr__', '__doc__',
+    '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__',
+    '__hash__', '__iand__', '__init__', '__ior__', '__isub__', '__iter__',
+    '__ixor__', '__le__', '__len__', '__lt__', '__ne__', '__new__',
+    '__or__', '__rand__', '__reduce__', '__reduce_ex__', '__repr__',
+    '__ror__', '__rsub__', '__rxor__', '__setattr__', '__sizeof__',
+    '__str__', '__sub__', '__subclasshook__', '__xor__', 'add',
+    'clear','copy', 'difference', 'difference_update', 'discard',
+    'intersection', 'intersection_update', 'isdisjoint', 'issubset',
+    'issuperset', 'pop', 'remove', 'symmetric_difference',
     'symmetric_difference_update', 'union', 'update']
 
 Hemen işimize yarayacak metotları alalım::
@@ -368,7 +368,7 @@ clear()
 Kümelerle ilgili olarak inceleyeceğimiz ilk metot `clear()`. Bu metodu daha önce
 sözlükleri çalışırken de görmüştük. Sözlüklerde bu metodun görevi sözlüğün içini
 boşaltmak idi. Burada da aynı vazifeyi görür::
-    
+
     >>> km = set("adana")
     >>> for i in km:
     ...     print(i)
@@ -384,22 +384,22 @@ boşaltmak idi. Burada da aynı vazifeyi görür::
 
 Burada önce "km" adlı bir küme oluşturduk. Daha sonra da `clear()` metodunu
 kullanarak bu kümenin bütün öğelerini sildik. Artık elimizde boş bir küme var.
-    
+
 copy()
 ^^^^^^^^^^^
 
 Listeler ve sözlükleri incelerken ``copy()`` adlı bir metot öğrenmiştik. Bu
 metot aynı zamanda kümelerle birlikte de kullanılabilir. Üstelik işlevi de
 aynıdır::
-    
+
     >>> km = set("kahramanmaraş")
     >>> yedek = km.copy()
     >>> yedek
-    
+
     {'a', 'r', 'h', 'k', 'm', 'ş', 'n'}
-    
+
     >>> km
-    
+
     {'a', 'h', 'k', 'm', 'n', 'r', 'ş'}
 
 Burada bir şey dikkatinizi çekmiş olmalı. "km" adlı kümeyi "yedek" adıyla
@@ -408,7 +408,7 @@ birbirinden farklı olduğunu görüyoruz. Biliyorsunuz, tıpkı sözlüklerde o
 gibi, kümeler de sırasız veri tipleridir. Bu yüzden, elde ettiğimiz çıktıda
 öğeler rastgele diziliyor. Dolayısıyla öğelere sıralarına göre erişemiyoruz.
 Aynen sözlüklerde olduğu gibi...
-    
+
 add()
 ^^^^^^^^^^
 
@@ -418,7 +418,7 @@ metotlar da içerir. Örneğin `add()` bu tür metotlardan biridir. *Add* kelime
 Türkçe'de "eklemek" anlamına gelir. Adından da anlaşılacağı gibi, bu metot
 yardımıyla kümelerimize yeni öğeler ilave edebileceğiz. Hemen bunun nasıl
 kullanıldığına bakalım::
-    
+
 	>>> küme = set(["elma", "armut", "kebap"])
 	>>> küme.add("çilek")
 	>>> print(küme)
@@ -437,9 +437,9 @@ döngüsünden yararlanabilirsiniz::
     >>> for i in yeni:
     ...     küme.add(i)
     ...
-    
+
     >>> küme
-    
+
     {1, 2, 3, 'elma', 'kebap', 'çilek', 'armut'}
 
 Burada ``yeni`` adlı listeyi kümeye `for` döngüsü ile ekledik. Ama bu işlemi
@@ -471,60 +471,60 @@ Dolayısıyla bir kümeye ancak şu veri tiplerini ekleyebiliriz:
 Şu kodları dikkatlice inceleyin:
 
 Önce boş bir küme oluşturalım::
-    
+
     >>> küme = set()
-    
+
 Bu kümeye bir demet ekleyelim::
-    
+
     >>> l = (1,2,3)
     >>> küme.add(l)
     >>> küme
-    
+
     {(1, 2, 3)}
-    
+
 Bir sayı ekleyelim::
-    
+
     >>> l = 45
     >>> küme.add(l)
     >>> küme
-    
+
     {45, (1, 2, 3)}
-    
+
 Bir karakter dizisi ekleyelim::
-    
+
     >>> l = 'Jacques Derrida'
     >>> küme.add(l)
     >>> küme
-    
+
     {'Jacques Derrida', 45, (1, 2, 3)}
 
-Yukarıdakiler, değiştirilemeyen veri tipleri olduğu için kümelere eklenebilir. 
+Yukarıdakiler, değiştirilemeyen veri tipleri olduğu için kümelere eklenebilir.
 
 Bir de şunlara bakalım:
 
 Kümemize bir liste eklemeye çalışalım::
-    
+
     >>> l = [1,2,3]
     >>> küme.add(l)
-    
+
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
     TypeError: unhashable type: 'list'
 
 Kümemize bir sözlük eklemeye çalışalım::
-    
+
     >>> l = {"a": 1, "b": 2, "c": 3}
     >>> küme.add(l)
-    
+
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
     TypeError: unhashable type: 'dict'
-    
+
 Kümemize bir küme eklemeye çalışalım::
-    
+
     >>> l = {1, 2, 3}
     >>> küme.add(l)
-    
+
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
     TypeError: unhashable type: 'set'
@@ -541,12 +541,12 @@ Bu metot iki kümenin farkını almamızı sağlar. Örneğin::
 	>>> k2 = set([3, 4, 2, 10])
 
 	>>> k1.difference(k2)
-	
+
 	{1, 5}
 
 Demek ki k1'in k2'den farkı buymuş. Peki k2'nin k1'den farkını bulmak istersek
 ne yapacağız? ::
-    
+
 	>>> k2.difference(k1)
 
 	{10, 4}
@@ -596,7 +596,7 @@ discard()
 Bir önceki bölümde öğrendiğimiz `add()` metodu yardımıyla, önceden
 oluşturduğumuz bir kümeye yeni öğeler ekleyebiliyorduk. Bu bölümde öğreneceğimiz
 `discard()` metodu ise kümeden öğe silmemizi sağlayacak::
-    
+
     >>> hayvanlar = set(["kedi", "köpek", "at", "kuş", "inek", "deve"])
     >>> hayvanlar.discard("kedi")
     >>> print(hayvanlar)
@@ -605,7 +605,7 @@ oluşturduğumuz bir kümeye yeni öğeler ekleyebiliyorduk. Bu bölümde öğre
 
 Eğer küme içinde bulunmayan bir öğe silmeye çalışırsak hiç bir şey olmaz. Yani
 hata mesajı almayız::
-    
+
 	>>> hayvanlar.discard("yılan")
 
 Burada etkileşimli kabuk sessizce bir alt satıra geçecektir. Bu metodun en
@@ -618,17 +618,17 @@ remove()
 Bu metot da bir önceki bölümde gördüğümüz `discard()` metoduyla aynı işlevi
 yerine getirir. Eğer bir kümeden öğe silmek istersek `remove()` metodunu da
 kullanabiliriz::
-    
+
 	>>> hayvanlar.remove("köpek")
 
-Peki `discard()` varken `remove()` metoduna ne gerek var? Ya da tersi. 
+Peki `discard()` varken `remove()` metoduna ne gerek var? Ya da tersi.
 
 Bu iki metot aynı işlevi yerine getirse de aralarında önemli bir fark vardır.
 Hatırlarsanız `discard()` metoduyla, kümede olmayan bir öğeyi silmeye çalışırsak
 herhangi bir hata mesajı almayacağımızı söylemiştik. Eğer `remove()` metodunu
 kullanarak, kümede olmayan bir öğeyi silmeye çalışırsak, `discard()` metodunun
 aksine, hata mesajı alırız::
-    
+
 	>>> hayvanlar.remove("fare")
 
 	Traceback (most recent call last):
@@ -644,7 +644,7 @@ intersection()
 *intersection* kelimesi Türkçe'de "kesişim" anlamına gelir. Adından da
 anladığımız gibi, `intersection()` metodu bize iki kümenin kesişim kümesini
 verecektir::
-    
+
 	>>> k1 = set([1, 2, 3, 4])
 	>>> k2 = set([1, 3, 5, 7])
 	>>> k1.intersection(k2)
@@ -658,7 +658,7 @@ Hatırlarsanız, `difference()` metodunu anlatırken, `difference()` kelimesi
 yerine "-" işaretini de kullanabileceğimiz, söylemiştik. Benzer bir durum
 `intersection()` metodu için de geçerlidir. İki kümenin kesişimini bulmak için
 "&" işaretinden yararlanabiliriz::
-    
+
 	>>> k1 & k2
 
 	{1, 3}
@@ -678,12 +678,12 @@ metodu nasıl kullanabileceğimizi görmüş oluruz::
 
     else:
         print("Parolanız kabul edildi!")
-        
+
 Burada eğer kullanıcı, parola belirlerken içinde Türkçe bir harf geçen bir
 kelime yazarsa programımız kendisini Türkçe harf kullanmaması konusunda
 uyaracaktır. Bu kodlarda kümeleri nasıl kullandığımıza dikkat edin. Programda
 asıl işi yapan kısım şu satırdır::
-    
+
     if set(tr) & set(parola):
         print("Parolanızda Türkçe harfler kullanmayın!")
 
@@ -691,7 +691,7 @@ Burada aslında şöyle bir şey demiş oluyoruz:
 
     *Eğer set(tr) ve set(parola) kümelerinin kesişim kümesi boş değilse,
     kullanıcıya "Parolanızda Türkçe harfler kullanmayın!" uyarısını göster!*
-    
+
 ``set(tr)`` ve ``set(parola)`` kümelerinin kesişim kümesinin boş olmaması,
 kullanıcının girdiği kelime içindeki harflerden en az birinin ``tr`` adlı
 değişken içinde geçtiği anlamına gelir. Burada basitçe, ``tr`` değişkeni ile
@@ -699,7 +699,7 @@ değişken içinde geçtiği anlamına gelir. Burada basitçe, ``tr`` değişken
 herhangi bir Türkçe harf içermeyen bir kelime girerse ``set(tr)`` ve
 ``set(parola)`` kümelerinin kesişim kümesi boş olacaktır. İsterseniz küçük bir
 deneme yapalım::
-    
+
 	>>> tr = "şçöğüıŞÇÖĞÜİ"
 	>>> parola = "çilek"
 	>>> set(tr) & set(parola)
@@ -710,7 +710,7 @@ Burada kullanıcının "çilek" adlı kelimeyi girdiğini varsayıyoruz. Böyle 
 durumda ``set(tr)`` ve ``set(parola)`` kümelerinin kesişim kümesi "ç" harfini
 içerecek, dolayısıyla da programımız kullanıcıya uyarı mesajı gösterecektir.
 Eğer kullanıcımız "kalem" gibi Türkçe harf içermeyen bir kelime girerse::
-   
+
 	>>> tr = "şçöğüıŞÇÖĞÜİ"
 	>>> parola = "kalem"
 	>>> set(tr) & set(parola)
@@ -736,7 +736,7 @@ güncellenmesini sağlar.*
 İşte `intersection_update` metodu da buna çok benzer bir işlevi yerine getirir.
 Bu metodun görevi, `intersection()` metodundan elde edilen sonuca göre bir
 kümenin güncellenmesini sağlamaktır::
-    
+
 	>>> k1 = set([1, 2, 3])
 	>>> k2 = set([1, 3, 5])
 	>>> k1.intersection_update(k2)
@@ -760,7 +760,7 @@ aynı işi bir önceki bölümde gördüğümüz `intersection()` metodunu kulla
 yapabiliyorduk. Ama eğer hayattan tek beklentiniz iki kümenin kesişim kümesinin
 boş olup olmadığını, yani bu iki kümenin ortak eleman içerip içermediğini
 öğrenmekse, basitçe `isdisjoint()` metodundan yararlanabilirsiniz::
-    
+
 	>>> a = set([1, 2, 3])
 	>>> b = set([2, 4, 6])
 	>>> a.isdisjoint(b)
@@ -795,7 +795,7 @@ alıp yer almadığını sorgulayabiliriz. Yani bir kümenin, başka bir kümeni
 kümesi olup olmadığını bu metot yardımıyla öğrenebiliriz. Eğer bir küme başka
 bir kümenin alt kümesi ise bu metot bize ``True`` değerini verecek; eğer değilse
 ``False`` çıktısını verecektir::
-    
+
 	>>> a = set([1, 2, 3])
 	>>> b = set([0, 1, 2, 3, 4, 5])
 	>>> a.issubset(b)
@@ -812,7 +812,7 @@ Bu metot, bir önceki bölümde gördüğümüz `issubset()` metoduna benzer. Ma
 derslerinde gördüğümüz "kümeler" konusunda hatırladığınız "b kümesi a kümesini
 kapsar" ifadesini bu metotla gösteriyoruz. Önce bir önceki derste gördüğümüz
 örneğe bakalım::
-    
+
 	>>> a = set([1, 2, 3])
 	>>> b = set([0, 1, 2, 3, 4, 5])
 	>>> a.issubset(b)
@@ -821,7 +821,7 @@ kapsar" ifadesini bu metotla gösteriyoruz. Önce bir önceki derste gördüğü
 
 Buradan, "a kümesi b kümesinin alt kümesidir," sonucuna ulaşıyoruz. Bir de şuna
 bakalım::
-    
+
 	>>> a = set([1, 2, 3])
 	>>> b = set([0, 1, 2, 3, 4, 5])
 	>>> b.issuperset(a)
@@ -830,13 +830,13 @@ bakalım::
 
 Burada ise, "b kümesi a kümesini kapsar," sonucunu elde ediyoruz. Yani ``b``
 kümesi ``a`` kümesinin bütün elemanlarını içinde barındırıyor.
-    
+
 union()
 ^^^^^^^^^^^^
 
 `union()` metodu iki kümenin birleşimini almamızı sağlar. Hemen bir örnek
 verelim::
-    
+
 	>>> a = set([2, 4, 6, 8])
 	>>> b = set([1, 3, 5, 7])
 	>>> a.union(b)
@@ -845,7 +845,7 @@ verelim::
 
 Önceki bölümlerde gördüğümüz bazı metotlarda olduğu gibi, `union()` metodu da
 bir kısayola sahiptir. `union()` metodu yerine "|" işaretini de kullanabiliriz::
-    
+
 	>>> a | b
 
 `union()` metodu yerine, bu metodun kısayolu olan "|" işareti Python
@@ -863,7 +863,7 @@ Hatırlarsanız `add()` metodunu anlatırken şöyle bir örnek vermiştik::
     ...     küme.add(i)
     ...
     >>> küme
-    
+
     {1, 2, 3, 'elma', 'armut', 'kebap'}
 
 Bu örneği verdikten sonra da şöyle bir şey demiştik:
@@ -875,7 +875,7 @@ bulunur."
 İşte bu metodu öğrenmenin vakti geldi. Metodumuzun adı `update()`. Bu metot, bir
 kümeyi güncellememizi sağlar. İsterseniz yukarıdaki örneği, bu metodu kullanarak
 tekrar yazalım::
-    
+
 	>>> küme = set(["elma", "armut", "kebap"])
 	>>> yeni = [1, 2, 3]
 	>>> küme.update(yeni)
@@ -892,7 +892,7 @@ symmetric_difference()
 Daha önceki bölümlerde `difference()` metodunu kullanarak iki küme arasındaki
 farklı öğeleri bulmayı öğrenmiştik. Örneğin elimizde şöyle iki küme var
 diyelim::
-    
+
 	>>> a = set([1, 2, 5])
 	>>> b = set([1, 4, 5])
 
@@ -914,7 +914,7 @@ Bu da bize "4" çıktısını verdi. Demek ki bu öğe ``b`` kümesinde bulunuyo
 ``a`` kümesinde bulunmuyormuş. Peki ya kümelerin ikisinde de bulunmayan öğeleri
 aynı anda nasıl alacağız? işte bu noktada yardımımıza `symmetric_difference()`
 adlı metot yetişecek::
-    
+
 	>>> a.symmetric_difference(b)
 
 	{2, 4}
@@ -927,11 +927,11 @@ symmetric_difference_update()
 Daha önce `difference_update` ve `intersection_update` gibi metotları
 öğrenmiştik. `symmetric_difference_update()` metodu da bunlara benzer bir işlevi
 yerine getirir::
-    
+
 	>>> a = set([1,2, 5])
 	>>> b = set([1,4, 5])
 	>>> a.symmetric_difference_update(b)
-	>>> print(a) 
+	>>> print(a)
 
 	{2, 4}
 
@@ -946,7 +946,7 @@ pop()
 değil. Bu metodu listeler konusundan hatırlıyoruz. Orada öğrendiğimize göre, bu
 metot listenin bir öğesini silip ekrana basıyordu. Aslında buradaki fonksiyonu
 da farklı değil. Burada da kümelerin öğelerini silip ekrana basıyor::
-    
+
 	>>> a = set(["elma", "armut", "kebap"])
 	>>> a.pop()
 
@@ -971,15 +971,15 @@ liste gibi davranır. İşte Python aynı imkanı bize kümelerde de sağlar. E�
 öğeleri üzerinde değişiklik yapılamayan bir küme oluşturmak isterseniz `set()`
 yerine `frozenset()` fonksiyonunu kullanabilirsiniz. Dilerseniz hemen bununla
 ilgili bir örnek verelim::
-    
+
     >>> dondurulmuş = frozenset(["elma", "armut", "ayva"])
-    
+
 Dondurulmuş kümeleri bu şekilde oluşturuyoruz. Şimdi bu dondurulmuş kümenin
 metotlarına bakalım::
-    
+
     >>> dir(dondurulmuş)
-    
-    ['__and__', '__class__', '__contains__', '__delattr__', '__doc__', '__eq__', 
+
+    ['__and__', '__class__', '__contains__', '__delattr__', '__doc__', '__eq__',
      '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__',
      '__init__', '__iter__', '__le__', '__len__', '__lt__', '__ne__', '__new__',
      '__or__', '__rand__', '__reduce__', '__reduce_ex__', '__repr__', '__ror__',
