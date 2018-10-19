@@ -202,10 +202,8 @@ daha ayrıntılı bir şekilde ele alacağız, ancak şimdilik, model
 değişikliklerini yapmak için üç adımlı kılavuzu hatırlayın:
 
     - Modeli değiştirin (**models.py** de)
-    - `python manage.py makemigrations` komutunu çalıştırarak 
-    bu değişiklikler için  migration oluşturun.
-    - `python manage.py migrate` komutunu çalıştırarak 
-    bu değişiklikleri veritabanına uygulayın.
+    - `python manage.py makemigrations` komutunu çalıştırarak bu değişiklikler için  migration oluşturun.
+    - `python manage.py migrate` komutunu çalıştırarak bu değişiklikleri veritabanına uygulayın.
 
 API ile oynayalım
 *****************
@@ -371,10 +369,10 @@ kabuk açalım:`python manage.py shell`
     >>> c.delete()
 
 Yönetici Paneli
-************
+***************
 
 Bir yönetici kullanıcısı oluşturalım
-==================================
+=====================================
 
 Yönetici paneline giriş yapmak için bir süper kullanıcıya ihtiyacımız
 var. Komut satırında şu kodu çalıştıralım::
@@ -412,7 +410,7 @@ yönetici sayfası görüyor olmalısın:
 .. image:: https://docs.djangoproject.com/en/2.0/_images/admin01.png
 
 Yönetici Paneline Giriş yapalım
-=============================
+================================
 
 Şimdi oluşturduğun süper kullanıcı ile yönetici paneline giriş yap.
 Yönetici panelinin anasayfasını görüyor olmalısın:
@@ -425,7 +423,7 @@ kullanıcılar. Django tarafından gönderilen kimlik doğrulama
 çerçevesi `django.contrib.auth` tarafından sağlanmıştır.
 
 Anket uygulamamızı yönetici panelinden kontrol edelim
-===================================================
+======================================================
 
 Fakat bizim anket uygulamamız nerede? Yönetici panelinin
 anasayfasında gözükmüyor.
@@ -440,7 +438,7 @@ dosyasını açıp şu kodla düzenlemek::
     admin.site.register(Question)
 
 Yönetici panelinin işlevselliğini keşfedelim
-==========================================
+=============================================
 
 Question nesnelerini kaydettiğimize göre yönetici panelinin
 anasayfası şu şekilde gözükmeli:
