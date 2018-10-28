@@ -247,9 +247,9 @@ metodu yardımıyla çok daha verimli ve sade bir hale getirebiliriz::
 clear()
 ********
 
-Sözlüklerin, inceleyeceğimiz ilk metodu ``clear()``. Bu kelime İngilizce'de
-"temizlemek" anlamına gelir. Görevi sözlükteki öğeleri temizlemektir. Yani içi
-dolu bir sözlüğü bu metot yardımıyla tamamen boşaltabiliriz::
+Bu kelime İngilizce'de "temizlemek" anlamına gelir. Görevi sözlükteki öğeleri 
+temizlemektir. Yani içi dolu bir sözlüğü bu metot yardımıyla tamamen 
+boşaltabiliriz::
 
 	>>> lig = {"şampiyon": "Adana Demirspor", "ikinci": "Mersin İdman Yurdu",
     ... "üçüncü": "Adana Gençlerbirliği"}
