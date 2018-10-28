@@ -715,7 +715,7 @@ Sözlüğümüze anahtar olarak bir liste eklemeye çalışalım::
       File "<stdin>", line 1, in <module>
     TypeError: unhashable type: 'list'
 
-Kümemize bir sözlük eklemeye çalışalım::
+Sözlüğümüze bir sözlük eklemeye çalışalım::
 
     >>> l = {"a": 1, "b": 2, "c": 3}
     >>> sözlük[l] = 'falanca'
