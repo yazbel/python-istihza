@@ -934,7 +934,7 @@ kullanıyoruz.
 parantezsiz olarak kullanma imkanına sahibiz.
 
 Sınıfın gövdesinde tanımladığımız şu değişkenler birer sınıf niteliğidir (*class
-atribute*)::
+attribute*)::
 
     firma = ''
     miktar = 0
