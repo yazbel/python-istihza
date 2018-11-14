@@ -30,6 +30,11 @@ $ apt install python3-sphinx
 # Python 2 için
 $ apt install python-sphinx
 ```
+Sphinx'i macOS'a [brew](https://brew.sh/index_tr) paket yöneticisi ile şu komutla kurabilirsiniz:
+
+```shell
+$ brew install sphinx
+```
 
 Şimdi şu komutla belgeleri inşa edebilirsiniz:
 
