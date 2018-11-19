@@ -10,7 +10,7 @@ Olaylar, kullanıcı hareketlerini yorumlamanın iyi bir yoludur. Bu hareketleri
 Şimdi bazı belli başlı olayları inceleyelim.
 
 Clock Olayları
-=====================
+==============
 
 Clock ile ilgili daha önce bir örnek yapmıştık. Clock sınıfı, belirtilen süre sonunda bir fonksiyon çalıştırmak üzere tasarlanmıştır. İşte bu süre sonunda fonksiyonu çalıştırması, bir olay olarak ele alınıyor. Clock için zamanlayıcı da diyebiliriz.
 
