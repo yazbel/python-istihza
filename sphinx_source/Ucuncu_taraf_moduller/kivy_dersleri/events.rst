@@ -1,7 +1,7 @@
 Olaylar
 #######
 
-Olaylardan önceki bölümlerde bahsetmiştik, ancak detaylı olarak anlatmamıştık. Bu bölümde Olaylar'dan biraz daha detaylı bir şekilde bahsedeceğiz. Öncelikle olay nedir tanımlamaya çalışalım. Bir olay, kullanıcı etkileşimi sonucu oluşabilen durumların tümüne denir. Örneğin kullanıcının bir butona tıklaması, bir pencere aracının üzerine mouse ile gelmesi, bir pencere aracından mouse tıklamasını kaldırması veya bir pencere aracını seçmesi(checkbox gibi araçlar) bütün hepsi birer olay olarak ele alınır. 
+Olaylardan önceki bölümlerde bahsetmiştik, ancak detaylı olarak anlatmamıştık. Bu bölümde olaylardan biraz daha detaylı bir şekilde bahsedeceğiz. Öncelikle olay nedir tanımlamaya çalışalım. Bir olay, kullanıcı etkileşimi sonucu oluşabilen durumların tümüne denir. Örneğin kullanıcının bir butona tıklaması, bir pencere aracının üzerine mouse ile gelmesi, bir pencere aracından mouse tıklamasını kaldırması veya bir pencere aracını seçmesi(checkbox gibi araçlar) bütün hepsi birer olay olarak ele alınır. 
 
 Kullanıcı taraflı gerçekleşmeyen, ancak birer olay olarak ele alınan durumlar da vardır. Örneğin bir resmin yüklenmeye başlaması, yüklenmesinin bitmesi durumları da birer olaydır. Bunlara da yeri geldiğinde değineceğiz.
 
