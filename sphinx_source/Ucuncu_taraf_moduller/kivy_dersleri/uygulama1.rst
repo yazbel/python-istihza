@@ -1,5 +1,5 @@
 Uygulama 1 - Resim Görüntüleyici
-############################################
+################################
 
 Şimdiye kadar öğrendiklerimiz ile örnek bir uygulama yapma zamanı geldi. Çünkü uygulamadıkça öğrenmemiz eksik kalır. O yüzden bir örnek yapalım
 
