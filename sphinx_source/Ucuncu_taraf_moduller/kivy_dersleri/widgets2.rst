@@ -1,11 +1,11 @@
-############################
+####################
 Pencere Araçları - 2
-############################
+####################
 
 Pencere araçlarının birinci bölümünde, oldukça temel olan araçları inceledik. Bu bölümde, programın daha kullanışlı olmasını sağlayan, daha iyi bir görünüm imkanı veren, daha dinamik olan, daha ileri pencere araçlarını inceleyeceğiz. 
 
 Popup
-=====================
+=====
 
 Bazen program çalışırken beklenmedik bir işlem gerçekleştiğinde kullanıcıya bilgi vermek için bir mesaj kutusu gösterilir. Ya da bazen kullanıcının ek bilgi girebilmesi için bir form göstermek istenirse ekranda küçük bir dialog ekranı gösterilir. Bunların hepsini Popup pencereleri ile yapabiliriz. Kivy'de Popup pencereleri, üzerinde başka pencere araçlarını taşırlar. Örneğin ekranda mesaj göstermek istersek, Popup penceresinin içerisinde bir Label tanımlayabiliriz. Birazdan örneklerle beraber göreceğiz.
 
@@ -200,31 +200,31 @@ Sonra, eğer "Hayır" butonuna basıldıysa popup penceremizi dismiss() metodu y
 Popup penceresine ait bazı özellikleri inceleyelim
 
 seperator_color
-------------------------------
+---------------
 
 Popup penceresi ile başlık arasında bulunan uzun çizginin rengini değiştirmek için kullanılır. Liste veya demet olarak değer alır. Varsayılan olarak [47 / 255., 167 / 255., 212 / 255., 1.] değerine sahiptir
 
 separator_height
--------------------------
+----------------
 
 Uzun çizginin yüksekliğini ayarlayabilirsiniz. Varsayılan olarak 2dp dir.
 
 title_align
-----------------------
+-----------
 
 Başlığın pozisyonunu ifade eder. "left","right","center" ve "justify" değerlerini alır
 
 title_color
----------------------
+-----------
 
 Aynı zamanda, başlığın rengini de değiştirebilirsiniz. Liste veya demet olarak değer alır. Varsayılan değeri [1, 1, 1, 1].
 
 title_font
-----------------------
+----------
 
 Başlığın yazı tipini belirtir
 
 title_size
-------------------------
+----------
 
 Anlaşıldığı gibi, başlığın boyutunu ifade eder. Varsayılan olarak 14sp dir.
