@@ -1,6 +1,6 @@
-##################
+###########
 Kivy Nedir?
-##################
+###########
 
 Kivy Android'den Windows'a kadar birden fazla işletim sistemini destekleyen bir grafik arayüz kütüphanesidir. 
 Açık kaynak kodludur ve %90 Python ile yazılmıştır. Kaynak kodlarını incelemek isterseniz `şu`_ linke tıklayabilirsiniz. Ayrıca bu github adresinde yer alan, Kivy ile ilgili örnekleri de incelemek isterseniz `linke`_ tıklayabilirsiniz.
