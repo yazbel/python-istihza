@@ -1,6 +1,6 @@
-###########
+#######
 Kurulum
-###########
+#######
 
 Burda çok detaylı olarak kurulumu anlatmayacağız. Gerekli linkleri vereceğim, eğer yine de kurulumda sorun yaşarsanız forumda konu açarak belirtebilirsiniz.
 
