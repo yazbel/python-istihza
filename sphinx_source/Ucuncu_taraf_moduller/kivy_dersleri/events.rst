@@ -84,8 +84,8 @@ Eğer tanımladığınız bir Clock nesnesini kaldırmak isterseniz;
 	self.event.cancel()
 	Clock.unschedule(self.event2)
 
-Input Events
-==================
+Girdi Olayları
+==============
 
 Kullanıcı girdisi sonucu oluşan olaylardır. Tıklama, basılı halde sürükleme, bırakma, mouse tekerleği hareketi gibi hareketler sonucu oluşan olaylardır. Daha önce buna benzer olayları bazı pencere araçlarımızda ele almıştık. Bunlardan birisi Button sınıfıydı. Bir butonun üzerine tıklanması on_press, bırakılma olayı da on_release ile dinleniyordu. 
 
