@@ -1,6 +1,6 @@
-###################################
+########################
 Kivy Programlamaya Giriş
-###################################
+########################
 
 Bu yazıyla Kivy derslerine giriş yapacağız. Önce klasik başlangıç olan "merhaba dünya" örneği yapacağız ve sırayla kodumuzu inceleyeceğiz.
 
@@ -65,7 +65,7 @@ Yani biz burda programımızı oluşturabilmek için App sınıfını, kendi ana
 
 
 Kv Dili
-============
+=======
 
 Kivy programlarını geliştirmek için geliştirilen bir dildir. Kullanımı basittir. Yukarıda yaptığımız programı bir de kv dili ile gerçekleştirelim.
 
@@ -100,7 +100,7 @@ kv dili kullanırken, aynen Python'da  olduğu gibi girintilemeye dikkat etmelis
 
 
 Uygulama Özellikleri
-======================
+====================
 
 Yazdığımız Kivy programının bazı niteliklerini değiştirebiliriz. Örneğin, siz yukarıda programı çalıştırdığınızda programın başlığını henüz tanımlamadığınız için pencerenin başlığı ana sınıfın adı ile aynıdır. İsterseniz bunu değiştirebilirsiniz.
 
