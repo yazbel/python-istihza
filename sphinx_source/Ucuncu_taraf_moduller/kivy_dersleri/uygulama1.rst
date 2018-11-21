@@ -272,7 +272,7 @@ Geri butonumuz için de benzer şeyleri yapıyoruz
                 print(e)
                 self.bilgi.text = "Yuklenemedi: {}".format(self.resimListesi[self.resimSirasi])
 
-Burda farklı olarak, resimSirasi değerinin eksiye düşüp düşmediğini kontrol ettik. Eksiye düştüyse, tekrar listenin sonuna alıyoruz. Böylece bir döngü içinde resimlerin görüntülenmesini sağladık.
+Burada farklı olarak, resimSirasi değerinin eksiye düşüp düşmediğini kontrol ettik. Eksiye düştüyse, tekrar listenin sonuna alıyoruz. Böylece bir döngü içinde resimlerin görüntülenmesini sağladık.
 
 Örnekte bulunan os.sep, bulunduğunuz işletim sisteminde kullanılan dizin ayracını verir. Linux kullanıyorsanız, "/" Windows kullanıyorsanız "\\" veya "\" olarak belirlenir. Örnekte kullanmamızın sebebi, resim yolu ve resim adını birleştirdiğimizde araya dizin ayracı koymak. Eğer koymazsak, resmin bulunamadığına dair hata alırız.
 
