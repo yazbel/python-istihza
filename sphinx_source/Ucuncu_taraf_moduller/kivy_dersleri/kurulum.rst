@@ -2,7 +2,7 @@
 Kurulum
 #######
 
-Burda çok detaylı olarak kurulumu anlatmayacağız. Gerekli linkleri vereceğim, eğer yine de kurulumda sorun yaşarsanız forumda konu açarak belirtebilirsiniz.
+Burada çok detaylı olarak kurulumu anlatmayacağız. Gerekli linkleri vereceğim, eğer yine de kurulumda sorun yaşarsanız forumda konu açarak belirtebilirsiniz.
 
 
 Kuruluma başlamadan önce dikkat edilmesi gereken bir durum var. Eğer Kivy ile programlama yapacaksanız, bilgisayarınızda Python kurulu olmalıdır.
