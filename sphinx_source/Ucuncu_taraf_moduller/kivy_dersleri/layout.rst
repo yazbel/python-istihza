@@ -1,6 +1,6 @@
-#####################
+#################
 Pencere düzenleri
-#####################
+#################
 
 Merhaba arkadaşlar. Bir önceki yazıda, Kivy ile ilk programımızı yazdık,kv diline kısaca göz attık ve programımıza dair bazı özellikleri tanıdık.
 
@@ -10,12 +10,12 @@ Hatırlarsanız bir önceki derste ekrana "Merhaba Dünya" yazmıştık. Tabi ki
 
 Bu pencere araçlarını ekranda gösterirken belli bir düzen içerisinde yerleştirmeliyiz ki, programın görüntüsü güzel olsun ve kullanıcıyı memnun etsin. Şimdi adım adım pencere düzenlerimizi tanımaya başlayalım.
 
-.. note:: Pencere düzenleri bu kadarıyla sınırlı değil. Burda en çok kullanılanlar anlatılmıştır
+.. note:: Pencere düzenleri bu kadarıyla sınırlı değil. Burada en çok kullanılanlar anlatılmıştır
 
 .. _BoxLayout:
 
 BoxLayout
-=============
+=========
 
 kivy.uix.boxlayout.BoxLayout
 
@@ -168,7 +168,7 @@ Peki bu örneğimizi kv dili ile yazsaydık nasıl olurdu? Hemen bakalım
 BoxLayout ile ilgili bu kadar örnek yeterli sanırım. Siz de kendinize göre örnekler yaparak veya verilen örnekleri inceleyip değiştirerek konuyu pekiştirebilirsiniz.
 
 FloatLayout
-===============
+===========
 
 kivy.uix.floatlayout.FloatLayout
 
@@ -207,7 +207,7 @@ Ekran görüntüsü
 .. image:: images/float1.png
 
 
-Butonumuzu tanımlarken size_hint ve pos şeklinde iki tane parametre verdik. Bunlardan size_hint parametresi, butonumuzun ekrana orantılı bir şekilde boyutlandırılması içindir. Yani, .1 yazdığımızda, pencerenin boyutunun 10'da 1'i kadar genişlikte ve yükseklikte boyutlandırılır. Eğer .5 yazsaydık ekranın boyutunun yarısı kadar olacaktı.Bu arada Python'da .X gösterimi 0.X gösterimi ile aynıdır, bunu da söylemiş olalım :)
+Butonumuzu tanımlarken size_hint ve pos şeklinde iki tane parametre verdik. Bunlardan size_hint parametresi, butonumuzun ekrana orantılı bir şekilde boyutlandırılması içindir. Yani, .1 yazdığımızda, pencerenin boyutunun 10'da 1'i kadar genişlikte ve yükseklikte boyutlandırılır. Eğer .5 yazsaydık ekranın boyutunun yarısı kadar olacaktı.Bu arada Python'da .X gösterimi 0.X gösterimi ile aynıdır, bunu da burada belirtmiş olalım.
 
 
 size_hint ile butonumuzun boyutlarını belirledikten sonra, pos parametresi ile FloatLayout pencere düzenindeki yerini belirledik. pos = (10,10) yani sıra ile 10 pixel soldan uzaklık, 10 pixel aşağıdan uzaklık şeklinde tanımlanır. Kivy'de (0,0) noktası sol-alt köşedir.
@@ -284,7 +284,7 @@ Kullanımı şu şekilde;
 	
 	Program().run()
 
-FloatLayout pencere düzeni ile ilgili anlatacaklarımız bu kadar :) FloatLayout pencere düzeni, üzerinde serbest konumlandırma yapıldığı için animasyon için uygundur. Sadece örnek olması açısından, aşağıdaki kodu çalıştırın ve ne olduğunu görün. Kodu anlamanızı istemiyorum, ileride zaten anlatacağım, sadece kodun sonuçlarını görmeniz yeterli...
+FloatLayout pencere düzeni ile ilgili anlatacaklarımız bu kadar. FloatLayout pencere düzeni, üzerinde serbest konumlandırma yapıldığı için animasyon için uygundur. Sadece örnek olması açısından, aşağıdaki kodu çalıştırın ve ne olduğunu görün. Kodu anlamanızı istemiyorum, ileride zaten anlatacağız, sadece kodun sonuçlarını görmeniz yeterli.
 
 .. code-block:: python
 	
@@ -323,14 +323,14 @@ FloatLayout pencere düzeni ile ilgili anlatacaklarımız bu kadar :) FloatLayou
 	Program().run()
 
 GridLayout
-===============
+==========
 
 kivy.uix.gridlayout.GridLayout
 
-Merhaba arkadaşlar. Bir önceki derste FloatLayout pencere düzenini anlattık. FloatLayout, üzerinde koordinat bilgisi ile yerleştirme yapabileceğimiz bir pencere düzenidir. Diyerek kısa bir tekrar yapmış olalım :)
+Merhaba arkadaşlar. Bir önceki bölümde FloatLayout pencere düzenini anlattık. FloatLayout, üzerinde koordinat bilgisi ile yerleştirme yapabileceğimiz bir pencere düzenidir diyerek kısa bir tekrar yapmış olalım.
 
 
-Bu derste GridLayout pencere düzenini inceleyeceğiz. GridLayout, ızgara şeklinde yerleştirmeye imkan veren bir pencere düzenidir. Örneğin şöyle bir görüntü elde etmek için GridLayout pencere düzeni kullanılabilir
+Bu bölümde GridLayout pencere düzenini inceleyeceğiz. GridLayout, ızgara şeklinde yerleştirmeye imkan veren bir pencere düzenidir. Örneğin şöyle bir görüntü elde etmek için GridLayout pencere düzeni kullanılabilir
 
 .. image:: images/gridlayout.gif
 
@@ -352,7 +352,7 @@ GridLayout ile ilgili önemli iki kavram vardır. Birincisi rows, yani satır. G
 	        # Max 2 sütundan oluşmasını istedik
 	        # 2 sütundan sonra alta kayacaktır
 	
-	        # Birden fazla buton ekleyerek nasıl göründüğüne bakalım :)
+	        # Birden fazla buton ekleyerek nasıl göründüğüne bakalım
 	        # for döngüsü ile ekleyelim
 	        for i in range(10):
 	            govde.add_widget(Button(text = "{}".format(i+1)))
@@ -361,11 +361,11 @@ GridLayout ile ilgili önemli iki kavram vardır. Birincisi rows, yani satır. G
 	
 	Yazbel().run()
 
-Bakalım nasıl görünüyor...
+Bakalım nasıl görünüyor
 
 .. image:: images/grid1.png
 
-Gördüğünüz gibi, ne kadar eleman eklersek ekleyelim her zaman 2 sütunu aşmayacak şekilde yerleştiriliyor. Eğer bir sütunun genişliğini biraz daraltmak istersek, aynı sütuna denk gelen elemanlara size_hint_x parametresini vermemiz gerekiyor. Örneğimizle görelim..
+Gördüğünüz gibi, ne kadar eleman eklersek ekleyelim her zaman 2 sütunu aşmayacak şekilde yerleştiriliyor. Eğer bir sütunun genişliğini biraz daraltmak istersek, aynı sütuna denk gelen elemanlara size_hint_x parametresini vermemiz gerekiyor. Bir örnek üzerinden görelim
 
 .. code-block:: python
 	
@@ -383,7 +383,7 @@ Gördüğünüz gibi, ne kadar eleman eklersek ekleyelim her zaman 2 sütunu aş
 	        # Max 2 sütundan oluşmasını istedik
 	        # 2 sütundan sonra alta kayacaktır
 	
-	        # Birden fazla buton ekleyerek nasıl göründüğüne bakalım :)
+	        # Birden fazla buton ekleyerek nasıl göründüğüne bakalım
 	        # for kullanarak ekleyelim
 	        for i in range(10):
 	            if(i%2 == 0):
@@ -399,7 +399,7 @@ Gördüğünüz gibi, ne kadar eleman eklersek ekleyelim her zaman 2 sütunu aş
 	
 .. image:: images/grid2.png
 
-width parametresini de kullanabiliriz :)
+width parametresini de kullanabiliriz
 
 .. code-block:: python
 	
@@ -417,7 +417,7 @@ width parametresini de kullanabiliriz :)
 	        # Max 2 sütundan oluşmasını istedik
 	        # 2 sütundan sonra alta kayacaktır
 	
-	        # Birden fazla buton ekleyerek nasıl göründüğüne bakalım :)
+	        # Birden fazla buton ekleyerek nasıl göründüğüne bakalım
 	        # for kullanarak ekleyelim
 	        for i in range(10):
 	            if(i%2 == 0):
@@ -454,7 +454,7 @@ size_hint_x = None kısmını neden yazdığımıza gelirsek, eğer orantılı b
 	        # Max 2 sütundan oluşmasını istedik
 	        # 2 sütundan sonra alta kayacaktır
 	
-	        # Birden fazla buton ekleyerek nasıl göründüğüne bakalım :)
+	        # Birden fazla buton ekleyerek nasıl göründüğüne bakalım
 	        # for döngüsü ile ekleyelim
 	        for i in range(10):
 	            govde.add_widget(Button(text = "{}".format(i+1)))
@@ -472,11 +472,11 @@ Eğer GridLayout ile ilgili daha çok bilgiye ulaşmak isterseniz, `Kivy GridLay
 .. _Kivy GridLayout: https://kivy.org/doc/stable/api-kivy.uix.gridlayout.html
 
 AnchorLayout
-====================
+============
 
 kivy.uix.anchorlayout.AnchorLayout
 
-Pencere araçlarını belli yönlere yaslamak isterseniz, AnchorLayout kullanabilirsiniz. Örneğin sağ-yukarı, veya orta-aşağı gibi. Yalnız, bu pencere düzeninin kullanımı biraz farklı. Diğer pencere düzenleri içerisine eklenen elemanları belli bir düzene göre yerleştiriyordu. Ancak AnchorLayout kullanımı bundan farklı, AnchorLayout daha çok içine pencere araçlarının yaslanmasında yardımcı bir eleman olarak düşünülebilir.Bir örnekle sanırım daha iyi anlayabiliriz. Öncelikle pencere düzenini tanımlayalım.Pencere aracımız X ekseninde sola yaslı ve Y ekseninde ortada dursun.
+Pencere araçlarını belli yönlere yaslamak isterseniz, AnchorLayout kullanabilirsiniz. Örneğin sağ-yukarı, veya orta-aşağı gibi. Yalnız, bu pencere düzeninin kullanımı biraz farklı. Diğer pencere düzenleri içerisine eklenen elemanları belli bir düzene göre yerleştiriyordu. Ancak AnchorLayout kullanımı bundan farklı, AnchorLayout daha çok içine pencere araçlarının yaslanmasında yardımcı bir eleman olarak düşünülebilir.Bir örnekle sanırım daha iyi anlayabiliriz. Öncelikle pencere düzenini tanımlayalım. Pencere aracımız X ekseninde sola yaslı ve Y ekseninde ortada dursun.
 
 .. code-block:: python
 
@@ -532,11 +532,11 @@ anchor_x ile kullanılabilecek değerler: "left","right","center"
 anchor_y ile kullanılabilecek değerler: "top","bottom","center"
 
 StackLayout
-=================
+===========
 
 kivy.uix.stacklayout.StackLayout
 
-Stack yani Türkçe karşılığı olarak yığıt, tam da kelime anlamı olarak pencere araçlarını bir tarafa yığarak yerleştirir. Örneğin sağ-yukarı şeklinde tanımladığımızda, eklenen her pencere aracını bu tarafa yerleştirmeye başlayacaktır. Aşağıdaki görsele bakarak daha iyi anlayabiliriz
+Stack yani Türkçe karşılığı olarak yığıt, tam da kelime anlamı olarak pencere araçlarını bir tarafa yığarak yerleştirir. Örneğin sağ-yukarı şeklinde tanımladığımızda, eklenen her pencere aracını bu tarafa yığarak yerleştirmeye başlayacaktır. Aşağıdaki gif dosyasına bakarak daha iyi anlayabiliriz
 
 .. image:: images/stack.gif
 
@@ -581,11 +581,11 @@ bt-rl
 Ekranda birden fazla buton oluşturmak için for döngüsü kullandık ve bu butonların boyutunu belirttik. Boyutu sığmayan butonlar otomatik olarak bir alt satıra yerleştirilir, resimde de gördüğünüz gibi. 
 
 padding
-----------------
+-------
 
 StackLayout çerçevesi ve içerisindeki pencere araçlarının arasında ne kadar boşluk olacağını belirtir. Varsayılan olarak [0,0,0,0]
 
 spacing
-------------
+-------
 
 Yerleştirilen pencere araçları arasında ne kadar boşluk olacağını belirtir. Varsayılan olarak [0,0]
