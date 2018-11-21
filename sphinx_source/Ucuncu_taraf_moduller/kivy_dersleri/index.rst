@@ -4,14 +4,14 @@
    contain the root `toctree` directive.
 
 Kivy Türkçe Kaynak
-====================
+==================
 
 Kivy dersleri sayfasına hoşgeldiniz. Kaynak kodlara ulaşmak için `Github`_ adresini ziyaret edebilir, veya ilgili sayfada bulunan "Kaynağı Göster" e tıklayabilirsiniz.
 
 Soru, sorun ve görüşler için `Forum`_ sayfasını kullanabilirsiniz.
 
 .. _Forum: https://forum.yazbel.com
-.. _Github: https://github.com/coderistan/python-istihza
+.. _Github: https://github.com/yazbel/python-istihza
 
 İçindekiler
 ===========
