@@ -1,23 +1,23 @@
 .. _Widgets: https://kivy.org/doc/stable/guide/widgets.html
 
-#########################
+######################
 Temel Pencere Araçları
-#########################
+######################
 
-Bu bölümde, Kivy içerisinde bulunan pencere araçlarından bahsetmeyi düşünüyorum. Kivy API kaynaklarından yardım alarak oluşturulmuştur. Kivy dökümanlarında `Widgets`_ sayfasına bakabilirsiniz
+Bu bölümde, Kivy içerisinde bulunan pencere araçlarından bahsedeceğiz. Bu bölüm, Kivy API kaynaklarından yardım alarak oluşturulmuştur. Kivy dökümanlarında `Widgets`_ sayfasına bakabilirsiniz
 
 Tüm pencere araçları Widget sınıfından türetilmiştir. Widget boş bir pencere aracıdır. Siz de isterseniz Widget sınıfını kullanarak kendi pencere aracınızı oluşturabilirsiniz. Biz de yeri geldiğinde burada Widget ile ilgili örnekler yapacağız. 
 
-Pencere araçları kullanıcı ile iletişim imkanı verir, görsel arayüzü anlamlı kılar. Boş pencere hiçbir anlam ifade etmez, ancak pencere araçlarıyla anlamlı olur. Burda da elimden geldiği kadar pencere araçlarını anlatmaya çalışacağım. Pencere araçlarını iki kısımda anlatmayı düşünüyoruz. Birinci kısımda buton,yazı,metin kutusu gibi temel pencere araçlarını anlatacağız. 
+Pencere araçları kullanıcı ile iletişim imkanı verir, görsel arayüzü anlamlı kılar. Boş pencere hiçbir anlam ifade etmez, ancak pencere araçlarıyla anlamlı olur. Pencere araçlarını iki kısımda anlatmayı düşünüyoruz. Birinci kısımda buton,yazı,metin kutusu gibi temel pencere araçlarını anlatacağız. 
 
-İkinci kısımda ileri seviye pencere araçlarından bahsedeceğiz. Android tarzı menüler, Slayt pencereleri, Popup pencereleri gibi araçları ikinci kısımda anlatacağız
+İkinci kısımda ileri seviye pencere araçlarından bahsedeceğiz. Android tarzı menüler, slayt pencereleri, popup pencereleri gibi araçları ikinci kısımda anlatacağız
 
-Tabi bunlar Kivy dökümanlarında ikiye ayrılmış değil. Amaç yazıların daha düzgün ve anlamlı bir şekilde sıralanması. 
+Tabi ki bunlar Kivy dökümanlarında ikiye ayrılmış değil, sadece burada anlatım için benimsenmiştir. Amaç yazıların daha düzgün ve anlamlı bir şekilde sıralanmasıdır. 
 
-Öyleyse başlayalım...
+Öyleyse başlayalım
 
 Label
-===========
+=====
 
 kivy.uix.label.Label
 
@@ -44,7 +44,7 @@ Bildiğiniz gibi Label, ekranda yazı göstermeyi sağlayan bir pencere aracıd�
 Label sınıfıyla birlikte kullanabileceğimiz bazı özellikleri birer örnek ve kısa bir açıklama ile aşağıda belirteceğim.
 
 font_size
---------------------
+---------
 
 Yazının boyutunu pixel cinsinden ifade etmeyi sağlar. Varsayılan olarak 15 sp'dir
 
@@ -69,7 +69,7 @@ Yazının boyutunu pixel cinsinden ifade etmeyi sağlar. Varsayılan olarak 15 s
 	
 
 halign
--------------
+------
 
 Yazıyı sağa,sola veya ortaya hizalamak için kullanılır. Varsayılan olarak "left" değerini alır. Verebilinecek değerler; left,right,center
 
@@ -95,7 +95,7 @@ Yazıyı sağa,sola veya ortaya hizalamak için kullanılır. Varsayılan olarak
 
 
 color
------------
+-----
 
 Yazının rengini değiştirmek için kullanılır. Liste veya demet olarak değer alır. RGBA cinsinden değer alabilir. Varsayılan değer: [1,1,1,1]
 
@@ -120,7 +120,7 @@ Yazının rengini değiştirmek için kullanılır. Liste veya demet olarak değ
 	Yazbel().run()
 
 bold - italic
-----------------------
+-------------
 
 Yazıyı kalın ve eğik göstermek için kullanılır. 
 
@@ -148,7 +148,7 @@ Yazıyı kalın ve eğik göstermek için kullanılır.
 	
 
 line_height
-----------------------
+-----------
 
 Satır arası genişliği ayarlamak için kullanılır. Varsayılan değeri 1'dir.
 
@@ -175,7 +175,7 @@ Satır arası genişliği ayarlamak için kullanılır. Varsayılan değeri 1'di
 	
 
 markup
-----------------
+------
 
 Daha önce HTML tag'leri kullandıysanız markup kullanımını anlamanız gayet kolay olacaktır. Ancak kullanmadıysanız da sorun değil. Zira kolaydır. markup, tag'ler yardımı ile yazınızı biçimlendirmenizi sağlar. Kullanılabilir tag'ler şunlardır.
 
@@ -240,7 +240,7 @@ Daha önce HTML tag'leri kullandıysanız markup kullanımını anlamanız gayet
 	        yazi.bind(on_ref_press = self.tikla)
 	        # ref ile belirlediğimiz yazıya tıklandığı zaman
 	        # self.tikla fonksiyonumuz çalışacaktır
-	        # Burda amaç, ref ile belirlediğimiz yazıya tıklandığı zaman
+	        # Burada amaç, ref ile belirlediğimiz yazıya tıklandığı zaman
 	        # hangi fonksiyonun çalışacağını belirlemektir.
 	        # bu bir olaydır. Olayları ileride göreceğiz
 	        # şimdilik bu örneği anlamanız yeterli
@@ -254,7 +254,7 @@ Daha önce HTML tag'leri kullandıysanız markup kullanımını anlamanız gayet
 	
 
 
-Örnekte kullandığım Picasso font'unu şu adresten temin edebilirsiniz. İndirdikten sonra programın ana dosyasının yanına koymanız gerekiyor. Yoksa font bulunamadığına dair hata mesajıyla karşılaşırsınız.
+Örnekte kullandığım Pacifico font'unu internet üzerinden kolaylıkla temin edebilirsiniz. İndirdikten sonra programın ana dosyasının yanına koymanız gerekiyor. Yoksa font dosyasının bulunamadığına dair hata mesajıyla karşılaşırsınız.
 
 
 Yazınızın özelliklerine sonradan erişebilir, isterseniz bunları değiştirebilirsiniz. yazi.ozellik şeklinde ilgili özelliğe erişebilir, yazi.ozellik = yeni_deger ile de yeni değerini verebilirsiniz. Örneğin, bir yazının içeriğini ve rengini değiştirelim
@@ -286,7 +286,7 @@ Label ile ilgili daha fazla bilgi için `Kivy Label`_ sayfasını ziyaret edebil
 .. _Kivy Label: https://kivy.org/doc/stable/api-kivy.uix.label.html
 
 Button
-========
+======
 
 kivy.uix.button.Button
 
@@ -337,7 +337,7 @@ Sonra, butonumuzun bind() metodu ile on_press olayını, self.press fonksiyonumu
 Button sınıfına dair bazı özellikleri tanımlamayalım
 
 background_color
----------------------
+----------------
 
 Butonumuzun arkaplan rengi. (r,g,b,a) formatında değer alır. 
 
@@ -352,7 +352,7 @@ veya
 	buton.background_color = [1,1,0,1]
 
 background_normal
-----------------------
+-----------------
 
 Butonun basılı olmadığı durumdaki arkaplan resmi. Resmin adını yazmanız yeterlidir. Resminiz ana program ile aynı klasörde olmalıdır. Eğer bir alt klasörde ise, mesela images klasöründe ise "images/resim.png" yazmalısınız
 
@@ -367,7 +367,7 @@ veya
 	buton.background_normal = "resim.png"
 
 background_down
------------------------
+---------------
 
 Butona basılı haldeki arkaplan resmi. background_normal ile aynıdır. 
 
@@ -383,7 +383,7 @@ veya
 
 
 disabled
----------------
+--------
 
 Butonun aktif olup olmama durumu. True değeri verilirse buton deaktif hale gelecektir. Bu durumda butona tıklama yapılamaz. Eğer False değeri verilirse buton aktif hale gelecektir
 
@@ -398,7 +398,7 @@ veya
 	buton.disabled = True
 
 background_disabled_normal
-----------------------------------
+--------------------------
 
 Buton aktif olmadığı durumdaki arkaplan resmi
 
@@ -414,7 +414,7 @@ veya
 
 
 background_disabled_down
-------------------------------------
+------------------------
 
 Buton aktif olmadığı durumda, butona basıldığı zaman belirlenen arkaplan resmi
 
@@ -429,7 +429,7 @@ veya
 	buton.background_disabled_down = "resim.png"
 
 border
------------
+------
 
 Butonun kenar genişlikleri. [alt,sağ,üst,sol] formatında değer alır. Varsayılan değeri [16,16,16,16]
 
@@ -447,7 +447,7 @@ veya
 Button sınıfıyla ilgili daha detaylı bilgi için https://kivy.org/doc/stable/api-kivy.uix.button.html
 
 TextInput
-==============
+=========
 
 kivy.uix.textinput.TextInput
 
@@ -587,7 +587,7 @@ Programı çalıştırıp kullanıcı adını "admin" ve parolayı "12345" olara
 Kutulardaki metinleri kutu.text niteliği yardımıyla aldık. Bu bir String değerdir ve eğer kullanıcıdan sayı aldığımızda bunun String olarak bize verildiğini ve bunu Integer'a çevirmemiz gerektiğini unutmayalım.
 
 TextInput Girdilerini Kontrol Etme
------------------------------------------
+----------------------------------
 
 TextInput aracımıza girilen girdileri kontrol etmek istersek, TextInput.insert_text() metodunun üzerine yazmalıyız. Yani bu sınıfı miras alıp insert_text() metodunu kendimize göre tekrar yazmalıyız. Hemen bir örnekle bunu görelim
 
@@ -613,11 +613,11 @@ TextInput aracımıza girilen girdileri kontrol etmek istersek, TextInput.insert
 
 	Program().run()
 
-Programımıza girilen karakter ister küçük ister büyük olsun, her zaman büyük olarak metin kutusuna eklenecektir. Peki bunu nasıl yaptık? Öncelikle TextInput() sınıfını miras aldık. Miras alma işlemini nesne yönelimli programlamadan biliyor olmanız gerekiyor. Kısaca miras alma, önceden yazılan bir sınıfı yeni yazılan sınıfa katma, onun özelliklerini de kullanmaktır. Biz burda kendimize ait bir metin kutusu yapmak istediğimiz için, ilk olarak TextInput sınıfını miras aldık. 
+Programımıza girilen karakter ister küçük ister büyük olsun, her zaman büyük olarak metin kutusuna eklenecektir. Peki bunu nasıl yaptık? Öncelikle TextInput() sınıfını miras aldık. Miras alma işlemini nesne yönelimli programlamadan biliyor olmanız gerekiyor. Kısaca miras alma, önceden yazılan bir sınıfı yeni yazılan sınıfa katma, onun özelliklerini de kullanmaktır. Biz burada kendimize ait bir metin kutusu yapmak istediğimiz için, ilk olarak TextInput sınıfını miras aldık. 
 
-Bu sınıf, girilen yazıları inser_text() metoduyla işlediği için, biz de bu metodu yeniden yazdık. Böylece bir karakter girildiği zaman TextInput sınıfının insert_text() metodu değil, bizim yazdığımız sınıfın insert_tex() metodu çalışacaktır. Böylece biz de gelen karakterleri işleyebileceğiz. Girilen karakter "substring" argümanıyla gelir. Bunu işleyip üst sınıfa işlenmiş olarak göndereceğiz. Biz de burda gelen karakter upper() metoduyla büyük karaktere dönüştürdük ve üst sınıfın insert_text() metodunu değiştirilmiş karakterle birlikte çağırdık. Miras aldığımız sınıfın metodunu çağırmak için super() metodundan yararlanıyoruz. 
+Bu sınıf, girilen yazıları inser_text() metoduyla işlediği için, biz de bu metodu yeniden yazdık. Böylece bir karakter girildiği zaman TextInput sınıfının insert_text() metodu değil, bizim yazdığımız sınıfın insert_tex() metodu çalışacaktır. Böylece biz de gelen karakterleri işleyebileceğiz. Girilen karakter "substring" argümanıyla gelir. Bunu işleyip üst sınıfa işlenmiş olarak göndereceğiz. Biz de burada gelen karakter upper() metoduyla büyük karaktere dönüştürdük ve üst sınıfın insert_text() metodunu değiştirilmiş karakterle birlikte çağırdık. Miras aldığımız sınıfın metodunu çağırmak için super() metodundan yararlanıyoruz. 
 
-Bir karakteri değiştirdiğimiz gibi, bu karakterin yazılmamasını da sağlayabiliriz. Diyelim ki "j" harfinden nefret ediyorsunuz, bu durumda "j" harfinin girilmesini şu şekilde engelleyebilirsiniz.
+Bir karakteri değiştirdiğimiz gibi, bu karakterin yazılmamasını da sağlayabiliriz. Diyelim ki "j" harfinin hiç girilmemesini istiyorsunuz, bu durumda "j" harfinin girilmesini şu şekilde engelleyebilirsiniz.
 
 .. code-block:: python
 
@@ -648,12 +648,12 @@ Programa büyük "J" harfi de girilebileceği için, gelen büyük karakteri kü
 Şimdi, TextInput ile birlikte kullanabileceğimiz bazı nitelikleri ve olayları inceleyelim.
 
 selection_text
------------------------
+--------------
 
 TextInput üzerinde bir yazı seçildiği zaman, bu seçili yazıya selection_text ile erişebiliriz. Böylece seçili yazı üzerinde işlemler yapabiliriz.
 
 focus
----------------
+-----
 
 TextInput üzerine odaklanıldığı zaman veya odaktan ayrıldığı zaman meydana gelen olay. Örnek kullanım
 
@@ -669,7 +669,7 @@ TextInput üzerine odaklanıldığı zaman veya odaktan ayrıldığı zaman meyd
 	textinput.bind(focus=on_focus)
 
 copy(veri<str>)
------------------
+---------------
 
 Copy fonksiyonu, kopyalama hafızasına verilen "veri" değerini kopyalar. "veri" argümanı String olmalıdır. Eğer "veri" argümanı verilmezse, o anda metin kutusu üzerinde seçili olan metni hafızaya kopyalar. 
 
@@ -684,17 +684,17 @@ Ya da
 	metinKutusu.copy("kopyala")
 
 cut()
-------------------
+-----
 
 Copy ile aynı işi yapmakla beraber, kopyaladığı metni metin kutusundan siler, yani bildiğimiz kesme işlemini yapar.
 
 paste()
----------------
+-------
 
 Kopyalama hafızasındaki metni, metin kutusuna o andaki cursor pozisyonuna yerleştirir. 
 
 readonly 
-------------
+--------
 
 Eğer metin kutusundaki ifadenin kullanıcı tarafından değiştirilmesini istemiyorsanız, readonly niteliğine True değerini vermelisiniz. Böylece kullanıcılar metin kutusundaki metni değiştiremeyecek ancak okuyup kopyalayabilecektir. 
 
@@ -703,12 +703,12 @@ Eğer metin kutusundaki ifadenin kullanıcı tarafından değiştirilmesini iste
 	metinKutusu.readonly = True
 
 tab_width
---------------
+---------
 
 Tab tuşunun varsayılan değeri 4'tür. Eğer bu değeri değiştirmek isterseniz tab_width parametresine bu değeri sayı olarak vermelisiniz. 
 
 text
-------------
+----
 
 TextInput içerisindeki metinde bir değişiklik olduğu zaman, bir "text" olayı meydana gelir. Bu olayı aşağıdaki örnekteki gibi ele alabiliriz
 
@@ -722,7 +722,7 @@ TextInput içerisindeki metinde bir değişiklik olduğu zaman, bir "text" olay�
 
 
 CheckBox
-===============
+========
 
 kivy.uix.checkbox.CheckBox
 
@@ -831,12 +831,12 @@ kutu1 ve kutu2 aynı grupta olduğu için, biri aktif olduğunda diğeri deaktif
 CheckBox ile ilgili bazı niteliklere bakalım
 
 color
-------------
+-----
 
 CheckBox görünümünü(rengini) değiştirmek için kullanılabilir. Liste veya demet olarak parametre alır
 
 active
------------
+------
 
 Eğer bir CheckBox'ın aktif olma olayını ele almak isterseniz, bind ile tanımlayıp active parametresine fonksiyonunuzu yazmanız gerekir
 
@@ -854,7 +854,7 @@ Eğer bir CheckBox'ın aktif olma olayını ele almak isterseniz, bind ile tanı
 Fonksiyonunuz iki parametre almalıdır. Birincisi CheckBox'ın kendisi, diğeri aktif olup olmama durumunu belirten boolean bir parametre(True veya False).
 
 Image
-=================
+=====
 
 kivy.uix.image.Image
 
@@ -906,7 +906,7 @@ Resim internet üzerinde yüklenirken, resmin halen yüklenmekte olduğunu göst
 
 
 Resmin Boyutlarını Değiştirme
----------------------------------------
+-----------------------------
 
 Bir resmin boyutlarını değiştirebiliriz. Bunun için kv dilinden yardım alabiliriz. 
 
@@ -925,22 +925,21 @@ Resmin istenilen şekilde boyutlandırılabilmesi için, orantılı boyutlandır
 
 
 allow_stretch
---------------------
+-------------
 
 Resmimizin bulunduğu alanı tam olarak doldurmasını istiyorsak kullanabiliriz. Değer olarak True veya False alabilir. True değeri verildiğinde, bulunduğu alana göre boyutu arttırılır. Ancak en-boy oranı korunur. Örneğin, eni boyundan büyük olan bir resim, boyutu arttığı zaman da eni boyundan büyük olacaktır. 
 
 keep_ratio
---------------------
+----------
 
 allow_stretch ile birlikte, en-boy oranını korumadan bulunduğu alanı tam olarak doldurmasını istersek, keep_ratio değerini False yapmalıyız. Bu parametre de, True veya False olarak iki değer alır.
 
 anim_delay
-----------------
-
+----------
 Eğer yüklediğiniz resim bir gif ise(veya başka bir animasyon formatı), resim kareleri arasında geçiş süresini anim_delay ile ayarlayabilirsiniz. Varsayılan olarak 0.25'tir. Yani saniyede 4 kare. 
 
 anim_loop
--------------------
+---------
 
 Gif dosyamızın kaç kere döngüye gireceğini belirtebiliriz. Örneğin gif'in sadece 1 kez çalışmasını istersek,
 
@@ -951,12 +950,12 @@ Gif dosyamızın kaç kere döngüye gireceğini belirtebiliriz. Örneğin gif'i
 yazmalıyız. Böylece gif resmimiz bir kere çalışacak ve duracaktır. Varsayılan olarak 0'dır ve -1 değeri verilirse duracaktır
 
 reload()
--------------------
+--------
 
 Diskten okuduğumuz resmi değiştirdiğimizde, bunu uygulama içinde güncellemek istersek reload() metodunu kullanabiliriz.
 
 ProgressBar
-==================
+===========
 
 kivy.uix.progressbar.ProgressBar
 
