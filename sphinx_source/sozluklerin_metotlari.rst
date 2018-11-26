@@ -12,17 +12,17 @@ Sözlüklerin Metotları
 Tıpkı öteki veri tiplerinde olduğu gibi, sözlüklerin de birtakım metotları
 bulunur. Bu bölümde sözlüklerin şu metotlarını inceleyeceğiz:
 
+#. ``keys()``
+#. ``values()``
+#. ``items()``
+#. ``get()``
 #. ``clear()``
 #. ``copy()``
 #. ``fromkeys()``
-#. ``get()``
-#. ``items()``
-#. ``keys()``
 #. ``pop()``
 #. ``popitem()``
 #. ``setdefault()``
 #. ``update()``
-#. ``values()``
 
 İlk olarak ``keys()`` metoduyla başlayalım.
 
