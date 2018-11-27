@@ -12,17 +12,17 @@ Sözlüklerin Metotları
 Tıpkı öteki veri tiplerinde olduğu gibi, sözlüklerin de birtakım metotları
 bulunur. Bu bölümde sözlüklerin şu metotlarını inceleyeceğiz:
 
+#. ``keys()``
+#. ``values()``
+#. ``items()``
+#. ``get()``
 #. ``clear()``
 #. ``copy()``
 #. ``fromkeys()``
-#. ``get()``
-#. ``items()``
-#. ``keys()``
 #. ``pop()``
 #. ``popitem()``
 #. ``setdefault()``
 #. ``update()``
-#. ``values()``
 
 İlk olarak ``keys()`` metoduyla başlayalım.
 
@@ -247,9 +247,9 @@ metodu yardımıyla çok daha verimli ve sade bir hale getirebiliriz::
 clear()
 ********
 
-Sözlüklerin, inceleyeceğimiz ilk metodu ``clear()``. Bu kelime İngilizce'de
-"temizlemek" anlamına gelir. Görevi sözlükteki öğeleri temizlemektir. Yani içi
-dolu bir sözlüğü bu metot yardımıyla tamamen boşaltabiliriz::
+Bu kelime İngilizce'de "temizlemek" anlamına gelir. Görevi sözlükteki öğeleri 
+temizlemektir. Yani içi dolu bir sözlüğü bu metot yardımıyla tamamen 
+boşaltabiliriz::
 
 	>>> lig = {"şampiyon": "Adana Demirspor", "ikinci": "Mersin İdman Yurdu",
     ... "üçüncü": "Adana Gençlerbirliği"}
