@@ -26,7 +26,6 @@ today_fmt               = '%d.%m.%Y'
 #html output
 html_theme              = 'pyramid'
 html_last_updated_fmt   = '%d.%m.%Y'
-html_use_smartypants    = True
 html_show_sourcelink    = False
 html_theme_options      = {'nosidebar': True}
 
