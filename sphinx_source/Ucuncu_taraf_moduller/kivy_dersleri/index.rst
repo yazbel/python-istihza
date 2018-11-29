@@ -3,9 +3,9 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-******************
-Kivy Türkçe Kaynak
-******************
+***********
+Kivy Paketi
+***********
 
 Kivy dersleri sayfasına hoşgeldiniz. Kaynak kodlara ulaşmak için `Github`_ adresini ziyaret edebilir, veya ilgili sayfada bulunan "Kaynağı Göster" e tıklayabilirsiniz.
 
