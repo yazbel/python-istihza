@@ -15,9 +15,6 @@ Soru, sorun ve görüşler için `Forum`_ sayfasını kullanabilirsiniz.
 .. _Github: https://github.com/yazbel/python-istihza
 
 .. toctree::
-   :maxdepth: 2
-   :numbered:
-   
    nedir
    kurulum
    giris
