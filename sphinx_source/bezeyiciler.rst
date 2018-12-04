@@ -41,14 +41,14 @@ Biz bu fonksiyonu başka bir değişkene referanslayarak, o değişkenin merhaba
 
 Gördüğümüz kadarıyla dunyaci fonksiyonuda "Merhaba, dünya!" çıktısını verdi. Niye?
 
-Niye olduğunu bi bakalım. mrb_dunya'yı çağırmadan yazdırırsak ne olur?::
+Niye olduğuna bir bakalım. mrb_dunya'yı çağırmadan yazdırırsak ne olur?::
 
    print(mrb_dunya)
 
 Çıktısı `<function mrb_dunya at 0x7f7ffe024c80>` şeklinde birşey olacaktır. Çıktısı bize demeye çalışıyor ki, 
-mrb_dunya fonksiyonu belleğin belleğin 0x7f7ffe024c80 lokasyonunda bulunmaktadır. Muhtemelen 0x7f7ffe024c80
+mrb_dunya fonksiyonu belleğin 0x7f7ffe024c80 lokasyonunda bulunmaktadır. Muhtemelen 0x7f7ffe024c80
 çıktısı aynı olmayacaktır çünkü sizin bilgisayarda o fonksiyon belleğinizin farklı bir lokasyonunda depolanmış
-olabilir. Şimdi mrb_dunya fonksiyonun nerde olduğunu bildiğimize göre dunyacı fonksiyonunada bi' bakalım::
+olabilir. Şimdi mrb_dunya fonksiyonun nerde olduğunu bildiğimize göre dunyacı fonksiyonunada bir bakalım::
 
    print(dunyaci)
 
