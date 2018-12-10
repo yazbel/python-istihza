@@ -536,7 +536,7 @@ StackLayout
 
 kivy.uix.stacklayout.StackLayout
 
-Stack yani Türkçe karşılığı olarak yığıt, tam da kelime anlamı olarak pencere araçlarını bir tarafa yığarak yerleştirir. Örneğin sağ-yukarı şeklinde tanımladığımızda, eklenen her pencere aracını bu tarafa yığarak yerleştirmeye başlayacaktır. Yerleştirme resimde da görüldüğü gibi hep bir tarafa yığılarak yapılıyor.
+Stack yani Türkçe karşılığı olarak yığıt, tam da kelime anlamı olarak pencere araçlarını bir tarafa yığarak yerleştirir. Örneğin sağ-yukarı şeklinde tanımladığımızda, eklenen her pencere aracını bu tarafa yığarak yerleştirmeye başlayacaktır. Yerleştirme resimde de görüldüğü gibi hep bir tarafa yığılarak yapılıyor.
 
 .. image:: images/stack.png
 
