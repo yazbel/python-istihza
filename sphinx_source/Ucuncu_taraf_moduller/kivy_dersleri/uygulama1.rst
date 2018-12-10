@@ -288,7 +288,7 @@ Ben örnekte görüntülemek istediğim resimleri, program ile aynı klasörde b
 
 Programın görüntüsü şöyle
 
-.. image:: images/uygulama-1.gif
+.. image:: images/uygulama-1.png
 
 Gayet güzel çalışıyor. Kodu elimden geldiği kadar anlaşılır yazmaya çalıştım. Eğer anlamadığınız bir kısım olursa, veya hata olduğunu düşündüğünüz bir kısım varsa `Forum`_ üzerinden ulaşabilirsiniz.
 

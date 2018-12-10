@@ -2,13 +2,13 @@
 Pencere düzenleri
 #################
 
-Merhaba arkadaşlar. Bir önceki yazıda, Kivy ile ilk programımızı yazdık,kv diline kısaca göz attık ve programımıza dair bazı özellikleri tanıdık.
+Bir önceki bölümde, Kivy ile ilk programımızı yazdık,kv diline kısaca göz attık ve programımıza dair bazı özellikleri tanıdık.
 
 
-Hatırlarsanız bir önceki derste ekrana "Merhaba Dünya" yazmıştık. Tabi ki programlar bu kadar basit olamaz. Yani ekranda başka araçlar da olacaktır. Buton, Metin giriş alanı, Seçim kutuları gibi araçlar da olacaktır elbette.
+Hatırlarsanız bir önceki bölümde ekrana "Merhaba Dünya" yazmıştık. Tabi ki programlar bu kadar basit olamaz. Yani ekranda başka araçlar da olacaktır. Buton, Metin giriş alanı, Seçim kutuları gibi araçlar da olacaktır elbette.
 
 
-Bu pencere araçlarını ekranda gösterirken belli bir düzen içerisinde yerleştirmeliyiz ki, programın görüntüsü güzel olsun ve kullanıcıyı memnun etsin. Şimdi adım adım pencere düzenlerimizi tanımaya başlayalım.
+Bu pencere araçlarını ekranda gösterirken belli bir düzen içerisinde yerleştirmeliyiz ki, programın görüntüsü güzel olsun ve kullanıcıyı memnun etsin. Bunu da Layouts yani pencere düzenleriyle yapabiliriz. Pencere düzenleri, pencere araçlarının ekranda düzenli bir şekilde gösterilmesini sağlarlar. Şimdi bazı pencere düzenlerimizi tanıyalım.
 
 .. note:: Pencere düzenleri bu kadarıyla sınırlı değil. Burada en çok kullanılanlar anlatılmıştır
 
@@ -332,7 +332,7 @@ Merhaba arkadaşlar. Bir önceki bölümde FloatLayout pencere düzenini anlatt�
 
 Bu bölümde GridLayout pencere düzenini inceleyeceğiz. GridLayout, ızgara şeklinde yerleştirmeye imkan veren bir pencere düzenidir. Örneğin şöyle bir görüntü elde etmek için GridLayout pencere düzeni kullanılabilir
 
-.. image:: images/gridlayout.gif
+.. image:: images/gridlayout.png
 
 GridLayout ile ilgili önemli iki kavram vardır. Birincisi rows, yani satır. GridLayout pencere düzeninin max kaç satırdan oluşmasını istiyorsak, rows parametresini kullanırız. Diğeri ise, cols yani sütun. GridLayout pencere düzenimizin max kaç sütundan oluşmasını istiyorsak, cols parametresini kullanabiliriz. Şimdi ayrı ayrı ikisiyle ilgili birer örnek yapalım ve nasıl kullanacağımızı görelim
 
@@ -536,9 +536,9 @@ StackLayout
 
 kivy.uix.stacklayout.StackLayout
 
-Stack yani Türkçe karşılığı olarak yığıt, tam da kelime anlamı olarak pencere araçlarını bir tarafa yığarak yerleştirir. Örneğin sağ-yukarı şeklinde tanımladığımızda, eklenen her pencere aracını bu tarafa yığarak yerleştirmeye başlayacaktır. Aşağıdaki gif dosyasına bakarak daha iyi anlayabiliriz
+Stack yani Türkçe karşılığı olarak yığıt, tam da kelime anlamı olarak pencere araçlarını bir tarafa yığarak yerleştirir. Örneğin sağ-yukarı şeklinde tanımladığımızda, eklenen her pencere aracını bu tarafa yığarak yerleştirmeye başlayacaktır. Yerleştirme resimde da görüldüğü gibi hep bir tarafa yığılarak yapılıyor.
 
-.. image:: images/stack.gif
+.. image:: images/stack.png
 
 İçerisine yerleştirilecek pencere araçlarının boyutunu değiştirmek gerekiyor. Yoksa diğer pencere düzenlerinde de olduğu gibi, tamamen bulunduğu alanı kaplayacak ve diğer pencere araçlarının düzgün bir şekilde yerleştirilmesine engel olacaktır. Şimdi, bir örnekle bu pencere düzenini kullanalım
 

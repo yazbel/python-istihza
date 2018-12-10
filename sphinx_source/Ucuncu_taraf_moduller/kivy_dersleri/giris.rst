@@ -58,10 +58,13 @@ ekranda yazı göstermemizi sağlayan Label sınıfını import ettik, yani kull
 Bir sonraki satırda, Program adında bir sınıf oluşturduk ve App sınıfından miras aldık. Miras almak demek, önceden oluşturulan sınıfı tekrar kullanmak üzere bir sınıfa katmak, eklemek.
 
 
-Yani biz burda programımızı oluşturabilmek için App sınıfını, kendi ana sınıfımıza miras aldık ve kullanmaya başladık. Ve sınıfımızda build adında bir fonksiyon tanımladık. Bu fonksiyon, programımız çalıştığında ekranda gösterilecek ana düzeni, bileşenleri geri döndürür. Genelde bir pencere düzeni geri döndürülür. Biz şimdilik basit bir şekilde ekranda yazı göstermek istedik ve bunu geri döndürdük. İleride pencere düzenlerini gördüğümüzde onları geri döndüreceğiz. Şimdilik örneğimize bakalım
+Yani biz burada programımızı oluşturabilmek için App sınıfını, kendi ana sınıfımıza miras aldık ve kullanmaya başladık. Ve sınıfımızda build adında bir metot tanımladık. Bu metodun yazılması gereklidir,çünkü programımız çalıştığında ekranda gösterilecek ana düzeni, bileşenleri geri döndürür. Genelde bir pencere düzeni geri döndürülür. Biz şimdilik basit bir şekilde ekranda yazı göstermek istedik ve bunu geri döndürdük. İleride pencere düzenlerini gördüğümüzde onları geri döndüreceğiz. Şimdilik örneğimize bakalım
 
+Ve bir sonraki satırda, ekranda yazı gösterebileceğimiz bir pencere aracı oluşturduk. Ve bunun ekranda görünmesini sağlamak için return ile geri döndürdük.
 
-Şimdiye kadar yaptıklarımız, ihtiyacımız olan şeyleri import etmek, ana sınıfımızı oluşturmak, ekranda gösterilecek nesneleri geri döndürmek. Artık programımızı çalıştırmamız gerekiyor. Bunu da Program().run() kısmında yaptık.
+Şimdiye kadar yaptıklarımız, ihtiyacımız olan şeyleri import etmek, ana sınıfımızı oluşturmak, ekranda gösterilecek nesneleri build() metodu ile geri döndürmek. Artık programımızı çalıştırmamız gerekiyor. Bunu da Program().run() kısmında yaptık. 
+
+Dikkat ederseniz build() metodunu değil de run() metodunu çalıştırdık. Çünkü run() metodu kendi içerisinde programımız için gerekli konfigurasyonları yapar ve bizim için build() metodunu otomatik çağırır. O yüzden Program().build() ile değil, Program().run() ile programımızı çalıştırmalıyız.
 
 
 Kv Dili
