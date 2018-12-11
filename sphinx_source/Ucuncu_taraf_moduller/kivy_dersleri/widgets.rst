@@ -824,7 +824,7 @@ CheckBox pencere aracını, RadioButton olarak kullanmak isterseniz elinizdeki o
 
 kutu1 ve kutu2 aynı grupta olduğu için, biri aktif olduğunda diğeri deaktif olacaktır. 
 
-.. image:: images/check.gif
+.. image:: images/check.png
  :width: 300px
  :align: center
 
