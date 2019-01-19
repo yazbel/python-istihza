@@ -150,7 +150,7 @@ Peki bu üçüncü şahıs paketlerini nereden bulabiliriz?
 
 Hatırlarsanız Modüller konusunu işlerken 'Üçüncü Şahıs Modüllerinden' de söz
 etmiştik. Üçüncü şahıs modüllerini bulabileceğimiz başlıca kaynağın
-https://pypi.python.org/pypi adresi olduğunu ve buradan 60.000'in üzerinde
+https://pypi.org adresi olduğunu ve buradan 60.000'in üzerinde
 üçüncü şahıs Python modülüne ulaşabileceğimizi de ifade etmiştik. İşte orada
 bahsettiğimiz üçüncü şahıs modülleri, aslında birer pakettir. Zira üçüncü şahıs
 modülleri çoğunlukla birer paket biçiminde sunulur. Dolayısıyla üçüncü şahıs
@@ -161,7 +161,7 @@ var. Çünkü bazı üçüncü şahıs modüllerini kurabilmek için birtakım �
 gereksinimleri yerine getirmeniz gerekiyor olabilir. Bu tür bilgilere de ancak
 ilgili paketi geliştiren kişi veya ekibin websitesinden ulaşabilirsiniz.
 
-Bir üçüncü şahıs paketinin https://pypi.python.org/pypi adresindeki adını
+Bir üçüncü şahıs paketinin https://pypi.org adresindeki adını
 öğrendikten sonra, bu paketi şu komutla kurabilirsiniz::
 
     pip3 install paket_adı
@@ -292,7 +292,7 @@ istersek şu komutu yazacağız::
 Bu modülü yukarıdaki şekilde içe aktardığımızda, modül içindeki nitelik ve
 metotlara `urllib.request` önekiyle erişebiliriz::
 
-    >>> urllib.request.urlopen('http://www.istihza.com')
+    >>> urllib.request.urlopen('https://yazbel.com/')
 
 from paket import modül
 ========================
@@ -310,7 +310,7 @@ aktarabilirsiniz::
 Böylece `request` modülünün nitelik ve metotlarına yalnızca `request` önekiyle
 erişebilirsiniz::
 
-    >>> request.urlopen('http://www.istihza.com')
+    >>> request.urlopen('https://yazbel.com/')
 
 from paket.modül import nitelik_veya_metot
 =============================================
@@ -326,7 +326,7 @@ Dikkatlice bakın::
 Bu şekilde `urllib` paketi içindeki `request` modülünden `urlopen` adlı metodu
 doğrudan içe aktarmış olduk. Dolayısıyla bu metodu dümdüz kullanabiliriz::
 
-    >>> urlopen('http://www.istihza.com')
+    >>> urlopen('https://yazbel.com/')
 
 Ancak, modüller konusunu işlerken öneksiz aktarmaya ilişkin söylediklerimizin
 paketler için de geçerli olduğunu aklımızdan çıkarmıyoruz.
@@ -360,7 +360,7 @@ olacak.
 
 Kendi oluşturduğumuz paketler, adı üzerinde, kendi kendimize yazıp meydana
 getirdiğimiz paketlerdir. Bu paketleri iyice geliştirdikten ve başkaları için de
-yararlı olabilecek hale getirdikten sonra, istersek https://pypi.python.org/pypi
+yararlı olabilecek hale getirdikten sonra, istersek https://pypi.org
 adresindeki üçüncü şahıs paket deposuna yükleyebiliriz. Böylece kendi
 geliştirdiğimiz paketler de, üçüncü şahıs Python paketleri arasına girmiş
 olur...
