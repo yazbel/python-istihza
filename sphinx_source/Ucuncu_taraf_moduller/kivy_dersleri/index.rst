@@ -1,3 +1,7 @@
+.. meta::
+    :description: Kivy kütüphanesi için Türkçe kaynak
+    :keywords: Python, Kivy, Mobil programlama, Kivy Türkçe kaynak
+
 .. Kivy documentation master file, created by
    sphinx-quickstart on Sun Aug 26 20:04:50 2018.
    You can adapt this file completely to your liking, but it should at least
