@@ -59,12 +59,12 @@ Fonksiyonlar argüman olarak verilebilir
 ***************************************
 Örnek olarak::
    
-   def fonksiyonCagir(fonksiyon):
+   def fonksiyon_cagir(fonksiyon):
       print("Fonksiyon çağrılıyor!")
 
       fonksiyon()
 
-   fonksiyon(mrb_dunya)
+   fonksiyon_cagir(mrb_dunya)
 
 Bu programın çıktısı sırayla "Fonksiyon çağrılıyor!" "Merhaba, dünya!" yazdırmak olacaktır. Yukarıda gösterdiğimiz gibi
 Python fonksiyon = mrb_dunya yaptı ve onu çağırınca 0x7f576e924bf8 lokasyonundaki (mrb_dunya'nın lokasyonundaki) fonksiyonu
@@ -75,17 +75,17 @@ Fonksiyonların içinde fonksiyon oluşturulabilir
 ***********************************************
 Örnek Olarak::
    
-   def merhabaDe():
+   def merhaba_de():
       def merhabaci():
          print("Merhaba istihza!")
       merhabaci()
 
-Yukardaki örnekte merhabaci fonksiyonu *merhabaDe* fonksiyonunun içinde tanımladık.
-Bu Python'da geçerli bir davranıştır. *merhabaDe* fonsksiyonunu çağırdığımızda, *merhabaci*
-fonksiyonu *merhabaDe* fonksiyonun içinde tanımlanıp çağrılıyor.
+Yukardaki örnekte merhabaci fonksiyonu *merhaba_de* fonksiyonunun içinde tanımladık.
+Bu Python'da geçerli bir davranıştır. *merhaba_de* fonsksiyonunu çağırdığımızda, *merhabaci*
+fonksiyonu *merhaba_de* fonksiyonun içinde tanımlanıp çağrılıyor.
 
-Eğer *merhabaci* fonksiyonunu *merhabaDe* fonksiyonun dışında çağırmaya çalışırsak, Python
-bize bir hata verecektir çünkü *merhabaci* fonksiyonu *merhabaDe* fonksiyonun dışında tanımlanmamıştır.
+Eğer *merhabaci* fonksiyonunu *merhaba_de* fonksiyonun dışında çağırmaya çalışırsak, Python
+bize bir hata verecektir çünkü *merhabaci* fonksiyonu *merhaba_de* fonksiyonun dışında tanımlanmamıştır.
 
 Bezeleyiciler (Decoratorlar)
 ****************************
