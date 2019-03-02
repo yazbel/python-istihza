@@ -15,6 +15,7 @@ döndürülebilir ve referanslanabilir. Fonksiyonlar da birer nesne olduğundan
 dolayı aynı işlemleri fonksiyonlar içinde yapabilirsiniz. Fonksiyonların
 ne olduğunu bildiğimize göre artık bezeyicilerin ne olduğunu öğrenebiliriz.
 
+Fonksiyonlar diğer değişkenler tarafından referanslanabilir
 ***********************************************************
 
 Python'da "Merhaba, dünya!" yazdıran bir fonksiyon örneği::
