@@ -10,8 +10,8 @@ Bu bölüme kadar fonksiyonları nasıl kullanabileceğimizi işlemiştik.
 Bu yazıda bezeyicilerin nasıl çalıştığını, bezeyicilerin ne olduğunu ve
 ve kendimize özgü bezeyicileri nasıl oluşturabileceğimizi anlayacağız.
 
-Python'daki herşey birer nesnedir. Nesneler argüman olarak verilebilir,
-döndürülebilir ve referanslanabilir. Fonksiyonlarda birer nesne olduğundan
+Python'da her şey birer nesnedir. Nesneler argüman olarak verilebilir,
+döndürülebilir ve referanslanabilir. Fonksiyonlar da birer nesne olduğundan
 dolayı aynı işlemleri fonksiyonlar içinde yapabilirsiniz. Fonksiyonların
 ne olduğunu bildiğimize göre artık bezeyicilerin ne olduğunu öğrenebiliriz.
 
@@ -45,7 +45,7 @@ Niye olduğuna bir bakalım. mrb_dunya'yı çağırmadan yazdırırsak ne olur?:
 Çıktısı `<function mrb_dunya at 0x7f7ffe024c80>` şeklinde birşey olacaktır. Çıktısı bize demeye çalışıyor ki, 
 mrb_dunya fonksiyonu belleğin 0x7f7ffe024c80 lokasyonunda bulunmaktadır. Muhtemelen 0x7f7ffe024c80
 çıktısı aynı olmayacaktır çünkü sizin bilgisayarda o fonksiyon belleğinizin farklı bir lokasyonunda depolanmış
-olabilir. Şimdi mrb_dunya fonksiyonun nerde olduğunu bildiğimize göre dunyacı fonksiyonunada bir bakalım::
+olabilir. Şimdi mrb_dunya fonksiyonun nerde olduğunu bildiğimize göre dunyacı fonksiyonuna da bir bakalım::
 
    print(dunyaci)
 
@@ -64,7 +64,7 @@ Fonksiyonlar argüman olarak verilebilir
 
    fonksiyon(mrb_dunya)
 
-Bu programın çıktısı sırayla "Fonksiyon çağrılıyor!" "Merhaba, dünya!" yazdırmak olacaktır. Yukarda gösterdiğimiz gibi
+Bu programın çıktısı sırayla "Fonksiyon çağrılıyor!" "Merhaba, dünya!" yazdırmak olacaktır. Yukarıda gösterdiğimiz gibi
 Python fonksiyon = mrb_dunya yaptı ve onu çağırınca 0x7f576e924bf8 lokasyonundaki (mrb_dunya'nın lokasyonundaki) fonksiyonu
 çağırdı.
 
@@ -79,7 +79,7 @@ Fonksiyonların içinde fonksiyon oluşturulabilir
       merhabaci()
 
 Yukardaki örnekte merhabaci fonksiyonu *merhabaDe* fonksiyonunun içinde tanımladık.
-Bu Pythonda geçerli bir davranıştır. *merhabaDe* fonsksiyonunu çağırdığımızda, *merhabaci*
+Bu Python'da geçerli bir davranıştır. *merhabaDe* fonsksiyonunu çağırdığımızda, *merhabaci*
 fonksiyonu *merhabaDe* fonksiyonun içinde tanımlanıp çağrılıyor.
 
 Eğer *merhabaci* fonksiyonunu *merhabaDe* fonksiyonun dışında çağırmaya çalışırsak, Python
