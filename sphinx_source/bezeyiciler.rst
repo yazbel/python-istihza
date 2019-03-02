@@ -10,10 +10,11 @@ Bu bölüme kadar fonksiyonları nasıl kullanabileceğimizi işlemiştik.
 Bu yazıda bezeyicilerin nasıl çalıştığını, bezeyicilerin ne olduğunu ve
 ve kendimize özgü bezeyicileri nasıl oluşturabileceğimizi anlayacağız.
 
-Python'da her şey birer nesnedir. Nesneler argüman olarak verilebilir,
-döndürülebilir ve referanslanabilir. Fonksiyonlar da birer nesne olduğundan
-dolayı aynı işlemleri fonksiyonlar içinde yapabilirsiniz. Fonksiyonların
-ne olduğunu bildiğimize göre artık bezeyicilerin ne olduğunu öğrenebiliriz.
+Python'da fonksiyonlar birinci sınıf nesnelerdir, Python'daki her
+şey gibi. Yani fonksiyonlar da her nesne gibidir. Bezeyiciler de
+bu özellikten yararlanarak çalışırlar. Şimdi fonksiyonların
+yapabileceklerinden bir kaç tanesini öğrenelim.
+
 
 Fonksiyonlar diğer değişkenler tarafından referanslanabilir
 ***********************************************************
