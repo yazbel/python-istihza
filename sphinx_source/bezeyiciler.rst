@@ -141,5 +141,14 @@ hemen argüman olarak verip, çağırıyoruz. Peki bezeyicilere argüman verebil
    # Python 3.7
    # Python 3.7 ile dataclasses gibi birçok güzel özellik eklendi.
 
-Gördüğümüz kadarıyla oldukça basit. bezeyiciler ne işe diye soracak isek, bazı fonksiyonlara istediğiniz
+ve ya onun çıktısını alarak çıktının üzerinde işlemler uygulayabiliriz::
+
+   def iki_ile_carp(fonksiyon):
+       def wrapper():
+           cikti = fonksiyon()
+         
+           print(cikti * 2)
+       return wrapper
+
+Gördüğümüz kadarıyla oldukça basit. bezeyiciler ne işe diye soracak isek, bazı fonksiyonlarda istediğiniz
 özelliği eklemede veya Flask gibi frameworklerde kullanıldığını unutmayın. Hadi sonraki dersimize geçelim :)
