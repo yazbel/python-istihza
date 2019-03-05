@@ -239,9 +239,9 @@ Daha önce HTML tag'leri kullandıysanız markup kullanımını anlamanız gayet
 	
 	        yazi.bind(on_ref_press = self.tikla)
 	        # ref ile belirlediğimiz yazıya tıklandığı zaman
-	        # self.tikla fonksiyonumuz çalışacaktır
+	        # self.tikla metodumuz çalışacaktır
 	        # Burada amaç, ref ile belirlediğimiz yazıya tıklandığı zaman
-	        # hangi fonksiyonun çalışacağını belirlemektir.
+	        # hangi metodun çalışacağını belirlemektir.
 	        # bu bir olaydır. Olayları ileride göreceğiz
 	        # şimdilik bu örneği anlamanız yeterli
 	        
@@ -824,7 +824,7 @@ CheckBox pencere aracını, RadioButton olarak kullanmak isterseniz elinizdeki o
 
 kutu1 ve kutu2 aynı grupta olduğu için, biri aktif olduğunda diğeri deaktif olacaktır. 
 
-.. image:: images/check.gif
+.. image:: images/check.png
  :width: 300px
  :align: center
 

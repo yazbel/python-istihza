@@ -332,7 +332,7 @@ Merhaba arkadaşlar. Bir önceki bölümde FloatLayout pencere düzenini anlatt�
 
 Bu bölümde GridLayout pencere düzenini inceleyeceğiz. GridLayout, ızgara şeklinde yerleştirmeye imkan veren bir pencere düzenidir. Örneğin şöyle bir görüntü elde etmek için GridLayout pencere düzeni kullanılabilir
 
-.. image:: images/gridlayout.gif
+.. image:: images/gridlayout.png
 
 GridLayout ile ilgili önemli iki kavram vardır. Birincisi rows, yani satır. GridLayout pencere düzeninin max kaç satırdan oluşmasını istiyorsak, rows parametresini kullanırız. Diğeri ise, cols yani sütun. GridLayout pencere düzenimizin max kaç sütundan oluşmasını istiyorsak, cols parametresini kullanabiliriz. Şimdi ayrı ayrı ikisiyle ilgili birer örnek yapalım ve nasıl kullanacağımızı görelim
 
@@ -536,9 +536,9 @@ StackLayout
 
 kivy.uix.stacklayout.StackLayout
 
-Stack yani Türkçe karşılığı olarak yığıt, tam da kelime anlamı olarak pencere araçlarını bir tarafa yığarak yerleştirir. Örneğin sağ-yukarı şeklinde tanımladığımızda, eklenen her pencere aracını bu tarafa yığarak yerleştirmeye başlayacaktır. Aşağıdaki gif dosyasına bakarak daha iyi anlayabiliriz
+Stack yani Türkçe karşılığı olarak yığıt, tam da kelime anlamı olarak pencere araçlarını bir tarafa yığarak yerleştirir. Örneğin sağ-yukarı şeklinde tanımladığımızda, eklenen her pencere aracını bu tarafa yığarak yerleştirmeye başlayacaktır. Aşağıdaki png dosyasına bakarak daha iyi anlayabiliriz
 
-.. image:: images/stack.gif
+.. image:: images/stack.png
 
 İçerisine yerleştirilecek pencere araçlarının boyutunu değiştirmek gerekiyor. Yoksa diğer pencere düzenlerinde de olduğu gibi, tamamen bulunduğu alanı kaplayacak ve diğer pencere araçlarının düzgün bir şekilde yerleştirilmesine engel olacaktır. Şimdi, bir örnekle bu pencere düzenini kullanalım
 

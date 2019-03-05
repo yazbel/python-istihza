@@ -58,7 +58,7 @@ ekranda yazı göstermemizi sağlayan Label sınıfını import ettik, yani kull
 Bir sonraki satırda, Program adında bir sınıf oluşturduk ve App sınıfından miras aldık. Miras almak demek, önceden oluşturulan sınıfı tekrar kullanmak üzere bir sınıfa katmak, eklemek.
 
 
-Yani biz burda programımızı oluşturabilmek için App sınıfını, kendi ana sınıfımıza miras aldık ve kullanmaya başladık. Ve sınıfımızda build adında bir fonksiyon tanımladık. Bu fonksiyon, programımız çalıştığında ekranda gösterilecek ana düzeni, bileşenleri geri döndürür. Genelde bir pencere düzeni geri döndürülür. Biz şimdilik basit bir şekilde ekranda yazı göstermek istedik ve bunu geri döndürdük. İleride pencere düzenlerini gördüğümüzde onları geri döndüreceğiz. Şimdilik örneğimize bakalım
+Yani biz burda programımızı oluşturabilmek için App sınıfını, kendi ana sınıfımıza miras aldık ve kullanmaya başladık. Ve sınıfımızda build adında bir metot tanımladık. Bu metot, programımız çalıştığında ekranda gösterilecek ana düzeni, bileşenleri geri döndürür. Genelde bir pencere düzeni geri döndürülür. Biz şimdilik basit bir şekilde ekranda yazı göstermek istedik ve bunu geri döndürdük. İleride pencere düzenlerini gördüğümüzde onları geri döndüreceğiz. Şimdilik örneğimize bakalım
 
 
 Şimdiye kadar yaptıklarımız, ihtiyacımız olan şeyleri import etmek, ana sınıfımızı oluşturmak, ekranda gösterilecek nesneleri geri döndürmek. Artık programımızı çalıştırmamız gerekiyor. Bunu da Program().run() kısmında yaptık.
@@ -120,7 +120,7 @@ Yazdığımız Kivy programının bazı niteliklerini değiştirebiliriz. Örne�
 	
 	Program().run()
 	
-Kivy'de bir program başlarken, ekrana pencere çizilmeden önce birtakım fonksiyonlar çalışır. Bunlardan birisi on_start() fonksiyonu. Bu fonksiyon içerisine, ekrana pencere çizilmeden önce yani programımız başlamadan yapmak istediğimiz tanımlamaları yazabiliriz. Örneğin başlığı burada tanımlayabiliriz, ya da veritabanımız varsa bağlantıları burada başlatabiliriz. Kullanımına dair basit bir örnek
+Kivy'de bir program başlarken, ekrana pencere çizilmeden önce birtakım metotlar çalışır. Bunlardan birisi on_start() metodu. Bu metot içerisine, ekrana pencere çizilmeden önce yani programımız başlamadan yapmak istediğimiz tanımlamaları yazabiliriz. Örneğin başlığı burada tanımlayabiliriz, ya da veritabanımız varsa bağlantıları burada başlatabiliriz. Kullanımına dair basit bir örnek
 
 .. code-block:: python
 	
@@ -140,18 +140,20 @@ Kivy'de bir program başlarken, ekrana pencere çizilmeden önce birtakım fonks
 	Program().run()
 	
 
-Kivy uygulamamızda belli olaylarda çalışan başka fonksiyonlar da var.
+Ancak dikkat edilmesi gereken bir durum var. on_start() metodu, build() metodu çalıştırıldıktan sonra çağrılır. 
+
+Kivy uygulamamızda belli olaylarda çalışan başka metotlar da var.
 
 
 .. role:: red
 
-:red:`on_stop()`: Bu fonksiyon, programımız sona erdiğinde çalıştırılır. Böylece son olarak yapmak istediğimiz işlemleri(örneğin açık dosyaları kapatmak) burada yapabiliriz
+:red:`on_stop()`: Bu metot, programımız sona erdiğinde çalıştırılır. Böylece son olarak yapmak istediğimiz işlemleri(örneğin açık dosyaları kapatmak) burada yapabiliriz
 
 
-:red:`on_pause()`: android veya ios üzerinde programımız arkaplana alındığında bu fonksiyon çalıştırılır.
+:red:`on_pause()`: android veya ios üzerinde programımız arkaplana alındığında bu metot çalıştırılır.
 
 
-:red:`on_resume()`: Kullanıcı arkaplana aldığı uygulamamıza tekrar dönerse bu fonksiyon çalıştırılır.
+:red:`on_resume()`: Kullanıcı arkaplana aldığı uygulamamıza tekrar dönerse bu metot çalıştırılır.
 
 
 Şimdi bunların hepsini birarada kullandığımız bir örnek görelim ve konuyu bitirelim
@@ -167,7 +169,7 @@ Kivy uygulamamızda belli olaylarda çalışan başka fonksiyonlar da var.
 	class Program(App):
 	    def on_start(self):
 	        self.title = "Yazbel"
-	        self.yazi = Label(text = "Merhaba Dünya")
+	        # bir takım işlemler...
 	
 	    def on_stop(self):
 	        # Uygulama kapatılırken...
@@ -183,6 +185,7 @@ Kivy uygulamamızda belli olaylarda çalışan başka fonksiyonlar da var.
 	        self.yazi.text = "Programa tekrar hoşgeldiniz"
 	
 	    def build(self):
+	        self.yazi = Label(text = "Merhaba Dünya")
 	        return self.yazi
 	
 	Program().run()

@@ -14,14 +14,6 @@ Bu kitabın amacı, herhangi bir sebeple Python programlama diline ilgi duyan, b
 Bu kitabın hedef kitlesi, programlamayı hiç bilmeyen kişilerdir.
 Bu sebeple, bu kitapta ders konularını olabildiğince ayrıntılı ve basitleştirilmiş bir şekilde ele almaya çalıştık.
 
-Bu Kitabı Nereden İndirebilirim?
-********************************
-
-Bu kitabı İnternet üzerinden takip edebileceğiniz gibi, PDF biçiminde bilgisayarınıza da `indirebilirsiniz <https://belgeler.yazbel.com/python-istihza.pdf>`__.
-Ancak bu kitabın içeriğinin sık sık güncellendiğini aklınızdan çıkarmayın.
-Dolayısıyla, bilgisayarınıza indirdiğiniz PDF belgesi güncelliğini çabucak yitirecektir.
-O yüzden, eğer mümkünse, kitabı çevrim içi kaynağından takip etmeniz veya bu mümkün değilse, PDF belgesini sık sık yeniden indirmeniz daha mantıklı olacaktır.
-
 Bu Kitaptan Nasıl Yararlanabilirim?
 ***********************************
 

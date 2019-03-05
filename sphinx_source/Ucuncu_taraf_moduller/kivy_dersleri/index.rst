@@ -3,22 +3,18 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Kivy Türkçe Kaynak
-==================
+***********
+Kivy Paketi
+***********
 
-Kivy dersleri sayfasına hoşgeldiniz. Kaynak kodlara ulaşmak için `Github`_ adresini ziyaret edebilir, veya ilgili sayfada bulunan "Kaynağı Göster" e tıklayabilirsiniz.
+Bu belgelerin kaynak kodlarına ulaşmak için `Github`_ adresini ziyaret edebilir ve eğer isterseniz katkıda bulunarak bu kaynağın iyileştirilmesine yardımcı olabilirsiniz.
 
 Soru, sorun ve görüşler için `Forum`_ sayfasını kullanabilirsiniz.
 
 .. _Forum: https://forum.yazbel.com
 .. _Github: https://github.com/yazbel/python-istihza
 
-İçindekiler
-===========
 .. toctree::
-   :maxdepth: 2
-   :numbered:
-   
    nedir
    kurulum
    giris
