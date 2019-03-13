@@ -7,8 +7,8 @@ Fonksiyonlarda Bezeyicilerin (Decorator) Kullanımı
 **************************************************
 
 Bu bölüme kadar fonksiyonları nasıl kullanabileceğimizi işlemiştik. 
-Bu yazıda bezeyicilerin nasıl çalıştığını, bezeyicilerin ne olduğunu ve
-ve kendimize özgü bezeyicileri nasıl oluşturabileceğimizi anlayacağız.
+Bu yazıda bezeyicilerin nasıl çalıştığını, bezeyicilerin ne olduğunu
+kendimize özgü bezeyicileri nasıl oluşturabileceğimizi anlayacağız.
 
 Python'da fonksiyonlar birinci sınıf nesnelerdir, Python'daki her
 şey gibi. Yani fonksiyonlar da her nesne gibidir. Bezeyiciler de
