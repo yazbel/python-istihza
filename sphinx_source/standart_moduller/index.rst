@@ -38,6 +38,7 @@ bir genişlemiş olacak.
 
     regex
     datetime
+    math
     random
     sqlite
     os
