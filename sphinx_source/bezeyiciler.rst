@@ -13,7 +13,7 @@ kendimize özgü bezeyicileri nasıl oluşturabileceğimizi anlayacağız.
 Python'da fonksiyonlar birinci sınıf nesnelerdir, Python'daki her
 şey gibi. Yani fonksiyonlar da her nesne gibidir. Bezeyiciler de
 bu özellikten yararlanarak çalışırlar. Şimdi fonksiyonların
-yapabileceklerinden bir kaç tanesini öğrenelim.
+yapabileceklerinden birkaç tanesini öğrenelim.
 
 
 Fonksiyonlar diğer değişkenler tarafından referanslanabilir
@@ -44,7 +44,7 @@ Niye olduğuna bir bakalım. mrb_dunya'yı çağırmadan yazdırırsak ne olur?:
 
    print(mrb_dunya)
 
-Çıktısı `<function mrb_dunya at 0x7f7ffe024c80>` şeklinde birşey olacaktır. Çıktısı bize demeye çalışıyor ki, 
+Çıktısı `<function mrb_dunya at 0x7f7ffe024c80>` şeklinde bir şey olacaktır. Çıktısı bize demeye çalışıyor ki, 
 mrb_dunya fonksiyonu belleğin 0x7f7ffe024c80 lokasyonunda bulunmaktadır. Muhtemelen 0x7f7ffe024c80
 çıktısı sizin çıktınız ile aynı olmayacaktır çünkü sizin bilgisayarınızda o fonksiyon belleğinizin farklı bir lokasyonunda depolanmış
 olabilir. Şimdi mrb_dunya fonksiyonun nerede olduğunu bildiğimize göre dunyacı fonksiyonuna da bir bakalım::
