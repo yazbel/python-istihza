@@ -32,13 +32,13 @@ Biz bu fonksiyonu başka bir değişkene referanslayarak, o değişkenin merhaba
 
    dunyaci = mrb_dunya
    
-Şimdide dunyaci fonksiyonunu çağıralım::
+Şimdi de dunyaci fonksiyonunu çağıralım::
 
    dunyaci()
 
    # Çıktı: Merhaba, dünya!
 
-Gördüğümüz kadarıyla dunyaci fonksiyonuda "Merhaba, dünya!" çıktısını verdi. Niye?
+Gördüğümüz kadarıyla dunyaci fonksiyonuda "Merhaba, dünya!" çıktısını verdi. Peki niye?
 
 Niye olduğuna bir bakalım. mrb_dunya'yı çağırmadan yazdırırsak ne olur?::
 
@@ -47,13 +47,13 @@ Niye olduğuna bir bakalım. mrb_dunya'yı çağırmadan yazdırırsak ne olur?:
 Çıktısı `<function mrb_dunya at 0x7f7ffe024c80>` şeklinde bir şey olacaktır. Çıktısı bize demeye çalışıyor ki, 
 mrb_dunya fonksiyonu belleğin 0x7f7ffe024c80 lokasyonunda bulunmaktadır. Muhtemelen 0x7f7ffe024c80
 çıktısı sizin çıktınız ile aynı olmayacaktır çünkü sizin bilgisayarınızda o fonksiyon belleğinizin farklı bir lokasyonunda depolanmış
-olabilir. Şimdi mrb_dunya fonksiyonun nerede olduğunu bildiğimize göre dunyacı fonksiyonuna da bir bakalım::
+olabilir. Şimdi mrb_dunya fonksiyonun nerede olduğunu bildiğimize göre dunyaci fonksiyonuna da bir bakalım::
 
    print(dunyaci)
 
-Çıktı `<function mrb_dunya at 0x7f41c77cebf8>`. Garip değil mi? Normalde `<function mrb_dunya at 0x7f41c77cebf8>` olmaması gerek çünkü fonksiyonumuzun adı mrb_dunya değil. İşte işler sandığımız gibi olmuyor. Python "dunyaci = mrb_dunya" yerinde mrb_dunya
+Çıktı `<function mrb_dunya at 0x7f41c77cebf8>`. Garip değil mi? Normalde `<function mrb_dunya at 0x7f41c77cebf8>` olmaması gerek çünkü fonksiyonumuzun adı mrb_dunya değil. İşte işler sandığımız gibi olmuyor. Python "dunyaci = mrb_dunya" yapınca mrb_dunya
 bellekteki mrb_dunya fonksiyonuna yönlendirdi, yani `0x7f41c77cebf8`'e. O yüzden Python onu mrb_dunya fonksiyonu olarak gördü. Fakat dikkatli olursak, mrb_dunya ile dunyaci fonksiyonun lokasyonları aynı değil. Çünkü iki fonksiyonun aynı yerde olması 
-mümkün değil. Belleğin farklı bir yerindeki fonksiyon, başka fonksiyona yönlendiriyor. Yani 0x7f41c77cebf8 olan bir fonksiyon aslında 0x7f576e924bf8 lokasyonundaki bir fonksiyonu çağırıyor. Şimdi sonrakine geçelim.
+mümkün değil. Belleğin farklı bir yerindeki fonksiyon, başka fonksiyona yönlendiriyor. Yani 0x7f41c77cebf8 olan bir fonksiyon aslında 0x7f576e924bf8 lokasyonundaki bir fonksiyonu çağırıyor.
 
 Fonksiyonlar argüman olarak verilebilir
 ***************************************
@@ -87,26 +87,35 @@ fonksiyonu *merhaba_de* fonksiyonun içinde tanımlanıp çağrılıyor.
 Eğer *merhabaci* fonksiyonunu *merhaba_de* fonksiyonun dışında çağırmaya çalışırsak, Python
 bize bir hata verecektir çünkü *merhabaci* fonksiyonu *merhaba_de* fonksiyonun dışında tanımlanmamıştır.
 
-Bezeleyiciler (Decoratorlar)
+Bezeyici (Decoratorlar)
 ****************************
 
-Bezeleyiciler, fonksiyonlarımızı veya nesnelerimizi modifiye etmemizi sağlayan çağrılabilir nesnelerdir.
+Bezeyici, fonksiyonlarımızı veya nesnelerimizi modifiye etmemizi sağlayan çağrılabilir nesnelerdir.
 
-Çağrılabilir objeleri örnek verecek olursak, fonksiyonlar ve objeleri örnek verebiliriz.
+Çağrılabilir objeleri örnek verecek olursak, fonksiyonlar ve objeleri örnek verebiliriz. Bunu "callable"
+fonksiyonu ile kontrol edebilirsiniz, örneğin::
 
-Bunu bir örnek ile anlayalım::
+    def f():
+        ...
+        
+    print(callable(f))
+    #=> True
+    
+ya da objemizin "__call\__" magic methodunun var olup olmadığını kontrol ederek de anlayabilirsiniz.
 
-   def bezeleyici(fonksiyon):
+Şimdi bezeyici fonksiyonları bir örnek ile anlayalım::
+
+   def bezeyici(fonksiyon):
       def wrapper():
          print("Wrapper fonksiyonumuz başladı")
-         fonksiyon() # Bezeleyici ile aldığımız fonksiyonu çağırıyoruz
+         fonksiyon() # Bezeyici ile aldığımız fonksiyonu çağırıyoruz
          print("Wrapper fonksiyonu bitti.")
       return wrapper
 
    def merhaba():
       print("Merhaba!")
 
-   merhaba = bezeleyici(merhaba)
+   merhaba = bezeyici(merhaba)
 
    merhaba()
 
@@ -114,17 +123,17 @@ Bunu bir örnek ile anlayalım::
    # Merhaba!
    # Wrapper fonksiyonu bitti.
 
-Şeklinde bir programımız olacaktır. Peki bu bezeleyici fonksiyonları
+Şeklinde bir çıktımız olacaktır. Peki bu bezeyici fonksiyonları
 daha okunabilir bir şekilde çağırabilir miyiz? Tabiki::
    
-   @bezeleyici
+   @bezeyici
    def merhaba():
       print("Merhaba!")
 
    merhaba()
 
 Yukarıdaki program ile bir önceki programımız ile aynı çıktıyı verecektir.
-Mantık aynı: fonksiyonu al, çağır. Fakat bu sefer fonksiyon tanımlandıktan sonra
+Mantık aynı; fonksiyonu al, çağır. Fakat bu sefer fonksiyonu tanımlandıktan sonra
 hemen argüman olarak verip, çağırıyoruz. Peki bezeyicilere argüman verebilir miyiz?::
    
    def baslik(fonksiyon):
@@ -150,5 +159,5 @@ ve ya onun çıktısını alarak çıktının üzerinde işlemler uygulayabiliri
            print(cikti * 2)
        return wrapper
 
-Gördüğümüz kadarıyla oldukça basit. bezeyiciler ne işe diye soracak isek, bazı fonksiyonlarda istediğiniz
-özelliği eklemede veya Flask gibi frameworklerde kullanıldığını unutmayın. Hadi sonraki dersimize geçelim :)
+Gördüğümüz kadarıyla oldukça basit. Bezeyiciler ne işe yarayacak diye soracak isek, bazı fonksiyonlarda istediğiniz
+özelliği eklemede ve ya Flask gibi frameworklerde kullanıldığını unutmayın. Hadi sonraki dersimize geçelim :)
