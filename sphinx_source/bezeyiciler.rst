@@ -47,7 +47,7 @@ Niye olduğuna bir bakalım. mrb_dunya'yı çağırmadan yazdırırsak ne olur?:
 Çıktısı `<function mrb_dunya at 0x7f7ffe024c80>` şeklinde birşey olacaktır. Çıktısı bize demeye çalışıyor ki, 
 mrb_dunya fonksiyonu belleğin 0x7f7ffe024c80 lokasyonunda bulunmaktadır. Muhtemelen 0x7f7ffe024c80
 çıktısı sizin çıktınız ile aynı olmayacaktır çünkü sizin bilgisayarınızda o fonksiyon belleğinizin farklı bir lokasyonunda depolanmış
-olabilir. Şimdi mrb_dunya fonksiyonun nerde olduğunu bildiğimize göre dunyacı fonksiyonuna da bir bakalım::
+olabilir. Şimdi mrb_dunya fonksiyonun nerede olduğunu bildiğimize göre dunyacı fonksiyonuna da bir bakalım::
 
    print(dunyaci)
 
