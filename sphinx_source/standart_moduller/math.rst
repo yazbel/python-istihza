@@ -296,11 +296,6 @@ Radyan cinsinden verilen sayının sinüsünü hesaplar.
     >>> math.sin(math.radians(60))
     0.8660254037844386
 
-math.sin()
-************
-
-Radyan cinsinden verilen parametrenin sinüsünü hesaplar.
-
 math.cos()
 **********
 
