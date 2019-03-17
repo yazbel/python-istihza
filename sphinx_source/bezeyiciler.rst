@@ -150,7 +150,7 @@ hemen argüman olarak verip, çağırıyoruz. Peki bezeyicilere argüman verebil
    # Python 3.7
    # Python 3.7 ile dataclasses gibi birçok güzel özellik eklendi.
 
-ve ya onun çıktısını alarak çıktının üzerinde işlemler uygulayabiliriz::
+veya onun çıktısını alarak çıktının üzerinde işlemler uygulayabiliriz::
 
    def iki_ile_carp(fonksiyon):
        def wrapper():
@@ -160,4 +160,4 @@ ve ya onun çıktısını alarak çıktının üzerinde işlemler uygulayabiliri
        return wrapper
 
 Gördüğümüz kadarıyla oldukça basit. Bezeyiciler ne işe yarayacak diye soracak isek, bazı fonksiyonlarda istediğiniz
-özelliği eklemede ve ya Flask gibi frameworklerde kullanıldığını unutmayın. Hadi sonraki dersimize geçelim :)
+özelliği eklemede veya Flask gibi frameworklerde kullanıldığını unutmayın. Hadi sonraki dersimize geçelim :)
