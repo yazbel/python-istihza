@@ -53,9 +53,15 @@ Geliştirme sunucusu
 
 Şimdi django projemizin çalışıp çalışmadığını kontrol edelim. Komut satırında dışarıdaki `mysite` dizinine gidin ve aşağıdaki kodu çalıştırın::
 
-	python manage.py runserver
+	python manage.py migrate
+    
+Bu komut, projeniz için varsayılan veritabanı ilklendirmesini yapar,yani gerekli tabloları oluşturur. Komut uygulanmadığı takdirde admin paneline giriş yaptığınızda gerekli tabloların olmadığına dair bir hata mesajı alırsınız.
 
-Çıktı olarak şunu görmelisin::
+Daha sonra şu komutu vererek sunucuyu başlatabilirsiniz::
+
+    python manage.py runserver
+
+Çıktı olarak şunu görmelisiniz::
 
 	Performing system checks...
 
