@@ -295,7 +295,9 @@ sözlükte `question` nesnesini arar. Bunu başaramazsa, bu durumda çalışan
 bir öznitelik aramaya çalışır. O da başarısız olsaydı, liste 
 dizini aramayı denerdi.
 
-    .. TODO: Burada bir paragraf eksik.
+`question.choice_set.all` metodu `{% for %}` döngüsünde çağırılır. Metod 
+Choice nesnelerini iterable olarak döndüren ve `{% for %}` döngüsünde 
+kullanmak için en müsait kod olan `question.choice_set.all()` olarak yorumlanır.
 
 Şablonlardaki sabit URL'leri kaldıralım
 ***************************************
