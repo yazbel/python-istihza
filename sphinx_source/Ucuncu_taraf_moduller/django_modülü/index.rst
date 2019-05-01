@@ -2,6 +2,11 @@
 django Paketi
 *************
 
+Bu belgeler Django frameworkunu anlatan resmi başlatıcının
+çevirisidir. Kaynağı:
+
+https://docs.djangoproject.com/en/2.0/intro/tutorial01/
+
 .. toctree::
         django_1
         django_2
