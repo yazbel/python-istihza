@@ -14,7 +14,7 @@ Veritabanı Kurulumu
 Şimdi **mysite/settings.py** dosyasını açın. Önce TIME_ZONE 
 değerini `Europe/Istanbul`  yaparak İstanbul'a ayarlayın.
 
-..Note:: Dosyanın en başındaki INSTALLED_APPS ayarına dikkat edin.
+.. Note:: Dosyanın en başındaki INSTALLED_APPS ayarına dikkat edin.
          Projenizde kullandığınız uygulamaları tutar. Yeni bir uygulama 
          kullanacağınız zaman bu listeye eklemelisiniz. 
 
@@ -168,10 +168,6 @@ Aşağıdakilere dikkat et:
       (Bu da geçersiz kılınabilir.)
     - Düzenlenirken  Django, foreign key alanının adına "_id" 
       ekler.(Evet, bunu da geçersiz kılabilirsiniz.)
-    - Yabancı anahtar ilişkisi bir FOREIGN KEY kısıtlaması 
-      ile açık hale getirilmiştir. DEFERRABLE parçaları hakkında 
-      endişelenmeyin; Bu sadece PostgreSQL'in yabancı anahtarı 
-      işlemin sonuna kadar zorlamamasını söylüyor.
     - Kullandığınız veritabanına göre düzenlenmiştir. Bu yüzden 
       auto_increment(MySQL), serial(PostgreSQL) gibi veritabanına 
       özgü alan türleri otomatik olarak ayarlanır. Aynı şey alan 
@@ -430,7 +426,7 @@ anasayfasında gözükmüyor.
 
 Bu sorunu çözmek için yapmanız gereken tek şey:
 Yönetici paneline Question nesnelerimizin yönetici panelinden 
-düzenlenebildiğini söylemek. Bunu yapmak için **poll/admin.py**
+düzenlenebildiğini söylemek. Bunu yapmak için **polls/admin.py**
 dosyasını açıp şu kodla düzenlemek::
 
     from django.contrib import admin
