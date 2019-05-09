@@ -2714,7 +2714,7 @@ işlemini düzgün bir şekilde gerçekleştirebiliyor.
 Bu bölümde Python'da sıralama konusunu epey ayrıntılı bir şekilde ele aldık.
 
 .. note:: 'Sıralama' konusuna ilişkin bir tartışma için
-    http://www.istihza.com/forum/viewtopic.php?f=25&t=1523 adresindeki konuyu
+    https://web.archive.org/web/20161017211231/www.istihza.com/forum/viewtopic.php?f=25&t=1523 adresindeki konuyu
     inceleyebilirsiniz.
 
 slice()
