@@ -278,7 +278,7 @@ hızlı bir şekilde listeler ve sözlükler üretebiliyorsak, aynı şekilde k�
 Bu arada, buradaki `random` adlı modüle şimdilik takılmayın. Birkaç bölüm sonra
 bu modülü inceleyeceğiz. Biz şimdilik `random`'un da tıpkı `sys` ve `os` gibi
 bir modül olduğunu ve rastgele sayılar üretmemizi sağladığını bilelim yeter.
-Yukarıdaki kodlarda da bu modül `0` ile `10000` arasında rstgele `1000` adet
+Yukarıdaki kodlarda da bu modül `0` ile `10000` arasında rastgele `1000` adet
 sayı üretmemizi sağladı.
 
 Şimdi amacımız bu liste içinde yer alan sayılardan, değeri `100`'den küçük
