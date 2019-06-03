@@ -5,9 +5,9 @@ REM Command file for Sphinx documentation
 if "%SPHINXBUILD%" == "" (
 	set SPHINXBUILD=sphinx-build
 )
-set BUILDDIR=%1/build
-set ALLSPHINXOPTS=-d %BUILDDIR%/doctrees %SPHINXOPTS% %1/sphinx_source
-set I18NSPHINXOPTS=%SPHINXOPTS% %1/sphinx_source
+set BUILDDIR=build
+set ALLSPHINXOPTS=-d %BUILDDIR%/doctrees %SPHINXOPTS% sphinx_source
+set I18NSPHINXOPTS=%SPHINXOPTS% sphinx_source
 if NOT "%PAPER%" == "" (
 	set ALLSPHINXOPTS=-D latex_paper_size=%PAPER% %ALLSPHINXOPTS%
 	set I18NSPHINXOPTS=-D latex_paper_size=%PAPER% %I18NSPHINXOPTS%
@@ -38,13 +38,13 @@ if "%1" == "help" (
 	goto end
 )
 
-if "%2" == "clean" (
+if "%1" == "clean" (
 	for /d %%i in (%BUILDDIR%\*) do rmdir /q /s %%i
 	del /q /s %BUILDDIR%\*
 	goto end
 )
 
-if "%2" == "html" (
+if "%1" == "html" (
 	%SPHINXBUILD% -b html %ALLSPHINXOPTS% %BUILDDIR%/html
 	if errorlevel 1 exit /b 1
 	echo.
@@ -52,7 +52,7 @@ if "%2" == "html" (
 	goto end
 )
 
-if "%2" == "dirhtml" (
+if "%1" == "dirhtml" (
 	%SPHINXBUILD% -b dirhtml %ALLSPHINXOPTS% %BUILDDIR%/dirhtml
 	if errorlevel 1 exit /b 1
 	echo.
@@ -60,7 +60,7 @@ if "%2" == "dirhtml" (
 	goto end
 )
 
-if "%2" == "singlehtml" (
+if "%1" == "singlehtml" (
 	%SPHINXBUILD% -b singlehtml %ALLSPHINXOPTS% %BUILDDIR%/singlehtml
 	if errorlevel 1 exit /b 1
 	echo.
@@ -68,7 +68,7 @@ if "%2" == "singlehtml" (
 	goto end
 )
 
-if "%2" == "pickle" (
+if "%1" == "pickle" (
 	%SPHINXBUILD% -b pickle %ALLSPHINXOPTS% %BUILDDIR%/pickle
 	if errorlevel 1 exit /b 1
 	echo.
@@ -76,7 +76,7 @@ if "%2" == "pickle" (
 	goto end
 )
 
-if "%2" == "json" (
+if "%1" == "json" (
 	%SPHINXBUILD% -b json %ALLSPHINXOPTS% %BUILDDIR%/json
 	if errorlevel 1 exit /b 1
 	echo.
@@ -84,7 +84,7 @@ if "%2" == "json" (
 	goto end
 )
 
-if "%2" == "htmlhelp" (
+if "%1" == "htmlhelp" (
 	%SPHINXBUILD% -b htmlhelp %ALLSPHINXOPTS% %BUILDDIR%/htmlhelp
 	if errorlevel 1 exit /b 1
 	echo.
@@ -93,7 +93,7 @@ if "%2" == "htmlhelp" (
 	goto end
 )
 
-if "%2" == "qthelp" (
+if "%1" == "qthelp" (
 	%SPHINXBUILD% -b qthelp %ALLSPHINXOPTS% %BUILDDIR%/qthelp
 	if errorlevel 1 exit /b 1
 	echo.
@@ -105,7 +105,7 @@ if "%2" == "qthelp" (
 	goto end
 )
 
-if "%2" == "devhelp" (
+if "%1" == "devhelp" (
 	%SPHINXBUILD% -b devhelp %ALLSPHINXOPTS% %BUILDDIR%/devhelp
 	if errorlevel 1 exit /b 1
 	echo.
@@ -113,7 +113,7 @@ if "%2" == "devhelp" (
 	goto end
 )
 
-if "%2" == "epub" (
+if "%1" == "epub" (
 	%SPHINXBUILD% -b epub %ALLSPHINXOPTS% %BUILDDIR%/epub
 	if errorlevel 1 exit /b 1
 	echo.
@@ -121,7 +121,7 @@ if "%2" == "epub" (
 	goto end
 )
 
-if "%2" == "latex" (
+if "%1" == "latex" (
 	%SPHINXBUILD% -b latex %ALLSPHINXOPTS% %BUILDDIR%/latex
 	if errorlevel 1 exit /b 1
 	echo.
@@ -129,7 +129,7 @@ if "%2" == "latex" (
 	goto end
 )
 
-if "%2" == "text" (
+if "%1" == "text" (
 	%SPHINXBUILD% -b text %ALLSPHINXOPTS% %BUILDDIR%/text
 	if errorlevel 1 exit /b 1
 	echo.
@@ -137,7 +137,7 @@ if "%2" == "text" (
 	goto end
 )
 
-if "%2" == "man" (
+if "%1" == "man" (
 	%SPHINXBUILD% -b man %ALLSPHINXOPTS% %BUILDDIR%/man
 	if errorlevel 1 exit /b 1
 	echo.
@@ -145,7 +145,7 @@ if "%2" == "man" (
 	goto end
 )
 
-if "%2" == "texinfo" (
+if "%1" == "texinfo" (
 	%SPHINXBUILD% -b texinfo %ALLSPHINXOPTS% %BUILDDIR%/texinfo
 	if errorlevel 1 exit /b 1
 	echo.
@@ -153,7 +153,7 @@ if "%2" == "texinfo" (
 	goto end
 )
 
-if "%2" == "gettext" (
+if "%1" == "gettext" (
 	%SPHINXBUILD% -b gettext %I18NSPHINXOPTS% %BUILDDIR%/locale
 	if errorlevel 1 exit /b 1
 	echo.
@@ -161,7 +161,7 @@ if "%2" == "gettext" (
 	goto end
 )
 
-if "%2" == "changes" (
+if "%1" == "changes" (
 	%SPHINXBUILD% -b changes %ALLSPHINXOPTS% %BUILDDIR%/changes
 	if errorlevel 1 exit /b 1
 	echo.
@@ -169,7 +169,7 @@ if "%2" == "changes" (
 	goto end
 )
 
-if "%2" == "linkcheck" (
+if "%1" == "linkcheck" (
 	%SPHINXBUILD% -b linkcheck %ALLSPHINXOPTS% %BUILDDIR%/linkcheck
 	if errorlevel 1 exit /b 1
 	echo.
@@ -178,7 +178,7 @@ or in %BUILDDIR%/linkcheck/output.txt.
 	goto end
 )
 
-if "%2" == "doctest" (
+if "%1" == "doctest" (
 	%SPHINXBUILD% -b doctest %ALLSPHINXOPTS% %BUILDDIR%/doctest
 	if errorlevel 1 exit /b 1
 	echo.
