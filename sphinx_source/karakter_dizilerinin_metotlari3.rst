@@ -363,10 +363,8 @@ olması açısından bir örnek daha verelim:
 
 .. note:: istihza.com sitemizin forum üyelerinden Barbaros Akkurt
     `http://www.istihza.com/forum/viewtopic.php?f=25&t=63
-    <https://web.archive.org/web/20150913015518/http://www.istihza.com/forum/viewtopic.php?f=25&t=63>`_ adresinde şöyle bir
-    problemden bahsediyor:
-
-    (İstihza projesi sonlandığı için bu link Wayback Machine tarafından arşivlenen sayfaya yönlendirilmiştir.)
+    <https://web.archive.org/web/20150913015518/http://www.istihza.com/forum/viewtopic.php?f=25&t=63>`_ (arşiv linki)
+    adresinde şöyle bir problemden bahsediyor:
 
     "Ben on parmak Türkçe F klavye kullanıyorum. Bunun için, bazı tuş
     kombinasyonları ile veya sistem tepsisi üzerindeki klavye simgesine
