@@ -242,9 +242,7 @@ olabilir.
 
 .. note:: Python'da girintileme konusuyla ilgili daha ayrıntılı bilgi için:
     `http://www.istihza.com/blog/python-ve-metin-duzenleyiciler.html
-    <http://web.archive.org/web/20161122123704/http://www.istihza.com/blog/python-ve-metin-duzenleyiciler.html>`_
-
-    (İstihza projesi sonlandığı için bu link Wayback Machine tarafından arşivlenen sayfaya yönlendirilmiştir.)
+    <http://web.archive.org/web/20161122123704/http://www.istihza.com/blog/python-ve-metin-duzenleyiciler.html>`_ (arşiv linki)
 
 Eğer yukarıdaki ``if`` bloğunu bir metin düzenleyici içine değil de doğrudan
 etkileşimli kabuğa yazmışsanız bazı şeyler dikkatinizi çekmiş olmalı.

@@ -1455,7 +1455,7 @@ komutlarını işletmeden önce bazı süzgeçler uygulamak da güvenlik açıs�
 işinize yarayabilir. Örneğin kullanıcıdan alınacak verileri alfanümerik
 karakterlerle [`http://www.istihza.com/blog/alfanumerik-ne-demek.html/
 <https://web.archive.org/web/20161127183825/http://www.istihza.com/blog/alfanumerik-ne-demek.html>`_]
-sınırlayabilirsiniz::
+(arşiv linki) sınırlayabilirsiniz::
 
     if kull.isalnum() and paro.isalnum():
         im.execute("""SELECT * FROM kullanicilar WHERE

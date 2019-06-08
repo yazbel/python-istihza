@@ -259,10 +259,8 @@ neleri nasıl yapabileceğimizi doğrudan etkiliyor. O yüzden programlama
 .. note:: Python'da bir nesnenin hangi veri tipine ait olduğunu bilmenin neden
  bu kadar önemli olduğunu gerçek bir örnek üzerinde görmek isterseniz
  `istihza.com/forum/viewtopic.php?f=43&t=62
- <https://web.archive.org/web/20161124155954/http://www.istihza.com/forum/viewtopic.php?f=43&t=62>`_ adresindeki tartışmayı
+ <https://web.archive.org/web/20161124155954/http://www.istihza.com/forum/viewtopic.php?f=43&t=62>`_ (arşiv linki) adresindeki tartışmayı
  inceleyebilirsiniz.
-
- (İstihza projesi sonlandığı için bu link Wayback Machine tarafından arşivlenen sayfaya yönlendirilmiştir.)
 
 Her ne kadar karakter dizileri ve listeler iki farklı veri tipi olsa ve bu iki
 veri tipinin birbirinden çok farklı yönleri ve yetenekleri olsa da, bu iki veri
