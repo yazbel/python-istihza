@@ -1297,8 +1297,8 @@ yararlanabiliriz.
 
 .. note:: ``repr()`` fonksiyonu ile ilgili gerçek hayattan bir örnek için
     `istihza.com/blog/windows-python-3-2de-bir-hata.html
-    <https://web.archive.org/web/20161027213804/http://www.istihza.com/blog/windows-python-3-2de-bir-hata.html>`_ adresindeki
-    yazımızı okuyabilirsiniz. (İstihza projesi sonlandığı için bu link arşivlenmiş sayfaya yönlendirilmiştir.)
+    <https://web.archive.org/web/20161027213804/http://www.istihza.com/blog/windows-python-3-2de-bir-hata.html>`_
+    (arşiv linki)adresindeki yazımızı okuyabilirsiniz.
 
 Bütün bu açıklamalar bize şunu söylüyor: ``repr()`` fonksiyonu, bir karakter
 dizisinin Python tarafından nasıl temsil edildiğini gösterir. Yukarıda biz bu
