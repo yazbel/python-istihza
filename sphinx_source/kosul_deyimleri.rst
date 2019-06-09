@@ -241,7 +241,8 @@ girintilemeler açısından tutarsızlık gösterilmesi programın çalışmamas
 olabilir.
 
 .. note:: Python'da girintileme konusuyla ilgili daha ayrıntılı bilgi için:
-          http://www.istihza.com/blog/python-ve-metin-duzenleyiciler.html/
+    `http://www.istihza.com/blog/python-ve-metin-duzenleyiciler.html
+    <http://web.archive.org/web/20161122123704/http://www.istihza.com/blog/python-ve-metin-duzenleyiciler.html>`_ (arşiv linki)
 
 Eğer yukarıdaki ``if`` bloğunu bir metin düzenleyici içine değil de doğrudan
 etkileşimli kabuğa yazmışsanız bazı şeyler dikkatinizi çekmiş olmalı.
@@ -805,4 +806,3 @@ hatırlıyor olmalısınız.
 Eğer toplam uzunluk 40 karakterden fazla ise, ``if`` bloğunda verilen mesajı
 gösteriyoruz. Bunun dışındaki bütün durumlarda ise ``else`` bloğunu devreye
 sokuyoruz.
-

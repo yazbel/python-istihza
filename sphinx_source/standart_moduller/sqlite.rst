@@ -1454,8 +1454,8 @@ Dediğimiz gibi, SQL sızdırma girişimlerine karşı alabileceğiniz başlıca
 komutlarını işletmeden önce bazı süzgeçler uygulamak da güvenlik açısından
 işinize yarayabilir. Örneğin kullanıcıdan alınacak verileri alfanümerik
 karakterlerle [`http://www.istihza.com/blog/alfanumerik-ne-demek.html/
-<http://www.istihza.com/blog/alfanumerik-ne-demek.html/>`_]
-sınırlayabilirsiniz::
+<https://web.archive.org/web/20161127183825/http://www.istihza.com/blog/alfanumerik-ne-demek.html>`_]
+(arşiv linki) sınırlayabilirsiniz::
 
     if kull.isalnum() and paro.isalnum():
         im.execute("""SELECT * FROM kullanicilar WHERE

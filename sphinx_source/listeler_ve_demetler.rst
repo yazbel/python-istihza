@@ -259,7 +259,7 @@ neleri nasıl yapabileceğimizi doğrudan etkiliyor. O yüzden programlama
 .. note:: Python'da bir nesnenin hangi veri tipine ait olduğunu bilmenin neden
  bu kadar önemli olduğunu gerçek bir örnek üzerinde görmek isterseniz
  `istihza.com/forum/viewtopic.php?f=43&t=62
- <http://www.istihza.com/forum/viewtopic.php?f=43&t=62>`_ adresindeki tartışmayı
+ <https://web.archive.org/web/20161124155954/http://www.istihza.com/forum/viewtopic.php?f=43&t=62>`_ (arşiv linki) adresindeki tartışmayı
  inceleyebilirsiniz.
 
 Her ne kadar karakter dizileri ve listeler iki farklı veri tipi olsa ve bu iki
@@ -2397,5 +2397,3 @@ yanlışlıkla bir karakter dizisi tanımlamak olacaktır. Örneğin yukarıdaki
     TEMPLATE_DIRS = ('/home/projects/djprojects/blog/templates')
 
 Aslında bir demet değil, alelade bir karakter dizisi tanımlamış olurduk...
-
-

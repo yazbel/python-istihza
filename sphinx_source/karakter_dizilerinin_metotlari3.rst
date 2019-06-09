@@ -361,16 +361,17 @@ Yukarıda verdiğimiz örnek vasıtasıyla ``str.maketrans()`` ve ``translate()`
 adlı metotları epey ayrıntılı bir şekilde incelemiş olduk. Dilerseniz pratik
 olması açısından bir örnek daha verelim:
 
-istihza.com sitemizin forum üyelerinden Barbaros Akkurt
-http://www.istihza.com/forum/viewtopic.php?f=25&t=63 adresinde şöyle bir
-problemden bahsediyor:
+.. note:: istihza.com sitemizin forum üyelerinden Barbaros Akkurt
+    `http://www.istihza.com/forum/viewtopic.php?f=25&t=63
+    <https://web.archive.org/web/20150913015518/http://www.istihza.com/forum/viewtopic.php?f=25&t=63>`_ (arşiv linki)
+    adresinde şöyle bir problemden bahsediyor:
 
-    Ben on parmak Türkçe F klavye kullanıyorum. Bunun için, bazı tuş
+    "Ben on parmak Türkçe F klavye kullanıyorum. Bunun için, bazı tuş
     kombinasyonları ile veya sistem tepsisi üzerindeki klavye simgesine
     tıklayarak Türkçe Q - Türkçe F değişimi yapıyorum. Bazen bunu yapmayı
     unutuyorum ve bir metne bakarak yazıyorsam gözüm ekranda olmuyor. Bir
     paragrafı yazıp bitirdikten sonra ekranda bir karakter salatası görünce çok
-    bozuluyorum.
+    bozuluyorum."
 
 İşte böyle bir durumda yukarıdaki iki metodu kullanarak o karakter salatasını
 düzeltebilirsiniz. Karakter salatamız şu olsun:
@@ -919,4 +920,3 @@ Basılamayan karakterlerin listesini görmek için http://www.asciitable.com/
 adresini ziyaret edebilirsiniz. Listedeki ilk `32` karakter (`0`'dan başlayarak
 `32`'ye kadar olan karakterler) ve listedeki `127.` karakter basılamayan
 karakterlerdir.
-

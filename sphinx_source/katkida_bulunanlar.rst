@@ -18,6 +18,11 @@ hem de daha çok kişiye ulaşmasını sağlayacaktır.
 .. contents::
     :local:
 
+Hakan Demiral
+===============
+    - Sonlanan istihza.com projesinin ulaşılamayan linkleri WaybackMachine veritabanındaki
+      en güncel halleri ile güncellendi.
+    - Navigation bar kısmındaki kırık pdf linki kaldırılarak açıklaması yapıldı.
 
 Barbaros Akkurt
 ================
