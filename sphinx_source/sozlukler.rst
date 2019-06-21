@@ -665,7 +665,7 @@ olarak her veri tipini atayamayız. Bir değerin 'anahtar' olabilmesi için, o
 #. Listeler
 #. Sözlükler
 
-Dolayısıyla bir sözlüğe ancak şu veri tiplerini ekleyebiliriz:
+Dolayısıyla bir sözlüğe anahtar olarak ancak şu veri tiplerini ekleyebiliriz:
 
 #. Demetler
 #. Sayılar
