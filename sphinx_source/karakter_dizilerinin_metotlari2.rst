@@ -741,7 +741,7 @@ ikinci parametre, ``count()`` metodunun bir karakteri saymaya başlarken karakte
 dizisinin kaçıncı sırasından başlayacağını gösteriyor. Bu örnekte ikinci
 parametre olarak `1` sayısını verdiğimiz için, Python saymaya `"adana"` karakter
 dizisinin `1.` sırasından başlayacak. Dolayısıyla `0.` sıradaki `"a"` harfi
-sayım işleminin dışında kalacağı için toplam `"a"` sayısı `4` değil `3` olarak
+sayım işleminin dışında kalacağı için toplam `"a"` sayısı `3` değil `2` olarak
 görünecek. Gördüğünüz gibi, sonraki örneklerde de aynı mantığı takip ettiğimiz
 için aradığımız karakterin toplam sayısı örnekten örneğe farklılık gösteriyor.
 
