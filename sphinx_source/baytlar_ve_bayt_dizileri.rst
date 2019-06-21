@@ -154,7 +154,7 @@ Bir de şuna bakalım::
 Burada ise `kardiz` adlı değişkenin değerinin kaç baytlık bir karakter dizisi
 olduğu, yani bir bakıma ``len()`` fonksiyonunun ne çıktı vereceği işletim
 sisteminden işletim sistemine farklılık gösterir. Eğer kullandığınız işletim
-sistemi Windows ise muhtelemen ``len(kardiz)`` komutu `1` çıktısı verecektir.
+sistemi Windows ise muhtemelen ``len(kardiz)`` komutu `1` çıktısı verecektir.
 Ama eğer bu komutu GNU/Linux dağıtımlarından birinde veriyorsanız alacağınız
 çıktı büyük ihtimalle `2` olacaktır.
 
