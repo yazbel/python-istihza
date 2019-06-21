@@ -106,7 +106,7 @@ veri tiplerine dönüştürme imkanına sahibiz::
     (1, 2, 0, 3)
 
 Yalnız bu verileri karakter dizisine dönüştürmeye çalıştığınızda ufak bir
-problemle karşılacaksınız::
+problemle karşılaşacaksınız::
 
     >>> kardiz = "".join(sözlük.values())
 
