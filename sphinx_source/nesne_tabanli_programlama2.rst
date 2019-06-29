@@ -302,7 +302,7 @@ mümkün olmadığını, bu tür metotlara erişebilmek için sınıfı en az bi
 Burada, ``__init__()`` ve ``personel_sayısını_görüntüle()`` dışında şu *örnek
 metotları* var: ``personel_sayısını_görüntüle()``, ``personele_ekle()``,
 ``personeli_görüntüle()``, ``kabiliyet_ekle()``,
-``kabiliyetlerleri_görüntüle()``. Bunları birer örnek metodu yapan şeyin, `self`
+``kabiliyetleri_görüntüle()``. Bunları birer örnek metodu yapan şeyin, `self`
 kelimesi olduğunu biliyoruz...
 
 Daha önce de söylediğimiz gibi, her ne kadar Python'da sınıf niteliklerine hem
