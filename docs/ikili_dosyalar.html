@@ -1,0 +1,692 @@
+
+ <!DOCTYPE html>
+ <html lang="tr">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta content="Bu bölümde ikili dosyaları (binary files) ele alacağız." name="description" />
+<meta content="python, python3, dosyalar" name="keywords" />
+
+    <title>İkili (Binary) Dosyalar &#8212; Python 3 için Türkçe Kılavuz</title>
+    <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="search" title="Ara" href="search.html" />
+    <link rel="next" title="Basit bir İletişim Modeli" href="basit_bir_iletisim_modeli.html" />
+    <link rel="prev" title="Dosyaların Metot ve Nitelikleri" href="dosyalarin_metot_ve_nitelikleri.html" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+<div class='header'><a href='https://yazbel.com'>yazbel.com</a></div>
+
+<ul class='navbar'>
+    <li><a href="#"><del>pdf desteği sonlanmıştır</del></a></li>
+    <li class="forum"><a href="http://forum.yazbel.com">forum</a></li>
+</ul>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="basit_bir_iletisim_modeli.html" title="Basit bir İletişim Modeli"
+             accesskey="N">sonraki</a></li>
+        <li class="right" >
+          <a href="dosyalarin_metot_ve_nitelikleri.html" title="Dosyaların Metot ve Nitelikleri"
+             accesskey="P">önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+ 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+
+  <div class="section" id="ikili-binary-dosyalar">
+<h1>İkili (<em>Binary</em>) Dosyalar<a class="headerlink" href="#ikili-binary-dosyalar" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<p>Dosyalar çoğunlukla iki farklı sınıfa ayrılır: Metin dosyaları ve ikili
+dosyalar. Metin dosyaları derken neyi kastettiğimiz az çok anlaşılıyor. Eğer bir
+dosyayı bir metin düzenleyici ile açtığınızda herhangi bir dilde yazılmış
+‘okunabilir’ bir metin görüyorsanız, o dosya bir metin dosyasıdır. Mesela
+Notepad, Gedit, Kwrite veya benzeri metin düzenleyicileri kullanarak
+oluşturduğunuz dosyalar birer metin dosyasıdır. Şimdiye kadar verdiğimiz bütün
+örnekler metin dosyalarını içeriyordu. Peki ‘ikili’ (<em>binary</em>) dosya ne demek?</p>
+<p>İkili dosyalar ise, metin dosyalarının aksine, metin düzenleyicilerle
+açılamayan, açılmaya çalışıldığında ise çoğunlukla anlamsız karakterler içeren
+bir dosya türüdür. Resim dosyaları, müzik dosyaları, video dosyaları, MS Office
+dosyaları, LibreOffice dosyaları, OpenOffice dosyaları, vb. ikili dosyalara
+örnektir.</p>
+<p>Önceki bölümlerde de ifade ettiğimiz gibi, bilgisayarlar yalnızca sayılarla
+işlem yapabilir. Bilgisayarların üzerinde işlem yapabildiği bu sayıların <cite>0</cite> ve
+<cite>1</cite> adlı iki sayı olduğunu biliyoruz.</p>
+<p>Peki bu iki farklı sayıyı kullanarak neler yapabiliriz? Aslında, bu iki farklı
+sayıyı kullanarak her türlü işlemi yapabiliriz: Basit veya karmaşık aritmetik
+hesaplamalar, metin düzenleme, resim veya video düzenleme, web siteleri
+hazırlama, uzaya mekik gönderme… Bütün bu işlemleri sadece iki farklı sayı
+kullanarak yapabiliriz. Daha doğrusu bilgisayarlar yapabilir.</p>
+<p>Durum böyle olmasına rağmen, ilk bilgisayarlar yalnızca hesaplama işlemleri için
+kullanılıyordu. Yani metin içeren işlemleri yapmak bilgisayarların değil, mesela
+daktiloların görevi olarak görülüyordu. Bu durumu telefon teknolojisi ile
+kıyaslayabilirsiniz. Bildiğiniz gibi, ilk telefonlar yalnızca iki kişi
+arasındaki sesli iletişimi sağlamak için kullanılıyordu. Ama yeni nesil
+telefonlar artık ikiden fazla kişi arasındaki sesli ve görüntülü iletişimi
+sağlayabilmenin yanısıra, önceleri birbirinden farklı cihazlarla
+gerçekleştirilen işlemleri artık tek başına yerine getirebiliyor.</p>
+<p>İlk bilgisayarlarda ise metinlerin, daha doğrusu karakterlerin görevi bir hayli
+sınırlıydı.</p>
+<p>Başta da söylediğimiz gibi, çoğunlukla dosyalar iki farklı sınıfa ayrılır: Metin
+dosyaları ve ikili dosyalar. Ama işin aslı sadece tek bir dosya türü vardır:
+İkili dosyalar (<em>binary files</em>). Yani bilgisayarlar açısından bütün dosyalar,
+içlerinde ne olursa olsun, birer ikili dosyadır ve içlerinde sadece 0’ları ve
+1’leri barındırır. İşte bu 0 ve 1’lerin ne anlama geleceğini, işletim sistemleri
+ve bu sistemler üzerine kurulu yazılımlar belirler. Eğer bir dosya metin
+dosyasıysa bu dosyadaki 0 ve 1’ler birer karakter/harf olarak yorumlanır. Ama
+eğer dosya bir ikili dosyaysa dosya içindeki 0 ve 1’ler özel birtakım veriler
+olarak ele alınır ve bu verileri okuyan yazılıma göre değer kazanır. Örneğin
+eğer ilgili dosya bir resim dosyasıyla, bu dosya herhangi bir resim
+görüntüleyici yazılım ile açıldığında karşımıza bir resim çıkar. Eğer ilgili
+dosya bir video dosyasıyla, bu dosya bir video görüntüleyici yazılım ile
+açıldığında karşımıza bir video çıkar. Bu olgudan bir sonraki bölümde daha
+ayrıntılı olarak söz edeceğiz. Biz şimdilik işin sadece pratiğine yoğunlaşalım
+ve temel olarak iki farklı dosya çeşidi olduğunu varsayalım: Metin dosyaları ve
+ikili dosyalar.</p>
+<p>Buraya gelene kadar hep metin dosyalarından söz etmiştik. Şimdi ise ikili
+dosyalardan söz edeceğiz.</p>
+<p>Hatırlarsanız metin dosyalarını açmak için temel olarak şöyle bir komut
+kullanıyorduk:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">dosya_adı</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu şekilde bir metin dosyasını okuma kipinde açmış oluyoruz. Bir metin dosyasını
+değil de, ikili bir dosyayı açmak için ise şu komutu kullanacağız:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">dosya_adı</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Dosyaya erişme kiplerini gösterdiğimiz tabloda ikili erişim türlerini de
+verdiğimizi hatırlıyorsunuz.</p>
+<p>Peki neden metin dosyaları ve ikili dosyalar için farklı erişim kipleri
+kullanıyoruz?</p>
+<p>İşletim sistemleri satır sonları için birbirinden farklı karakterler
+kullanırlar. Örneğin GNU/Linux dağıtımlarında satır sonları <cite>\n</cite> karakteri ile
+gösterilir. Windows işletim sistemi ise satır sonlarını <cite>\r\n</cite> karakterleriyle
+gösterir. İşte Python herhangi bir dosyayı açarken, eğer o dosya bir metin
+dosyası ise, satır sonlarını gösteren karakterleri, dosyanın açıldığı işletim
+sistemine göre ayarlar. Yani satır sonlarını standart bir hale getirerek <cite>\n</cite>
+karakterine dönüştürür.</p>
+<p>Metin dosyaları ile ikili dosyalar arasında önemli bir fark bulunur: Bir metin
+dosyasındaki ufak değişiklikler dosyanın okunamaz hale gelmesine yol açmaz.
+Olabilecek en kötü şey, değiştirilen karakterin okunamaz hale gelmesidir. Ancak
+ikili dosyalarda ufak değişiklikler dosyanın tümden bozulmasına yol açabilir.
+Dolayısıyla Python’ın yukarıda bahsedilen satır sonu değişiklikleri ikili
+dosyaların bozulmasına yol açabilir. Yani eğer siz ikili bir dosyayı <cite>‘rb’</cite>
+yerine sadece <cite>‘r’</cite> gibi bir kiple açarsanız dosyanın bozulmasına yol
+açabilirsiniz. İkili bir dosyayı <cite>‘rb’</cite> (veya <cite>‘wb’</cite>, <cite>‘ab’</cite>, <cite>‘xb’</cite>, vb.) gibi
+bir kipte açtığınızda Python satır sonlarına herhangi bir değiştirme-dönüştürme
+işlemi uygulamaz. Böylece dosya bozulma riskiyle karşı karşıya kalmaz. O yüzden,
+metin dosyalarını ve ikili dosyaları açarken farklı kipler kullanmamız
+gerektiğine dikkat ediyoruz.</p>
+<div class="section" id="ikili-dosyalarla-ornekler">
+<h2>İkili Dosyalarla Örnekler<a class="headerlink" href="#ikili-dosyalarla-ornekler" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Gelin isterseniz bu noktada birkaç örnek verelim.</p>
+<div class="section" id="pdf-dosyalarindan-bilgi-alma">
+<h3>PDF Dosyalarından Bilgi Alma<a class="headerlink" href="#pdf-dosyalarindan-bilgi-alma" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Tıpkı resim, müzik ve video dosyaları gibi, <cite>PDF</cite> dosyaları da birer ikili
+dosyadır. O halde hemen önümüze bir <cite>PDF</cite> dosyası alalım ve bu dosyayı okuma
+kipinde açalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;falanca.pdf&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Şimdi de bu dosyadan <cite>10</cite> baytlık bir veri okuyalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="go">b&#39;%PDF-1.3\n4&#39;</span>
+</pre></div>
+</div>
+<p>Bu çıktıda gördüğünüz <cite>‘b’</cite> işaretine şimdilik takılmayın. Birazdan bunun ne
+olduğunu bütün ayrıntılarıyla anlatacağız. Biz bu harfin, elimizdeki verinin
+bayt türünde bir veri olduğunu gösteren bir işaret olduğunu bilelim yeter.</p>
+<p>Gördüğünüz gibi, bir <cite>PDF</cite> dosyasının ilk birkaç baytını okuyarak hem dosyanın
+bir <cite>PDF</cite> belgesi olduğunu teyit edebiliyoruz, hem de bu <cite>PDF</cite> belgesinin, hangi
+<cite>PDF</cite> sürümü ile oluşturulduğunu anlayabiliyoruz. Buna göre bu belge PDF
+talimatnamesinin 1.3 numaralı sürümü ile oluşturulmuş.</p>
+<p>Eğer biz bu belgeyi bir ikili dosya olarak değil de bir metin dosyası olarak
+açmaya çalışsaydık şöyle bir hata alacaktık:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;falanca.pdf&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">okunan</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+  File <span class="nb">&quot;C:\Python33\lib\encodings\cp1254.py&quot;</span>, line <span class="m">23</span>, in <span class="n">decode</span>
+    <span class="k">return</span> <span class="n">codecs</span><span class="o">.</span><span class="n">charmap_decode</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">errors</span><span class="p">,</span><span class="n">decoding_table</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gr">UnicodeDecodeError</span>: <span class="n">&#39;charmap&#39; codec can&#39;t decode byte 0x9d in position 527: char</span>
+<span class="go">acter maps to &lt;undefined&gt;</span>
+</pre></div>
+</div>
+<p>Python’ın bu dosyanın bir ikili dosya olduğu konusunda bilgilendirerek, dosyanın
+düzgün bir şekilde açılıp okunabilmesini sağlıyoruz.</p>
+<p>Gelin bu <cite>PDF</cite> belgesi üzerinde biraz daha çalışalım.</p>
+<p><cite>PDF</cite> belgelerinde, o belge hakkında bazı önemli bilgiler veren birtakım özel
+etiketler bulunur. Bu etiketler şunlardır:</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="72%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Etiket</td>
+<td>Anlamı</td>
+</tr>
+<tr class="row-even"><td>/Creator</td>
+<td>Belgeyi oluşturan yazılım</td>
+</tr>
+<tr class="row-odd"><td>/Producer</td>
+<td>Belgeyi PDF’e çeviren yazılım</td>
+</tr>
+<tr class="row-even"><td>/Title</td>
+<td>Belgenin başlığı</td>
+</tr>
+<tr class="row-odd"><td>/Author</td>
+<td>Belgenin yazarı</td>
+</tr>
+<tr class="row-even"><td>/Subject</td>
+<td>Belgenin konusu</td>
+</tr>
+<tr class="row-odd"><td>/Keywords</td>
+<td>Belgenin anahtar kelimeleri</td>
+</tr>
+<tr class="row-even"><td>/CreationDate</td>
+<td>Belgenin oluşturulma zamanı</td>
+</tr>
+<tr class="row-odd"><td>/ModDate</td>
+<td>Belgenin değiştirilme zamanı</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>Bu etiketlerin tamamı bütün <cite>PDF</cite> dosyalarında tanımlı değildir. Ama özellikle
+<cite>/Producer</cite> etiketi her <cite>PDF</cite> dosyasında bulunur.</p>
+<p>Şimdi örnek olması bakımından elimize bir <cite>PDF</cite> dosyası alalım ve bunu güzelce
+okuyalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;falanca.pdf&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">okunan</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Şimdi de <cite>/Producer</cite> ifadesinin dosya içinde geçtiği noktanın sıra numarasını
+bulalım. Bildiğiniz gibi, dosyaların <code class="docutils literal notranslate"><span class="pre">read()</span></code> metodu bize bir karakter dizisi
+verir. Yine bildiğiniz gibi, karakter dizilerinin <code class="docutils literal notranslate"><span class="pre">index()</span></code> metodu yardımıyla
+bir öğenin karakter dizisi içinde geçtiği noktayı bulabiliyoruz. Yani:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">producer_index</span> <span class="o">=</span> <span class="n">okunan</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;/Producer&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada <cite>/Producer</cite> ifadesinin başına <cite>‘b’</cite> harfini yerleştirmeyi unutmuyoruz.
+Çünkü şu anda yaptığımız işlem ikili bir dosya içinde geçen birtakım baytları
+arama işlemidir.</p>
+<p><cite>producer_index</cite> değişkeni, ‘/Producer’ ifadesinin ilk baytının dosya içindeki
+konumunu tutuyor. Kontrol edelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">producer_index</span>
+
+<span class="go">4077883</span>
+</pre></div>
+</div>
+<p>Bu değerin gerçekten de ‘/Producer’ ifadesinin ilk baytını depoladığını teyit
+edelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">okunan</span><span class="p">[</span><span class="n">producer_index</span><span class="p">]</span>
+
+<span class="go">47</span>
+</pre></div>
+</div>
+<p>Daha önce de dediğimiz gibi, bilgisayarlar yalnızca sayıları görür. Bu sayının
+hangi karaktere karşılık geldiğini bulmak için <code class="docutils literal notranslate"><span class="pre">chr()</span></code> fonksiyonundan
+yararlanabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">chr</span><span class="p">(</span><span class="n">okunan</span><span class="p">[</span><span class="n">producer_index</span><span class="p">])</span>
+
+<span class="go">&#39;/&#39;</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, gerçekten de <cite>producer_index</cite> değişkeni ‘/Producer’ ifadesinin
+ilk baytının dosya içindeki konumunu gösteriyor. Biz bu konumu ve bu konumun 50-60
+bayt ötesini sorgularsak, <cite>PDF</cite> belgesini üreten yazılımın adına ulaşabiliriz.
+Dikkatlice bakın:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">okunan</span><span class="p">[</span><span class="n">producer_index</span><span class="p">:</span><span class="n">producer_index</span><span class="o">+</span><span class="mi">50</span><span class="p">]</span>
+
+<span class="go">b&#39;/Producer (Acrobat Distiller 2.0 for Macintosh)\r/T&#39;</span>
+</pre></div>
+</div>
+<p>Hatta eğer bu çıktı üzerine <code class="docutils literal notranslate"><span class="pre">split()</span></code> metodunu uygularsak, çıktıyı daha
+kullanışlı bir hale getirebiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">producer</span> <span class="o">=</span> <span class="n">okunan</span><span class="p">[</span><span class="n">producer_index</span><span class="p">:</span><span class="n">producer_index</span><span class="o">+</span><span class="mi">50</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">producer</span>
+
+<span class="go">[b&#39;/Producer&#39;, b&#39;(Acrobat&#39;, b&#39;Distiller&#39;, b&#39;2.0&#39;, b&#39;for&#39;, b&#39;Macintosh)&#39;, b&#39;/T&#39;]</span>
+</pre></div>
+</div>
+<p>Bu şekilde, ihtiyacımız olan bilginin istediğimiz parçasına kolayca
+ulaşabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">producer</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="go">b&#39;/Producer&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">producer</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="go">b&#39;(Acrobat&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">producer</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+
+<span class="go">[b&#39;(Acrobat&#39;, b&#39;Distiller&#39;]</span>
+</pre></div>
+</div>
+<p>Elbette bu yöntem, bir <cite>PDF</cite> dosyasından gerekli etiketleri almanın en iyi
+yöntemi değildir. Ama henüz Python bilgimiz bu kadarını yapmamıza müsaade
+ediyor. Ancak yine de, yukarıda örnek, bir ikili dosyadan nasıl veri alınacağı
+konusunda size iyi bir fikir verecektir.</p>
+</div>
+<div class="section" id="resim-dosyalarinin-turunu-tespit-etme">
+<h3>Resim Dosyalarının Türünü Tespit Etme<a class="headerlink" href="#resim-dosyalarinin-turunu-tespit-etme" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Dediğimiz gibi, resim dosyaları, müzik dosyaları, video dosyaları ve benzeri
+dosyalar birer ikili dosyadır. Mesela resim dosyalarını ele alalım. Diyelim ki,
+resimlerin hangi türde olduğunu tespit eden bir program yazmak istiyorsunuz.
+Yani yazdığınız bu programla bir resim dosyasının <cite>PNG</cite> mi, <cite>JPEG</cite> mi, <cite>TIFF</cite>
+mi, yoksa <cite>BMP</cite> mi olduğunu anlamak istiyorsunuz.</p>
+<p>Peki bir resim dosyasının hangi türde olduğunu bulmak için uzantısına baksanız
+olmaz mı? Asla unutmayın dosya uzantıları ile dosya biçimleri arasında doğrudan
+bir bağlantı yoktur. O yüzden dosya uzantıları, dosya biçimini anlamak açısından
+güvenilir bir yöntem değildir. Bir resim dosyasının sonuna hangi uzantıyı
+getirirseniz getirin, o dosya bir resim dosyasıdır. Yani mesela bir resim
+dosyasının uzantısı yanlışlıkla veya bilerek <cite>.doc</cite> olarak değiştirilmişse, o
+dosya bir WORD dosyası haline gelmez. İşte yazacağınız program, bir resim
+dosyasının uzantısı ne olursa olsun, hatta dosyanın bir uzantısı olmasa bile, o
+dosyanın hangi türde olduğunu söyleyebilecek.</p>
+<p>Bir resim dosyasının hangi türde olduğunu anlayabilmek için ilgili dosyanın ilk
+birkaç baytını okumanız yeterlidir. Bu birkaç bayt içinde o resim dosyasının
+türüne dair bilgileri bulabilirsiniz.</p>
+<p>Resim dosyalarının türlerini birbirinden ayırt etmenizi sağlayacak verilerin ne
+olduğunu, ilgili resim türünün teknik şartnamesine bakarak öğrenebilirsiniz.
+Ancak teknik şartnameler genellikle okuması zor metinlerdir. Bu yüzden, doğrudan
+şartnameyi okumak yerine, Internet üzerinde kısa bir araştırma yaparak konuyu
+daha kolay anlamanızı sağlayacak yardımcı belgelerden de yardım alabilirsiniz.</p>
+<div class="section" id="jpeg">
+<h4>JPEG<a class="headerlink" href="#jpeg" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<p><cite>JPEG</cite> biçimi ile ilgili bilgileri <a class="reference external" href="http://www.jpeg.org">http://www.jpeg.org</a> adresinde bulabilirsiniz.
+<cite>JPEG</cite> dosya biçimini daha iyi anlamanızı sağlayacak yardımcı kaynak ise
+şudur:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><a class="reference external" href="http://www.faqs.org/faqs/jpeg-faq/part1/section-15.html">http://www.faqs.org/faqs/jpeg-faq/part1/section-15.html</a></li>
+</ol>
+</div></blockquote>
+<p>Yukarıda verdiğimiz adreslerdeki bilgilere göre bir <cite>JPEG</cite> dosyasının en başında
+şu veriler bulunur:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span>FF  D8      FF      E0      ?   ?   4A      46      49      46      00
+</pre></div>
+</div>
+<p>Ancak eğer ilgili <cite>JPEG</cite> dosyası bir CANON fotograf makinesi ile oluşturulmuşsa
+bu veri dizisi şöyle de olabilir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span>FF  D8      FF      E0      ?   ?   45  78  69  66  00
+</pre></div>
+</div>
+<p>Burada soru işareti ile gösterdiğimiz kısım, yani dosyanın <cite>5.</cite> ve <cite>6.</cite> baytları
+farklı <cite>JPEG</cite> dosyalarında birbirinden farklı olabilir. Dolayısıyla bir <cite>JPEG</cite>
+dosyasını başka resim dosyalarından ayırabilmek için dosyanın ilk dört baytına
+bakmamız, sonraki iki baytı atlamamız ve bunlardan sonra gelen beş baytı kontrol
+etmemiz yeterli olacaktır.</p>
+<p>Yukarıda gördükleriniz birer on altılı (<em>hex</em>) sayıdır. Bunlar onlu düzende
+sırasıyla şu sayılara karşılık gelir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span>255 216 255 224 ? ? 74 70 73 70 0
+255 216 255 224 ? ? 45 78 69 66 0 #canon
+</pre></div>
+</div>
+<p>Bu diziler içinde özellikle şu dört sayı bizi yakından ilgilendiriyor:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="mi">74</span> <span class="mi">70</span> <span class="mi">73</span> <span class="mi">70</span>
+<span class="mi">45</span> <span class="mi">78</span> <span class="mi">69</span> <span class="mi">66</span> <span class="c1">#canon</span>
+</pre></div>
+</div>
+<p>Bu sayılar sırasıyla ‘J’, ‘F’, ‘I’, ‘F’ ve ‘E’, ‘x’, ‘i’, ‘f’ harflerine
+karşılık gelir. Yani bir <cite>JPEG</cite> dosyasını ayırt edebilmek için ilgili dosyanın
+7-10 arası baytlarının ne olduğuna bakmamız yeterli olacaktır. Eğer bu aralıkta
+‘JFIF’ veya ‘Exif’ ifadeleri varsa, o dosya bir <cite>JPEG</cite> dosyasıdır. Buna göre
+şöyle bir kod yazabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">dosya_adı</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="mi">6</span><span class="p">:</span><span class="mi">11</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="sa">b</span><span class="s2">&quot;JFIF&quot;</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;Exif&quot;</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bu dosya JPEG!&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bu dosya JPEG değil!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada herhangi bir resim dosyasının ilk on baytını okuduk öncelikle:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Çünkü aradığımız bilgiler ilk on bayt içinde yer alıyor.</p>
+<p>Daha sonra okuduğumuz kısmın 7 ila 10. baytları arasında kalan verinin ne
+olduğuna bakıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="mi">6</span><span class="p">:</span><span class="mi">11</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="sa">b</span><span class="s2">&quot;JFIF&quot;</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;Exif&quot;</span><span class="p">]:</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>Eğer ilgili aralıkta ‘JFIF’ veya ‘Exif’ baytları yer alıyorsa bu dosyanın bir
+<cite>JPEG</cite> dosyası olduğuna karar veriyoruz.</p>
+<p>Yukarıdaki kodları elinizdeki bir <cite>JPEG</cite> dosyasına uygulayarak kendi kendinize
+pratik yapabilirsiniz.</p>
+<p>Mesela benim elimde <cite>d1.jpg</cite>, <cite>d2.jpg</cite> ve <cite>d3.jpeg</cite> adlı üç farklı <cite>JPEG</cite>
+dosyası var:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">dosyalar</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;d1.jpg&quot;</span><span class="p">,</span> <span class="s2">&quot;d2.jpg&quot;</span><span class="p">,</span> <span class="s2">&quot;d3.jpeg&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Bu dosyaların ilk onar baytını okuyorum:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">dosyalar</span><span class="p">:</span>
+    <span class="n">okunan</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">okunan</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Buradan şu çıktıyı alıyorum:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span><span class="o">.</span><span class="n">jpg</span>         <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\xff\xd8\xff\xe0\x00\x10</span><span class="s1">JFIF&#39;</span>
+<span class="n">d2</span><span class="o">.</span><span class="n">jpg</span>         <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\xff\xd8\xff\xe1</span><span class="s1">T</span><span class="se">\xaa</span><span class="s1">Exif&#39;</span>
+<span class="n">d3</span><span class="o">.</span><span class="n">jpeg</span>        <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\xff\xd8\xff\xe0\x00\x10</span><span class="s1">JFIF&#39;</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi bu çıktılar yukarıda <cite>JPEG</cite> dosyalarına ilişkin olarak
+verdiğimiz bayt dizilimi ile uyuşuyor. Mesela ilk dosyayı ele alalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span><span class="o">.</span><span class="n">jpg</span>         <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\xff\xd8\xff\xe0\x00\x10</span><span class="s1">JFIF&#39;</span>
+</pre></div>
+</div>
+<p>Burada şu baytlar var:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span>\<span class="n">xff</span> \<span class="n">xd8</span> \<span class="n">xff</span> \<span class="n">xe0</span> \<span class="n">x00</span> \<span class="n">x10</span> <span class="n">J</span> <span class="n">F</span> <span class="n">I</span> <span class="n">F</span>
+</pre></div>
+</div>
+<p>Sayıların başındaki <cite>\x</cite> işaretleri bunların birer on altılı sayı
+olduğunu gösteren bir işarettir. Dolayısıyla yukarıdakileri daha net
+inceleyebilmek için şöyle de yazabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">ff</span> <span class="n">d8</span> <span class="n">ff</span> <span class="n">e0</span> <span class="mi">00</span> <span class="mi">10</span> <span class="n">J</span> <span class="n">F</span> <span class="n">I</span> <span class="n">F</span>
+</pre></div>
+</div>
+<p>Şimdi de ikinci dosyanın çıktısını ele alalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">d2</span><span class="o">.</span><span class="n">jpg</span>         <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\xff\xd8\xff\xe1</span><span class="s1">T</span><span class="se">\xaa</span><span class="s1">Exif&#39;</span>
+</pre></div>
+</div>
+<p>Burada da şu baytlar var:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">ff</span> <span class="n">d8</span> <span class="n">ff</span> <span class="n">e1T</span> <span class="n">aa</span> <span class="n">E</span> <span class="n">x</span> <span class="n">i</span> <span class="n">f</span>
+</pre></div>
+</div>
+<p>İşte dosyaların türünü ayırt etmek için bu çıktılardaki son dört baytı kontrol
+etmemiz yeterli olacaktır:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">dosyalar</span><span class="p">:</span>
+    <span class="n">okunan</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">okunan</span><span class="p">[</span><span class="mi">6</span><span class="p">:</span><span class="mi">11</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="sa">b</span><span class="s1">&#39;JFIF&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;Exif&#39;</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Evet </span><span class="si">{}</span><span class="s2"> adlı dosya bir JPEG!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> JPEG değil!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Bu kodları elinizde bulunan farklı türdeki dosyalara uygulayarak, aldığınız
+çıktıları inceleyebilirsiniz.</p>
+</div>
+<div class="section" id="png">
+<h4>PNG<a class="headerlink" href="#png" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<p><cite>PNG</cite> dosya biçiminin teknik şartnamesine <a class="reference external" href="http://www.libpng.org/pub/png/spec/">http://www.libpng.org/pub/png/spec/</a>
+adresinden ulaşabilirsiniz.</p>
+<p>Ayrıca yardımcı kaynak olarak da <a class="reference external" href="http://www.fileformat.info/format/png/egff.htm">http://www.fileformat.info/format/png/egff.htm</a>
+adresindeki belgeyi kullanabilirsiniz.</p>
+<p>Şartnamade,
+<a class="reference external" href="http://www.libpng.org/pub/png/spec/1.2/PNG-Rationale.html#R.PNG-file-signature">http://www.libpng.org/pub/png/spec/1.2/PNG-Rationale.html#R.PNG-file-signature</a>
+sayfasındaki bilgiye göre bir <cite>PNG</cite> dosyasının ilk <cite>8</cite> baytı mutlaka aşağıdaki
+değerleri içeriyor:</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="63%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>onlu değer</td>
+<td>137  80  78  71  13  10  26  10</td>
+</tr>
+<tr class="row-even"><td>on altılı değer</td>
+<td>89  50  4e  47  0d  0a  1a  0a</td>
+</tr>
+<tr class="row-odd"><td>karakter değeri</td>
+<td>\211   P   N   G  \r  \n \032 \n</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>Şimdi elimize herhangi bir <cite>PNG</cite> dosyası alarak bu durumu teyit edelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;falanca.png&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">okunan</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Şartnamede de söylendiği gibi, bir <cite>PNG</cite> dosyasını öteki türlerden ayırt
+edebilmek için dosyanın ilk <cite>8</cite> baytına bakmamız yeterli olacaktır. O yüzden biz
+de yukarıdaki kodlarda sadece ilk <cite>8</cite> baytı okumakla yetindik.</p>
+<p>Bakalım ilk <cite>8</cite> baytta neler varmış:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">okunan</span>
+
+<span class="go"> b&#39;\x89PNG\r\n\x1a\n&#39;</span>
+</pre></div>
+</div>
+<p>Bu değerin, şartnamedeki karakter değeri ile aynı olup olmadığını sorgulayarak
+herhangi bir dosyanın <cite>PNG</cite> olup olmadığına karar verebilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">okunan</span> <span class="o">==</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\211</span><span class="s2">PNG</span><span class="se">\r\n\032\n</span><span class="s2">&quot;</span>
+
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Dolayısıyla şuna benzer bir kod yazarak, farklı resim dosyalarının türünü tespit
+edebilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">dosyalar</span><span class="p">:</span>
+    <span class="n">okunan</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">okunan</span><span class="p">[</span><span class="mi">6</span><span class="p">:</span><span class="mi">11</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="sa">b</span><span class="s1">&#39;JFIF&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;Exif&#39;</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> adlı dosya bir JPEG!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="n">okunan</span><span class="p">[:</span><span class="mi">8</span><span class="p">]</span> <span class="o">==</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\211</span><span class="s2">PNG</span><span class="se">\r\n\032\n</span><span class="s2">&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> adlı dosya bir PNG!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Türü bilinmeyen dosya: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Bu kodlarda bir resim dosyasının ilk <cite>10</cite> baytını okuduk. 7-11 arası baytların
+içinde ‘JFIF’ veya ‘Exif’ baytları varsa o dosyanın bir <cite>JPEG</cite> olduğuna; ilk
+<cite>8</cite> bayt <cite>b”211PNGrn032n”</cite> adlı bayt dizisine eşitse de o dosyanın bir
+<cite>PNG</cite> olduğuna karar veriyoruz.</p>
+</div>
+<div class="section" id="gif">
+<h4>GIF<a class="headerlink" href="#gif" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<p>GIF şartnamesine <a class="reference external" href="http://www.w3.org/Graphics/GIF/spec-gif89a.txt">http://www.w3.org/Graphics/GIF/spec-gif89a.txt</a> adresinden
+ulaşabilirsiniz.</p>
+<p>Bir dosyanın <cite>GIF</cite> olup olmadığına karar verebilmek için ilk <cite>3</cite> baytını
+okumanız yeterli olacaktır. Standart bir <cite>GIF</cite> dosyasının ilk üç baytı ‘G’, ‘I’
+ve ‘F’ karakterlerinden oluşur. Dosyanın sonraki <cite>3</cite> baytı ise <cite>GIF</cite>’in sürüm
+numarasını verir. 30.06.2019 itibariyle <cite>GIF</cite> standardının şu sürümleri
+bulunmaktadır:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>87a - Mayıs 1987</li>
+<li>89a - Temmuz 1989</li>
+</ol>
+</div></blockquote>
+<p>Dolayısıyla standart bir <cite>GIF</cite> dosyasının ilk <cite>6</cite> baytı şöyledir:</p>
+<blockquote>
+<div>‘GIF87a’ veya ‘GIF89a’</div></blockquote>
+<p>Eğer bir dosyanın <cite>GIF</cite> olup olmadığını anlamak isterseniz dosyanın ilk <cite>3</cite> veya
+<cite>6</cite> baytını denetlemeniz yeterli olacaktır:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">dosyalar</span><span class="p">:</span>
+    <span class="n">okunan</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">okunan</span><span class="p">[</span><span class="mi">6</span><span class="p">:</span><span class="mi">11</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="sa">b</span><span class="s1">&#39;JFIF&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;Exif&#39;</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> adlı dosya bir JPEG!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="n">okunan</span><span class="p">[:</span><span class="mi">8</span><span class="p">]</span> <span class="o">==</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\211</span><span class="s2">PNG</span><span class="se">\r\n\032\n</span><span class="s2">&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> adlı dosya bir PNG!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="n">okunan</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="sa">b</span><span class="s1">&#39;GIF&#39;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> adlı dosya bir GIF!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Türü bilinmeyen dosya: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tiff">
+<h4>TIFF<a class="headerlink" href="#tiff" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<p><cite>TIFF</cite> şartnamesine <a class="reference external" href="http://partners.adobe.com/public/developer/en/tiff/TIFF6.pdf">http://partners.adobe.com/public/developer/en/tiff/TIFF6.pdf</a>
+adresinden ulaşabilirsiniz. Bu şartnameye göre bir <cite>TIFF</cite> dosyası şunlardan
+herhangi biri ile başlar:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>‘II’</li>
+<li>‘MM’</li>
+</ol>
+</div></blockquote>
+<p>Dolayısıyla, bir <cite>TIFF</cite> dosyasını tespit edebilmek için dosyanın ilk <cite>2</cite> baytına
+bakmanız yeterli olacaktır:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">dosyalar</span><span class="p">:</span>
+    <span class="n">okunan</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">okunan</span><span class="p">[</span><span class="mi">6</span><span class="p">:</span><span class="mi">11</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="sa">b</span><span class="s1">&#39;JFIF&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;Exif&#39;</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> adlı dosya bir JPEG!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="n">okunan</span><span class="p">[:</span><span class="mi">8</span><span class="p">]</span> <span class="o">==</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\211</span><span class="s2">PNG</span><span class="se">\r\n\032\n</span><span class="s2">&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> adlı dosya bir PNG!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="n">okunan</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="sa">b</span><span class="s1">&#39;GIF&#39;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> adlı dosya bir GIF!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="n">okunan</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="sa">b</span><span class="s1">&#39;II&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;MM&#39;</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> adlı dosya bir TIFF!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Türü bilinmeyen dosya: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="bmp">
+<h4>BMP<a class="headerlink" href="#bmp" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<p><cite>BMP</cite> türündeki resim dosyalarına ilişkin bilgi için
+<a class="reference external" href="http://www.digitalpreservation.gov/formats/fdd/fdd000189.shtml">http://www.digitalpreservation.gov/formats/fdd/fdd000189.shtml</a> adresine
+başvurabilirsiniz.</p>
+<p>Buna göre, <cite>BMP</cite> dosyaları ‘BM’ ile başlar. Yani:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">dosyalar</span><span class="p">:</span>
+    <span class="n">okunan</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">okunan</span><span class="p">[</span><span class="mi">6</span><span class="p">:</span><span class="mi">11</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="sa">b</span><span class="s1">&#39;JFIF&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;Exif&#39;</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> adlı dosya bir JPEG!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="n">okunan</span><span class="p">[:</span><span class="mi">8</span><span class="p">]</span> <span class="o">==</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\211</span><span class="s2">PNG</span><span class="se">\r\n\032\n</span><span class="s2">&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> adlı dosya bir PNG!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="n">okunan</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="sa">b</span><span class="s1">&#39;GIF&#39;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> adlı dosya bir GIF!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="n">okunan</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="sa">b</span><span class="s1">&#39;II&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;MM&#39;</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> adlı dosya bir TIFF!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="n">okunan</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="sa">b</span><span class="s1">&#39;BM&#39;</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> adlı dosya bir BMP!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Türü bilinmeyen dosya: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi ikili dosyalar, baytların özel bir şekilde dizildiği ve özel bir
+şekilde yorumlandığı bir dosya türüdür. Dolayısıyla ikili dosyalarla
+çalışabilmek için, ikili dosyanın bayt dizilimini yakından tanımak gerekiyor.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
+<div class='extrarelbar'> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="basit_bir_iletisim_modeli.html" title="Basit bir İletişim Modeli"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="dosyalarin_metot_ve_nitelikleri.html" title="Dosyaların Metot ve Nitelikleri"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+ 
+      </ul>
+    </div> </div>
+
+<div class='addcomment'>Yorumlar</div>
+
+<div class='how-to-use'>
+<h3>Önemli Not</h3>
+Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
+<span class='tag'>&lt;pre&gt;&lt;code&gt;</span> etiketleri içine alın. Örneğin:
+
+<pre>
+    <span class='tag'>&lt;pre&gt;&lt;code class="python"&gt;</span>
+    <span class='keyword'>print</span>(<span class='string'>"Merhaba Dünya!"</span>)
+    <span class='tag'>&lt;/code&gt;&lt;/pre&gt;</span>
+</pre>
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'istihza';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4eca48eb2d83faf9" async="async"></script>
+
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="basit_bir_iletisim_modeli.html" title="Basit bir İletişim Modeli"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="dosyalarin_metot_ve_nitelikleri.html" title="Dosyaların Metot ve Nitelikleri"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+ 
+      </ul>
+    </div> 
+
+<div class="footer">
+&copy; Copyright 2007-2019, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 30.06.2019.
+<a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5 ile oluşturulmuştur.
+<br>
+<br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
+alt="Creative Commons License" style="border-width:0"
+src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a><br />
+<br>
+</div>
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=10396326;
+var sc_invisible=1;
+var sc_security="fb5cd679";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="hit counter"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="http://c.statcounter.com/10396326/0/fb5cd679/1/"
+alt="hit counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+  </body>
+</html>

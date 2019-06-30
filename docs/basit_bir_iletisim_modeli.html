@@ -1,0 +1,820 @@
+
+ <!DOCTYPE html>
+ <html lang="tr">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta content="Bu bölümde, bilgisayarların çalışma mantığını daha iyi anlayabilmek için basit bir iletişim modeli oluşturacağız." name="description" />
+<meta content="iletişim, Mors, alfabesi" name="keywords" />
+
+    <title>Basit bir İletişim Modeli &#8212; Python 3 için Türkçe Kılavuz</title>
+    <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="search" title="Ara" href="search.html" />
+    <link rel="next" title="Karakter Kodlama (Character Encoding)" href="karakter_kodlama.html" />
+    <link rel="prev" title="İkili (Binary) Dosyalar" href="ikili_dosyalar.html" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+<div class='header'><a href='https://yazbel.com'>yazbel.com</a></div>
+
+<ul class='navbar'>
+    <li><a href="#"><del>pdf desteği sonlanmıştır</del></a></li>
+    <li class="forum"><a href="http://forum.yazbel.com">forum</a></li>
+</ul>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="karakter_kodlama.html" title="Karakter Kodlama (Character Encoding)"
+             accesskey="N">sonraki</a></li>
+        <li class="right" >
+          <a href="ikili_dosyalar.html" title="İkili (Binary) Dosyalar"
+             accesskey="P">önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+ 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+
+  <div class="section" id="basit-bir-iletisim-modeli">
+<h1>Basit bir İletişim Modeli<a class="headerlink" href="#basit-bir-iletisim-modeli" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<p>Bu bölümde, bilgisayarların çalışma mantığını, verileri nasıl işlediğini,
+sayılarla karakter dizilerini nasıl temsil ettiğini daha iyi ve daha net bir
+şekilde anlayabilmek için basit bir iletişim modeli kuracağız.</p>
+<p>Şimdi şöyle bir durum hayal edin: Diyelim ki, hatlar üzerinden iletilen elektrik
+akımı yoluyla bir arkadaşınızla haberleşmenizi sağlayacak bir sistem
+tasarlıyorsunuz. Bu sistem, verici tarafında elektrik akımının gönderilmesini
+sağlayan bir anahtardan, alıcı tarafında ise, gelen akımın şiddetine göre loş
+veya parlak ışık veren bir ampulden oluşuyor. Eğer vericiden gönderilen elektrik
+akımı düşükse alıcı loş bir ışık, eğer gelen akım yüksekse alıcı parlak bir ışık
+görecek. Elbette eğer isterseniz düşük akım-yüksek akım karşıtlığı yerine akım
+varlığı-akım yokluğu karşıtlığını da kullanabilirsiniz. Böylece vericiden akım
+gönderildiğinde ampul yanar, gönderilmediğinde ise söner. Bana düşük akım-yüksek
+akım karşıtlığı daha kullanışlı geldiği için böyle tercih ettim. Siz tabii ki
+öbür türlüsünü de tercih edebilirsiniz.</p>
+<p>Yukarıda bahsedildiği gibi sistemimizi kurduk diyelim. Peki ama bu sistem verici
+ile alıcı arasında basit de olsa bir iletişim kurmamızı nasıl olacak da
+sağlayacak?</p>
+<p>Aslında bunun cevabı ve mantığı çok basit. Gördüğünüz gibi, bu sistemde iki
+farklı durum söz konusu: Loş ışık ve parlak ışık (veya yanan ampul ve sönmüş
+ampul).</p>
+<p>Bu ikili yapıyı, tahmin edebileceğiniz gibi, ikili (<em>binary</em>) sayma sistemi
+aracılığıyla rahatlıkla temsil edebiliriz. Mesela loş ışık durumuna <cite>0</cite>, parlak
+ışık durumuna ise <cite>1</cite> diyebiliriz. Dolayısıyla verici, ampulün loş ışık
+vermesini sağlayacak düşük bir akım gönderdiğinde bunun değerini <cite>0</cite>, ampulün
+yüksek ışık vermesini sağlayacak yüksek bir akım gönderdiğinde ise bunun
+değerini <cite>1</cite> olarak değerlendirebiliriz.</p>
+<p>Burada yaptığımız dönüştürme işlemine teknik olarak ‘kodlama’ (<em>encoding</em>) adı
+verilir. Bu kodlama sistemine göre biz, iki farklı elektrik akımı değerini, yani
+loş ışık ve parlak ışık değerlerini sırasıyla ikili sistemdeki <cite>0</cite> ve <cite>1</cite>
+sayıları ile eşleştirip, loş ışığa <cite>0</cite>, parlak ışığa ise <cite>1</cite> dedik.</p>
+<p>Hemen anlayacağınız gibi, bahsettiğimiz bu hayali sistem, telgraf iletişimine
+çok benziyor. İşte gerçekte de kullanılan telgraf sistemine çok benzeyen bu
+basitleştirilmiş model bizim bilgisayarların çalışma mantığını da daha net bir
+şekilde anlamamızı sağlayacak.</p>
+<div class="section" id="bitlik-bir-sistem">
+<h2>8 Bitlik bir Sistem<a class="headerlink" href="#bitlik-bir-sistem" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Hatırlarsanız ikili sayma sisteminde <cite>0</cite>’lar ve <cite>1</cite>’lerin oluşturduğu her bir
+basamağa ‘bit’ adını veriyorduk.</p>
+<div class="admonition note">
+<p class="first admonition-title">Not</p>
+<p class="last"><em>Bit</em> kelimesi İngilizcede ‘<strong>bi</strong>nary’ (ikili) ve ‘digi<strong>t</strong>’ (rakam)
+kelimelerinin birleştirilmesi ile üretilmiştir.</p>
+</div>
+<p>Bu bilgiye göre mesela <cite>0</cite> sayısı bir bitlik bir sayı iken, <cite>1001</cite> sayısı dört
+bitlik bir sayıdır. İletişimimizi eksiksiz bir biçimde sağlayabilmemiz, yani
+gereken bütün karakterleri temsil edebilmemiz için, sistemimizin 8 hanelik bir
+sayı kapasitesine sahip olması, yani teknik bir dille ifade etmek gerekirse
+sistemimizin 8 bitlik olması herhalde yeterli olacaktır.</p>
+<p>8 bitlik bir iletişim sisteminde <cite>10</cite>’a kadar şu şekilde sayabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="n">i</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>
+<span class="gp">...</span>
+<span class="go">00000000</span>
+<span class="go">00000001</span>
+<span class="go">00000010</span>
+<span class="go">00000011</span>
+<span class="go">00000100</span>
+<span class="go">00000101</span>
+<span class="go">00000110</span>
+<span class="go">00000111</span>
+<span class="go">00001000</span>
+<span class="go">00001001</span>
+</pre></div>
+</div>
+<p>Verici tarafındaki kişi elindeki anahtar yardımıyla farklı kuvvetlere sahip
+sinyalleri art arda göndererek yukarıda gösterildiği gibi on farklı sayıyı
+alıcıya iletebilir. Sistemimizin 8 bitlik olduğunu düşünürsek karşı tarafa <cite>0</cite>
+sayısı ile birlikte toplam 2 ** 8 = 256 farklı sinyal gönderebiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">256</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="n">i</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>
+
+<span class="go">00000000</span>
+<span class="go">00000001</span>
+<span class="go">00000010</span>
+<span class="go">00000011</span>
+<span class="go">00000100</span>
+<span class="gp">...</span>
+<span class="gp">...</span>
+<span class="gp">...</span>
+<span class="go">11111001</span>
+<span class="go">11111010</span>
+<span class="go">11111011</span>
+<span class="go">11111100</span>
+<span class="go">11111101</span>
+<span class="go">11111110</span>
+<span class="go">11111111</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, bizim 8 bitlik bu sistemle gönderebileceğimiz son sinyal, yani
+sayı <cite>255</cite>’tir. Bu sistemle bundan büyük bir sayıyı gönderemeyiz. Bu durumu
+kendi gözlerinizle görmek için şu kodları çalıştırın:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">256</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="n">i</span><span class="p">)[</span><span class="mi">2</span><span class="p">:],</span> <span class="n">i</span><span class="o">.</span><span class="n">bit_length</span><span class="p">(),</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada ilk sütun <cite>256</cite>’ya kadar olan sayıların ikili sistemdeki karşılıklarını,
+ikinci sütun ise bu sayıların bit uzunluğunu gösteriyor. Bu çıktıyı
+incelediğinizde de göreceğiniz gibi, 8 bit uzunluğa sahip son sayı <cite>255</cite>’tir.
+<cite>256</cite> sayısı ise 9 bit uzunluğa sahiptir. Yani <cite>256</cite> sayısı mecburen bizim
+sistemimizin dışındadır:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">bin</span><span class="p">(</span><span class="mi">255</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span>
+
+<span class="go">&#39;11111111&#39;</span>
+
+
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="o">.</span><span class="n">bit_length</span><span class="p">()</span>
+
+<span class="go">8</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">bin</span><span class="p">(</span><span class="mi">256</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span>
+
+<span class="go">&#39;100000000&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mi">256</span><span class="p">)</span><span class="o">.</span><span class="n">bit_length</span><span class="p">()</span>
+
+<span class="go">9</span>
+</pre></div>
+</div>
+<p>Dediğimiz gibi, bu sistemde elimizde toplam 8 bit var. Yani bu sistemi kullanarak
+<cite>0</cite>’dan <cite>256</cite>’ya kadar sayıp, bu sayıları alıcıya iletebiliriz.</p>
+<p>Peki verici ile alıcı arasında birtakım sayıları gönderip alabilmek ne işimize
+yarar? Yani bu iş neden bu kadar önemli?</p>
+<p>Bu soruların cevabını birazdan vereceğiz, ama ondan önce daha önemli bir konuya
+değinelim.</p>
+</div>
+<div class="section" id="hata-kontrolu">
+<h2>Hata Kontrolü<a class="headerlink" href="#hata-kontrolu" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Buraya kadar her şey yolunda. Alıcı ve verici arasındaki iletişimi elektrik
+akımı vasıtasıyla, 8 bitlik bir sistem üzerinden sağlayabiliyoruz. Ancak
+sistemimizin çok önemli bir eksiği var. Biz bu sistemde hiçbir hata kontrolü
+yapmıyoruz. Yani vericiden gelen mesajın doğruluğunu test eden hiçbir ölçütümüz
+yok. Zira alıcı ile verici arasında gidip gelen veriler pek çok farklı şekilde
+ve sebeple bozulmaya uğrayabilir. Örneğin, gönderilen veri alıcı tarafından
+doğru anlaşılamayabilir veya elektrik sinyallerini ileten kablolardaki arızalar
+sinyallerin doğru iletilmesini engelleyebilir.</p>
+<p>İşte bütün bunları hesaba katarak, iletişimin doğru bir şekilde
+gerçekleşebilmesini sağlamak amacıyla sistemimiz için basit bir hata kontrol
+süreci tasarlayalım.</p>
+<p>Dediğimiz gibi, elimizdeki sistem toplam <cite>256</cite>’ya kadar saymamıza olanak
+tanıyor. Çünkü bizim sistemimiz 8 bitlik bir sistem. Bu sisteme bir hata kontrol
+mekanizması ekleyebilmek için veri iletimini 8 bitten 7 bite çekeceğiz. Yani
+iletişimimizi toplam 2 ** 7 = 127 sayı ile sınırlayacağız. Boşta kalan 8. biti
+ise bahsettiğimiz bu hata kontrol mekanizmasına ayıracağız.</p>
+<p>Peki hata kontrol mekanizmamız nasıl işleyecek?</p>
+<p>Çok basit: Vericiden alıcıya ulaşan verilerin tek mi yoksa çift mi olduğuna
+bakacağız.</p>
+<p>Buna göre sistemimiz şöyle çalışacak:</p>
+<p>Diyelim ki verici alıcıya sinyaller aracılığıyla şu sayıyı göndermek istiyor:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="mi">0110111</span>
+</pre></div>
+</div>
+<p>Bu arada, bunun 7 bitlik bir sayı olduğuna dikkat edin. Dediğimiz gibi, biz
+kontrol mekanizmamızı kurabilmek için elimizdeki 8 bitlik kapasitenin 7 bitini
+kullanacağız. Boşta kalan 8. biti ise kontrol mekanizmasına tahsis edeceğiz.</p>
+<p>Ne diyorduk? Evet, biz karşı tarafa 7 bitlik bir sayı olan <cite>0110111</cite> sayısını
+göndermek istiyoruz. Bu sayıyı göndermeden önce, içindeki <cite>1</cite>’lerin miktarına
+bakarak bu sayının tek mi yoksa çift mi olduğuna karar verelim. Burada toplam
+beş adet <cite>1</cite> sayısı var. Yani bu sayı bir tek sayıdır. Eğer göndermek
+istediğimiz sayı bir tek sayı ise, karşı tarafa ulaştığında da bir tek sayı
+olmalıdır.</p>
+<p>Biz bu sistem için şöyle bir protokol tasarlayabiliriz:</p>
+<blockquote>
+<div>Bu sistemde bütün sayılar karşı tarafa bir ‘tek sayı’ olarak iletilmelidir.
+Eğer iletilen sayılar arasında bir çift sayı varsa, o sayı hatalı iletilmiş
+veya iletim esnasında bozulmuş demektir.</div></blockquote>
+<p>Peki biz iletilen bütün sayıların bir tek sayı olmasını nasıl sağlayacağız? İşte
+bu işlemi, boşa ayırdığımız o 8. bit ile gerçekleştireceğiz:</p>
+<blockquote>
+<div>Eğer karşı tarafa iletilen bir sayı zaten tekse, o sayının başına <cite>0</cite>
+ekleyeceğiz. Böylece sayının teklik-çiftlik durumu değişmemiş olacak. Ama eğer
+iletilecek sayı çiftse, o sayının başına <cite>1</cite> ekleyeceğiz. Böylece çift sayıyı,
+sistemimizin gerektirdiği şekilde, tek sayıya çevirmiş olacağız.</div></blockquote>
+<p>Örnek olarak <cite>0110111</cite> sayısını verelim. Bu sayıda toplam beş adet <cite>1</cite> var. Yani
+bu sayı bir tek sayı. Dolayısıyla bu sayının başına bir adet <cite>0</cite> ekliyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="mi">0110111</span>
+</pre></div>
+</div>
+<p>Böylece sayımızın teklik-çiftlik durumu değişmemiş oluyor. Karşı taraf bu sayıyı
+aldığında <cite>1</cite>’lerin miktarına bakarak bu verinin doğru iletildiğinden emin
+oluyor.</p>
+<p>Bir de şu sayıya bakalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1111011</span>
+</pre></div>
+</div>
+<p>Bu sayıda toplam altı adet <cite>1</cite> sayısı var. Yani bu sayı bir çift sayı. Bir
+sayının sistemimiz tarafından ‘hatasız’ olarak kabul edilebilmesi için bu
+sayının bir tek sayı olması gerekiyor. Bu yüzden biz bu sayıyı tek sayıya
+çevirmek için başına bir adet <cite>1</cite> sayı ekliyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="mi">1111011</span>
+</pre></div>
+</div>
+<p>Böylece sayımızın içinde toplam yedi adet <cite>1</cite> sayısı olmuş ve böylece sayımız
+tek sayıya dönüşmüş oluyor.</p>
+<p>Teknik olarak ifade etmemiz gerekirse, yukarıda yaptığımız kontrol türüne ‘eşlik
+denetimi’ (<em>parity check</em>) adı verilir. Bu işlemi yapmamızı sağlayan bit’e ise
+‘eşlik biti’ (<em>parity bit</em>) denir. İki tür eşlik denetimi bulunur:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Tek eşlik denetimi (<em>odd parity check</em>)</li>
+<li>Çift eşlik denetimi (<em>even parity check</em>)</li>
+</ol>
+</div></blockquote>
+<p>Biz kendi sistemimizde hata kontrol mekanizmasını bütün verilerin bir ‘tek sayı’
+olması gerekliliği üzerine kurduk. Yani burada bir ‘tek eşlik denetimi’
+gerçekleştirmiş olduk. Elbette bütün verilerin bir çift sayı olması gerekliliği
+üzerine de kurabilirdik bu sistemi. Yani isteseydik ‘çift eşlik denetimi’ de
+yapabilirdik. Bu tamamen bir tercih meselesidir. Bu tür sistemlerde yaygın
+olarak ‘tek eşlik denetimi’ kullanıldığı için biz de bunu tercih ettik.</p>
+<p>Bu örneklerden de gördüğünüz gibi, toplam 8 bitlik kapasitemizin 7 bitini veri
+aktarımı için, kalan 1 bitini ise alınıp verilen bu verilerin doğruluğunu
+denetlemek için kullanıyoruz. Elbette kullandığımız hata kontrol mekanizması
+epey zayıf bir sistemdir. Ama, iletişim sistemleri arasında verilerin hatasız
+bir şekilde aktarılıp aktarılamadığını kontrol etmeye yarayan bir sistem olan
+eşlik denetiminin, bugün bilgisayarın belleklerinde (RAM) dahi kullanılmaya
+devam ettiğini söylemeden geçmeyelim…</p>
+</div>
+<div class="section" id="karakterlerin-temsili">
+<h2>Karakterlerin Temsili<a class="headerlink" href="#karakterlerin-temsili" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Yukarıda anlattıklarımızdan da gördüğünüz gibi, sistemimizi kullanarak 7 bit
+üzerinden toplam 127 sayı gönderebiliyoruz. Tabii ki sistemimiz 8 bit olduğu
+için 1 bit de boşta kalıyor. İşte boşta duran bu 1 biti ise eşlik denetimi için
+kullanıyoruz. Ama elbette alıcı ile verici arasında sayı alışverişi yapmak pek
+de heyecan uyandırıcı bir faaliyet değil. Karşı tarafa sayısal mesajlar yerine
+birtakım sözel mesajlar iletebilsek herhalde çok daha keyifli olurdu…</p>
+<p>Şunu asla unutmayın. Eğer bir noktadan başka bir noktaya en az iki farklı sinyal
+yolu ile birtakım sayısal verileri gönderebiliyorsanız aynı şekilde sözel
+verileri de rahatlıkla gönderebilirsiniz. Tıpkı düşük voltaj ve yüksek voltaj
+değerlerini sırasıyla <cite>0</cite> ve <cite>1</cite> sayıları ile temsil ettiğiniz gibi,
+karakterleri de bu iki sayı ile temsil edebilirsiniz. Yapmanız gereken tek şey
+hangi sayıların hangi karakterlere karşılık geleceğini belirlemekten ibarettir.
+Mesela elimizde sayılarla karakterleri eşleştiren şöyle bir tablo olduğunu
+varsayalım:</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="13%" />
+<col width="12%" />
+<col width="13%" />
+<col width="12%" />
+<col width="15%" />
+<col width="11%" />
+<col width="13%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">sayı</th>
+<th class="head">karakter</th>
+<th class="head">sayı</th>
+<th class="head">karakter</th>
+<th class="head">sayı</th>
+<th class="head">karakter</th>
+<th class="head">sayı</th>
+<th class="head">karakter</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0</td>
+<td>‘a’</td>
+<td>1</td>
+<td>‘b’</td>
+<td>10</td>
+<td>‘c’</td>
+<td>11</td>
+<td>‘d’</td>
+</tr>
+<tr class="row-odd"><td>100</td>
+<td>‘e’</td>
+<td>101</td>
+<td>‘f’</td>
+<td>110</td>
+<td>‘g’</td>
+<td>111</td>
+<td>‘h’</td>
+</tr>
+<tr class="row-even"><td>1000</td>
+<td>‘i’</td>
+<td>1001</td>
+<td>‘j’</td>
+<td>1010</td>
+<td>‘k’</td>
+<td>1011</td>
+<td>‘l’</td>
+</tr>
+<tr class="row-odd"><td>1100</td>
+<td>‘m’</td>
+<td>1101</td>
+<td>‘n’</td>
+<td>1110</td>
+<td>‘o’</td>
+<td>1111</td>
+<td>‘p’</td>
+</tr>
+<tr class="row-even"><td>10000</td>
+<td>‘q’</td>
+<td>10001</td>
+<td>‘r’</td>
+<td>10010</td>
+<td>‘s’</td>
+<td>10011</td>
+<td>‘t’</td>
+</tr>
+<tr class="row-odd"><td>10100</td>
+<td>‘u’</td>
+<td>10101</td>
+<td>‘v’</td>
+<td>10110</td>
+<td>‘w’</td>
+<td>10111</td>
+<td>‘x’</td>
+</tr>
+<tr class="row-even"><td>11000</td>
+<td>‘y’</td>
+<td>11001</td>
+<td>‘z’</td>
+<td>11010</td>
+<td>‘A’</td>
+<td>11011</td>
+<td>‘B’</td>
+</tr>
+<tr class="row-odd"><td>11100</td>
+<td>‘C’</td>
+<td>11101</td>
+<td>‘D’</td>
+<td>11110</td>
+<td>‘E’</td>
+<td>11111</td>
+<td>‘F’</td>
+</tr>
+<tr class="row-even"><td>100000</td>
+<td>‘G’</td>
+<td>100001</td>
+<td>‘H’</td>
+<td>100010</td>
+<td>‘I’</td>
+<td>100011</td>
+<td>‘J’</td>
+</tr>
+<tr class="row-odd"><td>100100</td>
+<td>‘K’</td>
+<td>100101</td>
+<td>‘L’</td>
+<td>100110</td>
+<td>‘M’</td>
+<td>100111</td>
+<td>‘N’</td>
+</tr>
+<tr class="row-even"><td>101000</td>
+<td>‘O’</td>
+<td>101001</td>
+<td>‘P’</td>
+<td>101010</td>
+<td>‘Q’</td>
+<td>101011</td>
+<td>‘R’</td>
+</tr>
+<tr class="row-odd"><td>101100</td>
+<td>‘S’</td>
+<td>101101</td>
+<td>‘T’</td>
+<td>101110</td>
+<td>‘U’</td>
+<td>101111</td>
+<td>‘V’</td>
+</tr>
+<tr class="row-even"><td>110000</td>
+<td>‘W’</td>
+<td>110001</td>
+<td>‘X’</td>
+<td>110010</td>
+<td>‘Y’</td>
+<td>110011</td>
+<td>‘Z’</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>Bu tabloda toplam <cite>52</cite> karakter ile <cite>52</cite> sayı birbiriyle eşleştirilmiş durumda.
+Mesela vericiden <cite>0</cite> sinyali geldiğinde bu tabloya göre biz bunu ‘a’ harfi
+olarak yorumlayacağız. Örneğin karşı tarafa ‘python’ mesajını iletmek için
+sırasıyla şu sinyalleri göndereceğiz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1111</span><span class="p">,</span> <span class="mi">11000</span><span class="p">,</span> <span class="mi">10011</span><span class="p">,</span> <span class="mi">111</span><span class="p">,</span> <span class="mi">1110</span><span class="p">,</span> <span class="mi">1101</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, elimizdeki 127 sayının 52’sini harflere ayırdık ve elimizde 75
+tane daha sayı kaldı. Eğer isterseniz geri kalan bu sayıları da birtakım başka
+karakterlere veya işaretlere ayırarak, alıcı ve verici arasındaki bütün
+iletişimin eksiksiz bir şekilde gerçekleşmesini sağlayabilirsiniz. Örneğin şöyle
+bir tablo oluşturabilirsiniz:</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="13%" />
+<col width="12%" />
+<col width="13%" />
+<col width="12%" />
+<col width="14%" />
+<col width="12%" />
+<col width="13%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">sayı</th>
+<th class="head">karakter</th>
+<th class="head">sayı</th>
+<th class="head">karakter</th>
+<th class="head">sayı</th>
+<th class="head">karakter</th>
+<th class="head">sayı</th>
+<th class="head">karakter</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0</td>
+<td>‘0’</td>
+<td>1</td>
+<td>‘1’</td>
+<td>10</td>
+<td>‘2’</td>
+<td>11</td>
+<td>‘3’</td>
+</tr>
+<tr class="row-odd"><td>100</td>
+<td>‘4’</td>
+<td>101</td>
+<td>‘5’</td>
+<td>110</td>
+<td>‘6’</td>
+<td>111</td>
+<td>‘7’</td>
+</tr>
+<tr class="row-even"><td>1000</td>
+<td>‘8’</td>
+<td>1001</td>
+<td>‘9’</td>
+<td>1010</td>
+<td>‘a’</td>
+<td>1011</td>
+<td>‘b’</td>
+</tr>
+<tr class="row-odd"><td>1100</td>
+<td>‘c’</td>
+<td>1101</td>
+<td>‘d’</td>
+<td>1110</td>
+<td>‘e’</td>
+<td>1111</td>
+<td>‘f’</td>
+</tr>
+<tr class="row-even"><td>10000</td>
+<td>‘g’</td>
+<td>10001</td>
+<td>‘h’</td>
+<td>10010</td>
+<td>‘i’</td>
+<td>10011</td>
+<td>‘j’</td>
+</tr>
+<tr class="row-odd"><td>10100</td>
+<td>‘k’</td>
+<td>10101</td>
+<td>‘l’</td>
+<td>10110</td>
+<td>‘m’</td>
+<td>10111</td>
+<td>‘n’</td>
+</tr>
+<tr class="row-even"><td>11000</td>
+<td>‘o’</td>
+<td>11001</td>
+<td>‘p’</td>
+<td>11010</td>
+<td>‘q’</td>
+<td>11011</td>
+<td>‘r’</td>
+</tr>
+<tr class="row-odd"><td>11100</td>
+<td>‘s’</td>
+<td>11101</td>
+<td>‘t’</td>
+<td>11110</td>
+<td>‘u’</td>
+<td>11111</td>
+<td>‘v’</td>
+</tr>
+<tr class="row-even"><td>100000</td>
+<td>‘w’</td>
+<td>100001</td>
+<td>‘x’</td>
+<td>100010</td>
+<td>‘y’</td>
+<td>100011</td>
+<td>‘z’</td>
+</tr>
+<tr class="row-odd"><td>100100</td>
+<td>‘A’</td>
+<td>100101</td>
+<td>‘B’</td>
+<td>100110</td>
+<td>‘C’</td>
+<td>100111</td>
+<td>‘D’</td>
+</tr>
+<tr class="row-even"><td>101000</td>
+<td>‘E’</td>
+<td>101001</td>
+<td>‘F’</td>
+<td>101010</td>
+<td>‘G’</td>
+<td>101011</td>
+<td>‘H’</td>
+</tr>
+<tr class="row-odd"><td>101100</td>
+<td>‘I’</td>
+<td>101101</td>
+<td>‘J’</td>
+<td>101110</td>
+<td>‘K’</td>
+<td>101111</td>
+<td>‘L’</td>
+</tr>
+<tr class="row-even"><td>110000</td>
+<td>‘M’</td>
+<td>110001</td>
+<td>‘N’</td>
+<td>110010</td>
+<td>‘O’</td>
+<td>110011</td>
+<td>‘P’</td>
+</tr>
+<tr class="row-odd"><td>110100</td>
+<td>‘Q’</td>
+<td>110101</td>
+<td>‘R’</td>
+<td>110110</td>
+<td>‘S’</td>
+<td>110111</td>
+<td>‘T’</td>
+</tr>
+<tr class="row-even"><td>111000</td>
+<td>‘U’</td>
+<td>111001</td>
+<td>‘V’</td>
+<td>111010</td>
+<td>‘W’</td>
+<td>111011</td>
+<td>‘X’</td>
+</tr>
+<tr class="row-odd"><td>111100</td>
+<td>‘Y’</td>
+<td>111101</td>
+<td>‘Z’</td>
+<td>111110</td>
+<td>‘!’</td>
+<td>111111</td>
+<td>‘”’</td>
+</tr>
+<tr class="row-even"><td>1000000</td>
+<td>‘#’</td>
+<td>1000001</td>
+<td>‘$’</td>
+<td>1000010</td>
+<td>‘%’</td>
+<td>1000011</td>
+<td>‘&amp;’</td>
+</tr>
+<tr class="row-odd"><td>1000100</td>
+<td>“’”’</td>
+<td>1000101</td>
+<td>‘’(‘</td>
+<td>1000110</td>
+<td>‘)’</td>
+<td>1000111</td>
+<td>‘*’</td>
+</tr>
+<tr class="row-even"><td>1001000</td>
+<td>‘+’</td>
+<td>1001001</td>
+<td>‘,’</td>
+<td>1001010</td>
+<td>‘-‘</td>
+<td>1001011</td>
+<td>‘.’</td>
+</tr>
+<tr class="row-odd"><td>1001100</td>
+<td>‘/’</td>
+<td>1001101</td>
+<td>‘:’</td>
+<td>1001110</td>
+<td>‘;’</td>
+<td>1001111</td>
+<td>‘&lt;’</td>
+</tr>
+<tr class="row-even"><td>1010000</td>
+<td>‘=’</td>
+<td>1010001</td>
+<td>‘&gt;’</td>
+<td>1010010</td>
+<td>‘?’</td>
+<td>1010011</td>
+<td>‘&#64;’</td>
+</tr>
+<tr class="row-odd"><td>1010100</td>
+<td>‘[‘</td>
+<td>1010101</td>
+<td>‘'</td>
+<td>1010110</td>
+<td>‘]’</td>
+<td>1010111</td>
+<td>‘^’</td>
+</tr>
+<tr class="row-even"><td>1011000</td>
+<td>‘_’</td>
+<td>1011001</td>
+<td>‘’</td>
+<td>1011010</td>
+<td>‘{‘</td>
+<td>1011011</td>
+<td>‘’</td>
+</tr>
+<tr class="row-odd"><td>1011100</td>
+<td>‘}’</td>
+<td>1011101</td>
+<td>‘~’</td>
+<td>1011110</td>
+<td>‘ ‘</td>
+<td>1011111</td>
+<td>‘t’</td>
+</tr>
+<tr class="row-even"><td>1100000</td>
+<td>‘n’</td>
+<td>1100001</td>
+<td>‘r’</td>
+<td>1100010</td>
+<td>‘x0b’</td>
+<td>1100011</td>
+<td>‘x0c’</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>Aslında yukarıda anlattığımız sayı-karakter eşleştirme işleminin, ta en başta
+yaptığımız sinyal-sayı eşleştirme işlemiyle mantık olarak aynı olduğuna
+dikkatinizi çekmek isterim.</p>
+<p>Sistemimizi tasarlarken, iletilen iki farklı sinyali <cite>0</cite> ve <cite>1</cite> sayıları ile
+temsil etmiştik. Yani bu sinyalleri <cite>0</cite> ve <cite>1</cite>’ler halinde kodlamıştık. Şimdi
+ise bu sayıları karakterlere dönüştürüyoruz. Yani yine bir kodlama (<em>encoding</em>)
+işlemi gerçekleştiriyoruz.</p>
+<p>Baştan beri anlattığımız bu küçük iletişim modeli, sayıların ve karakterlerin
+nasıl temsil edilebileceği konusunda bize epey bilgi verdi. Bu arada, yukarıda
+anlattığımız sistem her ne kadar hayali de olsa, bu sisteme benzeyen sistemlerin
+tarih boyunca kullanıldığını ve hatta bugün kullandığımız bütün iletişim
+sistemlerinin de yukarıda anlattığımız temel üzerinde şekillendiğini belirtmeden
+geçmeyelim. Örneğin telgraf iletişiminde kullanılan Mors alfabesi yukarıda tarif
+ettiğimiz sisteme çok benzer. Mors alfabesi, kısa ve uzun sinyallerle
+karakterlerin eşleştirilmesi yoluyla oluşturulmuştur. Mors sisteminde farklı
+sinyaller (tıpkı bizim sistemimizde olduğu gibi) farklı harflere karşılık gelir:</p>
+<blockquote>
+<div><a class="reference external image-reference" href="_images/misc/morse.png"><img alt="_images/morse.png" class="align-center" src="_images/morse.png" style="width: 400px; height: 400px;" /></a>
+</div></blockquote>
+<p>Mors alfabesinin bizim oluşturduğumuz sisteme mantık olarak ne kadar benzediğine
+dikkat edin. Bu sistemin benzeri biraz sonra göstereceğimiz gibi, modern
+bilgisayarlarda da kullanılmaktadır.</p>
+</div>
+</div>
+
+
+
+<div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
+<div class='extrarelbar'> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="karakter_kodlama.html" title="Karakter Kodlama (Character Encoding)"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="ikili_dosyalar.html" title="İkili (Binary) Dosyalar"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+ 
+      </ul>
+    </div> </div>
+
+<div class='addcomment'>Yorumlar</div>
+
+<div class='how-to-use'>
+<h3>Önemli Not</h3>
+Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
+<span class='tag'>&lt;pre&gt;&lt;code&gt;</span> etiketleri içine alın. Örneğin:
+
+<pre>
+    <span class='tag'>&lt;pre&gt;&lt;code class="python"&gt;</span>
+    <span class='keyword'>print</span>(<span class='string'>"Merhaba Dünya!"</span>)
+    <span class='tag'>&lt;/code&gt;&lt;/pre&gt;</span>
+</pre>
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'istihza';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4eca48eb2d83faf9" async="async"></script>
+
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="karakter_kodlama.html" title="Karakter Kodlama (Character Encoding)"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="ikili_dosyalar.html" title="İkili (Binary) Dosyalar"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+ 
+      </ul>
+    </div> 
+
+<div class="footer">
+&copy; Copyright 2007-2019, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 30.06.2019.
+<a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5 ile oluşturulmuştur.
+<br>
+<br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
+alt="Creative Commons License" style="border-width:0"
+src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a><br />
+<br>
+</div>
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=10396326;
+var sc_invisible=1;
+var sc_security="fb5cd679";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="hit counter"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="http://c.statcounter.com/10396326/0/fb5cd679/1/"
+alt="hit counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+  </body>
+</html>

@@ -1,0 +1,295 @@
+
+ <!DOCTYPE html>
+ <html lang="tr">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Kivy Programlamaya Giriş &#8212; Python 3 için Türkçe Kılavuz</title>
+    <link rel="stylesheet" href="../../_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/translations.js"></script>
+    <link rel="search" title="Ara" href="../../search.html" />
+    <link rel="next" title="Pencere düzenleri" href="layout.html" />
+    <link rel="prev" title="Kurulum" href="kurulum.html" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+<div class='header'><a href='https://yazbel.com'>yazbel.com</a></div>
+
+<ul class='navbar'>
+    <li><a href="#"><del>pdf desteği sonlanmıştır</del></a></li>
+    <li class="forum"><a href="http://forum.yazbel.com">forum</a></li>
+</ul>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="layout.html" title="Pencere düzenleri"
+             accesskey="N">sonraki</a></li>
+        <li class="right" >
+          <a href="kurulum.html" title="Kurulum"
+             accesskey="P">önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="../index.html" >Üçüncü Taraf Modüller</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">Kivy Paketi</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+
+  <div class="section" id="kivy-programlamaya-giris">
+<h1>Kivy Programlamaya Giriş<a class="headerlink" href="#kivy-programlamaya-giris" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<p>Bu yazıyla Kivy derslerine giriş yapacağız. Önce klasik başlangıç olan “merhaba dünya” örneği yapacağız ve sırayla kodumuzu inceleyeceğiz.</p>
+<p>Bundan önceki yazılarda da bahsettiğimiz gibi, Kivy ile programlamadan verim almak istiyorsanız Python sınıflar konusunda temel bilginiz olmalıdır. Çünkü genelde sınıfları kullanacağım ve bu yüzden yazdığım kodları(her ne kadar açıklama yapsam da) anlayabilmek için, temel de olsa, bilgili olmanız gerekir. Burdan, “Kivy sınıflar ile kullanılmak zorundadır” anlamı çıkmasın. Zaten sınıf yapısı çok zor değil, biraz pratik yaparak mantığını kavrayabilirsiniz.</p>
+<p>Kivy kütüphanesini sıkıntısız bir şekilde kurduğunuzu varsayarak ilk örneğimize geçiş yapıyoruz.</p>
+<p>Herhangi bir açıklama yapmadan önce hemen kodları verelim</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.label</span> <span class="kn">import</span> <span class="n">Label</span>
+
+<span class="k">class</span> <span class="nc">Program</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">yazi</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Merhaba Dünya&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">yazi</span>
+
+
+<span class="n">Program</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Kodu kaydedip çalıştırdığınızda ekranda, karşınıza aşağıdaki gibi bir pencere çıkacaktır.</p>
+<img alt="../../_images/merhaba.png" src="../../_images/merhaba.png" />
+<p>Şimdi sıra ile kodumuzu inceleyelim. İlk iki satır, her programın başına yazılan klasik satırlardır. Sadece ilk satır Linux için geçerli.</p>
+<p>Sonraki satırda</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
+</pre></div>
+</div>
+<p>programın belkemiğini oluşturan App sınıfını import ediyoruz. Ana pencere bu sınıf yardımıyla oluşturulur, programa dair tanımlamalar genelde bu sınıf ile yapılır.</p>
+<p>Bir sonraki satır</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">kivy.uix.label</span> <span class="kn">import</span> <span class="n">Label</span>
+</pre></div>
+</div>
+<p>ekranda yazı göstermemizi sağlayan Label sınıfını import ettik, yani kullanmak üzere içeriye aktardık. Artık gerekli sınıfları import ettiğimize göre ana programımızı tanımlayabiliriz</p>
+<p>Bir sonraki satırda, Program adında bir sınıf oluşturduk ve App sınıfından miras aldık. Miras almak demek, önceden oluşturulan sınıfı tekrar kullanmak üzere bir sınıfa katmak, eklemek.</p>
+<p>Yani biz burda programımızı oluşturabilmek için App sınıfını, kendi ana sınıfımıza miras aldık ve kullanmaya başladık. Ve sınıfımızda build adında bir metot tanımladık. Bu metot, programımız çalıştığında ekranda gösterilecek ana düzeni, bileşenleri geri döndürür. Genelde bir pencere düzeni geri döndürülür. Biz şimdilik basit bir şekilde ekranda yazı göstermek istedik ve bunu geri döndürdük. İleride pencere düzenlerini gördüğümüzde onları geri döndüreceğiz. Şimdilik örneğimize bakalım</p>
+<p>Şimdiye kadar yaptıklarımız, ihtiyacımız olan şeyleri import etmek, ana sınıfımızı oluşturmak, ekranda gösterilecek nesneleri geri döndürmek. Artık programımızı çalıştırmamız gerekiyor. Bunu da Program().run() kısmında yaptık.</p>
+<div class="section" id="kv-dili">
+<h2>Kv Dili<a class="headerlink" href="#kv-dili" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Kivy programlarını geliştirmek için geliştirilen bir dildir. Kullanımı basittir. Yukarıda yaptığımız programı bir de kv dili ile gerçekleştirelim.</p>
+<p>Öncelikle ana dosyamızı hazırlıyoruz. Benim ana dosyamın adı main.py . Ve bu dosyamın yanına bir tane program.kv dosyası oluşturuyorum. Ana sınıfımın ismi neyse, kv dosyama onun adını verdim. main.py dosyamın içerisine aşağıdaki kodları yazıyorum</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
+
+<span class="k">class</span> <span class="nc">Program</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="n">Program</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Şimdi program.kv dosyasının içerisine şunları yazalım. Amacımız ekranda merhaba dünya yazmak</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Label</span><span class="p">:</span>
+    <span class="n">text</span><span class="p">:</span><span class="s2">&quot;Merhaba Dünya&quot;</span>
+</pre></div>
+</div>
+<p>Programımızın build tarafından geri döndürülecek olan pencere düzenini, kv dili yardımıyla oluşturduk. Yapmamız gereken main.py dosyamızı çalıştırmak ve sonucu görmek.</p>
+<p>kv dili kullanırken, aynen Python’da  olduğu gibi girintilemeye dikkat etmelisiniz. Aksi taktirde hata verecektir. Kv dili, Kivy ile programlama yaparken oldukça kolaylık sağlar. Biz de derslerimizde bazen yaptığımız örnekleri kv diliyle de yapacağız. Bir programı birinci bölümdeki gibi sınıflarla da yazabilirsiniz, kv dili yardımıyla da yazabilirsiniz. Hatta bazı kısımları kv diliyle de yazabilirsiniz. Yerine göre değişecektir, illa ki kv diline ihtiyacınız olacaktır.</p>
+</div>
+<div class="section" id="uygulama-ozellikleri">
+<h2>Uygulama Özellikleri<a class="headerlink" href="#uygulama-ozellikleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Yazdığımız Kivy programının bazı niteliklerini değiştirebiliriz. Örneğin, siz yukarıda programı çalıştırdığınızda programın başlığını henüz tanımlamadığınız için pencerenin başlığı ana sınıfın adı ile aynıdır. İsterseniz bunu değiştirebilirsiniz.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.label</span> <span class="kn">import</span> <span class="n">Label</span>
+
+<span class="k">class</span> <span class="nc">Program</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Yazbel&quot;</span>
+
+        <span class="k">return</span> <span class="n">Label</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Merhaba Dünya&quot;</span><span class="p">)</span>
+
+<span class="n">Program</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Kivy’de bir program başlarken, ekrana pencere çizilmeden önce birtakım metotlar çalışır. Bunlardan birisi on_start() metodu. Bu metot içerisine, ekrana pencere çizilmeden önce yani programımız başlamadan yapmak istediğimiz tanımlamaları yazabiliriz. Örneğin başlığı burada tanımlayabiliriz, ya da veritabanımız varsa bağlantıları burada başlatabiliriz. Kullanımına dair basit bir örnek</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.label</span> <span class="kn">import</span> <span class="n">Label</span>
+
+<span class="k">class</span> <span class="nc">Program</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">on_start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Yazbel&quot;</span>
+
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Label</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Merhaba Dünya&quot;</span><span class="p">)</span>
+
+<span class="n">Program</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Ancak dikkat edilmesi gereken bir durum var. on_start() metodu, build() metodu çalıştırıldıktan sonra çağrılır.</p>
+<p>Kivy uygulamamızda belli olaylarda çalışan başka metotlar da var.</p>
+<p><span class="red">on_stop()</span>: Bu metot, programımız sona erdiğinde çalıştırılır. Böylece son olarak yapmak istediğimiz işlemleri(örneğin açık dosyaları kapatmak) burada yapabiliriz</p>
+<p><span class="red">on_pause()</span>: android veya ios üzerinde programımız arkaplana alındığında bu metot çalıştırılır.</p>
+<p><span class="red">on_resume()</span>: Kullanıcı arkaplana aldığı uygulamamıza tekrar dönerse bu metot çalıştırılır.</p>
+<p>Şimdi bunların hepsini birarada kullandığımız bir örnek görelim ve konuyu bitirelim</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.label</span> <span class="kn">import</span> <span class="n">Label</span>
+
+<span class="k">class</span> <span class="nc">Program</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">on_start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Yazbel&quot;</span>
+        <span class="c1"># bir takım işlemler...</span>
+
+    <span class="k">def</span> <span class="nf">on_stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Uygulama kapatılırken...</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">on_pause</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Uygulama arkaplana alınırken...</span>
+        <span class="c1"># Burda return True yapmanız gerekiyor</span>
+        <span class="k">return</span> <span class="bp">True</span>
+
+    <span class="k">def</span> <span class="nf">on_resume</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Tekrar giriş yapıldığında yazımızı değiştiriyoruz</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">yazi</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Programa tekrar hoşgeldiniz&quot;</span>
+
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">yazi</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Merhaba Dünya&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">yazi</span>
+
+<span class="n">Program</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+
+<div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
+<div class='extrarelbar'> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="layout.html" title="Pencere düzenleri"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="kurulum.html" title="Kurulum"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="../index.html" >Üçüncü Taraf Modüller</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >Kivy Paketi</a> &#187;</li> 
+      </ul>
+    </div> </div>
+
+<div class='addcomment'>Yorumlar</div>
+
+<div class='how-to-use'>
+<h3>Önemli Not</h3>
+Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
+<span class='tag'>&lt;pre&gt;&lt;code&gt;</span> etiketleri içine alın. Örneğin:
+
+<pre>
+    <span class='tag'>&lt;pre&gt;&lt;code class="python"&gt;</span>
+    <span class='keyword'>print</span>(<span class='string'>"Merhaba Dünya!"</span>)
+    <span class='tag'>&lt;/code&gt;&lt;/pre&gt;</span>
+</pre>
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'istihza';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4eca48eb2d83faf9" async="async"></script>
+
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="layout.html" title="Pencere düzenleri"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="kurulum.html" title="Kurulum"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="../index.html" >Üçüncü Taraf Modüller</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >Kivy Paketi</a> &#187;</li> 
+      </ul>
+    </div> 
+
+<div class="footer">
+&copy; Copyright 2007-2019, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 30.06.2019.
+<a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5 ile oluşturulmuştur.
+<br>
+<br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
+alt="Creative Commons License" style="border-width:0"
+src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a><br />
+<br>
+</div>
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=10396326;
+var sc_invisible=1;
+var sc_security="fb5cd679";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="hit counter"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="http://c.statcounter.com/10396326/0/fb5cd679/1/"
+alt="hit counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+  </body>
+</html>

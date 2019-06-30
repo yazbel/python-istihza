@@ -1,0 +1,827 @@
+
+ <!DOCTYPE html>
+ <html lang="tr">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta content="Bu bölümde sys modülünü inceleyeceğiz." name="description" />
+<meta content="python, modül, import, sys" name="keywords" />
+
+    <title>sys Modülü &#8212; Python 3 için Türkçe Kılavuz</title>
+    <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <link rel="search" title="Ara" href="../search.html" />
+    <link rel="next" title="Üçüncü Taraf Modüller" href="../Ucuncu_taraf_moduller/index.html" />
+    <link rel="prev" title="timeit Modülü" href="timeit.html" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+<div class='header'><a href='https://yazbel.com'>yazbel.com</a></div>
+
+<ul class='navbar'>
+    <li><a href="#"><del>pdf desteği sonlanmıştır</del></a></li>
+    <li class="forum"><a href="http://forum.yazbel.com">forum</a></li>
+</ul>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../Ucuncu_taraf_moduller/index.html" title="Üçüncü Taraf Modüller"
+             accesskey="N">sonraki</a></li>
+        <li class="right" >
+          <a href="timeit.html" title="timeit Modülü"
+             accesskey="P">önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Önemli Standart Kütüphane Modülleri</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+
+  <div class="section" id="sys-modulu">
+<h1>sys Modülü<a class="headerlink" href="#sys-modulu" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<p>Tıpkı <code class="docutils literal notranslate"><span class="pre">os</span></code> modülü gibi, <code class="docutils literal notranslate"><span class="pre">sys</span></code> de Python programlama dilindeki önemli
+standart kütüphane modüllerinden biridir. Bu modül, kullandığınız Python sürümü
+ile ilgili bilgi edinmenizi ve kullandığınız Python sürümü ile çeşitli işlemler
+yapabilmenizi sağlar.</p>
+<p>Bütün modüllerde olduğu gibi, bu modülü de şu komutla içe aktarıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sys</span>
+</pre></div>
+</div>
+<p>Bu modülün içinde hangi nitelik ve fonksiyonların olduğunu görmek için şu
+komutu kullanabileceğinizi biliyorsunuz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">sys</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi bu modül içinde de epeyce fonksiyon ve nitelik var. Biz bu
+bölümde, <code class="docutils literal notranslate"><span class="pre">sys</span></code> modülünün en yaygın kullanılan, en önemli fonksiyon ve
+niteliklerini ele alacağız.</p>
+<p>İlk olarak <cite>exit()</cite> fonksiyonu ile başlayalım…</p>
+<div class="section" id="sys-exit">
+<h2>sys.exit()<a class="headerlink" href="#sys-exit" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">sys</span></code> modülünün <code class="docutils literal notranslate"><span class="pre">exit()</span></code> fonksiyonunu kullanarak, programınızın işleyişini
+durdurabilir, programınızı kapanmaya zorlayabilirsiniz. Basit bir örnek
+verelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">sayı</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Bir sayı girin: &#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">sayı</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;çıkılıyor...&#39;</span><span class="p">)</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">sayı</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Eğer kullanıcı 0’dan küçük bir sayı girerse programımız <code class="docutils literal notranslate"><span class="pre">sys.exit()</span></code> komutunun
+etkisiyle çalışmayı durdurup kapanacaktır.</p>
+</div>
+<div class="section" id="sys-argv">
+<h2>sys.argv<a class="headerlink" href="#sys-argv" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">sys</span></code> modülünün <cite>argv</cite> niteliği, yazdığımız program çalıştırılırken
+kullanılan parametreleri bir liste halinde tutar.</p>
+<p>Gelin isterseniz bunun ne demek olduğunu bir örnek üzerinde gösterelim.</p>
+<p>Şimdi mesela masaüstünde <cite>deneme.py</cite> adlı bir dosya oluşturun ve içine şunları
+yazın:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu programı şu komutla çalıştırın:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">deneme</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Programı çalıştırdığınızda şuna benzer bir çıktı alacaksınız:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;deneme.py&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">sys.argv</span></code> komutu bize bir liste veriyor. Bu listenin ilk
+öğesi, yazdığımız programın adı. Yani <cite>deneme.py</cite>.</p>
+<p>Şimdi aynı programı bir de şu şekilde çalıştıralım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">deneme</span><span class="o">.</span><span class="n">py</span> <span class="n">parametre</span>
+</pre></div>
+</div>
+<p>Bu defa programımız bize şu çıktıyı verecek:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;deneme.py&#39;</span><span class="p">,</span> <span class="s1">&#39;parametre&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">sys.argv</span></code> komutu, programın ismi ile birlikte, bu programa
+parametre olarak verilen değerleri de bir liste halinde saklıyor. Bu oldukça
+önemli ve kullanışlı bir özelliktir. Bu özellikten pek çok farklı şekillerde
+yararlanabilirsiniz.</p>
+<p>Mesela:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="k">def</span> <span class="nf">çık</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Çıkılıyor...&#39;</span><span class="p">)</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Gerekli parametreleri girmediniz!&#39;</span><span class="p">)</span>
+    <span class="n">çık</span><span class="p">()</span>
+
+<span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Çok fazla parametre girdiniz!&#39;</span><span class="p">)</span>
+    <span class="n">çık</span><span class="p">()</span>
+
+<span class="k">elif</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;-v&#39;</span><span class="p">,</span> <span class="s1">&#39;-V&#39;</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Program sürümü: 0.8&#39;</span><span class="p">)</span>
+
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">mesaj</span> <span class="o">=</span> <span class="s1">&#39;Girdiğiniz parametre (</span><span class="si">{}</span><span class="s1">) anlaşılamadı!&#39;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">mesaj</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="n">çık</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Burada öncelikle modülümüzü içe aktardık:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+</pre></div>
+</div>
+<p>Bunu yapmadan, o modülü kullanamayacağımızı biliyorsunuz.</p>
+<p>Ardından <code class="docutils literal notranslate"><span class="pre">çık()</span></code> adlı bir fonksiyon tanımladık:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">çık</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Çıkılıyor...&#39;</span><span class="p">)</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Programı sonlandırmak istediğimizde bu fonksiyonu kullanacağız.</p>
+<p>Daha sonra şöyle bir <code class="docutils literal notranslate"><span class="pre">if</span></code> bloğu oluşturduk:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Gerekli parametreleri girmediniz!&#39;</span><span class="p">)</span>
+    <span class="n">çık</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Eğer <code class="docutils literal notranslate"><span class="pre">sys.argv</span></code> listesinin uzunluğu 2’den düşükse, programımız herhangi bir
+parametre olmadan, yalnızca ismiyle çalıştırılmış demektir. Bu durumda
+kullanıcıya ‘Gerekli parametreleri girmediniz!’ mesajını gösterip programı
+sonlandırıyoruz.</p>
+<p>Sonraki kod bloğumuz şöyle:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Çok fazla parametre girdiniz!&#39;</span><span class="p">)</span>
+    <span class="n">çık</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Eğer <code class="docutils literal notranslate"><span class="pre">sys.argv</span></code> listesi 2’den büyükse, programımız birden fazla parametre ile
+çalıştırılmış demektir. Bu durumda kullanıcıya ‘Çok fazla parametre girdiniz!’
+mesajını gösterip yine programı sonlandırıyoruz.</p>
+<p>Bir sonraki kodlarımız şöyle:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;-v&#39;</span><span class="p">,</span> <span class="s1">&#39;-V&#39;</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Program sürümü: 0.8&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Eğer <code class="docutils literal notranslate"><span class="pre">sys.argv</span></code> listesinin ikinci öğesi <cite>-v</cite> veya <cite>-V</cite> ise programımızın
+sürüm bilgisini veriyoruz.</p>
+<p>Son olarak da şu bloğu yazıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">else</span><span class="p">:</span>
+    <span class="n">mesaj</span> <span class="o">=</span> <span class="s1">&#39;Girdiğiniz parametre (</span><span class="si">{}</span><span class="s1">) anlaşılamadı!&#39;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">mesaj</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="n">çık</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Kullanıcının <cite>-v</cite> veya <cite>-V</cite> dışında bir parametre girmesi durumunda ise, girilen
+parametrenin anlaşılamadığı konusunda kullanıcıyı bilgilendirip programdan
+çıkıyoruz.</p>
+<p>Aşağıda, programımızın hangi komutlara hangi karşılıkları verdiğini
+görüyorsunuz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span>C:\Users\fozgul\Belgelerim&gt; python deneme.py
+Gerekli parametreleri girmediniz!
+Çıkılıyor...
+
+C:\Users\fozgul\Belgelerim&gt; python deneme.py -a
+Girdiğiniz parametre (-a) anlaşılamadı!
+Çıkılıyor...
+
+C:\Users\fozgul\Belgelerim&gt; python deneme.py -a -b
+Çok fazla parametre girdiniz!
+Çıkılıyor...
+
+C:\Users\fozgul\Belgelerim&gt; python deneme.py -v
+Program sürümü: 0.8
+
+C:\Users\fozgul\Belgelerim&gt; python deneme.py -V
+Program sürümü: 0.8
+</pre></div>
+</div>
+</div>
+<div class="section" id="sys-executable">
+<h2>sys.executable<a class="headerlink" href="#sys-executable" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Eğer, yazdığınız bir programda, programınızın çalıştığı sistemdeki Python’ın
+çalıştırılabilir dosyasının adını ve yolunu öğrenmeniz gerekirse bu niteliği
+kullanabilirsiniz:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; sys.executable
+
+C:\Python37python.exe
+</pre>
+</div>
+<div class="section" id="sys-getwindowsversion">
+<h2>sys.getwindowsversion()<a class="headerlink" href="#sys-getwindowsversion" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Bu fonksiyon, kullanılan Windows sürümüne ilişkin bilgi verir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">getwindowsversion</span><span class="p">()</span>
+
+<span class="go">sys.getwindowsversion(major=5, minor=1, build=2600,</span>
+<span class="go">platform=2, service_pack=&#39;Service Pack 3&#39;)</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Uyarı</p>
+<p class="last">Bu fonksiyon yalnızca Windows’ta çalışır. GNU/Linux’ta bu fonksiyon
+tanımlı değildir.</p>
+</div>
+<p>Bu fonksiyon kendi içinde de bazı nitelikler barındırır. Bunları görmek için şu
+komutu kullanabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ver</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">getwindowsversion</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">ver</span><span class="p">)</span>
+
+<span class="go">[&#39;__add__&#39;, &#39;__class__&#39;, &#39;__contains__&#39;, &#39;__delattr__&#39;,</span>
+<span class="go"> &#39;__dir__&#39;, &#39;__doc__&#39;, &#39;__eq__&#39;, &#39;__format__&#39;, &#39;__ge__&#39;,</span>
+<span class="go"> &#39;__getattribute__&#39;, &#39;__getitem__&#39;, &#39;__getnewargs__&#39;,</span>
+<span class="go"> &#39;__gt__&#39;, &#39;__hash__&#39;, &#39;__init__&#39;, &#39;__iter__&#39;, &#39;__le__&#39;,</span>
+<span class="go"> &#39;__len__&#39;, &#39;__lt__&#39;, &#39;__mul__&#39;, &#39;__ne__&#39;, &#39;__new__&#39;,</span>
+<span class="go"> &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__rmul__&#39;,</span>
+<span class="go"> &#39;__setattr__&#39;, &#39;__sizeof__&#39;, &#39;__str__&#39;, &#39;__subclasshook__&#39;,</span>
+<span class="go"> &#39;build&#39;, &#39;count&#39;, &#39;index&#39;, &#39;major&#39;, &#39;minor&#39;, &#39;n_fields&#39;,</span>
+<span class="go"> &#39;n_sequence_fields&#39;, &#39;n_unnamed_fields&#39;, &#39;platform&#39;,</span>
+<span class="go"> &#39;product_type&#39;, &#39;service_pack&#39;, &#39;service_pack_major&#39;,</span>
+<span class="go"> &#39;service_pack_minor&#39;, &#39;suite_mask&#39;]</span>
+</pre></div>
+</div>
+<p>Bu niteliklere erişmek için şu söz dizimini kullanabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ver</span><span class="o">.</span><span class="n">service_pack</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sys-path">
+<h2>sys.path<a class="headerlink" href="#sys-path" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p><a class="reference internal" href="../moduller.html"><span class="doc">Modüller</span></a> konusunu işlerken <code class="docutils literal notranslate"><span class="pre">sys</span></code> modülünün <cite>path</cite> niteliğinden söz
+etmiştik. O yüzden orada söylediklerimizi tekrarlamayacağız.</p>
+</div>
+<div class="section" id="sys-platform">
+<h2>sys.platform<a class="headerlink" href="#sys-platform" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">os</span></code> modülünü incelerken öğrendiğimiz <cite>name</cite> niteliği gibi, <code class="docutils literal notranslate"><span class="pre">sys</span></code> modülünün
+<cite>platform</cite> adlı niteliği de, kodlarımızın çalıştığı işletim sistemi hakkında
+bize bilgi verir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">platform</span>
+</pre></div>
+</div>
+<p>Eğer bu komutu GNU/Linux’ta verirsek <cite>linux</cite> çıktısı, Windows’ta verirsek
+<cite>win32</cite> çıktısı, Mac OS X’te verirsek <cite>darvin</cite> çıktısı alırız.</p>
+</div>
+<div class="section" id="sys-prefix">
+<h2>sys.prefix<a class="headerlink" href="#sys-prefix" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">sys</span></code> modülünün <cite>prefix</cite> niteliği Python’ın hangi dizine kurulduğunu
+gösterir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">prefix</span>
+
+<span class="go">&#39;/home/local/python&#39;</span>
+</pre></div>
+</div>
+<p>Veya:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">prefix</span>
+
+<span class="go">&#39;C:\\Python&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sys-ps1">
+<h2>sys.ps1<a class="headerlink" href="#sys-ps1" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">sys</span></code> modülünün <cite>ps1</cite> niteliği, etkileşimli kabuktaki ‘&gt;&gt;&gt;’ işaretini tutar:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">ps1</span>
+
+<span class="go">&#39;&gt;&gt;&gt; &#39;</span>
+</pre></div>
+</div>
+<p>Eğer isterseniz bu işareti değiştirebilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">ps1</span> <span class="o">=</span> <span class="s1">&#39;+++ &#39;</span>
+</pre></div>
+</div>
+<p>Bu komutu verdikten sonra ‘&gt;&gt;&gt;’ işaretinin ‘+++’ olarak değiştiğini
+göreceksiniz.</p>
+</div>
+<div class="section" id="sys-ps2">
+<h2>sys.ps2<a class="headerlink" href="#sys-ps2" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Etkileşimli kabukta Python bizden girdiğimiz kodların devamını beklediğini
+göstermek için ‘…’ işaretini kullanır:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+<span class="gp">...</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">sys</span></code> modülünün <cite>ps2</cite> niteliği, işte etkileşimli kabuktaki devam satırlarında
+gördüğümüz bu ‘…’ işaretini tutar:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">ps2</span>
+
+<span class="go">&#39;... &#39;</span>
+</pre></div>
+</div>
+<p>Eğer isterseniz bu işareti değiştirebilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">ps1</span> <span class="o">=</span> <span class="s1">&#39;--- &#39;</span>
+</pre></div>
+</div>
+<p>Bu komutu verdikten sonra ‘…’ işaretinin ‘—’ olarak değiştiğini
+göreceksiniz.</p>
+</div>
+<div class="section" id="sys-version">
+<h2>sys.version<a class="headerlink" href="#sys-version" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">sys</span></code> modülünün <cite>version</cite> niteliği kullandığınız Python sürümüne ilişkin
+ayrıntılı bilgi verir:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; sys.version
+
+'3.7.0 (default, 30.06.2019, 12:24:55)
+[GCC 4.4.7 20120313 (Red Hat 4.4.7-3)] on linux'
+</pre>
+</div>
+<div class="section" id="sys-version-info">
+<h2>sys.version_info<a class="headerlink" href="#sys-version-info" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">sys</span></code> modülünün <cite>version_info</cite> niteliği de kullandığınız Python sürümüne
+ilişkin bilgi verir:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; sys.version_info
+
+sys.version_info(major=|major3|, minor=|minor3|, micro=|micro3|, releaselevel='final', serial=0)
+</pre>
+<p>Bu nitelik kendi içinde birtakım başka nitelikler de barındırır:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="p">)</span>
+
+<span class="go">[&#39;count&#39;, &#39;index&#39;, &#39;major&#39;, &#39;micro&#39;, &#39;minor&#39;,</span>
+<span class="go"> &#39;n_fields&#39;, &#39;n_sequence_fields&#39;, &#39;n_unnamed_fields&#39;,</span>
+<span class="go"> &#39;releaselevel&#39;, &#39;serial&#39;]</span>
+</pre></div>
+</div>
+<p>Bu niteliklere nasıl ulaşacağınızı biliyorsunuz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="o">.</span><span class="n">major</span> <span class="c1">#büyük sürüm numarası</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="o">.</span><span class="n">minor</span> <span class="c1">#küçük sürüm numarası</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="o">.</span><span class="n">micro</span> <span class="c1">#minik sürüm numarası</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sys-winver">
+<h2>sys.winver<a class="headerlink" href="#sys-winver" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">sys</span></code> modülünün <cite>winver</cite> niteliği Python’ın büyük sürüm numarasıyla küçük
+sürüm numarasını verir:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; sys.winver
+
+3.7
+</pre>
+<div class="admonition warning">
+<p class="first admonition-title">Uyarı</p>
+<p class="last">Bu nitelik yalnızca Windows’ta çalışır; GNU/Linux’ta tanımlı
+değildir.</p>
+</div>
+</div>
+<div class="section" id="sys-stdout">
+<h2>sys.stdout<a class="headerlink" href="#sys-stdout" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Önceki derslerimizden de bildiğiniz gibi <cite>stdout</cite>, ‘standart çıktı konumu’, yani
+programlarımızın çıktılarını standart olarak verdikleri konum anlamına geliyor.</p>
+<p>Python’da yazdığımız programlar çıktılarını standart olarak komut satırına
+verir. Yani mesela:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;merhaba zalim dünya&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>komutunu verdiğimizde, bu komutun çıktısı komut ekranında görünecektir.</p>
+<p>Python’da standart çıktı konumununun neresi olacağı bilgisi <code class="docutils literal notranslate"><span class="pre">sys</span></code> modülünün
+<cite>stdout</cite> adlı niteliği içinde tutulur:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span>
+
+<span class="go">&lt;_io.TextIOWrapper name=&#39;&lt;stdout&gt;&#39; mode=&#39;w&#39; encoding=&#39;cp1254&#39;&gt;</span>
+</pre></div>
+</div>
+<p>Standart çıktı konumuna yazmanın en yaygın yolunun <code class="docutils literal notranslate"><span class="pre">print()</span></code> komutunu
+kullanmak olduğunu biliyoruz. Bu komut, standart çıktı konumu neresi ise oraya
+yazacaktır.</p>
+<p>Standart çıktı konumuma yazmanın başka bir yolu da doğrudan <code class="docutils literal notranslate"><span class="pre">sys.stdout</span></code>
+niteliğinin <code class="docutils literal notranslate"><span class="pre">write()</span></code> metodunu kullanmaktır.</p>
+<p>Dikkatlice bakın:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;merhaba zalim dünya&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">print()</span></code> komutundan farklı olarak <code class="docutils literal notranslate"><span class="pre">sys.stdout.write()</span></code> fonksiyonu şöyle bir
+çıktı verir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">merhaba</span> <span class="n">zalim</span> <span class="n">dünya19</span>
+</pre></div>
+</div>
+<p>Burada, çıktının sonundaki <cite>19</cite> sayısı ‘merhaba zalim dünya’ karakter dizisinin
+uzunluğunu gösteriyor. <code class="docutils literal notranslate"><span class="pre">sys.stdout.write()</span></code> fonksiyonu etkileşimli kabukta
+kullanıldığında böyle bir çıktı verir. Ama eğer bu kodları bir dosyaya yazıp
+çalıştırırsanız sonraki <cite>19</cite> sayısı görünmez.</p>
+<p>Bu arada, her ne kadar <code class="docutils literal notranslate"><span class="pre">print()</span></code> ve <code class="docutils literal notranslate"><span class="pre">sys.stdout.write()</span></code> birbirine benzese
+de aralarında önemli farklar bulunur. Örneğin <code class="docutils literal notranslate"><span class="pre">print()</span></code> fonksiyonu parametre
+olarak her türlü veri tipini alabilir. Ancak <code class="docutils literal notranslate"><span class="pre">sys.stdout.write()</span></code> fonksiyonu
+parametre olarak yalnızca karakter dizisi alabilir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">TypeError</span>: <span class="n">must be str, not int</span>
+</pre></div>
+</div>
+<p>Dolayısıyla <code class="docutils literal notranslate"><span class="pre">sys.stdout.write()</span></code> fonksiyonuna parametre olarak vereceğiniz
+değeri öncelikle karakter dizisine çevirmeniz gerekir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="mi">12</span><span class="p">))</span>
+
+<span class="go">122</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Not</p>
+<p class="last">Sondaki <cite>2</cite> sayısının ‘12’ karakter dizisinin uzunluğunu gösterdiğini
+söylemiştik. Bu kodları dosyaya yazıp çalıştırdığınızda yalnızca <cite>12</cite>
+çıktısı alırsınız.</p>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">print()</span></code> ile <code class="docutils literal notranslate"><span class="pre">sys.stdout.write()</span></code> arasındaki önemli bir fark da,
+<code class="docutils literal notranslate"><span class="pre">print()</span></code> fonksiyonu yazma işleminden sonra bir sonraki satıra geçerken,
+<code class="docutils literal notranslate"><span class="pre">sys.stdout.write()</span></code> fonksiyonunun geçmemesidir.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Uyarı</p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">sys.stdout.write()</span></code> fonksiyonu etkileşimli kabuktan
+çalıştırıldığında ve dosyadan çalıştırıldığında birbirinden farklı çıktılar
+verir. O yüzden aşağıdaki örnekleri dosyaya yazıp çalıştırmanızı tavsiye
+ederim.</p>
+</div>
+<p>Mesela şu örneğe bakalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="s1">&#39;istihza&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu komut şu çıktıyı verir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span>
+<span class="n">s</span>
+<span class="n">t</span>
+<span class="n">i</span>
+<span class="n">h</span>
+<span class="n">z</span>
+<span class="n">a</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">print()</span></code> fonksiyonu, döngüye giren her öğeyi yeni satıra
+basıyor.</p>
+<p>Bir de <code class="docutils literal notranslate"><span class="pre">sys.stdout.write()</span></code> fonksiyonunun ne yaptığına bakalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="s1">&#39;istihza&#39;</span><span class="p">:</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu komutlar ise şu çıktıyı verir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">istihza</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">sys.stdout.write()</span></code> fonksiyonu öğelerin hepsini aynı satıra
+bastı. Eğer öğelerin ayrı satırlara basılmasını istiyorsanız bunu açıkça
+belirtmelisiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="s1">&#39;istihza&#39;</span><span class="p">:</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">sys.stdout.write()</span></code> fonksiyonunun otomatik olarak satır başı karakterini
+basmıyor oluşunu kullanarak kronometre benzeri bir program yazabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">sayaç</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">sayaç</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\r</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">sayaç</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Burada, önceki derslerimizde öğrendiğimiz kaçış dizilerinden <cite>\r</cite>’yi
+kullanarak, her öğenin ekrana basılmasının ardından satırın en başına
+dönülmesini sağladık. Böylece öğeler yan yana değil de birbirlerinin üstüne
+basılmış oldu.</p>
+<p>Bu arada, eğer yukarıdaki kodlar herhangi bir çıktı vermeden bekliyorsa, kodları
+şu şekilde yazın:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">sayaç</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">sayaç</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\r</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+    <span class="n">sayaç</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Burada eklediğimiz <code class="docutils literal notranslate"><span class="pre">sys.stdout.flush()</span></code> satırı, Python’ın tamponda beklettiği
+verileri çıktıya göndermesini sağlar. Siz bu ‘flush’ kavramını <code class="docutils literal notranslate"><span class="pre">print()</span></code>
+fonksiyonundan hatırlıyor olmalısınız (<code class="docutils literal notranslate"><span class="pre">print()</span></code> fonksiyonunun <cite>flush</cite>
+parametresi).</p>
+<p>Hatırlarsanız, ‘flush’ kavramının yanısıra, <code class="docutils literal notranslate"><span class="pre">print()</span></code> fonksiyonunu işlerken
+öğrendiğimiz bir başka kavram da standart çıktı konumunun değiştirilmesi idi.
+<code class="docutils literal notranslate"><span class="pre">print()</span></code> fonksiyonuna verdiğimiz <cite>file</cite> parametresi yardımıyla
+programlarımızın standart olarak çıktı verdiği konumu değiştirebiliyorduk:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;çıktılar.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;merhaba zalim dünya&#39;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada <cite>çıktılar.txt</cite> adlı bir dosya oluşturduk ve bunu <code class="docutils literal notranslate"><span class="pre">print()</span></code>
+fonksiyonunun <cite>file</cite> parametresine atayarak, çıktıları komut satırı yerine
+<cite>çıktılar.txt</cite> adlı dosyaya gönderdik.</p>
+<p>Aynı işlemi <code class="docutils literal notranslate"><span class="pre">sys.stdout</span></code> aracılığıyla da yapabileceğimizi biliyorsunuz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;çıktılar.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">):</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">f</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;merhaba zalim dünya&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Gerçi bu sizin bilmediğiniz bir şey değil. Zira siz bunu <a class="reference internal" href="../print.html"><span class="doc">print() Fonksiyonu</span></a>
+konusunu işlerken de görmüştünüz…</p>
+</div>
+<div class="section" id="sys-stderr">
+<h2>sys.stderr<a class="headerlink" href="#sys-stderr" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Önceki bölümde gördüğümüz şu kodları tekrar önümüze alalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;çıktılar.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">f</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;merhaba zalim dünya&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu kodlar, bildiğiniz gibi, çıktı olarak verilmek istenen değerlerin
+<cite>çıktılar.txt</cite> adlı bir dosyaya yönlendirilmesini sağlıyor. Ancak kodlarımızı bu
+şekilde yazdığımızda sadece normal değerler yönlendirilecektir. Mesela çalışma
+esnasında ortaya çıkan hatalar yine komut ekranına basılmaya devam edecektir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;çıktılar.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">f</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu kodları çalıştırdığınızda, standart çıktı konumu yönlendirilmiş olmasına
+rağmen, hata mesajı komut satırına basılacaktır:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;deneme.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">5</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">0</span><span class="p">)</span>
+<span class="ne">ZeroDivisionError</span><span class="p">:</span> <span class="n">division</span> <span class="n">by</span> <span class="n">zero</span>
+</pre></div>
+</div>
+<p>Çünkü Python’da hata mesajlarının öntanımlı olarak basıldığı yer komut
+satırıdır. Nasıl çıktıların standart olarak basıldığı yeri teknik olarak
+‘standart çıktı konumu’ (<cite>Standard Output - stdout</cite>) olarak adlandırıyorsak,
+hataların standart olarak basıldığı yeri de teknik olarak ‘standart hata
+konumu’ (<cite>Standard Error - stderr</cite>) olarak adlandırıyoruz.</p>
+<p>Tıpkı <cite>stdout</cite>’u manipüle edebildiğimiz gibi, <cite>stderr</cite>’i de manipüle
+edebiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">f</span> <span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;hatalar.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">stderr</span> <span class="o">=</span> <span class="n">f</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu durumda, programımızın işleyişi sırasında ortaya çıkan hatalar <cite>hatalar.txt</cite>
+adlı bir dosyaya yönlendirilecektir.</p>
+<p>Bu bilgiyi kullanarak şöyle bir kod da yazabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">çıktılar</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;çıktılar.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">hatalar</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;hatalar.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">çıktılar</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">stderr</span> <span class="o">=</span> <span class="n">hatalar</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;normal çıktı&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;hata mesajı: &#39;</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu kodları çalıştırdığınızda, hata mesajı üretmeden başarıyla tamamlanan
+çıktıların <cite>çıktılar.txt</cite> adlı dosyaya, hata mesajlarının ise <cite>hatalar.txt</cite> adlı
+dosyaya yönlendirildiğini göreceksiniz.</p>
+</div>
+<div class="section" id="sys-stdin">
+<h2>sys.stdin<a class="headerlink" href="#sys-stdin" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Python’da üç adet standart konum bulunur:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Standart çıktı konumu - <cite>stdout</cite></li>
+<li>Standart hata konumu - <cite>stderr</cite></li>
+<li>Standart girdi konumu - <cite>stdin</cite></li>
+</ol>
+</div></blockquote>
+<p>İlk ikisini zaten görmüştük. Üçüncüsünü de şimdi ele alacağız.</p>
+<p>Bildiğiniz gibi Python’da kullanıcıdan veri almak için <code class="docutils literal notranslate"><span class="pre">input()</span></code> fonksiyonunu
+kullanıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sayı</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Lütfen bir sayı girin: &#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu fonksiyonun görevi, standart girdi konumuna girilen verileri okumaktır.
+Python’daki standart girdi konumu (genellikle) komut satırı olduğu için,
+<code class="docutils literal notranslate"><span class="pre">input()</span></code> fonksiyonu verileri komut satırından okur.</p>
+<p>Python’da standart girdi konumunu tutan değişken <cite>sys.stdin</cite>’dir. Dolayısıyla
+eğer isterseniz, verileri kullanıcıdan <code class="docutils literal notranslate"><span class="pre">input()</span></code> fonksiyonu yerine doğrudan
+<cite>sys.stdin</cite> niteliği aracılığıyla da alabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Bu komutları verdiğinizde, komut satırı sizden veri almaya hazır hale gelir. Bu
+şekilde istediğiniz kadar veriyi komut satırına girebilirsiniz. Veri girişini
+durdurmak istediğinizde ise Windows’ta <cite>CTRL+C</cite>, GNU/Linux’ta ise <cite>CTRL+D</cite>
+tuşlarına basmanız gerekir. Bu şekilde komut satırını terkettiğinizde, girmiş
+olduğunuz değerler bir karakter dizisi olarak ekrana basılacaktır.</p>
+<p><cite>sys.stdin</cite> niteliği, bize veri okumak için üç farklı fonksiyon sunar:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><code class="docutils literal notranslate"><span class="pre">sys.stdin.read()</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">sys.stdin.readline()</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">sys.stdin.readlines()</span></code></li>
+</ol>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">read()</span></code> fonksiyonu birden fazla satır içeren verilerin girilmesine müsaade
+eder ve çıktı olarak bir karakter dizisi verir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="go">(Girdi)</span>
+<span class="go">Fırat</span>
+<span class="go">Özgül</span>
+<span class="go">Adana</span>
+<span class="go">(Çıktı)</span>
+<span class="go">&#39;Fırat\nÖzgül\nAdana\n&#39;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">readline()</span></code> fonksiyonu tek bir satır içeren verilerin girilmesine müsaade
+eder ve çıktı olarak bir karakter dizisi verir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+<span class="go">(Girdi)</span>
+<span class="go">Fırat</span>
+<span class="go">(Çıktı)</span>
+<span class="go">&#39;Fırat\n&#39;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">readlines()</span></code> fonksiyonu birden fazla satır içeren verilerin girilmesine
+müsaade eder ve çıktı olarak bir liste verir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+<span class="go">(Girdi)</span>
+<span class="go">Fırat</span>
+<span class="go">Özgül</span>
+<span class="go">Adana</span>
+<span class="go">(Çıktı)</span>
+<span class="go">[&#39;Fırat\n&#39;, &#39;Özgül\n&#39;, &#39;Adana\n&#39;]</span>
+</pre></div>
+</div>
+<p>Gelin isterseniz <cite>sys.stdin</cite> niteliğinin nasıl kullanılabileceğine ilişkin
+birkaç örnek verelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;kayıtlar.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">kayıtlar</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">satırlar</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">satırlar</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;:q&#39;</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">kayıtlar</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">satırlar</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada <cite>kayıtlar.txt</cite> adlı bir dosya oluşturduk öncelikle. Daha sonra da
+<code class="docutils literal notranslate"><span class="pre">readline()</span></code> fonksiyonu aracılığıyla kullanıcıdan aldığımız bütün verileri bu
+dosyaya yazdık. Kullanıcının programdan çıkabilmesini sağlamak için de ‘:q’ tuş
+kombinasyonunu ayarladık. Böylece komut satırından çalışan basit bir metin
+düzenleyici yazmış olduk!</p>
+<p>Tıpkı <cite>sys.stdout</cite> ve <cite>sys.stderr</cite> konumlarını değiştirdiğimiz gibi,
+<cite>sys.stdin</cite> konumunu da değiştirebiliriz. Böylece verileri komut satırı
+aracılığıyla değil, mesela bir dosya aracılığıyla alabiliriz.</p>
+<p>Aşağıdaki örneği dikkatlice inceleyin:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;oku.txt&#39;</span><span class="p">)</span>
+
+<span class="n">sys</span><span class="o">.</span><span class="n">stdin</span> <span class="o">=</span> <span class="n">f</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">satırlar</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">satırlar</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;:q&#39;</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">satırlar</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu kodları yazdıktan sonra, bu kodların bulunduğu dizinde <cite>oku.txt</cite> adlı bir
+dosya oluşturun. Ardından programınızı çalıştırın. Programınız şu anda sizden
+veri girmenizi bekliyor. Verileri <cite>oku.txt</cite> adlı dosyaya gireceksiniz.</p>
+<p><cite>oku.txt</cite> adlı dosyayı açıp bir şeyler yazın. Veri girerken dosyayı her
+kaydedişinizde dosya içindeki verilerin komut satırına düştüğünü göreceksiniz.
+Veri girişini tamamladıktan sonra dosyanın en son satırına ‘:q’ yazıp dosyayı
+kaydettiğiniz anda da programınız kapanacaktır.</p>
+</div>
+</div>
+
+
+
+<div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
+<div class='extrarelbar'> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../Ucuncu_taraf_moduller/index.html" title="Üçüncü Taraf Modüller"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="timeit.html" title="timeit Modülü"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Önemli Standart Kütüphane Modülleri</a> &#187;</li> 
+      </ul>
+    </div> </div>
+
+<div class='addcomment'>Yorumlar</div>
+
+<div class='how-to-use'>
+<h3>Önemli Not</h3>
+Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
+<span class='tag'>&lt;pre&gt;&lt;code&gt;</span> etiketleri içine alın. Örneğin:
+
+<pre>
+    <span class='tag'>&lt;pre&gt;&lt;code class="python"&gt;</span>
+    <span class='keyword'>print</span>(<span class='string'>"Merhaba Dünya!"</span>)
+    <span class='tag'>&lt;/code&gt;&lt;/pre&gt;</span>
+</pre>
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'istihza';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4eca48eb2d83faf9" async="async"></script>
+
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../Ucuncu_taraf_moduller/index.html" title="Üçüncü Taraf Modüller"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="timeit.html" title="timeit Modülü"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Önemli Standart Kütüphane Modülleri</a> &#187;</li> 
+      </ul>
+    </div> 
+
+<div class="footer">
+&copy; Copyright 2007-2019, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 30.06.2019.
+<a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5 ile oluşturulmuştur.
+<br>
+<br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
+alt="Creative Commons License" style="border-width:0"
+src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a><br />
+<br>
+</div>
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=10396326;
+var sc_invisible=1;
+var sc_security="fb5cd679";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="hit counter"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="http://c.statcounter.com/10396326/0/fb5cd679/1/"
+alt="hit counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+  </body>
+</html>

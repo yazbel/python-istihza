@@ -1,0 +1,594 @@
+
+ <!DOCTYPE html>
+ <html lang="tr">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta content="Bu bölümde sayılar ve sayı sistemleri konusundan söz edeceğiz." name="description" />
+<meta content="python, python3, sayma sistemleri, ikili, binary, hex, oct, bin, int, ikili, onaltılı, sekizli, onlu" name="keywords" />
+
+    <title>Sayılar &#8212; Python 3 için Türkçe Kılavuz</title>
+    <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="search" title="Ara" href="search.html" />
+    <link rel="next" title="Temel Dosya İşlemleri" href="temel_dosya_islemleri.html" />
+    <link rel="prev" title="Sayma Sistemleri" href="sayma_sistemleri.html" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+<div class='header'><a href='https://yazbel.com'>yazbel.com</a></div>
+
+<ul class='navbar'>
+    <li><a href="#"><del>pdf desteği sonlanmıştır</del></a></li>
+    <li class="forum"><a href="http://forum.yazbel.com">forum</a></li>
+</ul>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="temel_dosya_islemleri.html" title="Temel Dosya İşlemleri"
+             accesskey="N">sonraki</a></li>
+        <li class="right" >
+          <a href="sayma_sistemleri.html" title="Sayma Sistemleri"
+             accesskey="P">önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+ 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+
+  <div class="section" id="sayilar">
+<h1>Sayılar<a class="headerlink" href="#sayilar" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<p>Geçen bölümde sayma sistemlerini ayrıntılı bir şekilde inceledik. Bu bölümde ise
+yine bununla bağlantılı bir konu olan sayılar konusunu ele alacağız. Esasında
+biz sayıların ne olduğuna ve Python’da bunların nasıl kullanılacağına dair
+tamamen bilgisiz değiliz. Buraya gelene kadar, sayılar konusunda epey şey
+söyledik aslında. Mesela biz Python’da üç tür sayı olduğunu biliyoruz:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Tam Sayılar (<em>integers</em>)</li>
+<li>Kayan Noktalı Sayılar (<em>floating point numbers</em> veya kısaca <em>floats</em>)</li>
+<li>Karmaşık Sayılar (<em>complex numbers</em>)</li>
+</ol>
+</div></blockquote>
+<p>Eğer bir veri <code class="docutils literal notranslate"><span class="pre">type(veri)</span></code> sorgulamasına <cite>int</cite> cevabı veriyorsa o veri bir
+tam sayıdır. Eğer bir veri <code class="docutils literal notranslate"><span class="pre">type(veri)</span></code> sorgulamasına <cite>float</cite> cevabı veriyorsa
+o veri bir kayan noktalı sayıdır. Eğer bir veri <code class="docutils literal notranslate"><span class="pre">type(veri)</span></code> sorgulamasına
+<cite>complex</cite> cevabını veriyorsa o veri bir karmaşık sayıdır.</p>
+<p>Mesela şunlar birer tam sayıdır:</p>
+<blockquote>
+<div>15, 4, 33</div></blockquote>
+<p>Şunlar birer kayan noktalı sayıdır:</p>
+<blockquote>
+<div>3.5, 6.6, 2.3</div></blockquote>
+<p>Şunlarsa birer karmaşık sayıdır:</p>
+<blockquote>
+<div>3+3j, 5+2j, 19+10j</div></blockquote>
+<p>Ayrıca şimdiye kadar öğrendiklerimiz sayesinde bu sayıların çeşitli fonksiyonlar
+yardımıyla birbirlerine dönüştürülebileceğini de biliyoruz:</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="52%" />
+<col width="25%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Fonksiyon</td>
+<td>Görevi</td>
+<td>Örnek</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">int()</span></code></td>
+<td>Bir veriyi tam sayıya dönüştürür</td>
+<td><code class="docutils literal notranslate"><span class="pre">int('2')</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">float()</span></code></td>
+<td>Bir veriyi kayan noktalı sayıya
+dönüştürür</td>
+<td><code class="docutils literal notranslate"><span class="pre">float(2)</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">complex()</span></code></td>
+<td>Bir veriyi karmaşık sayıya
+dönüştürür</td>
+<td><code class="docutils literal notranslate"><span class="pre">complex(2)</span></code></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>Dediğimiz gibi, bunlar bizim zaten sayılara dair bildiğimiz şeyler. Elbette bir
+de henüz öğrenmediklerimiz var.</p>
+<p>Gelin şimdi bunların neler olduğunu inceleyelim.</p>
+<div class="section" id="sayilarin-metotlari">
+<h2>Sayıların Metotları<a class="headerlink" href="#sayilarin-metotlari" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Tıpkı öteki veri tiplerinde olduğu gibi, sayıların da bazı metotları bulunur. Bu
+metotları kullanarak sayılar üzerinde çeşitli işlemler gerçekleştirebiliriz.</p>
+<div class="section" id="tam-sayilarin-metotlari">
+<h3>Tam Sayıların Metotları<a class="headerlink" href="#tam-sayilarin-metotlari" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Dediğimiz gibi, Python’da birkaç farklı sayı tipi bulunur. Biz ilk olarak tam
+sayı (<em>integer</em>) denen sayı tipinin metot ve niteliklerini inceleyeceğiz.</p>
+<p>Öncelikle hangi metotlar ve niteliklerle karşı karşıya olduğumuza bakalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">i</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)]</span>
+
+<span class="go">[&#39;bit_length&#39;, &#39;conjugate&#39;, &#39;denominator&#39;, &#39;from_bytes&#39;, &#39;imag&#39;, &#39;numerator&#39;,</span>
+<span class="go">&#39;real&#39;, &#39;to_bytes&#39;]</span>
+</pre></div>
+</div>
+<p>Bu listede şimdilik bizi ilgilendiren tek bir metot var. Bu metodun adı
+<code class="docutils literal notranslate"><span class="pre">bit_length()</span></code>.</p>
+<div class="section" id="bit-length">
+<h4>bit_length()<a class="headerlink" href="#bit-length" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<p>Bilgisayarlar hakkında bilmemiz gereken en önemli bilgilerden biri şudur:
+Bilgisayarlar ancak ve ancak sayılarla işlem yapabilir. Bilgisayarların işlem
+yapabildiği sayılar da onlu sistemdeki sayılar değil, ikili sistemdeki
+sayılardır. Yani 0’lar ve 1’ler.</p>
+<p>Bilgisayar terminolojisinde bu 0’lar ve 1’lerden oluşan herbir basamağa ‘bit’
+adı verilir. Yani ikili sayma sisteminde ‘0’ ve ‘1’ sayılarından herbiri 1
+bit’tir. Mesela onlu sistemde <cite>2</cite> sayısının ikili sistemdeki karşılığı olan <cite>10</cite>
+sayısı iki bit’lik bir sayıdır. Onlu sistemdeki <cite>100</cite> sayısının ikili sistemdeki
+karşılığı olan <cite>1100100</cite> sayısı ise yedi bitlik bir sayıdır.</p>
+<p>Bu durumu daha net bir şekilde görebilmek için şu kodları yazalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">11</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="nb">bin</span><span class="p">(</span><span class="n">i</span><span class="p">)[</span><span class="mi">2</span><span class="p">:],</span> <span class="nb">len</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="n">i</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]),</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">0       0       1</span>
+<span class="go">1       1       1</span>
+<span class="go">2       10      2</span>
+<span class="go">3       11      2</span>
+<span class="go">4       100     3</span>
+<span class="go">5       101     3</span>
+<span class="go">6       110     3</span>
+<span class="go">7       111     3</span>
+<span class="go">8       1000    4</span>
+<span class="go">9       1001    4</span>
+<span class="go">10      1010    4</span>
+</pre></div>
+</div>
+<p>Burada ikinci sütundaki sayılar ilk sütundaki sayıların ikili sistemdeki
+karşılıklarıdır. Üçüncü sütundaki sayılar ise her bir sayının kaç bit olduğunu,
+yani bir bakıma ikili sayma sisteminde kaç basamağa sahip olduğunu gösteriyor.</p>
+<p>İşte herhangi bir tam sayının kaç bit’lik bir yer kapladığını öğrenmek için, tam
+sayıların metotlarından biri olan <code class="docutils literal notranslate"><span class="pre">bit_length()</span></code> metodundan yararlanacağız:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sayı</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sayı</span><span class="o">.</span><span class="n">bit_length</span><span class="p">()</span>
+
+<span class="go">4</span>
+</pre></div>
+</div>
+<p>Demek ki <cite>10</cite> sayısı bellekte dört bitlik bir yer kaplıyormuş. Yani bu sayının
+ikili sistemdeki karşılığı olan <cite>1010</cite> sayısı dört basamaktan oluşuyormuş.</p>
+<p>Yukarıdaki örneklerden de rahatlıkla çıkarabileceğiniz gibi, <code class="docutils literal notranslate"><span class="pre">bit_length()</span></code>
+metodu, ikili sayma sistemindeki bir sayı üzerine <code class="docutils literal notranslate"><span class="pre">len()</span></code> fonksiyonunun
+uygulanması ile eşdeğerdir. Yani:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="mi">10</span><span class="p">)[</span><span class="mi">2</span><span class="p">:])</span> <span class="o">==</span> <span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">bit_length</span><span class="p">()</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Bu arada şu son örnekte bir şey dikkatinizi çekmiş olmalı: <code class="docutils literal notranslate"><span class="pre">bit_length()</span></code>
+metodunu doğrudan sayılar üzerine uygulayamıyoruz. Yani:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mf">10.</span><span class="n">bit_length</span><span class="p">()</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>
+    <span class="mf">10.</span><span class="n">bit_length</span><span class="p">()</span>
+                <span class="o">^</span>
+<span class="gr">SyntaxError</span>: <span class="n">invalid syntax</span>
+</pre></div>
+</div>
+<p>Bu metodu sayılarla birlikte kullanabilmek için iki seçeneğimiz var:
+<code class="docutils literal notranslate"><span class="pre">bit_length()</span></code> metodunu uygulamak istediğimiz sayıyı önce bir değişkene
+atayabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">bit_length</span><span class="p">()</span>
+
+<span class="go">4</span>
+</pre></div>
+</div>
+<p>…veya ilgili sayıyı parantez içine alabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">bit_length</span><span class="p">()</span>
+
+<span class="go">4</span>
+</pre></div>
+</div>
+<p>Bu durum, yani sayıyı parantez içinde gösterme zorunluluğu, <cite>10</cite> sayısının
+sağına bir nokta işareti koyduğumuzda, Python’ın bu sayıyı bir kayan noktalı
+sayı olarak değerlendirmesinden kaynaklanıyor. Yani biz ‘10’ yazıp,
+<code class="docutils literal notranslate"><span class="pre">bit_length()</span></code> metodunu bu sayıya bağlama amacıyla sayının sağına bir nokta
+koyduğumuz anda, Python bu sayının bir kayan noktalı sayı olduğunu zannediyor.
+Çünkü Python açısından, <cite>10.</cite> sayısı bir kayan noktalı sayıdır. Bunu teyit
+edelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="mf">10.</span><span class="p">)</span>
+
+<span class="go">&lt;class &#39;float&#39;&gt;</span>
+</pre></div>
+</div>
+<p>Kayan noktalı sayıların <code class="docutils literal notranslate"><span class="pre">bit_length()</span></code> adlı bir metodu olmadığı için de
+Python’ın bize bir hata mesajı göstermekten başka yapabileceği bir şey kalmıyor.</p>
+</div>
+</div>
+<div class="section" id="kayan-noktali-sayilarin-metotlari">
+<h3>Kayan Noktalı Sayıların Metotları<a class="headerlink" href="#kayan-noktali-sayilarin-metotlari" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Python’da tam sayılar dışında kayan noktalı sayıların da olduğunu biliyoruz. Bu
+sayı tipinin şu metotları vardır:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">i</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)]</span>
+
+<span class="go">[&#39;as_integer_ratio&#39;, &#39;conjugate&#39;, &#39;fromhex&#39;, &#39;hex&#39;, &#39;imag&#39;, &#39;is_integer&#39;, &#39;real&#39;]</span>
+</pre></div>
+</div>
+<p>Biz bu metotlar arasından, <code class="docutils literal notranslate"><span class="pre">as_integer_ratio()</span></code> ve <code class="docutils literal notranslate"><span class="pre">is_integer()</span></code> adlı
+metotlarla ilgileneceğiz.</p>
+<div class="section" id="as-integer-ratio">
+<h4>as_integer_ratio()<a class="headerlink" href="#as-integer-ratio" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<p>Bu metot, birbirine bölündüğünde ilgili kayan noktalı sayıyı veren iki adet tam
+sayı verir bize. Örnek üzerinden açıklayalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sayı</span> <span class="o">=</span> <span class="mf">4.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sayı</span><span class="o">.</span><span class="n">as_integer_ratio</span><span class="p">()</span>
+
+<span class="go">(9, 2)</span>
+</pre></div>
+</div>
+<p><cite>9</cite> sayısını <cite>2</cite> sayısına böldüğümüzde <cite>4.5</cite> sayısını elde ederiz. İşte
+<code class="docutils literal notranslate"><span class="pre">as_integer_ratio()</span></code> metodu, bu <cite>9</cite> ve <cite>2</cite> sayılarını bize ayrı ayrı verir.</p>
+</div>
+<div class="section" id="is-integer">
+<h4>is_integer()<a class="headerlink" href="#is-integer" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<p>Bir kayan noktalı sayının ondalık kısmında <cite>0</cite> harici bir sayının olup
+olmadığını kontrol etmek için bu metodu kullanıyoruz. Örneğin:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mf">12.0</span><span class="p">)</span><span class="o">.</span><span class="n">is_integer</span><span class="p">()</span>
+
+<span class="go">True</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mf">12.5</span><span class="p">)</span><span class="o">.</span><span class="n">is_integer</span><span class="p">()</span>
+
+<span class="go">False</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="karmasik-sayilarin-metotlari">
+<h3>Karmaşık Sayıların Metotları<a class="headerlink" href="#karmasik-sayilarin-metotlari" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Gelelim karmaşık sayıların metot ve niteliklerine…</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="nb">complex</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">i</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)]</span>
+
+<span class="go">[&#39;conjugate&#39;, &#39;imag&#39;, &#39;real&#39;]</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, karmaşık sayıların da birkaç tane metot ve niteliği var. Biz
+bunlar arasından <code class="docutils literal notranslate"><span class="pre">imag</span></code> ve <code class="docutils literal notranslate"><span class="pre">real</span></code> adlı nitelikleri inceleyeceğiz.</p>
+<div class="section" id="imag">
+<h4>imag<a class="headerlink" href="#imag" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<p>Bir gerçek bir de sanal kısımdan oluşan sayılara karmaşık sayılar (<em>complex</em>)
+adı verildiğini biliyorsunuz. Örneğin şu bir karmaşık sayıdır:</p>
+<blockquote>
+<div>12+4j</div></blockquote>
+<p>İşte <code class="docutils literal notranslate"><span class="pre">imag</span></code> adlı nitelik, bize bir karmaşık sayının sanal kısmını verir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="mi">12</span><span class="o">+</span><span class="mi">4</span><span class="n">j</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">imag</span>
+
+<span class="go">4.0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="real">
+<h4>real<a class="headerlink" href="#real" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">real</span></code> adlı nitelik bize bir karmaşık sayının gerçek kısmını verir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="mi">12</span><span class="o">+</span><span class="mi">4</span><span class="n">j</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">real</span>
+
+<span class="go">12.0</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="aritmetik-fonksiyonlar">
+<h2>Aritmetik Fonksiyonlar<a class="headerlink" href="#aritmetik-fonksiyonlar" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Python programlama dili, bize sayılarla rahat çalışabilmemiz için bazı
+fonksiyonlar sunar. Bu fonksiyonları kullanarak, karmaşık aritmetik işlemleri
+kolayca yapabiliriz.</p>
+<p>Biz bu bölümde Python’ın bize sunduğu bu gömülü fonksiyonları tek tek
+inceleyeceğiz.</p>
+<p>Gömülü fonksiyonlar, Python programlama dilinde, herhangi bir özel işlem
+yapmamıza gerek olmadan, kodlarımız içinde doğrudan kullanabileceğimiz
+fonksiyonlardır. Biz şimdiye kadar pek çok gömülü fonksiyonla zaten tanışmıştık.
+O yüzden gömülü fonksiyonlar bizim yabancısı olduğumuz bir konu değil. Mesela
+buraya gelene kadar gördüğümüz, <code class="docutils literal notranslate"><span class="pre">len()</span></code>, <code class="docutils literal notranslate"><span class="pre">range()</span></code>, <code class="docutils literal notranslate"><span class="pre">type()</span></code>, <code class="docutils literal notranslate"><span class="pre">open()</span></code>,
+<code class="docutils literal notranslate"><span class="pre">print()</span></code> ve <code class="docutils literal notranslate"><span class="pre">id()</span></code> gibi fonksiyonların tamamı birer gömülü fonksiyondur.
+Biz bu fonksiyonları ilerleyen derslerde çok daha ayrıntılı bir şekilde
+inceleyeceğiz. Ama şu anda bile fonksiyonlar konusunda epey bilgiye
+sahibiz.</p>
+<p>Şimdiye kadar öğrendiğimiz gömülü fonksiyonlardan şu listede yer alanlar,
+matematik işlemlerinde kullanılmaya uygun olanlardır:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><code class="docutils literal notranslate"><span class="pre">complex()</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">float()</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">int()</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">pow()</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">round()</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">hex()</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">oct()</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">bin()</span></code></li>
+</ol>
+</div></blockquote>
+<p>Biz bu fonksiyonların ne işe yaradığını önceki derslerimizde zaten ayrıntılı
+olarak incelemiştik. O yüzden burada bunlardan söz etmeyeceğiz. Onun yerine,
+henüz öğrenmediğimiz, ama mutlaka bilmemiz gereken gömülü fonksiyonları ele
+alacağız.</p>
+<p>O halde hiç vakit kaybetmeden yola koyulalım…</p>
+<div class="section" id="abs">
+<h3>abs()<a class="headerlink" href="#abs" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Bu fonksiyon bize bir sayının mutlak değerini verir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">abs</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="go">2</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">abs</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="go">2</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="divmod">
+<h3>divmod()<a class="headerlink" href="#divmod" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Bu fonksiyon, bir sayının bir sayıya bölünmesi işleminde <strong>bölümü</strong> ve
+<strong>kalanı</strong> verir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">divmod</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="go">(5, 0)</span>
+</pre></div>
+</div>
+<p><cite>10</cite> sayısı <cite>2</cite> sayısına bölündüğünde ‘bölüm’ <cite>5</cite>, ‘kalan’ ise <cite>0</cite>’dır.</p>
+<p>Bir örnek daha verelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">divmod</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="go">(4, 2)</span>
+</pre></div>
+</div>
+<p>Bu sonuçtan gördüğünüz gibi, aslında <code class="docutils literal notranslate"><span class="pre">divmod()</span></code> fonksiyonu şu kodlarla aynı
+işi yapıyor:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">14</span> <span class="o">//</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">14</span> <span class="o">%</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>Bu fonksiyonun gerçekleştirdiği bölme işleminin bir ‘taban bölme’ işlemi
+olduğuna özellikle dikkatinizi çekmek istiyorum.</p>
+</div>
+<div class="section" id="max">
+<h3>max()<a class="headerlink" href="#max" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Size şöyle bir soru sorduğumu düşünün: Acaba aşağıdaki listede yer alan
+sayıların en büyüğü kaçtır?</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">882388</span><span class="p">,</span> <span class="mi">260409</span><span class="p">,</span> <span class="mi">72923</span><span class="p">,</span> <span class="mi">692476</span><span class="p">,</span> <span class="mi">131925</span><span class="p">,</span> <span class="mi">259114</span><span class="p">,</span> <span class="mi">47630</span><span class="p">,</span> <span class="mi">84513</span><span class="p">,</span> <span class="mi">25413</span><span class="p">,</span> <span class="mi">614654</span><span class="p">,</span>
+ <span class="mi">239479</span><span class="p">,</span> <span class="mi">299159</span><span class="p">,</span> <span class="mi">175488</span><span class="p">,</span> <span class="mi">345972</span><span class="p">,</span> <span class="mi">458112</span><span class="p">,</span> <span class="mi">791030</span><span class="p">,</span> <span class="mi">243610</span><span class="p">,</span> <span class="mi">413702</span><span class="p">,</span> <span class="mi">565285</span><span class="p">,</span>
+ <span class="mi">773607</span><span class="p">,</span> <span class="mi">131583</span><span class="p">,</span> <span class="mi">979177</span><span class="p">,</span> <span class="mi">247202</span><span class="p">,</span> <span class="mi">615485</span><span class="p">,</span> <span class="mi">647512</span><span class="p">,</span> <span class="mi">556823</span><span class="p">,</span> <span class="mi">242460</span><span class="p">,</span> <span class="mi">852928</span><span class="p">,</span>
+ <span class="mi">893126</span><span class="p">,</span> <span class="mi">792435</span><span class="p">,</span> <span class="mi">273904</span><span class="p">,</span> <span class="mi">544434</span><span class="p">,</span> <span class="mi">627222</span><span class="p">,</span> <span class="mi">601984</span><span class="p">,</span> <span class="mi">966446</span><span class="p">,</span> <span class="mi">384143</span><span class="p">,</span> <span class="mi">308858</span><span class="p">,</span>
+ <span class="mi">915106</span><span class="p">,</span> <span class="mi">914423</span><span class="p">,</span> <span class="mi">826315</span><span class="p">,</span> <span class="mi">258342</span><span class="p">,</span> <span class="mi">188056</span><span class="p">,</span> <span class="mi">934954</span><span class="p">,</span> <span class="mi">253918</span><span class="p">,</span> <span class="mi">468223</span><span class="p">,</span> <span class="mi">262875</span><span class="p">,</span>
+ <span class="mi">462902</span><span class="p">,</span> <span class="mi">370061</span><span class="p">,</span> <span class="mi">336521</span><span class="p">,</span> <span class="mi">367829</span><span class="p">,</span> <span class="mi">147846</span><span class="p">,</span> <span class="mi">838385</span><span class="p">,</span> <span class="mi">605377</span><span class="p">,</span> <span class="mi">175140</span><span class="p">,</span> <span class="mi">957437</span><span class="p">,</span>
+ <span class="mi">105779</span><span class="p">,</span> <span class="mi">153499</span><span class="p">,</span> <span class="mi">435097</span><span class="p">,</span> <span class="mi">9934</span><span class="p">,</span> <span class="mi">435761</span><span class="p">,</span> <span class="mi">989066</span><span class="p">,</span> <span class="mi">357279</span><span class="p">,</span> <span class="mi">341319</span><span class="p">,</span> <span class="mi">420455</span><span class="p">,</span>
+ <span class="mi">220075</span><span class="p">,</span> <span class="mi">28839</span><span class="p">,</span> <span class="mi">910043</span><span class="p">,</span> <span class="mi">891209</span><span class="p">,</span> <span class="mi">975758</span><span class="p">,</span> <span class="mi">140968</span><span class="p">,</span> <span class="mi">837021</span><span class="p">,</span> <span class="mi">526798</span><span class="p">,</span> <span class="mi">235190</span><span class="p">,</span>
+ <span class="mi">634295</span><span class="p">,</span> <span class="mi">521918</span><span class="p">,</span> <span class="mi">400634</span><span class="p">,</span> <span class="mi">385922</span><span class="p">,</span> <span class="mi">842289</span><span class="p">,</span> <span class="mi">106889</span><span class="p">,</span> <span class="mi">742531</span><span class="p">,</span> <span class="mi">359913</span><span class="p">,</span> <span class="mi">842431</span><span class="p">,</span>
+ <span class="mi">666182</span><span class="p">,</span> <span class="mi">516933</span><span class="p">,</span> <span class="mi">22222</span><span class="p">,</span> <span class="mi">445705</span><span class="p">,</span> <span class="mi">589281</span><span class="p">,</span> <span class="mi">709098</span><span class="p">,</span> <span class="mi">48521</span><span class="p">,</span> <span class="mi">513501</span><span class="p">,</span> <span class="mi">277645</span><span class="p">,</span>
+ <span class="mi">860937</span><span class="p">,</span> <span class="mi">655966</span><span class="p">,</span> <span class="mi">923944</span><span class="p">,</span> <span class="mi">7895</span><span class="p">,</span> <span class="mi">77482</span><span class="p">,</span> <span class="mi">929007</span><span class="p">,</span> <span class="mi">562981</span><span class="p">,</span> <span class="mi">904166</span><span class="p">,</span> <span class="mi">619260</span><span class="p">,</span>
+ <span class="mi">616293</span><span class="p">,</span> <span class="mi">203512</span><span class="p">,</span> <span class="mi">67534</span><span class="p">,</span> <span class="mi">615578</span><span class="p">,</span> <span class="mi">74381</span><span class="p">,</span> <span class="mi">484273</span><span class="p">,</span> <span class="mi">941872</span><span class="p">,</span> <span class="mi">110617</span><span class="p">,</span> <span class="mi">53517</span><span class="p">,</span>
+ <span class="mi">402324</span><span class="p">,</span> <span class="mi">156156</span><span class="p">,</span> <span class="mi">839504</span> <span class="p">,</span> <span class="mi">625325</span><span class="p">,</span> <span class="mi">694080</span><span class="p">,</span> <span class="mi">904277</span><span class="p">,</span> <span class="mi">163914</span><span class="p">,</span> <span class="mi">756250</span><span class="p">,</span> <span class="mi">809689</span><span class="p">,</span>
+ <span class="mi">354050</span><span class="p">,</span> <span class="mi">523654</span><span class="p">,</span> <span class="mi">26723</span><span class="p">,</span> <span class="mi">167882</span><span class="p">,</span> <span class="mi">103404</span><span class="p">,</span> <span class="mi">689579</span><span class="p">,</span> <span class="mi">121439</span><span class="p">,</span> <span class="mi">158946</span><span class="p">,</span> <span class="mi">485258</span><span class="p">,</span>
+ <span class="mi">850804</span><span class="p">,</span> <span class="mi">650603</span><span class="p">,</span> <span class="mi">717388</span><span class="p">,</span> <span class="mi">981770</span><span class="p">,</span> <span class="mi">573882</span><span class="p">,</span> <span class="mi">358726</span><span class="p">,</span> <span class="mi">957285</span><span class="p">,</span> <span class="mi">418479</span><span class="p">,</span> <span class="mi">851590</span><span class="p">,</span>
+ <span class="mi">960182</span><span class="p">,</span> <span class="mi">11955</span><span class="p">,</span> <span class="mi">894146</span><span class="p">,</span> <span class="mi">856069</span><span class="p">,</span> <span class="mi">369866</span><span class="p">,</span> <span class="mi">740623</span><span class="p">,</span> <span class="mi">867622</span><span class="p">,</span> <span class="mi">616830</span><span class="p">,</span> <span class="mi">894801</span><span class="p">,</span>
+ <span class="mi">827179</span><span class="p">,</span> <span class="mi">580024</span><span class="p">,</span> <span class="mi">987174</span><span class="p">,</span> <span class="mi">638930</span><span class="p">,</span> <span class="mi">129200</span><span class="p">,</span> <span class="mi">214789</span><span class="p">,</span> <span class="mi">45268</span><span class="p">,</span> <span class="mi">455924</span><span class="p">,</span> <span class="mi">655940</span><span class="p">,</span>
+ <span class="mi">335481</span><span class="p">,</span> <span class="mi">845907</span><span class="p">,</span> <span class="mi">942437</span><span class="p">,</span> <span class="mi">759380</span><span class="p">,</span> <span class="mi">790660</span><span class="p">,</span> <span class="mi">432715</span><span class="p">,</span> <span class="mi">858959</span><span class="p">,</span> <span class="mi">289617</span><span class="p">,</span> <span class="mi">757317</span><span class="p">,</span>
+ <span class="mi">982063</span><span class="p">,</span> <span class="mi">237940</span><span class="p">,</span> <span class="mi">141714</span><span class="p">,</span> <span class="mi">939369</span><span class="p">,</span> <span class="mi">198282</span><span class="p">,</span> <span class="mi">975017</span><span class="p">,</span> <span class="mi">785968</span><span class="p">,</span> <span class="mi">49954</span><span class="p">,</span> <span class="mi">854914</span><span class="p">,</span>
+ <span class="mi">996780</span><span class="p">,</span> <span class="mi">121633</span><span class="p">,</span> <span class="mi">436419</span><span class="p">,</span> <span class="mi">471</span><span class="p">,</span> <span class="mi">776271</span><span class="p">,</span> <span class="mi">91626</span><span class="p">,</span> <span class="mi">209175</span><span class="p">,</span> <span class="mi">894281</span><span class="p">,</span> <span class="mi">417963</span><span class="p">,</span> <span class="mi">624464</span><span class="p">,</span>
+ <span class="mi">736535</span><span class="p">,</span> <span class="mi">418888</span><span class="p">,</span> <span class="mi">506194</span><span class="p">,</span> <span class="mi">591087</span><span class="p">,</span> <span class="mi">64075</span><span class="p">,</span> <span class="mi">50252</span><span class="p">,</span> <span class="mi">952943</span><span class="p">,</span> <span class="mi">25878</span><span class="p">,</span> <span class="mi">217085</span><span class="p">,</span>
+ <span class="mi">223996</span><span class="p">,</span> <span class="mi">416042</span><span class="p">,</span> <span class="mi">484123</span><span class="p">,</span> <span class="mi">810460</span><span class="p">,</span> <span class="mi">423284</span><span class="p">,</span> <span class="mi">956886</span><span class="p">,</span> <span class="mi">237772</span><span class="p">,</span> <span class="mi">960241</span><span class="p">,</span> <span class="mi">601551</span><span class="p">,</span>
+ <span class="mi">830147</span><span class="p">,</span> <span class="mi">449088</span><span class="p">,</span> <span class="mi">364567</span><span class="p">,</span> <span class="mi">337281</span><span class="p">,</span> <span class="mi">524358</span><span class="p">,</span> <span class="mi">980387</span><span class="p">,</span> <span class="mi">393760</span><span class="p">,</span> <span class="mi">619710</span><span class="p">,</span> <span class="mi">100181</span><span class="p">,</span>
+ <span class="mi">96738</span><span class="p">,</span> <span class="mi">275199</span><span class="p">,</span> <span class="mi">553783</span><span class="p">,</span> <span class="mi">975654</span><span class="p">,</span> <span class="mi">662536</span><span class="p">,</span> <span class="mi">979103</span><span class="p">,</span> <span class="mi">869504</span><span class="p">,</span> <span class="mi">702350</span><span class="p">,</span> <span class="mi">174361</span><span class="p">,</span>
+ <span class="mi">970250</span><span class="p">,</span> <span class="mi">267625</span><span class="p">,</span> <span class="mi">661580</span><span class="p">,</span> <span class="mi">444662</span><span class="p">,</span> <span class="mi">871532</span><span class="p">,</span> <span class="mi">881977</span><span class="p">,</span> <span class="mi">981660</span><span class="p">,</span> <span class="mi">446047</span><span class="p">,</span> <span class="mi">508758</span><span class="p">,</span>
+ <span class="mi">530694</span><span class="p">,</span> <span class="mi">608789</span><span class="p">,</span> <span class="mi">339540</span><span class="p">,</span> <span class="mi">242774</span><span class="p">,</span> <span class="mi">637473</span><span class="p">,</span> <span class="mi">874011</span><span class="p">,</span> <span class="mi">732999</span><span class="p">,</span> <span class="mi">511638</span><span class="p">,</span> <span class="mi">744144</span><span class="p">,</span>
+ <span class="mi">710805</span><span class="p">,</span> <span class="mi">641326</span><span class="p">,</span> <span class="mi">88085</span><span class="p">,</span> <span class="mi">128487</span><span class="p">,</span> <span class="mi">59732</span><span class="p">,</span> <span class="mi">739340</span><span class="p">,</span> <span class="mi">443638</span><span class="p">,</span> <span class="mi">830333</span><span class="p">,</span> <span class="mi">832136</span><span class="p">,</span>
+ <span class="mi">882277</span><span class="p">,</span> <span class="mi">403538</span><span class="p">,</span> <span class="mi">441349</span><span class="p">,</span> <span class="mi">721048</span><span class="p">,</span> <span class="mi">32859</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>İşte böyle bir soruyu çözmek için <code class="docutils literal notranslate"><span class="pre">max()</span></code> fonksiyonundan yararlanabilirsiniz.
+Yukarıdaki listeyi <cite>sayılar</cite> adlı bir değişkene atadığımızı varsayarsak,
+aşağıdaki kod bize listedeki en büyük sayıyı verecektir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">max</span><span class="p">(</span><span class="n">sayılar</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Yukarıdaki örneklerde <code class="docutils literal notranslate"><span class="pre">max()</span></code> fonksiyonunu kullanarak bir dizi içindeki en
+<strong>büyük</strong> sayıyı bulduk. Peki bu fonksiyonu kullanarak bir dizi içindeki en
+<strong>uzun</strong> karakter dizisini bulabilir miyiz? Evet, bulabiliriz.</p>
+<p>Diyelim ki elimizde şöyle bir liste var:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">isimler</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ahmet&quot;</span><span class="p">,</span> <span class="s2">&quot;mehmet&quot;</span><span class="p">,</span> <span class="s2">&quot;necla&quot;</span><span class="p">,</span> <span class="s2">&quot;sedat&quot;</span><span class="p">,</span> <span class="s2">&quot;abdullah&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;gıyaseddin&quot;</span><span class="p">,</span> <span class="s2">&quot;sibel&quot;</span><span class="p">,</span> <span class="s2">&quot;can&quot;</span><span class="p">,</span> <span class="s2">&quot;necmettin&quot;</span><span class="p">,</span> <span class="s2">&quot;savaş&quot;</span><span class="p">,</span> <span class="s2">&quot;özgür&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Amacımız bu liste içindeki en uzun kelimeyi bulmak. İşte bunu <code class="docutils literal notranslate"><span class="pre">max()</span></code>
+fonksiyonu ile yapabiliriz. Dikkatlice bakın:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">isimler</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Bu kodları çalıştırdığımızda, listedeki en uzun isim olan ‘gıyaseddin’i elde
+edeceğiz.</p>
+<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">max()</span></code> fonksiyonu <cite>key</cite> adlı özel bir parametre daha alıyor.
+Bu parametreye biz ‘len’ değerini verdik. Böylece <code class="docutils literal notranslate"><span class="pre">max()</span></code> fonksiyonu liste
+içindeki öğeleri uzunluklarına göre sıralayıp en uzun öğeyi bize sundu.</p>
+<p>Hatırlarsanız geçen bölümde şöyle bir kod yazmıştık:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sayı_sistemleri</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;onlu&quot;</span><span class="p">,</span> <span class="s2">&quot;sekizli&quot;</span><span class="p">,</span> <span class="s2">&quot;on altılı&quot;</span><span class="p">,</span> <span class="s2">&quot;ikili&quot;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">((</span><span class="s2">&quot;</span><span class="si">{:^9}</span><span class="s2"> &quot;</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">sayı_sistemleri</span><span class="p">))</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">sayı_sistemleri</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">17</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{0:^9}</span><span class="s2"> </span><span class="si">{0:^9o}</span><span class="s2"> </span><span class="si">{0:^9x}</span><span class="s2"> </span><span class="si">{0:^9b}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Bu kodlar, farklı sayma sistemleri arasındaki farkları daha net görmemizi
+sağlamıştı. Yalnız burada dikkat ettiyseniz, <cite>sayı_sistemleri</cite> adlı listeye her
+öğe ekleyişimizde, listedeki en uzun değeri dikkate alarak karakter dizisi
+biçimlendiricileri içindeki, öğeler arasında ne kadar boşluk bırakılacağını
+belirleyen sayıları güncelliyorduk. Mesela yukarıdaki örnekte, öğeler arasında
+yeterince boşluk bırakabilmek için bu sayıyı <cite>9</cite> olarak belirlemiştik. İşte
+şimdi öğrendiğimiz <code class="docutils literal notranslate"><span class="pre">max()</span></code> fonksiyonunu kullanarak bu sayının otomatik olarak
+belirlenmesini sağlayabiliriz. Dikkatlice inceleyin:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sayı_sistemleri</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;onlu&quot;</span><span class="p">,</span> <span class="s2">&quot;sekizli&quot;</span><span class="p">,</span> <span class="s2">&quot;on altılı&quot;</span><span class="p">,</span> <span class="s2">&quot;ikili&quot;</span><span class="p">]</span>
+
+<span class="n">en_uzun</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">sayı_sistemleri</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">((</span><span class="s2">&quot;{:^</span><span class="si">{aralık}</span><span class="s2">} &quot;</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">sayı_sistemleri</span><span class="p">))</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">sayı_sistemleri</span><span class="p">,</span> <span class="n">aralık</span><span class="o">=</span><span class="n">en_uzun</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">17</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;{0:^</span><span class="si">{1}</span><span class="s2">} {0:^</span><span class="si">{1}</span><span class="s2">o} {0:^</span><span class="si">{1}</span><span class="s2">x} {0:^</span><span class="si">{1}</span><span class="s2">b}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">en_uzun</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">max()</span></code> fonksiyonunu ve bu fonksiyonun <cite>key</cite> parametresini
+kullanarak, oluşturduğumuz tablodaki öğelerin arasına uygun boşluğu otomatik
+olarak eklemiş olduk. Bunun için, <cite>sayı_sistemleri</cite> adlı listedeki en uzun
+öğenin uzunluk miktarını temel aldık.</p>
+</div>
+<div class="section" id="min">
+<h3>min()<a class="headerlink" href="#min" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Bu fonksiyon, <code class="docutils literal notranslate"><span class="pre">max()</span></code> fonksiyonun yaptığı işin tam tersini yapar. Yani bu
+fonksiyonu kullanarak bir dizi içindeki en küçük sayıyı bulabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">min</span><span class="p">(</span><span class="n">sayılar</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Tıpkı <code class="docutils literal notranslate"><span class="pre">max()</span></code> fonksiyonunda olduğu gibi, <code class="docutils literal notranslate"><span class="pre">min()</span></code> fonksiyonunda da <cite>key</cite>
+parametresini kullanabilirsiniz. Mesela <code class="docutils literal notranslate"><span class="pre">max()</span></code> fonksiyonunu anlatırken
+verdiğimiz isim listesindeki en kısa ismi bulabilmek için şu kodu
+yazabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">isimler</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sum">
+<h3>sum()<a class="headerlink" href="#sum" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Bu fonksiyon bir dizi içinde yer alan bütün sayıları birbiriyle toplar.
+Örneğin:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">45</span> <span class="p">,</span> <span class="mi">77</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">sum</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="go">198</span>
+</pre></div>
+</div>
+<p>Eğer bu fonksiyonun, toplama işlemini belli bir sayının üzerine
+gerçekleştirmesini istiyorsanız şu kodu yazabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">sum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="go">208</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">sum()</span></code> fonksiyonuna bu şekilde ikinci bir parametre verdiğinizde, bu ikinci
+parametre toplam değere eklenecektir.</p>
+</div>
+</div>
+</div>
+
+
+
+<div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
+<div class='extrarelbar'> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="temel_dosya_islemleri.html" title="Temel Dosya İşlemleri"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="sayma_sistemleri.html" title="Sayma Sistemleri"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+ 
+      </ul>
+    </div> </div>
+
+<div class='addcomment'>Yorumlar</div>
+
+<div class='how-to-use'>
+<h3>Önemli Not</h3>
+Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
+<span class='tag'>&lt;pre&gt;&lt;code&gt;</span> etiketleri içine alın. Örneğin:
+
+<pre>
+    <span class='tag'>&lt;pre&gt;&lt;code class="python"&gt;</span>
+    <span class='keyword'>print</span>(<span class='string'>"Merhaba Dünya!"</span>)
+    <span class='tag'>&lt;/code&gt;&lt;/pre&gt;</span>
+</pre>
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'istihza';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4eca48eb2d83faf9" async="async"></script>
+
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="temel_dosya_islemleri.html" title="Temel Dosya İşlemleri"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="sayma_sistemleri.html" title="Sayma Sistemleri"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+ 
+      </ul>
+    </div> 
+
+<div class="footer">
+&copy; Copyright 2007-2019, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 30.06.2019.
+<a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5 ile oluşturulmuştur.
+<br>
+<br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
+alt="Creative Commons License" style="border-width:0"
+src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a><br />
+<br>
+</div>
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=10396326;
+var sc_invisible=1;
+var sc_security="fb5cd679";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="hit counter"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="http://c.statcounter.com/10396326/0/fb5cd679/1/"
+alt="hit counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+  </body>
+</html>
