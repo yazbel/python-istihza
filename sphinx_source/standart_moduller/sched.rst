@@ -130,7 +130,7 @@ Bir başka örnek::
     suan=time.time()
     if(s.empty()):
         s.enterabs(suan+5,1,yazdır)
-        s.enterabs(suan+6,2,değiştir)
+        s.enterabs(suan+6,2,değişti)
         s.enterabs(suan+6,1,yazdır)
         s.enter(10,1,yazdır)
     s.run()
