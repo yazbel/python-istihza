@@ -120,7 +120,7 @@ Bir başka örnek::
     import sched,time
     s=sched.scheduler(time.time,time.sleep)
     yazdırılacak_değer="Merhaba Dünya"
-    def değişti():
+    def değiştir():
         global yazdırılacak_değer
         yazdırılacak_değer="Merhaba Zalim Dünya"
 
