@@ -764,10 +764,10 @@ açısından önemli bir karakter dizisi (`\\u`) meydana getirmiş oluyoruz. O
 yüzden, böyle can sıkıcı hatalarla karşılaşmamak için olası kaçış dizilerine
 karşı her zaman uyanık olmamız gerekiyor.
 
-Pekı biz bu kaçış dizisi yüzünden, yazdığımız programlarda `Dosya konumu:
+Peki biz bu kaçış dizisi yüzünden, yazdığımız programlarda `Dosya konumu:
 C:\\users\\zeynep\\gizli\\dosya.txt")` gibi bir çıktı veremeyecek miyiz?
 
-Verebileceğimizi, ama bunun bir yolu yordamı olduğunu biliyorsunuz. Biz yine de
+Verebileceğimizi ve bunun bir yolu yordamı olduğunu biliyorsunuz. Biz yine de
 tekrar edelim::
 
     >>> print("Dosya konumu: C:\\users\\zeynep\\gizli\\dosya.txt")
@@ -792,22 +792,22 @@ Bu kaçış dizisi biraz önce gördüğümüz `\\u` adlı kaçış dizisiyle he
 aynı anlama gelir. Bu kaçış dizisi de, tıpkı `\\u` gibi, UNICODE kod konumlarını
 temsil etmek için kullanılır. Ancak `\U` ile gösterilen kod konumları `\u` ile
 gösterilenlere göre biraz daha uzundur. Örneğin, hatırlarsanız `\u` kaçış
-dizisini kullanarak 'ı' harfinin UNICODE kod konumunu şöyle temsil ediyorduk::
+dizisini kullanarak 'İ' harfinin UNICODE kod konumunu şöyle temsil ediyorduk::
 
-    >>> '\u0131'
+    >>> '\u0130'
 
-    'ı'
+    'İ'
 
 Eğer aynı kod konumunu `\U` adlı kaçış dizisi ile göstermek istersek şöyle bir
 şey yazmamız gerekir::
 
-    >>> '\U00000131'
+    >>> '\U00000130'
 
 Gördüğünüz gibi, burada `\\U` kaçış dizisinden sonra gelen kısım toplam 8
-haneli bir sayıdan oluşuyor. `\u` kaçış dizisinde ise bu kısmı toplam 4 haneli
-bir sayı olarak yazıyorduk. İşte `\\u` kaçış dizisi ile `\U` kaçış dizisi
-arasındaki fark budur. `\u` kaçış dizisi hakkında söylediğimiz öteki her şey
-`\U` kaçış dizisi için de geçerlidir.
+haneli bir sayıdan oluşuyor. `\\u` kaçış dizisinde ise bu kısmı toplam 4 haneli
+bir sayı olarak yazıyorduk. İşte `\\u` kaçış dizisi ile `\\U` kaçış dizisi
+arasındaki fark budur. `\\u` kaçış dizisi hakkında söylediğimiz öteki her şey
+`\\U` kaçış dizisi için de geçerlidir.
 
 Uzun Ad (\\N)
 ******************
