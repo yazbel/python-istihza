@@ -343,14 +343,14 @@ gibi çalışarak, bizim için, aynı nitelikleri taşıyan dört farklı nesne 
 
 İşte nesne tabanlı programlamanın özünü oluşturan 'nesne' budur. Bir nesnenin
 hangi niteliklere sahip olacağını belirleyen veri tipine sınıf (*class*) derken,
-o sınıfın ortaya çıkardığı ürüne ise nesne (*object*) adı veriyoruz. Bunu şuna
+o sınıfın ortaya çıkardığı ürüne ise nesne (*object*) adını veriyoruz. Bunu şuna
 benzetebilirsiniz: Eğer 'İnsan' bir sınıfsa, 'Mahmut' bu sınıfın bir örneğidir.
-Dolayısıyla Mahmut, İnsan sınıfından türemiş bir nesnedir. Aynı şekilde eğer
+Dolayısıyla Mahmut, İnsan sınıfından üretilmiş bir nesnedir. Aynı şekilde eğer
 'Köpek' bir sınıfsa, 'Karabaş' da bu sınıfın bir örneğidir. Yani Karabaş,
-Köpek sınıfından türemiş bir nesnedir. Mahmut'un hangi özelliklere sahip
+Köpek sınıfından üretilmiş bir nesnedir. Mahmut'un hangi özelliklere sahip
 olacağını İnsan sınıfının nasıl tanımlandığı, Karabaş'ın hangi özelliklere
 sahip olacağını ise Köpek sınıfının nasıl tanımlandığı belirler. İşte aynı
-bunun gibi, ``Oyuncu()`` sınıfından türeyen nesnelerin hangi özelliklere sahip
+bunun gibi, ``Oyuncu()`` sınıfından üretilen nesnelerin hangi özelliklere sahip
 olacağını da ``Oyuncu()`` sınıfının nasıl tanımlandığı belirler.
 
 Kodlarımızı incelemeye devam edelim...
@@ -451,7 +451,7 @@ aktarmış olmamız gerekiyor. Bu zorunluluğu da, tıpkı `time` modülünde ol
 gibi, dosyanın en başında yerine getirmiştik.
 
 Yukarıda `random` modülünü, 0 ile 2 arası rastgele sayılar üretmek için
-kullandık. ``random.randint(0, 2)`` komutu her çalışışında 0, 1 ve 2
+kullandık. ``random.randint(0, 2)`` komutu her çalıştığında 0, 1 ve 2
 sayılarından birini rastgele üretecektir. Buradan elde ettiğimiz sonucu `sonuç`
 adlı bir değişkene atayarak ``saldır()`` fonksiyonu içinde şu şekilde
 kullanıyoruz::
