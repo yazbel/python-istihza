@@ -391,3 +391,15 @@ Axolotl Axolotl
     - 'oyununun' olarak yazılan kelime 'oyunun' olarak düzeltildi.
     - 'O' olarak yazılması gerekirken 'Y' olarak yazılan karakter düzeltildi.
     - 'programımın' olarak yazılan kelime 'programın' olarak düzeltildi.
+
+Burak Kadir Er
+================
+
+    - `56715` değeri olduğu için ifadesi `56700` değeri olduğu için olarak düzeltildi.
+    - 'Pekı' kelimesi 'Peki' olarak düzeltildi.
+    - 'Verebileceğimizi, ama bunun bir yolu yordamı olduğunu biliyorsunuz.' cümlesi 'Verebileceğimizi ve bunun bir yolu yordamı olduğunu       biliyorsunuz.' olarak değiştirildi.
+    - 'ı' UNICODE ibaresi 'İ' UNICODE olarak düzeltildi.
+    - '\u0131' UNICODE kodu '\u0130' olarak düzeltildi.
+    - '\U00000131' UNICODE kodu '\U00000130' olarak düzeltildi.
+    - '\\' çift kaçış dizisi eklenmemiş küçük ve büyük UNICODE kaçış dizileri '\\u' ve '\\U' olarak düzeltildi.
+    
