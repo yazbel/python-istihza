@@ -931,26 +931,27 @@ sonucu olan `3420` sayısını verir.
 'Ne güzel bir fonksiyon! Her işimi görür bu!' dediğinizi duyar gibiyim. Ama
 aslında durum hiç de öyle değil. Neden mi?
 
-print("""
-Basit bir hesap makinesi uygulaması.
+::
+    print("""
+    Basit bir hesap makinesi uygulaması.
 
-İşleçler:
+    İşleçler:
 
-    +   toplama
-    -   çıkarma
-    *   çarpma
-    /   bölme
+        +   toplama
+        -   çıkarma
+        *   çarpma
+        /   bölme
 
-Yapmak istediğiniz işlemi yazıp ENTER
-tuşuna basın. (Örneğin 23 ve 46 sayılarını
-çarpmak için 23 * 46 yazdıktan sonra
-ENTER tuşuna basın.)
-""")
+    Yapmak istediğiniz işlemi yazıp ENTER
+    tuşuna basın. (Örneğin 23 ve 46 sayılarını
+    çarpmak için 23 * 46 yazdıktan sonra
+    ENTER tuşuna basın.)
+    """)
 
-veri = input("İşleminiz: ")
-hesap = eval(veri)
+    veri = input("İşleminiz: ")
+    hesap = eval(veri)
 
-print(hesap)
+    print(hesap)
 
 Şimdi yukarıdaki programı tekrar çalıştırın ve `"İşleminiz: "` ifadesinden sonra
 şu cevabı verin::
