@@ -246,7 +246,7 @@ import paket
 ==============
 
 Mesela `urllib` paketini ele alalım. Tıpkı `os` modülünde yaptığımız gibi,
-`urllib` modülünü de şu şekilde içe aktarabiliriz::
+`urllib` paketini de şu şekilde içe aktarabiliriz::
 
     >>> import urllib
 
