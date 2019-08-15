@@ -932,6 +932,7 @@ sonucu olan `3420` sayısını verir.
 aslında durum hiç de öyle değil. Neden mi?
 
 ::
+
     print("""
     Basit bir hesap makinesi uygulaması.
 
