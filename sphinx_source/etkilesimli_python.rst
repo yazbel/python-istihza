@@ -1393,7 +1393,7 @@ Bu özellikten çeşitli şekillerde yararlanabilirsiniz::
 
     56715
 
-Burada ``_`` komutunun değeri bir önceki işlemin sonucu olan `56715` değeri olduğu için, ``_`` komutuna `15` eklediğimizde `56715` değerini elde ediyoruz.
+Burada ``_`` komutunun değeri bir önceki işlemin sonucu olan `56700` değeri olduğu için, ``_`` komutuna `15` eklediğimizde `56715` değerini elde ediyoruz.
 ``_`` komutunun değerini tekrar kontrol edelim::
 
     >>> _
