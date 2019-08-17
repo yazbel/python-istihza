@@ -764,11 +764,10 @@ açısından önemli bir karakter dizisi (`\\u`) meydana getirmiş oluyoruz. O
 yüzden, böyle can sıkıcı hatalarla karşılaşmamak için olası kaçış dizilerine
 karşı her zaman uyanık olmamız gerekiyor.
 
-Pekı biz bu kaçış dizisi yüzünden, yazdığımız programlarda `Dosya konumu:
+Peki biz bu kaçış dizisi yüzünden, yazdığımız programlarda `Dosya konumu:
 C:\\users\\zeynep\\gizli\\dosya.txt")` gibi bir çıktı veremeyecek miyiz?
 
-Verebileceğimizi, ama bunun bir yolu yordamı olduğunu biliyorsunuz. Biz yine de
-tekrar edelim::
+Verebileceğimizi ve bunun bir yolu yordamı olduğunu biliyorsunuz::
 
     >>> print("Dosya konumu: C:\\users\\zeynep\\gizli\\dosya.txt")
 
