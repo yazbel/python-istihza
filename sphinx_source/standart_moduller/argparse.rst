@@ -3,7 +3,7 @@
    :keywords: python, python3, argparse
 
 ===============
-Argparse Modülü
+argparse Modülü
 ===============
 --------
 Giriş
