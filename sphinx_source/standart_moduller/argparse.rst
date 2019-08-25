@@ -997,7 +997,7 @@ verilen argüman geçersiz ise hata mesajı döner.
 
 Çıktımızı incelediğimiz zaman bir değişken atadığımız için uygulama hatasız çalıştı ancak ikincisinde değişken olmadığı için hata verdi.
 
-**NOT:Zorunlu seçimler genellikle kötü form olarak kabul edilir. Çünkü bu paramterler özünde isteğe bağlıdır ve kullanıcılar isteğe bağlı olmasını ister. Mümkün olduğunca kullanmamak gerekir.**
+**NOT:Zorunlu seçimler genellikle kötü form olarak kabul edilir. Çünkü bu parametreler özünde isteğe bağlıdır ve kullanıcılar isteğe bağlı olmasını ister. Mümkün olduğunca kullanmamak gerekir.**
 
 help
 -----
