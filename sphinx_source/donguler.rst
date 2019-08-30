@@ -597,17 +597,17 @@ Peki bu ``for`` döngüsünü nasıl kurduk?
 
 Bu söz dizimini Türkçe olarak şöyle ifade edebiliriz::
 
-    değişken içindeki herbir öğeyi değişken_adı olarak adlandır:
+    değişken içindeki her bir öğeyi değişken_adı olarak adlandır:
         ve bu öğelerle bir işlem yap.
 
 Bu soyut yapıları kendi örneğimize uygulayarak durumu daha net anlamaya
 çalışalım::
 
-    tr_harfler adlı değişken içindeki herbir öğeyi harf olarak adlandır:
+    tr_harfler adlı değişken içindeki her bir öğeyi harf olarak adlandır:
         ve harf olarak adlandırılan bu öğeleri ekrana yazdır.
 
 Yukarıdaki örnekte bir ``for`` döngüsü yardımıyla `tr_harfler` adlı değişken
-içindeki herbir öğeyi ekrana yazdırdık. Esasında ``for`` döngüsünün
+içindeki her bir öğeyi ekrana yazdırdık. Esasında ``for`` döngüsünün
 yeteneklerini düşündüğümüzde bu örnek pek heyecan verici değil. Zira aynı işi
 aslında ``print()`` fonksiyonu ile de yapabilirdik::
 
@@ -629,8 +629,8 @@ Aslında bu işlemi ``while`` ile de yapmak mümkün (Bu kodlardaki, henüz
 ile yapması daha zor (veya uzun) olan işlemleri ``for`` döngüsü ile çok daha
 kolay bir şekilde yapabiliriz. Ayrıca ``for`` döngüsü ile ``while`` döngüsünün
 çalışma mantıkları birbirinden farklıdır. ``for`` döngüsü, üzerinde döngü
-kurulabilecek veri tiplerinin herbir öğesinin üzerinden tek tek geçer ve bu
-öğelerin herbiri üzerinde bir işlem yapar. ``while`` döngüsü ise herhangi bir
+kurulabilecek veri tiplerinin her bir öğesinin üzerinden tek tek geçer ve bu
+öğelerin her biri üzerinde bir işlem yapar. ``while`` döngüsü ise herhangi bir
 ifadenin bool değerini kontrol eder ve bu değerin bool değeri `False` olana
 kadar, belirlenen işlemi yapmayı sürdürür.
 
@@ -659,12 +659,12 @@ anlamaya çalışalım::
     for sayı in sayılar:
         print(int(sayı) * 2)
 
-Burada `sayılar` adlı değişkenin herbir öğesini `sayı` olarak adlandırdıktan
+Burada `sayılar` adlı değişkenin her bir öğesini `sayı` olarak adlandırdıktan
 sonra, ``int()`` fonksiyonu yardımıyla bu öğeleri tek tek sayıya çevirdik ve
-herbir öğeyi `2` ile çarptık.
+her bir öğeyi `2` ile çarptık.
 
 ``for`` döngüsünün mantığını az çok anlamış olmalısınız. Bu döngü bir değişken
-içindeki herbir öğeyi tek tek ele alıp, iki nokta üst üste işaretinden sonra
+içindeki her bir öğeyi tek tek ele alıp, iki nokta üst üste işaretinden sonra
 yazdığımız kod bloğunu bu öğelere tek tek uyguluyor.
 
 *for* kelimesi İngilizcede 'için' anlamına gelir. Döngünün yapısı içinde geçen
@@ -690,7 +690,7 @@ in a`` sorgulaması `False` çıktısı veriyor.
 *in* kelimesi İngilizcede 'içinde' anlamına geliyor. Dolayısıyla ``for falanca
 in filanca:`` yazdığımızda aslında şöyle bir şey demiş oluyoruz:
 
-    `filanca` içinde `falanca` adını verdiğimiz herbir öğe için...
+    `filanca` içinde `falanca` adını verdiğimiz her bir öğe için...
 
 Yani şu kod::
 
@@ -699,7 +699,7 @@ Yani şu kod::
 
 Şu anlama geliyor:
 
-    `"istihza"` karakter dizisi içinde `s` adını verdiğimiz herbir öğe için:
+    `"istihza"` karakter dizisi içinde `s` adını verdiğimiz her bir öğe için:
         `s` öğesini ekrana basma işlemi gerçekleştir!
 
 Ya da şu kod::
@@ -712,7 +712,7 @@ Ya da şu kod::
 
 Şu anlama geliyor:
 
-    `sayılar` değişkeni içinde `i` adını verdiğimiz herbir öğe için:
+    `sayılar` değişkeni içinde `i` adını verdiğimiz her bir öğe için:
         eğer sayıya dönüştürülmüş `i` değeri `3`'ten büyükse:
             `i` öğesini ekrana basma işlemi gerçekleştir!
 
@@ -737,7 +737,7 @@ içinde Türkçe karakterlerden herhangi biri varsa kullanıcıyı Türkçe kara
 kullanmaması konusunda uyarıyor. Buradaki ``for`` döngüsünü nasıl kurduğumuzu
 görüyorsunuz. Aslında burada şu Türkçe cümleyi Pythonca'ya çevirmiş olduk:
 
-    `parola` değişkeni içinde `karakter` adını verdiğimiz herbir öğe için:
+    `parola` değişkeni içinde `karakter` adını verdiğimiz her bir öğe için:
         eğer `karakter` değişkeni `tr_harfler` adlı değişken içinde geçiyorsa:
             'parolada Türkçe karakter kullanılamaz' uyarısını göster!
 
@@ -1434,7 +1434,7 @@ edebiliriz. Bunun için şöyle bir kod yazabiliriz::
     print(fark)
 
 Burada da anlayamayacağımız hiçbir şey yok. Bu kodlardaki bütün parçaları
-tanıyoruz. Herzamanki gibi öncelikle değişkenlerimizi tanımladık::
+tanıyoruz. Her zamanki gibi öncelikle değişkenlerimizi tanımladık::
 
     ilk_metin = "asdasfddgdhfjfdgdşfkgjdfklgşjdfklgjdfkghdfjghjklsdhajlsdhjkjhkhjjh"
     ikinci_metin = "sdfsuıdoryeuıfsjkdfhdjklghjdfklruseldhfjlkdshfljskeeuf"
@@ -1537,7 +1537,7 @@ yaptık::
 Gördüğünüz gibi, önce boş bir `fark` değişkeni oluşturduk. Daha sonra bu
 değişkene ``for`` döngüsü içinde yeni değerler atayabilmek (daha doğrusu
 atarmış gibi yapmak) için ``fark += s`` gibi bir kod kullandık. Böylece `for`
-döngüsünün her dönüşünde `s` adını verdiğimiz herbir öğeyi tek tek `fark`
+döngüsünün her dönüşünde `s` adını verdiğimiz her bir öğeyi tek tek `fark`
 değişkenine yolladık. Böylece program sonunda elimizde, farklı öğeleri yalnızca
 birer kez içeren `fark` adlı bir değişken olmuş oldu. Dediğimiz gibi, ilk başta
 tanımladığımız boş `fark` değişkeni ile, program sonunda farklı değerleri içeren
@@ -1766,7 +1766,7 @@ varsa `sayı` değişkeninin değeri `aaaaa` olacaktır.
 
 Sonraki satırlarda ``for`` döngümüzü tanımlıyoruz::
 
-    for s in metin:         # metin içinde 's' adını verdiğimiz herbir öğe için
+    for s in metin:         # metin içinde 's' adını verdiğimiz her bir öğe için
         if harf == s:       # eğer kullanıcıdan gelen harf 's' ile aynıysa
             sayı += harf    # kullanıcıdan gelen bu harfi sayı değişkenine yolla
 
@@ -1881,7 +1881,7 @@ edin.
 
     edilmesi neredeyse bir gelenek halini almıştır.
 
-Burada herbir satır ayrı bir karakter dizisidir. Eğer herbir satırın ayrı bir
+Burada her bir satır ayrı bir karakter dizisidir. Eğer her bir satırın ayrı bir
 karakter dizisi olduğunu daha net bir şekilde görmek istiyorsanız ``repr()``
 adlı özel bir fonksiyondan yararlanabilirsiniz::
 
@@ -1906,12 +1906,12 @@ Bu kodlar bu kez şöyle bir çıktı verir::
 Bu çıktıya çok dikkatlice bakın. ``repr()`` fonksiyonu sayesinde Python'ın
 alttan alta neler çevirdiğini bariz bir biçimde görüyoruz. Karakter dizisinin
 başlangıç ve bitişini gösteren tırnak işaretleri ve `\\n` kaçış dizilerinin
-görünür vaziyette olması sayesinde herbir satırın ayrı bir karakter dizisi
+görünür vaziyette olması sayesinde her bir satırın ayrı bir karakter dizisi
 olduğunu daha net bir şekilde görebiliyoruz.
 
 Biz yazdığımız kodlarda, kullanıcıdan bir harf girmesini istiyoruz.
 Kullandığımız algoritma gereğince bu harfi metindeki karakter dizileri içinde
-geçen herbir karakterle tek tek karşılaştırmamız gerekiyor. ``input()`` metodu
+geçen her bir karakterle tek tek karşılaştırmamız gerekiyor. ``input()`` metodu
 aracılığıyla kullanıcıdan tek bir karakter alıyoruz. Kullandığımız ``for`` döngüsü
 ise bize bir karakter yerine her satırda bir karakter dizisi veriyor.
 Dolayısıyla mesela kullanıcı 'a' harfini sorgulamışsa, ilk ``for`` döngüsü bu
