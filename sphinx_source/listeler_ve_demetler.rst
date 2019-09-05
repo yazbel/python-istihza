@@ -2310,7 +2310,7 @@ Demetlerle Listelerin Birbirinden Farkı
 
 En başta da söylediğimiz gibi, demetlerle listeler birbirine çok benzer. Ama
 demetlerle listelerin birbirinden çok önemli bazı farkları da vardır. Bu iki
-veri tipi arasındaki en önemli fark, listelerin değiştirilebilir (*mutable*) bir
+veri tipi arasındaki en önemli fark şudur; listeler değiştirilebilir (*mutable*) bir
 veri tipi iken, demetlerin değiştirilemez (*immutable*) bir veri tipi olmasıdır.
 Yani tıpkı karakter dizileri gibi, demetler de bir kez tanımlandıktan sonra
 bunların üzerinde değişiklik yapmak mümkün değildir::
