@@ -399,7 +399,7 @@ Dosyamız artık üzerine yazmaya hazır. Dikkatlice bakın::
 
     g.writelines(içerik)
 
-Burada, biraz önce istediğimiz biçime getirdiğimiz `içerik` adlı listeyi doğruda
+Burada, biraz önce istediğimiz biçime getirdiğimiz `içerik` adlı listeyi doğrudan
 dosyaya yazdık. Bu işlem için ``writelines()`` adlı özel bir metottan
 yararlandık. Bu metotları birkaç bölüm sonra ayrıntılı olarak inceleyeceğiz. Biz
 şimdilik sadece sonuca odaklanalım.
