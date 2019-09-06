@@ -401,4 +401,5 @@ Burak Kadir Er
     - 'Herbir' ve 'herzamanki' kelimeleri düzeltildi.
     - Demetler kısmında gramer düzeltmesi yapıldı.
     - Evaluate kod kısmında anlatımı pekiştirme açısından eval'li kod örneği eklendi.
+    - Listelerin metotları kısmında gramer düzeltmesi yapıldı.
     
