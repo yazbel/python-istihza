@@ -402,4 +402,5 @@ Burak Kadir Er
     - Demetler kısmında gramer düzeltmesi yapıldı.
     - Evaluate kod kısmında anlatımı pekiştirme açısından eval'li kod örneği eklendi.
     - Listelerin metotları kısmında kelime düzeltmesi yapıldı.
+    - 'Doğruda' kelimesi 'doğrudan' olarak düzeltildi.
     
