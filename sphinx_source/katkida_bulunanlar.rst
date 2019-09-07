@@ -403,4 +403,5 @@ Burak Kadir Er
     - Evaluate kod kısmında anlatımı pekiştirme açısından eval'li kod örneği eklendi.
     - Listelerin metotları kısmında kelime düzeltmesi yapıldı.
     - 'Doğruda' kelimesi 'doğrudan' olarak düzeltildi.
+    - Sayma sistemleri kısmındaki 'herbir' kelimesi düzeltildi.
     
