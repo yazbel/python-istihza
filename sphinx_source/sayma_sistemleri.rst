@@ -607,7 +607,7 @@ bu noktada devreye on altılı (*hexadecimal*) sayılar girer. Bu sayma sistemin
 toplam `16` farklı rakam/simge olduğu için, büyük sayılar çok daha az yer
 kaplayacak şekilde gösterilebilir.
 
-Bildiğiniz gibi, ikili sayma sistemindeki herbir basamağa 'bit' adı verilir.
+Bildiğiniz gibi, ikili sayma sistemindeki her bir basamağa 'bit' adı verilir.
 İkili sayma sistemini kullanarak, `0`'dan `256`'ya kadar sayabilmek için toplam
 `8` bitlik (yani `8` hanelik) bir yer kullanmanız gerekir. On altılı sistemde
 ise bu işlemi sadece iki basamakla halledebilirsiniz. Yani on altılı sistemde 00

@@ -395,11 +395,13 @@ Axolotl Axolotl
 Burak Kadir Er
 ================
 
-    - `56715` değeri olduğu için ifadesi `56700` değeri olduğu için olarak düzeltildi.
+    - "`56715` değeri olduğu için" ifadesi "`56700` değeri olduğu için" olarak düzeltildi.
     - 'Pekı' kelimesi 'Peki' olarak düzeltildi.
     - 'Verebileceğimizi, ama bunun bir yolu yordamı olduğunu biliyorsunuz.' cümlesi 'Verebileceğimizi ve bunun bir yolu yordamı olduğunu       biliyorsunuz.' olarak değiştirildi.
-    - 'ı' UNICODE ibaresi 'İ' UNICODE olarak düzeltildi.
-    - '\u0131' UNICODE kodu '\u0130' olarak düzeltildi.
-    - '\U00000131' UNICODE kodu '\U00000130' olarak düzeltildi.
-    - '\\' çift kaçış dizisi eklenmemiş küçük ve büyük UNICODE kaçış dizileri '\\u' ve '\\U' olarak düzeltildi.
+    - 'Herbir' ve 'herzamanki' kelimeleri düzeltildi.
+    - Demetler kısmında gramer düzeltmesi yapıldı.
+    - Evaluate kod kısmında anlatımı pekiştirme açısından eval'li kod örneği eklendi.
+    - Listelerin metotları kısmında kelime düzeltmesi yapıldı.
+    - 'Doğruda' kelimesi 'doğrudan' olarak düzeltildi.
+    - Sayma sistemleri kısmındaki 'herbir' kelimesi düzeltildi.
     

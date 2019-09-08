@@ -60,7 +60,7 @@ Ama tabii ki, metotları tercih edecek olmamız, birinci bölümde anlattığım
 yöntemleri bir kenara atmanızı gerektirmez. Unutmayın, bir dildeki herhangi bir
 özelliği siz kullanmasanız bile, etrafta bu özelliği kullanan başka programcılar
 var. Dolayısıyla en azından başkalarının yazdığı kodları anlayabilmek için dahi
-olsa, kendinizin kullanmayacağınız yöntem ve yolları öğrenmeniz gerekir.
+olsa, kendinizin kullanmayacağı yöntem ve yolları öğrenmeniz gerekir.
 
 ``append()`` metoduyla başlayalım...
 
@@ -399,7 +399,7 @@ Dosyamız artık üzerine yazmaya hazır. Dikkatlice bakın::
 
     g.writelines(içerik)
 
-Burada, biraz önce istediğimiz biçime getirdiğimiz `içerik` adlı listeyi doğruda
+Burada, biraz önce istediğimiz biçime getirdiğimiz `içerik` adlı listeyi doğrudan
 dosyaya yazdık. Bu işlem için ``writelines()`` adlı özel bir metottan
 yararlandık. Bu metotları birkaç bölüm sonra ayrıntılı olarak inceleyeceğiz. Biz
 şimdilik sadece sonuca odaklanalım.
