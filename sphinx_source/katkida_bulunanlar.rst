@@ -405,5 +405,5 @@ Burak Kadir Er
     - 'Doğruda' kelimesi 'doğrudan' olarak düzeltildi.
     - Sayma sistemleri kısmındaki 'herbir' kelimesi düzeltildi.
     - 'veirleri', 'verileri' olarak düzeltildi.
-    - "Yani karşı karşıya olduğunuz duruma değerlendirip", "Yani karşı karşıya olduğunuz 'durumu' değerlendirip"
+    - "Yani karşı karşıya olduğunuz duruma değerlendirip", "Yani karşı karşıya olduğunuz 'durumu' değerlendirip" olarak düzeltildi.
     
