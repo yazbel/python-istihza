@@ -717,7 +717,7 @@ da şu satır yardımıyla yapıyoruz::
 
     f.seek(0)
 
-Son olarak da bütün veirleri dosyaya yazıyoruz::
+Son olarak da bütün verileri dosyaya yazıyoruz::
 
     f.writelines(veri)
 
