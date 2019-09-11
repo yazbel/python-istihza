@@ -760,7 +760,7 @@ Unutmayın, Python'da herhangi bir işlemi pek çok farklı şekilde
 gerçekleştirebilirsiniz. Biz yukarıda olası yöntemlerden bazılarını ele aldık.
 Zaten bütün yöntemleri tek tek göstermemiz pek mümkün olmazdı. Siz dosyalara
 ilişkin bilgilerinizi ve farklı araçları kullanarak aynı işlemleri çok daha
-farklı şekillerde de yapabilirsiniz. Yani karşı karşıya olduğunuz duruma
+farklı şekillerde de yapabilirsiniz. Yani karşı karşıya olduğunuz durumu
 değerlendirip, yukarıdaki kodlardan uygun olanını veya kendi bulduğunuz bambaşka
 bir yöntemi kullanabilirsiniz.
 
