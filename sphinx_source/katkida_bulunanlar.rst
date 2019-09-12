@@ -400,8 +400,10 @@ Burak Kadir Er
     - 'Verebileceğimizi, ama bunun bir yolu yordamı olduğunu biliyorsunuz.' cümlesi 'Verebileceğimizi ve bunun bir yolu yordamı olduğunu       biliyorsunuz.' olarak değiştirildi.
     - 'Herbir' ve 'herzamanki' kelimeleri düzeltildi.
     - Demetler kısmında gramer düzeltmesi yapıldı.
-    - Evaluate kod kısmında anlatımı pekiştirme açısından eval'li kod örneği eklendi.
+    - Evaluate kısmında anlatımı pekiştirme açısından eval'li kod örneği eklendi.
     - Listelerin metotları kısmında kelime düzeltmesi yapıldı.
     - 'Doğruda' kelimesi 'doğrudan' olarak düzeltildi.
     - Sayma sistemleri kısmındaki 'herbir' kelimesi düzeltildi.
+    - 'veirleri', 'verileri' olarak düzeltildi.
+    - "Yani karşı karşıya olduğunuz duruma değerlendirip", "Yani karşı karşıya olduğunuz 'durumu' değerlendirip" olarak düzeltildi.
     
