@@ -21,7 +21,7 @@ pek fırsat bulamadığımız bütün konuları da ele almaya çalışacağız. 
 bitirdikten sonra, önceki konuları çalışırken zihninizde oluşmuş olabilecek
 boşlukların pek çoğunun dolduğunu farkedeceksiniz. Sözün özü, bu bölümde hem
 yeni şeyler söyleyeceğiz, hem de halihazırda öğrendiğimiz şeylerin bir kez daha
-üzerinden geçerek bunların zihnimizde iyiden iyine pekişmesini sağlayacağız.
+üzerinden geçerek bunların zihnimizde iyiden iyiye pekişmesini sağlayacağız.
 
 Hatırlarsanız önceki derslerimizde karakter dizilerinin ``encode()`` adlı bir
 metodu olduğundan söz etmiştik. Aynı şekilde, dosyaların da `encoding` adlı bir
