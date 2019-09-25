@@ -406,4 +406,6 @@ Burak Kadir Er
     - Sayma sistemleri kısmındaki 'herbir' kelimesi düzeltildi.
     - 'veirleri', 'verileri' olarak düzeltildi.
     - "Yani karşı karşıya olduğunuz duruma değerlendirip", "Yani karşı karşıya olduğunuz 'durumu' değerlendirip" olarak düzeltildi.
+    - "iyiden 'iyine', "iyiden 'iyiye'" olarak değiştirildi.
+    - Gerekli yere soru işareti eklendi.
     
