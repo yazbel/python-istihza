@@ -1273,7 +1273,7 @@ yazarak gereksiz boşlukları atabilirsiniz::
 
 Daha önce de dediğimiz gibi, başında ``print()`` olmayan ifadeler, bir dosyaya
 yazılıp çalıştırıldığında çıktıda görünmez. O halde biz yukarıdaki özellikten
-yazdığımız programlarda nasıl yararlanacağız. İşte burada yardımımıza ``repr()``
+yazdığımız programlarda nasıl yararlanacağız? İşte burada yardımımıza ``repr()``
 adlı bir fonksiyon yetişecek. Bu fonksiyonu şöyle kullanıyoruz::
 
     print(repr("karakter dizisi\n"))
