@@ -397,7 +397,7 @@ Burak Kadir Er
 
     - "`56715` değeri olduğu için" ifadesi "`56700` değeri olduğu için" olarak düzeltildi.
     - 'Pekı' kelimesi 'Peki' olarak düzeltildi.
-    - 'Verebileceğimizi, ama bunun bir yolu yordamı olduğunu biliyorsunuz.' cümlesi 'Verebileceğimizi ve bunun bir yolu yordamı olduğunu       biliyorsunuz.' olarak değiştirildi.
+    - "Verebileceğimizi, ama bunun bir yolu yordamı olduğunu biliyorsunuz" cümlesi "Verebileceğimizi ve bunun bir yolu yordamı olduğunu       biliyorsunuz" olarak değiştirildi.
     - 'Herbir' ve 'herzamanki' kelimeleri düzeltildi.
     - Demetler kısmında gramer düzeltmesi yapıldı.
     - Evaluate kısmında anlatımı pekiştirme açısından eval'li kod örneği eklendi.
@@ -405,5 +405,8 @@ Burak Kadir Er
     - 'Doğruda' kelimesi 'doğrudan' olarak düzeltildi.
     - Sayma sistemleri kısmındaki 'herbir' kelimesi düzeltildi.
     - 'veirleri', 'verileri' olarak düzeltildi.
-    - "Yani karşı karşıya olduğunuz duruma değerlendirip", "Yani karşı karşıya olduğunuz 'durumu' değerlendirip" olarak düzeltildi.
+    - "Yani karşı karşıya olduğunuz 'duruma' değerlendirip", "Yani karşı karşıya olduğunuz 'durumu' değerlendirip" olarak düzeltildi.
+    - "iyiden 'iyine'", "iyiden 'iyiye'" olarak değiştirildi.
+    - Gerekli yere soru işareti eklendi.
+    - Yanlışlıkla iki kez yazılan 'eğer' kelimesi düzeltildi.
     

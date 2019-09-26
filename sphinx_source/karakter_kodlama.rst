@@ -21,7 +21,7 @@ pek fırsat bulamadığımız bütün konuları da ele almaya çalışacağız. 
 bitirdikten sonra, önceki konuları çalışırken zihninizde oluşmuş olabilecek
 boşlukların pek çoğunun dolduğunu farkedeceksiniz. Sözün özü, bu bölümde hem
 yeni şeyler söyleyeceğiz, hem de halihazırda öğrendiğimiz şeylerin bir kez daha
-üzerinden geçerek bunların zihnimizde iyiden iyine pekişmesini sağlayacağız.
+üzerinden geçerek bunların zihnimizde iyiden iyiye pekişmesini sağlayacağız.
 
 Hatırlarsanız önceki derslerimizde karakter dizilerinin ``encode()`` adlı bir
 metodu olduğundan söz etmiştik. Aynı şekilde, dosyaların da `encoding` adlı bir
@@ -1273,7 +1273,7 @@ yazarak gereksiz boşlukları atabilirsiniz::
 
 Daha önce de dediğimiz gibi, başında ``print()`` olmayan ifadeler, bir dosyaya
 yazılıp çalıştırıldığında çıktıda görünmez. O halde biz yukarıdaki özellikten
-yazdığımız programlarda nasıl yararlanacağız. İşte burada yardımımıza ``repr()``
+yazdığımız programlarda nasıl yararlanacağız? İşte burada yardımımıza ``repr()``
 adlı bir fonksiyon yetişecek. Bu fonksiyonu şöyle kullanıyoruz::
 
     print(repr("karakter dizisi\n"))

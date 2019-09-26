@@ -319,7 +319,7 @@ vereceğiz::
     "ahmet öz adlı kişinin telefon numarası 0532 532 32 32"
 
 Eğer aranan isim telefon defterinde varsa, bir önceki adımda tanımladığımız
-cevap şablonuna göre kullanıcıyı bilgilendiriyoruz. Ama eğer eğer isim defterde
+cevap şablonuna göre kullanıcıyı bilgilendiriyoruz. Ama eğer isim defterde
 yoksa, programımız hata veriyor. Bunu önlemek için şöyle bir kod
 yazabilirsiniz::
 
