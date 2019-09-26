@@ -410,7 +410,7 @@ kullanıldığında, listenin en son öğesini silip, silinen öğeyi de ekrana
 basıyordu. Eğer bu metodu bir sıra numarası ile birlikte kullanırsak, listede o
 sıra numarasına karşılık gelen öğe siliniyor ve silinen bu öğe ekrana
 basılıyordu. Bu metodun sözlüklerdeki kullanımı da az çok buna benzer. Ama
-burada farkı olarak, ``pop`` metodunu argümansız bir şekilde kullanamıyoruz.
+burada farklı olarak, ``pop`` metodunu argümansız bir şekilde kullanamıyoruz.
 Yani ``pop`` metodunun parantezi içinde mutlaka bir sözlük öğesi belirtmeliyiz::
 
 	>>> sepet = {"meyveler": ("elma", "armut"), "sebzeler": ("pırasa", "fasulye"),
