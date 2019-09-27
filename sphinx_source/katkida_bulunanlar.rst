@@ -409,4 +409,9 @@ Burak Kadir Er
     - "iyiden 'iyine'", "iyiden 'iyiye'" olarak değiştirildi.
     - Gerekli yere soru işareti eklendi.
     - Yanlışlıkla iki kez yazılan 'eğer' kelimesi düzeltildi.
+    - Sözlüklerin metotları kısmında kelime düzeltmesi yapıldı.
+    - 'yanısıra', 'yanı sıra' olarak düzeltildi.
+    - Fonksiyonlar kısmındaki gramer hatası düzeltildi.
+    - Fonksiyonlar kısmındaki kelime hatası düzeltildi.
+    
     
