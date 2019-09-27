@@ -1455,7 +1455,7 @@ karakterin geleceğini belirleyecek.
 ``bas()``. Bu fonksiyon her bakımdan ``print()`` fonksiyonu ile aynı işlevi
 görecek. Ancak ``bas()`` fonksiyonu, ``print()`` fonksiyonuna ek olarak, sahip
 olduğu `start` adlı bir isimli parametre sayesinde, kendisine verilen
-parametrelerin **en başına** istediğimiz herhangi bir karakteri eklemek
+parametrelerin **en başına** istediğimiz herhangi bir karakteri ekleme
 olanağı da verecek bize.
 
 ``bas()`` fonksiyonunun ilk parametresi olan `*args` sayesinde kullanıcıya
