@@ -100,7 +100,7 @@ Dilerseniz yukarıdaki soyut ifadeleri basit bir örnek üzerinde somutlaştırm
 Bu fonksiyonun görevini biliyorsunuz: ``print()`` fonksiyonunun görevi,
 kullanıcının girdiği parametreleri ekrana çıktı olarak vermektir. Her ne kadar
 ``print()`` fonksiyonunun görevini, ekrana çıktı vermek olarak tanımlasak da,
-aslında bu fonksiyon, ekrana çıktı vermenin yanısıra, başka bir takım ilave
+aslında bu fonksiyon, ekrana çıktı vermenin yanı sıra, başka bir takım ilave
 işlemler de yapar. Yani bu fonksiyon, aslında aldığı parametreleri sadece ekrana
 çıktı olarak vermekle yetinmez. Örneğin şu komutu inceleyelim::
 
