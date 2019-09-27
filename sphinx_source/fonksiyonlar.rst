@@ -649,7 +649,7 @@ Yukarıda tanımladığımız fonksiyonu nasıl çağıracağımızı biliyorsun
 
     sistem_bilgisi_göster()
 
-Bu fonksiyon tanımı ve çağrısını eksiksiz bir program içinde gösterelim::
+Bu fonksiyonun tanımını ve çağrısını eksiksiz bir program içinde gösterelim::
 
     def sistem_bilgisi_göster():
         import sys
