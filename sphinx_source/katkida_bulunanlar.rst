@@ -414,5 +414,6 @@ Burak Kadir Er
     - Fonksiyonlar kısmındaki gramer hatası düzeltildi.
     - Fonksiyonlar kısmındaki kelime hatası düzeltildi.
     - 'metodununa', 'metoduna' olarak düzeltildi.
+    - Gömülü fonksiyonlar kısmında kelime düzeltmesi yapıldı.
     
     
