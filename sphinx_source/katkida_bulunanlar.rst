@@ -413,5 +413,6 @@ Burak Kadir Er
     - 'yanısıra', 'yanı sıra' olarak düzeltildi.
     - Fonksiyonlar kısmındaki gramer hatası düzeltildi.
     - Fonksiyonlar kısmındaki kelime hatası düzeltildi.
+    - 'metodununa', 'metoduna' olarak düzeltildi.
     
     
