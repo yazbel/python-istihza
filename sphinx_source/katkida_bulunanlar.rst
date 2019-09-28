@@ -415,7 +415,7 @@ Burak Kadir Er
     - Fonksiyonlar kısmındaki kelime hatası düzeltildi.
     - 'metodununa', 'metoduna' olarak düzeltildi.
     - Gömülü fonksiyonlar kısmında kelime düzeltmesi yapıldı.
-    - 'yanlızca', 'yalnızca olarak düzeltildi.
+    - 'yanlızca', 'yalnızca' olarak düzeltildi.
     - Yanlışlıkla bitişik yazılmış olan 'yanı sıra' kelimesi düzeltildi.
     - Gömülü fonksiyonlar kısmında birden çok kez yanlış yazılmış olan 'herbir' kelimesi düzeltildi.
     
