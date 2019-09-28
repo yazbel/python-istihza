@@ -417,6 +417,6 @@ Burak Kadir Er
     - Gömülü fonksiyonlar kısmında kelime düzeltmesi yapıldı.
     - 'yanlızca', 'yalnızca' olarak düzeltildi.
     - Yanlışlıkla bitişik yazılmış olan 'yanı sıra' kelimesi düzeltildi.
-    - Gömülü fonksiyonlar kısmında birden çok kez yanlış yazılmış olan 'herbir' kelimesi düzeltildi.
+    - Gömülü fonksiyonlar kısmında birden çok kez yanlış yazılmış olan 'herbir' kelimeleri düzeltildi.
     
     
