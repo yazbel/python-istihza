@@ -1834,7 +1834,7 @@ Bu bilgileri kullanarak kodlarımızın son halini düzenleyelim::
                 'berkay': 'üsteğmen',
                 'mahmut': 'binbaşı'}
 
-Artık ``max()`` fonksiyonunu `askerler` adlı sözlük üzerine uygulayabiliriz::
+Artık ``max()`` fonksiyonunu `askerler` adlı sözlük üzerinde uygulayabiliriz::
 
     print(max(askerler.values(), key=en_yüksek_rütbe))
 
