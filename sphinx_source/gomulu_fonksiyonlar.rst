@@ -2068,7 +2068,7 @@ dosyanın dosya tanımlayıcısı benzersizdir::
     4
 
 Python'da bir dosyayı ``open()`` fonksiyonuyla açarken dosya adını vermenin
-yanısıra, dosyanın tanımlayıcısını da kullanabilirsiniz::
+yanı sıra, dosyanın tanımlayıcısını da kullanabilirsiniz::
 
     >>> z = open(4)
 
@@ -2137,7 +2137,7 @@ sayıyı elde ettik. Yani `0`. Çünkü bildiğiniz gibi ``8 % 2`` işleminin so
     0
 
 Ancak önceki derslerimizde de söylediğimiz gibi, ``pow()`` fonksiyonu çoğunlukla
-yanlızca ilk iki parametresi ile birlikte kullanılır::
+yalnızca ilk iki parametresi ile birlikte kullanılır::
 
     >>> pow(12, 2)
 
@@ -2453,8 +2453,8 @@ yararlanabilirsiniz::
 
     >>> çevrim = {i: harfler.index(i) for i in harfler}
 
-Bu şekilde `harfler` değişkeni içindeki herbir harfin bir anahtar; bu harflerin
-`harfler` değişkeni içindeki sırasını gösteren herbir sayının ise bir değer
+Bu şekilde `harfler` değişkeni içindeki her bir harfin bir anahtar; bu harflerin
+`harfler` değişkeni içindeki sırasını gösteren her bir sayının ise bir değer
 olduğu bir sözlük oluşturmuş olduk.
 
 Şimdi isim listemizi alalım karşımıza::
