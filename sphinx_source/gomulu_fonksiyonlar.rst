@@ -1415,7 +1415,7 @@ format()
 **********
 
 Bu gömülü fonksiyonun görevi, daha önce karakter dizilerini işlerken, karakter
-dizilerinin bir metodu olarak öğrendiğimiz ``format()`` metodununa benzer bir
+dizilerinin bir metodu olarak öğrendiğimiz ``format()`` metoduna benzer bir
 şekilde, karakter dizilerini biçimlendirmektir. Ancak ``format()`` fonksiyonu,
 daha önce öğrendiğimiz ``format()`` metoduna göre daha dar kapsamlıdır.
 ``format()`` metodunu kullanarak oldukça karmaşık karakter dizisi biçimlendirme
