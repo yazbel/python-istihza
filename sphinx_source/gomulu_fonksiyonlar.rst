@@ -1299,7 +1299,7 @@ veya nesne üzerinde bir döngü kurabiliriz::
     (6, 'a')
 
 Gördüğünüz gibi, 'enumerate' nesnesi bize her koşulda iki öğeli demetler
-veriyor. Bu demetlerin herbir öğesine nasıl ulaşabileceğimizi de biliyor
+veriyor. Bu demetlerin her bir öğesine nasıl ulaşabileceğimizi de biliyor
 olmalısınız::
 
     >>> for sıra, öğe in enumerate('istihza'):
@@ -2545,7 +2545,7 @@ Burada liste üreteçlerinden yararlandığımıza dikkatinizi çekmek isterim::
 
     [çevrim.get(kelime[i]) for i in range(len(kelime))]
 
-Bu kod yardımıyla `kelime` içinde geçen herbir harfi `çevrim` adlı sözlükte
+Bu kod yardımıyla `kelime` içinde geçen her bir harfi `çevrim` adlı sözlükte
 sorgulayarak, sözlükte ilgili harfe karşılık gelen sayıyı buluyoruz.
 
 Aslında bu kodları daha iyi anlayabilmek için Python'daki ``sorted()``
