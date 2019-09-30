@@ -406,7 +406,18 @@ Burak Kadir Er
     - Sayma sistemleri kısmındaki 'herbir' kelimesi düzeltildi.
     - 'veirleri', 'verileri' olarak düzeltildi.
     - "Yani karşı karşıya olduğunuz 'duruma' değerlendirip", "Yani karşı karşıya olduğunuz 'durumu' değerlendirip" olarak düzeltildi.
-    - "iyiden 'iyine'", "iyiden 'iyiye'" olarak değiştirildi.
+    - 'iyiden iyine', 'iyiden iyiye' olarak değiştirildi.
     - Gerekli yere soru işareti eklendi.
     - Yanlışlıkla iki kez yazılan 'eğer' kelimesi düzeltildi.
+    - Sözlüklerin metotları kısmında kelime düzeltmesi yapıldı.
+    - 'yanısıra', 'yanı sıra' olarak düzeltildi.
+    - Fonksiyonlar kısmındaki gramer hatası düzeltildi.
+    - Fonksiyonlar kısmındaki kelime hatası düzeltildi.
+    - 'metodununa', 'metoduna' olarak düzeltildi.
+    - Gömülü fonksiyonlar kısmında kelime düzeltmesi yapıldı.
+    - 'yanlızca', 'yalnızca' olarak düzeltildi.
+    - Yanlışlıkla bitişik yazılmış olan 'yanı sıra' kelimesi düzeltildi.
+    - Gömülü fonksiyonlar kısmında birden çok kez yanlış yazılmış olan 'herbir' kelimeleri düzeltildi.
+    - Input fonksiyonunun değişken adı girilmesi gereken yerde yanlışlıkla özyinelemeli fonksiyon girilen yer düzeltildi.
+    
     

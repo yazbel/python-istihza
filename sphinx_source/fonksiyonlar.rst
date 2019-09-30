@@ -100,7 +100,7 @@ Dilerseniz yukarıdaki soyut ifadeleri basit bir örnek üzerinde somutlaştırm
 Bu fonksiyonun görevini biliyorsunuz: ``print()`` fonksiyonunun görevi,
 kullanıcının girdiği parametreleri ekrana çıktı olarak vermektir. Her ne kadar
 ``print()`` fonksiyonunun görevini, ekrana çıktı vermek olarak tanımlasak da,
-aslında bu fonksiyon, ekrana çıktı vermenin yanısıra, başka bir takım ilave
+aslında bu fonksiyon, ekrana çıktı vermenin yanı sıra, başka bir takım ilave
 işlemler de yapar. Yani bu fonksiyon, aslında aldığı parametreleri sadece ekrana
 çıktı olarak vermekle yetinmez. Örneğin şu komutu inceleyelim::
 
@@ -649,7 +649,7 @@ Yukarıda tanımladığımız fonksiyonu nasıl çağıracağımızı biliyorsun
 
     sistem_bilgisi_göster()
 
-Bu fonksiyon tanımı ve çağrısını eksiksiz bir program içinde gösterelim::
+Bu fonksiyonun tanımını ve çağrısını eksiksiz bir program içinde gösterelim::
 
     def sistem_bilgisi_göster():
         import sys
@@ -1455,7 +1455,7 @@ karakterin geleceğini belirleyecek.
 ``bas()``. Bu fonksiyon her bakımdan ``print()`` fonksiyonu ile aynı işlevi
 görecek. Ancak ``bas()`` fonksiyonu, ``print()`` fonksiyonuna ek olarak, sahip
 olduğu `start` adlı bir isimli parametre sayesinde, kendisine verilen
-parametrelerin **en başına** istediğimiz herhangi bir karakteri eklemek
+parametrelerin **en başına** istediğimiz herhangi bir karakteri ekleme
 olanağı da verecek bize.
 
 ``bas()`` fonksiyonunun ilk parametresi olan `*args` sayesinde kullanıcıya
