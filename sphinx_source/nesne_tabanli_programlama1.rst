@@ -70,8 +70,7 @@ nesne tabanlı programlama yaklaşımı program geliştirme alanında oldukça y
 kullanılan bir yöntemdir. Dolayısıyla, etrafta nesne tabanlı programlama
 yaklaşımından yararlanılarak yazılmış pek çok kodla karşılaşacaksınız. Hiç
 değilse karşılaştığınız bu kodları anlayabilmek için nesne tabanlı programlamayı
-biliyor ve tanıyor olmanız lazım. Aksi halde, bu yöntem kullanılarak
-geliştirilmiş programları anlayamazsınız.
+biliyor ve tanıyor olmanız lazım. Aksi halde, bu yöntemle geliştirilmiş programları anlayamazsınız.
 
 Mesela, grafik bir arayüze sahip (yani düğmeli, menülü) programların ezici
 çoğunluğu nesne tabanlı programlama yöntemiyle geliştiriliyor. Grafik arayüz
