@@ -645,7 +645,7 @@ yerde kullanamayız. Mesela yukarıdaki fonksiyonu aşağıdaki gibi kullanamay�
             print(s[0])
 
     kelime = input('kelime girin: ')
-    print('Girdiğiniz kelimenin tersi: {}'.format(ters_çevir('istihza')))
+    print('Girdiğiniz kelimenin tersi: {}'.format(kelime)
 
 Fonksiyonumuzun daha kullanışlı olabilmesi için kodlarımızı şöyle yazabiliriz::
 
