@@ -392,7 +392,7 @@ Standart Kütüphane modülünden yararlanalım. Hem bu vesileyle yeni bir modü
 
 .. note:: ``subprocess`` modülü, harici komutları Python içinden
  çalıştırabilmemizi sağlayan oldukça faydalı bir araçtır. Bu modülü kullanarak
- Python programlarımız içinden, başka programları çalıştırabiliriz.
+ Python programlarımızın içinden başka programları çalıştırabiliriz.
 
 Bir modülün içindeki fonksiyon ve nitelikleri her kullanmak isteyişimizde, o
 fonksiyon veya niteliğin başına modül adını da eklememiz gerektiğini artık gayet
@@ -614,7 +614,7 @@ bizim tanımladığımız `version` değerini silip kendi `version` değerini
 bizimkinin yerine geçirdi...
 
 ``from modül_adı import *`` komutunun yaptığı şeyi, sıkıştırılmış bir klasörün
-bütün içeriğini olduğu gibi masaüstüne açmaya benzetebilirsiniz. Böyle bir
+bütün içeriğini olduğu gibi masaüstüne atmaya benzetebilirsiniz. Böyle bir
 durumda, eğer masaüstünde sıkıştırılmış klasördekilerle aynı adlı dosyalar
 varsa, sıkıştırılmış klasör içindeki dosya adları, masaüstünde halihazırda
 varolan dosya adlarıyla çakışacaktır.
