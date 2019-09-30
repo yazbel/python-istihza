@@ -419,5 +419,7 @@ Burak Kadir Er
     - Yanlışlıkla bitişik yazılmış olan 'yanı sıra' kelimesi düzeltildi.
     - Gömülü fonksiyonlar kısmında birden çok kez yanlış yazılmış olan 'herbir' kelimeleri düzeltildi.
     - Input fonksiyonunun değişken adı girilmesi gereken yerde yanlışlıkla özyinelemeli fonksiyon girilen yer düzeltildi.
+    - Modüller kısmında gramer hatası düzeltildi.
+    - Modüller kısmında kelime düzeltmesi yapıldı.
     
     
