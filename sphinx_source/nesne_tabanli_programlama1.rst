@@ -820,7 +820,7 @@ Biraz önce şöyle bir sınıf tanımlamıştık::
         doğum_tarihi = ''
 
 Daha önce de söylediğimiz gibi, sınıflar belli birtakım ortak özelliklere sahip
-gruplar tanımlamak için biçilmiş kaftandır. Burada da, herbir çalışan için ortak
+gruplar tanımlamak için biçilmiş kaftandır. Burada da, her bir çalışan için ortak
 birtakım nitelikler tanımlayan ``Çalışan()`` adlı bir sınıf oluşturduk. Ancak
 elbette bu sınıfın bir işe yarayabilmesi için, biraz önce de değindiğimiz gibi,
 bu sınıfı temel alarak, bu sınıfta belirtilen nitelikleri taşıyan birden fazla
@@ -1063,7 +1063,7 @@ yapılacağını belirleyebiliriz::
     >>> gofret.firma = 'Öz İstihza ve Şerikleri Gıda, Ticaret Anonim Şirketi'
 
 Böylece, sınıf içindeki bir niteliğe yeni bir değer atamış olduk. İsterseniz
-şipariş miktarını da belirleyelim::
+sipariş miktarını da belirleyelim::
 
     >>> gofret.miktar = 1000
 
@@ -1169,7 +1169,7 @@ istediğimiz nitelikleri nasıl tanımlayacağız? Elbette sınıf nitelikleri y
 
 Şimdiye kadar öğrendiklerimiz, sınıflarla faydalı işler yapmamız için pek
 yeterli değildi. Sınıflar konusunda ufkumuzun genişleyebilmesi için, sınıf
-niteliklerinin (*class attributes*) yanısıra, nesne tabanlı programlamanın
+niteliklerinin (*class attributes*) yanı sıra, nesne tabanlı programlamanın
 önemli bir parçası olan örnek niteliklerinden (*instance attributes*) de söz
 etmemiz gerekiyor. Hem örnek niteliklerini öğrendikten sonra, bunların sınıf
 nitelikleri ile arasındaki farkları görünce sınıf niteliklerini de çok daha iyi
