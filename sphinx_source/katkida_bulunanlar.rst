@@ -421,5 +421,8 @@ Burak Kadir Er
     - Input fonksiyonunun değişken adı girilmesi gereken yerde yanlışlıkla özyinelemeli fonksiyon girilen yer düzeltildi.
     - Modüller kısmında gramer hatası düzeltildi.
     - Modüller kısmında kelime düzeltmesi yapıldı.
+    - Nesne Tabanlı Programlama(OOP) kısmındaki 'herbir' kelimesi, 'her bir' olarak düzeltildi.
+    - 'şipariş', 'sipariş' olarak düzeltildi.
+    - Nesne Tabanlı Programlama(OOP) kısmındaki 'yanısıra' kelimesi, 'yanı sıra' olarak düzeltildi.
     
     
