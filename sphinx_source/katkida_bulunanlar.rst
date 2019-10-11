@@ -424,5 +424,6 @@ Burak Kadir Er
     - Nesne Tabanlı Programlama(OOP) kısmındaki 'herbir' kelimesi, 'her bir' olarak düzeltildi.
     - 'şipariş', 'sipariş' olarak düzeltildi.
     - Nesne Tabanlı Programlama(OOP) kısmındaki 'yanısıra' kelimesi, 'yanı sıra' olarak düzeltildi.
+    - Nesne Tabanlı Programlama(OOP) kısmında 'örnek niteliği' olarak yazılmış olan kelime, 'sınıf niteliği' olarak düzeltildi.
     
     
