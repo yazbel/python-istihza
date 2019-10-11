@@ -1787,7 +1787,7 @@ Burada, bir sınıf niteliği olan `personel` değişkenine nasıl eriştiğimiz
 dikkat etmenizi istiyorum. Daha önce de söylediğimiz gibi, sınıf niteliklerine
 sınıf dışındayken
 örnekler üzerinden erişebiliyoruz. `self` kelimesi, bir sınıfın örneklerini
-temsil ettiği için, bir örnek niteliğine sınıf içinden erişmemiz gerektiğinde
+temsil ettiği için, bir sınıf niteliğine sınıf içinden erişmemiz gerektiğinde
 `self` kelimesini kullanabiliriz.
 
 Sınıf niteliklerine, örnekler dışında, sınıf adıyla da erişebileceğinizi
