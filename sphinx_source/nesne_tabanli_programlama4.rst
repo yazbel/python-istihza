@@ -903,7 +903,7 @@ prosedürü yerine getiren öğelere ise metot adı veriyoruz. Mesela::
 Burada ``örnek_fonk()`` adlı fonksiyon bir örnek metodu, ``sınıf_fonk()`` adlı
 fonksiyon bir sınıf metodu, ``statik_fonk()`` adlı fonksiyon ise bir statik
 metottur. Metotlar ile niteliklerin gerçekleştirebilecekleri işlemlerin
-karmaşıklığının birbirinden farklı olmasının yanısıra, bunlar arasında kullanım
+karmaşıklığının birbirinden farklı olmasının yanı sıra, bunlar arasında kullanım
 açısından da farklılık vardır. Mesela ``Falanca()`` sınıfı içindeki `nitelik`
 adlı sınıf niteliğini şu şekilde kullanıyoruz::
 
@@ -1150,7 +1150,7 @@ bir şekilde erişip istediğimiz değişikliği yapabiliyoruz::
 Gördüğünüz gibi, artık `sayı` değişkeni, kendisi için bir `.setter` bezeyicisi
 tanımlamış olmamız sayesinde değişiklik kabul ediyor.
 
-`.setter` bezeyicisini, bir niteliği yazılabilir hale getirmenin yanısıra,
+`.setter` bezeyicisini, bir niteliği yazılabilir hale getirmenin yanı sıra,
 doğrulama işlemleri için de kullanabilirsiniz.
 
 Basit bir örnek verelim::
