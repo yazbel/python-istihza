@@ -12,7 +12,7 @@ Nesne Tabanlı Programlama (Devamı)
 
 Bu bölümde de, temellerini geçen derslerimizde attığımız nesne tabanlı
 programlama konusunu incelemeye devam edeceğiz. Bu bölümde uygulamaya yönelik
-bazı örnekler yapmanın yanısıra, nesne tabanlı programlamaya ilişkin bazı teorik
+bazı örnekler yapmanın yanı sıra, nesne tabanlı programlamaya ilişkin bazı teorik
 bilgiler de vereceğiz.
 
 Nesneler
@@ -266,7 +266,7 @@ gelen ``__init__()`` fonksiyonu, sınıfımız örneklendiğinde neler olacağı
 tanımladığımız yerdir. Bu sınıfın, örnekleme sırasında hangi parametreleri
 alacağını da ``__init__()`` fonksiyonu içinde belirliyoruz. Parametre listesinde
 gördüğümüz ilk öğe, yani `self`, sınıfın o anki örneğini temsil ediyor.
-Python'ın sözdizimi kuralları gereğince bu kelimeyi oraya yazmamız gerektiğini
+Python'ın söz dizimi kuralları gereğince bu kelimeyi oraya yazmamız gerektiğini
 biliyoruz.
 
 Yukarıdaki fonksiyon, `self` dışında toplam üç parametre alıyor: `isim`, `can`
@@ -866,7 +866,7 @@ dediğine bir bakalım:
     dizileri, fonksiyonlar, sınıflar, modüller, metotlar, vb.) eşit statüye
     sahip olmasıdır. Yani, bütün nesnelerin değişkenlere atanabilmesi,
     listelerin içine yerleştirilebilmesi, sözlükler içinde depolanabilmesi,
-    argüman olarak atanabilmesi ve saire...*
+    argüman olarak atanabilmesi vesaire...*
 
     kaynak: http://python-history.blogspot.com.tr/2009/02/first-class-everything.html
 
