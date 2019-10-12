@@ -429,4 +429,6 @@ Burak Kadir Er
     - Nesne Tabanlı Programlama(Devamı) kısmındaki 'yanısıra', 'yanı sıra' olarak düzeltildi.
     - Nesne Tabanlı Programlama(Devamı) kısmındaki 'sözdizimi', 'söz dizimi' olarak düzeltildi.
     - Nesne Tabanlı Programlama(Devamı) kısmındaki 've saire', 'vesaire' olarak düzeltildi.
+    - Nesne Tabanlı Programlama(Devamı) kısmında birden çok kelime düzeltmesi yapıldı.
+    
     
