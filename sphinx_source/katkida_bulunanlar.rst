@@ -425,5 +425,6 @@ Burak Kadir Er
     - 'şipariş', 'sipariş' olarak düzeltildi.
     - Nesne Tabanlı Programlama(OOP) kısmındaki 'yanısıra' kelimesi, 'yanı sıra' olarak düzeltildi.
     - Nesne Tabanlı Programlama(OOP) kısmında 'örnek niteliği' olarak yazılmış olan kelime, 'sınıf niteliği' olarak düzeltildi.
+    - Nesne Tabanlı Programlama(Devamı) kısmında birden çok kelime düzeltmesi yapıldı.
     
     
