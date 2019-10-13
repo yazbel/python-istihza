@@ -411,7 +411,7 @@ metoduna dönüştürme işlevi görüyor. İlerleyen derslerimizde bezeyicileri
             for kabiliyet in self.kabiliyetleri:
                 print(kabiliyet)
 
-Yukarıda ``personel_sayısını_görüntüle()`` adlı fonksiyonun yanısıra,
+Yukarıda ``personel_sayısını_görüntüle()`` adlı fonksiyonun yanı sıra,
 ``personeli_görüntüle()`` adlı fonksiyonu da bir sınıf metodu haline getirdik.
 Çünkü tıpkı ``personel_sayısını_görüntüle()`` fonksiyonu gibi,
 ``personeli_görüntüle()`` fonksiyonu da aslında tek tek örneklerden ziyade
@@ -854,7 +854,7 @@ sisteme giriş imkanı sağlıyor::
     >>> Giriş()
 
 Eğer biz aynı zamanda bir parola ve TC Kimlik Numarası ile de giriş imkanı
-sağlamak istersek, başka yöntemlerin yanısıra, sınıf metotlarından da
+sağlamak istersek, başka yöntemlerin yanı sıra, sınıf metotlarından da
 yararlanabiliriz::
 
     class Giriş():
