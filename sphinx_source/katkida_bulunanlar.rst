@@ -430,5 +430,11 @@ Burak Kadir Er
     - Nesne Tabanlı Programlama(Devamı) kısmındaki 'sözdizimi', 'söz dizimi' olarak düzeltildi.
     - Nesne Tabanlı Programlama(Devamı) kısmındaki 've saire', 'vesaire' olarak düzeltildi.
     - Nesne Tabanlı Programlama(Devamı) kısmında birden çok kelime düzeltmesi yapıldı.
+    - Nesne Tabanlı Programlama(Devamı) kısmındaki 'yanısıra', 'yanı sıra' olarak düzeltildi.
+    - Nesne Tabanlı Programlama(Devamı) kısmında birden çok kez yanlış yazılmış olan 'herbir' kelimesi düzeltildi.
+    - Nesne Tabanlı Programlama(Devamı) kısmındaki 'herzamanki', 'her zamanki' olarak düzeltildi.
+    - Nesne Tabanlı Programlama(Devamı) kısmında birden çok kelime düzeltmesi yapıldı.
+    - Nesne Tabanlı Programlama(Devamı) kısmındaki "bu sınıfları uygulamamız içine dahil ediyoruz." cümlesi "bu sınıfları uygulamamızın       içine dahil ediyoruz." olarak düzeltildi.
+    - Paketler kısmında kelime düzeltmesi yapıldı.
     
     
