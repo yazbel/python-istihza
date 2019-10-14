@@ -280,7 +280,7 @@ yazılış sırası çok önemlidir. Bunu kanıtlamak için çok basit bir örne
 
     pencere.mainloop()
 
-Burada herzamanki gibi öncelikle gerekli modülü içe aktardık::
+Burada her zamanki gibi öncelikle gerekli modülü içe aktardık::
 
     import tkinter as tk
 
@@ -320,7 +320,7 @@ Buna göre, düğmeye basıldığında, `command` parametresinin değeri olan
 tanımladığımız işlemler gerçekleşecek.
 
 Bildiğiniz gibi, bir program penceresinde, o programı kapatmayı sağlayacak
-düğmelerin yanısıra, bir de en üst sağ (veya sol) köşede program penceresini
+düğmelerin yanı sıra, bir de en üst sağ (veya sol) köşede program penceresini
 kapatan bir 'X' düğmesi bulunur. İşte bu 'X' düğmesine basıldığında da pencere
 kapanmadan önce ``çıkış()`` fonksiyonunun çalışması için şu kodu yazıyoruz::
 
@@ -549,7 +549,7 @@ Ufak bir örnek verelim. Diyelim ki elimizde şu sınıflar var::
             self.öm3 = 'öm3'
             return self.öm3
 
-Burada üç farklı sınıf ve herbir sınıfın içinde de birer sınıf niteliği, birer
+Burada üç farklı sınıf ve her bir sınıfın içinde de birer sınıf niteliği, birer
 ``__init__()`` metodu, birer örnek niteliği ve birer örnek metodu görüyoruz.
 
 Şimdi bu üç sınıfı birden taban sınıf olarak miras alan dördüncü bir sınıf
@@ -703,7 +703,7 @@ doğrudan bir türevidir. O yüzden bu sınıfı miras almayı tercih ediyoruz.
 
 Pencere üzerine etiket ve düğme yerleştirmemizi sağlayan ``Label()`` ve
 ``Button()`` sınıfları ise, uygulama penceresinin birer parçasıdır. Dolayısıyla
-bu sınıfları uygulamamız içine dahil ediyoruz.
+bu sınıfları uygulamamızın içine dahil ediyoruz.
 
 Yukarıda anlattığımız iki farklı ilişki türü 'olma ilişkisi' (*is-a
 relationship*) ve 'sahiplik ilişkisi' (*has-a relationship*) olarak
