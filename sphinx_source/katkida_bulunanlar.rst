@@ -397,7 +397,7 @@ Burak Kadir Er
 
     - "`56715` değeri olduğu için" ifadesi "`56700` değeri olduğu için" olarak düzeltildi.
     - 'Pekı' kelimesi 'Peki' olarak düzeltildi.
-    - "Verebileceğimizi, ama bunun bir yolu yordamı olduğunu biliyorsunuz" cümlesi "Verebileceğimizi ve bunun bir yolu yordamı olduğunu       biliyorsunuz" olarak değiştirildi.
+    - "Verebileceğimizi, 'ama' bunun bir yolu yordamı olduğunu biliyorsunuz" cümlesi "Verebileceğimizi 've' bunun bir yolu yordamı             olduğunu biliyorsunuz" olarak değiştirildi.
     - 'Herbir' ve 'herzamanki' kelimeleri düzeltildi.
     - Demetler kısmında gramer düzeltmesi yapıldı.
     - Evaluate kısmında anlatımı pekiştirme açısından eval'li kod örneği eklendi.
@@ -430,5 +430,12 @@ Burak Kadir Er
     - Nesne Tabanlı Programlama(Devamı) kısmındaki 'sözdizimi', 'söz dizimi' olarak düzeltildi.
     - Nesne Tabanlı Programlama(Devamı) kısmındaki 've saire', 'vesaire' olarak düzeltildi.
     - Nesne Tabanlı Programlama(Devamı) kısmında birden çok kelime düzeltmesi yapıldı.
+    - Nesne Tabanlı Programlama(Devamı) kısmındaki 'yanısıra', 'yanı sıra' olarak düzeltildi.
+    - Nesne Tabanlı Programlama(Devamı) kısmında birden çok kez yanlış yazılmış olan 'herbir' kelimeleri düzeltildi.
+    - Nesne Tabanlı Programlama(Devamı) kısmındaki 'herzamanki', 'her zamanki' olarak düzeltildi.
+    - Nesne Tabanlı Programlama(Devamı) kısmında birden çok kelime düzeltmesi yapıldı.
+    - Nesne Tabanlı Programlama(Devamı) kısmındaki "bu sınıfları 'uygulamamız' içine dahil ediyoruz." cümlesi "bu sınıfları
+      'uygulamamızın' içine dahil ediyoruz." olarak düzeltildi.
+    - Paketler kısmında kelime düzeltmesi yapıldı.
     
     

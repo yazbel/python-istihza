@@ -15,7 +15,7 @@ Paketler
 
 Birkaç bölüm önce, Python'ın belkemiği olduğunu söylediğimiz modüller konusundan
 söz etmiştik. Bu bölümde de yine modüllerle bağlantılı bir konuyu ele alacağız.
-Konumuz Python'da paketler.
+Konumuz Python'daki paketler.
 
 Paket Nedir?
 **************

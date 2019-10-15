@@ -30,7 +30,7 @@ söz edeceğiz. Bütün ayrıntılarıyla ele alacağımız miras alma, nesne ta
 programlamanın en önemli konularından birisidir. Hatta nesne tabanlı
 programlamayı faydalı bir programlama yaklaşımı haline getiren özelliklerin
 başında miras alma gelir dersek çok da abartmış olmayız. Ayrıca miras alma
-konusu, komut satırında çalışan programların yanısıra grafik arayüzlü programlar
+konusu, komut satırında çalışan programların yanı sıra grafik arayüzlü programlar
 da yazabilmemizin önündeki son engel olacak. Bu bölümü tamamladıktan sonra,
 grafik arayüzlü programlar yazmamızı sağlayacak özel modüllerin belgelerinden
 yararlanabilmeye ve grafik arayüzlü programların kodlarını okuyup anlamaya
@@ -624,7 +624,7 @@ deneyelim::
             self.güç = 50
 
 Burada taban sınıfın ``__init__()`` metodunu alt sınıflarda yeniden tanımladık.
-Bu kodları bu şekilde yazıp çalıştırdığımızda `self.güç` değerinin herbir alt
+Bu kodları bu şekilde yazıp çalıştırdığımızda `self.güç` değerinin her bir alt
 sınıf için istediğimiz değere sahip olduğunu görürüz. Ancak burada şöyle bir
 sorun var. Bu kodları bu şekilde yazarak `self.isim` ve `self.rütbe`
 değişkenlerinin değerini maalesef kaybettik...
@@ -673,7 +673,7 @@ Bu sorunu çözmek için alt sınıflarımızı şu şekilde yazabiliriz::
             self.rütbe = rütbe
             self.güç = 50
 
-Burada `self.isim` ve `self.rütbe` değişkenlerini herbir alt sınıf için tekrar
+Burada `self.isim` ve `self.rütbe` değişkenlerini her bir alt sınıf için tekrar
 tanımladık. Bu küçük örnekte pek sorun olmayabilir, ama taban sınıfın
 ``__init__()`` metodunun içinde çok daha karmaşık işlemlerin yapıldığı
 durumlarda yukarıdaki yaklaşım hiç de pratik olmayacaktır. Ayrıca eğer miras
@@ -712,7 +712,7 @@ varsayarsak::
     class Yönetici(Oyuncu):
         pass
 
-Herbir alt sınıfın `güç` değişkenini şu şekilde değiştirebiliriz::
+Her bir alt sınıfın `güç` değişkenini şu şekilde değiştirebiliriz::
 
     >>> import oyuncular
     >>> asker = oyuncular.Asker('Ahmet', 'Er')
