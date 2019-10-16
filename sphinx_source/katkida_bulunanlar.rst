@@ -434,8 +434,12 @@ Burak Kadir Er
     - Nesne Tabanlı Programlama(Devamı) kısmında birden çok kez yanlış yazılmış olan 'herbir' kelimeleri düzeltildi.
     - Nesne Tabanlı Programlama(Devamı) kısmındaki 'herzamanki', 'her zamanki' olarak düzeltildi.
     - Nesne Tabanlı Programlama(Devamı) kısmında birden çok kelime düzeltmesi yapıldı.
-    - Nesne Tabanlı Programlama(Devamı) kısmındaki "bu sınıfları 'uygulamamız' içine dahil ediyoruz." cümlesi "bu sınıfları
-      'uygulamamızın' içine dahil ediyoruz." olarak düzeltildi.
+    - Nesne Tabanlı Programlama(Devamı) kısmındaki "bu sınıfları 'uygulamamız' içine dahil ediyoruz" cümlesi "bu sınıfları
+      'uygulamamızın' içine dahil ediyoruz" olarak düzeltildi.
     - Paketler kısmında kelime düzeltmesi yapıldı.
-    
+    - Düzenli İfadeler kısmında kelime düzeltmesi yapıldı.
+    - Düzenli İfadeler kısmındaki 'bir kaç', "birkaç' olarak düzeltildi.
+    - Düzenli İfadeler kısmındaki 'paramtresinin', 'parametresinin' olarak düzeltildi.
+    - Düzenli İfadeler kısmındaki 'websitesinde', 'web sitesinde' olarak düzeltildi.
+    - Düzenli İfadeler kısmındaki bozuk linkler düzeltildi.
     

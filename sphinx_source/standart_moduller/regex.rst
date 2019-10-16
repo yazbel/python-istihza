@@ -135,7 +135,7 @@ tuttuğu karakter dizisi ile eşleştiği için bize bir eşleşme nesnesi
 döndürülüyor.
 
 Bu çıktı, düzenli ifade kalıbının karakter dizisi ile eşleştiğini bildirmenin
-yanısıra, bize başka birtakım bilgiler daha veriyor. Mesela bu çıktıdaki `span`
+yanı sıra, bize başka birtakım bilgiler daha veriyor. Mesela bu çıktıdaki `span`
 parametresi, aradığımız 'python' karakter dizisinin, `a` değişkeninin 0. ila 6.
 karakterleri arasında yer aldığını söylüyor bize. Yani::
 
@@ -201,7 +201,7 @@ veriyle eşleştirme işlemi yapmaksa, ``split()`` veya ``startswith()``
 metotlarını kullanmak daha mantıklıdır. Çünkü ``split()`` ve ``startswith()``
 metotları ``match()`` metodundan çok daha hızlı çalışacaktır.
 
-``match()`` metodunu kullanarak bir kaç örnek daha yapalım::
+``match()`` metodunu kullanarak birkaç örnek daha yapalım::
 
     >>> sorgu = "1234567890"
     >>> re.match("1", sorgu)
@@ -240,7 +240,7 @@ Daha önce söylediğimiz gibi, ``match()`` metodu ile bir eşleştirme işlemi
 yaptığımızda, eğer eşleşme varsa Python bize bir eşleşme nesnesi döndürecektir.
 Döndürülen bu eşleşme nesnesi bize `span` ve `match` parametreleri aracılığıyla,
 eşleşen karakter dizisinin sorgu dizisi içindeki yerini ve eşleşen dizinin ne
-olduğu söylüyor. `span` paramtresinin değerine ``span()`` adlı bir metot
+olduğu söylüyor. `span` parametresinin değerine ``span()`` adlı bir metot
 yardımıyla erişebiliyoruz. Örneğin::
 
     >>> import re
@@ -401,7 +401,7 @@ Hatta şimdiye kadar öğrendiklerimizle daha karmaşık bir şeyler de yapabili
 Gördüğünüz gibi, www.istihza.com sayfasında kaç adet "programlama"
 kelimesi geçiyorsa hepsi ekrana dökülüyor.
 
-Bu arada, websitesinde arama işlemi gerçekleştirirken `urllib` paketinin
+Bu arada, web sitesinde arama işlemi gerçekleştirirken `urllib` paketinin
 içindeki `request` modülünün ``urlopen()`` adlı fonksiyonunu kullandığımıza
 dikkat edin. Ayrıca ``search()`` metoduna parametre olarak bir karakter dizisi
 değil, bayt dizisi verdiğimizi de gözden kaçırmayın::
@@ -1387,14 +1387,14 @@ Bu metakarakter yardımıyla düzenli ifade kalıplarını gruplayacağız. Bu
 metakarakter bizim bir karakter dizisinin istediğimiz kısımlarını
 ayıklamamızda çok büyük kolaylıklar sağlayacak.
 
-Diyelim ki biz http://www.istihza.com/py2/icindekiler_python.html adresindeki
+Diyelim ki biz https://web.archive.org/web/20121025012131/http://www.istihza.com/py2/icindekiler_python.html adresindeki
 bütün başlıkları ve bu başlıklara ait html dosyalarını bir liste halinde
 almak istiyoruz. Bunun için şöyle bir şey yazabiliriz::
 
     import re
     from urllib.request import urlopen
 
-    url = "http://belgeler.istihza.com/py3/index.html"
+    url = "https://web.archive.org/web/20121025012131/http://www.istihza.com/py2/icindekiler_python.html"
     f = urlopen(url)
 
     regex = 'href=".+html">.+</a>'
@@ -1406,7 +1406,7 @@ almak istiyoruz. Bunun için şöyle bir şey yazabiliriz::
 
 Burada yaptığımız şey şu:
 
-#. Öncelikle "http://belgeler.istihza.com/py3/index.html" sayfasını urllib
+#. Öncelikle "https://web.archive.org/web/20121025012131/http://www.istihza.com/py2/icindekiler_python.html" sayfasını urllib
    modülü yardımıyla açtık. Amacımız bu sayfadaki başlıkları ve bu başlıklara ait
    html dosyalarını listelemek
 
@@ -1415,7 +1415,7 @@ Burada yaptığımız şey şu:
 #. Düzenli ifade kalıbımızı şöyle yazdık: ``'<href=".+html">.+</a>'``
    Çünkü bahsi geçen web sayfasındaki html uzantılı dosyalar bu şekilde
    gösteriliyor. Bu durumu, web tarayıcınızda
-   http://belgeler.istihza.com/py3/index.html sayfasını açıp
+   https://web.archive.org/web/20121025012131/http://www.istihza.com/py2/icindekiler_python.html sayfasını açıp
    sayfa kaynağını görüntüleyerek teyit edebilirsiniz. (Firefox'ta
    CTRL+U'ya basarak sayfa kaynağını görebilirsiniz)
 
@@ -1431,7 +1431,7 @@ Burada yaptığımız şey şu:
    düşünürsek, yazdığımız şey şu anlama geliyor: "Bana 'html' ile biten
    bütün karakter dizilerini bul!"
 
-#. "http://belgeler.istihza.com/py3/index.html" adresinin
+#. "https://web.archive.org/web/20121025012131/http://www.istihza.com/py2/icindekiler_python.html" adresinin
    kaynağına baktığımız zaman aradığımız bilgilerin hep şu şekilde
    olduğunu görüyoruz: href="kitap_hakkinda.html">Bu Kitap Hakk\xc4\xb1nda</a>
    Dolayısıyla aslında düzenli ifade kalıbımızı yazarken yaptığımız şey,
@@ -1742,7 +1742,7 @@ fazla boşluk" + "':' işareti" + "bir adet boşluk" + "bir veya daha fazla say�
 İsterseniz bu bölümü çok basit bir soruyla kapatalım. Sorumuz şu:
 
 Elimizde şu adresteki yığın var:
-`http://www.istihza.com/denemeler/yigin.txt <http://www.istihza.com/denemeler/yigin.txt>`_
+`https://web.archive.org/web/20130511050633/http://www.istihza.com/denemeler/yigin.txt <https://web.archive.org/web/20130511050633/http://www.istihza.com/denemeler/yigin.txt>`_
 
 Yapmanız gereken, bu yığın içindeki gizli mesajı düzenli ifadeleri
 kullanarak bulmak...
