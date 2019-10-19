@@ -2011,7 +2011,7 @@ Sonraki satırda iki metot birden var::
 Burada, fonksiyonumuzun argümanı olarak vazife gören eşleşme nesnesine ait
 metotlardan biri olan ``group(``) metodunu kullanıyoruz. Böylece ``derle =
 re.compile("çile[kğ]", re.IGNORECASE)`` satırı yardımıyla metin içinde
-bulduğumuz bütün "çilek" ve çeşnilerini alıyoruz. Karakter dizilerinin
+bulduğumuz bütün "çilek" ve çeşitlerini alıyoruz. Karakter dizilerinin
 ``split(``) metodunu kullanmamızın nedeni ise ``group()`` metodunun verdiği
 çıktıyı liste haline getirip daha kolay manipüle etmek. Burada ``for i in b:
 print(i)`` komutunu verirseniz ``group()`` metodu yardımıyla ne bulduğumuzu
