@@ -445,4 +445,5 @@ Burak Kadir Er
     - Düzenli İfadeler kısmında kelime düzeltmesi yapıldı.
     - Hata Yakalama kısmında gerekli yere nokta eklendi.
     - Hata Yakalama kısmında kelime düzeltmesi yapıldı.
+    - Random modülü kısmında birden çok kelime düzeltmesi yapıldı.
     
