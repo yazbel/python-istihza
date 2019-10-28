@@ -446,4 +446,5 @@ Burak Kadir Er
     - Hata Yakalama kısmında gerekli yere nokta eklendi.
     - Hata Yakalama kısmında kelime düzeltmesi yapıldı.
     - Random modülü kısmında birden çok kelime düzeltmesi yapıldı.
+    - OS modülü kısmında birden çok kelime düzeltmesi yapıldı.
     
