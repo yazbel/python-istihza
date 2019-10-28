@@ -70,7 +70,7 @@ istersek ne yapacağız?
 
 İşte, belirli bir aralıkta kayan noktalı sayılar üretmek istediğimizde,
 ``random()`` yerine ``uniform()`` adlı bir fonksiyon kullanacağız. Dikkatlice
-inceleyim::
+inceleyin::
 
     >>> random.uniform(0.5, 1.5)
 
@@ -239,7 +239,7 @@ Bir de şuna bakalım::
 
     >>> random.randint(10, 20)
 
-Burada da yime `10` ile `20` arasında rastgele bir sayı üretilir. Tıpkı
+Burada da yine `10` ile `20` arasında rastgele bir sayı üretilir. Tıpkı
 ``randrange()`` metodunda olduğu gibi, üretilecek en düşük sayı `10`'dur. Ancak
 en büyük sayı `20` olacaktır.
 
