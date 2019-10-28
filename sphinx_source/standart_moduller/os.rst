@@ -23,7 +23,7 @@ işareti kullanılır.
 
 İşte biz hem Windows'ta, hem de GNU/Linux'ta çalışacak bir program yazmak
 istediğimizde bu farklılıkları göz önünde bulundurmamız ve farklı durumların
-herbiri için ayrı kodlar yazmamız gerekirken, ``os`` modülü bizi bu zahmetten
+her biri için ayrı kodlar yazmamız gerekirken, ``os`` modülü bizi bu zahmetten
 kurtarır ve bize ortak bir arayüz üzerinden farklı işletim sistemleri ile
 tutarlı bir şekilde iletişim kurabilmemizi sağlayacak pek çok fonksiyon ve
 nitelik sunar.
@@ -784,7 +784,7 @@ komut verebilirsiniz::
     >>> for kökdizin, altdizinler, dosyalar in os.walk('anadizin'):
     ...     print(dosyalar)
 
-Burada, ``os.walk('anadizin')`` komutunun bize sunduğu üç öğeli demetin herbir
+Burada, ``os.walk('anadizin')`` komutunun bize sunduğu üç öğeli demetin her bir
 öğesini, şu satır yardımıyla tek tek `kökdizin`, `altdizinler` ve `dosyalar`
 adlı değişkenlere atıyoruz::
 
