@@ -442,4 +442,7 @@ Burak Kadir Er
     - Düzenli İfadeler kısmındaki 'paramtresinin', 'parametresinin' olarak düzeltildi.
     - Düzenli İfadeler kısmındaki 'websitesinde', 'web sitesinde' olarak düzeltildi.
     - Düzenli İfadeler kısmındaki bozuk linkler düzeltildi.
+    - Düzenli İfadeler kısmında kelime düzeltmesi yapıldı.
+    - Hata Yakalama kısmında gerekli yere nokta eklendi.
+    - Hata Yakalama kısmında kelime düzeltmesi yapıldı.
     
