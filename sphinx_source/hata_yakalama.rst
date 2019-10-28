@@ -16,7 +16,7 @@ her zaman sayı değerli bir veri gireceğini düşünüyoruz. Ancak bütün iyi
 niyetimize rağmen, yazdığımız programlarda işler her zaman beklediğimiz gibi
 gitmeyebilir. Örneğin, dediğimiz gibi, yazdığımız programı, kullanıcının bir
 sayı girmesi temeli üzerine kurgulamışsak, kullanıcının her zaman sayı değerli
-bir veri gireceğinden emin olamayız
+bir veri gireceğinden emin olamayız.
 
 Mesela şöyle bir program yazdığımızı düşünün::
 
