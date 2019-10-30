@@ -16,7 +16,7 @@ her zaman sayı değerli bir veri gireceğini düşünüyoruz. Ancak bütün iyi
 niyetimize rağmen, yazdığımız programlarda işler her zaman beklediğimiz gibi
 gitmeyebilir. Örneğin, dediğimiz gibi, yazdığımız programı, kullanıcının bir
 sayı girmesi temeli üzerine kurgulamışsak, kullanıcının her zaman sayı değerli
-bir veri gireceğinden emin olamayız
+bir veri gireceğinden emin olamayız.
 
 Mesela şöyle bir program yazdığımızı düşünün::
 
@@ -214,7 +214,7 @@ var: Bu üç kavram arasındaki fark belli belirsizdir. Yani bu kavramların ço
 yerde birbirlerinin yerine kullanıldığını da görebilirsiniz. Örneğin *exception*
 kavramı için Türkçe'de çoğu zaman 'hata' kelimesini kullanıyoruz. Zaten dikkat
 ederseniz bu bölümün başlığı da 'İstisna Yakalama' değil, 'Hata Yakalama'dır.
-Aynı şekilde, İngilizcede de bu kavramların çoğu yerde birbirleri yerine
+Aynı şekilde, İngilizcede de bu kavramların çoğu yerde birbirlerinin yerine
 kullanıldığını görebilirsiniz. Dolayısıyla, konuya karşı özel bir ilginiz yoksa,
 hata, kusur ve istisna kavramlarını birbirinden ayırmak için kendinizi
 zorlamanıza gerek yok. Bu üç kavram çoğu zaman birbirinin yerine kullanılıyor da
