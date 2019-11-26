@@ -3,26 +3,26 @@
    :keywords: python, python3, argparse
 
 
-=========================================
-Context Processors (İçerik İşleyicileri)
-=========================================
+==================
+İçerik İşlemcileri
+==================
 
--------------------------
-Context Processors Nedir
--------------------------
+------------------------
+İçerik İşlemcileri Nedir
+------------------------
 
 Dilden bağımsız olarak yazdığımız her uygulama DRY (Don't Repeat Yourself, Kendini Tekrar Etme) ilkesine sahip olmalıdır.
 Bu sayede yazılan kodların okunabilirliği daha yüksek, fazlalıkları ve karmaşıklıkları daha az olur.
 
-Django yazılım iskeletinde context processors (içerik işleyicileri) bu işe yarar. Bir kere tanımlanan değişken o proje içinde
+Django yazılım iskeletinde içerik işlemcileri bu işe yarar. Bir kere tanımlanan değişken o proje içinde
 oluşturulan tüm uygulamalarda kullanılabilir.
 
-Oluşturduğumuz her context processors bir `anahtar(lar)-değer(ler)` şeklinde dönmeledir. Bu değer tipi Python dilinin
-sahip olduğu veri tipi olan `dictionary (sözlük)` dir.
+Oluşturduğumuz her içerik işlemcisi bir `anahtar(lar)-değer(ler)` şeklinde dönmelidir. Bu değer tipi Python dilinin
+sahip olduğu veri tipi olan `sözlük`\ tür.
 
---------------------------------------
-Context Processors Nasıl Oluşturulur?
---------------------------------------
+-------------------------------------
+İçerik İşlemcileri Nasıl Oluşturulur?
+-------------------------------------
 
 Öncelikle bir Django projesi ve projemiz için bir uygulama oluşturuyoruz. Oluşturduğumuz uygulamanın içine `context_processors.py`
 isimli bir dosya oluşturuyoruz. Bundan sonra oluşturduğumuz tüm içerik işleyicilerini bu dosya altında toplayacağız. Son olarak oluşturduğumuz `context_processors.py` dosyasını
@@ -47,8 +47,8 @@ isimli bir dosya oluşturuyoruz. Bundan sonra oluşturduğumuz tüm içerik işl
     },
     ]
 
-bu kısmı buluyoruz. Ardından kendi oluşturacağımız içerik işleyicilerinş diğerlerinin yanına ekliyoruz. Bu ekleme sırasında sözdizimi önemlidir ve bu şekilde olmalıdır.
-`uygulama_adi.context_processors_dosya_adi.context_processors_adi`
+bu kısmı buluyoruz. Ardından kendi oluşturacağımız içerik işleyicilerini diğerlerinin yanına ekliyoruz. Bu ekleme sırasında sözdizimi önemlidir ve bu şekilde olmalıdır.
+`uygulama_adi.içerik_işlemcisi_dosya_adi.içerik_işlemcisi_adi`
 Yeni hali aşağıdaki gibi olmalı.
 
 .. code-block:: python
@@ -93,11 +93,11 @@ Denemek için `templates` klasörü altında `index.html` oluşturalım ardında
     <!DOCTYPE html>
     <html>
     <head>
-        <title>Django - İçerik İşleçleri</title>
+        <title>Django - İçerik İşlemcileri</title>
     </head>
     <body>
 
-    <p>merhaba benim adim {{ isim }} ve şu an bu ülkedeyim: {{ ulke }} </p>
+    <p>Merhaba, benim adım {{ isim }} ve şu an bu ülkedeyim: {{ ulke }} </p>
 
     </body>
     </html>
@@ -125,15 +125,15 @@ sonra view oluşturacağız. Bunun için oluşturduğumuz uygulamanın alt dizin
 
 Tüm yapacağımız bu kadar! Artık tarayıcıda oluşturduğumuz sayfayı çalıştırınca anahtarlarımızın yerinde değişkenlerimiz var.
 
----------------------------------------------
-Context Processors Nerelerde Kullanılabilir?
----------------------------------------------
+--------------------------------------------
+İçerik İşlemcileri Nerelerde Kullanılabilir?
+--------------------------------------------
 
 Django ile proje geliştirirken kullanıcının tarayıcıda göreceği HTML kısımlarını ortak olan kısımlarını tek bir noktadan
 çekebiliriz. Böylece ortak bir blok değiştiği zaman tüm sayfaları tekrar düzeltmeye gerek kalmaz. Bunu yapmak için oluşturduğumuz tüm view'lere
 ana tema blogumuzu, tüm sayfalarda ortak olan diğer blok parçalarının yollarını içerik işlecinde tanımlayabiliriz.
 
-İçerik İşlecimiz:
+İçerik İşlemcimiz:
 
 .. code-block:: python
 
@@ -164,7 +164,7 @@ HTML Sayfamız::
             <div class="row">
                 <div class="s-content__header col-full">
                     <h1 class="s-content__header-title">
-                        Iletisime Gec </h1>
+                        İletişime Geç </h1>
                 </div> <!-- end s-content__header -->
                 <div class="col-full s-content__main">
                     <h3>Merhaba De :)</h3>
@@ -184,12 +184,12 @@ HTML Sayfamız::
         <{% endblock %}
 
 
-Örnek HTML sayfamızda `{% extends base_components %}` ile `base_components` değişkenini içerik işlecinde tanımlamıştık bu sayede bir daha
+Örnek HTML sayfamızda `{% extends base_components %}` ile `base_components` değişkenini içerik işlemcisinde tanımlamıştık, bu sayede bir daha
 dosya adresini yazmamıza gerek kalmaz. Bunun yerine her view'de dosya yolunu yazabilirdik ancak dosyamızın yolu değişirse tüm view fonksiyonlarında
 dosya yolunu değiştirmek zorunda kalacaktık.
 
 Genel olarak kullanım şekli böyle oluyor.
 
-Bu makale için hazırladığım koda `bu adres`_  üzerinden ulaşabilir, detaylı olarak inceleyebilirsiniz.
+Bu makale için hazırladığım koda `bu adres`_  üzerinden ulaşabilir, bu kodu detaylı olarak inceleyebilirsiniz.
 
 .. _bu adres: https://github.com/mehmetkiran/context_processors_django
