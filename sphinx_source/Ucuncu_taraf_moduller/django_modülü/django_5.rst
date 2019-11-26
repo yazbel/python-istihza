@@ -1,6 +1,6 @@
 .. meta::
-   :description: Bu bölümde argparse modülünü inceleyeceğiz.
-   :keywords: python, python3, argparse
+   :description: Bu bölümde Context Processors konusunu inceleyeceğiz.
+   :keywords: python, python3, django, context processors
 
 
 ==================
