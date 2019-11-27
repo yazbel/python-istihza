@@ -1,6 +1,6 @@
 .. meta::
-   :description: Bu bölümde Context Processors konusunu inceleyeceğiz.
-   :keywords: python, python3, django, context processors
+   :description: Bu bölümde içerik işlemcileri konusunu inceleyeceğiz.
+   :keywords: python, python3, django, içerik işlemcileri
 
 
 ==================
