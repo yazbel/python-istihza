@@ -1,0 +1,1134 @@
+
+ <!DOCTYPE html>
+ <html lang="tr">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta content="Bu bölümde nesne tabanlı programlamadan söz edeceğiz." name="description" />
+<meta content="python, python3, nesne, oop, sınıf, class, miras alma, inheritance, nesne yönelimli programlama, nesne tabanlı programlama, object oriented programming, self, instantiation, instance, örnek, örneklendirme, örnekleme" name="keywords" />
+
+    <title>Nesne Tabanlı Programlama (Devamı) &#8212; Python 3 için Türkçe Kılavuz</title>
+    <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="search" title="Ara" href="search.html" />
+    <link rel="next" title="Nesne Tabanlı Programlama (Devamı)" href="nesne_tabanli_programlama6.html" />
+    <link rel="prev" title="Nesne Tabanlı Programlama (Devamı)" href="nesne_tabanli_programlama4.html" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+<div class='header'><a href='https://yazbel.com'>yazbel.com</a></div>
+
+<ul class='navbar'>
+    <li><a href="#"><del>pdf desteği sonlanmıştır</del></a></li>
+    <li class="forum"><a href="http://forum.yazbel.com">forum</a></li>
+</ul>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="nesne_tabanli_programlama6.html" title="Nesne Tabanlı Programlama (Devamı)"
+             accesskey="N">sonraki</a></li>
+        <li class="right" >
+          <a href="nesne_tabanli_programlama4.html" title="Nesne Tabanlı Programlama (Devamı)"
+             accesskey="P">önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+ 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+
+  <div class="section" id="nesne-tabanli-programlama-devami">
+<h1>Nesne Tabanlı Programlama (Devamı)<a class="headerlink" href="#nesne-tabanli-programlama-devami" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<p>Nesne tabanlı programlamaya giriş yaparken, bu programlama yaklaşımının oldukça
+geniş kapsamlı bir konu olduğunu söylemiştik. Bu bölümde de bu geniş kapsamlı
+konunun ileri düzey yönlerini ele almaya devam edeceğiz.</p>
+<p>Ayrıca bu bölümü bitirdikten sonra, nesne tabanlı programlamanın yoğun bir
+şekilde kullanıldığı ‘grafik arayüz tasarlama’ konusundan da söz edebileceğiz.
+Böylece, bu zamana kadar gördüğümüz komut satırı uygulamalarından sonra, bu
+bölümle birlikte ilk kez düğmeli-menülü modern arayüzleri tanımaya da
+başlayacağız. Üstelik grafik arayüzlü programlar üzerinde çalışmak, nesne
+tabanlı programlamanın özellikle karmaşık yönlerini çok daha kolay ve net bir
+şekilde anlamamızı da sağlayacak.</p>
+<div class="section" id="miras-alma">
+<h2>Miras Alma<a class="headerlink" href="#miras-alma" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Bu bölümde, yine nesne tabanlı programlamaya ait bir kavram olan ‘miras alma’dan
+söz edeceğiz. Bütün ayrıntılarıyla ele alacağımız miras alma, nesne tabanlı
+programlamanın en önemli konularından birisidir. Hatta nesne tabanlı
+programlamayı faydalı bir programlama yaklaşımı haline getiren özelliklerin
+başında miras alma gelir dersek çok da abartmış olmayız. Ayrıca miras alma
+konusu, komut satırında çalışan programların yanı sıra grafik arayüzlü programlar
+da yazabilmemizin önündeki son engel olacak. Bu bölümü tamamladıktan sonra,
+grafik arayüzlü programlar yazmamızı sağlayacak özel modüllerin belgelerinden
+yararlanabilmeye ve grafik arayüzlü programların kodlarını okuyup anlamaya
+başlayabileceğiz.</p>
+<p>Daha önce de söylediğimiz gibi, Python programlama dilinin temel felsefesi, bir
+kez yazılan kodları en verimli şekilde tekrar tekrar kullanabilmeye dayanır.
+Genel olarak baktığımızda dilin hemen hemen bütün öğeleri bu amaca hizmet edecek
+şekilde tasarlanmıştır. İşte bu başlık altında ele alacağımız ‘miras alma’
+kavramı da kodların tekrar tekrar kullanılabilmesi felsefesine katkı sunan bir
+özelliktir.</p>
+<p>İsterseniz miras alma konusunu anlatmaya basit bir örnekle başlayalım.</p>
+<p>Diyelim ki bir oyun yazıyorsunuz. Bu oyun içinde askerler, işçiler, yöneticiler,
+krallar, kraliçeler ve bunun gibi oyuncu türleri olacak. Bu oyuncuları ve
+kabiliyetlerini mesela şöyle tanımlayabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Asker</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">,</span> <span class="n">rütbe</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="n">isim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rütbe</span> <span class="o">=</span> <span class="n">rütbe</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">güç</span> <span class="o">=</span> <span class="mi">100</span>
+
+    <span class="k">def</span> <span class="nf">hareket_et</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;hareket ediliyor...&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">puan_kazan</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puan kazanıldı&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">puan_kaybet</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puan kaybedildi&#39;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">İşçi</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">,</span> <span class="n">rütbe</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="n">isim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rütbe</span> <span class="o">=</span> <span class="n">rütbe</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">güç</span> <span class="o">=</span> <span class="mi">70</span>
+
+    <span class="k">def</span> <span class="nf">hareket_et</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;hareket ediliyor...&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">puan_kazan</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puan kazanıldı&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">puan_kaybet</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puan kaybedildi&#39;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Yönetici</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">,</span> <span class="n">rütbe</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="n">isim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rütbe</span> <span class="o">=</span> <span class="n">rütbe</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">güç</span> <span class="o">=</span> <span class="mi">20</span>
+
+    <span class="k">def</span> <span class="nf">hareket_et</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;hareket ediliyor...&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">puan_kazan</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puan kazanıldı&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">puan_kaybet</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puan kaybedildi&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada asker, işçi ve yöneticinin her biri için ayrı bir sınıf tanımladık. Her
+sınıfın bir ismi, rütbesi ve gücü var. Ayrıca her sınıf; hareket etme, puan
+kazanma ve puan kaybetme gibi kabiliyetlere sahip.</p>
+<p>Bu kodların <cite>oyuncular.py</cite> adlı bir dosyada bulunduğunu varsayarsak, mesela bir
+asker oluşturmak için yukarıdaki kodları şöyle kullanabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oyuncular</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">asker1</span> <span class="o">=</span> <span class="n">oyuncular</span><span class="o">.</span><span class="n">Asker</span><span class="p">(</span><span class="s1">&#39;Mehmet&#39;</span><span class="p">,</span> <span class="s1">&#39;er&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Asker()</span></code> sınıfının <cite>isim</cite> ve <cite>rütbe</cite> parametrelerini belirtmek suretiyle bir
+asker nesnesi oluşturduk. Tıpkı Python’da gördüğümüz başka nesneler gibi, bu
+nesne de çeşitli nitelik ve metotlardan oluşuyor:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">asker1</span><span class="p">)</span>
+
+<span class="go">[&#39;__class__&#39;, &#39;__delattr__&#39;, &#39;__dict__&#39;, &#39;__dir__&#39;, &#39;__doc__&#39;,</span>
+<span class="go"> &#39;__eq__&#39;, &#39;__format__&#39;, &#39;__ge__&#39;, &#39;__getattribute__&#39;, &#39;__gt__&#39;,</span>
+<span class="go"> &#39;__hash__&#39;, &#39;__init__&#39;, &#39;__le__&#39;, &#39;__lt__&#39;, &#39;__module__&#39;, &#39;__ne__&#39;,</span>
+<span class="go"> &#39;__new__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__setattr__&#39;,</span>
+<span class="go"> &#39;__sizeof__&#39;, &#39;__str__&#39;, &#39;__subclasshook__&#39;, &#39;__weakref__&#39;, &#39;güç&#39;,</span>
+<span class="go"> &#39;hareket_et&#39;, &#39;isim&#39;, &#39;puan_kaybet&#39;, &#39;puan_kazan&#39;, &#39;rütbe&#39;]</span>
+</pre></div>
+</div>
+<p>Bu nitelik ve metotları asker nesnesi üzerine nasıl uygulayacağımızı
+biliyorsunuz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">asker1</span><span class="o">.</span><span class="n">isim</span>
+
+<span class="go">&#39;Mehmet&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">asker1</span><span class="o">.</span><span class="n">rütbe</span>
+
+<span class="go">&#39;er&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">asker1</span><span class="o">.</span><span class="n">güç</span>
+
+<span class="go">100</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">asker1</span><span class="o">.</span><span class="n">hareket_et</span><span class="p">()</span>
+
+<span class="go">&#39;hareket ediliyor...&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">asker1</span><span class="o">.</span><span class="n">puan_kazan</span><span class="p">()</span>
+
+<span class="go">&#39;puan kazanıldı&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">asker1</span><span class="o">.</span><span class="n">puan_kaybet</span><span class="p">()</span>
+
+<span class="go">&#39;puan kaybedildi&#39;</span>
+</pre></div>
+</div>
+<p>Aynı şekilde öteki <code class="docutils literal notranslate"><span class="pre">İşçi()</span></code> ve <code class="docutils literal notranslate"><span class="pre">Yönetici()</span></code> sınıflarını da örnekleyip
+kullanabiliriz. Bu konuda bir problem yok. Ancak yukarıdaki kodları
+incelediğinizde, aynı kodların sürekli tekrarlandığını göreceksiniz. Gördüğünüz
+gibi, aynı nitelik ve metotları her sınıf için yeniden tanımlıyoruz. Bu durumun
+Python’ın mantalitesine aykırı olduğunu tahmin etmek hiç zor değil. Peki acaba
+yukarıdaki kodları nasıl daha ‘Pythonvari’ hale getirebiliriz?</p>
+<p>Bu noktada ilk olarak taban sınıflardan söz etmemiz gerekiyor.</p>
+</div>
+<div class="section" id="taban-siniflar">
+<h2>Taban Sınıflar<a class="headerlink" href="#taban-siniflar" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Taban sınıflar (<em>base classes</em>) miras alma konusunun önemli kavramlarından
+biridir. Dilerseniz taban sınıfın ne olduğu anlayabilmek için, yukarıda
+verdiğimiz örneği temel alarak çok basit bir uygulama yapalım.</p>
+<p>Öncelikle yukarıda verdiğimiz örneği tekrar önümüze alalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Asker</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">,</span> <span class="n">rütbe</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="n">isim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rütbe</span> <span class="o">=</span> <span class="n">rütbe</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">güç</span> <span class="o">=</span> <span class="mi">100</span>
+
+    <span class="k">def</span> <span class="nf">hareket_et</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;hareket ediliyor...&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">puan_kazan</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puan kazanıldı&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">puan_kaybet</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puan kaybedildi&#39;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">İşçi</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">,</span> <span class="n">rütbe</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="n">isim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rütbe</span> <span class="o">=</span> <span class="n">rütbe</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">güç</span> <span class="o">=</span> <span class="mi">70</span>
+
+    <span class="k">def</span> <span class="nf">hareket_et</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;hareket ediliyor...&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">puan_kazan</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puan kazanıldı&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">puan_kaybet</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puan kaybedildi&#39;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Yönetici</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">,</span> <span class="n">rütbe</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="n">isim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rütbe</span> <span class="o">=</span> <span class="n">rütbe</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">güç</span> <span class="o">=</span> <span class="mi">20</span>
+
+    <span class="k">def</span> <span class="nf">hareket_et</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;hareket ediliyor...&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">puan_kazan</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puan kazanıldı&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">puan_kaybet</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puan kaybedildi&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu örnekte, <code class="docutils literal notranslate"><span class="pre">Asker()</span></code>, <code class="docutils literal notranslate"><span class="pre">İşçi()</span></code> ve <code class="docutils literal notranslate"><span class="pre">Yönetici()</span></code> adlı sınıfların içeriğine
+baktığımızda pek çok metot ve niteliğin aslında birbiriyle aynı olduğunu
+görüyoruz. Gelin isterseniz bütün sınıflarda ortak olan bu nitelik ve metotları
+tek bir sınıf altında toplayalım.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Asker()</span></code>, <code class="docutils literal notranslate"><span class="pre">İşçi()</span></code> ve <code class="docutils literal notranslate"><span class="pre">Yönetici()</span></code> sınıflarının, yazdığımız programdaki
+oyuncuları temsil ettiğini düşünürsek, ortak nitelik ve metotları barındıran
+sınıfımızı da <code class="docutils literal notranslate"><span class="pre">Oyuncu()</span></code> olarak adlandırmamız mantıksız olmayacaktır:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Oyuncu</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">,</span> <span class="n">rütbe</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="n">isim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rütbe</span> <span class="o">=</span> <span class="n">rütbe</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">güç</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">hareket_et</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;hareket ediliyor...&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">puan_kazan</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puan kazanıldı&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">puan_kaybet</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puan kaybedildi&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>İşte burada <code class="docutils literal notranslate"><span class="pre">Oyuncu()</span></code> adlı sınıf, bir ‘taban sınıf’ olarak adlandırılır.
+Taban sınıf denen şey, birkaç farklı sınıfta ortak olan nitelik ve metotları
+barındıran bir sınıf türüdür. İngilizcede <em>base class</em> olarak adlandırılan taban
+sınıflar, ayrıca üst sınıf (<em>super class</em>) veya ebeveyn sınıf (<em>parent class</em>)
+olarak da adlandırılır. Biz bu makalede taban sınıf ismini tercih edeceğiz.</p>
+<p>Yukarıdaki <code class="docutils literal notranslate"><span class="pre">Oyuncu()</span></code> adlı taban sınıf da, <code class="docutils literal notranslate"><span class="pre">İşçi()</span></code>, <code class="docutils literal notranslate"><span class="pre">Asker()</span></code>,
+<code class="docutils literal notranslate"><span class="pre">Yönetici()</span></code> gibi sınıfların hepsinde ortak olarak bulunacak nitelik ve
+metotları barındıracak. Öteki bütün sınıflar, ortak nitelik ve metotlarını her
+defasında tek tek yeniden tanımlamak yerine, <code class="docutils literal notranslate"><span class="pre">Oyuncu()</span></code> adlı bu taban sınıftan
+devralacak. Peki ama nasıl? İşte bunu anlamak için de ‘alt sınıf’ adlı bir
+kavrama değinmemiz gerekiyor.</p>
+</div>
+<div class="section" id="alt-siniflar">
+<h2>Alt Sınıflar<a class="headerlink" href="#alt-siniflar" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Bir taban sınıftan türeyen bütün sınıflar, o taban sınıfın alt sınıflarıdır.
+(<em>subclass</em>). Alt sınıflar, kendilerinden türedikleri taban sınıfların metot ve
+niteliklerini miras yoluyla devralır.</p>
+<p>Anlattığımız bu soyut şeyleri anlamanın en kolay yolu somut bir örnek üzerinden
+ilerlemektir. Mesela, biraz önce tanımladığımız <code class="docutils literal notranslate"><span class="pre">Oyuncu()</span></code> adlı taban sınıftan
+bir alt sınıf türetelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Asker</span><span class="p">(</span><span class="n">Oyuncu</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Kodlarımız tam olarak şöyle görünüyor:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Oyuncu</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">,</span> <span class="n">rütbe</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="n">isim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rütbe</span> <span class="o">=</span> <span class="n">rütbe</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">güç</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">hareket_et</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;hareket ediliyor...&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">puan_kazan</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puan kazanıldı&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">puan_kaybet</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puan kaybedildi&#39;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Asker</span><span class="p">(</span><span class="n">Oyuncu</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Burada <code class="docutils literal notranslate"><span class="pre">Asker()</span></code> sınıfını tanımlarken, bu sınıfın parantezleri içine
+<code class="docutils literal notranslate"><span class="pre">Oyuncu()</span></code> sınıfının adını yazdığımıza dikkat edin. İşte bu şekilde bir
+sınıfın parantezleri içinde başka bir sınıfın adını belirtirsek, o sınıf,
+parantez içinde belirttiğimiz sınıfın bir alt sınıfı olmuş olur. Yani mesela
+yukarıdaki gibi <code class="docutils literal notranslate"><span class="pre">Asker()</span></code> sınıfının parantezleri arasına <code class="docutils literal notranslate"><span class="pre">Oyuncu()</span></code>
+sınıfının adını yazdığımızda, <code class="docutils literal notranslate"><span class="pre">Asker()</span></code> adlı sınıf;</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><code class="docutils literal notranslate"><span class="pre">Oyuncu()</span></code> adlı sınıfı miras almış,</li>
+<li><code class="docutils literal notranslate"><span class="pre">Oyuncu()</span></code> adlı sınıfın bütün metot ve niteliklerini devralmış,</li>
+<li><code class="docutils literal notranslate"><span class="pre">Oyuncu()</span></code> adlı sınıftan türemiş oluyor.</li>
+</ol>
+</div></blockquote>
+<p>Bu sayede <code class="docutils literal notranslate"><span class="pre">Oyuncu()</span></code> sınıfında tanımlanan bütün nitelik ve metotlara
+<code class="docutils literal notranslate"><span class="pre">Asker()</span></code> sınıfından da erişebiliyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oyuncular</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">asker1</span> <span class="o">=</span> <span class="n">oyuncular</span><span class="o">.</span><span class="n">Asker</span><span class="p">(</span><span class="s1">&#39;Ahmet&#39;</span><span class="p">,</span> <span class="s1">&#39;Er&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">asker1</span><span class="o">.</span><span class="n">isim</span>
+
+<span class="go">&#39;Ahmet&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">asker1</span><span class="o">.</span><span class="n">rütbe</span>
+
+<span class="go">&#39;Er&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">asker1</span><span class="o">.</span><span class="n">güç</span>
+
+<span class="go">0</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">asker1</span><span class="o">.</span><span class="n">puan_kazan</span><span class="p">()</span>
+
+<span class="go">&#39;puan kazanıldı&#39;</span>
+</pre></div>
+</div>
+<p>Örnek olması açısından, <code class="docutils literal notranslate"><span class="pre">Oyuncu()</span></code> sınıfından türeyen (miras alan) birkaç alt
+sınıf daha tanımlayalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Oyuncu</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">,</span> <span class="n">rütbe</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="n">isim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rütbe</span> <span class="o">=</span> <span class="n">rütbe</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">güç</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">hareket_et</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;hareket ediliyor...&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">puan_kazan</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puan kazanıldı&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">puan_kaybet</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puan kaybedildi&#39;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Asker</span><span class="p">(</span><span class="n">Oyuncu</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">İşçi</span><span class="p">(</span><span class="n">Oyuncu</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">Yönetici</span><span class="p">(</span><span class="n">Oyuncu</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Tanımladığımız bu <code class="docutils literal notranslate"><span class="pre">İşçi()</span></code> ve <code class="docutils literal notranslate"><span class="pre">Yönetici()</span></code> sınıfları da tıpkı <code class="docutils literal notranslate"><span class="pre">Asker()</span></code>
+sınıfı gibi <code class="docutils literal notranslate"><span class="pre">Oyuncu()</span></code> adlı sınıftan miras aldığı için, <code class="docutils literal notranslate"><span class="pre">Oyuncu()</span></code> sınıfının
+sahip olduğu tüm nitelik ve metotlara sahiptirler.</p>
+<p>Buraya kadar anlattıklarımızı özetleyecek olursak, şu sınıf bir taban sınıftır:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Oyuncu</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">,</span> <span class="n">rütbe</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="n">isim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rütbe</span> <span class="o">=</span> <span class="n">rütbe</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">güç</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">hareket_et</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;hareket ediliyor...&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">puan_kazan</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puan kazanıldı&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">puan_kaybet</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puan kaybedildi&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu taban sınıf, kendisinden türeyecek alt sınıfların ortak nitelik ve
+metotlarını tanımlar.</p>
+<p>Şu sınıflar ise, yukarıdaki taban sınıftan türeyen birer alt sınıftır:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Asker</span><span class="p">(</span><span class="n">Oyuncu</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">İşçi</span><span class="p">(</span><span class="n">Oyuncu</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">Yönetici</span><span class="p">(</span><span class="n">Oyuncu</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Bu alt sınıflar, <code class="docutils literal notranslate"><span class="pre">Oyuncu()</span></code> adlı taban sınıfın bütün nitelik ve metotlarını
+miras yoluyla devralır. Yani <code class="docutils literal notranslate"><span class="pre">Oyuncu()</span></code> adlı taban/ebeveyn/üst sınıfın nitelik
+ve metotlarına, <code class="docutils literal notranslate"><span class="pre">Asker()</span></code>, <code class="docutils literal notranslate"><span class="pre">İşçi()</span></code> ve <code class="docutils literal notranslate"><span class="pre">Yönetici()</span></code> adlı alt sınıflardan
+erişebiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">asker1</span> <span class="o">=</span> <span class="n">Asker</span><span class="p">(</span><span class="s1">&#39;Ahmet&#39;</span><span class="p">,</span> <span class="s1">&#39;İstihkamcı&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">işçi1</span> <span class="o">=</span> <span class="n">İşçi</span><span class="p">(</span><span class="s1">&#39;Mehmet&#39;</span><span class="p">,</span> <span class="s1">&#39;Usta&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">yönetici1</span> <span class="o">=</span> <span class="n">Yönetici</span><span class="p">(</span><span class="s1">&#39;Selim&#39;</span><span class="p">,</span> <span class="s1">&#39;Müdür&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">asker1</span><span class="o">.</span><span class="n">hareket_et</span><span class="p">()</span>
+
+<span class="go">&#39;hareket ediliyor...&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">işçi1</span><span class="o">.</span><span class="n">puan_kaybet</span><span class="p">()</span>
+
+<span class="go">&#39;puan kaybedildi&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">yönetici1</span><span class="o">.</span><span class="n">puan_kazan</span><span class="p">()</span>
+
+<span class="go">&#39;puan kazanıldı&#39;</span>
+</pre></div>
+</div>
+<p>İşte bu mekanizmaya miras alma (<em>inheritance</em>) adı verilir. Miras alma
+mekanizması, bir kez yazılan kodların farklı yerlerde kullanılabilmesini
+sağlayan, bu bakımdan da programcıyı kod tekrarına düşmekten kurtaran oldukça
+faydalı bir araçtır. İlerleyen sayfalarda miras alma mekanizmasının başka
+faydalarını da göreceğiz.</p>
+</div>
+<div class="section" id="miras-alma-turleri">
+<h2>Miras Alma Türleri<a class="headerlink" href="#miras-alma-turleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Tahmin edebileceğiniz gibi, miras alma yalnızca bir sınıfın parantezleri arasına
+başka bir sınıfı yazarak ilgili sınıfın bütün nitelik ve metotlarını kayıtsız
+şartsız devralmaktan ibaret değildir. Bir sınıf, muhtemelen, miras aldığı
+nitelik ve metotlar üzerinde birtakım değişiklikler de yapmak isteyecektir.
+Esasında miras alma mekanizmasının işleyişi bakımından kabaca üç ihtimalden söz
+edebiliriz:</p>
+<ol class="arabic simple">
+<li>Miras alınan sınıfın bütün nitelik ve metotları alt sınıfa olduğu gibi
+devredilir.</li>
+<li>Miras alınan sınıfın bazı nitelik ve metotları alt sınıfta yeniden
+tanımlanır.</li>
+<li>Miras alınan sınıfın bazı nitelik ve metotları alt sınıfta değişikliğe
+uğratılır.</li>
+</ol>
+<p>Bu ihtimallerden ilkini zaten görmüştük. Bir sınıfın parantezleri arasına başka
+bir sınıfın adını yazdıktan sonra eğer alt sınıfta herhangi bir değişiklik
+yapmazsak, taban sınıftaki nitelik ve metotlar olduğu gibi alt sınıflara
+aktarılacaktır.</p>
+<p>Mesela:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Asker</span><span class="p">(</span><span class="n">Oyuncu</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Burada <code class="docutils literal notranslate"><span class="pre">Asker()</span></code> sınıfı, miras aldığı <code class="docutils literal notranslate"><span class="pre">Oyuncu()</span></code> sınıfının sanki bir kopyası
+gibidir. Dolayısıyla <code class="docutils literal notranslate"><span class="pre">Oyuncu()</span></code> sınıfının bütün nitelik ve metotlarına
+<code class="docutils literal notranslate"><span class="pre">Asker()</span></code> sınıfı altından da aynen erişebiliriz.</p>
+<p>Yani yukarıdaki kod, <code class="docutils literal notranslate"><span class="pre">Oyuncu()</span></code> adlı sınıfın bütün nitelik ve metotlarının
+<code class="docutils literal notranslate"><span class="pre">Asker()</span></code> sınıfı tarafından miras alınmasını sağlar. Bu şekilde, <code class="docutils literal notranslate"><span class="pre">Oyuncu()</span></code>
+sınıfı içinde hangi metot veya nitelik nasıl tanımlanmışsa, <code class="docutils literal notranslate"><span class="pre">Asker()</span></code> sınıfına
+da o şekilde devredilir.</p>
+<p>Taban sınıfımızın şu şekilde tanımlandığını biliyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Oyuncu</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">,</span> <span class="n">rütbe</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="n">isim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rütbe</span> <span class="o">=</span> <span class="n">rütbe</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">güç</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">hareket_et</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;hareket ediliyor...&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">puan_kazan</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puan kazanıldı&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">puan_kaybet</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puan kaybedildi&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Dolayısıyla bu taban sınıfta hangi nitelik ve metotlar hangi değerlere sahipse
+aşağıdaki <code class="docutils literal notranslate"><span class="pre">Asker()</span></code>, <code class="docutils literal notranslate"><span class="pre">İşçi()</span></code> ve <code class="docutils literal notranslate"><span class="pre">Yönetici()</span></code> sınıfları da o değerlere
+sahip olacaktır:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Asker</span><span class="p">(</span><span class="n">Oyuncu</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">İşçi</span><span class="p">(</span><span class="n">Oyuncu</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">Yönetici</span><span class="p">(</span><span class="n">Oyuncu</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Ancak, dediğimiz gibi, miras almada tek seçenek bütün metot ve nitelikleri
+olduğu gibi alt sınıflara aktarmak değildir. Zaten öyle olsaydı miras alma
+mekanizmasının pek bir anlamı olmazdı. Biz miras aldığımız sınıflar üzerinde,
+içinde bulunduğumuz durumun gerektirdiği birtakım değişiklikleri yapabilmeliyiz
+ki bu mekanizmanın ilgi çekici bir yanı olsun.</p>
+<p>Ayrıca eğer bir taban sınıfı alt sınıflara olduğu gibi aktaracaksanız, taban
+sınıftan gelen metot ve nitelikler üzerinde herhangi bir değişiklik
+yapmayacaksanız ve alt sınıflara da herhangi bir nitelik ilave etmeyecekseniz,
+alt sınıflar tanımlamak yerine doğrudan taban sınıfın örneklerinden yararlanmak
+daha akıllıca ve pratik bir tercih olabilir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">asker</span> <span class="o">=</span> <span class="n">Oyuncu</span><span class="p">(</span><span class="s1">&#39;Ahmet&#39;</span><span class="p">,</span> <span class="s1">&#39;Er&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">işçi</span> <span class="o">=</span> <span class="n">Oyuncu</span><span class="p">(</span><span class="s1">&#39;Mehmet&#39;</span><span class="p">,</span> <span class="s1">&#39;Usta&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">yönetici</span> <span class="o">=</span> <span class="n">Oyuncu</span><span class="p">(</span><span class="s1">&#39;Selim&#39;</span><span class="p">,</span> <span class="s1">&#39;Müdür&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada asker, işçi ve yönetici için ayrı ayrı alt sınıflar tanımlamak yerine,
+her biri için doğrudan <code class="docutils literal notranslate"><span class="pre">Oyuncu()</span></code> sınıfını farklı <cite>isim</cite> ve <cite>rütbe</cite>
+değerleriyle örnekleyerek istediğimiz şeyi elde ettik.</p>
+<p>İlerleyen derslerde miras alma alternatiflerinden daha ayrıntılı bir şekilde söz
+edeceğiz, ama dilerseniz şimdi konuyu daha fazla dağıtmadan miras alınan metot
+ve niteliklerin alt sınıflar içinde nasıl yeniden tanımlanacağını, nasıl
+değişikliğe uğratılacağını ve alt sınıflara nasıl yeni nitelik ve metotlar
+ekleneceğini incelemeye geçelim ve ilk örneklerimizi vermeye başlayalım.</p>
+<p>Hatırlarsanız bir önceki başlıkta şöyle bir kod yazmıştık:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Asker</span><span class="p">(</span><span class="n">Oyuncu</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Burada <code class="docutils literal notranslate"><span class="pre">Oyuncu()</span></code> sınıfını bütünüyle alt sınıfa aktardık. Peki ya biz bir
+taban sınıfı olduğu gibi miras almak yerine, bazı nitelikleri üzerinde
+değişiklik yaparak miras almak istersek ne olacak? Mesela taban sınıf içinde
+<cite>self.güç</cite> değeri 0. Biz bu değerin <code class="docutils literal notranslate"><span class="pre">Asker()</span></code>, <code class="docutils literal notranslate"><span class="pre">İşçi()</span></code> ve <code class="docutils literal notranslate"><span class="pre">Yönetici()</span></code>
+örnekleri için birbirinden farklı olmasını isteyebiliriz. Veya taban sınıfı
+olduğu gibi miras almakla birlikte, alt sınıflardan herhangi birine ilave
+nitelik veya nitelikler eklemek de isteyebiliriz. Diyelim ki biz <code class="docutils literal notranslate"><span class="pre">Asker()</span></code>
+sınıfı için, öteki sınıflardan farklı olarak, bir de <cite>memleket</cite> niteliği
+tanımlamak istiyoruz. Peki bu durumda ne yapacağız?</p>
+<p>İşte bunun için <code class="docutils literal notranslate"><span class="pre">Asker()</span></code> sınıfını şu şekilde yazabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Asker</span><span class="p">(</span><span class="n">Oyuncu</span><span class="p">):</span>
+    <span class="n">memleket</span> <span class="o">=</span> <span class="s1">&#39;Arpaçbahşiş&#39;</span>
+</pre></div>
+</div>
+<p>Burada <code class="docutils literal notranslate"><span class="pre">Asker()</span></code> sınıfına <cite>memleket</cite> adlı bir sınıf niteliği eklemiş olduk.
+Dolayısıyla <code class="docutils literal notranslate"><span class="pre">Asker()</span></code> sınıfı, <code class="docutils literal notranslate"><span class="pre">Oyuncu()</span></code> adlı taban sınıftan miras alınan
+bütün nitelik ve metotlarla birlikte bir de <cite>memleket</cite> niteliğine sahip olmuş
+oldu:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">asker</span> <span class="o">=</span> <span class="n">Asker</span><span class="p">(</span><span class="s1">&#39;Ahmet&#39;</span><span class="p">,</span> <span class="s1">&#39;binbaşı&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">asker</span><span class="o">.</span><span class="n">isim</span>
+
+<span class="go">&#39;Ahmet&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">asker</span><span class="o">.</span><span class="n">memleket</span>
+
+<span class="go">&#39;Arpaçbahşiş&#39;</span>
+</pre></div>
+</div>
+<p>Elbette, bu niteliği öbür alt sınıflarda tanımlamadığımız için bu nitelik
+yalnızca <code class="docutils literal notranslate"><span class="pre">Asker()</span></code> sınıfına özgüdür.</p>
+<p>Aynı şekilde, bir taban sınıftan türeyen bir alt sınıfa yeni bir sınıf metodu,
+örnek metodu veya statik metot da ekleyebiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Asker</span><span class="p">(</span><span class="n">Oyuncu</span><span class="p">):</span>
+    <span class="n">memleket</span> <span class="o">=</span> <span class="s1">&#39;Arpaçbahşiş&#39;</span>
+
+    <span class="k">def</span> <span class="nf">örnek_metodu</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">sınıf_metodu</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">statik_metot</span><span class="p">():</span>
+        <span class="k">pass</span>
+</pre></div>
+</div>
+<p><strong>Kural şu</strong>: Eğer alt sınıfa eklenen herhangi bir nitelik veya metot taban
+sınıfta zaten varsa, alt sınıfa eklenen nitelik ve metotlar taban sınıftaki
+metot ve niteliklerin yerine geçecektir. Yani diyelim ki taban sınıfımız şu:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Oyuncu</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">,</span> <span class="n">rütbe</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="n">isim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rütbe</span> <span class="o">=</span> <span class="n">rütbe</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">güç</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">hareket_et</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;hareket ediliyor...&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">puan_kazan</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puan kazanıldı&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">puan_kaybet</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puan kaybedildi&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu sınıfın nitelik ve metotlarını miras yoluyla devralan <code class="docutils literal notranslate"><span class="pre">Asker()</span></code> sınıfımız
+ise şu:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Asker</span><span class="p">(</span><span class="n">Oyuncu</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Şimdi bu sınıf içinde <code class="docutils literal notranslate"><span class="pre">hareket_et()</span></code> adlı bir örnek metodu tanımlayalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Asker</span><span class="p">(</span><span class="n">Oyuncu</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">hareket_et</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;yeni hareket_et() metodu&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Eğer taban sınıfta <code class="docutils literal notranslate"><span class="pre">hareket_et()</span></code> adlı bir metot olmasaydı, <code class="docutils literal notranslate"><span class="pre">Asker()</span></code> adlı
+alt sınıf, taban sınıftan miras alınan öteki metot ve niteliklerle birlikte bir
+de <code class="docutils literal notranslate"><span class="pre">hareket_et()</span></code> adlı yeni bir örnek metoduna sahip olmuş olacaktı. Ancak
+taban sınıfta zaten <code class="docutils literal notranslate"><span class="pre">hareket_et()</span></code> adlı bir örnek metodu olduğu için, alt
+sınıfta tanımladığımız aynı adlı örnek metodu, taban sınıftaki metodun yerine
+geçip üzerine yazıyor.</p>
+<p>Buraya kadar her şey tamam. Artık bir taban sınıfa ait metodu alt sınıfa miras
+yoluyla aktarırken nasıl yeniden tanımlayacağımızı öğrendik. Ayrıca alt
+sınıflara nasıl yeni metot ve nitelik ekleyeceğimizi de biliyoruz. Ama mesela,
+<cite>self.isim</cite> ve <cite>self.rütbe</cite> değişkenlerini korurken, taban sınıf içinde 0 değeri
+ile gösterilen <cite>self.güç</cite> değişkenini <code class="docutils literal notranslate"><span class="pre">Asker()</span></code>, <code class="docutils literal notranslate"><span class="pre">İşçi()</span></code> ve <code class="docutils literal notranslate"><span class="pre">Yönetici()</span></code>
+sınıflarının her biri içinde nasıl farklı bir değerle göstereceğimizi
+bilmiyoruz. Yani <cite>self.güç</cite> değerini <code class="docutils literal notranslate"><span class="pre">Asker()</span></code> sınıfı içinde 100, <code class="docutils literal notranslate"><span class="pre">İşçi()</span></code>
+sınıfı içinde 70, <code class="docutils literal notranslate"><span class="pre">Yönetici()</span></code> sınıfı içinde ise 50 ile göstermek istesek
+nasıl bir yol takip etmemiz gerektiği konusunda bir fikrimiz yok. İsterseniz şu
+ana kadar bildiğimiz yöntemleri kullanarak bu amacımızı gerçekleştirmeyi bir
+deneyelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Oyuncu</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">,</span> <span class="n">rütbe</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="n">isim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rütbe</span> <span class="o">=</span> <span class="n">rütbe</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">güç</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">hareket_et</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;hareket ediliyor...&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">puan_kazan</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puan kazanıldı&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">puan_kaybet</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puan kaybedildi&#39;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Asker</span><span class="p">(</span><span class="n">Oyuncu</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">,</span> <span class="n">rütbe</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">güç</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="k">class</span> <span class="nc">İşçi</span><span class="p">(</span><span class="n">Oyuncu</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">,</span> <span class="n">rütbe</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">güç</span> <span class="o">=</span> <span class="mi">70</span>
+
+<span class="k">class</span> <span class="nc">Yönetici</span><span class="p">(</span><span class="n">Oyuncu</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">,</span> <span class="n">rütbe</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">güç</span> <span class="o">=</span> <span class="mi">50</span>
+</pre></div>
+</div>
+<p>Burada taban sınıfın <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> metodunu alt sınıflarda yeniden tanımladık.
+Bu kodları bu şekilde yazıp çalıştırdığımızda <cite>self.güç</cite> değerinin her bir alt
+sınıf için istediğimiz değere sahip olduğunu görürüz. Ancak burada şöyle bir
+sorun var. Bu kodları bu şekilde yazarak <cite>self.isim</cite> ve <cite>self.rütbe</cite>
+değişkenlerinin değerini maalesef kaybettik…</p>
+<p><code class="docutils literal notranslate"><span class="pre">__init__()</span></code> metodunun parametre listesine <cite>isim</cite> ve <cite>rütbe</cite> parametrelerini
+yazdığımız halde bunları kodlarımız içinde herhangi bir şekilde kullanmadığımız
+için, bu parametrelerin listede görünüyor olması bir şey ifade etmiyor. Yani alt
+sınıflarda tanımladığımız <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> metodu bizden <cite>isim</cite> ve <cite>rütbe</cite> adlı
+iki parametre bekliyor olsa da, bu parametrelerin değerini kodlar içinde
+kullanmadığımız için bu parametrelere değer atamamız herhangi bir amaca hizmet
+etmiyor.</p>
+<p>Gelin bu söylediklerimizi kanıtlayalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oyuncular</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">asker</span> <span class="o">=</span> <span class="n">oyuncular</span><span class="o">.</span><span class="n">Asker</span><span class="p">(</span><span class="s1">&#39;Ahmet&#39;</span><span class="p">,</span> <span class="s1">&#39;Er&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">asker</span><span class="o">.</span><span class="n">rütbe</span>
+
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">AttributeError</span>: <span class="n">&#39;Asker&#39; object has no attribute &#39;rütbe&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">asker</span><span class="o">.</span><span class="n">isim</span>
+
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">AttributeError</span>: <span class="n">&#39;Asker&#39; object has no attribute &#39;isim&#39;</span>
+</pre></div>
+</div>
+<p>Bu sorunu çözmek için alt sınıflarımızı şu şekilde yazabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Asker</span><span class="p">(</span><span class="n">Oyuncu</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">,</span> <span class="n">rütbe</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="n">isim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rütbe</span> <span class="o">=</span> <span class="n">rütbe</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">güç</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="k">class</span> <span class="nc">İşçi</span><span class="p">(</span><span class="n">Oyuncu</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">,</span> <span class="n">rütbe</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="n">isim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rütbe</span> <span class="o">=</span> <span class="n">rütbe</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">güç</span> <span class="o">=</span> <span class="mi">70</span>
+
+<span class="k">class</span> <span class="nc">Yönetici</span><span class="p">(</span><span class="n">Oyuncu</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">,</span> <span class="n">rütbe</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="n">isim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rütbe</span> <span class="o">=</span> <span class="n">rütbe</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">güç</span> <span class="o">=</span> <span class="mi">50</span>
+</pre></div>
+</div>
+<p>Burada <cite>self.isim</cite> ve <cite>self.rütbe</cite> değişkenlerini her bir alt sınıf için tekrar
+tanımladık. Bu küçük örnekte pek sorun olmayabilir, ama taban sınıfın
+<code class="docutils literal notranslate"><span class="pre">__init__()</span></code> metodunun içinde çok daha karmaşık işlemlerin yapıldığı
+durumlarda yukarıdaki yaklaşım hiç de pratik olmayacaktır. Ayrıca eğer miras
+alma işlemini, içeriğini bilmediğiniz veya başka bir dosyada bulunan bir
+sınıftan yapıyorsanız yukarıdaki yöntem tamamen kullanışsız olacaktır. Ayrıca
+aynı şeyleri tekrar tekrar yazmak miras alma mekanizmasının ruhuna tamamen
+aykırıdır. Çünkü biz miras alma işlemini zaten aynı şeyleri tekrar tekrar
+yazmaktan kurtulmak için yapıyoruz.</p>
+<p>Bu arada, yukarıda yapmak istediğimiz şeyi şununla karıştırmayın: Biz elbette
+taban sınıftaki bir niteliği, örnekleme sırasında değiştirme imkanına her
+koşulda sahibiz. Yani taban ve alt sınıfların şöyle tanımlanmış olduğunu
+varsayarsak:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Oyuncu</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">,</span> <span class="n">rütbe</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="n">isim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rütbe</span> <span class="o">=</span> <span class="n">rütbe</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">güç</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">hareket_et</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;hareket ediliyor...&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">puan_kazan</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puan kazanıldı&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">puan_kaybet</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puan kaybedildi&#39;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Asker</span><span class="p">(</span><span class="n">Oyuncu</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">İşçi</span><span class="p">(</span><span class="n">Oyuncu</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">Yönetici</span><span class="p">(</span><span class="n">Oyuncu</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Her bir alt sınıfın <cite>güç</cite> değişkenini şu şekilde değiştirebiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">oyuncular</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">asker</span> <span class="o">=</span> <span class="n">oyuncular</span><span class="o">.</span><span class="n">Asker</span><span class="p">(</span><span class="s1">&#39;Ahmet&#39;</span><span class="p">,</span> <span class="s1">&#39;Er&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">asker</span><span class="o">.</span><span class="n">güç</span>
+
+<span class="go">0</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi şu anda askerin gücü 0. Bunu 100 yapalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">asker</span><span class="o">.</span><span class="n">güç</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">asker</span><span class="o">.</span><span class="n">güç</span>
+
+<span class="go">100</span>
+</pre></div>
+</div>
+<p>Aynı şeyi öteki <code class="docutils literal notranslate"><span class="pre">İşçi()</span></code> ve <code class="docutils literal notranslate"><span class="pre">Yönetici()</span></code> sınıflarının örnekleri üzerinde de
+yapabiliriz. Ama bizim istediğimiz bu değil. Biz, <code class="docutils literal notranslate"><span class="pre">Asker()</span></code> sınıfını
+örneklediğimiz anda gücü 100, <code class="docutils literal notranslate"><span class="pre">İşçi()</span></code> sınıfını örneklediğimiz anda gücü 70,
+<code class="docutils literal notranslate"><span class="pre">Yönetici()</span></code> sınıfını örneklediğimiz anda ise gücü 50 olsun istiyoruz.</p>
+<p>İşte tam bu noktada imdadımıza yepyeni bir fonksiyon yetişecek. Bu yeni
+fonksiyonun adı <code class="docutils literal notranslate"><span class="pre">super()</span></code>.</p>
+</div>
+<div class="section" id="super">
+<h2>super()<a class="headerlink" href="#super" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Hatırlarsanız, taban sınıflardan ilk kez bahsederken, bunlara üst sınıf da
+dendiğini söylemiştik. Üst sınıf kavramının İngilizcesi <em>super class</em>’tır. İşte
+bu bölümde inceleyeceğimiz <code class="docutils literal notranslate"><span class="pre">super()</span></code> fonksiyonunun adı da buradaki ‘super’,
+yani ‘üst’ kelimesinden gelir. Miras alınan üst sınıfa atıfta bulunan
+<code class="docutils literal notranslate"><span class="pre">super()</span></code> fonksiyonu, miras aldığımız bir <strong>üst</strong> sınıfın nitelik ve metotları
+üzerinde değişiklik yaparken, mevcut özellikleri de muhafaza edebilmemizi
+sağlar.</p>
+<p>Bir önceki başlıkta verdiğimiz örnek üzerinden <code class="docutils literal notranslate"><span class="pre">super()</span></code> fonksiyonunu
+açıklamaya çalışalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Oyuncu</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">,</span> <span class="n">rütbe</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="n">isim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rütbe</span> <span class="o">=</span> <span class="n">rütbe</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">güç</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">hareket_et</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;hareket ediliyor...&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">puan_kazan</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puan kazanıldı&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">puan_kaybet</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puan kaybedildi&#39;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Asker</span><span class="p">(</span><span class="n">Oyuncu</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">,</span> <span class="n">rütbe</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">güç</span> <span class="o">=</span> <span class="mi">100</span>
+</pre></div>
+</div>
+<p>Bu kodlarda, <code class="docutils literal notranslate"><span class="pre">Oyuncu()</span></code> adlı taban sınıfı miras alan <code class="docutils literal notranslate"><span class="pre">Asker()</span></code> sınıfı,
+<code class="docutils literal notranslate"><span class="pre">__init__()</span></code> metodu içinde <cite>self.güç</cite> değerini yeniden tanımlıyor. Ancak bu
+şekilde taban sınıfın <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> metodu silindiği için, <cite>self.isim</cite> ve
+<cite>self.rütbe</cite> değişkenlerini kaybediyoruz. İşte bu sorunu, üst sınıfa atıfta
+bulunan <code class="docutils literal notranslate"><span class="pre">super()</span></code> fonksiyonu ile çözebiliriz.</p>
+<p>Dikkatlice bakın:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Asker</span><span class="p">(</span><span class="n">Oyuncu</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">,</span> <span class="n">rütbe</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">isim</span><span class="p">,</span> <span class="n">rütbe</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">güç</span> <span class="o">=</span> <span class="mi">100</span>
+</pre></div>
+</div>
+<p>Burada <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> metodu içinde şöyle bir satır kullandığımızı
+görüyorsunuz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">isim</span><span class="p">,</span> <span class="n">rütbe</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>İşte bu satırda <code class="docutils literal notranslate"><span class="pre">super()</span></code> fonksiyonu, tam da adının anlamına uygun olarak,
+miras alınan üst sınıfın <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> metodu içindeki kodların, miras alan alt
+sınıfın <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> metodu içine aktarılmasını sağlıyor. Böylece hem taban
+sınıfın <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> metodu içindeki <cite>self.isim</cite> ve <cite>self.rütbe</cite> niteliklerini
+korumuş, hem de <cite>self.güç</cite> adlı yeni bir nitelik ekleme imkanı elde etmiş
+oluyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">asker</span> <span class="o">=</span> <span class="n">oyuncular</span><span class="o">.</span><span class="n">Asker</span><span class="p">(</span><span class="s1">&#39;Ahmet&#39;</span><span class="p">,</span> <span class="s1">&#39;Er&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">asker</span><span class="o">.</span><span class="n">isim</span>
+
+<span class="go">&#39;Ahmet&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">asker</span><span class="o">.</span><span class="n">rütbe</span>
+
+<span class="go">&#39;Er&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">asker</span><span class="o">.</span><span class="n">güç</span>
+
+<span class="go">100</span>
+</pre></div>
+</div>
+<p>Bu bilgiyi öteki alt sınıflara da uygulayalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Oyuncu</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">,</span> <span class="n">rütbe</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="n">isim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rütbe</span> <span class="o">=</span> <span class="n">rütbe</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">güç</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">hareket_et</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;hareket ediliyor...&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">puan_kazan</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puan kazanıldı&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">puan_kaybet</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puan kaybedildi&#39;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Asker</span><span class="p">(</span><span class="n">Oyuncu</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">,</span> <span class="n">rütbe</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">isim</span><span class="p">,</span> <span class="n">rütbe</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">güç</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="k">class</span> <span class="nc">İşçi</span><span class="p">(</span><span class="n">Oyuncu</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">,</span> <span class="n">rütbe</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">isim</span><span class="p">,</span> <span class="n">rütbe</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">güç</span> <span class="o">=</span> <span class="mi">70</span>
+
+<span class="k">class</span> <span class="nc">Yönetici</span><span class="p">(</span><span class="n">Oyuncu</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">,</span> <span class="n">rütbe</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">isim</span><span class="p">,</span> <span class="n">rütbe</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">güç</span> <span class="o">=</span> <span class="mi">20</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">super()</span></code> fonksiyonu sayesinde taban sınıfın değiştirmek
+istediğimiz niteliklerine yeni değerler atarken, değiştirmek istemediğimiz
+nitelikleri ise aynı şekilde muhafaza ettik.</p>
+<p>Bu arada eğer taban sınıfın <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> metodundaki parametre listesini alt
+sınıfta da tek tek tekrar etmek sizi rahatsız ediyorsa yukarıdaki kodları şöyle
+de yazabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Asker</span><span class="p">(</span><span class="n">Oyuncu</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">arglar</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">arglar</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">güç</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="k">class</span> <span class="nc">İşçi</span><span class="p">(</span><span class="n">Oyuncu</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">arglar</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">arglar</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">güç</span> <span class="o">=</span> <span class="mi">70</span>
+
+<span class="k">class</span> <span class="nc">Yönetici</span><span class="p">(</span><span class="n">Oyuncu</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">arglar</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">arglar</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">güç</span> <span class="o">=</span> <span class="mi">20</span>
+</pre></div>
+</div>
+<p>Yıldızlı parametreleri önceki derslerimizden hatırlıyor olmalısınız. Bildiğiniz
+gibi, tek yıldızlı parametreler bir fonksiyonun bütün konumlu (<em>positional</em>)
+argümanlarını, parametrelerin parantez içinde geçtiği sırayı dikkate alarak bir
+demet içinde toplar. İşte yukarıda da bu özellikten faydalanıyoruz. Eğer taban
+sınıfta isimli (<em>keyword</em>) argümanlar da olsaydı, o zaman da çift yıldızlı
+argümanları kullanabilirdik.</p>
+<p>Tek ve çift yıldızlı argümanlar genellikle şu şekilde gösterilir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Asker</span><span class="p">(</span><span class="n">Oyuncu</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">güç</span> <span class="o">=</span> <span class="mi">100</span>
+</pre></div>
+</div>
+<p>Böylece konumlu argümanları bir demet içinde, isimli argümanları ise bir sözlük
+içinde toplamış oluyoruz. Bu da bizi üst (ya da taban) sınıfın parametre
+listesini alt sınıflarda tekrar etme derdinden kurtarıyor.</p>
+<p>Bu arada, miras alınan taban sınıfa atıfta bulunan <code class="docutils literal notranslate"><span class="pre">super()</span></code> fonksiyonu,
+Python programlama diline sonradan eklenmiş bir özelliktir. Bu fonksiyon
+gelmeden önce taban sınıfa atıfta bulunabilmek için doğrudan o sınıfın adını
+kullanıyorduk:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Asker</span><span class="p">(</span><span class="n">Oyuncu</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">,</span> <span class="n">rütbe</span><span class="p">):</span>
+        <span class="n">Oyuncu</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">,</span> <span class="n">rütbe</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">güç</span> <span class="o">=</span> <span class="mi">100</span>
+</pre></div>
+</div>
+<p>veya:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Asker</span><span class="p">(</span><span class="n">Oyuncu</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="n">Oyuncu</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">güç</span> <span class="o">=</span> <span class="mi">100</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, eski yöntemde taban sınıfın adını iki kez kullanmamız
+gerekiyor. Ayrıca <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> fonksiyonunun parametre listesinde ilk sıraya
+yine <cite>self</cite> kelimesini de eklemek zorunda kalıyoruz.</p>
+<p>İsterseniz yukarıda gösterdiğimiz eski yöntemi kullanmaya devam edebilirsiniz
+elbette. Ancak <code class="docutils literal notranslate"><span class="pre">super()</span></code> fonksiyonunu kullanmak eski yönteme göre biraz daha
+pratiktir.</p>
+<p>Yukarıdaki örneklerde <code class="docutils literal notranslate"><span class="pre">super()</span></code> fonksiyonunu <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> metodu içinde
+kullandık. Ancak elbette <code class="docutils literal notranslate"><span class="pre">super()</span></code> fonksiyonunu yalnızca <code class="docutils literal notranslate"><span class="pre">__init__()</span></code>
+fonksiyonu içinde kullanmak zorunda değiliz. Bu fonksiyonu başka fonksiyonlar
+içinde de kullanabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Oyuncu</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">,</span> <span class="n">rütbe</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="n">isim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rütbe</span> <span class="o">=</span> <span class="n">rütbe</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">güç</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">hareket_et</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;hareket ediliyor...&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">puan_kazan</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puan kazanıldı&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">puan_kaybet</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puan kaybedildi&#39;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Asker</span><span class="p">(</span><span class="n">Oyuncu</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">,</span> <span class="n">rütbe</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">isim</span><span class="p">,</span> <span class="n">rütbe</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">güç</span> <span class="o">=</span> <span class="mi">100</span>
+
+    <span class="k">def</span> <span class="nf">hareket_et</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">hareket_et</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;hedefe ulaşıldı.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu örneğin, <code class="docutils literal notranslate"><span class="pre">super()</span></code> fonksiyonunun nasıl işlediğini daha iyi anlamanızı
+sağladığını zannediyorum. Gördüğünüz gibi, taban sınıfın <code class="docutils literal notranslate"><span class="pre">hareket_et()</span></code> adlı
+metodunu alt sınıfta tanımladığımız aynı adlı fonksiyon içinde <code class="docutils literal notranslate"><span class="pre">super()</span></code>
+fonksiyonu yardımıyla genişlettik, yani taban sınıfın <code class="docutils literal notranslate"><span class="pre">hareket_et()</span></code> adlı
+fonksiyonuna yeni bir işlev ekledik:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hareket_et</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">hareket_et</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;hedefe ulaşıldı.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada <code class="docutils literal notranslate"><span class="pre">super().hareket_et()</span></code> satırıyla taban sınıfın <code class="docutils literal notranslate"><span class="pre">hareket_et()</span></code> adlı
+metodunu alt sınıfta tanımladığımız yeni <code class="docutils literal notranslate"><span class="pre">hareket_et()</span></code> metodu içinde
+çalıştırarak, bu metodun kabiliyetlerini yeni <code class="docutils literal notranslate"><span class="pre">hareket_et()</span></code> metoduna
+aktarıyoruz.</p>
+</div>
+<div class="section" id="object-sinifi">
+<h2>object Sınıfı<a class="headerlink" href="#object-sinifi" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Biz buraya gelinceye kadar Python’da sınıfları iki farklı şekilde
+tanımlayabileceğimizi öğrendik:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Deneme</span><span class="p">():</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>veya:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Deneme</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Sınıf tanımlarken parantez kullansak da olur kullanmasak da. Eğer miras
+alacağınız bir sınıf yoksa parantezsiz yazımı tercih edebilir, parantezli yazım
+tarzını ise başka bir sınıftan miras aldığınız durumlar için saklayabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">AltSınıf</span><span class="p">(</span><span class="n">TabanSınıf</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Ancak sağda solda incelediğiniz Python kodlarında bazen şöyle bir sınıf
+tanımlama şekli de görürseniz şaşırmayın:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Python’ın 3.x öncesi sürümlerinde sınıflar yeni ve eski tip olmak üzere ikiye
+ayrılıyordu. Bu sürümlerde eski tip sınıflar şöyle tanımlanıyordu:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>veya:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">():</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Yeni tip sınıflar ise şöyle:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Yani eski tip sınıflar öntanımlı olarak herhangi bir taban sınıftan miras
+almazken, yeni tip sınıfların <cite>object</cite> adlı bir sınıftan miras
+alması gerekiyordu. Dolayısıyla, tanımladığınız bir sınıfta <cite>object</cite> sınıfını
+miras almadığınızda, yeni tip sınıflarla birlikte gelen özelliklerden
+yararlanamıyordunuz. Mesela önceki derslerde öğrendiğimiz <cite>&#64;property</cite>
+bezeyicisi yeni tip sınıflarla gelen bir özelliktir. Eğer Python 3 öncesi bir
+sürüm için kod yazıyorsanız ve eğer <cite>&#64;property</cite> bezeyicisini kullanmak
+istiyorsanız tanımladığınız sınıflarda açık açık <cite>object</cite> sınıfını miras
+almalısınız.</p>
+<p>Python 3’te ise bütün sınıflar yeni tip sınıftır. Dolayısıyla <cite>object</cite> sınıfını
+miras alsanız da almasanız da, tanımladığınız bütün sınıflar öntanımlı olarak
+<cite>object</cite> sınıfını miras alacaktır. Yani Python 3 açısından şu üç tanımlama
+arasında bir fark bulunmaz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">Sınıf</span><span class="p">():</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">Sınıf</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Bunların hepsi de Python 3 açısından birer yeni tip sınıftır. Daha doğrusu
+Python 3’te bütün sınıflar bir yeni tip sınıf olduğu için, yukarıdaki sınıf
+tanımlamaları hep aynı tipte sınıflara işaret eder. Python 2’de ise ilk iki
+tanımlama eski tip sınıfları gösterirken, yalnızca üçüncü tanımlama yeni tip
+sınıfları gösterir.</p>
+<p>Geldik bir bölümün daha sonuna… Böylece miras almaya ilişkin temel konuları
+incelemiş olduk. Bu bölümde öğrendiklerimiz sayesinde, etrafta gördüğümüz, miras
+alma mekanizmasının kullanıldığı kodların çok büyük bir bölümünü anlayabilecek
+duruma geldik. Bu mekanizmaya ilişkin olarak öğrenmemiz gerekenlerin geri
+kalanını da bir sonraki bölümde, grafik arayüz tasarımı konusuyla birlikte ele
+alacağız.</p>
+</div>
+</div>
+
+
+
+<div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
+<div class='extrarelbar'> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="nesne_tabanli_programlama6.html" title="Nesne Tabanlı Programlama (Devamı)"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="nesne_tabanli_programlama4.html" title="Nesne Tabanlı Programlama (Devamı)"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+ 
+      </ul>
+    </div> </div>
+
+<div class='addcomment'>Yorumlar</div>
+
+<div class='how-to-use'>
+<h3>Önemli Not</h3>
+Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
+<span class='tag'>&lt;pre&gt;&lt;code&gt;</span> etiketleri içine alın. Örneğin:
+
+<pre>
+    <span class='tag'>&lt;pre&gt;&lt;code class="python"&gt;</span>
+    <span class='keyword'>print</span>(<span class='string'>"Merhaba Dünya!"</span>)
+    <span class='tag'>&lt;/code&gt;&lt;/pre&gt;</span>
+</pre>
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'istihza';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4eca48eb2d83faf9" async="async"></script>
+
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="nesne_tabanli_programlama6.html" title="Nesne Tabanlı Programlama (Devamı)"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="nesne_tabanli_programlama4.html" title="Nesne Tabanlı Programlama (Devamı)"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+ 
+      </ul>
+    </div> 
+
+<div class="footer">
+&copy; Copyright 2007-2019, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 15.12.2019.
+<a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5 ile oluşturulmuştur.
+<br>
+<br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
+alt="Creative Commons License" style="border-width:0"
+src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a><br />
+<br>
+</div>
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=10396326;
+var sc_invisible=1;
+var sc_security="fb5cd679";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="hit counter"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="http://c.statcounter.com/10396326/0/fb5cd679/1/"
+alt="hit counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+  </body>
+</html>
