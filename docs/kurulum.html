@@ -1,0 +1,407 @@
+
+ <!DOCTYPE html>
+ <html lang="tr">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta content="Bu bölümde Python programlama dilinin farklı işletim sistemlerine nasıl kurulacağını anlatacağız." name="description" />
+<meta content="python, python2, python3, kurulum, kaynaktan, Windows, GNU, Linux, root, configure, prefix, home, ev, path, yol" name="keywords" />
+
+    <title>Python Nasıl Kurulur? &#8212; Python 3 için Türkçe Kılavuz</title>
+    <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="search" title="Ara" href="search.html" />
+    <link rel="next" title="Python Nasıl Çalıştırılır?" href="calistirma.html" />
+    <link rel="prev" title="Python Hakkında" href="python_hakkinda.html" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+<div class='header'><a href='https://yazbel.com'>yazbel.com</a></div>
+
+<ul class='navbar'>
+    <li><a href="#"><del>pdf desteği sonlanmıştır</del></a></li>
+    <li class="forum"><a href="http://forum.yazbel.com">forum</a></li>
+</ul>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="calistirma.html" title="Python Nasıl Çalıştırılır?"
+             accesskey="N">sonraki</a></li>
+        <li class="right" >
+          <a href="python_hakkinda.html" title="Python Hakkında"
+             accesskey="P">önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+ 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+
+  <div class="section" id="python-nasil-kurulur">
+<h1>Python Nasıl Kurulur?<a class="headerlink" href="#python-nasil-kurulur" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<p>Python ile program yazabilmemiz için bu programlama dilinin bilgisayarımızda kurulu olması gerekiyor.
+Bu programlama dilini kurmanızın gerekip gerekmediği, kullandığınız işletim sistemine bağlıdır.
+Biz burada hem GNU/Linux hem de Windows kullanıcılarının durumunu sırasıyla ve ayrı ayrı inceleyeceğiz.
+Dilerseniz öncelikle GNU/Linux kullanıcılarının durumuna bakalım:</p>
+<div class="admonition note">
+<p class="first admonition-title">Not</p>
+<p class="last">Bu kitap boyunca bazı konuların GNU/Linux ve Windows kullanıcıları için ayrı ayrı anlatıldığını göreceksiniz.
+Ancak konular bu şekilde ayrılmış da olsa, ben size her ikisini de okumanızı tavsiye ederim.
+Çünkü bu bölümlerde her iki kullanıcı grubunun da ilgisini çekebilecek bilgilere rastlayacaksınız.
+Ayrıca bu bölümler farklı kullanıcı gruplarına hitap ediyor olsa da, aslında bu bölümlerin birbirini tamamlayıcı nitelikte olduğunu göreceksiniz.</p>
+</div>
+<div class="section" id="gnu-linux-kullanicilari">
+<h2>GNU/Linux Kullanıcıları<a class="headerlink" href="#gnu-linux-kullanicilari" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>GNU/Linux dağıtımlarına Python programlama dilini kurarken bazı noktaları göz önünde bulundurmamız gerekiyor.
+İşte bu bölümde bu önemli noktaların neler olduğunu inceleyeceğiz.</p>
+<div class="section" id="kurulu-python-surumu">
+<h3>Kurulu Python Sürümü<a class="headerlink" href="#kurulu-python-surumu" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Hemen hemen bütün GNU/Linux dağıtımlarında Python programlama dili kurulu olarak gelir.
+Örneğin Ubuntu’da Python zaten kuruludur.</p>
+<p>Ancak burada şöyle bir durum var:</p>
+<p>Daha önce de belirttiğimiz gibi, şu anda piyasada iki farklı Python serisi bulunuyor.
+Bunlardan birinin Python’ın 2.x serisi, ötekinin ise 3.x serisi olduğunu biliyorsunuz.</p>
+<p>Sisteminizde kurulu olan Python sürümünü denetlemek için komut satırında öncelikle şu komutu vermeyi deneyin (büyük ‘V’ ile):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python -V
+</pre></div>
+</div>
+<p>Eğer bu komuttan <cite>Python 2.x.y</cite> şeklinde bir çıktı alıyorsanız, yani x ve y’den önceki kısım 2 ile başlıyorsa sisteminizde Python2 kuruludur.</p>
+<p>Ancak <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-V</span></code> komutundan <cite>Python 2.x.y</cite> şeklinde bir çıktı almanız sisteminizde <strong>sadece</strong> Python2’nin kurulu olduğunu göstermez.
+Sisteminizde Python2 ile birlikte Python3 de halihazırda kurulu olabilir.
+Örneğin Ubuntu GNU/Linux’un <strong>12.10</strong> sürümünden itibaren hem Python2, hem de Python3 sistemde kurulu vaziyettedir.</p>
+<p>Kullandığınız GNU/Linux dağıtımında durumun ne olduğunu denetlemek için yukarıdaki komutu bir de <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-V</span></code> şeklinde çalıştırmayı deneyebilirsiniz.
+Eğer bu komut size bir hata mesajı yerine bir sürüm numarası veriyorsa sisteminizde Python3 de kuruludur.</p>
+<p>Sisteminizdeki Python sürümlerine ilişkin daha kesin bir rapor için ise şu komutu kullanabilirsiniz:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ls -g {,/usr{,/local}}/bin | grep python
+</pre></div>
+</div>
+<p>Buradan aldığınız çıktıyı inceleyerek de sisteminizde birden fazla Python sürümünün kurulu olup olmadığını görebilirsiniz.</p>
+<p>Ayrıca kullandığınız GNU/Linux dağıtımında <code class="docutils literal notranslate"><span class="pre">whereis</span> <span class="pre">python</span></code> gibi bir komut vererek de sistemde kurulu Python sürümleri hakkında bilgi edinebilirsiniz.</p>
+<p>Eğer sisteminizde Python3 kuruluysa  ve siz de kurulu olan Python3 sürümünden memnunsanız herhangi bir şey yapmanıza gerek yok.
+Farklı bir Python sürümü kurmaya çalışmadan yolunuza devam edebilirsiniz.</p>
+</div>
+<div class="section" id="paket-deposundan-kurulum">
+<h3>Paket Deposundan Kurulum<a class="headerlink" href="#paket-deposundan-kurulum" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Sistemlerinde öntanımlı olarak herhangi bir Python3 sürümü kurulu olmayan veya sistemlerinde kurulu öntanımlı Python3 sürümünden memnun olmayan GNU/Linux kullanıcılarının, Python3’ü elde etmek için tercih edebileceği iki yol var:
+Birincisi ve benim size önereceğim yol, öncelikle kullandığınız dağıtımın paket yöneticisini kontrol etmenizdir.
+Python3 sisteminizde kurulu olmasa bile, dağıtımınızın depolarında bu sürüm paketlenmiş halde duruyor olabilir.
+O yüzden sisteminize uygun bir şekilde paket yöneticinizi açıp orada ‘python’ kelimesini kullanarak bir arama yapmanızı öneririm.
+Örneğin Ubuntu GNU/Linux dağıtımının paket depolarında Python3 var.
+Dolayısıyla Ubuntu kullanıcıları, eğer sistemlerinde zaten kurulu değilse (ki muhtemelen kuruludur), bu paketi Ubuntu Yazılım Merkezi aracılığıyla veya doğrudan şu komutla kurabilir:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo apt-get install python3
+</pre></div>
+</div>
+<p>Bu komut, Python3’ü bütün bağımlılıkları ile beraber bilgisayarınıza kuracaktır.</p>
+</div>
+<div class="section" id="kaynaktan-kurulum">
+<h3>Kaynaktan Kurulum<a class="headerlink" href="#kaynaktan-kurulum" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Peki ya kullandığınız dağıtımın depolarında Python3 yoksa veya depodaki Python3 sürümü eskiyse ve siz daha yeni bir Python3 sürümü kullanmak istiyorsanız ne yapacaksınız?</p>
+<p>Eğer dağıtımınızın depolarında Python3 paketini bulamazsanız veya depodaki sürüm sizi tatmin etmiyorsa, Python3’ü kaynaktan derlemeniz gerekecektir.
+Python3’ü kaynaktan derlerken iki seçeneğiniz var:
+Python3’ü <cite>root</cite> hakları ile kurmak veya Python3’ü yetkisiz kullanıcı olarak kurmak.
+Normal şartlar altında eğer kullandığınız sistemde <cite>root</cite> haklarına sahipseniz Python3’ü yetkili kullanıcı olarak kurmanızı tavsiye ederim.</p>
+<div class="section" id="root-haklari-ile-kurulum">
+<h4>root Hakları İle Kurulum<a class="headerlink" href="#root-haklari-ile-kurulum" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<p>Python’ı kurmadan önce sistemimizde bulunması gereken bazı programlar var.
+Aslında bu programlar olmadan da Python kurulabilir, ancak eğer bu programları kurmazsanız Python’ın bazı özelliklerinden yararlanamazsınız.
+Bu programlar şunlardır:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>tcl-dev</li>
+<li>tk-dev</li>
+<li>zlib1g-dev</li>
+<li>ncurses-dev</li>
+<li>libreadline-dev</li>
+<li>libdb-dev</li>
+<li>libgdbm-dev</li>
+<li>libzip-dev</li>
+<li>libssl-dev</li>
+<li>libsqlite3-dev</li>
+<li>libbz2-dev</li>
+<li>liblzma-dev</li>
+</ol>
+</div></blockquote>
+<p>Bu programları, kullandığınız GNU/Linux dağıtımının paket yöneticisi aracılığıyla kurabilirsiniz.
+Yalnız paket adlarının ve gerekli paket sayısının dağıtımlar arasında farklılık gösterebileceğini unutmayın.
+Yukarıdaki liste Ubuntu için geçerlidir.
+Mesela yukarıda <cite>tcl-dev</cite> olarak verdiğimiz paket adı başka bir dağıtımda sadece <cite>tcl</cite> olarak geçiyor ya da yukarıdaki paketlerin bazıları kullandığınız dağıtımda halihazırda kurulu olduğu için sizin daha az bağımlılık kurmanız gerekiyor olabilir.</p>
+<p>Ubuntu’da yukarıdaki paketlerin hepsini şu komutla kurabilirsiniz:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo apt-get install tcl-dev tk-dev zlib1g-dev ncurses-dev libreadline-dev libdb-dev libgdbm-dev libzip-dev libssl-dev libsqlite3-dev libbz2-dev liblzma-dev
+</pre></div>
+</div>
+<p>Yukarıdaki programları kurduktan sonra <a class="reference external" href="https://www.python.org/ftp/python/3.7.0">https://www.python.org/ftp/python/3.7.0</a> adresine gidiyoruz.
+Bu adreste, üzerinde ‘Python-3.7.0.tar.xz’ yazan bağlantıya tıklayarak sıkıştırılmış kurulum dosyasını bilgisayarımıza indiriyoruz.</p>
+<p>Daha sonra bu sıkıştırılmış dosyayı açıyoruz.
+Açılan klasörün içine girip, orada ilk olarak şu komutu veriyoruz:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./configure
+</pre></div>
+</div>
+<p>Bu komut, Python programlama dilinin sisteminize kurulabilmesi için gereken hazırlık aşamalarını gerçekleştirir.
+Bu betiğin temel olarak yaptığı iş, sisteminizin Python programlama dilinin kurulmasına uygun olup olmadığını, derleme işlemi için gereken yazılımların sisteminizde kurulu olup olmadığını denetlemektir.
+Bu betik ayrıca, bir sonraki adımda gerçekleştireceğimiz inşa işleminin nasıl yürüyeceğini tarif eden <em>Makefile</em> adlı bir dosya da oluşturur.</p>
+<p>Bu arada bu komutun başındaki <cite>./</cite> işareti, o anda içinde bulunduğunuz dizinde yer alan <cite>configure</cite> adlı bir betiği çalıştırmanızı sağlıyor.
+Eğer yalnızca <code class="docutils literal notranslate"><span class="pre">configure</span></code> komutu verirseniz, işletim sistemi bu betiği PATH dizinleri içinde arayacak ve bulamayacağı için de hata verecektir.</p>
+<p><code class="docutils literal notranslate"><span class="pre">./configure</span></code> komutu hatasız olarak tamamlandıktan sonra ikinci olarak şu komutu veriyoruz:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>make
+</pre></div>
+</div>
+<p>Burada aslında <code class="docutils literal notranslate"><span class="pre">./configure</span></code> komutu ile oluşan <em>Makefile</em> adlı dosyayı <cite>make</cite> adlı bir program aracılığıyla çalıştırmış oluyoruz.
+<code class="docutils literal notranslate"><span class="pre">make</span></code> bir sistem komutudur.
+Bu komutu yukarıdaki gibi parametresiz olarak çalıştırdığımızda <code class="docutils literal notranslate"><span class="pre">make</span></code> komutu, o anda içinde bulunduğumuz dizinde bir <em>Makefile</em> dosyası arar ve eğer böyle bir dosya varsa onu çalıştırır.
+Eğer bir önceki adımda çalıştırdığımız <code class="docutils literal notranslate"><span class="pre">./configure</span></code> komutu başarısız olduysa, dizinde bir <em>Makefile</em> dosyası oluşmayacağı için yukarıdaki <code class="docutils literal notranslate"><span class="pre">make</span></code> komutu da çalışmayacaktır.
+O yüzden derleme işlemi sırasında verdiğimiz komutların çıktılarını takip edip, bir sonraki aşamaya geçmeden önce komutun düzgün sonlanıp sonlanmadığından emin olmamız gerekiyor.</p>
+<p><code class="docutils literal notranslate"><span class="pre">make</span></code> komutunun yaptığı iş, Python programlama dilinin sisteminize kurulması esnasında sistemin çeşitli yerlerine kopyalanacak olan dosyaları inşa edip oluşturmaktır.
+Bu komutun tamamlanması, kullandığınız bilgisayarın kapasitesine bağlı olarak biraz uzun sürebilir.</p>
+<p><code class="docutils literal notranslate"><span class="pre">make</span></code> komutu tamamlandıktan sonra, komut çıktısının son satırlarına doğru şöyle bir uyarı mesajı görebilirsiniz:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Python build finished, but the necessary bits to build these modules were not found:
+[burada eksik olan modül veya modüllerin adları sıralanır]
+</pre></div>
+</div>
+<p>Burada Python, sistemimizde bazı paketlerin eksik olduğu konusunda bizi uyarıyor.
+Uyarı mesajında bir veya daha fazla paketin eksik olduğunu görebilirsiniz.
+Eğer öyleyse, eksik olduğu bildirilen bütün paketleri kurmamız gerekiyor.</p>
+<p>Gerekli paketi ya da paketleri kurduktan sonra <code class="docutils literal notranslate"><span class="pre">make</span></code> komutunu tekrar çalıştırıyoruz.
+Endişe etmeyin, <code class="docutils literal notranslate"><span class="pre">make</span></code> komutunu ikinci kez verdiğimizde komutun tamamlanması birincisi kadar uzun sürmez.
+Eğer bu komutu ikinci kez çalıştırdığınızda yukarıdaki uyarı mesajı kaybolduysa şu komutla yolunuza devam edebilirsiniz:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo make altinstall
+</pre></div>
+</div>
+<p>Daha önce kaynaktan program derlemiş olan GNU/Linux kullanıcılarının eli, <code class="docutils literal notranslate"><span class="pre">make</span></code> komutundan sonra <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">install</span></code> komutunu vermeye gitmiş olabilir.
+Ama burada bizim <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">install</span></code> yerine <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">altinstall</span></code> komutunu kullandığımıza dikkat edin.
+<code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">altinstall</span></code> komutu, Python kurulurken klasör ve dosyalara sürüm numarasının da eklenmesini sağlar.
+Böylece yeni kurduğunuz Python, sistemdeki eski Python3 sürümünü silip üzerine yazmamış olur ve iki farklı sürüm yan yana varolabilir.
+Eğer <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">altinstall</span></code> yerine <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">install</span></code> komutunu verirseniz sisteminizde zaten varolan eski bir Python3 sürümüne ait dosya ve dizinlerin üzerine yazıp silerek o sürümü kullanılamaz hale getirebilirsiniz.
+Bu da sistemde beklenmedik problemlerin ortaya çıkmasına yol açabilir.
+Bu önemli ayrıntıyı kesinlikle gözden kaçırmamalısınız.</p>
+<p>Derleme aşamalarının hiçbirinde herhangi bir hata mesajı almadıysanız kurulum başarıyla gerçekleşmiş ve sisteminize Python programlama dilinin 3.x sürümü kurulmuş demektir.</p>
+</div>
+<div class="section" id="yetkisiz-kullanici-olarak-kurulum">
+<h4>Yetkisiz Kullanıcı Olarak Kurulum<a class="headerlink" href="#yetkisiz-kullanici-olarak-kurulum" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<p>Elbette <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">make</span> <span class="pre">altinstall</span></code> komutunu verip Python’ı kurabilmek için <cite>root</cite> haklarına sahip olmanız gerekiyor.
+Ama eğer kullandığınız sistemde bu haklara sahip değilseniz Python’ı bu şekilde kuramazsınız.
+Kısıtlı haklara sahip olduğunuz bir sistemde Python’ı ancak kendi ev dizininize (<code class="docutils literal notranslate"><span class="pre">$HOME</span></code>) kurabilirsiniz.</p>
+<p>Eğer Python’ı yetkisiz kullanıcı olarak kuracaksanız, öncelikle yukarıda bahsettiğimiz Python bağımlılıklarının sisteminizde kurulu olup olmadığını kontrol etmeniz lazım.
+Kullandığınız sistemde herhangi bir Python sürümü halihazırda kuruluysa, bu bağımlılıklar da muhtemelen zaten kuruludur.
+Ama değilse, bunları kurması için ya sistem yöneticisine ricada bulunacaksınız, ya da bu bağımlılıkları da tek tek kendi ev dizininize kuracaksınız.
+Eğer sistem yöneticisini bu bağımlılıkları kurmaya ikna edemezseniz, internet üzerinden bulabileceğiniz bilgiler yardımıyla bu bağımlılıkları tek tek elle kendiniz kurabilirsiniz.
+Ancak bu işlemin epey zaman alacağını ve süreç sırasında pek çok başka bağımlılıkla da karşılacağınızı söyleyebilirim.
+O yüzden ne yapıp edip sistem yöneticisini bağımlılıkları kurmaya ikna etmenizi tavsiye ederim…
+Tabii sistem yöneticisini bu bağımlılıkları kurmaya ikna edebilirseniz, istediğiniz Python sürümünü de kurmaya ikna edebileceğinizi düşünebiliriz!
+Ama biz burada sizin Python’ı kendinizin kuracağını varsayarak yolumuza devam edelim.</p>
+<p>Python’ı yetkisiz olarak kurmak, <cite>root</cite> haklarıyla kurmaya çok benzer.
+Aralarında yalnızca bir-iki ufak fark vardır.
+Mesela Python’ı yetkisiz kullanıcı olarak kurarken, <code class="docutils literal notranslate"><span class="pre">./configure</span></code> komutunu şu şekilde vermeniz gerekiyor:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./configure --prefix=$HOME/python
+</pre></div>
+</div>
+<p>Python’ı <cite>root</cite> haklarıyla kurduğunuzda Python <cite>/usr</cite> dizini altına kurulacaktır.
+Ancak siz yetkisiz kullanıcı olduğunuz için <cite>/usr</cite> dizinine herhangi bir şey kuramazsınız.
+İşte bu yüzden, <cite>configure</cite> betiğine verdiğimiz <cite>–prefix</cite> parametresi yardımıyla Python’ı, yazma yetkimiz olan bir dizine kuruyoruz.
+Mesela yukarıdaki komut Python’ın <cite>/usr</cite> dizinine değil, ev dizininiz içinde <cite>python</cite> adlı bir klasöre kurulmasını sağlayacaktır.
+Elbette siz <cite>python</cite> yerine farklı bir dizin adı da belirleyebilirsiniz.
+Burada önemli olan nokta, <cite>–prefix</cite> parametresine vereceğiniz dizin adının, sizin yazmaya yetkili olduğunuz bir dizin olmasıdır.</p>
+<p>Bu komutu çalıştırdıktan sonra <code class="docutils literal notranslate"><span class="pre">make</span></code> komutunu normal bir şekilde veriyoruz.
+Bunun ardından da <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">install</span></code> (veya duruma göre <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">altinstall</span></code>) komutuyla Python’ı ev dizinimize kuruyoruz.
+Burada <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">install</span></code> komutunu <code class="docutils literal notranslate"><span class="pre">sudo</span></code>’suz kullandığımıza dikkat edin.
+Çünkü, dediğimiz gibi, siz yetkili kullanıcı olmadığınız için <code class="docutils literal notranslate"><span class="pre">sudo</span></code> komutunu kullanamazsınız.</p>
+<p>Python’ı bu şekilde ev dizininiz altında bir klasöre kurduğunuzda Python ile ilgili bütün dosyaların bu klasör içinde yer aldığını göreceksiniz.
+Bu klasörü dikkatlice inceleyip neyin nerede olduğuna aşinalık kazanmaya çalışın.
+Eğer mümkünse <cite>root</cite> hakları ile kurulmuş bir Python sürümünü inceleyerek, dosyaların iki farklı kurulum türünde nerelere kopyalandığını karşılaştırın.</p>
+<p>Böylece Python programlama dilini bilgisayarımıza nasıl kuracağımızı öğrenmiş olduk.
+Ama bu noktada bir uyarı yapmadan geçmeyelim:
+Python özellikle bazı GNU/Linux dağıtımlarında pek çok sistem aracıyla sıkı sıkıya bağlantılıdır.
+Yani Python, kullandığınız dağıtımın belkemiği durumunda olabilir.
+Bu yüzden Python’ı kaynaktan derlemek bazı riskler taşıyabilir.
+Eğer yukarıda anlatıldığı şekilde, kaynaktan Python derleyecekseniz, karşı karşıya olduğunuz risklerin farkında olmalısınız.
+Ayrıca GNU/Linux üzerinde kaynaktan program derlemek konusunda tecrübeli değilseniz ve eğer yukarıdaki açıklamalar size kafa karıştırıcı geliyorsa, mesela ‘Ben bu komutları nereye yazacağım?’ diye bir soru geçiyorsa aklınızdan, kesinlikle dağıtımınızla birlikte gelen Python sürümünü kullanmalısınız.
+Python sürümlerini başa baş takip ettiği için, ben size Ubuntu GNU/Linux’u denemenizi önerebilirim.
+Ubuntu’nun depolarında Python’ın en yeni sürümlerini rahatlıkla bulabilirsiniz.
+Ubuntu’nun resmi sitesine <a class="reference external" href="http://www.ubuntu.com">ubuntu.com</a> adresinden, yerel Türkiye sitesine ise <a class="reference external" href="http://forum.ubuntu-tr.net/">forum.ubuntu-tr.net</a> adresinden ulaşabilirsiniz.
+Eğer şu anda kullandığınız GNU/Linux dağıtımından vazgeçmek istemiyorsanız, sabit diskinizden küçük bir bölüm ayırıp bu bölüme sadece Python çalışmalarınız için Ubuntu dağıtımını da kurmayı tercih edebilirsiniz.</p>
+<p>Yalnız küçük bir uyarı daha yapalım.
+Kaynaktan kurulum ile ilgili bu söylediklerimizden, Python’ın GNU/Linux’a kesinlikle kaynaktan derlenerek kurulmaması gerektiği anlamı çıkmamalı.
+Yukarıdaki uyarıların amacı, kullanıcının Python’ı kaynaktan derlerken sadece biraz daha dikkatli olması gerektiğini hatırlatmaktır.
+Örneğin bu satırların yazarı, kullandığı Ubuntu sisteminde Python3’ü kaynaktan derleyerek kullanmayı tercih ediyor ve herhangi bir problem yaşamıyor.</p>
+<p>Bu önemli uyarıları da yaptığımıza göre gönül rahatlığıyla yolumuza devam edebiliriz.</p>
+<p>Kurduğumuz yeni Python’ı nasıl çalıştıracağımızı biraz sonra göreceğiz.
+Ama önce Windows kullanıcılarının Python3’ü nasıl kuracaklarına bakalım.</p>
+</div>
+</div>
+</div>
+<div class="section" id="windows-kullanicilari">
+<h2>Windows Kullanıcıları<a class="headerlink" href="#windows-kullanicilari" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Windows sürümlerinin hiçbirinde Python kurulu olarak gelmez.
+O yüzden Windows kullanıcıları, Python’ı sitesinden indirip kuracak.</p>
+<p>Bunun için öncelikle <a class="reference external" href="http://www.python.org/downloads">http://www.python.org/downloads</a> adresine gidiyoruz.</p>
+<p>Bu adrese gittiğinizde, üzerinde ‘Download Python 3.7.0’ yazan bir düğme göreceksiniz.
+Daha önce de söylediğimiz gibi, eğer bir Python sürüm numarası ‘2’ ile başlıyorsa o sürüm 2.x serisine, yok eğer ‘3’ ile başlıyorsa 3.x serisine aittir.
+Dolayısıyla bu düğme Python3 sürümünü içerir.</p>
+<p>Bu düğmeye tıklıyoruz.
+Bu düğmeye tıkladığınızda bilgisayarınıza <cite>.exe</cite> uzantılı kurulum dosyası inecek.
+Bu dosyaya çift tıklayarak kurulum programını başlatabilirsiniz.</p>
+<div class="admonition note">
+<p class="first admonition-title">Not</p>
+<p class="last">Eğer indireceğiniz Python sürümünün mimarisini ve sürümünü kendiniz seçmek isterseniz <a class="reference external" href="https://www.python.org/ftp/python/3.7.0">https://www.python.org/ftp/python/3.7.0</a> adresinden kendinize uygun olan sürümü bulup indirebilirsiniz.</p>
+</div>
+<p>Kurulum dosyasına çift tıkladığınızda karşınıza ilk gelen ekranda, pencerenin alt tarafında şu kutucukları göreceksiniz:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Install launcher for all users (recommended)</li>
+<li>Add Python 3.7 to PATH</li>
+</ol>
+</div></blockquote>
+<p>Burada ilk kutucuk zaten seçilidir.
+Bunu bu şekilde bırakabilirsiniz.
+İkinci kutucuk ise Python’ı yola eklememizi, böylece yalnızca <code class="docutils literal notranslate"><span class="pre">python</span></code> komutu vererek Python’ı başlatabilmemizi sağlayacak.
+O yüzden oradaki ikinci kutucuğu da işaretliyoruz.</p>
+<p>Aynı pencerenin üst tarafında ise şu seçenekleri göreceksiniz:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>-&gt; Install Now</li>
+<li>-&gt; Customize Installation</li>
+</ol>
+</div></blockquote>
+<p>Burada ‘Install Now’ yazan kısma tıklayarak kurulumu başlatıyoruz.</p>
+<p>Eğer Python’ın bilgisayarda nereye kurulacağını ve başka birtakım kurulum özelliklerini değiştirmek istiyorsanız ‘Customize Installation’ yazılı kısma tıklayabilirsiniz.
+Ben bu kitapta sizin ‘Install Now’ yazan kısma tıklayarak kurulum yaptığınızı varsayacağım.</p>
+<div class="admonition note">
+<p class="first admonition-title">Not</p>
+<p class="last">Python’ın resmi sitesinde dolaşırken kurulum dosyaları arasında, ‘web-based installer’ (web tabanlı kurulum betiği) adlı bir kurulum dosyası görebilirsiniz.
+Bu kurulum dosyası, Python’ın çalışması için gereken dosyaları kurulum esnasında internetten indirip kuran, 1MB’dan küçük bir kurulum programı içerir.
+Dolayısıyla eğer kurulumu bu dosyadan yapacaksanız, kesintisiz bir internet bağlantısına ihtiyacınız olacak.</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Uyarı</p>
+<p class="last">Eğer Windows’ta Python’ı kurmaya çalışırken hata alıyorsanız, muhtemelen işletim sisteminiz güncel değildir.
+Örneğin Windows 7’de Python kurabilmeniz için, SP1 (Service Pack 1) kurulu olmalıdır.
+Windows güncellemelerini kurduktan sonra Python’ı kurmayı tekrar deneyin.</p>
+</div>
+</div>
+<div class="section" id="python-kurulum-ve-calisma-dizini">
+<h2>Python Kurulum ve Çalışma Dizini<a class="headerlink" href="#python-kurulum-ve-calisma-dizini" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Python programlama dilini, kullandığımız işletim sistemine nasıl kurabileceğimizi bilmek kadar önemli bir konu da Python’ı hangi dizine kurduğumuzu bilmektir.
+Zira programcılık maceramız boyunca karşılaşacağımız bazı sorunlar, Python’ın kurulu olduğu dizine gitmemizi gerektirecek, üstelik kendi yazdığımız bazı programlarda da Python’ın kurulu olduğu dizinde çeşitli işlemler yapmak ihtiyacı duyacağız.
+Ayrıca bazı durumlarda, o anda çalışan Python sürümünün hangi konumdan çalıştığını tespit etmemiz de gerekebilir.</p>
+<p>İşte bu sebeplerden, Python’ın hangi dizine kurulduğunu mutlaka biliyor olmamız lazım.</p>
+<p>Python’ın, işletim sisteminizde hangi dizine kurulduğu, Python’ı nasıl kurduğunuza bağlı olarak farklılık gösterir.</p>
+<p>GNU/Linux dağıtımlarında Python genellikle <cite>/usr/lib/python</cite><cite>3.7</cite> dizininde kurulur.
+Ama elbette, eğer siz Python’ı kaynaktan derlediyseniz, derleme sırasında <cite>configure</cite> betiğine verdiğiniz <cite>–prefix</cite> parametresi yardımıyla Python’ın kurulum dizinini kendiniz de belirlemiş olabilirsiniz.</p>
+<p>Windows’ta Python programlama dilini aynen bu kitapta gösterdiğimiz şekilde kurduysanız, Python <code class="docutils literal notranslate"><span class="pre">%LOCALAPPDATA%\Programs\Python</span></code> dizini içine kurulacaktır.
+Ancak eğer kurulum penceresinde ‘Customize Installation’ düğmesine basarak kurulumu özelleştirdiyseniz ve ‘Install for all users’ seçeneğini işaretlediyseniz Python <cite>%PROGRAMFILES%</cite> veya <cite>%PROGRAMFILES(x86)</cite> adlı çevre değişkenlerinin işaret ettiği dizin içine kurulacaktır.</p>
+</div>
+</div>
+
+
+
+<div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
+<div class='extrarelbar'> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="calistirma.html" title="Python Nasıl Çalıştırılır?"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="python_hakkinda.html" title="Python Hakkında"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+ 
+      </ul>
+    </div> </div>
+
+<div class='addcomment'>Yorumlar</div>
+
+<div class='how-to-use'>
+<h3>Önemli Not</h3>
+Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
+<span class='tag'>&lt;pre&gt;&lt;code&gt;</span> etiketleri içine alın. Örneğin:
+
+<pre>
+    <span class='tag'>&lt;pre&gt;&lt;code class="python"&gt;</span>
+    <span class='keyword'>print</span>(<span class='string'>"Merhaba Dünya!"</span>)
+    <span class='tag'>&lt;/code&gt;&lt;/pre&gt;</span>
+</pre>
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'istihza';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4eca48eb2d83faf9" async="async"></script>
+
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="calistirma.html" title="Python Nasıl Çalıştırılır?"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="python_hakkinda.html" title="Python Hakkında"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+ 
+      </ul>
+    </div> 
+
+<div class="footer">
+&copy; Copyright 2007-2019, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 15.12.2019.
+<a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5 ile oluşturulmuştur.
+<br>
+<br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
+alt="Creative Commons License" style="border-width:0"
+src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a><br />
+<br>
+</div>
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=10396326;
+var sc_invisible=1;
+var sc_security="fb5cd679";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="hit counter"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="http://c.statcounter.com/10396326/0/fb5cd679/1/"
+alt="hit counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+  </body>
+</html>

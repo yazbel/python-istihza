@@ -1,0 +1,635 @@
+
+ <!DOCTYPE html>
+ <html lang="tr">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Pencere düzenleri &#8212; Python 3 için Türkçe Kılavuz</title>
+    <link rel="stylesheet" href="../../_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/translations.js"></script>
+    <link rel="search" title="Ara" href="../../search.html" />
+    <link rel="next" title="Temel Pencere Araçları" href="widgets.html" />
+    <link rel="prev" title="Kivy Programlamaya Giriş" href="giris.html" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+<div class='header'><a href='https://yazbel.com'>yazbel.com</a></div>
+
+<ul class='navbar'>
+    <li><a href="#"><del>pdf desteği sonlanmıştır</del></a></li>
+    <li class="forum"><a href="http://forum.yazbel.com">forum</a></li>
+</ul>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="widgets.html" title="Temel Pencere Araçları"
+             accesskey="N">sonraki</a></li>
+        <li class="right" >
+          <a href="giris.html" title="Kivy Programlamaya Giriş"
+             accesskey="P">önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="../index.html" >Üçüncü Taraf Modüller</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">Kivy Paketi</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+
+  <div class="section" id="pencere-duzenleri">
+<h1>Pencere düzenleri<a class="headerlink" href="#pencere-duzenleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<p>Merhaba arkadaşlar. Bir önceki yazıda, Kivy ile ilk programımızı yazdık,kv diline kısaca göz attık ve programımıza dair bazı özellikleri tanıdık.</p>
+<p>Hatırlarsanız bir önceki derste ekrana “Merhaba Dünya” yazmıştık. Tabi ki programlar bu kadar basit olamaz. Yani ekranda başka araçlar da olacaktır. Buton, Metin giriş alanı, Seçim kutuları gibi araçlar da olacaktır elbette.</p>
+<p>Bu pencere araçlarını ekranda gösterirken belli bir düzen içerisinde yerleştirmeliyiz ki, programın görüntüsü güzel olsun ve kullanıcıyı memnun etsin. Şimdi adım adım pencere düzenlerimizi tanımaya başlayalım.</p>
+<div class="admonition note">
+<p class="first admonition-title">Not</p>
+<p class="last">Pencere düzenleri bu kadarıyla sınırlı değil. Burada en çok kullanılanlar anlatılmıştır</p>
+</div>
+<div class="section" id="boxlayout">
+<span id="id1"></span><h2>BoxLayout<a class="headerlink" href="#boxlayout" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>kivy.uix.boxlayout.BoxLayout</p>
+<p>Bu pencere düzeni, içerisine yerleştirilen araçları yan yana veya alt alta yerleştirir. Hemen bir örnekle görelim.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.label</span> <span class="kn">import</span> <span class="n">Label</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.boxlayout</span> <span class="kn">import</span> <span class="n">BoxLayout</span>
+
+<span class="k">class</span> <span class="nc">Program</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">duzen</span> <span class="o">=</span> <span class="n">BoxLayout</span><span class="p">()</span>
+
+        <span class="n">yazi1</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Merhaba&quot;</span><span class="p">)</span>
+
+        <span class="n">yazi2</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Dünya&quot;</span><span class="p">)</span>
+
+        <span class="n">duzen</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="n">yazi1</span><span class="p">)</span>
+        <span class="n">duzen</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="n">yazi2</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">duzen</span>
+
+<span class="n">Program</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Ekran görüntüsü</p>
+<img alt="../../_images/box1.png" src="../../_images/box1.png" />
+<p>Şimdi sıra ile kodumuzu inceleyelim.İlk satırda App sınıfını import ettik. Daha sonra ekrana yazı yazmamızı sağlayan Label sınıfını import ettik. Ve son olarak, pencere düzenimiz olan BoxLayout sınıfını import ettik.</p>
+<p>Bir pencere düzenini kullanabilmek için öncelikle onu tanımlamanız gerekir. duzen isminde bir değişkenle tanımladık ve iki adet yazımızı bu düzenin içine add_widget() fonksiyonu ile ekledik. Bir pencere düzeninin içerisine pencere aracı eklemek için add_widget() fonksiyonu kullanılır. Bir pencere aracını kaldırmak için ise, remove_widget() fonksiyonu kullanılır.</p>
+<p>Eğer BoxLayout pencere düzenini tanımlarken herhangi bir parametre vermezseniz elemanları yanyana dizecektir. Eğer alt alta dizmesini isterseniz orientation parametresini kullanmanız gerekir.</p>
+<p>Örnek;</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.label</span> <span class="kn">import</span> <span class="n">Label</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.boxlayout</span> <span class="kn">import</span> <span class="n">BoxLayout</span>
+
+<span class="k">class</span> <span class="nc">Program</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">duzen</span> <span class="o">=</span> <span class="n">BoxLayout</span><span class="p">(</span><span class="n">orientation</span> <span class="o">=</span> <span class="s2">&quot;vertical&quot;</span><span class="p">)</span>
+
+        <span class="n">yazi1</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Merhaba&quot;</span><span class="p">)</span>
+
+        <span class="n">yazi2</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Dünya&quot;</span><span class="p">)</span>
+
+        <span class="n">duzen</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="n">yazi1</span><span class="p">)</span>
+        <span class="n">duzen</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="n">yazi2</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">duzen</span>
+
+<span class="n">Program</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Ekran görüntüsü</p>
+<img alt="../../_images/box2.png" src="../../_images/box2.png" />
+<p>Gördüğünüz gibi eklenen elemanları alt alta yerleştirdi. Peki ikisini birarada kullanabileceğimiz bir örnek yapabilir miyiz? Evet. Bir kullanıcı giriş ekranı yapalım. Ama sadece görüntü olarak, yani herhangi bir işlem yapmayacak. Sadece pencere düzenini göstermek için yapacağız.</p>
+<p id="target">Amacımız şuna benzer bir pencere oluşturmak;</p>
+<img alt="../../_images/box3.png" src="../../_images/box3.png" />
+<p>Hem alt alta elemanlar var, hem de yan yana. Şimdi böyle bir pencereyi nasıl oluşturacağımızı görelim.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.label</span> <span class="kn">import</span> <span class="n">Label</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.boxlayout</span> <span class="kn">import</span> <span class="n">BoxLayout</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.button</span> <span class="kn">import</span> <span class="n">Button</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.textinput</span> <span class="kn">import</span> <span class="n">TextInput</span>
+
+<span class="k">class</span> <span class="nc">Program</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">anaDuzen</span> <span class="o">=</span> <span class="n">BoxLayout</span><span class="p">(</span><span class="n">orientation</span> <span class="o">=</span> <span class="s2">&quot;vertical&quot;</span><span class="p">)</span> <span class="c1"># Elemanların hepsini tutan ana pencere düzenimiz</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">ilkSatir</span> <span class="o">=</span> <span class="n">BoxLayout</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ikinciSatir</span> <span class="o">=</span> <span class="n">BoxLayout</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">nick</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Nick&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nickKutu</span> <span class="o">=</span> <span class="n">TextInput</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">sifre</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Şifre&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sifreKutu</span> <span class="o">=</span> <span class="n">TextInput</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">buton</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Giriş Yap&quot;</span><span class="p">)</span>
+
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">ilkSatir</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nick</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ilkSatir</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nickKutu</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">ikinciSatir</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sifre</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ikinciSatir</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sifreKutu</span><span class="p">)</span>
+
+        <span class="c1"># Şimdi hepsini ana düzene yerleştiriyoruz</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">anaDuzen</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ilkSatir</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">anaDuzen</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ikinciSatir</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">anaDuzen</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">buton</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">anaDuzen</span>
+
+<span class="n">Program</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Ekran görüntüsü</p>
+<img alt="../../_images/box4.png" src="../../_images/box4.png" />
+<p>Şimdi kodumuzu adım adım inceleyelim. Yukarıda gördüğünüz gibi Button ve TextInput sınıflarını import ettik. Button sınıfı ile butonlar oluşturabiliriz. Butona tıklandığında yapılmasını istediğimiz işlemler tanımlayabiliriz. Ancak bu derste pencere düzenlerini incelediğimiz için butonumuza herhangi bir görev vermedik.</p>
+<p>TextInput, kullanıcıdan girdi almayı sağlar. Böylece kullanıcı ile iletişime geçebiliriz, girdilere göre işlemler yapabiliriz.</p>
+<p>Örneğimiz 3 tane BoxLayout düzeninden oluşuyor. Birincisi, tüm elemanları alt alta tutacak olan “anaDuzen”, İkincisi Nick ve Nick girme kutusunu yan yana tutacak olan “ilkSatir”, ve sonuncusu Şifre ve Şifre girme kutusunu yan yana tutacak olan “ikinciSatir”. Butonumuzu sadece anaDuzen’e eklememiz yeterli.Unutmayın bir pencere düzeninin içine başka bir pencere düzeni ekleyebilirsiniz.</p>
+<p>Peki bu örneğimizi kv dili ile yazsaydık nasıl olurdu? Hemen bakalım</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">BoxLayout</span><span class="p">:</span>
+    <span class="n">orientation</span><span class="p">:</span> <span class="s2">&quot;vertical&quot;</span>
+    <span class="n">BoxLayout</span><span class="p">:</span>
+        <span class="n">Label</span><span class="p">:</span>
+             <span class="n">text</span><span class="p">:</span><span class="s2">&quot;Nick&quot;</span>
+        <span class="n">TextInput</span><span class="p">:</span>
+    <span class="n">BoxLayout</span><span class="p">:</span>
+        <span class="n">Label</span><span class="p">:</span>
+             <span class="n">text</span><span class="p">:</span><span class="s2">&quot;Şifre&quot;</span>
+        <span class="n">TextInput</span><span class="p">:</span>
+    <span class="n">Button</span><span class="p">:</span>
+        <span class="n">text</span><span class="p">:</span><span class="s2">&quot;Giriş Yap&quot;</span>
+</pre></div>
+</div>
+<p>BoxLayout ile ilgili bu kadar örnek yeterli sanırım. Siz de kendinize göre örnekler yaparak veya verilen örnekleri inceleyip değiştirerek konuyu pekiştirebilirsiniz.</p>
+</div>
+<div class="section" id="floatlayout">
+<h2>FloatLayout<a class="headerlink" href="#floatlayout" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>kivy.uix.floatlayout.FloatLayout</p>
+<p>FloatLayout pencere düzeni, araçları istediğimiz boyutta ve koordinatta yerleştirebileceğimiz bir pencere düzenidir. Her zaman olduğu gibi önce import etmeliyiz ve kullanmak üzere tanımlamalıyız. Bir örnek yapalım</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding:utf-8 -*-</span>
+
+<span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.button</span> <span class="kn">import</span> <span class="n">Button</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.floatlayout</span> <span class="kn">import</span> <span class="n">FloatLayout</span>
+
+<span class="c1"># gerekli sınıfları import ettik</span>
+
+<span class="k">class</span> <span class="nc">Program</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="n">duzen</span> <span class="o">=</span> <span class="n">FloatLayout</span><span class="p">()</span> <span class="c1"># pencere düzenimizi tanımladık</span>
+
+        <span class="n">buton</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Merhaba&quot;</span><span class="p">,</span>
+                                <span class="n">size_hint</span> <span class="o">=</span> <span class="p">(</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">),</span>
+                                <span class="n">pos</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+
+        <span class="n">duzen</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="n">buton</span><span class="p">)</span> <span class="c1"># butonumuzu yerleştiriyoruz</span>
+
+        <span class="k">return</span> <span class="n">duzen</span>
+
+
+<span class="n">Program</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Ekran görüntüsü</p>
+<img alt="../../_images/float1.png" src="../../_images/float1.png" />
+<p>Butonumuzu tanımlarken size_hint ve pos şeklinde iki tane parametre verdik. Bunlardan size_hint parametresi, butonumuzun ekrana orantılı bir şekilde boyutlandırılması içindir. Yani, .1 yazdığımızda, pencerenin boyutunun 10’da 1’i kadar genişlikte ve yükseklikte boyutlandırılır. Eğer .5 yazsaydık ekranın boyutunun yarısı kadar olacaktı.Bu arada Python’da .X gösterimi 0.X gösterimi ile aynıdır, bunu da burada belirtmiş olalım.</p>
+<p>size_hint ile butonumuzun boyutlarını belirledikten sonra, pos parametresi ile FloatLayout pencere düzenindeki yerini belirledik. pos = (10,10) yani sıra ile 10 pixel soldan uzaklık, 10 pixel aşağıdan uzaklık şeklinde tanımlanır. Kivy’de (0,0) noktası sol-alt köşedir.</p>
+<p>Eğer butonumuza bu parametreleri vermeden pencere düzenimize eklersek, tüm ekranı dolduracak şekilde boyutlandırılacaktır.</p>
+<p>FloatLayout pencere düzenimizin de boyutunu ayarlayabiliriz. Bunun için</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">duzen</span> <span class="o">=</span> <span class="n">FloatLayout</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">300</span><span class="p">,</span><span class="mi">300</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>gibi bir tanımlama yapmamız yeterli. Aynı şekilde pencereye orantılı olmasını istersek, size_hint parametresini de verebiliriz. Bir örnekle beraber görelim</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># coding:utf-8</span>
+
+<span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.button</span> <span class="kn">import</span> <span class="n">Button</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.floatlayout</span> <span class="kn">import</span> <span class="n">FloatLayout</span>
+
+<span class="c1"># gerekli sınıfları import ettik</span>
+
+<span class="k">class</span> <span class="nc">Program</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="n">duzen</span> <span class="o">=</span> <span class="n">FloatLayout</span><span class="p">(</span><span class="n">size_hint</span> <span class="o">=</span> <span class="p">(</span><span class="o">.</span><span class="mi">5</span><span class="p">,</span><span class="o">.</span><span class="mi">5</span><span class="p">))</span> <span class="c1"># pencere boyutunun yarısı kadar</span>
+
+        <span class="n">buton</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Merhaba&quot;</span><span class="p">)</span> <span class="c1"># FloatLayout pencere düzenimizi tam doldursun diye, parametre vermedik</span>
+
+        <span class="n">duzen</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="n">buton</span><span class="p">)</span> <span class="c1"># butonumuzu yerleştiriyoruz</span>
+
+        <span class="k">return</span> <span class="n">duzen</span>
+
+
+<span class="n">Program</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Ekran görüntüsü</p>
+<img alt="../../_images/float2.png" src="../../_images/float2.png" />
+<p>FloatLayout pencere düzenine eklenen araçların, ekrana orantılı bir şekilde yerleştirilmesini istersek, pos_hint parametresini kullanabiliriz.Böylece penceremizin boyutu ne olursa olsun, orantılı bir şekilde yerleştirilecektir. Aşağıdaki kodları çalıştırıp pencerenin boyutlarıyla oynarsanız, ne demek istediğimi çok daha iyi anlarsınız.</p>
+<p>Kullanımı şu şekilde;</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># coding:utf-8</span>
+
+<span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.button</span> <span class="kn">import</span> <span class="n">Button</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.floatlayout</span> <span class="kn">import</span> <span class="n">FloatLayout</span>
+
+<span class="c1"># gerekli sınıfları import ettik</span>
+
+<span class="k">class</span> <span class="nc">Program</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="n">duzen</span> <span class="o">=</span> <span class="n">FloatLayout</span><span class="p">()</span>
+
+        <span class="n">button</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Hello world&#39;</span><span class="p">,</span> <span class="n">size_hint</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="o">.</span><span class="mi">1</span><span class="p">),</span>
+                <span class="n">pos_hint</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span><span class="o">.</span><span class="mi">2</span><span class="p">})</span>
+
+        <span class="n">duzen</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="n">button</span><span class="p">)</span> <span class="c1"># butonumuzu yerleştiriyoruz</span>
+
+        <span class="k">return</span> <span class="n">duzen</span>
+
+
+<span class="n">Program</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>FloatLayout pencere düzeni ile ilgili anlatacaklarımız bu kadar. FloatLayout pencere düzeni, üzerinde serbest konumlandırma yapıldığı için animasyon için uygundur. Sadece örnek olması açısından, aşağıdaki kodu çalıştırın ve ne olduğunu görün. Kodu anlamanızı istemiyorum, ileride zaten anlatacağız, sadece kodun sonuçlarını görmeniz yeterli.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># coding:utf-8</span>
+
+<span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.button</span> <span class="kn">import</span> <span class="n">Button</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.floatlayout</span> <span class="kn">import</span> <span class="n">FloatLayout</span>
+<span class="kn">from</span> <span class="nn">kivy.clock</span> <span class="kn">import</span> <span class="n">Clock</span>
+
+<span class="c1"># gerekli sınıfları import ettik</span>
+
+<span class="k">class</span> <span class="nc">Program</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">duzen</span> <span class="o">=</span> <span class="n">FloatLayout</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">buton</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Hello world&#39;</span><span class="p">,</span>
+                            <span class="n">size_hint</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="o">.</span><span class="mi">1</span><span class="p">),</span>
+                            <span class="n">pos</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">duzen</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">buton</span><span class="p">)</span>
+
+        <span class="n">Clock</span><span class="o">.</span><span class="n">schedule_interval</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">animasyon</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">duzen</span>
+
+    <span class="k">def</span> <span class="nf">animasyon</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span> <span class="o">=</span> <span class="bp">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">buton</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+
+
+<span class="n">Program</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="gridlayout">
+<h2>GridLayout<a class="headerlink" href="#gridlayout" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>kivy.uix.gridlayout.GridLayout</p>
+<p>Merhaba arkadaşlar. Bir önceki bölümde FloatLayout pencere düzenini anlattık. FloatLayout, üzerinde koordinat bilgisi ile yerleştirme yapabileceğimiz bir pencere düzenidir diyerek kısa bir tekrar yapmış olalım.</p>
+<p>Bu bölümde GridLayout pencere düzenini inceleyeceğiz. GridLayout, ızgara şeklinde yerleştirmeye imkan veren bir pencere düzenidir. Örneğin şöyle bir görüntü elde etmek için GridLayout pencere düzeni kullanılabilir</p>
+<img alt="../../_images/gridlayout.png" src="../../_images/gridlayout.png" />
+<p>GridLayout ile ilgili önemli iki kavram vardır. Birincisi rows, yani satır. GridLayout pencere düzeninin max kaç satırdan oluşmasını istiyorsak, rows parametresini kullanırız. Diğeri ise, cols yani sütun. GridLayout pencere düzenimizin max kaç sütundan oluşmasını istiyorsak, cols parametresini kullanabiliriz. Şimdi ayrı ayrı ikisiyle ilgili birer örnek yapalım ve nasıl kullanacağımızı görelim</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.button</span> <span class="kn">import</span> <span class="n">Button</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.gridlayout</span> <span class="kn">import</span> <span class="n">GridLayout</span>
+
+<span class="k">class</span> <span class="nc">Yazbel</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="n">govde</span> <span class="o">=</span> <span class="n">GridLayout</span><span class="p">(</span><span class="n">cols</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="c1"># Max 2 sütundan oluşmasını istedik</span>
+        <span class="c1"># 2 sütundan sonra alta kayacaktır</span>
+
+        <span class="c1"># Birden fazla buton ekleyerek nasıl göründüğüne bakalım</span>
+        <span class="c1"># for döngüsü ile ekleyelim</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+            <span class="n">govde</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="n">Button</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)))</span>
+
+        <span class="k">return</span> <span class="n">govde</span>
+
+<span class="n">Yazbel</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Bakalım nasıl görünüyor</p>
+<img alt="../../_images/grid1.png" src="../../_images/grid1.png" />
+<p>Gördüğünüz gibi, ne kadar eleman eklersek ekleyelim her zaman 2 sütunu aşmayacak şekilde yerleştiriliyor. Eğer bir sütunun genişliğini biraz daraltmak istersek, aynı sütuna denk gelen elemanlara size_hint_x parametresini vermemiz gerekiyor. Bir örnek üzerinden görelim</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.button</span> <span class="kn">import</span> <span class="n">Button</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.gridlayout</span> <span class="kn">import</span> <span class="n">GridLayout</span>
+
+<span class="k">class</span> <span class="nc">Yazbel</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="n">govde</span> <span class="o">=</span> <span class="n">GridLayout</span><span class="p">(</span><span class="n">cols</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="c1"># Max 2 sütundan oluşmasını istedik</span>
+        <span class="c1"># 2 sütundan sonra alta kayacaktır</span>
+
+        <span class="c1"># Birden fazla buton ekleyerek nasıl göründüğüne bakalım</span>
+        <span class="c1"># for kullanarak ekleyelim</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+                <span class="c1"># Aynı sütuna denk gelenler için</span>
+                <span class="n">govde</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="n">Button</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span>
+                                        <span class="n">size_hint_x</span> <span class="o">=</span> <span class="o">.</span><span class="mi">4</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">govde</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="n">Button</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)))</span>
+
+        <span class="k">return</span> <span class="n">govde</span>
+
+<span class="n">Yazbel</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="../../_images/grid2.png" src="../../_images/grid2.png" />
+<p>width parametresini de kullanabiliriz</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.button</span> <span class="kn">import</span> <span class="n">Button</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.gridlayout</span> <span class="kn">import</span> <span class="n">GridLayout</span>
+
+<span class="k">class</span> <span class="nc">Yazbel</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="n">govde</span> <span class="o">=</span> <span class="n">GridLayout</span><span class="p">(</span><span class="n">cols</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="c1"># Max 2 sütundan oluşmasını istedik</span>
+        <span class="c1"># 2 sütundan sonra alta kayacaktır</span>
+
+        <span class="c1"># Birden fazla buton ekleyerek nasıl göründüğüne bakalım</span>
+        <span class="c1"># for kullanarak ekleyelim</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+                <span class="c1"># Aynı sütuna denk gelenler için</span>
+                <span class="n">govde</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="n">Button</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span>
+                                        <span class="n">size_hint_x</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span>
+                                        <span class="n">width</span> <span class="o">=</span> <span class="mi">200</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">govde</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="n">Button</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)))</span>
+
+        <span class="k">return</span> <span class="n">govde</span>
+
+<span class="n">Yazbel</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>size_hint_x = None kısmını neden yazdığımıza gelirsek, eğer orantılı boyutlandırmaya None değeri vermezsek, width ile boyutu belirlememize izin vermeyecektir. O yüzden None değeri vererek boyutlandırmayı width ile yapabildik.</p>
+<p>Şimdi, rows kullanımıyla ile ilgili örnek yapalım.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.button</span> <span class="kn">import</span> <span class="n">Button</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.gridlayout</span> <span class="kn">import</span> <span class="n">GridLayout</span>
+
+<span class="k">class</span> <span class="nc">Yazbel</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="n">govde</span> <span class="o">=</span> <span class="n">GridLayout</span><span class="p">(</span><span class="n">rows</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="c1"># Max 2 sütundan oluşmasını istedik</span>
+        <span class="c1"># 2 sütundan sonra alta kayacaktır</span>
+
+        <span class="c1"># Birden fazla buton ekleyerek nasıl göründüğüne bakalım</span>
+        <span class="c1"># for döngüsü ile ekleyelim</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+            <span class="n">govde</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="n">Button</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)))</span>
+
+        <span class="k">return</span> <span class="n">govde</span>
+
+<span class="n">Yazbel</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="../../_images/grid3.png" src="../../_images/grid3.png" />
+<p>Aynı şekilde görüldüğü gibi, ne kadar eleman eklersek ekleyelim, her zaman 2 satır olacak şekilde yerleştiriliyor. Boyutlandırmak için, GridLayout nesnemizi tanımlarken row_default_height parametresini vererek, varsayılan yüksekliğini ayarlayabiliriz.</p>
+<p>Eğer GridLayout ile ilgili daha çok bilgiye ulaşmak isterseniz, <a class="reference external" href="https://kivy.org/doc/stable/api-kivy.uix.gridlayout.html">Kivy GridLayout</a> sayfasına bakabilirsiniz.</p>
+</div>
+<div class="section" id="anchorlayout">
+<h2>AnchorLayout<a class="headerlink" href="#anchorlayout" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>kivy.uix.anchorlayout.AnchorLayout</p>
+<p>Pencere araçlarını belli yönlere yaslamak isterseniz, AnchorLayout kullanabilirsiniz. Örneğin sağ-yukarı, veya orta-aşağı gibi. Yalnız, bu pencere düzeninin kullanımı biraz farklı. Diğer pencere düzenleri içerisine eklenen elemanları belli bir düzene göre yerleştiriyordu. Ancak AnchorLayout kullanımı bundan farklı, AnchorLayout daha çok içine pencere araçlarının yaslanmasında yardımcı bir eleman olarak düşünülebilir.Bir örnekle sanırım daha iyi anlayabiliriz. Öncelikle pencere düzenini tanımlayalım. Pencere aracımız X ekseninde sola yaslı ve Y ekseninde ortada dursun.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">anchor</span> <span class="o">=</span> <span class="n">AnchorLayout</span><span class="p">(</span><span class="n">anchor_x</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span><span class="p">,</span><span class="n">anchor_y</span> <span class="o">=</span> <span class="s2">&quot;center&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Şimdi, sol-orta’ya yerleştirilmesini istediğimiz pencere aracını bunun içine koyuyoruz. Örneğin bir buton koyalım. Yalnız bu butonun boyutlarını biz belirlemezsek ekranı kaplayacaktır.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">buton</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Sol Orta&quot;</span><span class="p">,</span><span class="n">size_hint</span> <span class="o">=</span> <span class="p">(</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span><span class="o">.</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">anchor</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="n">buton</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>İşte önemli nokta burası. İçine buton eklediğimiz bu pencere düzeni, kendi içinde sol-orta’ya yerleştirmeyecektir. Yerleşim için, bu pencere düzenini FloatLayout gibi bir pencere düzeni içerisinde göstermeliyiz.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">govde</span> <span class="o">=</span> <span class="n">FloatLayout</span><span class="p">()</span>
+
+<span class="bp">self</span><span class="o">.</span><span class="n">govde</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="n">anchor</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Yerleştirdikten sonra, butonumuz AnchorLayout yardımıyla sol-ortada duracaktır. Şimdi örneği tam olarak verelim.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># coding: utf-8</span>
+<span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.widget</span> <span class="kn">import</span> <span class="n">Widget</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.floatlayout</span> <span class="kn">import</span> <span class="n">FloatLayout</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.anchorlayout</span> <span class="kn">import</span> <span class="n">AnchorLayout</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.button</span> <span class="kn">import</span> <span class="n">Button</span>
+
+
+<span class="k">class</span> <span class="nc">AnchorOrnek</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">govde</span> <span class="o">=</span> <span class="n">FloatLayout</span><span class="p">()</span>
+
+        <span class="n">anchor</span> <span class="o">=</span> <span class="n">AnchorLayout</span><span class="p">(</span><span class="n">anchor_x</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span><span class="p">,</span><span class="n">anchor_y</span> <span class="o">=</span> <span class="s2">&quot;center&quot;</span><span class="p">)</span>
+        <span class="n">buton</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Sol Orta&quot;</span><span class="p">,</span><span class="n">size_hint</span> <span class="o">=</span> <span class="p">(</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span><span class="o">.</span><span class="mi">2</span><span class="p">))</span>
+        <span class="n">anchor</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="n">buton</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">govde</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="n">anchor</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">govde</span>
+
+<span class="n">AnchorOrnek</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Programı çalıştırdıktan sonra şöyle bir ekran bizi karşılayacaktır</p>
+<img alt="../../_images/anchor.png" src="../../_images/anchor.png" />
+<p>anchor_x ile kullanılabilecek değerler: “left”,”right”,”center”
+anchor_y ile kullanılabilecek değerler: “top”,”bottom”,”center”</p>
+</div>
+<div class="section" id="stacklayout">
+<h2>StackLayout<a class="headerlink" href="#stacklayout" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>kivy.uix.stacklayout.StackLayout</p>
+<p>Stack yani Türkçe karşılığı olarak yığıt, tam da kelime anlamı olarak pencere araçlarını bir tarafa yığarak yerleştirir. Örneğin sağ-yukarı şeklinde tanımladığımızda, eklenen her pencere aracını bu tarafa yığarak yerleştirmeye başlayacaktır. Aşağıdaki png dosyasına bakarak daha iyi anlayabiliriz</p>
+<img alt="../../_images/stack.png" src="../../_images/stack.png" />
+<p>İçerisine yerleştirilecek pencere araçlarının boyutunu değiştirmek gerekiyor. Yoksa diğer pencere düzenlerinde de olduğu gibi, tamamen bulunduğu alanı kaplayacak ve diğer pencere araçlarının düzgün bir şekilde yerleştirilmesine engel olacaktır. Şimdi, bir örnekle bu pencere düzenini kullanalım</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#coding: utf-8</span>
+
+<span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.button</span> <span class="kn">import</span> <span class="n">Button</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.stacklayout</span> <span class="kn">import</span> <span class="n">StackLayout</span>
+
+<span class="k">class</span> <span class="nc">Program</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+
+        <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="n">govde</span> <span class="o">=</span> <span class="n">StackLayout</span><span class="p">(</span><span class="n">orientation</span> <span class="o">=</span> <span class="s2">&quot;lr-tb&quot;</span><span class="p">)</span>
+
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">):</span>
+                        <span class="n">govde</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="n">Button</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="n">size_hint</span> <span class="o">=</span> <span class="p">(</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">),</span><span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">50</span><span class="p">)))</span>
+
+                <span class="k">return</span> <span class="n">govde</span>
+
+
+<span class="n">Program</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Ekran görüntüsü</p>
+<img alt="../../_images/stackexam.png" src="../../_images/stackexam.png" />
+<p>StackLayout oluştururken kullandığımız orientation parametresi, yerleştirmenin hangi yönlerden hangi yöne olacağını belirtmek için kullanılır. Bu durumda bizim yazdığımız değere bakarsak, lr-tb, Left Right - Top Bottom yani soldan sağa ve yukarıdan aşağı şeklinde. Bu şekilde kullanılabilecek kombinasyonlar</p>
+<p>lr-tb
+tb-lr
+rl-tb
+tb-rl
+lr-bt
+bt-lr
+rl-bt
+bt-rl</p>
+<p>Ekranda birden fazla buton oluşturmak için for döngüsü kullandık ve bu butonların boyutunu belirttik. Boyutu sığmayan butonlar otomatik olarak bir alt satıra yerleştirilir, resimde de gördüğünüz gibi.</p>
+<div class="section" id="padding">
+<h3>padding<a class="headerlink" href="#padding" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>StackLayout çerçevesi ve içerisindeki pencere araçlarının arasında ne kadar boşluk olacağını belirtir. Varsayılan olarak [0,0,0,0]</p>
+</div>
+<div class="section" id="spacing">
+<h3>spacing<a class="headerlink" href="#spacing" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Yerleştirilen pencere araçları arasında ne kadar boşluk olacağını belirtir. Varsayılan olarak [0,0]</p>
+</div>
+</div>
+</div>
+
+
+
+<div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
+<div class='extrarelbar'> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="widgets.html" title="Temel Pencere Araçları"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="giris.html" title="Kivy Programlamaya Giriş"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="../index.html" >Üçüncü Taraf Modüller</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >Kivy Paketi</a> &#187;</li> 
+      </ul>
+    </div> </div>
+
+<div class='addcomment'>Yorumlar</div>
+
+<div class='how-to-use'>
+<h3>Önemli Not</h3>
+Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
+<span class='tag'>&lt;pre&gt;&lt;code&gt;</span> etiketleri içine alın. Örneğin:
+
+<pre>
+    <span class='tag'>&lt;pre&gt;&lt;code class="python"&gt;</span>
+    <span class='keyword'>print</span>(<span class='string'>"Merhaba Dünya!"</span>)
+    <span class='tag'>&lt;/code&gt;&lt;/pre&gt;</span>
+</pre>
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'istihza';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4eca48eb2d83faf9" async="async"></script>
+
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="widgets.html" title="Temel Pencere Araçları"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="giris.html" title="Kivy Programlamaya Giriş"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="../index.html" >Üçüncü Taraf Modüller</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >Kivy Paketi</a> &#187;</li> 
+      </ul>
+    </div> 
+
+<div class="footer">
+&copy; Copyright 2007-2019, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 15.12.2019.
+<a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5 ile oluşturulmuştur.
+<br>
+<br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
+alt="Creative Commons License" style="border-width:0"
+src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a><br />
+<br>
+</div>
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=10396326;
+var sc_invisible=1;
+var sc_security="fb5cd679";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="hit counter"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="http://c.statcounter.com/10396326/0/fb5cd679/1/"
+alt="hit counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+  </body>
+</html>

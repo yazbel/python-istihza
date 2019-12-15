@@ -1,0 +1,401 @@
+
+ <!DOCTYPE html>
+ <html lang="tr">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta content="Bu bölümde random modülünü inceleyeceğiz." name="description" />
+<meta content="python, modül, import, random" name="keywords" />
+
+    <title>random Modülü &#8212; Python 3 için Türkçe Kılavuz</title>
+    <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <link rel="search" title="Ara" href="../search.html" />
+    <link rel="next" title="Sqlite ile Veritabanı Programlama" href="sqlite.html" />
+    <link rel="prev" title="math Modülü" href="math.html" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+<div class='header'><a href='https://yazbel.com'>yazbel.com</a></div>
+
+<ul class='navbar'>
+    <li><a href="#"><del>pdf desteği sonlanmıştır</del></a></li>
+    <li class="forum"><a href="http://forum.yazbel.com">forum</a></li>
+</ul>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="sqlite.html" title="Sqlite ile Veritabanı Programlama"
+             accesskey="N">sonraki</a></li>
+        <li class="right" >
+          <a href="math.html" title="math Modülü"
+             accesskey="P">önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Önemli Standart Kütüphane Modülleri</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+
+  <div class="section" id="random-modulu">
+<h1>random Modülü<a class="headerlink" href="#random-modulu" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<p>Eğer yazdığınız programlarda, belirli bir aralıkta rastgele sayıların
+üretilmesine ihtiyaç duyarsanız Python’ın standart kütüphanesinde bulunan
+<code class="docutils literal notranslate"><span class="pre">random</span></code> adlı bir modülü kullanabilirsiniz.</p>
+<p>Tıpkı öteki modüllerde olduğu gibi, <code class="docutils literal notranslate"><span class="pre">random</span></code> modülü de birtakım faydalı
+nitelik ve fonksiyonları barındırır. Biz bu bölümde, bu nitelik ve fonksiyonlar
+arasında en sık kullanılanları inceleyeceğiz.</p>
+<p>Elbette bu modülü kullanabilmek için öncelikle modülümüzü içe aktarmamız
+gerekiyor:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+</pre></div>
+</div>
+<p>Bu işlemin ardından, bu modülün bize sunduğu bütün işlevlerden yararlanabiliriz.</p>
+<div class="section" id="random">
+<h2>random()<a class="headerlink" href="#random" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">random</span></code> modülünün <code class="docutils literal notranslate"><span class="pre">random()</span></code> adlı fonksiyonunu kullanarak, <cite>0.0</cite> ile <cite>1.0</cite>
+arasında rastgele bir kayan noktalı sayı üretebilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+
+<span class="go">0.8064301704207291</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">random()</span></code> fonksiyonu, kendisini her çalıştırışınızda farklı bir kayan noktalı
+sayı üretecektir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+
+<span class="go">0.6825988062501599</span>
+</pre></div>
+</div>
+<p>Üretilen sayıların 0 ile 1 arasında olduğunu özellikle dikkatinizi çekmek
+isterim.</p>
+<p>Mesela bu fonksiyonu kullanarak, 0 ile 1 arası 10 tane sayı üretelim. Bu
+sayıları gösterirken de noktadan sonra yalnızca dört basamak görüntülenmesine
+izin verelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()))</span>
+<span class="gp">...</span>
+<span class="go">0.3094</span>
+<span class="go">0.5277</span>
+<span class="go">0.1588</span>
+<span class="go">0.2832</span>
+<span class="go">0.8742</span>
+<span class="go">0.9989</span>
+<span class="go">0.6847</span>
+<span class="go">0.5672</span>
+<span class="go">0.5529</span>
+<span class="go">0.9717</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="uniform">
+<h2>uniform()<a class="headerlink" href="#uniform" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Biraz önce gördüğümüz <code class="docutils literal notranslate"><span class="pre">random()</span></code> fonksiyonu, dikkat ederseniz herhangi bir
+parametre almıyordu. Çünkü bu fonksiyonun tek görevi 0 ile 1 arası sayılar
+üretmektir. Peki ya biz üreteceğimiz sayıların farklı bir aralıkta olmasını
+istersek ne yapacağız?</p>
+<p>İşte, belirli bir aralıkta kayan noktalı sayılar üretmek istediğimizde,
+<code class="docutils literal notranslate"><span class="pre">random()</span></code> yerine <code class="docutils literal notranslate"><span class="pre">uniform()</span></code> adlı bir fonksiyon kullanacağız. Dikkatlice
+inceleyin:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu kod, her çalıştırılışında <cite>0.5</cite> ile <cite>1.5</cite> arası rastgele bir kayan noktalı
+sayı üretecektir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+
+<span class="go">0.9624863371746406</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+
+<span class="go">0.900446344810926</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="randint">
+<h2>randint()<a class="headerlink" href="#randint" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Şimdiye kadar öğrendiğimiz <code class="docutils literal notranslate"><span class="pre">random()</span></code> ve <code class="docutils literal notranslate"><span class="pre">uniform()</span></code> fonksiyonları bize
+yalnızca kayan noktalı sayılar üretme imkanı veriyordu. Ancak elbette biz kimi
+durumlarda kayan noktalı sayılar yerine tam sayılar üretmek de isteyebiliriz.
+İşte böyle bir durumda, <code class="docutils literal notranslate"><span class="pre">random</span></code> modülünün <code class="docutils literal notranslate"><span class="pre">randint()</span></code> adlı başka bir
+fonksiyonunu kullanabiliriz.</p>
+<p>Mesela <cite>45</cite> ile <cite>500</cite> arasında rastgele bir sayı üretmek isterseniz,
+<code class="docutils literal notranslate"><span class="pre">randint()</span></code> fonksiyonunu şu şekilde kullanabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">45</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu fonksiyon, her çalıştırılışında <cite>45</cite> ile <cite>500</cite> arasında rastgele bir tam sayı
+üretecektir.</p>
+</div>
+<div class="section" id="choice">
+<h2>choice()<a class="headerlink" href="#choice" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">random</span></code> modülünün <code class="docutils literal notranslate"><span class="pre">choice()</span></code> adlı fonksiyonunu kullanarak, dizi niteliği
+taşıyan veri tiplerinden rastgele öğeler seçebiliriz. Bu tanım biraz anlaşılmaz
+gelmiş olabilir. O yüzden bunu bir örnekle açıklayalım.</p>
+<p>Diyelim ki elimizde şöyle bir liste var:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ali&#39;</span><span class="p">,</span> <span class="s1">&#39;veli&#39;</span><span class="p">,</span> <span class="s1">&#39;ahmet&#39;</span><span class="p">,</span>
+<span class="gp">... </span><span class="s1">&#39;mehmet&#39;</span><span class="p">,</span> <span class="s1">&#39;celal&#39;</span><span class="p">,</span> <span class="s1">&#39;selin&#39;</span><span class="p">,</span> <span class="s1">&#39;nihat&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Bildiğiniz gibi, listeler, dizi niteliği taşıyan veri tipleridir. Dolayısıyla
+<code class="docutils literal notranslate"><span class="pre">choice()</span></code> fonksiyonunu kullanarak bu diziden rastgele bir öğe seçebiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ali&#39;</span><span class="p">,</span> <span class="s1">&#39;veli&#39;</span><span class="p">,</span> <span class="s1">&#39;ahmet&#39;</span><span class="p">,</span> <span class="s1">&#39;mehmet&#39;</span><span class="p">,</span> <span class="s1">&#39;celal&#39;</span><span class="p">,</span> <span class="s1">&#39;selin&#39;</span><span class="p">,</span> <span class="s1">&#39;nihat&#39;</span><span class="p">]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
+
+<span class="go">&#39;ali&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
+
+<span class="go">&#39;mehmet&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
+
+<span class="go">&#39;selin&#39;</span>
+</pre></div>
+</div>
+<p>Tıpkı bu örnekte olduğu gibi, karakter dizileri de dizi niteliği taşıyan bir
+veri tipi olduğu için, <code class="docutils literal notranslate"><span class="pre">choice()</span></code> fonksiyonuna cevap verir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s1">&#39;istihza&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">kardiz</span><span class="p">)</span>
+
+<span class="go">&#39;i&#39;</span>
+</pre></div>
+</div>
+<p>Peki acaba bu ‘i’ harfi karakter dizisinin başındaki ‘i’ harfi mi, yoksa
+ortasındaki ‘i’ harfi mi? Sizce bunu nasıl anlayabiliriz?</p>
+</div>
+<div class="section" id="shuffle">
+<h2>shuffle()<a class="headerlink" href="#shuffle" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">shuffle()</span></code> fonksiyonunu kullanarak, dizi niteliği taşıyan veri tiplerindeki
+öğeleri karıştırabilirsiniz (yani öğelerin sırasını karışık bir hale
+getirebilirsiniz). Mesela:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>10 öğeli bir listemiz var. Bu listedeki öğeler <cite>0</cite>’dan <cite>10</cite>’a kadar düzgün bir
+şekilde sıralanmış:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span>
+
+<span class="go">[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span>
+</pre></div>
+</div>
+<p>Şimdi biz <code class="docutils literal notranslate"><span class="pre">shuffle()</span></code> fonksiyonunu kullanarak öğeleri karıştıracağız:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span>
+
+<span class="go">[8, 0, 7, 9, 1, 4, 6, 5, 3, 2]</span>
+</pre></div>
+</div>
+<p>Burada dikkat etmemiz gereken önemli nokta, <code class="docutils literal notranslate"><span class="pre">shuffle()</span></code> fonksiyonunun, özgün
+listenin kendisi üzerinde değişiklik yapıyor oluşudur. Yani liste üzerinde
+<code class="docutils literal notranslate"><span class="pre">shuffle()</span></code> metodunu uyguladıktan sonra artık özgün listeyi kaybediyoruz.
+Dolayısıyla elimizde artık öğeleri 0’dan 10’a kadar düzgün bir şekilde
+sıralanmış liste yok. Onun yerine, öğeleri karıştırılmış bir liste var elimizde.</p>
+<p>Liste üzerine <code class="docutils literal notranslate"><span class="pre">shuffle()</span></code> fonksiyonunu her uygulayışınızda özgün listenin
+öğeleri bir daha karıştırılacaktır.</p>
+<p>Peki size bir soru…</p>
+<p>Elinizde şöyle bir liste var:</p>
+<blockquote>
+<div>arkadaşlar = [‘ali’, ‘veli’, ‘mehmet’, ‘ahmet’, ‘serkan’, ‘selin’]</div></blockquote>
+<p>Görevimiz bu listenin öğelerini karıştırmak. Ama biz aynı zamanda özgün
+<cite>arkadaşlar</cite> listesindeki öğe sıralamasını da kaybetmek istemiyoruz. Bunu nasıl
+başarabiliriz?</p>
+</div>
+<div class="section" id="randrange">
+<h2>randrange()<a class="headerlink" href="#randrange" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">randrange()</span></code> fonksiyonu, yukarıda öğrendiğimiz <code class="docutils literal notranslate"><span class="pre">randint()</span></code> fonksiyonu ile
+aynı işi yapar. Yani her iki fonksiyon da, belli bir aralıkta rastgele
+tamsayılar üretir. Ancak aralarında iki ufak fark bulunur.</p>
+<p>İlk önce birincisine bakalım…</p>
+<p>Dikkatlice inceleyin:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">randrage</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>5</p>
+</div></blockquote>
+<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">randrange()</span></code> fonksiyonunu tek parametre ile
+kullanabiliyoruz. Yukarıdaki komutu eğer <code class="docutils literal notranslate"><span class="pre">randint()</span></code> ile yazmak istersek şunu
+yapmamız gerekir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">randrange()</span></code> fonksiyonundan farklı olarak, <code class="docutils literal notranslate"><span class="pre">randint()</span></code> fonksiyonunu iki
+parametre ile kullanmamız gerekir. Eğer bu fonksiyona tek parametre verirsek
+hata alırız:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">TypeError</span>: <span class="n">randint() missing 1 required positional argument: &#39;b&#39;</span>
+</pre></div>
+</div>
+<p>Elbette, eğer istersek <code class="docutils literal notranslate"><span class="pre">randrange()</span></code> fonksiyonunu da çift parametre ile
+kullanarak, farklı bir sayı aralığı belirtme imkanına sahibiz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu komut, <cite>10</cite> ile <cite>500</cite> arası rastgele tam sayılar üretecektir. Ayrıca bu komut
+şununla da eşdeğerdir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu iki fonksiyon arasındaki ikinci fark ise, rastgele sayı üretilecek aralığın
+son değeridir. Bu muğlak ifadeyi bir örnekle anlaşılır hale getirmeye
+çalışalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu komut, <cite>10</cite> ile <cite>20</cite> arasında rastgele bir sayı üretir. Üretilecek en düşük
+sayı <cite>10</cite> iken, en büyük sayı ise <cite>19</cite> olacaktır. <cite>20</cite> sayısı asla üretilmez.</p>
+<p>Bir de şuna bakalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada da yine <cite>10</cite> ile <cite>20</cite> arasında rastgele bir sayı üretilir. Tıpkı
+<code class="docutils literal notranslate"><span class="pre">randrange()</span></code> metodunda olduğu gibi, üretilecek en düşük sayı <cite>10</cite>’dur. Ancak
+en büyük sayı <cite>20</cite> olacaktır.</p>
+<p>Bu iki fonksiyonu kullanırken bu farklılığa dikkat etmemiz gerekir. Aksi halde
+yazdığımız programlar hatalı çalışabilir.</p>
+<p>Peki size bir soru: Acaba <code class="docutils literal notranslate"><span class="pre">randint()</span></code> ile <code class="docutils literal notranslate"><span class="pre">randrange()</span></code> arasındaki bu farkı
+nasıl kanıtlarsınız?</p>
+</div>
+<div class="section" id="sample">
+<h2>sample()<a class="headerlink" href="#sample" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>‘Sample’ kelimesi ‘numune’ anlamına gelir. İşte kelimenin bu anlamına paralel
+olarak <code class="docutils literal notranslate"><span class="pre">sample()</span></code> fonksiyonu da, dizi niteliği taşıyan veri tiplerinden belli
+sayıda numune alınabilmesini sağlar. Bakınız:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>100 öğeli bir liste oluşturduk. Şimdi bu listeden 5 tane rastgele numune
+alalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">liste</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+<span class="go">[56, 74, 2, 3, 80]</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">sample()</span></code> fonksiyonunun ilk parametresi numune alınacak
+diziyi, ikinci parametresi ise bu diziden kaç tane numune alınacağını
+gösteriyor.</p>
+</div>
+</div>
+
+
+
+<div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
+<div class='extrarelbar'> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="sqlite.html" title="Sqlite ile Veritabanı Programlama"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="math.html" title="math Modülü"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Önemli Standart Kütüphane Modülleri</a> &#187;</li> 
+      </ul>
+    </div> </div>
+
+<div class='addcomment'>Yorumlar</div>
+
+<div class='how-to-use'>
+<h3>Önemli Not</h3>
+Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
+<span class='tag'>&lt;pre&gt;&lt;code&gt;</span> etiketleri içine alın. Örneğin:
+
+<pre>
+    <span class='tag'>&lt;pre&gt;&lt;code class="python"&gt;</span>
+    <span class='keyword'>print</span>(<span class='string'>"Merhaba Dünya!"</span>)
+    <span class='tag'>&lt;/code&gt;&lt;/pre&gt;</span>
+</pre>
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'istihza';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4eca48eb2d83faf9" async="async"></script>
+
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="sqlite.html" title="Sqlite ile Veritabanı Programlama"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="math.html" title="math Modülü"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Önemli Standart Kütüphane Modülleri</a> &#187;</li> 
+      </ul>
+    </div> 
+
+<div class="footer">
+&copy; Copyright 2007-2019, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 15.12.2019.
+<a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5 ile oluşturulmuştur.
+<br>
+<br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
+alt="Creative Commons License" style="border-width:0"
+src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a><br />
+<br>
+</div>
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=10396326;
+var sc_invisible=1;
+var sc_security="fb5cd679";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="hit counter"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="http://c.statcounter.com/10396326/0/fb5cd679/1/"
+alt="hit counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+  </body>
+</html>

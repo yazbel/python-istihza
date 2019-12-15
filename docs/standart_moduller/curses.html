@@ -1,0 +1,1604 @@
+
+ <!DOCTYPE html>
+ <html lang="tr">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta content="Bu bölümde curses modülünü inceleyeceğiz." name="description" />
+<meta content="python, modül, import, curses" name="keywords" />
+
+    <title>curses Modülü &#8212; Python 3 için Türkçe Kılavuz</title>
+    <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <link rel="search" title="Ara" href="../search.html" />
+    <link rel="next" title="threading Modülü" href="threading.html" />
+    <link rel="prev" title="time Modülü" href="time.html" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+<div class='header'><a href='https://yazbel.com'>yazbel.com</a></div>
+
+<ul class='navbar'>
+    <li><a href="#"><del>pdf desteği sonlanmıştır</del></a></li>
+    <li class="forum"><a href="http://forum.yazbel.com">forum</a></li>
+</ul>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="threading.html" title="threading Modülü"
+             accesskey="N">sonraki</a></li>
+        <li class="right" >
+          <a href="time.html" title="time Modülü"
+             accesskey="P">önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Önemli Standart Kütüphane Modülleri</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+
+  <div class="section" id="curses-modulu">
+<h1>curses Modülü<a class="headerlink" href="#curses-modulu" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<div class="section" id="curses-nedir">
+<h2>curses Nedir?<a class="headerlink" href="#curses-nedir" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Curses kütüphanesi, metin tabanlı terminaller için terminalden bağımsız bir ekran boyama ve klavye kullanımı kolaylığı sağlar. Bu tip terminaller, VT100s, Linux konsolu ve çeşitli programlar tarafından simüle edilmiş terminallerdir. Ekran terminalleri imleci hareket ettirmek, ekranı kaydırmak ve alanları silmek gibi bazı genel işlemleri yapabilmek için çeşitli kontrol kodlarını destekler. Farklı terminaller geniş ölçüde değişik kodlar kullanırlar ve genellikle kendi küçük tuhaflıkları vardır.</p>
+<p>Curses kütüphanesi oldukça temel işlevsellikler sunar, programcıya, örtüşmeyen çoklu metin pencerelerini içeren ekranların soyutlanmasını sağlar. Bir pencerenin içerikleri çeşitli şekillerde değişebilir - bir metin girme, bu metni silme, bu metnin görüntüsünü değiştirme - ve Curses kütüphanesi doğru çıktıyı oluşturabilmek için terminale hangi kontrol kodlarının gönderilmesi gerektiğini çözer. Curses; düğmeler, onay kutuları, veya diyaloglar gibi kullanıcı arayüzü konseptleri sağlamaz; eğer bu gibi özelliklere ihtiyacınız varsa, Urwid gibi bir kullanıcı arayüzü kütüphanesini kullanmayı düşünün.</p>
+<p>Curses kütüphanesi ilk olarak BSD Unix için yazılmıştır; AT&amp;T’nin Unix’in sonraki System V sürümleri için bir çok geliştirme ve yeni işlev eklendi. BSD curses artık muhafaza edilmiyor, AT&amp;T’nin açık kaynak uygulama arayüzü olan ncurses onun yerine getirildi. Eğer Linux veya FreeBSD gibi açık kaynak Unix kullanıyorsanız, sisteminiz neredeyse kesinlikle ncurses kullanıyor demektir. Madem hali hazırdaki bir çok ticari Unix sürümü System V kodu üzerine temellenmiş, burada bahsedilen bütün işlevler büyük olasılıkla kullanılabilir olacaktır. Bazı tescilli Unixlerin taşıdığı eski curses sürümleri her özelliği desteklemeyebilir.</p>
+</div>
+<div class="section" id="python-curses-modulu">
+<h2>Python Curses Modülü<a class="headerlink" href="#python-curses-modulu" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Python modülü, curses tarafından sağlanan C işlevleri üzerinde basit bir sarıcıdır; eğer C’de curses programlamaya zaten aşinaysanız, bu bilgiyi Python’a taşımak gerçekten kolaydır. En büyük fark, Python arayüzeyinin <cite>addstr()</cite>, <cite>mvaddstr()</cite> ve <cite>mvwaddstr()</cite> gibi değişik C işlevlerini tek bir <cite>addstr()</cite> metodunda birleştirerek işleri daha kolay yoldan halletmesidir. Bunu birazdan biraz daha ayrıntılı bir şekilde göreceğiz.</p>
+</div>
+<div class="section" id="bir-curses-uygulamasini-baslatma-ve-sonlandirma">
+<h2>Bir Curses Uygulamasını Başlatma ve Sonlandırma<a class="headerlink" href="#bir-curses-uygulamasini-baslatma-ve-sonlandirma" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Curses ile bir şey yapmadan önce, curses ilklendirilmelidir. Bu ilklendirme işlemi <cite>initscr()</cite> işlevini çağırarak yapılır. Bu işlev terminal tipini belirler, gerekli bütün kurulum kodlarını terminale gönderir ve çeşitli iç veri yapılarını oluşturur. Eğer başarılı olursa, <cite>initscr()</cite> tüm ekranı temsil eden bir pencere geri döndürür; bu ekrana genellikle C değişkenine karşılık gelen isimden sonra stdscr ismi verilmiştir:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">curses</span>
+<span class="n">stdscr</span> <span class="o">=</span> <span class="n">curses</span><span class="o">.</span><span class="n">initscr</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Genellikle curses uygulamaları tuşları okuyabilmek ve onları sadece belli koşullar altında görüntüleyebilmek için tuşların ekranda otomatik olarak yansımasını devre dışı bırakır. Bunun için <cite>noecho()</cite> işlevini çağırmak gerekir:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">curses</span><span class="o">.</span><span class="n">noecho</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Uygulamaların , Enter tuşuna basılmasına ihtiyaç duyulmadan, anında tuşlara tepki vermesi gerekecektir; buna cbreak modu denir, ve tampon girdi moduna zıttır:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">curses</span><span class="o">.</span><span class="n">cbreak</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Terminaller genellikle imleç tuşları veya Page Up ve Home gibi gezinme tuşlarını çoklu kaçış dizisi olarak geri dönderir. Uygulamanızı bazı serileri beklemek ve buna göre işlemek için yazabilecekken, curses bunu sizin yapar; <cite>curses.KEY_LEFT</cite> gibi bir özel karakteri geri dönderir. Curses’in bu işlemi yapabilmesi için keypad modunu aktif hale getirmelisiniz:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">stdscr</span><span class="o">.</span><span class="n">keypad</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bir curses uygulamasını sonlandırmak yeni bir tanesini başlatmaktan çok daha kolaydır. Aşağıdakileri, curses’e uygun hale getirilmiş terminal ayarlarını tersine çevirmek için çağırmanız gerekebilir:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">curses</span><span class="o">.</span><span class="n">nocbreak</span><span class="p">()</span>
+<span class="n">stdscr</span><span class="o">.</span><span class="n">keypad</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">curses</span><span class="o">.</span><span class="n">echo</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Ardından terminalin ilk işletim modunu yüklemek için <cite>endwin()</cite>’i çağırın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">curses</span><span class="o">.</span><span class="n">endwin</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Şimdi yavaş yavaş örnekler üzerinde curses modülünü daha iyi anlamaya çalışalım.</p>
+</div>
+<div class="section" id="ornekler">
+<h2>Örnekler:<a class="headerlink" href="#ornekler" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+</div>
+<div class="section" id="ornek-1">
+<h2>Örnek-1:<a class="headerlink" href="#ornek-1" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Ekranın ortasına bir “hello world!” yazısı yerleştirelim.</p>
+<p><strong>Kodlar</strong>:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">import</span> <span class="nn">curses</span>
+
+<span class="n">ekran</span> <span class="o">=</span> <span class="n">curses</span><span class="o">.</span><span class="n">initscr</span><span class="p">()</span>
+<span class="n">boyutlar</span> <span class="o">=</span> <span class="n">ekran</span><span class="o">.</span><span class="n">getmaxyx</span><span class="p">()</span>
+<span class="n">ekran</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">boyutlar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">boyutlar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">6</span><span class="p">),</span> <span class="s2">&quot;hello world!&quot;</span><span class="p">,</span>
+             <span class="n">curses</span><span class="o">.</span><span class="n">A_BOLD</span><span class="p">)</span>
+<span class="n">ekran</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+<span class="n">ekran</span><span class="o">.</span><span class="n">getch</span><span class="p">()</span>
+<span class="n">curses</span><span class="o">.</span><span class="n">endwin</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Kodların Açıklamaları:</strong></p>
+<p>Önce gerekli modül programın içine aktarılır:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">curses</span>
+</pre></div>
+</div>
+<p>Curses ile işlem yapmadan önce mutlaka ekranın tanıtılması gerekiyor:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span> <span class="o">=</span> <span class="n">curses</span><span class="o">.</span><span class="n">initscr</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Yazıyı ekrana yerleştirmek için satır ve sütun numaralarını yazabileceğimiz gibi, Terminal ekran boyutunun ölçülerini referans alarak bazı özel durumlarda ne yapılması gerektiğini belirtebiliriz:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">boyutlar</span> <span class="o">=</span> <span class="n">ekran</span><span class="o">.</span><span class="n">getmaxyx</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Diyelim yazıyı terminal ekranının tam ortasına yerleştirmek istiyoruz, o zaman sütun ve satır parametrelerine ekran ölçülerinin yarısını değer olarak verebiliriz. Ancak <em>“hello world!”</em>
+ifadesi 12 karakterden oluştuğu için, bu karakter uzunluğunun yarısını satır değerinden çıkarırız:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">boyutlar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">boyutlar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">6</span><span class="p">),</span> <span class="s2">&quot;hello world!&quot;</span><span class="p">,</span>
+             <span class="n">curses</span><span class="o">.</span><span class="n">A_BOLD</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Ekranı tazeleyelim:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Karakterleri yakalayalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span><span class="o">.</span><span class="n">getch</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Herhangi bir tuşa basılınca ekran sonlansın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">curses</span><span class="o">.</span><span class="n">endwin</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ornek-2">
+<h2>Örnek-2:<a class="headerlink" href="#ornek-2" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Sürekli y ekseninin ortasında bulunan ama x ekseni boyunca hareket eden bir “hello world!” yazısı oluşturalım.</p>
+<p><strong>Kodlar</strong>:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">import</span> <span class="nn">curses</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">ekran</span> <span class="o">=</span> <span class="n">curses</span><span class="o">.</span><span class="n">initscr</span><span class="p">()</span>
+<span class="n">boyutlar</span> <span class="o">=</span> <span class="n">ekran</span><span class="o">.</span><span class="n">getmaxyx</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">boyutlar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="s2">&quot;hello world!&quot;</span><span class="p">)):</span>
+    <span class="n">ekran</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="n">ekran</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">boyutlar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="n">i</span><span class="p">,</span> <span class="s2">&quot;hello world!&quot;</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">A_BOLD</span><span class="p">)</span>
+    <span class="n">ekran</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="n">curses</span><span class="o">.</span><span class="n">endwin</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Kodların Açıklamaları:</strong></p>
+<p>Modülleri programın içine aktaralım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">curses</span>
+<span class="kn">import</span> <span class="nn">time</span>
+</pre></div>
+</div>
+<p>Her zamanki gibi önce ekran tanıtılır:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span> <span class="o">=</span> <span class="n">curses</span><span class="o">.</span><span class="n">initscr</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Yine ekranımızın maksimum boyutlarını tanımlayalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">boyutlar</span> <span class="o">=</span> <span class="n">ekran</span><span class="o">.</span><span class="n">getmaxyx</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Yazının terminal ekranında, bir animasyon gibi hareket etmesini istiyorsak, bir for döngüsü içinde sütun ve satırları anlık olarak değiştirebiliriz:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">boyutlar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="s2">&quot;hello world!&quot;</span><span class="p">)):</span>
+</pre></div>
+</div>
+<p>Ekranı temizleyelim:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Sürekli y ekseninin ortasında olan ve x ekseninin i parametresine göre değişen <em>“hello world!”</em> yazısını kalın harflerle ekrana hareketli bir şekilde bastıralım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">boyutlar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="n">i</span><span class="p">,</span> <span class="s2">&quot;hello world!&quot;</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">A_BOLD</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Ekranı tazeleyelim:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><cite>time.sleep()</cite> fonksiyonunu tanımlamadığınızda ne olacağını görmek için fonksiyonu yoruma alın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Ve programdan terminali eski haline getirecek şekilde çıkalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">curses</span><span class="o">.</span><span class="n">endwin</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ornek-3">
+<h2>Örnek-3:<a class="headerlink" href="#ornek-3" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>x ve y eksenleri boyunca hareket eden bir “hello world!” yazısı oluşturalım. Dilerseniz bu uygulamayı bir ekran koruyucu olarak da kullanabilirsiniz.</p>
+<p><strong>Kodlar</strong>:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">import</span> <span class="nn">curses</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">ekran</span> <span class="o">=</span> <span class="n">curses</span><span class="o">.</span><span class="n">initscr</span><span class="p">()</span>
+<span class="n">boyutlar</span> <span class="o">=</span> <span class="n">ekran</span><span class="o">.</span><span class="n">getmaxyx</span><span class="p">()</span>
+<span class="n">ekran</span><span class="o">.</span><span class="n">nodelay</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">q</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+<span class="n">dusey</span><span class="p">,</span> <span class="n">yatay</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
+<span class="k">while</span> <span class="n">q</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">ekran</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="n">ekran</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot;hello world!&quot;</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">A_BOLD</span><span class="p">)</span>
+    <span class="n">ekran</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+    <span class="n">y</span> <span class="o">+=</span> <span class="n">dusey</span>
+    <span class="n">x</span> <span class="o">+=</span> <span class="n">yatay</span>
+    <span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">dusey</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">dusey</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="s2">&quot;hello world!&quot;</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">yatay</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">yatay</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">ekran</span><span class="o">.</span><span class="n">getch</span><span class="p">()</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="n">curses</span><span class="o">.</span><span class="n">endwin</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Kodların Açıklamaları:</strong></p>
+<p>Bu örnekte kullanacağımız gerekli modülleri programın içine aktaralım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">curses</span>
+<span class="kn">import</span> <span class="nn">time</span>
+</pre></div>
+</div>
+<p>Her zamanki gibi önce ekranı tanıtalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span> <span class="o">=</span> <span class="n">curses</span><span class="o">.</span><span class="n">initscr</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Ekranın maksimum boyutlarını alalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">boyutlar</span> <span class="o">=</span> <span class="n">ekran</span><span class="o">.</span><span class="n">getmaxyx</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><cite>nodelay()</cite>’in parametresi <em>1 (True)</em> olursa yazımız ekranda hareket edebilir, <em>0 (False)</em> olursa da yazı sabit bir şekilde durur:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span><span class="o">.</span><span class="n">nodelay</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Döngü değişkenini tanımlıyoruz. Bu değişken basılan her tuşu temsil edecek. Böylece herhangi bir tuşa bastığımızda programdan çıkabiliriz:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>Döngüyle birlikte değişecek olan ekran satır ve sütun değerlerini ilk etapta 0 olarak belirliyoruz:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>Satır ve sütunların değerleri, biri düşey diğeri yataya müdahele edecek değişkenlere göre değiştirilecek. Bu yüzden <em>dusey</em> ve <em>yatay</em> isminde iki tane değişken oluşturalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">dusey</span><span class="p">,</span> <span class="n">yatay</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Şimdi döngümüzü oluşturmaya geçelim:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">q</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>Döngü her başa sardığında ekran temizlensin:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Ekrandaki yazı hep kalın harflerle <em>“hello world!”</em> yazısı olsun:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot;hello world!&quot;</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">A_BOLD</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Ekranı tazeleyelim:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Döngüyle birlikte <em>x</em> ve <em>y</em>’nin değerleri <em>dusey</em> ve <em>yatay</em> değişkenlerine göre arttırılır:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">+=</span> <span class="n">dusey</span>
+<span class="n">x</span> <span class="o">+=</span> <span class="n">yatay</span>
+</pre></div>
+</div>
+<p>Şayet <em>y</em> maksimum değerine ulaşırsa, <em>dusey</em> değişkeni -1’e eşitlenir. Böylece negatif y yönünde hareket edebiliriz:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">dusey</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>Şayet <em>y</em> minimum değerine ulaşırsa, <em>dusey</em>’ değişkeni 1’e eşitlenir. Böylece pozitif y yönünde hareket edebiliriz:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">dusey</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Şayet <em>x</em> maksimum değerine ulaşırsa, <em>yatay</em> değişkeni -1’e eşitlenir. Böylece negatif x yönünde hareket edebiliriz:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="s2">&quot;hello world!&quot;</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">yatay</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>Şayet <em>x</em> minimum değerine ulaşırsa, <em>yatay</em> değişkeni 1’e eşitlenir. Böylece pozitif x yönünde hareket edebiliriz:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">yatay</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Ekranda bir tuşa bastığımız zaman programdan çıkabilmemiz için, <em>q</em> değişkeninin bütün harfleri temsil etmesini sağlayalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="n">ekran</span><span class="o">.</span><span class="n">getch</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Ekrandaki yazının hareketliliği <cite>time.sleep()</cite> fonksiyonu ile biraz azaltalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Ve normal terminal ekranına geri dönelim:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">curses</span><span class="o">.</span><span class="n">endwin</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ornek-4">
+<h2>Örnek-4<a class="headerlink" href="#ornek-4" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>‘asdw’ tuşlarıyla hareket eden bir “hello world!” yazısı oluşturalım.</p>
+<p><strong>Kodlar</strong>:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">import</span> <span class="nn">curses</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">ekran</span> <span class="o">=</span> <span class="n">curses</span><span class="o">.</span><span class="n">initscr</span><span class="p">()</span>
+<span class="n">curses</span><span class="o">.</span><span class="n">noecho</span><span class="p">()</span>
+<span class="n">boyutlar</span> <span class="o">=</span> <span class="n">ekran</span><span class="o">.</span><span class="n">getmaxyx</span><span class="p">()</span>
+<span class="n">ekran</span><span class="o">.</span><span class="n">nodelay</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">q</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">q</span> <span class="o">!=</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;q&quot;</span><span class="p">):</span>
+    <span class="n">ekran</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="n">ekran</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot;hello world!&quot;</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">A_BOLD</span><span class="p">)</span>
+    <span class="n">ekran</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">ekran</span><span class="o">.</span><span class="n">getch</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">q</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">y</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;s&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">y</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;d&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="s2">&quot;hello world!&quot;</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="n">curses</span><span class="o">.</span><span class="n">endwin</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Kodların Açıklamaları:</strong></p>
+<p>Bu örnekte kullanacağımız modülleri içe aktaralım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">curses</span>
+<span class="kn">import</span> <span class="nn">time</span>
+</pre></div>
+</div>
+<p>Yine her zamanki gibi önce ekranı oluşturalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span> <span class="o">=</span> <span class="n">curses</span><span class="o">.</span><span class="n">initscr</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Bastığımız tuş ekrana yansımasın diye, <cite>curses.noecho()</cite> fonksiyonunu kullanacağız. Farkı görmek için bu fonksiyonu yoruma alın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">curses</span><span class="o">.</span><span class="n">noecho</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Yine ekran boyutlarını alalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">boyutlar</span> <span class="o">=</span> <span class="n">ekran</span><span class="o">.</span><span class="n">getmaxyx</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Hareketi sağlamak için <cite>nodelay()</cite> fonksiyonunun değerini 1 olarak ayarlayalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span><span class="o">.</span><span class="n">nodelay</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Her tuşu temsil edecek olan <em>q</em> değişkenimizi tanımlayalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>Bu sefer ekrandaki yazının değişen konumlarını <em>x</em> ve <em>y</em> değerlerine göre belirleyelim. Başlangıç
+değerlerini 0, 0 yazıyoruz:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>Şimdi döngümüzü oluşturmaya geçelim. <em>q</em> tuşuna basılmadığı sürece döngü devam etsin:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">q</span> <span class="o">!=</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;q&quot;</span><span class="p">):</span>
+</pre></div>
+</div>
+<p>Döngü her başa sardığında <cite>clear()</cite> ile yine ekranı temizleyelim:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Ekranın y, x konumuna “hello world!” stringini kalın harfli olacak şekilde ekleyelim:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot;hello world!&quot;</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">A_BOLD</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Ekranı tazeleyelim:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><em>q</em> tuşunun bütün tuşları temsil etmesini sağlayalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="n">ekran</span><span class="o">.</span><span class="n">getch</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Şayet kullanıcı <em>w</em> tuşuna basarsa ve <em>y</em>’nin değeri 0’dan büyükse, <em>y</em>’nin değeri 1 birim azalsın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">q</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">y</span> <span class="o">-=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Şayet kullanıcı <em>s</em> tuşuna basarsa ve <em>y</em>’nin değeri maksimum değerinden küçükse, <em>y</em>’nin değeri 1 birim arttırılsın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;s&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">y</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Şayet kullanıcı <em>a</em> tuşuna basarsa ve <em>x</em>’in değeri 0’dan büyükse, <em>x</em>’in değeri 1 birim azalsın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">-=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Şayet kulanıcı <em>d</em> tuşuna basarsa ve <em>x</em>’in değeri maksimum değerinden küçükse; <em>x</em>’in değeri 1 birim arttırılsın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;d&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="s2">&quot;hello world!&quot;</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p><cite>time.sleep()</cite>’i niye kullandığımızı merak ediyorsanız, bu kodu yoruma ekleyin ve farkı gözlemleyin:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Ve bizi programdan terminali bozmadan çıkaracak olan komutu yazmayı unutmuyoruz:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">curses</span><span class="o">.</span><span class="n">endwin</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ornek-5">
+<h2>Örnek-5:<a class="headerlink" href="#ornek-5" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>“asdw” tuşlarıyla hareket eden ve “1, 2, 3” tuşlarıyla renk değiştiren bir “hello world!” yazısı oluşturalım.</p>
+<p><strong>Kodlar</strong>:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">import</span> <span class="nn">curses</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">ekran</span> <span class="o">=</span> <span class="n">curses</span><span class="o">.</span><span class="n">initscr</span><span class="p">()</span>
+<span class="n">curses</span><span class="o">.</span><span class="n">start_color</span><span class="p">()</span>
+<span class="n">curses</span><span class="o">.</span><span class="n">init_pair</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_GREEN</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_BLACK</span><span class="p">)</span>
+<span class="n">curses</span><span class="o">.</span><span class="n">init_pair</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_CYAN</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_BLACK</span><span class="p">)</span>
+<span class="n">curses</span><span class="o">.</span><span class="n">init_pair</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_RED</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_BLACK</span><span class="p">)</span>
+<span class="n">curses</span><span class="o">.</span><span class="n">noecho</span><span class="p">()</span>
+<span class="n">boyutlar</span> <span class="o">=</span> <span class="n">ekran</span><span class="o">.</span><span class="n">getmaxyx</span><span class="p">()</span>
+<span class="n">ekran</span><span class="o">.</span><span class="n">nodelay</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">g</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">q</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">q</span> <span class="o">!=</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;q&quot;</span><span class="p">):</span>
+    <span class="n">ekran</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="n">ekran</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot;hello world!&quot;</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">color_pair</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+    <span class="n">ekran</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">boyutlar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">ekran</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">ekran</span><span class="o">.</span><span class="n">getch</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">q</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">49</span><span class="p">,</span> <span class="mi">52</span><span class="p">):</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="n">q</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">q</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">y</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;s&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">==</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> \
+                <span class="nb">len</span><span class="p">(</span><span class="s2">&quot;hello world!&quot;</span><span class="p">):</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">y</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;d&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="s2">&quot;hello world!&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">==</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> \
+                <span class="nb">len</span><span class="p">(</span><span class="s2">&quot;hello world!&quot;</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="n">curses</span><span class="o">.</span><span class="n">endwin</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Kodların Açıklamaları:</strong></p>
+<p>Her zamanki gibi kullanacağımız modülleri programın içine aktaralım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">curses</span>
+<span class="kn">import</span> <span class="nn">time</span>
+</pre></div>
+</div>
+<p>Yine önce ekranı tanımlıyoruz:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span> <span class="o">=</span> <span class="n">curses</span><span class="o">.</span><span class="n">initscr</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Herhangi bir renklendirme işlemine geçmeden önce renklendirmeyi başlatmamız gerekiyor:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">curses</span><span class="o">.</span><span class="n">start_color</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Şimdi renk çiftlerini sıralarını belirterek oluşturmaya geçebiliriz:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">curses</span><span class="o">.</span><span class="n">init_pair</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_GREEN</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_BLACK</span><span class="p">)</span>
+<span class="n">curses</span><span class="o">.</span><span class="n">init_pair</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_CYAN</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_BLACK</span><span class="p">)</span>
+<span class="n">curses</span><span class="o">.</span><span class="n">init_pair</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_RED</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_BLACK</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Yine bastığımız herhangi bir tuş ekranda yansıma oluşturmasın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">curses</span><span class="o">.</span><span class="n">noecho</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Maksimum ekran boyutlarını bir değişkene kaydedelim:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">boyutlar</span> <span class="o">=</span> <span class="n">ekran</span><span class="o">.</span><span class="n">getmaxyx</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Yine ekrandaki harekette bir gecikme olmaması için <cite>nodelay()</cite>’in parametresini 1 olarak ayarlıyoruz:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span><span class="o">.</span><span class="n">nodelay</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Yukarıda tanımladığımız renk çiftlerini kullanabilmek için bir değişken tanımlayalım. Bu değişken sayesinde renk çiftlerine, sıra numarası sayesinde erişebileceğiz:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Şimdi de her zamanki gibi her tuşu temsil edecek <em>q</em> değişkenimizi tanımlayalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>Ekrana yazıyı yine <em>x</em> ve <em>y</em> değerlerine göre yerleştireceğiz. 0’a 0 <em>“hello world!”</em> yazısının başlangıç değerleri olsun:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>Döngümüzü tanımlayalım. Döngü <em>q</em> tuşuna basılmadığı sürece devam etsin:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">q</span> <span class="o">!=</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;q&quot;</span><span class="p">):</span>
+</pre></div>
+</div>
+<p>Her zamanki gibi ekranımızı tamamen temizleyelim:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Ekranın <em>y</em> ve <em>x</em> konumuna <em>“hello world!”</em> yazısını yerleştirelim. Aşağıdaki <cite>curses.color_pair(g)</cite>’deki <em>g</em> birazdan tanımlayacağımız tuşlara bastığımızda renk değiştirmeye yarayacak:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot;hello world!&quot;</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">color_pair</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>İmleci ekranın en sonuna götürelim. Bu fonksiyonu kullanmadığımız zaman oluşacak olan farkı görebilmek için fonksiyonu yoruma alın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">boyutlar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Ekranı tazeleyelim:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><em>q</em> bütün tuşları temsil ediyor olsun:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="n">ekran</span><span class="o">.</span><span class="n">getch</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><cite>chr(49)</cite>’dan <cite>chr(52)</cite>’ye kadar olan karakterler 1, 2 ve 3’tür. Şayet kullanıcı bu tuşlara basarsa <em>g</em> değişkeni değişecek ve böylece <em>“hello world!”</em> yazımız farklı renklere sahip olacak:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">q</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">49</span><span class="p">,</span> <span class="mi">52</span><span class="p">):</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="n">q</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Şayet kullanıcı <em>w</em> tuşuna basarsa ve <em>y</em>’nin değeri 0’dan büyükse, <em>y</em> değişkeninin değeri 1 birim azalsın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">q</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">y</span> <span class="o">-=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Şayet kullanıcı <em>s</em> tuşuna basarsa ve <em>y</em>’nin değeri maksimum değerin 1 birim eksiğinden küçükse:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;s&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>Yukarıdaki koşul altında şayet <em>y</em> maksimum değerinden 2 birim küçükse ve <em>x</em>’de maksimum değere ulaşmışsa, hiç bir işlem yapılmasın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">==</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="s2">&quot;hello world!&quot;</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Aksi taktirde, <em>y</em> değişkeninin değeri 1 birim artsın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">else</span><span class="p">:</span>
+    <span class="n">y</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Şayet kullanıcı <em>a</em> tuşuna basarsa ve <em>x</em>’in değeri 0’dan büyükse, <em>x</em> değişkeninin değeri 1 birim azalsın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">-=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Şayet kullanıcı <em>d</em> tuşuna basarsa ve <em>x</em>’in değeri maksimum değerden küçükse:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;d&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="s2">&quot;hello world!&quot;</span><span class="p">):</span>
+</pre></div>
+</div>
+<p>Şayet yukarıdaki koşul altında <em>y</em>’nin ve <em>x</em>’in değerleri max değerlerinden 1 birim küçüğüne eşitse; hiç bir işlem yapılmasın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">==</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="s2">&quot;hello world!&quot;</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Aksi taktirde, <em>x</em> değişkeninin değeri 1 birim arttırılsın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">else</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p><cite>time.sleep()</cite>’in neden kullanıldığını öğrenmek için bu fonksiyonun başına yorum satırı işareti getirin:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Ve programdan çıkıldığında terminal tekrar eski haline getirilsin:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">curses</span><span class="o">.</span><span class="n">endwin</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ornek-6">
+<h2>Örnek-6:<a class="headerlink" href="#ornek-6" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>“asdw” tuşlarıyla hareket eden, “1, 2, 3” tuşlarıyla renkleri değişen, “b” tuşu ile kalınlaşıp inceleşen ve “r” tuşuyla arka plan rengi ön plan rengi haline gelen bir “hello world!” yazısı oluşturalım.</p>
+<p><strong>Kodlar</strong>:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">import</span> <span class="nn">curses</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="n">ekran</span> <span class="o">=</span> <span class="n">curses</span><span class="o">.</span><span class="n">initscr</span><span class="p">()</span>
+<span class="n">curses</span><span class="o">.</span><span class="n">start_color</span><span class="p">()</span>
+<span class="n">curses</span><span class="o">.</span><span class="n">init_pair</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_GREEN</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_BLACK</span><span class="p">)</span>
+<span class="n">curses</span><span class="o">.</span><span class="n">init_pair</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_CYAN</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_BLACK</span><span class="p">)</span>
+<span class="n">curses</span><span class="o">.</span><span class="n">init_pair</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_RED</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_BLACK</span><span class="p">)</span>
+<span class="n">curses</span><span class="o">.</span><span class="n">noecho</span><span class="p">()</span>
+<span class="n">boyutlar</span> <span class="o">=</span> <span class="n">ekran</span><span class="o">.</span><span class="n">getmaxyx</span><span class="p">()</span>
+<span class="n">ekran</span><span class="o">.</span><span class="n">nodelay</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">bold</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">reverse</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="n">curses</span><span class="o">.</span><span class="n">A_NORMAL</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">A_BOLD</span><span class="p">]</span>
+<span class="n">r</span> <span class="o">=</span> <span class="p">[</span><span class="n">curses</span><span class="o">.</span><span class="n">A_NORMAL</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">A_REVERSE</span><span class="p">]</span>
+<span class="n">g</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">q</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">q</span> <span class="o">!=</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;q&quot;</span><span class="p">):</span>
+    <span class="n">ekran</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="n">ekran</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot;hello world!&quot;</span><span class="p">,</span>
+                 <span class="n">curses</span><span class="o">.</span><span class="n">color_pair</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="o">|</span> <span class="n">b</span><span class="p">[</span><span class="n">bold</span><span class="p">]</span> <span class="o">|</span> <span class="n">r</span><span class="p">[</span><span class="n">reverse</span><span class="p">])</span>
+    <span class="n">ekran</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">boyutlar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">ekran</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">ekran</span><span class="o">.</span><span class="n">getch</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">q</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">49</span><span class="p">,</span> <span class="mi">52</span><span class="p">):</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="n">q</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">98</span><span class="p">:</span>
+        <span class="n">bold</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">bold</span>
+    <span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">114</span><span class="p">:</span>
+        <span class="n">reverse</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">reverse</span>
+    <span class="k">if</span> <span class="n">q</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">y</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;s&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">==</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> \
+                <span class="nb">len</span><span class="p">(</span><span class="s2">&quot;hello world!&quot;</span><span class="p">):</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">y</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;d&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="s2">&quot;hello world!&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">==</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> \
+                <span class="nb">len</span><span class="p">(</span><span class="s2">&quot;hello world!&quot;</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="n">curses</span><span class="o">.</span><span class="n">endwin</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Kodların Açıklamaları:</strong></p>
+<p>Yine örnek uygulamamızda kullanacağımız modülleri içe aktaralım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">curses</span>
+<span class="kn">import</span> <span class="nn">time</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi ilk olarak hep ekranı tanımlıyoruz:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span> <span class="o">=</span> <span class="n">curses</span><span class="o">.</span><span class="n">initscr</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Örnek uygulamada renk kullanacağız yine. Bu yüzden renk çiftlerini tanımlamadan önce aşağıdaki fonksiyonu kesin kullanmamız gerekiyor:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">curses</span><span class="o">.</span><span class="n">start_color</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Şimdi 3 tane renk çifti oluşturalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">curses</span><span class="o">.</span><span class="n">init_pair</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_GREEN</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_BLACK</span><span class="p">)</span>
+<span class="n">curses</span><span class="o">.</span><span class="n">init_pair</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_CYAN</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_BLACK</span><span class="p">)</span>
+<span class="n">curses</span><span class="o">.</span><span class="n">init_pair</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_RED</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_BLACK</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bastığımız tuşlar yine ekranda yansıma oluşturmasın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">curses</span><span class="o">.</span><span class="n">noecho</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Ekranın maksimum <em>x</em> ve <em>y</em> değerlerini alalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">boyutlar</span> <span class="o">=</span> <span class="n">ekran</span><span class="o">.</span><span class="n">getmaxyx</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Animasyonumuzun ekranda görüntülenmesinin gecikmemesi için yine <cite>nodelay()</cite>’in parametresini 1 olarak ayarlıyoruz:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span><span class="o">.</span><span class="n">nodelay</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu sefer kalınlaştırma işlemini bir tuş yardımıyla yapacağız. Bunun için <em>bold</em> isimli bir değişken oluşturalım ve değerini 0 yapalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">bold</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p><em>“hello world!”</em> yazısının arka plan rengini ön plana, ön plan rengini ise arka plana çevirmek için <em>reverse</em> isminde bir değişken oluşturalım ve değerini 0 yapalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">reverse</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p><em>b</em> tuşuna basılınca iki ayrı işlem yapılsın: Metin kalınlaştırılmışsa inceltilsin, yok eğer inceltilmişse kalınlaştırılsın. Bu işlem için bir liste oluşturalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="n">curses</span><span class="o">.</span><span class="n">A_NORMAL</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">A_BOLD</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Aynı şekilde <em>reverse</em> işlemi için de birbirinin tersi olan değişkenleri barındıran bir liste oluşturalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="p">[</span><span class="n">curses</span><span class="o">.</span><span class="n">A_NORMAL</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">A_REVERSE</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Tanımladığımız renk çiftlerini kullanabilmek için yine <em>g</em> isimli bir değişken kullanacağız ve bu değişkenin değerini 1 olarak belirleyelim:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Yine ekrandaki her tuşu temsil eden bir <em>q</em> değişkeni oluşturalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p><em>x</em> ve <em>y</em>’nin başlangıç değerlerini belirtelim:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>Yine <em>q</em> tuşuna basılınca sonlanan bir döngü oluşturalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">q</span> <span class="o">!=</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;q&quot;</span><span class="p">):</span>
+</pre></div>
+</div>
+<p>Ekranı temizleyelim yine:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><em>“hello world!</em> yazısını ilgili tuşlara basılınca aktif hale gelecek biçimlendirme özellikleriyle birlikte ekrana ekleyelim:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot;hello world!&quot;</span><span class="p">,</span>
+             <span class="n">curses</span><span class="o">.</span><span class="n">color_pair</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="o">|</span> <span class="n">b</span><span class="p">[</span><span class="n">bold</span><span class="p">]</span> <span class="o">|</span> <span class="n">r</span><span class="p">[</span><span class="n">reverse</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>İmleci ekranın sağ alt köşesine yerleştirelim:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">boyutlar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Ekranı tazeleyelim:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><em>q</em> bütün tuşları temsil etsin:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="n">ekran</span><span class="o">.</span><span class="n">getch</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><cite>chr(49)</cite>’dan <cite>chr(52)</cite>’ye kadar olan karakterler 1, 2 ve 3’tür. Şayet kullanıcı bu tuşlara basarsa <em>g</em> değişkeni değişecek ve böylece <em>“hello world!”</em> yazımız farklı renklere sahip olacak:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">q</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">49</span><span class="p">,</span> <span class="mi">52</span><span class="p">):</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="n">q</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Kullanıcı <em>b</em> tuşuna basarsa, <em>bold</em> değişkeninin değerini <cite>1 - bold</cite> yapalım. Böylece <em>bold</em> 0 iken <em>bold</em> 1 olur, <em>bold</em> 1 iken de <em>bold</em> 0 olur. Bu şekilde yukarıda tanımladığımız <em>b</em> listesinin iki elemanını da aktif hale getirmiş oluruz:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">98</span><span class="p">:</span>
+    <span class="n">bold</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">bold</span>
+</pre></div>
+</div>
+<p>Kullanıcı “r” tuşuna basarsa, <em>reverse</em>’in değeini <cite>1 - reverse</cite> yapalım. Yine aynı şekilde <em>reverse</em> 0 iken <em>reverse</em> 1 olur, <em>reverse</em> 1 iken de <em>reverse</em> 0 olur. Böylece yukarıda tanımladığımız <em>r</em> listesinin iki elemanını da aktif hale getiririz:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">114</span><span class="p">:</span>
+    <span class="n">reverse</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">reverse</span>
+</pre></div>
+</div>
+<p>Eğer kullanıcı <em>w</em> tuşuna basarsa ve <em>y</em>’nin değeri 0’dan büyükse, <em>y</em> değişkeninin değeri 1 birim azaltılsın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">q</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">y</span> <span class="o">-=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Şayet kullanıcı <em>s</em> tuşuna basarsa ve <em>y</em>’nin değeri maksimum değerin 1 birim eksiğinden küçükse:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;s&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>Yukarıdaki koşul altında, şayet <em>y</em>, maksimum değerinden 2 birim küçükse ve <em>x</em>’de maksimum değere ulaşmışsa, hiç bir işlem yapılmasın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">==</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="s2">&quot;hello world!&quot;</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Aksi taktirde, <em>y</em> değişkeninin değeri 1 birim arttırılsın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">else</span><span class="p">:</span>
+    <span class="n">y</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Şayet kullanıcı <em>a</em> tuşuna basarsa ve <em>x</em>’in değeri 0’dan büyükse, <em>x</em> değişkeninin değeri 1 birim azaltılsın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">-=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Şayet kullanıcı <em>d</em> tuşuna basarsa ve <em>x</em>’in değeri maksimum değerden küçükse:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;d&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="s2">&quot;hello world!&quot;</span><span class="p">):</span>
+</pre></div>
+</div>
+<p>Yukarıdaki koşul altında, şayet <em>y</em>’nin ve <em>x</em>’in değerleri maksimum değerlerinden 1 birim küçüğüne eşitse, hiç bir işlem yapılmasın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">==</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="s2">&quot;hello world!&quot;</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Aksi taktirde, <em>x</em> değişkeninin değeri 1 birim arttırılsın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">else</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Yine bu <cite>time.sleep()</cite> fonksiyonunun burada neden kullanıldığını görmek için, fonksiyonu yoruma alın ve aradaki farka bakın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Ve programı yine terminali bozmayacak şekilde sonlandıralım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">curses</span><span class="o">.</span><span class="n">endwin</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ornek-7">
+<h2>Örnek-7:<a class="headerlink" href="#ornek-7" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Yön tuşlarıyla hareket eden, “1, 2, 3” tuşlarıyla renkleri değişen, “b” tuşu ile kalınlaşıp inceleşen ve “r” tuşuyla arka plan rengi ön plan rengi haline gelen bir “hello world!” yazısı oluşturalım.</p>
+<p><strong>Kodlar</strong>:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">import</span> <span class="nn">curses</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">ekran</span> <span class="o">=</span> <span class="n">curses</span><span class="o">.</span><span class="n">initscr</span><span class="p">()</span>
+<span class="n">ekran</span><span class="o">.</span><span class="n">keypad</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">curses</span><span class="o">.</span><span class="n">start_color</span><span class="p">()</span>
+<span class="n">curses</span><span class="o">.</span><span class="n">init_pair</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_GREEN</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_BLACK</span><span class="p">)</span>
+<span class="n">curses</span><span class="o">.</span><span class="n">init_pair</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_CYAN</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_BLACK</span><span class="p">)</span>
+<span class="n">curses</span><span class="o">.</span><span class="n">init_pair</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_RED</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_BLACK</span><span class="p">)</span>
+<span class="n">curses</span><span class="o">.</span><span class="n">noecho</span><span class="p">()</span>
+<span class="n">boyutlar</span> <span class="o">=</span> <span class="n">ekran</span><span class="o">.</span><span class="n">getmaxyx</span><span class="p">()</span>
+<span class="n">ekran</span><span class="o">.</span><span class="n">nodelay</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">bold</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">reverse</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="n">curses</span><span class="o">.</span><span class="n">A_NORMAL</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">A_BOLD</span><span class="p">]</span>
+<span class="n">r</span> <span class="o">=</span> <span class="p">[</span><span class="n">curses</span><span class="o">.</span><span class="n">A_NORMAL</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">A_REVERSE</span><span class="p">]</span>
+<span class="n">g</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">q</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">q</span> <span class="o">!=</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;q&quot;</span><span class="p">):</span>
+    <span class="n">ekran</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="n">ekran</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot;hello world!&quot;</span><span class="p">,</span>
+                 <span class="n">curses</span><span class="o">.</span><span class="n">color_pair</span><span class="p">(</span><span class="n">g</span><span class="p">)</span><span class="o">|</span> <span class="n">b</span><span class="p">[</span><span class="n">bold</span><span class="p">]</span> <span class="o">|</span> <span class="n">r</span><span class="p">[</span><span class="n">reverse</span><span class="p">])</span>
+    <span class="n">ekran</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">boyutlar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">ekran</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">ekran</span><span class="o">.</span><span class="n">getch</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">q</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">48</span><span class="p">,</span> <span class="mi">52</span><span class="p">):</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="n">q</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">98</span><span class="p">:</span>
+        <span class="n">bold</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">bold</span>
+    <span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">114</span><span class="p">:</span>
+        <span class="n">reverse</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">reverse</span>
+    <span class="k">if</span> <span class="n">q</span> <span class="o">==</span> <span class="n">curses</span><span class="o">.</span><span class="n">KEY_UP</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">y</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="n">curses</span><span class="o">.</span><span class="n">KEY_DOWN</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">==</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> \
+                <span class="nb">len</span><span class="p">(</span><span class="s2">&quot;hello world!&quot;</span><span class="p">):</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">y</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="n">curses</span><span class="o">.</span><span class="n">KEY_LEFT</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="n">curses</span><span class="o">.</span><span class="n">KEY_RIGHT</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="s2">&quot;hello world!&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">==</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> \
+                <span class="nb">len</span><span class="p">(</span><span class="s2">&quot;hello world!&quot;</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="n">curses</span><span class="o">.</span><span class="n">endwin</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Kodların Açıklamaları:</strong></p>
+<p>Yine örnek uygulamamızda kullanacağımız modülleri içe aktaralım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">curses</span>
+<span class="kn">import</span> <span class="nn">time</span>
+</pre></div>
+</div>
+<p>Yine önce ekranı tanımlayalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span> <span class="o">=</span> <span class="n">curses</span><span class="o">.</span><span class="n">initscr</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Şimdi de yön tuşlarının kullanılabilmesi için <cite>keypad()</cite> fonksiyonunu değeri <cite>True</cite> olacak şekilde çağıralım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span><span class="o">.</span><span class="n">keypad</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Örnek uygulamada renk kullanacağız yine. Bu yüzden renk çiftlerini tanımlamadan önce aşağıdaki fonksiyonu kesin kullanmamız gerekiyor:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">curses</span><span class="o">.</span><span class="n">start_color</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Şimdi 3 tane renk çifti oluşturalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">curses</span><span class="o">.</span><span class="n">init_pair</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_GREEN</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_BLACK</span><span class="p">)</span>
+<span class="n">curses</span><span class="o">.</span><span class="n">init_pair</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_CYAN</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_BLACK</span><span class="p">)</span>
+<span class="n">curses</span><span class="o">.</span><span class="n">init_pair</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_RED</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_BLACK</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bastığımız tuşlar yine ekranda yansıma oluşturmasın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">curses</span><span class="o">.</span><span class="n">noecho</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Ekranın maksimum <em>x</em> ve <em>y</em> değerlerini alalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">boyutlar</span> <span class="o">=</span> <span class="n">ekran</span><span class="o">.</span><span class="n">getmaxyx</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Animasyonumuzun ekranda görüntülenmesinin gecikmemesi için yine <cite>nodelay()</cite>’in parametresini 1 olarak ayarlıyoruz:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span><span class="o">.</span><span class="n">nodelay</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu sefer de kalınlaştırma işlemini bir tuş yardımıyla yapacağız. Bunun için <em>bold</em> isimli bir değişken oluşturalım ve değerini 0 yapalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">bold</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p><em>“hello world!”</em> yazısının arka plan rengini ön plana, ön plan rengini ise arka plana çevirmek için <em>reverse</em> isminde bir değişken oluşturalım ve değerini 0 yapalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">reverse</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p><em>b</em> tuşuna basılınca iki ayrı işlem yapılsın: Metin kalınlaştırılmışsa inceltilsin, yok eğer inceltilmişse kalınlaştırılsın. Bu işlem için bir liste oluşturalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="n">curses</span><span class="o">.</span><span class="n">A_NORMAL</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">A_BOLD</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Aynı şekilde <em>reverse</em> işlemi için de birbirinin tersi olan değişkenleri barındıran bir liste oluşturalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="p">[</span><span class="n">curses</span><span class="o">.</span><span class="n">A_NORMAL</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">A_REVERSE</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Tanımladığımız renk çiftlerini kullanabilmek için yine <em>g</em> isimli bir değişken kullanacağız ve bu değişkenin değerini 1 olarak belirleyelim:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Yine ekrandaki her tuşu temsil eden bir <em>q</em> değişkeni oluşturalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p><em>x</em> ve <em>y</em>’nin başlangıç değerlerini belirtelim:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>Yine <em>q</em> tuşuna basılınca sonlanan bir döngü oluşturalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">q</span> <span class="o">!=</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;q&quot;</span><span class="p">):</span>
+</pre></div>
+</div>
+<p>Ekranı temizleyelim yine:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><em>“hello world!</em> yazısını, ilgili tuşlara basılınca aktif hale gelecek biçimlendirme özellikleriyle birlikte ekrana ekleyelim:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot;hello world!&quot;</span><span class="p">,</span>
+             <span class="n">curses</span><span class="o">.</span><span class="n">color_pair</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="o">|</span> <span class="n">b</span><span class="p">[</span><span class="n">bold</span><span class="p">]</span> <span class="o">|</span> <span class="n">r</span><span class="p">[</span><span class="n">reverse</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>İmleci ekranın sağ alt köşesine yerleştirelim:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">boyutlar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Ekranı tazeleyelim:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><em>q</em> bütün tuşları temsil etsin:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="n">ekran</span><span class="o">.</span><span class="n">getch</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><cite>chr(49)</cite>’dan <cite>chr(52)</cite>’ye kadar olan karakterler 1, 2 ve 3’tür. Şayet kullanıcı bu tuşlara basarsa <em>g</em> değişkeni değişecek ve böylece <em>“hello world!”</em> yazımız farklı renklere sahip olacak:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">q</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">49</span><span class="p">,</span> <span class="mi">52</span><span class="p">):</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="n">q</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Kullanıcı <em>b</em> tuşuna basarsa, <em>bold</em> değişkeninin değerini <cite>1 - bold</cite> yapalım. Böylece <em>bold</em> 0 iken <em>bold</em> 1 olur, <em>bold</em> 1 iken de <em>bold</em> 0 olur. Bu şekilde yukarıda tanımladığımız <em>b</em> listesinin iki elemanını da aktif hale getirmiş oluruz:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">98</span><span class="p">:</span>
+    <span class="n">bold</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">bold</span>
+</pre></div>
+</div>
+<p>Kullanıcı “r” tuşuna basarsa, <em>reverse</em>’in değeini <cite>1- reverse</cite> yapalım. Yine aynı şekilde <em>reverse</em> 0 iken <em>reverse</em> 1 olur, <em>reverse</em> 1 iken de <em>reverse</em> 0 olur. Böylece yukarıda tanımladığımız <em>r</em> listesinin iki elemanını da aktif hale getiririz:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">114</span><span class="p">:</span>
+    <span class="n">reverse</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">reverse</span>
+</pre></div>
+</div>
+<p>Eğer kullanıcı yukarı ok tuşuna basarsa ve <em>y</em>’nin değeri 0’dan büyükse; <em>y</em> değişkeninin değeri 1 birim azaltılsın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">q</span> <span class="o">==</span> <span class="n">curses</span><span class="o">.</span><span class="n">KEY_UP</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">y</span> <span class="o">-=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Şayet kullanıcı aşağı ok tuşuna basarsa ve <em>y</em>’nin değeri maksimum değerin 1 birim eksiğinden küçükse:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="n">curses</span><span class="o">.</span><span class="n">KEY_DOWN</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>Yukarıdaki koşul altında, şayet <em>y</em>, maksimum değerinden 2 birim küçükse ve <em>x</em>’de maksimum değere ulaşmışsa, hiç bir şey yapılmasın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">==</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="s2">&quot;hello world!&quot;</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Aksi taktirde; <em>y</em> değişkeninin değeri 1 birim arttırılsın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">else</span><span class="p">:</span>
+    <span class="n">y</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Şayet kullanıcı sol ok tuşuna basarsa ve <em>x</em>’in değeri 0’dan büyükse, <em>x</em> değişkeninin değeri 1 birim azaltılsın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="n">curses</span><span class="o">.</span><span class="n">KEY_LEFT</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">-=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Şayet kullanıcı sağ ok tuşuna basarsa ve <em>x</em>’in değeri maksimum değerden küçükse:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="n">curses</span><span class="o">.</span><span class="n">KEY_RIGHT</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="s2">&quot;hello world!&quot;</span><span class="p">):</span>
+</pre></div>
+</div>
+<p>Yukarıdaki koşul altında, şayet <em>y</em>’nin ve <em>x</em>’in değerleri maksimum değerlerinden 1 birim küçüğüne eşitse, hiç bir şey yapılmasın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">==</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="s2">&quot;hello world!&quot;</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Aksi taktirde <em>x</em> değişkeninin değeri 1 birim arttırılsın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">else</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Yine bu <cite>time.sleep()</cite> fonksiyonunun burada neden kullanıldığını görmek için, fonksiyonu yoruma alın ve aradaki farka bakın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Ve programı yine terminali bozmayacak şekilde sonlandıralım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">curses</span><span class="o">.</span><span class="n">endwin</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ornek-8">
+<h2>Örnek-8:<a class="headerlink" href="#ornek-8" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Bu örnekte ekrana hazır bir metin eklemek yerine Türkçe karakterler eklemeye çalışalım. Ve ayrıca eklediğimiz karakterleri silmek veya bir alt satıra geçmek için yeni işlemler tanımlayalım.</p>
+<p><strong>Kodlar</strong>:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">import</span> <span class="nn">curses</span>
+
+<span class="n">ekran</span> <span class="o">=</span> <span class="n">curses</span><span class="o">.</span><span class="n">initscr</span><span class="p">()</span>
+<span class="n">ekran</span><span class="o">.</span><span class="n">keypad</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">curses</span><span class="o">.</span><span class="n">start_color</span><span class="p">()</span>
+<span class="n">curses</span><span class="o">.</span><span class="n">init_pair</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_RED</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_WHITE</span><span class="p">)</span>
+<span class="n">curses</span><span class="o">.</span><span class="n">noecho</span><span class="p">()</span>
+<span class="n">boyutlar</span> <span class="o">=</span> <span class="n">ekran</span><span class="o">.</span><span class="n">getmaxyx</span><span class="p">()</span>
+<span class="n">q</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+<span class="n">xy</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">karakterler</span> <span class="o">=</span> <span class="p">[]</span>
+
+
+<span class="k">def</span> <span class="nf">karakter_ekle</span><span class="p">(</span><span class="n">karakter</span><span class="p">,</span> <span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+    <span class="n">ekran</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">karakter</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">color_pair</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">karakterler</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">num1</span><span class="p">)</span>
+    <span class="n">karakterler</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">num2</span><span class="p">)</span>
+
+
+<span class="k">while</span> <span class="n">q</span> <span class="o">!=</span> <span class="mi">27</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">ekran</span><span class="o">.</span><span class="n">getch</span><span class="p">()</span>
+    <span class="n">ekran</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+    <span class="n">karakterler</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">xy</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">y</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">263</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">y</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">y</span> <span class="o">-=</span> <span class="mi">1</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">x</span> <span class="o">=</span> <span class="n">xy</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">xy</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="n">xy</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xy</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+                    <span class="n">x</span> <span class="o">=</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+                <span class="n">ekran</span><span class="o">.</span><span class="n">delch</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">ekran</span><span class="o">.</span><span class="n">delch</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">x</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="n">xy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">curses</span><span class="o">.</span><span class="n">getsyx</span><span class="p">())</span>
+        <span class="n">ekran</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="nb">chr</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">curses</span><span class="o">.</span><span class="n">color_pair</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">y</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">261</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">y</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">ekran</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">color_pair</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">260</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">y</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">y</span> <span class="o">-=</span> <span class="mi">1</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="mi">78</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="n">ekran</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">color_pair</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">259</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">y</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">y</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="n">ekran</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">color_pair</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">pass</span>
+    <span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">258</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">y</span> <span class="o">!=</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">y</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">ekran</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">color_pair</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">pass</span>
+    <span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">195</span><span class="p">:</span>
+        <span class="n">ekran</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">color_pair</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">196</span><span class="p">:</span>
+        <span class="n">ekran</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">color_pair</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">197</span><span class="p">:</span>
+        <span class="n">ekran</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">color_pair</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">167</span><span class="p">:</span>
+        <span class="n">karakter_ekle</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\u00e7</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">195</span><span class="p">,</span> <span class="mi">167</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">159</span><span class="p">:</span>
+        <span class="k">if</span> <span class="mi">196</span> <span class="ow">in</span> <span class="n">karakterler</span><span class="p">:</span>
+            <span class="n">karakter_ekle</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\u011f</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">196</span><span class="p">,</span> <span class="mi">159</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="mi">197</span> <span class="ow">in</span> <span class="n">karakterler</span><span class="p">:</span>
+            <span class="n">karakter_ekle</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\u015f</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">197</span><span class="p">,</span> <span class="mi">159</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">177</span><span class="p">:</span>
+        <span class="n">karakter_ekle</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\u0131</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">196</span><span class="p">,</span> <span class="mi">177</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">182</span><span class="p">:</span>
+        <span class="n">karakter_ekle</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\u00f6</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">195</span><span class="p">,</span> <span class="mi">182</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">188</span><span class="p">:</span>
+        <span class="n">karakter_ekle</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\u00fc</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">195</span><span class="p">,</span> <span class="mi">188</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">135</span><span class="p">:</span>
+        <span class="n">karakter_ekle</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\u00c7</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">195</span><span class="p">,</span> <span class="mi">135</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">158</span><span class="p">:</span>
+        <span class="k">if</span> <span class="mi">196</span> <span class="ow">in</span> <span class="n">karakterler</span><span class="p">:</span>
+            <span class="n">karakter_ekle</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\u011e</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">196</span><span class="p">,</span> <span class="mi">158</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="mi">197</span> <span class="ow">in</span> <span class="n">karakterler</span><span class="p">:</span>
+            <span class="n">karakter_ekle</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\u015e</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">197</span><span class="p">,</span> <span class="mi">158</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">176</span><span class="p">:</span>
+        <span class="n">karakter_ekle</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\u0130</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">196</span><span class="p">,</span> <span class="mi">176</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">150</span><span class="p">:</span>
+        <span class="n">karakter_ekle</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\u00d6</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">195</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">156</span><span class="p">:</span>
+        <span class="n">karakter_ekle</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\u00dc</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">195</span><span class="p">,</span> <span class="mi">156</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">ekran</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="nb">chr</span><span class="p">(</span><span class="n">q</span><span class="p">),</span> <span class="n">curses</span><span class="o">.</span><span class="n">color_pair</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">curses</span><span class="o">.</span><span class="n">endwin</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Kodların Açıklamaları:</strong></p>
+<p>Her zamanki gibi önce gerekli modülü programın içine aktarıyoruz:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">curses</span>
+</pre></div>
+</div>
+<p>Bildiğiniz gibi curses ile işlem yapmaya geçmeden önce ekranı tanıtmamız gerekiyor:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span> <span class="o">=</span> <span class="n">curses</span><span class="o">.</span><span class="n">initscr</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Bu çalışmada tanımlanmamasına rağmen <em>BACKSPACE</em> gibi bazı özel klavye tuşlarını kullanacağımız için önce <cite>keypad()</cite> fonksiyonunu çağırmalıyız:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span><span class="o">.</span><span class="n">keypad</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Yine bildiğiniz gibi yazıları renklendirmek için önce renklendiriciyi başlatmamız gerekiyor:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">curses</span><span class="o">.</span><span class="n">start_color</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Şimdi bir tek tane renk çifti oluşturalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">curses</span><span class="o">.</span><span class="n">init_pair</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_RED</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_WHITE</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bastığımız tuşların ekranda yansıma oluşturmaması için <cite>curses.noecho()</cite> fonksiyonunu kullanalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">curses</span><span class="o">.</span><span class="n">noecho</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Ekranın maksimum boyutlarını bir değişkene atayalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">boyutlar</span> <span class="o">=</span> <span class="n">ekran</span><span class="o">.</span><span class="n">getmaxyx</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Yine her tuşu temsil edecek <em>q</em> değişkenimizi tanımlayalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>Şimdi de satır ve sütun değeri olarak kullanacağımız değişkenleri tanımlayalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>Her bir satırı bir liste içinde tutacağız. Her satırda hangi sütunda kaldığımızı bilmemiz gerekiyor çünkü karakter silme işleminde bize lazım olacak:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">xy</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+</div>
+<p>Türkçe karakterlerin olduğu tuşlara bastığımız sırada, q’nun 1’den fazla değeri olur. Mesela <em>Enter</em> tuşu için konuşacak olursak karakter değeri 10’dur. <cite>elif q == 10:</cite> durumunda yapılması gerekeni rahatça belirleyebiliriz. Ama aynı durum Türkçe karakterler için geçerli değildir. Örneğin <em>ç</em> tuşuna basılınca yapılması gereken işlemleri belirtmek için şöyle bir koşul tanımlamamız gerekir: <cite>elif q == 196:</cite> durumunda bir şey yap. Sonra da <cite>elif q == 159:</cite> durumunda bir şey yap. Çünkü <em>ç</em> harfine bastığımız zaman iki tane karakter değeri oluşur. Bunlardan birisi <em>196</em> diğeri <em>159</em>’dur. Aynı durum diğer Türkçe karakterler için de geçerlidir. Mesela <em>ı</em> harfine basınca oluşan karakter değerleri <em>196</em> ve <em>177</em> olur. O halde karakter değerlerinden birisinin <em>196</em> olduğu birden fazla tuş var. İşte bu tuş kombinasyonlarını birbirlerinden ayırmak için bir liste kullanacağız:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">karakterler</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+</div>
+<p>Türkçe karakterleri bir fonksiyon yardımıyla ekrana eklemeye çalışalım. Buradaki <em>karakter</em> parametresi, Türkçe harfin unicode kodu; num1 ve num2 parametreleri ise karakterin değerleridir:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">karakter_ekle</span><span class="p">(</span><span class="n">karakter</span><span class="p">,</span> <span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">):</span>
+</pre></div>
+</div>
+<p>Fonksiyonumuzun içine global alandaki <em>x</em>, ve <em>y</em> değişkenlerini çekelim:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">global</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+</pre></div>
+</div>
+<p>Global alandan aldığımız ekrana ait <em>y</em>, <em>x</em> konumuna karakteri ekleyelim:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">karakter</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">color_pair</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Her Türkçe karakteri ekledikten sonra, x’in konumunu 1 birim arttıralım ki yeni girilecek karakter için kullanılabilir yeni bir hücre oluşsun:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Daha sonra da karakterler listesinden bu tuşu temsil eden değerleri silelim ki, bir sonraki Türkçe
+karakteri ekrana eklemek istediğimizde sorun çıkmasın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">karakterler</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">num1</span><span class="p">)</span>
+<span class="n">karakterler</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">num2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Şimdi de, <em>ESC</em> tuşuna basılmadığı sürece çalışan bir döngü oluşturalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">q</span> <span class="o">!=</span> <span class="mi">27</span>
+</pre></div>
+</div>
+<p><em>q</em> bütün tuşları temsil etsin:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="n">ekran</span><span class="o">.</span><span class="n">getch</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Ekranı tazeleyelim:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Her tuşa bastığımızda karakterler listesine <em>q</em> değeri eklensin:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">karakterler</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Eğer bir satırın sonuna gelinmişse, <em>xy</em> satır listesine bu satırı ekleyelim:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">xy</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Aynı zamanda y değişkeninin değeri 1 birim artsın ki bir alt satıra, x değişkeninin değeri de 0’a eşitlensin ki satır başına geçelim:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>Eğer kullanıcı <em>BACKSPACE</em> tuşuna basarsa ve koşul altında eğer <em>x</em> değişkeninin değeri 0’a eşitse:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">263</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>Yukarıdaki her iki koşulun altında eğer <em>y</em> değişkeninin değeri 0’a eşit değilse, <em>y</em> değişkeninin değeri 1 birim azaltılsın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">y</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">y</span> <span class="o">-=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Ayrıca x’in değeri bir önceki satırın bittiği x değerine eşitlenmeye çalışılsın ve satır listesinden bir önceki satır silinsin:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">xy</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">xy</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">xy</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xy</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu işlem yapılırken bir sıra hatası oluşmasını bekliyoruz, bu durumda x’in değeri maksimum x değerine eşitlensin:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Her halükarda ekranın y, x konumundan bu karakter silinsin:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span><span class="o">.</span><span class="n">delch</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>BACKSPACE</em> tuşuna basıldığı koşulun altında, eğer <em>x</em> değikeninin değeri 0’a eşitse ve eğer <em>y</em> değişkeninin değeri de 0’a eşitse, hiç bir işlem yapılmasın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">else</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p><em>BACKSPACE</em> tuşuna basıldığı koşulun altında ve eğer <em>x</em> değikeninin değeri 0’a eşit değilse, ekranın <em>y</em>, <em>x - 1</em> konumundan bu karakter silinsin ve <em>x</em> değişkeninin değeri 1 birim azaltılsın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">else</span><span class="p">:</span>
+    <span class="n">ekran</span><span class="o">.</span><span class="n">delch</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">-=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Eğer kullanıcı <em>enter</em> tuşuna basarsa: <em>xy</em> satır listesine o andaki <em>y</em>, <em>x</em> değerlerini ekleyelim, ekrana <em>“n”</em> kaçış dizisi eklensin, <em>y</em> değikeninin değeri 1 birim arttırılsın ve <em>x</em> değişkeninin değeri 0’a eşitlensin yani yeni satırın başına geçilsin:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
+    <span class="n">xy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">curses</span><span class="o">.</span><span class="n">getsyx</span><span class="p">())</span>
+    <span class="n">ekran</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="nb">chr</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">curses</span><span class="o">.</span><span class="n">color_pair</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">y</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>Eğer kullanıcı sağ ok tuşuna basarsa ve <em>x</em> değişkeni maksimum değerine ulaştıysa, <em>y</em> değişkenin değeri 1 birim arttırılsın ve <em>x</em> değişkeninin değeri 0’a eşitlensin. Yani yeni bir satıra geçilsin. Yok eğer <em>x</em> değişkeni maksimum değerine ulaşmadıysa, <em>x</em> değişkeninin değeri 1 birim arttırılsın ve ekrana boş bir string verisi eklensin:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">261</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">y</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">ekran</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">color_pair</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Eğer kullanıcı sol ok tuşuna basarsa, <em>x</em> değişkeninin değeri 0’a eşitse ve <em>y</em> değişkeninin değeri 0’a eşit değilse, <em>y</em> değişkeninin değeri 1 birim azaltılsın, <em>x</em> değişkeninin değeri 78 olarak ayarlansın, şayet hem <em>x</em> hem de*y* değişkeninin değeri 0’a eşitse hiç bir işlem yapılmasın. <em>x</em> değişkeninin değeri 0’a eşit değilse, <em>x</em> değişkenin değeri 1 birim azaltılsın ve ekranın <em>yx</em> konumuna boş bir string eklensin:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">260</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">y</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">y</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="mi">78</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">pass</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="n">ekran</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">color_pair</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Eğer kullanıcı yukarı ok tuşuna basarsa ve <em>y</em> değişkeninin değeri 0’a eşit değilse, <em>y</em> değişkeninin değeri 1 birim azaltılsın ve ekranın <em>yx</em> konumuna boş bir string yerleştirilsin. Eğer <em>y</em> değişkeninin değeri 0’a eşitse, hiç bir işlem yapılmasın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">259</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">y</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">y</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="n">ekran</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">color_pair</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Eğer kullanıcı aşağı ok tuşuna basarsa ve <em>y</em> değişkeni maksimum değerine eşit değilse, <em>y</em> değişkeninin değeri 1 birim arttırılsın ve ekranın <em>yx</em> konumuna boş bir string yerleştirilsin. Eğer <em>y</em> değişkeni ekranın maksimum <em>y</em> değerine gelmişse, hiç bir işlem yapılmasın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">258</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">y</span> <span class="o">!=</span> <span class="n">boyutlar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">y</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">ekran</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">color_pair</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Aşağıdaki kodlar Türkçe karakterleri eklemekle ilgilidir. Daha önce belirtildiği gibi Türkçe karakterler iki tane karakter değerine sahip oluyor. Dolayısıyla bir karakteri ekledikten sonra o karakterin değerlerini karakterler listesinden bir karışılıklık olmaması için silmek gerekiyor. Aşağıda tanımlanmış olan 3 koşul da Türkçe karakterlerin 1. değerleridir, bu üç sayısal değerden birisi bütün Türkçe karakterlerde ortak olarak bulunuyor:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">195</span><span class="p">:</span>
+    <span class="n">ekran</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">color_pair</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">196</span><span class="p">:</span>
+    <span class="n">ekran</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">color_pair</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">197</span><span class="p">:</span>
+    <span class="n">ekran</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">color_pair</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Aşağıdaki kodlarda hangi koşullarda ekrana Türkçe karakterlerin ekleneceği tanımlanmıştır. Türkçe karakterler doğrudan unicode karakteri olarak eklenecektir:</p>
+<p>Küçük <em>“ç”</em> harfinin eklenmesini sağlayan koşul:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">167</span><span class="p">:</span>
+    <span class="n">karakter_ekle</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\u00e7</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">195</span><span class="p">,</span> <span class="mi">167</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Küçük <em>“ğ”</em> ve küçük <em>“ş”</em> harflerinin eklenmesini sağlayan koşullar:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">159</span><span class="p">:</span>
+    <span class="k">if</span> <span class="mi">196</span> <span class="ow">in</span> <span class="n">karakterler</span><span class="p">:</span>
+        <span class="n">karakter_ekle</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\u011f</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">196</span><span class="p">,</span> <span class="mi">159</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="mi">197</span> <span class="ow">in</span> <span class="n">karakterler</span><span class="p">:</span>
+        <span class="n">karakter_ekle</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\u015f</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">197</span><span class="p">,</span> <span class="mi">159</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Küçük <em>“ı”</em> harfininin eklenmesini sağlayan koşul:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">177</span><span class="p">:</span>
+    <span class="n">karakter_ekle</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\u0131</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">196</span><span class="p">,</span> <span class="mi">177</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Küçük <em>“ö”</em> harfinin eklenmesini sağlayan koşul:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">182</span><span class="p">:</span>
+    <span class="n">karakter_ekle</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\u00f6</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">195</span><span class="p">,</span> <span class="mi">182</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Küçük <em>“ü”</em> harfinin eklenmesini sağlayan koşul:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">188</span><span class="p">:</span>
+    <span class="n">karakter_ekle</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\u00fc</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">195</span><span class="p">,</span> <span class="mi">188</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Büyük <em>“Ç”</em> harfinin eklenmesini sağlayan koşul:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">135</span><span class="p">:</span>
+    <span class="n">karakter_ekle</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\u00c7</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">195</span><span class="p">,</span> <span class="mi">135</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Büyük <em>“Ğ</em>” ve büyük <em>“Ş”</em> harflerinin eklenmesini sağlayan koşullar:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">158</span><span class="p">:</span>
+    <span class="k">if</span> <span class="mi">196</span> <span class="ow">in</span> <span class="n">karakterler</span><span class="p">:</span>
+        <span class="n">karakter_ekle</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\u011e</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">196</span><span class="p">,</span> <span class="mi">158</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="mi">197</span> <span class="ow">in</span> <span class="n">karakterler</span><span class="p">:</span>
+        <span class="n">karakter_ekle</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\u015e</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">197</span><span class="p">,</span> <span class="mi">158</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Büyük <em>“İ”</em> harfinin eklenmesini sağlayan koşul:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">176</span><span class="p">:</span>
+    <span class="n">karakter_ekle</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\u0130</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">196</span><span class="p">,</span> <span class="mi">176</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Büyük <em>“Ö”</em> harfinin eklenmesini sağlayan koşul:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">150</span><span class="p">:</span>
+    <span class="n">karakter_ekle</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\u00d6</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">195</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Büyük <em>“Ü”</em> harfinin eklenmesini sağlayan koşul:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">156</span><span class="p">:</span>
+    <span class="n">karakter_ekle</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\u00dc</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">195</span><span class="p">,</span> <span class="mi">156</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Ve son koşulumuzda Türkçe karakterler haricinde herhangi bir karakterin ekrana nasıl eklenmesi gerektiği tanımlanmıştır. Bu koşulda karakter <em>yx</em> konumuna eklenir ve <em>x</em> değişkeninin değeri 1 birim arttırılır:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">else</span><span class="p">:</span>
+    <span class="n">ekran</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="nb">chr</span><span class="p">(</span><span class="n">q</span><span class="p">),</span> <span class="n">curses</span><span class="o">.</span><span class="n">color_pair</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ornek-9">
+<h2>Örnek-9:<a class="headerlink" href="#ornek-9" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Bu örnekte <cite>def</cite>, <cite>if</cite>, <cite>else</cite> gibi bazı özel kelimelerin diğer kelimelerden farklı renge sahip olması için uğraşalım. Örneğin <cite>def</cite>’i <em>define</em>’den veya <em>“def”</em> den ayırt etmeye çalışalım.</p>
+<p><strong>Kodlar</strong>:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">curses</span>
+<span class="kn">import</span> <span class="nn">keyword</span>
+
+<span class="n">ekran</span> <span class="o">=</span> <span class="n">curses</span><span class="o">.</span><span class="n">initscr</span><span class="p">()</span>
+<span class="n">curses</span><span class="o">.</span><span class="n">start_color</span><span class="p">()</span>
+<span class="n">curses</span><span class="o">.</span><span class="n">init_pair</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_RED</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_BLACK</span><span class="p">)</span>
+<span class="n">curses</span><span class="o">.</span><span class="n">init_pair</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_BLUE</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_BLACK</span><span class="p">)</span>
+<span class="n">curses</span><span class="o">.</span><span class="n">noecho</span><span class="p">()</span>
+<span class="n">q</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">karakterler</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="k">while</span> <span class="n">q</span> <span class="o">!=</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;q&quot;</span><span class="p">):</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">ekran</span><span class="o">.</span><span class="n">getch</span><span class="p">()</span>
+    <span class="n">ekran</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="n">q</span><span class="p">),</span> <span class="n">curses</span><span class="o">.</span><span class="n">color_pair</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">karakterler</span> <span class="o">+=</span> <span class="nb">chr</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">kw</span> <span class="ow">in</span> <span class="n">keyword</span><span class="o">.</span><span class="n">kwlist</span><span class="p">:</span>
+        <span class="n">regex1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;[^&#39;</span><span class="se">\&quot;</span><span class="s2">]\s</span><span class="si">{}</span><span class="s2">\s$&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">kw</span><span class="p">),</span> <span class="n">karakterler</span><span class="p">)</span>
+        <span class="n">regex2</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;^</span><span class="si">{}</span><span class="s2">\s$&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">kw</span><span class="p">),</span> <span class="n">karakterler</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">regex1</span> <span class="ow">or</span> <span class="n">regex2</span><span class="p">:</span>
+            <span class="n">ekran</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}{}</span><span class="s2"> &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\b</span><span class="s2">&quot;</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">kw</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">kw</span><span class="p">),</span>
+                         <span class="n">curses</span><span class="o">.</span><span class="n">color_pair</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+            <span class="n">karakterler</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="n">curses</span><span class="o">.</span><span class="n">endwin</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Kodların Açıklamaları:</strong></p>
+<p>Bu örnekte kullanacağımız modülleri programın içine aktaralım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">curses</span>
+<span class="kn">import</span> <span class="nn">keyword</span>
+</pre></div>
+</div>
+<p>Her zamanki gibi ekranı tanıtıyoruz:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span> <span class="o">=</span> <span class="n">curses</span><span class="o">.</span><span class="n">initscr</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Renklendirme işlemine geçmeden önce bildiğiniz gibi renk başlatıcıyı çalıştırıyoruz:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">curses</span><span class="o">.</span><span class="n">start_color</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Bu örnekte bir çift Python’a özgü özel karakterler için, bir çift de diğer karakterler için toplam iki çift renk tanımlayalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">curses</span><span class="o">.</span><span class="n">init_pair</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_RED</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_BLACK</span><span class="p">)</span>
+<span class="n">curses</span><span class="o">.</span><span class="n">init_pair</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_BLUE</span><span class="p">,</span> <span class="n">curses</span><span class="o">.</span><span class="n">COLOR_BLACK</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Karakterlerin ekranda yansımasını istemiyoruz diyelim:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">curses</span><span class="o">.</span><span class="n">noecho</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Her karakteri temsil edecek bir karakter seçelim. Ve değerini -1 yapalım (değerinin ne olduğu bu örnekte pek önemli değil):</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>Python’a özgü karakterleri diğer karakterlerden ayırt edebilmek için bir tane string verisi oluşturalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">karakterler</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+</pre></div>
+</div>
+<p><em>q</em> değişkeninin <cite>“q”</cite>’ya eşit olmadığı durumda çalışacak döngüyü tanımlayalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">q</span> <span class="o">!=</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;q&quot;</span><span class="p">):</span>
+</pre></div>
+</div>
+<p><em>q</em> değişkeni her karakteri temsil etsin:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="n">ekran</span><span class="o">.</span><span class="n">getch</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Basılan her tuşun karakteri ekrana 1. sıradaki renkle birlikte eklensin:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekran</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="n">q</span><span class="p">),</span> <span class="n">curses</span><span class="o">.</span><span class="n">color_pair</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Eklenen her bir karakter, <em>karakterler</em> değişkenine de eklensin:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">karakterler</span> <span class="o">+=</span> <span class="nb">chr</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>keyword.kwlist listesi içindeki Python’a özgü her bir özel ifade için, iki tane düzenli ifade oluşturalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">kw</span> <span class="ow">in</span> <span class="n">keyword</span><span class="o">.</span><span class="n">kwlist</span><span class="p">:</span>
+    <span class="n">regex1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;[^&#39;</span><span class="se">\&quot;</span><span class="s2">]\s</span><span class="si">{}</span><span class="s2">\s$&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">kw</span><span class="p">),</span> <span class="n">karakterler</span><span class="p">)</span>
+    <span class="n">regex2</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;^</span><span class="si">{}</span><span class="s2">\s$&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">kw</span><span class="p">),</span> <span class="n">karakterler</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Eğer yazdığımız yazı regex1’e veya regex2’ye uyuyorsa, ekrana bu yazı farklı bir renkle yazılsın. Buradaki <cite>“b” * (len(kw) + 1)</cite> kod parçası <em>kw</em> ile temsil edilen kwlistteki her bir özel ifadeden sonra yeni eklenecek karakterin nereye eklenmesi gerektiğini belirtir. Mesela kwlistteki üç harflik bir özel ifade için 4. hücreye yeni bir karakter eklenmesini sağlar. Eğer bu kod parçasını yazıyı ekrana eklerken yazmazsak, yeni eklenen karakterler, özel karakterlerin üzerine yazılır:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">regex1</span> <span class="ow">or</span> <span class="n">regex2</span><span class="p">:</span>
+    <span class="n">ekran</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}{}</span><span class="s2"> &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\b</span><span class="s2">&quot;</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">kw</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">kw</span><span class="p">),</span>
+                 <span class="n">curses</span><span class="o">.</span><span class="n">color_pair</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Ve <em>karakterler</em> stringimizin değerini boş bir string verisine eşitleyelim ki bir sonraki karakter için tekrar kullanabilelim:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">karakterler</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+</pre></div>
+</div>
+<p>Ve son olarak program kapandığında terminali eski haline getirmek için <cite>curses.endwin()</cite> fonksiyonumuzu çağıralım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">curses</span><span class="o">.</span><span class="n">endwin</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+
+<div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
+<div class='extrarelbar'> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="threading.html" title="threading Modülü"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="time.html" title="time Modülü"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Önemli Standart Kütüphane Modülleri</a> &#187;</li> 
+      </ul>
+    </div> </div>
+
+<div class='addcomment'>Yorumlar</div>
+
+<div class='how-to-use'>
+<h3>Önemli Not</h3>
+Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
+<span class='tag'>&lt;pre&gt;&lt;code&gt;</span> etiketleri içine alın. Örneğin:
+
+<pre>
+    <span class='tag'>&lt;pre&gt;&lt;code class="python"&gt;</span>
+    <span class='keyword'>print</span>(<span class='string'>"Merhaba Dünya!"</span>)
+    <span class='tag'>&lt;/code&gt;&lt;/pre&gt;</span>
+</pre>
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'istihza';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4eca48eb2d83faf9" async="async"></script>
+
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="threading.html" title="threading Modülü"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="time.html" title="time Modülü"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Önemli Standart Kütüphane Modülleri</a> &#187;</li> 
+      </ul>
+    </div> 
+
+<div class="footer">
+&copy; Copyright 2007-2019, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 15.12.2019.
+<a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5 ile oluşturulmuştur.
+<br>
+<br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
+alt="Creative Commons License" style="border-width:0"
+src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a><br />
+<br>
+</div>
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=10396326;
+var sc_invisible=1;
+var sc_security="fb5cd679";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="hit counter"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="http://c.statcounter.com/10396326/0/fb5cd679/1/"
+alt="hit counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+  </body>
+</html>
