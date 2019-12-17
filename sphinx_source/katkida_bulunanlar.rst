@@ -11,8 +11,8 @@ Katkıda Bulunanlar
 Bu sayfada, Python3 belgelerine herhangi bir şekilde katkıda bulunanların
 isimleri bir liste halinde yer alıyor.
 
-Lütfen siz de belgelerde gördüğünüz hataları ozgulfirat@gmail.com adresine
-iletmekten çekinmeyin. Katkılarınız, bu belgelerin hem daha az hata içermesini
+Lütfen siz de belgelerde gördüğünüz hataları bildirmekten ya da
+düzeltmekten çekinmeyin. Katkılarınız, bu belgelerin hem daha az hata içermesini
 hem de daha çok kişiye ulaşmasını sağlayacaktır.
 
 .. contents::
