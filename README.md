@@ -1,6 +1,6 @@
 # YazBel Python Belgeleri
 
-[https://belgeler.yazbel.com/python-istihza](https://belgeler.yazbel.com/python-istihza)
+[https://python-istihza.yazbel.com](https://python-istihza.yazbel.com)
 
 Bu belgeler [Python](https://www.python.org/) programlama dilinin 3. sürümünü anlatmaktadır ve
 [istihza.com](http://www.istihza.com/)'da yer alan, [Fırat Özgül](http://www.kodlab.com/AuthorDetail.aspx?ID=50)'ün
