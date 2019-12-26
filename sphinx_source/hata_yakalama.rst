@@ -716,8 +716,7 @@ Son olarak büyük bir proje yazdığımızda, şu örnekteki gibi::
         raise AssertionError("İsim bölümü boş.")
     print("Hoşgeldiniz.")
 
-``if`` ve ``raise`` ifadesi kullanmak yerine ``assert`` kullanmamızın iki avantajından bahsedelim.
-Öncelikle istediğiniz zaman geliştirme arayüzünüzün **"Bul (Find)"** özelliğini kullanarak bu anahtar kelimeleri
+``if`` ve ``raise`` ifadesi kullanmak yerine ``assert`` kullanmamızın iki avantajından bahsedelim. Öncelikle istediğiniz zaman geliştirme arayüzünüzün **"Bul (Find)"** özelliğini kullanarak bu anahtar kelimeleri
 bulup silebilir veya yorum satırı haline getirebilirsiniz. Bu özellik uzun bir kod yazdığımızda zaman kazanmamızı sağlar.
 İkinci olarak da python yorumlayıcısını komut satırından ``-O`` parametresi (*optimize* anlamına gelir) ile şu şekilde çağırdığımızda::
 
