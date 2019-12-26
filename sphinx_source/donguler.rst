@@ -1414,6 +1414,7 @@ Peki olmasa da olur muydu? Olurdu. ``else`` ifadesinin bu kullanım şekli de
 Python'daki çoğu kolaylıklardan biri sadece...
 
 Konu ile alakalı daha çok örnek için buraya_ bakabilirsiniz.
+
 .. _buraya: https://forum.yazbel.com/t/while-else-ve-for-else/4439
 
 
