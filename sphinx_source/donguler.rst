@@ -1,6 +1,6 @@
 .. meta::
    :description: Bu bölümde döngülerden bahsedeceğiz.
-   :keywords: python, döngüler, loops, for, while
+   :keywords: python, döngüler, loops, for, while , else
 
 .. highlight:: python3
 
@@ -1308,10 +1308,119 @@ geri gidiyor. Ama eğer kullanıcı, uzunluğu üç karakterden fazla bir sayı
 girerse, ekrana 'En fazla üç haneli bir sayı girebilirsiniz,' cümlesinin
 yazdırıldığını görüyoruz.
 
+else Deyimi
+=============
+
+Biz ``else`` deyimini koşullu durumlarda da görmüştük, ancak ``else`` deyimi
+döngüler ile de kullanılabilmektedir. Tabii döngüler ile kullanıldığında 
+farklı bir işi üstlenmektedir. ``else`` deyimi döngüler ile birlikte
+kullanılırken ``break`` deyimi ile birlikte bir anlam kazanır.
+Şöyle bir kodumuz olduğunu varsayalım::
+
+	for i in range(5):
+		print(i)
+	else:
+		print("else çalıştı.")
+
+Kodumuzu kaydedip çalıştırdığımızda bu çıktıyı alıyoruz::
+
+	1
+	2
+	3
+	4
+	else çalıştı.
+	>>>
+
+Peki şimdi ``else`` ifadesi ne işe yaradı? Aslında pek de işe yaramadı,
+``else`` ifadesini yazmadan da aynı çıktıları alabilirdik. 
+Dediğimiz gibi Python'da ``else`` ifadesi döngüler ile birlikte kullanılacaksa
+``break`` ifadesi ile birlikte bir anlam kazanır. Eğer döngü ``break``
+ifadesi kullanılarak sonlandırıldı ise ``else`` çalışmaz, döngü ``break`` ifadesi ile sonlandırıldı ise ``else`` bölümü çalışır.
+Yukarıdaki örneğimizde zaten ``break`` deyimi bulunmadığı
+için ``else`` bölümü çalıştı. Şimdi çalışmayacağı bir örnek verelim::
+
+	a = 0
+	while True:
+		a += 1
+		print(a)
+		if a==3:
+			break
+	else:
+		print("else çalıştı.")
+
+Şimdi programımızı çalıştırdığımızda şu sonucu almaktayız::
+
+	1
+	2
+	3
+
+Gördüğünüz gibi ``a`` değişkenimiz ``3`` olduğunda döngümüz ``break`` ifadesi
+ile kırılıyor ve bu yüzden ``else`` çalışmıyor. ``else`` ifadesini
+hem ``for`` hem de ``while`` döngüsü ile kullanabileceğimizi unutmayalım.
+
+Şimdi bu konu ile ilgili işe yarar bir örnek verelim. Bir karakter dizimiz
+var ve ``'a'`` harfinin bu dizide bulunup bulunmadığını kontrol
+etmek istiyoruz. Eğer bulunuyorsa ekrana bunu belirten bir
+yazı yazacağız::
+
+	karater_dizisi = "Merhaba Dünya"
+	for harf in karater_dizisi:
+		if harf == 'a':
+			print("a harfi bulundu.")
+
+Ancak bu programı çalıştırdığımızda şöyle bir sonuçla karşılaşıyoruz::
+
+	a harfi bulundu.
+	a harfi bulundu.
+	a harfi bulundu.
+	>>>
+
+Gördüğünüz gibi her ``'a'`` harfi için bir defa ``a harfi bulundu.`` yazılıyor.
+Eğer biz bir defa ``'a'`` harfine rastladığımızda döngüden çıkmak istiyorsak
+bunu şu şekilde yazabiliriz::
+
+	karater_dizisi = "Merhaba Dünya"
+	for harf in karater_dizisi:
+		if harf == 'a':
+			print("a harfi bulundu.")
+			break
+
+Kodumuzu çalıştırıyoruz::
+
+	a harfi bulundu.
+	>>>
+
+Peki şimdi ``'a'`` harfinin bulunmadığı durumda da ``a harfi bulunmadı.``
+yazmak istersek bunu nasıl yaparız? Bazı değişkenler oluşturup ``if``
+ifadesi ile bunu yapmak mümkündür ancak ``else`` ifadesi ile de
+bu işi hemen halledebiliyoruz::
+
+	karater_dizisi = "Bu yAzıdA küçük A yok."
+	for harf in karater_dizisi:
+		if harf == 'a':
+			print("a harfi bulundu.")
+			break
+	else:
+		print("a harfi bulunmadı.")
+
+Kodumuzu çalıştırdığımızda ``break`` ifadesi hiç çalışmadığı için ``else`` ifadesinin
+çalıştığını görebiliriz::
+
+	a harfi bulunmadı.
+	>>>
+
+Evet, ``else`` ifadesi de Python'da döngüler ile bu şekilde kullanılabiliyor.
+Peki olmasa da olur muydu? Olurdu. ``else`` ifadesinin bu kullanım şekli de
+Python'daki çoğu kolaylıklardan biri sadece...
+
+Konu ile alakalı daha çok örnek için buraya_ bakabilirsiniz.
+.. _buraya: https://forum.yazbel.com/t/while-else-ve-for-else/4439
+
+
 Örnek Uygulamalar
 ******************
 
-Python programlama dilinde döngülerin neye benzediğini öğrendik. Bu bölünde
+Python programlama dilinde döngülerin neye benzediğini öğrendik. Bu bölümde
 ayrıca döngülerle birlikte kullanabileceğimiz başka araçları da tanıdık. Şimdi
 dilerseniz bu öğrendiklerimizi pekiştirmek için birkaç ufak çalışma yapalım.
 
