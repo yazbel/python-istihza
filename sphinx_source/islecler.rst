@@ -1,7 +1,7 @@
 .. meta::
    :description: Bu bölümde işleçleri inceleyeceğiz.
    :keywords: python, işlec, bool, aritmetik, True, False, eşit, eşit değil,
-    karşılaştırma, değer atama, aitlik, kimlik
+    karşılaştırma, değer atama, aitlik, kimlik , walrus
 
 .. highlight:: python3
 
@@ -1152,6 +1152,65 @@ göreceksiniz. Durum şu örnekte daha net görünecektir::
 
 Gördüğünüz gibi, ``a =- 5`` yazdığımızda, aslında yaptığımız şey `a` değişkenine
 `-5` değerini vermekten ibarettir. Yani ``a = -5``.
+
+**:= işleci**
+
+.. note:: Walrus operatörü olarak da bilinen bu işleç, Python'un 3.8 versiyonu ile
+          eklenmiştir. Bundan önceki versiyonlarda bulunmamaktadır ve çalışmayacaktır.
+          ``SyntaxError`` hatası verecektir.
+
+Bu işleç biraz garip gözüküyor olabilir. Ne yaptığını bakarak kestirmek de biraz 
+zor. En iyisi bir örnekle başlayalım::
+
+    giriş = len(input("Adın ne? "))
+
+    if giriş < 4:
+        print("Adın kısaymış.") 
+    elif giriş < 6:
+        print("Adın biraz uzunmuş.")
+    else:
+        print("Çok uzun bir adın var.")
+
+Gördüğünüz gibi girilen karakter dizisinin uzunluğuna göre ekrana bir çıktı yazdırmaktayız.
+Python3.8'e sahipseniz vereceğimiz örnekleri kendiniz de deneyebilirsiniz.
+Bir de ``:=`` işleci ile bu kodu nasıl yazabileceğimize bakalım::
+
+    if ( giriş := len(input("Adın ne? ")) ) < 4:
+        print("Adın kısaymış.") 
+    elif giriş < 6:
+        print("Adın biraz uzunmuş.")
+    else:
+        print("Çok uzun bir adın var.")
+
+
+Burada ``giriş`` değişkenine değer atamayı ``if`` ifadesinin içinde yaptık.
+Normalde böyle bir işlemi ``=`` ile yapamazdık::
+
+    >>> if ( giriş = len(input("Adın ne? ")) ) < 4:
+
+    SyntaxError: invalid syntax
+
+Fark edebileceğiniz gibi walrus operatörü bizi bir satır fazladan yazmaktan 
+kurtardı. Kullanıcıdan alınan bilginin giriş değişkenine nasıl atandığına dikkat
+edin. ``giriş`` değişkeninden sonra ``:=`` işlecini kullanıyoruz ve aynı zamanda
+değişken atamasını yaptığımız bölümün tamamını parantez içine alıyoruz. Peki bu 
+parantezi koymaz isek ne olur? Gelin bir örnek ile de onu deneyelim::
+
+    if  giriş := len(input("Adın ne? "))  < 4:
+        print(giriş)
+
+Eğer bu kodu çalıştırsanız ekrana ``True`` yazıldığını veya hiçbir şey yazılmadığını
+görebilirsiniz. Oysa önceki parantez kullandığımız kodda ``giriş`` değişkeni bir 
+``int``'di. Bu örneğimizde ise ilk önce ``len(input("Adın ne? "))  < 4`` kısmı 
+çalışıyor ve bunun sonucu daha sonra ``giriş`` değişkenimize atanıyor. Bu yüzden ``giriş``
+değişkenimiz ``True`` veya ``False``, yani bir ``bool`` oluyor. Eğer ``giriş`` değişkeni
+``True`` olursa ekrana yazılıyor, ancak eğer ``False`` olursa ekrana yazılmıyor. Çünkü
+``if`` ifadesinin değeri de ``False`` oluyor. ``if`` ifadesinin kontrol ettiği yer
+``len(input("Adın ne? "))  < 4`` kısmı olduğu için ``if`` deyiminin içine girilmiyor.
+
+Çok önemli bir işleç olmayabilir ama bazen aynı fonksiyonu iki defa çağırmak yerine
+bir defa çağırmak gibi kolaylıklar sağlamaktadır. Bu konu ile alakalı daha fazla örnek için buraya_ bakabilirsiniz
+.. _buraya: https://forum.yazbel.com/t/walrus-operator/4612
 
 Aitlik İşleçleri
 ****************
