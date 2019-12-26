@@ -1210,6 +1210,7 @@ değişkenimiz ``True`` veya ``False``, yani bir ``bool`` oluyor. Eğer ``giriş
 
 Çok önemli bir işleç olmayabilir ama bazen aynı fonksiyonu iki defa çağırmak yerine
 bir defa çağırmak gibi kolaylıklar sağlamaktadır. Bu konu ile alakalı daha fazla örnek için buraya_ bakabilirsiniz
+
 .. _buraya: https://forum.yazbel.com/t/walrus-operator/4612
 
 Aitlik İşleçleri
