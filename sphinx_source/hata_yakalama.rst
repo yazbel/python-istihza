@@ -723,9 +723,10 @@ bulup silebilir veya yorum satırı haline getirebilirsiniz. Bu özellik uzun bi
 
     C:\Users\User> python -O kod_dosyası
 
-``kod_dosyası`` programımızdaki bütün ``assert`` ifadeleri python yorumlayıcısı tarafından yok sayılır ve çalıştırılmaz. Yani ``assert`` ifadelerinin hepsini yorum satırı haline getirmek istediğimizde bunun ile uğraşmak yerine bu özelliği kullanabiliriz.
+``kod_dosyası`` programımızdaki bütün ``assert`` ifadeleri python yorumlayıcısı tarafından yok sayılır ve hiçbiri çalıştırılmaz. Yani ``assert`` ifadelerinin hepsini yorum satırı haline getirmek istediğimizde bunun ile uğraşmak yerine bu özelliği kullanabiliriz.
 
 Konu ile alakalı daha çok örnek için buraya_ bakabilirsiniz.
+
 .. _buraya: https://forum.yazbel.com/t/assert-deyimi-nasil-kullanilir/231
 
 Bütün Hataları Yakalamak
