@@ -1,0 +1,356 @@
+
+ <!DOCTYPE html>
+ <html lang="tr">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta content="Bu bölümde JSON modülünün fonksiyonları anlatılıyor." name="description" />
+<meta content="JSON" name="keywords" />
+
+    <title>json Modülü &#8212; Python 3 için Türkçe Kılavuz</title>
+    <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <link rel="search" title="Ara" href="../search.html" />
+    <link rel="next" title="timeit Modülü" href="timeit.html" />
+    <link rel="prev" title="sched modülü" href="sched.html" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head>
+  <body>
+<div class='header'><a href='https://yazbel.com'>yazbel.com</a></div>
+
+<ul class='navbar'>
+    <li><a href="#"><del>pdf desteği sonlanmıştır</del></a></li>
+    <li class="forum"><a href="http://forum.yazbel.com">forum</a></li>
+</ul>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="timeit.html" title="timeit Modülü"
+             accesskey="N">sonraki</a></li>
+        <li class="right" >
+          <a href="sched.html" title="sched modülü"
+             accesskey="P">önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Önemli Standart Kütüphane Modülleri</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+
+  <div class="section" id="json-modulu">
+<h1>json Modülü<a class="headerlink" href="#json-modulu" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<p>JSON farklı diller arasında iletişimi sağlamak için geliştirilmiş
+basit bir veri formatıdır. Bu veri formatı Python’daki sözlük ve
+listelere çok benzer. İki tür kullanımı vardır. Birincisi anahtar-değer mantıyla çalışır.</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;Ad&quot;</span><span class="p">:</span> <span class="s2">&quot;Fırat&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Soyad&quot;</span><span class="p">:</span> <span class="s2">&quot;Özgül&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>JSON ifadelerinde her öğe arasında virgül olmalıdır. Anahtar ve değer ikilisi
+arasında ise iki nokta kullanılır.</p>
+<p>İkinci kullanımı ise liste tipine çok benzer. Bu kullanımda
+anahtar-değer değil, sadece değer verilir.</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;Fırat&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Özgül&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>JSON modülünde 4 ana fonksiyon bulunuyor. Bunlardan ikisi
+Python ile JSON oluşturmaya yararken diğer ikisi JSON
+verilerini çözmeye yarar. JSON oluşturan fonksiyonlar şu
+ikisidir:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>json.dump</li>
+<li>json.dumps</li>
+</ol>
+</div></blockquote>
+<p>JSON verilerini çözen iki fonksiyon ise şunlardır:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>json.load</li>
+<li>json.loads</li>
+</ol>
+</div></blockquote>
+<div class="section" id="json-dump-ve-json-dumps">
+<h2>json.dump ve json.dumps<a class="headerlink" href="#json-dump-ve-json-dumps" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Bu iki fonksiyonu birlikte yazmak istedim. Çünkü ikisinin
+parametreleri neredeyse aynı. Aralarındaki fark ise şu:</p>
+<blockquote>
+<div><cite>dump</cite> fonksiyonu çıktıyı illaki bir dosya içine aktarır.
+Yani size al bu senin istediğin JSON çıktısı demez. Bunu diyen
+<cite>dumps</cite> fonksiyonudur. <cite>dumps</cite> fonksiyonu <cite>str</cite> tipinde
+bir değer döndürürken <cite>dump</cite> fonksiyonu hiçbir değer döndürmez.</div></blockquote>
+<p>O yüzden python.org sitesinden alınan şu örneklerde <cite>dump</cite>
+yerine <cite>dumps</cite> fonksiyonu kullanılmış.Eğer <cite>dump</cite> fonksiyonunu
+kullanacaksanız JSON’a dönüşmesini istediğiniz ifadeden sonra
+dosyayı bulunduran değişkeni yazın.</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">([</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;bar&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;baz&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)}])</span>
+<span class="go">&#39;[&quot;foo&quot;, {&quot;bar&quot;: [&quot;baz&quot;, null, 1.0, 2]}]&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2">foo</span><span class="se">\b</span><span class="s2">ar&quot;</span><span class="p">))</span>
+<span class="go">&quot;\&quot;foo\bar&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\u1234</span><span class="s1">&#39;</span><span class="p">))</span>
+<span class="go">&quot;\u1234&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">))</span>
+<span class="go">&quot;\\&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="go">{&quot;a&quot;: 0, &quot;b&quot;: 0, &quot;c&quot;: 0}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">io</span> <span class="k">import</span> <span class="n">StringIO</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">io</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">([</span><span class="s1">&#39;streaming API&#39;</span><span class="p">],</span> <span class="n">io</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">io</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span>
+<span class="go">&#39;[&quot;streaming API&quot;]&#39;</span>
+</pre></div>
+</div>
+<p>Bu fonksiyonların birkaç parametresi var. Şimdi sıra bunların
+ne işe yaradığını öğrenmekte.</p>
+<p><strong>skipkeys</strong></p>
+<p>Normalde Python, JSON oluştururken anahtar veya değer basit tipte
+(str,int,float…) değilse <cite>TypeError</cite> hatası verir.
+Eğer bu parametre <cite>True</cite> (Varsayılan <cite>False</cite>) ise hata vermek yerine o ikiliyi atlar.</p>
+<p><strong>ensure_ascii</strong></p>
+<p>Eğer bu parametre <cite>True</cite> (varsayılan olarak) ise çıktıda ASCII
+tablosuna uymayan karakterlerden kaçınır. <cite>False</cite> ise buna dikkat etmez.</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">([</span><span class="s2">&quot;üzüm&quot;</span><span class="p">],</span><span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">&#39;[&quot;\\u00fcz\\u00fcm&quot;]&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">([</span><span class="s2">&quot;üzüm&quot;</span><span class="p">],</span><span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">&#39;[&quot;üzüm&quot;]&#39;</span>
+</pre></div>
+</div>
+<p><strong>indent</strong></p>
+<p>Eğer negatif olmayan bir tamsayı veya bir karakter dizisi ise
+girintileme sayesinde daha güzel bir çıktı almanızı sağlar.
+Eğer 0, negatif sayı veya boş karakter dizisi(<cite>“”</cite>) ise her öğeyi yeni
+satıra basar. None(varsayılan) ise dip dibe bir çıktı verir.
+Pozitif bir sayı verildiğinde onu boşluk sayısı kabul ederek
+girintileme yapar. Karakter dizisi ifadesine şu ikisi yeterince açık
+bir örnek: <cite>\t</cite>, <cite>\n</cite></p>
+<div class="admonition note">
+<p class="first admonition-title">Not</p>
+<p class="last">Karakter dizisi kullanımı 3.2 sürümü itibari ile başladı.</p>
+</div>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;Özellikler&quot;</span><span class="p">:{</span><span class="s2">&quot;Hız&quot;</span><span class="p">:</span><span class="mi">150</span><span class="p">,</span><span class="s2">&quot;Ses&quot;</span><span class="p">:</span><span class="s2">&quot;10db&quot;</span><span class="p">}},</span><span class="n">indent</span><span class="o">=</span><span class="kc">None</span><span class="p">))</span>
+<span class="go">{&quot;\u00d6zellikler&quot;: {&quot;H\u0131z&quot;: 150, &quot;Ses&quot;: &quot;10db&quot;}}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;Ozellikler&quot;</span><span class="p">:{</span><span class="s2">&quot;Hız&quot;</span><span class="p">:</span><span class="mi">150</span><span class="p">,</span><span class="s2">&quot;Ses&quot;</span><span class="p">:</span><span class="s2">&quot;10db&quot;</span><span class="p">}},</span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+<span class="go">{</span>
+<span class="go">    &quot;Ozellikler&quot;: {</span>
+<span class="go">        &quot;Hiz&quot;: 150,</span>
+<span class="go">        &quot;Ses&quot;: &quot;10db&quot;</span>
+<span class="go">    }</span>
+<span class="go">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;Ozellikler&quot;</span><span class="p">:{</span><span class="s2">&quot;Hız&quot;</span><span class="p">:</span><span class="mi">150</span><span class="p">,</span><span class="s2">&quot;Ses&quot;</span><span class="p">:</span><span class="s2">&quot;10db&quot;</span><span class="p">}},</span><span class="n">indent</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">))</span>
+<span class="go">{</span>
+
+<span class="go">&quot;Ozellikler&quot;: {</span>
+
+
+<span class="go">&quot;Hiz&quot;: 150,</span>
+
+
+<span class="go">&quot;Ses&quot;: &quot;10db&quot;</span>
+
+<span class="go">}</span>
+<span class="go">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;Ozellikler&quot;</span><span class="p">:{</span><span class="s2">&quot;Hız&quot;</span><span class="p">:</span><span class="mi">150</span><span class="p">,</span><span class="s2">&quot;Ses&quot;</span><span class="p">:</span><span class="s2">&quot;10db&quot;</span><span class="p">}},</span><span class="n">indent</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="go">{</span>
+<span class="go">&quot;Ozellikler&quot;: {</span>
+<span class="go">&quot;Hiz&quot;: 150,</span>
+<span class="go">&quot;Ses&quot;: &quot;10db&quot;</span>
+<span class="go">}</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+<p><strong>separators</strong></p>
+<p>Bu parametre verilen değeri öğeler arasında ayraç olarak
+kullanır. Verilen değer tuple tipinde olmalıdır. Varsayılan olarak
+şu kullanılır: <cite>(“,”, “: “)</cite>
+Ancak indent parametresi <cite>None</cite> değerindeyse ilk virgül değeri de iki
+nokta gibi sonuna boşluk alır. Yani şu şekilde olur: <cite>(“, “, “: “)</cite></p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;Elma&quot;</span><span class="p">:</span><span class="mi">42</span><span class="p">,</span><span class="s2">&quot;Armut&quot;</span><span class="p">:</span><span class="mi">25</span><span class="p">,</span><span class="s2">&quot;kiraz&quot;</span><span class="p">:</span><span class="mi">65</span><span class="p">},</span><span class="n">separators</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;?&quot;</span><span class="p">,</span><span class="s2">&quot;!&quot;</span><span class="p">))</span>
+<span class="go">&#39;{&quot;Elma&quot;!42?&quot;Armut&quot;!25?&quot;kiraz&quot;!65}&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="json-load-ve-json-loads">
+<h2>json.load ve json.loads<a class="headerlink" href="#json-load-ve-json-loads" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Bu iki fonksiyon da dump ve dumps gibi birbirine çok benziyor.
+Hatta farkları bile neredeyse aynı. load fonksiyonu sadece
+dosyadaki JSON verilerini Python verisine çevirirken
+loads fonksiyonu veriyi parametre olarak alıyor. dump
+ve dumps’da olduğu gibi parametreleri tamamen aynı.</p>
+<p>Buraya birkaç örnek kod yazalım.</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="s1">&#39;{&quot;mezuniyet&quot;: &quot;üniversite&quot;, &quot;Bölüm&quot;: &quot;Tıp&quot;}&#39;</span><span class="p">)</span>
+<span class="go">{&#39;mezuniyet&#39;: &#39;üniversite&#39;, &#39;Bölüm&#39;: &#39;Tıp&#39;}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="s1">&#39;[&quot;</span><span class="se">\\</span><span class="s1">u00fcz</span><span class="se">\\</span><span class="s1">u00fcm&quot;]&#39;</span><span class="p">)</span>
+<span class="go">[&#39;üzüm&#39;]</span>
+</pre></div>
+</div>
+<p>Şimdi de sıra fonksiyonların aldığı parametrelerde.</p>
+<p><strong>object_hook</strong></p>
+<p>Döndürülen değerin veri tipini değiştirmenizi sağlar. Bunu
+bir kod ile açıklayalım.</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="s1">&#39;{&quot;mezuniyet&quot;: &quot;üniversite&quot;, &quot;Bölüm&quot;: &quot;Tıp&quot;}&#39;</span><span class="p">,</span><span class="n">object_hook</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+<span class="go">[&#39;mezuniyet&#39;, &#39;Bölüm&#39;]</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi çıktıyı liste tipinde verdi. Ancak bunu
+yapmak için sadece anahtarları aldı.</p>
+<p><strong>object_pairs_hook</strong></p>
+<p>object_pairs_hook, object_hook ile benzer görevler yapıyor.
+İkisi arasında öncelik object_pairs_hook’da. Eğer anahtar değer
+ilişkisinden oluşan bir JSON verisiyse object_pairs_hook
+değilse object_hook parametresi kullanılır.</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="s1">&#39;{&quot;Ad&quot;: &quot;Fırat&quot;, &quot;Soyad&quot;: &quot;Özgül&quot;}&#39;</span><span class="p">,</span><span class="n">object_pairs_hook</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+<span class="go">&quot;[(&#39;Ad&#39;, &#39;Fırat&#39;), (&#39;Soyad&#39;, &#39;Özgül&#39;)]&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="s1">&#39;[&quot;Fırat&quot;, &quot;Özgül&quot;]&#39;</span><span class="p">,</span><span class="n">object_pairs_hook</span><span class="o">=</span><span class="nb">dict</span><span class="p">,</span><span class="n">object_hook</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+<span class="go">[&#39;Fırat&#39;, &#39;Özgül&#39;]</span>
+</pre></div>
+</div>
+<p><strong>parse_int</strong></p>
+<p>int tipindeki değerlerin Python koduna dönüştürülürken hangi
+tipin kullanılması gerektiğini belirler. Bunu bir kodla
+açıklamak daha kolay olur sanıyorum:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="s1">&#39;{&quot;Satılan&quot;: 54, &quot;Kalan&quot;: 46}&#39;</span><span class="p">,</span><span class="n">parse_int</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="go">{&#39;Satılan&#39;: 54.0, &#39;Kalan&#39;: 46.0}</span>
+</pre></div>
+</div>
+<p><strong>parse_float</strong></p>
+<p>parse_int parametresinin yaptığını float tipindeki sayılar
+için yapar.</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="s1">&#39;[23, 45.2, &quot;yazbel&quot;, 512.128]&#39;</span><span class="p">,</span><span class="n">parse_int</span><span class="o">=</span><span class="nb">bool</span><span class="p">,</span><span class="n">parse_float</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+<span class="go">[True, [&#39;4&#39;, &#39;5&#39;, &#39;.&#39;, &#39;2&#39;], &#39;yazbel&#39;, [&#39;5&#39;, &#39;1&#39;, &#39;2&#39;, &#39;.&#39;, &#39;1&#39;, &#39;2&#39;, &#39;8&#39;]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+
+<div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
+<div class='extrarelbar'> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="timeit.html" title="timeit Modülü"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="sched.html" title="sched modülü"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Önemli Standart Kütüphane Modülleri</a> &#187;</li> 
+      </ul>
+    </div> </div>
+
+<div class='addcomment'>Yorumlar</div>
+
+<div class='how-to-use'>
+<h3>Önemli Not</h3>
+Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
+<span class='tag'>&lt;pre&gt;&lt;code&gt;</span> etiketleri içine alın. Örneğin:
+
+<pre>
+    <span class='tag'>&lt;pre&gt;&lt;code class="python"&gt;</span>
+    <span class='keyword'>print</span>(<span class='string'>"Merhaba Dünya!"</span>)
+    <span class='tag'>&lt;/code&gt;&lt;/pre&gt;</span>
+</pre>
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'istihza';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4eca48eb2d83faf9" async="async"></script>
+
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="timeit.html" title="timeit Modülü"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="sched.html" title="sched modülü"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Önemli Standart Kütüphane Modülleri</a> &#187;</li> 
+      </ul>
+    </div> 
+
+<div class="footer">
+&copy; Copyright 2007-2019, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 30.12.2019.
+<a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7 ile oluşturulmuştur.
+<br>
+<br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
+alt="Creative Commons License" style="border-width:0"
+src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a><br />
+<br>
+</div>
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=10396326;
+var sc_invisible=1;
+var sc_security="fb5cd679";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="hit counter"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="http://c.statcounter.com/10396326/0/fb5cd679/1/"
+alt="hit counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+  </body>
+</html>

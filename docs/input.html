@@ -1,0 +1,1477 @@
+
+ <!DOCTYPE html>
+ <html lang="tr">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta content="Bu bölümde kullanıcıdan nasıl veri alabileceğimizi öğreneceğiz." name="description" />
+<meta content="python, input fonksiyonu, tip dönüştürme, int, float, str, complex, eval, exec, format" name="keywords" />
+
+    <title>Kullanıcıdan Bilgi Almak &#8212; Python 3 için Türkçe Kılavuz</title>
+    <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="search" title="Ara" href="search.html" />
+    <link rel="next" title="Koşullu Durumlar" href="kosul_deyimleri.html" />
+    <link rel="prev" title="Yorum ve Açıklama Cümleleri" href="yorum.html" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head>
+  <body>
+<div class='header'><a href='https://yazbel.com'>yazbel.com</a></div>
+
+<ul class='navbar'>
+    <li><a href="#"><del>pdf desteği sonlanmıştır</del></a></li>
+    <li class="forum"><a href="http://forum.yazbel.com">forum</a></li>
+</ul>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="kosul_deyimleri.html" title="Koşullu Durumlar"
+             accesskey="N">sonraki</a></li>
+        <li class="right" >
+          <a href="yorum.html" title="Yorum ve Açıklama Cümleleri"
+             accesskey="P">önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+ 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+
+  <div class="section" id="kullanicidan-bilgi-almak">
+<h1>Kullanıcıdan Bilgi Almak<a class="headerlink" href="#kullanicidan-bilgi-almak" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<p>Şimdiye kadar Python programlama dili ile ilgili epey bilgi edindik. Ama
+muhtemelen buraya kadar öğrendiklerimiz sizi heyecanlandırmaktan bir hayli
+uzaktı. Zira şu ana kadar hep tek yönlü bir programlama faaliyeti yürüttük.</p>
+<p>Mesela şimdiye kadar öğrendiklerimizi kullanarak ancak şöyle bir program
+yazabildik:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">isim</span> <span class="o">=</span> <span class="s2">&quot;Mübeccel&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Merhaba&quot;</span><span class="p">,</span> <span class="n">isim</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;!</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu programı çalıştırdığımızda şöyle bir çıktı alacağımızı biliyorsunuz:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span>Merhaba Mübeccel!
+</pre></div>
+</div>
+<p>Bu programın ne kadar sıkıcı olduğunu herhalde söylemeye gerek yok. Bu programda
+<cite>isim</cite> değişkenini doğrudan kendimiz yazdığımız için programımız hiçbir koşulda
+<cite>Merhaba Mübeccel</cite> dışında bir çıktı veremez. Çünkü bu program, tek yönlü bir
+programlama faaliyetinin ürünüdür.</p>
+<p>Halbuki bu değişkenin değerini kendimiz yazmasak, bu değeri kullanıcıdan alsak
+ne hoş olurdu, değil mi?</p>
+<p>Python’da kullanıcıdan herhangi bir veri alıp, yazdığımız programları tek
+taraflı olmaktan kurtarmak için <code class="docutils literal"><span class="pre">input()</span></code> adlı bir fonksiyondan
+faydalanıyoruz.</p>
+<p>İşte biz bu bölümde, programcılık maceramızı bir üst seviyeye taşıyacak çok
+önemli bir araç olan bu <code class="docutils literal"><span class="pre">input()</span></code> fonksiyonunu derinlemesine inceleyeceğiz.
+Ama bu bölümde sadece bu fonksiyonu ele almayacağız elbette. Burada kullanıcıdan
+veri almanın yanısıra, aldığımız bu veriyi nasıl dönüştüreceğimizi ve bu veriyi,
+yazdığımız programlarda nasıl kullanacağımızı da derin derin inceleyeceğiz.</p>
+<p>İlkin <code class="docutils literal"><span class="pre">input()</span></code> fonksiyonunu anlatarak yola koyulalım.</p>
+<div class="section" id="input-fonksiyonu">
+<h2>input() Fonksiyonu<a class="headerlink" href="#input-fonksiyonu" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">input()</span></code> da daha önce öğrendiğimiz <code class="docutils literal"><span class="pre">type()</span></code>, <code class="docutils literal"><span class="pre">len()</span></code> ve <code class="docutils literal"><span class="pre">print()</span></code> gibi
+bir fonksiyondur. Esasında biz bu fonksiyonu ilk kez burada görmüyoruz. Windows
+ve GNU/Linux kullanıcıları, yazdıkları bir programı çift tıklayarak
+çalıştırabilmek için bu fonksiyonu kullandıklarını hatırlıyor olmalılar. Mesela
+şu programı ele alalım:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+
+<span class="n">kartvizit</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">İstihza Anonim Şirketi</span>
+<span class="s2">Fırat Özgül</span>
+<span class="s2">Tel: 0212 123 23 23</span>
+<span class="s2">Faks: 0212 123 23 24</span>
+<span class="s2">e.posta: kistihza@yahoo.com</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">kartvizit</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu programı yazıp kaydettikten sonra bu programın simgesi üzerine çift
+tıkladığımızda siyah bir komut ekranının çok hızlı bir şekilde açılıp
+kapandığını görürüz. Aslında programımız çalışıyor, ama programımız yapması
+gereken işi yaptıktan hemen sonra kapandığı için biz program penceresini
+görmüyoruz.</p>
+<p>Programımızın çalıştıktan sonra hemen kapanmamasını sağlamak için son satıra bir
+<code class="docutils literal"><span class="pre">input()</span></code> fonksiyonu yerleştirmemiz gerektiğini biliyoruz:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+
+<span class="n">kartvizit</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">İstihza Anonim Şirketi</span>
+<span class="s2">Fırat Özgül</span>
+<span class="s2">Tel: 0212 123 23 23</span>
+<span class="s2">Faks: 0212 123 23 24</span>
+<span class="s2">e.posta: kistihza@yahoo.com</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">kartvizit</span><span class="p">)</span>
+
+<span class="nb">input</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Bu sayede programımız kullanıcıdan bir giriş bekleyecek ve o girişi alana kadar
+da kapanmayacaktır. Programı kapatmak için <cite>Enter</cite> düğmesine basabiliriz.</p>
+<p><code class="docutils literal"><span class="pre">input()</span></code> bir fonksiyondur dedik. Henüz fonksiyon kavramının ayrıntılarını
+öğrenmemiş olsak da, şimdiye kadar pek çok fonksiyon gördüğümüz için artık bir
+fonksiyonla karşılaştığımızda bunun nasıl kullanılacağını az çok tahmin
+edebiliyoruz. Tıpkı düşündüğünüz ve yukarıdaki örnekten de gördüğünüz gibi,
+birer fonksiyon olan <code class="docutils literal"><span class="pre">type()</span></code>, <code class="docutils literal"><span class="pre">print()</span></code>, <code class="docutils literal"><span class="pre">len()</span></code> ve <code class="docutils literal"><span class="pre">open()</span></code>
+fonksiyonlarını nasıl kullanıyorsak <code class="docutils literal"><span class="pre">input()</span></code> fonksiyonunu da öyle
+kullanacağız.</p>
+<p>Dilerseniz lafı daha fazla uzatmadan örnek bir program yazalım:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">isim</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;İsminiz nedir? &quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Merhaba&quot;</span><span class="p">,</span> <span class="n">isim</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;!</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu programı kaydedip çalıştırdığınızda, sorulan soruya verdiğiniz cevaba göre
+çıktı farklı olacaktır. Örneğin eğer bu soruya ‘Niyazi’ cevabını vermişseniz
+çıktınız <cite>Merhaba Niyazi!</cite> şeklinde olacaktır.</p>
+<p>Görüyorsunuz ya, tıpkı daha önce gördüğümüz fonksiyonlarda olduğu gibi,
+<code class="docutils literal"><span class="pre">input()</span></code> fonksiyonunda da parantez içine bir parametre yazıyoruz. Bu
+fonksiyona verilen parametre, kullanıcıdan veri alınırken kullanıcıya sorulacak
+soruyu gösteriyor. Gelin isterseniz bir örnek daha yapalım elimizin alışması
+için:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">yaş</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Yaşınız: &quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Demek&quot;</span><span class="p">,</span> <span class="n">yaş</span><span class="p">,</span> <span class="s2">&quot;yaşındasın.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Genç mi yoksa yaşlı mı olduğuna karar veremedim.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">input()</span></code> fonksiyonunun ne kadar kullanışlı bir araç olduğu ortada. Bu
+fonksiyon sayesinde, şimdiye kadar tek sesli bir şekilde yürüttüğümüz
+programcılık faaliyetlerimizi çok sesli bir hale getirebileceğiz. Mesela önceki
+bölümlerden birinde yazdığımız, daire alanı hesaplayan programı hatırlarsınız. O
+zaman henüz dosyalarımızı kaydetmeyi ve <code class="docutils literal"><span class="pre">input()</span></code> fonksiyonunu öğrenmediğimiz
+için o programı etkileşimli kabukta şu şekilde yazmıştık:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">çap</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">yarıçap</span> <span class="o">=</span> <span class="n">çap</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14159</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">alan</span> <span class="o">=</span> <span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">yarıçap</span> <span class="o">*</span> <span class="n">yarıçap</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">alan</span>
+
+<span class="go">201.06176</span>
+</pre></div>
+</div>
+<p>Ama artık hem dosyalarımızı kaydetmeyi biliyoruz, hem de <code class="docutils literal"><span class="pre">input()</span></code>
+fonksiyonunu öğrendik. Dolayısıyla yukarıdaki programı şu şekilde yazabiliriz:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="c1">#Kullanıcıdan dairenin çapını girmesini istiyoruz.</span>
+<span class="n">çap</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Dairenin çapı: &quot;</span><span class="p">)</span>
+
+<span class="c1">#Kullanıcının verdiği çap bilgisini kullanarak</span>
+<span class="c1">#yarıçapı hesaplayalım. Buradaki int() fonksiyonunu</span>
+<span class="c1">#ilk kez görüyoruz. Biraz sonra bunu açıklayacağız</span>
+<span class="n">yarıçap</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">çap</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="c1">#pi sayımız sabit</span>
+<span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14159</span>
+
+<span class="c1">#Yukarıdaki bilgileri kullanarak artık</span>
+<span class="c1">#dairenin alanını hesaplayabiliriz</span>
+<span class="n">alan</span> <span class="o">=</span> <span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">yarıçap</span> <span class="o">*</span> <span class="n">yarıçap</span><span class="p">)</span>
+
+<span class="c1">#Son olarak, hesapladığımız alanı yazdırıyoruz</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Çapı&quot;</span><span class="p">,</span> <span class="n">çap</span><span class="p">,</span> <span class="s2">&quot;cm olan dairenin alanı: &quot;</span><span class="p">,</span> <span class="n">alan</span><span class="p">,</span> <span class="s2">&quot;cm2&#39;dir&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, <code class="docutils literal"><span class="pre">input()</span></code> fonksiyonunu öğrenmemiz sayesinde artık yavaş yavaş
+işe yarar programlar yazabiliyoruz.</p>
+<p>Ancak burada, daha önce öğrenmediğimiz bir fonksiyon dikkatinizi çekmiş olmalı.
+Bu fonksiyonun adı <code class="docutils literal"><span class="pre">int()</span></code>. Bu yeni fonksiyon dışında, yukarıdaki bütün
+kodları anlayabilecek kadar Python bilgisine sahibiz.</p>
+<p><code class="docutils literal"><span class="pre">int()</span></code> fonksiyonunun ne işe yaradığını anlamak için isterseniz ilgili satırı
+<code class="docutils literal"><span class="pre">yarıçap</span> <span class="pre">=</span> <span class="pre">çap</span> <span class="pre">/</span> <span class="pre">2</span></code> şeklinde yazarak çalıştırmayı deneyin bu programı.</p>
+<p>Dediğim gibi, eğer o satırdaki <code class="docutils literal"><span class="pre">int()</span></code> fonksiyonunu kaldırarak programı
+çalıştırdıysanız şuna benzer bir hata mesajı almış olmalısınız:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;deneme.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">8</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="n">yarıçap</span> <span class="o">=</span> <span class="n">çap</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="ne">TypeError</span><span class="p">:</span> <span class="n">unsupported</span> <span class="n">operand</span> <span class="nb">type</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="o">/</span><span class="p">:</span> <span class="s1">&#39;str&#39;</span> <span class="ow">and</span> <span class="s1">&#39;int&#39;</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi programımız bölme işlemini yapamadı. Buradan anlıyoruz ki, bu
+<code class="docutils literal"><span class="pre">int()</span></code> fonksiyonu programımızdaki aritmetik işlemin düzgün bir şekilde
+yapılabilmesini sağlıyor. Gelelim bu fonksiyonun bu işlevi nasıl yerine
+getirdiğini incelemeye.</p>
+</div>
+<div class="section" id="tip-donusumleri">
+<h2>Tip Dönüşümleri<a class="headerlink" href="#tip-donusumleri" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Bir önceki bölümün sonunda verdiğimiz örnek programda <code class="docutils literal"><span class="pre">int()</span></code> adlı bir
+fonksiyon görmüş, bu fonksiyonu anlatmayı o zaman ertelemiştik. Çok gecikmeden,
+bu önemli fonksiyonun ne işe yaradığını öğrenmemiz gerekiyor. İsterseniz bir
+örnek üzerinden gidelim.</p>
+<p>Diyelim ki kullanıcıdan aldığı sayının karesini hesaplayan bir program yazmak
+istiyoruz. Öncelikle şöyle bir şey deneyelim:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">sayı</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Lütfen bir sayı girin: &quot;</span><span class="p">)</span>
+
+<span class="c1">#Girilen sayının karesini bulmak için sayı değişkeninin 2.</span>
+<span class="c1">#kuvvetini alıyoruz. Aynı şeyi pow() fonksiyonu ile de</span>
+<span class="c1">#yapabileceğimizi biliyorsunuz. Örn.: pow(sayı, 2)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Girdiğiniz sayının karesi: &quot;</span><span class="p">,</span> <span class="n">sayı</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu kodları çalıştırdığımız zaman, programımız kullanıcıdan bir sayı girmesini
+isteyecek, ancak kullanıcı bir sayı girip <cite>Enter</cite> tuşuna bastığında şöyle bir
+hata mesajıyla karşılaşacaktır:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;test.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">5</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Girdiğiniz sayının karesi: &quot;</span><span class="p">,</span> <span class="n">sayı</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+<span class="ne">TypeError</span><span class="p">:</span> <span class="n">unsupported</span> <span class="n">operand</span> <span class="nb">type</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="o">**</span> <span class="ow">or</span> <span class="nb">pow</span><span class="p">():</span> <span class="s1">&#39;str&#39;</span> <span class="ow">and</span> <span class="s1">&#39;int&#39;</span>
+</pre></div>
+</div>
+<p>Hata mesajına baktığınızda, ‘TypeError’ ifadesinden, bunun veri tipine ilişkin
+bir hata olduğunu tahmin edebilirsiniz. Eğer İngilizce biliyorsanız yukarıdaki
+hata mesajının anlamını rahatlıkla çıkarabilirsiniz. İngilizce bilmeseniz de en
+sondaki ‘str’ ve ‘int’ kelimeleri size karakter dizisi ve sayı adlı veri
+tiplerini hatırlatacaktır. Demek ki ortada veri tiplerini ilgilendiren bir sorun
+var…</p>
+<p>Peki burada tam olarak neler dönüyor?</p>
+<p>Hatırlayacaksınız, geçen derslerden birinde <code class="docutils literal"><span class="pre">len()</span></code> fonksiyonunu anlatırken
+şöyle bir şey söylemiştik:</p>
+<blockquote>
+<div>Biz henüz kullanıcıdan nasıl veri alacağımızı bilmiyoruz. Ama şimdilik şunu
+söyleyebiliriz: Python’da kullanıcıdan herhangi bir veri aldığımızda, bu
+veri bize bir karakter dizisi olarak gelecektir.</div></blockquote>
+<p>Gelin isterseniz yukarıda anlattığımız durumu teyit eden bir program yazalım:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="c1">#Kullanıcıdan herhangi bir veri girmesini istiyoruz</span>
+<span class="n">sayı</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Herhangi bir veri girin: &quot;</span><span class="p">)</span>
+
+<span class="c1">#Kullanıcının girdiği verinin tipini bir</span>
+<span class="c1">#değişkene atıyoruz</span>
+<span class="n">tip</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">sayı</span><span class="p">)</span>
+
+<span class="c1">#Son olarak kullanıcının girdiği verinin tipini</span>
+<span class="c1">#ekrana basıyoruz.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Girdiğiniz verinin tipi: &quot;</span><span class="p">,</span> <span class="n">tip</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu programı çalıştırdığımızda ne tür bir veri girersek girelim, girdiğimiz
+verinin tipi <cite>str</cite>, yani karakter dizisi olacaktır. Demek ki gerçekten de,
+kullanıcıdan veri almak için kullandığımız <code class="docutils literal"><span class="pre">input()</span></code> fonksiyonu bize her
+koşulda bir karakter dizisi veriyormuş.</p>
+<p>Geçen derslerde şöyle bir şey daha söylemiştik:</p>
+<blockquote>
+<div>Python’da, o anda elinizde bulunan bir verinin hangi tipte olduğunu bilmek
+son derece önemlidir. Çünkü bir verinin ait olduğu tip, o veriyle neler
+yapıp neler yapamayacağınızı belirler.</div></blockquote>
+<p>Şu anda karşı karşıya olduğumuz durum da buna çok güzel bir örnektir. Eğer o
+anda elimizde bulunan verinin tipini bilmezsek tıpkı yukarıda olduğu gibi, o
+veriyi programımızda kullanmaya çalışırken programımız hata verir ve çöker.</p>
+<p>Her zaman üstüne basa basa söylediğimiz gibi, aritmetik işlemler yalnızca
+sayılarla yapılır. Karakter dizileri ile herhangi bir aritmetik işlem yapılamaz.
+Dolayısıyla, <code class="docutils literal"><span class="pre">input()</span></code> fonksiyonundan gelen veri bir karakter dizisi olduğu
+için ve biz de programımızda girilen sayının karesini hesaplamak amacıyla bu
+fonksiyondan gelen verinin <cite>2.</cite> kuvvetini, yani karesini hesaplamaya
+çalıştığımız için programımız hata verecektir.</p>
+<p>Yukarıdaki programda neler olup bittiğini daha iyi anlayabilmek için Python’ın
+etkileşimli kabuğunda şu işlemleri yapabiliriz:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;23&quot;</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">TypeError</span>: <span class="n">unsupported operand type(s) for ** or pow(): &#39;str&#39; and &#39;int&#39;</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, programımızdan aldığımız hata ile yukarıdaki hata tamamen aynı
+(hata mesajlarında bizi ilgilendiren kısım en son satırdır). Tıpkı burada olduğu
+gibi, hata veren programda da ‘Lütfen bir sayı girin: ‘ sorusuna örneğin <cite>23</cite>
+cevabını verdiğimizde programımız aslında <code class="docutils literal"><span class="pre">&quot;23&quot;</span> <span class="pre">**</span> <span class="pre">2</span></code> gibi bir işlem yapmaya
+çalışıyor. Bir karakter dizisinin kuvvetini hesaplamak mümkün olmadığı, kuvvet
+alma işlemi yalnızca sayılarla yapılabileceği için de hata vermekten başka
+çaresi kalmıyor.</p>
+<p>Ancak bazen öyle durumlarla karşılaşırsınız ki, programınız hiçbir hata vermez,
+ama elde edilen sonuç aslında tamamen beklentinizin dışındadır. Mesela şu basit
+örneği inceleyelim:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">sayı1</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Toplama işlemi için ilk sayıyı girin: &quot;</span><span class="p">)</span>
+<span class="n">sayı2</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Toplama işlemi için ikinci sayıyı girin: &quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sayı1</span><span class="p">,</span> <span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="n">sayı2</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">sayı1</span> <span class="o">+</span> <span class="n">sayı2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu kodları çalıştırdığımızda şöyle bir manzarayla karşılaşırız:</p>
+<img alt="_images/output_int.png" class="align-center" src="_images/output_int.png" />
+<p><code class="docutils literal"><span class="pre">input()</span></code> fonksiyonunun alttan alta neler çevirdiğini bu örnek yardımıyla çok
+daha iyi anladığınızı zannediyorum. Gördüğünüz gibi yukarıdaki program herhangi
+bir hata vermedi. Ama beklediğimiz çıktıyı da vermedi. Zira biz programımızın
+iki sayıyı toplamasını istiyorduk. O ise kullanıcının girdiği sayıları yan yana
+yazmakla yetindi. Yani bir aritmetik işlem yapmak yerine, verileri birbiriyle
+bitiştirdi. Çünkü, dediğim gibi, <code class="docutils literal"><span class="pre">input()</span></code> fonksiyonunun kullanıcıdan aldığı
+şey bir karakter dizisidir. Dolayısıyla bu fonksiyon yukarıdaki gibi bir durumla
+karşılaştığı zaman karakter dizileri arasında bir birleştirme işlemi
+gerçekleştirir. Tıpkı ilk derslerimizde etkileşimli kabukta verdiğimiz şu
+örnekte olduğu gibi:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;23&quot;</span> <span class="o">+</span> <span class="s2">&quot;23&quot;</span>
+
+<span class="go">2323</span>
+</pre></div>
+</div>
+<p>Bu son örnekten ayrıca şunu çıkarıyoruz: Yazdığınız bir programın herhangi bir
+hata vermemesi o programın doğru çalıştığı anlamına gelmeyebilir. Dolayısıyla bu
+tür durumlara karşı her zaman uyanık olmanızda fayda var.</p>
+<p>Peki yukarıdaki gibi durumlarla karşılaşmamak için ne yapacağız?</p>
+<p>İşte bu noktada devreye tip dönüştürücü adını verdiğimiz birtakım fonksiyonlar
+girecek.</p>
+<div class="section" id="int">
+<h3>int()<a class="headerlink" href="#int" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Dediğimiz gibi, <code class="docutils literal"><span class="pre">input()</span></code> fonksiyonundan gelen veri her zaman bir karakter
+dizisidir. Dolayısıyla bu fonksiyondan gelen veriyle herhangi bir aritmetik
+işlem yapabilmek için öncelikle bu veriyi bir sayıya dönüştürmemiz gerekir. Bu
+dönüştürme işlemi için <code class="docutils literal"><span class="pre">int()</span></code> adlı özel bir dönüştürücü fonksiyondan
+yararlanacağız. Gelin isterseniz Python’ın etkileşimli kabuğunda bu fonksiyonla
+bir kaç deneme yaparak bu fonksiyonun ne işe yaradığını ve nasıl kullanıldığını
+anlamaya çalışalım. Zira etkileşimli kabuk bu tür deneme işlemleri için biçilmiş
+kaftandır:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">karakter_dizisi</span> <span class="o">=</span> <span class="s2">&quot;23&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sayı</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">karakter_dizisi</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">sayı</span><span class="p">)</span>
+
+<span class="go">23</span>
+</pre></div>
+</div>
+<p>Burada öncelikle <cite>“23”</cite> adlı bir karakter dizisi tanımladık. Ardından da
+<code class="docutils literal"><span class="pre">int()</span></code> fonksiyonunu kullanarak bu karakter dizisini bir tamsayıya (<em>integer</em>)
+dönüştürdük. İsminden de anlayacağınız gibi <code class="docutils literal"><span class="pre">int()</span></code> fonksiyonu İngilizce
+<em>integer</em> (tamsayı) kelimesinin kısaltmasıdır ve bu fonksiyonun görevi bir
+veriyi tamsayıya dönüştürmektir.</p>
+<p>Ancak burada dikkat etmemiz gereken bir şey var. Herhangi bir verinin sayıya
+dönüştürülebilmesi için o verinin sayı değerli bir veri olması gerekir. Örneğin
+<cite>“23”</cite>, sayı değerli bir karakter dizisidir. Ama mesela <cite>“elma”</cite> sayı değerli
+bir karakter dizisi değildir. Bu yüzden <cite>“elma”</cite> karakter dizisi sayıya
+dönüştürülemez:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">karakter_dizisi</span> <span class="o">=</span> <span class="s2">&quot;elma&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sayı</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">karakter_dizisi</span><span class="p">)</span>
+
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">ValueError</span>: <span class="n">invalid literal for int() with base 10: &#39;elma&#39;</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, sayı değerli olmayan bir veriyi sayıya dönüştürmeye
+çalıştırdığımızda Python bize bir hata mesajı gösteriyor. Yazdığımız
+programlarda bu duruma özellikle dikkat etmemiz gerekiyor.</p>
+<p>Şimdi bu bölümün başında yazdığımız ve hata veren programımıza dönelim yine:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">sayı</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Lütfen bir sayı girin: &quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Girdiğiniz sayının karesi: &quot;</span><span class="p">,</span> <span class="n">sayı</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu kodların hata vereceğini biliyoruz. Ama artık, öğrendiğimiz <code class="docutils literal"><span class="pre">int()</span></code>
+dönüştürücüsünü kullanarak programımızı hata vermeyecek şekilde yeniden
+yazabiliriz:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">veri</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Lütfen bir sayı girin: &quot;</span><span class="p">)</span>
+
+<span class="c1">#input() fonksiyonundan gelen karakter dizisini</span>
+<span class="c1">#sayıya dönüştürüyoruz.</span>
+<span class="n">sayı</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">veri</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Girdiğiniz sayının karesi: &quot;</span><span class="p">,</span> <span class="n">sayı</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Artık programımız hatasız bir şekilde çalışıyor.</p>
+<p>Bir de öteki örneğimizi ele alalım:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">sayı1</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Toplama işlemi için ilk sayıyı girin: &quot;</span><span class="p">)</span>
+<span class="n">sayı2</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Toplama işlemi için ikinci sayıyı girin: &quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sayı1</span><span class="p">,</span> <span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="n">sayı2</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">sayı1</span> <span class="o">+</span> <span class="n">sayı2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu kodların beklediğimiz çıktıyı vermeyeceğini biliyoruz. Ama eğer bu kodları
+şöyle yazarsak işler değişir:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">v1</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Toplama işlemi için ilk sayıyı girin: &quot;</span><span class="p">)</span>
+<span class="n">v2</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Toplama işlemi için ikinci sayıyı girin: &quot;</span><span class="p">)</span>
+
+<span class="n">sayı1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">v1</span><span class="p">)</span> <span class="c1">#v1 adlı karakter dizisini sayıya dönüştürüyoruz.</span>
+<span class="n">sayı2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">v2</span><span class="p">)</span> <span class="c1">#v2 adlı karakter dizisini sayıya dönüştürüyoruz.</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sayı1</span><span class="p">,</span> <span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="n">sayı2</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">sayı1</span> <span class="o">+</span> <span class="n">sayı2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, <code class="docutils literal"><span class="pre">input()</span></code> fonksiyonundan gelen karakter dizilerini sayıya
+dönüştürerek istediğimiz çıktıyı alabiliyoruz.</p>
+</div>
+<div class="section" id="str">
+<h3>str()<a class="headerlink" href="#str" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Python’daki tip dönüştürücüleri elbette sadece <code class="docutils literal"><span class="pre">int()</span></code> fonksiyonuyla sınırlı
+değildir. Gördüğünüz gibi, <code class="docutils literal"><span class="pre">int()</span></code> fonksiyonu sayı değerli verileri (mesela
+karakter dizilerini) tam sayıya dönüştürüyor. Bunun bir de tersi mümkündür. Yani
+karakter dizisi olmayan verileri karakter dizisine dönüştürmemiz de mümkündür.
+Bu işlem için <code class="docutils literal"><span class="pre">str()</span></code> adlı başka bir tip dönüştürücüden yararlanıyoruz:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sayı</span> <span class="o">=</span> <span class="mi">23</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">sayı</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">kardiz</span><span class="p">)</span>
+
+<span class="go">23</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">kardiz</span><span class="p">))</span>
+
+<span class="go">&lt;class &#39;str&#39;&gt;</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, bir tam sayı olan <cite>23</cite>’ü <code class="docutils literal"><span class="pre">str()</span></code> adlı bir fonksiyondan
+yararlanarak karakter dizisi olan <cite>“23”</cite> ifadesine dönüştürdük. Son satırda da,
+elde ettiğimiz şeyin bir karakter dizisi olduğundan emin olmak için <code class="docutils literal"><span class="pre">type()</span></code>
+fonksiyonunu kullanarak verinin tipini denetledik.</p>
+<p>Yukarıdaki örneklerden gördüğümüz gibi, aritmetik işlemler yapmak istediğimizde
+karakter dizilerini sayıya çevirmemiz gerekiyor. Peki acaba hangi durumlarda
+bunun tersini yapmamız, yani sayıları karakter dizilerine çevirmemiz gerekir?
+Python bilginiz ve tecrübeniz arttıkça bunların hangi durumlar olduğunu kendiniz
+de göreceksiniz. Mesela biz daha şimdiden, sayıları karakter dizisine çevirmemiz
+gereken bir durumla karşılaştık. Hatırlarsanız, <code class="docutils literal"><span class="pre">len()</span></code> fonksiyonunu
+anlatırken, bu fonksiyonun sayılarla birlikte kullanılamayacağını söylemiştik:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="mi">12343423432</span><span class="p">)</span>
+
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">TypeError</span>: <span class="n">object of type &#39;int&#39; has no len()</span>
+</pre></div>
+</div>
+<p>Peki ya yazdığınız programda bir sayının kaç haneden oluştuğunu hesaplamanız
+gerekirse ne yapacaksınız? Yani mesela yukarıdaki sayının 11 haneli olduğunu
+bilmeniz gerekiyorsa ne olacak?</p>
+<p>İşte böyle bir durumda <code class="docutils literal"><span class="pre">str()</span></code> fonksiyonundan yararlanabilirsiniz:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sayı</span> <span class="o">=</span> <span class="mi">12343423432</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">sayı</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">kardiz</span><span class="p">)</span>
+
+<span class="go">11</span>
+</pre></div>
+</div>
+<p>Bildiğiniz gibi, <code class="docutils literal"><span class="pre">len()</span></code> fonksiyonu, şu ana kadar öğrendiğimiz veri tipleri
+içinde sadece karakter dizileri üzerinde işlem yapabiliyor. Biz de bu yüzden,
+sayımızın kaç haneli olduğunu öğrenebilmek için, öncelikle bu sayıyı bir
+karakter dizisine çeviriyoruz. Daha sonra da elde ettiğimiz bu karakter dizisini
+<code class="docutils literal"><span class="pre">len()</span></code> fonksiyonuna parametre olarak veriyoruz. Böylece sayının kaç haneli
+olduğu bilgisini elde etmiş oluyoruz.</p>
+<p>Bu arada elbette yukarıdaki işlemi tek satırda da halledebilirsiniz:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="mi">12343423432</span><span class="p">))</span>
+
+<span class="go">11</span>
+</pre></div>
+</div>
+<p>Bu şekilde iç içe geçmiş fonksiyonlar yazdığımızda, Python fonksiyonları içten
+dışa doğru tek tek değerlendirecektir. Mesela yukarıdaki örnekte Python önce
+<code class="docutils literal"><span class="pre">str(12343423432)</span></code> ifadesini değerlendirecek ve çıkan sonucu <code class="docutils literal"><span class="pre">len()</span></code>
+fonksiyonuna gönderecektir. İç içe geçmiş fonksiyonları yazarken dikkat etmemiz
+gereken önemli bir nokta da, açtığımız her bir parantezi tek tek kapatmayı
+unutmamaktır.</p>
+</div>
+<div class="section" id="float">
+<h3>float()<a class="headerlink" href="#float" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Hatırlarsanız ilk bölümlerde sayılardan söz ederken tamsayıların (<em>integer</em>)
+dışında kayan noktalı sayıların (<em>float</em>) da olduğundan söz etmiştik. İşte eğer
+bir tamsayıyı veya sayı değerli bir karakter dizisini kayan noktalı sayıya
+dönüştürmek istersek <code class="docutils literal"><span class="pre">float()</span></code> adlı başka bir dönüştürücüden yararlanacağız:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">23</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="go">&lt;class &#39;int&#39;&gt;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">float</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="go">23.0</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, <cite>23</cite> tamsayısı, <code class="docutils literal"><span class="pre">float()</span></code> fonksiyonu sayesinde <cite>23.0</cite>’a yani
+bir kayan noktalı sayıya dönüştü.</p>
+<p>Aynı şeyi, sayı değerli karakter dizileri üzerine uygulamak da mümkündür:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="s2">&quot;23&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+<span class="go">&lt;class &#39;str&#39;&gt;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">float</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+<span class="go">23.0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="complex">
+<h3>complex()<a class="headerlink" href="#complex" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Sayılardan söz ederken, eğer matematikle çok fazla içli dışlı değilseniz pek
+karşılaşmayacağınız, ‘karmaşık sayı’ adlı bir sayı türünden de bahsetmiştik.
+Karmaşık sayılar Python’da ‘complex’ ifadesiyle gösteriliyor. Mesela şunun bir
+karmaşık sayı olduğunu biliyoruz:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">12</span><span class="o">+</span><span class="mi">0</span><span class="n">j</span>
+</pre></div>
+</div>
+<p>Kontrol edelim:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="mi">12</span><span class="o">+</span><span class="mi">0</span><span class="n">j</span><span class="p">)</span>
+
+<span class="go">&lt;class &#39;complex&#39;&gt;</span>
+</pre></div>
+</div>
+<p>İşte eğer herhangi bir sayıyı karmaşık sayıya dönüştürmeniz gerekirse
+<code class="docutils literal"><span class="pre">complex()</span></code> adlı bir fonksiyondan yararlanabilirsiniz. Örneğin:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">complex</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+
+<span class="go">(15+0j)</span>
+</pre></div>
+</div>
+<p>Böylece Python’daki bütün sayı dönüştürücüleri öğrenmiş olduk.</p>
+<p>Gelin isterseniz, bu bölümde anlattığımız konuları şöyle bir tekrar ederek
+bilgilerimizi sağlamlaştırmaya çalışalım.</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">56</span>
+</pre></div>
+</div>
+<p>Bu sayı bir tamsayıdır. İngilizce olarak ifade etmek gerekirse, <em>integer</em>. Bunun
+bir tamsayı olduğunu şu şekilde teyit edebileceğimizi gayet iyi biliyorsunuz:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="go">&lt;class &#39;int&#39;&gt;</span>
+</pre></div>
+</div>
+<p>Burada aldığımız <cite>&lt;class int&gt;</cite> çıktısı, bize <cite>a</cite> değişkeninin tuttuğu sayının
+bir tamsayı olduğunu söylüyor. ‘int’ ifadesi, <em>integer</em> (tamsayı) kelimesinin
+kısaltmasıdır.</p>
+<p>Bir de şu sayıya bakalım:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="mf">34.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+<span class="go">&lt;class &#39;float&#39;&gt;</span>
+</pre></div>
+</div>
+<p>Bu çıktı ise bize <cite>34.5</cite> sayısının bir kayan noktalı sayı olduğunu söylüyor.
+<em>float</em> kelimesi <em>Floats</em> veya <em>Floating Point Number</em> ifadesinin kısaltmasıdır.
+Yani ‘kayan noktalı sayı’ demektir.</p>
+<p>Bu arada, bu <code class="docutils literal"><span class="pre">type()</span></code> adlı fonksiyonu sadece sayılara değil, başka şeylere de
+uygulayabileceğimizi biliyorsunuz. Mesela bir örnek vermek gerekirse:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">meyve</span> <span class="o">=</span> <span class="s2">&quot;karpuz&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">meyve</span><span class="p">)</span>
+
+<span class="go">&lt;class &#39;str&#39;&gt;</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, <code class="docutils literal"><span class="pre">type()</span></code> fonksiyonu bize <cite>meyve</cite> adlı değişkenin değerinin
+bir ‘str’ yani <em>string</em> yani karakter dizisi olduğunu bildirdi.</p>
+<p>Bu veri tipleri arasında, bazı özel fonksiyonları kullanarak dönüştürme işlemi
+yapabileceğimizi öğrendik. Mesela:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sayı</span> <span class="o">=</span> <span class="mi">45</span>
+</pre></div>
+</div>
+<p><cite>sayı</cite> adlı değişkenin tuttuğu verinin değeri bir tamsayıdır. Biz bu tamsayıyı
+kayan noktalı sayıya dönüştürmek istiyoruz. Yapacağımız işlem çok basit:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">float</span><span class="p">(</span><span class="n">sayı</span><span class="p">)</span>
+
+<span class="go">45.0</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, <cite>45</cite> adlı tamsayıyı, <cite>45.0</cite> adlı bir kayan noktalı sayıya
+dönüştürdük. Şimdi <code class="docutils literal"><span class="pre">type(45.0)</span></code> komutu bize <cite>&lt;class ‘float’&gt;</cite> çıktısını
+verecektir.</p>
+<p>Eğer kayan noktalı bir sayıyı tamsayıya çevirmek istersek şu komutu veriyoruz.
+Mesela kayan noktalı sayımız, <cite>56.5</cite> olsun:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="mf">56.5</span><span class="p">)</span>
+
+<span class="go">56</span>
+</pre></div>
+</div>
+<p>Yukarıdaki örneği tabii ki şöyle de yazabiliriz:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mf">56.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="go">56</span>
+</pre></div>
+</div>
+<p>Dönüştürme işlemini sayılar arasında yapabileceğimiz gibi, sayılar ve karakter
+dizileri arasında da yapabiliriz. Örneğin şu bir karakter dizisidir:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nesne</span> <span class="o">=</span> <span class="s2">&quot;45&quot;</span>
+</pre></div>
+</div>
+<p>Yukarıdaki değeri tırnak içinde belirttiğimiz için bu değer bir karakter
+dizisidir. Şimdi bunu bir tamsayıya çevireceğiz:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="n">nesne</span><span class="p">)</span>
+
+<span class="go">45</span>
+</pre></div>
+</div>
+<p>Dilersek, aynı karakter dizisini kayan noktalı sayıya da çevirebiliriz:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">float</span><span class="p">(</span><span class="n">nesne</span><span class="p">)</span>
+
+<span class="go">45.0</span>
+</pre></div>
+</div>
+<p>Hatta bir sayıyı karakter dizisine de çevirebiliriz. Bunun için <em>string</em>
+(karakter dizisi) kelimesinin kısaltması olan <cite>str</cite> ifadesini kullanacağız:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="mi">6547</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+<span class="go">&#39;6547&#39;</span>
+</pre></div>
+</div>
+<p>Bir örnek de kayan noktalı sayılarla yapalım:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="mf">65.7</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+<span class="go">&#39;65.7&#39;</span>
+</pre></div>
+</div>
+<p>Yalnız şunu unutmayın: Bir karakter dizisinin sayıya dönüştürülebilmesi için o
+karakter dizisinin sayı değerli olması lazım. Yani <cite>“45”</cite> değerini sayıya
+dönüştürebiliriz. Çünkü <cite>“45”</cite> değeri, tırnaklardan ötürü bir karakter dizisi de
+olsa, neticede sayı değerli bir karakter dizisidir. Ama mesela <cite>“elma”</cite> karakter
+dizisi böyle değildir. Dolayısıyla, şöyle bir maceraya girişmek bizi hüsrana
+uğratacaktır:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nesne</span> <span class="o">=</span> <span class="s2">&quot;elma&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="n">nesne</span><span class="p">)</span>
+
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">ValueError</span>: <span class="n">invalid literal for int() with base 10: &#39;elma&#39;</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, Python böyle bir işlem denemesi karşısında hata veriyor…</p>
+<p>Bu bölümde pek çok yeni şey öğrendik. Bu bölümün en önemli getirisi <code class="docutils literal"><span class="pre">input()</span></code>
+fonksiyonunu öğrenmemiz oldu. Bu fonksiyon sayesinde kullanıcıyla iletişim
+kurmayı başardık. Artık kullanıcıdan veri alıp, bu verileri programlarımız
+içinde işleyebiliyoruz.</p>
+<p>Yine bu bölümde dikkatinizi çektiğimiz başka bir konu da sayılar ve karakter
+dizileri arasındaki ilişkiydi. <code class="docutils literal"><span class="pre">input()</span></code> fonksiyonuyla elde edilen çıktının
+bir karakter dizisi olduğunu öğrendik. Bildiğimiz gibi, aritmetik işlemler ancak
+sayılar arasında yapılabilir. Dolayısıyla <code class="docutils literal"><span class="pre">input()</span></code> fonksiyonuyla gelen
+karakter dizisini bir sayıyla çarpmaya kalkarsak hata alıyoruz. Burada yapmamız
+gereken şey, elimizdeki verileri dönüştürmek. Yani <code class="docutils literal"><span class="pre">input()</span></code> fonksiyonundan
+gelen karakter dizisini bir sayıyla çarpmak istiyorsak, öncelikle aldığımız
+karakter dizisini sayıya dönüştürmemiz gerekiyor. Dönüştürme işlemleri için
+kullandığımız fonksiyonlar şunlardı:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">int()</span></code></dt>
+<dd>Sayı değerli bir karakter dizisini veya kayan noktalı sayıyı tamsayıya
+(<em>integer</em>) çevirir.</dd>
+<dt><code class="docutils literal"><span class="pre">float()</span></code></dt>
+<dd>Sayı değerli bir karakter dizisini veya tamsayıyı kayan noktalı sayıya
+(<em>float</em>) çevirir.</dd>
+<dt><code class="docutils literal"><span class="pre">str()</span></code></dt>
+<dd>Bir tamsayı veya kayan noktalı sayıyı karakter dizisine (<em>string</em>) çevirir.</dd>
+<dt><code class="docutils literal"><span class="pre">complex()</span></code></dt>
+<dd>Herhangi bir sayıyı veya sayı değerli karakter dizisini karmaşık sayıya
+(<em>complex</em>) çevirir.</dd>
+</dl>
+</div></blockquote>
+<p>Ayrıca bu bölümde öğrendiklerimiz, şöyle önemli bir tespitte bulunmamıza da
+olanak tanıdı:</p>
+<blockquote>
+<div>Her tamsayı ve/veya kayan noktalı sayı bir karakter dizisine
+dönüştürülebilir. Ama her karakter dizisi tamsayıya ve/veya kayan noktalı
+sayıya dönüştürülemez.</div></blockquote>
+<p>Örneğin, <cite>5654</cite> gibi bir tamsayıyı veya <cite>543.34</cite> gibi bir kayan noktalı sayıyı
+<code class="docutils literal"><span class="pre">str()</span></code> fonksiyonu yardımıyla karakter dizisine dönüştürebiliriz:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="mi">5654</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="mf">543.34</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><cite>“5654”</cite> veya <cite>“543.34”</cite> gibi bir karakter dizisini <code class="docutils literal"><span class="pre">int()</span></code> veya <code class="docutils literal"><span class="pre">float()</span></code>
+fonksiyonu yardımıyla tamsayıya ya da kayan noktalı sayıya da dönüştürebiliriz:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="s2">&quot;5654&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="s2">&quot;543.34&quot;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;5654&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;543.34&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Ama <cite>“elma”</cite> gibi bir karakter dizisini ne <code class="docutils literal"><span class="pre">int()</span></code> ne de <code class="docutils literal"><span class="pre">float()</span></code>
+fonksiyonuyla tamsayıya veya kayan noktalı sayıya dönüştürebiliriz! Çünkü
+<cite>“elma”</cite> verisi sayı değerli değildir.</p>
+<p>Bu bölümü kapatmadan önce, dilerseniz şimdiye kadar öğrendiklerimizi de içeren
+örnek bir program yazalım. Bu program, Python maceramız açısından bize yeni
+kapılar da açacak.</p>
+<p>Önceki derslerimizin birinde verdiğimiz doğalgaz faturası hesaplayan programı
+hatırlarsınız. İşte artık <code class="docutils literal"><span class="pre">input()</span></code> fonksiyonu sayesinde bu doğalgaz faturası
+hesaplama programını da daha ilginç bir hale getirebiliriz:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="c1">#Her bir ayın kaç gün çektiğini tanımlıyoruz</span>
+<span class="n">ocak</span> <span class="o">=</span> <span class="n">mart</span> <span class="o">=</span> <span class="n">mayıs</span> <span class="o">=</span> <span class="n">temmuz</span> <span class="o">=</span> <span class="n">ağustos</span> <span class="o">=</span> <span class="n">ekim</span> <span class="o">=</span> <span class="n">aralık</span> <span class="o">=</span> <span class="mi">31</span>
+<span class="n">nisan</span> <span class="o">=</span> <span class="n">haziran</span> <span class="o">=</span> <span class="n">eylül</span> <span class="o">=</span> <span class="n">kasım</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">şubat</span> <span class="o">=</span> <span class="mi">28</span>
+
+<span class="c1">#Doğalgazın vergiler dahil metreküp fiyatı</span>
+<span class="n">birimFiyat</span> <span class="o">=</span> <span class="mf">0.79</span>
+
+<span class="c1">#Kullanıcı ayda ne kadar doğalgaz tüketmiş?</span>
+<span class="n">aylıkSarfiyat</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Aylık doğalgaz sarfiyatınızı metreküp olarak giriniz: &quot;</span><span class="p">)</span>
+
+<span class="c1">#Kullanıcı hangi aya ait faturasını öğrenmek istiyor?</span>
+<span class="n">dönem</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;Hangi aya ait faturayı hesaplamak istersiniz?</span>
+<span class="s2">(Lütfen ay adını tamamı küçük harf olacak şekilde giriniz)</span><span class="se">\n</span><span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+
+<span class="c1">#Yukarıdaki input() fonksiyonundan gelen veriyi</span>
+<span class="c1">#Python&#39;ın anlayabileceği bir biçime dönüştürüyoruz</span>
+<span class="n">ay</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">dönem</span><span class="p">)</span>
+
+<span class="c1">#Kullanıcının günlük doğalgaz sarfiyatı</span>
+<span class="n">günlükSarfiyat</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">aylıkSarfiyat</span><span class="p">)</span> <span class="o">/</span> <span class="n">ay</span>
+
+<span class="c1">#Fatura tutarı</span>
+<span class="n">fatura</span> <span class="o">=</span> <span class="n">birimFiyat</span> <span class="o">*</span> <span class="n">günlükSarfiyat</span> <span class="o">*</span> <span class="n">ay</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;günlük sarfiyatınız: </span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">günlükSarfiyat</span><span class="p">,</span> <span class="s2">&quot; metreküp</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+<span class="s2">&quot;tahmini fatura tutarı: </span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">fatura</span><span class="p">,</span> <span class="s2">&quot; TL&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada yine bilmediğimiz bir fonksiyonla daha karşılaştık. Bu fonksiyonun adı
+<code class="docutils literal"><span class="pre">eval()</span></code>. Biraz sonra <code class="docutils literal"><span class="pre">eval()</span></code> fonksiyonunu derinlemesine inceleyeceğiz. Ama
+bu fonksiyonu anlatmaya geçmeden önce dilerseniz yukarıdaki kodları biraz
+didikleyelim.</p>
+<p>İlk satırların ne işe yaradığını zaten biliyorsunuz. Bir yıl içindeki bütün
+ayların kaç gün çektiğini gösteren değişkenlerimizi tanımladık. Burada her bir
+değişkeni tek tek tanımlamak yerine değişkenleri topluca tanımladığımıza dikkat
+edin. İsteseydik tabii ki yukarıdaki kodları şöyle de yazabilirdik:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="c1">#Her bir ayın kaç gün çektiğini tanımlıyoruz</span>
+<span class="n">ocak</span>    <span class="o">=</span> <span class="mi">31</span>
+<span class="n">şubat</span>   <span class="o">=</span> <span class="mi">28</span>
+<span class="n">mart</span>    <span class="o">=</span> <span class="mi">31</span>
+<span class="n">nisan</span>   <span class="o">=</span> <span class="mi">30</span>
+<span class="n">mayıs</span>   <span class="o">=</span> <span class="mi">31</span>
+<span class="n">haziran</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">temmuz</span>  <span class="o">=</span> <span class="mi">31</span>
+<span class="n">ağustos</span> <span class="o">=</span> <span class="mi">31</span>
+<span class="n">eylül</span>   <span class="o">=</span> <span class="mi">30</span>
+<span class="n">ekim</span>    <span class="o">=</span> <span class="mi">31</span>
+<span class="n">kasım</span>   <span class="o">=</span> <span class="mi">30</span>
+<span class="n">aralık</span>  <span class="o">=</span> <span class="mi">31</span>
+
+<span class="c1">#Doğalgazın vergiler dahil m3 fiyatı</span>
+<span class="n">birimFiyat</span> <span class="o">=</span> <span class="mf">0.79</span>
+
+<span class="c1">#Kullanıcı ayda ne kadar doğalgaz tüketmiş?</span>
+<span class="n">aylıkSarfiyat</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Aylık doğalgaz sarfiyatınızı m3 olarak giriniz: &quot;</span><span class="p">)</span>
+
+<span class="c1">#Kullanıcı hangi aya ait faturasını öğrenmek istiyor?</span>
+<span class="n">dönem</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;Hangi aya ait faturayı hesaplamak istersiniz?</span>
+<span class="s2">(Lütfen ay adını tamamı küçük harf olacak şekilde giriniz)</span><span class="se">\n</span><span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+
+<span class="c1">#Yukarıdaki input() fonksiyonundan gelen veriyi</span>
+<span class="c1">#Python&#39;ın anlayabileceği bir biçime dönüştürüyoruz</span>
+<span class="n">ay</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">dönem</span><span class="p">)</span>
+
+<span class="c1">#Kullanıcının günlük doğalgaz sarfiyatı</span>
+<span class="n">günlükSarfiyat</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">aylıkSarfiyat</span><span class="p">)</span> <span class="o">/</span> <span class="n">ay</span>
+
+<span class="c1">#Fatura tutarı</span>
+<span class="n">fatura</span> <span class="o">=</span> <span class="n">birimFiyat</span> <span class="o">*</span> <span class="n">günlükSarfiyat</span> <span class="o">*</span> <span class="n">ay</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;günlük sarfiyatınız: </span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">günlükSarfiyat</span><span class="p">,</span> <span class="s2">&quot; metreküp</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+<span class="s2">&quot;tahmini fatura tutarı: </span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">fatura</span><span class="p">,</span> <span class="s2">&quot; TL&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Ama tabii ki, değişkenleri tek tek tanımlamak yerine topluca tanımlamak, daha az
+kod yazmanızı sağlamasının yanısıra, programınızın çalışma performansı açısından
+da daha iyidir. Yani değişkenleri bu şekilde tanımladığınızda programınız daha
+hızlı çalışır.</p>
+<p>Programımızı incelemeye devam edelim…</p>
+<p>Değişkenleri tanımladıktan sonra doğalgazın vergiler dahil yaklaşık birim
+fiyatını da bir değişken olarak tanımladık. <cite>0.79</cite> değerini zaten birkaç bölüm
+önce hesaplayıp bulduğumuz için, aynı işlemleri tekrar programımıza eklememize
+gerek yok. Doğrudan nihai değeri programımıza yazsak yeter…</p>
+<p>Birim fiyatı belirledikten sonra kullanıcıya aylık doğalgaz sarfiyatını
+soruyoruz. Kullanıcının bu değeri m<sup>3</sup> olarak girmesini bekliyoruz.
+Elbette bu veriyi kullanıcıdan alabilmek için <code class="docutils literal"><span class="pre">input()</span></code> fonksiyonunu
+kullanıyoruz.</p>
+<p>Daha sonra kullanıcıya hangi aya ait doğalgaz faturasını ödemek istediğini
+soruyoruz. Bu bilgi, bir sonraki satırda günlük doğalgaz sarfiyatını hesaplarken
+işimize yarayacak. Çünkü kullanıcının girdiği ayın çektiği gün sayısına bağlı
+olarak günlük sarfiyat değişecektir. Günlük sarfiyatı hesaplamak için aylık
+sarfiyatı, ilgili ayın çektiği gün sayısına bölüyoruz. Bu arada bir önceki
+satırda <cite>dönem</cite> değişkenini <code class="docutils literal"><span class="pre">eval()</span></code> adlı bir fonksiyonla birlikte
+kullandığımızı görüyorsunuz. Bunu biraz sonra inceleyeceğiz. O yüzden bu
+satırları atlayıp son satıra gelelim.</p>
+<p>Son satırda <code class="docutils literal"><span class="pre">print()</span></code> fonksiyonunu kullanarak, kullanıcıdan aldığımız verileri
+düzgün bir şekilde kendisine gösteriyoruz. Programımız kullanıcıya günlük
+doğalgaz sarfiyatını ve ay sonunda karşılaşacağı tahmini fatura tutarını
+bildiriyor. <code class="docutils literal"><span class="pre">print()</span></code> fonksiyonu içinde kullandığımız kaçış dizilerine
+özellikle dikkatinizi çekmek istiyorum. Burada düzgün bir çıktı elde etmek için
+<cite>\t</cite> ve <cite>\n</cite> adlı kaçış dizilerinden nasıl yararlandığımızı görüyorsunuz. Bu
+kaçış dizilerinin buradaki işlevini tam olarak anlayabilmek için, bu kodları bir
+de bu kaçış dizileri olmadan yazmayı deneyebilirsiniz.</p>
+<p>Bu bilgileri, önemlerinden ötürü aklımızda tutmaya çalışalım. Buraya kadar
+anlatılan konular hakkında zihnimizde belirsizlikler varsa veya bazı noktaları
+tam olarak kavrayamadıysak, şimdiye kadar öğrendiğimiz konuları tekrar gözden
+geçirmemiz bizim için epey faydalı olacaktır. Zira bundan sonraki bölümlerde,
+yeni bilgilerin yanısıra, buraya kadar öğrendiğimiz şeyleri de yoğun bir şekilde
+pratiğe dökeceğiz. Bundan sonraki konuları takip edebilmemiz açısından, buraya
+kadar verdiğimiz temel bilgileri iyice sindirmiş olmak işimizi bir hayli
+kolaylaştıracaktır.</p>
+</div>
+</div>
+<div class="section" id="eval-ve-exec-fonksiyonlari">
+<h2>eval() ve exec() Fonksiyonları<a class="headerlink" href="#eval-ve-exec-fonksiyonlari" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Bir önceki bölümün son örnek programında <code class="docutils literal"><span class="pre">eval()</span></code> adlı bir fonksiyonla
+karşılaşmıştık. İşte şimdi bu önemli fonksiyonun ne işe yaradığını anlamaya
+çalışacağız. Ancak <code class="docutils literal"><span class="pre">eval()</span></code> fonksiyonunu anlatmaya başlamadan önce şu uyarıyı
+yapalım:</p>
+<div class="raw">eval() ŞEYTANİ GÜÇLERİ OLAN BİR FONKSİYONDUR!</div><p>Bunun neden böyle olduğunu hem biz anlatacağız, hem de zaten bu fonksiyonu
+tanıdıkça neden <code class="docutils literal"><span class="pre">eval()</span></code>’e karşı dikkatli olmanız gerektiğini kendiniz de
+anlayacaksınız.</p>
+<p>Dilerseniz işe basit bir <code class="docutils literal"><span class="pre">eval()</span></code> örneği vererek başlayalım:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">Basit bir hesap makinesi uygulaması.</span>
+
+<span class="s2">İşleçler:</span>
+
+<span class="s2">    +   toplama</span>
+<span class="s2">    -   çıkarma</span>
+<span class="s2">    *   çarpma</span>
+<span class="s2">    /   bölme</span>
+
+<span class="s2">Yapmak istediğiniz işlemi yazıp ENTER</span>
+<span class="s2">tuşuna basın. (Örneğin 23 ve 46 sayılarını</span>
+<span class="s2">çarpmak için 23 * 46 yazdıktan sonra</span>
+<span class="s2">ENTER tuşuna basın.)</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+
+<span class="n">veri</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;İşleminiz: &quot;</span><span class="p">)</span>
+<span class="n">hesap</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">veri</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">hesap</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>İngilizcede <em>evaluate</em> diye bir kelime bulunur. Bu kelime, ‘değerlendirmeye tabi
+tutmak, işleme sokmak, işlemek’ gibi anlamlar taşır. İşte <code class="docutils literal"><span class="pre">eval()</span></code>
+fonksiyonundaki <em>eval</em> kelimesi bu <em>evaluate</em> kelimesinin kısaltmasıdır. Yani bu
+fonksiyonun görevi, kendisine verilen karakter dizilerini değerlendirmeye tabi
+tutmak ya da işlemektir. Peki bu tam olarak ne anlama geliyor?</p>
+<p>Aslında yukarıdaki örnek programı çalıştırdığımızda bu sorunun yanıtını kendi
+kendimize verebiliyoruz. Bu programı çalıştırarak, <cite>“İşleminiz: “</cite> ifadesinden
+sonra, örneğin, <code class="docutils literal"><span class="pre">45</span> <span class="pre">*</span> <span class="pre">76</span></code> yazıp <cite>Enter</cite> tuşuna basarsak programımız bize
+<cite>3420</cite> çıktısı verecektir. Yani programımız hesap makinesi işlevini yerine
+getirip <cite>45</cite> sayısı ile <cite>76</cite> sayısını çarpacaktır. Dolayısıyla, yukarıdaki
+programı kullanarak her türlü aritmetik işlemi yapabilirsiniz. Hatta bu program,
+son derece karmaşık aritmetik işlemlerin yapılmasına dahi müsaade eder.</p>
+<p>Peki programımız bu işlevi nasıl yerine getiriyor? İsterseniz kodların üzerinden
+tek tek geçelim.</p>
+<p>Öncelikle programımızın en başına kullanım kılavuzuna benzer bir metin
+yerleştirdik ve bu metni <code class="docutils literal"><span class="pre">print()</span></code> fonksiyonu yardımıyla ekrana bastık.</p>
+<p>Daha sonra kullanıcıdan alacağımız komutları <cite>veri</cite> adlı bir değişkene atadık.
+Tabii ki kullanıcıyla iletişimi her zaman olduğu gibi <code class="docutils literal"><span class="pre">input()</span></code> fonksiyonu
+yardımıyla sağlıyoruz.</p>
+<p>Ardından, kullanıcıdan gelen veriyi <code class="docutils literal"><span class="pre">eval()</span></code> fonksiyonu yardımıyla
+değerlendirmeye tabi tutuyoruz. Yani kullanıcının girdiği komutları işleme
+sokuyoruz. Örneğin, kullanıcı <code class="docutils literal"><span class="pre">46</span> <span class="pre">/</span> <span class="pre">2</span></code> gibi bir veri girdiyse, biz <code class="docutils literal"><span class="pre">eval()</span></code>
+fonksiyonu yardımıyla bu <code class="docutils literal"><span class="pre">46</span> <span class="pre">/</span> <span class="pre">2</span></code> komutunu işletiyoruz. Bu işlemin sonucunu da
+<cite>hesap</cite> adlı başka bir değişken içinde depoluyoruz.</p>
+<p>Eğer burada <code class="docutils literal"><span class="pre">eval()</span></code> fonksiyonunu kullanmazsak, programımız, kullanıcının
+girdiği <code class="docutils literal"><span class="pre">45</span> <span class="pre">*</span> <span class="pre">76</span></code> komutunu hiçbir işleme sokmadan dümdüz ekrana basacaktır.
+Yani:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">Basit bir hesap makinesi uygulaması.</span>
+
+<span class="s2">İşleçler:</span>
+
+<span class="s2">    +   toplama</span>
+<span class="s2">    -   çıkarma</span>
+<span class="s2">    *   çarpma</span>
+<span class="s2">    /   bölme</span>
+
+<span class="s2">Yapmak istediğiniz işlemi yazıp ENTER</span>
+<span class="s2">tuşuna basın. (Örneğin 23 ve 46 sayılarını</span>
+<span class="s2">çarpmak için 23 * 46 yazdıktan sonra</span>
+<span class="s2">ENTER tuşuna basın.)</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+
+<span class="n">veri</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;İşleminiz: &quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Eğer programımızı yukarıdaki gibi, <code class="docutils literal"><span class="pre">eval()</span></code> fonksiyonu olmadan yazarsak,
+kullanıcımız <code class="docutils literal"><span class="pre">45</span> <span class="pre">*</span> <span class="pre">76</span></code> gibi bir komut girdiğinde alacağı cevap dümdüz bir <cite>45
+* 76</cite> çıktısı olacaktır. İşte <code class="docutils literal"><span class="pre">eval()</span></code> fonksiyonu, kullanıcının girdiği her
+veriyi bir Python komutu olarak algılar ve bu veriyi işleme sokar. Yani <code class="docutils literal"><span class="pre">45</span> <span class="pre">*</span>
+<span class="pre">76</span></code> gibi bir şey gördüğünde, bu şeyi doğrudan ekrana yazdırmak yerine, işlemin
+sonucu olan <cite>3420</cite> sayısını verir.</p>
+<p><code class="docutils literal"><span class="pre">eval()</span></code> fonksiyonunun, yukarıda anlattığımız özelliklerini okuduktan sonra,
+‘Ne güzel bir fonksiyon! Her işimi görür bu!’ dediğinizi duyar gibiyim. Ama
+aslında durum hiç de öyle değil. Neden mi?</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">Basit bir hesap makinesi uygulaması.</span>
+
+<span class="s2">İşleçler:</span>
+
+<span class="s2">    +   toplama</span>
+<span class="s2">    -   çıkarma</span>
+<span class="s2">    *   çarpma</span>
+<span class="s2">    /   bölme</span>
+
+<span class="s2">Yapmak istediğiniz işlemi yazıp ENTER</span>
+<span class="s2">tuşuna basın. (Örneğin 23 ve 46 sayılarını</span>
+<span class="s2">çarpmak için 23 * 46 yazdıktan sonra</span>
+<span class="s2">ENTER tuşuna basın.)</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+
+<span class="n">veri</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;İşleminiz: &quot;</span><span class="p">)</span>
+<span class="n">hesap</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">veri</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">hesap</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Şimdi yukarıdaki programı tekrar çalıştırın ve <cite>“İşleminiz: “</cite> ifadesinden sonra
+şu cevabı verin:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Merhaba Python!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu komut şöyle bir çıktı vermiş olmalı:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span>Merhaba Python!
+None
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Not</p>
+<p class="last">Buradaki <cite>None</cite> değerini görmezden gelin. Bunu fonksiyonlar konusunu
+anlatırken inceleyeceğiz.</p>
+</div>
+<p>Gördüğünüz gibi, yazdığımız program, kullanıcının girdiği Python komutunun
+işletilmesine sebep oldu. Bu noktada, ‘Eee, ne olmuş!’ demiş olabilirsiniz.
+Gelin bir de şuna bakalım. Şimdi programı tekrar çalıştırıp şu cevabı verin:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;deneme.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu cevap, bilgisayarınızda <cite>deneme.txt</cite> adlı bir dosya oluşturulmasına sebep
+oldu. Belki farkındasınız, belki farkında değilsiniz, ama aslında şu anda kendi
+yazdığınız program sizin kontrolünüzden tamamen çıktı. Siz aslında bir hesap
+makinesi programı yazmıştınız. Ama <code class="docutils literal"><span class="pre">eval()</span></code> fonksiyonu nedeniyle kullanıcıya
+rastgele Python komutlarını çalıştırma imkanı verdiğiniz için programınız sadece
+aritmetik işlemleri hesaplamak için kullanılmayabilir. Böyle bir durumda kötü
+niyetli (ve bilgili) bir kullanıcı size çok büyük zarar verebilir. Mesela
+kullanıcının, yukarıdaki programa şöyle bir cevap verdiğini düşünün:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="nb">__import__</span><span class="p">(</span><span class="s2">&quot;os&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;dir&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada anlamadığınız şeyleri şimdilik bir kenara bırakıp, bu komutun sonuçlarına
+odaklanın. Gördüğünüz gibi, yukarıdaki programa bu cevabı vererek mevcut dizin
+altındaki bütün dosyaları listeleyebildik. Yani programımız bir anda amacını
+aştı. Artık bu aşamadan sonra bu programı şeytani bir amaca yönelik olarak
+kullanmak tamamen programı kullanan kişiye kalmış… Bu programın, bir web
+sunucusu üzerinde çalışan bir uygulama olduğunu ve bu programı kullananların
+yukarıdaki gibi masumane bir şekilde dizin içindeki dosyaları listeleyen bir
+komut yerine, dizin içindeki dosyaları ve hatta sabit disk üzerindeki her şeyi
+silen bir komut yazdığını düşünün… Yanlış yazılmış bir program yüzünden bütün
+verilerinizi kaybetmeniz işten bile değildir. (Bahsettiğim o, ‘bütün sabit diski
+silen komutu’ kendi sisteminizde vermemeniz gerektiğini söylememe gerek yok,
+değil mi?)</p>
+<p>Eğer <em>SQL Injection</em> kavramını biliyorsanız, yukarıdaki kodların yol açtığı
+güvenlik açığını gayet iyi anlamış olmalısınız. Zaten internet üzerinde yaygın
+bir şekilde kullanılan ve web sitelerini hedef alan <em>SQL Injection</em> tarzı
+saldırılar da aynı mantık üzerinden gerçekleştiriliyor. <em>SQL Injection</em>
+metoduyla bir web sitesine saldıran <em>cracker</em>’lar, o web sitesini programlayan
+kişinin (çoğunlukla farkında olmadan) kullanıcıya verdiği rastgele SQL komutu
+işletme yetkisini kötüye kullanarak gizli ve özel bilgileri ele
+geçirebiliyorlar. Örneğin <em>SQL Injection</em> metodu kullanılarak, bir web sitesine
+ait veritabanının içeriği tamamen silinebilir. Aynı şekilde, yukarıdaki
+<code class="docutils literal"><span class="pre">eval()</span></code> fonksiyonu da kullanıcılarınıza rastgele Python komutlarını
+çalıştırma yetkisi verdiği için kötü niyetli bir kullanıcının programınıza
+sızmasına yol açabilecek potansiyele sahiptir.</p>
+<p>Peki <code class="docutils literal"><span class="pre">eval()</span></code> fonksiyonunu asla kullanmayacak mıyız? Elbette kullanacağız. Bu
+fonksiyonun kullanımını gerektiren durumlarla da karşılaşabilirsiniz. Ama şunu
+asla aklınızdan çıkarmayın: <code class="docutils literal"><span class="pre">eval()</span></code> fonksiyonu her ne kadar son derece
+yetenekli ve güçlü bir araç da olsa yanlış ellerde yıkıcı sonuçlar doğurabilir.
+Program yazarken, eğer <code class="docutils literal"><span class="pre">eval()</span></code> kullanmanızı gerektiren bir durumla karşı
+karşıya olduğunuzu düşünüyorsanız, bir kez daha düşünün. <code class="docutils literal"><span class="pre">eval()</span></code> ile elde
+edeceğiniz etkiyi muhtemelen başka ve çok daha iyi yöntemlerle de elde
+edebilirsiniz. Üstelik performans açısından <code class="docutils literal"><span class="pre">eval()</span></code> pek iyi bir tercih
+değildir, çünkü bu fonksiyon (çoğu durumda farketmeseniz de) aslında yavaş
+çalışır. O yüzden, <code class="docutils literal"><span class="pre">eval()</span></code> fonksiyonunu kullanacağınız zaman, bunun artı ve
+eksilerini çok iyi tartın: Bu fonksiyonu kullanmak size ne kazandırıyor, ne
+kaybettiriyor?</p>
+<p>Ayrıca <code class="docutils literal"><span class="pre">eval()</span></code> fonksiyonu kullanılacağı zaman, kullanıcıdan gelen veri bu
+fonksiyona parametre olarak verilmeden önce sıkı bir kontrolden geçirilir. Yani
+kullanıcının girdiği veri <code class="docutils literal"><span class="pre">eval()</span></code> aracılığıyla doğrudan değerlendirmeye tabi
+tutulmaz. Araya bir kontrol mekanizması yerleştirilir. Örneğin, yukarıdaki hesap
+makinesi programında kullanıcının gireceği verileri sadece sayılar ve işleçlerle
+sınırlandırabilirsiniz. Yani kullanıcınızın, izin verilen değerler harici bir
+değer girmesini engelleyebilirsiniz. Bu durumu somutlaştırmak için şöyle bir
+diyagram çizebiliriz:</p>
+<a class="reference internal image-reference" href="_images/eval_yanlis.png"><img alt="_images/eval_yanlis.png" class="align-center" src="_images/eval_yanlis.png" style="width: 50%;" /></a>
+<p>Yukarıdaki diyagram <code class="docutils literal"><span class="pre">eval()</span></code> fonksiyonunun yanlış uygulanış biçimini
+gösteriyor. Gördüğünüz gibi, veri doğrudan <code class="docutils literal"><span class="pre">eval()</span></code> fonksiyonuna gidiyor ve
+çıktı olarak veriliyor. Böyle bir durumda, <code class="docutils literal"><span class="pre">eval()</span></code> fonksiyonu kullanıcıdan
+gelen verinin ne olduğuna bakmadan, veriyi doğrudan komut olarak değerlendirip
+işleteceği için programınızı kullanıcının insafına terketmiş oluyorsunuz.</p>
+<p>Aşağıdaki diyagram ise <code class="docutils literal"><span class="pre">eval()</span></code> fonksiyonunun doğru uygulanış biçimini
+gösteriyor:</p>
+<a class="reference internal image-reference" href="_images/eval_dogru.png"><img alt="_images/eval_dogru.png" class="align-center" src="_images/eval_dogru.png" style="width: 75%;" /></a>
+<p>Burada ise, veri <code class="docutils literal"><span class="pre">eval()</span></code> fonksiyonuna ulaşmadan önce kontrolden geçiriliyor.
+Eğer veri ancak kontrol aşamasından geçerse <code class="docutils literal"><span class="pre">eval()</span></code> fonksiyona ulaşabilecek
+ve oradan da çıktı olarak verilebilecektir. Böylece kullanıcıdan gelen komutları
+süzme imkanına sahip oluyoruz.</p>
+<p>Gördüğünüz gibi, Python <code class="docutils literal"><span class="pre">eval()</span></code> gibi bir fonksiyon yardımıyla karakter
+dizileri içinde geçen Python kodlarını ayıklayıp bunları çalıştırabiliyor. Bu
+sayede, mesela bize <code class="docutils literal"><span class="pre">input()</span></code> fonksiyonu aracılığıyla gelen bir karakter
+dizisi içindeki Python kodlarını işletme imkanına sahip olabiliyoruz. Bu
+özellik, dikkatli kullanıldığında, işlerinizi epey kolaylaştırabilir.</p>
+<p>Python’da <code class="docutils literal"><span class="pre">eval()</span></code> fonksiyonuna çok benzeyen <code class="docutils literal"><span class="pre">exec()</span></code> adlı başka bir
+fonksiyon daha bulunur. <code class="docutils literal"><span class="pre">eval()</span></code> ile yapamadığımız bazı şeyleri <code class="docutils literal"><span class="pre">exec()</span></code> ile
+yapabiliriz. Bu fonksiyon yardımıyla, karakter dizileri içindeki çok kapsamlı
+Python kodlarını işletebilirsiniz.</p>
+<p>Örneğin <code class="docutils literal"><span class="pre">eval()</span></code> fonksiyonu bir karakter dizisi içindeki değişken tanımlama
+işlemini yerine getiremez. Yani <code class="docutils literal"><span class="pre">eval()</span></code> ile şöyle bir şey yapamazsınız:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">eval</span><span class="p">(</span><span class="s2">&quot;a = 45&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Ama <code class="docutils literal"><span class="pre">exec()</span></code> ile böyle bir işlem yapabilirsiniz:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">exec</span><span class="p">(</span><span class="s2">&quot;a = 45&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Böylece <cite>a</cite> adlı bir değişken tanımlamış olduk. Kontrol edelim:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="go">45</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">eval()</span></code> ve <code class="docutils literal"><span class="pre">exec()</span></code> fonksiyonları özellikle kullanıcıdan alınan verilerle
+doğrudan işlem yapmak gereken durumlarda işinize yarar. Örneğin bir hesap
+makinesi yaparken <code class="docutils literal"><span class="pre">eval()</span></code> fonksiyonundan yararlanabilirsiniz.</p>
+<p>Aynı şekilde mesela insanlara Python programlama dilini öğreten bir program
+yazıyorsanız <code class="docutils literal"><span class="pre">exec()</span></code> fonksiyonunu şöyle kullanabilirsiniz:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">d1</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">Python&#39;da ekrana çıktı verebilmek için print() adlı bir</span>
+<span class="s2">fonksiyondan yararlanıyoruz. Bu fonksiyonu şöyle kullanabilirsiniz:</span>
+
+<span class="s2">&gt;&gt;&gt; print(&quot;Merhaba Dünya&quot;)</span>
+
+<span class="s2">Şimdi de aynı kodu siz yazın!</span>
+
+<span class="s2">&gt;&gt;&gt; &quot;&quot;&quot;</span>
+
+<span class="n">girdi</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="n">d1</span><span class="p">)</span>
+
+<span class="n">exec</span><span class="p">(</span><span class="n">girdi</span><span class="p">)</span>
+
+<span class="n">d2</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">Gördüğünüz gibi print() fonksiyonu, kendisine</span>
+<span class="s2">parametre olarak verilen değerleri ekrana basıyor.</span>
+
+<span class="s2">Böylece ilk dersimizi tamamlamış olduk. Şimdi bir</span>
+<span class="s2">sonraki dersimize geçebiliriz.&quot;&quot;&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">d2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada <code class="docutils literal"><span class="pre">exec()</span></code> ile yaptığımız işi <code class="docutils literal"><span class="pre">eval()</span></code> ile de yapabiliriz. Ama mesela
+eğer bir sonraki derste ‘Python’da değişkenler’ konusunu öğretecekseniz,
+<code class="docutils literal"><span class="pre">eval()</span></code> yerine <code class="docutils literal"><span class="pre">exec()</span></code> fonksiyonunu kullanmak durumunda kalabilirsiniz.</p>
+<p><code class="docutils literal"><span class="pre">eval()</span></code> fonksiyonunu anlatırken güvenlik ile ilgili olarak söylediğimiz her
+şey <code class="docutils literal"><span class="pre">exec()</span></code> fonksiyonu için de geçerlidir. Dolayısıyla bu iki fonksiyonu çok
+dikkatli bir şekilde kullanmanız ve bu fonksiyonların doğurduğu güvenlik
+açığının bilincinde olmanız gerekiyor.</p>
+<p>Henüz Python bilgilerimiz çok kısıtlı olduğu için <code class="docutils literal"><span class="pre">eval()</span></code> ve <code class="docutils literal"><span class="pre">exec()</span></code>
+fonksiyonlarını bütün ayrıntılarıyla inceleyemiyoruz. Ama bilgimiz arttıkça bu
+fonksiyonların ne kadar güçlü (ve tehlikeli) araçlar olduğunu siz de
+göreceksiniz.</p>
+</div>
+<div class="section" id="format-metodu">
+<h2>format() Metodu<a class="headerlink" href="#format-metodu" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Python programlama dili içindeki çok temel bazı araçları incelediğimize göre, bu
+noktada Python’daki küçük ama önemli bir konuya değinelim bu bölümü kapatmadan
+önce.</p>
+<p>İnternette dolaşırken mutlaka şuna benzer bir sayfayla karşılaşmış olmalısınız:</p>
+<a class="reference internal image-reference" href="_images/unknown_url.png"><img alt="_images/unknown_url.png" class="align-center" src="_images/unknown_url.png" style="width: 75%;" /></a>
+<p>Burada belli ki adres çubuğuna <a class="reference external" href="http://www.fdkgd.com">fdkgd.com</a> diye bir URL
+yazmışız, ama böyle bir internet adresi olmadığı için, kullandığımız internet
+tarayıcısı bize şöyle bir mesaj vermiş:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span>Hata! Google Chrome fdkgd.com sitesini bulamadı
+</pre></div>
+</div>
+<p>Şimdi de <a class="reference external" href="http://dadasdaf.com/">dadasdaf.com</a> adresini arayalım…</p>
+<p>Yine böyle bir adres olmadığı için, bu defa tarayıcımız bize şöyle bir uyarı
+gösterecek:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span>Hata! Google Chrome dadasdaf.com sitesini bulamadı
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, hata mesajlarında değişen tek yer, aradığımız sitenin adresi.
+Yani internet tarayıcımız bu hata için şöyle bir taslağa sahip:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span>Hata! Google Chrome ... sitesini bulamadı
+</pre></div>
+</div>
+<p>Burada <cite>…</cite> ile gösterdiğimiz yere, bulunamayan URL yerleştiriliyor. Peki böyle
+bir şeyi Python programlama dili ile nasıl yapabiliriz?</p>
+<p>Çok basit:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="c1">#Öncelikle kullanıcıdan bir internet adresi girmesini istiyoruz</span>
+<span class="n">url</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Lütfen ulaşmak istediğiniz sitenin adresini yazın: &quot;</span><span class="p">)</span>
+
+<span class="c1">#Şimdi de bu adresin bulunamadığı konusunda kullanıcıyı bilgilendiriyoruz</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hata! Google Chrome&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="s2">&quot;sitesini bulamadı&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, şimdiye kadar öğrendiğimiz bilgileri kullanarak böyle bir
+programı rahatlıkla yazabiliyoruz.</p>
+<p>Peki ya biz kullanıcının girdiği internet adresini mesela tırnak içinde
+göstermek istersek ne olacak? Yani örneğin şöyle bir çıktı vermek istersek:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span>Hata! Google Chrome &#39;fdsfd.com&#39; sitesini bulamadı
+</pre></div>
+</div>
+<p>Bunun için yine karakter dizisi birleştirme yönteminden yararlanabilirsiniz:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="c1">#Öncelikle kullanıcıdan bir internet adresi girmesini istiyoruz</span>
+<span class="n">url</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Lütfen ulaşmak istediğiniz sitenin adresini yazın: &quot;</span><span class="p">)</span>
+
+<span class="c1">#Şimdi de bu adresin bulunamadığı konusunda kullanıcıyı bilgilendiriyoruz</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hata! Google Chrome&quot;</span><span class="p">,</span> <span class="s2">&quot;&#39;&quot;</span> <span class="o">+</span> <span class="n">url</span> <span class="o">+</span> <span class="s2">&quot;&#39;&quot;</span><span class="p">,</span> <span class="s2">&quot;sitesini bulamadı&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada, <cite>+</cite> işaretlerini kullanarak, kullanıcının girdiği adresin sağına ve
+soluna birer tırnak işaretini nasıl yerleştirdiğimize dikkat edin.</p>
+<p>Gördüğünüz gibi bu yöntem işe yarıyor, ama ortaya çıkan karakter dizisi de
+oldukça karmaşık görünüyor. İşte bu tür ‘karakter dizisi biçimlendirme’
+işlemleri için Python bize çok faydalı bir araç sunuyor. Bu aracın adı
+<code class="docutils literal"><span class="pre">format()</span></code>.</p>
+<p>Bu aracı şöyle kullanıyoruz:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="c1">#Öncelikle kullanıcıdan bir internet adresi girmesini istiyoruz</span>
+<span class="n">url</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Lütfen ulaşmak istediğiniz sitenin adresini yazın: &quot;</span><span class="p">)</span>
+
+<span class="c1">#Şimdi de bu adresin bulunamadığı konusunda kullanıcıyı bilgilendiriyoruz</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hata! Google Chrome </span><span class="si">{}</span><span class="s2"> sitesini bulamadı&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">url</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Bir de bulunamayan internet adresini tırnak içine alalım:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hata! Google Chrome &#39;</span><span class="si">{}</span><span class="s2">&#39; sitesini bulamadı&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">url</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Görüyorsunuz ya, biraz önce karakter dizisi birleştirme yöntemini kullanarak
+gerçekleştirdiğimiz işlemi, çok daha basit bir yolla gerçekleştirme imkanı
+sunuyor bize bu <code class="docutils literal"><span class="pre">format()</span></code> denen araç…</p>
+<p>Peki <code class="docutils literal"><span class="pre">format()</span></code> nasıl çalışıyor?</p>
+<p>Bunu anlamak için şu basit örneklere bir bakalım:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> ve </span><span class="si">{}</span><span class="s2"> iyi bir ikilidir&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s2">&quot;Django&quot;</span><span class="p">))</span>
+
+<span class="go">&#39;Python ve Django iyi bir ikilidir&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&#39;yi seviyor!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;Ali&quot;</span><span class="p">,</span> <span class="s2">&quot;Ayşe&quot;</span><span class="p">))</span>
+
+<span class="go">&#39;Ali Ayşe&#39;yi seviyor!&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2"> yaşında bir </span><span class="si">{}</span><span class="s2">dur&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;Ahmet&quot;</span><span class="p">,</span> <span class="s2">&quot;18&quot;</span><span class="p">,</span> <span class="s2">&quot;futbolcu&quot;</span><span class="p">))</span>
+
+<span class="go">&#39;Ahmet 18 yaşında bir futbolcudur&#39;</span>
+</pre></div>
+</div>
+<p>Elbette bu örnekleri şöyle de yazabilirdik:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> ve </span><span class="si">{}</span><span class="s2"> iyi bir ikilidir&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metin</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s2">&quot;Django&quot;</span><span class="p">)</span>
+
+<span class="go">&#39;Python ve Django iyi bir ikilidir&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&#39;yi seviyor!&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metin</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;Ali&quot;</span><span class="p">,</span> <span class="s2">&quot;Ayşe&quot;</span><span class="p">)</span>
+
+<span class="go">&#39;Ali Ayşe&#39;yi seviyor!&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2"> yaşında bir </span><span class="si">{}</span><span class="s2">dur&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metin</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;Ahmet&quot;</span><span class="p">,</span> <span class="s2">&quot;18&quot;</span><span class="p">,</span> <span class="s2">&quot;futbolcu&quot;</span><span class="p">)</span>
+
+<span class="go">&#39;Ahmet 18 yaşında bir futbolcudur&#39;</span>
+</pre></div>
+</div>
+<p>Burada taslak metni doğrudan <code class="docutils literal"><span class="pre">format()</span></code> metoduna parametre olarak vermeden
+önce bir değişkene atadık. Böylece bu metni daha kolay bir şekilde
+kullanabildik.</p>
+<p>Bu örneklerin, <code class="docutils literal"><span class="pre">format()</span></code> denen aracı anlamak konusunda size epey fikir
+verdiğini zannediyorum. Ama isterseniz bu aracın ne olduğunu ve nasıl
+çalıştığını daha ayrıntılı olarak incelemeye geçmeden önce başka bir örnek daha
+verelim.</p>
+<p>Varsayalım ki kullanıcıdan aldığı bilgiler doğrultusunda, özel bir konu üzerine
+dilekçe oluşturan bir program yazmak istiyorsunuz.</p>
+<p>Dilekçe taslağımız şu şekilde olsun:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span>                                                        <span class="n">tarih</span><span class="p">:</span>
+
+<span class="n">T</span><span class="o">.</span><span class="n">C</span><span class="o">.</span>
+<span class="o">...</span> <span class="n">ÜNİVERSİTESİ</span>
+<span class="o">...</span> <span class="n">Fakültesi</span> <span class="n">Dekanlığına</span>
+
+
+<span class="n">Fakülteniz</span> <span class="o">..........</span><span class="n">Bölümü</span> <span class="o">.........</span> <span class="n">numaralı</span> <span class="n">öğrencisiyim</span><span class="o">.</span> <span class="n">Ekte</span> <span class="n">sunduğum</span>
+<span class="n">belgede</span> <span class="n">belirtilen</span> <span class="n">mazeretim</span> <span class="n">gereğince</span> <span class="o">.......</span> <span class="n">Eğitim</span><span class="o">-</span><span class="n">Öğretim</span> <span class="n">Yılı</span>  <span class="o">.........</span>
+<span class="n">yarıyılında</span> <span class="n">öğrenime</span> <span class="n">ara</span> <span class="n">izni</span> <span class="p">(</span><span class="n">kayıt</span> <span class="n">dondurma</span><span class="p">)</span> <span class="n">istiyorum</span><span class="o">.</span>
+
+    <span class="n">Bilgilerinizi</span> <span class="n">ve</span> <span class="n">gereğini</span> <span class="n">arz</span> <span class="n">ederim</span><span class="o">.</span>
+
+    <span class="n">İmza</span>
+
+<span class="n">Ad</span><span class="o">-</span><span class="n">Soyadı</span>       <span class="p">:</span>
+<span class="n">T</span><span class="o">.</span><span class="n">C</span><span class="o">.</span> <span class="n">Kimlik</span> <span class="n">No</span><span class="o">.</span> <span class="p">:</span>
+<span class="n">Adres</span>           <span class="p">:</span>
+<span class="n">Tel</span><span class="o">.</span>            <span class="p">:</span>
+<span class="n">Ekler</span>           <span class="p">:</span>
+</pre></div>
+</div>
+<p>Amacınız bu dilekçedeki boşluklara gelmesi gereken bilgileri kullanıcıdan alıp,
+eksiksiz bir dilekçe ortaya çıkarmak.</p>
+<p>Kullanıcıdan bilgi alma kısmı kolay. <code class="docutils literal"><span class="pre">input()</span></code> fonksiyonunu kullanarak gerekli
+bilgileri kullanıcıdan alabileceğimizi biliyorsunuz:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">tarih</span>           <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;tarih: &quot;</span><span class="p">)</span>
+<span class="n">üniversite</span>      <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;üniversite adı: &quot;</span><span class="p">)</span>
+<span class="n">fakülte</span>         <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;fakülte adı: &quot;</span><span class="p">)</span>
+<span class="n">bölüm</span>           <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;bölüm adı: &quot;</span><span class="p">)</span>
+<span class="n">öğrenci_no</span>      <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;öğrenci no. :&quot;</span><span class="p">)</span>
+<span class="n">öğretim_yılı</span>    <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;öğretim yılı: &quot;</span><span class="p">)</span>
+<span class="n">yarıyıl</span>         <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;yarıyıl: &quot;</span><span class="p">)</span>
+<span class="n">ad</span>              <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;öğrencinin adı: &quot;</span><span class="p">)</span>
+<span class="n">soyad</span>           <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;öğrencinin soyadı: &quot;</span><span class="p">)</span>
+<span class="n">tc_kimlik_no</span>    <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;TC Kimlik no. :&quot;</span><span class="p">)</span>
+<span class="n">adres</span>           <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;adres: &quot;</span><span class="p">)</span>
+<span class="n">tel</span>             <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;telefon: &quot;</span><span class="p">)</span>
+<span class="n">ekler</span>           <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;ekler: &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bilgileri kullanıcıdan aldık. Peki ama bu bilgileri dilekçe taslağı içindeki
+boşluklara nasıl yerleştireceğiz?</p>
+<p>Şu ana kadar öğrendiğimiz <code class="docutils literal"><span class="pre">print()</span></code> fonksiyonunu ve <cite>\t</cite> ve <cite>\n</cite> gibi kaçış
+dizilerini kullanarak istediğiniz çıktıyı elde etmeyi deneyebilirsiniz. Ama
+denediğinizde siz de göreceksiniz ki, bu tür yöntemleri kullanarak yukarıdaki
+dilekçe taslağını doldurmak inanılmaz zor ve vakit alıcı olacaktır. Halbuki
+bunların hiçbirine gerek yok. Çünkü Python bize bu tür durumlarda kullanılmak
+üzere çok pratik bir araç sunuyor. Şimdi çok dikkatlice inceleyin şu kodları:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">dilekçe</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">                                                    tarih: </span><span class="si">{}</span><span class="s2"></span>
+
+
+<span class="s2">T.C.</span>
+<span class="si">{}</span><span class="s2"> ÜNİVERSİTESİ</span>
+<span class="si">{}</span><span class="s2"> Fakültesi Dekanlığına</span>
+
+
+<span class="s2">Fakülteniz </span><span class="si">{}</span><span class="s2"> Bölümü </span><span class="si">{}</span><span class="s2"> numaralı öğrencisiyim. Ekte sunduğum belgede</span>
+<span class="s2">belirtilen mazeretim gereğince </span><span class="si">{}</span><span class="s2"> Eğitim-Öğretim Yılı  </span><span class="si">{}</span><span class="s2">.</span>
+<span class="s2">yarıyılında öğrenime ara izni (kayıt dondurma) istiyorum.</span>
+
+<span class="s2">    Bilgilerinizi ve gereğini arz ederim.</span>
+
+<span class="s2">        İmza</span>
+
+<span class="s2">Ad              : </span><span class="si">{}</span><span class="s2"></span>
+<span class="s2">Soyad           : </span><span class="si">{}</span><span class="s2"></span>
+<span class="s2">T.C. Kimlik No. : </span><span class="si">{}</span><span class="s2"></span>
+<span class="s2">Adres           : </span><span class="si">{}</span><span class="s2"></span>
+<span class="s2">Tel.            : </span><span class="si">{}</span><span class="s2"></span>
+<span class="s2">Ekler           : </span><span class="si">{}</span><span class="s2"></span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+
+<span class="n">tarih</span>           <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;tarih: &quot;</span><span class="p">)</span>
+<span class="n">üniversite</span>      <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;üniversite adı: &quot;</span><span class="p">)</span>
+<span class="n">fakülte</span>         <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;fakülte adı: &quot;</span><span class="p">)</span>
+<span class="n">bölüm</span>           <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;bölüm adı: &quot;</span><span class="p">)</span>
+<span class="n">öğrenci_no</span>      <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;öğrenci no. :&quot;</span><span class="p">)</span>
+<span class="n">öğretim_yılı</span>    <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;öğretim yılı: &quot;</span><span class="p">)</span>
+<span class="n">yarıyıl</span>         <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;yarıyıl: &quot;</span><span class="p">)</span>
+<span class="n">ad</span>              <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;öğrencinin adı: &quot;</span><span class="p">)</span>
+<span class="n">soyad</span>           <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;öğrencinin soyadı: &quot;</span><span class="p">)</span>
+<span class="n">tc_kimlik_no</span>    <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;TC Kimlik no. :&quot;</span><span class="p">)</span>
+<span class="n">adres</span>           <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;adres: &quot;</span><span class="p">)</span>
+<span class="n">tel</span>             <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;telefon: &quot;</span><span class="p">)</span>
+<span class="n">ekler</span>           <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;ekler: &quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dilekçe</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tarih</span><span class="p">,</span> <span class="n">üniversite</span><span class="p">,</span> <span class="n">fakülte</span><span class="p">,</span> <span class="n">bölüm</span><span class="p">,</span>
+                     <span class="n">öğrenci_no</span><span class="p">,</span> <span class="n">öğretim_yılı</span><span class="p">,</span> <span class="n">yarıyıl</span><span class="p">,</span>
+                     <span class="n">ad</span><span class="p">,</span> <span class="n">soyad</span><span class="p">,</span> <span class="n">tc_kimlik_no</span><span class="p">,</span>
+                     <span class="n">adres</span><span class="p">,</span> <span class="n">tel</span><span class="p">,</span> <span class="n">ekler</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Bu kodlara (ve bundan önceki örneklere) bakarak birkaç tespitte bulunalım:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Taslak metinde kullanıcıdan alınacak bilgilerin olduğu yerlere birer <cite>{}</cite>
+işareti yerleştirdik.</li>
+<li>Taslaktaki eksiklikleri tamamlayacak verileri <code class="docutils literal"><span class="pre">input()</span></code> fonksiyonu
+yardımıyla kullanıcıdan tek tek aldık.</li>
+<li>Son olarak, <code class="docutils literal"><span class="pre">print()</span></code> fonksiyonu yardımıyla metni tam bir şekilde ekrana
+çıktı olarak verdik.</li>
+</ol>
+</div></blockquote>
+<p>Şimdi son tespitimizi biraz açıklayalım. Gördüğünüz gibi, <code class="docutils literal"><span class="pre">print()</span></code> fonksiyonu
+içinde <code class="docutils literal"><span class="pre">dilekçe.format()</span></code> gibi bir yapı var. Burada <cite>dilekçe</cite> değişkenine
+nokta işareti ile bağlanmış <code class="docutils literal"><span class="pre">format()</span></code> adlı, fonksiyon benzeri bir araç
+görüyoruz. Bu araca teknik dilde ‘metot’ adı verilir. <code class="docutils literal"><span class="pre">format()</span></code> metodunun
+parantezleri içinde ise, kullanıcıdan alıp birer değişkene atadığımız veriler
+yer alıyor.</p>
+<p>Dilerseniz yukarıda olan biteni daha net anlayabilmek için bu konunun başına
+verdiğimiz örneklere geri dönelim.</p>
+<p>İlk olarak şöyle bir örnek vermiştik:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="c1">#Öncelikle kullanıcıdan bir internet adresi girmesini istiyoruz</span>
+<span class="n">url</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Lütfen ulaşmak istediğiniz sitenin adresini yazın: &quot;</span><span class="p">)</span>
+
+<span class="c1">#Şimdi de bu adresin bulunamadığı konusunda kullanıcıyı bilgilendiriyoruz</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hata! Google Chrome </span><span class="si">{}</span><span class="s2"> sitesini bulamadı&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">url</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Burada kullanıcının gireceği internet adresinin yerini tutması için <cite>{}</cite>
+işaretlerinden yararlanarak şöyle bir karakter dizisi oluşturduk:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="s2">&quot;Hata! Google Chrome </span><span class="si">{}</span><span class="s2"> sitesini bulamadı&quot;</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, <cite>{}</cite> işareti karakter dizisi içinde URL’nin geleceği yeri
+tutuyor. Bu <cite>{}</cite> işaretinin yerine neyin geleceğini <code class="docutils literal"><span class="pre">format()</span></code> metodunun
+parantezleri içinde belirtiyoruz. Dikkatlice bakın:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hata! Google Chrome </span><span class="si">{}</span><span class="s2"> sitesini bulamadı&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">url</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Elbette eğer istersek yukarıdaki örneği şöyle de yazabilirdik:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Lütfen ulaşmak istediğiniz sitenin adresini yazın: &quot;</span><span class="p">)</span>
+
+<span class="c1">#Kullanıcıya gösterilecek hata için bir taslak metin oluşturuyoruz</span>
+<span class="n">hata_taslağı</span> <span class="o">=</span> <span class="s2">&quot;Hata! Google Chrome </span><span class="si">{}</span><span class="s2"> sitesini bulamadı&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">hata_taslağı</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">url</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Burada hata metnini içeren karakter dizisini doğrudan <code class="docutils literal"><span class="pre">format()</span></code> metoduna
+bağlamak yerine, bunu bir değişkene atayıp, <code class="docutils literal"><span class="pre">format()</span></code> metodunu bu değişkene
+bağladık.</p>
+<p>Bunun dışında şu örnekleri de vermiştik:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> ve </span><span class="si">{}</span><span class="s2"> iyi bir ikilidir&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metin</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s2">&quot;Django&quot;</span><span class="p">)</span>
+
+<span class="go">&#39;Python ve Django iyi bir ikilidir</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&#39;yi seviyor!&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metin</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;Ali&quot;</span><span class="p">,</span> <span class="s2">&quot;Ayşe&quot;</span><span class="p">)</span>
+
+<span class="go">&#39;Ali Ayşe&#39;yi seviyor!&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2"> yaşında bir </span><span class="si">{}</span><span class="s2">dur&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metin</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;Ahmet&quot;</span><span class="p">,</span> <span class="s2">&quot;18&quot;</span><span class="p">,</span> <span class="s2">&quot;futbolcu&quot;</span><span class="p">)</span>
+
+<span class="go">&#39;Ahmet 18 yaşında bir futbolcudur&#39;</span>
+</pre></div>
+</div>
+<p>Burada da, gördüğüz gibi, öncelikle bir karakter dizisi tanımlıyoruz. Bu
+karakter dizisi içindeki değişken değerleri ise <cite>{}</cite> işaretleri ile
+gösteriyoruz. Daha sonra <code class="docutils literal"><span class="pre">format()</span></code> metodunu alıp bu karakter dizisine
+bağlıyoruz. Karakter dizisi içindeki <cite>{}</cite> işaretleri ile gösterdiğimiz yerlere
+gelecek değerleri de <code class="docutils literal"><span class="pre">format()</span></code> metodunun parantezleri içinde gösteriyoruz.
+Yalnız burada şuna dikkat etmemiz lazım: Karakter dizisi içinde kaç tane <cite>{}</cite>
+işareti varsa, <code class="docutils literal"><span class="pre">format()</span></code> metodunun parantezleri içinde de o sayıda değer
+olması gerekiyor.</p>
+<p>Bu yapının, yazdığımız programlarda işimizi ne kadar kolaylaştıracağını tahmin
+edebilirsiniz. Kısa karakter dizilerinde pek belli olmayabilir, ama özellikle
+çok uzun ve boşluklu karakter dizilerini biçimlendirirken <code class="docutils literal"><span class="pre">format()</span></code> metodunun
+hayat kurtardığına kendiniz de şahit olacaksınız.</p>
+<p>İlerleyen derslerimizde <code class="docutils literal"><span class="pre">format()</span></code> metodunu ve karakter dizisi biçimlendirme
+konusunu çok daha ayrıntılı bir şekilde inceleyeceğiz. Ancak yukarıda verdiğimiz
+bilgiler <code class="docutils literal"><span class="pre">format()</span></code> metodunu verimli bir şekilde kullanabilmenizi sağlamaya
+yetecek düzeydedir.</p>
+</div>
+</div>
+
+
+
+<div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
+<div class='extrarelbar'> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="kosul_deyimleri.html" title="Koşullu Durumlar"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="yorum.html" title="Yorum ve Açıklama Cümleleri"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+ 
+      </ul>
+    </div> </div>
+
+<div class='addcomment'>Yorumlar</div>
+
+<div class='how-to-use'>
+<h3>Önemli Not</h3>
+Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
+<span class='tag'>&lt;pre&gt;&lt;code&gt;</span> etiketleri içine alın. Örneğin:
+
+<pre>
+    <span class='tag'>&lt;pre&gt;&lt;code class="python"&gt;</span>
+    <span class='keyword'>print</span>(<span class='string'>"Merhaba Dünya!"</span>)
+    <span class='tag'>&lt;/code&gt;&lt;/pre&gt;</span>
+</pre>
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'istihza';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4eca48eb2d83faf9" async="async"></script>
+
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="kosul_deyimleri.html" title="Koşullu Durumlar"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="yorum.html" title="Yorum ve Açıklama Cümleleri"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+ 
+      </ul>
+    </div> 
+
+<div class="footer">
+&copy; Copyright 2007-2019, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 30.12.2019.
+<a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7 ile oluşturulmuştur.
+<br>
+<br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
+alt="Creative Commons License" style="border-width:0"
+src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a><br />
+<br>
+</div>
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=10396326;
+var sc_invisible=1;
+var sc_security="fb5cd679";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="hit counter"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="http://c.statcounter.com/10396326/0/fb5cd679/1/"
+alt="hit counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+  </body>
+</html>

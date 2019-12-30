@@ -1,0 +1,308 @@
+
+ <!DOCTYPE html>
+ <html lang="tr">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta content="Bu bölümde sched modülünü inceleyeceğiz." name="description" />
+<meta content="python, modül, import, sched, zamanlı işlemler" name="keywords" />
+
+    <title>sched modülü &#8212; Python 3 için Türkçe Kılavuz</title>
+    <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <link rel="search" title="Ara" href="../search.html" />
+    <link rel="next" title="json Modülü" href="json.html" />
+    <link rel="prev" title="threading Modülü" href="threading.html" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head>
+  <body>
+<div class='header'><a href='https://yazbel.com'>yazbel.com</a></div>
+
+<ul class='navbar'>
+    <li><a href="#"><del>pdf desteği sonlanmıştır</del></a></li>
+    <li class="forum"><a href="http://forum.yazbel.com">forum</a></li>
+</ul>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="json.html" title="json Modülü"
+             accesskey="N">sonraki</a></li>
+        <li class="right" >
+          <a href="threading.html" title="threading Modülü"
+             accesskey="P">önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Önemli Standart Kütüphane Modülleri</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+
+  <div class="section" id="sched-modulu">
+<h1>sched modülü<a class="headerlink" href="#sched-modulu" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<p>Bu modülün amacı belirli fonksiyonları sırayla çalıştırmaktır.
+Modülün içinde scheduler diye bir sınıf mevcut.
+(Sınıfın adı dikkat ettiyseniz küçük harfle başlıyor.)
+Bu modülü kullanmadan önce <cite>scheduler</cite> sınıfından bir örnek
+oluşturmalısınız:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sched</span>
+<span class="n">s</span><span class="o">=</span><span class="n">sched</span><span class="o">.</span><span class="n">scheduler</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Örneğimizi bu şekilde oluşturabiliriz. Ancak bu şekilde
+oluşturmamız bize daha sonra sorun teşkil edebilir.
+Bu sınıfın iki tane parametresi var. Bunlardan ilki: <cite>timefunc</cite>.
+Bu parametrenin varsayılan değeri <cite>time.monotonic</cite>. Örnek oluşturulurken
+bu parametreyi <cite>time.time</cite> olarak ayarlayalım. Bunun sebebini
+birazdan açıklayacağım. İkinci ve son parametre ise <cite>delayfunc</cite>.
+Bu parametrenin varsayılan değeri <cite>time.sleep</cite>. Bu parametreyi de
+kodun okunaklılığı açısından belirtelim. Sonuç olarak örneğimizi
+şu şekilde tanımlayalım:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sched</span><span class="o">,</span> <span class="nn">time</span>
+<span class="n">s</span><span class="o">=</span><span class="n">sched</span><span class="o">.</span><span class="n">scheduler</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Şimdi sıra bu örneğin metodlarında.</p>
+<div class="section" id="scheduler-enter">
+<h2>scheduler.enter()<a class="headerlink" href="#scheduler-enter" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Bu metod çalıştırılacak fonksiyonların sıraya eklenmesini sağlıyor.
+5 tane parametresi var. İlki bekleme süresini belirliyor.
+İkincisi önceliğini belirliyor. Eğer aynı zamanda çalışacak
+fonksiyonlar varsa önceliğine göre çalıştırılır. Üçüncüsü
+çalışacak fonksiyon. Diğer ikisi isimli parametre. Bunlardan
+<cite>argument</cite> olan eğer varsa demet olarak fonksiyonun parametrelerini alıyor.
+Diğerinin adı da tahmin edeceğiniz üzere <cite>kwargs</cite>. Değeri de
+sözlük olarak fonksiyonun isimli parametreleri.</p>
+<p><cite>scheduler</cite> sınıfının <cite>delayfunc</cite> parametresi burada kullanılıyor.</p>
+</div>
+<div class="section" id="scheduler-enterabs">
+<h2>scheduler.enterabs()<a class="headerlink" href="#scheduler-enterabs" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Bu metod <cite>enter</cite> metodundan çok da farklı değil. Tek farkı ilk
+değeri bekleme süresini değil çalışacağı süreyi belirliyor.</p>
+<p><cite>scheduler</cite> sınıfının <cite>timefunc</cite> parametresi burada kullanılıyor.</p>
+</div>
+<div class="section" id="scheduler-cancel">
+<h2>scheduler.cancel()<a class="headerlink" href="#scheduler-cancel" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p><cite>enter</cite> veya <cite>enterabs</cite> ile sıraya eklenmiş fonksiyonları
+sıradan çıkarmayı sağlıyor.</p>
+</div>
+<div class="section" id="scheduler-empty">
+<h2>scheduler.empty()<a class="headerlink" href="#scheduler-empty" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Eğer sırada herhangi bir fonksiyon yoksa <cite>True</cite> döndürür.
+Eğer fonksiyon varsa <cite>False</cite> döndürür.</p>
+</div>
+<div class="section" id="scheduler-run">
+<h2>scheduler.run()<a class="headerlink" href="#scheduler-run" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Sıradaki fonksiyonları hazırlandığı şekilde çalıştırır.
+Tek parametresi olan <cite>blocking</cite> eğer <cite>False</cite> ise ilk çalışacak
+fonksiyonun çalışmasına kalan süreyi döndürür.</p>
+</div>
+<div class="section" id="scheduler-queue">
+<h2>scheduler.queue<a class="headerlink" href="#scheduler-queue" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Bu değişken <cite>scheduler</cite> nesnelerinin sahip olduğu ve bizim
+kullanabileceğimiz tek değişken. Daha önce sıraya eklenmiş
+<cite>Event</cite> nesnelerini tutuyor.</p>
+</div>
+<div class="section" id="ornekler">
+<h2>Örnekler<a class="headerlink" href="#ornekler" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Anlatım biraz kafa karıştırıcı oldu. Ancak şimdi birkaç
+Örnek yaparak mantığını kavramanızı sağlayalım.</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sched</span><span class="o">,</span><span class="nn">time</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">=</span><span class="n">sched</span><span class="o">.</span><span class="n">scheduler</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">,</span><span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">zamanı_yazdır</span><span class="p">(</span><span class="n">sıra</span><span class="p">):</span>
+<span class="go">    print(f&quot;Zaman: {time.time()} ,{sıra}&quot;)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">farklı_zamanları_yazdır</span><span class="p">():</span>
+<span class="go">    print(time.time())</span>
+<span class="go">    s.enter(10,1,zamanı_yazdır,argument=(&quot;Birinci&quot;,))</span>
+<span class="go">    s.enter(5,1,zamanı_yazdır,argument=(&quot;İkinci&quot;,))</span>
+<span class="go">    s.enter(5,2,zamanı_yazdır,argument=(&quot;Üçüncü&quot;,))</span>
+<span class="go">    s.enter(5,1,zamanı_yazdır,argument=(&quot;Dördüncü&quot;,))</span>
+<span class="go">    s.run()</span>
+<span class="go">    print(time.time())</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">farklı_zamanları_yazdır</span><span class="p">()</span>
+<span class="go">1532176259.627274</span>
+<span class="go">Zaman: 1532176264.6953058 ,İkinci</span>
+<span class="go">Zaman: 1532176264.6953058 ,Dördüncü</span>
+<span class="go">Zaman: 1532176264.6953058 ,Üçüncü</span>
+<span class="go">Zaman: 1532176269.6955397 ,Birinci</span>
+<span class="go">1532176269.7111597</span>
+</pre></div>
+</div>
+<p>Çalışmaya başladıktan 5 saniye sonra “İkinci”, “Üçüncü” ve “Dördüncü”
+çalıştı. “İkinci” ve “Dördüncü”nün sırası aynıydı. O yüzden
+tanımlanma sıralarına bakıldı. “Üçüncü”nün öncelik sırası
+2 olduğu için onlardan daha sonra yazıldı. “Birinci” onlardan 5
+saniye sonra yani çalışmaya başladıktan 10 saniye sonra çalıştı.</p>
+<p>Bir başka örnek:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sched</span><span class="o">,</span><span class="nn">time</span>
+<span class="n">s</span><span class="o">=</span><span class="n">sched</span><span class="o">.</span><span class="n">scheduler</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">,</span><span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">)</span>
+<span class="n">yazdırılacak_değer</span><span class="o">=</span><span class="s2">&quot;Merhaba Dünya&quot;</span>
+<span class="k">def</span> <span class="nf">değiştir</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">yazdırılacak_değer</span>
+    <span class="n">yazdırılacak_değer</span><span class="o">=</span><span class="s2">&quot;Merhaba Zalim Dünya&quot;</span>
+
+<span class="k">def</span> <span class="nf">yazdır</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">yazdırılacak_değer</span><span class="p">)</span>
+
+<span class="n">suan</span><span class="o">=</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">empty</span><span class="p">()):</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">enterabs</span><span class="p">(</span><span class="n">suan</span><span class="o">+</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">yazdır</span><span class="p">)</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">enterabs</span><span class="p">(</span><span class="n">suan</span><span class="o">+</span><span class="mi">6</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">değiştir</span><span class="p">)</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">enterabs</span><span class="p">(</span><span class="n">suan</span><span class="o">+</span><span class="mi">6</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">yazdır</span><span class="p">)</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">enter</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">yazdır</span><span class="p">)</span>
+<span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><cite>if</cite> bloğunda eğer sıra boşsa çalışmasını söyledik.
+Sıra boş olduğu için altındaki fonksiyonlar çalışacaktır.
+İlk önce 5 saniye sonra bir kere <cite>yazdır</cite> fonksiyonu çalışacaktır.
+Daha sonra çalışmaya başladıktan 6 saniye sonra ikinci
+<cite>yazdır</cite> fonksiyonu çalışacaktır. Çıktısı ilkiyle aynı olur.
+Ancak hemen sonra çalışan <cite>değiştir</cite> fonksiyonu ile <cite>yazdırılacak_değer</cite>
+değiştiği için 10. saniyede çalışan <cite>yazdır</cite> fonksiyonu
+farklı bir çıktı veriyor.</p>
+<p>Şu şekilde fantastik bir döngü oluşturulabilir:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sched</span><span class="o">,</span><span class="nn">time</span>
+<span class="n">s</span><span class="o">=</span><span class="n">sched</span><span class="o">.</span><span class="n">scheduler</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">,</span><span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">)</span>
+<span class="n">suan</span><span class="o">=</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">çıktı</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">suan</span>
+    <span class="n">suan</span><span class="o">+=</span><span class="mi">2</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">suan</span><span class="p">)</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">enterabs</span><span class="p">(</span><span class="n">suan</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">çıktı</span><span class="p">)</span>
+
+<span class="n">s</span><span class="o">.</span><span class="n">enter</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">çıktı</span><span class="p">)</span>
+<span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Her iki saniyede bir aynı kod çalışacaktır.
+Eğer <cite>2</cite>’yi değiştirirseniz süreyi de düzenlemiş olursunuz.</p>
+</div>
+</div>
+
+
+
+<div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
+<div class='extrarelbar'> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="json.html" title="json Modülü"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="threading.html" title="threading Modülü"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Önemli Standart Kütüphane Modülleri</a> &#187;</li> 
+      </ul>
+    </div> </div>
+
+<div class='addcomment'>Yorumlar</div>
+
+<div class='how-to-use'>
+<h3>Önemli Not</h3>
+Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
+<span class='tag'>&lt;pre&gt;&lt;code&gt;</span> etiketleri içine alın. Örneğin:
+
+<pre>
+    <span class='tag'>&lt;pre&gt;&lt;code class="python"&gt;</span>
+    <span class='keyword'>print</span>(<span class='string'>"Merhaba Dünya!"</span>)
+    <span class='tag'>&lt;/code&gt;&lt;/pre&gt;</span>
+</pre>
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'istihza';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4eca48eb2d83faf9" async="async"></script>
+
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="json.html" title="json Modülü"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="threading.html" title="threading Modülü"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Önemli Standart Kütüphane Modülleri</a> &#187;</li> 
+      </ul>
+    </div> 
+
+<div class="footer">
+&copy; Copyright 2007-2019, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 30.12.2019.
+<a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7 ile oluşturulmuştur.
+<br>
+<br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
+alt="Creative Commons License" style="border-width:0"
+src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a><br />
+<br>
+</div>
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=10396326;
+var sc_invisible=1;
+var sc_security="fb5cd679";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="hit counter"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="http://c.statcounter.com/10396326/0/fb5cd679/1/"
+alt="hit counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+  </body>
+</html>

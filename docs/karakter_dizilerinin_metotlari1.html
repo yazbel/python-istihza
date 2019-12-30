@@ -1,0 +1,1111 @@
+
+ <!DOCTYPE html>
+ <html lang="tr">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta content="Python 3.x'te karakter dizileri" name="description" />
+<meta content="python, string, karakter dizisi, metotlar" name="keywords" />
+
+    <title>Karakter Dizilerinin Metotları &#8212; Python 3 için Türkçe Kılavuz</title>
+    <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="search" title="Ara" href="search.html" />
+    <link rel="next" title="Karakter Dizilerinin Metotları (Devamı)" href="karakter_dizilerinin_metotlari2.html" />
+    <link rel="prev" title="Karakter Dizileri" href="karakter_dizileri.html" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head>
+  <body>
+<div class='header'><a href='https://yazbel.com'>yazbel.com</a></div>
+
+<ul class='navbar'>
+    <li><a href="#"><del>pdf desteği sonlanmıştır</del></a></li>
+    <li class="forum"><a href="http://forum.yazbel.com">forum</a></li>
+</ul>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="karakter_dizilerinin_metotlari2.html" title="Karakter Dizilerinin Metotları (Devamı)"
+             accesskey="N">sonraki</a></li>
+        <li class="right" >
+          <a href="karakter_dizileri.html" title="Karakter Dizileri"
+             accesskey="P">önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+ 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+
+  <div class="section" id="karakter-dizilerinin-metotlari">
+<h1>Karakter Dizilerinin Metotları<a class="headerlink" href="#karakter-dizilerinin-metotlari" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<p>Geçen bölümde karakter dizilerinin genel özelliklerinden söz ettik. Bu ikinci
+bölümde ise karakter dizilerini biraz daha ayrıntılı bir şekilde incelemeye ve
+karakter dizilerinin yepyeni özelliklerini görmeye başlayacağız.</p>
+<p>Hatırlarsanız, geçen bölümün en başında, metot diye bir şeyden söz edeceğimizi
+söylemiştik. Orada da kabaca tarif ettiğimiz gibi, metotlar Python’da nesnelerin
+niteliklerini değiştirmemizi, sorgulamamızı veya bu nesnelere yeni özellikler
+katmamızı sağlayan araçlardır. Metotlar sayesinde karakter dizilerini
+istediğimiz gibi eğip bükebileceğiz.</p>
+<p>Geçen bölümün sonlarına doğru, bir karakter dizisinin hangi metotlara sahip
+olduğunu şu komut yardımıyla listeleyebileceğimizi öğrenmiştik:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu komutu verdiğinizde aldığınız çıktıdan da gördüğünüz gibi, karakter
+dizilerinin <cite>40</cite>’ın üzerinde metodu var. Dolayısıyla metot sayısının çokluğu
+gözünüzü korkutmuş olabilir. Ama aslında buna hiç lüzum yok. Çünkü programcılık
+maceranızda bu metotların bazılarını ya çok nadiren kullanacaksınız, ya da hiç
+kullanmayacaksınız. Çok kullanılan metotlar belli başlıdır. Elbette bütün
+metotlar hakkında fikir sahibi olmak gerekir. Zaten siz de göreceksiniz ki, bu
+metotlar kullandıkça aklınızda kalacak. Doğal olarak çok kullandığınız metotları
+daha kolay öğreneceksiniz. Eğer bir program yazarken hangi metodu kullanmanız
+gerektiğini veya kullanacağınız metodun ismini hatırlayamazsanız etkileşimli
+kabukta <code class="docutils literal"><span class="pre">dir(&quot;&quot;)</span></code> gibi bir komut verip çıkan sonucu incelemek pek zor olmasa
+gerek. Ayrıca hatırlayamadığınız bir metot olması durumunda dönüp bu sayfaları
+tekrar gözden geçirme imkanına da sahipsiniz. Unutmayın, bütün metotları ve bu
+metotların nasıl kullanıldığını ezbere bilmeniz zaten beklenmiyor. Metotları
+hatırlayamamanız gayet normal. Böyle bir durumda referans kitaplarına bakmak en
+doğal hakkınız.</p>
+<div class="section" id="replace">
+<h2>replace()<a class="headerlink" href="#replace" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Karakter dizisi metotları arasında inceleyeceğimiz ilk metot <code class="docutils literal"><span class="pre">replace()</span></code>
+metodu olacak. <em>replace</em> kelimesi Türkçede ‘değiştirmek, yerine koymak’ gibi
+anlamlar taşır. İşte bu metodun yerine getirdiği görev de tam olarak budur. Yani
+bu metodu kullanarak bir karakter dizisi içindeki karakterleri başka
+karakterlerle değiştirebileceğiz.</p>
+<p>Peki bu metodu nasıl kullanacağız? Hemen bir örnek verelim:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;elma&quot;</span>
+</pre></div>
+</div>
+<p>Burada <cite>“elma”</cite> değerini taşıyan <cite>kardiz</cite> adlı bir karakter dizisi tanımladık.
+Şimdi bu karakter dizisinin içinde geçen <cite>“e”</cite> harfini <cite>“E”</cite> ile değiştirelim.
+Dikkatlice bakın:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;e&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">)</span>
+
+<span class="go">&#39;Elma&#39;</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, <code class="docutils literal"><span class="pre">replace()</span></code> son derece yararlı ve kullanımı oldukça kolay bir
+metot. Bu arada bu ilk metodumuz sayesinde Python’daki metotların nasıl
+kullanılacağı konusunda da bilgi edinmiş olduk. Yukarıdaki örneklerin bize
+gösterdiği gibi şöyle bir formülle karşı karşıyayız:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">karakter_dizisi</span><span class="o">.</span><span class="n">metot</span><span class="p">(</span><span class="n">parametre</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Metotlar karakter dizilerinden nokta ile ayrılır. Python’da bu yönteme ‘noktalı
+gösterim’ (<em>dot notation</em>) adı verilir.</p>
+<p>Bu arada metotların görünüş ve kullanım olarak fonksiyonlara ne kadar
+benzediğine dikkat edin. Tıpkı fonksiyonlarda olduğu gibi, metotlar da birtakım
+parametreler alabiliyor.</p>
+<p>Yukarıdaki örnekte, <code class="docutils literal"><span class="pre">replace()</span></code> metodunun iki farklı parametre aldığını
+görüyoruz. Bu metoda verdiğimiz ilk parametre değiştirmek istediğimiz karakter
+dizisini gösteriyor. İkinci parametre ise birinci parametrede belirlediğimiz
+karakter dizisinin yerine ne koyacağımızı belirtiyor. Yani <code class="docutils literal"><span class="pre">replace()</span></code> metodu
+şöyle bir formüle sahiptir:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">karakter_dizisi</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">eski_karakter_dizisi</span><span class="p">,</span> <span class="n">yeni_karakter_dizisi</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Gelin isterseniz elimizin alışması için <code class="docutils literal"><span class="pre">replace()</span></code> metoduyla birkaç örnek
+daha verelim:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;memleket&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;ket&quot;</span><span class="p">,</span> <span class="s2">&quot;KET&quot;</span><span class="p">)</span>
+
+<span class="go">&#39;memleKET&#39;</span>
+</pre></div>
+</div>
+<p>Burada gördüğünüz gibi, <code class="docutils literal"><span class="pre">replace()</span></code> metodu aynı anda birden fazla karakteri
+değiştirme yeteneğine de sahip.</p>
+<p><code class="docutils literal"><span class="pre">replace()</span></code> metodunun iki parametreden oluştuğunu, ilk parametrenin
+değiştirilecek karakter dizisini, ikinci parametrenin ise ilk karakter dizisinin
+yerine geçecek yeni karakter dizisini gösterdiğini söylemiştik. Aslında
+<code class="docutils literal"><span class="pre">replace()</span></code> metodu üçüncü bir parametre daha alır. Bu parametre ise bir
+karakter dizisi içindeki karakterlerin kaç tanesinin değiştirileceğini gösterir.
+Eğer bu parametreyi belirtmezsek <code class="docutils literal"><span class="pre">replace()</span></code> metodu ilgili karakterlerin
+tamamını değiştirir. Yani:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;memleket&quot;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;e&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+<span class="go">&#39;mmlkt&#39;</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, <code class="docutils literal"><span class="pre">replace()</span></code> metodunu iki parametre ile kullanıp üçüncü
+parametreyi belirtmediğimizde, <cite>“memleket”</cite> kelimesi içindeki bütün <cite>“e”</cite>
+harfleri boş karakter dizisi ile değiştiriliyor (yani bir anlamda siliniyor).</p>
+<p>Şimdi şu örneğe bakalım:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;e&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="go">&#39;mmleket&#39;</span>
+</pre></div>
+</div>
+<p>Burada <code class="docutils literal"><span class="pre">replace()</span></code> metodunu üçüncü bir parametre ile birlikte kullandık.
+Üçüncü parametre olarak <cite>1</cite> sayısını verdiğimiz için <code class="docutils literal"><span class="pre">replace()</span></code> metodu sadece
+tek bir <cite>“e”</cite> harfini sildi.</p>
+<p>Bu üçüncü parametreyi, silmek istediğiniz harf sayısı kadar artırabilirsiniz.
+Mesela:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;e&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="go">&#39;mmlket&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;e&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="go">&#39;mmlkt&#39;</span>
+</pre></div>
+</div>
+<p>Burada ilk örnekte üçüncü parametre olarak <cite>2</cite> sayısını kullandığımız için,
+‘replace’ işleminden karakter dizisi içindeki <cite>2</cite> adet <cite>“e”</cite> harfi etkilendi.
+Üçüncü örnekte ise <cite>“memleket”</cite> adlı karakter dizisi içinde geçen üç adet <cite>“e”</cite>
+harfi değişiklikten etkilendi.</p>
+<p>Karakter dizileri konusunun ilk bölümünde ‘değiştirilebilirlik’ (<em>mutability</em>)
+üzerine söylediğimiz şeylerin burada da geçerli olduğunu unutmayın. Orada da
+söylediğimiz gibi, karakter dizileri değiştirilemeyen veri tipleridir.
+Dolayısıyla eğer bir karakter dizisi üzerinde değişiklik yapmak istiyorsanız, o
+karakter dizisini baştan tanımlamalısınız. Örneğin:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">meyve</span> <span class="o">=</span> <span class="s2">&quot;elma&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">meyve</span> <span class="o">=</span> <span class="n">meyve</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;e&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">meyve</span>
+
+<span class="go">&#39;Elma&#39;</span>
+</pre></div>
+</div>
+<p>Böylece <code class="docutils literal"><span class="pre">replace()</span></code> metodunu incelemiş olduk. Sırada üç önemli metot var.</p>
+</div>
+<div class="section" id="split-rsplit-splitlines">
+<h2>split(), rsplit(), splitlines()<a class="headerlink" href="#split-rsplit-splitlines" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Şimdi size şöyle bir soru sorduğumu düşünün: Acaba aşağıdaki karakter dizisinde
+yer alan bütün kelimelerin ilk harfini nasıl alırız?</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;İstanbul Büyükşehir Belediyesi&quot;</span>
+</pre></div>
+</div>
+<p>Yani diyorum ki burada <cite>“İBB”</cite> gibi bir çıktıyı nasıl elde ederiz?</p>
+<p>Sadece bu karakter dizisi söz konusu ise, elbette karakter dizilerinin
+dilimlenme özelliğinden yararlanarak, <cite>kardiz</cite> değişkeni içindeki <cite>“İ”</cite>, <cite>“B”</cite>,
+ve <cite>“B”</cite> harflerini tek tek alabiliriz:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">kardiz</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">kardiz</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">kardiz</span><span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+<span class="go">İBB</span>
+</pre></div>
+</div>
+<p>Ancak bu yöntemin ne kadar kullanışsız olduğu ortada. Çünkü bu metot yalnızca
+<cite>“İstanbul Büyükşehir Belediyesi”</cite> adlı karakter dizisi için geçerlidir. Eğer
+karakter dizisi değişirse bu yöntem de çöpe gider. Bu soruna genel bir çözüm
+üretebilsek ne güzel olurdu, değil mi?</p>
+<p>İşte Python’da bu sorunu çözmemizi sağlayacak çok güzel bir metot bulunur. Bu
+metodun adı <code class="docutils literal"><span class="pre">split()</span></code>.</p>
+<p>Bu metodun görevi karakter dizilerini belli noktalardan bölmektir. Zaten <em>split</em>
+kelimesi Türkçede ‘bölmek, ayırmak’ gibi anlamlara gelir. İşte bu metot, üzerine
+uygulandığı karakter dizilerini parçalarına ayırır. Örneğin:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;İstanbul Büyükşehir Belediyesi&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+
+<span class="go">[&#39;İstanbul&#39;, &#39;Büyükşehir&#39;, &#39;Belediyesi&#39;]</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi bu metot sayesinde <cite>“İstanbul Büyükşehir Belediyesi”</cite> adlı
+karakter dizisini kelimelere bölmeyi başardık. Eğer bu çıktı üzerine bir <code class="docutils literal"><span class="pre">for</span></code>
+döngüsü uygularsak şöyle bir sonuç elde ederiz:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">kardiz</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">İstanbul</span>
+<span class="go">Büyükşehir</span>
+<span class="go">Belediyesi</span>
+</pre></div>
+</div>
+<p>Artık bu bilgiyi kullanarak şöyle bir program yazabiliriz:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">kardiz</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Kısaltmasını öğrenmek istediğiniz kurum adını girin: &quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">kardiz</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada kullanıcı hangi kurum adını girerse girsin, bu kurum adının her
+kelimesinin ilk harfi ekrana dökülecektir. Örneğin kullanıcı burada <cite>“Türkiye
+Büyük Millet Meclisi”</cite> ifadesini girmişse <code class="docutils literal"><span class="pre">split()</span></code> metodu öncelikle bu
+ifadeyi alıp şu şekle dönüştürür:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;Türkiye&#39;</span><span class="p">,</span> <span class="s1">&#39;Büyük&#39;</span><span class="p">,</span> <span class="s1">&#39;Millet&#39;</span><span class="p">,</span> <span class="s1">&#39;Meclisi&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Daha sonra biz bu çıktı üzerinde bir <code class="docutils literal"><span class="pre">for</span></code> döngüsü kurarsak bu kelime grubunun
+her bir öğesine tek tek müdahale etme imkanına erişiriz. Örneğin yukarıdaki
+programda bu kelime grubunun her bir öğesinin ilk harfini tek tek ekrana döktük
+ve <cite>“TBMM”</cite> çıktısını elde ettik.</p>
+<p>Yukarıdaki örneklerde <code class="docutils literal"><span class="pre">split()</span></code> metodunu herhangi bir parametre içermeyecek
+şekilde kullandık. Yani metodun parantezleri içine herhangi bir şey eklemedik.
+<code class="docutils literal"><span class="pre">split()</span></code> metodunu bu şekilde parametresiz olarak kullandığımızda bu metot
+karakter dizilerini bölerken boşluk karakterini ölçüt alacaktır. Yani karakter
+dizisi içinde karşılaştığı her boşluk karakterinde bir bölme işlemi
+uygulayacaktır. Ama bazen istediğimiz şey, bir karakter dizisini boşluklardan
+bölmek değildir. Mesela şu örneğe bakalım:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;Bolvadin, Kilis, Siverek, İskenderun, İstanbul&quot;</span>
+</pre></div>
+</div>
+<p>Eğer bu karakter dizisi üzerine <code class="docutils literal"><span class="pre">split()</span></code> metodunu parametresiz olarak
+uygularsak şöyle bir çıktı elde ederiz:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;Bolvadin,&#39;</span><span class="p">,</span> <span class="s1">&#39;Kilis,&#39;</span><span class="p">,</span> <span class="s1">&#39;Siverek,&#39;</span><span class="p">,</span> <span class="s1">&#39;İskenderun,&#39;</span><span class="p">,</span> <span class="s1">&#39;İstanbul&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">split()</span></code> metoduna herhangi bir parametre vermediğimiz için bu metot karakter
+dizisi içindeki kelimeleri boşluklardan böldü. Bu yüzden karakter dizisi
+içindeki virgül işaretleri de bölünen kelimeler içinde görünüyor:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="n">kardiz</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">kardiz</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">Bolvadin,</span>
+<span class="go">Kilis,</span>
+<span class="go">Siverek,</span>
+<span class="go">İskenderun,</span>
+<span class="go">İstanbul</span>
+</pre></div>
+</div>
+<p>Bu arada tıpkı <code class="docutils literal"><span class="pre">replace()</span></code> metodunu anlatırken gösterdiğimiz gibi,
+<code class="docutils literal"><span class="pre">kardiz.split()</span></code> ifadesini de yine <cite>kardiz</cite> adını taşıyan bir değişkene
+atadık. Böylece <code class="docutils literal"><span class="pre">kardiz.split()</span></code> komutu ile elde ettiğimiz değişiklik
+kaybolmamış oldu. Karakter dizilerinin değiştirilemeyen bir veri tipi olduğunu
+biliyorsunuz. Dolayısıyla yukarıdaki karakter dizisi üzerine <code class="docutils literal"><span class="pre">split()</span></code>
+metodunu uyguladığımızda aslında orijinal karakter dizisi üzerinde herhangi bir
+değişiklik yapmış olmuyoruz. Çıktıda görünen değişikliğin orijinal karakter
+dizisini etkileyebilmesi için eski karakter dizisini silip, yerine yeni
+değerleri yazmamız gerekiyor. Bunu da <code class="docutils literal"><span class="pre">kardiz</span> <span class="pre">=</span> <span class="pre">kardiz.split()</span></code> gibi bir
+komutla hallediyoruz.</p>
+<p>Nerede kalmıştık? Gördüğünüz gibi <code class="docutils literal"><span class="pre">split()</span></code> metodu parametresiz olarak
+kullanıldığında karakter dizisini boşluklardan bölüyor. Ama yukarıdaki örnekte
+karakter dizisini boşluklardan değil de virgüllerden bölsek çok daha anlamlı bir
+çıktı elde edebiliriz.</p>
+<p>Dikkatlice inceleyin:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;Bolvadin, Kilis, Siverek, İskenderun, İstanbul&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="n">kardiz</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">kardiz</span><span class="p">)</span>
+
+<span class="go">[&#39;Bolvadin&#39;, &#39; Kilis&#39;, &#39; Siverek&#39;, &#39; İskenderun&#39;, &#39; İstanbul&#39;]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">kardiz</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">Bolvadin</span>
+<span class="go">Kilis</span>
+<span class="go">Siverek</span>
+<span class="go">İskenderun</span>
+<span class="go">İstanbul</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, <code class="docutils literal"><span class="pre">split()</span></code> metodu tam da istediğimiz gibi, karakter dizisini
+bu kez boşluklardan değil virgüllerden böldü. Peki bunu nasıl başardı? Aslında
+bu sorunun cevabı gayet net bir şekilde görünüyor. Dikkat ederseniz yukarıdaki
+örnekte <code class="docutils literal"><span class="pre">split()</span></code> metoduna parametre olarak virgül karakter dizisini verdik.
+Yani şöyle bir şey yazdık:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">kardiz</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu sayede <code class="docutils literal"><span class="pre">split()</span></code> metodu karakter dizisini virgüllerden bölmeyi başardı.
+Tahmin edebileceğiniz gibi, <code class="docutils literal"><span class="pre">split()</span></code> metoduna hangi parametreyi verirseniz bu
+metot ilgili karakter dizisini o karakterin geçtiği yerlerden bölecektir. Yani
+mesela siz bu metoda <cite>“l”</cite> parametresini verirseniz, bu metot da ‘l’ harfi geçen
+yerden karakter dizisini bölecektir:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;l&quot;</span><span class="p">)</span>
+
+<span class="go">[&#39;Bo&#39;, &#39;vadin, Ki&#39;, &#39;is, Siverek, İskenderun, İstanbu&#39;, &#39;&#39;]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">kardiz</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;l&quot;</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">Bo</span>
+<span class="go">vadin, Ki</span>
+<span class="go">is, Siverek, İskenderun, İstanbu</span>
+</pre></div>
+</div>
+<p>Eğer parametre olarak verdiğiniz değer karakter dizisi içinde hiç geçmiyorsa
+karakter dizisi üzerinde herhangi bir değişiklik yapılmaz:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;z&quot;</span><span class="p">)</span>
+
+<span class="go">[&#39;Bolvadin, Kilis, Siverek, İskenderun, İstanbul&#39;]</span>
+</pre></div>
+</div>
+<p>Aynı şey, <code class="docutils literal"><span class="pre">split()</span></code> metodundan önce öğrendiğimiz <code class="docutils literal"><span class="pre">replace()</span></code> metodu için de
+geçerlidir. Yani eğer değiştirilmek istenen karakter, karakter dizisi içinde yer
+almıyorsa herhangi bir işlem yapılmaz.</p>
+<p><code class="docutils literal"><span class="pre">split()</span></code> metodu çoğunlukla, yukarıda anlattığımız şekilde parametresiz olarak
+veya tek parametre ile kullanılır. Ama aslında bu metot ikinci bir parametre
+daha alır. Bu ikinci parametre, karakter dizisinin kaç kez bölüneceğini
+belirler:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;Ankara Büyükşehir Belediyesi&quot;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="go">[&#39;Ankara&#39;, &#39;Büyükşehir Belediyesi&#39;]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="go">[&#39;Ankara&#39;, &#39;Büyükşehir&#39;, &#39;Belediyesi&#39;]</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, ilk örnekte kullandığımız <cite>1</cite> sayısı sayesinde bölme işlemi
+karakter dizisi üzerine bir kez uygulandı. İkinci örnekte ise <cite>2</cite> sayısının
+etkisiyle karakter dizimiz iki kez bölme işlemine maruz kaldı.</p>
+<p>Elbette, <code class="docutils literal"><span class="pre">split()</span></code> metodunun ikinci parametresini kullanabilmek için ilk
+parametreyi de mutlaka yazmanız gerekir. Aksi halde Python ne yapmaya
+çalıştığınızı anlayamaz:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">TypeError</span>: <span class="n">Can&#39;t convert &#39;int&#39; object to str implicitly</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, ilk parametreyi es geçip doğrudan ikinci parametreyi yazmaya
+çalıştığımızda Python parametre olarak verdiğimiz <cite>2</cite> sayısının bölme ölçütü
+olduğunu zannediyor. Yukarıdaki hatayı engellemek için bölme ölçütünü de açıkça
+belirtmemiz gerekir. Yukarıdaki örnekte bölme ölçütümüz bir adet boşluk
+karakteri idi. Bildiğiniz gibi, bölme ölçütü herhangi bir şey olabilir. Mesela
+virgül.</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">arkadaşlar</span> <span class="o">=</span> <span class="s2">&quot;Ahmet, Mehmet, Kezban, Mualla, Süreyya, Veli&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">arkadaşlar</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="go">[&#39;Ahmet&#39;, &#39; Mehmet&#39;, &#39; Kezban&#39;, &#39; Mualla, Süreyya, Veli&#39;]</span>
+</pre></div>
+</div>
+<p>Burada da bölme ölçütü olarak virgül karakterini kullandık ve <cite>arkadaşlar</cite> adlı
+karakter dizisi üzerine <cite>3</cite> kez bölme işlemi uyguladık. İlk bölme işlemi
+<cite>“Ahmet”</cite> karakter dizisini; ikinci bölme işlemi <cite>“Mehmet”</cite> karakter dizisini;
+üçüncü bölme işlemi ise <cite>“Kezban”</cite> karakter dizisini ayırdı. <cite>arkadaşlar</cite> adlı
+karakter dizisinin geri kalanını oluşturan <cite>“Mualla, Süreyya, Veli”</cite> kısmı ise
+herhangi bir bölme işlemine tabi tutulmadan tek parça olarak kaldı.</p>
+<p><code class="docutils literal"><span class="pre">split()</span></code> metoduyla son bir örnek verip yolumuza devam edelim.</p>
+<p>Bildiğiniz gibi <cite>sys</cite> modülünün <cite>version</cite> değişkeni bize bir karakter dizisi
+veriyor:</p>
+<pre class="literal-block">
+'3.7.0 (default, 30.12.2019, 12:24:55)
+[GCC 4.4.7 20120313 (Red Hat 4.4.7-3)] on linux'
+</pre>
+<p>Bu karakter dizisi içinden yalnızca sürüm kısmını ayıklamak için karakter
+dizilerinin dilimlenme özelliğinden yararlanabiliyoruz:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; sürüm = sys.version
+&gt;&gt;&gt; print(sürüm[:5])
+
+3.7.0
+</pre>
+<p>Bu işlemin bir benzerini <code class="docutils literal"><span class="pre">split()</span></code> metoduyla da yapabiliriz. Dikkatlice
+inceleyin:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sürüm</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">version</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sürüm</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+
+<span class="go">[&#39;3.3.0&#39;, &#39;(v3.3.0:bd8afb90ebf2,&#39;, &#39;Sep&#39;, &#39;29&#39;, &#39;2012,&#39;, &#39;10:55:48)&#39;,</span>
+<span class="go"> &#39;[MSC&#39;, &#39;v.1600&#39;, &#39;32&#39;, &#39;bit&#39;, &#39;(Intel)]&#39;]</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, <code class="docutils literal"><span class="pre">sys.version</span></code> komutuna <code class="docutils literal"><span class="pre">split()</span></code> metodunu uyguladığımızda,
+üzerinde işlem yapması çok daha kolay olan bir veri tipi elde ediyoruz. Bu veri
+tipinin adı ‘liste’. Önceki derslerimizde öğrendiğimiz <code class="docutils literal"><span class="pre">dir()</span></code> fonksiyonunun
+da liste adlı bu veri tipini verdiğini hatırlıyor olmalısınız. İlerleyen
+derslerde, tıpkı karakter dizileri ve sayılar adlı veri tipleri gibi, liste adlı
+veri tipini de bütün ayrıntılarıyla inceleyeceğiz. Şimdilik biz sadece <strong>bazı
+durumlarda</strong> liste veri tipinin karakter dizilerine kıyasla daha kullanışlı bir
+veri tipi olduğunu bilelim yeter.</p>
+<p>Yukarıdaki örnekten de gördüğünüz gibi, <code class="docutils literal"><span class="pre">sys.version</span></code> komutunun çıktısını
+<code class="docutils literal"><span class="pre">split()</span></code> metodu yardımıyla boşluklardan bölerek bir liste elde ettik. Bu
+listenin ilk öğesi, kullandığımız Python serisinin sürüm numarasını verecektir:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; print(sürüm.split()[0])
+
+3.7.0
+</pre>
+<p>Böylece <code class="docutils literal"><span class="pre">split()</span></code> metodunu öğrenmiş olduk. Gelelim <code class="docutils literal"><span class="pre">rsplit()</span></code> metoduna…</p>
+<p><code class="docutils literal"><span class="pre">rsplit()</span></code> metodu her yönüyle <code class="docutils literal"><span class="pre">split()</span></code> metoduna benzer. <code class="docutils literal"><span class="pre">split()</span></code> ile
+<code class="docutils literal"><span class="pre">rsplit()</span></code> arasındaki tek fark, <code class="docutils literal"><span class="pre">split()</span></code> metodunun karakter dizisini soldan
+sağa, <code class="docutils literal"><span class="pre">rsplit()</span></code> metodunun ise sağdan sola doğru okumasıdır. Şu örnekleri
+dikkatlice inceleyerek bu iki metot arasındaki farkı bariz bir şekilde
+görebilirsiniz:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="go">[&#39;Ankara&#39;, &#39;Büyükşehir Belediyesi&#39;]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="go">[&#39;Ankara Büyükşehir&#39;, &#39;Belediyesi&#39;]</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, <code class="docutils literal"><span class="pre">split()</span></code> metodu karakter dizisini soldan sağa doğru okuduğu
+için bölme işlemini <cite>“Ankara”</cite> karakter dizisine uyguladı. <code class="docutils literal"><span class="pre">rsplit()</span></code> metodu
+ise karakter dizisini sağdan sola soğru okuduğu için bölme işlemini
+<cite>“Belediyesi”</cite> adlı karakter dizisine uyguladı.</p>
+<p><code class="docutils literal"><span class="pre">rsplit()</span></code> metodunun pek yaygın kullanılan bir metot olmadığını belirterek
+<code class="docutils literal"><span class="pre">splitlines()</span></code> metoduna geçelim.</p>
+<p>Bildiğiniz gibi, <code class="docutils literal"><span class="pre">split()</span></code> metodunu bir karakter dizisini kelime kelime
+ayırabilmek için kullanabiliyoruz. <code class="docutils literal"><span class="pre">splitlines()</span></code> metodunu ise bir karakter
+dizisini satır satır ayırmak için kullanabiliriz. Mesela elinizde uzun bir metin
+olduğunu ve amacınızın bu metin içindeki herbir satırı ayrı ayrı almak olduğunu
+düşünün. İşte <code class="docutils literal"><span class="pre">splitlines()</span></code> metoduyla bu amacınızı gerçekleştirebilirsiniz.
+Hemen bir örnek verelim:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Python programlama dili Guido Van Rossum adlı Hollandalı bir programcı</span>
+<span class="s2">tarafından 90&#39;lı yılların başında geliştirilmeye başlanmıştır. Çoğu insan, isminin</span>
+<span class="s2">Python olmasına bakarak, bu programlama dilinin, adını piton yılanından aldığını</span>
+<span class="s2">düşünür. Ancak zannedildiğinin aksine bu programlama dilinin adı piton yılanından</span>
+<span class="s2">gelmez. Guido Van Rossum bu programlama dilini, The Monty Python adlı bir İngiliz</span>
+<span class="s2">komedi grubunun, Monty Python&#39;s Flying Circus adlı gösterisinden esinlenerek</span>
+<span class="s2">adlandırmıştır. Ancak her ne kadar gerçek böyle olsa da, Python programlama</span>
+<span class="s2">dilinin pek çok yerde bir yılan figürü ile temsil edilmesi neredeyse bir gelenek</span>
+<span class="s2">halini almıştır diyebiliriz.&quot;&quot;&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">metin</span><span class="o">.</span><span class="n">splitlines</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Bu programı çalıştırdığınızda şöyle bir çıktı alırsınız:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>[&#39;Python programlama dili Guido Van Rossum adlı Hollandalı bir programcı &#39;,
+&quot;tarafından 90&#39;lı yılların başında geliştirilmeye başlanmıştır. Çoğu insan,
+isminin&quot;, &#39;Python olmasına bakarak, bu programlama dilinin, adını piton
+yılanından aldığını &#39;, &#39;düşünür. Ancak zannedildiğinin aksine bu programlama
+dilinin adı piton yılanından &#39;, &#39;gelmez. Guido Van Rossum bu programlama
+dilini, The Monty Python adlı bir İngiliz &#39;, &quot;komedi grubunun, Monty Python&#39;s
+Flying Circus adlı gösterisinden esinlenerek &quot;, &#39;adlandırmıştır. Ancak her ne
+kadar gerçek böyle olsa da, Python programlama &#39;, &#39;dilinin pek çok yerde bir
+yılan figürü ile temsil edilmesi neredeyse bir gelenek &#39;, &#39;halini almıştır
+diyebiliriz.&#39;]
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, metnimiz <cite>Enter</cite> tuşuna bastığımız noktalardan bölündü. Biz
+henüz bu çıktıyı nasıl değerlendireceğimizi ve bu çıktıdan nasıl
+yararlanacağımızı bilmiyoruz. Ayrıca şu anda bu çıktı gözünüze çok anlamlı
+görünmemiş olabilir. Ama ‘Listeler’ adlı konuyu öğrendiğimizde bu çıktı size çok
+daha anlamlı görünecek.</p>
+<p><code class="docutils literal"><span class="pre">splitlines()</span></code> metodu yukarıdaki gibi parametresiz olarak kullanılabileceği
+gibi, bir adet parametre ile de kullanılabilir. Bunu bir örnek üzerinde
+gösterelim:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Python programlama dili Guido Van Rossum adlı Hollandalı bir programcı</span>
+<span class="s2">tarafından 90&#39;lı yılların başında geliştirilmeye başlanmıştır. Çoğu insan, isminin</span>
+<span class="s2">Python olmasına bakarak, bu programlama dilinin, adını piton yılanından aldığını</span>
+<span class="s2">düşünür. Ancak zannedildiğinin aksine bu programlama dilinin adı piton yılanından</span>
+<span class="s2">gelmez. Guido Van Rossum bu programlama dilini, The Monty Python adlı bir İngiliz</span>
+<span class="s2">komedi grubunun, Monty Python&#39;s Flying Circus adlı gösterisinden esinlenerek</span>
+<span class="s2">adlandırmıştır. Ancak her ne kadar gerçek böyle olsa da, Python programlama</span>
+<span class="s2">dilinin pek çok yerde bir yılan figürü ile temsil edilmesi neredeyse bir gelenek</span>
+<span class="s2">halini almıştır diyebiliriz.&quot;&quot;&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">metin</span><span class="o">.</span><span class="n">splitlines</span><span class="p">(</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Bu programı çalıştırdığımızda şuna benzer bir sonuç elde ederiz:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>[&#39;Python programlama dili Guido Van Rossum adlı Hollandalı bir programcı \n&#39;,
+&quot;tarafından 90&#39;lı yılların başında geliştirilmeye başlanmıştır. Çoğu insan,
+isminin \n&quot;, &#39;Python olmasına bakarak, bu programlama dilinin, adını piton
+yılanından aldığını \n&#39;, &#39;düşünür. Ancak zannedildiğinin aksine bu programlama
+dilinin adı piton yılanından \n&#39;, &#39;gelmez. Guido Van Rossum bu programlama
+dilini, The Monty Python adlı bir İngiliz \n&#39;, &quot;komedi grubunun, Monty
+Python&#39;s Flying Circus adlı gösterisinden esinlenerek \n&quot;, &#39;adlandırmıştır.
+Ancak her ne kadar gerçek böyle olsa da, Python programlama \n&#39;, &#39;dilinin pek
+çok yerde bir yılan figürü ile temsil edilmesi neredeyse bir gelenek \n&#39;,
+&#39;halini almıştır diyebiliriz.&#39;]
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, parametresiz kullanımda, program çıktısında satır başı
+karakterleri (<cite>\n</cite>) görünmüyor. Ama eğer <code class="docutils literal"><span class="pre">splitlines()</span></code> metoduna parametre
+olarak <code class="docutils literal"><span class="pre">True</span></code> verirsek program çıktısında satır başı karakterleri de
+görünüyor. Yazdığınız programlarda ihtiyacınıza göre <code class="docutils literal"><span class="pre">splitlines()</span></code> metodunu
+parametreli olarak veya parametresiz bir şekilde kullanabilirsiniz.</p>
+</div>
+<div class="section" id="lower">
+<h2>lower()<a class="headerlink" href="#lower" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Mutlaka karşılaşmışsınızdır. Bazı programlarda kullanıcıdan istenen veriler
+büyük-küçük harfe duyarlıdır. Yani mesela kullanıcıdan bir parola isteniyorsa,
+kullanıcının bu parolayı büyük-küçük harfe dikkat ederek yazması gerekir. Bu
+programlar açısından, örneğin ‘parola’ ve ‘Parola’ aynı kelimeler değildir.
+Mesela kullanıcının parolası ‘parola’ ise, bu kullanıcı programa ‘Parola’
+yazarak giremez.</p>
+<p>Bazı başka programlarda ise bu durumun tam tersi söz konusudur. Yani büyük-küçük
+harfe duyarlı programların aksine bazı programlar da kullanıcıdan gelen verinin
+büyük harfli mi yoksa küçük harfli mi olduğunu önemsemez. Kullanıcı doğru
+kelimeyi büyük harfle de yazsa, küçük harfle de yazsa program istenen işlemi
+gerçekleştirir. Mesela Google’da yapılan aramalar bu mantık üzerine çalışır.
+Örneğin ‘kitap’ kelimesini Google’da aratıyorsanız, bu kelimeyi büyük harfle de
+yazsanız, küçük harfle de yazsanız Google size aynı sonuçları gösterecektir.
+Google açısından, aradığınız kelimeyi büyük ya da küçük harfle yazmanızın bir
+önemi yoktur.</p>
+<p>Şimdi şöyle bir program yazdığımızı düşünün:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">kişi</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Aradığınız kişinin adı ve soyadı: &quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">kişi</span> <span class="o">==</span> <span class="s2">&quot;Ahmet Öz&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;email: aoz@hmail.com&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;tel  : 02121231212&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;şehir: istanbul&quot;</span><span class="p">)</span>
+
+<span class="k">elif</span> <span class="n">kişi</span> <span class="o">==</span> <span class="s2">&quot;Mehmet Söz&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;email: msoz@zmail.com&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;tel  : 03121231212&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;şehir: ankara&quot;</span><span class="p">)</span>
+
+<span class="k">elif</span> <span class="n">kişi</span> <span class="o">==</span> <span class="s2">&quot;Mahmut Göz&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;email: mgoz@jmail.com&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;tel  : 02161231212&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;şehir: istanbul&quot;</span><span class="p">)</span>
+
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Aradığınız kişi veritabanında yok!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu programın doğru çalışabilmesi için kullanıcının, örneğin, Ahmet Öz adlı
+kişiyi ararken büyük-küçük harfe dikkat etmesi gerekir. Eğer kullanıcı Ahmet Öz
+yazarsa o kişiyle ilgili bilgileri alabilir, ama eğer mesela Ahmet öz yazarsa
+bilgileri alamaz. Peki acaba biz bu sorunun üstesinden nasıl gelebiliriz? Yani
+programımızın büyük-küçük harfe duyarlı olmamasını nasıl sağlayabiliriz?</p>
+<p>Bu işi yapmanın iki yolu var: Birincisi <code class="docutils literal"><span class="pre">if</span></code> bloklarını her türlü ihtimali
+düşünerek yazabiliriz. Mesela:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">kişi</span> <span class="o">==</span> <span class="s2">&quot;Ahmet Öz&quot;</span> <span class="ow">or</span> <span class="s2">&quot;Ahmet öz&quot;</span> <span class="ow">or</span> <span class="s2">&quot;ahmet öz&quot;</span><span class="p">:</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>Ama burada bazı problemler var. Birincisi, kullanıcının kaç türlü veri
+girebileceğini kestiremeyebilirsiniz. İkincisi, kestirebilseniz bile, her kişi
+için olasılıkları girmeye çalışmak eziyetten başka bir şey değildir…</p>
+<p>İşte burada imdadımıza <code class="docutils literal"><span class="pre">lower()</span></code> metodu yetişecek. Dikkatlice inceleyin:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">kişi</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Aradığınız kişinin adı ve soyadı: &quot;</span><span class="p">)</span>
+<span class="n">kişi</span> <span class="o">=</span> <span class="n">kişi</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">kişi</span> <span class="o">==</span> <span class="s2">&quot;ahmet öz&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;email: aoz@hmail.com&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;tel  : 02121231212&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;şehir: istanbul&quot;</span><span class="p">)</span>
+
+<span class="k">elif</span> <span class="n">kişi</span> <span class="o">==</span> <span class="s2">&quot;mehmet söz&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;email: msoz@zmail.com&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;tel  : 03121231212&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;şehir: ankara&quot;</span><span class="p">)</span>
+
+<span class="k">elif</span> <span class="n">kişi</span> <span class="o">==</span> <span class="s2">&quot;mahmut göz&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;email: mgoz@jmail.com&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;tel  : 02161231212&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;şehir: istanbul&quot;</span><span class="p">)</span>
+
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Aradığınız kişi veritabanında yok!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Artık kullanıcı ‘ahmet öz’ de yazsa, ‘Ahmet Öz’ de yazsa, hatta ‘AhMeT öZ’ de
+yazsa programımız doğru çalışacaktır. Peki bu nasıl oluyor? Elbette <code class="docutils literal"><span class="pre">lower()</span></code>
+metodu sayesinde…</p>
+<p>Yukarıdaki örneklerin de bize gösterdiği gibi, <code class="docutils literal"><span class="pre">lower()</span></code> metodu, karakter
+dizisindeki bütün harfleri küçük harfe çeviriyor. Örneğin:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;ELMA&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+<span class="go">&#39;elma&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;arMuT&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+<span class="go">&#39;armut&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;PYTHON PROGRAMLAMA&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+<span class="go">&#39;python programlama&#39;</span>
+</pre></div>
+</div>
+<p>Eğer karakter dizisi zaten tamamen küçük harflerden oluşuyorsa bu metot hiçbir
+işlem yapmaz:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;elma&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+<span class="go">&#39;elma&#39;</span>
+</pre></div>
+</div>
+<p>İşte verdiğimiz örnek programda da <code class="docutils literal"><span class="pre">lower()</span></code> metodunun bu özelliğinden
+yararlandık. Bu metot sayesinde, kullanıcı ne tür bir kelime girerse girsin, bu
+kelimeler her halükarda küçük harfe çevrileceği için, <code class="docutils literal"><span class="pre">if</span></code> blokları
+kullanıcıdan gelen veriyi yakalayabilecektir.</p>
+<p>Gördüğünüz gibi, son derece kolay ve kullanışlı bir metot bu. Ama bu metodun bir
+problemi var. Şu örneği dikkatlice inceleyin:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">il</span> <span class="o">=</span> <span class="s2">&quot;İSTANBUL&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">il</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+  File <span class="nb">&quot;C:\Python33\lib\encodings\cp857.py&quot;</span>, line <span class="m">19</span>, in <span class="n">encode</span>
+    <span class="k">return</span> <span class="n">codecs</span><span class="o">.</span><span class="n">charmap_encode</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">errors</span><span class="p">,</span><span class="n">encoding_map</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gr">UnicodeEncodeError</span>: <span class="n">&#39;charmap&#39; codec can&#39;t encode character &#39;\u0307&#39; in position</span>
+<span class="go">1: character maps to &lt;undefined&gt;</span>
+</pre></div>
+</div>
+<p>Buradaki problem ‘İ’ harfinden kaynaklanıyor. Python programlama dili bu harfi
+Türkçeye uygun bir şekilde küçültemediği için yukarıdaki hatayı alıyoruz.
+Yukarıdaki hatanın tam olarak ne anlama geldiğini birkaç bölüm sonra
+anlayacaksınız. Biz şimdilik sadece Python’ın ‘İ’ harfini Türkçeye uygun olarak
+küçültemediğini bilelim yeter.</p>
+<p>Bir de şu örneğe bakalım:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">il</span> <span class="o">=</span> <span class="s2">&quot;ADIYAMAN&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">il</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+
+<span class="go">adiyaman</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, Python programlama dili ‘I’ harfini de düzgün küçültemiyor. ‘I’
+harfinin küçük biçimi ‘ı’ olması gerekirken, bu metot ‘I’ harfini ‘i’ diye
+küçültüyor. Yani:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;I&quot;</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+<span class="go">&#39;i&#39;</span>
+</pre></div>
+</div>
+<p>Peki bu durumda ne yapacağız? Elimiz kolumuz bağlı oturacak mıyız? Elbette
+hayır! Biz bu tür küçük sorunları aşabilecek kadar Python bilgisine sahibiz. ‘İ’
+ve ‘I’ harfleri ile ilgili problemi, yalnızca mevcut bilgilerimizi kullanarak
+rahatlıkla çözebiliriz:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">iller</span> <span class="o">=</span> <span class="s2">&quot;ISPARTA, ADIYAMAN, DİYARBAKIR, AYDIN, BALIKESİR, AĞRI&quot;</span>
+
+<span class="n">iller</span> <span class="o">=</span> <span class="n">iller</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;I&quot;</span><span class="p">,</span> <span class="s2">&quot;ı&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;İ&quot;</span><span class="p">,</span> <span class="s2">&quot;i&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">iller</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu kodlarla yaptığımız şey çok basit:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>İlk <code class="docutils literal"><span class="pre">replace()</span></code> metoduyla karakter dizisi içinde geçen bütün ‘I’
+harflerini, ‘ı’ ile değiştiriyoruz.</li>
+<li>İkinci <code class="docutils literal"><span class="pre">replace()</span></code> metoduyla karakter dizisi içinde geçen bütün ‘İ’
+harflerini ‘i’ ile değiştiriyoruz.</li>
+<li>Bu iki işlemin ardından karakter dizisi içinde geçen ‘I’ ve ‘İ’
+harflerini küçültmüş olduk. Ancak öteki harfler henüz küçülmedi. O yüzden de
+karakter dizimiz üzerine bir de <code class="docutils literal"><span class="pre">lower()</span></code> metodunu uyguluyoruz. Böylece
+bütün harfler düzgün bir şekilde küçülmüş oluyor.</li>
+<li>Bu kodlarda farklı metotları uç uca nasıl eklediğimize dikkat edin.</li>
+</ol>
+</div></blockquote>
+<p>Bu örnek size şunu göstermiş olmalı: Aslında programlama dediğimiz şey gerçekten
+de çok basit parçaların uygun bir şekilde birleştirilmesinden ibaret. Tıpkı bir
+yap-bozun parçalarını birleştirmek gibi…</p>
+<p>Ayrıca bu örnek sizi bir gerçekle daha tanıştırıyor: Gördüğünüz gibi, artık
+Python’da o kadar ilerlediniz ki Python’ın problemlerini tespit edip bu
+problemlere çözüm dahi üretebiliyorsunuz!</p>
+</div>
+<div class="section" id="upper">
+<h2>upper()<a class="headerlink" href="#upper" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Bu metot biraz önce öğrendiğimiz <code class="docutils literal"><span class="pre">lower()</span></code> metodunun yaptığı işin tam tersini
+yapar. Hatırlarsanız <code class="docutils literal"><span class="pre">lower()</span></code> metodu yardımıyla karakter dizileri içindeki
+harfleri küçültüyorduk. <code class="docutils literal"><span class="pre">upper()</span></code> metodu ise bu harfleri büyütmemizi sağlar.</p>
+<p>Örneğin:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;kalem&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+
+<span class="go">&#39;KALEM&#39;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">lower()</span></code> metodunu anlatırken, kullanıcıdan gelen verileri belli bir düzene
+sokmak konusunda bu metodun oldukça faydalı olduğunu söylemiştik. Kullanıcıdan
+gelen verilerin <code class="docutils literal"><span class="pre">lower()</span></code> metodu yardımıyla standart bir hale getirilmesi
+sayesinde, kullanıcının girdiği kelimelerin büyük-küçük harfli olmasının önemli
+olmadığı programlar yazabiliyoruz. Elbette eğer isterseniz kullanıcıdan gelen
+bütün verileri <code class="docutils literal"><span class="pre">lower()</span></code> metoduyla küçük harfe çevirmek yerine, <code class="docutils literal"><span class="pre">upper()</span></code>
+metoduyla büyük harfe çevirmeyi de tercih edebilirsiniz. Python programcıları
+genellikle kullanıcı verilerini standart bir hale getirmek için bütün harfleri
+küçültmeyi tercih eder, ama tabii ki sizin bunun tersini yapmak istemenizin
+önünde hiçbir engel yok.</p>
+<p>Diyelim ki, şehirlere göre hava durumu bilgisi veren bir program yazmak
+istiyorsunuz. Bunun için şöyle bir kod yazarak işe başlayabilirsiniz:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">şehir</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Hava durumunu öğrenmek için bir şehir adı girin: &quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">şehir</span> <span class="o">==</span> <span class="s2">&quot;ADANA&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;parçalı bulutlu&quot;</span><span class="p">)</span>
+
+<span class="k">elif</span> <span class="n">şehir</span> <span class="o">==</span> <span class="s2">&quot;ERZURUM&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;karla karışık yağmurlu&quot;</span><span class="p">)</span>
+
+<span class="k">elif</span> <span class="n">şehir</span> <span class="o">==</span> <span class="s2">&quot;ANTAKYA&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;açık ve güneşli&quot;</span><span class="p">)</span>
+
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Girdiğiniz şehir veritabanında yok!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada programımızın doğru çalışabilmesi, kullanıcının şehir adlarını büyük
+harfle girmesine bağlıdır. Örneğin programımız ‘ADANA’ cevabını kabul edecek,
+ama mesela ‘Adana’ cevabını kabul etmeyecektir. Bunu engellemek için <code class="docutils literal"><span class="pre">lower()</span></code>
+metodunu kullanabileceğimizi biliyoruz. Bu sorunu çözmek için aynı şekilde
+<code class="docutils literal"><span class="pre">upper()</span></code> metodunu da kullanabiliriz:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">şehir</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Hava durumunu öğrenmek için bir şehir adı girin: &quot;</span><span class="p">)</span>
+
+<span class="n">şehir</span> <span class="o">=</span> <span class="n">şehir</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">şehir</span> <span class="o">==</span> <span class="s2">&quot;ADANA&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;parçalı bulutlu&quot;</span><span class="p">)</span>
+
+<span class="k">elif</span> <span class="n">şehir</span> <span class="o">==</span> <span class="s2">&quot;ERZURUM&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;karla karışık yağmurlu&quot;</span><span class="p">)</span>
+
+<span class="k">elif</span> <span class="n">şehir</span> <span class="o">==</span> <span class="s2">&quot;ANTAKYA&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;açık ve güneşli&quot;</span><span class="p">)</span>
+
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Girdiğiniz şehir veritabanında yok!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada yazdığımız <code class="docutils literal"><span class="pre">şehir</span> <span class="pre">=</span> <span class="pre">şehir.upper()</span></code> kodu sayesinde artık kullanıcı şehir
+adını büyük harfle de girse, küçük harfle de girse programımız düzgün
+çalışacaktır.</p>
+<p>Hatırlarsanız <code class="docutils literal"><span class="pre">lower()</span></code> metodunu anlatırken bu metodun bazı Türkçe
+karakterlerle problemi olduğunu söylemiştik. Aynı sorun, tahmin edebileceğiniz
+gibi, <code class="docutils literal"><span class="pre">upper()</span></code> metodu için de geçerlidir.</p>
+<p>Dikkatlice inceleyin:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;istanbul&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+
+<span class="go">&#39;ISTANBUL&#39;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">lower()</span></code> metodu Türkçe’deki ‘I’ harfini ‘i’ şeklinde küçültüyordu.
+<code class="docutils literal"><span class="pre">upper()</span></code> metodu ise ‘i’ harfini yanlış olarak ‘I’ şeklinde büyütüyor. Elbette
+bu sorun da çözülemeyecek gibi değil. Burada da <code class="docutils literal"><span class="pre">lower()</span></code> metodu için
+uyguladığımız yöntemin bir benzerini uygulayacağız:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">iller</span> <span class="o">=</span> <span class="s2">&quot;istanbul, izmir, siirt, mersin&quot;</span>
+
+<span class="n">iller</span> <span class="o">=</span> <span class="n">iller</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;i&quot;</span><span class="p">,</span> <span class="s2">&quot;İ&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">iller</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu kodlarla, önce karakter dizisi içinde geçen ‘i’ harflerini ‘İ’ ile
+değiştiriyoruz. Böylece şöyle bir şey elde etmiş oluyoruz:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">İstanbul</span><span class="p">,</span> <span class="n">İzmİr</span><span class="p">,</span> <span class="n">sİİrt</span><span class="p">,</span> <span class="n">mersİn</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi öteki harfler eski hallerinde kaldı. Öteki harfleri de
+büyütebilmek için karakter dizisine <code class="docutils literal"><span class="pre">upper()</span></code> metodunu uygulamamız yeterli
+olacaktır.</p>
+<p>Bir sorunun daha üstesinden geldiğimize göre kendimizden emin bir şekilde bir
+sonraki metodumuzu incelemeye geçebiliriz.</p>
+</div>
+<div class="section" id="islower-isupper">
+<h2>islower(), isupper()<a class="headerlink" href="#islower-isupper" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Yukarıda öğrendiğimiz <code class="docutils literal"><span class="pre">lower()</span></code> ve <code class="docutils literal"><span class="pre">upper()</span></code> adlı metotlar karakter dizileri
+üzerinde bazı değişiklikler yapmamıza yardımcı oluyor. Karakter dizileri
+üzerinde birtakım değişiklikler yapmamızı sağlayan bu tür metotlara ‘değiştirici
+metotlar’ adı verilir. Bu tür metotların dışında bir de ‘sorgulayıcı
+metotlar’dan söz edebiliriz. Sorgulayıcı metotlar, değiştirici metotların
+aksine, bir karakter dizisi üzerinde değişiklik yapmamızı sağlamaz. Bu tür
+metotların görevi karakter dizilerinin durumunu sorgulamaktır. Sorgulayıcı
+metotlara örnek olarak <code class="docutils literal"><span class="pre">islower()</span></code> ve <code class="docutils literal"><span class="pre">isupper()</span></code> metotlarını verebiliriz.</p>
+<p>Bildiğiniz gibi, <code class="docutils literal"><span class="pre">lower()</span></code> metodu bir karakter dizisini tamamen küçük
+harflerden oluşacak şekle getiriyordu. <code class="docutils literal"><span class="pre">islower()</span></code> metodu ise bir karakter
+dizisinin tamamen küçük harflerden oluşup oluşmadığını sorguluyor.</p>
+<p>Hemen bir örnek verelim:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;istihza&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="o">.</span><span class="n">islower</span><span class="p">()</span>
+
+<span class="go">True</span>
+</pre></div>
+</div>
+<p><cite>“istihza”</cite> tamamen küçük harflerden oluşan bir karakter dizisi olduğu için
+<code class="docutils literal"><span class="pre">islower()</span></code> sorgusu <cite>True</cite> çıktısı veriyor. Bir de şuna bakalım:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;Ankara&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="o">.</span><span class="n">islower</span><span class="p">()</span>
+
+<span class="go">False</span>
+</pre></div>
+</div>
+<p><cite>“Ankara”</cite> ise içinde bir adet büyük harf barındırdığı için <code class="docutils literal"><span class="pre">islower()</span></code>
+sorgusuna <cite>False</cite> cevabı veriyor.</p>
+<p>Yazdığınız programlarda, örneğin, kullanıcıdan gelen verinin sadece küçük
+harflerden oluşmasını istiyorsanız bu metottan yararlanarak kullanıcıdan gelen
+verinin gerçekten tamamen küçük harflerden oluşup oluşmadığını
+denetleyebilirsiniz:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">veri</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Adınız: &quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">veri</span><span class="o">.</span><span class="n">islower</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Lütfen isminizi sadece küçük harflerle yazın&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">isupper()</span></code> metodu da <code class="docutils literal"><span class="pre">islower()</span></code> metodunun yaptığı işin tam tersini yapar.
+Bildiğiniz gibi, <code class="docutils literal"><span class="pre">upper()</span></code> metodu bir karakter dizisini tamamen büyük
+harflerden oluşacak şekle getiriyordu. <code class="docutils literal"><span class="pre">isupper()</span></code> metodu ise bir karakter
+dizisinin tamamen büyük harflerden oluşup oluşmadığını sorguluyor:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;İSTİHZA&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="o">.</span><span class="n">isupper</span><span class="p">()</span>
+
+<span class="go">True</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;python&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="o">.</span><span class="n">isupper</span><span class="p">()</span>
+
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>Tıpkı <code class="docutils literal"><span class="pre">islower()</span></code> metodunda olduğu gibi, <code class="docutils literal"><span class="pre">isupper()</span></code> metodunu da
+kullanıcıdan gelen verinin büyük harfli mi yoksa küçük harfli mi olduğunu
+denetlemek için kullanabilirsiniz.</p>
+<p>Örneğin, internet kültüründe kullanıcıların forum ve e.posta listesi gibi
+yerlerde tamamı büyük harflerden oluşan kelimelerle yazması kaba bir davranış
+olarak kabul edilir. Kullanıcıların tamamı büyük harflerden oluşan kelimeler
+kullanmasını engellemek için yukarıdaki metotlardan yararlanabilirsiniz:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">veri</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;mesajınız: &quot;</span><span class="p">)</span>
+<span class="n">böl</span> <span class="o">=</span> <span class="n">veri</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">böl</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">isupper</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tamamı büyük harflerden oluşan kelimeler kullanmayın!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada kullanıcının girdiği mesaj içindeki her kelimeyi tek tek sorgulayabilmek
+için öncelikle <code class="docutils literal"><span class="pre">split()</span></code> metodu yardımıyla karakter dizisini parçalarına
+ayırdığımıza dikkat edin. <code class="docutils literal"><span class="pre">böl</span> <span class="pre">=</span> <span class="pre">veri.split()</span></code> satırının tam olarak ne işe
+yaradığını anlamak için bu programı bir de o satır olmadan çalıştırmayı
+deneyebilirsiniz.</p>
+<p><code class="docutils literal"><span class="pre">islower()</span></code> ve <code class="docutils literal"><span class="pre">isupper()</span></code> metotları programlamada sıklıkla kullanılan
+karakter dizisi metotlarından ikisidir. Dolayısıyla bu iki metodu iyi öğrenmek
+programlama maceranız sırasında işlerinizi epey kolaylaştıracaktır.</p>
+</div>
+<div class="section" id="endswith">
+<h2>endswith()<a class="headerlink" href="#endswith" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Tıpkı <code class="docutils literal"><span class="pre">isupper()</span></code> ve <code class="docutils literal"><span class="pre">islower()</span></code> metotları gibi, <code class="docutils literal"><span class="pre">endswith()</span></code> metodu da
+sorgulayıcı metotlardan biridir. <code class="docutils literal"><span class="pre">endswith()</span></code> metodu karakter dizileri
+üzerinde herhangi bir değişiklik yapmamızı sağlamaz. Bu metodun görevi karakter
+dizisinin durumunu sorgulamaktır.</p>
+<p>Bu metot yardımıyla bir karakter dizisinin hangi karakter dizisi ile bittiğini
+sorgulayabiliyoruz. Yani örneğin:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;istihza&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Burada, değeri <cite>“istihza”</cite> olan <cite>kardiz</cite> adlı bir karakter dizisi tanımladık.
+Daha sonra da <code class="docutils literal"><span class="pre">kardiz.endswith(&quot;a&quot;)</span></code> ifadesiyle bu karakter dizisinin <cite>“a”</cite>
+karakteri ile bitip bitmediğini sorguladık. Gerçekten de <cite>“istihza”</cite> karakter
+dizisinin sonunda <cite>“a”</cite> karakteri bulunduğu için Python bize <cite>True</cite> cevabı
+verdi. Bir de şuna bakalım:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;z&quot;</span><span class="p">)</span>
+
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>Bu defa da <cite>False</cite> çıktısı aldık. Çünkü karakter dizimiz ‘z’ harfiyle bitmiyor.</p>
+<p>Gelin isterseniz elimizi alıştırmak için bu metotla birkaç örnek daha yapalım:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">d1</span> <span class="o">=</span> <span class="s2">&quot;python.ogg&quot;</span>
+<span class="n">d2</span> <span class="o">=</span> <span class="s2">&quot;tkinter.mp3&quot;</span>
+<span class="n">d3</span> <span class="o">=</span> <span class="s2">&quot;pygtk.ogg&quot;</span>
+<span class="n">d4</span> <span class="o">=</span> <span class="s2">&quot;movie.avi&quot;</span>
+<span class="n">d5</span> <span class="o">=</span> <span class="s2">&quot;sarki.mp3&quot;</span>
+<span class="n">d6</span> <span class="o">=</span> <span class="s2">&quot;filanca.ogg&quot;</span>
+<span class="n">d7</span> <span class="o">=</span> <span class="s2">&quot;falanca.mp3&quot;</span>
+<span class="n">d8</span> <span class="o">=</span> <span class="s2">&quot;dosya.avi&quot;</span>
+<span class="n">d9</span> <span class="o">=</span> <span class="s2">&quot;perl.ogg&quot;</span>
+<span class="n">d10</span> <span class="o">=</span> <span class="s2">&quot;c.avi&quot;</span>
+<span class="n">d11</span> <span class="o">=</span> <span class="s2">&quot;c++.mp3&quot;</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">,</span> <span class="n">d3</span><span class="p">,</span> <span class="n">d4</span><span class="p">,</span> <span class="n">d5</span><span class="p">,</span> <span class="n">d6</span><span class="p">,</span> <span class="n">d7</span><span class="p">,</span> <span class="n">d8</span><span class="p">,</span> <span class="n">d9</span><span class="p">,</span> <span class="n">d10</span><span class="p">,</span> <span class="n">d11</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.mp3&quot;</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu örnekte, elimizde farklı uzantılara sahip bazı dosyalar olduğunu varsaydık ve
+bu dosya adlarının herbirini ayrı birer değişken içinde depoladık. Gördüğünüz
+gibi, dosya uzantıları <cite>.ogg</cite>, <cite>.mp3</cite> veya <cite>.avi</cite>. Bizim burada amacımız
+elimizdeki mp3 dosyalarını listelemek. Bu işlem için <code class="docutils literal"><span class="pre">endswith()</span></code> metodundan
+yararlanabiliyoruz. Burada yaptığımız şey şu:</p>
+<p>Öncelikle <cite>d1</cite>, <cite>d2</cite>, <cite>d3</cite>, <cite>d4</cite>, <cite>d5</cite>, <cite>d6</cite>, <cite>d7</cite>, <cite>d8</cite>, <cite>d9</cite>, <cite>d10</cite> ve <cite>d11</cite>
+adlı değişkenleri bir <code class="docutils literal"><span class="pre">for</span></code> döngüsü içine alıyoruz ve bu değişkenlerinin
+herbirinin içeriğini tek tek kontrol ediyoruz (<code class="docutils literal"><span class="pre">for</span> <span class="pre">i</span> <span class="pre">in</span> <span class="pre">d1,</span> <span class="pre">d2,</span> <span class="pre">d3,</span> <span class="pre">d4,</span> <span class="pre">d5,</span>
+<span class="pre">d6,</span> <span class="pre">d7,</span> <span class="pre">d8,</span> <span class="pre">d9,</span> <span class="pre">d10,</span> <span class="pre">d11:</span></code>). Ardından, eğer baktığımız bu değişkenlerin
+değerleri “.mp3” ifadesi ile bitiyorsa (<code class="docutils literal"><span class="pre">if</span> <span class="pre">i.endswith(&quot;.mp3&quot;):</span></code>), ölçüte uyan
+bütün karakter dizilerini ekrana döküyoruz (<code class="docutils literal"><span class="pre">print(i)</span></code>).</p>
+<p>Yukarıdaki örneği, dilerseniz, <code class="docutils literal"><span class="pre">endswith()</span></code> metodunu kullanmadan şöyle de
+yazabilirsiniz:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">,</span> <span class="n">d3</span><span class="p">,</span> <span class="n">d4</span><span class="p">,</span> <span class="n">d5</span><span class="p">,</span> <span class="n">d6</span><span class="p">,</span> <span class="n">d7</span><span class="p">,</span> <span class="n">d8</span><span class="p">,</span> <span class="n">d9</span><span class="p">,</span> <span class="n">d10</span><span class="p">,</span> <span class="n">d11</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">i</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">==</span> <span class="s2">&quot;.mp3&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada karakter dizilerinin dilimlenebilme özelliğinden yararlandık. Ancak
+gördüğünüz gibi, dilimlenecek kısmı ayarlamaya uğraşmak yerine <code class="docutils literal"><span class="pre">endswith()</span></code>
+metodunu kullanmak çok daha mantıklı ve kolay bir yöntemdir.</p>
+<p>Yukarıdaki örnekte de gördüğünüz gibi, <code class="docutils literal"><span class="pre">endswith()</span></code> metodu özellikle dosya
+uzantılarına göre dosya türlerini tespit etmede oldukça işe yarar bir metottur.</p>
+</div>
+<div class="section" id="startswith">
+<h2>startswith()<a class="headerlink" href="#startswith" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Bu metot, biraz önce gördüğümüz <code class="docutils literal"><span class="pre">endswith()</span></code> metodunun yaptığı işin tam
+tersini yapar. Hatırlarsanız <code class="docutils literal"><span class="pre">endswith()</span></code> metodu bir karakter dizisinin hangi
+karakter veya karakterlerle bittiğini denetliyordu. <code class="docutils literal"><span class="pre">startswith()</span></code> metodu ise
+bir karakter dizisinin hangi karakter veya karakterlerle başladığını denetler:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;python&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;p&quot;</span><span class="p">)</span>
+
+<span class="go">True</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, eğer karakter dizisi gerçekten belirtilen karakterle başlıyorsa
+Python <cite>True</cite> çıktısı, yok eğer belirtilen karakterle başlamıyorsa <cite>False</cite>
+çıktısı veriyor.</p>
+<p>Bu metodun gerçek hayatta nasıl kullanılabileceğine dair bir örnek verelim:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">d1</span> <span class="o">=</span> <span class="s2">&quot;python.ogg&quot;</span>
+<span class="n">d2</span> <span class="o">=</span> <span class="s2">&quot;tkinter.mp3&quot;</span>
+<span class="n">d3</span> <span class="o">=</span> <span class="s2">&quot;pygtk.ogg&quot;</span>
+<span class="n">d4</span> <span class="o">=</span> <span class="s2">&quot;movie.avi&quot;</span>
+<span class="n">d5</span> <span class="o">=</span> <span class="s2">&quot;sarki.mp3&quot;</span>
+<span class="n">d6</span> <span class="o">=</span> <span class="s2">&quot;filanca.ogg&quot;</span>
+<span class="n">d7</span> <span class="o">=</span> <span class="s2">&quot;falanca.mp3&quot;</span>
+<span class="n">d8</span> <span class="o">=</span> <span class="s2">&quot;dosya.avi&quot;</span>
+<span class="n">d9</span> <span class="o">=</span> <span class="s2">&quot;perl.ogg&quot;</span>
+<span class="n">d10</span> <span class="o">=</span> <span class="s2">&quot;c.avi&quot;</span>
+<span class="n">d11</span> <span class="o">=</span> <span class="s2">&quot;c++.mp3&quot;</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">,</span> <span class="n">d3</span><span class="p">,</span> <span class="n">d4</span><span class="p">,</span> <span class="n">d5</span><span class="p">,</span> <span class="n">d6</span><span class="p">,</span> <span class="n">d7</span><span class="p">,</span> <span class="n">d8</span><span class="p">,</span> <span class="n">d9</span><span class="p">,</span> <span class="n">d10</span><span class="p">,</span> <span class="n">d11</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;p&quot;</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada ‘p’ harfiyle başlayan bütün dosyaları listeledik. Elbette aynı etkiyi şu
+şekilde de elde edebilirsiniz:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">,</span> <span class="n">d3</span><span class="p">,</span> <span class="n">d4</span><span class="p">,</span> <span class="n">d5</span><span class="p">,</span> <span class="n">d6</span><span class="p">,</span> <span class="n">d7</span><span class="p">,</span> <span class="n">d8</span><span class="p">,</span> <span class="n">d9</span><span class="p">,</span> <span class="n">d10</span><span class="p">,</span> <span class="n">d11</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;p&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sadece tek bir harfi sorguluyorsanız yukarıdaki yöntem de en az <code class="docutils literal"><span class="pre">startswith()</span></code>
+metodunu kullanmak kadar pratiktir. Ama birden fazla karakteri sorguladığınız
+durumlarda elbette <code class="docutils literal"><span class="pre">startswith()</span></code> çok daha mantıklı bir tercih olacaktır:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">,</span> <span class="n">d3</span><span class="p">,</span> <span class="n">d4</span><span class="p">,</span> <span class="n">d5</span><span class="p">,</span> <span class="n">d6</span><span class="p">,</span> <span class="n">d7</span><span class="p">,</span> <span class="n">d8</span><span class="p">,</span> <span class="n">d9</span><span class="p">,</span> <span class="n">d10</span><span class="p">,</span> <span class="n">d11</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;py&quot;</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Yukarıda yazdığımız kodu dilimleme tekniğinden yararlanarak yeniden yazmak
+isterseniz şöyle bir şeyler yapmanız gerekiyor:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">,</span> <span class="n">d3</span><span class="p">,</span> <span class="n">d4</span><span class="p">,</span> <span class="n">d5</span><span class="p">,</span> <span class="n">d6</span><span class="p">,</span> <span class="n">d7</span><span class="p">,</span> <span class="n">d8</span><span class="p">,</span> <span class="n">d9</span><span class="p">,</span> <span class="n">d10</span><span class="p">,</span> <span class="n">d11</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">i</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;py&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Dediğim gibi, birden fazla karakteri sorguladığınız durumlarda, dilimlemek
+istediğiniz kısmın karakter dizisi içinde hangi aralığa denk geldiğini
+hesaplamaya uğraşmak yerine, daha kolay bir yöntem olan <code class="docutils literal"><span class="pre">startswith()</span></code>
+metodundan yararlanmayı tercih edebilirsiniz.</p>
+<p>Böylece karakter dizilerinin 2. bölümünü de bitirmiş olduk. Sonraki bölümde yine
+karakter dizilerinin metotlarından söz etmeye devam edeceğiz.</p>
+</div>
+</div>
+
+
+
+<div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
+<div class='extrarelbar'> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="karakter_dizilerinin_metotlari2.html" title="Karakter Dizilerinin Metotları (Devamı)"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="karakter_dizileri.html" title="Karakter Dizileri"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+ 
+      </ul>
+    </div> </div>
+
+<div class='addcomment'>Yorumlar</div>
+
+<div class='how-to-use'>
+<h3>Önemli Not</h3>
+Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
+<span class='tag'>&lt;pre&gt;&lt;code&gt;</span> etiketleri içine alın. Örneğin:
+
+<pre>
+    <span class='tag'>&lt;pre&gt;&lt;code class="python"&gt;</span>
+    <span class='keyword'>print</span>(<span class='string'>"Merhaba Dünya!"</span>)
+    <span class='tag'>&lt;/code&gt;&lt;/pre&gt;</span>
+</pre>
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'istihza';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4eca48eb2d83faf9" async="async"></script>
+
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="karakter_dizilerinin_metotlari2.html" title="Karakter Dizilerinin Metotları (Devamı)"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="karakter_dizileri.html" title="Karakter Dizileri"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+ 
+      </ul>
+    </div> 
+
+<div class="footer">
+&copy; Copyright 2007-2019, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 30.12.2019.
+<a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7 ile oluşturulmuştur.
+<br>
+<br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
+alt="Creative Commons License" style="border-width:0"
+src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a><br />
+<br>
+</div>
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=10396326;
+var sc_invisible=1;
+var sc_security="fb5cd679";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="hit counter"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="http://c.statcounter.com/10396326/0/fb5cd679/1/"
+alt="hit counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+  </body>
+</html>
