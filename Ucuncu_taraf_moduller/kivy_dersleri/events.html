@@ -5,16 +5,23 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Olaylar &#8212; Python 3 için Türkçe Kılavuz</title>
     <link rel="stylesheet" href="../../_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
     <script type="text/javascript" src="../../_static/translations.js"></script>
     <link rel="search" title="Ara" href="../../search.html" />
     <link rel="next" title="Pencere Araçları - 2" href="widgets2.html" />
@@ -23,7 +30,8 @@
 <link rel="stylesheet" href="../../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
 <![endif]-->
 
-  </head><body>
+  </head>
+  <body>
 <div class='header'><a href='https://yazbel.com'>yazbel.com</a></div>
 
 <ul class='navbar'>
@@ -63,7 +71,7 @@
 <h2>Clock Olayları<a class="headerlink" href="#clock-olaylari" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Clock ile ilgili daha önce bir örnek yapmıştık. Clock sınıfı, belirtilen süre sonunda bir fonksiyon çalıştırmak üzere tasarlanmıştır. İşte bu süre sonunda fonksiyonu çalıştırması, bir olay olarak ele alınıyor. Clock için zamanlayıcı da diyebiliriz.</p>
 <p>Clock sınıfını iki şekilde kullanabiliriz. Birincisi, fonksiyonun sadece bir kez çağrılması. Yani belirtilen süre sonunda, fonksiyon çalıştırılır ve işlem tamamlanır. Bir örnekle görelim</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># coding: utf-8</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># coding: utf-8</span>
 
 <span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
 <span class="kn">from</span> <span class="nn">kivy.clock</span> <span class="kn">import</span> <span class="n">Clock</span>
@@ -87,7 +95,7 @@
 </div>
 <p>Program başladıktan 3 saniye sonra, ekrandaki “Merhaba” yazısı, “Dünya” yazısıyla değiştirilecektir. Böylece işlem tamamlanmış olacaktır.</p>
 <p>Clock sınıfının bir başka kullanımı ise, belli aralıklarla sürekli çalışmasıdır. Fonksiyonu çalıştırır, sonra belirtilen süre kadar bekler ve sonra tekrar çalıştırır. Bunu, siz sonlandırana kadar veya program kapanana kadar yapmaya devam eder. Saat örneği, bu kullanım için çok iyi bir örnektir.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># coding: utf-8</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># coding: utf-8</span>
 
 <span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
 <span class="kn">from</span> <span class="nn">kivy.clock</span> <span class="kn">import</span> <span class="n">Clock</span>
@@ -114,7 +122,7 @@
 <p>Programda kullandığımız datetime modülü, zaman bilgisini elde etmek içindir. Dikkat ettiyseniz, sürekli çalışmasını istediğimizde Clock.schedule_interval() kullanıyoruz. Bir saniye aralıkla çalışmasını sağlayarak, ekranda zaman bilgisini göstermiş olduk.</p>
 <p>Her iki kullanım şeklinde dikkat etmemiz gereken şey, çalıştırılacak olan fonksiyonun mutlaka bir argüman almasıdır. Burda kullandığımız “self” dışında alması gereken bir argüman olduğunu görüyoruz. Bu argüman, belirlediğimiz zamanın kendisidir.</p>
 <p>Eğer tanımladığınız bir Clock nesnesini kaldırmak isterseniz;</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tanımladık</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Tanımladık</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">event</span> <span class="o">=</span> <span class="n">Clock</span><span class="o">.</span><span class="n">schedule_interval</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fonk</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">event2</span> <span class="o">=</span> <span class="n">Clock</span><span class="o">.</span><span class="n">schedule_once</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fonk2</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
 
@@ -128,7 +136,7 @@
 <h2>Girdi Olayları<a class="headerlink" href="#girdi-olaylari" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Kullanıcı girdisi sonucu oluşan olaylardır. Tıklama, basılı halde sürükleme, bırakma, mouse tekerleği hareketi gibi hareketler sonucu oluşan olaylardır. Daha önce buna benzer olayları bazı pencere araçlarımızda ele almıştık. Bunlardan birisi Button sınıfıydı. Bir butonun üzerine tıklanması on_press, bırakılma olayı da on_release ile dinleniyordu.</p>
 <p>Genelde bir pencere aracının sahip olduğu olaylar, ilgili <a class="reference external" href="https://kivy.org/doc/stable/api-index.html">API</a> kaynağında bulunur. Böylece kaynağa bakarak, ele almak istediğimiz olayları bind() yardımıyla bağlayabiliriz. Basit bir örnek yapalım isterseniz</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># coding: utf-8</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># coding: utf-8</span>
 
 <span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
 <span class="kn">from</span> <span class="nn">kivy.uix.boxlayout</span> <span class="kn">import</span> <span class="n">BoxLayout</span>
@@ -227,8 +235,8 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 <div class="footer">
 &copy; Copyright 2007-2019, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 15.12.2019.
-<a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5 ile oluşturulmuştur.
+Son güncelleme: 30.12.2019.
+<a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7 ile oluşturulmuştur.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img

@@ -5,18 +5,25 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta content="Bu bölümde Python'daki kaçış dizilerinden (escape sequences) söz edeceğiz." name="description" />
 <meta content="python, kaçış dizileri, escape sequences, satır başı, tab, sekme" name="keywords" />
 
     <title>Kaçış Dizileri &#8212; Python 3 için Türkçe Kılavuz</title>
     <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
     <script type="text/javascript" src="_static/translations.js"></script>
     <link rel="search" title="Ara" href="search.html" />
     <link rel="next" title="Programları Kaydetme ve Çalıştırma" href="kaydetme_ve_calistirma.html" />
@@ -25,7 +32,8 @@
 <link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
 <![endif]-->
 
-  </head><body>
+  </head>
+  <body>
 <div class='header'><a href='https://yazbel.com'>yazbel.com</a></div>
 
 <ul class='navbar'>
@@ -82,7 +90,7 @@ herhangi bir metin içinde kaç farklı amaçla kullanılabilir?</p>
 kelimesini birbirinden ayırmak için kesme işareti görevinde kullandık.</p>
 <p>Şimdi yukarıda verdiğimiz ilk cümleyi bir karakter dizisi olarak tanımlamaya
 çalışalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;Ahmet, &quot;Bugün sinemaya gidiyorum,&quot; dedi.&#39;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;Ahmet, &quot;Bugün sinemaya gidiyorum,&quot; dedi.&#39;</span>
 </pre></div>
 </div>
 <p>Burada karakter dizisini tanımlamaya tek tırnak işareti ile başladık. Böylece
@@ -95,7 +103,7 @@ verdiğimiz örnek cümlelerden de göreceğiniz gibi, programlama dillerinden f
 olarak, tırnak işaretlerini bir metin içinde daha farklı amaçlar için de
 kullanabiliyoruz.</p>
 <p>Şimdi yukarıdaki karakter dizisini şöyle tanımlamaya çalıştığımızı düşünün:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;Ahmet, &quot;</span><span class="n">Bugün</span> <span class="n">sinemaya</span> <span class="n">gidiyorum</span><span class="p">,</span><span class="s2">&quot; dedi.&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;Ahmet, &quot;</span><span class="n">Bugün</span> <span class="n">sinemaya</span> <span class="n">gidiyorum</span><span class="p">,</span><span class="s2">&quot; dedi.&quot;</span>
 </pre></div>
 </div>
 <p>İşte burada Python’ın çıkarları ile bizim çıkarlarımız birbiriyle çatıştı.
@@ -103,7 +111,7 @@ Python karakter dizisini başlatan ilk çift tırnak işaretini gördükten sonr
 karakter dizisini tanımlama işlemini bitirebilmek için ikinci bir tırnak işareti
 daha aramaya koyuldu. Bu arayış sırasında da ‘Bugün’ kelimesinin başındaki çift
 tırnak işaretini gördü ve karakter dizisinin şu olduğunu zannetti:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;Ahmet, &quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;Ahmet, &quot;</span>
 </pre></div>
 </div>
 <p>Buraya kadar bir sorun yok. Bu karakter dizisi Python’ın sözdizimi kurallarına
@@ -119,7 +127,7 @@ tarafındaki çift tırnak işaretini karakter dizisi tanımlamak için değil,
 başkasının sözlerini aktarmak amacıyla kullandık. Ancak elbette bir programlama
 dili bizim amacımızın ne olduğunu kestiremez ve hata mesajını suratımıza
 yapıştırır:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span>  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span>  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span>
     <span class="s2">&quot;Ahmet, &quot;</span><span class="n">Bugün</span> <span class="n">sinemaya</span> <span class="n">gidiyorum</span><span class="p">,</span><span class="s2">&quot; dedi.&quot;</span>
                   <span class="o">^</span>
 <span class="ne">SyntaxError</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">syntax</span>
@@ -128,11 +136,11 @@ yapıştırır:</p>
 <p>Peki biz böyle bir durumda ne yapmalıyız?</p>
 <p>Bu hatayı engellemek için karakter dizisini tanımlamaya çift tırnak yerine tek
 tırnakla ya da üç tırnakla başlayabiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;Ahmet, &quot;Bugün sinemaya gidiyorum,&quot; dedi.&#39;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;Ahmet, &quot;Bugün sinemaya gidiyorum,&quot; dedi.&#39;</span>
 </pre></div>
 </div>
 <p>… veya:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="sd">&quot;&quot;&quot;Ahmet, &quot;Bugün sinemaya gidiyorum,&quot; dedi.&quot;&quot;&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="sd">&quot;&quot;&quot;Ahmet, &quot;Bugün sinemaya gidiyorum,&quot; dedi.&quot;&quot;&quot;</span>
 </pre></div>
 </div>
 <p>Böylece karakter dizisini başlatan işaret ‘Bugün sinemaya gidiyorum,’ cümlesinin
@@ -167,13 +175,13 @@ karakter dizilerini yine çift tırnakla tanımlayabiliriz.</p>
 <p>Dilerseniz, kaçış dizisi kavramını açıklamaya geçmeden önce bununla ilgili
 birkaç örnek verelim. Bu sayede ne ile karşı karşıya olduğumuz, zihnimizde biraz
 daha belirginleşebilir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Yarın Adana</span><span class="se">\&#39;</span><span class="s1">ya gidiyorum.&#39;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Yarın Adana</span><span class="se">\&#39;</span><span class="s1">ya gidiyorum.&#39;</span><span class="p">)</span>
 
 <span class="go">Yarın Adana&#39;ya gidiyorum.</span>
 </pre></div>
 </div>
 <p>Bir örnek daha verelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2">book</span><span class="se">\&quot;</span><span class="s2"> kelimesi Türkçede </span><span class="se">\&quot;</span><span class="s2">kitap</span><span class="se">\&quot;</span><span class="s2"> anlamına gelir.&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2">book</span><span class="se">\&quot;</span><span class="s2"> kelimesi Türkçede </span><span class="se">\&quot;</span><span class="s2">kitap</span><span class="se">\&quot;</span><span class="s2"> anlamına gelir.&quot;</span><span class="p">)</span>
 
 <span class="go">&quot;book&quot; kelimesi Türkçede &quot;kitap&quot; anlamına gelir.</span>
 </pre></div>
@@ -181,7 +189,7 @@ daha belirginleşebilir:</p>
 <p>Burada da cümle içinde çift tırnak işaretlerini kullandığımız halde, <cite>\</cite>
 işaretleri sayesinde karakter dizilerini yine çift tırnakla tanımlayabildik.</p>
 <p>Bir de şu örneğe bakalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Python programlama dilinin adı </span><span class="se">\&quot;</span><span class="s2">piton</span><span class="se">\&quot;</span><span class="s2"> yılanından gelmez&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Python programlama dilinin adı </span><span class="se">\&quot;</span><span class="s2">piton</span><span class="se">\&quot;</span><span class="s2"> yılanından gelmez&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Bütün bu örneklerde, karakter dizisini hem çift tırnakla tanımlayıp hem de
@@ -190,7 +198,7 @@ bir hata almadığımızı görüyorsunuz. Yukarıdaki kodlarda hata almamızı 
 şeyin <cite>\</cite> işareti olduğu belli. Ama dilerseniz bu işaretin, hata almamızı nasıl
 önlediğini anlatmadan önce son bir örnek daha verelim.</p>
 <p>Hatırlarsanız önceki sayfalarda şöyle bir karakter dizisi ile karşılaşmıştık:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;İstanbul&#39;</span><span class="n">un</span> <span class="mi">5</span> <span class="n">günlük</span> <span class="n">hava</span> <span class="n">durumu</span> <span class="n">tahmini</span><span class="s1">&#39;)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;İstanbul&#39;</span><span class="n">un</span> <span class="mi">5</span> <span class="n">günlük</span> <span class="n">hava</span> <span class="n">durumu</span> <span class="n">tahmini</span><span class="s1">&#39;)</span>
 
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;İstanbul&#39;</span><span class="n">un</span> <span class="mi">5</span> <span class="n">günlük</span> <span class="n">hava</span> <span class="n">durumu</span> <span class="n">tahmini</span><span class="s1">&#39;)</span>
@@ -202,20 +210,20 @@ bir hata almadığımızı görüyorsunuz. Yukarıdaki kodlarda hata almamızı 
 dizisini tek tırnak kullanarak tanımlayamıyorduk. Bu karakter dizisini hatasız
 bir şekilde tanımlayabilmek için ya çift tırnak ya da üç tırnak kullanmamız
 gerekiyordu:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;İstanbul&#39;un 5 günlük hava durumu tahmini&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;İstanbul&#39;un 5 günlük hava durumu tahmini&quot;</span><span class="p">)</span>
 
 <span class="go">İstanbul&#39;un 5 günlük hava durumu tahmini</span>
 </pre></div>
 </div>
 <p>… veya:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;İstanbul&#39;un 5 günlük hava durumu tahmini&quot;&quot;&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;İstanbul&#39;un 5 günlük hava durumu tahmini&quot;&quot;&quot;</span><span class="p">)</span>
 
 <span class="go">İstanbul&#39;un 5 günlük hava durumu tahmini</span>
 </pre></div>
 </div>
 <p>Tıpkı önceki örneklerde olduğu gibi, yukarıdaki karakter dizisini de aslında tek
 tırnakla tanımlayıp hata oluşmasını önleyebiliriz. Hemen görelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;İstanbul</span><span class="se">\&#39;</span><span class="s1">un 5 günlük hava durumu tahmini&#39;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;İstanbul</span><span class="se">\&#39;</span><span class="s1">un 5 günlük hava durumu tahmini&#39;</span><span class="p">)</span>
 
 <span class="go">İstanbul&#39;un 5 günlük hava durumu tahmini</span>
 </pre></div>
@@ -241,7 +249,7 @@ karakter dizisini okumaya devam et. Biraz sonra aradığın tırnağı bulacaks�
 mesajı vermiş, yani orada tırnak işaretini farklı bir amaçla kullandığımız
 konusunda Python’ı bilgilendirmiş oluruz.</p>
 <p>Şurada da aynı durum sözkonusu:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Python programlama dilinin adı </span><span class="se">\&quot;</span><span class="s2">piton</span><span class="se">\&quot;</span><span class="s2"> yılanından gelmez&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Python programlama dilinin adı </span><span class="se">\&quot;</span><span class="s2">piton</span><span class="se">\&quot;</span><span class="s2"> yılanından gelmez&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Tıpkı bir önceki örnekte olduğu gibi, burada da Python karakter dizisini soldan
@@ -271,7 +279,7 @@ de bu kaçış dizisinin nasıl kullanılacağına dair örnekler vermiş olduk.
 <cite>\</cite> kaçış dizisinin yetenekleri yukarıdakilerle sınırlı değildir. Bu kaçış
 dizisini, uzun karakter dizilerini bölmek için de kullanabiliriz. Şimdi şu
 örneği dikkatlice inceleyin:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Python 1990 yılında Guido Van Rossum </span><span class="se">\</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Python 1990 yılında Guido Van Rossum </span><span class="se">\</span>
 <span class="gp">... </span><span class="s2">tarafından geliştirilmeye başlanmış, oldukça </span><span class="se">\</span>
 <span class="gp">... </span><span class="s2">güçlü ve yetenekli bir programlama dilidir.&quot;</span><span class="p">)</span>
 
@@ -282,7 +290,7 @@ dizisini, uzun karakter dizilerini bölmek için de kullanabiliriz. Şimdi şu
 <p>Normal şartlar altında, bir karakter dizisini tanımlamaya tek veya çift tırnakla
 başlamışsak, karakter dizisinin kapanış tırnağını koymadan <cite>Enter</cite> tuşuna
 bastığımızda Python bize bir hata mesajı gösterir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Python 1990 yılında Guido Van Rossum</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Python 1990 yılında Guido Van Rossum</span>
 
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Python 1990 yılında Guido Van Rossum</span>
@@ -302,7 +310,7 @@ verdiği bir ‘Yazmaya devam et!’ mesajı olduğunu biliyorsunuz.</p>
 <p>Python’daki en temel kaçış dizisi biraz önce örneklerini verdiğimiz <cite>\</cite>
 işaretidir. Bu kaçış dizisi başka karakterlerle birleşerek, farklı işlevlere
 sahip yeni kaçış dizileri de oluşturabilir. Aslında bu olguya yabancı değiliz.
-Önceki sayfalarda bu duruma bir örnek vermiştik. Hatırlarsanız <code class="docutils literal notranslate"><span class="pre">print()</span></code>
+Önceki sayfalarda bu duruma bir örnek vermiştik. Hatırlarsanız <code class="docutils literal"><span class="pre">print()</span></code>
 fonksiyonunu anlatırken <cite>end</cite> parametresinin ön tanımlı değerinin <cite>\n</cite>, yani
 satır başı karakteri olduğunu söylemiştik.</p>
 <div class="admonition note">
@@ -311,7 +319,7 @@ satır başı karakteri olduğunu söylemiştik.</p>
 </div>
 <p>Satır başı karakterini ilk öğrendiğimizde bu karakteri anlatırken bazı örnekler
 de vermiştik:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;birinci satır</span><span class="se">\n</span><span class="s2">ikinci satır</span><span class="se">\n</span><span class="s2">üçüncü satır&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;birinci satır</span><span class="se">\n</span><span class="s2">ikinci satır</span><span class="se">\n</span><span class="s2">üçüncü satır&quot;</span><span class="p">)</span>
 
 <span class="go">birinci satır</span>
 <span class="go">ikinci satır</span>
@@ -325,7 +333,7 @@ kazanmasını sağlamaktır. <cite>\</cite> işareti ile ‘n’ harfi birleşti
 karakteri’ denen özel bir karakter dizisi ortaya çıkarıyor.</p>
 <p>Gelin bu kaçış dizisi ile ilgili bir örnek verelim. Şimdi şu kodları dikkatlice
 inceleyin:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">başlık</span> <span class="o">=</span> <span class="s2">&quot;Türkiye&#39;de Özgür Yazılımın Geçmişi&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">başlık</span> <span class="o">=</span> <span class="s2">&quot;Türkiye&#39;de Özgür Yazılımın Geçmişi&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">başlık</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">başlık</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 
 <span class="go">Türkiye&#39;de Özgür Yazılımın Geçmişi</span>
@@ -337,7 +345,7 @@ adlı karakter dizisinin altını çizdik. Dikkat ederseniz, başlığın altın
 koyduğumuz çizgiler başlığın uzunluğunu aşmıyor. Yazdığımız program, başlığın
 uzunluğu kadar çizgiyi başlığın altına ekliyor. Bu programda başlık ne olursa
 olsun, programımız çizgi uzunluğunu kendisi ayarlayacaktır. Örneğin:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">başlık</span> <span class="o">=</span> <span class="s2">&quot;Python Programlama Dili&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">başlık</span> <span class="o">=</span> <span class="s2">&quot;Python Programlama Dili&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">başlık</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">başlık</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 
 <span class="go">Python Programlama Dili</span>
@@ -350,33 +358,33 @@ olsun, programımız çizgi uzunluğunu kendisi ayarlayacaktır. Örneğin:</p>
 <span class="go">-----------------</span>
 </pre></div>
 </div>
-<p>Gelin isterseniz bu kodlardaki <code class="docutils literal notranslate"><span class="pre">print()</span></code> satırını şöyle bir inceleyelim.
+<p>Gelin isterseniz bu kodlardaki <code class="docutils literal"><span class="pre">print()</span></code> satırını şöyle bir inceleyelim.
 Kodumuz şu:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">başlık</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">başlık</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">başlık</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">başlık</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Burada öncelikle <cite>başlık</cite> adlı değişkeni <code class="docutils literal notranslate"><span class="pre">print()</span></code> fonksiyonunun parantezleri
+<p>Burada öncelikle <cite>başlık</cite> adlı değişkeni <code class="docutils literal"><span class="pre">print()</span></code> fonksiyonunun parantezleri
 içine yazdık. Böylece <cite>başlık</cite> değişkeninin değeri ekrana yazdırılacak.</p>
-<p><code class="docutils literal notranslate"><span class="pre">print()</span></code> fonksiyonunun ikinci parametresinin <cite>\n</cite> adlı kaçış dizisi olduğunu
+<p><code class="docutils literal"><span class="pre">print()</span></code> fonksiyonunun ikinci parametresinin <cite>\n</cite> adlı kaçış dizisi olduğunu
 görüyoruz. Bu kaçış dizisini eklememiz sayesinde Python ilk parametreyi çıktı
 olarak verdikten sonra bir alt satıra geçiyor. Bu parametrenin tam olarak ne işe
 yaradığını anlamak için, yukarıdaki satırı bir de o parametre olmadan
 çalıştırmayı deneyebilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">başlık</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">başlık</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">başlık</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">başlık</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 
 <span class="go">Alışveriş Listesi-----------------</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">print()</span></code> fonksiyonunun üçüncü parametresinin ise şu olduğunu görüyoruz:
-<code class="docutils literal notranslate"><span class="pre">&quot;-&quot;*len(başlık)</span></code>.</p>
+<p><code class="docutils literal"><span class="pre">print()</span></code> fonksiyonunun üçüncü parametresinin ise şu olduğunu görüyoruz:
+<code class="docutils literal"><span class="pre">&quot;-&quot;*len(başlık)</span></code>.</p>
 <p>İşte <cite>başlık</cite> değişkeninin altına gerekli sayıda çizgiyi çizen kodlar bunlardır.
-Burada <code class="docutils literal notranslate"><span class="pre">len()</span></code> fonksiyonunu nasıl kullandığımıza çok dikkat edin. Bu kod
-sayesinde <cite>başlık</cite> değişkeninin uzunluğu (<code class="docutils literal notranslate"><span class="pre">len(başlık)</span></code>) sayısınca <cite>-</cite>
+Burada <code class="docutils literal"><span class="pre">len()</span></code> fonksiyonunu nasıl kullandığımıza çok dikkat edin. Bu kod
+sayesinde <cite>başlık</cite> değişkeninin uzunluğu (<code class="docutils literal"><span class="pre">len(başlık)</span></code>) sayısınca <cite>-</cite>
 işaretini ekrana çıktı olarak verebiliyoruz.</p>
-<p>Yukarıdaki kodlarda <code class="docutils literal notranslate"><span class="pre">print()</span></code> fonksiyonunun son parametresi ise <cite>sep=’’</cite>. Peki
+<p>Yukarıdaki kodlarda <code class="docutils literal"><span class="pre">print()</span></code> fonksiyonunun son parametresi ise <cite>sep=’‘</cite>. Peki
 bu ne işe yarıyor? Her zaman olduğu gibi, bu kod parçasının ne işe yaradığını
 anlamak için programı bir de o kodlar olmadan çalıştırmayı deneyebilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">başlık</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">başlık</span><span class="p">))</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">başlık</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">başlık</span><span class="p">))</span>
 
 <span class="go">Alışveriş Listesi</span>
 <span class="go">  -----------------</span>
@@ -403,11 +411,11 @@ yer alan <cite>masraflar.txt</cite> adlı bir dosyayı yazdığınız bir progra
 kullanmanız gerekiyor. Mesela bu dosyayı, tam adresiyle birlikte
 kullanıcılarınıza göstermek istiyorsunuz.</p>
 <p>İlk denememizi yapalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C:</span><span class="se">\n</span><span class="s2">isan\masraflar.txt&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C:</span><span class="se">\n</span><span class="s2">isan\masraflar.txt&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Buradan şöyle bir çıktı aldık:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">C</span><span class="p">:</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">C</span><span class="p">:</span>
 <span class="n">isan</span>\<span class="n">masraflar</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
@@ -419,7 +427,7 @@ yerinde <cite>\</cite> işaretini kullanmışsak, bu işaretten hemen sonra gele
 ne olduğuna çok dikkat etmemiz gerekir. Çünkü eğer dikkat etmezsek, farkında
 olmadan Python için özel anlam taşıyan bir karakter dizisi oluşturmuş
 olabiliriz. Bu da kodlarımızın beklediğimiz gibi çalışmasını engeller.</p>
-<p>Yukarıdaki sorunun kaynağını anlamak için <code class="docutils literal notranslate"><span class="pre">&quot;C:\nisan\masraflar.txt&quot;</span></code> adlı
+<p>Yukarıdaki sorunun kaynağını anlamak için <code class="docutils literal"><span class="pre">&quot;C:\nisan\masraflar.txt&quot;</span></code> adlı
 karakter dizisine çok dikkatlice bakın. Python bu karakter dizisinde bizim
 ‘\nisan’ olarak belirttiğimiz kısmın başındaki <cite>\n</cite> karakterlerini bir kaçış
 dizisi olarak algıladı. Çünkü <cite>\n</cite> adlı karakter dizisi, ‘satır başı kaçış
@@ -436,9 +444,9 @@ zaman uyanık olmalıyız. Aksi takdirde, yukarıda olduğu gibi hiç beklemedi�
 olarak görülebilir. Çünkü bu hata programımızın çökmesine yol açmıyor. Ama bir
 karakter dizisi içindeki gizli kaçış dizilerini gözden kaçırmak, bazı durumlarda
 çok daha yıkıcı sonuçlara yol açabilir. Mesela yukarıdaki sorunlu dizin adını
-ekrana yazdırmak yerine <code class="docutils literal notranslate"><span class="pre">open()</span></code> fonksiyonunu kullanarak, bu karakter dizisi
+ekrana yazdırmak yerine <code class="docutils literal"><span class="pre">open()</span></code> fonksiyonunu kullanarak, bu karakter dizisi
 içinde belirttiğimiz <cite>masraflar.txt</cite> adlı dosyayı açmaya çalıştığımızı düşünün:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:</span><span class="se">\n</span><span class="s2">isan\masraflar.txt&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:</span><span class="se">\n</span><span class="s2">isan\masraflar.txt&quot;</span><span class="p">)</span>
 
 <span class="gt">Traceback (most recent call last):</span>
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
@@ -458,17 +466,17 @@ Peki bu sorunu nasıl çözeceksiniz?</p>
 Bu bölümün sonuna vardığınızda öteki çözüm yolunu da öğrenmiş olacaksınız.</p>
 <p>Yukarıdaki problemi, ilgili kaçış dizisi içindeki ters taksim işaretini
 çiftleyerek çözebilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:</span><span class="se">\\</span><span class="s2">nisan\masraflar&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:</span><span class="se">\\</span><span class="s2">nisan\masraflar&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Tabii tutarlılık açısından karakter dizisi içindeki bütün ters taksim
 işaretlerini çiftlemek mantıklı olacaktır:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:</span><span class="se">\\</span><span class="s2">nisan</span><span class="se">\\</span><span class="s2">masraflar&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:</span><span class="se">\\</span><span class="s2">nisan</span><span class="se">\\</span><span class="s2">masraflar&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Bunun dışında, bu örnek için, dizin adlarını ters taksim yerine düz taksim
 işaretiyle ayırmayı tercih edebilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:/nisan/masraflar&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:/nisan/masraflar&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Dediğimiz gibi, üçüncü (ve aslında daha kullanışlı olan) yöntemi biraz sonra
@@ -479,7 +487,7 @@ inceleyeceğiz. Biz şimdilik kaçış dizilerini anlatmaya devam edelim.</p>
 <p>Python’da <cite>\</cite> işareti sadece ‘n’ harfiyle değil, başka harflerle de
 birleşebilir. Örneğin <cite>\</cite> işaretini ‘t’ harfiyle birleştirerek yine özel bir
 anlam ifade eden bir kaçış dizisi elde edebiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;abc</span><span class="se">\t</span><span class="s2">def&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;abc</span><span class="se">\t</span><span class="s2">def&quot;</span><span class="p">)</span>
 
 <span class="go">abc def</span>
 </pre></div>
@@ -487,13 +495,13 @@ anlam ifade eden bir kaçış dizisi elde edebiliriz:</p>
 <p>Burada <cite>\t</cite> adlı kaçış dizisi, <cite>“abc”</cite> ifadesinden sonra sanki <cite>Tab</cite> (sekme)
 tuşuna basılmış gibi bir etki oluşturarak <cite>“def”</cite> ifadesini sağa doğru itiyor.
 Bir de şu örneğe bakalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;bir&quot;</span><span class="p">,</span> <span class="s2">&quot;iki&quot;</span><span class="p">,</span> <span class="s2">&quot;üç&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;bir&quot;</span><span class="p">,</span> <span class="s2">&quot;iki&quot;</span><span class="p">,</span> <span class="s2">&quot;üç&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="go">bir     iki     üç</span>
 </pre></div>
 </div>
 <p>Bir örnek daha:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="s2">&quot;123456789&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="s2">&quot;123456789&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="go">1   2   3   4   5   6   7   8   9</span>
 </pre></div>
@@ -502,7 +510,7 @@ Bir de şu örneğe bakalım:</p>
 istediğimizde <cite>\t</cite> adlı kaçış dizisinden yararlanabiliyoruz.</p>
 <p>Tıpkı <cite>\n</cite> kaçış dizisinde olduğu gibi, karakter dizilerinde <cite>\t</cite> kaçış
 dizisinin varlığına karşı da uyanık olmalıyız:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:</span><span class="se">\n</span><span class="s2">isan\masraflar</span><span class="se">\t</span><span class="s2">oplam_masraf.txt&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:</span><span class="se">\n</span><span class="s2">isan\masraflar</span><span class="se">\t</span><span class="s2">oplam_masraf.txt&quot;</span><span class="p">)</span>
 
 <span class="gt">Traceback (most recent call last):</span>
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
@@ -515,7 +523,7 @@ ifadenin başındaki ‘t’ harfinin, kendisinden önce gelen <cite>\</cite> i�
 birleşmesinden ötürü, bunu <cite>\t</cite> kaçış dizisi olarak algılıyor ve ona göre
 davranıyor.</p>
 <p>Belki yukarıdaki kodları şöyle yazarsak durumu anlamak daha kolay olabilir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C:</span><span class="se">\n</span><span class="s2">isan\masraflar</span><span class="se">\t</span><span class="s2">oplam_masraf.txt&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C:</span><span class="se">\n</span><span class="s2">isan\masraflar</span><span class="se">\t</span><span class="s2">oplam_masraf.txt&quot;</span><span class="p">)</span>
 
 <span class="go">C:</span>
 <span class="go">isan\masraflar      oplam_masraf.txt</span>
@@ -525,11 +533,11 @@ davranıyor.</p>
 geçiyor ve <cite>\t</cite> kaçış dizisini gördüğü noktada da önceki ve sonraki öğeler
 arasında bir sekme boşluğu bırakıyor. Bu durumu engellemek için ne yapmanız
 gerektiğini biliyorsunuz: Ya ters taksim işaretlerini çiftleyeceksiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C:</span><span class="se">\\</span><span class="s2">nisan</span><span class="se">\\</span><span class="s2">masraflar</span><span class="se">\\</span><span class="s2">toplam_masraf.txt&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C:</span><span class="se">\\</span><span class="s2">nisan</span><span class="se">\\</span><span class="s2">masraflar</span><span class="se">\\</span><span class="s2">toplam_masraf.txt&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Ya da dizin adı ayracı olarak düz taksim işaretini kullanacaksınız:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C:/nisan/masraflar/toplam_masraf.txt&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C:/nisan/masraflar/toplam_masraf.txt&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Daha önce de söylediğimiz gibi, üçüncü ve daha pratik olan yolu biraz sonra
@@ -540,14 +548,14 @@ göreceğiz. Şimdilik sadece biraz sabır…</p>
 <p><cite>\</cite> işaretinin birleştiğinde farklı bir anlam türettiği bir başka harf de ‘a’
 harfidir. <cite>\</cite> işareti ‘a’ harfiyle birleşerek !bip! benzeri bir zil sesi
 üretilmesini sağlayabilir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\a</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\a</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="go">!bip!</span>
 </pre></div>
 </div>
 <p>İsterseniz yukarıdaki komutu şu şekilde yazarak, kafa şişirme katsayısını
 artırabilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\a</span><span class="s2">&quot;</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\a</span><span class="s2">&quot;</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Bu şekilde !bip! sesi <cite>10</cite> kez tekrar edilecektir. Ancak bu kaçış dizisi
@@ -566,15 +574,15 @@ farkında olmadan.</p>
 sağlar. Bu kaçış dizisinin işlevini tanımına bakarak anlamak biraz zor olabilir.
 O yüzden dilerseniz bu kaçış dizisinin ne işe yaradığını bir örnek üzerinde
 göstermeye çalışalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Merhaba</span><span class="se">\r</span><span class="s2">Zalim Dünya!&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Merhaba</span><span class="se">\r</span><span class="s2">Zalim Dünya!&quot;</span><span class="p">)</span>
 
 <span class="go">Zalim Dünya!</span>
 </pre></div>
 </div>
-<p>Burada olan şey şu: Normal şartlar altında, <code class="docutils literal notranslate"><span class="pre">print()</span></code> fonksiyonu içine
+<p>Burada olan şey şu: Normal şartlar altında, <code class="docutils literal"><span class="pre">print()</span></code> fonksiyonu içine
 yazdığımız bir karakter dizisindeki bütün karakterler soldan sağa doğru tek tek
 ekrana yazdırılır:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Merhaba Zalim Dünya!&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Merhaba Zalim Dünya!&quot;</span><span class="p">)</span>
 
 <span class="go">Merhaba Zalim Dünya!</span>
 </pre></div>
@@ -583,7 +591,7 @@ ekrana yazdırılır:</p>
 yerleştirirsek, bu kaçış dizisinin bulunduğu konumdan itibaren <strong>aynı</strong> satırın
 başına dönülecek ve <cite>\r</cite> kaçış dizisinden sonra gelen bütün karakterler satır
 başındaki karakterlerin üzerine yazacaktır. Şu örnek daha açıklayıcı olabilir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Merhaba</span><span class="se">\r</span><span class="s2">Dünya&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Merhaba</span><span class="se">\r</span><span class="s2">Dünya&quot;</span><span class="p">)</span>
 
 <span class="go">Dünyaba</span>
 </pre></div>
@@ -597,7 +605,7 @@ karakteri (<cite>“ba”</cite>) dışarda kalıyor. Böylece ortaya <cite>“D
 çıkıyor.</p>
 <p>Önceki kaçış dizilerinde olduğu gibi, bu kaçış dizisini de farkında olmadan
 karakter dizisi içinde kullanırsanız beklemediğiniz çıktılar alırsınız:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C:\ülke</span><span class="se">\t</span><span class="s2">ürkiye\iller</span><span class="se">\r</span><span class="s2">ize</span><span class="se">\n</span><span class="s2">üfus.txt&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C:\ülke</span><span class="se">\t</span><span class="s2">ürkiye\iller</span><span class="se">\r</span><span class="s2">ize</span><span class="se">\n</span><span class="s2">üfus.txt&quot;</span><span class="p">)</span>
 
 <span class="go">izeülke     ürkiye\iller</span>
 <span class="go">üfus.txt</span>
@@ -609,7 +617,7 @@ karakter dizisi içinde kullanırsanız beklemediğiniz çıktılar alırsınız
 <h2>Düşey Sekme (\v)<a class="headerlink" href="#dusey-sekme-v" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Eğer <cite>\</cite> işaretini ‘v’ harfiyle birlikte kullanırsak düşey sekme denen şeyi
 elde ederiz. Hemen bir örnek verelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;düşey</span><span class="se">\v</span><span class="s2">sekme&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;düşey</span><span class="se">\v</span><span class="s2">sekme&quot;</span><span class="p">)</span>
 
 <span class="go">düşey</span>
 <span class="go">     sekme</span>
@@ -624,39 +632,39 @@ programlarınızda bu kaçış dizisini kullanmanızı önermem.</p>
 <p><cite>\</cite> kaçış dizisinin, biraraya geldiğinde özel bir anlam kazandığı bir başka
 harf de b’dir. <cite>\b</cite> kaçış dizisinin görevi, imleci o anki konumundan sola
 kaydırmaktır. Bu tanım pek anlaşılır değil. O yüzden bir örnek verelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;yahoo.com</span><span class="se">\b</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;yahoo.com</span><span class="se">\b</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Bu kodu çalıştırdığınızda herhangi bir değişiklik görmeyeceksiniz. Ama aslında
 en sonda gördüğümüz <cite>\b</cite> kaçış dizisi, imleci bir karakter sola kaydırdı.
 Dikkatlice bakın:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;yahoo.com</span><span class="se">\b</span><span class="s2">.uk&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;yahoo.com</span><span class="se">\b</span><span class="s2">.uk&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi, <cite>\b</cite> kaçış dizisinin etkisiyle imleç bir karakter sola kaydığı
 için, ‘com’ kelimesinin son harfi silindi ve bunun yerine <cite>\b</cite> kaçış dizisinden
 sonra gelen <cite>.uk</cite> karakterleri yerleştirildi. Dolayısıyla biz de şu çıktıyı
 aldık:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">yahoo</span><span class="o">.</span><span class="n">co</span><span class="o">.</span><span class="n">uk</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">yahoo</span><span class="o">.</span><span class="n">co</span><span class="o">.</span><span class="n">uk</span>
 </pre></div>
 </div>
 <p>Bir örnek daha verelim…</p>
-<p>Bildiğiniz gibi, <code class="docutils literal notranslate"><span class="pre">print()</span></code> fonksiyonu, kendisine verilen parametreler arasına
+<p>Bildiğiniz gibi, <code class="docutils literal"><span class="pre">print()</span></code> fonksiyonu, kendisine verilen parametreler arasına
 birer boşluk yerleştirir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;istihza&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;com&#39;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;istihza&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;com&#39;</span><span class="p">)</span>
 
 <span class="go">istihza . com</span>
 </pre></div>
 </div>
 <p>Biz bu öğeleri birbirine bitiştirmek için şöyle bir yol izleyebileceğimizi
 biliyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;istihza&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;com&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;istihza&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;com&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 
 <span class="go">istihza.com</span>
 </pre></div>
 </div>
 <p>İşte aynı etkiyi <cite>\b</cite> kaçış dizisini kullanarak da elde edebiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;istihza&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\b</span><span class="s1">.&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\b</span><span class="s1">com&#39;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;istihza&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\b</span><span class="s1">.&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\b</span><span class="s1">com&#39;</span><span class="p">)</span>
 
 <span class="go">istihza.com</span>
 </pre></div>
@@ -665,7 +673,7 @@ biliyoruz:</p>
 birer karakter sola kaydırdığı için, parametreler arasındaki boşluk karakterleri
 ortadan kalktı.</p>
 <p>Bu kaçış dizisini kullanarak şöyle gereksiz işler peşinde de koşabilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;istihza</span><span class="se">\b\b\b</span><span class="s1">sn&#39;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;istihza</span><span class="se">\b\b\b</span><span class="s1">sn&#39;</span><span class="p">)</span>
 
 <span class="go">istisna</span>
 </pre></div>
@@ -687,7 +695,7 @@ programlar tespit etmesi çok güç hatalar üretebilir.</p>
 <div>Dosya konumu: C:\users\zeynep\gizli\dosya.txt</div></blockquote>
 <p>Bu çıktıyı normal yollardan vermeye çalışırsak Python bize bir hata mesajı
 gösterecektir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dosya konumu: C:\users\zeynep\gizli\dosya.txt&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dosya konumu: C:\users\zeynep\gizli\dosya.txt&quot;</span><span class="p">)</span>
 
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>
 <span class="gr">SyntaxError</span>: <span class="n">(unicode error) &#39;unicodeescape&#39; codec can&#39;t decode bytes in</span>
@@ -702,22 +710,22 @@ harflerin, sayıların ve bilgisayar ekranında gördüğümüz öteki bütün i
 her biri için tek ve benzersiz bir numaranın tanımlandığı bir sistemdir. Bu
 sistemde, ‘kod konumu’ (<em>code point</em>) adı verilen bu numaralar özel bir şekilde
 gösterilir. Örneğin ‘ı’ harfi UNICODE sisteminde şu şekilde temsil edilir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">u</span><span class="o">+</span><span class="mi">0131</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">u</span><span class="o">+</span><span class="mi">0131</span>
 </pre></div>
 </div>
 <p>Aynı şekilde ‘a’ harfi bu sistemde şu kod konumu ile gösterilir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">u</span><span class="o">+</span><span class="mi">0061</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">u</span><span class="o">+</span><span class="mi">0061</span>
 </pre></div>
 </div>
 <p>Python programlama dilinde ise, yukarıdaki kod konumu düzeni şöyle gösterilir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span>\\<span class="n">u0131</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span>\\<span class="n">u0131</span>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi, Python UNICODE sistemindeki her bir kod konumunu gösterebilmek
 için, önce <cite>\u</cite> şeklinde bir kaçış dizisi tanımlıyor, ardından UNICODE
 sisteminde <cite>+</cite> işaretinden sonra gelen sayıyı bu kaçış dizisinin hemen
 sağına ekliyor. Gelin kendi kendimize birkaç deneme çalışması yapalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;</span><span class="se">\u0130</span><span class="s1">&#39;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;</span><span class="se">\u0130</span><span class="s1">&#39;</span>
 
 <span class="go">&#39;İ&#39;</span>
 
@@ -734,7 +742,7 @@ sağına ekliyor. Gelin kendi kendimize birkaç deneme çalışması yapalım:</
 </div>
 <p>Gördüğünüz gibi, eğer <cite>\u</cite> kaçış dizisinden sonra doğru bir kod konumu
 belirtmezsek Python bize bir hata mesajı gösteriyor…</p>
-<p>Bu hata mesajının, biraz önce <code class="docutils literal notranslate"><span class="pre">print(&quot;Dosya</span> <span class="pre">konumu:</span>
+<p>Bu hata mesajının, biraz önce <code class="docutils literal"><span class="pre">print(&quot;Dosya</span> <span class="pre">konumu:</span>
 <span class="pre">C:\users\zeynep\gizli\dosya.txt&quot;)</span></code> kodunu yazdıktan sonra aldığımız hata ile
 aynı olduğuna dikkat edin. Tıpkı <cite>\ufdsf</cite> örneğinde olduğu gibi, <cite>\users</cite>
 ifadesi de varolan bir UNICODE kod konumuna karşılık gelmediği için, Python’ın
@@ -747,7 +755,7 @@ karşı her zaman uyanık olmamız gerekiyor.</p>
 <p>Peki biz bu kaçış dizisi yüzünden, yazdığımız programlarda <cite>Dosya konumu:
 C:\users\zeynep\gizli\dosya.txt”)</cite> gibi bir çıktı veremeyecek miyiz?</p>
 <p>Verebileceğimizi ve bunun bir yolu yordamı olduğunu biliyorsunuz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dosya konumu: C:</span><span class="se">\\</span><span class="s2">users</span><span class="se">\\</span><span class="s2">zeynep</span><span class="se">\\</span><span class="s2">gizli</span><span class="se">\\</span><span class="s2">dosya.txt&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dosya konumu: C:</span><span class="se">\\</span><span class="s2">users</span><span class="se">\\</span><span class="s2">zeynep</span><span class="se">\\</span><span class="s2">gizli</span><span class="se">\\</span><span class="s2">dosya.txt&quot;</span><span class="p">)</span>
 
 <span class="go">Dosya konumu: C:\users\zeynep\gizli\dosya.txt</span>
 </pre></div>
@@ -756,7 +764,7 @@ C:\users\zeynep\gizli\dosya.txt”)</cite> gibi bir çıktı veremeyecek miyiz?<
 çiftleyerek sorunumuzu çözdük. Buradaki gibi bir sorunla karşılaşmamak için,
 dizin adlarını ayırırken ters taksim işareti yerine düz taksim işaretini
 kullanmayı da tercih edebilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dosya konumu: C:/users/zeynep/gizli/dosya.txt&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dosya konumu: C:/users/zeynep/gizli/dosya.txt&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Biraz sonra bu sorunu halletmenin üçüncü ve daha kolay bir yönteminden daha söz
@@ -770,14 +778,14 @@ aynı anlama gelir. Bu kaçış dizisi de, tıpkı <cite>\u</cite> gibi, UNICODE
 temsil etmek için kullanılır. Ancak <cite>U</cite> ile gösterilen kod konumları <cite>u</cite> ile
 gösterilenlere göre biraz daha uzundur. Örneğin, hatırlarsanız <cite>u</cite> kaçış
 dizisini kullanarak ‘ı’ harfinin UNICODE kod konumunu şöyle temsil ediyorduk:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;</span><span class="se">\u0131</span><span class="s1">&#39;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;</span><span class="se">\u0131</span><span class="s1">&#39;</span>
 
 <span class="go">&#39;ı&#39;</span>
 </pre></div>
 </div>
 <p>Eğer aynı kod konumunu <cite>U</cite> adlı kaçış dizisi ile göstermek istersek şöyle bir
 şey yazmamız gerekir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;</span><span class="se">\U00000131</span><span class="s1">&#39;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;</span><span class="se">\U00000131</span><span class="s1">&#39;</span>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi, burada <cite>\U</cite> kaçış dizisinden sonra gelen kısım toplam 8
@@ -794,12 +802,12 @@ edeceğiz, ama bu sistemle ilgili ufak bir bilgi daha verelim.</p>
 <p>UNICODE sisteminde her karakterin tek ve benzersiz bir kod konumu olduğu gibi,
 tek ve benzersiz bir de uzun adı vardır. Örneğin ‘a’ harfinin UNICODE
 sistemindeki uzun adı şudur:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">LATIN</span> <span class="n">SMALL</span> <span class="n">LETTER</span> <span class="n">A</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">LATIN</span> <span class="n">SMALL</span> <span class="n">LETTER</span> <span class="n">A</span>
 </pre></div>
 </div>
 <p>Bir karakterin UNICODE sistemindeki uzun adını öğrenmek için <cite>unicodedata</cite> adlı
 bir modülden yararlanabilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">unicodedata</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">unicodedata</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">unicodedata</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
 
 <span class="go">LATIN SMALL LETTER A</span>
@@ -819,7 +827,7 @@ UNICODE sistemindeki uzun adını elde edebileceğimizi bilelim yeter.</p>
 imkanı verir bize. Bu kaçış dizisini, karakterlerin UNICODE sistemindeki uzun
 adları ile birlikte kullanarak asıl karakterleri elde edebiliriz. Dikkatlice
 bakın:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\N{LATIN SMALL LETTER A}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\N{LATIN SMALL LETTER A}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="go">a</span>
 
@@ -865,7 +873,7 @@ dizisi meydana getirir.</p>
 <p><cite>\x</cite> kaçış dizisini kullanarak, onaltılı
 (<em>hexadecimal</em>) sayma sistemindeki bir sayının karakter karşılığını
 gösterebilirsiniz. Dikkatlice bakın:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;</span><span class="se">\x41</span><span class="s2">&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;</span><span class="se">\x41</span><span class="s2">&quot;</span>
 
 <span class="go">&#39;A&#39;</span>
 </pre></div>
@@ -877,7 +885,7 @@ sütunu altında gösterilen sayılar onaltılı sayılar olup, ‘symbol’ sü
 gösterilen karakterlere karşılık gelirler. Örneğin ‘hex’ sütunundaki <cite>4E</cite> sayısı
 ‘symbol’ sütunundaki ‘N’ harfine karşılık gelir. Bu durumu Python’la da teyit
 edebilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="go">&gt;&gt;&gt;&quot;\x4E&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="go">&gt;&gt;&gt;&quot;\x4E&quot;</span>
 
 <span class="go">N</span>
 </pre></div>
@@ -888,7 +896,7 @@ arasında nasıl bir bağ olduğunu gayet ayrıntılı bir şekilde anlatacağı
 şimdilik yalnızca <cite>\x</cite> karakter dizisinin özel bir kaçış dizisine karşılık
 geldiğini ve bu kaçış dizisini karakter dizileri içinde kullanırken dikkatli
 olmamız gerektiğini bilelim yeter:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C:\Users\Ayşe\xp_dosyaları&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C:\Users\Ayşe\xp_dosyaları&quot;</span><span class="p">)</span>
 
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>
 <span class="gr">SyntaxError</span>: <span class="n">(unicode error) &#39;unicodeescape&#39; codec can&#39;t decode bytes in</span>
@@ -908,12 +916,12 @@ bazı başka harflerle birleşerek yeni kaçış dizileri de oluşturabilir.</p>
 dizisi ‘r’ harfidir. Şimdi bu kaçış dizisinin nasıl kullanılacağını ve ne işe
 yaradığını inceleyelim:</p>
 <p>Şöyle bir çıktı vermek istediğimizi düşünün:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">Kurulum</span> <span class="n">dizini</span><span class="p">:</span> <span class="n">C</span><span class="p">:</span>\<span class="n">aylar</span>\<span class="n">nisan</span>\<span class="n">toplam</span> <span class="n">masraf</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">Kurulum</span> <span class="n">dizini</span><span class="p">:</span> <span class="n">C</span><span class="p">:</span>\<span class="n">aylar</span>\<span class="n">nisan</span>\<span class="n">toplam</span> <span class="n">masraf</span>
 </pre></div>
 </div>
 <p>Bildiğimiz yoldan bu çıktıyı vermeye çalışırsak neler olacağını adınız gibi
 biliyorsunuz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kurulum dizini: C:</span><span class="se">\a</span><span class="s2">ylar</span><span class="se">\n</span><span class="s2">isan</span><span class="se">\t</span><span class="s2">oplam masraf&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kurulum dizini: C:</span><span class="se">\a</span><span class="s2">ylar</span><span class="se">\n</span><span class="s2">isan</span><span class="se">\t</span><span class="s2">oplam masraf&quot;</span><span class="p">)</span>
 
 <span class="go">Kurulum dizini: C:ylar</span>
 <span class="go">isan        oplam masraf</span>
@@ -932,7 +940,7 @@ görünce satır başına geçiyor ve <cite>\t</cite> karakterlerini görünce d
 basılmış gibi bir tepki veriyor. Sonuç olarak da yukarıdaki gibi bir çıktı
 üretiyor.</p>
 <p>Daha önce bu durumu şöyle bir kod yazarak engellemiştik:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kurulum dizini: C:</span><span class="se">\\</span><span class="s2">aylar</span><span class="se">\\</span><span class="s2">nisan</span><span class="se">\\</span><span class="s2">toplam masraf&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kurulum dizini: C:</span><span class="se">\\</span><span class="s2">aylar</span><span class="se">\\</span><span class="s2">nisan</span><span class="se">\\</span><span class="s2">toplam masraf&quot;</span><span class="p">)</span>
 
 <span class="go">Kurulum dizini: C:\aylar\nisan\toplam masraf</span>
 </pre></div>
@@ -940,7 +948,7 @@ basılmış gibi bir tepki veriyor. Sonuç olarak da yukarıdaki gibi bir çıkt
 <p>Burada, <cite>\</cite> işaretlerinin her birini çiftleyerek sorunun üstesinden geldik.
 Yukarıdaki yöntem doğru ve kabul görmüş bir çözümdür. Ama bu sorunun üstesinden
 gelmenin çok daha basit ve pratik bir yolu var. Bakalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Kurulum dizini: C:\aylar\nisan\toplam masraf&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Kurulum dizini: C:\aylar\nisan\toplam masraf&quot;</span><span class="p">)</span>
 
 <span class="go">Kurulum dizini: C:\aylar\nisan\toplam masraf</span>
 </pre></div>
@@ -952,7 +960,7 @@ dizileri karakter dizisinin içinde yer alırken, bu kaçış dizisi karakter
 dizisinin dışına yerleştiriliyor.</p>
 <p>Bu kaçış dizisinin tam olarak nasıl işlediğini görmek için dilerseniz bir örnek
 daha verelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kaçış dizileri: \, </span><span class="se">\n</span><span class="s2">, </span><span class="se">\t</span><span class="s2">, </span><span class="se">\a</span><span class="s2">, </span><span class="se">\\</span><span class="s2">, r&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kaçış dizileri: \, </span><span class="se">\n</span><span class="s2">, </span><span class="se">\t</span><span class="s2">, </span><span class="se">\a</span><span class="s2">, </span><span class="se">\\</span><span class="s2">, r&quot;</span><span class="p">)</span>
 
 <span class="go">Kaçış dizileri: \,</span>
 <span class="go">,   , , \, r</span>
@@ -963,13 +971,13 @@ içinde geçen kaçış dizilerini doğrudan ekrana yazdırmak yerine bu kaçı�
 dizilerinin işlevlerini yerine getirmesine izin verdi. Tıpkı biraz önceki
 örnekte olduğu gibi, istersek kaçış dizilerini çiftleyerek bu sorunu
 aşabiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kaçış dizileri: </span><span class="se">\\</span><span class="s2">, </span><span class="se">\\</span><span class="s2">n, </span><span class="se">\\</span><span class="s2">t, </span><span class="se">\\</span><span class="s2">a, </span><span class="se">\\</span><span class="s2">\, r&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kaçış dizileri: </span><span class="se">\\</span><span class="s2">, </span><span class="se">\\</span><span class="s2">n, </span><span class="se">\\</span><span class="s2">t, </span><span class="se">\\</span><span class="s2">a, </span><span class="se">\\</span><span class="s2">\, r&quot;</span><span class="p">)</span>
 
 <span class="go">Kaçış dizileri: \, \n, \t, \a, \\, r</span>
 </pre></div>
 </div>
 <p>Ama tabii ki bunun çok daha kolay bir yöntemi olduğunu biliyorsunuz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Kaçış dizileri: \, \n, \t, \a, </span><span class="se">\\</span><span class="s2">, r&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Kaçış dizileri: \, \n, \t, \a, </span><span class="se">\\</span><span class="s2">, r&quot;</span><span class="p">)</span>
 
 <span class="go">Kaçış dizileri: \, \n, \t, \a, \\, r</span>
 </pre></div>
@@ -986,7 +994,7 @@ bulunabilir. Tek sayıda <cite>\</cite> işareti kullanıldığında karakter di
 tırnak işareti etkisizleşeceği için çakışma sorunu ortaya çıkar. Bu
 etkisizleşmeyi, karakter dizisinin başına koyduğunuz ‘r’ kaçış dizisi de
 engelleyemez. Yani:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kaçış dizisi: </span><span class="se">\&quot;</span><span class="s2">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kaçış dizisi: </span><span class="se">\&quot;</span><span class="s2">)</span>
 </pre></div>
 </div>
 <p>Bu şekilde bir tanımlama yaptığımızda Python bize bir hata mesajı gösterir.
@@ -994,7 +1002,7 @@ engelleyemez. Yani:</p>
 Python’ın karakter dizisini kapatan tırnak işaretini görmezden gelmesine yol
 açarak bu tırnağı etkisizleştiriyor. Böylece sanki karakter dizisini tanımlarken
 kapanış tırnağını hiç yazmamışız gibi bir sonuç ortaya çıkıyor:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kaçış dizisi: </span><span class="se">\&quot;</span><span class="s2">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kaçış dizisi: </span><span class="se">\&quot;</span><span class="s2">)</span>
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kaçış dizisi: </span><span class="se">\&quot;</span><span class="s2">)</span>
                               <span class="o">^</span>
@@ -1002,7 +1010,7 @@ kapanış tırnağını hiç yazmamışız gibi bir sonuç ortaya çıkıyor:</p
 </pre></div>
 </div>
 <p>Üstelik bu durumu, <cite>r</cite> adlı kaçış dizisi de engelleyemiyor:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Kaçış dizisi: </span><span class="se">\&quot;</span><span class="s2">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Kaçış dizisi: </span><span class="se">\&quot;</span><span class="s2">)</span>
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Kaçış dizisi: </span><span class="se">\&quot;</span><span class="s2">)</span>
                                <span class="o">^</span>
@@ -1012,16 +1020,16 @@ kapanış tırnağını hiç yazmamışız gibi bir sonuç ortaya çıkıyor:</p
 <p>Çözüm olarak birkaç farklı yöntemden yararlanabilirsiniz. Mesela karakter
 dizisini kapatmadan önce karakter dizisinin sonundaki <cite>\</cite> işaretinin sağına bir
 adet boşluk karakteri yerleştirmeyi deneyebilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kaçış dizisi: \ &quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kaçış dizisi: \ &quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Veya kaçış dizisini çiftleyebilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kaçış dizisi: </span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kaçış dizisi: </span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Ya da karakter dizisi birleştirme yöntemlerinden herhangi birini
 kullanabilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kaçış dizisi: &quot;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kaçış dizisi: &quot;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kaçış dizisi:&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kaçış dizisi: &quot;</span> <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
@@ -1039,7 +1047,7 @@ başladığını göstermektir. Dolayısıyla eski model yazıcılar, bu karakte
 gördükleri noktada mevcut sayfayı sona erdirip yeni bir sayfaya geçer.</p>
 <p>Bu kaçış dizisinin tam olarak ne işe yaradığını test etmek için şu kodları
 çalıştırın:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;deneme.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;deneme.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;deneme</span><span class="se">\f</span><span class="s2">deneme&quot;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">f</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
@@ -1052,7 +1060,7 @@ penceresini kapatın. Dosya normal bir şekilde açılacaktır.</p>
 <p>Dediğimiz gibi, bu kaçış dizisi artık pek kullanılmıyor. Ama yine de bu kaçış
 dizisine karşı da uyanık olmalısınız. Çünkü bu kaçış dizisi de beklemediğiniz
 çıktılar almanıza yol açabilir. Mesela şu örneğe bir bakalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;</span><span class="se">\f</span><span class="s2">ırat&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;</span><span class="se">\f</span><span class="s2">ırat&quot;</span>
 
 <span class="go">&#39;\x0cırat&#39;</span>
 </pre></div>
@@ -1229,8 +1237,8 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 <div class="footer">
 &copy; Copyright 2007-2019, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 15.12.2019.
-<a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5 ile oluşturulmuştur.
+Son güncelleme: 30.12.2019.
+<a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7 ile oluşturulmuştur.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img

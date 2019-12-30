@@ -5,18 +5,25 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta content="Bu bölümde nesne tabanlı programlamadan söz edeceğiz." name="description" />
 <meta content="python, python3, nesne, oop, sınıf, class, miras alma, inheritance, nesne yönelimli programlama, nesne tabanlı programlama, object oriented programming, self, instantiation, instance, örnek, örneklendirme, örnekleme" name="keywords" />
 
     <title>Nesne Tabanlı Programlama (OOP) &#8212; Python 3 için Türkçe Kılavuz</title>
     <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
     <script type="text/javascript" src="_static/translations.js"></script>
     <link rel="search" title="Ara" href="search.html" />
     <link rel="next" title="Nesne Tabanlı Programlama (Devamı)" href="nesne_tabanli_programlama2.html" />
@@ -25,7 +32,8 @@
 <link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
 <![endif]-->
 
-  </head><body>
+  </head>
+  <body>
 <div class='header'><a href='https://yazbel.com'>yazbel.com</a></div>
 
 <ul class='navbar'>
@@ -72,7 +80,7 @@ kullanılabilmesi,’ fikrine dayanıyor.</p>
 <p>Şimdi bir geriye dönüp baktığımızda, esasında bu fikrin izlerini ta ilk
 derslerimize kadar sürebiliyoruz. Mesela değişkenleri ele alalım. Değişkenleri
 kullanmamızdaki temel gerekçe, bir kez yazdığımız bir kodu başka yerlerde
-rahatça kullanabilmek. Örneğin, <code class="docutils literal notranslate"><span class="pre">isim</span> <span class="pre">=</span> <span class="pre">'Uzun</span> <span class="pre">İhsan</span> <span class="pre">Efendi'</span></code> gibi bir
+rahatça kullanabilmek. Örneğin, <code class="docutils literal"><span class="pre">isim</span> <span class="pre">=</span> <span class="pre">'Uzun</span> <span class="pre">İhsan</span> <span class="pre">Efendi'</span></code> gibi bir
 tanımlama yaptıktan sonra, bu <cite>isim</cite> değişkeni aracılığıyla <cite>‘Uzun İhsan
 Efendi’</cite> adlı karakter dizisini her defasında tekrar tekrar yazmak zorunda
 kalmadan, kodlarımızın her yanında kullanabiliyoruz.</p>
@@ -154,7 +162,7 @@ manipüle etmemizi sağlayan bir veri tipidir.</p>
 <p>Diyelim ki, kullanıcının girdiği bir kelimedeki sesli harfleri sayan bir kod
 yazmak istiyorsunuz. Bu amacı gerçekleştirebilmek için yazabileceğiniz en basit
 kod herhalde şu olacaktır:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sesli_harfler</span> <span class="o">=</span> <span class="s1">&#39;aeıioöuü&#39;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">sesli_harfler</span> <span class="o">=</span> <span class="s1">&#39;aeıioöuü&#39;</span>
 <span class="n">sayaç</span> <span class="o">=</span> <span class="mi">0</span>
 
 <span class="n">kelime</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Bir kelime girin: &#39;</span><span class="p">)</span>
@@ -184,7 +192,7 @@ ekledikçe programımız karmaşık hale gelecek, kodları anlamak zorlaşacakt�
 kullanıcı tarafından girilen kelimedeki bir harfin sesli olup olmadığını
 denetleyen kodları bir fonksiyon içine alarak, o kısmı daha belirgin hale
 getirebiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sesli_harfler</span> <span class="o">=</span> <span class="s1">&#39;aeıioöuü&#39;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">sesli_harfler</span> <span class="o">=</span> <span class="s1">&#39;aeıioöuü&#39;</span>
 <span class="n">sayaç</span> <span class="o">=</span> <span class="mi">0</span>
 
 <span class="n">kelime</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Bir kelime girin: &#39;</span><span class="p">)</span>
@@ -201,16 +209,16 @@ getirebiliriz:</p>
 </pre></div>
 </div>
 <p>Burada, kontrol ettiğimiz harfin <cite>sesli_harfler</cite> adlı değişken içinde bulunup
-bulunmamasına göre <cite>True</cite> veya <cite>False</cite> çıktısı veren, <code class="docutils literal notranslate"><span class="pre">seslidir()</span></code> adlı bir
+bulunmamasına göre <cite>True</cite> veya <cite>False</cite> çıktısı veren, <code class="docutils literal"><span class="pre">seslidir()</span></code> adlı bir
 fonksiyon tanımladık. Eğer kontrol ettiğimiz harf <cite>sesli_harfler</cite> değişkeni
-içinde geçiyorsa, yani bu bir sesli harf ise, <code class="docutils literal notranslate"><span class="pre">seslidir()</span></code> fonksiyonu <cite>True</cite>
+içinde geçiyorsa, yani bu bir sesli harf ise, <code class="docutils literal"><span class="pre">seslidir()</span></code> fonksiyonu <cite>True</cite>
 çıktısı verecektir. Aksi durumda ise bu fonksiyondan <cite>False</cite> çıktısı alacağız.
-Böylece sesli harf kontrolü yapmak istediğimiz her yerde yalnızca <code class="docutils literal notranslate"><span class="pre">seslidir()</span></code>
+Böylece sesli harf kontrolü yapmak istediğimiz her yerde yalnızca <code class="docutils literal"><span class="pre">seslidir()</span></code>
 fonksiyonunu kullanabileceğiz. Bu da bize, bir kez yazdığımız kodları tekrar
 tekrar kullanma imkanı verecek.</p>
 <p>Eğer yukarıdaki kodları daha da genel amaçlı bir hale getirmek istersek, sayacı
 artıran kodları da bir fonksiyon içine almayı düşünebiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sesli_harfler</span> <span class="o">=</span> <span class="s1">&#39;aeıioöuü&#39;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">sesli_harfler</span> <span class="o">=</span> <span class="s1">&#39;aeıioöuü&#39;</span>
 <span class="n">sayaç</span> <span class="o">=</span> <span class="mi">0</span>
 
 <span class="n">kelime</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Bir kelime girin: &#39;</span><span class="p">)</span>
@@ -237,16 +245,16 @@ birden fazla isim/etki alanı var:</p>
 <div><ol class="arabic simple">
 <li><cite>sesli_harfler</cite>, <cite>sayaç</cite>, <cite>kelime</cite> ve <cite>mesaj</cite> değişkenlerinin bulunduğu
 global isim/etki alanı.</li>
-<li><code class="docutils literal notranslate"><span class="pre">seslidir()</span></code> fonksiyonunun lokal isim/etki alanı.</li>
-<li><code class="docutils literal notranslate"><span class="pre">artır()</span></code> fonksiyonunun lokal isim/etki alanı.</li>
+<li><code class="docutils literal"><span class="pre">seslidir()</span></code> fonksiyonunun lokal isim/etki alanı.</li>
+<li><code class="docutils literal"><span class="pre">artır()</span></code> fonksiyonunun lokal isim/etki alanı.</li>
 </ol>
 </div></blockquote>
 <p>Bildiğiniz gibi, global isim alanında bulunan değişkenlere her yerden
 <strong>ulaşabiliyoruz</strong>. Ancak bunları her yerden <strong>değiştiremiyoruz</strong>. Yani mesela
-global isim alanında bulunan <cite>sayaç</cite> değişkeninin değerini, <code class="docutils literal notranslate"><span class="pre">seslidir()</span></code>
+global isim alanında bulunan <cite>sayaç</cite> değişkeninin değerini, <code class="docutils literal"><span class="pre">seslidir()</span></code>
 fonksiyonu içinden görüntüleyebiliriz.</p>
 <p>Bunu teyit edelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sesli_harfler</span> <span class="o">=</span> <span class="s1">&#39;aeıioöuü&#39;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">sesli_harfler</span> <span class="o">=</span> <span class="s1">&#39;aeıioöuü&#39;</span>
 <span class="n">sayaç</span> <span class="o">=</span> <span class="mi">0</span>
 
 <span class="n">kelime</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Bir kelime girin: &#39;</span><span class="p">)</span>
@@ -267,22 +275,22 @@ fonksiyonu içinden görüntüleyebiliriz.</p>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi, global isim alanındaki <cite>sayaç</cite> değişkeninin değerini
-<code class="docutils literal notranslate"><span class="pre">seslidir()</span></code> fonksiyonu içinde kullanabildik. Ama eğer bu değişken üzerinde
+<code class="docutils literal"><span class="pre">seslidir()</span></code> fonksiyonu içinde kullanabildik. Ama eğer bu değişken üzerinde
 değişiklik yapacaksak ilave adımlar atmak zorundayız. Dolayısıyla, mesela
-<code class="docutils literal notranslate"><span class="pre">artır()</span></code> fonksiyonunun etki alanından, global etki alanındaki <cite>sayaç</cite>
-değişkeni üzerinde değişiklik yapabilmek için <code class="docutils literal notranslate"><span class="pre">global</span></code> deyimini kullanmamız
+<code class="docutils literal"><span class="pre">artır()</span></code> fonksiyonunun etki alanından, global etki alanındaki <cite>sayaç</cite>
+değişkeni üzerinde değişiklik yapabilmek için <code class="docutils literal"><span class="pre">global</span></code> deyimini kullanmamız
 gerekiyor. Bu şekilde, global isim alanında bulunan <cite>sayaç</cite> adlı değişkenin
 değerini artırabiliyoruz.</p>
-<p>Dikkat ederseniz, <code class="docutils literal notranslate"><span class="pre">artır()</span></code> fonksiyonunda iki tane global değişken var:
+<p>Dikkat ederseniz, <code class="docutils literal"><span class="pre">artır()</span></code> fonksiyonunda iki tane global değişken var:
 <cite>sayaç</cite> ve <cite>kelime</cite>. Ama biz bunlardan yalnızca <cite>sayaç</cite> değişkenini global
 olarak belirledik. Öbür global değişkenimiz <cite>kelime</cite> için ise bu işlemi
 yapmadık. Çünkü <cite>kelime</cite> adlı değişkeni değiştirmek gibi bir niyetimiz yok. Biz
 bu değişkeni sadece kullanmakla yetiniyoruz. O yüzden bu değişkeni global olarak
 belirlemek zorunda değiliz.</p>
-<p>Ancak bildiğiniz gibi, <code class="docutils literal notranslate"><span class="pre">global</span></code> deyimini kullanmak pek tavsiye edilen bir şey
+<p>Ancak bildiğiniz gibi, <code class="docutils literal"><span class="pre">global</span></code> deyimini kullanmak pek tavsiye edilen bir şey
 değil. Eğer siz de bu deyimi kullanmak istemezseniz, yukarıdaki kodları şu
 şekilde yazmayı yeğleyebilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sesli_harfler</span> <span class="o">=</span> <span class="s1">&#39;aeıioöuü&#39;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">sesli_harfler</span> <span class="o">=</span> <span class="s1">&#39;aeıioöuü&#39;</span>
 <span class="n">sayaç</span> <span class="o">=</span> <span class="mi">0</span>
 
 <span class="n">kelime</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Bir kelime girin: &#39;</span><span class="p">)</span>
@@ -300,14 +308,14 @@ değil. Eğer siz de bu deyimi kullanmak istemezseniz, yukarıdaki kodları şu
 <span class="nb">print</span><span class="p">(</span><span class="n">mesaj</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">kelime</span><span class="p">,</span> <span class="n">artır</span><span class="p">(</span><span class="n">sayaç</span><span class="p">)))</span>
 </pre></div>
 </div>
-<p>Gördüğünüz gibi, bu kodlarda <code class="docutils literal notranslate"><span class="pre">global</span></code> deyimini kullanmak yerine, <code class="docutils literal notranslate"><span class="pre">artır()</span></code>
+<p>Gördüğünüz gibi, bu kodlarda <code class="docutils literal"><span class="pre">global</span></code> deyimini kullanmak yerine, <code class="docutils literal"><span class="pre">artır()</span></code>
 fonksiyonuna verdiğimiz <cite>sayaç</cite> parametresi üzerinden global isim alanıyla
 iletişim kurarak, <cite>sayaç</cite> değişkenini manipüle edebildik. Sadece değerini
 kullandığımız global değişken <cite>kelime</cite> için ise özel bir şey yapmamıza gerek
 kalmadı.</p>
-<p>Bu arada, tabii ki, <code class="docutils literal notranslate"><span class="pre">artır()</span></code> fonksiyonunda parametre olarak kullandığımız
+<p>Bu arada, tabii ki, <code class="docutils literal"><span class="pre">artır()</span></code> fonksiyonunda parametre olarak kullandığımız
 kelime <cite>sayaç</cite> olmak zorunda değil. Kodlarımızı mesela şöyle de yazabilirdik:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sesli_harfler</span> <span class="o">=</span> <span class="s1">&#39;aeıioöuü&#39;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">sesli_harfler</span> <span class="o">=</span> <span class="s1">&#39;aeıioöuü&#39;</span>
 <span class="n">sayaç</span> <span class="o">=</span> <span class="mi">0</span>
 
 <span class="n">kelime</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Bir kelime girin: &#39;</span><span class="p">)</span>
@@ -325,12 +333,12 @@ kelime <cite>sayaç</cite> olmak zorunda değil. Kodlarımızı mesela şöyle d
 <span class="nb">print</span><span class="p">(</span><span class="n">mesaj</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">kelime</span><span class="p">,</span> <span class="n">artır</span><span class="p">(</span><span class="n">sayaç</span><span class="p">)))</span>
 </pre></div>
 </div>
-<p>Önemli olan, <code class="docutils literal notranslate"><span class="pre">artır()</span></code> fonksiyonunun, bizim global isim alanıyla iletişim
+<p>Önemli olan, <code class="docutils literal"><span class="pre">artır()</span></code> fonksiyonunun, bizim global isim alanıyla iletişim
 kurmamızı sağlayacak bir parametre alması. Bu parametrenin adının ne olduğunun
 bir önemi yok.</p>
 <p>Yukarıdaki kodlarda birkaç değişiklik daha yaparak, bu kodları iyice
 genişletilebilir hale getirebiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sesli_harfler</span> <span class="o">=</span> <span class="s1">&#39;aeıioöuü&#39;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">sesli_harfler</span> <span class="o">=</span> <span class="s1">&#39;aeıioöuü&#39;</span>
 <span class="n">sayaç</span> <span class="o">=</span> <span class="mi">0</span>
 
 <span class="k">def</span> <span class="nf">kelime_sor</span><span class="p">():</span>
@@ -359,13 +367,13 @@ genişletilebilir hale getirebiliriz:</p>
 <p>Bu kodlarda, fonksiyonlara verdiğimiz parametreler yardımıyla, farklı
 fonksiyonların lokal etki alanlarında yer alan öğeler arasında nasıl iletişim
 kurduğumuza dikkat edin. Bir önceki kodlarda global etki alanında bulunan
-<cite>kelime</cite> değişkenini bu kez <code class="docutils literal notranslate"><span class="pre">çalıştır()</span></code> fonksiyonunun lokal etki alanı içine
-yerleştirdiğimiz için, <code class="docutils literal notranslate"><span class="pre">artır()</span></code> fonksiyonu içindeki <cite>kelime</cite> değişkeni boşa
-düştü. O yüzden, bu değişkeni <code class="docutils literal notranslate"><span class="pre">artır()</span></code> fonksiyonuna bir parametre olarak
-verdik ve <code class="docutils literal notranslate"><span class="pre">ekrana_bas()</span></code> fonksiyonu içinde bu fonksiyonu çağırırken, hem
+<cite>kelime</cite> değişkenini bu kez <code class="docutils literal"><span class="pre">çalıştır()</span></code> fonksiyonunun lokal etki alanı içine
+yerleştirdiğimiz için, <code class="docutils literal"><span class="pre">artır()</span></code> fonksiyonu içindeki <cite>kelime</cite> değişkeni boşa
+düştü. O yüzden, bu değişkeni <code class="docutils literal"><span class="pre">artır()</span></code> fonksiyonuna bir parametre olarak
+verdik ve <code class="docutils literal"><span class="pre">ekrana_bas()</span></code> fonksiyonu içinde bu fonksiyonu çağırırken, hem
 <cite>sayaç</cite> hem de <cite>kelime</cite> argümanlarını kullandık.</p>
 <p>Ayrıca, kullanıcıya kelime sorup, aldığı kelimeyi ekrana basan kod parçalarını,
-yani programımızı başlatan kodları <code class="docutils literal notranslate"><span class="pre">çalıştır()</span></code> başlığı altında toplayarak bu
+yani programımızı başlatan kodları <code class="docutils literal"><span class="pre">çalıştır()</span></code> başlığı altında toplayarak bu
 kısmı tam anlamıyla ‘modüler’, yani esnek ve takılıp çıkarılabilir bir hale
 getirdik.</p>
 <p>Gördüğünüz gibi, yazdığımız kodların olabildiğince anlaşılır ve yönetilebilir
@@ -400,14 +408,14 @@ daha kurcalayalım.</p>
 bağımsız bir program olarak hem de bir modül olarak kullanılabileceğini
 söylemiştik.</p>
 <p>Mesela, yukarıdaki kodları <cite>sayac.py</cite> adlı bir dosyaya kaydettiğimizi
-varsayarsak, bu programı komut satırı üzerinden <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">sayac.py</span></code> gibi bir
+varsayarsak, bu programı komut satırı üzerinden <code class="docutils literal"><span class="pre">python</span> <span class="pre">sayac.py</span></code> gibi bir
 kodla çalıştırabiliyoruz. Biz bu programı bu şekilde komut satırı üzerinden veya
 üzerine çift tıklayarak çalıştırdığımızda, bu kodları bağımsız bir program
 olarak çalıştırmış oluyoruz. Gelin bir de bu kodları bir modül olarak nasıl içe
 aktaracağımızı inceleyelim.</p>
 <p>Şimdi, <cite>sayac.py</cite> programının bulunduğu dizin altında Python komut satırını
 başlatalım ve orada şu komutu vererek <cite>sayac</cite> modülünü içe aktaralım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sayac</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sayac</span>
 </pre></div>
 </div>
 <p>Bu komutu verdiğimiz anda, <cite>sayac.py</cite> programı çalışmaya başlayacaktır. Ancak
@@ -428,7 +436,7 @@ olarak aktararak, ilgili modül içindeki işlevleri kullanabilirsiniz.</p>
 <p>Diyelim ki biz, yukarıda yazdığımız <cite>sayac.py</cite> adlı dosya içindeki kodların
 düzgün çalışıp çalışmadığını kontrol etmek istiyoruz. Bunun için <cite>sayac.py</cite>
 dosyasındaki kodlarda şu değişikliği yapalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sesli_harfler</span> <span class="o">=</span> <span class="s1">&#39;aeıioöuü&#39;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">sesli_harfler</span> <span class="o">=</span> <span class="s1">&#39;aeıioöuü&#39;</span>
 <span class="n">sayaç</span> <span class="o">=</span> <span class="mi">0</span>
 
 <span class="k">def</span> <span class="nf">kelime_sor</span><span class="p">():</span>
@@ -455,18 +463,18 @@ dosyasındaki kodlarda şu değişikliği yapalım:</p>
     <span class="n">çalıştır</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Gördüğünüz gibi, burada <code class="docutils literal notranslate"><span class="pre">çalıştır()</span></code> fonksiyonunu <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span>
+<p>Gördüğünüz gibi, burada <code class="docutils literal"><span class="pre">çalıştır()</span></code> fonksiyonunu <code class="docutils literal"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span>
 <span class="pre">'__main__'</span></code> bloğuna aldık. Buna göre, eğer <cite>__name__</cite> niteliğinin değeri
-<cite>‘__main__’</cite> ise <code class="docutils literal notranslate"><span class="pre">çalıştır()</span></code> fonksiyonu işlemeye başlayacak. Aksi halde
+<cite>‘__main__’</cite> ise <code class="docutils literal"><span class="pre">çalıştır()</span></code> fonksiyonu işlemeye başlayacak. Aksi halde
 herhangi bir şey olmayacak.</p>
-<p>Şimdi <cite>sayac.py</cite> programını komut satırı üzerinden <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">sayac.py</span></code> gibi bir
+<p>Şimdi <cite>sayac.py</cite> programını komut satırı üzerinden <code class="docutils literal"><span class="pre">python</span> <span class="pre">sayac.py</span></code> gibi bir
 komutla çalıştırın. Programınız normal bir şekilde çalışacaktır. Çünkü,
 bildiğiniz gibi, bir Python programı bağımsız bir program olarak
 çalıştırıldığında <cite>__name__</cite> niteliğinin değeri <cite>‘__main__’</cite> olur.
-Dolayısıyla da <code class="docutils literal notranslate"><span class="pre">çalıştır()</span></code> fonksiyonu işlemeye başlar.</p>
+Dolayısıyla da <code class="docutils literal"><span class="pre">çalıştır()</span></code> fonksiyonu işlemeye başlar.</p>
 <p>Şimdi de etkileşimli kabuğu tekrar açın ve şu komutu vererek modülü içe
 aktarın:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sayac</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sayac</span>
 </pre></div>
 </div>
 <p>Bu defa programımız çalışmaya başlamadı. Çünkü bu kez, programımızı bir modül
@@ -477,7 +485,7 @@ olmasından yararlanarak, programınızın farklı durumlarda farklı tepkiler
 vermesini sağlamış olduk.</p>
 <p><cite>sayac</cite> modülünü içe aktardıktan sonra, bu modülün içinde neler olduğunu nasıl
 kontrol edebileceğinizi biliyorsunuz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">sayac</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">sayac</span><span class="p">)</span>
 
 <span class="go">[&#39;__builtins__&#39;, &#39;__cached__&#39;, &#39;__doc__&#39;, &#39;__file__&#39;, &#39;__loader__&#39;,</span>
 <span class="go"> &#39;__name__&#39;, &#39;__package__&#39;, &#39;__spec__&#39;, &#39;artır&#39;, &#39;ekrana_bas&#39;,</span>
@@ -486,8 +494,8 @@ kontrol edebileceğinizi biliyorsunuz:</p>
 </div>
 <p>Bu listede, <cite>sayac</cite> modülüne ait bütün nitelik ve fonksiyonları görebiliyoruz.
 Bunları, başka modüllerde olduğu gibi kullanma imkanına sahibiz.</p>
-<p>Mesela bu listede görünen <code class="docutils literal notranslate"><span class="pre">seslidir()</span></code> fonksiyonunu kullanalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sayac</span><span class="o">.</span><span class="n">seslidir</span><span class="p">(</span><span class="s1">&#39;ö&#39;</span><span class="p">)</span>
+<p>Mesela bu listede görünen <code class="docutils literal"><span class="pre">seslidir()</span></code> fonksiyonunu kullanalım:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sayac</span><span class="o">.</span><span class="n">seslidir</span><span class="p">(</span><span class="s1">&#39;ö&#39;</span><span class="p">)</span>
 
 <span class="go">True</span>
 
@@ -496,13 +504,13 @@ Bunları, başka modüllerde olduğu gibi kullanma imkanına sahibiz.</p>
 <span class="go">False</span>
 </pre></div>
 </div>
-<p>Gördüğünüz gibi, <cite>sayac.py</cite> içinde tanımladığımız <code class="docutils literal notranslate"><span class="pre">seslidir()</span></code> fonksiyonunu,
+<p>Gördüğünüz gibi, <cite>sayac.py</cite> içinde tanımladığımız <code class="docutils literal"><span class="pre">seslidir()</span></code> fonksiyonunu,
 rastgele harflerin birer sesli harf olup olmadığını denetlemek için de
-kullanabiliyoruz. Bu şekilde aynı zamanda <code class="docutils literal notranslate"><span class="pre">seslidir()</span></code> fonksiyonunun düzgün
+kullanabiliyoruz. Bu şekilde aynı zamanda <code class="docutils literal"><span class="pre">seslidir()</span></code> fonksiyonunun düzgün
 bir şekilde çalışıp çalışmadığını, sesli olan ve olmayan harfleri başarılı bir
 şekilde birbirinden ayırt edip edemediğini de test etmiş oluyoruz.</p>
 <p>Devam edelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sayac</span><span class="o">.</span><span class="n">sesli_harfler</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sayac</span><span class="o">.</span><span class="n">sesli_harfler</span>
 
 <span class="go">&#39;aeıioöuü&#39;</span>
 </pre></div>
@@ -521,7 +529,7 @@ aşağıdaki kodlara bakın ve hem okunaklılık hem de yönetilebilirlik bakım
 kodların bize ne gibi faydalar sağlıyor olabileceğine dair fikir yürütmeye
 çalışın. Anlamadığınız kısımlar olursa bunları geçin gitsin. Anladığınız
 kısımlar ise yanınıza kâr kalsın.</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">HarfSayacı</span><span class="p">:</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">HarfSayacı</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sesli_harfler</span> <span class="o">=</span> <span class="s1">&#39;aeıioöuü&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sayaç</span> <span class="o">=</span> <span class="mi">0</span>
@@ -570,7 +578,7 @@ arasındaki ilişki gayet net bir şekilde görünüyor. Eğer ileride bu sayaca
 bir işlev eklemek istersek, neyi nereye yerleştirmemiz gerektiği çok açık.
 Mesela ilerde bu kodlara sesli harflerle birlikte bir de sessiz harf denetim
 işlevi eklemek istersek, gerekli değişiklikleri kolayca yapabiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">HarfSayacı</span><span class="p">:</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">HarfSayacı</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sesli_harfler</span> <span class="o">=</span> <span class="s1">&#39;aeıioöuü&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sessiz_harfler</span> <span class="o">=</span> <span class="s1">&#39;bcçdfgğhjklmnprsştvyz&#39;</span>
@@ -639,7 +647,7 @@ başka her türlü özelliği tek tek belirleyebilirsiniz.</p>
 olmalıdır. Zira fonksiyonlarda olduğu gibi, bir sınıfı kullanabilmek için de
 öncelikle o sınıfı tanımlamamız gerekiyor. Mesela, yukarıda bahsettiğimiz işe
 uygun olarak, <cite>Çalışan</cite> adlı bir sınıf tanımlayalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">:</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">:</span>
     <span class="k">pass</span>
 </pre></div>
 </div>
@@ -648,7 +656,7 @@ uygun olarak, <cite>Çalışan</cite> adlı bir sınıf tanımlayalım:</p>
 <cite>class</cite> adlı bir ifadeden yararlanıyoruz. Bu ifadenin ardından gelen
 <cite>Çalışan</cite> kelimesi ise bu sınıfın adıdır.</p>
 <p>Eğer arzu ederseniz, yukarıdaki sınıfı şu şekilde de tanımlayabilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
     <span class="k">pass</span>
 </pre></div>
 </div>
@@ -656,12 +664,12 @@ uygun olarak, <cite>Çalışan</cite> adlı bir sınıf tanımlayalım:</p>
 de. Her ikisi de aynı kapıya çıkar. Ayrıca sınıf adlarında, yukarıda olduğu gibi
 büyük harf kullanmak ve birden fazla kelimeden oluşan sınıf adlarının ilk
 harflerini büyük yazıp bunları birleştirmek adettendir. Yani:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ÇalışanSınıfı</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ÇalışanSınıfı</span><span class="p">():</span>
     <span class="k">pass</span>
 </pre></div>
 </div>
 <p>Veya parantezsiz olarak:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ÇalışanSınıfı</span><span class="p">:</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ÇalışanSınıfı</span><span class="p">:</span>
     <span class="k">pass</span>
 </pre></div>
 </div>
@@ -670,12 +678,12 @@ Fonksiyonları tanımlarken nasıl <cite>def</cite> deyimini kullanıyorsak, sı
 tanımlamak için de <cite>class</cite> deyimini kullanıyoruz.</p>
 <p>Örnek olması açısından, yukarıda bahsettiğimiz ‘Asker’ grubu için de bir sınıf
 tanımlayalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Asker</span><span class="p">:</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Asker</span><span class="p">:</span>
     <span class="k">pass</span>
 </pre></div>
 </div>
 <p>… veya:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Asker</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Asker</span><span class="p">():</span>
     <span class="k">pass</span>
 </pre></div>
 </div>
@@ -687,7 +695,7 @@ nasıl kullanacağımızı incelemeye geçebiliriz.</p>
 <p>Yukarıda, boş bir sınıfı nasıl tanımlayacağımızı öğrendik. Elbette
 tanımladığımız sınıflar hep boş kalmayacak. Bu sınıflara birtakım nitelikler
 ekleyerek bu sınıfları kullanışlı hale getirebiliriz. Mesela:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
     <span class="n">kabiliyetleri</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">unvanı</span> <span class="o">=</span> <span class="s1">&#39;işçi&#39;</span>
 </pre></div>
@@ -701,7 +709,7 @@ bulunur. Bildiğiniz gibi, bir fonksiyonu tanımladıktan sonra, o fonksiyonun
 işlemeye başlaması için, o fonksiyonun mutlaka çağrılması gerekir. Çağrılmayan
 fonksiyonlar çalışmaz. Mesela yukarıdaki sınıfa benzeyen şöyle bir fonksiyon
 tanımladığımızı düşünün:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">çalışan</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">çalışan</span><span class="p">():</span>
     <span class="n">kabiliyetleri</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">unvanı</span> <span class="o">=</span> <span class="s1">&#39;işçi&#39;</span>
 
@@ -711,12 +719,12 @@ tanımladığımızı düşünün:</p>
 </div>
 <p>Bu fonksiyonun çalışması için, kodlarımızın herhangi bir yerinde bu fonksiyonu
 çağırmamız lazım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">çalışan</span><span class="p">()</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">çalışan</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Ancak sınıflar farklıdır. Bunu görmek için yukarıdaki fonksiyonu bir sınıf
 haline getirelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
     <span class="n">kabiliyetleri</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">unvanı</span> <span class="o">=</span> <span class="s1">&#39;işçi&#39;</span>
 
@@ -732,7 +740,7 @@ geçerlidir. Yani yukarıdaki kodların <cite>deneme.py</cite> adlı bir dosyada
 varsayarsak, bu modülü şu komutla içe aktardığımızda, sınıfı kodlarımızın
 herhangi bir yerinde çağırmamış olmamıza rağmen sınıf içeriği çalışmaya
 başlayacaktır:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">deneme</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">deneme</span>
 
 <span class="go">[]</span>
 <span class="go">işçi</span>
@@ -740,7 +748,7 @@ başlayacaktır:</p>
 </div>
 <p>Eğer sınıf niteliklerinin ne zaman çalışacağını kendiniz kontrol etmek
 isterseniz, bu nitelikleri sınıf dışında kullanabilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
     <span class="n">kabiliyetleri</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">unvanı</span> <span class="o">=</span> <span class="s1">&#39;işçi&#39;</span>
 
@@ -748,7 +756,7 @@ isterseniz, bu nitelikleri sınıf dışında kullanabilirsiniz:</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">Çalışan</span><span class="o">.</span><span class="n">unvanı</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Burada <code class="docutils literal notranslate"><span class="pre">Çalışan()</span></code> adlı sınıfın niteliklerine nasıl eriştiğimize dikkat edin.
+<p>Burada <code class="docutils literal"><span class="pre">Çalışan()</span></code> adlı sınıfın niteliklerine nasıl eriştiğimize dikkat edin.
 Gördüğünüz gibi, sınıf niteliklerine erişmek için doğrudan sınıfın adını
 parantezsiz bir şekilde kullanıyoruz. Eğer sınıf adlarını parantezli bir şekilde
 yazarsak başka bir şey yapmış oluruz. Bundan biraz sonra bahsedeceğiz. Biz
@@ -757,9 +765,9 @@ kullanmamız gerektiğini bilelim yeter.</p>
 <p>Hatırlarsanız, bu bölüme başlarken, nesne tabanlı programlama yaklaşımının,
 özellikle birtakım ortak niteliklere ve davranış şekillerine sahip gruplar
 tanımlamak gerektiğinde son derece kullanışlı olduğunu söylemiştik. Gelin
-isterseniz yukarıdaki <code class="docutils literal notranslate"><span class="pre">Çalışan()</span></code> sınıfına birkaç nitelik daha ekleyerek bu
+isterseniz yukarıdaki <code class="docutils literal"><span class="pre">Çalışan()</span></code> sınıfına birkaç nitelik daha ekleyerek bu
 iddiamızı destekleyelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
     <span class="n">kabiliyetleri</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">unvanı</span> <span class="o">=</span> <span class="s1">&#39;işçi&#39;</span>
     <span class="n">maaşı</span> <span class="o">=</span> <span class="mi">1500</span>
@@ -768,27 +776,27 @@ iddiamızı destekleyelim:</p>
 </pre></div>
 </div>
 <p>Burada belli <cite>kabiliyetleri</cite>, <cite>unvanı</cite>, <cite>maaşı</cite>, <cite>memleketi</cite> ve <cite>doğum_tarihi</cite>
-olan bir <code class="docutils literal notranslate"><span class="pre">Çalışan()</span></code> sınıfı tanımladık. Yani ‘Çalışan’ adlı bir grubun ortak
+olan bir <code class="docutils literal"><span class="pre">Çalışan()</span></code> sınıfı tanımladık. Yani ‘Çalışan’ adlı bir grubun ortak
 niteliklerini belirledik. Elbette her çalışanın memleketi ve doğum tarihi farklı
 olacağı için sınıf içinde bu değişkenlere belli bir değer atamadık. Bunların
 birer karakter dizisi olacağını belirten bir işaret olması için yalnızca
 <cite>memleketi</cite> ve <cite>doğum_tarihi</cite> adlı birer boş karakter dizisi tanımladık.</p>
 <p>Yukarıda tanımladığımız sınıf niteliklerine, doğrudan sınıf adını kullanarak
 erişebileceğimizi biliyorsunuz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Çalışan</span><span class="o">.</span><span class="n">maaşı</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Çalışan</span><span class="o">.</span><span class="n">maaşı</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">Çalışan</span><span class="o">.</span><span class="n">memleketi</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">Çalışan</span><span class="o">.</span><span class="n">doğum_tarihi</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Eğer isterseniz bu sınıfa yeni sınıf nitelikleri de ekleyebilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">Çalışan</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="s1">&#39;Ahmet&#39;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">Çalışan</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="s1">&#39;Ahmet&#39;</span>
 <span class="n">Çalışan</span><span class="o">.</span><span class="n">yaş</span> <span class="o">=</span> <span class="mi">40</span>
 </pre></div>
 </div>
 <p>Gayet güzel…</p>
 <p>Ancak burada şöyle bir sorun var: Biz yukarıdaki gibi doğrudan sınıf adını
 kullanarak öğelere eriştiğimizde kodlarımız tek kullanımlık olmuş oluyor. Yani
-bu şekilde ancak tek bir <code class="docutils literal notranslate"><span class="pre">Çalışan()</span></code> nesnesi (‘nesne’ kavramına ilerde
+bu şekilde ancak tek bir <code class="docutils literal"><span class="pre">Çalışan()</span></code> nesnesi (‘nesne’ kavramına ilerde
 değineceğiz), dolayısıyla da tek bir çalışan oluşturma imkanı elde edebiliyoruz.
 Ama biz, mantıken, sınıf içinde belirtilen özellikleri taşıyan, Ahmet, Mehmet,
 Veli, Selim, Selin ve buna benzer, istediğimiz sayıda çalışan
@@ -797,7 +805,7 @@ oluşturabilmeliyiz. Peki ama nasıl?</p>
 <div class="section" id="siniflarin-orneklenmesi">
 <h2>Sınıfların Örneklenmesi<a class="headerlink" href="#siniflarin-orneklenmesi" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Biraz önce şöyle bir sınıf tanımlamıştık:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
     <span class="n">kabiliyetleri</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">unvanı</span> <span class="o">=</span> <span class="s1">&#39;işçi&#39;</span>
     <span class="n">maaşı</span> <span class="o">=</span> <span class="mi">1500</span>
@@ -807,12 +815,12 @@ oluşturabilmeliyiz. Peki ama nasıl?</p>
 </div>
 <p>Daha önce de söylediğimiz gibi, sınıflar belli birtakım ortak özelliklere sahip
 gruplar tanımlamak için biçilmiş kaftandır. Burada da, her bir çalışan için ortak
-birtakım nitelikler tanımlayan <code class="docutils literal notranslate"><span class="pre">Çalışan()</span></code> adlı bir sınıf oluşturduk. Ancak
+birtakım nitelikler tanımlayan <code class="docutils literal"><span class="pre">Çalışan()</span></code> adlı bir sınıf oluşturduk. Ancak
 elbette bu sınıfın bir işe yarayabilmesi için, biraz önce de değindiğimiz gibi,
 bu sınıfı temel alarak, bu sınıfta belirtilen nitelikleri taşıyan birden fazla
 sınıf üyesi meydana getirebilmemiz lazım.</p>
 <p>Şimdi dikkatlice bakın:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
     <span class="n">kabiliyetleri</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">unvanı</span> <span class="o">=</span> <span class="s1">&#39;işçi&#39;</span>
     <span class="n">maaşı</span> <span class="o">=</span> <span class="mi">1500</span>
@@ -829,17 +837,17 @@ programlama dilinde bir fonksiyonu kullanışlı hale getirme işlemine ‘çağ
 bir sınıfı kullanışlı hale getirme işlemine ise ‘örnekleme’ adı veriyoruz.</p>
 <p>Örnekleme kavramını daha iyi anlayabilmek için başka bir sınıf daha
 oluşturalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Asker</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Asker</span><span class="p">():</span>
     <span class="n">rütbesi</span> <span class="o">=</span> <span class="s1">&#39;Er&#39;</span>
     <span class="n">standart_teçhizat</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;G3&#39;</span><span class="p">,</span> <span class="s1">&#39;kasatura&#39;</span><span class="p">,</span> <span class="s1">&#39;süngü&#39;</span><span class="p">,</span> <span class="s1">&#39;el bombası&#39;</span><span class="p">]</span>
     <span class="n">gücü</span> <span class="o">=</span> <span class="mi">60</span>
     <span class="n">birliği</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
 </pre></div>
 </div>
-<p>Burada da belli birtakım niteliklere sahip <code class="docutils literal notranslate"><span class="pre">Asker()</span></code> adlı bir sınıf
+<p>Burada da belli birtakım niteliklere sahip <code class="docutils literal"><span class="pre">Asker()</span></code> adlı bir sınıf
 tanımladık. Bu sınıfın niteliklerine doğrudan sınıf adını kullanarak
 erişebileceğimizi biliyorsunuz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">Asker</span><span class="o">.</span><span class="n">rütbesi</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">Asker</span><span class="o">.</span><span class="n">rütbesi</span>
 <span class="n">Asker</span><span class="o">.</span><span class="n">standart_teçhizat</span>
 <span class="n">Asker</span><span class="o">.</span><span class="n">gücü</span>
 <span class="n">Asker</span><span class="o">.</span><span class="n">birliği</span>
@@ -851,14 +859,14 @@ bu sınıfı çağırırken buna bir isim vermeliyiz, ki bu isim üzerinden sın
 niteliklerine erişebilelim.</p>
 <p>Mesela bu sınıfa daha sonra atıfta bulunabilmek amacıyla, bu sınıf için <cite>mehmet</cite>
 adlı bir referans noktası oluşturalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">mehmet</span> <span class="o">=</span> <span class="n">Asker</span><span class="p">()</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">mehmet</span> <span class="o">=</span> <span class="n">Asker</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>İşte, teknik olarak ifade etmemiz gerekirse, sınıfları bir isme atama işlemine
 örnekleme (veya örneklendirme) adı veriyoruz.</p>
 <p>Burada <cite>ahmet</cite> ve <cite>mehmet</cite>, ait oldukları sınıfların birer ‘sureti’ veya başka
-bir deyişle ‘örneği’dir (<em>instance</em>). <cite>mehmet</cite>’in, <code class="docutils literal notranslate"><span class="pre">Asker()</span></code> adlı sınıfın bir
-örneği, <cite>ahmet</cite>’inse <code class="docutils literal notranslate"><span class="pre">Çalışan()</span></code> adlı sınıfın bir örneği olması demek,
+bir deyişle ‘örneği’dir (<em>instance</em>). <cite>mehmet</cite>’in, <code class="docutils literal"><span class="pre">Asker()</span></code> adlı sınıfın bir
+örneği, <cite>ahmet</cite>’inse <code class="docutils literal"><span class="pre">Çalışan()</span></code> adlı sınıfın bir örneği olması demek,
 <cite>mehmet</cite>’in ve <cite>ahmet</cite>’in, ilgili sınıfların bütün özelliklerini taşıyan birer
 üyesi olması demektir.</p>
 <div class="admonition warning">
@@ -868,7 +876,7 @@ bir deyişle ‘örneği’dir (<em>instance</em>). <cite>mehmet</cite>’in, <c
 karşıladığımız ‘instance’ kavramı, nesne tabanlı programlamanın önemli teknik
 kavramlarından biridir.</p>
 </div>
-<p>Biz bir sınıfı çağırdığımızda (yani <code class="docutils literal notranslate"><span class="pre">Asker()</span></code> veya <code class="docutils literal notranslate"><span class="pre">Çalışan()</span></code> komutunu
+<p>Biz bir sınıfı çağırdığımızda (yani <code class="docutils literal"><span class="pre">Asker()</span></code> veya <code class="docutils literal"><span class="pre">Çalışan()</span></code> komutunu
 verdiğimizde), o sınıfı örneklemiş oluyoruz. Örneklediğimiz sınıfı bir değişkene
 atadığımızda ise o sınıfın bir örneğini çıkarmış, yani o sınıfın bütün
 özelliklerini taşıyan bir üye meydana getirmiş oluyoruz.</p>
@@ -893,7 +901,7 @@ Dolayısıyla, bir kavramdan bahsederken onun aslının ne olduğunu da belirtme
 İngilizce bilip de konuyu daha ileri bir düzeyde araştırmak isteyenlere kolaylık
 sağlayacaktır.</p>
 <p>Ne diyorduk? Eğer elimizde şöyle bir kod varsa:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sipariş</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sipariş</span><span class="p">():</span>
     <span class="n">firma</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
     <span class="n">miktar</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">sipariş_tarihi</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
@@ -911,27 +919,27 @@ kullanıyoruz.</p>
 parantezsiz olarak kullanma imkanına sahibiz.</p>
 <p>Sınıfın gövdesinde tanımladığımız şu değişkenler birer sınıf niteliğidir (<em>class
 attribute</em>):</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">firma</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">firma</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
 <span class="n">miktar</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">sipariş_tarihi</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
 <span class="n">teslim_tarihi</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
 <span class="n">stok_adedi</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">jilet</span> <span class="pre">=</span> <span class="pre">Sipariş()</span></code> komutunu verdiğimizde ise, biraz önce tanımladığımız
+<p><code class="docutils literal"><span class="pre">jilet</span> <span class="pre">=</span> <span class="pre">Sipariş()</span></code> komutunu verdiğimizde ise, biraz önce tanımladığımız
 sınıfı örnekleyip (<em>instantiation</em>), bunu <cite>jilet</cite> adlı bir örneğe (<em>instance</em>)
-atamış oluyoruz. Yani <cite>jilet</cite>, <code class="docutils literal notranslate"><span class="pre">Sipariş()</span></code> adlı sınıfın bir örneği olmuş
+atamış oluyoruz. Yani <cite>jilet</cite>, <code class="docutils literal"><span class="pre">Sipariş()</span></code> adlı sınıfın bir örneği olmuş
 oluyor. Bir sınıftan istediğimiz sayıda örnek çıkarabiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">kalem</span> <span class="o">=</span> <span class="n">Sipariş</span><span class="p">()</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">kalem</span> <span class="o">=</span> <span class="n">Sipariş</span><span class="p">()</span>
 <span class="n">pergel</span> <span class="o">=</span> <span class="n">Sipariş</span><span class="p">()</span>
 <span class="n">çikolata</span> <span class="o">=</span> <span class="n">Sipariş</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Bu şekilde <code class="docutils literal notranslate"><span class="pre">Sipariş()</span></code> sınıfını üç kez örneklemiş, yani bu sınıfın bütün
+<p>Bu şekilde <code class="docutils literal"><span class="pre">Sipariş()</span></code> sınıfını üç kez örneklemiş, yani bu sınıfın bütün
 özelliklerini taşıyan üç farklı üye meydana getirmiş oluyoruz.</p>
 <p>Bu sınıf örneklerini kullanarak, ilgili sınıfın niteliklerine (<em>attribute</em>)
 erişebiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">kalem</span> <span class="o">=</span> <span class="n">Sipariş</span><span class="p">()</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">kalem</span> <span class="o">=</span> <span class="n">Sipariş</span><span class="p">()</span>
 
 <span class="n">kalem</span><span class="o">.</span><span class="n">firma</span>
 <span class="n">kalem</span><span class="o">.</span><span class="n">miktar</span>
@@ -943,7 +951,7 @@ erişebiliriz:</p>
 <p>Bildiğiniz gibi, eriştiğimiz bu nitelikler birer sınıf niteliği olduğu için,
 sınıfı hiç örneklemeden, bu niteliklere doğrudan sınıf adı üzerinden de
 erişebilirdik:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">Sipariş</span><span class="o">.</span><span class="n">firma</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">Sipariş</span><span class="o">.</span><span class="n">firma</span>
 <span class="n">Sipariş</span><span class="o">.</span><span class="n">miktar</span>
 <span class="n">Sipariş</span><span class="o">.</span><span class="n">sipariş_tarihi</span>
 <span class="n">Sipariş</span><span class="o">.</span><span class="n">teslim_tarihi</span>
@@ -961,7 +969,7 @@ hiçbir sakıncası olmadığını bilin.</p>
 <p>Gelin şimdi yukarıda öğrendiklerimizi kullanarak ufak tefek uygulama çalışmaları
 yapalım.</p>
 <p>Sınıfımız şu olsun:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sipariş</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sipariş</span><span class="p">():</span>
     <span class="n">firma</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
     <span class="n">miktar</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">sipariş_tarihi</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
@@ -973,35 +981,35 @@ yapalım.</p>
 kabuğu son derece uygun bir ortamdır. O halde yukarıdaki sınıfı <cite>sipariş.py</cite>
 adlı bir dosyaya kaydedelim, bu dosyanın bulunduğu konumda bir etkileşimli
 kabuk ortamı açalım ve <cite>sipariş.py</cite> dosyasını bir modül olarak içe aktaralım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sipariş</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sipariş</span>
 </pre></div>
 </div>
 <p>Böylece <cite>sipariş</cite> modülü içindeki nitelik ve metotlara erişim sağladık. Bunu
 teyit edelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">sipariş</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">sipariş</span><span class="p">)</span>
 
 <span class="go">[&#39;Sipariş&#39;, &#39;__builtins__&#39;, &#39;__cached__&#39;, &#39;__doc__&#39;, &#39;__file__&#39;,</span>
 <span class="go"> &#39;__loader__&#39;, &#39;__name__&#39;, &#39;__package__&#39;, &#39;__spec__&#39;]</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">Sipariş()</span></code> adlı sınıfı listenin en başında görebilirsiniz. O halde gelin bu
+<p><code class="docutils literal"><span class="pre">Sipariş()</span></code> adlı sınıfı listenin en başında görebilirsiniz. O halde gelin bu
 sınıfı örnekleyerek kullanılabilir hale getirelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gofret</span> <span class="o">=</span> <span class="n">sipariş</span><span class="o">.</span><span class="n">Sipariş</span><span class="p">()</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gofret</span> <span class="o">=</span> <span class="n">sipariş</span><span class="o">.</span><span class="n">Sipariş</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Elbette <code class="docutils literal notranslate"><span class="pre">Sipariş()</span></code> adlı sınıf <cite>sipariş</cite> adlı modül içinde bulunduğundan, bu
+<p>Elbette <code class="docutils literal"><span class="pre">Sipariş()</span></code> adlı sınıf <cite>sipariş</cite> adlı modül içinde bulunduğundan, bu
 sınıfa <cite>sipariş</cite> önekiyle erişiyoruz. Tabii biz isteseydik modülü şu şekilde de
 içe aktarabilirdik:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sipariş</span> <span class="k">import</span> <span class="n">Sipariş</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sipariş</span> <span class="k">import</span> <span class="n">Sipariş</span>
 </pre></div>
 </div>
-<p>Böylece <code class="docutils literal notranslate"><span class="pre">Sipariş()</span></code> sınıfına öneksiz olarak erişebilirdik:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gofret</span> <span class="o">=</span> <span class="n">Sipariş</span><span class="p">()</span>
+<p>Böylece <code class="docutils literal"><span class="pre">Sipariş()</span></code> sınıfına öneksiz olarak erişebilirdik:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gofret</span> <span class="o">=</span> <span class="n">Sipariş</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Ancak mevcut isim alanını kirletmemek ve bu alanı nereden geldiği belli olmayan
-birtakım nitelik ve metotlarla doldurmamak için biz <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">modül_adı</span></code>
-biçimini tercih ediyoruz. Aksi halde, bu kodları okuyanlar, <code class="docutils literal notranslate"><span class="pre">Sipariş()</span></code> adlı
+birtakım nitelik ve metotlarla doldurmamak için biz <code class="docutils literal"><span class="pre">import</span> <span class="pre">modül_adı</span></code>
+biçimini tercih ediyoruz. Aksi halde, bu kodları okuyanlar, <code class="docutils literal"><span class="pre">Sipariş()</span></code> adlı
 sınıfın <cite>sipariş</cite> adlı bir modüle ait olduğunu anlamayacak, bu sınıfı ilk olarak
 mevcut dosya içinde bulmaya çalışacaklardır. Ama biz modül adını sınıf adına
 eklediğimizde modülün nereden geldiği gayet açık bir şekilde anlaşılabiliyor.
@@ -1009,12 +1017,12 @@ Böylece hem kodları okuyan başkalarının işini hem de birkaç ay sonra kend
 kodlarımıza tekrar bakmak istediğimizde kendi işimizi kolaylaştırmış oluyoruz.</p>
 <p>Neyse… Lafı daha fazla dolandırmadan kaldığımız yerden devam edelim…</p>
 <p>Sınıfımızı şu şekilde içe aktarmış ve örneklemiştik:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sipariş</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sipariş</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gofret</span> <span class="o">=</span> <span class="n">sipariş</span><span class="o">.</span><span class="n">Sipariş</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Gelin şimdi bir de <cite>gofret</cite> örneğinin (<em>instance</em>) içeriğini kontrol edelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">gofret</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">gofret</span><span class="p">)</span>
 
 <span class="go">[&#39;__class__&#39;, &#39;__delattr__&#39;, &#39;__dict__&#39;, &#39;__dir__&#39;, &#39;__doc__&#39;,</span>
 <span class="go"> &#39;__eq__&#39;, &#39;__format__&#39;, &#39;__ge__&#39;, &#39;__getattribute__&#39;, &#39;__gt__&#39;,</span>
@@ -1029,19 +1037,19 @@ kodlarımıza tekrar bakmak istediğimizde kendi işimizi kolaylaştırmış olu
 var.</p>
 <p>Bu sınıf niteliklerinden, adı <cite>firma</cite> olanı kullanarak siparişin hangi firmadan
 yapılacağını belirleyebiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gofret</span><span class="o">.</span><span class="n">firma</span> <span class="o">=</span> <span class="s1">&#39;Öz İstihza ve Şerikleri Gıda, Ticaret Anonim Şirketi&#39;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gofret</span><span class="o">.</span><span class="n">firma</span> <span class="o">=</span> <span class="s1">&#39;Öz İstihza ve Şerikleri Gıda, Ticaret Anonim Şirketi&#39;</span>
 </pre></div>
 </div>
 <p>Böylece, sınıf içindeki bir niteliğe yeni bir değer atamış olduk. İsterseniz
 sipariş miktarını da belirleyelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gofret</span><span class="o">.</span><span class="n">miktar</span> <span class="o">=</span> <span class="mi">1000</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gofret</span><span class="o">.</span><span class="n">miktar</span> <span class="o">=</span> <span class="mi">1000</span>
 </pre></div>
 </div>
 <p>Öteki sınıf niteliklerini de ihtiyacınıza göre ayarlayabilir, hatta bu sınıfa
 yeni nitelikler de ekleyebilirsiniz.</p>
 <p>Gelin isterseniz pratik olması bakımından bir örnek daha verelim.</p>
 <p>Elimizde şöyle bir sınıf olsun:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
     <span class="n">kabiliyetleri</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">unvanı</span> <span class="o">=</span> <span class="s1">&#39;işçi&#39;</span>
     <span class="n">maaşı</span> <span class="o">=</span> <span class="mi">1500</span>
@@ -1052,16 +1060,16 @@ yeni nitelikler de ekleyebilirsiniz.</p>
 <p>Burada <cite>kabiliyetleri</cite>, <cite>unvanı</cite>, <cite>maaşı</cite>, <cite>memleketi</cite> ve <cite>doğum_tarihi</cite> adlı
 beş adet değişken tanımladık. Teknik dilde bu değişkenlere ‘sınıf niteliği’
 (<em>class attribute</em>) adı verildiğini biliyorsunuz.</p>
-<p><code class="docutils literal notranslate"><span class="pre">Çalışan()</span></code> sınıfı içindeki niteliklere erişmek için birkaç tane örnek
+<p><code class="docutils literal"><span class="pre">Çalışan()</span></code> sınıfı içindeki niteliklere erişmek için birkaç tane örnek
 çıkaralım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">ahmet</span> <span class="o">=</span> <span class="n">Çalışan</span><span class="p">()</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">ahmet</span> <span class="o">=</span> <span class="n">Çalışan</span><span class="p">()</span>
 <span class="n">mehmet</span> <span class="o">=</span> <span class="n">Çalışan</span><span class="p">()</span>
 <span class="n">ayşe</span> <span class="o">=</span> <span class="n">Çalışan</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Bu şekilde <code class="docutils literal notranslate"><span class="pre">Çalışan()</span></code> sınıfının üç farklı örneğini oluşturmuş olduk. Bu
+<p>Bu şekilde <code class="docutils literal"><span class="pre">Çalışan()</span></code> sınıfının üç farklı örneğini oluşturmuş olduk. Bu
 sınıfın niteliklerine, oluşturduğumuz bu örnekler üzerinden erişebiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">ahmet</span><span class="o">.</span><span class="n">kabiliyetleri</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">ahmet</span><span class="o">.</span><span class="n">kabiliyetleri</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">ahmet</span><span class="o">.</span><span class="n">unvanı</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">mehmet</span><span class="o">.</span><span class="n">maaşı</span><span class="p">)</span>
@@ -1073,29 +1081,29 @@ sınıfın niteliklerine, oluşturduğumuz bu örnekler üzerinden erişebiliriz
 </div>
 <p>Çıkardığımız örnekler aracılığıyla sınıf nitelikleri üzerinde değişiklik de
 yapabiliyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">ahmet</span><span class="o">.</span><span class="n">kabiliyetleri</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;prezantabl&#39;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">ahmet</span><span class="o">.</span><span class="n">kabiliyetleri</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;prezantabl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Şimdi burada bir duralım. Çünkü burada çok sinsi bir sorunla karşı karşıyayız.
 Dikkatlice bakın.</p>
-<p><code class="docutils literal notranslate"><span class="pre">Çalışan()</span></code> sınıfı için bir <cite>ahmet</cite> örneği oluşturalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">ahmet</span> <span class="o">=</span> <span class="n">Çalışan</span><span class="p">()</span>
+<p><code class="docutils literal"><span class="pre">Çalışan()</span></code> sınıfı için bir <cite>ahmet</cite> örneği oluşturalım:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">ahmet</span> <span class="o">=</span> <span class="n">Çalışan</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Buna ‘prezantabl’ kabiliyetini ekleyelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">ahmet</span><span class="o">.</span><span class="n">kabiliyetleri</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;prezantabl&#39;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">ahmet</span><span class="o">.</span><span class="n">kabiliyetleri</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;prezantabl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Bu kabiliyetin eklendiğini teyit edelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">ahmet</span><span class="o">.</span><span class="n">kabiliyetleri</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">ahmet</span><span class="o">.</span><span class="n">kabiliyetleri</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Şimdi <code class="docutils literal notranslate"><span class="pre">Çalışan()</span></code> sınıfının bir başka örneğini oluşturalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">selim</span> <span class="o">=</span> <span class="n">Çalışan</span><span class="p">()</span>
+<p>Şimdi <code class="docutils literal"><span class="pre">Çalışan()</span></code> sınıfının bir başka örneğini oluşturalım:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">selim</span> <span class="o">=</span> <span class="n">Çalışan</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Bu örneğin kabiliyetlerini kontrol edelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">selim</span><span class="o">.</span><span class="n">kabiliyetleri</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">selim</span><span class="o">.</span><span class="n">kabiliyetleri</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi, yalnızca <cite>ahmet</cite> örneğine eklemek istediğimiz ‘prezantabl’
@@ -1117,7 +1125,7 @@ olabilir veya olmayabilir. Önemli olan, sınıf niteliklerinin bu özelliğinin
 farkında olmanız ve kodlarınızı bu bilgi çerçevesinde yazmanızdır. Mesela
 yukarıdaki örnekte <cite>kabiliyetleri</cite> listesine eklenen öğelerin bütün örneklere
 yansıması istediğimiz bir şey değil. Ama eğer sınıfımız şöyle olsaydı:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
     <span class="n">personel_listesi</span> <span class="o">=</span> <span class="p">[]</span>
 </pre></div>
 </div>
@@ -1141,35 +1149,35 @@ anlamış olacaksınız.</p>
 <div class="section" id="init-fonksiyonu-ve-self">
 <h2>__init__ Fonksiyonu ve self<a class="headerlink" href="#init-fonksiyonu-ve-self" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Buraya gelene kadar, sınıflar ile ilgili verdiğimiz kod parçaları yalnızca sınıf
-niteliklerini içeriyordu. Mesela yukarıda tanımladığımız <code class="docutils literal notranslate"><span class="pre">Çalışan()</span></code> sınıfı
+niteliklerini içeriyordu. Mesela yukarıda tanımladığımız <code class="docutils literal"><span class="pre">Çalışan()</span></code> sınıfı
 içindeki <cite>unvanı</cite> ve <cite>kabiliyetleri</cite> adlı değişkenlerin birer sınıf
 niteliği olduğunu biliyoruz.</p>
 <p>Sınıf nitelikleri dışında, Python’da bir de örnek nitelikleri bulunur.</p>
 <p>Bildiğiniz gibi, Python’da sınıf niteliklerini tanımlamak için yapmamız gereken
 tek şey, sınıf tanımının hemen altına bunları alelade birer değişken gibi
 yazmaktan ibarettir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">():</span>
     <span class="n">sınıf_niteliği1</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">sınıf_niteliği2</span> <span class="o">=</span> <span class="mi">1</span>
 </pre></div>
 </div>
 <p>Örnek niteliklerini tanımlamak için ise iki yardımcı araca ihtiyacımız var:
-<code class="docutils literal notranslate"><span class="pre">__init__()</span></code> fonksiyonu ve <cite>self</cite>.</p>
+<code class="docutils literal"><span class="pre">__init__()</span></code> fonksiyonu ve <cite>self</cite>.</p>
 <p>Bu iki aracı şu şekilde kullanıyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">kabiliyetleri</span> <span class="o">=</span> <span class="p">[]</span>
 </pre></div>
 </div>
-<p>Bu arada, <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> fonksiyonunun nasıl yazıldığına dikkat ediyoruz. <cite>init</cite>
+<p>Bu arada, <code class="docutils literal"><span class="pre">__init__()</span></code> fonksiyonunun nasıl yazıldığına dikkat ediyoruz. <cite>init</cite>
 kelimesinin sağında ve solunda ikişer adet alt çizgi (<cite>_</cite>) bulunduğunu gözden
-kaçırmıyoruz. Ayrıca, <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> fonksiyonunu <cite>def</cite> ifadesine bitişik
+kaçırmıyoruz. Ayrıca, <code class="docutils literal"><span class="pre">__init__()</span></code> fonksiyonunu <cite>def</cite> ifadesine bitişik
 yazmamaya da bilhassa özen gösteriyoruz.</p>
 <p>‘init’ kelimesinin solunda ve sağında bulunan alt çizgiler sizi sakın
-ürkütmesin. Aslında <code class="docutils literal notranslate"><span class="pre">__init__()</span></code>, alelade bir fonksiyondan başka bir şey
+ürkütmesin. Aslında <code class="docutils literal"><span class="pre">__init__()</span></code>, alelade bir fonksiyondan başka bir şey
 değildir. Bu fonksiyonun öteki fonksiyonlardan tek farkı, sınıflar açısından
 biraz özel bir anlam taşıyor olmasıdır. Bu özel fonksiyonun görevi, sınıfımızı
-örneklediğimiz sırada, yani mesela <code class="docutils literal notranslate"><span class="pre">ahmet</span> <span class="pre">=</span> <span class="pre">Çalışan()</span></code> gibi bir komut
+örneklediğimiz sırada, yani mesela <code class="docutils literal"><span class="pre">ahmet</span> <span class="pre">=</span> <span class="pre">Çalışan()</span></code> gibi bir komut
 verdiğimiz anda oluşturulacak nitelikleri ve gerçekleştirilecek işlemleri
 tanımlamaktır. Bu fonksiyonun ilk parametresi her zaman <cite>self</cite> olmak zorundadır.
 Bu açıklama ilk anda kulağınıza biraz anlaşılmaz gelmiş olabilir. Ama hiç endişe
@@ -1177,14 +1185,14 @@ etmeyin. Bu bölümün sonuna vardığınızda bu iki öğeyi, adınızı bilir 
 olacaksınız.</p>
 <p>Hatırlarsanız, sınıf niteliklerini anlatırken bunların önemli bir özelliğinin,
 sınıfın çağrılmasına gerek olmadan çalışmaya başlaması olduğunu söylemiştik:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
     <span class="n">selam</span> <span class="o">=</span> <span class="s1">&#39;merhaba&#39;</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">selam</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Bu kodları çalıştırdığımız anda ekrana ‘merhaba’ çıktısı verilecektir. Örnek
 nitelikleri ise farklıdır:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">kabiliyetleri</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kabiliyetleri</span><span class="p">)</span>
@@ -1192,7 +1200,7 @@ nitelikleri ise farklıdır:</p>
 </div>
 <p>Bu kodları çalıştırdığınızda herhangi bir çıktı almazsınız. Bu kodların çıktı
 verebilmesi için sınıfımızı mutlaka örneklememiz lazım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">kabiliyetleri</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kabiliyetleri</span><span class="p">)</span>
@@ -1205,56 +1213,56 @@ verebilmesi için sınıfımızı mutlaka örneklememiz lazım:</p>
 gerekir. Ayrıca sınıf niteliklerinin aksine, örnek niteliklerine sınıf adları
 üzerinden erişemeyiz. Yani <cite>self.kabiliyetleri</cite> adlı örnek niteliğine erişmeye
 yönelik şöyle bir girişim bizi hüsrana uğratacaktır:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">Çalışan</span><span class="o">.</span><span class="n">kabiliyetleri</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">Çalışan</span><span class="o">.</span><span class="n">kabiliyetleri</span>
 </pre></div>
 </div>
 <p>Bu örnek niteliğine erişmek için örneklendirme mekanizmasından yararlanmamız
 lazım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">Çalışan</span><span class="p">()</span><span class="o">.</span><span class="n">kabiliyetleri</span> <span class="c1">#parantezlere dikkat!</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">Çalışan</span><span class="p">()</span><span class="o">.</span><span class="n">kabiliyetleri</span> <span class="c1">#parantezlere dikkat!</span>
 </pre></div>
 </div>
 <p>Gelin isterseniz, örneklendirme işlemini daha kullanışlı bir hale getirmek için,
 örneklendirdiğimiz sınıfı bir örneğe atayalım, yani bu sınıfın bir örneğini
 çıkaralım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">ahmet</span> <span class="o">=</span> <span class="n">Çalışan</span><span class="p">()</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">ahmet</span> <span class="o">=</span> <span class="n">Çalışan</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">ahmet</span> <span class="pre">=</span> <span class="pre">Çalışan()</span></code> kodu yardımıyla, <code class="docutils literal notranslate"><span class="pre">Çalışan</span></code> sınıfının bir örneğini
-çıkardık ve buna <cite>ahmet</cite> adını verdik. İşte tam bu anda <code class="docutils literal notranslate"><span class="pre">__init__()</span></code>
+<p><code class="docutils literal"><span class="pre">ahmet</span> <span class="pre">=</span> <span class="pre">Çalışan()</span></code> kodu yardımıyla, <code class="docutils literal"><span class="pre">Çalışan</span></code> sınıfının bir örneğini
+çıkardık ve buna <cite>ahmet</cite> adını verdik. İşte tam bu anda <code class="docutils literal"><span class="pre">__init__()</span></code>
 fonksiyonu çalışmaya başladı ve <cite>ahmet</cite> örneği için, <cite>kabiliyetleri</cite> adlı boş
 bir örnek niteliği oluşturdu.</p>
-<p>Peki yukarıda kodlarımızı yazarken <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> fonksiyonuna parametre olarak
+<p>Peki yukarıda kodlarımızı yazarken <code class="docutils literal"><span class="pre">__init__()</span></code> fonksiyonuna parametre olarak
 verdiğimiz ve <cite>kabiliyetleri</cite> listesinin başında kullandığımız <cite>self</cite> kelimesi
 ne oluyor?</p>
 <p>Öncelikle bilmemiz gereken şey, <cite>self</cite> kelimesinin, Python programlama dilinin
-söz diziminin gerektirdiği bir öğe olduğudur. Bu kelime, <code class="docutils literal notranslate"><span class="pre">Çalışan()</span></code> adlı
+söz diziminin gerektirdiği bir öğe olduğudur. Bu kelime, <code class="docutils literal"><span class="pre">Çalışan()</span></code> adlı
 sınıfın örneklerini temsil eder. Peki ‘self kelimesinin bir sınıfın örneklerini
 temsil ediyor olması’ ne anlama geliyor?</p>
 <p>Bildiğiniz gibi, bir sınıfın örneğini şu şekilde çıkarıyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">ahmet</span> <span class="o">=</span> <span class="n">Çalışan</span><span class="p">()</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">ahmet</span> <span class="o">=</span> <span class="n">Çalışan</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Bu <cite>ahmet</cite> örneğini kullanarak, <code class="docutils literal notranslate"><span class="pre">Çalışan()</span></code> sınıfının içindeki <cite>kabiliyetleri</cite>
+<p>Bu <cite>ahmet</cite> örneğini kullanarak, <code class="docutils literal"><span class="pre">Çalışan()</span></code> sınıfının içindeki <cite>kabiliyetleri</cite>
 adlı örnek niteliğine sınıf dışından erişebiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">ahmet</span><span class="o">.</span><span class="n">kabiliyetleri</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">ahmet</span><span class="o">.</span><span class="n">kabiliyetleri</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>İşte <cite>self</cite> kelimesi, yukarıdaki kodda yer alan <cite>ahmet</cite> kelimesini temsil
-ediyor. Yani <code class="docutils literal notranslate"><span class="pre">ahmet.kabiliyetleri</span></code> şeklinde bir kod yazabilmemizi sağlayan
-şey, <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> fonksiyonu içinde belirttiğimiz <cite>self</cite> kelimesidir. Eğer bu
+ediyor. Yani <code class="docutils literal"><span class="pre">ahmet.kabiliyetleri</span></code> şeklinde bir kod yazabilmemizi sağlayan
+şey, <code class="docutils literal"><span class="pre">__init__()</span></code> fonksiyonu içinde belirttiğimiz <cite>self</cite> kelimesidir. Eğer bu
 kelimeyi kullanmadan şöyle bir kod yazarsak:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">():</span>
         <span class="n">kabiliyetleri</span> <span class="o">=</span> <span class="p">[]</span>
 </pre></div>
 </div>
 <p>…artık aşağıdaki kodlar yardımıyla <cite>kabiliyetleri</cite> niteliğine erişemeyiz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">ahmet</span> <span class="o">=</span> <span class="n">Çalışan</span><span class="p">()</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">ahmet</span> <span class="o">=</span> <span class="n">Çalışan</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">ahmet</span><span class="o">.</span><span class="n">kabiliyetleri</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Şimdi aynı kodları bir de şöyle yazalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">kabiliyetleri</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -1262,17 +1270,17 @@ kelimeyi kullanmadan şöyle bir kod yazarsak:</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">ahmet</span><span class="o">.</span><span class="n">kabiliyetleri</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Burada <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> fonksiyonunda ilk parametre olarak <cite>self</cite>’i belirttik. Ama
+<p>Burada <code class="docutils literal"><span class="pre">__init__()</span></code> fonksiyonunda ilk parametre olarak <cite>self</cite>’i belirttik. Ama
 <cite>kabiliyetleri</cite> niteliğinin başına <cite>self</cite> eklemedik. Dolayısıyla yazdığımız
-kodlar yine hata verdi. Çünkü, <code class="docutils literal notranslate"><span class="pre">ahmet.kabiliyetleri</span></code> şeklinde
-ifade ettiğimiz kodlardaki <code class="docutils literal notranslate"><span class="pre">ahmet</span></code> kelimesini karşılayacak herhangi bir
+kodlar yine hata verdi. Çünkü, <code class="docutils literal"><span class="pre">ahmet.kabiliyetleri</span></code> şeklinde
+ifade ettiğimiz kodlardaki <code class="docutils literal"><span class="pre">ahmet</span></code> kelimesini karşılayacak herhangi bir
 öğe sınıf içinde bulunmuyor…</p>
 <p>Bu arada, örnek isimlerini (mesela <cite>ahmet</cite>) yalnızca örnek niteliklerine erişmek
 için kullanmıyoruz. Bunları aynı zamanda sınıf niteliklerine erişmek için de
 kullanabiliyoruz. Dolayısıyla eğer yukarıdaki sınıf tanımı içinde,
 <cite>self.kabiliyetleri</cite> adlı <em>örnek niteliği</em>’nin yanısıra <cite>personel</cite> adlı bir
 <em>sınıf niteliği</em> de bulunsaydı:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
     <span class="n">personel</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;personel&#39;</span><span class="p">]</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1280,27 +1288,27 @@ kullanabiliyoruz. Dolayısıyla eğer yukarıdaki sınıf tanımı içinde,
 </pre></div>
 </div>
 <p>Şu kodları yazdığımızda:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">ahmet</span> <span class="o">=</span> <span class="n">Çalışan</span><span class="p">()</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">ahmet</span> <span class="o">=</span> <span class="n">Çalışan</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">ahmet</span><span class="o">.</span><span class="n">personel</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>…o sınıf niteliğine erişebilirdik. Ancak eğer <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> fonksiyonu
+<p>…o sınıf niteliğine erişebilirdik. Ancak eğer <code class="docutils literal"><span class="pre">__init__()</span></code> fonksiyonu
 altındaki <cite>kabiliyetleri</cite> niteliğine erişmek istiyorsak, bu niteliğin başına
 <cite>self</cite> kelimesini getirerek, bu niteliği bir <em>örnek niteliği</em> haline getirmeli
-ve böylece, <code class="docutils literal notranslate"><span class="pre">ahmet.kabiliyetleri</span></code> kodundaki <code class="docutils literal notranslate"><span class="pre">ahmet</span></code> kelimesini temsil edecek
+ve böylece, <code class="docutils literal"><span class="pre">ahmet.kabiliyetleri</span></code> kodundaki <code class="docutils literal"><span class="pre">ahmet</span></code> kelimesini temsil edecek
 bir öğeyi sınıf içinde oluşturmalıyız.</p>
 <p>Bu süreç tam olarak şöyle işler:</p>
-<p>Biz <code class="docutils literal notranslate"><span class="pre">ahmet.kabiliyetleri</span></code> şeklinde bir komut verdiğimizde, Python ilk olarak
-ilgili sınıfın <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> fonksiyonu içinde <cite>kabiliyetleri</cite> adlı bir örnek
+<p>Biz <code class="docutils literal"><span class="pre">ahmet.kabiliyetleri</span></code> şeklinde bir komut verdiğimizde, Python ilk olarak
+ilgili sınıfın <code class="docutils literal"><span class="pre">__init__()</span></code> fonksiyonu içinde <cite>kabiliyetleri</cite> adlı bir örnek
 niteliği arar. Elbette Python’ın bu örnek niteliğini bulabilmesi için,
-<code class="docutils literal notranslate"><span class="pre">__init__()</span></code> fonksiyonu içinde, bu fonksiyonun ilk parametresi ile aynı öneki
-taşıyan bir niteliğin yer alması gerekir. Yani eğer <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> fonksiyonunun
+<code class="docutils literal"><span class="pre">__init__()</span></code> fonksiyonu içinde, bu fonksiyonun ilk parametresi ile aynı öneki
+taşıyan bir niteliğin yer alması gerekir. Yani eğer <code class="docutils literal"><span class="pre">__init__()</span></code> fonksiyonunun
 ilk parametresi <cite>self</cite> ise, Python bu fonksiyon içinde <cite>self.kabiliyetleri</cite> adlı
 bir <em>örnek niteliği</em> bulmaya çalışır. Eğer bulamazsa, Python bu kez
 <cite>kabiliyetleri</cite> adlı bir <em>sınıf niteliği</em> arar. Eğer onu da bulamazsa tabii ki
 hata verir…</p>
 <p>Gelin isterseniz bu mekanizmayı teyit edelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
     <span class="n">kabiliyetleri</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sınıf niteliği&#39;</span><span class="p">]</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1312,15 +1320,15 @@ niteliğimiz var. Python’da hem sınıf niteliklerine, hem de örnek nitelikle
 örnek isimleri üzerinden erişebileceğimizi söylemiştik. Yani eğer örneğimizin
 ismi <cite>ahmet</cite> ise, hem <cite>kabiliyetleri</cite> adlı sınıf niteliğine hem de
 <cite>self.kabiliyetleri</cite> adlı örnek niteliğine aynı şekilde erişiyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">ahmet</span> <span class="o">=</span> <span class="n">Çalışan</span><span class="p">()</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">ahmet</span> <span class="o">=</span> <span class="n">Çalışan</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">ahmet</span><span class="o">.</span><span class="n">kabiliyetleri</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Peki ama acaba yukarıdaki kodlar bize örnek niteliğini mi verir, yoksa sınıf
 niteliğini mi?</p>
 <p>Böyle bir durumda, yukarıda bahsettiğimiz mekanizma nedeniyle,
-<code class="docutils literal notranslate"><span class="pre">self.kabiliyetleri</span></code> şeklinde ifade ettiğimiz örnek niteliği, <cite>kabiliyetleri</cite>
-adlı sınıf niteliğini gölgeler. Bu yüzden de <code class="docutils literal notranslate"><span class="pre">print(ahmet.kabiliyetleri)</span></code>
+<code class="docutils literal"><span class="pre">self.kabiliyetleri</span></code> şeklinde ifade ettiğimiz örnek niteliği, <cite>kabiliyetleri</cite>
+adlı sınıf niteliğini gölgeler. Bu yüzden de <code class="docutils literal"><span class="pre">print(ahmet.kabiliyetleri)</span></code>
 komutu, örnek niteliğini, yani <cite>self.kabiliyetleri</cite> listesini verir. Yukarıdaki
 kodları çalıştırarak siz de bu durumu teyit edebilirsiniz. Zira bu kodlar bize,
 <cite>self.kabiliyetleri</cite> listesinin değeri olan ‘örnek niteliği’ çıktısını
@@ -1328,7 +1336,7 @@ verecektir…</p>
 <p>Peki ya siz sınıf niteliği olan <cite>kabiliyetleri</cite> listesine erişmek isterseniz ne
 olacak?</p>
 <p>İşte bunun için, sınıf örneğini değil de, sınıf adını kullanacaksınız:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
     <span class="n">kabiliyetleri</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sınıf niteliği&#39;</span><span class="p">]</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1356,7 +1364,7 @@ Ayrıca bu <cite>self</cite> kelimesini de, örnek niteliğinin bulunduğu fonks
 parametre listesinde ilk sıraya yerleştirmiş olmalıyız. Unutmayın, örnek
 nitelikleri sadece fonksiyonlar içinde tanımlanabilir. Fonksiyon dışında örnek
 niteliği tanımlayamazsınız. Yani şöyle bir şey yazamazsınız:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1369,31 +1377,31 @@ listesinde ilk sırada kullanıldığında anlam kazanır.</p>
 niteliklerini temsil etmesi için kullanacağınız kelimenin <cite>self</cite> olması şart
 değildir. Bunun yerine istediğiniz başka bir kelimeyi kullanabilirsiniz.
 Mesela:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">falanca</span><span class="p">):</span>
         <span class="n">falanca</span><span class="o">.</span><span class="n">kabiliyetleri</span> <span class="o">=</span> <span class="p">[]</span>
 </pre></div>
 </div>
 <p>Dediğimiz gibi, <cite>self</cite> kelimesi, bir sınıfın örneklerini temsil ediyor. Siz
 sınıf örneklerini hangi kelimenin temsil edeceğini kendiniz de
-belirleyebilirsiniz. Mesela yukarıdaki örnekte, <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> fonksiyonunun ilk
+belirleyebilirsiniz. Mesela yukarıdaki örnekte, <code class="docutils literal"><span class="pre">__init__()</span></code> fonksiyonunun ilk
 parametresini <cite>falanca</cite> olarak belirleyerek, örnek niteliklerinin <cite>falanca</cite>
 kelimesi ile temsil edilmesini sağlamış olduk. Python’da bu konuya ilişkin kural
 şudur: Sınıf içindeki bir fonksiyonun ilk parametresi ne ise, o fonksiyon
 içindeki örnek niteliklerini temsil eden kelime de odur. Örneğin, eğer şöyle bir
 sınıf tanımlamışsak:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">XY</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">XY</span><span class="p">():</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
         <span class="n">a</span><span class="o">.</span><span class="n">örnek_niteliği</span> <span class="o">=</span> <span class="p">[]</span>
 </pre></div>
 </div>
-<p>Burada <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> fonksiyonunun ilk parametresi <cite>a</cite> olduğu için, örnek
+<p>Burada <code class="docutils literal"><span class="pre">__init__()</span></code> fonksiyonunun ilk parametresi <cite>a</cite> olduğu için, örnek
 niteliğini temsil eden kelime de <cite>a</cite> olur. Dolayısıyla <cite>örnek_niteliği</cite> adlı
 örnek niteliğimizin başına da önek olarak bu <cite>a</cite> kelimesini getiriyoruz.</p>
-<p><code class="docutils literal notranslate"><span class="pre">__init__()</span></code> fonksiyonunun ilk parametresi <cite>a</cite> olarak belirlendikten sonra,
+<p><code class="docutils literal"><span class="pre">__init__()</span></code> fonksiyonunun ilk parametresi <cite>a</cite> olarak belirlendikten sonra,
 bu fonksiyon içindeki bütün örnek nitelikleri, önek olarak <cite>a</cite> kelimesini
 alacaktır:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">XY</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">XY</span><span class="p">():</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
         <span class="n">a</span><span class="o">.</span><span class="n">örnek_niteliği1</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">a</span><span class="o">.</span><span class="n">örnek_niteliği2</span> <span class="o">=</span> <span class="mi">23</span>
@@ -1410,7 +1418,7 @@ için, ilgili fonksiyonun parametre listesinde ilk sırada belirtiliyor olması
 lazım. Zaten bu yüzden, dediğimiz gibi, <cite>self</cite> kelimesinin Python açısından bir
 özelliği yoktur. Yani şöyle bir kod yazmamızın, Python söz dizimi açısından
 hiçbir sakıncası bulunmaz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">osman</span><span class="p">):</span>
         <span class="n">osman</span><span class="o">.</span><span class="n">kabiliyetleri</span> <span class="o">=</span> <span class="p">[]</span>
 </pre></div>
@@ -1420,7 +1428,7 @@ ilgilenmez. Python için önemli olan tek şey, temsil işi için herhangi bir
 kelimenin belirlenmiş olmasıdır. Tabii, biz, daha önce de ısrarla söylediğimiz
 gibi, örnek niteliklerini <cite>self</cite> dışında bir kelime ile temsil etmeye teşebbüs
 etmeyeceğiz ve kodlarımızı şu şekilde yazmaktan şaşmayacağız:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">kabiliyetleri</span> <span class="o">=</span> <span class="p">[]</span>
 </pre></div>
@@ -1431,14 +1439,14 @@ niteliklerinin öneki de o olacaktır.</p>
 <p>Bu arada, örnek niteliklerini anlatmaya başlamadan önce sınıf niteliklerine
 ilişkin sinsi bir durumdan söz etmiştik hatırlarsanız. Buna göre, eğer elimizde
 şöyle bir kod varsa:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
     <span class="n">kabiliyetleri</span> <span class="o">=</span> <span class="p">[]</span>
 </pre></div>
 </div>
 <p>Biz bu sınıf içindeki <cite>kabiliyetleri</cite> listesine ekleme yaptığımızda, bu durum o
 sınıfın bütün örneklerini etkiliyordu.</p>
 <p>Yukarıdaki kodları <cite>deneme.py</cite> adlı bir dosyaya kaydettiğimizi varsayarsak:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">deneme</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">deneme</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ahmet</span> <span class="o">=</span> <span class="n">deneme</span><span class="o">.</span><span class="n">Çalışan</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ahmet</span><span class="o">.</span><span class="n">kabiliyetleri</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;konuşkan&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ahmet</span><span class="o">.</span><span class="n">kabiliyetleri</span>
@@ -1452,14 +1460,14 @@ sınıfın bütün örneklerini etkiliyordu.</p>
 </pre></div>
 </div>
 <p>İşte bu durumu önlemek için örnek metotlarından yararlanabiliyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">kabiliyetleri</span> <span class="o">=</span> <span class="p">[]</span>
 </pre></div>
 </div>
 <p>Yukarıdaki kodları yine <cite>deneme.py</cite> adlı bir dosyaya kaydettiğimizi
 varsayarsak:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">deneme</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">deneme</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ahmet</span> <span class="o">=</span> <span class="n">deneme</span><span class="o">.</span><span class="n">Çalışan</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ahmet</span><span class="o">.</span><span class="n">kabiliyetleri</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;konuşkan&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ahmet</span><span class="o">.</span><span class="n">kabiliyetleri</span>
@@ -1484,7 +1492,7 @@ kullanarak az çok anlamlı bir şeyler yazmaya çalışalım. Böylece hem şim
 kadar öğrendiklerimizi gözden geçirmiş ve pekiştirmiş oluruz, hem de bu bölümde
 ele alacağımız ‘örnek metotları’ (<em>instance methods</em>) kavramını anlamamız
 kolaylaşır:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
     <span class="n">personel</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">):</span>
@@ -1519,11 +1527,11 @@ etmek için etkileşimli kabuğu sıklıkla kullanacaksınız.</p>
 <p>O halde, yukarıdaki kodları barındıran dosyanın bulunduğu dizin altında bir
 etkileşimli kabuk oturumu başlatalım ve dosya adının <cite>çalışan.py</cite> olduğunu
 varsayarak kodlarımızı bir modül şeklinde içe aktaralım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">çalışan</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">çalışan</span>
 </pre></div>
 </div>
 <p>Daha sonra sınıfımızın iki farklı örneğini çıkaralım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ç1</span> <span class="o">=</span> <span class="n">çalışan</span><span class="o">.</span><span class="n">Çalışan</span><span class="p">(</span><span class="s1">&#39;Ahmet&#39;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ç1</span> <span class="o">=</span> <span class="n">çalışan</span><span class="o">.</span><span class="n">Çalışan</span><span class="p">(</span><span class="s1">&#39;Ahmet&#39;</span><span class="p">)</span>
 
 <span class="go">Ahmet adlı kişi personele eklendi</span>
 
@@ -1532,17 +1540,17 @@ varsayarak kodlarımızı bir modül şeklinde içe aktaralım:</p>
 <span class="go">Mehmet adlı kişi personele eklendi</span>
 </pre></div>
 </div>
-<p>Bu şekilde <cite>çalışan</cite> adlı modül içindeki <code class="docutils literal notranslate"><span class="pre">Çalışan()</span></code> adlı sınıfı sırasıyla
+<p>Bu şekilde <cite>çalışan</cite> adlı modül içindeki <code class="docutils literal"><span class="pre">Çalışan()</span></code> adlı sınıfı sırasıyla
 <cite>‘Ahmet’</cite> ve <cite>‘Mehmet’</cite> parametreleri ile çağırarak <cite>ç1</cite> ve <cite>ç2</cite> adlı iki farklı
 sınıf örneği oluşturmuş olduk. Bu arada, sınıfımızı örneklediğimiz anda
-<code class="docutils literal notranslate"><span class="pre">__init__()</span></code> fonksiyonunun devreye girdiğine dikkat ediyoruz.</p>
-<p><code class="docutils literal notranslate"><span class="pre">personele_ekle()</span></code> adlı fonksiyonu <code class="docutils literal notranslate"><span class="pre">self.personele_ekle()</span></code> şeklinde
-<code class="docutils literal notranslate"><span class="pre">__init__()</span></code> fonksiyonu içinden çağırdığımız için, sınıfımızı
+<code class="docutils literal"><span class="pre">__init__()</span></code> fonksiyonunun devreye girdiğine dikkat ediyoruz.</p>
+<p><code class="docutils literal"><span class="pre">personele_ekle()</span></code> adlı fonksiyonu <code class="docutils literal"><span class="pre">self.personele_ekle()</span></code> şeklinde
+<code class="docutils literal"><span class="pre">__init__()</span></code> fonksiyonu içinden çağırdığımız için, sınıfımızı
 örneklediğimiz anda hem personelin kendisi personel listesine eklendi, hem
 de bu kişinin personele eklendiğine dair bir mesaj gösterildi.</p>
 <p>Tanımladığımız sınıfın niteliklerine, çıkardığımız örnekler üzerinden
 erişebiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ç1</span><span class="o">.</span><span class="n">isim</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ç1</span><span class="o">.</span><span class="n">isim</span>
 
 <span class="go">&#39;Ahmet&#39;</span>
 
@@ -1552,12 +1560,12 @@ erişebiliriz:</p>
 </pre></div>
 </div>
 <p>Yine bu örnekler üzerinden, bu nitelikleri değiştirebiliriz de:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ç1</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="s1">&#39;Mahmut&#39;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ç1</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="s1">&#39;Mahmut&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ç1</span><span class="o">.</span><span class="n">personel</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Mahmut&#39;</span>
 </pre></div>
 </div>
 <p>Böylece ilk çalışanın ismini ‘Mahmut’ olarak değiştirdik:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ç1</span><span class="o">.</span><span class="n">isim</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ç1</span><span class="o">.</span><span class="n">isim</span>
 
 <span class="go">&#39;Mahmut&#39;</span>
 
@@ -1568,12 +1576,12 @@ erişebiliriz:</p>
 </div>
 <p>Tanımladığımız sınıf içindeki fonksiyonları kullanarak, çalışanlarımıza birkaç
 kabiliyet ekleyelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ç1</span><span class="o">.</span><span class="n">kabiliyet_ekle</span><span class="p">(</span><span class="s1">&#39;prezantabl&#39;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ç1</span><span class="o">.</span><span class="n">kabiliyet_ekle</span><span class="p">(</span><span class="s1">&#39;prezantabl&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ç1</span><span class="o">.</span><span class="n">kabiliyet_ekle</span><span class="p">(</span><span class="s1">&#39;konuşkan&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><cite>ç1</cite> örneğinin kabiliyetlerini görüntüleyelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ç1</span><span class="o">.</span><span class="n">kabiliyetleri_görüntüle</span><span class="p">()</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ç1</span><span class="o">.</span><span class="n">kabiliyetleri_görüntüle</span><span class="p">()</span>
 
 <span class="go">Mahmut adlı kişinin kabiliyetleri:</span>
 <span class="go">prezantabl</span>
@@ -1582,7 +1590,7 @@ kabiliyet ekleyelim:</p>
 </div>
 <p>Şimdi de <cite>ç2</cite> örneğine bir kabiliyet ekleyelim ve eklediğimiz kabiliyeti
 görüntüleyelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ç2</span><span class="o">.</span><span class="n">kabiliyet_ekle</span><span class="p">(</span><span class="s1">&#39;girişken&#39;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ç2</span><span class="o">.</span><span class="n">kabiliyet_ekle</span><span class="p">(</span><span class="s1">&#39;girişken&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ç2</span><span class="o">.</span><span class="n">kabiliyetleri_görüntüle</span><span class="p">()</span>
 
 <span class="go">Mehmet adlı kişinin kabiliyetleri:</span>
@@ -1596,7 +1604,7 @@ paylaşılır. Ama örnek nitelikleri her bir örneğe özgüdür. Bu özellikte
 sonra daha ayrıntılı olarak söz edeceğiz. Biz şimdilik okumaya devam edelim.</p>
 <p>Sınıf örneklerimizin herhangi biri üzerinden personel listesine de
 ulaşabileceğimizi biliyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ç1</span><span class="o">.</span><span class="n">personeli_görüntüle</span><span class="p">()</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ç1</span><span class="o">.</span><span class="n">personeli_görüntüle</span><span class="p">()</span>
 
 <span class="go">Personel listesi:</span>
 <span class="go">Mahmut</span>
@@ -1607,7 +1615,7 @@ ulaşabileceğimizi biliyoruz:</p>
 <p>Yukarıda anlattıklarımız sınıflar hakkında size epey fikir vermiş olmalı. Konuyu
 daha da derinlemesine anlayabilmek için, artık bu sınıfı incelemeye geçebiliriz.</p>
 <p>Sınıfımızı önümüze alalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
     <span class="n">personel</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">):</span>
@@ -1634,12 +1642,12 @@ daha da derinlemesine anlayabilmek için, artık bu sınıfı incelemeye geçebi
 </pre></div>
 </div>
 <p>Burada öncelikle her zamanki gibi sınıfımızı tanımlıyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
     <span class="o">...</span>
 </pre></div>
 </div>
 <p>Daha sonra bu sınıfa <cite>personel</cite> adlı bir sınıf niteliği ekliyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
     <span class="n">personel</span> <span class="o">=</span> <span class="p">[]</span>
 </pre></div>
 </div>
@@ -1658,9 +1666,9 @@ kişiyi bu <cite>personel</cite> listesine ilave edeceğiz. Dolayısıyla bu nit
 yapılan değişikliklerin bütün örneklere yansıması bizim istediğimiz bir şey.</p>
 <p>Neyse… Lafı daha fazla uzatmadan, kodlarımızı açıklamaya kaldığımız yerden
 devam edelim…</p>
-<p>Sınıfımızı ve sınıf niteliğimizi tanımladıktan sonra <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> adlı özel
+<p>Sınıfımızı ve sınıf niteliğimizi tanımladıktan sonra <code class="docutils literal"><span class="pre">__init__()</span></code> adlı özel
 fonksiyonumuzu oluşturuyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">):</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="n">isim</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">kabiliyetleri</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">personele_ekle</span><span class="p">()</span>
@@ -1670,39 +1678,39 @@ fonksiyonumuzu oluşturuyoruz:</p>
 çalıştırılacak olmasıdır. Biz burada, <cite>self.isim</cite> ve <cite>self.kabiliyetleri</cite> adlı
 iki adet örnek niteliği tanımladık. Bu örnek niteliklerine sınıfımızın her
 tarafından erişebileceğiz.</p>
-<p>Yukarıda, tanımladığımız sınıfı nasıl kullanacağımızı gösterirken, <code class="docutils literal notranslate"><span class="pre">Çalışan()</span></code>
+<p>Yukarıda, tanımladığımız sınıfı nasıl kullanacağımızı gösterirken, <code class="docutils literal"><span class="pre">Çalışan()</span></code>
 sınıfını şu şekilde örneklediğimizi hatırlıyorsunuz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ç1</span> <span class="o">=</span> <span class="n">çalışan</span><span class="o">.</span><span class="n">Çalışan</span><span class="p">(</span><span class="s1">&#39;Ahmet&#39;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ç1</span> <span class="o">=</span> <span class="n">çalışan</span><span class="o">.</span><span class="n">Çalışan</span><span class="p">(</span><span class="s1">&#39;Ahmet&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Burada sınıfımızı <cite>‘Ahmet’</cite> adlı bir argümanla örneklediğimize dikkatinizi
-çekmek isterim. İşte bu argüman, biraz önce <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> fonksiyonunu
+çekmek isterim. İşte bu argüman, biraz önce <code class="docutils literal"><span class="pre">__init__()</span></code> fonksiyonunu
 tanımlarken belirttiğimiz <cite>isim</cite> parametresine karşılık geliyor. Dolayısıyla,
-bir sınıfı çağırırken/örneklerken kullanacağımız argümanları, bu <code class="docutils literal notranslate"><span class="pre">__init__()</span></code>
+bir sınıfı çağırırken/örneklerken kullanacağımız argümanları, bu <code class="docutils literal"><span class="pre">__init__()</span></code>
 fonksiyonunun parametreleri olarak tanımlıyoruz.</p>
-<p>Daha sonra bu <cite>isim</cite> parametresini, <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> fonksiyonunun gövdesi içinde
+<p>Daha sonra bu <cite>isim</cite> parametresini, <code class="docutils literal"><span class="pre">__init__()</span></code> fonksiyonunun gövdesi içinde
 bir örnek niteliği haline getiriyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="n">isim</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="n">isim</span>
 </pre></div>
 </div>
 <p>Bunu yapmamızın gerekçesi, <cite>isim</cite> parametresini sınıfımızın başka bölgelerinde
 de kullanabilmek. <cite>self</cite> kelimesini parametremizin başına yerleştirerek, bu
 parametreyi sınıfın başka yerlerinden de erişilebilir hale getiriyoruz.</p>
-<p><cite>isim</cite> parametresini, <code class="docutils literal notranslate"><span class="pre">self.isim</span></code> kodu yardımıyla bir örnek niteliğine
+<p><cite>isim</cite> parametresini, <code class="docutils literal"><span class="pre">self.isim</span></code> kodu yardımıyla bir örnek niteliğine
 dönüştürdükten sonra <cite>self.kabiliyetleri</cite> adlı bir başka örnek niteliği daha
 tanımlıyoruz. Bu liste, sınıf örneklerine eklediğimiz kabiliyetleri tutacak.</p>
 <p>Bunun ardından şöyle bir kod görüyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">personele_ekle</span><span class="p">()</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">personele_ekle</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Burada, <code class="docutils literal notranslate"><span class="pre">personele_ekle()</span></code> adlı bir örnek metoduna (<em>instance method</em>) atıfta
+<p>Burada, <code class="docutils literal"><span class="pre">personele_ekle()</span></code> adlı bir örnek metoduna (<em>instance method</em>) atıfta
 bulunuyoruz. Örnek metotları, bir sınıfın örnekleri vasıtasıyla çağrılabilen
 fonksiyonlardır. Bu fonksiyonların ilk parametresi her zaman <cite>self</cite> kelimesidir.
 Ayrıca bu fonksiyonlara sınıf içinde atıfta bulunurken de yine <cite>self</cite> kelimesini
 kullanıyoruz. Tıpkı yukarıdaki örnekte olduğu gibi…</p>
-<p>Bir örnek metodu olduğunu söylediğimiz <code class="docutils literal notranslate"><span class="pre">personele_ekle()</span></code> fonksiyonunu şu
+<p>Bir örnek metodu olduğunu söylediğimiz <code class="docutils literal"><span class="pre">personele_ekle()</span></code> fonksiyonunu şu
 şekilde tanımladık:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">personele_ekle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">personele_ekle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">personel</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">isim</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> adlı kişi personele eklendi&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">isim</span><span class="p">))</span>
 </pre></div>
@@ -1716,7 +1724,7 @@ temsil ettiği için, bir sınıf niteliğine sınıf içinden erişmemiz gerekt
 <p>Sınıf niteliklerine, örnekler dışında, sınıf adıyla da erişebileceğinizi
 biliyorsunuz. Dolayısıyla isterseniz yukarıdaki kodları şöyle de
 yazabilirdiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">personele_ekle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">personele_ekle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">Çalışan</span><span class="o">.</span><span class="n">personel</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">isim</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> adlı kişi personele eklendi&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">isim</span><span class="p">))</span>
 </pre></div>
@@ -1726,12 +1734,12 @@ yazabilirdiniz:</p>
 <p>Ayrıca bu fonksiyonda, bir örnek niteliği olan <cite>self.isim</cite> değişkenine de
 erişebiliyor olduğumuza dikkat edin. Unutmayın, <cite>self</cite> sınıfların çok önemli bir
 öğesidir. Bu öğeyi kullanarak hem örnek niteliklerine, hem sınıf niteliklerine,
-hem de örnek metotlarına ulaşabiliyoruz. Tanımladığımız bu <code class="docutils literal notranslate"><span class="pre">personele_ekle()</span></code>
-adlı örnek metodunu <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> fonksiyonu içinden <code class="docutils literal notranslate"><span class="pre">self.personele_ekle()</span></code>
+hem de örnek metotlarına ulaşabiliyoruz. Tanımladığımız bu <code class="docutils literal"><span class="pre">personele_ekle()</span></code>
+adlı örnek metodunu <code class="docutils literal"><span class="pre">__init__()</span></code> fonksiyonu içinden <code class="docutils literal"><span class="pre">self.personele_ekle()</span></code>
 kodu ile (yani yine <cite>self</cite> kelimesini kullanarak) çağırdığımızı hatırlıyorsunuz.</p>
-<p><code class="docutils literal notranslate"><span class="pre">personele_ekle()</span></code> fonksiyonunun ardından arka arkaya üç fonksiyon daha
+<p><code class="docutils literal"><span class="pre">personele_ekle()</span></code> fonksiyonunun ardından arka arkaya üç fonksiyon daha
 tanımladık:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">personeli_görüntüle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">personeli_görüntüle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Personel listesi:&#39;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">kişi</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">personel</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">kişi</span><span class="p">)</span>
@@ -1745,7 +1753,7 @@ tanımladık:</p>
         <span class="nb">print</span><span class="p">(</span><span class="n">kabiliyet</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Bu fonksiyonlar da, tıpkı <code class="docutils literal notranslate"><span class="pre">personele_ekle()</span></code> gibi, birer örnek metodudur. Bu
+<p>Bu fonksiyonlar da, tıpkı <code class="docutils literal"><span class="pre">personele_ekle()</span></code> gibi, birer örnek metodudur. Bu
 örnek metotlarının da ilk parametrelerinin hep <cite>self</cite> olduğuna dikkat ediyoruz.
 Örnek metotlarına sınıf dışından örnek isimleri (<cite>ahmet</cite>, <cite>mehmet</cite> gibi)
 aracılığıyla, sınıf içinden ise, örnek isimlerini temsil eden <cite>self</cite> kelimesi
@@ -1754,7 +1762,7 @@ aracılığıyla eriştiğimizi biliyorsunuz.</p>
 <p>Bu noktaya kadar epey konuştuk, epey örnek verdik. Sınıflar hakkında yeterince
 bilgi sahibi olduğumuza göre, nihayet en başta verdiğimiz harf sayacı kodlarını
 rahatlıkla anlayabilecek düzeye eriştik:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">HarfSayacı</span><span class="p">:</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">HarfSayacı</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sesli_harfler</span> <span class="o">=</span> <span class="s1">&#39;aeıioöuü&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sessiz_harfler</span> <span class="o">=</span> <span class="s1">&#39;bcçdfgğhjklmnprsştvyz&#39;</span>
@@ -1794,18 +1802,18 @@ rahatlıkla anlayabilecek düzeye eriştik:</p>
 </div>
 <p>Gelin isterseniz bu kodlara da şöyle bir bakalım…</p>
 <p>Burada sınıfımızı şu şekilde tanımladık:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">HarfSayacı</span><span class="p">:</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">HarfSayacı</span><span class="p">:</span>
     <span class="o">...</span>
 </pre></div>
 </div>
 <p>Sınıf adını parantezli bir şekilde yazabileceğimizi de biliyorsunuz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">HarfSayacı</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">HarfSayacı</span><span class="p">():</span>
     <span class="o">...</span>
 </pre></div>
 </div>
-<p>Daha sonra, <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> fonksiyonu içinde dört adet örnek niteliği
+<p>Daha sonra, <code class="docutils literal"><span class="pre">__init__()</span></code> fonksiyonu içinde dört adet örnek niteliği
 tanımladık:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">sesli_harfler</span> <span class="o">=</span> <span class="s1">&#39;aeıioöuü&#39;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">sesli_harfler</span> <span class="o">=</span> <span class="s1">&#39;aeıioöuü&#39;</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">sessiz_harfler</span> <span class="o">=</span> <span class="s1">&#39;bcçdfgğhjklmnprsştvyz&#39;</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">sayaç_sesli</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">sayaç_sessiz</span> <span class="o">=</span> <span class="mi">0</span>
@@ -1816,7 +1824,7 @@ kelimesinden anlıyoruz. Çünkü bildiğiniz gibi, <cite>self</cite> kelimesi, 
 örneklerini temsil ediyor. Bir sınıf içinde örnek niteliklerine ve örnek
 metotlarına hep bu <cite>self</cite> kelimesi aracılığıyla erişiyoruz.</p>
 <p>Bu sınıf içinde, ilk parametreleri <cite>self</cite> olan şu örnek metotlarını görüyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">kelime_sor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">kelime_sor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="o">...</span>
 
 <span class="k">def</span> <span class="nf">seslidir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">harf</span><span class="p">):</span>
@@ -1837,18 +1845,18 @@ metotlarına hep bu <cite>self</cite> kelimesi aracılığıyla erişiyoruz.</p>
 </div>
 <p>Sınıfla birlikte bütün örnek değişkenlerini ve örnek metotlarını tanımladıktan
 sonra programımızı çalıştırma aşamasına geliyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">sayaç</span> <span class="o">=</span> <span class="n">HarfSayacı</span><span class="p">()</span>
     <span class="n">sayaç</span><span class="o">.</span><span class="n">çalıştır</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Buna göre, eğer programımız bağımsız olarak çalıştırılıyorsa öncelikle
-<code class="docutils literal notranslate"><span class="pre">HarfSayacı()</span></code> adlı sınıfı örneklendiriyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sayaç</span> <span class="o">=</span> <span class="n">HarfSayacı</span><span class="p">()</span>
+<code class="docutils literal"><span class="pre">HarfSayacı()</span></code> adlı sınıfı örneklendiriyoruz:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">sayaç</span> <span class="o">=</span> <span class="n">HarfSayacı</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Daha sonra da <cite>sayaç</cite> örneği üzerinden <code class="docutils literal notranslate"><span class="pre">HarfSayacı()</span></code> adlı sınıfın
-<code class="docutils literal notranslate"><span class="pre">çalıştır()</span></code> metoduna erişerek programımızı başlatıyoruz.</p>
+<p>Daha sonra da <cite>sayaç</cite> örneği üzerinden <code class="docutils literal"><span class="pre">HarfSayacı()</span></code> adlı sınıfın
+<code class="docutils literal"><span class="pre">çalıştır()</span></code> metoduna erişerek programımızı başlatıyoruz.</p>
 <p>Böylece, Python’da nesne tabanlı programlama ve sınıflara dair öğrenmemiz
 gereken bütün temel bilgileri edinmiş olduk. Şu ana kadar öğrendikleriniz
 sayesinde, etrafta göreceğiniz sınıflı kodların büyük bölümünü anlayabilecek
@@ -1926,8 +1934,8 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 <div class="footer">
 &copy; Copyright 2007-2019, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 15.12.2019.
-<a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5 ile oluşturulmuştur.
+Son güncelleme: 30.12.2019.
+<a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7 ile oluşturulmuştur.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img

@@ -5,18 +5,25 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta content="Bu bölümde nesne tabanlı programlamadan söz edeceğiz." name="description" />
 <meta content="python, python3, nesne, oop, sınıf, class, miras alma, inheritance, nesne yönelimli programlama, nesne tabanlı programlama, object oriented programming, self, instantiation, instance, örnek, örneklendirme, örnekleme" name="keywords" />
 
     <title>Nesne Tabanlı Programlama (Devamı) &#8212; Python 3 için Türkçe Kılavuz</title>
     <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
     <script type="text/javascript" src="_static/translations.js"></script>
     <link rel="search" title="Ara" href="search.html" />
     <link rel="next" title="Nesne Tabanlı Programlama (Devamı)" href="nesne_tabanli_programlama3.html" />
@@ -25,7 +32,8 @@
 <link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
 <![endif]-->
 
-  </head><body>
+  </head>
+  <body>
 <div class='header'><a href='https://yazbel.com'>yazbel.com</a></div>
 
 <ul class='navbar'>
@@ -80,7 +88,7 @@ edeceğiz.</p>
 <p>Dilerseniz ne ile karşı karşıya olduğumuzu anlayabilmek için basit bir örnek
 üzerinden ilerleyelim.</p>
 <p>Hatırlarsanız bir önceki bölümde şöyle bir kod parçası vermiştik:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
     <span class="n">personel</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">):</span>
@@ -111,7 +119,7 @@ personeli görüntülememizi, personele yeni kabiliyet eklememizi ve eklediğimi
 kabiliyetleri görüntüleyebilmemizi sağlayan örnek metotları var. Gelin bu
 kodlara bir de personel sayısını görüntülememizi sağlayacak bir başka örnek
 metodu daha ekleyelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
     <span class="n">personel</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">):</span>
@@ -140,17 +148,17 @@ metodu daha ekleyelim:</p>
             <span class="nb">print</span><span class="p">(</span><span class="n">kabiliyet</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Burada yeni olarak <code class="docutils literal notranslate"><span class="pre">personel_sayısını_görüntüle()</span></code> adlı bir örnek metodu
+<p>Burada yeni olarak <code class="docutils literal"><span class="pre">personel_sayısını_görüntüle()</span></code> adlı bir örnek metodu
 tanımladık. Bu metot, bir sınıf niteliği olan <cite>personel</cite>’e erişerek bunun
 uzunluğunu ekrana basıyor. Böylece personelin kaç kişiden oluştuğunu öğrenmiş
 oluyoruz.</p>
 <p>Bu yeni örnek metodunu aşağıdaki şekilde kullanabiliriz.</p>
 <p>Öncelikle kodlarımızı barındıran modülü içe aktaralım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">çalışan</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">çalışan</span>
 </pre></div>
 </div>
 <p>Daha sonra personel listesine birkaç çalışan ekleyelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ahmet</span> <span class="o">=</span> <span class="n">çalışan</span><span class="o">.</span><span class="n">Çalışan</span><span class="p">(</span><span class="s1">&#39;Ahmet&#39;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ahmet</span> <span class="o">=</span> <span class="n">çalışan</span><span class="o">.</span><span class="n">Çalışan</span><span class="p">(</span><span class="s1">&#39;Ahmet&#39;</span><span class="p">)</span>
 
 <span class="go">Ahmet adlı kişi personele eklendi</span>
 
@@ -164,7 +172,7 @@ oluyoruz.</p>
 </pre></div>
 </div>
 <p>Artık herhangi bir örnek değişkeni üzerinden personel sayısına erişebiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ayşe</span><span class="o">.</span><span class="n">personel_sayısını_görüntüle</span><span class="p">()</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ayşe</span><span class="o">.</span><span class="n">personel_sayısını_görüntüle</span><span class="p">()</span>
 
 <span class="go">3</span>
 </pre></div>
@@ -175,10 +183,10 @@ edebiliriz. Genel olarak bütün personele dair bilgi veren bir fonksiyona
 kulağa sizce de biraz tuhaf gelmiyor mu? Neticede bu fonksiyon, aslında sınıfın
 herhangi bir örneği ile özellikle veya doğrudan ilişkili değil. Yani bu
 fonksiyon tek tek sınıf örneklerini değil, genel olarak sınıfın bütününü
-ilgilendiriyor. Bu bakımdan, <code class="docutils literal notranslate"><span class="pre">personel_sayısını_görüntüle()</span></code> fonksiyonunun
+ilgilendiriyor. Bu bakımdan, <code class="docutils literal"><span class="pre">personel_sayısını_görüntüle()</span></code> fonksiyonunun
 örnek değişkenlerinden bağımsız bir biçimde kullanılabilmesi çok daha mantıklı
 olacaktır.</p>
-<p>Ayrıca, bir örnek metodu olan <code class="docutils literal notranslate"><span class="pre">personel_sayısını_görüntüle()</span></code> fonksiyonunu
+<p>Ayrıca, bir örnek metodu olan <code class="docutils literal"><span class="pre">personel_sayısını_görüntüle()</span></code> fonksiyonunu
 örneklerden bağımsız olarak kullanamadığımız için, bu metot yardımıyla personel
 sayısının 0 olduğu bir durumu görüntülememiz de mümkün olmuyor. Çünkü bu
 fonksiyona erişebilmek için öncelikle sınıfı en az bir kez örneklemiş, yani
@@ -187,7 +195,7 @@ kodlarımızın mantığı açısından son derece ciddi bir kısıtlamadır.</p
 <p>Yukarıda sıralanan gerekçeler doğrultusunda kodları hem daha tutarlı bir hale
 getirmek hem de personel sayısının 0 olduğu durumu göstermemizi engelleyen
 kısıtlamayı aşabilmek için şöyle bir şey deneyebilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">personel_sayısını_görüntüle</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">personel_sayısını_görüntüle</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Çalışan</span><span class="o">.</span><span class="n">personel</span><span class="p">))</span>
 
 <span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
@@ -218,22 +226,22 @@ kısıtlamayı aşabilmek için şöyle bir şey deneyebilirsiniz:</p>
 </div>
 <p>Burada personel sayısını görüntüleyen fonksiyonu sınıftan ayırdık. Böylece şu
 şekilde bir kullanım mümkün olabildi:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">çalışan</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">çalışan</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">çalışan</span><span class="o">.</span><span class="n">personel_sayısını_görüntüle</span><span class="p">()</span>
 
 <span class="go">0</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">personel_sayısını_görüntüle()</span></code> adlı fonksiyonu sınıftan ayırıp <em>modül
+<p><code class="docutils literal"><span class="pre">personel_sayısını_görüntüle()</span></code> adlı fonksiyonu sınıftan ayırıp <em>modül
 düzeyinde çalışan bir fonksiyon</em> (veya bir başka deyişle <em>global düzeyde çalışan
-bir fonksiyon</em>) haline getirdiğimiz için, artık bu fonksiyon <code class="docutils literal notranslate"><span class="pre">Çalışan()</span></code>
+bir fonksiyon</em>) haline getirdiğimiz için, artık bu fonksiyon <code class="docutils literal"><span class="pre">Çalışan()</span></code>
 sınıfının herhangi bir örneğine bağımlı değil. Dolayısıyla bu fonksiyonu,
-<code class="docutils literal notranslate"><span class="pre">Çalışan()</span></code> sınıfı için bir örnek çıkarmak zorunda kalmadan da
+<code class="docutils literal"><span class="pre">Çalışan()</span></code> sınıfı için bir örnek çıkarmak zorunda kalmadan da
 kullanabiliyoruz. Bu da bize personel sayısının 0 olduğu durumu gösterebilme
 imkanı tanıyor.</p>
 <p>Bu fonksiyonu bir de birkaç örnek çıkardıktan sonra çalıştıralım…</p>
 <p>Önce sınıfımızın birkaç örneğini çıkaralım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ahmet</span> <span class="o">=</span> <span class="n">çalışan</span><span class="o">.</span><span class="n">Çalışan</span><span class="p">(</span><span class="s1">&#39;Ahmet&#39;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ahmet</span> <span class="o">=</span> <span class="n">çalışan</span><span class="o">.</span><span class="n">Çalışan</span><span class="p">(</span><span class="s1">&#39;Ahmet&#39;</span><span class="p">)</span>
 
 <span class="go">Ahmet adlı kişi personele eklendi</span>
 
@@ -247,42 +255,42 @@ imkanı tanıyor.</p>
 </pre></div>
 </div>
 <p>Şimdi de personelin şu anda kaç kişiden oluştuğunu sorgulayalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">çalışan</span><span class="o">.</span><span class="n">personel_sayısını_görüntüle</span><span class="p">()</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">çalışan</span><span class="o">.</span><span class="n">personel_sayısını_görüntüle</span><span class="p">()</span>
 
 <span class="go">3</span>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi, bu şekilde kodlarımız biraz daha tutarlı bir görünüme kavuştu.
-Ancak bu şekilde, bariz bir biçimde <code class="docutils literal notranslate"><span class="pre">Çalışan()</span></code> sınıfı ile ilişkili olan
-<code class="docutils literal notranslate"><span class="pre">personel_sayısını_görüntüle()</span></code> fonksiyonunu sınıftan ayırmış ve kod
-bütünlüğünü bozmuş olduk. Çünkü, her ne kadar <code class="docutils literal notranslate"><span class="pre">personel_sayısını_görüntüle()</span></code>
-fonksiyonu <code class="docutils literal notranslate"><span class="pre">Çalışan()</span></code> sınıfının herhangi bir örneği ile ilişkili olmasa da,
-anlam açısından bu fonksiyonun <code class="docutils literal notranslate"><span class="pre">Çalışan()</span></code> sınıfına ait olduğu besbelli.
-Ayrıca, yukarıdaki kodları barındıran modülün tamamını değil de, <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">çalışan</span>
-<span class="pre">import</span> <span class="pre">Çalışan</span></code> gibi bir komutla yalnızca <code class="docutils literal notranslate"><span class="pre">Çalışan()</span></code> sınıfını içe
-aktarırsak, <code class="docutils literal notranslate"><span class="pre">personel_sayısını_görüntüle()</span></code> fonksiyonu dışarıda kalacaktır:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">çalışan</span> <span class="k">import</span> <span class="n">Çalışan</span>
+Ancak bu şekilde, bariz bir biçimde <code class="docutils literal"><span class="pre">Çalışan()</span></code> sınıfı ile ilişkili olan
+<code class="docutils literal"><span class="pre">personel_sayısını_görüntüle()</span></code> fonksiyonunu sınıftan ayırmış ve kod
+bütünlüğünü bozmuş olduk. Çünkü, her ne kadar <code class="docutils literal"><span class="pre">personel_sayısını_görüntüle()</span></code>
+fonksiyonu <code class="docutils literal"><span class="pre">Çalışan()</span></code> sınıfının herhangi bir örneği ile ilişkili olmasa da,
+anlam açısından bu fonksiyonun <code class="docutils literal"><span class="pre">Çalışan()</span></code> sınıfına ait olduğu besbelli.
+Ayrıca, yukarıdaki kodları barındıran modülün tamamını değil de, <code class="docutils literal"><span class="pre">from</span> <span class="pre">çalışan</span>
+<span class="pre">import</span> <span class="pre">Çalışan</span></code> gibi bir komutla yalnızca <code class="docutils literal"><span class="pre">Çalışan()</span></code> sınıfını içe
+aktarırsak, <code class="docutils literal"><span class="pre">personel_sayısını_görüntüle()</span></code> fonksiyonu dışarıda kalacaktır:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">çalışan</span> <span class="k">import</span> <span class="n">Çalışan</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">personel_sayısını_görüntüle()</span></code> fonksiyonu listede yok.
+<p>Gördüğünüz gibi, <code class="docutils literal"><span class="pre">personel_sayısını_görüntüle()</span></code> fonksiyonu listede yok.
 Dolayısıyla, sınıfla sıkı sıkıya ilişkili olan bu fonksiyonu sınıftan
 kopardığımız için, seçmeli içe aktarmalarda bu fonksiyon geride kalıyor ve
 böylece bu fonksiyonu kullanamaz hale geliyoruz.</p>
 <p>Seçmeli içe aktarmalarda bu fonksiyon aktarım işlemiyle birlikte gelmediği için,
 ilgili fonksiyonu özel olarak içe aktarmamız gerekir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">çalışan</span> <span class="k">import</span> <span class="n">personel_sayısını_görüntüle</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">çalışan</span> <span class="k">import</span> <span class="n">personel_sayısını_görüntüle</span>
 </pre></div>
 </div>
-<p>Bu şekilde <cite>çalışan</cite> modülü içinden <code class="docutils literal notranslate"><span class="pre">personel_sayısını_görüntüle()</span></code> adlı
+<p>Bu şekilde <cite>çalışan</cite> modülü içinden <code class="docutils literal"><span class="pre">personel_sayısını_görüntüle()</span></code> adlı
 fonksiyonu özel olarak elle içe aktarmış olduk. Artık bu fonksiyonu şöyle
 kullanabiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">personel_sayısını_görüntüle</span><span class="p">()</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">personel_sayısını_görüntüle</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Ancak bu da, her zaman tercih etmeyeceğiniz bir kısıtlama olabilir. O halde bu
 kısıtlamayı aşmak için gelin, ilgili fonksiyonu tekrar sınıf içine alalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
     <span class="n">personel</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">):</span>
@@ -313,28 +321,28 @@ kısıtlamayı aşmak için gelin, ilgili fonksiyonu tekrar sınıf içine alal�
 </div>
 <p>Yukarıdaki kodlarda ilgili fonksiyona bir örnek adıyla değil de, sınıf adıyla
 erişmek için ilk etapta şu kodu denemek aklınıza gelmiş olabilir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">çalışan</span> <span class="k">import</span> <span class="n">Çalışan</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">çalışan</span> <span class="k">import</span> <span class="n">Çalışan</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Çalışan</span><span class="o">.</span><span class="n">personel_sayısını_görüntüle</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Ancak bu kod size şöyle bir hata mesajı verir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
   <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">TypeError</span><span class="p">:</span> <span class="n">personel_sayısını_görüntüle</span><span class="p">()</span> <span class="n">missing</span>
 <span class="mi">1</span> <span class="n">required</span> <span class="n">positional</span> <span class="n">argument</span><span class="p">:</span> <span class="s1">&#39;self&#39;</span>
 </pre></div>
 </div>
-<p>Çünkü burada siz <code class="docutils literal notranslate"><span class="pre">Çalışan.personel_sayısını_görüntüle()</span></code> komutunu vererek
+<p>Çünkü burada siz <code class="docutils literal"><span class="pre">Çalışan.personel_sayısını_görüntüle()</span></code> komutunu vererek
 aslında sınıfın bir metoduna (<em>class method</em>) erişmeye çalışıyorsunuz. Ancak
 kodlarımızın içinde bir <em>sınıf metodu</em> yok. Zira, yukarıda sınıf adıyla erişmeye
-çalıştığımız <code class="docutils literal notranslate"><span class="pre">personel_sayısını_görüntüle()</span></code> fonksiyonu bir sınıf metodu
+çalıştığımız <code class="docutils literal"><span class="pre">personel_sayısını_görüntüle()</span></code> fonksiyonu bir sınıf metodu
 değil, bir örnek metodudur. Örnek metotlarına da sınıf adlarıyla erişmemizin
 mümkün olmadığını, bu tür metotlara erişebilmek için sınıfı en az bir kez
 örneklemiş olmamız gerektiğini biliyorsunuz.</p>
-<p>Burada, <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> ve <code class="docutils literal notranslate"><span class="pre">personel_sayısını_görüntüle()</span></code> dışında şu <em>örnek
-metotları</em> var: <code class="docutils literal notranslate"><span class="pre">personel_sayısını_görüntüle()</span></code>, <code class="docutils literal notranslate"><span class="pre">personele_ekle()</span></code>,
-<code class="docutils literal notranslate"><span class="pre">personeli_görüntüle()</span></code>, <code class="docutils literal notranslate"><span class="pre">kabiliyet_ekle()</span></code>,
-<code class="docutils literal notranslate"><span class="pre">kabiliyetleri_görüntüle()</span></code>. Bunları birer örnek metodu yapan şeyin, <cite>self</cite>
+<p>Burada, <code class="docutils literal"><span class="pre">__init__()</span></code> ve <code class="docutils literal"><span class="pre">personel_sayısını_görüntüle()</span></code> dışında şu <em>örnek
+metotları</em> var: <code class="docutils literal"><span class="pre">personel_sayısını_görüntüle()</span></code>, <code class="docutils literal"><span class="pre">personele_ekle()</span></code>,
+<code class="docutils literal"><span class="pre">personeli_görüntüle()</span></code>, <code class="docutils literal"><span class="pre">kabiliyet_ekle()</span></code>,
+<code class="docutils literal"><span class="pre">kabiliyetleri_görüntüle()</span></code>. Bunları birer örnek metodu yapan şeyin, <cite>self</cite>
 kelimesi olduğunu biliyoruz…</p>
 <p>Daha önce de söylediğimiz gibi, her ne kadar Python’da sınıf niteliklerine hem
 örnekler hem de doğrudan sınıf adları üzerinden erişebilsek de örnek
@@ -349,7 +357,7 @@ yararlanıyorduk. Tanımladığımız örnek metotlarının parametre listesinde
 sıraya yerleştirdiğimiz bu kelimeyi kullanarak, sınıf içinde örnek metotlarına
 erişebiliyoruz. İşte sınıf metotları için de benzer bir işlem yapacağız.</p>
 <p>Çok basit bir örnek verelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">():</span>
     <span class="n">sınıf_niteliği</span> <span class="o">=</span> <span class="mi">0</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param1</span><span class="p">,</span> <span class="n">param2</span><span class="p">):</span>
@@ -366,24 +374,24 @@ erişebiliyoruz. İşte sınıf metotları için de benzer bir işlem yapacağı
         <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">sınıf_niteliği</span>
 </pre></div>
 </div>
-<p>Burada <code class="docutils literal notranslate"><span class="pre">örnek_metodu()</span></code> ile <code class="docutils literal notranslate"><span class="pre">sınıf_metodu()</span></code> arasındaki fark, ilkinde
+<p>Burada <code class="docutils literal"><span class="pre">örnek_metodu()</span></code> ile <code class="docutils literal"><span class="pre">sınıf_metodu()</span></code> arasındaki fark, ilkinde
 <cite>self</cite>, ikincisinde ise <cite>cls</cite> kullanmamız. Ancak hatırlarsanız, <cite>self</cite>
 kelimesinin Python açısından bir zorunluluk olmadığını söylemiştik. Tıpkı <cite>self</cite>
 gibi, aslında <cite>cls</cite> kelimesi de Python açısından bir zorunluluk değildir. Yani
 <cite>cls</cite> yerine de istediğimiz kelimeyi kullanabilirdik. Bu metotlarda önemli olan,
 parametre listesinin ilk sırasını işgal eden kelimenin ne olduğudur. Dolayısıyla
-yukarıdaki örnekte Python açısından <code class="docutils literal notranslate"><span class="pre">örnek_metodu()</span></code> ile <code class="docutils literal notranslate"><span class="pre">sınıf_metodu()</span></code>
+yukarıdaki örnekte Python açısından <code class="docutils literal"><span class="pre">örnek_metodu()</span></code> ile <code class="docutils literal"><span class="pre">sınıf_metodu()</span></code>
 arasında hiçbir fark bulunmaz. Python her iki metodu da birer örnek metodu
 olarak değerlendirir. Bu iki örnek metodu arasındaki fark, ilkinde sınıf
 örneklerini temsil edecek kelimenin <cite>self</cite>, ikincisinde ise <cite>cls</cite> olarak
 belirlenmiş olmasıdır. Python <cite>self</cite> veya <cite>cls</cite> kelimelerine özel bir önem
 atfetmez. Ama Python topluluğu içinde, örnek metotları için <cite>self</cite>, sınıf
 metotları için ise <cite>cls</cite> kullanmak çok güçlü bir gelenektir.</p>
-<p>Sözün özü, <code class="docutils literal notranslate"><span class="pre">sınıf_metodu()</span></code> fonksiyonunun ilk parametresini <cite>cls</cite> yapmış
+<p>Sözün özü, <code class="docutils literal"><span class="pre">sınıf_metodu()</span></code> fonksiyonunun ilk parametresini <cite>cls</cite> yapmış
 olmamız bu metodun bir sınıf metodu olabilmesi için gereklidir, ama yeterli
 değildir. Python’da bir sınıf metodu oluşturabilmek için bir parçaya daha
 ihtiyacımız var:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">():</span>
     <span class="n">sınıf_niteliği</span> <span class="o">=</span> <span class="mi">0</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param1</span><span class="p">,</span> <span class="n">param2</span><span class="p">):</span>
@@ -407,8 +415,8 @@ işareti olan bu tür öğelere ‘bezeyici’ (<em>decorator</em>) adı verilir
 gibi, <cite>&#64;classmethod</cite> bezeyicisi, yukarıdaki örnekte bir fonksiyonu sınıf
 metoduna dönüştürme işlevi görüyor. İlerleyen derslerimizde bezeyicilerin başka
 özelliklerinden de söz edeceğiz. Gelin isterseniz şimdi yukarıda öğrendiğimiz
-özelliği <code class="docutils literal notranslate"><span class="pre">Çalışan()</span></code> adlı sınıfa uygulayalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
+özelliği <code class="docutils literal"><span class="pre">Çalışan()</span></code> adlı sınıfa uygulayalım:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
     <span class="n">personel</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">):</span>
@@ -439,35 +447,35 @@ metoduna dönüştürme işlevi görüyor. İlerleyen derslerimizde bezeyicileri
             <span class="nb">print</span><span class="p">(</span><span class="n">kabiliyet</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Yukarıda <code class="docutils literal notranslate"><span class="pre">personel_sayısını_görüntüle()</span></code> adlı fonksiyonun yanı sıra,
-<code class="docutils literal notranslate"><span class="pre">personeli_görüntüle()</span></code> adlı fonksiyonu da bir sınıf metodu haline getirdik.
-Çünkü tıpkı <code class="docutils literal notranslate"><span class="pre">personel_sayısını_görüntüle()</span></code> fonksiyonu gibi,
-<code class="docutils literal notranslate"><span class="pre">personeli_görüntüle()</span></code> fonksiyonu da aslında tek tek örneklerden ziyade
+<p>Yukarıda <code class="docutils literal"><span class="pre">personel_sayısını_görüntüle()</span></code> adlı fonksiyonun yanı sıra,
+<code class="docutils literal"><span class="pre">personeli_görüntüle()</span></code> adlı fonksiyonu da bir sınıf metodu haline getirdik.
+Çünkü tıpkı <code class="docutils literal"><span class="pre">personel_sayısını_görüntüle()</span></code> fonksiyonu gibi,
+<code class="docutils literal"><span class="pre">personeli_görüntüle()</span></code> fonksiyonu da aslında tek tek örneklerden ziyade
 sınıfın genelini ilgilendiriyor. Dolayısıyla bu fonksiyona da sınıf adı
 üzerinden erişebilmek gayet makul ve mantıklı bir iştir.</p>
 <p>Sınıf metotlarımızı başarıyla tanımladığımıza göre artık yukarıdaki sınıfı şu
 şekilde kullanabiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">çalışan</span> <span class="k">import</span> <span class="n">Çalışan</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">çalışan</span> <span class="k">import</span> <span class="n">Çalışan</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Çalışan</span><span class="o">.</span><span class="n">personel_sayısını_görüntüle</span><span class="p">()</span>
 
 <span class="go">0</span>
 </pre></div>
 </div>
-<p>Bir sınıf metodu olarak tanımladığımız <code class="docutils literal notranslate"><span class="pre">personel_sayısını_görüntüle()</span></code>
+<p>Bir sınıf metodu olarak tanımladığımız <code class="docutils literal"><span class="pre">personel_sayısını_görüntüle()</span></code>
 fonksiyonu artık ilgili sınıfın herhangi bir örneğine bağımlı olmadığı için,
 sınıfı örneklemek zorunda kalmadan, yalnızca sınıf adını kullanarak
-<code class="docutils literal notranslate"><span class="pre">personel_sayısını_görüntüle()</span></code> fonksiyonuna erişebiliyoruz. Bu da bize
+<code class="docutils literal"><span class="pre">personel_sayısını_görüntüle()</span></code> fonksiyonuna erişebiliyoruz. Bu da bize
 personel sayısının 0 olduğu durumu görüntüleyebilme imkanı veriyor…</p>
-<p>Ayrıca, <code class="docutils literal notranslate"><span class="pre">personel_sayısını_görüntüle()</span></code> adlı sınıf metodumuz, fiziksel olarak
+<p>Ayrıca, <code class="docutils literal"><span class="pre">personel_sayısını_görüntüle()</span></code> adlı sınıf metodumuz, fiziksel olarak
 da sınıfın içinde yer aldığı için, seçmeli içe aktarmalarda sınıfın öteki
 öğeleriyle birlikte bu metot da aktarılacaktır:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">çalışan</span> <span class="k">import</span> <span class="n">Çalışan</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">çalışan</span> <span class="k">import</span> <span class="n">Çalışan</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">Çalışan</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Listede sınıf metodumuzun da olduğunu görüyorsunuz.</p>
 <p>Personele üye ekledikten sonra bu metodu nasıl kullanacağımızı biliyorsunuz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ahmet</span> <span class="o">=</span> <span class="n">Çalışan</span><span class="p">(</span><span class="s1">&#39;Ahmet&#39;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ahmet</span> <span class="o">=</span> <span class="n">Çalışan</span><span class="p">(</span><span class="s1">&#39;Ahmet&#39;</span><span class="p">)</span>
 
 <span class="go">Ahmet adlı kişi personele eklendi</span>
 
@@ -486,9 +494,9 @@ da sınıfın içinde yer aldığı için, seçmeli içe aktarmalarda sınıfın
 </div>
 <p>Gördüğünüz gibi, sınıf metodumuza doğrudan sınıf adını kullanarak
 erişebiliyoruz. Elbette bu durum, sınıf metoduna örnek adları üzerinden de
-erişmemize engel değil. Eğer arzu edersek <code class="docutils literal notranslate"><span class="pre">personel_sayısını_görüntüle()</span></code> adlı
+erişmemize engel değil. Eğer arzu edersek <code class="docutils literal"><span class="pre">personel_sayısını_görüntüle()</span></code> adlı
 sınıf metodunu şu şekilde de çağırabiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ayşe</span><span class="o">.</span><span class="n">personel_sayısını_görüntüle</span><span class="p">()</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ayşe</span><span class="o">.</span><span class="n">personel_sayısını_görüntüle</span><span class="p">()</span>
 
 <span class="go">3</span>
 
@@ -504,8 +512,8 @@ sınıf metodunu şu şekilde de çağırabiliriz:</p>
 <p>Ancak örnek metotlarına ve örnek niteliklerine atıfta bulunmak için örnek
 adlarını kullanmak, sınıf metotları ve sınıf niteliklerine atıfta bulunmak için
 ise sınıf adlarını tercih etmek daha akıllıca olabilir.</p>
-<p><code class="docutils literal notranslate"><span class="pre">personel_sayısını_görüntüle()</span></code> fonksiyonu için söylediğimiz bu sözler,
-<code class="docutils literal notranslate"><span class="pre">personeli_görüntüle()</span></code> fonksiyonu için de aynen geçerlidir.</p>
+<p><code class="docutils literal"><span class="pre">personel_sayısını_görüntüle()</span></code> fonksiyonu için söylediğimiz bu sözler,
+<code class="docutils literal"><span class="pre">personeli_görüntüle()</span></code> fonksiyonu için de aynen geçerlidir.</p>
 <p>Sözün özü, sınıfın herhangi bir örneğine bağlı olmayan bir işlem yapan, ama
 anlamsal olarak da sınıfla ilişkili olduğu için sınıf dışında bırakmak
 istemediğiniz fonksiyonları birer sınıf metodu olarak tanımlayabilirsiniz.</p>
@@ -518,7 +526,7 @@ olmasıdır. “Alternatif neyci?” diye sorduğunuzu rahatlıkla duyabiliyorum
 <p>Gelin isterseniz ‘alternatif inşacı’ kavramını bir dizi örnek üzerinde
 kabataslak da olsa açıklamaya çalışalım.</p>
 <p>Şimdi elinizde şöyle bir kitap listesi olduğunu düşünün:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">liste</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;9789753424080&#39;</span><span class="p">,</span> <span class="s1">&#39;Greenberg&#39;</span><span class="p">,</span> <span class="s1">&#39;Sana Gül Bahçesi Vadetmedim&#39;</span><span class="p">,</span> <span class="s1">&#39;Metis&#39;</span><span class="p">),</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">liste</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;9789753424080&#39;</span><span class="p">,</span> <span class="s1">&#39;Greenberg&#39;</span><span class="p">,</span> <span class="s1">&#39;Sana Gül Bahçesi Vadetmedim&#39;</span><span class="p">,</span> <span class="s1">&#39;Metis&#39;</span><span class="p">),</span>
          <span class="p">(</span><span class="s1">&#39;975872519X&#39;</span><span class="p">,</span> <span class="s1">&#39;Evren&#39;</span><span class="p">,</span> <span class="s1">&#39;Postmodern Bir Kız Sevdim&#39;</span><span class="p">,</span> <span class="s1">&#39;İthaki&#39;</span><span class="p">),</span>
          <span class="p">(</span><span class="s1">&#39;9789754060409&#39;</span><span class="p">,</span> <span class="s1">&#39;Nietzsche&#39;</span><span class="p">,</span> <span class="s1">&#39;Böyle Buyurdu Zerdüşt&#39;</span><span class="p">,</span> <span class="s1">&#39;Cem&#39;</span><span class="p">)]</span>
 </pre></div>
@@ -529,7 +537,7 @@ ismini ve yayınevini gösteren birer demetten oluşuyor. Amacımız, bu listede
 program; isbn, isim, eser ve yayınevi ölçütlerine göre bu listeden veri
 alabilmemizi sağlayacak.</p>
 <p>İlk denememizi yapalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">liste</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;9789753424080&#39;</span><span class="p">,</span> <span class="s1">&#39;Greenberg&#39;</span><span class="p">,</span> <span class="s1">&#39;Sana Gül Bahçesi Vadetmedim&#39;</span><span class="p">,</span> <span class="s1">&#39;Metis&#39;</span><span class="p">),</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">liste</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;9789753424080&#39;</span><span class="p">,</span> <span class="s1">&#39;Greenberg&#39;</span><span class="p">,</span> <span class="s1">&#39;Sana Gül Bahçesi Vadetmedim&#39;</span><span class="p">,</span> <span class="s1">&#39;Metis&#39;</span><span class="p">),</span>
          <span class="p">(</span><span class="s1">&#39;975872519X&#39;</span><span class="p">,</span> <span class="s1">&#39;Evren&#39;</span><span class="p">,</span> <span class="s1">&#39;Postmodern Bir Kız Sevdim&#39;</span><span class="p">,</span> <span class="s1">&#39;İthaki&#39;</span><span class="p">),</span>
          <span class="p">(</span><span class="s1">&#39;9789754060409&#39;</span><span class="p">,</span> <span class="s1">&#39;Nietzsche&#39;</span><span class="p">,</span> <span class="s1">&#39;Böyle Buyurdu Zerdüşt&#39;</span><span class="p">,</span> <span class="s1">&#39;Cem&#39;</span><span class="p">)]</span>
 
@@ -556,14 +564,14 @@ alabilmemizi sağlayacak.</p>
 </pre></div>
 </div>
 <p>Burada öncelikle kitap listemizi tanımladık. Daha sonra da sorgulama işlemini
-gerçekleştirecek <code class="docutils literal notranslate"><span class="pre">sorgula()</span></code> adlı bir fonksiyon yazdık.</p>
+gerçekleştirecek <code class="docutils literal"><span class="pre">sorgula()</span></code> adlı bir fonksiyon yazdık.</p>
 <p>Bu fonksiyon toplam iki parametre alıyor: <cite>ölçüt</cite> ve <cite>değer</cite>. Bu parametrelerin
 öntanımlı değerlerini <cite>None</cite> olarak belirledik. Böylece bu fonksiyonu herhangi
 bir argüman vermeden de çalıştırabileceğiz.</p>
 <p>Fonksiyon gövdesinde ilk yaptığımız iş, fonksiyon argümansız çalıştırıldığında,
 yani <cite>ölçüt</cite> ve <cite>değer</cite> için herhangi bir değer belirlenmediğinde ne olacağını
 ayarlamak:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">li</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">li</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">ölçüt</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">değer</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="n">li</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;, &#39;</span><span class="p">)</span>
 </pre></div>
@@ -571,10 +579,10 @@ ayarlamak:</p>
 <p>Eğer <cite>ölçüt</cite> ve <cite>değer</cite> parametreleri için herhangi bir değer belirtilmemişse,
 yani bunlar <cite>None</cite> olarak bırakılmışsa, kitap listesinin tamamını, her bir öğe
 arasına birer virgül yerleştirerek ekrana basıyoruz.</p>
-<p>Eğer <code class="docutils literal notranslate"><span class="pre">sorgula()</span></code> fonksiyonu çağrılırken <cite>ölçüt</cite> parametresine <cite>‘isbn’</cite>
+<p>Eğer <code class="docutils literal"><span class="pre">sorgula()</span></code> fonksiyonu çağrılırken <cite>ölçüt</cite> parametresine <cite>‘isbn’</cite>
 argümanı, <cite>değer</cite> parametresine ise bir ISBN değeri verilmişse şu işlemi
 yapıyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">ölçüt</span> <span class="o">==</span> <span class="s1">&#39;isbn&#39;</span><span class="p">:</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">ölçüt</span> <span class="o">==</span> <span class="s1">&#39;isbn&#39;</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">değer</span> <span class="o">==</span> <span class="n">li</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
         <span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="n">li</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;, &#39;</span><span class="p">)</span>
 </pre></div>
@@ -583,12 +591,12 @@ yapıyoruz:</p>
 argümanını, kitap listesi içindeki her bir demetin ilk sırasında arıyoruz. Çünkü
 ISBN bilgileri demetlerin ilk sırasında yer alıyor. Eğer bu koşul sağlanırsa
 listenin ilgili kısmını ekrana basıyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">değer</span> <span class="o">==</span> <span class="n">li</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">değer</span> <span class="o">==</span> <span class="n">li</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
     <span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="n">li</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;, &#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Bu mantığı kullanarak öteki ölçütler için de birer sorgu kodu yazıyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">ölçüt</span> <span class="o">==</span> <span class="s1">&#39;yazar&#39;</span><span class="p">:</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">ölçüt</span> <span class="o">==</span> <span class="s1">&#39;yazar&#39;</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">değer</span> <span class="o">==</span> <span class="n">li</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
         <span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="n">li</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;, &#39;</span><span class="p">)</span>
 
@@ -609,12 +617,12 @@ eser için <cite>li[2]</cite>’yi, yayınevi için ise <cite>li[3]</cite>’ü 
 ortamıdır. O halde şimdi bu kodları <cite>klist.py</cite> adlı bir dosyaya kaydedelim ve
 dosyanın bulunduğu dizinde bir etkileşimli kabuk oturumu başlatarak modülümüzü
 içe aktaralım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">klist</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">klist</span>
 </pre></div>
 </div>
-<p>Önce <cite>klist</cite> modülü içindeki <code class="docutils literal notranslate"><span class="pre">sorgula()</span></code> fonksiyonunu argümansız olarak
+<p>Önce <cite>klist</cite> modülü içindeki <code class="docutils literal"><span class="pre">sorgula()</span></code> fonksiyonunu argümansız olarak
 çağıralım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">klist</span><span class="o">.</span><span class="n">sorgula</span><span class="p">()</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">klist</span><span class="o">.</span><span class="n">sorgula</span><span class="p">()</span>
 
 <span class="go">9789753424080, Greenberg, Sana Gül Bahçesi Vadetmedim, Metis</span>
 <span class="go">975872519X, Evren, Postmodern Bir Kız Sevdim, İthaki</span>
@@ -624,7 +632,7 @@ içe aktaralım:</p>
 <p>Tam da beklediğimiz gibi, fonksiyon argümansız çağrıldığında bütün kitap
 listesini, her bir öğe arasında bir virgül olacak şekilde ekrana basıyor.</p>
 <p>Şimdi de mesela ISBN numarasına göre birkaç sorgu işlemi gerçekleştirelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">klist</span><span class="o">.</span><span class="n">sorgula</span><span class="p">(</span><span class="s1">&#39;isbn&#39;</span><span class="p">,</span> <span class="s1">&#39;9789754060409&#39;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">klist</span><span class="o">.</span><span class="n">sorgula</span><span class="p">(</span><span class="s1">&#39;isbn&#39;</span><span class="p">,</span> <span class="s1">&#39;9789754060409&#39;</span><span class="p">)</span>
 
 <span class="go">9789754060409, Nietzsche, Böyle Buyurdu Zerdüşt , Cem</span>
 
@@ -637,12 +645,12 @@ listesini, her bir öğe arasında bir virgül olacak şekilde ekrana basıyor.<
 <span class="go">9789753424080, Greenberg, Sana Gül Bahçesi Vadetmedim, Metis</span>
 </pre></div>
 </div>
-<p>Burada, <code class="docutils literal notranslate"><span class="pre">sorgula()</span></code> fonksiyonunun ilk parametresine argüman olarak ‘isbn’
+<p>Burada, <code class="docutils literal"><span class="pre">sorgula()</span></code> fonksiyonunun ilk parametresine argüman olarak ‘isbn’
 değerini verdik. Böylece programımız ISBN numarasına göre sorgu yapmak
 istediğimizi anladı. Daha sonra da ikinci argüman olarak istediğimiz bir ISBN
 numarasını yazdık ve sorgu işlemini tamamladık.</p>
 <p>Bir de yayınevine göre sorgulama yapalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">klist</span><span class="o">.</span><span class="n">sorgula</span><span class="p">(</span><span class="s1">&#39;yayınevi&#39;</span><span class="p">,</span> <span class="s1">&#39;Metis&#39;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">klist</span><span class="o">.</span><span class="n">sorgula</span><span class="p">(</span><span class="s1">&#39;yayınevi&#39;</span><span class="p">,</span> <span class="s1">&#39;Metis&#39;</span><span class="p">)</span>
 
 <span class="go">9789753424080, Greenberg, Sana Gül Bahçesi Vadetmedim, Metis</span>
 
@@ -657,10 +665,10 @@ numarasını yazdık ve sorgu işlemini tamamladık.</p>
 </div>
 <p>Gördüğünüz gibi, fonksiyonumuz gayet güzel çalışıyor…</p>
 <p>Yukarıda verdiğimiz kodlar, bahsettiğimiz amaç için yazılabilecek tek alternatif
-değildir elbette. Mesela yukarıdaki <code class="docutils literal notranslate"><span class="pre">if-else</span></code> yapısını bir sözlük içine
+değildir elbette. Mesela yukarıdaki <code class="docutils literal"><span class="pre">if-else</span></code> yapısını bir sözlük içine
 yerleştirerek çok daha sade bir program elde edebiliriz.</p>
 <p>Dikkatlice inceleyin:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">liste</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;9789753424080&#39;</span><span class="p">,</span> <span class="s1">&#39;Greenberg&#39;</span><span class="p">,</span> <span class="s1">&#39;Sana Gül Bahçesi Vadetmedim&#39;</span><span class="p">,</span> <span class="s1">&#39;Metis&#39;</span><span class="p">),</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">liste</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;9789753424080&#39;</span><span class="p">,</span> <span class="s1">&#39;Greenberg&#39;</span><span class="p">,</span> <span class="s1">&#39;Sana Gül Bahçesi Vadetmedim&#39;</span><span class="p">,</span> <span class="s1">&#39;Metis&#39;</span><span class="p">),</span>
          <span class="p">(</span><span class="s1">&#39;975872519X&#39;</span><span class="p">,</span> <span class="s1">&#39;Evren&#39;</span><span class="p">,</span> <span class="s1">&#39;Postmodern Bir Kız Sevdim&#39;</span><span class="p">,</span> <span class="s1">&#39;İthaki&#39;</span><span class="p">),</span>
          <span class="p">(</span><span class="s1">&#39;9789754060409&#39;</span><span class="p">,</span> <span class="s1">&#39;Nietzsche&#39;</span><span class="p">,</span> <span class="s1">&#39;Böyle Buyurdu Zerdüşt&#39;</span><span class="p">,</span> <span class="s1">&#39;Cem&#39;</span><span class="p">)]</span>
 
@@ -675,17 +683,17 @@ yerleştirerek çok daha sade bir program elde edebiliriz.</p>
         <span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="n">öğe</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;, &#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Burada bütün <code class="docutils literal notranslate"><span class="pre">if-else</span></code> cümleciklerini birer liste üretecine dönüştürüp, <cite>d</cite>
+<p>Burada bütün <code class="docutils literal"><span class="pre">if-else</span></code> cümleciklerini birer liste üretecine dönüştürüp, <cite>d</cite>
 adlı sözlüğün anahtarları olarak belirledik. Artık sorgulama işlemlerini bir
-<code class="docutils literal notranslate"><span class="pre">if-else</span></code> yapısı içinde değil de, bir sözlük içinden gerçekleştireceğiz.</p>
+<code class="docutils literal"><span class="pre">if-else</span></code> yapısı içinde değil de, bir sözlük içinden gerçekleştireceğiz.</p>
 <p>Hangi parametrenin hangi listeyi çağıracağını belirleyen sözlüğümüzü yazdıktan
-sonra, sözlüklerin <code class="docutils literal notranslate"><span class="pre">get()</span></code> metodunu kullanarak, <cite>ölçüt</cite> argümanının değerine
+sonra, sözlüklerin <code class="docutils literal"><span class="pre">get()</span></code> metodunu kullanarak, <cite>ölçüt</cite> argümanının değerine
 göre sözlükten veri çekiyoruz. Eğer sözlükte bulunmayan bir <cite>ölçüt</cite> değeri
 verilirse tüm listeyi ekrana basıyoruz.</p>
 <p>Bu arada, eğer <cite>d</cite> sözlüğü içindeki liste üreteçlerinin birbirini tekrar eder
 bir yapıda olması sizi rahatsız ediyorsa, bu kısmı bir yardımcı fonksiyon
 aracılığıyla sadeleştirebilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">liste</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;9789753424080&#39;</span><span class="p">,</span> <span class="s1">&#39;Greenberg&#39;</span><span class="p">,</span> <span class="s1">&#39;Sana Gül Bahçesi Vadetmedim&#39;</span><span class="p">,</span> <span class="s1">&#39;Metis&#39;</span><span class="p">),</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">liste</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;9789753424080&#39;</span><span class="p">,</span> <span class="s1">&#39;Greenberg&#39;</span><span class="p">,</span> <span class="s1">&#39;Sana Gül Bahçesi Vadetmedim&#39;</span><span class="p">,</span> <span class="s1">&#39;Metis&#39;</span><span class="p">),</span>
          <span class="p">(</span><span class="s1">&#39;975872519X&#39;</span><span class="p">,</span> <span class="s1">&#39;Evren&#39;</span><span class="p">,</span> <span class="s1">&#39;Postmodern Bir Kız Sevdim&#39;</span><span class="p">,</span> <span class="s1">&#39;İthaki&#39;</span><span class="p">),</span>
          <span class="p">(</span><span class="s1">&#39;9789754060409&#39;</span><span class="p">,</span> <span class="s1">&#39;Nietzsche&#39;</span><span class="p">,</span> <span class="s1">&#39;Böyle Buyurdu Zerdüşt&#39;</span><span class="p">,</span> <span class="s1">&#39;Cem&#39;</span><span class="p">)]</span>
 
@@ -702,10 +710,10 @@ aracılığıyla sadeleştirebilirsiniz:</p>
         <span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="n">öğe</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;, &#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Burada bütün liste üreteçlerini tek bir <code class="docutils literal notranslate"><span class="pre">bul()</span></code> fonksiyonu içinde oluşturarak,
-<code class="docutils literal notranslate"><span class="pre">sorgula()</span></code> fonksiyonu içindeki <cite>d</cite> sözlüğüne gönderdik.</p>
+<p>Burada bütün liste üreteçlerini tek bir <code class="docutils literal"><span class="pre">bul()</span></code> fonksiyonu içinde oluşturarak,
+<code class="docutils literal"><span class="pre">sorgula()</span></code> fonksiyonu içindeki <cite>d</cite> sözlüğüne gönderdik.</p>
 <p>Bu kodları da aynı ilk program örneğinde olduğu gibi kullanıyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">klist</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">klist</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">klist</span><span class="o">.</span><span class="n">sorgula</span><span class="p">()</span>
 
 <span class="go">9789753424080, Greenberg, Sana Gül Bahçesi Vadetmedim, Metis</span>
@@ -723,7 +731,7 @@ aracılığıyla sadeleştirebilirsiniz:</p>
 </div>
 <p>Yukarıdaki kodları yazmanın daha başka alternatifleri de var. Mesela, eğer arzu
 ederseniz, yukarıdaki kodları bir sınıf yapısı içinde de ifade edebilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sorgu</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sorgu</span><span class="p">():</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">liste</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;9789753424080&#39;</span><span class="p">,</span> <span class="s1">&#39;Greenberg&#39;</span><span class="p">,</span> <span class="s1">&#39;Sana Gül Bahçesi Vadetmedim&#39;</span><span class="p">,</span> <span class="s1">&#39;Metis&#39;</span><span class="p">),</span>
                       <span class="p">(</span><span class="s1">&#39;975872519X&#39;</span><span class="p">,</span> <span class="s1">&#39;Evren&#39;</span><span class="p">,</span> <span class="s1">&#39;Postmodern Bir Kız Sevdim&#39;</span><span class="p">,</span> <span class="s1">&#39;İthaki&#39;</span><span class="p">),</span>
@@ -744,10 +752,10 @@ ederseniz, yukarıdaki kodları bir sınıf yapısı içinde de ifade edebilirsi
 </div>
 <p>Burada kitap listesini bir örnek niteliği olarak tanımlamak suretiyle sınıfın
 her yerinden kullanılabilir hale getirdik.</p>
-<p>Ardından da <code class="docutils literal notranslate"><span class="pre">bul()</span></code> ve <code class="docutils literal notranslate"><span class="pre">sorgula()</span></code> adlı fonksiyonları, birer örnek metodu
+<p>Ardından da <code class="docutils literal"><span class="pre">bul()</span></code> ve <code class="docutils literal"><span class="pre">sorgula()</span></code> adlı fonksiyonları, birer örnek metodu
 biçiminde sınıf içine yerleştirdik.</p>
 <p>Bu sınıfı da şu şekilde kullanabiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">klist</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">klist</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sorgu</span> <span class="o">=</span> <span class="n">klist</span><span class="o">.</span><span class="n">Sorgu</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sorgu</span><span class="o">.</span><span class="n">sorgula</span><span class="p">()</span>
 
@@ -765,7 +773,7 @@ etmenin bize pek bir katkısı yok. Burada yaptığımız şey esasında bütün
 ‘Sorgu’ adlı bir etki alanı içine taşımaktan fazlası değil. Ama böyle bir
 imkanınızın da olduğunu bilmeniz her halükarda sizin için faydalı olacaktır.</p>
 <p>Gelelim yukarıdaki kodları yazmanın son alternatifine:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sorgu</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sorgu</span><span class="p">():</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">değer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sıra</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">liste</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;9789753424080&#39;</span><span class="p">,</span> <span class="s1">&#39;Greenberg&#39;</span><span class="p">,</span> <span class="s1">&#39;Sana Gül Bahçesi Vadetmedim&#39;</span><span class="p">,</span> <span class="s1">&#39;Metis&#39;</span><span class="p">),</span>
                       <span class="p">(</span><span class="s1">&#39;975872519X&#39;</span><span class="p">,</span> <span class="s1">&#39;Evren&#39;</span><span class="p">,</span> <span class="s1">&#39;Postmodern Bir Kız Sevdim&#39;</span><span class="p">,</span> <span class="s1">&#39;İthaki&#39;</span><span class="p">),</span>
@@ -800,11 +808,11 @@ imkanınızın da olduğunu bilmeniz her halükarda sizin için faydalı olacakt
 ölçütleri yapısal olarak birbirinden ayırmış olduk. Yukarıdaki sınıfı şu şekilde
 kullanabiliriz:</p>
 <p>Önce modülümüzü içe aktaralım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">klist</span> <span class="k">import</span> <span class="n">Sorgu</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">klist</span> <span class="k">import</span> <span class="n">Sorgu</span>
 </pre></div>
 </div>
 <p>ISBN numarasına göre bir sorgu gerçekleştirelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Sorgu</span><span class="o">.</span><span class="n">isbnden</span><span class="p">(</span><span class="s2">&quot;9789753424080&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Sorgu</span><span class="o">.</span><span class="n">isbnden</span><span class="p">(</span><span class="s2">&quot;9789753424080&quot;</span><span class="p">)</span>
 
 <span class="go">9789753424080, Greenberg, Sana Gül Bahçesi Vadetmedim, Metis</span>
 </pre></div>
@@ -812,7 +820,7 @@ kullanabiliriz:</p>
 <p>Gördüğünüz gibi, sınıf metodu yaklaşımı, gayet temiz bir sorgu kodu üretmemize
 imkan tanıyor.</p>
 <p>Bir de yazara ve esere göre sorgulayalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Sorgu</span><span class="o">.</span><span class="n">yazardan</span><span class="p">(</span><span class="s2">&quot;Greenberg&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Sorgu</span><span class="o">.</span><span class="n">yazardan</span><span class="p">(</span><span class="s2">&quot;Greenberg&quot;</span><span class="p">)</span>
 
 <span class="go">9789753424080, Greenberg, Sana Gül Bahçesi Vadetmedim, Metis</span>
 
@@ -823,7 +831,7 @@ imkan tanıyor.</p>
 </div>
 <p>Bunlar da gayet güzel görünüyor.</p>
 <p>Şimdi bir de bütün listeyi alalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hepsi</span> <span class="o">=</span> <span class="n">Sorgu</span><span class="p">()</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hepsi</span> <span class="o">=</span> <span class="n">Sorgu</span><span class="p">()</span>
 
 <span class="go">9789753424080, Greenberg, Sana Gül Bahçesi Vadetmedim, Metis</span>
 <span class="go">975872519X, Evren, Postmodern Bir Kız Sevdim, İthaki</span>
@@ -833,13 +841,13 @@ imkan tanıyor.</p>
 <p>Gördüğünüz gibi, sınıfı parametresiz olarak örneklediğimizde bütün listeyi elde
 ediyoruz.</p>
 <p>İşte ‘alternatif inşa’ denen işlem tam olarak budur. Yukarıdaki örnekte
-<code class="docutils literal notranslate"><span class="pre">isbnden()</span></code>, <code class="docutils literal notranslate"><span class="pre">yazardan()</span></code>, <code class="docutils literal notranslate"><span class="pre">eserden()</span></code> ve <code class="docutils literal notranslate"><span class="pre">yayınevinden()</span></code> adlı sınıf
-metotları, <code class="docutils literal notranslate"><span class="pre">Sorgu()</span></code> adlı sınıfı alternatif şekillerde inşa etmemizi sağlıyor <a class="footnote-reference" href="#id2" id="id1"><sup>1</sup></a>.</p>
-<p>Normal şartlarda, bir sınıfı, <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> fonksiyonuna verdiğimiz
+<code class="docutils literal"><span class="pre">isbnden()</span></code>, <code class="docutils literal"><span class="pre">yazardan()</span></code>, <code class="docutils literal"><span class="pre">eserden()</span></code> ve <code class="docutils literal"><span class="pre">yayınevinden()</span></code> adlı sınıf
+metotları, <code class="docutils literal"><span class="pre">Sorgu()</span></code> adlı sınıfı alternatif şekillerde inşa etmemizi sağlıyor <a class="footnote-reference" href="#id2" id="id1"><sup>1</sup></a>.</p>
+<p>Normal şartlarda, bir sınıfı, <code class="docutils literal"><span class="pre">__init__()</span></code> fonksiyonuna verdiğimiz
 parametreler aracılığıyla inşa ediyoruz (birkaç sayfa sonra ‘inşa’ kavramından
 daha ayrıntılı olarak bahsedeceğiz).</p>
 <p>Mesela:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Giriş</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Giriş</span><span class="p">():</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mesaj</span><span class="o">=</span><span class="s1">&#39;Müşteri numaranız: &#39;</span><span class="p">):</span>
         <span class="n">cevap</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="n">mesaj</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hoşgeldiniz!&#39;</span><span class="p">)</span>
@@ -847,14 +855,14 @@ daha ayrıntılı olarak bahsedeceğiz).</p>
 </div>
 <p>Burada tanımladığımız <cite>Giriş()</cite> sınıfı, bir müşteri numarası aracılığıyla
 sisteme giriş imkanı sağlıyor:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sistem</span> <span class="k">import</span> <span class="n">Giriş</span> <span class="c1">#kodlarımız sistem.py dosyası içinde</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sistem</span> <span class="k">import</span> <span class="n">Giriş</span> <span class="c1">#kodlarımız sistem.py dosyası içinde</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Giriş</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Eğer biz aynı zamanda bir parola ve TC Kimlik Numarası ile de giriş imkanı
 sağlamak istersek, başka yöntemlerin yanı sıra, sınıf metotlarından da
 yararlanabiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Giriş</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Giriş</span><span class="p">():</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mesaj</span><span class="o">=</span><span class="s1">&#39;Müşteri numaranız: &#39;</span><span class="p">):</span>
         <span class="n">cevap</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="n">mesaj</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hoşgeldiniz!&#39;</span><span class="p">)</span>
@@ -871,22 +879,22 @@ yararlanabiliriz:</p>
 </pre></div>
 </div>
 <p>Bu şekilde yukarıdaki sınıfı aşağıdaki gibi de inşa etme imkanına kavuşuyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Giriş</span><span class="o">.</span><span class="n">paroladan</span><span class="p">()</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Giriş</span><span class="o">.</span><span class="n">paroladan</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>veya:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Giriş</span><span class="o">.</span><span class="n">tcknden</span><span class="p">()</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Giriş</span><span class="o">.</span><span class="n">tcknden</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Sınıf metotları içinde kullandığımız <code class="docutils literal notranslate"><span class="pre">cls(mesaj)</span></code> satırları, <cite>Giriş()</cite> adlı
+<p>Sınıf metotları içinde kullandığımız <code class="docutils literal"><span class="pre">cls(mesaj)</span></code> satırları, <cite>Giriş()</cite> adlı
 sınıfı farklı bir parametre ile çağırmamızı sağlıyor. Gördüğünüz gibi, bu
 sınıfın <cite>mesaj</cite> parametresinin öntanımlı değeri <cite>‘Müşteri numaranız: ‘</cite>.
-Sınıfımızı farklı bir şekilde çağırabilmek için, <code class="docutils literal notranslate"><span class="pre">cls(mesaj)</span></code> kodları
+Sınıfımızı farklı bir şekilde çağırabilmek için, <code class="docutils literal"><span class="pre">cls(mesaj)</span></code> kodları
 yardımıyla sınıfın <cite>mesaj</cite> parametresini <cite>‘Lütfen parolanızı giriniz: ‘</cite> ve
 <cite>‘Lütfen TC kimlik numaranızı giriniz: ‘</cite> değerleri ile yeniden çalıştırıyoruz.</p>
 <p>Daha önce de birkaç kez vurguladığımız gibi, <cite>cls</cite> kelimesi Python açısından bir
 zorunluluk değildir. Yani yukarıdaki sınıfı mesela şöyle de yazabilirdik:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Giriş</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Giriş</span><span class="p">():</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mesaj</span><span class="o">=</span><span class="s1">&#39;Müşteri numaranız: &#39;</span><span class="p">):</span>
         <span class="n">cevap</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="n">mesaj</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hoşgeldiniz!&#39;</span><span class="p">)</span>
@@ -920,7 +928,7 @@ bakınız.</p>
 (kaynak dosyanın nerede olduğunu nasıl öğrenebilirim diye soran arkadaşlara
 teessüflerimi iletiyorum…), orada <cite>date</cite> sınıfının şöyle yazıldığını
 göreceksiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">date</span><span class="p">:</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">date</span><span class="p">:</span>
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="s1">&#39;_year&#39;</span><span class="p">,</span> <span class="s1">&#39;_month&#39;</span><span class="p">,</span> <span class="s1">&#39;_day&#39;</span>
 
     <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -954,7 +962,7 @@ göreceksiniz:</p>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi, burada üç tane sınıf metodu var:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@classmethod</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="nd">@classmethod</span>
 <span class="k">def</span> <span class="nf">fromtimestamp</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
     <span class="o">...</span>
 
@@ -969,7 +977,7 @@ göreceksiniz:</p>
 </div>
 <p>Normal şartlarda <cite>datetime</cite> modülü içindeki <cite>date</cite> sınıfını şu şekilde
 kullanıyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">datetime</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">datetime</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">bugün</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -977,24 +985,24 @@ kullanıyoruz:</p>
 adlı bir tarih nesnesi oluşturmuş oluyoruz. Bu şekilde herhangi bir tarihi elle
 oluşturabilirsiniz.</p>
 <p>Eğer amacınız bugünün tarihini oluşturmaksa, yıl, ay ve gün bilgilerini
-yukarıdaki gibi <cite>date</cite> sınıfına elle girebileceğiniz gibi, <code class="docutils literal notranslate"><span class="pre">today()</span></code> adlı
+yukarıdaki gibi <cite>date</cite> sınıfına elle girebileceğiniz gibi, <code class="docutils literal"><span class="pre">today()</span></code> adlı
 sınıf metodunu da kullanabilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bugün</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bugün</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>İşte böylece, <cite>date</cite> sınıfının size sunduğu bir alternatif inşacı
-(<code class="docutils literal notranslate"><span class="pre">today()</span></code>) vasıtasıyla bugünün tarihini otomatik olarak elde etmiş oldunuz.</p>
+(<code class="docutils literal"><span class="pre">today()</span></code>) vasıtasıyla bugünün tarihini otomatik olarak elde etmiş oldunuz.</p>
 <p>Aynı şekilde, eğer elinizde bir zaman damgası varsa ve siz bu zaman damgasından
 bir tarih elde etmek istiyorsanız yine <cite>date</cite> sınıfının sunduğu bir başka
 alternatif inşacıdan yararlanabilirsiniz:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">time</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">time</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">zaman_damgası</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">bugün</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">zaman_damgası</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Eğer elinizde tam sayı biçimli bir Gregoryen tarih verisi varsa bu veriyi
 kullanarak da bir tarih nesnesi elde edebilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gregoryen</span> <span class="o">=</span> <span class="mi">735765</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gregoryen</span> <span class="o">=</span> <span class="mi">735765</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">bugün</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">fromordinal</span><span class="p">(</span><span class="n">gregoryen</span><span class="p">)</span>
 
 <span class="go">datetime.date(2015, 6, 16)</span>
@@ -1022,7 +1030,7 @@ statik metotları kullanabilirsiniz.</p>
 <h2>&#64;staticmethod Bezeyicisi<a class="headerlink" href="#staticmethod-bezeyicisi" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Buraya gelene kadar öğrendiğimiz örnek ve sınıf metotlarını nasıl
 kullanacağımızı biliyorsunuz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">():</span>
     <span class="n">sınıf_niteliği</span> <span class="o">=</span> <span class="mi">0</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">veri</span><span class="p">):</span>
@@ -1036,12 +1044,12 @@ kullanacağımızı biliyorsunuz:</p>
         <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">sınıf_niteliği</span>
 </pre></div>
 </div>
-<p>Burada <code class="docutils literal notranslate"><span class="pre">örnek_metodu()</span></code>, <cite>self</cite> yardımıyla örnek niteliklerine erişiyor.
-<code class="docutils literal notranslate"><span class="pre">sınıf_metodu()</span></code> ise <cite>cls</cite> yardımıyla sınıf niteliklerine erişiyor. Sınıf
+<p>Burada <code class="docutils literal"><span class="pre">örnek_metodu()</span></code>, <cite>self</cite> yardımıyla örnek niteliklerine erişiyor.
+<code class="docutils literal"><span class="pre">sınıf_metodu()</span></code> ise <cite>cls</cite> yardımıyla sınıf niteliklerine erişiyor. Sınıf
 metodu tanımlamak için ayrıca <cite>&#64;classmethod</cite> bezeyicisini de kullanıyoruz. İşte
 eğer sınıf içinde tanımlayacağınız fonksiyon herhangi bir örnek ya da sınıf
 niteliği üzerinde herhangi bir işlem yapmayacaksa şöyle bir şey yazabilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">():</span>
     <span class="n">sınıf_niteliği</span> <span class="o">=</span> <span class="mi">0</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">veri</span><span class="p">):</span>
@@ -1069,7 +1077,7 @@ anlamsal olarak sınıfla ilgili olan, ancak sınıf metotlarının aksine bu s�
 herhangi bir niteliğine erişmesine gerek olmayan fonksiyonları, sınıf dışına
 atmak yerine, birer statik metot olarak sınıf içine yerleştirebiliriz.</p>
 <p>Basit bir örnek verelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Mat</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Mat</span><span class="p">():</span>
     <span class="sd">&#39;&#39;&#39;Matematik işlemleri yapmamızı sağlayan</span>
 <span class="sd">    bir sınıf.&#39;&#39;&#39;</span>
 
@@ -1082,14 +1090,14 @@ atmak yerine, birer statik metot olarak sınıf içine yerleştirebiliriz.</p>
         <span class="k">return</span> <span class="n">sayı</span> <span class="o">**</span> <span class="mf">0.5</span>
 </pre></div>
 </div>
-<p>Burada <code class="docutils literal notranslate"><span class="pre">Mat()</span></code> adlı bir sınıf tanımladık. Bu sınıf içinde iki adet statik
-metodumuz var: <code class="docutils literal notranslate"><span class="pre">pi()</span></code> ve <code class="docutils literal notranslate"><span class="pre">karekök()</span></code>. Gördüğünüz gibi, bu iki fonksiyon,
+<p>Burada <code class="docutils literal"><span class="pre">Mat()</span></code> adlı bir sınıf tanımladık. Bu sınıf içinde iki adet statik
+metodumuz var: <code class="docutils literal"><span class="pre">pi()</span></code> ve <code class="docutils literal"><span class="pre">karekök()</span></code>. Gördüğünüz gibi, bu iki fonksiyon,
 örnek ve sınıf metotlarının aksine ilk parametre olarak <cite>self</cite> veya <cite>cls</cite>
 almıyor. Çünkü bu iki sınıfın da sınıf veya örnek nitelikleriyle herhangi bir
 işi yok.</p>
 <p>Statik metotları hem örnekler hem de sınıf adları üzerinden kullanabiliriz.</p>
 <p>Yukarıdaki kodların <cite>mat.py</cite> adlı bir dosyada yer aldığını varsayarsak:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mat</span> <span class="k">import</span> <span class="n">Mat</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mat</span> <span class="k">import</span> <span class="n">Mat</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">Mat</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">pi</span><span class="p">()</span> <span class="c1">#örnek üzerinden</span>
 
@@ -1111,7 +1119,7 @@ işi yok.</p>
 metotları epey kullanışlı hale getirir. Böylece sınıfı örneklemek zorunda
 kalmadan, sınıf içindeki statik metotlara ulaşabiliriz.</p>
 <p>Elbette eğer isteseydik biz bu fonksiyonları şöyle de tanımlayabilirdik:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Mat</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Mat</span><span class="p">():</span>
     <span class="sd">&#39;&#39;&#39;Matematik işlemleri yapmamızı sağlayan</span>
 <span class="sd">    bir sınıf.&#39;&#39;&#39;</span>
 
@@ -1124,7 +1132,7 @@ kalmadan, sınıf içindeki statik metotlara ulaşabiliriz.</p>
 </div>
 <p>Burada bu iki fonksiyonu birer örnek metodu olarak tanımladık. Bu fonksiyonları
 bu şekilde tanımladığımızda, bunlara örnekler üzerinden erişebiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mat</span> <span class="k">import</span> <span class="n">Mat</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mat</span> <span class="k">import</span> <span class="n">Mat</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">Mat</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">pi</span><span class="p">()</span>
 
@@ -1136,7 +1144,7 @@ bu şekilde tanımladığımızda, bunlara örnekler üzerinden erişebiliriz:</
 </pre></div>
 </div>
 <p>Ancak bildiğiniz gibi, örnek metotlarına sınıf adları üzerinden erişemeyiz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Mat</span><span class="o">.</span><span class="n">pi</span><span class="p">()</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Mat</span><span class="o">.</span><span class="n">pi</span><span class="p">()</span>
 
 <span class="gt">Traceback (most recent call last):</span>
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
@@ -1144,7 +1152,7 @@ bu şekilde tanımladığımızda, bunlara örnekler üzerinden erişebiliriz:</
 </pre></div>
 </div>
 <p>Aynı şekilde bunları sınıf metodu olarak da tanımlayabilirdik:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Mat</span><span class="p">():</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Mat</span><span class="p">():</span>
     <span class="sd">&#39;&#39;&#39;Matematik işlemleri yapmamızı sağlayan</span>
 <span class="sd">    bir sınıf.&#39;&#39;&#39;</span>
 
@@ -1159,7 +1167,7 @@ bu şekilde tanımladığımızda, bunlara örnekler üzerinden erişebiliriz:</
 </div>
 <p>Bu metotları böyle tanımladığımızda, bu metotlara hem örnekler üzerinden hem de
 sınıf adı üzerinden erişebiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mat</span> <span class="k">import</span> <span class="n">Mat</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mat</span> <span class="k">import</span> <span class="n">Mat</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">Mat</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">pi</span><span class="p">()</span> <span class="c1">#örnek üzerinden</span>
 
@@ -1178,7 +1186,7 @@ sınıf adı üzerinden erişebiliriz:</p>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi, kullanım açısından sınıf metotları ile statik metotlar aynı.
-Ancak <code class="docutils literal notranslate"><span class="pre">Mat()</span></code> sınıfı içindeki fonksiyonları birer sınıf metodu olarak
+Ancak <code class="docutils literal"><span class="pre">Mat()</span></code> sınıfı içindeki fonksiyonları birer sınıf metodu olarak
 tanımladığımızda gereksiz yere <cite>cls</cite> parametresi kullanmış oluyoruz. Fonksiyon
 içinde herhangi bir yerde kullanılmadığı için, yukarıdaki örnekte <cite>cls</cite>
 parametresinin hiçbir amaca hizmet etmediğine dikkat edin.</p>
@@ -1264,8 +1272,8 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 <div class="footer">
 &copy; Copyright 2007-2019, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 15.12.2019.
-<a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5 ile oluşturulmuştur.
+Son güncelleme: 30.12.2019.
+<a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7 ile oluşturulmuştur.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img

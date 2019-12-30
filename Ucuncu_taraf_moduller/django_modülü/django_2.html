@@ -5,18 +5,25 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta content="Bu bölümde django API'ını öğreneceğiz." name="description" />
 <meta content="python, django, çeviri" name="keywords" />
 
     <title>İLK DJANGO PROJENİ YAZ, part 2 &#8212; Python 3 için Türkçe Kılavuz</title>
     <link rel="stylesheet" href="../../_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
     <script type="text/javascript" src="../../_static/translations.js"></script>
     <link rel="search" title="Ara" href="../../search.html" />
     <link rel="next" title="İLK DJANGO PROJENİ YAZ, part 3" href="django_3.html" />
@@ -25,7 +32,8 @@
 <link rel="stylesheet" href="../../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
 <![endif]-->
 
-  </head><body>
+  </head>
+  <body>
 <div class='header'><a href='https://yazbel.com'>yazbel.com</a></div>
 
 <ul class='navbar'>
@@ -68,7 +76,7 @@ Projenizde kullandığınız uygulamaları tutar. Yeni bir uygulama
 kullanacağınız zaman bu listeye eklemelisiniz.</p>
 </div>
 <p>Varsayılan olarak gelen uygulamalar şunlardır:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">django</span><span class="o">.</span><span class="n">contrib</span><span class="o">.</span><span class="n">admin</span> <span class="o">--&gt;</span> <span class="n">Yönetici</span> <span class="n">panelini</span> <span class="n">oluşturur</span><span class="o">.</span>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">django</span><span class="o">.</span><span class="n">contrib</span><span class="o">.</span><span class="n">admin</span> <span class="o">--&gt;</span> <span class="n">Yönetici</span> <span class="n">panelini</span> <span class="n">oluşturur</span><span class="o">.</span>
 <span class="n">django</span><span class="o">.</span><span class="n">contrib</span><span class="o">.</span><span class="n">auth</span> <span class="o">--&gt;</span> <span class="n">Bir</span> <span class="n">kimlik</span> <span class="n">doğrulama</span> <span class="n">sistemi</span><span class="o">.</span>
 <span class="n">django</span><span class="o">.</span><span class="n">contrib</span><span class="o">.</span><span class="n">contenttypes</span> <span class="o">--&gt;</span> <span class="n">İçerik</span> <span class="n">türleri</span> <span class="n">için</span> <span class="n">bir</span> <span class="n">framework</span><span class="o">.</span>
 <span class="n">django</span><span class="o">.</span><span class="n">contrib</span><span class="o">.</span><span class="n">sessions</span> <span class="o">--&gt;</span> <span class="n">Bir</span> <span class="n">oturum</span> <span class="n">frameworku</span>
@@ -79,7 +87,7 @@ kullanacağınız zaman bu listeye eklemelisiniz.</p>
 <p>Bu uygulamalardan bazıları en az bir veritabanı kullanıyor.
 Ancak bu veritabanlarının kullanılabilmesi için bir
 tablo oluşturmalıyız. O tablo da şu komutla oluşuyor:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">migrate</span>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">migrate</span>
 </pre></div>
 </div>
 </div>
@@ -90,7 +98,7 @@ Anket uygulamamızda iki tane model olacak: Question(Soru), Choice(Seçenek).
 Question modeli bir soru ve yayınlama tarihi içerecek. Choice modeli ise iki alandan
 oluşacak: Bir yazı alanı ve oy çetelesi. Her Choice bir Question ile ilişkili olacak.
 Şimdi <strong>polls/models.py</strong> dosyasını şu şekilde düzenleyin:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="k">import</span> <span class="n">models</span>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="k">import</span> <span class="n">models</span>
 
 
 <span class="k">class</span> <span class="nc">Question</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
@@ -135,7 +143,7 @@ INSTALLED_APPS  ayarını düzenlemeliyiz. Bu listeye
 <strong>polls/apps.py</strong> dosyasındaki PollsConfig sınıfını referans
 olarak ekleyelim. <strong>setting.py</strong> dosyasındaki INSTALLED_APPS
 son hali şöyle olmalı:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s1">&#39;polls.apps.PollsConfig&#39;</span><span class="p">,</span>
     <span class="s1">&#39;django.contrib.admin&#39;</span><span class="p">,</span>
     <span class="s1">&#39;django.contrib.auth&#39;</span><span class="p">,</span>
@@ -148,11 +156,11 @@ son hali şöyle olmalı:</p>
 </div>
 <p>Artık Django, polls isimli uygulamamızı projeye eklediğimizi biliyor.
 Şimdi farklı bir komutu çalıştıralım:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">makemigrations</span> <span class="n">polls</span>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">makemigrations</span> <span class="n">polls</span>
 </pre></div>
 </div>
 <p>Talimatlara benzer şeyler görmelisiniz:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">Migrations</span> <span class="k">for</span> <span class="s1">&#39;polls&#39;</span><span class="p">:</span>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">Migrations</span> <span class="k">for</span> <span class="s1">&#39;polls&#39;</span><span class="p">:</span>
   <span class="n">polls</span><span class="o">/</span><span class="n">migrations</span><span class="o">/</span><span class="mi">0001</span><span class="n">_initial</span><span class="o">.</span><span class="n">py</span><span class="p">:</span>
     <span class="o">-</span> <span class="n">Create</span> <span class="n">model</span> <span class="n">Choice</span>
     <span class="o">-</span> <span class="n">Create</span> <span class="n">model</span> <span class="n">Question</span>
@@ -172,11 +180,11 @@ Endişelenmeyin, bu dosyayı her zaman okumak zorunda değilsiniz.
 Birazdan bu konuya tekrar geleceğiz. Ama önce migrationın çalıştırdığı
 SQL dosyasına bakalım. “<cite>sqlmigrate</cite>” komutuna migration adını
 parametre olarak verin ve SQL çıktısını alın:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">sqlmigrate</span> <span class="n">polls</span> <span class="mi">0001</span>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">sqlmigrate</span> <span class="n">polls</span> <span class="mi">0001</span>
 </pre></div>
 </div>
 <p>İngilizce yönerge tarzında bir şeyler görüyor olmalısın:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">BEGIN</span><span class="p">;</span>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">BEGIN</span><span class="p">;</span>
 <span class="o">--</span>
 <span class="o">--</span> <span class="n">Create</span> <span class="n">model</span> <span class="n">Choice</span>
 <span class="o">--</span>
@@ -235,7 +243,7 @@ kontrol etmek veya SQL kodlarını düzenlemek için kullanışlıdır.</li>
 Bu kod projende herhangi bir problem olup olmadığını veritabanıyla
 uğraşmadan kontrol eder. Şimdi <cite>migrate</cite> komutunu tekrar
 çalıştırıp modelleri veritabanında oluştur:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">migrate</span>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">migrate</span>
 </pre></div>
 </div>
 <p><cite>migrate</cite> komutu daha önce uygulanmayan tüm migrationları alır
@@ -262,13 +270,13 @@ değişikliklerini yapmak için üç adımlı kılavuzu hatırlayın:</p>
 <h2>API ile oynayalım<a class="headerlink" href="#api-ile-oynayalim" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Şimdi etkileşimli kabuğa atlayıp Django’nun sunduğu API ile uğraşalım.
 Etkileşimli kabuğu çağırmak için şu komutu kullanın:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">shell</span>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">shell</span>
 </pre></div>
 </div>
 <p>Basitçe <cite>python</cite> yazmak yerine bunu kullanıyoruz.
 Çünkü manage.py dosyası kullanacağımız django dosyalarını içe aktarıyor.
 Kabuğa girdikten sonra veritabanı API’ını keşfedin:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">polls.models</span> <span class="k">import</span> <span class="n">Choice</span><span class="p">,</span> <span class="n">Question</span>  <span class="c1"># Az önce yazdığımız model sınıflarını içe aktar.</span>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">polls.models</span> <span class="k">import</span> <span class="n">Choice</span><span class="p">,</span> <span class="n">Question</span>  <span class="c1"># Az önce yazdığımız model sınıflarını içe aktar.</span>
 
 <span class="go">#Henüz sistemde Question nesnesi yok.</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
@@ -306,7 +314,7 @@ Kabuğa girdikten sonra veritabanı API’ını keşfedin:</p>
 <p>Bir dakika! &lt;Question: Question object (1)&gt; bu nesne
 ilişkisi hiç yararlı değil. Question modeline (<strong>polls/models.py</strong> dosyasında)
 __str__() metodunu ekleyelim(Choice modeline de):</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="k">import</span> <span class="n">models</span>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="k">import</span> <span class="n">models</span>
 
 <span class="k">class</span> <span class="nc">Question</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="c1"># ...</span>
@@ -325,7 +333,7 @@ temsillerinin Django’nun otomatik olarak oluşturulan yöneticisi
 boyunca kullanılmasından dolayı <cite>__str __()</cite> yöntemlerini eklemeniz
 önemlidir. Bunların normal Python yöntemleri olduğunu unutmayın.
 Bunu kanıtlamak için özel bir yöntem ekleyelim:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#polls/models.py</span>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="c1">#polls/models.py</span>
 <span class="kn">import</span> <span class="nn">datetime</span>
 
 <span class="kn">from</span> <span class="nn">django.db</span> <span class="k">import</span> <span class="n">models</span>
@@ -343,7 +351,7 @@ saat dilimleri ile ilgili kütüphanesinden timezone modülünü içe
 aktaralım.</p>
 <p>Bu yaptığımız değişiklikleri kaydetmek için şu komutla yeni bir
 kabuk açalım:<cite>python manage.py shell</cite></p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">polls.models</span> <span class="k">import</span> <span class="n">Choice</span><span class="p">,</span> <span class="n">Question</span>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">polls.models</span> <span class="k">import</span> <span class="n">Choice</span><span class="p">,</span> <span class="n">Question</span>
 
 <span class="go"># Eklediğimiz __str__() fonksiyonunun çalıştığından emin olalım.</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
@@ -423,20 +431,20 @@ kabuk açalım:<cite>python manage.py shell</cite></p>
 <h3>Bir yönetici kullanıcısı oluşturalım<a class="headerlink" href="#bir-yonetici-kullanicisi-olusturalim" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
 <p>Yönetici paneline giriş yapmak için bir süper kullanıcıya ihtiyacımız
 var. Komut satırında şu kodu çalıştıralım:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">createsuperuser</span>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">createsuperuser</span>
 </pre></div>
 </div>
 <p>İstediğiniz kullanıcı adını girin ve entera basın:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">Username</span><span class="p">:</span> <span class="n">admin</span>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">Username</span><span class="p">:</span> <span class="n">admin</span>
 </pre></div>
 </div>
 <p>Sizden email adresi istenecektir. Doldurmak istemezseniz boş bırakın:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">Email</span> <span class="n">address</span><span class="p">:</span> <span class="n">admin</span><span class="nd">@example</span><span class="o">.</span><span class="n">com</span>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">Email</span> <span class="n">address</span><span class="p">:</span> <span class="n">admin</span><span class="nd">@example</span><span class="o">.</span><span class="n">com</span>
 </pre></div>
 </div>
 <p>Son olarak şifrenizi girin. Sizden iki kere şifre isteyecek
 (İkincisi doğrulama için).</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">Password</span><span class="p">:</span> <span class="o">**********</span>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">Password</span><span class="p">:</span> <span class="o">**********</span>
 <span class="n">Password</span> <span class="p">(</span><span class="n">again</span><span class="p">):</span> <span class="o">*********</span>
 <span class="n">Superuser</span> <span class="n">created</span> <span class="n">successfully</span><span class="o">.</span>
 </pre></div>
@@ -446,7 +454,7 @@ var. Komut satırında şu kodu çalıştıralım:</p>
 <h3>Geliştirme Sunucusunu Başlatın<a class="headerlink" href="#gelistirme-sunucusunu-baslatin" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
 <p>Django’da yönetici paneli varsayılan olarak aktiftir. Geliştirme
 sunucusunu başlatalım ve onu biraz araştıralım:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">runserver</span>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">runserver</span>
 </pre></div>
 </div>
 <p>Şimdi tarayıcınızı açın ve yerel alan adınızda “<cite>/admin/</cite>” sayfasına
@@ -471,7 +479,7 @@ anasayfasında gözükmüyor.</p>
 Yönetici paneline Question nesnelerimizin yönetici panelinden
 düzenlenebildiğini söylemek. Bunu yapmak için <strong>polls/admin.py</strong>
 dosyasını açıp şu kodla düzenlemek:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="k">import</span> <span class="n">admin</span>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="k">import</span> <span class="n">admin</span>
 <span class="kn">from</span> <span class="nn">.models</span> <span class="k">import</span> <span class="n">Question</span>
 <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Question</span><span class="p">)</span>
 </pre></div>
@@ -588,8 +596,8 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 <div class="footer">
 &copy; Copyright 2007-2019, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 15.12.2019.
-<a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5 ile oluşturulmuştur.
+Son güncelleme: 30.12.2019.
+<a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7 ile oluşturulmuştur.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img

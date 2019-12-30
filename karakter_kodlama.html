@@ -5,18 +5,25 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta content="Python 3.x'te karakter dizileri ve karakter kodlamaları" name="description" />
 <meta content="python, string, karakter dizisi, karakter kodlamaları, unicode, encoding, ascii, utf-8" name="keywords" />
 
     <title>Karakter Kodlama (Character Encoding) &#8212; Python 3 için Türkçe Kılavuz</title>
     <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
     <script type="text/javascript" src="_static/translations.js"></script>
     <link rel="search" title="Ara" href="search.html" />
     <link rel="next" title="Baytlar (Bytes) ve Bayt Dizileri (Bytearrays)" href="baytlar_ve_bayt_dizileri.html" />
@@ -25,7 +32,8 @@
 <link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
 <![endif]-->
 
-  </head><body>
+  </head>
+  <body>
 <div class='header'><a href='https://yazbel.com'>yazbel.com</a></div>
 
 <ul class='navbar'>
@@ -67,7 +75,7 @@ bitirdikten sonra, önceki konuları çalışırken zihninizde oluşmuş olabile
 boşlukların pek çoğunun dolduğunu farkedeceksiniz. Sözün özü, bu bölümde hem
 yeni şeyler söyleyeceğiz, hem de halihazırda öğrendiğimiz şeylerin bir kez daha
 üzerinden geçerek bunların zihnimizde iyiden iyiye pekişmesini sağlayacağız.</p>
-<p>Hatırlarsanız önceki derslerimizde karakter dizilerinin <code class="docutils literal notranslate"><span class="pre">encode()</span></code> adlı bir
+<p>Hatırlarsanız önceki derslerimizde karakter dizilerinin <code class="docutils literal"><span class="pre">encode()</span></code> adlı bir
 metodu olduğundan söz etmiştik. Aynı şekilde, dosyaların da <cite>encoding</cite> adlı bir
 parametresi olduğunu söylemiştik. Ayrıca bu <em>encoding</em> konusu, ilk derslerimizde
 metin düzenleyici ayarlarını anlatırken de karşımıza çıkmıştı. Orada, yazdığımız
@@ -234,7 +242,7 @@ eşleştirildiği basit bir tablodan ibarettir. Bu tabloyu
 <a class="reference external" href="http://www.asciitable.com/">http://www.asciitable.com/</a> adresinde görebilirsiniz:</p>
 <a class="reference external image-reference" href="_images/misc/asciifull.png"><img alt="_images/asciifull.png" class="align-center" src="_images/asciifull.png" style="width: 400px; height: 300px;" /></a>
 <p>İsterseniz bu tabloyu Python yardımıyla kendiniz de oluşturabilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">128</span><span class="p">):</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">128</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
@@ -243,16 +251,16 @@ eşleştirildiği basit bir tablodan ibarettir. Bu tabloyu
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Not</p>
-<p class="last">Bu kodlarda <code class="docutils literal notranslate"><span class="pre">repr()</span></code> fonksiyonu dışında bilmediğiniz ve
-anlayamayacağınız hiçbir şey yok. Biraz sonra <code class="docutils literal notranslate"><span class="pre">repr()</span></code> fonksiyonundan da
+<p class="last">Bu kodlarda <code class="docutils literal"><span class="pre">repr()</span></code> fonksiyonu dışında bilmediğiniz ve
+anlayamayacağınız hiçbir şey yok. Biraz sonra <code class="docutils literal"><span class="pre">repr()</span></code> fonksiyonundan da
 bahsedeceğiz. Ama dilerseniz, bu fonksiyonun ne işe yaradığı konusunda en
-azından bir fikir sahibi olmak için, yukarıdaki kodları bir de <code class="docutils literal notranslate"><span class="pre">repr()</span></code>
+azından bir fikir sahibi olmak için, yukarıdaki kodları bir de <code class="docutils literal"><span class="pre">repr()</span></code>
 olmadan yazmayı ve aldığınız çıktıyı incelemeyi deneyebilirsiniz.</p>
 </div>
 <p>ASCII tablosunda toplam 128 karakterin sayılarla eşleştirilmiş durumda olduğunu
 görüyorsunuz. Bir önceki bölümde bahsettiğimiz basit iletişim modelinde
 anlattıklarımızdan da aşina olduğunuz gibi, 128 adet sayı 7 bite karşılık gelir
-(<code class="docutils literal notranslate"><span class="pre">2**7=128</span></code>). Yani 7 bit ile gösterilebilecek son sayı <cite>127</cite>’dir.
+(<code class="docutils literal"><span class="pre">2**7=128</span></code>). Yani 7 bit ile gösterilebilecek son sayı <cite>127</cite>’dir.
 Dolayısıyla ASCII 7 bitlik bir sistemdir.</p>
 <p>ASCII tablosunu şöyle bir incelediğimizde ilk 32 öğenin göze ilk başta anlamsız
 görünen birtakım karakterlerden oluştuğunu görüyoruz:</p>
@@ -651,7 +659,7 @@ tahsis edilmiştir:</p>
 <td>‘_’</td>
 </tr>
 <tr class="row-even"><td>96</td>
-<td>‘’’</td>
+<td>‘’‘</td>
 <td>97</td>
 <td>‘a’</td>
 <td>98</td>
@@ -747,14 +755,14 @@ Bu sebepten, bu standart ile mesela Türkçeye özgü karakterleri gösteremeyiz
 Python’ın 2.x serisini kullanmış olanlar, ASCII’nin bu yetersizliğinin nelere
 sebep olduğunu gayet iyi bilir. Python’ın 2.x serisinde mesela doğrudan şöyle
 bir kod yazamayız:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Merhaba Şirin Baba!&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Merhaba Şirin Baba!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><cite>“Merhaba Şirin Baba!</cite> adlı karakter dizisinde geçen ‘Ş’ harfi ASCII dışı bir
 karakterdir. Yani bu harf ASCII ile temsil edilemez. O yüzden böyle bir kod
 yazıp bu kodu çalıştırdığımızda Python bize şöyle bir hata mesajı
 gösterecektir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span>    <span class="n">File</span> <span class="s2">&quot;deneme.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span>    <span class="n">File</span> <span class="s2">&quot;deneme.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">SyntaxError</span><span class="p">:</span> <span class="n">Non</span><span class="o">-</span><span class="n">ASCII</span> <span class="n">character</span> <span class="s1">&#39;</span><span class="se">\xde</span><span class="s1">&#39;</span> <span class="ow">in</span> <span class="n">file</span> <span class="n">deneme</span><span class="o">.</span><span class="n">py</span> <span class="n">on</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="n">but</span> <span class="n">no</span>
 <span class="n">encoding</span> <span class="n">declared</span><span class="p">;</span> <span class="n">see</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">peps</span><span class="o">/</span><span class="n">pep</span><span class="o">-</span><span class="mf">0263.</span><span class="n">html</span> <span class="k">for</span> <span class="n">details</span>
 </pre></div>
@@ -794,7 +802,7 @@ boşa düşmüş oldu. Bu bitin boşa düşmesi ile elimizde yine toplam <cite>1
 karakterlik bir boşluk olmuş oldu. Dediğimiz gibi 7 bit ile toplam <cite>128</cite>
 sayı-karakter eşleştirilebilirken, 8 bit ile toplam <cite>256</cite> sayı-karakter
 eşleştirilebilir. Ne de olsa:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">2</span><span class="o">**</span><span class="mi">7</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">2</span><span class="o">**</span><span class="mi">7</span>
 
 <span class="go">128</span>
 
@@ -817,7 +825,7 @@ tablosu ile aynı olduğunu göreceksiniz. 128. karakterden itibaren ise Türkç
 özgü harfler tanımlanır. Mesela bu tabloda 128. karakter Türkçedeki büyük ‘ç’
 harfi iken, 159. karakter küçük ‘ş’ harfidir. Bu durumu şu Python kodları ile de
 teyit edebilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;Ç&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;cp857&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;Ç&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;cp857&quot;</span><span class="p">)</span>
 
 <span class="go">b&#39;\x80&#39;</span>
 
@@ -828,7 +836,7 @@ teyit edebilirsiniz:</p>
 </div>
 <p>Bu arada bu sayıların onaltılı sayma düzenine göre olduğunu biliyorsunuz. Onlu
 düzende bunların karşılığı sırasıyla şudur:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="s2">&quot;80&quot;</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="s2">&quot;80&quot;</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
 
 <span class="go">128</span>
 
@@ -837,7 +845,7 @@ düzende bunların karşılığı sırasıyla şudur:</p>
 <span class="go">159</span>
 </pre></div>
 </div>
-<p>Burada karakter dizilerinin <code class="docutils literal notranslate"><span class="pre">encode()</span></code> adlı metodunu kullandığımıza dikkat
+<p>Burada karakter dizilerinin <code class="docutils literal"><span class="pre">encode()</span></code> adlı metodunu kullandığımıza dikkat
 edin. Bu metot yardımıyla herhangi bir karakteri herhangi bir karakter kodlama
 sistemine göre kodlayabiliriz. Mesela yukarıdaki iki örnekte ‘Ç’ ve ‘ş’
 harflerini ‘cp857’ adlı kod sayfasına göre kodladık ve bunların bu kod
@@ -846,7 +854,7 @@ sayfasında hangi sayılara karşılık geldiğini bulduk.</p>
 harfleri o kod sayfasına göre kodlayabiliyoruz. Ama mesela ASCII kodlama
 sisteminde bu harfler bulunmaz. O yüzden bu harfleri ASCII sistemine göre
 kodlayamayız:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;Ç&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;Ç&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">)</span>
 
 <span class="gt">Traceback (most recent call last):</span>
     <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
@@ -855,7 +863,7 @@ kodlayamayız:</p>
 </pre></div>
 </div>
 <p>Tıpkı hata mesajında da söylendiği gibi:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Unicode Kodlama Hatası: &#39;ascii&#39; kod çözücüsü, 0 konumundaki &#39;\xc7&#39; adlı
+<div class="highlight-none"><div class="highlight"><pre><span></span>Unicode Kodlama Hatası: &#39;ascii&#39; kod çözücüsü, 0 konumundaki &#39;\xc7&#39; adlı
 karakteri kodlayamıyor. Sayı 0-128 aralığında değil.
 </pre></div>
 </div>
@@ -921,13 +929,13 @@ bayt’ta da 8 bit vardır… Yani biz insanlar öyle olmasına karar verdiğimi
 1 destede 10 öğe, 1 düzinede 12 öğe, 1 bayt’ta ise 8 bit vardır.</p>
 <p>Dediğimiz gibi ASCII standardı 7 bitlik bir sistemdir. Yani bu standartta en
 büyük sayı olan 127 yalnızca 7 bit ile gösterilebilir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">bin</span><span class="p">(</span><span class="mi">127</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">bin</span><span class="p">(</span><span class="mi">127</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span>
 
 <span class="go">&#39;1111111&#39;</span>
 </pre></div>
 </div>
 <p>127 sayısı 7 bit ile gösterilebilecek son sayıdır:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mi">127</span><span class="p">)</span><span class="o">.</span><span class="n">bit_length</span><span class="p">()</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mi">127</span><span class="p">)</span><span class="o">.</span><span class="n">bit_length</span><span class="p">()</span>
 
 <span class="go">7</span>
 
@@ -938,13 +946,13 @@ büyük sayı olan 127 yalnızca 7 bit ile gösterilebilir:</p>
 </div>
 <p>8 bitlik bir sistem olan Genişletilmiş ASCII ise 0 ile 255 arası sayıları temsil
 edebilir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">bin</span><span class="p">(</span><span class="mi">255</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">bin</span><span class="p">(</span><span class="mi">255</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span>
 
 <span class="go">&#39;11111111&#39;</span>
 </pre></div>
 </div>
 <p>255 sayısı 8 bit ile gösterilebilecek son sayıdır:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="o">.</span><span class="n">bit_length</span><span class="p">()</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="o">.</span><span class="n">bit_length</span><span class="p">()</span>
 
 <span class="go">8</span>
 
@@ -1035,7 +1043,7 @@ izin verir.</p>
 <p>UNICODE sistemini devasa bir karakter tablosu olarak hayal edebilirsiniz.
 Bildiğiniz gibi ASCII 7 bitlik bir sistemdir. Bu sebeple de sadece 128 karakteri
 kodlayabilir. UNICODE ilk ortaya çıktığında 16 bitlik bir sistem olarak
-tasarlanmıştı. Dolayısıyla UNICODE daha ilk çıkışında <code class="docutils literal notranslate"><span class="pre">2**16=65536</span></code> karakterin
+tasarlanmıştı. Dolayısıyla UNICODE daha ilk çıkışında <code class="docutils literal"><span class="pre">2**16=65536</span></code> karakterin
 kodlanmasına izin veriyordu. Bugün ise UNICODE sisteminin böyle kesin bir sınırı
 yoktur. Çünkü ‘bilmem kaç bitlik bir sistem’ kavramı UNICODE için geçerli
 değildir. Dediğimiz gibi, UNICODE’u, ucu bucağı olmayan dev bir karakter tablosu
@@ -1045,16 +1053,16 @@ sisteminin kendisi, ASCII sisteminin aksine, doğrudan doğruya karakterleri
 kodlamaz. UNICODE’un yaptığı şey karakterleri tanımlamaktan ibarettir.</p>
 <p>Unicode sisteminde her karakter tek ve benzersiz bir ‘kod konumuna’ (<em>code
 point</em>) karşılık gelir. Kod konumları şu formüle göre gösterilir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">U</span><span class="o">+</span><span class="n">sayının_onaltılı_değeri</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">U</span><span class="o">+</span><span class="n">sayının_onaltılı_değeri</span>
 </pre></div>
 </div>
 <p>Örneğin ‘a’ harfinin kod konumu şudur:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">u</span><span class="o">+</span><span class="mi">0061</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">u</span><span class="o">+</span><span class="mi">0061</span>
 </pre></div>
 </div>
 <p>Buradaki <cite>0061</cite> sayısı onaltılı bir sayıdır. Bunu onlu sayı sistemine
 çevirebilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="s2">&quot;61&quot;</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="s2">&quot;61&quot;</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
 
 <span class="go">97</span>
 </pre></div>
@@ -1090,14 +1098,14 @@ en altındaki ‘More…’ bağlantısı ile ulaşabileceğinize dikkat edin.</
 bayt dünyadaki bütün karakterleri kodlamaya yetmez. Geri kalan karakterleri de
 kodlayabilmek için 1 bayttan fazlasına ihtiyacımız var. Mesela karakter kodlama
 için:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1 bayt kullanırsak toplam 2**8  = 256
+<div class="highlight-none"><div class="highlight"><pre><span></span>1 bayt kullanırsak toplam 2**8  = 256
 2 bayt kullanırsak toplam 2**16 = 65,536
 3 bayt kullanırsak toplam 2**24 = 16,777,216
 4 bayt kullanırsak toplam 2**32 = 4,294,967,296
 </pre></div>
 </div>
 <p>karakter kodlayabiliriz. Bu durumu şu Python kodları ile de gösterebiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> bayt kullanırsak toplam 2**</span><span class="si">{:&lt;2}</span><span class="s2"> = </span><span class="si">{:,}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">*</span><span class="mi">8</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="mi">8</span><span class="p">))))</span>
 </pre></div>
 </div>
@@ -1117,7 +1125,7 @@ kodlayabilir. UTF-8, UNICODE sistemi içinde tanımlanmış karakterleri
 kodlayabilmek için 1 ile 4 bayt arası değerleri kullanır. Böylece de bu kod
 çözücü UNICODE sistemi içinde tanımlanmış bütün karakterleri temsil edebilir.</p>
 <p>Bu durumu bir örnek üzerinden göstermeye çalışalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">harfler</span> <span class="o">=</span> <span class="s2">&quot;abcçdefgğhıijklmnoöprsştuüvyz&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">harfler</span> <span class="o">=</span> <span class="s2">&quot;abcçdefgğhıijklmnoöprsştuüvyz&quot;</span>
 <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">harfler</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:&lt;5}{:&lt;15}{:&lt;15}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="p">,</span>
                                      <span class="nb">str</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)),</span>
@@ -1125,7 +1133,7 @@ kodlayabilmek için 1 ile 4 bayt arası değerleri kullanır. Böylece de bu kod
 </pre></div>
 </div>
 <p>Buradan şuna benzer bir çıktı alıyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span>    <span class="sa">b</span><span class="s1">&#39;a&#39;</span>           <span class="mi">1</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">a</span>    <span class="sa">b</span><span class="s1">&#39;a&#39;</span>           <span class="mi">1</span>
 <span class="n">b</span>    <span class="sa">b</span><span class="s1">&#39;b&#39;</span>           <span class="mi">1</span>
 <span class="n">c</span>    <span class="sa">b</span><span class="s1">&#39;c&#39;</span>           <span class="mi">1</span>
 <span class="n">ç</span>    <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\xc3\xa7</span><span class="s1">&#39;</span>    <span class="mi">2</span>
@@ -1156,13 +1164,13 @@ kodlayabilmek için 1 ile 4 bayt arası değerleri kullanır. Böylece de bu kod
 <span class="n">z</span>    <span class="sa">b</span><span class="s1">&#39;z&#39;</span>           <span class="mi">1</span>
 </pre></div>
 </div>
-<p>Burada, <code class="docutils literal notranslate"><span class="pre">s.encode(&quot;utf-8&quot;)</span></code> komutunun ‘baytlar’ (<cite>bytes</cite>) türünden bir veri
+<p>Burada, <code class="docutils literal"><span class="pre">s.encode(&quot;utf-8&quot;)</span></code> komutunun ‘baytlar’ (<cite>bytes</cite>) türünden bir veri
 tipi verdiğine dikkat edin (baytlar veri tipini bir sonraki bölümde ayrıntılı
-olarak inceleyeceğiz). Karakter dizilerinin aksine baytların <code class="docutils literal notranslate"><span class="pre">format()</span></code> adlı
-bir metodu bulunmaz. Bu yüzden, bu veri tipini <code class="docutils literal notranslate"><span class="pre">format()</span></code> metoduna göndermeden
-önce <code class="docutils literal notranslate"><span class="pre">str()</span></code> fonksiyonu yardımıyla karakter dizisine dönüştürmemiz gerekiyor.
+olarak inceleyeceğiz). Karakter dizilerinin aksine baytların <code class="docutils literal"><span class="pre">format()</span></code> adlı
+bir metodu bulunmaz. Bu yüzden, bu veri tipini <code class="docutils literal"><span class="pre">format()</span></code> metoduna göndermeden
+önce <code class="docutils literal"><span class="pre">str()</span></code> fonksiyonu yardımıyla karakter dizisine dönüştürmemiz gerekiyor.
 Bu dönüştürme işlevini, alternatif olarak şu şekilde de yapabilirdik:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:&lt;5}{!s:&lt;15}{:&lt;15}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="p">,</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:&lt;5}{!s:&lt;15}{:&lt;15}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="p">,</span>
                                    <span class="n">s</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">),</span>
                                    <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))))</span>
 </pre></div>
@@ -1173,31 +1181,31 @@ Bu dönüştürme işlevini, alternatif olarak şu şekilde de yapabilirdik:</p>
 sütunda ise UTF-8 ile kodlanan Türk harflerinin kaç baytlık yer kapladığını
 görüyoruz.</p>
 <p>Bu tabloyu daha iyi anlayabilmek için mesela buradaki ‘ç’ harfini ele alalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;ç&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;ç&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
 
 <span class="go">b&#39;\xc3\xa7&#39;</span>
 </pre></div>
 </div>
 <p>Burada Python’ın kendi yerleştirdiği karakterleri çıkarırsak (‘b’ ve ‘\x’
 gibi) elimizde şu onaltılı sayı kalır:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">c3a7</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">c3a7</span>
 </pre></div>
 </div>
 <p>Bu onaltılı sayının onlu sistemdeki karşılığı şudur:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="s1">&#39;c3a7&#39;</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="s1">&#39;c3a7&#39;</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
 
 <span class="go">50087</span>
 </pre></div>
 </div>
 <p><cite>50087</cite> sayısının ikili sayma sistemindeki karşılığı ise şudur:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">bin</span><span class="p">(</span><span class="mi">50087</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">bin</span><span class="p">(</span><span class="mi">50087</span><span class="p">)</span>
 
 <span class="go">&#39;0b1100001110100111&#39;</span>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi, bu sayı 16 bitlik, yani 2 baytlık bir sayıdır. Bunu nasıl teyit
 edeceğinizi biliyorsunuz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mi">50087</span><span class="p">)</span><span class="o">.</span><span class="n">bit_length</span><span class="p">()</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mi">50087</span><span class="p">)</span><span class="o">.</span><span class="n">bit_length</span><span class="p">()</span>
 
 <span class="go">16</span>
 </pre></div>
@@ -1205,7 +1213,7 @@ edeceğinizi biliyorsunuz:</p>
 <p><a class="reference external" href="http://www.fileformat.info/info/charset/UTF-8/list.htm">http://www.fileformat.info/info/charset/UTF-8/list.htm</a> adresine gittiğinizde de
 UTF-8 tablosunda ‘ç’ harfinin ‘c3a7’ sayısıyla eşleştirildiğini göreceksiniz.</p>
 <p>Bir de UTF-8’in ‘a’ harfini nasıl temsil ettiğine bakalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;a&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;a&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
 
 <span class="go">b&#39;a&#39;</span>
 </pre></div>
@@ -1213,7 +1221,7 @@ UTF-8 tablosunda ‘ç’ harfinin ‘c3a7’ sayısıyla eşleştirildiğini g�
 <p>‘a’ harfi standart ASCII harflerinden biri olduğu için Python doğrudan bu harfin
 kendisini gösteriyor. Eğer bu harfin hangi sayıya karşılık geldiğini görmek
 isterseniz şu kodu kullanabilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
 
 <span class="go">97</span>
 </pre></div>
@@ -1225,7 +1233,7 @@ hem ASCII’de, hem UTF-8’de <cite>97</cite> sayısı ile temsil edilir. Bu sa
 olduğu için yalnızca 1 bayt ile temsil edilir. Ancak standart ASCII dışında
 kalan karakterler, farklı kod çözücüler tarafından farklı sayılarla
 eşleştirilecektir. Bununla ilgili şöyle bir çalışma yapabiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">kod_çözücüler</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">,</span> <span class="s1">&#39;cp1254&#39;</span><span class="p">,</span> <span class="s1">&#39;latin-1&#39;</span><span class="p">,</span> <span class="s1">&#39;ASCII&#39;</span><span class="p">]</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">kod_çözücüler</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">,</span> <span class="s1">&#39;cp1254&#39;</span><span class="p">,</span> <span class="s1">&#39;latin-1&#39;</span><span class="p">,</span> <span class="s1">&#39;ASCII&#39;</span><span class="p">]</span>
 
 <span class="n">harf</span> <span class="o">=</span> <span class="s1">&#39;İ&#39;</span>
 
@@ -1240,7 +1248,7 @@ eşleştirilecektir. Bununla ilgili şöyle bir çalışma yapabiliriz:</p>
 </pre></div>
 </div>
 <p>Bu programı çalıştırdığımızda şuna benzer bir çıktı alırız:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span>&#39;İ&#39; karakteri UTF-8 ile b&#39;\xc4\xb0&#39; olarak ve 304 sayısıyla temsil edilir
+<div class="highlight-py3"><div class="highlight"><pre><span></span>&#39;İ&#39; karakteri UTF-8 ile b&#39;\xc4\xb0&#39; olarak ve 304 sayısıyla temsil edilir
 &#39;İ&#39; karakteri cp1254 ile b&#39;\xdd&#39; olarak ve 304 sayısıyla temsil edilir.
 &#39;İ&#39; karakteri latin-1 ile temsil edilemez!
 &#39;İ&#39; karakteri ASCII ile temsil edilemez!
@@ -1274,7 +1282,7 @@ konusu olan bir Python programıysa, ilgili karakter bulunamadığında öntanı
 olarak bu karakterin yerine hiçbir şey koyulmaz. Onun yerine program çökmeye
 bırakılır… Ancak böyle bir durumda ne yapılacağını isterseniz kendiniz de
 belirleyebilirsiniz.</p>
-<p>Bunun için karakter dizilerinin <code class="docutils literal notranslate"><span class="pre">encode()</span></code> metodunun <cite>errors</cite> adlı
+<p>Bunun için karakter dizilerinin <code class="docutils literal"><span class="pre">encode()</span></code> metodunun <cite>errors</cite> adlı
 parametresinden yararlanacağız. Bu parametre dört farklı değer alabilir:</p>
 <blockquote>
 <div><table border="1" class="docutils">
@@ -1304,7 +1312,7 @@ parametresinden yararlanacağız. Bu parametre dört farklı değer alabilir:</p
 </table>
 </div></blockquote>
 <p>Bu parametreleri şöyle kullanıyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;bu Türkçe bir cümledir.&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;strict&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;bu Türkçe bir cümledir.&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;strict&quot;</span><span class="p">)</span>
 
 <span class="gt">Traceback (most recent call last):</span>
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
@@ -1316,7 +1324,7 @@ parametresinden yararlanacağız. Bu parametre dört farklı değer alabilir:</p
 herhangi bir değer vermezsek Python sanki ‘strict’ değerini vermişiz gibi
 davranacak ve ilgili karakter kodlaması ile temsil edilemeyen bir karakter ile
 karşılaşıldığında hata verecektir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;bu Türkçe bir cümledir.&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;bu Türkçe bir cümledir.&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">)</span>
 
 <span class="gt">Traceback (most recent call last):</span>
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
@@ -1325,21 +1333,21 @@ karşılaşıldığında hata verecektir:</p>
 </pre></div>
 </div>
 <p>Gelelim öteki değerlerin ne yaptığına:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;bu Türkçe bir cümledir.&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;bu Türkçe bir cümledir.&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
 
 <span class="go">b&#39;bu Trke bir cmledir.&#39;</span>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi, <cite>errors</cite> parametresine ‘ignore’ değerini verdiğimizde, temsil
 edilemeyen karakterler görmezden geliniyor:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;bu Türkçe bir cümledir.&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;replace&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;bu Türkçe bir cümledir.&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;replace&quot;</span><span class="p">)</span>
 
 <span class="go">b&#39;bu T?rk?e bir c?mledir.&#39;</span>
 </pre></div>
 </div>
 <p>Burada ise ‘replace’ değerini kullandık. Böylece temsil edilemeyen karakterlerin
 yerine birer <cite>?</cite> işareti koyuldu:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;bu Türkçe bir cümledir.&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;xmlcharrefreplace&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;bu Türkçe bir cümledir.&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;xmlcharrefreplace&quot;</span><span class="p">)</span>
 
 <span class="go">b&#39;bu T&amp;#252;rk&amp;#231;e bir c&amp;#252;mledir.&#39;</span>
 </pre></div>
@@ -1352,13 +1360,13 @@ işinize yarayabilir.</p>
 </div>
 <div class="section" id="dosyalar-ve-karakter-kodlama">
 <h3>Dosyalar ve Karakter Kodlama<a class="headerlink" href="#dosyalar-ve-karakter-kodlama" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<p>Dosyalar konusunu anlatırken, Python’da bir dosyanın <code class="docutils literal notranslate"><span class="pre">open()</span></code> fonksiyonu ile
-açılacağını söylemiştik. Bildiğiniz gibi <code class="docutils literal notranslate"><span class="pre">open()</span></code> fonksiyonunu şu şekilde
+<p>Dosyalar konusunu anlatırken, Python’da bir dosyanın <code class="docutils literal"><span class="pre">open()</span></code> fonksiyonu ile
+açılacağını söylemiştik. Bildiğiniz gibi <code class="docutils literal"><span class="pre">open()</span></code> fonksiyonunu şu şekilde
 kullanıyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">dosya_adı</span><span class="p">,</span> <span class="n">dosya_açma_kipi</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">dosya_adı</span><span class="p">,</span> <span class="n">dosya_açma_kipi</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Burada biz <code class="docutils literal notranslate"><span class="pre">open()</span></code> fonksiyonunu iki farklı parametre ile birlikte kullandık.
+<p>Burada biz <code class="docutils literal"><span class="pre">open()</span></code> fonksiyonunu iki farklı parametre ile birlikte kullandık.
 Ancak aslında belirtmemiz gereken önemli bir parametresi daha var bu
 fonksiyonun. İşte bu parametrenin adı <cite>encoding</cite>’dir.</p>
 <p>Gelin şimdi bu parametrenin ne olduğuna ve nasıl kullanıldığına bakalım:</p>
@@ -1366,10 +1374,10 @@ fonksiyonun. İşte bu parametrenin adı <cite>encoding</cite>’dir.</p>
 <h4>encoding<a class="headerlink" href="#encoding" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
 <p>Tahmin edebileceğiniz gibi, <cite>encoding</cite> parametresi bir dosyanın hangi kod çözücü
 ile açılacağını belirtmemizi sağlar. Python’da dosyalar öntanımlı olarak
-<code class="docutils literal notranslate"><span class="pre">locale</span></code> adlı bir modülün <code class="docutils literal notranslate"><span class="pre">getpreferredencoding()</span></code> adlı fonksiyonunun
+<code class="docutils literal"><span class="pre">locale</span></code> adlı bir modülün <code class="docutils literal"><span class="pre">getpreferredencoding()</span></code> adlı fonksiyonunun
 gösterdiği kod çözücü ile açılır. Siz de dosyalarınızın varsayılan olarak hangi
 kod çözücü ile açılacağını öğrenmek için şu komutları yazabilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">locale</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">locale</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">locale</span><span class="o">.</span><span class="n">getpreferredencoding</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1377,12 +1385,12 @@ kod çözücü ile açılacağını öğrenmek için şu komutları yazabilirsin
 çıktıda görünen kod çözücü ile açılacaktır.</p>
 <p>GNU/Linux dağıtımlarında bu çıktı çoğunlukla UTF-8 olacaktır. O yüzden
 GNU/Linux’ta dosyalarınız muhtemelen <cite>encoding</cite> belirtmeseniz bile düzgün
-görünecektir. Ancak Windows’ta <code class="docutils literal notranslate"><span class="pre">locale.getpreferredencoding()</span></code> değeri cp1254
+görünecektir. Ancak Windows’ta <code class="docutils literal"><span class="pre">locale.getpreferredencoding()</span></code> değeri cp1254
 olacağı için, mesela UTF-8 ile kodlanmış dosyalarınızda özellikle Türkçe
 karakterler düzgün görüntülenemeyecektir. O yüzden, dosyalarınızın hangi kod
-çözücü ile kodlanmış olduğunu <code class="docutils literal notranslate"><span class="pre">open()</span></code> fonksiyonuna vereceğiniz <cite>encoding</cite>
+çözücü ile kodlanmış olduğunu <code class="docutils literal"><span class="pre">open()</span></code> fonksiyonuna vereceğiniz <cite>encoding</cite>
 parametresi aracılığıyla her zaman belirtmelisiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">dosya</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">dosya</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Diyelim ki açmak istediğiniz dosya cp1254 adlı kod çözücü ile kodlanmış olsun.
@@ -1392,7 +1400,7 @@ Eğer siz bu dosyayı açarken cp1254 adlı kod çözücüyü değil de başka b
 hiçbir kod çözücü belirtmediğiniz halde kullandığınız işletim sistemi öntanımlı
 olarak dosyaları açmak için cp1254 harici bir kod çözücüyü kullanıyorsa, dosyayı
 okuma esnasında şuna benzer bir hata alırsınız:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;belge.txt&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;belge.txt&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
 
 <span class="gt">Traceback (most recent call last):</span>
@@ -1407,11 +1415,11 @@ okuma esnasında şuna benzer bir hata alırsınız:</p>
 farklı bir kod çözücü ile (cp1254) kodlanmış olduğu için, doğal olarak
 karakterler doğru sayılarla eşleştirilemiyor. Bu da kaçınılmaz olarak yukarıdaki
 hatanın verilmesine sebep oluyor.</p>
-<p>Aslında siz bu hatayı tanıyorsunuz. <code class="docutils literal notranslate"><span class="pre">encode()</span></code> metodunu anlatırken bunun ne
+<p>Aslında siz bu hatayı tanıyorsunuz. <code class="docutils literal"><span class="pre">encode()</span></code> metodunu anlatırken bunun ne
 olduğundan ve bu hataya karşı neler yapabileceğinizden söz etmiştik.</p>
 <p>Hatırlarsanız bu tür hatalara karşı ne tepki verileceğini belirleyebilmek için
-<code class="docutils literal notranslate"><span class="pre">encode()</span></code> metodunda <cite>errors</cite> adlı bir parametreyi kullanabiliyorduk. İşte
-<code class="docutils literal notranslate"><span class="pre">open()</span></code> fonksiyonunda da aynı <cite>errors</cite> parametresi bulunur.</p>
+<code class="docutils literal"><span class="pre">encode()</span></code> metodunda <cite>errors</cite> adlı bir parametreyi kullanabiliyorduk. İşte
+<code class="docutils literal"><span class="pre">open()</span></code> fonksiyonunda da aynı <cite>errors</cite> parametresi bulunur.</p>
 </div>
 <div class="section" id="errors">
 <h4>errors<a class="headerlink" href="#errors" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
@@ -1426,33 +1434,33 @@ ile çözemezse öntanımlı olarak bir hata mesajı üretip programdan çıkaca
 Ancak sizin istediğiniz şey her zaman bu olmayabilir. Mesela dosyadaki
 karakterler doğru kodlanamasa bile programınızın çökmemesini tercih
 edebilirsiniz. İşte bunun için <cite>errors</cite> parametresinden yararlanacaksınız.</p>
-<p>Bu parametreyi <code class="docutils literal notranslate"><span class="pre">encoding()</span></code> metodundan hatırlıyorsunuz. Bu parametre orada
-nasıl kullanılıyorsa, <code class="docutils literal notranslate"><span class="pre">open()</span></code> fonksiyonunda da aynı şekilde kullanılır.
+<p>Bu parametreyi <code class="docutils literal"><span class="pre">encoding()</span></code> metodundan hatırlıyorsunuz. Bu parametre orada
+nasıl kullanılıyorsa, <code class="docutils literal"><span class="pre">open()</span></code> fonksiyonunda da aynı şekilde kullanılır.
 Dikkatlice bakın:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">dosya_adı</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;strict&#39;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">dosya_adı</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;strict&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Bu zaten <cite>errors</cite> parametresinin öntanımlı değeridir. Dolayısıyla ‘strict’
 değerini belirtmeseniz de öntanımlı olarak bu değeri belirtmişsiniz gibi
 davranılacaktır.</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">dosya_adı</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">dosya_adı</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Burada ise ‘ignore’ değerini kullanarak, Python’ın kodlanamayan karakterleri
 görmezden gelmesini sağlıyoruz.</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">dosya_adı</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">dosya_adı</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>‘replace’ değeri ise kodlanamayan karakterlerin yerine <cite>\ufffd</cite> karakterini
-yerleştirecektir. Bu karakter işlev bakımından, <code class="docutils literal notranslate"><span class="pre">encode()</span></code> metodunu anlatırken
+yerleştirecektir. Bu karakter işlev bakımından, <code class="docutils literal"><span class="pre">encode()</span></code> metodunu anlatırken
 gördüğümüz ‘?’ işaretine benzer. Bu karaktere teknik olarak ‘UNICODE Değiştirme
 Karakteri’ (<em>UNICODE Replacement Character</em>) adı verilir. Bazı yerlerde bu
 karakteri elmas şeklinde siyah bir küp içine yerleştirilmiş soru işareti
 şeklinde görebilirsiniz.</p>
-<p>Peki <code class="docutils literal notranslate"><span class="pre">encode()</span></code> metodunu anlatırken <cite>errors</cite> parametresi ile birlikte
-kullanabildiğimiz ‘xmlcharrefreplace’ değerini <code class="docutils literal notranslate"><span class="pre">open()</span></code> fonksiyonu ile
+<p>Peki <code class="docutils literal"><span class="pre">encode()</span></code> metodunu anlatırken <cite>errors</cite> parametresi ile birlikte
+kullanabildiğimiz ‘xmlcharrefreplace’ değerini <code class="docutils literal"><span class="pre">open()</span></code> fonksiyonu ile
 birlikte kullanabilir miyiz?</p>
-<p>Hayır, <code class="docutils literal notranslate"><span class="pre">open()</span></code> fonksiyonu, <cite>errors</cite> parametresinde bu değerin kullanılmasına
+<p>Hayır, <code class="docutils literal"><span class="pre">open()</span></code> fonksiyonu, <cite>errors</cite> parametresinde bu değerin kullanılmasına
 izin vermez.</p>
 </div>
 </div>
@@ -1463,25 +1471,25 @@ izin vermez.</p>
 fonksiyonları ele alacağız.</p>
 <div class="section" id="repr">
 <h3>repr()<a class="headerlink" href="#repr" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<p>İnceleyeceğimiz ilk fonksiyonun adı <code class="docutils literal notranslate"><span class="pre">repr()</span></code>. Esasında biz bu fonksiyonu
+<p>İnceleyeceğimiz ilk fonksiyonun adı <code class="docutils literal"><span class="pre">repr()</span></code>. Esasında biz bu fonksiyonu
 önceki derslerimizde de birkaç örnekte kullanmıştık. Belki o zaman bu
 fonksiyonun ne işe yaradığını deneme-yanılma yoluyla anlamış olabilirsiniz. Eğer
 henüz bu fonksiyonun görevini anlamadıysanız da mesele değil. Bu bölümde bu
 fonksiyonu ve işlevini ayrıntılı bir şekilde anlatmaya çalışacağız.</p>
-<p>Dilerseniz <code class="docutils literal notranslate"><span class="pre">repr()</span></code> fonksiyonunu anlatmaya bir örnek ile başlayalım.</p>
+<p>Dilerseniz <code class="docutils literal"><span class="pre">repr()</span></code> fonksiyonunu anlatmaya bir örnek ile başlayalım.</p>
 <p>Şimdi Python’ın etkileşimli kabuğunu açarak şu kodu yazın:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;Python programlama dili&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;Python programlama dili&quot;</span>
 </pre></div>
 </div>
 <p>Bu kodu yazıp <cite>ENTER</cite> düğmesine bastığınızda şöyle bir çıktı alacağınızı
 biliyorsunuz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;Python programlama dili&#39;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;Python programlama dili&#39;</span>
 </pre></div>
 </div>
 <p>Dikkat ettiyseniz, yukarıdaki kodların çıktısında karakter dizisi tırnak
-işaretleri içinde gösteriliyor. Eğer bu karakter dizisini <code class="docutils literal notranslate"><span class="pre">print()</span></code> fonksiyonu
+işaretleri içinde gösteriliyor. Eğer bu karakter dizisini <code class="docutils literal"><span class="pre">print()</span></code> fonksiyonu
 içine yazarsanız o tırnak işaretleri kaybolacaktır:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Python programlama dili&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Python programlama dili&quot;</span><span class="p">)</span>
 
 <span class="go">Python programlama dili</span>
 </pre></div>
@@ -1496,22 +1504,22 @@ içine yazarsanız o tırnak işaretleri kaybolacaktır:</p>
 </div></blockquote>
 <p>Yukarıdaki ilk kullanım, yazdığımız kodu Python programlama dilinin nasıl
 gördüğünü gösteriyor. İkinci kullanım ise aynı kodu bizim nasıl gördüğümüzü
-gösteriyor. Zaten bu yüzden, etkileşimli kabukta <code class="docutils literal notranslate"><span class="pre">print()</span></code> fonksiyonu içinde
+gösteriyor. Zaten bu yüzden, etkileşimli kabukta <code class="docutils literal"><span class="pre">print()</span></code> fonksiyonu içinde
 yazmadığımız karakter dizilerinin çıktılarını ekranda görebildiğimiz halde, aynı
 karakter dizilerini bir dosyaya yazıp kaydettiğimizde ekranda çıktı olarak
-görebilmek için bunları <code class="docutils literal notranslate"><span class="pre">print()</span></code> fonksiyonu içine yazmamız gerekiyor.</p>
+görebilmek için bunları <code class="docutils literal"><span class="pre">print()</span></code> fonksiyonu içine yazmamız gerekiyor.</p>
 <p>Bu söylediklerimiz biraz karmaşık gelmiş olabilir. İsterseniz ne anlatmaya
 çalıştığımızı daha açık bir örnek üzerinde gösterelim. Şimdi tekrar etkileşimli
 kabuğu açıp şu kodu çalıştıralım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;birinci satır</span><span class="se">\n</span><span class="s2">&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;birinci satır</span><span class="se">\n</span><span class="s2">&quot;</span>
 </pre></div>
 </div>
 <p>Bu komut bize şu çıktıyı verdi:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;birinci satır</span><span class="se">\n</span><span class="s1">&#39;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="s1">&#39;birinci satır</span><span class="se">\n</span><span class="s1">&#39;</span>
 </pre></div>
 </div>
 <p>Şimdi aynı kodu bir de şöyle yazalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;birinci satır</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;birinci satır</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="go">birinci satır</span>
 </pre></div>
@@ -1524,11 +1532,11 @@ bizim bakış açımızı yansıtmasıdır.</p>
 <p>Peki bu bilgi bizim ne işimize yarar?</p>
 <p>Şimdi şöyle bir örnek düşünün:</p>
 <p>Diyelim ki elimizde şöyle bir değişken var:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;elma &quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;elma &quot;</span>
 </pre></div>
 </div>
 <p>Şimdi bu değişkeni ekrana çıktı olarak verelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 
 <span class="go">elma</span>
 </pre></div>
@@ -1537,64 +1545,64 @@ bizim bakış açımızı yansıtmasıdır.</p>
 son tarafında bir adet boşluk karakteri olduğunu anlayamıyoruz. Bu yüzden bu
 değişkeni şöyle bir program içinde kullanmaya çalıştığımızda neden bozuk bir
 çıktı elde ettiğimizi anlamak zor olabilir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> kilo </span><span class="si">{}</span><span class="s2"> kaldı!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">23</span><span class="p">,</span> <span class="n">a</span><span class="p">))</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> kilo </span><span class="si">{}</span><span class="s2"> kaldı!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">23</span><span class="p">,</span> <span class="n">a</span><span class="p">))</span>
 
 <span class="go">23 kilo elma  kaldı!</span>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi, <cite>“elma”</cite> karakter dizisinin son tarafında bir boşluk olduğu
 için ‘elma’ ile ‘kaldı’ kelimeleri arasında gereksiz bir açıklık meydana geldi.</p>
-<p>Bu boşluğu <code class="docutils literal notranslate"><span class="pre">print()</span></code> ile göremiyoruz, ama bu değişkeni <code class="docutils literal notranslate"><span class="pre">print()</span></code> olmadan
+<p>Bu boşluğu <code class="docutils literal"><span class="pre">print()</span></code> ile göremiyoruz, ama bu değişkeni <code class="docutils literal"><span class="pre">print()</span></code> olmadan
 yazdırdığımızda o boşluk da görünür:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
 
 <span class="go">&#39;elma &#39;</span>
 </pre></div>
 </div>
 <p>Bu sayede programınızdaki aksaklıkları giderme imkanı kazanmış olur, şu kodu
 yazarak gereksiz boşlukları atabilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> kilo </span><span class="si">{}</span><span class="s2"> kaldı!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">23</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">strip</span><span class="p">()))</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> kilo </span><span class="si">{}</span><span class="s2"> kaldı!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">23</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">strip</span><span class="p">()))</span>
 
 <span class="go">23 kilo elma kaldı!</span>
 </pre></div>
 </div>
-<p>Daha önce de dediğimiz gibi, başında <code class="docutils literal notranslate"><span class="pre">print()</span></code> olmayan ifadeler, bir dosyaya
+<p>Daha önce de dediğimiz gibi, başında <code class="docutils literal"><span class="pre">print()</span></code> olmayan ifadeler, bir dosyaya
 yazılıp çalıştırıldığında çıktıda görünmez. O halde biz yukarıdaki özellikten
-yazdığımız programlarda nasıl yararlanacağız? İşte burada yardımımıza <code class="docutils literal notranslate"><span class="pre">repr()</span></code>
+yazdığımız programlarda nasıl yararlanacağız? İşte burada yardımımıza <code class="docutils literal"><span class="pre">repr()</span></code>
 adlı bir fonksiyon yetişecek. Bu fonksiyonu şöyle kullanıyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="s2">&quot;karakter dizisi</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">))</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="s2">&quot;karakter dizisi</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>Bu kodu bir dosyaya yazıp kaydettiğimizde şöyle bir çıktı alıyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;karakter dizisi</span><span class="se">\n</span><span class="s1">&#39;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="s1">&#39;karakter dizisi</span><span class="se">\n</span><span class="s1">&#39;</span>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi hem tırnak işaretleri, hem de satır başı karakteri çıktıda
-görünüyor. Eğer <code class="docutils literal notranslate"><span class="pre">repr()</span></code> fonksiyonunu kullanmasaydık şöyle bir çıktı
+görünüyor. Eğer <code class="docutils literal"><span class="pre">repr()</span></code> fonksiyonunu kullanmasaydık şöyle bir çıktı
 alacaktık:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">karakter</span> <span class="n">dizisi</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">karakter</span> <span class="n">dizisi</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">repr()</span></code> fonksiyonu özellikle yazdığımız programlardaki hataları çözmeye
-çalışırken çok işimize yarar. Çünkü <code class="docutils literal notranslate"><span class="pre">print()</span></code> fonksiyonu, kullanıcının gözüne
+<p><code class="docutils literal"><span class="pre">repr()</span></code> fonksiyonu özellikle yazdığımız programlardaki hataları çözmeye
+çalışırken çok işimize yarar. Çünkü <code class="docutils literal"><span class="pre">print()</span></code> fonksiyonu, kullanıcının gözüne
 daha cazip görünecek bir çıktı üretebilmek için arkaplanda neler olup bittiğini
-kullanıcıdan gizler. İşte arkaplanda neler döndüğünü, <code class="docutils literal notranslate"><span class="pre">print()</span></code> fonksiyonunun
-bizden neleri gizlediğini görebilmek için bu <code class="docutils literal notranslate"><span class="pre">repr()</span></code> fonksiyonundan
+kullanıcıdan gizler. İşte arkaplanda neler döndüğünü, <code class="docutils literal"><span class="pre">print()</span></code> fonksiyonunun
+bizden neleri gizlediğini görebilmek için bu <code class="docutils literal"><span class="pre">repr()</span></code> fonksiyonundan
 yararlanabiliriz.</p>
 <div class="admonition note">
 <p class="first admonition-title">Not</p>
-<p class="last"><code class="docutils literal notranslate"><span class="pre">repr()</span></code> fonksiyonu ile ilgili gerçek hayattan bir örnek için
+<p class="last"><code class="docutils literal"><span class="pre">repr()</span></code> fonksiyonu ile ilgili gerçek hayattan bir örnek için
 <a class="reference external" href="https://web.archive.org/web/20161027213804/http://www.istihza.com/blog/windows-python-3-2de-bir-hata.html">istihza.com/blog/windows-python-3-2de-bir-hata.html</a>
 (arşiv linki)adresindeki yazımızı okuyabilirsiniz.</p>
 </div>
-<p>Bütün bu açıklamalar bize şunu söylüyor: <code class="docutils literal notranslate"><span class="pre">repr()</span></code> fonksiyonu, bir karakter
+<p>Bütün bu açıklamalar bize şunu söylüyor: <code class="docutils literal"><span class="pre">repr()</span></code> fonksiyonu, bir karakter
 dizisinin Python tarafından nasıl temsil edildiğini gösterir. Yukarıda biz bu
 fonksiyonun nasıl kullanıldığına dair ayrıntıları verdik. Ancak bu fonksiyonun,
 yine yukarıdaki işleviyle bağlantılı olmakla birlikte biraz daha farklı görünen
 bir işlevi daha bulunur.</p>
 <p>Hatırlarsanız, ilk derslerimizde <cite>r</cite> adlı bir kaçış dizisinden söz etmiştik. Bu
 kaçış dizisini şöyle kullanıyorduk:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\n&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\n&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Bildiğiniz gibi, <cite>\n</cite> kaçış dizisi bir alt satıra geçmemizi sağlıyor. İşte <cite>r</cite>
@@ -1603,30 +1611,30 @@ kaçış dizisinin kendisini çıktı olarak verebilmemizi sağlıyor.</p>
 <p>O halde bu noktada size şöyle bir soru sormama izin verin:</p>
 <p>Acaba bir değişkene atanmış kaçış dizilerinin işlevini nasıl baskılayabiliriz?
 Yani mesela elimizde şöyle bir değişken bulunuyor olsun:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">yeni_satır</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">yeni_satır</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
 </pre></div>
 </div>
 <p>Biz bu değişkenin değerini nasıl ekrana yazdıracağız?</p>
-<p>Eğer bunu doğrudan <code class="docutils literal notranslate"><span class="pre">print()</span></code> fonksiyonuna gönderirsek ne olacağını
+<p>Eğer bunu doğrudan <code class="docutils literal"><span class="pre">print()</span></code> fonksiyonuna gönderirsek ne olacağını
 biliyorsunuz: Yeni satır karakteri işlevini yerine getirecek ve biz de yeni
 satır karakterinin kendisini değil, yaptığı işin sonucunu (yani satır başına
 geçildiğini) göreceğiz.</p>
-<p>İşte bu tür durumlar için de <code class="docutils literal notranslate"><span class="pre">repr()</span></code> fonksiyonundan yararlanabilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">))</span>
+<p>İşte bu tür durumlar için de <code class="docutils literal"><span class="pre">repr()</span></code> fonksiyonundan yararlanabilirsiniz:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>Böylece satır başı karakterinin işlevi baskılanacak ve biz çıktıda bu karakterin
 kendisini göreceğiz.</p>
 <p>Hatırlarsanız ASCII konusunu anlatırken şöyle bir örnek vermiştik:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">128</span><span class="p">):</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">128</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:&lt;3}{:&gt;8}</span><span class="se">\t</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="nb">repr</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="n">i</span><span class="p">))),</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>İşte burada, <code class="docutils literal notranslate"><span class="pre">repr()</span></code> fonksiyonunun yukarıda sözünü ettiğimiz işlevinden
-yararlanıyoruz. Eğer bu kodlarda <code class="docutils literal notranslate"><span class="pre">repr()</span></code> fonksiyonunu kullanmazsak, ASCII
+<p>İşte burada, <code class="docutils literal"><span class="pre">repr()</span></code> fonksiyonunun yukarıda sözünü ettiğimiz işlevinden
+yararlanıyoruz. Eğer bu kodlarda <code class="docutils literal"><span class="pre">repr()</span></code> fonksiyonunu kullanmazsak, ASCII
 tablosunu oluşturan karakterler arasındaki <cite>\n</cite>, <cite>\a</cite>, <cite>\t</cite> gibi kaçış
 dizileri ekranda görünmeyecek, bunun yerine bu kaçış dizileri doğrudan
 işlevlerini yerine getirecek, bu da bizim istediğimiz ASCII tablosunu üretmemize
@@ -1634,9 +1642,9 @@ engel olacaktır.</p>
 </div>
 <div class="section" id="id2">
 <h3>ascii()<a class="headerlink" href="#id2" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">ascii()</span></code> fonksiyonu biraz önce öğrendiğimiz <code class="docutils literal notranslate"><span class="pre">repr()</span></code> fonksiyonuna çok
+<p><code class="docutils literal"><span class="pre">ascii()</span></code> fonksiyonu biraz önce öğrendiğimiz <code class="docutils literal"><span class="pre">repr()</span></code> fonksiyonuna çok
 benzer. Örneğin:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">repr</span><span class="p">(</span><span class="s2">&quot;asds&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">repr</span><span class="p">(</span><span class="s2">&quot;asds&quot;</span><span class="p">)</span>
 
 <span class="go">&quot;&#39;asds&#39;&quot;</span>
 
@@ -1647,7 +1655,7 @@ benzer. Örneğin:</p>
 </div>
 <p>Bu iki fonksiyon, <cite>ASCII</cite> tablosunda yer almayan karakterlere karşı tutumları
 yönünden birbirlerinden ayrılır. Örneğin:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">repr</span><span class="p">(</span><span class="s2">&quot;İ&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">repr</span><span class="p">(</span><span class="s2">&quot;İ&quot;</span><span class="p">)</span>
 
 <span class="go">&quot;&#39;İ&#39;&quot;</span>
 
@@ -1656,11 +1664,11 @@ yönünden birbirlerinden ayrılır. Örneğin:</p>
 <span class="go">&quot;&#39;\\u0130&#39;&quot;</span>
 </pre></div>
 </div>
-<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">repr()</span></code> fonksiyonu <cite>ASCII</cite> tablosunda yer almayan
-karakterleri de göründükleri gibi temsil ediyor. <code class="docutils literal notranslate"><span class="pre">ascii()</span></code> fonksiyonu ise bu
+<p>Gördüğünüz gibi, <code class="docutils literal"><span class="pre">repr()</span></code> fonksiyonu <cite>ASCII</cite> tablosunda yer almayan
+karakterleri de göründükleri gibi temsil ediyor. <code class="docutils literal"><span class="pre">ascii()</span></code> fonksiyonu ise bu
 karakterlerin UNICODE kod konumlarını (<em>code points</em>) gösteriyor.</p>
 <p>Bir örnek daha verelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">repr</span><span class="p">(</span><span class="s2">&quot;€&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">repr</span><span class="p">(</span><span class="s2">&quot;€&quot;</span><span class="p">)</span>
 
 <span class="go">&quot;&#39;€&#39;&quot;</span>
 
@@ -1669,21 +1677,21 @@ karakterlerin UNICODE kod konumlarını (<em>code points</em>) gösteriyor.</p>
 <span class="go">&quot;&#39;\\u20ac&#39;&quot;</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">ascii()</span></code> fonksiyonunun UNICODE kod konumlarını gösterme özelliğinin bir
-benzerini daha önce öğrendiğimiz <code class="docutils literal notranslate"><span class="pre">encode()</span></code> metodu yardımıyla da elde
+<p><code class="docutils literal"><span class="pre">ascii()</span></code> fonksiyonunun UNICODE kod konumlarını gösterme özelliğinin bir
+benzerini daha önce öğrendiğimiz <code class="docutils literal"><span class="pre">encode()</span></code> metodu yardımıyla da elde
 edebilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;€&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;unicode_escape&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;€&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;unicode_escape&quot;</span><span class="p">)</span>
 
 <span class="go">b&#39;\\u20ac&#39;</span>
 </pre></div>
 </div>
-<p>Ancak <code class="docutils literal notranslate"><span class="pre">ascii()</span></code> fonksiyonunun <cite>str</cite> tipinde, <code class="docutils literal notranslate"><span class="pre">encode()</span></code> metodunun ise
+<p>Ancak <code class="docutils literal"><span class="pre">ascii()</span></code> fonksiyonunun <cite>str</cite> tipinde, <code class="docutils literal"><span class="pre">encode()</span></code> metodunun ise
 <cite>bytes</cite> tipinde bir çıktı verdiğine dikkat edin.</p>
 </div>
 <div class="section" id="ord">
 <h3>ord()<a class="headerlink" href="#ord" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
 <p>Bu fonksiyon, bir karakterin sayı karşılığını verir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="go">10</span>
 
@@ -1696,7 +1704,7 @@ edebilirsiniz:</p>
 <div class="section" id="chr">
 <h3>chr()<a class="headerlink" href="#chr" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
 <p>Bu fonksiyon, bir sayının karakter karşılığını verir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">chr</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">chr</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 
 <span class="go">&#39;\n&#39;</span>
 
@@ -1778,8 +1786,8 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 <div class="footer">
 &copy; Copyright 2007-2019, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 15.12.2019.
-<a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5 ile oluşturulmuştur.
+Son güncelleme: 30.12.2019.
+<a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7 ile oluşturulmuştur.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img

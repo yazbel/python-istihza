@@ -5,18 +5,25 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta content="Bu bölümde, bilgisayarların çalışma mantığını daha iyi anlayabilmek için basit bir iletişim modeli oluşturacağız." name="description" />
 <meta content="iletişim, Mors, alfabesi" name="keywords" />
 
     <title>Basit bir İletişim Modeli &#8212; Python 3 için Türkçe Kılavuz</title>
     <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
     <script type="text/javascript" src="_static/translations.js"></script>
     <link rel="search" title="Ara" href="search.html" />
     <link rel="next" title="Karakter Kodlama (Character Encoding)" href="karakter_kodlama.html" />
@@ -25,7 +32,8 @@
 <link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
 <![endif]-->
 
-  </head><body>
+  </head>
+  <body>
 <div class='header'><a href='https://yazbel.com'>yazbel.com</a></div>
 
 <ul class='navbar'>
@@ -104,7 +112,7 @@ gereken bütün karakterleri temsil edebilmemiz için, sistemimizin 8 hanelik bi
 sayı kapasitesine sahip olması, yani teknik bir dille ifade etmek gerekirse
 sistemimizin 8 bitlik olması herhalde yeterli olacaktır.</p>
 <p>8 bitlik bir iletişim sisteminde <cite>10</cite>’a kadar şu şekilde sayabiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="n">i</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>
 <span class="gp">...</span>
 <span class="go">00000000</span>
@@ -123,7 +131,7 @@ sistemimizin 8 bitlik olması herhalde yeterli olacaktır.</p>
 sinyalleri art arda göndererek yukarıda gösterildiği gibi on farklı sayıyı
 alıcıya iletebilir. Sistemimizin 8 bitlik olduğunu düşünürsek karşı tarafa <cite>0</cite>
 sayısı ile birlikte toplam 2 ** 8 = 256 farklı sinyal gönderebiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">256</span><span class="p">):</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">256</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="n">i</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>
 
 <span class="go">00000000</span>
@@ -146,7 +154,7 @@ sayısı ile birlikte toplam 2 ** 8 = 256 farklı sinyal gönderebiliriz:</p>
 <p>Gördüğünüz gibi, bizim 8 bitlik bu sistemle gönderebileceğimiz son sinyal, yani
 sayı <cite>255</cite>’tir. Bu sistemle bundan büyük bir sayıyı gönderemeyiz. Bu durumu
 kendi gözlerinizle görmek için şu kodları çalıştırın:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">256</span><span class="p">):</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">256</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="n">i</span><span class="p">)[</span><span class="mi">2</span><span class="p">:],</span> <span class="n">i</span><span class="o">.</span><span class="n">bit_length</span><span class="p">(),</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -155,7 +163,7 @@ ikinci sütun ise bu sayıların bit uzunluğunu gösteriyor. Bu çıktıyı
 incelediğinizde de göreceğiniz gibi, 8 bit uzunluğa sahip son sayı <cite>255</cite>’tir.
 <cite>256</cite> sayısı ise 9 bit uzunluğa sahiptir. Yani <cite>256</cite> sayısı mecburen bizim
 sistemimizin dışındadır:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">bin</span><span class="p">(</span><span class="mi">255</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">bin</span><span class="p">(</span><span class="mi">255</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span>
 
 <span class="go">&#39;11111111&#39;</span>
 
@@ -203,7 +211,7 @@ ise bahsettiğimiz bu hata kontrol mekanizmasına ayıracağız.</p>
 bakacağız.</p>
 <p>Buna göre sistemimiz şöyle çalışacak:</p>
 <p>Diyelim ki verici alıcıya sinyaller aracılığıyla şu sayıyı göndermek istiyor:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="mi">0110111</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="mi">0110111</span>
 </pre></div>
 </div>
 <p>Bu arada, bunun 7 bitlik bir sayı olduğuna dikkat edin. Dediğimiz gibi, biz
@@ -229,21 +237,21 @@ iletilecek sayı çiftse, o sayının başına <cite>1</cite> ekleyeceğiz. Böy
 sistemimizin gerektirdiği şekilde, tek sayıya çevirmiş olacağız.</div></blockquote>
 <p>Örnek olarak <cite>0110111</cite> sayısını verelim. Bu sayıda toplam beş adet <cite>1</cite> var. Yani
 bu sayı bir tek sayı. Dolayısıyla bu sayının başına bir adet <cite>0</cite> ekliyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="mi">0110111</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="mi">0110111</span>
 </pre></div>
 </div>
 <p>Böylece sayımızın teklik-çiftlik durumu değişmemiş oluyor. Karşı taraf bu sayıyı
 aldığında <cite>1</cite>’lerin miktarına bakarak bu verinin doğru iletildiğinden emin
 oluyor.</p>
 <p>Bir de şu sayıya bakalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1111011</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="mi">1111011</span>
 </pre></div>
 </div>
 <p>Bu sayıda toplam altı adet <cite>1</cite> sayısı var. Yani bu sayı bir çift sayı. Bir
 sayının sistemimiz tarafından ‘hatasız’ olarak kabul edilebilmesi için bu
 sayının bir tek sayı olması gerekiyor. Bu yüzden biz bu sayıyı tek sayıya
 çevirmek için başına bir adet <cite>1</cite> sayı ekliyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="mi">1111011</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="mi">1111011</span>
 </pre></div>
 </div>
 <p>Böylece sayımızın içinde toplam yedi adet <cite>1</cite> sayısı olmuş ve böylece sayımız
@@ -435,7 +443,7 @@ varsayalım:</p>
 Mesela vericiden <cite>0</cite> sinyali geldiğinde bu tabloya göre biz bunu ‘a’ harfi
 olarak yorumlayacağız. Örneğin karşı tarafa ‘python’ mesajını iletmek için
 sırasıyla şu sinyalleri göndereceğiz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1111</span><span class="p">,</span> <span class="mi">11000</span><span class="p">,</span> <span class="mi">10011</span><span class="p">,</span> <span class="mi">111</span><span class="p">,</span> <span class="mi">1110</span><span class="p">,</span> <span class="mi">1101</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="mi">1111</span><span class="p">,</span> <span class="mi">11000</span><span class="p">,</span> <span class="mi">10011</span><span class="p">,</span> <span class="mi">111</span><span class="p">,</span> <span class="mi">1110</span><span class="p">,</span> <span class="mi">1101</span>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi, elimizdeki 127 sayının 52’sini harflere ayırdık ve elimizde 75
@@ -789,8 +797,8 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 <div class="footer">
 &copy; Copyright 2007-2019, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 15.12.2019.
-<a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5 ile oluşturulmuştur.
+Son güncelleme: 30.12.2019.
+<a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7 ile oluşturulmuştur.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
