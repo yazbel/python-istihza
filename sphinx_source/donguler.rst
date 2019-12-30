@@ -1335,7 +1335,7 @@ Peki şimdi ``else`` ifadesi ne işe yaradı? Aslında pek de işe yaramadı,
 ``else`` ifadesini yazmadan da aynı çıktıları alabilirdik. 
 Dediğimiz gibi Python'da ``else`` ifadesi döngüler ile birlikte kullanılacaksa
 ``break`` ifadesi ile birlikte bir anlam kazanır. Eğer döngü ``break``
-ifadesi kullanılarak sonlandırıldı ise ``else`` çalışmaz, döngü ``break`` ifadesi ile sonlandırıldı ise ``else`` bölümü çalışır.
+ifadesi kullanılarak sonlandırıldı ise ``else`` çalışmaz, döngü ``break`` ifadesi ile sonlandırılmadı ise ``else`` bölümü çalışır.
 Yukarıdaki örneğimizde zaten ``break`` deyimi bulunmadığı
 için ``else`` bölümü çalıştı. Şimdi çalışmayacağı bir örnek verelim::
 
