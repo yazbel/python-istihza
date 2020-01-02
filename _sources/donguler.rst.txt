@@ -980,7 +980,7 @@ belirleyebilirsiniz. Aşağıdaki kodları dikkatlice inceleyin::
         elif len(parola) in range(3, 8):
             print("Yeni parolanız", parola)
             break
-        
+
         elif i == 2:
             print("parolayı 3 kez yanlış girdiniz.",
             "Lütfen 30 dakika sonra tekrar deneyin!")
@@ -1004,7 +1004,7 @@ yerlerine ``print()`` fonksiyonu yerleştirerek arka planda Python'ın neler
         elif len(parola) in range(3, 8):
             print("Yeni parolanız", parola)
             break
-            
+
         elif i == 2:
             print("parolayı 3 kez yanlış girdiniz.",
             "Lütfen 30 dakika sonra tekrar deneyin!")
@@ -1312,7 +1312,7 @@ else Deyimi
 =============
 
 Biz ``else`` deyimini koşullu durumlarda da görmüştük, ancak ``else`` deyimi
-döngüler ile de kullanılabilmektedir. Tabii döngüler ile kullanıldığında 
+döngüler ile de kullanılabilmektedir. Tabii döngüler ile kullanıldığında
 farklı bir işi üstlenmektedir. ``else`` deyimi döngüler ile birlikte
 kullanılırken ``break`` deyimi ile birlikte bir anlam kazanır.
 Şöyle bir kodumuz olduğunu varsayalım::
@@ -1332,10 +1332,10 @@ Kodumuzu kaydedip çalıştırdığımızda bu çıktıyı alıyoruz::
 	>>>
 
 Peki şimdi ``else`` ifadesi ne işe yaradı? Aslında pek de işe yaramadı,
-``else`` ifadesini yazmadan da aynı çıktıları alabilirdik. 
+``else`` ifadesini yazmadan da aynı çıktıları alabilirdik.
 Dediğimiz gibi Python'da ``else`` ifadesi döngüler ile birlikte kullanılacaksa
 ``break`` ifadesi ile birlikte bir anlam kazanır. Eğer döngü ``break``
-ifadesi kullanılarak sonlandırıldı ise ``else`` çalışmaz, döngü ``break`` ifadesi ile sonlandırıldı ise ``else`` bölümü çalışır.
+ifadesi kullanılarak sonlandırıldı ise ``else`` çalışmaz, döngü ``break`` ifadesi ile sonlandırılmadı ise ``else`` bölümü çalışır.
 Yukarıdaki örneğimizde zaten ``break`` deyimi bulunmadığı
 için ``else`` bölümü çalıştı. Şimdi çalışmayacağı bir örnek verelim::
 
