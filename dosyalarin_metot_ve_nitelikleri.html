@@ -5,18 +5,25 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta content="Bu bölümde dosyaların metot ve niteliklerini inceleyeceğiz." name="description" />
 <meta content="python, python3, dosyalar" name="keywords" />
 
     <title>Dosyaların Metot ve Nitelikleri &#8212; Python 3 için Türkçe Kılavuz</title>
     <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
     <script type="text/javascript" src="_static/translations.js"></script>
     <link rel="search" title="Ara" href="search.html" />
     <link rel="next" title="İkili (Binary) Dosyalar" href="ikili_dosyalar.html" />
@@ -25,7 +32,8 @@
 <link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
 <![endif]-->
 
-  </head><body>
+  </head>
+  <body>
 <div class='header'><a href='https://yazbel.com'>yazbel.com</a></div>
 
 <ul class='navbar'>
@@ -61,14 +69,14 @@ dizileri ve listeler gibi, Python programlama dilindeki veri tiplerinden
 biridir. Dolayısıyla tıpkı karakter dizileri ve listeler gibi, dosya (<em>file</em>)
 adlı bu veri tipinin de bazı metotları ve nitelikleri vardır. Gelin isterseniz
 bu metot ve niteliklerin neler olduğunu şöyle bir listeleyelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">dosya</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;falanca_dosya.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">dosya</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;falanca_dosya.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">metot</span> <span class="k">for</span> <span class="n">metot</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">dosya</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">metot</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)],</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Bu kodlar, dosya adlı veri tipinin bizi ilgilendiren bütün metotlarını alt alta
 ekrana basacaktır. Eğer yukarıdaki kodları anlamakta zorluk çektiyseniz, bunları
 şöyle de yazabilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">dosya</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;falanca_dosya.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">dosya</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;falanca_dosya.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">metot</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">dosya</span><span class="p">):</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">metot</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">):</span>
@@ -84,7 +92,7 @@ bu önemli metot ve nitelikleri gözden geçirelim.</p>
 <h2>closed Niteliği<a class="headerlink" href="#closed-niteligi" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Bu nitelik, bir dosyanın kapalı olup olmadığını sorgulamamızı sağlar. Dosya
 adının <cite>f</cite> olduğunu varsayarsak, bu niteliği şöyle kullanıyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">closed</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">closed</span>
 </pre></div>
 </div>
 <p>Eğer <cite>f</cite> adlı bu dosya kapalıysa <cite>True</cite> çıktısı, açıksa <cite>False</cite> çıktısı
@@ -111,18 +119,18 @@ metot yardımıyla dosyalarımızı istediğimiz boyuta getirebiliyoruz.</p>
 <p>İngilizcede <em>truncate</em> kelimesi ‘budamak, kırpmak’ gibi anlamlara gelir. Bu
 metodun yaptığı iş de bu anlamıyla uyumludur. Bu metodu temel olarak şöyle
 kullanıyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;falanca.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r+&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;falanca.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r+&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">f</span><span class="o">.</span><span class="n">truncate</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Bu komutu bu şekilde kullandığımızda dosyanın bütün içeriği silinecektir. Yani
 bu kodlar, sanki dosyayı <cite>“w”</cite> kipiyle açmışsınız gibi bir etki ortaya
 çıkaracaktır.</p>
-<p><code class="docutils literal notranslate"><span class="pre">truncate()</span></code> metodu yukarıda gördüğünüz şekilde parametresiz olarak
+<p><code class="docutils literal"><span class="pre">truncate()</span></code> metodu yukarıda gördüğünüz şekilde parametresiz olarak
 kullanılabileceği gibi, parametreli olarak da kullanılabilir. Bu metodun
 parantezleri arasına, dosyanın kaç baytlık bir boyuta sahip olmasını
 istediğinizi yazabilirsiniz. Örneğin:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;falanca.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r+&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;falanca.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r+&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">f</span><span class="o">.</span><span class="n">truncate</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -131,22 +139,22 @@ siler. Yani dosyayı yalnızca <cite>10</cite> baytlık bir boyuta sahip olacak 
 kırpar.</p>
 <p>Gelin isterseniz bu metotla ilgili bir örnek verelim. Elimizdeki dosyanın şu
 içeriğe sahip olduğunu varsayalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ahmet</span> <span class="n">Özbudak</span> <span class="p">:</span> <span class="mi">0533</span> <span class="mi">123</span> <span class="mi">23</span> <span class="mi">34</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">Ahmet</span> <span class="n">Özbudak</span> <span class="p">:</span> <span class="mi">0533</span> <span class="mi">123</span> <span class="mi">23</span> <span class="mi">34</span>
 <span class="n">Mehmet</span> <span class="n">Sülün</span>  <span class="p">:</span> <span class="mi">0532</span> <span class="mi">212</span> <span class="mi">22</span> <span class="mi">22</span>
 <span class="n">Sami</span> <span class="n">Sam</span>      <span class="p">:</span> <span class="mi">0542</span> <span class="mi">333</span> <span class="mi">34</span> <span class="mi">34</span>
 </pre></div>
 </div>
 <p>Amacımız dosyadaki şu iki satırı tamamen silmek:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">Mehmet</span> <span class="n">Sülün</span>  <span class="p">:</span> <span class="mi">0532</span> <span class="mi">212</span> <span class="mi">22</span> <span class="mi">22</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">Mehmet</span> <span class="n">Sülün</span>  <span class="p">:</span> <span class="mi">0532</span> <span class="mi">212</span> <span class="mi">22</span> <span class="mi">22</span>
 <span class="n">Sami</span> <span class="n">Sam</span>      <span class="p">:</span> <span class="mi">0542</span> <span class="mi">333</span> <span class="mi">34</span> <span class="mi">34</span>
 </pre></div>
 </div>
 <p>Yani dosyanın yeni içeriğinin tam olarak şöyle olmasını istiyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ahmet</span> <span class="n">Özbudak</span> <span class="p">:</span> <span class="mi">0533</span> <span class="mi">123</span> <span class="mi">23</span> <span class="mi">34</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">Ahmet</span> <span class="n">Özbudak</span> <span class="p">:</span> <span class="mi">0533</span> <span class="mi">123</span> <span class="mi">23</span> <span class="mi">34</span>
 </pre></div>
 </div>
-<p>Bunun için <code class="docutils literal notranslate"><span class="pre">truncate()</span></code> metodundan yararlanarak şu kodları yazabiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;fihrist.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r+&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<p>Bunun için <code class="docutils literal"><span class="pre">truncate()</span></code> metodundan yararlanarak şu kodları yazabiliriz:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;fihrist.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r+&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
     <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">tell</span><span class="p">())</span>
     <span class="n">f</span><span class="o">.</span><span class="n">truncate</span><span class="p">()</span>
@@ -159,28 +167,28 @@ ettiğinizi göreceksiniz.</p>
 <li><p class="first">Önce dosyamızı hem okuma hem de yazma kipinde açtık. Çünkü aynı dosya
 üzerinde hem okuma hem de yazma işlemleri gerçekleştireceğiz:</p>
 <blockquote>
-<div><div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;fihrist.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r+&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<div><div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;fihrist.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r+&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
 </pre></div>
 </div>
 </div></blockquote>
 </li>
 <li><p class="first">Ardından dosyadan tek bir satır okuduk:</p>
 <blockquote>
-<div><div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+<div><div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
 </pre></div>
 </div>
 </div></blockquote>
 </li>
-<li><p class="first">Daha sonra, <code class="docutils literal notranslate"><span class="pre">truncate()</span></code> metodunun imleç konumundan itibaren kırpma işlemi
+<li><p class="first">Daha sonra, <code class="docutils literal"><span class="pre">truncate()</span></code> metodunun imleç konumundan itibaren kırpma işlemi
 gerçekleştirebilmesi için imleci dosya içinde o anda bulunduğumuz konuma, yani
-ikinci satırın başına getirdik. Bildiğiniz gibi dosyaların <code class="docutils literal notranslate"><span class="pre">tell()</span></code> metodu, o
+ikinci satırın başına getirdik. Bildiğiniz gibi dosyaların <code class="docutils literal"><span class="pre">tell()</span></code> metodu, o
 anda dosya içinde hangi konumda bulunduğumuzu bildiriyor. Biz biraz önce
-yazdığımız <code class="docutils literal notranslate"><span class="pre">readline()</span></code> komutu yardımıyla dosyadan bir satır okuduğumuz için,
-o anda ikinci satırın başında bulunuyoruz. İşte <code class="docutils literal notranslate"><span class="pre">seek()</span></code> metodunu ve
-<code class="docutils literal notranslate"><span class="pre">tell()</span></code> metodundan elde ettiğimiz bu konum bilgisini kullanarak imleci
+yazdığımız <code class="docutils literal"><span class="pre">readline()</span></code> komutu yardımıyla dosyadan bir satır okuduğumuz için,
+o anda ikinci satırın başında bulunuyoruz. İşte <code class="docutils literal"><span class="pre">seek()</span></code> metodunu ve
+<code class="docutils literal"><span class="pre">tell()</span></code> metodundan elde ettiğimiz bu konum bilgisini kullanarak imleci
 istediğimiz konuma getirdik:</p>
 <blockquote>
-<div><div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">tell</span><span class="p">())</span>
+<div><div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">tell</span><span class="p">())</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -188,19 +196,19 @@ istediğimiz konuma getirdik:</p>
 <li><p class="first">İmleci istediğimiz konuma getirdiğimize göre artık kırpma işlemini
 gerçekleştirebiliriz:</p>
 <blockquote>
-<div><div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">truncate</span><span class="p">()</span>
+<div><div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">truncate</span><span class="p">()</span>
 </pre></div>
 </div>
 </div></blockquote>
 </li>
 </ol>
 <p>Artık elimizde tek satırlık bir dosya var…</p>
-<p><code class="docutils literal notranslate"><span class="pre">truncate()</span></code> metodunun, yukarıda anlattığımızdan farklı bir özelliği daha
+<p><code class="docutils literal"><span class="pre">truncate()</span></code> metodunun, yukarıda anlattığımızdan farklı bir özelliği daha
 var. Her ne kadar <em>truncate</em> kelimesi ‘kırpmak’ anlamına gelse ve bu metotla
 dosya boyutlarını küçültebilsek bile, bu metodu kullanarak aynı zamanda dosya
 boyutlarını artırabiliriz de. Örneğin boyutu <cite>1</cite> kilobayt olan bir dosyayı <cite>3</cite>
 kilobayta çıkarmak için bu metodu şöyle kullanabiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;fihrist.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r+&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;fihrist.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r+&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">truncate</span><span class="p">(</span><span class="mi">1024</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
@@ -210,7 +218,7 @@ kilobayta çıkarmak için bu metodu şöyle kullanabiliriz:</p>
 çok basit: Dosyanın sonuna gereken miktarda <cite>0</cite> ekleyerek… Zaten eğer
 <cite>fihrist.txt</cite> adlı bu dosyayı tekrar açıp okursanız bu durumu kendiniz de
 görebilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;fihrist.txt&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;fihrist.txt&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -219,7 +227,7 @@ görebilirsiniz:</p>
 <div class="section" id="mode-niteligi">
 <h2>mode Niteliği<a class="headerlink" href="#mode-niteligi" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Bu nitelik, bize bir dosyanın hangi kipte açıldığına dair bilgi verir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;falanca.txt&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;falanca.txt&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">mode</span>
 
 <span class="go">&#39;r&#39;</span>
@@ -230,7 +238,7 @@ görebilirsiniz:</p>
 <div class="section" id="name-niteligi">
 <h2>name Niteliği<a class="headerlink" href="#name-niteligi" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Bu nitelik, bize bir dosyanın adını verir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">name</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">name</span>
 
 <span class="go">&#39;falanca.txt&#39;</span>
 </pre></div>
@@ -239,13 +247,13 @@ görebilirsiniz:</p>
 <div class="section" id="encoding-niteligi">
 <h2>encoding Niteliği<a class="headerlink" href="#encoding-niteligi" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Bu nitelik, bize bir dosyanın hangi dil kodlaması ile kodlandığını söyler:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">encoding</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">encoding</span>
 
 <span class="go">&#39;utf-8&#39;</span>
 </pre></div>
 </div>
 <p>veya:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">encoding</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">encoding</span>
 
 <span class="go">&#39;cp1254&#39; #Windows</span>
 </pre></div>
@@ -335,9 +343,9 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
     </div> 
 
 <div class="footer">
-&copy; Copyright 2007-2019, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 15.12.2019.
-<a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5 ile oluşturulmuştur.
+&copy; Copyright 2007-2020, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 02.01.2020.
+<a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7 ile oluşturulmuştur.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img

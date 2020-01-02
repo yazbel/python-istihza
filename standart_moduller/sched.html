@@ -5,18 +5,25 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta content="Bu bölümde sched modülünü inceleyeceğiz." name="description" />
 <meta content="python, modül, import, sched, zamanlı işlemler" name="keywords" />
 
     <title>sched modülü &#8212; Python 3 için Türkçe Kılavuz</title>
     <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
     <script type="text/javascript" src="../_static/translations.js"></script>
     <link rel="search" title="Ara" href="../search.html" />
     <link rel="next" title="json Modülü" href="json.html" />
@@ -25,7 +32,8 @@
 <link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
 <![endif]-->
 
-  </head><body>
+  </head>
+  <body>
 <div class='header'><a href='https://yazbel.com'>yazbel.com</a></div>
 
 <ul class='navbar'>
@@ -61,7 +69,7 @@ Modülün içinde scheduler diye bir sınıf mevcut.
 (Sınıfın adı dikkat ettiyseniz küçük harfle başlıyor.)
 Bu modülü kullanmadan önce <cite>scheduler</cite> sınıfından bir örnek
 oluşturmalısınız:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sched</span>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sched</span>
 <span class="n">s</span><span class="o">=</span><span class="n">sched</span><span class="o">.</span><span class="n">scheduler</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -74,7 +82,7 @@ birazdan açıklayacağım. İkinci ve son parametre ise <cite>delayfunc</cite>.
 Bu parametrenin varsayılan değeri <cite>time.sleep</cite>. Bu parametreyi de
 kodun okunaklılığı açısından belirtelim. Sonuç olarak örneğimizi
 şu şekilde tanımlayalım:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sched</span><span class="o">,</span> <span class="nn">time</span>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sched</span><span class="o">,</span> <span class="nn">time</span>
 <span class="n">s</span><span class="o">=</span><span class="n">sched</span><span class="o">.</span><span class="n">scheduler</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -123,7 +131,7 @@ kullanabileceğimiz tek değişken. Daha önce sıraya eklenmiş
 <h2>Örnekler<a class="headerlink" href="#ornekler" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Anlatım biraz kafa karıştırıcı oldu. Ancak şimdi birkaç
 Örnek yaparak mantığını kavramanızı sağlayalım.</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sched</span><span class="o">,</span><span class="nn">time</span>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sched</span><span class="o">,</span><span class="nn">time</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">=</span><span class="n">sched</span><span class="o">.</span><span class="n">scheduler</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">,</span><span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">zamanı_yazdır</span><span class="p">(</span><span class="n">sıra</span><span class="p">):</span>
 <span class="go">    print(f&quot;Zaman: {time.time()} ,{sıra}&quot;)</span>
@@ -152,7 +160,7 @@ tanımlanma sıralarına bakıldı. “Üçüncü”nün öncelik sırası
 2 olduğu için onlardan daha sonra yazıldı. “Birinci” onlardan 5
 saniye sonra yani çalışmaya başladıktan 10 saniye sonra çalıştı.</p>
 <p>Bir başka örnek:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sched</span><span class="o">,</span><span class="nn">time</span>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sched</span><span class="o">,</span><span class="nn">time</span>
 <span class="n">s</span><span class="o">=</span><span class="n">sched</span><span class="o">.</span><span class="n">scheduler</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">,</span><span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">)</span>
 <span class="n">yazdırılacak_değer</span><span class="o">=</span><span class="s2">&quot;Merhaba Dünya&quot;</span>
 <span class="k">def</span> <span class="nf">değiştir</span><span class="p">():</span>
@@ -180,7 +188,7 @@ Ancak hemen sonra çalışan <cite>değiştir</cite> fonksiyonu ile <cite>yazdı
 değiştiği için 10. saniyede çalışan <cite>yazdır</cite> fonksiyonu
 farklı bir çıktı veriyor.</p>
 <p>Şu şekilde fantastik bir döngü oluşturulabilir:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sched</span><span class="o">,</span><span class="nn">time</span>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sched</span><span class="o">,</span><span class="nn">time</span>
 <span class="n">s</span><span class="o">=</span><span class="n">sched</span><span class="o">.</span><span class="n">scheduler</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">,</span><span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">)</span>
 <span class="n">suan</span><span class="o">=</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="k">def</span> <span class="nf">çıktı</span><span class="p">():</span>
@@ -268,9 +276,9 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
     </div> 
 
 <div class="footer">
-&copy; Copyright 2007-2019, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 15.12.2019.
-<a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5 ile oluşturulmuştur.
+&copy; Copyright 2007-2020, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 02.01.2020.
+<a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7 ile oluşturulmuştur.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img

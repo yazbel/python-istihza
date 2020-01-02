@@ -5,18 +5,25 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta content="Bu bölümde Python'ın etkileşimli kabuğundan söz edeceğiz." name="description" />
 <meta content="etkileşimli, kabuk, Python, işleçler, aritmetik, type, str, string, fonksiyon, değişkenler, len" name="keywords" />
 
     <title>Etkileşimli Python &#8212; Python 3 için Türkçe Kılavuz</title>
     <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
     <script type="text/javascript" src="_static/translations.js"></script>
     <link rel="search" title="Ara" href="search.html" />
     <link rel="next" title="print() Fonksiyonu" href="print.html" />
@@ -25,7 +32,8 @@
 <link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
 <![endif]-->
 
-  </head><body>
+  </head>
+  <body>
 <div class='header'><a href='https://yazbel.com'>yazbel.com</a></div>
 
 <ul class='navbar'>
@@ -59,7 +67,7 @@
 Dolayısıyla Python’ı bir önceki bölümde anlattığımız şekilde çalıştırdığımız zaman şuna benzer bir ekranla karşılaşacağımızın farkındayız:</p>
 <div class="screenshot docutils container">
 <cite>yazbel&#64;ubuntu:~$</cite> # python3
-Python 3.7.0 (default, 15.12.2019, 12:24:55)
+Python 3.7.0 (default, 30.12.2019, 12:24:55)
 [GCC 4.4.7 20120313 (Red Hat 4.4.7-3)] on linux
 Type “help”, “copyright”, “credits” or “license” for more information.
 &gt;&gt;&gt;</div>
@@ -74,10 +82,10 @@ Bu ortam, özellikle Python’a yeni başlayanların bu programlama diline aşin
 Biz de bu bölümde etkileşimli kabuk üzerinde bazı çalışmalar yaparak, Python’a alışma turları atacağız.</p>
 <p>Bu arada, geçen bölümde söylediğimiz gibi, bu ortamın sistem komut satırı adını verdiğimiz ortamdan farklı olduğunu aklımızdan çıkarmıyoruz.
 O zaman da dediğimiz gibi, sistem komut satırında sistem komutları, Python komut satırında (yani etkileşimli kabukta) ise Python komutları verilir.
-Mesela <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">%PATH%</span></code>, <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">Desktop</span></code>, <code class="docutils literal notranslate"><span class="pre">dir</span></code> ve <code class="docutils literal notranslate"><span class="pre">ls</span></code> birer sistem komutudur.
+Mesela <code class="docutils literal"><span class="pre">echo</span> <span class="pre">%PATH%</span></code>, <code class="docutils literal"><span class="pre">cd</span> <span class="pre">Desktop</span></code>, <code class="docutils literal"><span class="pre">dir</span></code> ve <code class="docutils literal"><span class="pre">ls</span></code> birer sistem komutudur.
 Eğer bu komutları etkileşimli kabukta vermeye kalkışırsanız, bunlar birer Python komutu olmadığı için, Python size bir hata mesajı gösterecektir.
-Mesela Python’ın etkileşimli kabuğunda <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">Desktop</span></code> komutunu verirseniz şöyle bir hata alırsınız:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cd</span> <span class="n">Desktop</span>
+Mesela Python’ın etkileşimli kabuğunda <code class="docutils literal"><span class="pre">cd</span> <span class="pre">Desktop</span></code> komutunu verirseniz şöyle bir hata alırsınız:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cd</span> <span class="n">Desktop</span>
 
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>
     <span class="n">cd</span> <span class="n">Desktop</span>
@@ -85,7 +93,7 @@ Mesela Python’ın etkileşimli kabuğunda <code class="docutils literal notran
 <span class="gr">SyntaxError</span>: <span class="n">invalid syntax</span>
 </pre></div>
 </div>
-<p>Çünkü <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">Desktop</span></code> bir Python komutu değildir.
+<p>Çünkü <code class="docutils literal"><span class="pre">cd</span> <span class="pre">Desktop</span></code> bir Python komutu değildir.
 O yüzden bu komutu Python’ın etkileşimli kabuğunda veremeyiz.
 Bu komutu ancak ve ancak kullandığımız işletim sisteminin komut satırında verebiliriz.</p>
 <p>Ne diyorduk?
@@ -93,7 +101,7 @@ Etkileşimli kabuk bir veya birkaç satırlık kodları denemek/test etmek için
 İsterseniz konuyu daha fazla lafa boğmayalım.
 Zira etkileşimli kabuğu kullandıkça bunun ne büyük bir nimet olduğunu siz de anlayacaksınız.
 Özellikle derlenerek çalıştırılan programlama dilleri ile uğraşmış olan arkadaşlarım, etkileşimli kabuğun gücünü gördüklerinde göz yaşlarına hakim olamayacaklar.</p>
-<p>Farklı işletim sistemlerinde <code class="docutils literal notranslate"><span class="pre">py3</span></code>, <code class="docutils literal notranslate"><span class="pre">py</span> <span class="pre">-3</span></code>, <code class="docutils literal notranslate"><span class="pre">python3</span></code> veya <code class="docutils literal notranslate"><span class="pre">python</span></code> komutunu vererek Python’ın komut satırına nasıl erişebileceğimizi önceki derslerde ayrıntılı olarak anlatmıştık.
+<p>Farklı işletim sistemlerinde <code class="docutils literal"><span class="pre">py3</span></code>, <code class="docutils literal"><span class="pre">py</span> <span class="pre">-3</span></code>, <code class="docutils literal"><span class="pre">python3</span></code> veya <code class="docutils literal"><span class="pre">python</span></code> komutunu vererek Python’ın komut satırına nasıl erişebileceğimizi önceki derslerde ayrıntılı olarak anlatmıştık.
 Etkileşimli kabuğa ulaşmakta sıkıntı yaşıyorsanız eski konuları tekrar gözden geçirmenizi tavsiye ederim.</p>
 <p>Etkileşimli kabuk üzerinde çalışmaya başlamadan önce dilerseniz önemli bir konuyu açıklığa kavuşturalım:
 Etkileşimli kabuğu başarıyla çalıştırdık.
@@ -106,8 +114,8 @@ Ancak bu işlemi kaba kuvvete başvurmadan yapmanın bir yolu olmalı, değil mi
 <li>Önce <cite>Ctrl+Z</cite> tuşlarına, ardından da <cite>Enter</cite> tuşuna basmak (Windows)</li>
 <li><cite>Ctrl+Z</cite> tuşlarına basmak (GNU/Linux)</li>
 <li>Önce <cite>F6</cite> tuşuna, ardından da <cite>Enter</cite> tuşuna basmak (Windows)</li>
-<li><code class="docutils literal notranslate"><span class="pre">quit()</span></code> yazıp <cite>Enter</cite> tuşuna basmak (Bütün işletim sistemleri)</li>
-<li><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">sys;</span> <span class="pre">sys.exit()</span></code> komutunu vermek (Bütün işletim sistemleri)</li>
+<li><code class="docutils literal"><span class="pre">quit()</span></code> yazıp <cite>Enter</cite> tuşuna basmak (Bütün işletim sistemleri)</li>
+<li><code class="docutils literal"><span class="pre">import</span> <span class="pre">sys;</span> <span class="pre">sys.exit()</span></code> komutunu vermek (Bütün işletim sistemleri)</li>
 </ol>
 <p>Siz bu farklı yöntemler arasından, kolayınıza hangisi geliyorsa onu seçebilirsiniz.
 Bu satırların yazarı, Windows’ta 2 numaralı; GNU/Linux’ta ise 3 numaralı seçeneği tercih ediyor.</p>
@@ -122,14 +130,14 @@ Python’a yeni başlayanların en sık yaptığı hatalardan biri <cite>&gt;&gt
 Eğer bu şekilde boşluk bırakırsanız yazdığınız kod hata verecektir.</p>
 <p>İsterseniz basit bir deneme yapalım.
 <cite>&gt;&gt;&gt;</cite> işaretinden hemen sonra, hiç boşluk bırakmadan şu komutu yazalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;Merhaba Zalim Dünya!&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;Merhaba Zalim Dünya!&quot;</span>
 </pre></div>
 </div>
 <p>Bu arada yukarıdaki kodlar içinde görünen <cite>&gt;&gt;&gt;</cite> işaretini siz yazmayacaksınız.
 Bu işareti etkileşimli kabuğun görünümünü temsil etmek için yerleştirdik oraya.
 Siz <cite>“Merhaba Zalim Dünya!”</cite> satırını yazdıktan sonra doğruca <cite>Enter</cite> düğmesine basacaksınız.</p>
 <p>Bu komutu yazıp <cite>Enter</cite> tuşuna bastığımızda şöyle bir çıktı almış olmalıyız:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;Merhaba Zalim Dünya!&#39;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="s1">&#39;Merhaba Zalim Dünya!&#39;</span>
 </pre></div>
 </div>
 <p>Böylece yarım yamalak da olsa ilk Python programımızı yazmış olduk…</p>
@@ -157,7 +165,7 @@ Biraz sonra başka veri tiplerini de inceleyeceğiz.</p>
 <p>Dikkat ederseniz <cite>“Merhaba Zalim Dünya!”</cite> adlı karakter dizisini tırnak içinde gösterdik.
 Bu da çok önemli bir bilgidir.
 Eğer bu cümleyi tırnak içine almazsak programımız hata verecektir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; Merhaba Zalim Dünya!
+<div class="highlight-py3"><div class="highlight"><pre><span></span>&gt;&gt;&gt; Merhaba Zalim Dünya!
 
   File &quot;&lt;stdin&gt;&quot;, line 1
     Merhaba Zalim Dünya!
@@ -168,16 +176,16 @@ SyntaxError: invalid syntax
 <p>Zaten tırnak işaretleri, karakter dizilerinin ayırt edici özelliğidir.
 Öyle ki, Python’da tırnak içinde gösterdiğiniz her şey bir karakter dizisidir.
 Örneğin şu bir karakter dizisidir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;a&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;a&quot;</span>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi, tırnak içinde gösterilen tek karakterlik bir öğe de Python’da karakter dizisi sınıfına giriyor.</p>
 <p>Mesela şu, içi boş bir karakter dizisidir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;&quot;</span>
 </pre></div>
 </div>
 <p>Şu da içinde bir adet boşluk karakteri barındıran bir karakter dizisi…</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot; &quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot; &quot;</span>
 </pre></div>
 </div>
 <p>Bu ikisi arasındaki farka dikkat ediyoruz:
@@ -188,7 +196,7 @@ Yani bu karakter dizilerinden biri boş, öteki ise doludur.
 Ama neticede her ikisi de karakter dizisidir.
 Şu anda oldukça anlamsız bir konu üzerinde vakit kaybediyormuşuz hissine kapılmış olabilirsiniz, ama emin olun, Python programlama diline yeni başlayanların önemli tökezleme noktalarından biridir bu söylediğimiz şey…</p>
 <p>Dilerseniz biz karakter dizilerine elimizin alışması için birkaç örnek verelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;Elma&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;Elma&quot;</span>
 
 <span class="go">&#39;Elma&#39;</span>
 
@@ -221,9 +229,9 @@ Ama neticede her ikisi de karakter dizisidir.
 Dikkat ettiyseniz yukarıdaki karakter dizilerinin hepsinin ortak özelliği tırnak içinde gösteriliyor olmasıdır.
 Dediğimiz gibi, tırnak işaretleri karakter dizilerinin ayırt edici özelliğidir.</p>
 <p>Peki bir verinin karakter dizisi olup olmadığından nasıl emin olabilirsiniz?</p>
-<p>Eğer herhangi bir verinin karakter dizisi olup olmadığı konusunda tereddütünüz varsa, <code class="docutils literal notranslate"><span class="pre">type()</span></code> adlı bir fonksiyondan yararlanarak o verinin tipini sorgulayabilirsiniz.
+<p>Eğer herhangi bir verinin karakter dizisi olup olmadığı konusunda tereddütünüz varsa, <code class="docutils literal"><span class="pre">type()</span></code> adlı bir fonksiyondan yararlanarak o verinin tipini sorgulayabilirsiniz.
 Bu fonksiyonu şöyle kullanıyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="s2">&quot;Elma&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="s2">&quot;Elma&quot;</span><span class="p">)</span>
 
 <span class="go">&lt;class &#39;str&#39;&gt;</span>
 </pre></div>
@@ -231,23 +239,23 @@ Bu fonksiyonu şöyle kullanıyoruz:</p>
 <div class="admonition note">
 <p class="first admonition-title">Not</p>
 <p class="last">Bu ‘fonksiyon’ kelimesinin kafanızı karıştırmasına izin vermeyin.
-İleride fonksiyonları oldukça ayrıntılı bir şekilde inceleyeceğimiz için, <code class="docutils literal notranslate"><span class="pre">type()</span></code> ifadesinin bir fonksiyon olduğunu bilmeniz şimdilik yeterli olacaktır.
+İleride fonksiyonları oldukça ayrıntılı bir şekilde inceleyeceğimiz için, <code class="docutils literal"><span class="pre">type()</span></code> ifadesinin bir fonksiyon olduğunu bilmeniz şimdilik yeterli olacaktır.
 Üstelik fonksiyon konusunu ayrıntılı bir şekilde anlatma vakti geldiğinde siz fonksiyonlara dair pek çok şeyi zaten öğrenmiş olacaksınız.</p>
 </div>
 <p>Burada amacımız <cite>“Elma”</cite> adlı öğenin tipini denetlemek.
-Denetlenecek öğeyi <code class="docutils literal notranslate"><span class="pre">type()</span></code> fonksiyonunun parantezleri arasında belirttiğimize dikkat edin.
+Denetlenecek öğeyi <code class="docutils literal"><span class="pre">type()</span></code> fonksiyonunun parantezleri arasında belirttiğimize dikkat edin.
 (Fonksiyonların parantezleri içinde belirtilen değerlere teknik dilde parametre adı verilir.)</p>
 <p>Yukarıdaki çıktıda bizi ilgilendiren kısım, sondaki ‘str’ ifadesi.
 Tahmin edebileceğiniz gibi, bu ifade <em>string</em> kelimesinin kısaltmasıdır.
 Bu kelimenin Türkçede karakter dizisi anlamına geldiğini söylemiştik.
 O halde yukarıdaki çıktıya bakarak, <cite>“Elma”</cite> öğesinin bir karakter dizisi olduğunu söyleyebiliyoruz.</p>
-<p><code class="docutils literal notranslate"><span class="pre">type()</span></code> fonksiyonu yardımıyla kendi kendinize bazı denemeler yaparak konuyu iyice sindirmenizi tavsiye ederim.
+<p><code class="docutils literal"><span class="pre">type()</span></code> fonksiyonu yardımıyla kendi kendinize bazı denemeler yaparak konuyu iyice sindirmenizi tavsiye ederim.
 Mesela <cite>“½{656$#gfd”</cite> ifadesinin hangi sınıfa girdiğini kontrol etmekle başlayabilirsiniz.</p>
 <p>Peki karakter dizileri ile neler yapabiliriz?
 Şu anda Python bilgimiz kısıtlı olduğu için karakter dizileri ile çok fazla şey yapamayız, ama ileride bilgimiz arttıkça, karakter dizileriyle sıkı fıkı olacağız.</p>
 <p>Esasında, henüz bilgimiz kısıtlı da olsa karakter dizileriyle yine de ufak tefek bazı şeyler yapamayacak durumda değiliz.
 Mesela şu anki bilgilerimizi ve görür görmez size tanıdık gelecek bazı basit parçaları kullanarak, karakter dizilerini birbirleriyle birleştirebiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;yazbel&quot;</span> <span class="o">+</span> <span class="s2">&quot;.com&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;yazbel&quot;</span> <span class="o">+</span> <span class="s2">&quot;.com&quot;</span>
 
 <span class="go">&#39;yazbel.com&#39;</span>
 </pre></div>
@@ -255,27 +263,27 @@ Mesela şu anki bilgilerimizi ve görür görmez size tanıdık gelecek bazı ba
 <p>Burada <cite>+</cite> işaretini kullanarak karakter dizilerini nasıl birleştirebildiğimize dikkat edin.
 İki karakter dizisini <cite>+</cite> işareti ile birleştirdiğimizde karakter dizilerinin arasında boşluk olmadığına özellikle dikkatinizi çekmek isterim.
 Bu durumu şu örnekte daha net görebiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;Fırat&quot;</span> <span class="o">+</span> <span class="s2">&quot;Özgül&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;Fırat&quot;</span> <span class="o">+</span> <span class="s2">&quot;Özgül&quot;</span>
 
 <span class="go">&#39;FıratÖzgül&#39;</span>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi, bu iki karakter dizisi, arada boşluk olmadan birbiriyle bitiştirildi.
 Araya boşluk eklemek için birkaç farklı yöntemden yararlanabilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;Fırat&quot;</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="s2">&quot;Özgül&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;Fırat&quot;</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="s2">&quot;Özgül&quot;</span>
 
 <span class="go">&#39;Fırat Özgül&#39;</span>
 </pre></div>
 </div>
 <p>Burada iki karakter dizisi arasına bir adet boşluk karakteri yerleştirdik.
 Aynı etkiyi şu şekilde de elde edebilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;Fırat&quot;</span> <span class="o">+</span> <span class="s2">&quot; Özgül&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;Fırat&quot;</span> <span class="o">+</span> <span class="s2">&quot; Özgül&quot;</span>
 </pre></div>
 </div>
 <p>Burada da <cite>Özgül</cite> karakter dizisinin başına bir adet boşluk yerleştirerek istediğimiz çıktıyı elde ettik.</p>
 <p>Bu arada, karakter dizilerini birleştirmek için mutlaka <cite>+</cite> işareti kullanmak zorunda değilsiniz.
 Siz <cite>+</cite> işaretini kullanmasanız da Python sizin karakter dizilerini birleştirmek istediğinizi anlayacak kadar zekidir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;www&quot;</span> <span class="s2">&quot;.&quot;</span> <span class="s2">&quot;google&quot;</span> <span class="s2">&quot;.&quot;</span> <span class="s2">&quot;com&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;www&quot;</span> <span class="s2">&quot;.&quot;</span> <span class="s2">&quot;google&quot;</span> <span class="s2">&quot;.&quot;</span> <span class="s2">&quot;com&quot;</span>
 
 <span class="go">&#39;www.google.com&#39;</span>
 </pre></div>
@@ -283,7 +291,7 @@ Siz <cite>+</cite> işaretini kullanmasanız da Python sizin karakter dizilerini
 <p>Ancak gördüğünüz gibi, <cite>+</cite> işaretini kullandığınızda kodlarınız daha okunaklı oluyor.</p>
 <p><cite>+</cite> işareti dışında karakter dizileri ile birlikte <cite>*</cite> (çarpı) işaretini de kullanabiliriz.
 O zaman şöyle bir etki elde ederiz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;w&quot;</span> <span class="o">*</span> <span class="mi">3</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;w&quot;</span> <span class="o">*</span> <span class="mi">3</span>
 
 <span class="go">&#39;www&#39;</span>
 
@@ -301,7 +309,7 @@ O zaman şöyle bir etki elde ederiz:</p>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi, çok basit parçaları bir araya getirerek karmaşık çıktılar elde edebiliyoruz.
-Mesela son örnekte <cite>“uzak”</cite> adlı karakter dizisine önce <cite>5</cite> adet boşluk karakteri (<code class="docutils literal notranslate"><span class="pre">&quot;</span> <span class="pre">&quot;</span> <span class="pre">*</span> <span class="pre">5</span></code>), ardından da <cite>“çok uzak…”</cite> adlı karakter dizisini ekleyerek istediğimiz çıktıyı aldık.</p>
+Mesela son örnekte <cite>“uzak”</cite> adlı karakter dizisine önce <cite>5</cite> adet boşluk karakteri (<code class="docutils literal"><span class="pre">&quot;</span> <span class="pre">&quot;</span> <span class="pre">*</span> <span class="pre">5</span></code>), ardından da <cite>“çok uzak…”</cite> adlı karakter dizisini ekleyerek istediğimiz çıktıyı aldık.</p>
 <p>Burada <cite>+</cite> ve <cite>*</cite> adlı iki yeni araç görüyoruz.
 Bunlar aslında sayılarla birlikte kullanılan birer aritmetik işleçtir.
 Normalde <cite>+</cite> işleci toplama işlemleri için, <cite>*</cite> işleci ise çarpma işlemleri için kullanılır.
@@ -318,7 +326,7 @@ Veri tipi olarak karakter dizilerinin dışında, biraz önce aritmetik işleçl
 <p>Herhalde sayıların ne anlama geldiğini tarif etmeye gerek yok.
 Bunlar bildiğimiz sayılardır.
 Mesela:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">23</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">23</span>
 
 <span class="go">23</span>
 
@@ -344,7 +352,7 @@ Bu arada kayan noktalı sayılarda basamak ayracı olarak virgül değil, nokta 
 <p>En sonda gördüğümüz <cite>10+2j</cite> sayısı ise bir karmaşık sayıdır (<em>complex</em>).
 Ancak eğer matematikle yoğun bir şekilde uğraşmıyorsanız karmaşık sayılar pek karşınıza çıkmaz.</p>
 <p>Sayıları temel olarak öğrendiğimize göre etkileşimli kabuğu basit bir hesap makinesi niyetine kullanabiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">5</span> <span class="o">+</span> <span class="mi">2</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">5</span> <span class="o">+</span> <span class="mi">2</span>
 
 <span class="go">7</span>
 
@@ -396,21 +404,21 @@ Karakter dizilerini tanımlarken tırnak işaretlerini kullandık.
 Ancak sayılarda tırnak işareti yok. Daha önce de dediğimiz gibi, tırnak işaretleri karakter dizilerinin ayırt edici özelliğidir.
 Python’da tırnak içinde gösterdiğiniz her şey bir karakter dizisidir.
 Mesela şu örneklere bakalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">34657</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">34657</span>
 
 <span class="go">34657</span>
 </pre></div>
 </div>
 <p>Bu bir sayıdır.
 Peki ya şu?</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;34657&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;34657&quot;</span>
 
 <span class="go">&#39;34657&#39;</span>
 </pre></div>
 </div>
 <p>Bu ise bir karakter dizisidir.
-Dilerseniz biraz önce öğrendiğimiz <code class="docutils literal notranslate"><span class="pre">type()</span></code> fonksiyonu yardımıyla bu verilerin tipini sorgulayalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="mi">34657</span><span class="p">)</span>
+Dilerseniz biraz önce öğrendiğimiz <code class="docutils literal"><span class="pre">type()</span></code> fonksiyonu yardımıyla bu verilerin tipini sorgulayalım:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="mi">34657</span><span class="p">)</span>
 
 <span class="go">&lt;class &#39;int&#39;&gt;</span>
 </pre></div>
@@ -418,7 +426,7 @@ Dilerseniz biraz önce öğrendiğimiz <code class="docutils literal notranslate
 <p>Buradaki ‘int’ ifadesi İngilizce “<em>integer</em>”, yani tamsayı kelimesinin kısaltmasıdır.
 Demek ki <cite>34657</cite> sayısı bir tamsayı imiş.
 Bir de şuna bakalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="s2">&quot;34657&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="s2">&quot;34657&quot;</span><span class="p">)</span>
 
 <span class="go">&lt;class &#39;str&#39;&gt;</span>
 </pre></div>
@@ -426,14 +434,14 @@ Bir de şuna bakalım:</p>
 <p>Gördüğünüz gibi, <cite>34657</cite> sayısını tırnak içine aldığımızda bu sayı artık sayı olma özelliğini yitiriyor ve bir karakter dizisi oluyor.
 Şu anda bu çok önemsiz bir ayrıntıymış gibi gelebilir size, ama aslında son derece önemli bir konudur bu.
 Bu durumun etkilerini şu örneklerde görebilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">23</span> <span class="o">+</span> <span class="mi">65</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">23</span> <span class="o">+</span> <span class="mi">65</span>
 
 <span class="go">88</span>
 </pre></div>
 </div>
 <p>Burada normal bir şekilde iki sayıyı birbiriyle topladık.</p>
 <p>Bir de şuna bakın:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;23&quot;</span> <span class="o">+</span> <span class="s2">&quot;65&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;23&quot;</span> <span class="o">+</span> <span class="s2">&quot;65&quot;</span>
 
 <span class="go">&#39;2365&#39;</span>
 </pre></div>
@@ -448,7 +456,7 @@ Ancak <cite>65</cite> ile <cite>“65”</cite> birbirinden farklıdır.
 <cite>65</cite> bir sayı iken, <cite>“65”</cite> bir karakter dizisidir.</p>
 <p>Bu bilgi, özellikle aritmetik işlemlerde büyük önem taşır.
 Bunu dilerseniz şu örnekler üzerinde gösterelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">45</span> <span class="o">+</span> <span class="s2">&quot;45&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">45</span> <span class="o">+</span> <span class="s2">&quot;45&quot;</span>
 
 <span class="gt">Traceback (most recent call last):</span>
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
@@ -460,7 +468,7 @@ Bunun sebebi bir sayı (<cite>45</cite>) ile bir karakter dizisini (<cite>“45�
 Asla unutmayın, aritmetik işlemler ancak sayılar arasında yapılır.
 Karakter dizileri ile herhangi bir aritmetik işlem yapılamaz.</p>
 <p>Bir de şuna bakalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">45</span> <span class="o">+</span> <span class="mi">45</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">45</span> <span class="o">+</span> <span class="mi">45</span>
 
 <span class="go">90</span>
 </pre></div>
@@ -468,7 +476,7 @@ Karakter dizileri ile herhangi bir aritmetik işlem yapılamaz.</p>
 <p>Bu kodlar ise düzgün çalışır.
 Çünkü burada iki sayıyı aritmetik işleme soktuk ve başarılı olduk.</p>
 <p>Son olarak şu örneği verelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;45&quot;</span> <span class="o">+</span> <span class="s2">&quot;45&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;45&quot;</span> <span class="o">+</span> <span class="s2">&quot;45&quot;</span>
 
 <span class="go">&#39;4545&#39;</span>
 </pre></div>
@@ -476,7 +484,7 @@ Karakter dizileri ile herhangi bir aritmetik işlem yapılamaz.</p>
 <p>Burada <cite>+</cite> işlecinin toplama anlamına gelmediğine dikkat edin.
 Bu işleç burada iki karakter dizisini birleştirme görevi üstleniyor.
 Yani yukarıdaki örneğin şu örnekten hiçbir farkı yoktur:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;yazbel.&quot;</span> <span class="o">+</span> <span class="s2">&quot;com&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;yazbel.&quot;</span> <span class="o">+</span> <span class="s2">&quot;com&quot;</span>
 
 <span class="go">&#39;yazbel.com&#39;</span>
 </pre></div>
@@ -487,7 +495,7 @@ Ama eğer bu değerler birer sayı ise <cite>+</cite> işleci bu değerleri birb
 <p><cite>*</cite> işleci de <cite>+</cite> işlecine benzer bir iş yapar.
 Yani eğer <cite>*</cite> işleci bir sayı ve bir karakter dizisi ile karşılaşırsa, o karakter dizisini, verilen sayı kadar tekrarlar.
 Örneğin:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;w&quot;</span> <span class="o">*</span> <span class="mi">3</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;w&quot;</span> <span class="o">*</span> <span class="mi">3</span>
 
 <span class="go">&#39;www&#39;</span>
 </pre></div>
@@ -495,7 +503,7 @@ Yani eğer <cite>*</cite> işleci bir sayı ve bir karakter dizisi ile karşıla
 <p>Burada <cite>*</cite> işleci bir karakter dizisi (<cite>“w”</cite>) ve bir sayı (<cite>3</cite>) arasında işlem yaptığı için, karakter dizisini, ilgili sayı kadar tekrarlıyor.
 Yani <cite>“w”</cite> karakter dizisini <cite>3</cite> kez tekrarlıyor.</p>
 <p>Bir de şuna bakalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">25</span> <span class="o">*</span> <span class="mi">3</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">25</span> <span class="o">*</span> <span class="mi">3</span>
 
 <span class="go">75</span>
 </pre></div>
@@ -515,11 +523,11 @@ Diyelim ki sisteme kayıt için kullanıcı adı ve parola belirlenmesini isteye
 Yazacağınız bu programda, belirlenebilecek kullanıcı adı ve parolanın toplam uzunluğu <cite>40</cite> karakteri geçmeyecek.</p>
 <p>Bu programı yazarken ilk aşamada yapmanız gereken şey, kullanıcının belirlediği kullanıcı adı ve parolanın uzunluğunu tek tek denetlemek olmalı.</p>
 <p>Mesela kullanıcı şöyle bir kullanıcı adı belirlemiş olsun:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">firat_ozgul_1980</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">firat_ozgul_1980</span>
 </pre></div>
 </div>
 <p>Kullanıcının belirlediği parola ise şu olsun:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>rT%65#$hGfUY56123
+<div class="highlight-none"><div class="highlight"><pre><span></span>rT%65#$hGfUY56123
 </pre></div>
 </div>
 <p>İşte bizim öncelikle kullanıcıdan gelen bu verilerin teker teker uzunluğunu biliyor olmamız lazım, ki bu verilerin toplam <cite>40</cite> karakter sınırını aşıp aşmadığını denetleyebilelim.</p>
@@ -527,30 +535,30 @@ Yazacağınız bu programda, belirlenebilecek kullanıcı adı ve parolanın top
 Elbette bunun için verilerdeki harfleri elle tek tek saymayacağız.
 Bunun yerine, Python programlama dilinin bize sunduğu bir aracı kullanacağız.
 Peki nedir bu araç?</p>
-<p>Hatırlarsanız birkaç sayfa önce <code class="docutils literal notranslate"><span class="pre">type()</span></code> adlı bir fonksiyondan söz etmiştik.
+<p>Hatırlarsanız birkaç sayfa önce <code class="docutils literal"><span class="pre">type()</span></code> adlı bir fonksiyondan söz etmiştik.
 Bu fonksiyonun görevi bir verinin hangi tipte olduğunu bize bildirmekti.
-İşte tıpkı <code class="docutils literal notranslate"><span class="pre">type()</span></code> gibi, Python’da <code class="docutils literal notranslate"><span class="pre">len()</span></code> adlı başka bir fonksiyon daha bulunur.
+İşte tıpkı <code class="docutils literal"><span class="pre">type()</span></code> gibi, Python’da <code class="docutils literal"><span class="pre">len()</span></code> adlı başka bir fonksiyon daha bulunur.
 Bu fonksiyonun görevi ise karakter dizilerinin (ve ileride göreceğimiz gibi, başka veri tiplerinin) uzunluğunu ölçmektir.
 Yani bu fonksiyonu kullanarak bir karakter dizisinin toplam kaç karakterden oluştuğunu öğrenebiliriz.</p>
 <p>Biz henüz kullanıcıdan nasıl veri alacağımızı bilmiyoruz.
 Ama şimdilik şunu söyleyebiliriz:
 Python’da kullanıcıdan herhangi bir veri aldığımızda, bu veri bize bir karakter dizisi olarak gelecektir.
 Yani kullanıcıdan yukarıdaki kullanıcı adı ve parolayı aldığımızı varsayarsak, bu veriler bize şu şekilde gelir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;firat_ozgul_1980&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="s2">&quot;firat_ozgul_1980&quot;</span>
 </pre></div>
 </div>
 <p>ve:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;rT%65#$hGfUY56123&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="s2">&quot;rT%65#$hGfUY56123&quot;</span>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi, elde ettiğimiz veriler tırnak içinde yer alıyor.
 Yani bunlar birer karakter dizisi.
-Şimdi gelin yukarıda bahsettiğimiz <code class="docutils literal notranslate"><span class="pre">len()</span></code> fonksiyonunu kullanarak bu karakter dizilerinin uzunluğunu ölçelim.</p>
-<p>Dediğimiz gibi, <code class="docutils literal notranslate"><span class="pre">len()</span></code> de tıpkı <code class="docutils literal notranslate"><span class="pre">type()</span></code> gibi bir fonksiyondur.
-Dolayısıyla <code class="docutils literal notranslate"><span class="pre">len()</span></code> fonksiyonunun kullanımı <code class="docutils literal notranslate"><span class="pre">type()</span></code> fonksiyonunun kullanımına çok benzer.
-Nasıl <code class="docutils literal notranslate"><span class="pre">type()</span></code> fonksiyonu bize, kendisine verdiğimiz parametrelerin <strong>tipini</strong> söylüyorsa, <code class="docutils literal notranslate"><span class="pre">len()</span></code> fonksiyonu da kendisine verdiğimiz parametrelerin <strong>uzunluğunu</strong> söyler.</p>
+Şimdi gelin yukarıda bahsettiğimiz <code class="docutils literal"><span class="pre">len()</span></code> fonksiyonunu kullanarak bu karakter dizilerinin uzunluğunu ölçelim.</p>
+<p>Dediğimiz gibi, <code class="docutils literal"><span class="pre">len()</span></code> de tıpkı <code class="docutils literal"><span class="pre">type()</span></code> gibi bir fonksiyondur.
+Dolayısıyla <code class="docutils literal"><span class="pre">len()</span></code> fonksiyonunun kullanımı <code class="docutils literal"><span class="pre">type()</span></code> fonksiyonunun kullanımına çok benzer.
+Nasıl <code class="docutils literal"><span class="pre">type()</span></code> fonksiyonu bize, kendisine verdiğimiz parametrelerin <strong>tipini</strong> söylüyorsa, <code class="docutils literal"><span class="pre">len()</span></code> fonksiyonu da kendisine verdiğimiz parametrelerin <strong>uzunluğunu</strong> söyler.</p>
 <p>Dikkatlice bakın:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;firat_ozgul_1980&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;firat_ozgul_1980&quot;</span><span class="p">)</span>
 
 <span class="go">16</span>
 
@@ -563,35 +571,35 @@ Nasıl <code class="docutils literal notranslate"><span class="pre">type()</span
 Bizim istediğimiz şey bu iki değerin toplam uzunluğunun <cite>40</cite> karakteri aşmaması.
 Bunu denetlemek için yapmamız gereken şey bu iki değerin uzunluğunu birbiriyle toplamak olmalı.
 Yani:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;firat_ozgul_1980&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="s2">&quot;rT%65#$hGfUY56123&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;firat_ozgul_1980&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="s2">&quot;rT%65#$hGfUY56123&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Buradan alacağımız sonuç <cite>33</cite> olacaktır.
 Demek ki kullanıcı <cite>40</cite> karakter limitini aşmamış.
 O halde programımız bu kullanıcı adı ve parolayı kabul edebilir…</p>
 <p>Bu arada, belki farkettiniz, belki de farketmediniz, ama burada da çok önemli bir durumla karşı karşıyayız.
-Gördüğünüz gibi <code class="docutils literal notranslate"><span class="pre">len()</span></code> fonksiyonu bize sayı değerli bir veri gönderiyor.
+Gördüğünüz gibi <code class="docutils literal"><span class="pre">len()</span></code> fonksiyonu bize sayı değerli bir veri gönderiyor.
 Gelin isterseniz bunu teyit edelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;firat_ozgul_1980&quot;</span><span class="p">))</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;firat_ozgul_1980&quot;</span><span class="p">))</span>
 
 <span class="go">&lt;class &#39;int&#39;&gt;</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">len()</span></code> fonksiyonunun bize sayı değerli bir veri göndermesi sayesinde bu fonksiyondan elde ettiğimiz değerleri birbiriyle toplayabiliyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;firat_ozgul_1980&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="s2">&quot;rT%65#$hGfUY56123&quot;</span><span class="p">)</span>
+<p><code class="docutils literal"><span class="pre">len()</span></code> fonksiyonunun bize sayı değerli bir veri göndermesi sayesinde bu fonksiyondan elde ettiğimiz değerleri birbiriyle toplayabiliyoruz:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;firat_ozgul_1980&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="s2">&quot;rT%65#$hGfUY56123&quot;</span><span class="p">)</span>
 
 <span class="go">33</span>
 </pre></div>
 </div>
-<p>Eğer <code class="docutils literal notranslate"><span class="pre">len()</span></code> fonksiyonu bize sayı değil de mesela karakter dizisi verseydi, bu fonksiyondan elde ettiğimiz değerleri yukarıdaki gibi doğrudan birbiriyle aritmetik olarak toplayamazdık.
+<p>Eğer <code class="docutils literal"><span class="pre">len()</span></code> fonksiyonu bize sayı değil de mesela karakter dizisi verseydi, bu fonksiyondan elde ettiğimiz değerleri yukarıdaki gibi doğrudan birbiriyle aritmetik olarak toplayamazdık.
 Öyle bir durumda, bu iki veriyi birbiriyle toplamaya çalıştığımızda, <cite>+</cite> işleci <cite>16</cite> ve <cite>17</cite> değerlerini birbiriyle toplamak yerine bu değerleri birbiriyle birleştirerek bize <cite>‘1617’</cite> gibi bir sonuç verecekti.</p>
 <p>Her zaman söylediğimiz gibi, Python’da veri tipi kavramını çok iyi anlamak ve o anda elimizde bulunan bir verinin hangi tipte olduğunu bilmek çok önemlidir.
 Aksi halde programlarımızda hata yapmamız kaçınılmazdır.</p>
 <p>Eğer yukarıda anlattığımız şeyleri kafa karıştırıcı bulduysanız hiç endişe etmeyin.
-Birkaç bölüm sonra <code class="docutils literal notranslate"><span class="pre">input()</span></code> adlı bir fonksiyondan bahsettiğimizde şimdi söylediğimiz şeyleri çok daha net anlayacaksınız.</p>
-<p>Biraz sonra <code class="docutils literal notranslate"><span class="pre">len()</span></code> fonksiyonundan bahsetmeye devam edeceğiz, ama isterseniz ondan önce çok önemli bir konuya değinelim.</p>
+Birkaç bölüm sonra <code class="docutils literal"><span class="pre">input()</span></code> adlı bir fonksiyondan bahsettiğimizde şimdi söylediğimiz şeyleri çok daha net anlayacaksınız.</p>
+<p>Biraz sonra <code class="docutils literal"><span class="pre">len()</span></code> fonksiyonundan bahsetmeye devam edeceğiz, ama isterseniz ondan önce çok önemli bir konuya değinelim.</p>
 <p>Biraz önce şöyle bir örnek vermiştik:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;firat_ozgul_1980&quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;firat_ozgul_1980&quot;</span><span class="p">)</span>
 
 <span class="go">16</span>
 
@@ -611,15 +619,15 @@ Herhalde olur…</p>
 <p>Peki nedir bu değişken dediğimiz şey?</p>
 <p>Python’da bir program içinde değerlere verilen isimlere değişken denir.
 Hemen bir örnek verelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>
 </pre></div>
 </div>
 <p>Burada <cite>5</cite> sayısını bir değişkene atadık.
 Değişkenimiz ise <cite>n</cite>.
 Ayrıca <cite>5</cite> sayısını bir değişkene atamak için <cite>=</cite> işaretinden yararlandığımıza da çok dikkat edin.
 Buradan, <cite>=</cite> işaretinin Python programlama dilinde değer atama işlemleri için kullanıldığı sonucunu çıkarıyoruz.</p>
-<p><code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">5</span></code> gibi bir komut yardımıyla <cite>5</cite> değerini <cite>n</cite> adlı değişkene atamamız sayesinde artık ne zaman <cite>5</cite> sayısına ihtiyaç duysak bu <cite>n</cite> değişkenini çağırmamız yeterli olacaktır:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">n</span>
+<p><code class="docutils literal"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">5</span></code> gibi bir komut yardımıyla <cite>5</cite> değerini <cite>n</cite> adlı değişkene atamamız sayesinde artık ne zaman <cite>5</cite> sayısına ihtiyaç duysak bu <cite>n</cite> değişkenini çağırmamız yeterli olacaktır:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">n</span>
 
 <span class="go">5</span>
 
@@ -633,27 +641,27 @@ Buradan, <cite>=</cite> işaretinin Python programlama dilinde değer atama işl
 </pre></div>
 </div>
 <p>Gördüğünüz gibi, <cite>5</cite> değerini bir değişkene atadıktan sonra, bu <cite>5</cite> değerini kullanmamız gereken yerlerde sadece değişkenin adını kullandığımızda değişkenin değerini Python otomatik olarak yerine koyabiliyor.
-Yani <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">5</span></code> komutuyla <cite>n</cite> adlı bir değişken tanımladıktan sonra, artık ne zaman <cite>5</cite> sayısına ihtiyaç duysak <cite>n</cite> değişkenini çağırmamız yeterli olacaktır.
+Yani <code class="docutils literal"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">5</span></code> komutuyla <cite>n</cite> adlı bir değişken tanımladıktan sonra, artık ne zaman <cite>5</cite> sayısına ihtiyaç duysak <cite>n</cite> değişkenini çağırmamız yeterli olacaktır.
 Python o <cite>5</cite> değerini otomatik olarak yerine koyar.</p>
 <p>Şimdi de <cite>pi</cite> adlı başka bir değişken tanımlayalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14</span>
 </pre></div>
 </div>
 <p>Bu <cite>pi</cite> değişkeninin değeri ile <cite>n</cite> değişkeninin değerini toplayalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pi</span> <span class="o">+</span> <span class="n">n</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pi</span> <span class="o">+</span> <span class="n">n</span>
 
 <span class="go">8.14</span>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi, değerleri her defasında tekrar yazmak yerine bunları bir değişkene atayıp, gereken yerde bu değişkeni kullanmak çok daha pratik bir yöntem.</p>
 <p>Aynı şeyi programımız için de yapabiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kullanıcı_adı</span> <span class="o">=</span> <span class="s2">&quot;firat_ozgul_1980&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kullanıcı_adı</span> <span class="o">=</span> <span class="s2">&quot;firat_ozgul_1980&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">parola</span> <span class="o">=</span> <span class="s2">&quot;rT%65#$hGfUY56123&quot;</span>
 </pre></div>
 </div>
 <p><cite>=</cite> işaretini kullanarak ilgili değerlere artık birer ad verdiğimiz, yani bu değerleri birer değişkene atadığımız için, bu değerleri kullanmamız gereken yerlerde değerlerin kendisini uzun uzun yazmak yerine, belirlediğimiz değişken adlarını kullanabiliriz.
 Mesela:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">kullanıcı_adı</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">kullanıcı_adı</span><span class="p">)</span>
 
 <span class="go">16</span>
 
@@ -681,23 +689,23 @@ Bu kuralların bazıları zorunluluk, bazıları ise yalnızca tavsiye niteliği
 <p>Şimdi bu kuralları tek tek inceleyelim:</p>
 <p>1. Değişken adları bir sayı ile başlayamaz.
 Yani şu kullanım yanlıştır:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">3</span><span class="n">_kilo_elma</span> <span class="o">=</span> <span class="s2">&quot;5 TL&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">3</span><span class="n">_kilo_elma</span> <span class="o">=</span> <span class="s2">&quot;5 TL&quot;</span>
 </pre></div>
 </div>
 <p>2. Değişken adları aritmetik işleçlerle başlayamaz.
 Yani şu kullanım yanlıştır:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="o">+</span><span class="n">değer</span> <span class="o">=</span> <span class="mi">4568</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="o">+</span><span class="n">değer</span> <span class="o">=</span> <span class="mi">4568</span>
 </pre></div>
 </div>
 <p>3. Değişken adları ya bir alfabe harfiyle ya da <cite>_</cite> işaretiyle başlamalıdır:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">_değer</span> <span class="o">=</span> <span class="mi">4568</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">_değer</span> <span class="o">=</span> <span class="mi">4568</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">değer</span> <span class="o">=</span> <span class="mi">4568</span>
 </pre></div>
 </div>
 <p>4. Değişken adları içinde Türkçe karakterler kullanabilirsiniz.
 Ancak ileride beklenmedik uyum sorunları çıkması ihtimaline karşı değişken adlarında Türkçe karakter kullanmaktan kaçınmak isteyebilirsiniz.</p>
 <p>5. Aşağıdaki kelimeleri değişken adı olarak kullanamazsınız:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;False&#39;</span><span class="p">,</span> <span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="s1">&#39;True&#39;</span><span class="p">,</span> <span class="s1">&#39;and&#39;</span><span class="p">,</span> <span class="s1">&#39;as&#39;</span><span class="p">,</span> <span class="s1">&#39;assert&#39;</span><span class="p">,</span> <span class="s1">&#39;async&#39;</span><span class="p">,</span> <span class="s1">&#39;await&#39;</span><span class="p">,</span> <span class="s1">&#39;break&#39;</span><span class="p">,</span> <span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="s1">&#39;continue&#39;</span><span class="p">,</span> <span class="s1">&#39;def&#39;</span><span class="p">,</span> <span class="s1">&#39;del&#39;</span><span class="p">,</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;False&#39;</span><span class="p">,</span> <span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="s1">&#39;True&#39;</span><span class="p">,</span> <span class="s1">&#39;and&#39;</span><span class="p">,</span> <span class="s1">&#39;as&#39;</span><span class="p">,</span> <span class="s1">&#39;assert&#39;</span><span class="p">,</span> <span class="s1">&#39;async&#39;</span><span class="p">,</span> <span class="s1">&#39;await&#39;</span><span class="p">,</span> <span class="s1">&#39;break&#39;</span><span class="p">,</span> <span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="s1">&#39;continue&#39;</span><span class="p">,</span> <span class="s1">&#39;def&#39;</span><span class="p">,</span> <span class="s1">&#39;del&#39;</span><span class="p">,</span>
 <span class="s1">&#39;elif&#39;</span><span class="p">,</span> <span class="s1">&#39;else&#39;</span><span class="p">,</span> <span class="s1">&#39;except&#39;</span><span class="p">,</span> <span class="s1">&#39;finally&#39;</span><span class="p">,</span> <span class="s1">&#39;for&#39;</span><span class="p">,</span> <span class="s1">&#39;from&#39;</span><span class="p">,</span> <span class="s1">&#39;global&#39;</span><span class="p">,</span> <span class="s1">&#39;if&#39;</span><span class="p">,</span> <span class="s1">&#39;import&#39;</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;is&#39;</span><span class="p">,</span> <span class="s1">&#39;lambda&#39;</span><span class="p">,</span> <span class="s1">&#39;nonlocal&#39;</span><span class="p">,</span>
 <span class="s1">&#39;not&#39;</span><span class="p">,</span> <span class="s1">&#39;or&#39;</span><span class="p">,</span> <span class="s1">&#39;pass&#39;</span><span class="p">,</span> <span class="s1">&#39;raise&#39;</span><span class="p">,</span> <span class="s1">&#39;return&#39;</span><span class="p">,</span> <span class="s1">&#39;try&#39;</span><span class="p">,</span> <span class="s1">&#39;while&#39;</span><span class="p">,</span> <span class="s1">&#39;with&#39;</span><span class="p">,</span> <span class="s1">&#39;yield&#39;</span><span class="p">]</span>
 </pre></div>
@@ -705,7 +713,7 @@ Ancak ileride beklenmedik uyum sorunları çıkması ihtimaline karşı değişk
 <p>Bunlar Python’da özel anlam ifade eden kelimelerdir.
 Etkileşimli kabuk zaten bu kelimeleri değişken adı olarak kullanmanıza izin vermez.
 Örneğin:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">elif</span> <span class="o">=</span> <span class="s2">&quot;hoş kız&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">elif</span> <span class="o">=</span> <span class="s2">&quot;hoş kız&quot;</span>
 
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>
     <span class="k">elif</span> <span class="o">=</span> <span class="s2">&quot;hoş kız&quot;</span>
@@ -729,7 +737,7 @@ Etkileşimli kabuk zaten bu kelimeleri değişken adı olarak kullanmanıza izin
 <p>Bu arada elbette yukarıdaki listeyi bir çırpıda ezberlemeniz beklenmiyor sizden.
 Python programlama dilini öğrendikçe özel kelimeleri bir bakışta tanıyabilecek duruma geleceksiniz.
 Ayrıca eğer isterseniz şu komutları vererek, istediğiniz her an yukarıdaki listeye ulaşabilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">keyword</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">keyword</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">keyword</span><span class="o">.</span><span class="n">kwlist</span>
 
 <span class="go">[&#39;False&#39;, &#39;None&#39;, &#39;True&#39;, &#39;and&#39;, &#39;as&#39;, &#39;assert&#39;, &#39;async&#39;, &#39;await&#39;, &#39;break&#39;, &#39;class&#39;, &#39;continue&#39;, &#39;def&#39;, &#39;del&#39;,</span>
@@ -741,13 +749,13 @@ Ayrıca eğer isterseniz şu komutları vererek, istediğiniz her an yukarıdaki
 Acaba bu listede kaç tane kelime var?</p>
 <p>Bu soru karşısında listedeki kelimeleri tek tek elle saymaya kalkışan arkadaşlarıma teessüflerimi iletiyorum…
 Bu tür işler için hangi aracı kullanabileceğimizi artık çok iyi biliyor olmalısınız:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">keyword</span><span class="o">.</span><span class="n">kwlist</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">keyword</span><span class="o">.</span><span class="n">kwlist</span><span class="p">)</span>
 
 <span class="go">35</span>
 </pre></div>
 </div>
 <p>Bu kodları şöyle yazabileceğimizi de biliyorsunuz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">yasaklı_kelimeler</span> <span class="o">=</span> <span class="n">keyword</span><span class="o">.</span><span class="n">kwlist</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">yasaklı_kelimeler</span> <span class="o">=</span> <span class="n">keyword</span><span class="o">.</span><span class="n">kwlist</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">yasaklı_kelimeler</span><span class="p">)</span>
 
 <span class="go">35</span>
@@ -761,67 +769,67 @@ Bir-iki bölüm sonra burada yazdığımız kodları rahatlıkla anlayabilecek d
 <p>6. Yukarıdaki kelimeler dışında, Python programlama diline ait fonksiyon ve benzeri araçların adlarını da değişken adı olarak kullanmamalısınız.
 Örneğin yazdığınız programlarda değişkenlerinize <cite>type</cite> veya <cite>len</cite> adı vermeyin.
 Çünkü ‘type’ ve ‘len’ Python’a ait iki önemli fonksiyonun adıdır.
-Eğer mesela bir değişkene <cite>type</cite> adını verirseniz, o programda artık <code class="docutils literal notranslate"><span class="pre">type()</span></code> fonksiyonunu kullanamazsınız:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span> <span class="o">=</span> <span class="mi">3456</span>
+Eğer mesela bir değişkene <cite>type</cite> adını verirseniz, o programda artık <code class="docutils literal"><span class="pre">type()</span></code> fonksiyonunu kullanamazsınız:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span> <span class="o">=</span> <span class="mi">3456</span>
 </pre></div>
 </div>
 <p>Bu örnekte <cite>type</cite> adında bir değişken tanımladık.
-Şimdi mesela <cite>“elma”</cite> kelimesinin tipini denetlemek için <code class="docutils literal notranslate"><span class="pre">type()</span></code> fonksiyonunu kullanmaya çalışalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="s2">&quot;elma&quot;</span><span class="p">)</span>
+Şimdi mesela <cite>“elma”</cite> kelimesinin tipini denetlemek için <code class="docutils literal"><span class="pre">type()</span></code> fonksiyonunu kullanmaya çalışalım:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="s2">&quot;elma&quot;</span><span class="p">)</span>
 
 <span class="gt">Traceback (most recent call last):</span>
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
 <span class="gr">TypeError</span>: <span class="n">&#39;int&#39; object is not callable</span>
 </pre></div>
 </div>
-<p>Gördüğünüz gibi, artık <code class="docutils literal notranslate"><span class="pre">type()</span></code> fonksiyonu çalışmıyor.
-Çünkü siz ‘type’ kelimesini bir değişken adı olarak kullanarak, <code class="docutils literal notranslate"><span class="pre">type()</span></code> fonksiyonunu kullanılamaz hale getirdiniz.</p>
+<p>Gördüğünüz gibi, artık <code class="docutils literal"><span class="pre">type()</span></code> fonksiyonu çalışmıyor.
+Çünkü siz ‘type’ kelimesini bir değişken adı olarak kullanarak, <code class="docutils literal"><span class="pre">type()</span></code> fonksiyonunu kullanılamaz hale getirdiniz.</p>
 <p>Bu durumdan kurtulmak için etkileşimli kabuğu kapatıp tekrar açabilirsiniz.
 Ya da eğer etkileşimli kabuğu kapatmak istemiyorsanız şu komut yardımıyla <cite>type</cite> değişkenini ortadan kaldırmayı da tercih edebilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="nb">type</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="nb">type</span>
 </pre></div>
 </div>
-<p>Böylece, (tahmin edebileceğiniz gibi <em>delete</em> (silmek) kelimesinin kısaltması olan) <code class="docutils literal notranslate"><span class="pre">del</span></code> komutuyla <cite>type</cite> değişkenini silmiş oldunuz.
-Artık ‘type’ kelimesi yine <code class="docutils literal notranslate"><span class="pre">type()</span></code> fonksiyonunu çağıracak:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="s2">&quot;elma&quot;</span><span class="p">)</span>
+<p>Böylece, (tahmin edebileceğiniz gibi <em>delete</em> (silmek) kelimesinin kısaltması olan) <code class="docutils literal"><span class="pre">del</span></code> komutuyla <cite>type</cite> değişkenini silmiş oldunuz.
+Artık ‘type’ kelimesi yine <code class="docutils literal"><span class="pre">type()</span></code> fonksiyonunu çağıracak:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="s2">&quot;elma&quot;</span><span class="p">)</span>
 
 <span class="go">&lt;class &#39;str&#39;&gt;</span>
 </pre></div>
 </div>
 <p>7. Değişken adlarını belirlerken, değişkeni oluşturan kelimeler arasında boşluk bırakılamaz.
 Yani şu kullanım yanlıştır:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kullanıcı</span> <span class="n">adı</span> <span class="o">=</span> <span class="s2">&quot;yazbel&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kullanıcı</span> <span class="n">adı</span> <span class="o">=</span> <span class="s2">&quot;yazbel&quot;</span>
 </pre></div>
 </div>
 <p>Yukarıdaki değişkeni şu şekilde tanımlayabiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kullanıcı_adı</span> <span class="o">=</span> <span class="s2">&quot;yazbel&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kullanıcı_adı</span> <span class="o">=</span> <span class="s2">&quot;yazbel&quot;</span>
 </pre></div>
 </div>
 <p>Ya da şöyle:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kullanıcıAdı</span> <span class="o">=</span> <span class="s2">&quot;yazbel&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kullanıcıAdı</span> <span class="o">=</span> <span class="s2">&quot;yazbel&quot;</span>
 </pre></div>
 </div>
 <p>8. Değişken adları belirlerken, değişken adının, değişkenin değerini olabildiğince betimlemesine dikkat etmemiz kodlarımızın okunaklılığını artıracaktır.
 Örneğin:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">personel_sayısı</span> <span class="o">=</span> <span class="mi">45</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">personel_sayısı</span> <span class="o">=</span> <span class="mi">45</span>
 </pre></div>
 </div>
 <p>Yukarıdaki, tanımladığı değere uygun bir değişken adıdır.
 Şu ise kurallara uygun bir değişken adı olsa da yeterince betimleyici değildir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sayı</span> <span class="o">=</span> <span class="mi">45</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sayı</span> <span class="o">=</span> <span class="mi">45</span>
 </pre></div>
 </div>
 <p>9. Değişken adları ne çok kısa, ne de çok uzun olmalıdır.
 Mesela şu değişken adı, kodları okuyan kişiye, değişken değerinin anlamı konusunda pek fikir vermez:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">345542353</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">345542353</span>
 </pre></div>
 </div>
 <p>Şu değişken adı ise gereksiz yere uzundur:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">türkiye_büyük_millet_meclisi_milletvekili_sayısı</span> <span class="o">=</span> <span class="mi">600</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">türkiye_büyük_millet_meclisi_milletvekili_sayısı</span> <span class="o">=</span> <span class="mi">600</span>
 </pre></div>
 </div>
 <p>Değişken adlarının uzunluğunu makul seviyede tutmak esastır:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tbmm_mv_sayısı</span> <span class="o">=</span> <span class="mi">600</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tbmm_mv_sayısı</span> <span class="o">=</span> <span class="mi">600</span>
 </pre></div>
 </div>
 <p>Yukarıda verdiğimiz bütün bu örnekler bize, Python’da değişkenlerin, değerlere atanmış adlardan ibaret olduğunu gösteriyor.
@@ -843,11 +851,11 @@ Elimizdeki verilerin şunlar olduğunu varsayalım:</p>
 </ol>
 <p>Aylık yol masrafımızı hesaplayabilmek için gidiş ve dönüş ücretlerini toplayıp, bunları çalıştığımız gün sayısıyla çarpmamız yeterli olacaktır.
 Elimizdeki bu bilgilere göre aylık yol masrafımızı hesaplamak için şöyle bir formül üretebiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">masraf</span> <span class="o">=</span> <span class="n">gün</span> <span class="n">sayısı</span> <span class="n">x</span> <span class="p">(</span><span class="n">gidiş</span> <span class="n">ücreti</span> <span class="o">+</span> <span class="n">dönüş</span> <span class="n">ücreti</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">masraf</span> <span class="o">=</span> <span class="n">gün</span> <span class="n">sayısı</span> <span class="n">x</span> <span class="p">(</span><span class="n">gidiş</span> <span class="n">ücreti</span> <span class="o">+</span> <span class="n">dönüş</span> <span class="n">ücreti</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Dilerseniz hemen bunu bir Python programı haline getirelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">22</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.5</span> <span class="o">+</span> <span class="mf">1.4</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">22</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.5</span> <span class="o">+</span> <span class="mf">1.4</span><span class="p">)</span>
 
 <span class="go">63.8</span>
 </pre></div>
@@ -865,7 +873,7 @@ Bu sıralamayı da parantezler yardımıyla elde ediyoruz.</p>
 Gördüğünüz gibi, bu programda bütün değerleri tek tek elle kendimiz giriyoruz.
 Örneğin çalışılan gün sayısına karşılık gelen <cite>22</cite> değerini başka bir yerde daha kullanmak istesek aynı sayıyı tekrar elle doğrudan kendimiz girmek zorundayız.
 Mesela yılda kaç gün çalıştığımızı hesaplayalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">22</span> <span class="o">*</span> <span class="mi">12</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">22</span> <span class="o">*</span> <span class="mi">12</span>
 
 <span class="go">264</span>
 </pre></div>
@@ -874,7 +882,7 @@ Mesela yılda kaç gün çalıştığımızı hesaplayalım:</p>
 Aslında değerleri bu şekilde her defasında tekrar tekrar elle girmek hem hata yapma riskini artırdığı, hem de bize fazladan iş çıkardığı için tercih edilmeyen bir yöntemdir.
 Bunun yerine, <cite>22</cite> sayısına bir isim verip, gereken yerlerde bu ismi kullanmak daha mantıklı olacaktır.
 Yani tıpkı kullanıcı ve parola örneğinde olduğu gibi, burada da verileri öncelikle bir değişkene atamak çok daha akıllıca bir iştir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gün</span> <span class="o">=</span> <span class="mi">22</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gün</span> <span class="o">=</span> <span class="mi">22</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gidiş_ücreti</span> <span class="o">=</span> <span class="mf">1.5</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dönüş_ücreti</span> <span class="o">=</span> <span class="mf">1.4</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gün</span> <span class="o">*</span> <span class="p">(</span><span class="n">gidiş_ücreti</span> <span class="o">+</span> <span class="n">dönüş_ücreti</span><span class="p">)</span>
@@ -884,13 +892,13 @@ Yani tıpkı kullanıcı ve parola örneğinde olduğu gibi, burada da verileri 
 </div>
 <p>Bütün değerleri birer değişkene atadığımız için, artık bu değişkenleri istediğimiz yerde kullanabiliriz.
 Mesela yılda toplam kaç gün çalıştığımızı bulmak istersek, ilgili değeri elle yazmak yerine, yukarıda tanımladığımız <cite>gün</cite> değişkenini kullanabiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gün</span> <span class="o">*</span> <span class="mi">12</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gün</span> <span class="o">*</span> <span class="mi">12</span>
 
 <span class="go">264</span>
 </pre></div>
 </div>
 <p>İlerleyen zamanda aylık çalışılan gün sayısı değişirse sadece <cite>gün</cite> değişkeninin değerini değiştirmemiz yeterli olacaktır:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gün</span> <span class="o">=</span> <span class="mi">23</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gün</span> <span class="o">=</span> <span class="mi">23</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gün</span> <span class="o">*</span> <span class="p">(</span><span class="n">gidiş_ücreti</span> <span class="o">+</span> <span class="n">dönüş_ücreti</span><span class="p">)</span>
 
 <span class="go">66.7</span>
@@ -901,7 +909,7 @@ Mesela yılda toplam kaç gün çalıştığımızı bulmak istersek, ilgili de�
 </pre></div>
 </div>
 <p>Eğer bu şekilde değişken atamak yerine, değerleri gerektiği her yerde elle yazsaydık, bu değerlerde herhangi bir değişiklik yapmamız gerektiğinde program içinde geçen ilgili bütün değerleri bulup tek tek değiştirmemiz gerekecekti:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">23</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.6</span> <span class="o">+</span> <span class="mf">1.5</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">23</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.6</span> <span class="o">+</span> <span class="mf">1.5</span><span class="p">)</span>
 
 <span class="go">71.3</span>
 
@@ -915,31 +923,31 @@ Ama programlarımızı ileride dosyaya kaydettiğimiz zaman bu değişkenler ço
 <p>Dilerseniz bir örnek daha yaparak yukarıdaki bilgilerin kafamıza iyice yerleşmesini sağlayalım.
 Mesela bir dairenin alanını (yaklaşık olarak) hesaplayan bir program yazalım.</p>
 <p>Öncelikle <cite>çap</cite> adlı bir değişken tanımlayarak dairenin çapını belirleyelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">çap</span> <span class="o">=</span> <span class="mi">16</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">çap</span> <span class="o">=</span> <span class="mi">16</span>
 </pre></div>
 </div>
 <p>Bu değeri kullanarak dairemizin yarıçapını hesaplayabiliriz.
 Bunun için <cite>çap</cite> değişkeninin değerinin yarısını almamız yeterli olacaktır:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">yarıçap</span> <span class="o">=</span> <span class="n">çap</span> <span class="o">/</span> <span class="mi">2</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">yarıçap</span> <span class="o">=</span> <span class="n">çap</span> <span class="o">/</span> <span class="mi">2</span>
 </pre></div>
 </div>
 <p>pi sayısını <cite>3.14159</cite> olarak alalım.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14159</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14159</span>
 </pre></div>
 </div>
 <p>Bir dairenin alan formülü (pi)r<sup>2</sup>’dir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">alan</span> <span class="o">=</span> <span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">yarıçap</span> <span class="o">*</span> <span class="n">yarıçap</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">alan</span> <span class="o">=</span> <span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">yarıçap</span> <span class="o">*</span> <span class="n">yarıçap</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Son olarak <cite>alan</cite> değişkeninin değerini ekrana yazdırabiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">alan</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">alan</span>
 
 <span class="go">201.06176</span>
 </pre></div>
 </div>
 <p>Böylece bir dairenin alanını yaklaşık olarak hesaplamış olduk.
 Dilerseniz programımızı bir de derli toplu olarak görelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">çap</span> <span class="o">=</span> <span class="mi">16</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">çap</span> <span class="o">=</span> <span class="mi">16</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">yarıçap</span> <span class="o">=</span> <span class="n">çap</span> <span class="o">/</span> <span class="mi">2</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14159</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">alan</span> <span class="o">=</span> <span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">yarıçap</span> <span class="o">*</span> <span class="n">yarıçap</span><span class="p">)</span>
@@ -950,7 +958,7 @@ Dilerseniz programımızı bir de derli toplu olarak görelim:</p>
 </div>
 <p>Görüyorsunuz ya, değişkenler işimizi nasıl da kolaylaştırıyor.
 Eğer yukarıdaki programda değişken kullanmasaydık kodlarımız şöyle görünecekti:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mf">3.14159</span> <span class="o">*</span> <span class="p">((</span><span class="mi">16</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">16</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mf">3.14159</span> <span class="o">*</span> <span class="p">((</span><span class="mi">16</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">16</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>
 
 <span class="go">201.06176</span>
 </pre></div>
@@ -965,14 +973,14 @@ Ama bu değeri en başta bir değişkene atarsanız, <cite>16</cite> değerini k
 Şimdiye kadar Python’da toplama (<cite>+</cite>), çıkarma (<cite>-</cite>), çarpma (<cite>*</cite>), bölme (<cite>/</cite>) ve değer atama (<cite>=</cite>) işleçlerini gördük.
 Ama yukarıda verdiğimiz son örnek, başka bir işleç daha öğrenmemizi gerektiriyor…</p>
 <p>Yukarıdaki şu örneğe tekrar bakalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">alan</span> <span class="o">=</span> <span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">yarıçap</span> <span class="o">*</span> <span class="n">yarıçap</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">alan</span> <span class="o">=</span> <span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">yarıçap</span> <span class="o">*</span> <span class="n">yarıçap</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Burada <cite>yarıçap</cite> değişkeninin karesini alabilmek için bu değeri kendisiyle çarptık.
 Aslında gayet mantıklı ve makul bir yöntem.
 Kare bulmak için değeri kendisiyle çarpıyoruz.
 Eğer bir sayının küpünü bulmak isteseydik o sayıyı üç kez kendisiyle çarpacaktık:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">3</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">3</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">3</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">3</span>
 
 <span class="go">27</span>
 </pre></div>
@@ -986,42 +994,42 @@ Python’da bu tür ‘kuvvet hesaplamaları’ için ayrı bir işleç (ve fonk
 <p>Python’da <cite>**</cite> adlı bir işleç bulunur.
 Bu işlecin görevi bir sayının kuvvetini hesaplamamızı sağlamaktır.
 Örneğin bir sayının <cite>2.</cite> kuvvetini, ya da başka bir deyişle karesini hesaplamak istersek şöyle bir kod yazabiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">12</span> <span class="o">**</span> <span class="mi">2</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">12</span> <span class="o">**</span> <span class="mi">2</span>
 
 <span class="go">144</span>
 </pre></div>
 </div>
 <p>Burada <cite>12</cite> sayısının <cite>2.</cite> kuvvetini, yani karesini hesapladık.
 Bu bilgiyi yukarıdaki formüle uygulayalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">alan</span> <span class="o">=</span> <span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">yarıçap</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">alan</span> <span class="o">=</span> <span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">yarıçap</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Bu işleci herhangi bir sayının herhangi bir kuvvetini hesaplamak için kullanabiliriz elbette.
 Mesela <cite>23</cite> sayısının küpünü (yani <cite>3.</cite> kuvvetini) hesaplayalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">23</span> <span class="o">**</span> <span class="mi">3</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">23</span> <span class="o">**</span> <span class="mi">3</span>
 
 <span class="go">12167</span>
 </pre></div>
 </div>
 <p>Aynı işleçten, bir sayının karekökünü hesaplamak için de yararlanabilirsiniz.
 Neticede bir sayının <cite>0.5</cite>’inci kuvveti, o sayının kareköküdür:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">144</span> <span class="o">**</span> <span class="mf">0.5</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">144</span> <span class="o">**</span> <span class="mf">0.5</span>
 
 <span class="go">12.0</span>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi, kuvvet hesaplama işlemleri için bu işleç son derece kullanışlı bir araç vazifesi görüyor.
 Ama eğer istersek aynı iş için özel bir fonksiyondan da yararlanabiliriz.
-Bu fonksiyonun adı <code class="docutils literal notranslate"><span class="pre">pow()</span></code>.</p>
+Bu fonksiyonun adı <code class="docutils literal"><span class="pre">pow()</span></code>.</p>
 <p>Peki bu fonksiyonu nasıl kullanacağız?</p>
-<p>Daha önce öğrendiğimiz <code class="docutils literal notranslate"><span class="pre">type()</span></code> ve <code class="docutils literal notranslate"><span class="pre">len()</span></code> fonksiyonlarını nasıl kullanıyorsak <code class="docutils literal notranslate"><span class="pre">pow()</span></code> fonksiyonu da aynı şekilde kullanacağız.</p>
-<p><code class="docutils literal notranslate"><span class="pre">type()</span></code> ve <code class="docutils literal notranslate"><span class="pre">len()</span></code> fonksiyonlarını birtakım parametreler ile birlikte kullanıyorduk hatırlarsanız.
-Aynı şekilde <code class="docutils literal notranslate"><span class="pre">pow()</span></code> fonksiyonu da birtakım parametreler alır.</p>
+<p>Daha önce öğrendiğimiz <code class="docutils literal"><span class="pre">type()</span></code> ve <code class="docutils literal"><span class="pre">len()</span></code> fonksiyonlarını nasıl kullanıyorsak <code class="docutils literal"><span class="pre">pow()</span></code> fonksiyonu da aynı şekilde kullanacağız.</p>
+<p><code class="docutils literal"><span class="pre">type()</span></code> ve <code class="docutils literal"><span class="pre">len()</span></code> fonksiyonlarını birtakım parametreler ile birlikte kullanıyorduk hatırlarsanız.
+Aynı şekilde <code class="docutils literal"><span class="pre">pow()</span></code> fonksiyonu da birtakım parametreler alır.</p>
 <p>Daha önce öğrendiğimiz fonksiyonları tek bir parametre ile birlikte kullanmıştık.
-<code class="docutils literal notranslate"><span class="pre">pow()</span></code> fonksiyonu ise toplam üç farklı parametre alır.
+<code class="docutils literal"><span class="pre">pow()</span></code> fonksiyonu ise toplam üç farklı parametre alır.
 Ama genellikle bu fonksiyon yalnızca iki parametre ile kullanılır.</p>
 <p>Bu fonksiyonu şöyle kullanıyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">pow</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">pow</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 
 <span class="go">144</span>
 
@@ -1034,12 +1042,12 @@ Ama genellikle bu fonksiyon yalnızca iki parametre ile kullanılır.</p>
 <span class="go">12.0</span>
 </pre></div>
 </div>
-<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">pow()</span></code> fonksiyonunun ilk parametresi asıl sayıyı, ikinci parametresi ise bu sayının hangi kuvvetini hesaplamak istediğimizi gösteriyor.</p>
+<p>Gördüğünüz gibi, <code class="docutils literal"><span class="pre">pow()</span></code> fonksiyonunun ilk parametresi asıl sayıyı, ikinci parametresi ise bu sayının hangi kuvvetini hesaplamak istediğimizi gösteriyor.</p>
 <p>Bu arada, fonksiyonun parantezleri içinde belirttiğimiz parametreleri birbirinden virgül ile ayırdığımızı gözden kaçırmayın.</p>
-<p>Dediğimiz gibi, <code class="docutils literal notranslate"><span class="pre">pow()</span></code> fonksiyonu, pek kullanılmayan üçüncü bir parametre daha alır.
+<p>Dediğimiz gibi, <code class="docutils literal"><span class="pre">pow()</span></code> fonksiyonu, pek kullanılmayan üçüncü bir parametre daha alır.
 Bu fonksiyonun üçüncü parametresi şöyle kullanılır.
 Dikkatlice bakın:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">pow</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">pow</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 
 <span class="go">0</span>
 </pre></div>
@@ -1051,13 +1059,13 @@ Dikkatlice bakın:</p>
 <cite>256</cite> sayısını <cite>2</cite>’ye böldüğümüzde, bölme işleminin kalanı <cite>0</cite>’dır.
 Yani <cite>256</cite> sayısı <cite>2</cite>’ye tam bölünür…</p>
 <p>Bir örnek daha verelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">pow</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">pow</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 
 <span class="go">3</span>
 </pre></div>
 </div>
 <p>Demek ki, <cite>11</cite> sayısının <cite>3.</cite> kuvveti olan <cite>1331</cite> sayısı <cite>4</cite>’e bölündüğünde, bölme işleminden kalan sayı <cite>3</cite> imiş…</p>
-<p>Dediğimiz gibi, <code class="docutils literal notranslate"><span class="pre">pow()</span></code> fonksiyonu genellikle sadece iki parametre ile kullanılır.
+<p>Dediğimiz gibi, <code class="docutils literal"><span class="pre">pow()</span></code> fonksiyonu genellikle sadece iki parametre ile kullanılır.
 Üçüncü parametrenin kullanım alanı oldukça dardır.</p>
 </div>
 <div class="section" id="degiskenlere-dair-bazi-ipuclari">
@@ -1069,19 +1077,19 @@ Yani <cite>256</cite> sayısı <cite>2</cite>’ye tam bölünür…</p>
 Acaba aynı değere sahip iki değişkeni nasıl tanımlayabiliriz?
 Yani mesela değeri <cite>4</cite> sayısı olan iki farklı değişkeni nasıl belirleyeceğiz?</p>
 <p>Aklınıza şöyle bir çözüm gelmiş olabilir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">4</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="mi">4</span>
 </pre></div>
 </div>
 <p>Böylece ikisi de <cite>4</cite> değerine sahip <cite>a</cite> ve <cite>b</cite> adlı iki farklı değişken tanımlamış olduk.
 Bu tamamen geçerli bir yöntemdir.
 Ancak Python’da bu işlemi yapmanın daha kolay bir yolu var. Bakalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">4</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">4</span>
 </pre></div>
 </div>
 <p>Bu kodlar bir öncekiyle tamamen aynı işlevi görür.
 Yani her iki kod da <cite>4</cite> değerine sahip <cite>a</cite> ve <cite>b</cite> değişkenleri tanımlamamızı sağlar:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
 
 <span class="go">4</span>
 
@@ -1091,14 +1099,14 @@ Yani her iki kod da <cite>4</cite> değerine sahip <cite>a</cite> ve <cite>b</ci
 </pre></div>
 </div>
 <p>Bu bilgiyi kullanarak mesela bir yıl içindeki her bir ayın çektiği gün sayısını ay adlarına atayabilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ocak</span> <span class="o">=</span> <span class="n">mart</span> <span class="o">=</span> <span class="n">mayıs</span> <span class="o">=</span> <span class="n">temmuz</span> <span class="o">=</span> <span class="n">ağustos</span> <span class="o">=</span> <span class="n">ekim</span> <span class="o">=</span> <span class="n">aralık</span> <span class="o">=</span> <span class="mi">31</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ocak</span> <span class="o">=</span> <span class="n">mart</span> <span class="o">=</span> <span class="n">mayıs</span> <span class="o">=</span> <span class="n">temmuz</span> <span class="o">=</span> <span class="n">ağustos</span> <span class="o">=</span> <span class="n">ekim</span> <span class="o">=</span> <span class="n">aralık</span> <span class="o">=</span> <span class="mi">31</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">nisan</span> <span class="o">=</span> <span class="n">haziran</span> <span class="o">=</span> <span class="n">eylül</span> <span class="o">=</span> <span class="n">kasım</span> <span class="o">=</span> <span class="mi">30</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">şubat</span> <span class="o">=</span> <span class="mi">28</span>
 </pre></div>
 </div>
 <p>Böylece bir çırpıda değeri <cite>31</cite> olan yedi adet değişken, değeri <cite>30</cite> olan dört adet değişken, değeri <cite>28</cite> olan bir adet değişken tanımlamış olduk.
 Bu değişkenlerin değerine nasıl ulaşacağınızı biliyorsunuz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ocak</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ocak</span>
 
 <span class="go">31</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">haziran</span>
@@ -1123,7 +1131,7 @@ Bu değişkenlerin değerine nasıl ulaşacağınızı biliyorsunuz:</p>
 </pre></div>
 </div>
 <p>Eğer Python’ın aynı anda birden fazla değişkene tek bir değer atama özelliği olmasaydı yukarıdaki kodları şöyle yazmamız gerekirdi:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ocak</span> <span class="o">=</span> <span class="mi">31</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ocak</span> <span class="o">=</span> <span class="mi">31</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">şubat</span> <span class="o">=</span> <span class="mi">28</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mart</span> <span class="o">=</span> <span class="mi">31</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">nisan</span> <span class="o">=</span> <span class="mi">30</span>
@@ -1144,13 +1152,13 @@ Mesela bu değişkenleri kullanarak aylara göre doğalgaz faturasını hesaplay
 Demek ki bir ayda toplam <cite>346</cite> m<sup>3</sup> doğalgaz harcamışız.</p>
 <p>Fatura tutarı <cite>273.87</cite> TL imiş. Yani <cite>346</cite> m<sup>3</sup> doğalgaz tüketmenin bedeli <cite>273.87</cite> TL.
 Buna göre değişkenlerimizi tanımlayalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">aylık_sarfiyat</span> <span class="o">=</span> <span class="mi">346</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">aylık_sarfiyat</span> <span class="o">=</span> <span class="mi">346</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fatura_tutarı</span> <span class="o">=</span> <span class="mf">273.87</span>
 </pre></div>
 </div>
 <p>Bu bilgiyi kullanarak doğalgazın birim fiyatını hesaplayabiliriz.
 Formülümüz şöyle olmalı:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">birim_fiyat</span> <span class="o">=</span> <span class="n">fatura_tutarı</span> <span class="o">/</span> <span class="n">aylık_sarfiyat</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">birim_fiyat</span> <span class="o">=</span> <span class="n">fatura_tutarı</span> <span class="o">/</span> <span class="n">aylık_sarfiyat</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">birim_fiyat</span>
 
@@ -1159,7 +1167,7 @@ Formülümüz şöyle olmalı:</p>
 </div>
 <p>Demek ki doğalgazın m<sup>3</sup> fiyatı (vergilerle birlikte yaklaşık) <cite>0.79</cite> TL’ye karşılık geliyormuş.</p>
 <p>Bu noktada günlük ortalama doğalgaz sarfiyatımızı da hesaplamamız gerekiyor:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">günlük_sarfiyat</span> <span class="o">=</span> <span class="n">aylık_sarfiyat</span> <span class="o">/</span> <span class="n">mart</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">günlük_sarfiyat</span> <span class="o">=</span> <span class="n">aylık_sarfiyat</span> <span class="o">/</span> <span class="n">mart</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">günlük_sarfiyat</span>
 
 <span class="go">11.161290322580646</span>
@@ -1167,14 +1175,14 @@ Formülümüz şöyle olmalı:</p>
 </div>
 <p>Demek ki Mart ayında günlük ortalama <cite>11</cite> m<sup>3</sup> doğalgaz tüketmişiz.</p>
 <p>Bütün bu bilgileri kullanarak Nisan ayında gelecek faturayı tahmin edebiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nisan_faturası</span> <span class="o">=</span> <span class="n">birim_fiyat</span> <span class="o">*</span> <span class="n">günlük_sarfiyat</span> <span class="o">*</span> <span class="n">nisan</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nisan_faturası</span> <span class="o">=</span> <span class="n">birim_fiyat</span> <span class="o">*</span> <span class="n">günlük_sarfiyat</span> <span class="o">*</span> <span class="n">nisan</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">nisan_faturası</span>
 
 <span class="go">265.03548387096777</span>
 </pre></div>
 </div>
 <p>Şubat ayı faturası ise şöyle olabilir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">şubat_faturası</span> <span class="o">=</span> <span class="n">birim_fiyat</span> <span class="o">*</span> <span class="n">günlük_sarfiyat</span> <span class="o">*</span> <span class="n">şubat</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">şubat_faturası</span> <span class="o">=</span> <span class="n">birim_fiyat</span> <span class="o">*</span> <span class="n">günlük_sarfiyat</span> <span class="o">*</span> <span class="n">şubat</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">şubat_faturası</span>
 
 <span class="go">247.36645161290326</span>
@@ -1189,7 +1197,7 @@ Formülümüz şöyle olmalı:</p>
 <h5>Değişkenlerin Değerini Takas Etme<a class="headerlink" href="#degiskenlerin-degerini-takas-etme" title="Bu başlığın kalıcı bağlantısı">¶</a></h5>
 <p>Diyelim ki, işyerinizdeki personelin unvanlarını tuttuğunuz bir veritabanı var elinizde.
 Bu veritabanında şuna benzer ilişkiler tanımlı:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">osman</span> <span class="o">=</span> <span class="s2">&quot;Araştırma Geliştirme Müdürü&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">osman</span> <span class="o">=</span> <span class="s2">&quot;Araştırma Geliştirme Müdürü&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mehmet</span> <span class="o">=</span> <span class="s2">&quot;Proje Sorumlusu&quot;</span>
 </pre></div>
 </div>
@@ -1197,12 +1205,12 @@ Bu veritabanında şuna benzer ilişkiler tanımlı:</p>
 Yani Osman’ı Proje Sorumlusu, Mehmet’i de Araştırma Geliştirme Müdürü yapmanızı isteyebilir sizden.</p>
 <p>Patronunuzun bu isteğini Python’da çok rahat bir biçimde yerine getirebilirsiniz.
 Dikkatlice bakın:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">osman</span><span class="p">,</span> <span class="n">mehmet</span> <span class="o">=</span> <span class="n">mehmet</span><span class="p">,</span> <span class="n">osman</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">osman</span><span class="p">,</span> <span class="n">mehmet</span> <span class="o">=</span> <span class="n">mehmet</span><span class="p">,</span> <span class="n">osman</span>
 </pre></div>
 </div>
 <p>Böylece tek hamlede bu iki kişinin unvanlarını takas etmiş oldunuz.
 Gelin isterseniz değişkenlerin son durumuna bakalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">osman</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">osman</span>
 
 <span class="go">&#39;Proje Sorumlusu</span>
 
@@ -1215,24 +1223,24 @@ Gelin isterseniz değişkenlerin son durumuna bakalım:</p>
 <p>Yukarıdaki yöntem Python’ın öteki diller üzerinde önemli bir üstünlüğüdür.
 Başka programlama dillerinde bu işlemi yapmak için geçici bir değişken tanımlamanız gerekir.
 Yani mesela:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">osman</span> <span class="o">=</span> <span class="s2">&quot;Araştırma Geliştirme Müdürü&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">osman</span> <span class="o">=</span> <span class="s2">&quot;Araştırma Geliştirme Müdürü&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mehmet</span> <span class="o">=</span> <span class="s2">&quot;Proje Sorumlusu&quot;</span>
 </pre></div>
 </div>
 <p>Elimizdeki değerler bunlar.
 Biz şimdi Osman’ın değerini Mehmet’e; Mehmet’in değerini ise Osman’a aktaracağız.
 Bunun için öncelikle bir geçici değişken tanımlamalıyız:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">geçici</span> <span class="o">=</span> <span class="s2">&quot;Proje Sorumlusu&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">geçici</span> <span class="o">=</span> <span class="s2">&quot;Proje Sorumlusu&quot;</span>
 </pre></div>
 </div>
 <p>Bu sayede <cite>“Proje Sorumlusu”</cite> değerini yedeklemiş olduk.
 Bu işlem sayesinde, takas sırasında bu değeri kaybetmeyeceğiz.</p>
 <p>Şimdi Osman’ın değerini Mehmet’e aktaralım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mehmet</span> <span class="o">=</span> <span class="n">osman</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mehmet</span> <span class="o">=</span> <span class="n">osman</span>
 </pre></div>
 </div>
 <p>Şimdi elimizde iki tane Araştırma Geliştirme Müdürü olmuş oldu:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mehmet</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mehmet</span>
 
 <span class="go">&#39;Araştırma Geliştirme Müdürü&#39;</span>
 
@@ -1241,15 +1249,15 @@ Bu işlem sayesinde, takas sırasında bu değeri kaybetmeyeceğiz.</p>
 <span class="go">&#39;Araştırma Geliştirme Müdürü&#39;</span>
 </pre></div>
 </div>
-<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">mehmet</span> <span class="pre">=</span> <span class="pre">osman</span></code> kodunu kullanarak <cite>mehmet</cite> değişkeninin değerini <cite>osman</cite> değişkeninin değeriyle değiştirdiğimiz için <cite>“Proje Sorumlusu”</cite> değeri ortadan kayboldu.
+<p>Gördüğünüz gibi, <code class="docutils literal"><span class="pre">mehmet</span> <span class="pre">=</span> <span class="pre">osman</span></code> kodunu kullanarak <cite>mehmet</cite> değişkeninin değerini <cite>osman</cite> değişkeninin değeriyle değiştirdiğimiz için <cite>“Proje Sorumlusu”</cite> değeri ortadan kayboldu.
 Ama biz önceden bu değeri <cite>geçici</cite> adlı değişkene atadığımız için bu değeri kaybetmemiş olduk.
 Şimdi Osman’a <cite>geçici</cite> değişkeni içinde tuttuğumuz <cite>“Proje Sorumlusu”</cite> değerini verebiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">osman</span> <span class="o">=</span> <span class="n">geçici</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">osman</span> <span class="o">=</span> <span class="n">geçici</span>
 </pre></div>
 </div>
 <p>Böylece istediğimiz takas işlemini gerçekleştirmiş olduk.
 Son durumu kontrol edelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">osman</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">osman</span>
 
 <span class="go">&#39;Proje Sorumlusu</span>
 
@@ -1261,41 +1269,41 @@ Son durumu kontrol edelim:</p>
 <p>Basit bir işlem için ne kadar büyük bir zaman kaybı, değil mi?
 Ama dediğimiz gibi, Python’da bu şekilde geçici bir değişken atamakla uğraşmamıza hiç gerek yok.
 Sadece şu formülü kullanarak değişkenlerin değerini takas edebiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span>
 </pre></div>
 </div>
 <p>Bu şekilde <cite>a</cite> değişkeninin değerini <cite>b</cite> değişkenine; <cite>b</cite> değişkeninin değerini ise <cite>a</cite> değerine vermiş oluyoruz.
 Eğer bu işlemi geri alıp her şeyi eski haline döndürmek istersek, tahmin edebileceğiniz gibi yine aynı yöntemden yararlanabiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span>
 </pre></div>
 </div>
 <p>Böylece değişkenler konusunu da oldukça ayrıntılı bir şekilde incelemiş olduk.
-Ayrıca bu esnada <code class="docutils literal notranslate"><span class="pre">len()</span></code> ve <code class="docutils literal notranslate"><span class="pre">pow()</span></code> adlı iki yeni fonksiyon ile <cite>**</cite> adlı bir işleç de öğrendik.</p>
-<p>Hazır lafı geçmişken, <code class="docutils literal notranslate"><span class="pre">len()</span></code> fonksiyonunun bazı kısıtlamalarından söz edelim.
+Ayrıca bu esnada <code class="docutils literal"><span class="pre">len()</span></code> ve <code class="docutils literal"><span class="pre">pow()</span></code> adlı iki yeni fonksiyon ile <cite>**</cite> adlı bir işleç de öğrendik.</p>
+<p>Hazır lafı geçmişken, <code class="docutils literal"><span class="pre">len()</span></code> fonksiyonunun bazı kısıtlamalarından söz edelim.
 Dediğimiz gibi, bu fonksiyonu kullanarak karakter dizileri içinde toplam kaç adet karakter bulunduğunu hesaplayabiliyoruz.
 Örneğin:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kelime</span> <span class="o">=</span> <span class="s2">&quot;muvaffakiyet&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kelime</span> <span class="o">=</span> <span class="s2">&quot;muvaffakiyet&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">kelime</span><span class="p">)</span>
 
 <span class="go">12</span>
 </pre></div>
 </div>
-<p>Yalnız bu <code class="docutils literal notranslate"><span class="pre">len()</span></code> fonksiyonunu sayıların uzunluğunu ölçmek için kullanamıyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="mi">123456</span><span class="p">)</span>
+<p>Yalnız bu <code class="docutils literal"><span class="pre">len()</span></code> fonksiyonunu sayıların uzunluğunu ölçmek için kullanamıyoruz:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="mi">123456</span><span class="p">)</span>
 
 <span class="gt">Traceback (most recent call last):</span>
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
 <span class="gr">TypeError</span>: <span class="n">object of type &#39;int&#39; has no len()</span>
 </pre></div>
 </div>
-<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">len()</span></code> fonksiyonu, şu ana kadar öğrendiğimiz veri tipleri arasında yalnızca karakter dizileri ile birlikte kullanılabiliyor.
+<p>Gördüğünüz gibi, <code class="docutils literal"><span class="pre">len()</span></code> fonksiyonu, şu ana kadar öğrendiğimiz veri tipleri arasında yalnızca karakter dizileri ile birlikte kullanılabiliyor.
 Bu fonksiyonu sayılarla birlikte kullanamıyoruz.</p>
 <p>Bu bölümün başında, o anda elimizde bulunan bir verinin tipini bilmemizin çok önemli olduğunu ve Python’da bir verinin tipinin, o veri ile neler yapıp neler yapamayacağınızı belirlediğini söylediğimizi hatırlıyorsunuz, değil mi?
-İşte <code class="docutils literal notranslate"><span class="pre">len()</span></code> fonksiyonu bu duruma çok güzel bir örnektir.</p>
-<p><code class="docutils literal notranslate"><span class="pre">len()</span></code> fonksiyonu sayılarla birlikte kullanılamaz.
-Dolayısıyla eğer elinizdeki verinin bir sayı olduğunu bilmezseniz, bu sayıyı <code class="docutils literal notranslate"><span class="pre">len()</span></code> fonksiyonu ile birlikte kullanmaya çalışabilir ve bu şekilde programınızın hata vererek çökmesine yol açabilirsiniz.</p>
-<p>Ayrıca daha önce de söylediğimiz gibi, <code class="docutils literal notranslate"><span class="pre">len()</span></code> fonksiyonunu doğru kullanabilmek için, bu fonksiyonun bize sayı değerli bir çıktı verdiğini de bilmemiz gerekir.</p>
-<p><code class="docutils literal notranslate"><span class="pre">len()</span></code> fonksiyonu ile ilgili bu durumu da bir kenara not ettikten sonra yolumuza kaldığımız yerden devam edelim.</p>
+İşte <code class="docutils literal"><span class="pre">len()</span></code> fonksiyonu bu duruma çok güzel bir örnektir.</p>
+<p><code class="docutils literal"><span class="pre">len()</span></code> fonksiyonu sayılarla birlikte kullanılamaz.
+Dolayısıyla eğer elinizdeki verinin bir sayı olduğunu bilmezseniz, bu sayıyı <code class="docutils literal"><span class="pre">len()</span></code> fonksiyonu ile birlikte kullanmaya çalışabilir ve bu şekilde programınızın hata vererek çökmesine yol açabilirsiniz.</p>
+<p>Ayrıca daha önce de söylediğimiz gibi, <code class="docutils literal"><span class="pre">len()</span></code> fonksiyonunu doğru kullanabilmek için, bu fonksiyonun bize sayı değerli bir çıktı verdiğini de bilmemiz gerekir.</p>
+<p><code class="docutils literal"><span class="pre">len()</span></code> fonksiyonu ile ilgili bu durumu da bir kenara not ettikten sonra yolumuza kaldığımız yerden devam edelim.</p>
 </div>
 </div>
 </div>
@@ -1306,34 +1314,34 @@ Dolayısıyla eğer elinizdeki verinin bir sayı olduğunu bilmezseniz, bu sayı
 Şimdi isterseniz yeri gelmişken Python’ın etkileşimli kabuğunun bir başka yeteneğinden daha söz edelim.</p>
 <p>Etkileşimli kabukta <cite>_</cite> adlı işaret (alt çizgi işareti), yapılan son işlemin veya girilen son öğenin değerini tutma işlevi görür.
 Yani:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">2345</span> <span class="o">+</span> <span class="mi">54355</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">2345</span> <span class="o">+</span> <span class="mi">54355</span>
 
 <span class="go">56700</span>
 </pre></div>
 </div>
-<p>Eğer bu işlemin ardından <code class="docutils literal notranslate"><span class="pre">_</span></code> komutunu verirsek şöyle bir çıktı alırız:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">_</span>
+<p>Eğer bu işlemin ardından <code class="docutils literal"><span class="pre">_</span></code> komutunu verirsek şöyle bir çıktı alırız:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">_</span>
 
 <span class="go">56700</span>
 </pre></div>
 </div>
-<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">_</span></code> komutu son girilen öğeyi hafızasında tutuyor.
+<p>Gördüğünüz gibi, <code class="docutils literal"><span class="pre">_</span></code> komutu son girilen öğeyi hafızasında tutuyor.
 Bu özellikten çeşitli şekillerde yararlanabilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">+</span> <span class="mi">15</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">+</span> <span class="mi">15</span>
 
 <span class="go">56715</span>
 </pre></div>
 </div>
-<p>Burada <code class="docutils literal notranslate"><span class="pre">_</span></code> komutunun değeri bir önceki işlemin sonucu olan <cite>56700</cite> değeri olduğu için, <code class="docutils literal notranslate"><span class="pre">_</span></code> komutuna <cite>15</cite> eklediğimizde <cite>56715</cite> değerini elde ediyoruz.
-<code class="docutils literal notranslate"><span class="pre">_</span></code> komutunun değerini tekrar kontrol edelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">_</span>
+<p>Burada <code class="docutils literal"><span class="pre">_</span></code> komutunun değeri bir önceki işlemin sonucu olan <cite>56700</cite> değeri olduğu için, <code class="docutils literal"><span class="pre">_</span></code> komutuna <cite>15</cite> eklediğimizde <cite>56715</cite> değerini elde ediyoruz.
+<code class="docutils literal"><span class="pre">_</span></code> komutunun değerini tekrar kontrol edelim:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">_</span>
 
 <span class="go">56715</span>
 </pre></div>
 </div>
-<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">_</span></code> komutunun değeri artık <cite>56715</cite> sayısıdır…</p>
-<p><code class="docutils literal notranslate"><span class="pre">_</span></code> komutu yalnızca sayıları değil, karakter dizilerini de hafızasında tutabilir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;www&quot;</span>
+<p>Gördüğünüz gibi, <code class="docutils literal"><span class="pre">_</span></code> komutunun değeri artık <cite>56715</cite> sayısıdır…</p>
+<p><code class="docutils literal"><span class="pre">_</span></code> komutu yalnızca sayıları değil, karakter dizilerini de hafızasında tutabilir:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;www&quot;</span>
 
 <span class="go">&#39;www&#39;</span>
 
@@ -1348,7 +1356,7 @@ Bu özellikten çeşitli şekillerde yararlanabilirsiniz:</p>
 </div>
 <p>Bu işaret öyle çok sık kullanılan bir araç değildir, ama zaman zaman işinizi epey kolaylaştırır.
 Yalnız, unutmamamız gereken şey, bu özelliğin sadece etkileşimli kabuk ortamında geçerli olmasıdır.
-<code class="docutils literal notranslate"><span class="pre">_</span></code> komutunun etkileşimli kabuk ortamı dışında herhangi bir geçerliliği yoktur.</p>
+<code class="docutils literal"><span class="pre">_</span></code> komutunun etkileşimli kabuk ortamı dışında herhangi bir geçerliliği yoktur.</p>
 <p>Aslında burada söylenecek daha çok şey var.
 Ama biz şimdilik bunları sonraki konulara bırakacağız.
 Zira bu bölümdeki amacımız size konuların her ayrıntısını vermekten ziyade, Python’a ısınmanızı sağlamaktır.</p>
@@ -1423,9 +1431,9 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
     </div> 
 
 <div class="footer">
-&copy; Copyright 2007-2019, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 15.12.2019.
-<a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5 ile oluşturulmuştur.
+&copy; Copyright 2007-2020, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 02.01.2020.
+<a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7 ile oluşturulmuştur.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img

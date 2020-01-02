@@ -5,18 +5,25 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta content="Python 3.x'te sözlükler adlı veri tipi" name="description" />
 <meta content="python, sözlük, sözlükler, dictionary" name="keywords" />
 
     <title>Sözlükler &#8212; Python 3 için Türkçe Kılavuz</title>
     <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
     <script type="text/javascript" src="_static/translations.js"></script>
     <link rel="search" title="Ara" href="search.html" />
     <link rel="next" title="Sözlüklerin Metotları" href="sozluklerin_metotlari.html" />
@@ -25,7 +32,8 @@
 <link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
 <![endif]-->
 
-  </head><body>
+  </head>
+  <body>
 <div class='header'><a href='https://yazbel.com'>yazbel.com</a></div>
 
 <ul class='navbar'>
@@ -74,11 +82,11 @@ tipinin neler yapabileceğini görüp şaşıracağınızı rahatlıkla söyleye
 <p>Esasında biz daha önceki derslerimizin birinde sözlük adlı bu veri tipinden
 üstünkörü de olsa söz etmiştik. Yani aslında bu veri tipiyle tanışıklığımız
 eskiye dayanıyor.</p>
-<p>Hatırlayacaksınız, karakter dizilerinin <code class="docutils literal notranslate"><span class="pre">str.maketrans()</span></code> ve
-<code class="docutils literal notranslate"><span class="pre">translate()</span></code> adlı metotlarını anlatırken, Türkçeye özgü karakterleri ve
+<p>Hatırlayacaksınız, karakter dizilerinin <code class="docutils literal"><span class="pre">str.maketrans()</span></code> ve
+<code class="docutils literal"><span class="pre">translate()</span></code> adlı metotlarını anlatırken, Türkçeye özgü karakterleri ve
 bunların noktasız karşılıklarını içeren <cite>çeviri_tablosu</cite> adını verdiğimiz şöyle
 bir değişken tanımlamıştık:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">çeviri_tablosu</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Ö&quot;</span><span class="p">:</span> <span class="s2">&quot;O&quot;</span><span class="p">,</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">çeviri_tablosu</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Ö&quot;</span><span class="p">:</span> <span class="s2">&quot;O&quot;</span><span class="p">,</span>
                   <span class="s2">&quot;ç&quot;</span><span class="p">:</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span>
                   <span class="s2">&quot;Ü&quot;</span><span class="p">:</span> <span class="s2">&quot;U&quot;</span><span class="p">,</span>
                   <span class="s2">&quot;Ç&quot;</span><span class="p">:</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span>
@@ -121,7 +129,7 @@ aklınıza gelen şeye çok benzer. Mesela gerçek hayatta ‘kitap’ kelimesin
 <p>Bu manzara bize ‘kitap’ kelimesinin karşılığının ‘<em>book</em>’ olduğunu açık bir
 şekilde gösteriyor. Eğer bu durumu Python’daki sözlük veri tipiyle göstermek
 isteseydik şöyle bir şey yazacaktık:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kelimeler</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;kitap&quot;</span><span class="p">:</span> <span class="s2">&quot;book&quot;</span><span class="p">}</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kelimeler</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;kitap&quot;</span><span class="p">:</span> <span class="s2">&quot;book&quot;</span><span class="p">}</span>
 </pre></div>
 </div>
 <p>Burada, içeriği sözlük veri tipi olan <cite>kelimeler</cite> adlı bir değişken tanımladık.
@@ -132,21 +140,21 @@ adet karakter dizisinden oluşuyor.</p>
 ayırt edici özelliği köşeli parantezlerdi, sözlüklerin ayırt edici özelliği de
 küme parantezleridir.</p>
 <p>Esasında sözlük dediğimiz şey en basit haliyle şöyle görünür:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{}</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{}</span>
 </pre></div>
 </div>
 <p>Bu örnek boş bir sözlüktür. İsterseniz yukarıdaki veri tipinin gerçekten de bir
 sözlük olduğunu kanıtlayalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">sözlük</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">sözlük</span><span class="p">)</span>
 
 <span class="go">&lt;class &#39;dict&#39;&gt;</span>
 </pre></div>
 </div>
-<p>Sözlüklerin Python programlama dilindeki teknik karşılığı <code class="docutils literal notranslate"><span class="pre">dict</span></code> ifadesidir.
-<code class="docutils literal notranslate"><span class="pre">type(sözlük)</span></code> sorgusu <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'dict'&gt;</span></code> çıktısı verdiğine göre, <cite>sözlük</cite>
+<p>Sözlüklerin Python programlama dilindeki teknik karşılığı <code class="docutils literal"><span class="pre">dict</span></code> ifadesidir.
+<code class="docutils literal"><span class="pre">type(sözlük)</span></code> sorgusu <code class="docutils literal"><span class="pre">&lt;class</span> <span class="pre">'dict'&gt;</span></code> çıktısı verdiğine göre, <cite>sözlük</cite>
 adlı değişkenin gerçekten de bir sözlük olduğunu söyleyebiliyoruz.</p>
 <p>Yukarıda şöyle bir sözlük örneği verdiğimizi hatırlıyorsunuz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kelimeler</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;kitap&quot;</span><span class="p">:</span> <span class="s2">&quot;book&quot;</span><span class="p">}</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kelimeler</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;kitap&quot;</span><span class="p">:</span> <span class="s2">&quot;book&quot;</span><span class="p">}</span>
 </pre></div>
 </div>
 <p>Python programlama diline özellikle yeni başlayanlar, sözlüklerin görünüşü
@@ -154,23 +162,23 @@ nedeniyle bir sözlükteki öğe sayısı konusunda tereddüte kapılabilir, ör
 yukarıdaki sözlüğün <cite>2</cite> öğeden oluştuğu yanılgısına düşebilir. O halde bu
 noktada size şöyle bir soru sormama izin verin: Acaba bu sözlükte kaç öğe var?
 Hemen bakalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">kelimeler</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">kelimeler</span><span class="p">)</span>
 
 <span class="go">1</span>
 </pre></div>
 </div>
 <p>Demek ki elimizdeki veri tipi bir adet öğeye sahip bir sözlükmüş. Gördüğünüz
-gibi, <code class="docutils literal notranslate"><span class="pre">&quot;kitap&quot;:</span> <span class="pre">&quot;book&quot;</span></code> ifadesi tek başına bir öğe durumundadır. Yani burada
+gibi, <code class="docutils literal"><span class="pre">&quot;kitap&quot;:</span> <span class="pre">&quot;book&quot;</span></code> ifadesi tek başına bir öğe durumundadır. Yani burada
 <cite>“kitap”</cite> karakter dizisini ayrı, <cite>“book”</cite> karakter dizisini ayrı bir öğe olarak
 almıyoruz. Bu ikisi tek bir sözlük öğesi oluşturuyor. Hatırlarsanız, listelerde
 öğeleri birbirinden ayırmak için virgül işaretlerinden yararlanıyorduk.
 Sözlüklerde de birden fazla öğeyi birbirinden ayırmak için virgül işaretlerinden
 yararlanacağız:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kelimeler</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;kitap&quot;</span><span class="p">:</span> <span class="s2">&quot;book&quot;</span><span class="p">,</span> <span class="s2">&quot;bilgisayar&quot;</span><span class="p">:</span> <span class="s2">&quot;computer&quot;</span><span class="p">}</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kelimeler</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;kitap&quot;</span><span class="p">:</span> <span class="s2">&quot;book&quot;</span><span class="p">,</span> <span class="s2">&quot;bilgisayar&quot;</span><span class="p">:</span> <span class="s2">&quot;computer&quot;</span><span class="p">}</span>
 </pre></div>
 </div>
 <p>Bir önceki örnek tek öğeliydi. Bu sözlük ise <cite>2</cite> öğeye sahiptir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">kelimeler</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">kelimeler</span><span class="p">)</span>
 
 <span class="go">2</span>
 </pre></div>
@@ -179,14 +187,14 @@ yararlanacağız:</p>
 programlama dilinde doğru kod yazmak kadar okunaklı kod yazmak da çok önemlidir.
 Mesela bir sözlüğü şöyle tanımladığımızda kodlarımızın pek okunaklı olmayacağını
 söyleyebiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;kitap&quot;</span><span class="p">:</span> <span class="s2">&quot;book&quot;</span><span class="p">,</span> <span class="s2">&quot;bilgisayar&quot;</span><span class="p">:</span> <span class="s2">&quot;computer&quot;</span><span class="p">,</span> <span class="s2">&quot;programlama&quot;</span><span class="p">:</span> <span class="s2">&quot;programming&quot;</span><span class="p">,</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;kitap&quot;</span><span class="p">:</span> <span class="s2">&quot;book&quot;</span><span class="p">,</span> <span class="s2">&quot;bilgisayar&quot;</span><span class="p">:</span> <span class="s2">&quot;computer&quot;</span><span class="p">,</span> <span class="s2">&quot;programlama&quot;</span><span class="p">:</span> <span class="s2">&quot;programming&quot;</span><span class="p">,</span>
 <span class="s2">&quot;dil&quot;</span><span class="p">:</span> <span class="s2">&quot;language&quot;</span><span class="p">,</span> <span class="s2">&quot;defter&quot;</span><span class="p">:</span> <span class="s2">&quot;notebook&quot;</span><span class="p">}</span>
 </pre></div>
 </div>
 <p>Teknik olarak baktığımızda bu kodlarda hiçbir problem yok. Ancak sözlükleri
 böyle sağa doğru uzayacak şekilde tanımladığımızda okunaklılığı azaltmış
 oluyoruz. Bu yüzden yukarıdaki sözlüğü şöyle yazmayı tercih edebiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;kitap&quot;</span>      <span class="p">:</span> <span class="s2">&quot;book&quot;</span><span class="p">,</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;kitap&quot;</span>      <span class="p">:</span> <span class="s2">&quot;book&quot;</span><span class="p">,</span>
           <span class="s2">&quot;bilgisayar&quot;</span> <span class="p">:</span> <span class="s2">&quot;computer&quot;</span><span class="p">,</span>
           <span class="s2">&quot;programlama&quot;</span><span class="p">:</span> <span class="s2">&quot;programming&quot;</span><span class="p">,</span>
           <span class="s2">&quot;dil&quot;</span>        <span class="p">:</span> <span class="s2">&quot;language&quot;</span><span class="p">,</span>
@@ -207,7 +215,7 @@ Ancak şimdilik ‘sözlük tanımlama’ konusunu burada noktalayıp sözlükle
 öğrendik. Peki tanımladığımız bir sözlüğün öğelerine nasıl erişeceğiz?</p>
 <p>Hemen basit bir örnek verelim. Daha önce tanımladığımız şu sözlüğe bir bakalım
 mesela:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;kitap&quot;</span>      <span class="p">:</span> <span class="s2">&quot;book&quot;</span><span class="p">,</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;kitap&quot;</span>      <span class="p">:</span> <span class="s2">&quot;book&quot;</span><span class="p">,</span>
           <span class="s2">&quot;bilgisayar&quot;</span> <span class="p">:</span> <span class="s2">&quot;computer&quot;</span><span class="p">,</span>
           <span class="s2">&quot;programlama&quot;</span><span class="p">:</span> <span class="s2">&quot;programming&quot;</span><span class="p">,</span>
           <span class="s2">&quot;dil&quot;</span>        <span class="p">:</span> <span class="s2">&quot;language&quot;</span><span class="p">,</span>
@@ -216,21 +224,21 @@ mesela:</p>
 </div>
 <p>Bu sözlükte birtakım Türkçe kelimeler ve bunların İngilizce karşılıkları var.
 Şimdi mesela bu sözlükteki ‘kitap’ adlı öğeye erişelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">sözlük</span><span class="p">[</span><span class="s2">&quot;kitap&quot;</span><span class="p">])</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">sözlük</span><span class="p">[</span><span class="s2">&quot;kitap&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>Bu kodları çalıştırdığımızda şöyle bir çıktı alırız:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">book</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">book</span>
 </pre></div>
 </div>
 <p>Yukarıdaki örnekten anladığımız gibi, sözlük öğelerine erişmek için şöyle bir
 formül kullanıyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sözlük</span><span class="p">[</span><span class="n">sözlük_öğesinin_adı</span><span class="p">]</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">sözlük</span><span class="p">[</span><span class="n">sözlük_öğesinin_adı</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>Aynı şekilde <cite>sözlük</cite> değişkeni içindeki ‘bilgisayar’ öğesinin karşılığını almak
 istersek şöyle bir kod yazıyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">sözlük</span><span class="p">[</span><span class="s2">&quot;bilgisayar&quot;</span><span class="p">])</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">sözlük</span><span class="p">[</span><span class="s2">&quot;bilgisayar&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>Bu da bize <cite>“computer”</cite> çıktısını veriyor.</p>
@@ -239,7 +247,7 @@ anlattıklarımıza geri dönelim şimdi. Artık sözlük adlı veri tipiyle iyi
 tanıştığımıza göre, orada anlattıklarımız zihninizde daha net bir hale gelmiş
 olmalı.</p>
 <p>Oradaki tablomuz şöyleydi:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">çeviri_tablosu</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Ö&quot;</span><span class="p">:</span> <span class="s2">&quot;O&quot;</span><span class="p">,</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">çeviri_tablosu</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Ö&quot;</span><span class="p">:</span> <span class="s2">&quot;O&quot;</span><span class="p">,</span>
                   <span class="s2">&quot;ç&quot;</span><span class="p">:</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span>
                   <span class="s2">&quot;Ü&quot;</span><span class="p">:</span> <span class="s2">&quot;U&quot;</span><span class="p">,</span>
                   <span class="s2">&quot;Ç&quot;</span><span class="p">:</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span>
@@ -255,18 +263,18 @@ olmalı.</p>
 </div>
 <p>Mesela bu sözlükteki <cite>“Ö”</cite> öğesinin karşılığını elde etmek için şöyle bir kod
 yazdığımızı gayet iyi hatırlıyorsunuz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">çeviri_tablosu</span><span class="p">[</span><span class="s2">&quot;Ö&quot;</span><span class="p">])</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">çeviri_tablosu</span><span class="p">[</span><span class="s2">&quot;Ö&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>Bu kodları bir dosyaya kaydedip çalıştırdığımızda şöyle bir çıktı alıyorduk:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">O</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">O</span>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi sözlükteki <cite>“Ö”</cite> adlı öğeyi parantez içinde belirttiğimiz zaman,
 Python bize bu öğenin karşısındaki değeri veriyor. Dolayısıyla sözlük içinde
 <cite>“Ö”</cite> öğesinin karşılığı <cite>“O”</cite> harfi olduğu için de çıktımız <cite>“O”</cite> oldu.</p>
 <p>Sözlüğün öteki öğelerini ise şu şekilde alabiliyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">çeviri_tablosu</span><span class="p">[</span><span class="s2">&quot;Ö&quot;</span><span class="p">])</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">çeviri_tablosu</span><span class="p">[</span><span class="s2">&quot;Ö&quot;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">çeviri_tablosu</span><span class="p">[</span><span class="s2">&quot;ç&quot;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">çeviri_tablosu</span><span class="p">[</span><span class="s2">&quot;Ü&quot;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">çeviri_tablosu</span><span class="p">[</span><span class="s2">&quot;Ç&quot;</span><span class="p">])</span>
@@ -280,7 +288,7 @@ Python bize bu öğenin karşısındaki değeri veriyor. Dolayısıyla sözlük 
 </div>
 <p>Ancak kod tekrarından kaçınmak için yukarıdaki kodları şu şekilde sadeleştirme
 imkanımızın da olduğunu biliyorsunuz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">çeviri_tablosu</span><span class="p">:</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">çeviri_tablosu</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">çeviri_tablosu</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -288,9 +296,9 @@ imkanımızın da olduğunu biliyorsunuz:</p>
 görünen öğeleri köşeli parantez içinde yazarak, iki nokta üst üste işaretinin
 sağ tarafındaki değerleri elde edebiliyoruz.</p>
 <p>Eğer bir sözlük içinde bulunmayan bir öğeye erişmeye çalışırsak Python bize
-<code class="docutils literal notranslate"><span class="pre">KeyError</span></code> tipinde bir hata mesajı verecektir. Mesela yukarıdaki sözlüğü temel
+<code class="docutils literal"><span class="pre">KeyError</span></code> tipinde bir hata mesajı verecektir. Mesela yukarıdaki sözlüğü temel
 alacak olursak şöyle bir sorgu hata verecektir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">çeviri_tablosu</span><span class="p">[</span><span class="s2">&quot;Z&quot;</span><span class="p">])</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">çeviri_tablosu</span><span class="p">[</span><span class="s2">&quot;Z&quot;</span><span class="p">])</span>
 
 <span class="gt">Traceback (most recent call last):</span>
   File <span class="nb">&quot;deneme.py&quot;</span>, line <span class="m">14</span>, in <span class="n">&lt;module&gt;</span>
@@ -303,7 +311,7 @@ mesajı göstermekten başka çaresi kalmıyor.</p>
 <p>Sözlükler ile ilgili epey bilgi edindik. Dilerseniz bu öğrendiklerimizi örnek
 bir uygulama üzerinde somutlaştırmaya çalışalım. Mesela Python’daki sözlükleri
 kullanarak basit bir telefon defteri uygulaması yazalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">telefon_defteri</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;ahmet öz&quot;</span> <span class="p">:</span> <span class="s2">&quot;0532 532 32 32&quot;</span><span class="p">,</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">telefon_defteri</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;ahmet öz&quot;</span> <span class="p">:</span> <span class="s2">&quot;0532 532 32 32&quot;</span><span class="p">,</span>
                    <span class="s2">&quot;mehmet su&quot;</span><span class="p">:</span> <span class="s2">&quot;0543 543 42 42&quot;</span><span class="p">,</span>
                    <span class="s2">&quot;seda naz&quot;</span> <span class="p">:</span> <span class="s2">&quot;0533 533 33 33&quot;</span><span class="p">,</span>
                    <span class="s2">&quot;eda ala&quot;</span>  <span class="p">:</span> <span class="s2">&quot;0212 212 12 12&quot;</span><span class="p">}</span>
@@ -317,7 +325,7 @@ kullanarak basit bir telefon defteri uygulaması yazalım:</p>
 </div>
 <p>Burada öncelikle isimler ve telefon numaralarından oluşan, sözlük veri tipinde
 bir telefon defteri oluşturduk:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">telefon_defteri</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;ahmet öz&quot;</span> <span class="p">:</span> <span class="s2">&quot;0532 532 32 32&quot;</span><span class="p">,</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">telefon_defteri</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;ahmet öz&quot;</span> <span class="p">:</span> <span class="s2">&quot;0532 532 32 32&quot;</span><span class="p">,</span>
                    <span class="s2">&quot;mehmet su&quot;</span><span class="p">:</span> <span class="s2">&quot;0543 543 42 42&quot;</span><span class="p">,</span>
                    <span class="s2">&quot;seda naz&quot;</span> <span class="p">:</span> <span class="s2">&quot;0533 533 33 33&quot;</span><span class="p">,</span>
                    <span class="s2">&quot;eda ala&quot;</span>  <span class="p">:</span> <span class="s2">&quot;0212 212 12 12&quot;</span><span class="p">}</span>
@@ -327,24 +335,24 @@ bir telefon defteri oluşturduk:</p>
 kullanarak oluşturduğumuz oldukça basit bir sözlüktür bu.</p>
 <p>Daha sonra kullanıcıdan, telefon numarasını öğrenmek için bir kişi adı girmesini
 istiyoruz. Bunu da şu kodlar yardımıyla yapıyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">kişi</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Telefon numarasını öğrenmek için bir kişi adı girin: &quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">kişi</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Telefon numarasını öğrenmek için bir kişi adı girin: &quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Ardından da telefon defterinde sorgulama yapacak olan kullanıcıya göstereceğimiz
 cevap için bir şablon oluşturuyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">cevap</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> adlı kişinin telefon numarası: </span><span class="si">{}</span><span class="s2">&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">cevap</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> adlı kişinin telefon numarası: </span><span class="si">{}</span><span class="s2">&quot;</span>
 </pre></div>
 </div>
 <p>Mesela kullanıcı <cite>“ahmet öz”</cite> ismini sorgulamışsa ona şöyle bir cevap
 vereceğiz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;ahmet öz adlı kişinin telefon numarası 0532 532 32 32&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="s2">&quot;ahmet öz adlı kişinin telefon numarası 0532 532 32 32&quot;</span>
 </pre></div>
 </div>
 <p>Eğer aranan isim telefon defterinde varsa, bir önceki adımda tanımladığımız
 cevap şablonuna göre kullanıcıyı bilgilendiriyoruz. Ama eğer isim defterde
 yoksa, programımız hata veriyor. Bunu önlemek için şöyle bir kod
 yazabilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">telefon_defteri</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;ahmet öz&quot;</span> <span class="p">:</span> <span class="s2">&quot;0532 532 32 32&quot;</span><span class="p">,</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">telefon_defteri</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;ahmet öz&quot;</span> <span class="p">:</span> <span class="s2">&quot;0532 532 32 32&quot;</span><span class="p">,</span>
                    <span class="s2">&quot;mehmet su&quot;</span><span class="p">:</span> <span class="s2">&quot;0543 543 42 42&quot;</span><span class="p">,</span>
                    <span class="s2">&quot;seda naz&quot;</span> <span class="p">:</span> <span class="s2">&quot;0533 533 33 33&quot;</span><span class="p">,</span>
                    <span class="s2">&quot;eda ala&quot;</span>  <span class="p">:</span> <span class="s2">&quot;0212 212 12 12&quot;</span><span class="p">}</span>
@@ -358,7 +366,7 @@ yazabilirsiniz:</p>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Aradığınız kişi telefon rehberinde yok!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">kişi</span> <span class="pre">in</span> <span class="pre">telefon_defteri</span></code> satırı yardımıyla öncelikle
+<p>Gördüğünüz gibi, <code class="docutils literal"><span class="pre">if</span> <span class="pre">kişi</span> <span class="pre">in</span> <span class="pre">telefon_defteri</span></code> satırı yardımıyla öncelikle
 aranan ismin sözlükte olup olmadığını denetledik. Eğer aranan isim sözlükte yer
 alıyorsa bu telefon numarasını kullanıcılarımıza gösteriyoruz. Aksi durumda
 aranan kişinin telefon rehberinde olmadığı konusunda kullanıcılarımızı
@@ -382,7 +390,7 @@ tipinin derinliklerine doğru yol almaya devam edelim.</p>
 sözlüğün öğelerine nasıl erişileceğini öğrendik. Gelin isterseniz şimdi sözlük
 veri tipinin yapısına ilişkin bazı ayrıntıları inceleyelim.</p>
 <p>Mesela şu örneği tekrar önümüze alalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;kitap&quot;</span><span class="p">:</span> <span class="s2">&quot;book&quot;</span><span class="p">}</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;kitap&quot;</span><span class="p">:</span> <span class="s2">&quot;book&quot;</span><span class="p">}</span>
 </pre></div>
 </div>
 <p>Burada iki nokta üst üste işaretinden önce ve sonra birer tane karakter dizisi
@@ -409,7 +417,7 @@ eşleştirme görevi görür.</p>
 görebiliyoruz.</p>
 <p>Yukarıdaki örneklerde tanımladığımız sözlüklerde sadece karakter dizilerini
 kullandık. Ama aslında sözlükler farklı veri tiplerinden oluşabilir. Mesela:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;sıfır&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;sıfır&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
           <span class="s2">&quot;bir&quot;</span>  <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
           <span class="s2">&quot;iki&quot;</span>  <span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
           <span class="s2">&quot;üç&quot;</span>   <span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
@@ -419,25 +427,25 @@ kullandık. Ama aslında sözlükler farklı veri tiplerinden oluşabilir. Mesel
 </div>
 <p>Burada sözlük içinde hem sayıları hem de karakter dizilerini kullandık. Aynı
 şekilde sözlük içinde listelere de yer verebiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Ahmet Özkoparan&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;İstanbul&quot;</span><span class="p">,</span> <span class="s2">&quot;Öğretmen&quot;</span><span class="p">,</span> <span class="mi">34</span><span class="p">],</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Ahmet Özkoparan&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;İstanbul&quot;</span><span class="p">,</span> <span class="s2">&quot;Öğretmen&quot;</span><span class="p">,</span> <span class="mi">34</span><span class="p">],</span>
           <span class="s2">&quot;Mehmet Yağız&quot;</span>   <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Adana&quot;</span><span class="p">,</span> <span class="s2">&quot;Mühendis&quot;</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span>
           <span class="s2">&quot;Seda Bayrak&quot;</span>    <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;İskenderun&quot;</span><span class="p">,</span> <span class="s2">&quot;Doktor&quot;</span><span class="p">,</span> <span class="mi">30</span><span class="p">]}</span>
 </pre></div>
 </div>
 <p>Mesela bu sözlükte <cite>“Seda Bayrak”</cite> adlı kişinin bilgilerine ulaşmak istersek
 şöyle bir kod yazabiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">sözlük</span><span class="p">[</span><span class="s2">&quot;Seda Bayrak&quot;</span><span class="p">])</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">sözlük</span><span class="p">[</span><span class="s2">&quot;Seda Bayrak&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>Bu kod bize şöyle bir çıktı verecektir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;İskenderun&#39;</span><span class="p">,</span> <span class="s1">&#39;Doktor&#39;</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;İskenderun&#39;</span><span class="p">,</span> <span class="s1">&#39;Doktor&#39;</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi, sözlük içinde <cite>“Seda Bayrak”</cite> adlı öğenin karşısındaki bilgi
 listesine ulaşabildik.</p>
 <p>İstersek sözlükleri, içlerinde başka sözlükleri barındıracak şekilde de
 tanımlayabiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">kişiler</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Ahmet Özkoparan&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;Memleket&quot;</span><span class="p">:</span> <span class="s2">&quot;İstanbul&quot;</span><span class="p">,</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">kişiler</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Ahmet Özkoparan&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;Memleket&quot;</span><span class="p">:</span> <span class="s2">&quot;İstanbul&quot;</span><span class="p">,</span>
                                <span class="s2">&quot;Meslek&quot;</span>  <span class="p">:</span> <span class="s2">&quot;Öğretmen&quot;</span><span class="p">,</span>
                                <span class="s2">&quot;Yaş&quot;</span>     <span class="p">:</span> <span class="mi">34</span><span class="p">},</span>
 
@@ -451,7 +459,7 @@ tanımlayabiliriz:</p>
 </pre></div>
 </div>
 <p>Böylece şöyle kodlar yazabiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">kişiler</span><span class="p">[</span><span class="s2">&quot;Mehmet Yağız&quot;</span><span class="p">][</span><span class="s2">&quot;Memleket&quot;</span><span class="p">])</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">kişiler</span><span class="p">[</span><span class="s2">&quot;Mehmet Yağız&quot;</span><span class="p">][</span><span class="s2">&quot;Memleket&quot;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">kişiler</span><span class="p">[</span><span class="s2">&quot;Seda Bayrak&quot;</span><span class="p">][</span><span class="s2">&quot;Yaş&quot;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">kişiler</span><span class="p">[</span><span class="s2">&quot;Ahmet Özkoparan&quot;</span><span class="p">][</span><span class="s2">&quot;Meslek&quot;</span><span class="p">])</span>
 </pre></div>
@@ -459,7 +467,7 @@ tanımlayabiliriz:</p>
 <p>Yukarıdaki yapının benzerini listeler konusundan hatırlıyor olmalısınız. İç içe
 geçmiş listelerin öğelerine ulaşırken de buna benzer bir sözdiziminden
 yararlanıyorduk. Örneğin:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">liste</span> <span class="o">=</span> <span class="p">[[</span><span class="s2">&quot;Ahmet&quot;</span><span class="p">,</span> <span class="s2">&quot;Mehmet&quot;</span><span class="p">,</span> <span class="s2">&quot;Ayşe&quot;</span><span class="p">],</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">liste</span> <span class="o">=</span> <span class="p">[[</span><span class="s2">&quot;Ahmet&quot;</span><span class="p">,</span> <span class="s2">&quot;Mehmet&quot;</span><span class="p">,</span> <span class="s2">&quot;Ayşe&quot;</span><span class="p">],</span>
          <span class="p">[</span><span class="s2">&quot;Sedat&quot;</span><span class="p">,</span> <span class="s2">&quot;Serkan&quot;</span><span class="p">,</span> <span class="s2">&quot;Selin&quot;</span><span class="p">],</span>
          <span class="p">[</span><span class="s2">&quot;Zeynep&quot;</span><span class="p">,</span> <span class="s2">&quot;Nur&quot;</span><span class="p">,</span> <span class="s2">&quot;Eda&quot;</span><span class="p">]]</span>
 </pre></div>
@@ -467,18 +475,18 @@ yararlanıyorduk. Örneğin:</p>
 <p>Burada bir liste içinde iç içe geçmiş üç farklı liste ile karşı karşıyayız.
 Mesela ilk listenin ilk öğesi olan <cite>“Ahmet”</cite> adlı öğeye erişmek istersek şöyle
 bir kod yazmamız gerekiyor:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">liste</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">liste</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>İşte iç içe geçmiş sözlüklerin öğelerine ulaşmak için de buna benzer bir kod
 yazmamız gerekiyor. Örneğin <cite>kişiler</cite> adlı sözlükteki <cite>“Mehmet Yağız”</cite> adlı
 kişinin yaşına ulaşmak istersek şöyle bir şey yazacağız:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">kişiler</span><span class="p">[</span><span class="s2">&quot;Mehmet Yağız&quot;</span><span class="p">][</span><span class="s2">&quot;Yaş&quot;</span><span class="p">])</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">kişiler</span><span class="p">[</span><span class="s2">&quot;Mehmet Yağız&quot;</span><span class="p">][</span><span class="s2">&quot;Yaş&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>Gelin isterseniz <cite>kişiler</cite> adlı sözlüğü kullanarak basit bir irtibat listesi
 uygulaması yazalım. Böylece sözlüklere elimizi alıştırmış oluruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">kişiler</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Ahmet Özkoparan&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;Memleket&quot;</span><span class="p">:</span> <span class="s2">&quot;İstanbul&quot;</span><span class="p">,</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">kişiler</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Ahmet Özkoparan&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;Memleket&quot;</span><span class="p">:</span> <span class="s2">&quot;İstanbul&quot;</span><span class="p">,</span>
                                <span class="s2">&quot;Meslek&quot;</span>  <span class="p">:</span> <span class="s2">&quot;Öğretmen&quot;</span><span class="p">,</span>
                                <span class="s2">&quot;Yaş&quot;</span>     <span class="p">:</span> <span class="mi">34</span><span class="p">},</span>
 
@@ -509,7 +517,7 @@ alan öğelerin herhangi bir sıralama mantığına sahip olmamasıdır. Yani s�
 öğeler açısından ‘sıra’ diye bir kavram yoktur.</p>
 <p>Örneğin bir liste, demet veya karakter dizisi içindeki öğelere; bu öğelerin o
 liste, demet veya karakter dizisi içindeki sıralarına göre erişebilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Ahmet&quot;</span><span class="p">,</span> <span class="s2">&quot;Mehmet&quot;</span><span class="p">,</span> <span class="s2">&quot;Zeynep&quot;</span><span class="p">]</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Ahmet&quot;</span><span class="p">,</span> <span class="s2">&quot;Mehmet&quot;</span><span class="p">,</span> <span class="s2">&quot;Zeynep&quot;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="go">&#39;Ahmet&#39;</span>
@@ -520,7 +528,7 @@ liste, demet veya karakter dizisi içindeki sıralarına göre erişebilirsiniz:
 </pre></div>
 </div>
 <p>Ancak sözlükler açısından böyle bir şey söz konusu değildir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;elma&#39;</span><span class="p">:</span> <span class="s1">&#39;apple&#39;</span><span class="p">,</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;elma&#39;</span><span class="p">:</span> <span class="s1">&#39;apple&#39;</span><span class="p">,</span>
 <span class="gp">... </span>          <span class="s1">&#39;armut&#39;</span><span class="p">:</span> <span class="s1">&#39;pear&#39;</span><span class="p">,</span>
 <span class="gp">... </span>          <span class="s1">&#39;çilek&#39;</span><span class="p">:</span> <span class="s1">&#39;strawberry&#39;</span><span class="p">}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -534,7 +542,7 @@ liste, demet veya karakter dizisi içindeki sıralarına göre erişebilirsiniz:
 çalıştığımızda Python bize bir hata mesajı gösteriyor.</p>
 <p>Bu durumun etkilerini şurada da görebilirsiniz:</p>
 <p>Dikkatlice bakın:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;2&#39;</span><span class="p">}</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;2&#39;</span><span class="p">}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span>
 
 <span class="go">{&#39;a&#39;: &#39;0&#39;, &#39;c&#39;: &#39;2&#39;, &#39;b&#39;: &#39;1&#39;}</span>
@@ -555,33 +563,33 @@ sözlüğü ilk kez tanımladıktan sonra istediğimiz zaman bu sözlüğe yeni 
 ekleyebilir veya varolan öğeleri çıkarabiliriz. Biz şimdi bir sözlüğe nasıl öğe
 ekleyeceğimizi inceleyeceğiz.</p>
 <p>Diyelim ki elimizde şöyle boş bir sözlük var:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{}</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{}</span>
 </pre></div>
 </div>
 <p>Bu listeye öğe eklemek için şöyle bir formül kullanacağız:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span><span class="p">[</span><span class="n">anahtar</span><span class="p">]</span> <span class="o">=</span> <span class="n">değer</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span><span class="p">[</span><span class="n">anahtar</span><span class="p">]</span> <span class="o">=</span> <span class="n">değer</span>
 </pre></div>
 </div>
 <p>Bu formülü bir örnek üzerinden somutlaştıralım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span><span class="p">[</span><span class="s2">&quot;Ahmet&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Adana&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span><span class="p">[</span><span class="s2">&quot;Ahmet&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Adana&quot;</span>
 </pre></div>
 </div>
 <p>Böylece sözlüğe, anahtarı <cite>“Ahmet”</cite>, değeri ise <cite>“Adana”</cite> olan bir öğe eklemiş
 olduk. Sözlüğümüzün son durumunu kontrol edelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">sözlük</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">sözlük</span><span class="p">)</span>
 
 <span class="go">{&#39;Ahmet&#39;: &#39;Adana&#39;}</span>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi, “Ahmet” öğesi sözlüğe eklendi. Artık bu öğeye normal yollardan
 ulaşabiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">sözlük</span><span class="p">[</span><span class="s2">&quot;Ahmet&quot;</span><span class="p">])</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">sözlük</span><span class="p">[</span><span class="s2">&quot;Ahmet&quot;</span><span class="p">])</span>
 
 <span class="go">Adana</span>
 </pre></div>
 </div>
 <p>Elimiz alışsın diye sözlüğe öğe eklemeye devam edelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span><span class="p">[</span><span class="s2">&quot;Mehmet&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;İstanbul&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span><span class="p">[</span><span class="s2">&quot;Mehmet&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;İstanbul&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span>
 
 <span class="go">{&#39;Ahmet&#39;: &#39;Adana&#39;, &#39;Mehmet&#39;: &#39;İstanbul&#39;}</span>
@@ -603,18 +611,18 @@ ortasına bir yere yerleştiğini görüyoruz. Bu durumun, sözlüklerin sıras�
 veri tipi olmasından kaynaklandığını biliyorsunuz.</p>
 <p>Gelin pratik olması açısından birkaç örnek daha verelim.</p>
 <p>Elimizde şöyle bir sözlük olsun:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">personel</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Mehmet Öz&quot;</span><span class="p">:</span> <span class="s2">&quot;AR-GE Müdürü&quot;</span><span class="p">,</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">personel</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Mehmet Öz&quot;</span><span class="p">:</span> <span class="s2">&quot;AR-GE Müdürü&quot;</span><span class="p">,</span>
 <span class="gp">... </span>            <span class="s2">&quot;Samet Söz&quot;</span><span class="p">:</span> <span class="s2">&quot;Genel Direktör&quot;</span><span class="p">,</span>
 <span class="gp">... </span>            <span class="s2">&quot;Sedat Gün&quot;</span><span class="p">:</span> <span class="s2">&quot;Proje Müdürü&quot;</span><span class="p">}</span>
 </pre></div>
 </div>
-<p>Şimdi bu sözlüğe <code class="docutils literal notranslate"><span class="pre">&quot;Turgut</span> <span class="pre">Özben&quot;:</span> <span class="pre">&quot;Mühendis&quot;</span></code> anahtar-değer çiftini
+<p>Şimdi bu sözlüğe <code class="docutils literal"><span class="pre">&quot;Turgut</span> <span class="pre">Özben&quot;:</span> <span class="pre">&quot;Mühendis&quot;</span></code> anahtar-değer çiftini
 ekleyelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">personel</span><span class="p">[</span><span class="s2">&quot;Turgut Özben&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Mühendis&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">personel</span><span class="p">[</span><span class="s2">&quot;Turgut Özben&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Mühendis&quot;</span>
 </pre></div>
 </div>
 <p>Sözlüğümüzün son halini görelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">personel</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">personel</span><span class="p">)</span>
 
 <span class="go">{&#39;Samet Söz&#39;: &#39;Genel Direktör&#39;, &#39;Mehmet Öz&#39;: &#39;AR-GE Müdürü&#39;, &#39;Turgut Özben&#39;:</span>
 <span class="go">&#39;Mühendis&#39;, &#39;Sedat Gün&#39;: &#39;Proje Müdürü&#39;}</span>
@@ -626,11 +634,11 @@ dikkatinizi çekmek isterim. Çünkü, dediğimiz gibi, sözlükler sırasız bi
 tipidir.</p>
 <p>Gelin bu konuyu daha iyi anlamak için bir örnek daha verelim.</p>
 <p>Önce <cite>notlar</cite> adında boş bir sözlük tanımlayalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">notlar</span> <span class="o">=</span> <span class="p">{}</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">notlar</span> <span class="o">=</span> <span class="p">{}</span>
 </pre></div>
 </div>
 <p>Bu sözlüğe öğrencilerin sınavdan aldıkları notları ekleyeceğiz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">notlar</span><span class="p">[</span><span class="s2">&quot;Ahmet&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">45</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">notlar</span><span class="p">[</span><span class="s2">&quot;Ahmet&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">45</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">notlar</span><span class="p">[</span><span class="s2">&quot;Mehmet&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">77</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">notlar</span><span class="p">[</span><span class="s2">&quot;Seda&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">98</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">notlar</span><span class="p">[</span><span class="s2">&quot;Deniz&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">95</span>
@@ -639,14 +647,14 @@ tipidir.</p>
 </pre></div>
 </div>
 <p>Sözlüğümüzün son halini görelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">notlar</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">notlar</span><span class="p">)</span>
 
 <span class="go">{&#39;Seda&#39;: 98, &#39;Ege&#39;: 95, &#39;Mehmet&#39;: 77, &#39;Zeynep&#39;: 100, &#39;Deniz&#39;: 95, &#39;Ahmet&#39;: 45}</span>
 </pre></div>
 </div>
 <p>Bu noktada sözlüklerin önemli bir özelliğinden bahsetmemiz uygun olacak. Bir
 sözlüğe değer olarak bütün veri tiplerini verebiliriz. Yani:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{}</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;kardiz&#39;</span><span class="p">}</span>
@@ -676,11 +684,11 @@ olarak her veri tipini atayamayız. Bir değerin ‘anahtar’ olabilmesi için,
 </ol>
 <p>Şu kodları dikkatlice inceleyin:</p>
 <p>Önce boş bir sözlük oluşturalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{}</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{}</span>
 </pre></div>
 </div>
 <p>Bu sözlüğe anahtar olarak bir demet ekleyelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;falanca&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span>
 
@@ -688,7 +696,7 @@ olarak her veri tipini atayamayız. Bir değerin ‘anahtar’ olabilmesi için,
 </pre></div>
 </div>
 <p>Bir sayı ekleyelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="mi">45</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="mi">45</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;falanca&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span>
 
@@ -696,7 +704,7 @@ olarak her veri tipini atayamayız. Bir değerin ‘anahtar’ olabilmesi için,
 </pre></div>
 </div>
 <p>Bir karakter dizisi ekleyelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="s1">&#39;kardiz&#39;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="s1">&#39;kardiz&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;falanca&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span>
 
@@ -707,7 +715,7 @@ olarak her veri tipini atayamayız. Bir değerin ‘anahtar’ olabilmesi için,
 olarak eklenebildi.</p>
 <p>Bir de şunlara bakalım:</p>
 <p>Sözlüğümüze anahtar olarak bir liste eklemeye çalışalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;falanca&#39;</span>
 
 <span class="gt">Traceback (most recent call last):</span>
@@ -716,7 +724,7 @@ olarak eklenebildi.</p>
 </pre></div>
 </div>
 <p>Sözlüğümüze bir sözlük eklemeye çalışalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;falanca&#39;</span>
 
 <span class="gt">Traceback (most recent call last):</span>
@@ -732,13 +740,13 @@ olarak eklenebildi.</p>
 rahatlıkla istediğimiz değişikliği yapabiliriz.</p>
 <p>Sözlükler üzerinde değişiklik yapma işlemi, biraz önce öğrendiğimiz, sözlüklere
 yeni öğe ekleme işlemiyle aynıdır. Dikkatlice bakın:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">notlar</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Seda&#39;</span><span class="p">:</span> <span class="mi">98</span><span class="p">,</span> <span class="s1">&#39;Ege&#39;</span><span class="p">:</span> <span class="mi">95</span><span class="p">,</span> <span class="s1">&#39;Mehmet&#39;</span><span class="p">:</span> <span class="mi">77</span><span class="p">,</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">notlar</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Seda&#39;</span><span class="p">:</span> <span class="mi">98</span><span class="p">,</span> <span class="s1">&#39;Ege&#39;</span><span class="p">:</span> <span class="mi">95</span><span class="p">,</span> <span class="s1">&#39;Mehmet&#39;</span><span class="p">:</span> <span class="mi">77</span><span class="p">,</span>
 <span class="gp">... </span><span class="s1">&#39;Zeynep&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;Deniz&#39;</span><span class="p">:</span> <span class="mi">95</span><span class="p">,</span> <span class="s1">&#39;Ahmet&#39;</span><span class="p">:</span> <span class="mi">45</span><span class="p">}</span>
 </pre></div>
 </div>
 <p>Sözlüğümüz bu. Şimdi bu sözlükteki ‘Ahmet’ adlı kişinin <cite>45</cite> olan notunu <cite>65</cite>
 olarak değiştirelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">notlar</span><span class="p">[</span><span class="s2">&quot;Ahmet&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">65</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">notlar</span><span class="p">[</span><span class="s2">&quot;Ahmet&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">65</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">notlar</span><span class="p">)</span>
 
 <span class="go">{&#39;Seda&#39;: 98, &#39;Ege&#39;: 95, &#39;Mehmet&#39;: 77, &#39;Zeynep&#39;: 100, &#39;Deniz&#39;: 95, &#39;Ahmet&#39;: 65}</span>
@@ -755,12 +763,12 @@ listeler oluşturabiliyorduk. Aynı şey sözlükler için de geçerlidir. Tıpk
 şekilde sözlükler üretebiliriz.</p>
 <p>Örneğin elimizde, Türkçe alfabedeki harfleri içeren <cite>harfler</cite> adlı şöyle bir
 liste olduğunu düşünün:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">harfler</span> <span class="o">=</span> <span class="s1">&#39;abcçdefgğhıijklmnoöprsştuüvyz&#39;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">harfler</span> <span class="o">=</span> <span class="s1">&#39;abcçdefgğhıijklmnoöprsştuüvyz&#39;</span>
 </pre></div>
 </div>
 <p>Amacımız bu harflerin her birine bir numara vermek. Yani nihai olarak şöyle bir
 sözlük elde etmek istiyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;ğ&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;ğ&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
  <span class="s1">&#39;v&#39;</span><span class="p">:</span> <span class="mi">26</span><span class="p">,</span>
  <span class="s1">&#39;ş&#39;</span><span class="p">:</span> <span class="mi">22</span><span class="p">,</span>
  <span class="s1">&#39;u&#39;</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span>
@@ -792,29 +800,29 @@ sözlük elde etmek istiyoruz:</p>
 </pre></div>
 </div>
 <p>Bunun için birkaç farklı yöntemden yararlanabiliriz. Örneğin:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{}</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">harfler</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">sözlük</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">harfler</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>veya:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{}</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">harfler</span><span class="p">)):</span>
 <span class="gp">... </span>    <span class="n">sözlük</span><span class="p">[</span><span class="n">harfler</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">i</span>
 </pre></div>
 </div>
 <p>İşte bu işlemleri sözlük üreteçlerini kullanarak çok daha hızlı ve pratik bir
 şekilde halledebiliriz. Dikkatlice bakın:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:</span> <span class="n">harfler</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">harfler</span><span class="p">}</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:</span> <span class="n">harfler</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">harfler</span><span class="p">}</span>
 </pre></div>
 </div>
 <p>Bir örnek daha verelim. Diyelim ki elinizde şöyle bir isim listesi var:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">isimler</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ahmet&quot;</span><span class="p">,</span> <span class="s2">&quot;mehmet&quot;</span><span class="p">,</span> <span class="s2">&quot;fırat&quot;</span><span class="p">,</span> <span class="s2">&quot;zeynep&quot;</span><span class="p">,</span> <span class="s2">&quot;selma&quot;</span><span class="p">,</span> <span class="s2">&quot;abdullah&quot;</span><span class="p">,</span> <span class="s2">&quot;cem&quot;</span><span class="p">]</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">isimler</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ahmet&quot;</span><span class="p">,</span> <span class="s2">&quot;mehmet&quot;</span><span class="p">,</span> <span class="s2">&quot;fırat&quot;</span><span class="p">,</span> <span class="s2">&quot;zeynep&quot;</span><span class="p">,</span> <span class="s2">&quot;selma&quot;</span><span class="p">,</span> <span class="s2">&quot;abdullah&quot;</span><span class="p">,</span> <span class="s2">&quot;cem&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>Amacınız, bu isimleri ve her bir ismin kaç harften oluştuğunu gösteren bir
 sözlük elde etmek. Yani nihai olarak şöyle bir şey olsun istiyorsunuz elinizde:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;zeynep&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;zeynep&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
  <span class="s1">&#39;cem&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
  <span class="s1">&#39;abdullah&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
  <span class="s1">&#39;ahmet&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
@@ -824,7 +832,7 @@ sözlük elde etmek. Yani nihai olarak şöyle bir şey olsun istiyorsunuz elini
 </pre></div>
 </div>
 <p>İşte bu görev için de sözlük üreteçlerinden yararlanabilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">isimler</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ahmet&quot;</span><span class="p">,</span> <span class="s2">&quot;mehmet&quot;</span><span class="p">,</span> <span class="s2">&quot;fırat&quot;</span><span class="p">,</span> <span class="s2">&quot;zeynep&quot;</span><span class="p">,</span> <span class="s2">&quot;selma&quot;</span><span class="p">,</span> <span class="s2">&quot;abdullah&quot;</span><span class="p">,</span> <span class="s2">&quot;cem&quot;</span><span class="p">]</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">isimler</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ahmet&quot;</span><span class="p">,</span> <span class="s2">&quot;mehmet&quot;</span><span class="p">,</span> <span class="s2">&quot;fırat&quot;</span><span class="p">,</span> <span class="s2">&quot;zeynep&quot;</span><span class="p">,</span> <span class="s2">&quot;selma&quot;</span><span class="p">,</span> <span class="s2">&quot;abdullah&quot;</span><span class="p">,</span> <span class="s2">&quot;cem&quot;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">isimler</span><span class="p">}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span>
 
@@ -906,9 +914,9 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
     </div> 
 
 <div class="footer">
-&copy; Copyright 2007-2019, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 15.12.2019.
-<a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5 ile oluşturulmuştur.
+&copy; Copyright 2007-2020, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 02.01.2020.
+<a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7 ile oluşturulmuştur.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img

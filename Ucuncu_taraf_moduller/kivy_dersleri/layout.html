@@ -5,16 +5,23 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Pencere düzenleri &#8212; Python 3 için Türkçe Kılavuz</title>
     <link rel="stylesheet" href="../../_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
     <script type="text/javascript" src="../../_static/translations.js"></script>
     <link rel="search" title="Ara" href="../../search.html" />
     <link rel="next" title="Temel Pencere Araçları" href="widgets.html" />
@@ -23,7 +30,8 @@
 <link rel="stylesheet" href="../../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
 <![endif]-->
 
-  </head><body>
+  </head>
+  <body>
 <div class='header'><a href='https://yazbel.com'>yazbel.com</a></div>
 
 <ul class='navbar'>
@@ -66,7 +74,7 @@
 <span id="id1"></span><h2>BoxLayout<a class="headerlink" href="#boxlayout" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>kivy.uix.boxlayout.BoxLayout</p>
 <p>Bu pencere düzeni, içerisine yerleştirilen araçları yan yana veya alt alta yerleştirir. Hemen bir örnekle görelim.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
 <span class="kn">from</span> <span class="nn">kivy.uix.label</span> <span class="kn">import</span> <span class="n">Label</span>
 <span class="kn">from</span> <span class="nn">kivy.uix.boxlayout</span> <span class="kn">import</span> <span class="n">BoxLayout</span>
 
@@ -92,7 +100,7 @@
 <p>Bir pencere düzenini kullanabilmek için öncelikle onu tanımlamanız gerekir. duzen isminde bir değişkenle tanımladık ve iki adet yazımızı bu düzenin içine add_widget() fonksiyonu ile ekledik. Bir pencere düzeninin içerisine pencere aracı eklemek için add_widget() fonksiyonu kullanılır. Bir pencere aracını kaldırmak için ise, remove_widget() fonksiyonu kullanılır.</p>
 <p>Eğer BoxLayout pencere düzenini tanımlarken herhangi bir parametre vermezseniz elemanları yanyana dizecektir. Eğer alt alta dizmesini isterseniz orientation parametresini kullanmanız gerekir.</p>
 <p>Örnek;</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
 <span class="kn">from</span> <span class="nn">kivy.uix.label</span> <span class="kn">import</span> <span class="n">Label</span>
 <span class="kn">from</span> <span class="nn">kivy.uix.boxlayout</span> <span class="kn">import</span> <span class="n">BoxLayout</span>
 
@@ -118,7 +126,7 @@
 <p id="target">Amacımız şuna benzer bir pencere oluşturmak;</p>
 <img alt="../../_images/box3.png" src="../../_images/box3.png" />
 <p>Hem alt alta elemanlar var, hem de yan yana. Şimdi böyle bir pencereyi nasıl oluşturacağımızı görelim.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
 <span class="kn">from</span> <span class="nn">kivy.uix.label</span> <span class="kn">import</span> <span class="n">Label</span>
 <span class="kn">from</span> <span class="nn">kivy.uix.boxlayout</span> <span class="kn">import</span> <span class="n">BoxLayout</span>
 <span class="kn">from</span> <span class="nn">kivy.uix.button</span> <span class="kn">import</span> <span class="n">Button</span>
@@ -164,7 +172,7 @@
 <p>TextInput, kullanıcıdan girdi almayı sağlar. Böylece kullanıcı ile iletişime geçebiliriz, girdilere göre işlemler yapabiliriz.</p>
 <p>Örneğimiz 3 tane BoxLayout düzeninden oluşuyor. Birincisi, tüm elemanları alt alta tutacak olan “anaDuzen”, İkincisi Nick ve Nick girme kutusunu yan yana tutacak olan “ilkSatir”, ve sonuncusu Şifre ve Şifre girme kutusunu yan yana tutacak olan “ikinciSatir”. Butonumuzu sadece anaDuzen’e eklememiz yeterli.Unutmayın bir pencere düzeninin içine başka bir pencere düzeni ekleyebilirsiniz.</p>
 <p>Peki bu örneğimizi kv dili ile yazsaydık nasıl olurdu? Hemen bakalım</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">BoxLayout</span><span class="p">:</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">BoxLayout</span><span class="p">:</span>
     <span class="n">orientation</span><span class="p">:</span> <span class="s2">&quot;vertical&quot;</span>
     <span class="n">BoxLayout</span><span class="p">:</span>
         <span class="n">Label</span><span class="p">:</span>
@@ -184,7 +192,7 @@
 <h2>FloatLayout<a class="headerlink" href="#floatlayout" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>kivy.uix.floatlayout.FloatLayout</p>
 <p>FloatLayout pencere düzeni, araçları istediğimiz boyutta ve koordinatta yerleştirebileceğimiz bir pencere düzenidir. Her zaman olduğu gibi önce import etmeliyiz ve kullanmak üzere tanımlamalıyız. Bir örnek yapalım</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding:utf-8 -*-</span>
 
 <span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
@@ -216,11 +224,11 @@
 <p>size_hint ile butonumuzun boyutlarını belirledikten sonra, pos parametresi ile FloatLayout pencere düzenindeki yerini belirledik. pos = (10,10) yani sıra ile 10 pixel soldan uzaklık, 10 pixel aşağıdan uzaklık şeklinde tanımlanır. Kivy’de (0,0) noktası sol-alt köşedir.</p>
 <p>Eğer butonumuza bu parametreleri vermeden pencere düzenimize eklersek, tüm ekranı dolduracak şekilde boyutlandırılacaktır.</p>
 <p>FloatLayout pencere düzenimizin de boyutunu ayarlayabiliriz. Bunun için</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">duzen</span> <span class="o">=</span> <span class="n">FloatLayout</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">300</span><span class="p">,</span><span class="mi">300</span><span class="p">))</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">duzen</span> <span class="o">=</span> <span class="n">FloatLayout</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">300</span><span class="p">,</span><span class="mi">300</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>gibi bir tanımlama yapmamız yeterli. Aynı şekilde pencereye orantılı olmasını istersek, size_hint parametresini de verebiliriz. Bir örnekle beraber görelim</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># coding:utf-8</span>
 
 <span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
@@ -248,7 +256,7 @@
 <img alt="../../_images/float2.png" src="../../_images/float2.png" />
 <p>FloatLayout pencere düzenine eklenen araçların, ekrana orantılı bir şekilde yerleştirilmesini istersek, pos_hint parametresini kullanabiliriz.Böylece penceremizin boyutu ne olursa olsun, orantılı bir şekilde yerleştirilecektir. Aşağıdaki kodları çalıştırıp pencerenin boyutlarıyla oynarsanız, ne demek istediğimi çok daha iyi anlarsınız.</p>
 <p>Kullanımı şu şekilde;</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># coding:utf-8</span>
 
 <span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
@@ -274,7 +282,7 @@
 </pre></div>
 </div>
 <p>FloatLayout pencere düzeni ile ilgili anlatacaklarımız bu kadar. FloatLayout pencere düzeni, üzerinde serbest konumlandırma yapıldığı için animasyon için uygundur. Sadece örnek olması açısından, aşağıdaki kodu çalıştırın ve ne olduğunu görün. Kodu anlamanızı istemiyorum, ileride zaten anlatacağız, sadece kodun sonuçlarını görmeniz yeterli.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># coding:utf-8</span>
 
 <span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
@@ -317,7 +325,7 @@
 <p>Bu bölümde GridLayout pencere düzenini inceleyeceğiz. GridLayout, ızgara şeklinde yerleştirmeye imkan veren bir pencere düzenidir. Örneğin şöyle bir görüntü elde etmek için GridLayout pencere düzeni kullanılabilir</p>
 <img alt="../../_images/gridlayout.png" src="../../_images/gridlayout.png" />
 <p>GridLayout ile ilgili önemli iki kavram vardır. Birincisi rows, yani satır. GridLayout pencere düzeninin max kaç satırdan oluşmasını istiyorsak, rows parametresini kullanırız. Diğeri ise, cols yani sütun. GridLayout pencere düzenimizin max kaç sütundan oluşmasını istiyorsak, cols parametresini kullanabiliriz. Şimdi ayrı ayrı ikisiyle ilgili birer örnek yapalım ve nasıl kullanacağımızı görelim</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
@@ -344,7 +352,7 @@
 <p>Bakalım nasıl görünüyor</p>
 <img alt="../../_images/grid1.png" src="../../_images/grid1.png" />
 <p>Gördüğünüz gibi, ne kadar eleman eklersek ekleyelim her zaman 2 sütunu aşmayacak şekilde yerleştiriliyor. Eğer bir sütunun genişliğini biraz daraltmak istersek, aynı sütuna denk gelen elemanlara size_hint_x parametresini vermemiz gerekiyor. Bir örnek üzerinden görelim</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
@@ -375,7 +383,7 @@
 </div>
 <img alt="../../_images/grid2.png" src="../../_images/grid2.png" />
 <p>width parametresini de kullanabiliriz</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
@@ -407,7 +415,7 @@
 </div>
 <p>size_hint_x = None kısmını neden yazdığımıza gelirsek, eğer orantılı boyutlandırmaya None değeri vermezsek, width ile boyutu belirlememize izin vermeyecektir. O yüzden None değeri vererek boyutlandırmayı width ile yapabildik.</p>
 <p>Şimdi, rows kullanımıyla ile ilgili örnek yapalım.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
@@ -439,22 +447,22 @@
 <h2>AnchorLayout<a class="headerlink" href="#anchorlayout" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>kivy.uix.anchorlayout.AnchorLayout</p>
 <p>Pencere araçlarını belli yönlere yaslamak isterseniz, AnchorLayout kullanabilirsiniz. Örneğin sağ-yukarı, veya orta-aşağı gibi. Yalnız, bu pencere düzeninin kullanımı biraz farklı. Diğer pencere düzenleri içerisine eklenen elemanları belli bir düzene göre yerleştiriyordu. Ancak AnchorLayout kullanımı bundan farklı, AnchorLayout daha çok içine pencere araçlarının yaslanmasında yardımcı bir eleman olarak düşünülebilir.Bir örnekle sanırım daha iyi anlayabiliriz. Öncelikle pencere düzenini tanımlayalım. Pencere aracımız X ekseninde sola yaslı ve Y ekseninde ortada dursun.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">anchor</span> <span class="o">=</span> <span class="n">AnchorLayout</span><span class="p">(</span><span class="n">anchor_x</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span><span class="p">,</span><span class="n">anchor_y</span> <span class="o">=</span> <span class="s2">&quot;center&quot;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">anchor</span> <span class="o">=</span> <span class="n">AnchorLayout</span><span class="p">(</span><span class="n">anchor_x</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span><span class="p">,</span><span class="n">anchor_y</span> <span class="o">=</span> <span class="s2">&quot;center&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Şimdi, sol-orta’ya yerleştirilmesini istediğimiz pencere aracını bunun içine koyuyoruz. Örneğin bir buton koyalım. Yalnız bu butonun boyutlarını biz belirlemezsek ekranı kaplayacaktır.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">buton</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Sol Orta&quot;</span><span class="p">,</span><span class="n">size_hint</span> <span class="o">=</span> <span class="p">(</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span><span class="o">.</span><span class="mi">2</span><span class="p">))</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">buton</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Sol Orta&quot;</span><span class="p">,</span><span class="n">size_hint</span> <span class="o">=</span> <span class="p">(</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span><span class="o">.</span><span class="mi">2</span><span class="p">))</span>
 <span class="n">anchor</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="n">buton</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>İşte önemli nokta burası. İçine buton eklediğimiz bu pencere düzeni, kendi içinde sol-orta’ya yerleştirmeyecektir. Yerleşim için, bu pencere düzenini FloatLayout gibi bir pencere düzeni içerisinde göstermeliyiz.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">govde</span> <span class="o">=</span> <span class="n">FloatLayout</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">govde</span> <span class="o">=</span> <span class="n">FloatLayout</span><span class="p">()</span>
 
 <span class="bp">self</span><span class="o">.</span><span class="n">govde</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="n">anchor</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Yerleştirdikten sonra, butonumuz AnchorLayout yardımıyla sol-ortada duracaktır. Şimdi örneği tam olarak verelim.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># coding: utf-8</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># coding: utf-8</span>
 <span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
 <span class="kn">from</span> <span class="nn">kivy.uix.widget</span> <span class="kn">import</span> <span class="n">Widget</span>
 <span class="kn">from</span> <span class="nn">kivy.uix.floatlayout</span> <span class="kn">import</span> <span class="n">FloatLayout</span>
@@ -488,7 +496,7 @@ anchor_y ile kullanılabilecek değerler: “top”,”bottom”,”center”</p
 <p>Stack yani Türkçe karşılığı olarak yığıt, tam da kelime anlamı olarak pencere araçlarını bir tarafa yığarak yerleştirir. Örneğin sağ-yukarı şeklinde tanımladığımızda, eklenen her pencere aracını bu tarafa yığarak yerleştirmeye başlayacaktır. Aşağıdaki png dosyasına bakarak daha iyi anlayabiliriz</p>
 <img alt="../../_images/stack.png" src="../../_images/stack.png" />
 <p>İçerisine yerleştirilecek pencere araçlarının boyutunu değiştirmek gerekiyor. Yoksa diğer pencere düzenlerinde de olduğu gibi, tamamen bulunduğu alanı kaplayacak ve diğer pencere araçlarının düzgün bir şekilde yerleştirilmesine engel olacaktır. Şimdi, bir örnekle bu pencere düzenini kullanalım</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#coding: utf-8</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1">#coding: utf-8</span>
 
 <span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
 <span class="kn">from</span> <span class="nn">kivy.uix.button</span> <span class="kn">import</span> <span class="n">Button</span>
@@ -603,9 +611,9 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
     </div> 
 
 <div class="footer">
-&copy; Copyright 2007-2019, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 15.12.2019.
-<a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5 ile oluşturulmuştur.
+&copy; Copyright 2007-2020, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 02.01.2020.
+<a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7 ile oluşturulmuştur.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img

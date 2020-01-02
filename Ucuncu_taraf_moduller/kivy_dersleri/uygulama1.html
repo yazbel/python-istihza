@@ -5,16 +5,23 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Uygulama 1 - Resim Görüntüleyici &#8212; Python 3 için Türkçe Kılavuz</title>
     <link rel="stylesheet" href="../../_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
     <script type="text/javascript" src="../../_static/translations.js"></script>
     <link rel="search" title="Ara" href="../../search.html" />
     <link rel="next" title="Olaylar" href="events.html" />
@@ -23,7 +30,8 @@
 <link rel="stylesheet" href="../../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
 <![endif]-->
 
-  </head><body>
+  </head>
+  <body>
 <div class='header'><a href='https://yazbel.com'>yazbel.com</a></div>
 
 <ul class='navbar'>
@@ -58,7 +66,7 @@
 <p>Şimdiye kadar öğrendiklerimiz ile örnek bir uygulama yapma zamanı geldi. Çünkü uygulamadıkça öğrenmemiz eksik kalır. O yüzden bir örnek yapalım</p>
 <p>Örneğimiz bir resim görüntüleyici. Bir klasör içinde bulunan resimleri listeler, sonra bunları ileri ve geri butonlarına bastıkça görüntüler. Planımız ise şöyle. Girişte bir yazı ve bir progressbar olacak. Resimler yüklenirken progressbar üzerinde yüklenme durumu gösterilecek. Tabi, resimler az olduğunda çok hızlı bir şekilde yüklenecek. Ancak örnekte de bulunsun diye bir progressbar eklemek istedim.</p>
 <p>Resimlerimiz yüklendikten sonra, ekrandaki yazıyı ve progressbar’ı kaldırıp yerine ana ekranımızı koyacağız. Bunu da ayrı bir fonksiyon içinde yaptık. O zaman şimdi kodumuzu görelim, sonra da incelemeye başlayalım</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="c1"># Resim Görüntüleyici</span>
 <span class="c1"># Yazbel</span>
 
@@ -197,7 +205,7 @@
 </pre></div>
 </div>
 <p>Öncelikle, programımız başlar başlamaz yazıyı ve progressbar’ı ekliyoruz sonra da resimlerin yüklenmesi için self.resimYukle fonksiyonuna gidiyoruz.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">resimYukle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">dosya_yolu</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">resimYukle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">dosya_yolu</span><span class="p">):</span>
     <span class="c1"># Format listesi</span>
     <span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;png&quot;</span><span class="p">,</span><span class="s2">&quot;gif&quot;</span><span class="p">,</span><span class="s2">&quot;jpeg&quot;</span><span class="p">,</span><span class="s2">&quot;jpg&quot;</span><span class="p">]</span>
 
@@ -225,7 +233,7 @@
 <p>Formatlarımızı tanımladıktan sonra, os.listdir() yardımıyla hangi klasördeki resimleri göstermek istiyorsak, o klasördeki dosyaları liste olarak elde ediyoruz. Bakın resimleri değil, dosyaları diyorum. Çünkü os.listdir() sadece verilen dizindeki dosyaların listesini verir. Bu listeden resim dosyalarını, bizim belirlediğimiz formatta olanları, ayırt etmek bizim işimiz.</p>
 <p>Bu yüzden hemen aşağısında for döngüsü ile bu listenin elemanlarını tek tek kontrol ettik, ve uzantısı bizim belirttiğimiz uzantılardan biriyle eşleşiyorsa, self.resimListesi adlı listemize ekledik.</p>
 <p>Tüm resimleri tespit ettikten sonra, 1 saniye sonra self.basla fonksiyonuna gidiyoruz. Bu fonksiyonda, ekrandaki tüm araçları self.govde.clear_widgets() ile temizledik ve yeni araçlarımızı ekledik.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">basla</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span> <span class="o">=</span> <span class="bp">None</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">basla</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span> <span class="o">=</span> <span class="bp">None</span><span class="p">):</span>
     <span class="c1"># Ekrandaki tüm araçları kaldırıyoruz</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">govde</span><span class="o">.</span><span class="n">clear_widgets</span><span class="p">()</span>
 
@@ -261,7 +269,7 @@
 </div>
 <p>Bu fonksiyonda yabancı olduğumuz bir kod yok sanırım.Kullandığımız tüm pencere araçlarını daha önce gördük. Sadece butonBar içine eklediğimiz bir adet boş widget var. Onu da iki butonun arasını doldurmak için ekledik. Eklemeseydik de olurdu tabi.</p>
 <p>Butonlarımızı ekledik ve ileri butonuna tıklandığı zaman, self.ileriYukle fonksiyonumuzun çalışmasını sağladık.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ileriYukle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span> <span class="o">=</span> <span class="bp">None</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ileriYukle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span> <span class="o">=</span> <span class="bp">None</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">resimSirasi</span> <span class="o">+=</span> <span class="mi">1</span>
 
     <span class="c1"># Eğer resim sırası listemizin boyutunu aşmamışsa</span>
@@ -285,7 +293,7 @@
 </div>
 <p>İlk olarak resimSirasi değişkenini 1 arttırıyoruz ve sonra da bu değerin listemizin boyutunu aşıp aşmadığını kontrol ediyoruz. Çünkü eğer boyutunu aşarsa, “liste boyutu aşıldı” hatası alabiliriz. Bu yüzden eğer boyutu aştıysa, değerini tekrardan 0 yapıyoruz</p>
 <p>Geri butonumuz için de benzer şeyleri yapıyoruz</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">geriYukle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span> <span class="o">=</span> <span class="bp">None</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">geriYukle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span> <span class="o">=</span> <span class="bp">None</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">resimSirasi</span> <span class="o">-=</span> <span class="mi">1</span>
 
     <span class="c1"># Eğer resim sırası listemizin boyutunun altına düşmemişse</span>
@@ -311,7 +319,7 @@
 </div>
 <p>Burada farklı olarak, resimSirasi değerinin eksiye düşüp düşmediğini kontrol ettik. Eksiye düştüyse, tekrar listenin sonuna alıyoruz. Böylece bir döngü içinde resimlerin görüntülenmesini sağladık.</p>
 <p>Örnekte bulunan os.sep, bulunduğunuz işletim sisteminde kullanılan dizin ayracını verir. Linux kullanıyorsanız, “/” Windows kullanıyorsanız “&quot; veya “” olarak belirlenir. Örnekte kullanmamızın sebebi, resim yolu ve resim adını birleştirdiğimizde araya dizin ayracı koymak. Eğer koymazsak, resmin bulunamadığına dair hata alırız.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">resimYolu</span><span class="o">+</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">+</span><span class="n">resim</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">resimYolu</span><span class="o">+</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">+</span><span class="n">resim</span>
 <span class="go">&quot;resim/resim.jpg&quot;</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">resimYolu</span><span class="o">+</span><span class="n">resim</span>
@@ -396,9 +404,9 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
     </div> 
 
 <div class="footer">
-&copy; Copyright 2007-2019, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 15.12.2019.
-<a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5 ile oluşturulmuştur.
+&copy; Copyright 2007-2020, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 02.01.2020.
+<a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7 ile oluşturulmuştur.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img

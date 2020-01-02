@@ -640,6 +640,94 @@ bloğunu herhangi bir hatayı engellemek için değil, hataya ilave bilgi ekleme
 için kullanıyoruz. Bunu yapmamızı sağlayan şey tabii ki bu kodlar içinde görünen
 ``raise`` adlı deyimdir...
 
+assert
+********
+
+Bazen programımızda bir hata yaptığımızda bu hatayı bulmakta zorlanabiliriz.
+``print`` fonksiyonunu kullanarak bu hatamızı bulmaya çalışabiliriz ancak
+bu da programımız ekrana çok fazla yazdırma işlemi yapıyorsa gözden kaçabilir.
+Böyle durumlarda ``assert`` ifadesini kullanabiliriz. ``assert`` ifadesi
+aynı zamanda hata yükseltmenin kısa bir yoludur. Ancak ``assert`` ifadesini
+kullanarak sadece ``AssertionError`` türünde bir hata yükseltebiliriz. Normalde
+``raise`` kullanmamız daha doğru olacaktır. Dediğimiz gibi ``assert`` ifadesi
+hızlı bir şekilde kodumuzdaki hataları belirlemek için kullanılır.
+Şimdi şöyle bir kodumuz olduğunu düşünelim::
+
+    giriş = input("Merhaba! Adın ne? ")
+    if len(giriş) == 0:
+        raise AssertionError("İsim bölümü boş.")
+    print("Hoşgeldiniz.")
+
+Bu kodu ``assert`` kullanarak şu şekilde de yazabilirdik::
+
+    giriş = input("Merhaba! Adın ne? ")
+    assert len(giriş) != 0 , "İsim bölümü boş."
+    print("Hoşgeldiniz.")
+
+Dikkat ederseniz ``assert`` ifadesinin şu şekilde kullanıldığını görebilirsiniz::
+
+    assert ifade , mesaj
+
+Burada ``ifade`` bir ``bool`` yani ``True`` veya ``False`` olabileceği gibi, (aynı ``if``'deki gibi)
+``bool`` fonksiyonu ile birlikte kullanılabilecek bir nesne de olabilir. Sonuç olarak
+eğer ``ifade``'nin değeri ``True`` ise ``assert`` ifademiz çalışmayacak, ``False`` ise 
+çalışacaktır. Yani ``assert`` ifademizin içine doğru olmasını istediğimiz durumu yazmalıyız ki
+eğer yanlış olursa hata yükseltsin. Zaten ``assert`` kelimesi *“iddia etmek”* anlamına gelir. Yani biz ``assert`` ifadesini kullanarak bir ifadenin doğru olduğunu iddia ediyoruz, bu iddiamız yanlış ise Python bir hata yükseltiyor. Ayırca ``assert`` ifademiz çalıştığında bir hata yükseleceği için program da sonlanacaktır, yani bu özelliği istemediğimiz bir durum gerçekleştiğinde
+programı sonlandırmak için de kullanabiliriz . ``mesaj`` ise hata verildiğinde ekrana yazılmasını
+istediğimiz mesajdır. Tabii ki ``raise`` ifadesinde olduğu gibi burada da bir mesaj vermek zorunda 
+değiliz. Yani ``assert`` ifadesini şu şekilde de kullanabiliriz::
+
+    assert ifade
+
+Şimdi baştaki örneğimize geri dönersek::
+
+    giriş = input("Merhaba! Adın ne? ")
+    assert len(giriş) != 0 , "İsim bölümü boş."
+    print("Hoşgeldiniz.")
+
+Bu kodumuzu çalıştırdığımızda::
+
+    Merhaba! Adın ne? Ali
+    Hoşgeldiniz.
+    >>>
+
+``giriş`` değişkenimizin uzunluğu ``0`` olmadığı için bir hata verilmedi. Şimdi
+aynı kodu çalıştırıp hiçbir şey yazmadan ``enter`` tuşuna basalım::
+
+    Merhaba! Adın ne? 
+    Traceback (most recent call last):
+      File "C:\Users\Kullanıcı\Desktop\assert_ifadesi.py", line 2, in <module>
+        assert len(giriş) != 0 , "İsim bölümü boş."
+    AssertionError: İsim bölümü boş.
+
+Gördüğünüz gibi ``assert`` ifadesini de bu şeklide kullanıyoruz. Burada bir şeye
+dikkat etmek lazım ki ``assert`` bir fonksiyon değildir, bu yüzden parantezler
+ile şu şekilde **kullanılmamalıdır**::
+
+    assert(ifade)
+
+Bu kullanım hata vermeyecek olsa da farkında olmadan -ileride öğreneceğimiz
+bir konu- bir demet oluşturmuş oluyoruz.
+
+Son olarak büyük bir proje yazdığımızda, şu örnekteki gibi::
+
+    giriş = input("Merhaba! Adın ne? ")
+    if len(giriş) == 0:
+        raise AssertionError("İsim bölümü boş.")
+    print("Hoşgeldiniz.")
+
+``if`` ve ``raise`` ifadesi kullanmak yerine ``assert`` kullanmamızın iki avantajından bahsedelim. Öncelikle istediğiniz zaman geliştirme arayüzünüzün **"Bul (Find)"** özelliğini kullanarak bu anahtar kelimeleri
+bulup silebilir veya yorum satırı haline getirebilirsiniz. Bu özellik uzun bir kod yazdığımızda zaman kazanmamızı sağlar.
+İkinci olarak da python yorumlayıcısını komut satırından ``-O`` parametresi (*optimize* anlamına gelir) ile şu şekilde çağırdığımızda::
+
+    C:\Users\User> python -O kod_dosyası
+
+``kod_dosyası`` programımızdaki bütün ``assert`` ifadeleri python yorumlayıcısı tarafından yok sayılır ve hiçbiri çalıştırılmaz. Yani ``assert`` ifadelerinin hepsini yorum satırı haline getirmek istediğimizde bunun ile uğraşmak yerine bu özelliği kullanabiliriz.
+
+Konu ile alakalı daha çok örnek için buraya_ bakabilirsiniz.
+
+.. _buraya: https://forum.yazbel.com/t/assert-deyimi-nasil-kullanilir/231
+
 Bütün Hataları Yakalamak
 *************************
 
