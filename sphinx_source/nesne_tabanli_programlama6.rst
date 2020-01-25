@@ -717,7 +717,7 @@ arasında 'sahiplik ilişkisi' varsa dahil etme yöntemini kullanıyoruz.
 .. [#] GNU/Linux dağıtımlarında, dağıtımı geliştiren ekip genellikle
  Tkinter paketini Python paketinden ayırdığı için, Tkinter'i ayrıca kurmanız
  gerekebilir. Eğer Python'ın etkileşimli kabuğunda ``import tkinter`` komutunu
- verdiğinizde bir hata mesajı alıyorsanız http://www.istihza.com/forum
+ verdiğinizde bir hata mesajı alıyorsanız https://forum.yazbel.com/
  adresinden yardım isteyin. Eğer Windows kullanıyorsanız, böyle bir probleminiz
  yok. Python'ı kurduğunuz anda Tkinter de emrinize amadedir.
 
