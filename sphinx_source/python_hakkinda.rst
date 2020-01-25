@@ -153,4 +153,4 @@ Zira şu anda piyasada bulunan bütün Python modülleri/programları henüz Pyt
 
 Eğer projenizde kullanmayı planladığınız yardımcı modüller halihazırda Python3'e aktarılmışsa Python3'ü öğrenebilirsiniz.
 Ancak eğer bu modüllerin henüz Python3 sürümü çıkmamışsa sizin de Python2 ile devam etmeniz daha uygun olabilir.
-Ama her halükarda Python3'ün bu dilin geleceği olduğunu ve günün birinde Python2'nin tamamen tedavülden kalkacağını da aklınızın bir köşesinde bulundurun.
+Ama her halükarda Python3'ün bu dilin geleceği olduğunu ve günün birinde Python2'nin tamamen tedavülden kalkacağını da aklınızın bir köşesinde bulundurun. (1 Ocak 2020 itibarıyla Python2'ye verilen destek bitmiştir. Artık `Python Geliştirme Vakfı<https://tr.wikipedia.org/wiki/Python_Yaz%C4%B1l%C4%B1m_Vakf%C4%B1>` Python2.x sürümlerini geliştirmemektedir. )
