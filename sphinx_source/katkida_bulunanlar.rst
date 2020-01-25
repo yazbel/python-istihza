@@ -172,7 +172,7 @@ Halit Turan Arıcan
 Levent Güler
 ==============
 
-    - PDF için kapak tasarımı [bkz. http://istihza.com/forum/viewtopic.php?f=40&t=2487]
+    - PDF için kapak tasarımı [bkz. https://web.archive.org/web/20150831052508/http://istihza.com/forum/viewtopic.php?f=40&t=2487]
     - Komutun, `'uzak çok uzak...'` olarak gösterilen çıktısı ``'uzak     çok
       uzak...'`` olarak düzeltildi.
     - `C:\\\\aylar\\\\nisan\\\\toplam masraf` şeklinde gösterilen dizin yolu
