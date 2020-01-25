@@ -193,7 +193,7 @@ kurulduğunu teyit etmek için şu komutu çalıştırın::
 Eğer program penceresi açıldıysa her şey yolunda demektir. Eğer programı
 çalıştıramadıysanız veya yukarıdaki komutları anlamakta ve işletmekte zorluk
 çekiyorsanız paket deponuzdaki Sqlitebrowser sürümü ile yola devam etmenizi
-tavsiye ederim. Ya da eğer arzu ederseniz, http://www.istihza.com/forum adresine
+tavsiye ederim. Ya da eğer arzu ederseniz, https://forum.yazbel.com/ adresine
 uğrayıp yardım talebinde bulunabilirsiniz.
 
 Örnek Veritabanı
@@ -201,7 +201,7 @@ uğrayıp yardım talebinde bulunabilirsiniz.
 
 Sqlite'ı öğrenirken, içinde örnek veriler barındıran bir veritabanının elimizin
 altında bulunması alıştırma yapabilmek açısından faydalı olacaktır. Bunun için
-http://www.istihza.com/denemeler/kitaplar.sqlite adresindeki örnek veritabanını
+https://web.archive.org/web/20170511004853/http://www.istihza.com/denemeler/kitaplar.sqlite adresindeki örnek veritabanını
 bilgisayarınıza indirin. Veritabanı sorgu çalışmalarımızı bu örnek veritabanı
 üzerinde gerçekleştireceğiz.
 
