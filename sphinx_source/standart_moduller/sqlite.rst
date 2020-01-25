@@ -329,7 +329,7 @@ veritabanı dosyanız varsa, ``sqlite3`` bu veritabanına bağlanacaktır.
 Dolayısıyla Sqlite'ta hem yeni bir veritabanı oluşturmak hem de mevcut bir
 veritabanına bağlanmak için birbiriyle tamamen aynı kodları kullanıyoruz.
 
-Mesela biraz önce http://www.istihza.com/denemeler/kitaplar.sqlite adresinden
+Mesela biraz önce https://web.archive.org/web/20170511004853/http://www.istihza.com/denemeler/kitaplar.sqlite adresinden
 indirdiğimiz `kitaplar.sqlite` adlı veritabanına bağlanalım.
 
 Bu dosyanın bulunduğu konumda bir Python etkileşimli kabuk oturumu açtığımızı
