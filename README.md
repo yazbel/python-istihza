@@ -61,7 +61,7 @@ olmasına dikkat edin.
 
 ## Lisans
 
-[`LICENSE`](https://github.com/yazbel/belgeler/blob/master/python/LICENSE) dosyasında da belirtildiği üzere bu
+[`LICENSE`](https://github.com/yazbel/python-istihza/blob/master/LICENSE) dosyasında da belirtildiği üzere bu
 belgelerin lisansı **Creative Commons Atıf-GayriTicari-AynıLisanslaPaylaş 3.0 Yerelleştirilmemiş (CC BY-NC-SA 3.0)**
 lisansıdır. Daha fazla bilgi için lütfen dosyanın içeriğine bakınız.
 
