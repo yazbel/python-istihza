@@ -155,5 +155,6 @@ Eğer projenizde kullanmayı planladığınız yardımcı modüller halihazırda
 Ancak eğer bu modüllerin henüz Python3 sürümü çıkmamışsa sizin de Python2 ile devam etmeniz daha uygun olabilir.
 Ama her halükarda Python3'ün bu dilin geleceği olduğunu ve günün birinde Python2'nin tamamen tedavülden kalkacağını da aklınızın bir köşesinde bulundurun. 
 
-.. warning:: 1 Ocak 2020 itibarıyla Python2'ye verilen destek bitmiştir. Artık `Python Yazılım Vakfı
-<https://tr.wikipedia.org/wiki/Python_Yaz%C4%B1l%C4%B1m_Vakf%C4%B1>`_ Python2.x sürümlerini geliştirmemektedir. Ayrıntılı bilgi için bu linklere bakabilirsiniz: https://www.python.org/doc/sunset-python-2/, https://pythonclock.org/, https://python3statement.org/
+.. warning:: 1 Ocak 2020 itibarıyla Python2'ye verilen destek bitmiştir. Artık `Python Yazılım Vakfı  
+             <https://tr.wikipedia.org/wiki/Python_Yaz%C4%B1l%C4%B1m_Vakf%C4%B1>`_ Python2.x sürümlerini geliştirmemektedir.
+             Ayrıntılı bilgi için bu    linklere bakabilirsiniz: https://www.python.org/doc/sunset-python-2/, https://pythonclock.org/,              https://python3statement.org/
