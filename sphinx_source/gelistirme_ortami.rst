@@ -159,8 +159,8 @@ ayarların her metin düzenleyicide nasıl yapılacağını tek tek göstermemiz
 değil. Ancak iyi bir metin düzenleyicide yukarıdaki ayarların hepsi bulunur. Tek
 yapmanız gereken, bu ayarların, kullandığınız metin düzenleyicide nereden
 yapıldığını bulmak. Eğer kullandığınız metin düzenleyiciyi ayarlamakta
-zorlanıyorsanız, her zamanki gibi `istihza.com/forum
-<http://www.istihza.com/forum>`_ adresinde sıkıntınızı dile getirebilirsiniz.
+zorlanıyorsanız, her zamanki gibi `yazbel
+<https://forum.yazbel.com/>`_ adresinde sıkıntınızı dile getirebilirsiniz.
 
 'Kodlama biçimi' kavramından söz etmişken, Python'la ilgili önemli bir konuya
 daha değinelim. En başta da söylediğimiz gibi, şu anda piyasada Python iki
