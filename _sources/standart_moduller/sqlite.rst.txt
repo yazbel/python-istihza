@@ -193,7 +193,7 @@ kurulduğunu teyit etmek için şu komutu çalıştırın::
 Eğer program penceresi açıldıysa her şey yolunda demektir. Eğer programı
 çalıştıramadıysanız veya yukarıdaki komutları anlamakta ve işletmekte zorluk
 çekiyorsanız paket deponuzdaki Sqlitebrowser sürümü ile yola devam etmenizi
-tavsiye ederim. Ya da eğer arzu ederseniz, http://www.istihza.com/forum adresine
+tavsiye ederim. Ya da eğer arzu ederseniz, https://forum.yazbel.com/ adresine
 uğrayıp yardım talebinde bulunabilirsiniz.
 
 Örnek Veritabanı
@@ -201,9 +201,9 @@ uğrayıp yardım talebinde bulunabilirsiniz.
 
 Sqlite'ı öğrenirken, içinde örnek veriler barındıran bir veritabanının elimizin
 altında bulunması alıştırma yapabilmek açısından faydalı olacaktır. Bunun için
-http://www.istihza.com/denemeler/kitaplar.sqlite adresindeki örnek veritabanını
-bilgisayarınıza indirin. Veritabanı sorgu çalışmalarımızı bu örnek veritabanı
-üzerinde gerçekleştireceğiz.
+https://web.archive.org/web/20170511004853/http://www.istihza.com/denemeler/kitaplar.sqlite 
+adresindeki örnek veritabanını bilgisayarınıza indirin. Veritabanı sorgu çalışmalarımızı 
+bu örnek veritabanı üzerinde gerçekleştireceğiz.
 
 Şimdi mesela biraz önce indirip kurduğunuz Sqlitebrowser programını çalıştırın
 ve *File* > *Open Database* yolunu takip ederek bu `kitaplar.sqlite` adlı
@@ -329,7 +329,7 @@ veritabanı dosyanız varsa, ``sqlite3`` bu veritabanına bağlanacaktır.
 Dolayısıyla Sqlite'ta hem yeni bir veritabanı oluşturmak hem de mevcut bir
 veritabanına bağlanmak için birbiriyle tamamen aynı kodları kullanıyoruz.
 
-Mesela biraz önce http://www.istihza.com/denemeler/kitaplar.sqlite adresinden
+Mesela biraz önce https://web.archive.org/web/20170511004853/http://www.istihza.com/denemeler/kitaplar.sqlite adresinden
 indirdiğimiz `kitaplar.sqlite` adlı veritabanına bağlanalım.
 
 Bu dosyanın bulunduğu konumda bir Python etkileşimli kabuk oturumu açtığımızı
