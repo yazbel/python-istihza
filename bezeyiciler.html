@@ -1,0 +1,311 @@
+
+ <!DOCTYPE html>
+ <html lang="tr">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta content="Python 3.x'te bezeyiciler (Decoratorlar)" name="description" />
+<meta content="python, fonksiyonlar, decoratorlar, bezeyiciler" name="keywords" />
+
+    <title>Fonksiyonlarda Bezeyicilerin (Decorator) Kullanımı &#8212; Python 3 için Türkçe Kılavuz</title>
+    <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="search" title="Ara" href="search.html" />
+    <link rel="next" title="Modüller" href="moduller.html" />
+    <link rel="prev" title="İleri Düzey Fonksiyonlar" href="ileri_fonksiyonlar.html" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head>
+  <body>
+<div class='header'><a href='https://yazbel.com'>yazbel.com</a></div>
+
+<ul class='navbar'>
+    <li><a href="#"><del>pdf desteği sonlanmıştır</del></a></li>
+    <li class="forum"><a href="http://forum.yazbel.com">forum</a></li>
+</ul>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="moduller.html" title="Modüller"
+             accesskey="N">sonraki</a></li>
+        <li class="right" >
+          <a href="ileri_fonksiyonlar.html" title="İleri Düzey Fonksiyonlar"
+             accesskey="P">önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+ 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+
+  <div class="section" id="fonksiyonlarda-bezeyicilerin-decorator-kullanimi">
+<h1>Fonksiyonlarda Bezeyicilerin (Decorator) Kullanımı<a class="headerlink" href="#fonksiyonlarda-bezeyicilerin-decorator-kullanimi" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<p>Bu bölüme kadar fonksiyonları nasıl kullanabileceğimizi işlemiştik.
+Bu yazıda bezeyicilerin nasıl çalıştığını, bezeyicilerin ne olduğunu
+kendimize özgü bezeyicileri nasıl oluşturabileceğimizi anlayacağız.</p>
+<p>Python’da fonksiyonlar birinci sınıf nesnelerdir, Python’daki her
+şey gibi. Yani fonksiyonlar da her nesne gibidir. Bezeyiciler de
+bu özellikten yararlanarak çalışırlar. Şimdi fonksiyonların
+yapabileceklerinden birkaç tanesini öğrenelim.</p>
+<div class="section" id="fonksiyonlar-diger-degiskenler-tarafindan-referanslanabilir">
+<h2>Fonksiyonlar diğer değişkenler tarafından referanslanabilir<a class="headerlink" href="#fonksiyonlar-diger-degiskenler-tarafindan-referanslanabilir" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Python’da “Merhaba, dünya!” yazdıran bir fonksiyon örneği:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mrb_dunya</span><span class="p">():</span>
+   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Merhaba, dünya!&quot;</span><span class="p">)</span>
+
+<span class="n">mrb_dunya</span><span class="p">()</span>
+
+<span class="c1"># Çıktı: Merhaba, dünya!</span>
+</pre></div>
+</div>
+<p>Biz bu fonksiyonu başka bir değişkene referanslayarak, o değişkenin merhaba dünya demesini sağlayabiliriz:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">dunyaci</span> <span class="o">=</span> <span class="n">mrb_dunya</span>
+</pre></div>
+</div>
+<p>Şimdi de dunyaci fonksiyonunu çağıralım:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">dunyaci</span><span class="p">()</span>
+
+<span class="c1"># Çıktı: Merhaba, dünya!</span>
+</pre></div>
+</div>
+<p>Gördüğümüz kadarıyla dunyaci fonksiyonuda “Merhaba, dünya!” çıktısını verdi. Peki niye?</p>
+<p>Niye olduğuna bir bakalım. mrb_dunya’yı çağırmadan yazdırırsak ne olur?:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">mrb_dunya</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Çıktısı <cite>&lt;function mrb_dunya at 0x7f7ffe024c80&gt;</cite> şeklinde bir şey olacaktır. Çıktısı bize demeye çalışıyor ki,
+mrb_dunya fonksiyonu belleğin 0x7f7ffe024c80 lokasyonunda bulunmaktadır. Muhtemelen 0x7f7ffe024c80
+çıktısı sizin çıktınız ile aynı olmayacaktır çünkü sizin bilgisayarınızda o fonksiyon belleğinizin farklı bir lokasyonunda depolanmış
+olabilir. Şimdi mrb_dunya fonksiyonun nerede olduğunu bildiğimize göre dunyaci fonksiyonuna da bir bakalım:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dunyaci</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Çıktı <cite>&lt;function mrb_dunya at 0x7f41c77cebf8&gt;</cite>. Garip değil mi? Normalde <cite>&lt;function mrb_dunya at 0x7f41c77cebf8&gt;</cite> olmaması gerek çünkü fonksiyonumuzun adı mrb_dunya değil. İşte işler sandığımız gibi olmuyor. Python “dunyaci = mrb_dunya” yapınca mrb_dunya
+bellekteki mrb_dunya fonksiyonuna yönlendirdi, yani <cite>0x7f41c77cebf8</cite>’e. O yüzden Python onu mrb_dunya fonksiyonu olarak gördü. Fakat dikkatli olursak, mrb_dunya ile dunyaci fonksiyonun lokasyonları aynı değil. Çünkü iki fonksiyonun aynı yerde olması
+mümkün değil. Belleğin farklı bir yerindeki fonksiyon, başka fonksiyona yönlendiriyor. Yani 0x7f41c77cebf8 olan bir fonksiyon aslında 0x7f576e924bf8 lokasyonundaki bir fonksiyonu çağırıyor.</p>
+</div>
+<div class="section" id="fonksiyonlar-arguman-olarak-verilebilir">
+<h2>Fonksiyonlar argüman olarak verilebilir<a class="headerlink" href="#fonksiyonlar-arguman-olarak-verilebilir" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Örnek olarak:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fonksiyon_cagir</span><span class="p">(</span><span class="n">fonksiyon</span><span class="p">):</span>
+   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fonksiyon çağrılıyor!&quot;</span><span class="p">)</span>
+
+   <span class="n">fonksiyon</span><span class="p">()</span>
+
+<span class="n">fonksiyon_cagir</span><span class="p">(</span><span class="n">mrb_dunya</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu programın çıktısı sırayla “Fonksiyon çağrılıyor!” ve “Merhaba, dünya!” olacaktır. Yukarıda gösterdiğimiz gibi
+Python fonksiyon = mrb_dunya yaptı ve onu çağırınca 0x7f576e924bf8 lokasyonundaki (mrb_dunya’nın lokasyonundaki) fonksiyonu
+çağırdı.</p>
+</div>
+<div class="section" id="fonksiyonlarin-icinde-fonksiyon-olusturulabilir">
+<h2>Fonksiyonların içinde fonksiyon oluşturulabilir<a class="headerlink" href="#fonksiyonlarin-icinde-fonksiyon-olusturulabilir" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Örnek Olarak:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">merhaba_de</span><span class="p">():</span>
+   <span class="k">def</span> <span class="nf">merhabaci</span><span class="p">():</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Merhaba istihza!&quot;</span><span class="p">)</span>
+   <span class="n">merhabaci</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Yukarıdaki örnekte merhabaci fonksiyonu <em>merhaba_de</em> fonksiyonunun içinde tanımladık.
+Bu Python’da geçerli bir davranıştır. <em>merhaba_de</em> fonsksiyonunu çağırdığımızda, <em>merhabaci</em>
+fonksiyonu <em>merhaba_de</em> fonksiyonunun içinde tanımlanıp çağrılıyor.</p>
+<p>Eğer <em>merhabaci</em> fonksiyonunu <em>merhaba_de</em> fonksiyonunun dışında çağırmaya çalışırsak, Python
+bize bir hata verecektir çünkü <em>merhabaci</em> fonksiyonu <em>merhaba_de</em> fonksiyonunun dışında tanımlanmamıştır.</p>
+</div>
+<div class="section" id="bezeyici-decoratorlar">
+<h2>Bezeyici (Decoratorlar)<a class="headerlink" href="#bezeyici-decoratorlar" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Bezeyici, fonksiyonlarımızı veya nesnelerimizi modifiye etmemizi sağlayan çağrılabilir nesnelerdir.</p>
+<p>Çağrılabilir objeleri örnek verecek olursak, fonksiyonlar ve objeleri örnek verebiliriz. Bunu “callable”
+fonksiyonu ile kontrol edebilirsiniz, örneğin:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">():</span>
+    <span class="o">...</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">callable</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+<span class="c1">#=&gt; True</span>
+</pre></div>
+</div>
+<p>ya da objemizin “__call__” magic methodunun var olup olmadığını kontrol ederek de anlayabilirsiniz.</p>
+<p>Şimdi bezeyici fonksiyonları bir örnek ile anlayalım:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bezeyici</span><span class="p">(</span><span class="n">fonksiyon</span><span class="p">):</span>
+   <span class="k">def</span> <span class="nf">wrapper</span><span class="p">():</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Wrapper fonksiyonumuz başladı&quot;</span><span class="p">)</span>
+      <span class="n">fonksiyon</span><span class="p">()</span> <span class="c1"># Bezeyici ile aldığımız fonksiyonu çağırıyoruz</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Wrapper fonksiyonu bitti.&quot;</span><span class="p">)</span>
+   <span class="k">return</span> <span class="n">wrapper</span>
+
+<span class="k">def</span> <span class="nf">merhaba</span><span class="p">():</span>
+   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Merhaba!&quot;</span><span class="p">)</span>
+
+<span class="n">merhaba</span> <span class="o">=</span> <span class="n">bezeyici</span><span class="p">(</span><span class="n">merhaba</span><span class="p">)</span>
+
+<span class="n">merhaba</span><span class="p">()</span>
+
+<span class="c1"># Wrapper Fonksiyonumuz başladı</span>
+<span class="c1"># Merhaba!</span>
+<span class="c1"># Wrapper fonksiyonu bitti.</span>
+</pre></div>
+</div>
+<p>Şeklinde bir çıktımız olacaktır. Peki bu bezeyici fonksiyonları
+daha okunabilir bir şekilde çağırabilir miyiz? Tabiki:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="nd">@bezeyici</span>
+<span class="k">def</span> <span class="nf">merhaba</span><span class="p">():</span>
+   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Merhaba!&quot;</span><span class="p">)</span>
+
+<span class="n">merhaba</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Yukarıdaki program ile bir önceki programımız ile aynı çıktıyı verecektir.
+Mantık aynı; fonksiyonu al, çağır. Fakat bu sefer fonksiyonu tanımlandıktan sonra
+hemen argüman olarak verip, çağırıyoruz. Peki bezeyicilere argüman verebilir miyiz?:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">baslik</span><span class="p">(</span><span class="n">fonksiyon</span><span class="p">):</span>
+   <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="n">basligimiz</span><span class="p">):</span>
+      <span class="nb">print</span><span class="p">(</span><span class="n">basligimiz</span><span class="p">)</span>
+      <span class="n">fonksiyon</span><span class="p">()</span>
+
+<span class="nd">@baslik</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">makale</span><span class="p">(</span><span class="n">basligimiz</span><span class="p">):</span>
+   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Python 3.7 ile dataclasses gibi birçok güzel özellik eklendi.&quot;</span><span class="p">)</span>
+
+<span class="n">makale</span><span class="p">(</span><span class="s2">&quot;Python 3.7&quot;</span><span class="p">)</span>
+
+<span class="c1"># Python 3.7</span>
+<span class="c1"># Python 3.7 ile dataclasses gibi birçok güzel özellik eklendi.</span>
+</pre></div>
+</div>
+<p>veya onun çıktısını alarak çıktının üzerinde işlemler uygulayabiliriz:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">iki_ile_carp</span><span class="p">(</span><span class="n">fonksiyon</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">():</span>
+        <span class="n">cikti</span> <span class="o">=</span> <span class="n">fonksiyon</span><span class="p">()</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="n">cikti</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+</pre></div>
+</div>
+<p>Gördüğümüz kadarıyla oldukça basit. Bezeyiciler ne işe yarayacak diye soracak isek, bazı fonksiyonlarda istediğiniz
+özelliği eklemede veya Flask gibi frameworklerde kullanıldığını unutmayın. Hadi sonraki dersimize geçelim :)</p>
+</div>
+</div>
+
+
+
+<div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
+<div class='extrarelbar'> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="moduller.html" title="Modüller"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="ileri_fonksiyonlar.html" title="İleri Düzey Fonksiyonlar"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+ 
+      </ul>
+    </div> </div>
+
+<div class='addcomment'>Yorumlar</div>
+
+<div class='how-to-use'>
+<h3>Önemli Not</h3>
+Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
+<span class='tag'>&lt;pre&gt;&lt;code&gt;</span> etiketleri içine alın. Örneğin:
+
+<pre>
+    <span class='tag'>&lt;pre&gt;&lt;code class="python"&gt;</span>
+    <span class='keyword'>print</span>(<span class='string'>"Merhaba Dünya!"</span>)
+    <span class='tag'>&lt;/code&gt;&lt;/pre&gt;</span>
+</pre>
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'istihza';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4eca48eb2d83faf9" async="async"></script>
+
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="moduller.html" title="Modüller"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="ileri_fonksiyonlar.html" title="İleri Düzey Fonksiyonlar"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+ 
+      </ul>
+    </div> 
+
+<div class="footer">
+&copy; Copyright 2007-2020, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 01.02.2020.
+<a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7 ile oluşturulmuştur.
+<br>
+<br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
+alt="Creative Commons License" style="border-width:0"
+src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a><br />
+<br>
+</div>
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=10396326;
+var sc_invisible=1;
+var sc_security="fb5cd679";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="hit counter"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="http://c.statcounter.com/10396326/0/fb5cd679/1/"
+alt="hit counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+  </body>
+</html>

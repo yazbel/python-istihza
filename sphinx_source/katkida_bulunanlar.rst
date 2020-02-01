@@ -447,4 +447,8 @@ Burak Kadir Er
     - Hata Yakalama kısmında kelime düzeltmesi yapıldı.
     - Random modülü kısmında birden çok kelime düzeltmesi yapıldı.
     - OS modülü kısmında birden çok kelime düzeltmesi yapıldı.
-    
+
+Muhammed Hattap Alkan
+=====================
+
+    - Bezeyiciler (decoratorlar) konusu eklendi.

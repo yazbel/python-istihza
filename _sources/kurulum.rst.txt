@@ -269,7 +269,8 @@ Ben bu kitapta sizin 'Install Now' yazan kısma tıklayarak kurulum yaptığın�
 
 .. warning:: Eğer Windows'ta Python'ı kurmaya çalışırken hata alıyorsanız, muhtemelen işletim sisteminiz güncel değildir.
     Örneğin Windows 7'de Python kurabilmeniz için, SP1 (Service Pack 1) kurulu olmalıdır.
-    Windows güncellemelerini kurduktan sonra Python'ı kurmayı tekrar deneyin.
+    Windows güncellemelerini kurduktan sonra Python'ı kurmayı tekrar deneyin. Ancak Windows XP kullanıyorsanız kurabileceğiniz en yüksek sürüm, Python 3.4'tür.
+    Ne yazık ki Windows XP artık desteklenmiyor.
 
 Python Kurulum ve Çalışma Dizini
 ********************************
