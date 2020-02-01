@@ -1349,8 +1349,7 @@ biz ``sayı`` değişkenini kullanmaya devam ediyoruz. Eee şimdi Python kalkıp
 kullanacağımız bir değişkeni silse ayıp olur. O da bunu yapmıyor zaten. Ancak
 ``sayı`` değişkeni iç fonksiyon olan ``say`` fonksiyonunda hiç kullanılmasaydı silinirdi. Aslında bu
 örnekteki kilit olaylardan biri de ``sayı`` değişkeninin sadece bir defa tanımlanması
-ve bu tanımın aynı ``say`` fonksiyonunda olduğu gibi ``sayıcı`` fonksiyonumuzun
-sadece bir çağırılışına özgü olması. Burdan iki sonuca varıyoruz:
+ve bu tanımın aynı ``say`` fonksiyonunda olduğu gibi ``sayıcı`` fonksiyonumuzun sadece bir çağırılışına özgü olması. Buradan iki sonuca varıyoruz:
 
 	* ``sayıcı`` sınıfını birden fazla defa çağırsak bile geri döndürülen her ``say`` fonksiyonu ekrana sayıları hep sırayla yazdıracaktır. Çünkü her ``say`` fonksiyonu kendisini tanımlayan ``sayıcı`` çağırılışına ait olan ``sayı`` değişkenini kullanmaktadır.
 	* Her ``say`` fonksiyonunun kullandığı ``sayı`` değişkeni sadece bir defa ``0`` olarak tanımlanmakta ve daha sonra ``say`` fonksiyonumuzu her çağırışımızda artmaktadır.
