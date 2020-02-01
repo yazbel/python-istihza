@@ -249,10 +249,10 @@ Yukarıdaki örneklerin dışında, lambda fonksiyonları özellikle grafik aray
 .. note:: Bu kodlardan hiçbir şey anlamamış olabilirsiniz. Endişe etmeyin.
     Burada amacımız size sadece lambda fonksiyonlarının kullanımını göstermek. Bu
     kodlarda yalnızca lambda fonksiyonuna odaklanmanız şimdilik yeterli olacaktır.
-    Eğer bu kodları çalıştıramadıysanız http://www.istihza.com/forum adresinde
+    Eğer bu kodları çalıştıramadıysanız https://forum.yazbel.com/ adresinde
     sorununuzu dile getirebilirsiniz.
 
-Bu kodları çalıştırıp 'deneme' düğmesine bastığınızda komut satırında 'merhaba'
+Bu kodları çalıştırıp 'merhaba' düğmesine bastığınızda komut satırında 'merhaba'
 çıktısı görünecektir. Tkinter'de fonksiyonların `command` parametresi bizden
 parametresiz bir fonksiyon girmemizi bekler. Ancak bazen, elde etmek istediğimiz
 işlevsellik için oraya parametreli bir fonksiyon yazmak durumunda kalabiliriz.
