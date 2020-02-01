@@ -1351,8 +1351,8 @@ kullanacağımız bir değişkeni silse ayıp olur. O da bunu yapmıyor zaten. A
 örnekteki kilit olaylardan biri de ``sayı`` değişkeninin sadece bir defa tanımlanması
 ve bu tanımın aynı ``say`` fonksiyonunda olduğu gibi ``sayıcı`` fonksiyonumuzun sadece bir çağırılışına özgü olması. Buradan iki sonuca varıyoruz:
 
-	* ``sayıcı`` sınıfını birden fazla defa çağırsak bile geri döndürülen her ``say`` fonksiyonu ekrana sayıları hep sırayla yazdıracaktır. Çünkü her ``say`` fonksiyonu kendisini tanımlayan ``sayıcı`` çağırılışına ait olan ``sayı`` değişkenini kullanmaktadır.
-	* Her ``say`` fonksiyonunun kullandığı ``sayı`` değişkeni sadece bir defa ``0`` olarak tanımlanmakta ve daha sonra ``say`` fonksiyonumuzu her çağırışımızda artmaktadır.
+* ``sayıcı`` sınıfını birden fazla defa çağırsak bile geri döndürülen her ``say`` fonksiyonu ekrana sayıları hep sırayla yazdıracaktır. Çünkü her ``say`` fonksiyonu kendisini tanımlayan ``sayıcı`` çağırılışına ait olan ``sayı`` değişkenini kullanmaktadır.
+* Her ``say`` fonksiyonunun kullandığı ``sayı`` değişkeni sadece bir defa ``0`` olarak tanımlanmakta ve daha sonra ``say`` fonksiyonumuzu her çağırışımızda artmaktadır.
 
 Evet dediğimiz gibi farklı ``say`` fonksiyonları farklı ``sayı`` değişkenlerini kullanıyor::
 
