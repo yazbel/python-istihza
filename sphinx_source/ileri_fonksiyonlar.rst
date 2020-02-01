@@ -1794,8 +1794,8 @@ sayı dizisinin bir sonraki elemanını döndürecek bir üreteç yazalım::
 
 Gördüğünüz gibi üretecimiz bize (ilk 0 ve 1 sonrasındaki) fibonacci sayılarını vermektedir. Kodumuzu anlamaya çalışırsak:
 
-	* İlk yinelemede, yani ``next`` fonksiyonunu ilk kullanışımızda, ``x``, ``y`` ve ``z`` değişkenleri tanımlanıyor. Daha sonra ``while`` döngüsüne giriliyor. Değişkenlerin değerleri değiştirildikten sonra ``yield x`` deyimine geldiğimiz için ``next`` fonksiyonu ``x`` değerini döndürürerek üretecemizin çalışmasını durduruyor.
-	* İkinci yinelememizde normal bir kodda olacağı gibi ``while`` döngümüzün başına gidiliyor. Aynı işlemler tekrarlanıyor. Tekrar ``yield`` deyimine geliniyor. ``x`` değeri döndürürülüyor. Üretecimizin çalışması durduruluyor ve aynı şeyler tekrar etmeye devam ediyor.
+* İlk yinelemede, yani ``next`` fonksiyonunu ilk kullanışımızda, ``x``, ``y`` ve ``z`` değişkenleri tanımlanıyor. Daha sonra ``while`` döngüsüne giriliyor. Değişkenlerin değerleri değiştirildikten sonra ``yield x`` deyimine geldiğimiz için ``next`` fonksiyonu ``x`` değerini döndürürerek üretecemizin çalışmasını durduruyor.
+* İkinci yinelememizde normal bir kodda olacağı gibi ``while`` döngümüzün başına gidiliyor. Aynı işlemler tekrarlanıyor. Tekrar ``yield`` deyimine geliniyor. ``x`` değeri döndürürülüyor. Üretecimizin çalışması durduruluyor ve aynı şeyler tekrar etmeye devam ediyor.
 
 Üreteçlerin çok güzel özelliklerinden biri de ``for`` döngüsü ile kullanılabilmeleridir.
 Örneğin ``fibonacci`` üretecimiz için bunu uygulayalım::
