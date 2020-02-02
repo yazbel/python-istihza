@@ -6,7 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta content="Bu bölümde fonksiyonlar konusunu inceleyeceğiz." name="description" />
-<meta content="python, fonksiyon, lambda, recursive, decorator, closure, özyinelemeli, bezeyiciler, kapalı fonksiyonlar" name="keywords" />
+<meta content="python, fonksiyon, lambda, recursive, decorator, closure, özyinelemeli, bezeyiciler, kapalı fonksiyonlar , nested , nonlocal , nested function , iç , iç içe , iç içe fonksiyonlar, generator, üreteç , yield , iterate , iterator" name="keywords" />
 
     <title>İleri Düzey Fonksiyonlar &#8212; Python 3 için Türkçe Kılavuz</title>
     <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
@@ -26,7 +26,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/translations.js"></script>
     <link rel="search" title="Ara" href="search.html" />
-    <link rel="next" title="Modüller" href="moduller.html" />
+    <link rel="next" title="Fonksiyonlarda Bezeyicilerin (Decorator) Kullanımı" href="bezeyiciler.html" />
     <link rel="prev" title="Gömülü Fonksiyonlar" href="gomulu_fonksiyonlar.html" />
 <!--[if lte IE 6]>
 <link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
@@ -46,7 +46,7 @@
       <h3>Gezinti</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="moduller.html" title="Modüller"
+          <a href="bezeyiciler.html" title="Fonksiyonlarda Bezeyicilerin (Decorator) Kullanımı"
              accesskey="N">sonraki</a></li>
         <li class="right" >
           <a href="gomulu_fonksiyonlar.html" title="Gömülü Fonksiyonlar"
@@ -286,7 +286,7 @@ bir şey yazabilirdik:</p>
 <p class="last">Bu kodlardan hiçbir şey anlamamış olabilirsiniz. Endişe etmeyin.
 Burada amacımız size sadece lambda fonksiyonlarının kullanımını göstermek. Bu
 kodlarda yalnızca lambda fonksiyonuna odaklanmanız şimdilik yeterli olacaktır.
-Eğer bu kodları çalıştıramadıysanız <a class="reference external" href="http://www.istihza.com/forum">http://www.istihza.com/forum</a> adresinde
+Eğer bu kodları çalıştıramadıysanız <a class="reference external" href="https://forum.yazbel.com/">https://forum.yazbel.com/</a> adresinde
 sorununuzu dile getirebilirsiniz.</p>
 </div>
 <p>Bu kodları çalıştırıp ‘merhaba’ düğmesine bastığınızda komut satırında ‘merhaba’
@@ -1031,6 +1031,1076 @@ ise <cite>son</cite> değişkeninde tutulacaktır. İlerleyen derslerde ‘Yür�
 (<em>Iterators</em>) konusunu işlerken bu yapıdan daha ayrıntılı bir şekilde söz
 edeceğiz.</p>
 </div>
+<div class="section" id="ic-ice-nested-fonksiyonlar">
+<h2>İç İçe (<em>Nested</em>) Fonksiyonlar<a class="headerlink" href="#ic-ice-nested-fonksiyonlar" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Bu bölümde iç içe fonksiyonların ne olduklarını ve nasıl kullanılabileceklerini
+inceleceğiz.</p>
+<div class="section" id="ic-ice-fonksiyonlar-nedir">
+<h3>İç İçe Fonksiyonlar Nedir?<a class="headerlink" href="#ic-ice-fonksiyonlar-nedir" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>İsminden anlayabileceğimiz gibi içe içe olan birden fazla fonksiyonumuz
+olunca bunlara <em>Nested</em>, yani iç içe fonksiyonlar diyoruz.
+Aşağıdaki gibi iki fonksiyonumuz olduğunu düşünelim:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fonk1</span><span class="p">():</span>
+        <span class="k">def</span> <span class="nf">fonk2</span><span class="p">():</span>
+                <span class="o">...</span>
+</pre></div>
+</div>
+<p>Burada <code class="docutils literal"><span class="pre">fonk1</span></code> kapsayıcı (<em>enclosing</em>) veya dış fonksiyonumuz, <code class="docutils literal"><span class="pre">fonk2</span></code> ise içerideki (<em>nested</em>) yani iç
+fonksiyonumuz oluyor. İç içe fonksiyonlarımızın ilginç özellikleri olduğunu
+söyleyebiliriz. Ayrıca bu fonksiyonları iyice anlamak, ileride üreteçleri
+(diğer bir adı ile yürüyücüleri) de daha iyi anlamamızı sağlayacaktır.</p>
+<p>İç içe fonksiyonları anlamanın en iyi yolu örnek üzerinden gitmektir.
+Şimdi bir fonksiyon tanımlayalım:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span>def yazıcı():
+        def yaz(mesaj):
+                print(mesaj)
+        return yaz
+
+&gt;&gt;&gt; y = yazıcı()
+&gt;&gt;&gt; y(&quot;Merhaba&quot;)
+Merhaba
+&gt;&gt;&gt; type(y)
+&lt;class &#39;function&#39;&gt;
+&gt;&gt;&gt; y
+&lt;function yazıcı.&lt;locals&gt;.yaz at 0x00000210D9235558&gt;
+</pre></div>
+</div>
+<p>Şimdi bu çıktılarımızı inceleyelim. <code class="docutils literal"><span class="pre">yazıcı</span></code> fonksiyonumuz çağrıldığında değer olarak
+<code class="docutils literal"><span class="pre">yaz</span></code> fonksiyonunu çeviriyor. Bu <code class="docutils literal"><span class="pre">yaz</span></code> fonksiyonu da <code class="docutils literal"><span class="pre">yazıcı</span></code> fonksiyonumuzun
+içerisinde tanımladığı için bizim <strong>iç</strong> fonksiyonumuz oluyor. <code class="docutils literal"><span class="pre">yazıcı</span></code> ise
+<strong>kapsayıcı</strong> fonksiyonumuz. <code class="docutils literal"><span class="pre">y(&quot;Merhaba&quot;)</span></code> komutu çağırıldığında ekrana <code class="docutils literal"><span class="pre">Merhaba</span></code>
+yazılıyor. Çünkü <code class="docutils literal"><span class="pre">y</span></code>’ye atanan değer olan <code class="docutils literal"><span class="pre">yaz</span></code> fonksiyonunun yaptığı iş
+buydu. Dikkat ederseniz <code class="docutils literal"><span class="pre">y</span></code>’nin türünün de <code class="docutils literal"><span class="pre">function</span></code> olduğunu görebilirsiniz.
+Son çıktımızda ise alışılmışın dışında bir <code class="docutils literal"><span class="pre">&lt;locals&gt;</span></code> ifadesi görüyoruz.
+Şimdi biraz bunun üzerine konuşacağız.</p>
+<p>Normalde bir fonksiyon yazdığımızda ve bu fonksiyon başka bir fonksiyonun içerisinde
+olmadığında, programı çalıştırıldığımızda ve kod işleme sırası bu fonksiyona geldiğinde
+fonksiyonumuz tanımlanmış olur. Yani bu fonksiyonun ne olduğu, ne yapacağı
+artık Python yorumlayıcısı tarafından bilinmektedir. Ayrıca bu fonksiyondan sadece bir tane
+vardır. Örneğin fonksiyonumuz şu şekilde ise:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fonk</span><span class="p">():</span>
+        <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Her <code class="docutils literal"><span class="pre">fonk()</span></code> yazdığımızda aynı fonksiyon çağrılır. Dikkat edin, aynı işlemler yapılır
+demiyorum. Aynı fonksiyon çağrılır. Yapacağı işlem burada bizim için önemli değil.</p>
+<p>Şimdi de iç içe fonksiyon tanımımıza ve şu <code class="docutils literal"><span class="pre">&lt;locals&gt;</span></code> kelimesine bakalım.
+İlk önce:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">yazıcı</span><span class="p">():</span>
+        <span class="k">def</span> <span class="nf">yaz</span><span class="p">(</span><span class="n">mesaj</span><span class="p">):</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">mesaj</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">yaz</span>
+</pre></div>
+</div>
+<p>Şeklinde kapsayıcı fonksiyonumuzu tanımlamış oluyoruz. Dikkat ederseniz sadece kapsa-
+yıcı fonksiyonun tanımlandığını söyledim. Artık <code class="docutils literal"><span class="pre">yazıcı</span></code> fonksiyonunun, Python yorum-
+layıcısı tarafından ne yapacağı, nasıl çalışacağı biliniyor. Ancak <code class="docutils literal"><span class="pre">yaz</span></code> fonksiyonu için
+aynı şeyleri söyleyemeyiz. Sonuç olarak bir fonksiyon çağırılmadan içerisindeki
+komutlar çalışmaz. Eğer <code class="docutils literal"><span class="pre">def</span> <span class="pre">yaz...</span></code> komutu çalışmaz ise de <code class="docutils literal"><span class="pre">yaz</span></code> fonksiyonumuz tanımlanmış
+olmaz. Yani şu anda <code class="docutils literal"><span class="pre">yaz</span></code> fonksiyonumuz tanımlanmamıştır. Peki ne zaman tanımlanacaktır?
+Tabii ki de <code class="docutils literal"><span class="pre">yazıcı</span></code> fonksiyonumuzu çağırdığımız zaman. Çünkü dediğimiz gibi,
+yazıcı fonksiyonu çağrılmadığı sürece <code class="docutils literal"><span class="pre">def</span> <span class="pre">yaz...</span></code> bölümü çalışmıyor. Python yorumlayıcısı
+programımız çalışırken <code class="docutils literal"><span class="pre">yazıcı</span></code> fonksiyonunun <em>ne yapacağını</em> bilir, dolayısı ile de
+<code class="docutils literal"><span class="pre">yaz</span></code> fonksiyonununun <em>nasıl tanımlanacağını</em> bilir. Ancak <code class="docutils literal"><span class="pre">yaz</span></code> fonksiyonu
+tanımlanmadan önce <em>ne yapacağını</em> bilemez. Buradan önemli
+yerlere varacağımız için bu kısmın anlaşılması gerekiyor. Şimdi şunu söyleyebiliriz ki
+<code class="docutils literal"><span class="pre">yazıcı</span></code> fonksiyonumuzu her çağırdımızda <code class="docutils literal"><span class="pre">yaz</span></code> sınıfı en baştan tanımlanır.
+Bu da <code class="docutils literal"><span class="pre">yazıcı</span></code> fonksiyonumuzu her çağırışımızda yeni tanımlanan <code class="docutils literal"><span class="pre">yaz</span></code> fonksiyonunun
+farklı ve tek olduğu anlamına gelir. Yani kapsayıcı olan <code class="docutils literal"><span class="pre">yazıcı</span></code> fonksiyonu
+sadece bir tane iken döndürdüğü <code class="docutils literal"><span class="pre">yaz</span></code> fonksiyonu birden fazla ve farklı oluyor.
+Yani <code class="docutils literal"><span class="pre">yazıcı</span></code> fonksiyonumuzu her çağırdığımızda sadece o çağırışımıza özel bir
+<code class="docutils literal"><span class="pre">yaz</span></code> fonksiyonu elde ediyoruz. İşte bu <code class="docutils literal"><span class="pre">&lt;locals&gt;</span></code> kelimesi buradan geliyor.
+Yani:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span>
+<span class="go">&lt;function yazıcı.&lt;locals&gt;.yaz at 0x00000210D9235558&gt;</span>
+</pre></div>
+</div>
+<p>Bu demek oluyor ki bizim <code class="docutils literal"><span class="pre">y</span></code> değişkenimiz, daha önceki bir <code class="docutils literal"><span class="pre">yazıcı</span></code> fonksiyonunun çağrısına
+ait, yani onun içinde tanımlanan bir <code class="docutils literal"><span class="pre">yaz</span></code> fonksiyonudur. <code class="docutils literal"><span class="pre">locals</span></code> da zaten
+yerel değişkenler anlamına gelir. Yani buradaki <code class="docutils literal"><span class="pre">yaz</span></code> fonksiyonu, daha önce çağırdığımız
+<code class="docutils literal"><span class="pre">yazıcı</span></code> fonksiyonunun içinde tanımlanan yerel bir değişkendir. Tanımlanan her <code class="docutils literal"><span class="pre">yaz</span></code>
+fonksiyonunun farklı olduğunu şu şekilde de görebiliriz:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">yazıcı</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">yazıcı</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span>
+<span class="go">&lt;function yazıcı.&lt;locals&gt;.yaz at 0x00000210D9235558&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>
+<span class="go">&lt;function yazıcı.&lt;locals&gt;.yaz at 0x00000210D920E678&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">id</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="go">2271385703768</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="go">2271385544312</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi farklı <code class="docutils literal"><span class="pre">yaz</span></code> fonksiyonlarının hafızada saklandığı yerler de
+farklı oluyor…</p>
+<p>Bu konuda biraz daha ilerlemeden önce bilmemiz gereken başka şeyler de var.
+Biraz da onlar hakkında konuşalım.</p>
+</div>
+<div class="section" id="nonlocal-deyimi">
+<h3>‘nonlocal’ Deyimi<a class="headerlink" href="#nonlocal-deyimi" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">nonlocal</span></code> deyimi <em>yerel olmayan</em> anlamına gelir. Kullanım amacı <code class="docutils literal"><span class="pre">global</span></code> deyimi
+ile benzerdir. Ancak bunu kullanmamız küresel yani global değişkenlere ulaşmamızı değil,
+yerel olmayan değişkenlere ulaşmamızı sağlar. Ayrıca bu deyimi sadece iç içe fonksiyonlarda kullanabiliriz. Tabii bunu böyle söyleyince bir şey anlaşılmıyor. Örnek vermek lazım:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">kapsayıcı_fonk</span><span class="p">():</span>
+        <span class="n">non_local_değişken</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="k">def</span> <span class="nf">iç_fonk</span><span class="p">():</span>
+                <span class="n">non_local_değişken</span> <span class="o">=</span> <span class="mi">2</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">non_local_değişken</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">iç_fonk</span>
+</pre></div>
+</div>
+<p>Burada iç içe bir fonksiyon yapısına sahibiz. Şimdi bu kodumuzu çalıştırıp
+etkileşimli kabukta denemeler yapalım:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dönüş_fonksiyonu</span> <span class="o">=</span> <span class="n">kapsayıcı_fonk</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dönüş_fonksiyonu</span><span class="p">()</span>
+<span class="go">2</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi <code class="docutils literal"><span class="pre">1</span></code> yazılmadı. Yani kapsayıcı fonksiyona ait olan <code class="docutils literal"><span class="pre">non_local_değişken</span></code>
+ile iç fonksiyonumuza ait olan <code class="docutils literal"><span class="pre">non_local_değişken</span></code> farklılar. Aynı bu örnekte:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">def</span> <span class="nf">fonk</span><span class="p">():</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">fonk</span><span class="p">()</span>
+<span class="mi">2</span>
+</pre></div>
+</div>
+<p>küresel <code class="docutils literal"><span class="pre">a</span></code> değişkeni ile <code class="docutils literal"><span class="pre">fonk</span></code> fonksiyonuna ait <code class="docutils literal"><span class="pre">a</span></code> değişkeninin farklı olması gibi.
+Peki biz burada fonksiyon içinde de küresel <code class="docutils literal"><span class="pre">a</span></code>’yı kullanmak istersek nasıl yaparız?
+Bir şey yapmamıza gerek yok, zaten fonksiyon kendi içinde <code class="docutils literal"><span class="pre">a</span></code> değişkenini bulamayınca global alana bakacaktır:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">def</span> <span class="nf">fonk</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">fonk</span><span class="p">()</span>
+<span class="mi">1</span>
+</pre></div>
+</div>
+<p>Fakat eğer küresel olan <cite>a</cite> değişkenini değiştirmek istiyorsanız bildiğiniz gibi <code class="docutils literal"><span class="pre">global</span></code> deyimini kullanmamız lazım:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">def</span> <span class="nf">fonk</span><span class="p">():</span>
+        <span class="k">global</span> <span class="n">a</span>
+        <span class="n">a</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">fonk</span><span class="p">()</span>
+<span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>
+<span class="mi">2</span>
+</pre></div>
+</div>
+<p>İşte aynı bunun gibi:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">kapsayıcı_fonk</span><span class="p">():</span>
+        <span class="n">non_local_değişken</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="k">def</span> <span class="nf">iç_fonk</span><span class="p">():</span>
+                <span class="n">non_local_değişken</span> <span class="o">=</span> <span class="mi">2</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">non_local_değişken</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">iç_fonk</span>
+</pre></div>
+</div>
+<p>Örneğimizde de <code class="docutils literal"><span class="pre">iç_fonk</span></code>’un içinde <code class="docutils literal"><span class="pre">kapsayıcı_fonk</span></code>’a ait olan <code class="docutils literal"><span class="pre">non_local_değişken</span></code>
+değişkenini değiştirmek istersek bunu da <code class="docutils literal"><span class="pre">nonlocal</span></code> deyimi ile şöyle yapabiliriz:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">kapsayıcı_fonk</span><span class="p">():</span>
+        <span class="n">non_local_değişken</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="k">def</span> <span class="nf">iç_fonk</span><span class="p">():</span>
+                <span class="k">nonlocal</span> <span class="n">non_local_değişken</span>
+                <span class="n">non_local_değişken</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">non_local_değişken</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">iç_fonk</span>
+
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">dönüş_fonksiyonu</span> <span class="o">=</span> <span class="n">kapsayıcı_fonk</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">dönüş_fonksiyonu</span><span class="p">()</span>
+<span class="mi">2</span>
+</pre></div>
+</div>
+<p>Tabii bu değişkeni değiştirmek gibi bir amacımız yoksa, sadece kullanmak isteseydik şöyle de yapabilirdik ve <code class="docutils literal"><span class="pre">nonlocal</span></code> deyimine gerek kalmazdı:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">kapsayıcı_fonk</span><span class="p">():</span>
+<span class="n">non_local_değişken</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">def</span> <span class="nf">iç_fonk</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">non_local_değişken</span><span class="p">)</span>
+<span class="k">return</span> <span class="n">iç_fonk</span>
+
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">dönüş_fonksiyonu</span> <span class="o">=</span> <span class="n">kapsayıcı_fonk</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">dönüş_fonksiyonu</span><span class="p">()</span>
+<span class="mi">1</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi <code class="docutils literal"><span class="pre">nonlocal</span></code> ifadesi iç içe fonksiyonlar ile çalışırken iç fonksiyonda,
+kapsayıcı fonksiyonunun değişkenlerini değiştirmemizi sağlıyor. Artık bu bilgiyi kullanarak
+şöyle bir fonksiyon oluşturabiliriz:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">yazıcı</span><span class="p">(</span><span class="n">mesaj</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">yaz</span><span class="p">():</span>
+                <span class="k">nonlocal</span> <span class="n">mesaj</span>
+                <span class="n">mesaj</span> <span class="o">+=</span> <span class="s2">&quot; Dünya&quot;</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">mesaj</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">yaz</span>
+
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">yazıcı</span><span class="p">(</span><span class="s2">&quot;Merhaba&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">y</span><span class="p">()</span>
+<span class="n">Merhaba</span> <span class="n">Dünya</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">nonlocal</span></code> deyiminin nasıl kullanıldığını bildiğiniz için örneğimizi anladığınızı
+düşünüyorum. Burda yaptığımız tek farklı şey <code class="docutils literal"><span class="pre">nonlocal</span></code> deyimi ile birlikte
+kullandığımız nesnenin <code class="docutils literal"><span class="pre">yazıcı</span></code> fonksiyonunun parametresi olması. Bunu yapmamızda
+bir sakınca yoktur. Sonuç olarak <code class="docutils literal"><span class="pre">mesaj</span></code> parametresi, normalde de <code class="docutils literal"><span class="pre">yazıcı</span></code> fonksiyonu
+içerisinde bir değişken gibi kullanılmaktadır. Ancak şunu da unutmayalım ki aynı
+<code class="docutils literal"><span class="pre">global</span></code> ifadesini kullanırken olduğu gibi <code class="docutils literal"><span class="pre">nonlocal</span></code> ifadesinde de eğer
+daha üst bir alandaki değişkenin üzerinde bir değer atama işleci kullanmayacaksak
+<code class="docutils literal"><span class="pre">nonlocal</span></code> ifadesini kullanmamıza gerek yoktur. Yani değişkeni <code class="docutils literal"><span class="pre">nonlocal</span></code> ifadesi
+olmadan da kullanabiliriz, ancak değerini değiştiremeyiz. Eğer yukarıdaki kodda <code class="docutils literal"><span class="pre">nonlocal</span></code>
+ifadesini kullanmazsak hata alırız:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">yazıcı</span><span class="p">(</span><span class="n">mesaj</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">yaz</span><span class="p">():</span>
+                <span class="n">mesaj</span> <span class="o">+=</span> <span class="s2">&quot; Dünya&quot;</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">mesaj</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">yaz</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">yazıcı</span><span class="p">(</span><span class="s2">&quot;Merhaba Dünya&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">y</span><span class="p">()</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;pyshell#1&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="n">y</span><span class="p">()</span>
+  <span class="n">File</span> <span class="s2">&quot;C:\Users\Dinçel\Desktop\istihza.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">3</span><span class="p">,</span> <span class="ow">in</span> <span class="n">yaz</span>
+    <span class="n">mesaj</span> <span class="o">+=</span> <span class="s2">&quot; Dünya&quot;</span>
+<span class="ne">UnboundLocalError</span><span class="p">:</span> <span class="n">local</span> <span class="n">variable</span> <span class="s1">&#39;mesaj&#39;</span> <span class="n">referenced</span> <span class="n">before</span> <span class="n">assignment</span>
+</pre></div>
+</div>
+<p>Sonuç olarak kapsayıcı fonksiyona ait değişkenleri, iç fonksiyonumuzda değiştirebilmek
+için <code class="docutils literal"><span class="pre">nonlocal</span></code> ifadesine ihtiyacımız vardır.</p>
+<p>Şimdi en başta konuştuğumuz <code class="docutils literal"><span class="pre">&lt;locals&gt;</span></code> konusuna geri dönüyoruz. İç fonksiyonun,
+çağırılan kapsayıcı fonksiyonun yerel değişkenlerinden biri olduğunu ve
+her seferinde yeniden tanımlandığını, bu yüzden de aynı işi yapsalar da
+aslında farklı olan fonksiyonlar elde ettiğimizi konuşmuştuk. Ancak her seferinde
+yeniden tanımlanan tek şey iç fonksiyon değildir. Kapsayıcı fonksiyonun içindeki
+her değişken, dış fonksiyonun her çağırılışında baştan tanımlanır.
+Bunu şu örnek üzerinden anlamaya çalışalım:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sayıcı</span><span class="p">():</span>
+    <span class="n">sayı</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">def</span> <span class="nf">say</span><span class="p">():</span>
+            <span class="k">nonlocal</span> <span class="n">sayı</span>
+            <span class="n">sayı</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">return</span> <span class="n">sayı</span>
+    <span class="k">return</span> <span class="n">say</span>
+</pre></div>
+</div>
+<p>Kodumuzu kısaca incelersek <code class="docutils literal"><span class="pre">say</span></code> fonksiyonunda <code class="docutils literal"><span class="pre">sayı</span></code> değişkenini <code class="docutils literal"><span class="pre">nonlocal</span></code>
+hale getiriyoruz. Aynı zamanda <code class="docutils literal"><span class="pre">say</span></code> fonksiyonu her çağırıldığında <code class="docutils literal"><span class="pre">sayı</span></code> değiş-
+kenini de bir arttırıp değer olarak döndürüyoruz. Şimdi kodumuzu çalıştıralım:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">sayıcı</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="go">&lt;class &#39;function&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span>
+<span class="go">&lt;function sayıcı.&lt;locals&gt;.say at 0x000001FD2213ED38&gt;</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="p">()</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="p">()</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="p">()</span>
+<span class="go">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="p">()</span>
+<span class="go">4</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi ilginç bir şekilde <code class="docutils literal"><span class="pre">sayıcı</span></code> fonksiyonu çalışmış ve bitmiştir,
+ancak içerisinde bulunan <code class="docutils literal"><span class="pre">sayı</span></code> değişkeni silinmemiştir ve geri döndürülen
+<code class="docutils literal"><span class="pre">say</span></code> fonksiyonu tarafından kullanılmaya devam etmektedir. Yani biz göremesek de
+<code class="docutils literal"><span class="pre">sayı</span></code> değişkeni hala bir yerlede saklanılıyordur. Peki normalde bir fonksiyonun
+çalışması bitince yerel değişkenleri silinmez mi? Tabii ki silinir. Ancak burada <code class="docutils literal"><span class="pre">say</span></code>
+fonksiyonu içinde <code class="docutils literal"><span class="pre">sayı</span></code> değişkenini <code class="docutils literal"><span class="pre">nonlocal</span></code> hale getirmiş oluyoruz. Yani aslında
+biz <code class="docutils literal"><span class="pre">sayı</span></code> değişkenini kullanmaya devam ediyoruz. Eee şimdi Python kalkıp da bizim
+kullanacağımız bir değişkeni silse ayıp olur. O da bunu yapmıyor zaten. Ancak
+<code class="docutils literal"><span class="pre">sayı</span></code> değişkeni iç fonksiyon olan <code class="docutils literal"><span class="pre">say</span></code> fonksiyonunda hiç kullanılmasaydı silinirdi. Aslında bu
+örnekteki kilit olaylardan biri de <code class="docutils literal"><span class="pre">sayı</span></code> değişkeninin sadece bir defa tanımlanması
+ve bu tanımın aynı <code class="docutils literal"><span class="pre">say</span></code> fonksiyonunda olduğu gibi <code class="docutils literal"><span class="pre">sayıcı</span></code> fonksiyonumuzun sadece bir çağırılışına özgü olması. Buradan iki sonuca varıyoruz:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">sayıcı</span></code> sınıfını birden fazla defa çağırsak bile geri döndürülen her <code class="docutils literal"><span class="pre">say</span></code> fonksiyonu ekrana sayıları hep sırayla yazdıracaktır. Çünkü her <code class="docutils literal"><span class="pre">say</span></code> fonksiyonu kendisini tanımlayan <code class="docutils literal"><span class="pre">sayıcı</span></code> çağırılışına ait olan <code class="docutils literal"><span class="pre">sayı</span></code> değişkenini kullanmaktadır.</li>
+<li>Her <code class="docutils literal"><span class="pre">say</span></code> fonksiyonunun kullandığı <code class="docutils literal"><span class="pre">sayı</span></code> değişkeni sadece bir defa <code class="docutils literal"><span class="pre">0</span></code> olarak tanımlanmakta ve daha sonra <code class="docutils literal"><span class="pre">say</span></code> fonksiyonumuzu her çağırışımızda artmaktadır.</li>
+</ul>
+<p>Evet dediğimiz gibi farklı <code class="docutils literal"><span class="pre">say</span></code> fonksiyonları farklı <code class="docutils literal"><span class="pre">sayı</span></code> değişkenlerini kullanıyor:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">sayıcı</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="p">()</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="p">()</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="p">()</span>
+<span class="go">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="p">()</span>
+<span class="go">4</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s2</span> <span class="o">=</span> <span class="n">sayıcı</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s2</span><span class="p">()</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s2</span><span class="p">()</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s2</span><span class="p">()</span>
+<span class="go">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s2</span><span class="p">()</span>
+<span class="go">4</span>
+</pre></div>
+</div>
+<p>Eğer bu örnekleri anlamakta zorluk çektiyseniz bunun çalışma mantığı olarak şunun ile aynı olduğunu söyleyebiliriz:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">sayı</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">def</span> <span class="nf">say</span><span class="p">():</span>
+        <span class="k">global</span> <span class="n">sayı</span>
+        <span class="n">sayı</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">sayı</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="n">say</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="p">()</span>
+<span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="p">()</span>
+<span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="p">()</span>
+<span class="mi">3</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="p">()</span>
+<span class="mi">4</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">global</span></code> deyimi ile yaptığımız bu örneğin <code class="docutils literal"><span class="pre">nonlocal</span></code> ile yaptığımız örnekten belki de en önemli
+farkı, <code class="docutils literal"><span class="pre">nonlocal</span></code> örneğinde <code class="docutils literal"><span class="pre">sayı</span></code> değişkenine doğrudan erişememizdir. Ama <code class="docutils literal"><span class="pre">sayı</span></code> değişkenini <code class="docutils literal"><span class="pre">say</span></code> fonksiyonu tarafından kullanılmaktadır. Ancak bizim <code class="docutils literal"><span class="pre">sayı</span></code> değişkenine bizzat erişememiz, gördüğümüz gibi, silindiği anlamına gelmiyor…</p>
+</div>
+<div class="section" id="ic-ice-fonksiyonlarin-kullanim-alanlari">
+<h3>İç İçe Fonksiyonların Kullanım Alanları<a class="headerlink" href="#ic-ice-fonksiyonlarin-kullanim-alanlari" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Şu ana kadar iç içe fonksiyonların nasıl tanımlandığını ve nasıl çalıştığını öğrendik.
+Ancak öğrenme aşamasında olduğumuz için buraya kadar hep basit örnekler verdik.
+Şimdi bazı işe yarar örnekler vereceğiz ve ne zaman içe içe fonksiyon kullanıp ne zaman normal fonksiyonlar
+kullanmamızın daha doğru olacağını konuşacağız.</p>
+<p>Öncelikle şunu söyleyelim ki iç içe fonksiyonların en fazla kullanıldığı yer bezeyicilerdir.
+Bu daha sonra göreceğimiz bir konu ancak orada iç içe fonksiyonları çok fazla kullanacağız, haberiniz olsun.</p>
+<p>İç içe fonksiyonlar bazı işlemleri daha verimli yapmamızı sağlayabileceği gibi bazı işlemleri de
+(yanlış veya gereksiz yere kullanırsak) yavaşlatırlar. Mesela şu fonksiyona bakalım:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">işlem_yap</span><span class="p">(</span><span class="n">sayı</span><span class="p">,</span> <span class="n">bölen</span><span class="p">,</span> <span class="o">*</span><span class="n">eklenenler</span><span class="p">):</span>
+    <span class="n">sonuç</span> <span class="o">=</span> <span class="n">sayı</span> <span class="o">/</span> <span class="n">bölen</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">eklenenler</span><span class="p">:</span>
+        <span class="n">sonuç</span> <span class="o">+=</span> <span class="n">i</span>
+
+    <span class="k">return</span> <span class="n">sonuç</span>
+</pre></div>
+</div>
+<p>Bu fonksiyonumuz aldığı <code class="docutils literal"><span class="pre">sayı</span></code> parametresini <code class="docutils literal"><span class="pre">bölen</span></code> parametresi ile böldükten sonra geriye kalan bütün parametreleri sonuca ekleyip geri döndürüyor. <code class="docutils literal"><span class="pre">*eklenenler</span></code>’in ne anlama geldiğini zaten daha önce öğrenmiştik. şimdi bu fonksiyonu kullanalım:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">işlem_yap</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="go">17.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">işlem_yap</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">6.0</span>
+</pre></div>
+</div>
+<p>Şimdi diyelim ki biz yazdığımız programda farklı <code class="docutils literal"><span class="pre">sayı</span></code> ve <code class="docutils literal"><span class="pre">bölen</span></code> parametreleri ile hep aynı <code class="docutils literal"><span class="pre">eklenenler</span></code> parametrelerini kullanacağız. Yani şunun gibi işlemler yapacağız:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">işlem_yap</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="go">12.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">işlem_yap</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="go">15.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">işlem_yap</span><span class="p">(</span><span class="mi">48</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="go">22.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">işlem_yap</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">13.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">işlem_yap</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">14.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">işlem_yap</span><span class="p">(</span><span class="mi">105</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">18.0</span>
+</pre></div>
+</div>
+<p>Burada görebileceğimiz gibi aynı <code class="docutils literal"><span class="pre">eklenenler</span></code> değerleri çoklukla kullanılıyor. Böyle bir durumda toplama işlemini her seferinde gerçekleştirmemiz gereksiz oluyor. Bu işlemin sadece bir defa yapılmasını şu şekilde sağlayabiliriz:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">işlem_yapıcı</span><span class="p">(</span><span class="o">*</span><span class="n">eklenenler</span><span class="p">):</span>
+    <span class="n">ekle</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">eklenenler</span><span class="p">:</span>
+        <span class="n">ekle</span> <span class="o">+=</span> <span class="n">i</span>
+
+    <span class="k">def</span> <span class="nf">işlem</span><span class="p">(</span><span class="n">sayı</span><span class="p">,</span> <span class="n">bölen</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">sayı</span><span class="o">/</span><span class="n">bölen</span> <span class="o">+</span> <span class="n">ekle</span>
+
+    <span class="k">return</span> <span class="n">işlem</span>
+</pre></div>
+</div>
+<p>Bu kodumuzda <code class="docutils literal"><span class="pre">işlem_yapıcı</span></code> fonksiyonu hep aynı olacağı için değişmeyecek olan <code class="docutils literal"><span class="pre">eklenenler</span></code> parametresini sadece bir defa alıyor ve hepsini topluyor, daha sonra <code class="docutils literal"><span class="pre">işlem</span></code> fonksiyonunu geri döndürüyor. <code class="docutils literal"><span class="pre">işlem</span></code> fonksiyonunu çağırdığımızda da <code class="docutils literal"><span class="pre">sayı</span></code> ve <code class="docutils literal"><span class="pre">bölen</span></code> parametrelerini veriyoruz ve işlemin sonucu bize geri dönüyor. İlk yaptığımız işlemleri bir de böyle kullanalım:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">işlemci</span> <span class="o">=</span> <span class="n">işlem_yapıcı</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">işlemci2</span> <span class="o">=</span> <span class="n">işlem_yapıcı</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">işlemci</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">12.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">işlemci</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+<span class="go">15.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">işlemci</span><span class="p">(</span><span class="mi">48</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="go">22.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">işlemci2</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="go">13.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">işlemci2</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="go">14.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">işlemci2</span><span class="p">(</span><span class="mi">105</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+<span class="go">18.0</span>
+</pre></div>
+</div>
+<p>Artık gerekli işlemi yapacak fonksiyonu sadece bir defa oluşturuyoruz ve sürekli onu kullanıyoruz. Bu da aynı parametrelerin sürekli fonksiyona parametre olarak yollanmasını engelliyor ve gerekli işlemlerin sadece bir defa yapılmasını sağlıyor. Kendi yazdığınız kodlarda herhangi bir amaç ile bir fonksiyon oluşturduğunuzda ve bu fonksiyonu da kullanırken bunun gibi bir durum ile karşılaştırdığımızda artık iç içe fonksiyonları kullanarak kodu nasıl daha verimli hale getireceğiniz hakkında aklınızda bir fikir oluşmuştur diye düşünüyorum.</p>
+<p>Şimdi de bir fonksiyon oluştururken o fonksiyonun içinde kod tekrarları yaptığımız fark ettiğimizi varsayalım. Böyle bir durumda bu kod tekrarlarını da azaltmak için bir fonksiyon daha yazmamız iyi olacaktır. Yani:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dosyadaki_karakter_sayısı</span><span class="p">(</span><span class="n">dosya</span><span class="p">,</span> <span class="n">karakter</span><span class="p">):</span>
+    <span class="n">sonuç</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">dosya</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">dosya</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">veri</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">veri</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="n">karakter</span><span class="p">:</span>
+                    <span class="n">sonuç</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">veri</span> <span class="o">=</span> <span class="n">dosya</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">veri</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="n">karakter</span><span class="p">:</span>
+                <span class="n">sonuç</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">sonuç</span>
+</pre></div>
+</div>
+<p>Elimizde bir dosyayı okuyacak ve bu dosyadaki belli bir karakterin sayını döndürecek bir fonksiyon var. Ama bu fonksiyon <code class="docutils literal"><span class="pre">dosya</span></code> parametresi olarak hem dosyanın ismini hem de açılmış bir dosyanın kendisini alabiliyor. <cite>if type(dosya) == str:</cite> kısmı <code class="docutils literal"><span class="pre">dosya</span></code>
+değişkeninin türünün <code class="docutils literal"><span class="pre">str</span></code> olup olmadığını kontrol ediyor, eğer öyleyse dosyayı açıyoruz ve okuyoruz. Öyle değilse dosyayı direkt okuyoruz. Dikkat ederseniz daha sonra yapılan işlemler aynı, yani:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">veri</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="n">karakter</span><span class="p">:</span>
+        <span class="n">sonuç</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>kısmı iki defa tekrar ediyor. Hatırlarsanız bir karakter dizisinin içinde herhangi bir karakterin kaç defa geçtiğini öğrenmek için <code class="docutils literal"><span class="pre">count</span></code> metodundan faydalanabiliriz:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;merhaba&quot;</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+<span class="go">2</span>
+</pre></div>
+</div>
+<p>Ama burada örneğimiz anlaşılsın diye bunu kendimiz yapıyoruz.</p>
+<p>Şimdi yukarıdaki tekrar eden yeri şu şekilde ayrı bir fonksiyon haline getirebiliriz:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">karakter_sayısı</span><span class="p">(</span><span class="n">karakter_dizisi</span><span class="p">,</span> <span class="n">karakter</span><span class="p">):</span>
+    <span class="n">sayaç</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">karakter_dizisi</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="n">karakter</span><span class="p">:</span>
+            <span class="n">sayaç</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">sayaç</span>
+
+<span class="k">def</span> <span class="nf">dosyadaki_karakter_sayısı</span><span class="p">(</span><span class="n">dosya</span><span class="p">,</span> <span class="n">karakter</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">dosya</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">dosya</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">karakter_sayısı</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span> <span class="n">karakter</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">karakter_sayısı</span><span class="p">(</span><span class="n">dosya</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span> <span class="n">karakter</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Artık karakter dizisinin içinde bir karakterin kaç defa geçtiğini bulmak için <code class="docutils literal"><span class="pre">karakter_sayısı</span></code> sayısı adlı fonksiyon yararlanıyoruz. Ancak bizim bu fonksiyonu tanımlama sebebimiz <cite>dosyadaki_karakter_sayısı</cite> fonksiyonunda yaptığımız bir işlemi yerine getirmekdi. Eğer <code class="docutils literal"><span class="pre">karakter_sayısı</span></code> fonksiyonunu programımızda sadece <code class="docutils literal"><span class="pre">dosyadaki_karakter_sayısı</span></code> fonksiyonu içinde kullanacaksak bu fonksiyonu global alanda tanımlamamıza gerek yokü, <cite>dosyadaki_karakter_sayısı</cite> fonksiyonunun içinde de tanımlayabiliriz:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dosyadaki_karakter_sayısı</span><span class="p">(</span><span class="n">dosya</span><span class="p">,</span> <span class="n">karakter</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">karakter_sayısı</span><span class="p">(</span><span class="n">karakter_dizisi</span><span class="p">):</span>
+        <span class="n">sayaç</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">karakter_dizisi</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="n">karakter</span><span class="p">:</span>
+                <span class="n">sayaç</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">sayaç</span>
+
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">dosya</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">dosya</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">karakter_sayısı</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">karakter_sayısı</span><span class="p">(</span><span class="n">dosya</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Ayrıca bu şekilde <code class="docutils literal"><span class="pre">karakter_sayısı</span></code> fonksiyonunun <code class="docutils literal"><span class="pre">karakter</span></code> şeklinde bir parametreye ihtiyacı kalmadı, zaten
+<cite>dosyadaki_karakter_sayısı</cite> fonksiyonunun içindeki <code class="docutils literal"><span class="pre">karakter</span></code> değişkenine erişebiliyor. İç içe fonksiyonları bunun gibi durumlarda da kullanabiliriz.</p>
+</div>
+</div>
+<div class="section" id="uretecler-generators">
+<h2>Üreteçler (<em>Generators</em>)<a class="headerlink" href="#uretecler-generators" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<p>Biz üreteçlerle az çok tanışıyoruz. Liste üreteçleri olsun, sözlük üreteçleri
+olsun bu konu hakkında bir şeyler öğrenmiştik. Ancak biz üreteçlerimizi hep
+şunun gibi tanımlamıştık:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">listem</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">listem</span>
+<span class="go">[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span>
+</pre></div>
+</div>
+<p>Dikkat ederseniz burada <code class="docutils literal"><span class="pre">i</span> <span class="pre">for</span> <span class="pre">i</span> <span class="pre">in</span> <span class="pre">range(10)</span></code> kısmı (nasıl <code class="docutils literal"><span class="pre">lambda</span></code> fonksiyonlar normal yolla tanımlanan fonksiyonlardan farklı bir söz dizimi kullanıyorsa) normal kodlardan biraz farklı bir söz dizimi kullanıyor. Bu söz dizimi ile karmaşık
+algoritmalar oluşturmak zordur, çoğunlukla da mümkün değildir. Zaten bunun bulunma sebebi
+karmaşık algoritmalarda kullanılması değil, kısa işlerde yazım kolaylığı sağlamasıdır.
+Yani bu yazım şekli, bazı fonksiyonların <code class="docutils literal"><span class="pre">lambda</span></code> olarak tanımlanması gibi,
+üreteç tanımlamanın sadece kısa bir yoludur. Peki aslında üreteçler nasıl
+tanımlanır? Şimdi gelin bu konuyu inceleyelim.</p>
+<div class="section" id="ureteclere-giris">
+<h3>Üreteçlere Giriş<a class="headerlink" href="#ureteclere-giris" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Üreteçler, fonksiyonlara benzer şekilde tanımlanır. Hatta tek farkının <code class="docutils literal"><span class="pre">yield</span></code>
+adındaki bir ifade olduğunu söyleyebiliriz. Hatırlarsanız iç içe fonksiyonlar
+konusunda üreteçler konusuna birkaç defa atıfta bulunmuştuk.
+Bu yüzden aynı işi yapacak iç içe bir fonksiyon ile bir üreteci karşılaştırarak
+konuya başlamak istiyorum:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fonksiyon_sayıcı</span><span class="p">():</span>
+    <span class="n">sayı</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">def</span> <span class="nf">say</span><span class="p">():</span>
+            <span class="k">nonlocal</span> <span class="n">sayı</span>
+            <span class="n">sayı</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">return</span> <span class="n">sayı</span>
+    <span class="k">return</span> <span class="n">say</span>
+
+<span class="k">def</span> <span class="nf">üreteç_sayıcı</span><span class="p">():</span>
+        <span class="n">sayı</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">sayı</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">yield</span> <span class="n">sayı</span>
+</pre></div>
+</div>
+<p>Endişe etmeyin. İleride <code class="docutils literal"><span class="pre">üreteç_sayıcı</span></code>’nın nasıl çalıştığını inceleyeceğiz.
+Şimdilik sadece şuraya odaklanalım:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">fonksiyon_sayıcı</span><span class="p">)</span>
+<span class="go">&lt;class &#39;function&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">üreteç_sayıcı</span><span class="p">)</span>
+<span class="go">&lt;class &#39;function&#39;&gt;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fonk</span> <span class="o">=</span> <span class="n">fonksiyon_sayıcı</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">üreteç</span> <span class="o">=</span> <span class="n">üreteç_sayıcı</span><span class="p">()</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">fonk</span><span class="p">)</span>
+<span class="go">&lt;class &#39;function&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">üreteç</span><span class="p">)</span>
+<span class="go">&lt;class &#39;generator&#39;&gt;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fonk</span><span class="p">()</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fonk</span><span class="p">()</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fonk</span><span class="p">()</span>
+<span class="go">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fonk</span><span class="p">()</span>
+<span class="go">4</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">üreteç</span><span class="p">)</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">üreteç</span><span class="p">)</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">üreteç</span><span class="p">)</span>
+<span class="go">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">üreteç</span><span class="p">)</span>
+<span class="go">4</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">fonk</span></code> ve <code class="docutils literal"><span class="pre">üreteç</span></code> değişkenlerini kullanarak elde ettiğimiz sonuçların aynı olduğunu görebiliyorsunuz. Şimdi
+bundan faydalanarak tanımlanma şekillerini anlamaya çalışalım.</p>
+<p><code class="docutils literal"><span class="pre">fonk</span></code> fonksiyonunun nasıl çalıştığını zaten iç içe fonksiyonlar konusunda gördük.
+Şimdi <code class="docutils literal"><span class="pre">next</span></code> fonksiyonu ve <code class="docutils literal"><span class="pre">yield</span></code> deyimi ile alakalı konuşalım. Öncelikle
+şunu söylemek gerekir ki <code class="docutils literal"><span class="pre">next</span></code> fonksiyonu, gömülü bir fonksiyondur. Ne işe yaradığını anlamak
+için ise <code class="docutils literal"><span class="pre">yield</span></code> deyimini anlamamız gerekiyor. Eğer kodumuzu ve aldığımız
+çıktıları incelerseniz <code class="docutils literal"><span class="pre">yield</span></code> deyiminin, <code class="docutils literal"><span class="pre">return</span></code> deyimine bazı yönlerden
+benzediğini fark edebilirsiniz. Tabii önemli farklılıklar da var. Bir kere
+fark edeceğiniz gibi <code class="docutils literal"><span class="pre">yield</span></code> deyimi hangi değeri döndüreceğimizi
+belirliyor. Peki bu döndürme işleminin <code class="docutils literal"><span class="pre">return</span></code> ile değer döndürmekten
+ne farkı var? Bir fonksiyonun içinde <code class="docutils literal"><span class="pre">return</span></code> deyimine ulaşıldığında
+fonksiyon sonlanır ve fonksiyona ait yerel değişkenler silinir. <code class="docutils literal"><span class="pre">yield</span></code> deyiminde böyle
+bir şey söz konusu değildir. Aynı iç içe fonksiyonlarda iç fonksiyonunun dış fonksiyondaki değişkeni kullanması gibi
+üreteçlerin de yerel değişkenleri Python tarafından saklanır. Ancak üreteçlerde
+belli değişkenler değil, yerel değişkenlerin tamamı saklanır. Şimdi yukarıdaki örnekte şu üç kısma
+tekrar bakarsak:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">fonksiyon_sayıcı</span><span class="p">)</span>
+<span class="go">&lt;class &#39;function&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">üreteç_sayıcı</span><span class="p">)</span>
+<span class="go">&lt;class &#39;function&#39;&gt;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fonk</span> <span class="o">=</span> <span class="n">fonksiyon_sayıcı</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">üreteç</span> <span class="o">=</span> <span class="n">üreteç_sayıcı</span><span class="p">()</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">fonk</span><span class="p">)</span>
+<span class="go">&lt;class &#39;function&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">üreteç</span><span class="p">)</span>
+<span class="go">&lt;class &#39;generator&#39;&gt;</span>
+</pre></div>
+</div>
+<p>Şunu görüyoruz ki <code class="docutils literal"><span class="pre">üreteç_sayıcı</span></code> aslında bir fonksiyon. Ama alelade bir
+fonksiyon değil, çağrıldığında <code class="docutils literal"><span class="pre">generator</span></code> nesnesi döndüren bir fonksiyon.
+Yani aynı iç içe fonksiyonlarda önce kapsayıcı fonksiyonu çağırıp dönüş değerini kullandığımız
+gibi üreteçlerde de önce üreteci tanımladığımız fonksiyonu çağırıp dönüş değerini
+kullanıyoruz. Çünkü aslında üreteç olan nesne, bu döndürülen değerdir. Ve aynı
+iç içe fonksiyonlarda olduğu gibi bu durum birbirinden bağımsız ancak aynı işi
+yapan değişkenler oluşturmamızı sağlar. Dikkat ederseniz iç içe fonksiyonlar ve
+üreteçler, çalışma prensibi açısından benzerler. Ancak üreteçler <code class="docutils literal"><span class="pre">yield</span></code> ifadesininin
+kullanımı ile bize daha kullanışlı bir algoritma şekli vermektedir.</p>
+<p>Şu ana kadar üreteçlerin nasıl tanımlandığı ve nasıl kullanıldığı hakkında pek de bilgi
+vermedik. Yaptığımız şey, iç içe fonksiyonlar ile üreteçlerin, çalışma
+prensiblerinin ne kadar benzer olduğuna dikkat çekmek idi. Şimdi <code class="docutils literal"><span class="pre">next</span></code> fonksiyonu ve
+<code class="docutils literal"><span class="pre">yield</span></code> deyimi hakkında konuşarak kendi üreteçlerimizi nasıl tanımlayacağımıza
+bakalım.</p>
+</div>
+<div class="section" id="ureteclerin-tanimlanmasi">
+<h3>Üreteçlerin Tanımlanması<a class="headerlink" href="#ureteclerin-tanimlanmasi" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<div class="section" id="yield-deyimi-ve-next-fonksiyonu">
+<h4>‘yield’ Deyimi ve ‘next’ Fonksiyonu<a class="headerlink" href="#yield-deyimi-ve-next-fonksiyonu" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<p><code class="docutils literal"><span class="pre">next</span></code> fonksiyonunun gömülü bir fonksiyon olduğunu söylemiştik. <code class="docutils literal"><span class="pre">yield</span></code> deyimi da
+üretecimizden değer döndürmemizi sağlıyordu. Peki bu işlemler hangi kurallar çerçevesinde
+gerçekleşiyor?</p>
+<p>Basit bir üreteç tanımlayarak <code class="docutils literal"><span class="pre">yield</span></code> metodunu anlatmaya çalışalım:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">üreteç</span><span class="p">():</span>
+        <span class="k">yield</span> <span class="s2">&quot;Merhaba&quot;</span>
+        <span class="k">yield</span> <span class="s2">&quot;Dünya&quot;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">return</span></code> deyiminin fonksiyonu sonlandırırken <code class="docutils literal"><span class="pre">yield</span></code> deyimi üretecin çalışmasına ara
+verir ve sağındaki değişkeni geriye döndürür. Herhangi bir değer verilmemiş ise <code class="docutils literal"><span class="pre">None</span></code> döndürecektir.
+Şimdi kodumuzu çalıştıralım:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">üreteç</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="go">&quot;Merhaba&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="go">&quot;Dünya&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;pyshell#5&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+    <span class="nb">next</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="gr">StopIteration</span>
+</pre></div>
+</div>
+<p>Çıktımızı incelersek <code class="docutils literal"><span class="pre">next</span></code> fonksiyonunun, kendisine verilen üretecin kodunu bir <code class="docutils literal"><span class="pre">yield</span></code> deyimine
+rastlayana kadar çalıştırdığını, <code class="docutils literal"><span class="pre">yield</span></code> deyimine rastladığında ise deyimin sağındaki
+değişkeni döndürdüğünü görebiliriz. Unutmayalım ki bu döndürme işlemini yapan <code class="docutils literal"><span class="pre">next</span></code> fonksiyonudur.
+Üretecimizin içinde herhangi bir yönerge kalmadığında ise <code class="docutils literal"><span class="pre">next</span></code> fonksiyonumuz <code class="docutils literal"><span class="pre">StopIteration</span></code>
+hatası yükseltmektedir.</p>
+<div class="admonition note">
+<p class="first admonition-title">Not</p>
+<p class="last">‘next’ fonksiyonunun burada yaptığı iş için ‘yineleme (iteration)’ terimi kullanılır.
+‘next’ fonksiyonuna parametre olarak verilebilen nesneler ise birer ‘yinelenebilir nesne
+(iterable object)’dir. ‘generator’ sınıfı yinelenebilir nesnelere bir örnektir.</p>
+</div>
+<p>Bir örnek daha yapalım:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">üreteç</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;üreteç ilk defa next fonksiyonu ile kullanıldı.&quot;</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="s2">&quot;1. yield&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;üreteç ikinci defa next fonksiyonu ile kullanıldı.&quot;</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="s2">&quot;2. yield&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;üreteç üçüncü defa next fonksiyonu ile kullanıldı ve bitti.&quot;</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">g</span> <span class="o">=</span> <span class="n">üreteç</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">ilk_dönüş</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="n">üreteç</span> <span class="n">ilk</span> <span class="n">defa</span> <span class="nb">next</span> <span class="n">fonksiyonu</span> <span class="n">ile</span> <span class="n">kullanıldı</span><span class="o">.</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">ikinci_dönüş</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="n">üreteç</span> <span class="n">ikinci</span> <span class="n">defa</span> <span class="nb">next</span> <span class="n">fonksiyonu</span> <span class="n">ile</span> <span class="n">kullanıldı</span><span class="o">.</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">son_dönüş</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="n">üreteç</span> <span class="n">üçüncü</span> <span class="n">defa</span> <span class="nb">next</span> <span class="n">fonksiyonu</span> <span class="n">ile</span> <span class="n">kullanıldı</span> <span class="n">ve</span> <span class="n">bitti</span><span class="o">.</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;pyshell#5&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="nb">next</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="ne">StopIteration</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">ilk_dönüş</span>
+<span class="s1">&#39;1. yield&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">ikinci_dönüş</span>
+<span class="s1">&#39;2. yield&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">son_dönüş</span>
+<span class="ne">NameError</span><span class="p">:</span> <span class="n">name</span> <span class="s1">&#39;son_dönüş&#39;</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">defined</span>
+</pre></div>
+</div>
+<p>Örneğimiz gayet açık. <code class="docutils literal"><span class="pre">next</span></code> fonksiyonu kendisine verilen üretecin kodunu en sol kaldığı yerden çalıştırmaya devam ediyor, bir <code class="docutils literal"><span class="pre">yield</span></code> ifadesine denk geldiğinde de üretecin çalışması duruyor ve <code class="docutils literal"><span class="pre">next</span></code> fonksiyonu <code class="docutils literal"><span class="pre">yield</span></code> deyiminin sağındaki değeri geri döndürüyor. Tabii <code class="docutils literal"><span class="pre">son_dönüş</span></code>’ün <code class="docutils literal"><span class="pre">None</span></code> olmak yerine tanımlanmamış olması da ilginç gelmiş olabilir. Bunu da şu örnekle açıklayabiliriz:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">hata</span><span class="p">():</span>
+<span class="go">            raise Exception</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dönüş</span> <span class="o">=</span> <span class="n">hata</span><span class="p">()</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;pyshell#8&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+    <span class="n">dönüş</span> <span class="o">=</span> <span class="n">hata</span><span class="p">()</span>
+  File <span class="nb">&quot;&lt;pyshell#7&gt;&quot;</span>, line <span class="m">2</span>, in <span class="n">hata</span>
+    <span class="k">raise</span> <span class="ne">Exception</span>
+<span class="gr">Exception</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dönüş</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;pyshell#9&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+    <span class="n">dönüş</span>
+<span class="gr">NameError</span>: <span class="n">name &#39;dönüş&#39; is not defined</span>
+</pre></div>
+</div>
+<p>Gördüğümüz gibi <code class="docutils literal"><span class="pre">son_dönüş</span></code> değişkenimizin tanımlanmamış olmasının sebebi de <code class="docutils literal"><span class="pre">next</span></code>
+fonksiyonunun değer döndürmek yerine hata yükseltmiş olmasıdır.</p>
+<p>Buraya kadar yaptığımız örnekleri iç içe fonksiyonlar ile de kolayca yapabilirdik. Üreteçlerin
+önemli bir özelliği de tanımlanırken , fonksiyonlar gibi, her türlü ifade ile kullanılabilmesidir.
+Örnek olarak <code class="docutils literal"><span class="pre">while</span></code> döngüsü kullanarak, 1’den başlayarak her yinelediğimizde fibonacci
+sayı dizisinin bir sonraki elemanını döndürecek bir üreteç yazalım:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">():</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">z</span> <span class="o">=</span> <span class="n">y</span>
+                <span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">z</span>
+                <span class="k">yield</span> <span class="n">x</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Not</p>
+<p class="last">Fibonacci dizisi, 0 ve 1 ile başlayan ve her sayının kendisinden önce gelen
+iki sayının toplanması ile elde edildiği bir sayı dizisidir. İtalyan matematikçi
+Leonardo Fibonacci’den adını alır. 0, 1, 1 (0+1), 2 (1+1), 3 (1+2), 5 (2+3), 8 (3+5), 13 (5+8), 21 (8+13), 34 (13+21)
+şeklinde devam eder.</p>
+</div>
+<p>Şimdi bu kodu çalıştıralım:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">fibonacci</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="go">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="go">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="go">8</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="go">13</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi üretecimiz bize (ilk 0 ve 1 sonrasındaki) fibonacci sayılarını vermektedir. Kodumuzu anlamaya çalışırsak:</p>
+<ul class="simple">
+<li>İlk yinelemede, yani <code class="docutils literal"><span class="pre">next</span></code> fonksiyonunu ilk kullanışımızda, <code class="docutils literal"><span class="pre">x</span></code>, <code class="docutils literal"><span class="pre">y</span></code> ve <code class="docutils literal"><span class="pre">z</span></code> değişkenleri tanımlanıyor. Daha sonra <code class="docutils literal"><span class="pre">while</span></code> döngüsüne giriliyor. Değişkenlerin değerleri değiştirildikten sonra <code class="docutils literal"><span class="pre">yield</span> <span class="pre">x</span></code> deyimine geldiğimiz için <code class="docutils literal"><span class="pre">next</span></code> fonksiyonu <code class="docutils literal"><span class="pre">x</span></code> değerini döndürürerek üretecemizin çalışmasını durduruyor.</li>
+<li>İkinci yinelememizde normal bir kodda olacağı gibi <code class="docutils literal"><span class="pre">while</span></code> döngümüzün başına gidiliyor. Aynı işlemler tekrarlanıyor. Tekrar <code class="docutils literal"><span class="pre">yield</span></code> deyimine geliniyor. <code class="docutils literal"><span class="pre">x</span></code> değeri döndürürülüyor. Üretecimizin çalışması durduruluyor ve aynı şeyler tekrar etmeye devam ediyor.</li>
+</ul>
+<p>Üreteçlerin çok güzel özelliklerinden biri de <code class="docutils literal"><span class="pre">for</span></code> döngüsü ile kullanılabilmeleridir.
+Örneğin <code class="docutils literal"><span class="pre">fibonacci</span></code> üretecimiz için bunu uygulayalım:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">fibonacci</span><span class="p">():</span>
+<span class="go">                print(i)</span>
+
+<span class="go">1</span>
+<span class="go">2</span>
+<span class="go">3</span>
+<span class="go">5</span>
+<span class="go">8</span>
+<span class="go">13</span>
+<span class="go">21</span>
+<span class="go">34</span>
+<span class="go">55</span>
+<span class="go">89</span>
+<span class="go">144</span>
+<span class="gp">...</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Not</p>
+<p class="last"><code class="docutils literal"><span class="pre">for</span> <span class="pre">i</span> <span class="pre">in</span> <span class="pre">fibonacci()</span></code> ifadesinde <code class="docutils literal"><span class="pre">fibonacci</span></code> fonksiyonunu çağırdığımıza dikkat
+edin. Sonuçta üretecimizin kendisi <code class="docutils literal"><span class="pre">fibonacci</span></code> fonksiyonu değil, onun döndüreceği değer.</p>
+</div>
+<p>Ancak bu örnekte üretecimiz hiç durmuyor. Bazen üreteçlerimizin durmasını isteyebiliriz.
+Bunu yapmamız için tek gereken şey üretecimizin durmasını istediğimiz yerde üretecimizi
+<code class="docutils literal"><span class="pre">return</span></code> etmemizdir. Sonuçta üreteçler de bir tür fonksiyondur ve <code class="docutils literal"><span class="pre">return</span></code> deyimi
+fonksiyonları sonlandırır (bu <code class="docutils literal"><span class="pre">return</span></code> deyiminden dönen değer üreteçlerde bize ulaşmaz).
+Bu durum <code class="docutils literal"><span class="pre">next</span></code> fonksiyonunun <code class="docutils literal"><span class="pre">StopIteration</span></code> yükseltmesine neden olur.
+<code class="docutils literal"><span class="pre">for</span></code> döngüsü bu hatayı yakalar ve üretecimizin bittiğini anlar:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">():</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">z</span> <span class="o">=</span> <span class="n">y</span>
+                <span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">z</span>
+                <span class="k">yield</span> <span class="n">x</span>
+                <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>
+                        <span class="k">return</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">fibonacci</span><span class="p">():</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="mi">1</span>
+<span class="mi">2</span>
+<span class="mi">3</span>
+<span class="mi">5</span>
+<span class="mi">8</span>
+<span class="mi">13</span>
+<span class="mi">21</span>
+<span class="mi">34</span>
+<span class="mi">55</span>
+<span class="mi">89</span>
+<span class="mi">144</span>
+<span class="o">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi üretecimiz <code class="docutils literal"><span class="pre">100</span></code>’den büyük bir tane daha değer yazıp durdu. Tabii burada
+fazladan bir <code class="docutils literal"><span class="pre">if</span></code> kullanmak yerine bu şartı <code class="docutils literal"><span class="pre">while</span></code>’dan sonra da yazabilirdik:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">z</span>
+        <span class="k">yield</span> <span class="n">x</span>
+</pre></div>
+</div>
+<p>Burada da <code class="docutils literal"><span class="pre">x</span></code> değişkeni <code class="docutils literal"><span class="pre">100</span></code>’den büyük olduğunda döngümüz bitiyor ve başka kodumuz kalmadığımız için
+fonksiyon sonlanıyor. Zaten bir fonksiyonun sonuna ulaşıldığında da biz bir değer döndürmediysek de
+<code class="docutils literal"><span class="pre">None</span></code> değeri döndürülecektir.</p>
+<p>Son olarak parametre alan basit bir üreteç örneği yaparak bir sonraki konuya geçelim.
+Unutmayalım ki üreteçler de bir çeşit fonksiyon olduğu için fonksiyon tanımlarken yapabildiğimiz
+her şeyi üreteç tanımlarken de kullanabiliriz. Buna parametre vermek ve iç içe
+fonksiyonlar oluşturmak da dahildir.</p>
+<p>Üretecimiz bir <code class="docutils literal"><span class="pre">sayı</span></code> parametresi alacak ve o <code class="docutils literal"><span class="pre">sayı</span></code> defa ekrana yazı yazdıracak:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span>def yaz(sayı):
+        for i in range(sayı):
+                print(&quot;Merhaba Dünya!&quot;)
+                yield
+
+&gt;&gt;&gt; y = yaz(4)
+&gt;&gt;&gt; for i in y:
+                pass
+
+Merhaba Dünya!
+Merhaba Dünya!
+Merhaba Dünya!
+Merhaba Dünya!
+</pre></div>
+</div>
+</div>
+<div class="section" id="yield-from-deyimi">
+<h4>‘yield from’ Deyimi<a class="headerlink" href="#yield-from-deyimi" title="Bu başlığın kalıcı bağlantısı">¶</a></h4>
+<p><code class="docutils literal"><span class="pre">yield</span> <span class="pre">from</span></code> deyimi bir üretecin içinde, başka bir üretecin <code class="docutils literal"><span class="pre">yield</span></code> ile
+döndüreceği değerleri tekrar <code class="docutils literal"><span class="pre">yield</span></code> etmek istediğimizde kullanılabilir.
+Şöyle bir örnek verelim:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">üreteç1</span><span class="p">():</span>
+        <span class="k">yield</span> <span class="s2">&quot;üreteç1 başladı&quot;</span>
+        <span class="k">yield</span> <span class="s2">&quot;üreteç1 bitti&quot;</span>
+
+<span class="k">def</span> <span class="nf">üreteç2</span><span class="p">():</span>
+        <span class="k">yield</span> <span class="s2">&quot;üreteç2 başladı&quot;</span>
+        <span class="k">yield from</span> <span class="n">üreteç1</span><span class="p">()</span>
+        <span class="k">yield</span> <span class="s2">&quot;üreteç2 bitti&quot;</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">üreteç2</span><span class="p">():</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="n">üreteç2</span> <span class="n">başladı</span>
+<span class="n">üreteç1</span> <span class="n">başladı</span>
+<span class="n">üreteç1</span> <span class="n">bitti</span>
+<span class="n">üreteç2</span> <span class="n">bitti</span>
+<span class="o">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>Aslında <code class="docutils literal"><span class="pre">yield</span> <span class="pre">from</span></code> ile yazdığımız bu örnek şu kod ile eşdeğerdir:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">üreteç1</span><span class="p">():</span>
+        <span class="k">yield</span> <span class="s2">&quot;üreteç1 başladı&quot;</span>
+        <span class="k">yield</span> <span class="s2">&quot;üreteç1 bitti&quot;</span>
+
+<span class="k">def</span> <span class="nf">üreteç2</span><span class="p">():</span>
+        <span class="k">yield</span> <span class="s2">&quot;üreteç2 başladı&quot;</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">üreteç1</span><span class="p">():</span>
+                <span class="k">yield</span> <span class="n">i</span>
+        <span class="k">yield</span> <span class="s2">&quot;üreteç2 bitti&quot;</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">üreteç2</span><span class="p">():</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="n">üreteç2</span> <span class="n">başladı</span>
+<span class="n">üreteç1</span> <span class="n">başladı</span>
+<span class="n">üreteç1</span> <span class="n">bitti</span>
+<span class="n">üreteç2</span> <span class="n">bitti</span>
+<span class="o">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>Yani:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">yield from</span> <span class="n">bir_üreteç</span>
+</pre></div>
+</div>
+<p>ifadesi bu ifade eş değerdir:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">bir_üreteç</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">i</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="liste-ve-sozluk-uretecleri-hakkinda">
+<h3>Liste ve Sözlük Üreteçleri Hakkında<a class="headerlink" href="#liste-ve-sozluk-uretecleri-hakkinda" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
+<p>Üreteçler konusunun başında söylediğimiz şu bilgiyi tekrarlayarak konumuza başlayalım:</p>
+<blockquote>
+<div><p>Biz üreteçlerle az çok tanışıyoruz. Liste üreteçleri olsun, sözlük üreteçleri
+olsun bu konu hakkında bir şeyler öğrenmiştik. Ancak biz üreteçlerimizi hep
+şunun gibi tanımlamıştık:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">listem</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">listem</span>
+<span class="go">[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span>
+</pre></div>
+</div>
+<p>Dikkat ederseniz burada <code class="docutils literal"><span class="pre">i</span> <span class="pre">for</span> <span class="pre">i</span> <span class="pre">in</span> <span class="pre">range(10)</span></code> kısmı (nasıl <code class="docutils literal"><span class="pre">lambda</span></code> fonksiyonlar normal yolla tanımlanan fonksiyonlardan farklı bir söz dizimi kullanıyorsa) normal kodlardan biraz farklı bir söz dizimi kullanıyor. Bu söz dizimi ile karmaşık
+algoritmalar oluşturmak zordur, çoğunlukla da mümkün değildir. Zaten bunun bulunma sebebi
+karmaşık algoritmalarda kullanılması değil, kısa işlerde yazım kolaylığı sağlamasıdır.
+Yani bu yazım şekli, bazı fonksiyonların <code class="docutils literal"><span class="pre">lambda</span></code> olarak tanımlanması gibi,
+üreteç tanımlamanın sadece kısa bir yoludur. Peki aslında üreteçler nasıl
+tanımlanır? Şimdi gelin bu konuyu inceleyelim.</p>
+</div></blockquote>
+<p>Biz önceden üreteçleri şu şekilde kullanmayı biliyorduk:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">listem</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">listem</span>
+<span class="go">[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span>
+</pre></div>
+</div>
+<p>Peki üreteç bu kodun neresinde? Aslında bu yazım oldukça kısaltılmış, yani kolaylaştırılmış
+bir yazım şeklidir. Biraz açacak olursak şunu elde ederiz:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">üreteç</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">üreteç</span><span class="p">)</span>
+<span class="go">&lt;class &#39;generator&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">listem</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">üreteç</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">listem</span>
+<span class="go">[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span>
+</pre></div>
+</div>
+<p>Şimdilik liste kısmını bir kenara koyarak üreteç kısmı ile ilgilenelim.</p>
+<p>Gördüğünüz gibi aslında şu yazım şekli:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">üreteç</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Bunun için bir kısaltmadır:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">üreteç_fonksiyonu</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+                <span class="k">yield</span> <span class="n">i</span>
+
+<span class="n">üreteç</span> <span class="o">=</span> <span class="n">üreteç_fonksiyonu</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Aynı <code class="docutils literal"><span class="pre">lambda</span></code> fonksiyonların normal fonksiyonlar için bir kısaltma olması gibi.</p>
+<p>Ancak şuraya dikkat etmek lazım ki:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">üreteç</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Yazdığımızda, elimizde çağırıldığında bize üreteç döndürecek bir fonksiyonumuz yok.
+Yani <code class="docutils literal"><span class="pre">üreteç</span></code> değişkenimiz <code class="docutils literal"><span class="pre">generator</span></code> türünde bir nesne ve tek kullanımlık.
+Sonuçta üreteçlerin yinelenmesi bir defa bittikten sonra bir daha kullanamayız, çünkü bir defa bittikten sonra hep <code class="docutils literal"><span class="pre">StopIteration</span></code> hatası yükseltirler. Eğer istersek yenisini oluşturabiliriz. <code class="docutils literal"><span class="pre">üreteç</span></code> değişkenimizin yinelenmesi bir defa tamamlandıktan sonra daha fazla onu kullanamayacağımızı şu şekilde görebiliriz:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">üreteç</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">üreteç</span><span class="p">:</span>
+<span class="go">                print(i)</span>
+
+<span class="go">1</span>
+<span class="go">2</span>
+<span class="go">3</span>
+<span class="go">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">üreteç</span><span class="p">:</span>
+<span class="go">                print(i)</span>
+
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi <code class="docutils literal"><span class="pre">üreteç</span></code> değişkenimizi bir defa <code class="docutils literal"><span class="pre">for</span></code> döngüsü ile kullandığımızda
+ikinci defa kullanamamaktayız. Çünkü ilk döngüde üretecimiz bitene kadar çalıştı
+ve en sonunda <code class="docutils literal"><span class="pre">StopIteration</span></code> yükseltti. Artık istediğimiz kadar üretecimizi
+kullanmayı deneyelim, <code class="docutils literal"><span class="pre">StopIteration</span></code> yükseltmeye devam edecektir (unutmayalım ki <code class="docutils literal"><span class="pre">for</span></code> döngüsü
+<code class="docutils literal"><span class="pre">StopIteration</span></code> hatalarını yakalar ve yakaladığında da çalışmayı bırakır)</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">üreteç</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">üreteç</span><span class="p">)</span>
+<span class="go">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">üreteç</span><span class="p">)</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">üreteç</span><span class="p">)</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">üreteç</span><span class="p">)</span>
+<span class="go">StopIteration</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">üreteç</span><span class="p">)</span>
+<span class="go">StopIteration</span>
+</pre></div>
+</div>
+<p>Aynı şey normal yoldan tanımlanan üreteçler için de geçerlidir:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">üreteç_fonksiyonu</span><span class="p">():</span>
+<span class="go">                for i in range(3):</span>
+<span class="go">                        yield i</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">üreteç</span> <span class="o">=</span> <span class="n">üreteç_fonksiyonu</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">üreteç</span><span class="p">)</span>
+<span class="go">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">üreteç</span><span class="p">)</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">üreteç</span><span class="p">)</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">üreteç</span><span class="p">)</span>
+<span class="go">StopIteration</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">üreteç</span><span class="p">)</span>
+<span class="go">StopIteration</span>
+</pre></div>
+</div>
+<p>Buradaki fark üretecimizi bize veren fonksiyonumuz durduğu için yeni bir üreteç oluşturabiliyor
+olmamızdır:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">üreteç2</span> <span class="o">=</span> <span class="n">üreteç_fonksiyonu</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">üreteç2</span><span class="p">)</span>
+<span class="go">0</span>
+</pre></div>
+</div>
+<p>Ancak şu şekilde bir tanımlama yaptığımızda:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">üreteç</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">üreteç</span><span class="p">)</span>
+<span class="go">&lt;class &#39;generator&#39;&gt;</span>
+</pre></div>
+</div>
+<p>Burada elde ettiğimiz üretecin kendisi oluyor, ve bu üreteç de tek kullanımlık. Şimdi
+bunların liste üreteçleri ile alakasına geri dönecek olursak:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">üreteç</span> <span class="o">=</span> <span class="n">üreteç_fonksiyonu</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">listem</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">üreteç</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">listem</span>
+<span class="go">[0, 1, 2]</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi aslında normal yoldan tanımlanmış üreteçler, yani <code class="docutils literal"><span class="pre">yield</span></code> ifadesi kullanılarak fonksiyon gibi tanımlanmış üreteçler, de <code class="docutils literal"><span class="pre">list</span></code> fonksiyonuna argüman olarak verilebilir. Aynı
+<code class="docutils literal"><span class="pre">for</span></code> döngüsünde kullanılabilmesi gibi. Çünkü -kendi geliştirme arayüzünüzü kullanarak
+görebilirsiniz- dikkat edersiniz <code class="docutils literal"><span class="pre">list</span></code> fonksiyonunun ilk parametresinin adı <code class="docutils literal"><span class="pre">iterable</span></code>’dır.
+Türkçe’ye çevirirsek <em>yinelenebilir</em>. Biz zaten üreteçlerin yinelenebilir nesnelere örnek olduğunu
+söylemiştik. Bu yüzden bütün üreteçleri <code class="docutils literal"><span class="pre">list</span></code> fonksiyonunu kullanarak bir listeye çevirebiliriz.
+Buna şu şekilde tanımlanan üreteçler de dahildir:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">üreteç</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Bu yüzden şu kod güzel bir şekilde çalışmaktadır:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">üreteç</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">üreteç</span><span class="p">)</span>
+<span class="go">[0, 1, 2]</span>
+</pre></div>
+</div>
+<p>Ve şu yazım da yukarıda yazdığımızın daha da kısaltılmış halinden başka bir şey değildir:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">listem</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>Anlattıklarımız sözlük üreteçleri için de geçerlidir. Dikkat edersiniz kısa yoldan üreteç
+tanımlamaları <code class="docutils literal"><span class="pre">(i</span> <span class="pre">for</span> <span class="pre">i</span> <span class="pre">in</span> <span class="pre">range(3))</span></code> şeklinde, liste tanımlamaları <code class="docutils literal"><span class="pre">[i</span> <span class="pre">for</span> <span class="pre">i</span> <span class="pre">in</span> <span class="pre">range(3)]</span></code> şeklinde
+ve sözlük tanımlamaları da <code class="docutils literal"><span class="pre">{str(i):i</span> <span class="pre">for</span> <span class="pre">i</span> <span class="pre">in</span> <span class="pre">range(3)}</span></code> şeklinde yapılmaktadır. Bu liste tanımlamasını:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">üreteç</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">listem</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">üreteç</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Şu şekilde yazabileceğimiz gibi:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">üreteç</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">listem</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">üreteç</span><span class="p">:</span>
+<span class="go">                listem.append(i)</span>
+</pre></div>
+</div>
+<p>Bu sözlük tanımlamasını da:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">üreteç</span> <span class="o">=</span> <span class="p">((</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">üreteç</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Şu şekilde yazabilirdik:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">üreteç</span> <span class="o">=</span> <span class="p">((</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">üreteç</span><span class="p">:</span>
+<span class="go">                sözlük[key] = value</span>
+</pre></div>
+</div>
+<p>Son örneğimizde üretecimiz her yinelenişinde iki elemanlı bir <code class="docutils literal"><span class="pre">tuple</span></code> döndürüyor ve
+bu demetin ilk elemanı <code class="docutils literal"><span class="pre">for</span></code> döngüsü içinde <code class="docutils literal"><span class="pre">key</span></code> değişkenine, ikinci elemanı ise
+<code class="docutils literal"><span class="pre">value</span></code> değişkenine atanıyor. Şunun gibi de düşünebilirsiniz:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="p">((</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">)):</span>
+<span class="go">                sözlük[key] = value</span>
+</pre></div>
+</div>
+<p>Evet, artık üreteçler konusunda da kayda değer bilgiler öğrendiğimize göre bir sonraki konumuza geçelim.</p>
+</div>
+</div>
 </div>
 
 
@@ -1041,7 +2111,7 @@ edeceğiz.</p>
       <h3>Gezinti</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="moduller.html" title="Modüller"
+          <a href="bezeyiciler.html" title="Fonksiyonlarda Bezeyicilerin (Decorator) Kullanımı"
              >sonraki</a></li>
         <li class="right" >
           <a href="gomulu_fonksiyonlar.html" title="Gömülü Fonksiyonlar"
@@ -1090,7 +2160,7 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
       <h3>Gezinti</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="moduller.html" title="Modüller"
+          <a href="bezeyiciler.html" title="Fonksiyonlarda Bezeyicilerin (Decorator) Kullanımı"
              >sonraki</a></li>
         <li class="right" >
           <a href="gomulu_fonksiyonlar.html" title="Gömülü Fonksiyonlar"
@@ -1102,7 +2172,7 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 <div class="footer">
 &copy; Copyright 2007-2020, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 02.01.2020.
+Son güncelleme: 01.02.2020.
 <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7 ile oluşturulmuştur.
 <br>
 <br>
