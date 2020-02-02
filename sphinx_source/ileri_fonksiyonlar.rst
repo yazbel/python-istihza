@@ -1187,13 +1187,13 @@ ile iç fonksiyonumuza ait olan ``non_local_değişken`` farklılar. Aynı bu ö
 
 
     >>> fonk()
-        2
+    2
 
 küresel ``a`` değişkeni ile ``fonk`` fonksiyonuna ait ``a`` değişkeninin farklı olması gibi.
 Peki biz burada fonksiyon içinde de küresel ``a``'yı kullanmak istersek nasıl yaparız?
 Bir şey yapmamıza gerek yok, zaten fonksiyon kendi içinde ``a`` değişkenini bulamayınca global alana bakacaktır::
 
-	a = 1
+    a = 1
 
     def fonk():
         print(a)
