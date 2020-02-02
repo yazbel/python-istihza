@@ -1410,7 +1410,7 @@ kullanmamızın daha doğru olacağını konuşacağız.
 Öncelikle şunu söyleyelim ki iç içe fonksiyonların en fazla kullanıldığı yer bezeyicilerdir.
 Bu daha sonra göreceğimiz bir konu ancak orada iç içe fonksiyonları çok fazla kullanacağız, haberiniz olsun.
 
-İç içe fonksiyonlar bazı işlemleri daha verimli yapmamızı sağlayabileceği gibi bazı işlemleri de
+İç içe fonksiyonlar bazı işlemleri daha verimli yapmamızı sağlayabileceği gibi bazı işlemleri de 
 (yanlış veya gereksiz yere kullanırsak) yavaşlatırlar. Mesela şu fonksiyona bakalım::
 
 	def işlem_yap(sayı, bölen, *eklenenler):
@@ -1540,7 +1540,7 @@ Artık karakter dizisinin içinde bir karakterin kaç defa geçtiğini bulmak i�
 	    else:
 	        return karakter_sayısı(dosya.read())
 
-Ayrıca bu şekilde ``karakter_sayısı`` fonksiyonunun ``karakter`` şeklinde bir parametreye ihtiyacı kalmadı, zaten
+Ayrıca bu şekilde ``karakter_sayısı`` fonksiyonunun ``karakter`` şeklinde bir parametreye ihtiyacı kalmadı, zaten 
 `dosyadaki_karakter_sayısı` fonksiyonunun içindeki ``karakter`` değişkenine erişebiliyor. İç içe fonksiyonları bunun gibi durumlarda da kullanabiliriz.
 
 
@@ -1565,7 +1565,7 @@ tanımlanır? Şimdi gelin bu konuyu inceleyelim.
 Üreteçlere Giriş
 ==================
 
-Üreteçler, fonksiyonlara benzer şekilde tanımlanır. Hatta tek farkının ``yield``
+Üreteçler, fonksiyonlara benzer şekilde tanımlanır. Hatta tek farkının ``yield`` 
 adındaki bir ifade olduğunu söyleyebiliriz. Hatırlarsanız iç içe fonksiyonlar
 konusunda üreteçler konusuna birkaç defa atıfta bulunmuştuk.
 Bu yüzden aynı işi yapacak iç içe bir fonksiyon ile bir üreteci karşılaştırarak
