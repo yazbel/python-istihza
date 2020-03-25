@@ -28,7 +28,7 @@ Colorama modülünü anlayabilmek için basit bir örnek yapalım:
 
 	from colorama import Fore, Back, Style, init
 	init(autoreset=True)
-	print(Fore.RED + 'sade kırmızı yazı)
+	print(Fore.RED + 'sade kırmızı yazı')
 	print(Back.GREEN + 'Yeşil arkaplan')
 	print(Style.DIM + 'Python')
 	print(Style.RESET_ALL)

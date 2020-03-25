@@ -5,26 +5,18 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta content="Bu bölümde nesne tabanlı programlamadan söz edeceğiz." name="description" />
+    <meta charset="utf-8" /><meta content="Bu bölümde nesne tabanlı programlamadan söz edeceğiz." name="description" />
 <meta content="python, python3, nesne, oop, sınıf, class, miras alma, inheritance, nesne yönelimli programlama, nesne tabanlı programlama, object oriented programming, self, instantiation, instance, örnek, örneklendirme, örnekleme" name="keywords" />
 
     <title>Nesne Tabanlı Programlama (Devamı) &#8212; Python 3 için Türkçe Kılavuz</title>
     <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '3',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/translations.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/translations.js"></script>
     <link rel="search" title="Ara" href="search.html" />
     <link rel="next" title="Nesne Tabanlı Programlama (Devamı)" href="nesne_tabanli_programlama7.html" />
     <link rel="prev" title="Nesne Tabanlı Programlama (Devamı)" href="nesne_tabanli_programlama5.html" />
@@ -32,8 +24,7 @@
 <link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
 <![endif]-->
 
-  </head>
-  <body>
+  </head><body>
 <div class='header'><a href='https://yazbel.com'>yazbel.com</a></div>
 
 <ul class='navbar'>
@@ -64,12 +55,12 @@
   <div class="section" id="nesne-tabanli-programlama-devami">
 <h1>Nesne Tabanlı Programlama (Devamı)<a class="headerlink" href="#nesne-tabanli-programlama-devami" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
 <div class="admonition warning">
-<p class="first admonition-title">Uyarı</p>
-<p class="last">Bu makale yoğun bir şekilde geliştirilmekte, içeriği sık sık
+<p class="admonition-title">Uyarı</p>
+<p>Bu makale yoğun bir şekilde geliştirilmekte, içeriği sık sık
 güncellenmektedir.</p>
 </div>
 <p>Geçen bölümde verdiğimiz bilgiler sayesinde miras alma konusunun temelini
-oluşturan taban sınıf, alt sınıf ve türeme gibi kavramlarla birlikte <code class="docutils literal"><span class="pre">super()</span></code>
+oluşturan taban sınıf, alt sınıf ve türeme gibi kavramlarla birlikte <code class="docutils literal notranslate"><span class="pre">super()</span></code>
 ve <cite>object</cite> gibi araçların ne olduğunu ve ne işe yaradığını da öğrendik.
 Dolayısıyla artık miras alma mekanizmasına dair daha renkli, daha teşvik edici
 örnekler verebiliriz. Böylece, belki de gözünüze ilk bakışta pek de matah bir
@@ -91,7 +82,7 @@ bulacağız.</p>
 etmiştik. Tkinter, Python kurulumu ile birlikte gelen ve pencereli-menülü modern
 programlar yazmamızı sağlayan grafik arayüz geliştirme takımlarından biridir.</p>
 <p>Tkinter bir standart kütüphane paketi olduğu için, Python programlama dilini
-kurduğunuzda Tkinter de otomatik olarak kurulur<a class="footnote-reference" href="#id2" id="id1"><sup>1</sup></a>.</p>
+kurduğunuzda Tkinter de otomatik olarak kurulur<a class="footnote-reference superscript" href="#id2" id="id1">1</a>.</p>
 <p>Elbette Python’da grafik arayüzlü programlar yazmamızı sağlayacak tek modül
 Tkinter değildir. Bunun dışında PyQt, PyGI ve Kivy gibi alternatifler de
 bulunur. Ancak Tkinter’in öteki alternatiflere karşı en büyük üstünlüğü hem
@@ -130,7 +121,7 @@ kodları anlamaktan daha kolaydır. Ancak tabii ki kodlar büyüyüp karmaşıkl
 sınıflı yapıları kullanmak çok daha akıllıca olacaktır.</p>
 <p>O halde gelin isterseniz Tkinter modülünü nasıl kullanacağımızı anlamak için,
 bir metin dosyası açıp içine şu kodları yazalım:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tkinter</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tkinter</span>
 
 <span class="n">pencere</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
 <span class="n">pencere</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
@@ -143,38 +134,38 @@ grafik arayüze geçiş yapmış oldunuz. Hadi hayırlı olsun!</p>
 Tkinter’i daha iyi anlayabilmek için sınıflı yapılar yerine prosedürel bir
 yaklaşımı benimseyeceğiz.</p>
 <p>Burada öncelikle Tkinter modülünü içe aktardığımıza dikkat edin:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tkinter</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tkinter</span>
 </pre></div>
 </div>
 <p>Modülü bu şekilde içe aktardığımız için, modül içindeki nitelik ve metotlara
 erişmek istediğimizde modülün adını kullanmamız gerekecek. Mesela yukarıda
-modülün adını kullanarak, <cite>tkinter</cite> modülü içindeki <code class="docutils literal"><span class="pre">Tk()</span></code> sınıfını
+modülün adını kullanarak, <cite>tkinter</cite> modülü içindeki <code class="docutils literal notranslate"><span class="pre">Tk()</span></code> sınıfını
 örnekledik:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">pencere</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">pencere</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Dilerseniz içe aktarma işlemini şu şekilde yaparak işlerimizi biraz daha
 kolaylaştırabiliriz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
 </pre></div>
 </div>
 <p>Böylece <cite>tkinter</cite> modülünün nitelik ve metotlarına ‘tkinter’ yerine ‘tk’
 önekiyle erişebiliriz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">pencere</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">pencere</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Yukarıdaki kodları yazdığımızda, yani <cite>tkinter</cite> modülünün <code class="docutils literal"><span class="pre">Tk()</span></code> sınıfını
+<p>Yukarıdaki kodları yazdığımızda, yani <cite>tkinter</cite> modülünün <code class="docutils literal notranslate"><span class="pre">Tk()</span></code> sınıfını
 örneklediğimiz anda aslında penceremiz oluştu. Ancak bu pencere örnekleme ile
 birlikte oluşmuş olsa da, Tkinter’in iç işleyişi gereği, ‘ana döngü’ adlı bir
 mekanizma çalışmaya başlamadan görünür hale gelmez. İşte bu özel ana döngü
 mekanizmasını çalıştırmak ve böylece oluşturduğumuz pencereyi görünür hale
-getirmek için, <code class="docutils literal"><span class="pre">Tk()</span></code> sınıf örneklerinin <code class="docutils literal"><span class="pre">mainloop()</span></code> adlı bir metodunu
+getirmek için, <code class="docutils literal notranslate"><span class="pre">Tk()</span></code> sınıf örneklerinin <code class="docutils literal notranslate"><span class="pre">mainloop()</span></code> adlı bir metodunu
 çalıştıracağız:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">pencere</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">pencere</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Gördüğünüz gibi, <code class="docutils literal"><span class="pre">Tk()</span></code> sınıfını <cite>pencere</cite> adıyla örnekledikten sonra <code class="docutils literal"><span class="pre">Tk()</span></code>
-sınıfının <code class="docutils literal"><span class="pre">mainloop()</span></code> adlı metoduna <cite>pencere</cite> örneği üzerinden eriştik.</p>
+<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">Tk()</span></code> sınıfını <cite>pencere</cite> adıyla örnekledikten sonra <code class="docutils literal notranslate"><span class="pre">Tk()</span></code>
+sınıfının <code class="docutils literal notranslate"><span class="pre">mainloop()</span></code> adlı metoduna <cite>pencere</cite> örneği üzerinden eriştik.</p>
 <p>Bu ana döngü mekanizmasının benzerlerini Tkinter’in dışındaki öbür grafik arayüz
 tasarım araçlarında da göreceksiniz.</p>
 <p>Bu arada, yukarıdaki prosedürel örnekte bile, biz istemesek de sınıflarla
@@ -190,20 +181,20 @@ nesne tabanlı yapılardan kaçmamızın hiçbir gerekçesi yok.</p>
 <p>Yukarıda Tkinter modülünü kullanarak boş bir pencere oluşturduk. Gelin
 isterseniz bu boş pencere üzerinde birtakım değişiklikler yapalım.</p>
 <p>Öncelikle <cite>tkinter</cite> modülümüzü içe aktaralım:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
 </pre></div>
 </div>
-<p>Şimdi bu modülün <code class="docutils literal"><span class="pre">Tk()</span></code> adlı sınıfını örnekleyelim:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">pencere</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<p>Şimdi bu modülün <code class="docutils literal notranslate"><span class="pre">Tk()</span></code> adlı sınıfını örnekleyelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">pencere</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Böylece penceremizi oluşturmuş olduk. Tkinter’le verdiğimiz ilk örnekte de
 gördüğünüz gibi, Tkinter’le oluşturulan boş bir pencere öntanımlı olarak 200
 piksel genişliğe ve 200 piksel yüksekliğe sahip olacaktır. Ancak isterseniz,
-<code class="docutils literal"><span class="pre">Tk()</span></code> sınıfının <code class="docutils literal"><span class="pre">geometry()</span></code> adlı metodunu kullanarak, pencere boyutunu
-ayarlayabilirsiniz (<code class="docutils literal"><span class="pre">Tk()</span></code> sınıfının hangi metotlara sahip olduğunu görmek
-için <code class="docutils literal"><span class="pre">dir(pencere)</span></code> komutunu verebileceğinizi biliyorsunuz):</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
+<code class="docutils literal notranslate"><span class="pre">Tk()</span></code> sınıfının <code class="docutils literal notranslate"><span class="pre">geometry()</span></code> adlı metodunu kullanarak, pencere boyutunu
+ayarlayabilirsiniz (<code class="docutils literal notranslate"><span class="pre">Tk()</span></code> sınıfının hangi metotlara sahip olduğunu görmek
+için <code class="docutils literal notranslate"><span class="pre">dir(pencere)</span></code> komutunu verebileceğinizi biliyorsunuz):</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
 
 <span class="n">pencere</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
 <span class="n">pencere</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;200x70&#39;</span><span class="p">)</span>
@@ -211,21 +202,21 @@ için <code class="docutils literal"><span class="pre">dir(pencere)</span></code
 <span class="n">pencere</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Kendi yazdığımız sınıflardaki nitelik ve metotlara nasıl erişiyorsak, <code class="docutils literal"><span class="pre">Tk()</span></code>
+<p>Kendi yazdığımız sınıflardaki nitelik ve metotlara nasıl erişiyorsak, <code class="docutils literal notranslate"><span class="pre">Tk()</span></code>
 sınıfının nitelik ve metotlarına da aynı şekilde eriştiğimize dikkat edin.
-Neticede bizim yazdıklarımız da sınıftır, <code class="docutils literal"><span class="pre">Tk()</span></code> da sınıftır. <code class="docutils literal"><span class="pre">Tk()</span></code>
-sınıfının bizimkilerden tek farkı, <code class="docutils literal"><span class="pre">Tk()</span></code> sınıfının Python geliştiricilerince
+Neticede bizim yazdıklarımız da sınıftır, <code class="docutils literal notranslate"><span class="pre">Tk()</span></code> da sınıftır. <code class="docutils literal notranslate"><span class="pre">Tk()</span></code>
+sınıfının bizimkilerden tek farkı, <code class="docutils literal notranslate"><span class="pre">Tk()</span></code> sınıfının Python geliştiricilerince
 yazılmış olmasıdır. Yazarları farklı olsa da bütün sınıflar aynı kurallara
 tabidir. Dolayısıyla ilgili sınıfı kullanabilmek için önce sınıfımızı
 örnekliyoruz, ardından da bu sınıf içinde tanımlı olan nitelik ve metotlara
-noktalı gösterim tekniğini kullanarak ulaşıyoruz. Burada da <code class="docutils literal"><span class="pre">Tk()</span></code> sınıf
-örneklerinin <code class="docutils literal"><span class="pre">geometry()</span></code> metodunu kullanarak 200x200 yerine 200x70
+noktalı gösterim tekniğini kullanarak ulaşıyoruz. Burada da <code class="docutils literal notranslate"><span class="pre">Tk()</span></code> sınıf
+örneklerinin <code class="docutils literal notranslate"><span class="pre">geometry()</span></code> metodunu kullanarak 200x200 yerine 200x70
 boyutlarında bir pencere oluşturduk:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">pencere</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;200x70&#39;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">pencere</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;200x70&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Şimdi bu boş pencereye bir etiket bir de düğme ekleyelim:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
 
 <span class="n">pencere</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
 <span class="n">pencere</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;200x70&#39;</span><span class="p">)</span>
@@ -239,12 +230,12 @@ boyutlarında bir pencere oluşturduk:</p>
 <span class="n">pencere</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Burada <cite>tkinter</cite> modülünün <code class="docutils literal"><span class="pre">Tk()</span></code> sınıfına ek olarak, aynı modülün <code class="docutils literal"><span class="pre">Label()</span></code>
-ve <code class="docutils literal"><span class="pre">Button()</span></code> adlı iki sınıfını daha kullandık. <code class="docutils literal"><span class="pre">Label()</span></code> sınıfı etiketler,
-<code class="docutils literal"><span class="pre">Button()</span></code> sınıfı ise düğmeler oluşturmamızı sağlıyor. Bu sınıfların örnekleri
-üzerinde çalıştırdığımız <code class="docutils literal"><span class="pre">pack()</span></code> metodunu ise, etiket ve düğmeleri pencere
+<p>Burada <cite>tkinter</cite> modülünün <code class="docutils literal notranslate"><span class="pre">Tk()</span></code> sınıfına ek olarak, aynı modülün <code class="docutils literal notranslate"><span class="pre">Label()</span></code>
+ve <code class="docutils literal notranslate"><span class="pre">Button()</span></code> adlı iki sınıfını daha kullandık. <code class="docutils literal notranslate"><span class="pre">Label()</span></code> sınıfı etiketler,
+<code class="docutils literal notranslate"><span class="pre">Button()</span></code> sınıfı ise düğmeler oluşturmamızı sağlıyor. Bu sınıfların örnekleri
+üzerinde çalıştırdığımız <code class="docutils literal notranslate"><span class="pre">pack()</span></code> metodunu ise, etiket ve düğmeleri pencere
 üzerine yerleştirmek için kullanıyoruz.</p>
-<p><code class="docutils literal"><span class="pre">Label()</span></code> ve <code class="docutils literal"><span class="pre">Button()</span></code> sınıflarının <cite>text</cite> adlı bir parametre aldığını
+<p><code class="docutils literal notranslate"><span class="pre">Label()</span></code> ve <code class="docutils literal notranslate"><span class="pre">Button()</span></code> sınıflarının <cite>text</cite> adlı bir parametre aldığını
 görüyorsunuz. Bu parametrenin değeri, etiket veya düğmenin üzerinde ne
 yazacağını gösteriyor.</p>
 <p>Bu kodları da tıpkı başka Python programlarını çalıştırdığınız gibi
@@ -252,46 +243,46 @@ yazacağını gösteriyor.</p>
 <p>Bu arada, Tkinter’de bir şeyi oluşturmanın ve görünür hale getirmenin iki farklı
 işlem gerektirdiğine özellikle dikkat edin. Mesela üzerinde ‘Merhaba Zalim
 Dünya’ yazan bir etiket oluşturmak için şu kodu kullanıyoruz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">etiket</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Merhaba Zalim Dünya&#39;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">etiket</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Merhaba Zalim Dünya&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Bu etiketi pencere üzerine yerleştirmek, yani görünür hale getirmek için ise şu
 komutu kullanıyoruz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">etiket</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">etiket</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Aynı şekilde bir düğme oluşturmak için de şu komutu kullanıyoruz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">düğme</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Tamam&#39;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">pencere</span><span class="o">.</span><span class="n">destroy</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">düğme</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Tamam&#39;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">pencere</span><span class="o">.</span><span class="n">destroy</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Böylece üzerinde ‘Tamam’ yazan ve tıklandığında pencereyi kapatan bir düğme
-oluşturmuş oluyoruz. Düğmenin üzerine tıklandığında ne olacağını <code class="docutils literal"><span class="pre">Button()</span></code>
+oluşturmuş oluyoruz. Düğmenin üzerine tıklandığında ne olacağını <code class="docutils literal notranslate"><span class="pre">Button()</span></code>
 sınıfının <cite>command</cite> parametresi aracılığıyla belirledik. Bu parametreye,
-<cite>pencere</cite> örneğinin <code class="docutils literal"><span class="pre">destroy()</span></code> metodunu verdiğimizde pencereye kapatma
+<cite>pencere</cite> örneğinin <code class="docutils literal notranslate"><span class="pre">destroy()</span></code> metodunu verdiğimizde pencereye kapatma
 sinyali gönderilecektir. Yalnız bu metodu yazarken parantez işaretlerini
-kullanmadığımıza dikkat edin. Eğer metodu <code class="docutils literal"><span class="pre">pencere.destroy()</span></code> şeklinde
+kullanmadığımıza dikkat edin. Eğer metodu <code class="docutils literal notranslate"><span class="pre">pencere.destroy()</span></code> şeklinde
 parantezli bir biçimde yazarsak, kapatma komutu daha düğmeye basmadan çalışacak
 ve bu durumda düğmemiz düzgün işlemeyecektir.</p>
 <p>Tıpkı etikette olduğu gibi, düğmemizi de pencere üzerine yerleştirmek, yani
-görünür hale getirmek için <code class="docutils literal"><span class="pre">pack()</span></code> metodundan yararlanıyoruz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">düğme</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+görünür hale getirmek için <code class="docutils literal notranslate"><span class="pre">pack()</span></code> metodundan yararlanıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">düğme</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Bunun, <code class="docutils literal"><span class="pre">Tk()</span></code> sınıfı ile <code class="docutils literal"><span class="pre">mainloop()</span></code> metodu arasındaki ilişkiye benzediğine
-dikkatinizi çekmek isterim: Tıpkı <code class="docutils literal"><span class="pre">pack()</span></code> metoduna benzer bir şekilde,
-<code class="docutils literal"><span class="pre">Tk()</span></code> sınıfı yardımıyla da bir pencere oluşturduktan sonra, bu pencerenin
-görünür hale gelebilmesi için <code class="docutils literal"><span class="pre">mainloop()</span></code> metodunu çalıştırmamız gerektiğini
+<p>Bunun, <code class="docutils literal notranslate"><span class="pre">Tk()</span></code> sınıfı ile <code class="docutils literal notranslate"><span class="pre">mainloop()</span></code> metodu arasındaki ilişkiye benzediğine
+dikkatinizi çekmek isterim: Tıpkı <code class="docutils literal notranslate"><span class="pre">pack()</span></code> metoduna benzer bir şekilde,
+<code class="docutils literal notranslate"><span class="pre">Tk()</span></code> sınıfı yardımıyla da bir pencere oluşturduktan sonra, bu pencerenin
+görünür hale gelebilmesi için <code class="docutils literal notranslate"><span class="pre">mainloop()</span></code> metodunu çalıştırmamız gerektiğini
 hatırlıyorsunuz.</p>
 <p>Bu kodlarda Tkinter’e ilişkin ayrıntılardan ziyade, sınıflı yapıları kodlarımıza
 nasıl dahil ettiğimize ve bunları nasıl kullandığımıza odaklanmanızı istiyorum.
-Gördüğünüz gibi, <cite>tkinter</cite> modülünden içe aktardığımız <code class="docutils literal"><span class="pre">Tk()</span></code>, <code class="docutils literal"><span class="pre">Label()</span></code> ve
-<code class="docutils literal"><span class="pre">Button()</span></code> gibi sınıfların metot ve niteliklerini, mesela tıpkı karakter
+Gördüğünüz gibi, <cite>tkinter</cite> modülünden içe aktardığımız <code class="docutils literal notranslate"><span class="pre">Tk()</span></code>, <code class="docutils literal notranslate"><span class="pre">Label()</span></code> ve
+<code class="docutils literal notranslate"><span class="pre">Button()</span></code> gibi sınıfların metot ve niteliklerini, mesela tıpkı karakter
 dizilerinin metot ve niteliklerini kullanır gibi kullanıyoruz.</p>
 <p>Yukarıdaki örnekte, <cite>tkinter</cite> modülünün sınıflarını, kodlarımız içine prosedürel
 olarak dahil ettik. Yani her sınıfı, belli bir sıraya göre kodlarımız içinde
 belirtip, bunları adım adım çalıştırdık. Prosedürel programlamada kodların
 yazılış sırası çok önemlidir. Bunu kanıtlamak için çok basit bir örnek verelim:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
 
 <span class="n">pencere</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
 
@@ -313,15 +304,15 @@ yazılış sırası çok önemlidir. Bunu kanıtlamak için çok basit bir örne
 </pre></div>
 </div>
 <p>Burada her zamanki gibi öncelikle gerekli modülü içe aktardık:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
 </pre></div>
 </div>
-<p>Daha sonra <code class="docutils literal"><span class="pre">Tk()</span></code> sınıfı yardımıyla penceremizi oluşturduk:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">pencere</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<p>Daha sonra <code class="docutils literal notranslate"><span class="pre">Tk()</span></code> sınıfı yardımıyla penceremizi oluşturduk:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">pencere</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Ardından <code class="docutils literal"><span class="pre">çıkış()</span></code> adlı bir fonksiyon tanımladık:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">çıkış</span><span class="p">():</span>
+<p>Ardından <code class="docutils literal notranslate"><span class="pre">çıkış()</span></code> adlı bir fonksiyon tanımladık:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">çıkış</span><span class="p">():</span>
     <span class="n">etiket</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Elveda zalim dünya...&#39;</span>
     <span class="n">düğme</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Bekleyin...&#39;</span>
     <span class="n">düğme</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;disabled&#39;</span>
@@ -331,16 +322,16 @@ yazılış sırası çok önemlidir. Bunu kanıtlamak için çok basit bir örne
 <p>Bu fonksiyon, pencere kapatılırken hangi işlemlerin yapılacağını belirliyor.
 Buna göre, programdan çıkılırken sırasıyla şu işlemleri gerçekleştiriyoruz:</p>
 <ol class="arabic simple">
-<li>Etiketin <cite>text</cite> parametresini ‘Elveda zalim dünya…’ olarak değiştiriyoruz.</li>
-<li>Düğmenin <cite>text</cite> parametresini ‘Bekleyin…’ olarak değiştiriyoruz.</li>
-<li>Düğmenin <cite>state</cite> parametresini ‘disabled’ olarak değiştirerek düğmeyi basılamaz
-hale getiriyoruz.</li>
-<li>2000 milisaniye (yani 2 saniye) sonra ise <code class="docutils literal"><span class="pre">pencere.destroy()</span></code> komutunu
-işleterek pencerenin kapanmasını sağlıyoruz.</li>
+<li><p>Etiketin <cite>text</cite> parametresini ‘Elveda zalim dünya…’ olarak değiştiriyoruz.</p></li>
+<li><p>Düğmenin <cite>text</cite> parametresini ‘Bekleyin…’ olarak değiştiriyoruz.</p></li>
+<li><p>Düğmenin <cite>state</cite> parametresini ‘disabled’ olarak değiştirerek düğmeyi basılamaz
+hale getiriyoruz.</p></li>
+<li><p>2000 milisaniye (yani 2 saniye) sonra ise <code class="docutils literal notranslate"><span class="pre">pencere.destroy()</span></code> komutunu
+işleterek pencerenin kapanmasını sağlıyoruz.</p></li>
 </ol>
-<p><code class="docutils literal"><span class="pre">çıkış()</span></code> fonksiyonunu tanımladıktan sonra <code class="docutils literal"><span class="pre">Label()</span></code> ve <code class="docutils literal"><span class="pre">Button()</span></code>
+<p><code class="docutils literal notranslate"><span class="pre">çıkış()</span></code> fonksiyonunu tanımladıktan sonra <code class="docutils literal notranslate"><span class="pre">Label()</span></code> ve <code class="docutils literal notranslate"><span class="pre">Button()</span></code>
 düğmeleri aracılığıyla etiket ve düğmelerimizi oluşturuyoruz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">etiket</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Merhaba Zalim Dünya&#39;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">etiket</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Merhaba Zalim Dünya&#39;</span><span class="p">)</span>
 <span class="n">etiket</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
 
 <span class="n">düğme</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Çık&#39;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">çıkış</span><span class="p">)</span>
@@ -348,25 +339,25 @@ düğmeleri aracılığıyla etiket ve düğmelerimizi oluşturuyoruz:</p>
 </pre></div>
 </div>
 <p>Buna göre, düğmeye basıldığında, <cite>command</cite> parametresinin değeri olan
-<code class="docutils literal"><span class="pre">çıkış()</span></code> fonksiyonu çalışmaya başlayacak ve fonksiyon gövdesinde
+<code class="docutils literal notranslate"><span class="pre">çıkış()</span></code> fonksiyonu çalışmaya başlayacak ve fonksiyon gövdesinde
 tanımladığımız işlemler gerçekleşecek.</p>
 <p>Bildiğiniz gibi, bir program penceresinde, o programı kapatmayı sağlayacak
 düğmelerin yanı sıra, bir de en üst sağ (veya sol) köşede program penceresini
 kapatan bir ‘X’ düğmesi bulunur. İşte bu ‘X’ düğmesine basıldığında da pencere
-kapanmadan önce <code class="docutils literal"><span class="pre">çıkış()</span></code> fonksiyonunun çalışması için şu kodu yazıyoruz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">pencere</span><span class="o">.</span><span class="n">protocol</span><span class="p">(</span><span class="s1">&#39;WM_DELETE_WINDOW&#39;</span><span class="p">,</span> <span class="n">çıkış</span><span class="p">)</span>
+kapanmadan önce <code class="docutils literal notranslate"><span class="pre">çıkış()</span></code> fonksiyonunun çalışması için şu kodu yazıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">pencere</span><span class="o">.</span><span class="n">protocol</span><span class="p">(</span><span class="s1">&#39;WM_DELETE_WINDOW&#39;</span><span class="p">,</span> <span class="n">çıkış</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">protocol()</span></code> de tıpkı <code class="docutils literal"><span class="pre">geometry()</span></code> gibi, <code class="docutils literal"><span class="pre">Tk()</span></code> sınıfının metotlarından
+<p><code class="docutils literal notranslate"><span class="pre">protocol()</span></code> de tıpkı <code class="docutils literal notranslate"><span class="pre">geometry()</span></code> gibi, <code class="docutils literal notranslate"><span class="pre">Tk()</span></code> sınıfının metotlarından
 biridir. Bu metodu <cite>WM_DELETE_WINDOW</cite> argümanıyla birlikte kullanarak, pencere
 üzerindeki ‘X’ düğmesine basıldığında neler olacağını tanımlayabiliyoruz.</p>
 <p>Son olarak da ana döngü mekanizmasını çalıştırıyoruz ve penceremizi görünür hale
 getiriyoruz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">pencere</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">pencere</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Bu prosedürel kodları tekrar önümüze alalım:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
 
 <span class="n">pencere</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
 
@@ -388,10 +379,10 @@ getiriyoruz:</p>
 </pre></div>
 </div>
 <p>En başta da söylediğimiz gibi, bu kodlarda, satır sıraları çok önemlidir. Mesela
-burada düğmeyi oluşturan kodlarla <code class="docutils literal"><span class="pre">pencere.protocol()</span></code> kodlarının çalışması
-için bunların mutlaka <code class="docutils literal"><span class="pre">çıkış()</span></code> fonksiyonu tanımlandıktan sonra yazılması
+burada düğmeyi oluşturan kodlarla <code class="docutils literal notranslate"><span class="pre">pencere.protocol()</span></code> kodlarının çalışması
+için bunların mutlaka <code class="docutils literal notranslate"><span class="pre">çıkış()</span></code> fonksiyonu tanımlandıktan sonra yazılması
 gerekir. Eğer bu kodları şöyle yazarsanız:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
 
 <span class="n">pencere</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
 <span class="n">pencere</span><span class="o">.</span><span class="n">protocol</span><span class="p">(</span><span class="s1">&#39;WM_DELETE_WINDOW&#39;</span><span class="p">,</span> <span class="n">çıkış</span><span class="p">)</span>
@@ -429,7 +420,7 @@ bu yaklaşımdan yoğun bir şekilde faydalandığını bilmek çok önemlidir.<
 <p>Bir önceki başlıkta Tkinter’i kullanılarak prosedürel bir kod yazdık. Peki acaba
 yukarıdaki kodları nesne tabanlı olarak nasıl yazabiliriz?</p>
 <p>Dikkatlice bakın:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
 
 <span class="k">class</span> <span class="nc">Pencere</span><span class="p">(</span><span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -456,54 +447,54 @@ yukarıdaki kodları nesne tabanlı olarak nasıl yazabiliriz?</p>
 bilgisine sahipsiniz. Ama gelin biz yine de bu kodları sizin için tek tek ve
 tane tane açıklayalım.</p>
 <p>Öncelikle <cite>tkinter</cite> modülünü <cite>tk</cite> adıyla içe aktarıyoruz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
 </pre></div>
 </div>
-<p>Daha sonra <code class="docutils literal"><span class="pre">Pencere()</span></code> adlı sınıfımızı tanımlamaya başlıyoruz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Pencere</span><span class="p">(</span><span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">):</span>
+<p>Daha sonra <code class="docutils literal notranslate"><span class="pre">Pencere()</span></code> adlı sınıfımızı tanımlamaya başlıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Pencere</span><span class="p">(</span><span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">):</span>
     <span class="o">...</span>
 </pre></div>
 </div>
-<p>Burada öncelikle <code class="docutils literal"><span class="pre">Tk()</span></code> sınıfını miras aldığımıza dikkat edin. Bu sayede bu
+<p>Burada öncelikle <code class="docutils literal notranslate"><span class="pre">Tk()</span></code> sınıfını miras aldığımıza dikkat edin. Bu sayede bu
 sınıfın içindeki bütün nitelik ve metotları kendi uygulamamız içinden
 çağırabileceğiz.</p>
 <p>Penceremiz oluşur oluşmaz pencere üzerinde bir etiket ile bir düğme olmasını
 planlıyoruz. Pencere oluşur oluşmaz işletilecek kodları tanımlamak için bir
-<code class="docutils literal"><span class="pre">__init__()</span></code> metoduna ihtiyacımız olduğunu biliyorsunuz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Pencere</span><span class="p">(</span><span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">):</span>
+<code class="docutils literal notranslate"><span class="pre">__init__()</span></code> metoduna ihtiyacımız olduğunu biliyorsunuz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Pencere</span><span class="p">(</span><span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="o">...</span>
 </pre></div>
 </div>
-<p>Ancak kendi <code class="docutils literal"><span class="pre">__init__()</span></code> metodumuzu tanımlarken, <code class="docutils literal"><span class="pre">Tk()</span></code> sınıfının kendi
-<code class="docutils literal"><span class="pre">__init__()</span></code> metodundaki işlemleri de gölgelemememiz lazım. Dolayısıyla
-orijinal <code class="docutils literal"><span class="pre">__init__()</span></code> metodunu kendi <code class="docutils literal"><span class="pre">__init__()</span></code> metodumuza aktarmak için
-<code class="docutils literal"><span class="pre">super()</span></code> fonksiyonundan yararlanacağız:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Pencere</span><span class="p">(</span><span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">):</span>
+<p>Ancak kendi <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> metodumuzu tanımlarken, <code class="docutils literal notranslate"><span class="pre">Tk()</span></code> sınıfının kendi
+<code class="docutils literal notranslate"><span class="pre">__init__()</span></code> metodundaki işlemleri de gölgelemememiz lazım. Dolayısıyla
+orijinal <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> metodunu kendi <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> metodumuza aktarmak için
+<code class="docutils literal notranslate"><span class="pre">super()</span></code> fonksiyonundan yararlanacağız:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Pencere</span><span class="p">(</span><span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Artık taban sınıfın <code class="docutils literal"><span class="pre">__init__()</span></code> metodunu kendi tanımladığımız alt sınıfın
-<code class="docutils literal"><span class="pre">__init__()</span></code> metodu içinden özelleştirmeye başlayabiliriz. Öncelikle şu satırı
+<p>Artık taban sınıfın <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> metodunu kendi tanımladığımız alt sınıfın
+<code class="docutils literal notranslate"><span class="pre">__init__()</span></code> metodu içinden özelleştirmeye başlayabiliriz. Öncelikle şu satırı
 yazıyoruz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">protocol</span><span class="p">(</span><span class="s1">&#39;WM_DELETE_WINDOW&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">çıkış</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">protocol</span><span class="p">(</span><span class="s1">&#39;WM_DELETE_WINDOW&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">çıkış</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">protocol()</span></code> metodunun öntanımlı davranışı, pencerenin ‘X’ düğmesine
+<p><code class="docutils literal notranslate"><span class="pre">protocol()</span></code> metodunun öntanımlı davranışı, pencerenin ‘X’ düğmesine
 basıldığında programı sonlandırmaktır. İşte biz bu öntanımlı davranışı
-değiştirmek için <code class="docutils literal"><span class="pre">protocol()</span></code> metodunu içeren kodu tekrar tanımlıyoruz ve
-‘X’ düğmesine basıldığında <code class="docutils literal"><span class="pre">çıkış()</span></code> fonksiyonunun çalışmasını sağlıyoruz.</p>
+değiştirmek için <code class="docutils literal notranslate"><span class="pre">protocol()</span></code> metodunu içeren kodu tekrar tanımlıyoruz ve
+‘X’ düğmesine basıldığında <code class="docutils literal notranslate"><span class="pre">çıkış()</span></code> fonksiyonunun çalışmasını sağlıyoruz.</p>
 <p>Daha sonra normal bir şekilde etiketimizi ve düğmemizi tanımlıyoruz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">etiket</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Merhaba Zalim Dünya&#39;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">etiket</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Merhaba Zalim Dünya&#39;</span><span class="p">)</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">etiket</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
 
 <span class="bp">self</span><span class="o">.</span><span class="n">düğme</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Çık&#39;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">çıkış</span><span class="p">)</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">düğme</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>İki farklı yerde atıfta bulunduğumuz <code class="docutils literal"><span class="pre">çıkış()</span></code> fonksiyonumuz ise şöyle:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">çıkış</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<p>İki farklı yerde atıfta bulunduğumuz <code class="docutils literal notranslate"><span class="pre">çıkış()</span></code> fonksiyonumuz ise şöyle:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">çıkış</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">etiket</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Elveda zalim dünya...&#39;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">düğme</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Bekleyin...&#39;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">düğme</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;disabled&#39;</span>
@@ -511,7 +502,7 @@ değiştirmek için <code class="docutils literal"><span class="pre">protocol()<
 </pre></div>
 </div>
 <p>Son olarak da şu kodları yazıp programımızı tamamlıyoruz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">pencere</span> <span class="o">=</span> <span class="n">Pencere</span><span class="p">()</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">pencere</span> <span class="o">=</span> <span class="n">Pencere</span><span class="p">()</span>
 <span class="n">pencere</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -529,14 +520,14 @@ kullanmasanız da başkaları kullanıyor.</p>
 <p>Python’da bir sınıf, aynı anda birden fazla sınıfı da miras alabilir. Eğer
 yazdığınız bir uygulamada birden fazla taban sınıftan nitelik ve metot miras
 almanız gerekirse bunu şu şekilde gerçekleştirebilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">(</span><span class="n">taban_sınıf1</span><span class="p">,</span> <span class="n">taban_sınıf2</span><span class="p">):</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">(</span><span class="n">taban_sınıf1</span><span class="p">,</span> <span class="n">taban_sınıf2</span><span class="p">):</span>
     <span class="k">pass</span>
 </pre></div>
 </div>
 <p>Bu şekilde hem <cite>taban_sınıf1</cite> hem de <cite>taban_sınıf2</cite>’de bulunan nitelik ve
 metotlar aynı anda <cite>Sınıf</cite> adlı sınıfa dahil olacaktır.</p>
 <p>Ufak bir örnek verelim. Diyelim ki elimizde şu sınıflar var:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">c1</span><span class="p">:</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">c1</span><span class="p">:</span>
     <span class="n">sn1</span> <span class="o">=</span> <span class="s1">&#39;sn1&#39;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -571,16 +562,16 @@ metotlar aynı anda <cite>Sınıf</cite> adlı sınıfa dahil olacaktır.</p>
 </pre></div>
 </div>
 <p>Burada üç farklı sınıf ve her bir sınıfın içinde de birer sınıf niteliği, birer
-<code class="docutils literal"><span class="pre">__init__()</span></code> metodu, birer örnek niteliği ve birer örnek metodu görüyoruz.</p>
+<code class="docutils literal notranslate"><span class="pre">__init__()</span></code> metodu, birer örnek niteliği ve birer örnek metodu görüyoruz.</p>
 <p>Şimdi bu üç sınıfı birden taban sınıf olarak miras alan dördüncü bir sınıf
 tanımlayalım:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">c4</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">,</span> <span class="n">c3</span><span class="p">):</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">c4</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">,</span> <span class="n">c3</span><span class="p">):</span>
     <span class="k">pass</span>
 </pre></div>
 </div>
-<p>Burada, taban sınıf vazifesi görecek sınıfların adını <code class="docutils literal"><span class="pre">c4</span></code> sınıfının
-parantezleri arasına tek tek yerleştirdiğimize dikkat edin. Bu şekilde <code class="docutils literal"><span class="pre">c1</span></code>,
-<code class="docutils literal"><span class="pre">c2</span></code> ve <code class="docutils literal"><span class="pre">c3</span></code> adlı sınıfları aynı anda miras almış oluyoruz. İşte bu
+<p>Burada, taban sınıf vazifesi görecek sınıfların adını <code class="docutils literal notranslate"><span class="pre">c4</span></code> sınıfının
+parantezleri arasına tek tek yerleştirdiğimize dikkat edin. Bu şekilde <code class="docutils literal notranslate"><span class="pre">c1</span></code>,
+<code class="docutils literal notranslate"><span class="pre">c2</span></code> ve <code class="docutils literal notranslate"><span class="pre">c3</span></code> adlı sınıfları aynı anda miras almış oluyoruz. İşte bu
 mekanizmaya Python’da çoklu miras alma (<em>multiple inheritance</em>) adı veriliyor.</p>
 <p>Tek bir sınıfı miras aldığınızda hangi kurallar geçerliyse, birden fazla sınıfı
 miras aldığınızda da temel olarak aynı kurallar geçerlidir. Ancak çoklu miras
@@ -590,7 +581,7 @@ halinde ortaya çıkabilecek beklenmedik durumlara karşı dikkatli olmalısın�
 Ayrıca çoklu miras alma işlemi sırasında, aynı adı taşıyan metotlardan yalnızca
 birinin miras alınacağını da unutmayın.</p>
 <p>Örneğin:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">c1</span><span class="p">:</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">c1</span><span class="p">:</span>
     <span class="n">sn1</span> <span class="o">=</span> <span class="s1">&#39;sn1&#39;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -640,21 +631,21 @@ birinin miras alınacağını da unutmayın.</p>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Burada, aynı adı taşıyan <code class="docutils literal"><span class="pre">__init__()</span></code> ve <code class="docutils literal"><span class="pre">ortak_metot()</span></code> adlı metotlardan
+<p>Burada, aynı adı taşıyan <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> ve <code class="docutils literal notranslate"><span class="pre">ortak_metot()</span></code> adlı metotlardan
 yalnızca biri miras alınacaktır. Bunlardan hangisinin miras alınacağını az çok
 tahmin etmişsinizdir. Evet, doğru bildiniz. Miras alma listesinde hangi sınıf
 önde geliyorsa onun metotları miras alınacaktır:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">c4</span><span class="p">()</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">c4</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">ortak_metot</span><span class="p">())</span>
 </pre></div>
 </div>
-<p>Gördüğünüz gibi, <code class="docutils literal"><span class="pre">c4()</span></code> sınıfı önce <code class="docutils literal"><span class="pre">c1</span></code> sınıfını miras aldığı için hep
-<code class="docutils literal"><span class="pre">c1</span></code> sınıfının metotları öncelik kazanıyor.</p>
-<p>Eğer sınıfları <code class="docutils literal"><span class="pre">class</span> <span class="pre">c4(c2,</span> <span class="pre">c3,</span> <span class="pre">c1):</span></code> şeklinde miras alsaydık, bu kez de
-<code class="docutils literal"><span class="pre">c2</span></code> sınıfının metotları öncelik kazanacaktı.</p>
+<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">c4()</span></code> sınıfı önce <code class="docutils literal notranslate"><span class="pre">c1</span></code> sınıfını miras aldığı için hep
+<code class="docutils literal notranslate"><span class="pre">c1</span></code> sınıfının metotları öncelik kazanıyor.</p>
+<p>Eğer sınıfları <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">c4(c2,</span> <span class="pre">c3,</span> <span class="pre">c1):</span></code> şeklinde miras alsaydık, bu kez de
+<code class="docutils literal notranslate"><span class="pre">c2</span></code> sınıfının metotları öncelik kazanacaktı.</p>
 <p>Elbette, Python’ın sizin için belirlediği öncelik sırası yerine kendi
 belirlediğiniz öncelik sırasını da dayatabilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">c4</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">,</span> <span class="n">c3</span><span class="p">):</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">c4</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">,</span> <span class="n">c3</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">c2</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
@@ -662,8 +653,8 @@ belirlediğiniz öncelik sırasını da dayatabilirsiniz:</p>
         <span class="k">return</span> <span class="n">c3</span><span class="o">.</span><span class="n">ortak_metot</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Burada <code class="docutils literal"><span class="pre">c2</span></code> sınıfının <code class="docutils literal"><span class="pre">__init__()</span></code> metodu ile <code class="docutils literal"><span class="pre">c3</span></code> sınıfının
-<code class="docutils literal"><span class="pre">ortak_metot</span></code>’una miras önceliği verdik.</p>
+<p>Burada <code class="docutils literal notranslate"><span class="pre">c2</span></code> sınıfının <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> metodu ile <code class="docutils literal notranslate"><span class="pre">c3</span></code> sınıfının
+<code class="docutils literal notranslate"><span class="pre">ortak_metot</span></code>’una miras önceliği verdik.</p>
 </div>
 <div class="section" id="dahil-etme">
 <h2>Dahil Etme<a class="headerlink" href="#dahil-etme" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
@@ -676,7 +667,7 @@ dahil etme (<em>composition</em>) denen yöntemi tercih edebiliriz.</p>
 yönteminde, taban sınıfın nitelik ve metotlarını miras almak yerine, alt sınıf
 içine dahil ediyoruz. Esasında biz bunun örneğini görmüştük. Şu kodu
 hatırlıyorsunuz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
 
 <span class="k">class</span> <span class="nc">Pencere</span><span class="p">(</span><span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -700,9 +691,9 @@ hatırlıyorsunuz:</p>
 </pre></div>
 </div>
 <p>Burada aynı anda hem miras alma hem de dahil etme yönteminden yararlanıyoruz.
-İlk önce <code class="docutils literal"><span class="pre">Tk()</span></code> sınıfını miras aldık. Böylece bu sınıfın nitelik ve
+İlk önce <code class="docutils literal notranslate"><span class="pre">Tk()</span></code> sınıfını miras aldık. Böylece bu sınıfın nitelik ve
 metotlarına doğrudan erişim elde ettik. Etiket ve düğme oluşturmamızı sağlayan
-<code class="docutils literal"><span class="pre">Label()</span></code> ve <code class="docutils literal"><span class="pre">Button()</span></code> sınıflarını ise <code class="docutils literal"><span class="pre">Pencere()</span></code> sınıfımız içine dahil
+<code class="docutils literal notranslate"><span class="pre">Label()</span></code> ve <code class="docutils literal notranslate"><span class="pre">Button()</span></code> sınıflarını ise <code class="docutils literal notranslate"><span class="pre">Pencere()</span></code> sınıfımız içine dahil
 ettik. Böylece bu sınıfların nitelik ve metotlarına sırasıyla <cite>self.etiket</cite> ve
 <cite>self.düğme</cite> adları altında erişim kazandık.</p>
 <p>Miras alma ve dahil etme yöntemleri arasında tercih yaparken genel yaklaşımımız
@@ -710,10 +701,10 @@ ettik. Böylece bu sınıfların nitelik ve metotlarına sırasıyla <cite>self.
 miras alacağız. Ama eğer bir sınıf, yazdığımız uygulamanın bir parçası ise o
 sınıfı uygulamamıza dahil edeceğiz.</p>
 <p>Yani mesela yukarıdaki örnekte temel olarak yaptığımız şey bir uygulama
-penceresi tasarlamaktır. Dolayısıyla uygulama penceremiz, <code class="docutils literal"><span class="pre">tk.Tk()</span></code> sınıfının
+penceresi tasarlamaktır. Dolayısıyla uygulama penceremiz, <code class="docutils literal notranslate"><span class="pre">tk.Tk()</span></code> sınıfının
 doğrudan bir türevidir. O yüzden bu sınıfı miras almayı tercih ediyoruz.</p>
-<p>Pencere üzerine etiket ve düğme yerleştirmemizi sağlayan <code class="docutils literal"><span class="pre">Label()</span></code> ve
-<code class="docutils literal"><span class="pre">Button()</span></code> sınıfları ise, uygulama penceresinin birer parçasıdır. Dolayısıyla
+<p>Pencere üzerine etiket ve düğme yerleştirmemizi sağlayan <code class="docutils literal notranslate"><span class="pre">Label()</span></code> ve
+<code class="docutils literal notranslate"><span class="pre">Button()</span></code> sınıfları ise, uygulama penceresinin birer parçasıdır. Dolayısıyla
 bu sınıfları uygulamamızın içine dahil ediyoruz.</p>
 <p>Yukarıda anlattığımız iki farklı ilişki türü ‘olma ilişkisi’ (<em>is-a
 relationship</em>) ve ‘sahiplik ilişkisi’ (<em>has-a relationship</em>) olarak
@@ -722,17 +713,16 @@ ilişkisinde ise bir sınıf öteki sınıfın parçasıdır. Eğer iki sınıf 
 ‘olma ilişkisi’ varsa miras alma yöntemini kullanıyoruz. Ama eğer iki sınıf
 arasında ‘sahiplik ilişkisi’ varsa dahil etme yöntemini kullanıyoruz.</p>
 <p class="rubric">Dipnotları:</p>
-<table class="docutils footnote" frame="void" id="id2" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>GNU/Linux dağıtımlarında, dağıtımı geliştiren ekip genellikle
+<dl class="footnote superscript">
+<dt class="label" id="id2"><span class="superscript"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>GNU/Linux dağıtımlarında, dağıtımı geliştiren ekip genellikle
 Tkinter paketini Python paketinden ayırdığı için, Tkinter’i ayrıca kurmanız
-gerekebilir. Eğer Python’ın etkileşimli kabuğunda <code class="docutils literal"><span class="pre">import</span> <span class="pre">tkinter</span></code> komutunu
+gerekebilir. Eğer Python’ın etkileşimli kabuğunda <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">tkinter</span></code> komutunu
 verdiğinizde bir hata mesajı alıyorsanız <a class="reference external" href="https://forum.yazbel.com/">https://forum.yazbel.com/</a>
 adresinden yardım isteyin. Eğer Windows kullanıyorsanız, böyle bir probleminiz
-yok. Python’ı kurduğunuz anda Tkinter de emrinize amadedir.</td></tr>
-</tbody>
-</table>
+yok. Python’ı kurduğunuz anda Tkinter de emrinize amadedir.</p>
+</dd>
+</dl>
 </div>
 </div>
 
@@ -805,8 +795,8 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 <div class="footer">
 &copy; Copyright 2007-2020, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 01.02.2020.
-<a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7 ile oluşturulmuştur.
+Son güncelleme: 25.03.2020.
+<a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4 ile oluşturulmuştur.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
