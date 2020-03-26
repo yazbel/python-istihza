@@ -243,6 +243,7 @@ Nuri Acar
 =============
 
     - 'nitelğin' olarak yazılan kelime 'niteliğin' olarak düzeltildi.
+    - colorama modülü anlatımı, "print(Fore.RED + 'sade kırmızı yazı)" satırı parantez içi sonunda olması gereken ' işareti eklendi.
 
 Azat Fırat Çimen
 ===================

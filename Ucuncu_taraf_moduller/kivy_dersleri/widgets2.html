@@ -5,24 +5,16 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>Pencere Araçları - 2 &#8212; Python 3 için Türkçe Kılavuz</title>
     <link rel="stylesheet" href="../../_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../',
-        VERSION:     '3',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/translations.js"></script>
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/translations.js"></script>
     <link rel="search" title="Ara" href="../../search.html" />
     <link rel="next" title="Colorama Modülü" href="../colorama_modülü/index.html" />
     <link rel="prev" title="Olaylar" href="events.html" />
@@ -30,8 +22,7 @@
 <link rel="stylesheet" href="../../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
 <![endif]-->
 
-  </head>
-  <body>
+  </head><body>
 <div class='header'><a href='https://yazbel.com'>yazbel.com</a></div>
 
 <ul class='navbar'>
@@ -68,7 +59,7 @@
 <h2>Popup<a class="headerlink" href="#popup" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Bazen program çalışırken beklenmedik bir işlem gerçekleştiğinde kullanıcıya bilgi vermek için bir mesaj kutusu gösterilir. Ya da bazen kullanıcının ek bilgi girebilmesi için bir form göstermek istenirse ekranda küçük bir dialog ekranı gösterilir. Bunların hepsini Popup pencereleri ile yapabiliriz. Kivy’de Popup pencereleri, üzerinde başka pencere araçlarını taşırlar. Örneğin ekranda mesaj göstermek istersek, Popup penceresinin içerisinde bir Label tanımlayabiliriz. Birazdan örneklerle beraber göreceğiz.</p>
 <p>Popup pencerelerini oluşturmak için öncelikle kivy.uix.popup.Popup sınıfını import etmeliyiz. Sonra da mutlaka içerisinde yer alacak başka bir pencere aracını belirtmeliyiz. Şimdi bir butona tıklandığı zaman ekranda beliren Popup penceresi örneğini yapalım</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1">#coding: utf-8</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#coding: utf-8</span>
 
 <span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
 <span class="kn">from</span> <span class="nn">kivy.uix.popup</span> <span class="kn">import</span> <span class="n">Popup</span>
@@ -94,7 +85,7 @@
 </pre></div>
 </div>
 <p>Örneğimiz oldukça basit. Bir buton tanımladık ve tıklandığı zaman mesaj() metoduna geçiş yaptık. Bu metodumuzun içerisinde de bir tane Popup penceresi oluşturduk ve gerekli özelliklerini tanımladık. title, Popup penceresinin üst kısmında gösterilecek başlığını ifade eder. content ise, Popup penceresi içerisinde gösterilecek pencere aracını ifade eder. Bu pencere aracı sadece Label,Button gibi araçlar değil, bir pencere düzeni de olabilir.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1">#coding: utf-8</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#coding: utf-8</span>
 
 <span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
 <span class="kn">from</span> <span class="nn">kivy.uix.popup</span> <span class="kn">import</span> <span class="n">Popup</span>
@@ -134,7 +125,7 @@
 <img alt="../../_images/pop2.png" src="../../_images/pop2.png" />
 <p>Popup penceresini kapatmak istediğinizde, bunu yapmanın bir yolu olmadığını gördünüz değil mi? Evet, çünkü yazdığımız örnekte pencerenin kapatılmasını sağlayacak bir kod yazmadık. Peki bir Popup penceresini nasıl kapatabiliriz?</p>
 <p>Bunun iki yolu var. Birincisi, Popup penceresi dışındaki bir alana basıldığı zaman pencerenin kapatılmasıdır. Yukarıdaki örneğimizde Popup penceremiz tam ekran olarak açıldığı için Popup dışındaki bir alana basamıyoruz. Bu yüzden popup penceremizin boyutlarını değiştirelim ve Popup dışındaki bir alana basıldığı zaman kapanması için auto_dismiss özelliğini aktif edelim</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1">#coding: utf-8</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#coding: utf-8</span>
 
 <span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
 <span class="kn">from</span> <span class="nn">kivy.uix.popup</span> <span class="kn">import</span> <span class="n">Popup</span>
@@ -179,7 +170,7 @@
 </pre></div>
 </div>
 <p>Programı çalıştırıp, Popup alanı dışındaki bir alana tıklarsanız Popup kapatılacaktır. Popup pencerelerini kapatmanın bir diğer yolu, dismiss() metodunu kullanmaktır. Bu sefer ki örneğimizde kullanıcı programdan çıkmak istesin ve biz de, evet - hayır dialog kutusu göstererek onaylayalım. Eğer kullanıcı hayır derse, Popup pencereyi kapatalım. Evet derse programdan çıkış yapalım.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1">#coding: utf-8</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#coding: utf-8</span>
 
 <span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
 <span class="kn">from</span> <span class="nn">kivy.uix.popup</span> <span class="kn">import</span> <span class="n">Popup</span>
@@ -341,8 +332,8 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 <div class="footer">
 &copy; Copyright 2007-2020, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 01.02.2020.
-<a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7 ile oluşturulmuştur.
+Son güncelleme: 25.03.2020.
+<a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4 ile oluşturulmuştur.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img

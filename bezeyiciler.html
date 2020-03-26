@@ -5,26 +5,18 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta content="Python 3.x'te bezeyiciler (Decoratorlar)" name="description" />
+    <meta charset="utf-8" /><meta content="Python 3.x'te bezeyiciler (Decoratorlar)" name="description" />
 <meta content="python, fonksiyonlar, decoratorlar, bezeyiciler" name="keywords" />
 
     <title>Fonksiyonlarda Bezeyicilerin (Decorator) Kullanımı &#8212; Python 3 için Türkçe Kılavuz</title>
     <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '3',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/translations.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/translations.js"></script>
     <link rel="search" title="Ara" href="search.html" />
     <link rel="next" title="Modüller" href="moduller.html" />
     <link rel="prev" title="İleri Düzey Fonksiyonlar" href="ileri_fonksiyonlar.html" />
@@ -32,8 +24,7 @@
 <link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
 <![endif]-->
 
-  </head>
-  <body>
+  </head><body>
 <div class='header'><a href='https://yazbel.com'>yazbel.com</a></div>
 
 <ul class='navbar'>
@@ -73,7 +64,7 @@ yapabileceklerinden birkaç tanesini öğrenelim.</p>
 <div class="section" id="fonksiyonlar-diger-degiskenler-tarafindan-referanslanabilir">
 <h2>Fonksiyonlar diğer değişkenler tarafından referanslanabilir<a class="headerlink" href="#fonksiyonlar-diger-degiskenler-tarafindan-referanslanabilir" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Python’da “Merhaba, dünya!” yazdıran bir fonksiyon örneği:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mrb_dunya</span><span class="p">():</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mrb_dunya</span><span class="p">():</span>
    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Merhaba, dünya!&quot;</span><span class="p">)</span>
 
 <span class="n">mrb_dunya</span><span class="p">()</span>
@@ -82,25 +73,25 @@ yapabileceklerinden birkaç tanesini öğrenelim.</p>
 </pre></div>
 </div>
 <p>Biz bu fonksiyonu başka bir değişkene referanslayarak, o değişkenin merhaba dünya demesini sağlayabiliriz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">dunyaci</span> <span class="o">=</span> <span class="n">mrb_dunya</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">dunyaci</span> <span class="o">=</span> <span class="n">mrb_dunya</span>
 </pre></div>
 </div>
 <p>Şimdi de dunyaci fonksiyonunu çağıralım:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">dunyaci</span><span class="p">()</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">dunyaci</span><span class="p">()</span>
 
 <span class="c1"># Çıktı: Merhaba, dünya!</span>
 </pre></div>
 </div>
 <p>Gördüğümüz kadarıyla dunyaci fonksiyonuda “Merhaba, dünya!” çıktısını verdi. Peki niye?</p>
 <p>Niye olduğuna bir bakalım. mrb_dunya’yı çağırmadan yazdırırsak ne olur?:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">mrb_dunya</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">mrb_dunya</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Çıktısı <cite>&lt;function mrb_dunya at 0x7f7ffe024c80&gt;</cite> şeklinde bir şey olacaktır. Çıktısı bize demeye çalışıyor ki,
 mrb_dunya fonksiyonu belleğin 0x7f7ffe024c80 lokasyonunda bulunmaktadır. Muhtemelen 0x7f7ffe024c80
 çıktısı sizin çıktınız ile aynı olmayacaktır çünkü sizin bilgisayarınızda o fonksiyon belleğinizin farklı bir lokasyonunda depolanmış
 olabilir. Şimdi mrb_dunya fonksiyonun nerede olduğunu bildiğimize göre dunyaci fonksiyonuna da bir bakalım:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dunyaci</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dunyaci</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Çıktı <cite>&lt;function mrb_dunya at 0x7f41c77cebf8&gt;</cite>. Garip değil mi? Normalde <cite>&lt;function mrb_dunya at 0x7f41c77cebf8&gt;</cite> olmaması gerek çünkü fonksiyonumuzun adı mrb_dunya değil. İşte işler sandığımız gibi olmuyor. Python “dunyaci = mrb_dunya” yapınca mrb_dunya
@@ -110,7 +101,7 @@ mümkün değil. Belleğin farklı bir yerindeki fonksiyon, başka fonksiyona y�
 <div class="section" id="fonksiyonlar-arguman-olarak-verilebilir">
 <h2>Fonksiyonlar argüman olarak verilebilir<a class="headerlink" href="#fonksiyonlar-arguman-olarak-verilebilir" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Örnek olarak:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fonksiyon_cagir</span><span class="p">(</span><span class="n">fonksiyon</span><span class="p">):</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fonksiyon_cagir</span><span class="p">(</span><span class="n">fonksiyon</span><span class="p">):</span>
    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fonksiyon çağrılıyor!&quot;</span><span class="p">)</span>
 
    <span class="n">fonksiyon</span><span class="p">()</span>
@@ -125,7 +116,7 @@ Python fonksiyon = mrb_dunya yaptı ve onu çağırınca 0x7f576e924bf8 lokasyon
 <div class="section" id="fonksiyonlarin-icinde-fonksiyon-olusturulabilir">
 <h2>Fonksiyonların içinde fonksiyon oluşturulabilir<a class="headerlink" href="#fonksiyonlarin-icinde-fonksiyon-olusturulabilir" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Örnek Olarak:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">merhaba_de</span><span class="p">():</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">merhaba_de</span><span class="p">():</span>
    <span class="k">def</span> <span class="nf">merhabaci</span><span class="p">():</span>
       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Merhaba istihza!&quot;</span><span class="p">)</span>
    <span class="n">merhabaci</span><span class="p">()</span>
@@ -142,7 +133,7 @@ bize bir hata verecektir çünkü <em>merhabaci</em> fonksiyonu <em>merhaba_de</
 <p>Bezeyici, fonksiyonlarımızı veya nesnelerimizi modifiye etmemizi sağlayan çağrılabilir nesnelerdir.</p>
 <p>Çağrılabilir objeleri örnek verecek olursak, fonksiyonlar ve objeleri örnek verebiliriz. Bunu “callable”
 fonksiyonu ile kontrol edebilirsiniz, örneğin:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">():</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">():</span>
     <span class="o">...</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">callable</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
@@ -151,7 +142,7 @@ fonksiyonu ile kontrol edebilirsiniz, örneğin:</p>
 </div>
 <p>ya da objemizin “__call__” magic methodunun var olup olmadığını kontrol ederek de anlayabilirsiniz.</p>
 <p>Şimdi bezeyici fonksiyonları bir örnek ile anlayalım:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bezeyici</span><span class="p">(</span><span class="n">fonksiyon</span><span class="p">):</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bezeyici</span><span class="p">(</span><span class="n">fonksiyon</span><span class="p">):</span>
    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">():</span>
       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Wrapper fonksiyonumuz başladı&quot;</span><span class="p">)</span>
       <span class="n">fonksiyon</span><span class="p">()</span> <span class="c1"># Bezeyici ile aldığımız fonksiyonu çağırıyoruz</span>
@@ -172,7 +163,7 @@ fonksiyonu ile kontrol edebilirsiniz, örneğin:</p>
 </div>
 <p>Şeklinde bir çıktımız olacaktır. Peki bu bezeyici fonksiyonları
 daha okunabilir bir şekilde çağırabilir miyiz? Tabiki:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="nd">@bezeyici</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@bezeyici</span>
 <span class="k">def</span> <span class="nf">merhaba</span><span class="p">():</span>
    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Merhaba!&quot;</span><span class="p">)</span>
 
@@ -182,7 +173,7 @@ daha okunabilir bir şekilde çağırabilir miyiz? Tabiki:</p>
 <p>Yukarıdaki program ile bir önceki programımız ile aynı çıktıyı verecektir.
 Mantık aynı; fonksiyonu al, çağır. Fakat bu sefer fonksiyonu tanımlandıktan sonra
 hemen argüman olarak verip, çağırıyoruz. Peki bezeyicilere argüman verebilir miyiz?:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">baslik</span><span class="p">(</span><span class="n">fonksiyon</span><span class="p">):</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">baslik</span><span class="p">(</span><span class="n">fonksiyon</span><span class="p">):</span>
    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="n">basligimiz</span><span class="p">):</span>
       <span class="nb">print</span><span class="p">(</span><span class="n">basligimiz</span><span class="p">)</span>
       <span class="n">fonksiyon</span><span class="p">()</span>
@@ -198,7 +189,7 @@ hemen argüman olarak verip, çağırıyoruz. Peki bezeyicilere argüman verebil
 </pre></div>
 </div>
 <p>veya onun çıktısını alarak çıktının üzerinde işlemler uygulayabiliriz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">iki_ile_carp</span><span class="p">(</span><span class="n">fonksiyon</span><span class="p">):</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">iki_ile_carp</span><span class="p">(</span><span class="n">fonksiyon</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">wrapper</span><span class="p">():</span>
         <span class="n">cikti</span> <span class="o">=</span> <span class="n">fonksiyon</span><span class="p">()</span>
 
@@ -280,8 +271,8 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 <div class="footer">
 &copy; Copyright 2007-2020, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 01.02.2020.
-<a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7 ile oluşturulmuştur.
+Son güncelleme: 25.03.2020.
+<a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4 ile oluşturulmuştur.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
