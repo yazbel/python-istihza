@@ -171,7 +171,7 @@ Yani ``print()`` fonksiyonu;
 Eğer ``print()`` gibi bir fonksiyon olmasaydı, yukarıda listediğimiz bütün bu
 işlemleri kendimiz yapmak zorunda kalacaktık. Yani ekranda göstermek istediğimiz
 ifadeleri ekrana çıktı olarak vermenin yanısıra, bunların ekranda nasıl
-görüneceğini de tek tek kendimiz elle ayarlamak zorunda kalacaktır. Ekrana çıktı
+görüneceğini de tek tek kendimiz elle ayarlamak zorunda kalacaktık. Ekrana çıktı
 verme ile ilgili pek çok işlem tek bir ``print()`` fonksiyonu altında
 birleştirildiği için, her ihtiyaç duyduğumuzda o işlemleri tek tek bizim
 yapmamıza gerek kalmıyor.

@@ -1746,10 +1746,10 @@ __name__ Niteliği
         else:
             print("{} kelimesi sözlükten silindi!".format(sözcük))
 
-    no = input('Yapmak istediğiniz işlemin numarasını girin: ')
     print('1. Sözlükte kelime ara')
     print('2. Sözlüğe kelime ekle')
     print('3. Sözlükten kelime sil')
+    no = input('Yapmak istediğiniz işlemin numarasını girin: ')
 
     if no == '1':
         sözcük = input('Aradığınız sözcük: ')
