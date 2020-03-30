@@ -1444,8 +1444,7 @@ Bu gömülü fonksiyon yardımıyla dizi niteliği taşıyan nesneler içindeki 
 
 Diyelim ki elimizde şöyle bir liste var::
 
-    >>> [400, 176, 64, 175, 355, 13, 207, 298, 397, 386, 31, 120, 120, 236,
-         241, 123, 249, 364, 292, 153]
+    >>> l = [400, 176, 64, 175, 355, 13, 207, 298, 397, 386, 31, 120, 120, 236, 241, 123, 249, 364, 292, 153]
 
 Amacımız bu liste içindeki tek sayıları süzmek.
 
