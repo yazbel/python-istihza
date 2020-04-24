@@ -702,7 +702,7 @@ Yukarıdaki örnek, karakter dizisi dilimlemeye ilişkin olarak bize bazı başk
 ipuçları da veriyor. Gördüğünüz gibi, köşeli parantez içinde toplam üç adet
 parametre kullanabiliyoruz. Yani formülümüz şöyle::
 
-    kardiz[ilk_karakter:son_karakter:atlama_sayısı]
+    kardiz[ilk_karakter:son_karakterin_bir_eksiği:atlama_sayısı]
 
 Bir örnek verelim::
 
