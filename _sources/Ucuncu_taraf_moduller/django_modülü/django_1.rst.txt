@@ -38,7 +38,7 @@ Bu kod bulunduğunuz dizinde mysite dizinini yaratacak.
 	        urls.py
 	        wsgi.py
 
-En dışardaki `mysite/` dizini, projeniz için sadece bir kapsayıcıdır. Adı Django için önemli değil. Beğendiğiniz herhangi bir şeye yeniden adlandırabilirsiniz.
+En dışardaki `mysite/` dizini, projeniz için sadece bir kapsayıcıdır. Adı Django için önemli değil. Beğendiğiniz herhangi bir şeyle yeniden adlandırabilirsiniz.
 `manage.py`: Komut satırından django projesiyle etkileşime geçmenizi sağlayan bir programdır.
 İçerideki `mysite/` dizini , projeniz için gerçek bir python paketidir.
 `mysite/init.py`: Boş bir python dosyasıdır. mysite/ dizininin python paketi olmasını sağlar.
