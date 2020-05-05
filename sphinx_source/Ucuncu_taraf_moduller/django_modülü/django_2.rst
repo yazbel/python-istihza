@@ -268,7 +268,7 @@ __str__() metodunu ekleyelim(Choice modeline de)::
 Modellerinize, yalnızca etkileşimli komut istemiyle 
 çalışırken kendi rahatlığınız için değil, aynı zamanda nesnelerin 
 temsillerinin Django’nun otomatik olarak oluşturulan yöneticisi 
-boyunca kullanılmasından dolayı `__str __()` yöntemlerini eklemeniz 
+boyunca kullanılmasından dolayı `__str__()` yöntemlerini eklemeniz 
 önemlidir. Bunların normal Python yöntemleri olduğunu unutmayın. 
 Bunu kanıtlamak için özel bir yöntem ekleyelim::
 
