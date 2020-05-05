@@ -289,7 +289,8 @@ saat dilimleri ile ilgili kütüphanesinden timezone modülünü içe
 aktaralım.
 
 Bu yaptığımız değişiklikleri kaydetmek için şu komutla yeni bir 
-kabuk açalım:`python manage.py shell`
+kabuk açalım::
+`python manage.py shell`
 ::
 
     >>> from polls.models import Choice, Question
