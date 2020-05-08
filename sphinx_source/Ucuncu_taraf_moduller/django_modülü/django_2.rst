@@ -268,7 +268,7 @@ __str__() metodunu ekleyelim(Choice modeline de)::
 Modellerinize, yalnızca etkileşimli komut istemiyle 
 çalışırken kendi rahatlığınız için değil, aynı zamanda nesnelerin 
 temsillerinin Django’nun otomatik olarak oluşturulan yöneticisi 
-boyunca kullanılmasından dolayı `__str __()` yöntemlerini eklemeniz 
+boyunca kullanılmasından dolayı `__str__()` yöntemlerini eklemeniz 
 önemlidir. Bunların normal Python yöntemleri olduğunu unutmayın. 
 Bunu kanıtlamak için özel bir yöntem ekleyelim::
 
@@ -289,7 +289,8 @@ saat dilimleri ile ilgili kütüphanesinden timezone modülünü içe
 aktaralım.
 
 Bu yaptığımız değişiklikleri kaydetmek için şu komutla yeni bir 
-kabuk açalım:`python manage.py shell`
+kabuk açalım::
+`python manage.py shell`
 ::
 
     >>> from polls.models import Choice, Question
