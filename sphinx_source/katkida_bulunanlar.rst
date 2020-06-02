@@ -464,6 +464,14 @@ Burak Kadir Er
     - Hata Yakalama kısmında kelime düzeltmesi yapıldı.
     - Random modülü kısmında birden çok kelime düzeltmesi yapıldı.
     - OS modülü kısmında birden çok kelime düzeltmesi yapıldı.
+    - Bezeyiciler kısmında birleşik yazılan bağlaç düzeltildi.
+    - Bezeyiciler kısmındaki 'Örnek Olarak', 'Örnek olarak' olarak düzeltildi.
+    - Bezeyiciler kısmındaki 'Çağrılabilir objeleri örnek verecek olursak', "Çağrılabilir 'objelere' örnek verecek olursak" olarak düzeltildi.
+    - Bezeyiciler kısmındaki 'methodunun', 'metodunun' olarak düzeltildi.
+    - Bezeyiciler kısmındaki 'Tabiki', 'Tabii ki' olarak düzeltildi.
+    - Bezeyiciler kısmındaki bir cümlede anlatım bozukluğu giderildi.
+    - Bezeyiciler kısmının son bölümündeki hatalı kod düzeltildi.
+    - Bezeyiciler kısmındaki son cümlelerden birindeki anlatım bozukluğu giderildi.
 
 Muhammed Hattap Alkan
 =====================
