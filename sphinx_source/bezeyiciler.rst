@@ -139,18 +139,18 @@ Mantık aynı; fonksiyonu al, çağır. Fakat bu sefer fonksiyonu tanımlandıkt
 hemen argüman olarak verip, çağırıyoruz. Peki bezeyicilere argüman verebilir miyiz?::
 
    def baslik(fonksiyon):
-       def wrapper(basligimiz):
-          print(basligimiz)
-          fonksiyon(basligimiz)
-       return wrapper
+      def wrapper(basligimiz):
+         print(basligimiz)
+         fonksiyon(basligimiz)
+      return wrapper
 
 
-    @baslik
-    def makale(basligimiz):
-       print("Python 3.7 ile dataclasses gibi birçok güzel özellik eklendi.")
+   @baslik
+   def makale(basligimiz):
+      print("Python 3.7 ile dataclasses gibi birçok güzel özellik eklendi.")
 
 
-    makale("Python 3.7")
+   makale("Python 3.7")
 
    # Python 3.7
    # Python 3.7 ile dataclasses gibi birçok güzel özellik eklendi.
