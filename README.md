@@ -20,11 +20,11 @@ Bu arada proje sonlandığında bu belgede istihza.com'a verilen bağlantıları
 
 ## Belgeleri inşa etme
 
-Buradaki belgeler [reStructuredText] formatında yazılmış, [Sphinx] kullanılarak derlenmiştir.
+Buradaki belgeler [reStructuredText] formatında yazılmış ve [Sphinx] kullanılarak derlenmiştir.
 Belgeleri derlemek için öncelikle Sphinx'i kurmalısınız. Sphinx, Python'un 3.6 ve daha yukarı versiyonlarını desteklemektedir.
 
 ### Debian/Ubuntu için kurulum
-Sphinx'i Ubuntu'da şu komutla kurabilirsiniz:
+Sphinx'i Debian veya Ubuntu'da şu komutla kurabilirsiniz:
 
 ```shell
 $ apt install python3-sphinx
