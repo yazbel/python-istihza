@@ -20,25 +20,43 @@ Bu arada proje sonlandığında bu belgede istihza.com'a verilen bağlantıları
 
 ## Belgeleri inşa etme
 
-Buradaki belgeler [reStructuredText] kullanılarak yazılmış, [Sphinx] kullanılarak derlenmiştir.
-Belgeleri derlemek için öncelikle Sphinx'i kurmalısınız.
+Buradaki belgeler [reStructuredText] formatında yazılmış, [Sphinx] kullanılarak derlenmiştir.
+Belgeleri derlemek için öncelikle Sphinx'i kurmalısınız. Sphinx, Python'un 3.6 ve daha yukarı versiyonlarını desteklemektedir.
+
+### Debian/Ubuntu için kurulum
 Sphinx'i Ubuntu'da şu komutla kurabilirsiniz:
 
 ```shell
-# Python 3 için
 $ apt install python3-sphinx
-# Python 2 için
-$ apt install python-sphinx
 ```
 
-Şimdi şu komutla belgeleri inşa edebilirsiniz:
+Daha sonra bu komutla belgeleri inşa edebilirsiniz:
 
 ```shell
-# UNIX ortamında
 $ make html
-# Windows ortamında
-> .\make.bat html
 ```
+
+### Windows için kurulum
+
+Python'un bilgisayarınızda kurulu olduğundan ve `pip.exe`'nin PATH'da bulunduğundan emin olduktan sonra bu kodu CMD'de çalıştırarak Sphinx'i kurabilirsiniz:
+
+```shell
+> pip install sphinx
+```
+
+Yükleme işlemi başarıyla gerçekleşmiş ise şu komut size Sphinx'in versiyonunu verecektir:
+
+```shell
+> sphinx-build --version
+```
+
+Daha sonra bu komutla belgeleri inşa edebilirsiniz:
+
+```shell
+> make.bat html
+```
+
+Sphinx kurulumu ile alakalı daha ayrıntılı bilgi için [buraya](https://www.sphinx-doc.org/en/master/usage/installation.html) bakabilirsiniz.
 
 ## Nasıl yardım alabilirim?
 
