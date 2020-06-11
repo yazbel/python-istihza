@@ -11,9 +11,11 @@ Katkıda Bulunanlar
 Bu sayfada, Python3 belgelerine herhangi bir şekilde katkıda bulunanların
 isimleri bir liste halinde yer alıyor.
 
-Lütfen siz de belgelerde gördüğünüz hataları [GitHub](https://github.com/yazbel/python-istihza) aracılığı ile bildirmekten ya da
+Lütfen siz de belgelerde gördüğünüz hataları `GitHub`_ aracılığı ile bildirmekten ya da
 düzeltmekten çekinmeyin. Katkılarınız, bu belgelerin hem daha az hata içermesini
 hem de daha çok kişiye ulaşmasını sağlayacaktır.
+
+.. _GitHub: https://github.com/yazbel/python-istihza
 
 .. contents::
     :local:
