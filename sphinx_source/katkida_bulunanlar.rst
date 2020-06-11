@@ -11,7 +11,7 @@ Katkıda Bulunanlar
 Bu sayfada, Python3 belgelerine herhangi bir şekilde katkıda bulunanların
 isimleri bir liste halinde yer alıyor.
 
-Lütfen siz de belgelerde gördüğünüz hataları bildirmekten ya da
+Lütfen siz de belgelerde gördüğünüz hataları [GitHub](https://github.com/yazbel/python-istihza) aracılığı ile bildirmekten ya da
 düzeltmekten çekinmeyin. Katkılarınız, bu belgelerin hem daha az hata içermesini
 hem de daha çok kişiye ulaşmasını sağlayacaktır.
 
@@ -243,6 +243,23 @@ Nuri Acar
 =============
 
     - 'nitelğin' olarak yazılan kelime 'niteliğin' olarak düzeltildi.
+    - colorama modülü anlatımı, "print(Fore.RED + 'sade kırmızı yazı)" satırı 
+      parantez içi sonunda olması gereken ' işareti eklendi.
+    - Fonksiyonlar konusu, cümle sonu harf hatası düzeltmesi.
+        
+        kalacaktır. => kalacaktık.
+    
+    - Gömülü fonksiyonlar konusu, liste isimlendirmesi eksikliği yüzünden 
+      devamındaki kodlarda ortaya çıkan "NameError: name 'l' is not defined" 
+      hatası düzeltmesi.
+    
+        [400, 176, 64, ...]
+        
+        l = [400, 176, 64, ...]
+
+    - Modüller konusu, __name__ Niteliği, kod satır sıralaması düzeltmesi.
+      Program opsiyonları görüntülenmeden işlem numarası girilmesi istenmesi 
+      durumu düzeltmesi.
 
 Azat Fırat Çimen
 ===================
