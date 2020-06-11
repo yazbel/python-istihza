@@ -26,7 +26,7 @@ Belgelere katkıda bulunmadan önce [`CONTRIBUTING.md`](https://github.com/yazbe
 
 #### Debian/Ubuntu
 
-Sphinx'i Debian veya Ubuntu'da şu komutla kurabilirsiniz:
+`make`'in sisteminizde kurulu olduğundan emin olduktan sonra Sphinx'i Debian veya Ubuntu'da şu komutla kurabilirsiniz:
 
 ```shell
 $ apt install python3-sphinx
