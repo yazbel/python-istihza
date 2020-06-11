@@ -22,9 +22,9 @@ Bu arada proje sonlandığında bu belgede istihza.com'a verilen bağlantıları
 
 Buradaki belgeler [reStructuredText] formatında yazılmış ve [Sphinx] kullanılarak derlenmiştir.
 Belgeleri derlemek için öncelikle Sphinx'i kurmalısınız. Sphinx, Python'un 3.6 ve daha yukarı versiyonlarını desteklemektedir.
+Belgelere katkıda bulunmadan önce [`CONTRIBUTING.md`](https://github.com/yazbel/python-istihza/blob/master/CONTRIBUTING.md) dosyasına başvurun.
 
-
-#### Debian/Ubuntu için kurulum
+#### Debian/Ubuntu
 
 Sphinx'i Debian veya Ubuntu'da şu komutla kurabilirsiniz:
 
@@ -44,9 +44,9 @@ Belgeleri inşa ettikten sonra `move.py` betiği `python-istihza/build/html` iç
 > python move.py
 ```
 
-#### Windows için kurulum
+#### Windows
 
-[Python](https://www.python.org/downloads/)'un bilgisayarınızda kurulu olduğundan ve `pip.exe`'nin PATH'da bulunduğundan emin olduktan sonra bu kodu ``CMD``'de çalıştırarak Sphinx'i kurabilirsiniz:
+[Python](https://www.python.org/downloads/)'un bilgisayarınızda kurulu olduğundan ve `pip.exe`'nin PATH'da bulunduğundan emin olduktan sonra bu kodu ``cmd.exe``'de çalıştırarak Sphinx'i kurabilirsiniz:
 
 ```shell
 > pip install sphinx
@@ -75,6 +75,8 @@ Belgeleri inşa ettikten sonra `move.py` betiği `python-istihza/build/html` iç
 
 Diğer işletim sistemlerinde Sphinx kurulumu ve ayrıntılı bilgi için [buraya](https://www.sphinx-doc.org/en/master/usage/installation.html) bakabilirsiniz.
 
+
+
 ## Nasıl yardım alabilirim?
 
 Her zaman [YazBel forumu](https://forum.yazbel.com/)nun [Python kategorisi](https://forum.yazbel.com/c/python)nde bir
@@ -82,11 +84,11 @@ konu açarak aklınızdaki soruları sorabilirsiniz. Topluluk size yardım etmek
 
 ## Nasıl yardım edebilirim?
 
-Birçok şekilde yardım edebilirsiniz:
+Belgelere ekleme yaparak veya yazım ve bilgi yanlışlarını düzelterek yardım edebilirsiniz:
 
 - Belgelerde değişiklik yaparak çekme isteği (pull request) gönderebilirsiniz. Yazım yanlışları ve küçük hatalar için
 GitHub arayüzünü kullanabilirsiniz ancak daha büyük ve karmaşık düzeltmeler için veri havuzunu bilgisayarınıza çekmeli,
-daha sonrasında düzeltmeleri yapıp çekme isteği göndermelisiniz. Her iki durumda da kısa ve öz bir
+daha sonrasında düzeltmeleri yapmalı ve belgeleri inşa edip çekme isteği göndermelisiniz. Her iki durumda da kısa ve öz bir
 işleme mesajı (commit message) yazdığınıza emin olmalısınız.
 
 - Eğer bir yanlış gördünüz ancak bir sebepten ötürü düzeltmeyi kendiniz yapmak istemediyseniz, bu hatayı bildirerek de
