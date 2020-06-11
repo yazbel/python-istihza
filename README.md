@@ -24,7 +24,7 @@ Buradaki belgeler [reStructuredText] formatında yazılmış ve [Sphinx] kullan�
 Belgeleri derlemek için öncelikle Sphinx'i kurmalısınız. Sphinx, Python'un 3.6 ve daha yukarı versiyonlarını desteklemektedir.
 Belgelere katkıda bulunmadan önce [`CONTRIBUTING.md`](https://github.com/yazbel/python-istihza/blob/master/CONTRIBUTING.md) dosyasına başvurun.
 
-#### Debian/Ubuntu
+### Debian/Ubuntu
 
 `make`'in sisteminizde kurulu olduğundan emin olduktan sonra Sphinx'i Debian veya Ubuntu'da şu komutla kurabilirsiniz:
 
@@ -44,7 +44,7 @@ Belgeleri inşa ettikten sonra `move.py` betiği `python-istihza/build/html/` i�
 > python move.py
 ```
 
-#### Windows
+### Windows
 
 [Python](https://www.python.org/downloads/)'un bilgisayarınızda kurulu olduğundan ve `pip.exe`'nin PATH'da bulunduğundan emin olduktan sonra bu kodu ``cmd.exe``'de çalıştırarak Sphinx'i kurabilirsiniz:
 
@@ -71,7 +71,7 @@ Belgeleri inşa ettikten sonra `move.py` betiği `python-istihza/build/html/` i�
 ```
 
 
-#### Diğer işletim sistemleri
+### Diğer işletim sistemleri
 
 Diğer işletim sistemlerinde Sphinx kurulumu ve ayrıntılı bilgi için [buraya](https://www.sphinx-doc.org/en/master/usage/installation.html) bakabilirsiniz.
 
