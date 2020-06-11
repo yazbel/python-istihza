@@ -38,7 +38,7 @@ Daha sonra `python-istihza/` dizinine gidip bu komutla belgeleri inşa edebilirs
 $ make html
 ```
 
-Belgeleri inşa ettikten sonra `move.py` betiği `python-istihza/build/html` içindeki dosyaları `python-istihza/` dizinine çıkaracak ve `python-istihza/build` klasörünü silecektir:
+Belgeleri inşa ettikten sonra `move.py` betiği `python-istihza/build/html/` içindeki dosyaları `python-istihza/` dizinine çıkaracak ve `python-istihza/build` klasörünü silecektir:
 
 ```shell
 > python move.py
@@ -64,7 +64,7 @@ Daha sonra `python-istihza/` dizinine gidip bu komutla belgeleri inşa edebilirs
 > make.bat html
 ```
 
-Belgeleri inşa ettikten sonra `move.py` betiği `python-istihza/build/html` içindeki dosyaları `python-istihza/` dizinine çıkaracak ve `python-istihza/build` klasörünü silecektir:
+Belgeleri inşa ettikten sonra `move.py` betiği `python-istihza/build/html/` içindeki dosyaları `python-istihza/` dizinine çıkaracak ve `python-istihza/build` klasörünü silecektir:
 
 ```shell
 > python move.py
