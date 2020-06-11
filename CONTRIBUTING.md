@@ -11,4 +11,8 @@ Belgelere katkıda bulunduktan sonra dilerseniz isminizi ve yaptığınız eklem
 Belgeleri inşa etmek ve pull request (çekme isteği) yapmaya hazır hale getirmek için [burayı](https://github.com/yazbel/python-istihza#belgeleri-in%C5%9Fa-etme) takip edin.
 
 
+### Çekme isteği açmak
+
+Belgeleri düzgün bir şekilde inşa ettikten sonra değiştirdiğiniz bütün HTML ve reStructuredText dosyalarını çekme isteğine dahil edin. Yaptığınız değişimler hakkında bilgi vermeyi de unutmayın. 
+
 Katkılarınız için teşekkürler. 
