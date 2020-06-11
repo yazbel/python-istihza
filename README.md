@@ -73,7 +73,7 @@ Belgeleri inşa ettikten sonra `move.py` betiği `python-istihza/build/html/` i�
 
 ### Diğer işletim sistemleri
 
-Diğer işletim sistemlerinde Sphinx kurulumu ve ayrıntılı bilgi için [buraya](https://www.sphinx-doc.org/en/master/usage/installation.html) bakabilirsiniz.
+Kurulum konusunda daha ayrıntılı bilgi ve diğer işletim sistemlerinde Sphinx kurulumu ile alakalı bilgi için [buraya](https://www.sphinx-doc.org/en/master/usage/installation.html) bakabilirsiniz.
 
 
 
