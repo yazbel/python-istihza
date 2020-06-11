@@ -23,22 +23,30 @@ Bu arada proje sonlandığında bu belgede istihza.com'a verilen bağlantıları
 Buradaki belgeler [reStructuredText] formatında yazılmış ve [Sphinx] kullanılarak derlenmiştir.
 Belgeleri derlemek için öncelikle Sphinx'i kurmalısınız. Sphinx, Python'un 3.6 ve daha yukarı versiyonlarını desteklemektedir.
 
-### Debian/Ubuntu için kurulum
+
+#### Debian/Ubuntu için kurulum
+
 Sphinx'i Debian veya Ubuntu'da şu komutla kurabilirsiniz:
 
 ```shell
 $ apt install python3-sphinx
 ```
 
-Daha sonra bu komutla belgeleri inşa edebilirsiniz:
+Daha sonra `python-istihza/` dizinine gidip bu komutla belgeleri inşa edebilirsiniz:
 
 ```shell
 $ make html
 ```
 
-### Windows için kurulum
+Belgeleri inşa ettikten sonra `move.py` betiği `python-istihza/build/html` içindeki dosyaları `python-istihza/` dizinine çıkaracaktır ve `python-istihza/build` klasörünü silecektir:
 
-Python'un bilgisayarınızda kurulu olduğundan ve `pip.exe`'nin PATH'da bulunduğundan emin olduktan sonra bu kodu CMD'de çalıştırarak Sphinx'i kurabilirsiniz:
+```shell
+> python move.py
+```
+
+#### Windows için kurulum
+
+[Python](https://www.python.org/downloads/)'un bilgisayarınızda kurulu olduğundan ve `pip.exe`'nin PATH'da bulunduğundan emin olduktan sonra bu kodu ``CMD``'de çalıştırarak Sphinx'i kurabilirsiniz:
 
 ```shell
 > pip install sphinx
@@ -50,13 +58,22 @@ Yükleme işlemi başarıyla gerçekleşmiş ise şu komut size Sphinx'in versiy
 > sphinx-build --version
 ```
 
-Daha sonra bu komutla belgeleri inşa edebilirsiniz:
+Daha sonra `python-istihza/` dizinine gidip bu komutla belgeleri inşa edebilirsiniz:
 
 ```shell
 > make.bat html
 ```
 
-Sphinx kurulumu ile alakalı daha ayrıntılı bilgi için [buraya](https://www.sphinx-doc.org/en/master/usage/installation.html) bakabilirsiniz.
+Belgeleri inşa ettikten sonra `move.py` betiği `python-istihza/build/html` içindeki dosyaları `python-istihza/` dizinine çıkaracaktır ve `python-istihza/build` klasörünü silecektir:
+
+```shell
+> python move.py
+```
+
+
+#### Diğer işletim sistemleri
+
+Diğer işletim sistemlerinde Sphinx kurulumu ve ayrıntılı bilgi için [buraya](https://www.sphinx-doc.org/en/master/usage/installation.html) bakabilirsiniz.
 
 ## Nasıl yardım alabilirim?
 
