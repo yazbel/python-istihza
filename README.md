@@ -26,7 +26,7 @@ Belgelere katkıda bulunmadan önce [`CONTRIBUTING.md`](https://github.com/yazbe
 
 #### Debian/Ubuntu
 
-Sphinx'i Debian veya Ubuntu'da şu komutla kurabilirsiniz:
+`make`'in sisteminizde kurulu olduğundan emin olduktan sonra Sphinx'i Debian veya Ubuntu'da şu komutla kurabilirsiniz:
 
 ```shell
 $ apt install python3-sphinx
@@ -38,7 +38,7 @@ Daha sonra `python-istihza/` dizinine gidip bu komutla belgeleri inşa edebilirs
 $ make html
 ```
 
-Belgeleri inşa ettikten sonra `move.py` betiği `python-istihza/build/html` içindeki dosyaları `python-istihza/` dizinine çıkaracaktır ve `python-istihza/build` klasörünü silecektir:
+Belgeleri inşa ettikten sonra `move.py` betiği `python-istihza/build/html/` içindeki dosyaları `python-istihza/` dizinine çıkaracak ve `python-istihza/build` klasörünü silecektir:
 
 ```shell
 > python move.py
@@ -46,10 +46,10 @@ Belgeleri inşa ettikten sonra `move.py` betiği `python-istihza/build/html` iç
 
 #### Windows
 
-[Python](https://www.python.org/downloads/)'un bilgisayarınızda kurulu olduğundan ve `pip.exe`'nin PATH'da bulunduğundan emin olduktan sonra bu kodu ``cmd.exe``'de çalıştırarak Sphinx'i kurabilirsiniz:
+[Python](https://www.python.org/downloads/)'un bilgisayarınızda kurulu olduğundan ve `python.exe`'nin PATH'da bulunduğundan emin olduktan sonra bu kodu ``cmd.exe``'de çalıştırarak Sphinx'i kurabilirsiniz:
 
 ```shell
-> pip install sphinx
+> python -m pip install sphinx
 ```
 
 Yükleme işlemi başarıyla gerçekleşmiş ise şu komut size Sphinx'in versiyonunu verecektir:
@@ -64,7 +64,7 @@ Daha sonra `python-istihza/` dizinine gidip bu komutla belgeleri inşa edebilirs
 > make.bat html
 ```
 
-Belgeleri inşa ettikten sonra `move.py` betiği `python-istihza/build/html` içindeki dosyaları `python-istihza/` dizinine çıkaracaktır ve `python-istihza/build` klasörünü silecektir:
+Belgeleri inşa ettikten sonra `move.py` betiği `python-istihza/build/html/` içindeki dosyaları `python-istihza/` dizinine çıkaracak ve `python-istihza/build` klasörünü silecektir:
 
 ```shell
 > python move.py
