@@ -12,8 +12,15 @@ for i in os.listdir(builds):
     if os.path.exists(i):
         if os.path.isfile(i):
             os.remove(i)
-        else:
+        else: # klasör ise
+            if i.startswith("_"): # _static klasörü
+                for file in os.listdir(i):
+                    dir_in_builds = os.path.join(builds, i)
+                    if file not in os.listdir(dir_in_builds):
+                        shutil.move(os.path.join(i, file), dir_in_builds)
+            
             shutil.rmtree(i)
+                
 
     shutil.move(full_path, current_path)
 

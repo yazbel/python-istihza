@@ -2033,9 +2033,6 @@ Burada yaptığımız şey, karakter dizisinin değerini değiştirmekten ziyade
 karakter dizisini yeniden tanımlamaktır. Çünkü bildiğiniz gibi karakter dizileri
 değiştirilemeyen veri tipleridir.
 
-İşte karakter dizileri gibi değiştirilemeyen nesneleri, lokal isim alanlarında
-değiştiremeyeceğiniz gibi, yeniden tanımlayamazsınız da...
-
 ::
 
     isim = 'Fırat'
@@ -2058,9 +2055,7 @@ Aynı durum değiştirilebilir nesneler için de geçerlidir::
 
     print(fonk())
 
-Değiştirilebilen bir veri tipi olan listeleri, fonksiyon içinde yeniden
-tanımlayamazsınız. Ancak tabii isterseniz listeleri değişikliğe
-uğratabilirsiniz::
+Ancak tabii isterseniz listeleri değişikliğe uğratabilirsiniz::
 
     isim_listesi = []
 

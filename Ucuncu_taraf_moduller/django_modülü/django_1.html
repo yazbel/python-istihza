@@ -3,9 +3,10 @@
  <html lang="tr">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
+<html lang="tr">
   <head>
-    <meta charset="utf-8" /><meta content="Bu bölümde django ile site yapmaya başlayacağız." name="description" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta content="Bu bölümde django ile site yapmaya başlayacağız." name="description" />
 <meta content="python, django, çeviri" name="keywords" />
 
     <title>İLK DJANGO PROJENİ YAZ, part 1 &#8212; Python 3 için Türkçe Kılavuz</title>
@@ -45,7 +46,8 @@
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
 
           <li class="nav-item nav-item-1"><a href="../index.html" >Üçüncü Taraf Modüller</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">django Paketi</a> &#187;</li> 
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">django Paketi</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">İLK DJANGO PROJENİ YAZ, part 1</a></li> 
       </ul>
     </div>  
 
@@ -55,7 +57,7 @@
             
 
   <div class="section" id="ilk-django-projeni-yaz-part-1">
-<h1>İLK DJANGO PROJENİ YAZ, part 1<a class="headerlink" href="#ilk-django-projeni-yaz-part-1" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<h1>İLK DJANGO PROJENİ YAZ, part 1<a class="headerlink" href="#ilk-django-projeni-yaz-part-1" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
 <p>Bir örnekle öğrenmeye başlayalım. Bu örnekte basit bir anket uygulaması oluşturacağız.
 Uygulama iki kısımdan oluşacak:</p>
 <blockquote>
@@ -70,7 +72,7 @@ Uygulama iki kısımdan oluşacak:</p>
 </div>
 <p>Eğer Django yüklüyse yüklü olan versiyonu görmelisin. Eğer değilse “No module named django” yazısı ile karşılaşmalısın.</p>
 <div class="section" id="bir-proje-olustur">
-<h2>Bir proje oluştur<a class="headerlink" href="#bir-proje-olustur" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<h2>Bir proje oluştur<a class="headerlink" href="#bir-proje-olustur" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Komut satırında cd komutuyla komutunuzu saklamak istediğiniz dizine gidin ve aşağıdaki kodu çalıştırın:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">django</span><span class="o">-</span><span class="n">admin</span> <span class="n">startproject</span> <span class="n">mysite</span>
 </pre></div>
@@ -95,7 +97,7 @@ Uygulama iki kısımdan oluşacak:</p>
 <cite>mysite/wsgi.py</cite>: WSGI uyumlu web sunucuları için projenize hizmet edecek bir giriş noktası.</p>
 </div>
 <div class="section" id="gelistirme-sunucusu">
-<h2>Geliştirme sunucusu<a class="headerlink" href="#gelistirme-sunucusu" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<h2>Geliştirme sunucusu<a class="headerlink" href="#gelistirme-sunucusu" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Şimdi django projemizin çalışıp çalışmadığını kontrol edelim. Komut satırında dışarıdaki <cite>mysite</cite> dizinine gidin ve aşağıdaki kodu çalıştırın:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">runserver</span>
 </pre></div>
@@ -121,7 +123,7 @@ Uygulama iki kısımdan oluşacak:</p>
 <p>Django geliştirme sunucusunu başlattınız.</p>
 </div>
 <div class="section" id="kullanilan-portu-degistirme">
-<h2>Kullanılan portu değiştirme<a class="headerlink" href="#kullanilan-portu-degistirme" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<h2>Kullanılan portu değiştirme<a class="headerlink" href="#kullanilan-portu-degistirme" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p><cite>runserver</cite> komutu geliştirme sunucusu için standart olarak 8000 portunu kullanır.
 Eğer bu portu değiştirmek isterseniz bunu komuta argüman olarak verin. Mesela aşağıdaki komut 8080 portunda geliştirme sunucusunu çalıştırıyor:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span>  <span class="n">runserver</span> <span class="mi">8080</span>
@@ -134,7 +136,7 @@ Eğer bu portu değiştirmek isterseniz bunu komuta argüman olarak verin. Mesel
 <p>Yukarıda yazdığımız kodda 0’ın anlamı 0.0.0.0 (Yani bir kısaltma).</p>
 </div>
 <div class="section" id="bir-anket-uygulamasi-olusturalim">
-<h2>Bir anket uygulaması oluşturalım<a class="headerlink" href="#bir-anket-uygulamasi-olusturalim" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<h2>Bir anket uygulaması oluşturalım<a class="headerlink" href="#bir-anket-uygulamasi-olusturalim" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Artık proje ortamımız kuruldu. Çalışmaya başlayabiliriz.
 Django’da yazdığımız her uygulama bir python paketinden oluşur ve Django’da uygulamanın dizini otomatik olarak oluşturulur. Bu sayede dizin oluşturmakla uğraşacağımız zamanda kod yazabiliriz.
 Bir uygulama oluşturmak için komut satırında <cite>manage.py</cite> ile aynı dizine gelin ve şu komutu yazın:</p>
@@ -156,7 +158,7 @@ Bir uygulama oluşturmak için komut satırında <cite>manage.py</cite> ile ayn�
 <p>Bu dizin anket uygulamamızın merkezi olacak.</p>
 </div>
 <div class="section" id="ilk-view-imizi-yazalim">
-<h2>İlk view’ımızı yazalım<a class="headerlink" href="#ilk-view-imizi-yazalim" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<h2>İlk view’ımızı yazalım<a class="headerlink" href="#ilk-view-imizi-yazalim" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Hadi yazmaya başlayalım. Şimdi <cite>polls/views.py</cite> açın ve şu kodları yazın:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.http</span> <span class="k">import</span> <span class="n">HttpResponse</span>
 <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
@@ -220,7 +222,8 @@ polls dizininde <cite>urls.py</cite> isimli bir dosya oluşturarak uygulamanın 
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
 
           <li class="nav-item nav-item-1"><a href="../index.html" >Üçüncü Taraf Modüller</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="index.html" >django Paketi</a> &#187;</li> 
+          <li class="nav-item nav-item-2"><a href="index.html" >django Paketi</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">İLK DJANGO PROJENİ YAZ, part 1</a></li> 
       </ul>
     </div> </div>
 
@@ -255,6 +258,7 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 
 
+            <div class="clearer"></div>
           </div>
       </div>
       <div class="clearer"></div>
@@ -271,14 +275,15 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
 
           <li class="nav-item nav-item-1"><a href="../index.html" >Üçüncü Taraf Modüller</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="index.html" >django Paketi</a> &#187;</li> 
+          <li class="nav-item nav-item-2"><a href="index.html" >django Paketi</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">İLK DJANGO PROJENİ YAZ, part 1</a></li> 
       </ul>
     </div> 
 
 <div class="footer">
 &copy; Copyright 2007-2020, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 30.03.2020.
-<a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4 ile oluşturulmuştur.
+Son güncelleme: 13.06.2020.
+<a href="http://sphinx-doc.org/">Sphinx</a> 3.1.0 kullanılarak oluşturuldu.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
