@@ -673,7 +673,7 @@ Burada ``ifade`` bir ``bool`` yani ``True`` veya ``False`` olabileceği gibi, (a
 eğer ``ifade``'nin değeri ``True`` ise ``assert`` ifademiz çalışmayacak, ``False`` ise 
 çalışacaktır. Yani ``assert`` ifademizin içine doğru olmasını istediğimiz durumu yazmalıyız ki
 eğer yanlış olursa hata yükseltsin. Zaten ``assert`` kelimesi *“iddia etmek”* anlamına gelir. Yani biz ``assert`` ifadesini kullanarak bir ifadenin doğru olduğunu iddia ediyoruz, bu iddiamız yanlış ise Python bir hata yükseltiyor. Ayrıca ``assert`` ifademiz çalıştığında bir hata yükseleceği için program da sonlanacaktır, yani bu özelliği istemediğimiz bir durum gerçekleştiğinde
-programı sonlandırmak için de kullanabiliriz . ``mesaj`` ise hata verildiğinde ekrana yazılmasını
+programı sonlandırmak için de kullanabiliriz. ``mesaj`` ise hata verildiğinde ekrana yazılmasını
 istediğimiz mesajdır. Tabii ki ``raise`` ifadesinde olduğu gibi burada da bir mesaj vermek zorunda 
 değiliz. Yani ``assert`` ifadesini şu şekilde de kullanabiliriz::
 
