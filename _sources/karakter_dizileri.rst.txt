@@ -983,7 +983,7 @@ değiştirilemeyen veri tipleridir. Henüz değiştirilebilen bir veri tipi gör
 Ama birkaç bölüm sonra değiştirilebilen veri tiplerini de inceleyeceğiz.
 
 Neyse... Dediğimiz gibi, karakter dizileri üzerinde yaptığımız değişikliklerin
-kalıcı olmamasını nedeni, karakter dizilerinin değiştirilemeyen bir veri tipi
+kalıcı olmamasının nedeni, karakter dizilerinin değiştirilemeyen bir veri tipi
 olmasıdır. Python'da bir karakter dizisini bir kez tanımladıktan sonra bu
 karakter dizisi üzerinde artık değişiklik yapamazsınız. Eğer bir karakter dizisi
 üzerinde değişiklik yapmanız gerekiyorsa, yapabileceğiniz tek şey o karakter

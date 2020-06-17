@@ -56,7 +56,7 @@ Clock sınıfının bir başka kullanımı ise, belli aralıklarla sürekli çal
 	    def build(self):
 	        self.yazi = Label(text = "Merhaba",markup = True)
 
-	        Clock.schedule_interval(self.degistir,1) # 3 saniye sonra, self.degistir adlı fonksiyonu çalıştır
+	        Clock.schedule_interval(self.degistir,1) # 1 saniye sonra, self.degistir adlı fonksiyonu çalıştır
 
 	        return self.yazi
 

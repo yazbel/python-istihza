@@ -471,3 +471,9 @@ Muhammed Hattap Alkan
 =====================
 
     - Bezeyiciler (decoratorlar) konusu eklendi.
+
+
+Husamsdu
+=============
+
+    - Birden fazla yazım hatası düzeltildi.
