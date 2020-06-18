@@ -659,7 +659,7 @@ Fonksiyonumuzun daha kullanışlı olabilmesi için kodlarımızı şöyle yazab
             return ters_çevir(s[1:]) + s[0]
 
     kelime = input('kelime girin: ')
-    print('Girdiğiniz kelimenin tersi: {}'.format(ters_çevir('istihza')))
+    print('Girdiğiniz kelimenin tersi: {}'.format(ters_çevir(kelime)))
 
 Burada bizim amacımızı gerçekleştirmemizi sağlayan satır şu::
 

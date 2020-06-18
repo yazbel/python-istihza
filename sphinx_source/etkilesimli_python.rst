@@ -1329,7 +1329,7 @@ Sadece şu formülü kullanarak değişkenlerin değerini takas edebiliriz::
 
     a, b = b, a
 
-Bu şekilde `a` değişkeninin değerini `b` değişkenine; `b` değişkeninin değerini ise `a` değerine vermiş oluyoruz.
+Bu şekilde `a` değişkeninin değerini `b` değişkenine; `b` değişkeninin değerini ise `a` değişkenine vermiş oluyoruz.
 Eğer bu işlemi geri alıp her şeyi eski haline döndürmek istersek, tahmin edebileceğiniz gibi yine aynı yöntemden yararlanabiliriz::
 
     b, a = a, b

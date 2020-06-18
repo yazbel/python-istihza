@@ -3,9 +3,10 @@
  <html lang="tr">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
+<html lang="tr">
   <head>
-    <meta charset="utf-8" /><meta content="Python 3.x'te bezeyiciler (Decoratorlar)" name="description" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta content="Python 3.x'te bezeyiciler (Decoratorlar)" name="description" />
 <meta content="python, fonksiyonlar, decoratorlar, bezeyiciler" name="keywords" />
 
     <title>Fonksiyonlarda Bezeyicilerin (Decorator) Kullanımı &#8212; Python 3 için Türkçe Kılavuz</title>
@@ -43,7 +44,8 @@
           <a href="ileri_fonksiyonlar.html" title="İleri Düzey Fonksiyonlar"
              accesskey="P">önceki</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
- 
+
+        <li class="nav-item nav-item-this"><a href="">Fonksiyonlarda Bezeyicilerin (Decorator) Kullanımı</a></li> 
       </ul>
     </div>  
 
@@ -53,7 +55,11 @@
             
 
   <div class="section" id="fonksiyonlarda-bezeyicilerin-decorator-kullanimi">
-<h1>Fonksiyonlarda Bezeyicilerin (Decorator) Kullanımı<a class="headerlink" href="#fonksiyonlarda-bezeyicilerin-decorator-kullanimi" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<h1>Fonksiyonlarda Bezeyicilerin (Decorator) Kullanımı<a class="headerlink" href="#fonksiyonlarda-bezeyicilerin-decorator-kullanimi" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Uyarı</p>
+<p>Bu makale eksikler içermektedir. İleride güncellenecektir.</p>
+</div>
 <p>Bu bölüme kadar fonksiyonları nasıl kullanabileceğimizi işlemiştik.
 Bu yazıda bezeyicilerin nasıl çalıştığını, bezeyicilerin ne olduğunu
 kendimize özgü bezeyicileri nasıl oluşturabileceğimizi anlayacağız.</p>
@@ -62,7 +68,7 @@ kendimize özgü bezeyicileri nasıl oluşturabileceğimizi anlayacağız.</p>
 bu özellikten yararlanarak çalışırlar. Şimdi fonksiyonların
 yapabileceklerinden birkaç tanesini öğrenelim.</p>
 <div class="section" id="fonksiyonlar-diger-degiskenler-tarafindan-referanslanabilir">
-<h2>Fonksiyonlar diğer değişkenler tarafından referanslanabilir<a class="headerlink" href="#fonksiyonlar-diger-degiskenler-tarafindan-referanslanabilir" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<h2>Fonksiyonlar diğer değişkenler tarafından referanslanabilir<a class="headerlink" href="#fonksiyonlar-diger-degiskenler-tarafindan-referanslanabilir" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Python’da “Merhaba, dünya!” yazdıran bir fonksiyon örneği:</p>
 <div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mrb_dunya</span><span class="p">():</span>
    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Merhaba, dünya!&quot;</span><span class="p">)</span>
@@ -99,7 +105,7 @@ bellekteki mrb_dunya fonksiyonuna yönlendirdi, yani <cite>0x7f41c77cebf8</cite>
 mümkün değil. Belleğin farklı bir yerindeki fonksiyon, başka fonksiyona yönlendiriyor. Yani 0x7f41c77cebf8 olan bir fonksiyon aslında 0x7f576e924bf8 lokasyonundaki bir fonksiyonu çağırıyor.</p>
 </div>
 <div class="section" id="fonksiyonlar-arguman-olarak-verilebilir">
-<h2>Fonksiyonlar argüman olarak verilebilir<a class="headerlink" href="#fonksiyonlar-arguman-olarak-verilebilir" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<h2>Fonksiyonlar argüman olarak verilebilir<a class="headerlink" href="#fonksiyonlar-arguman-olarak-verilebilir" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Örnek olarak:</p>
 <div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fonksiyon_cagir</span><span class="p">(</span><span class="n">fonksiyon</span><span class="p">):</span>
    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fonksiyon çağrılıyor!&quot;</span><span class="p">)</span>
@@ -114,7 +120,7 @@ Python fonksiyon = mrb_dunya yaptı ve onu çağırınca 0x7f576e924bf8 lokasyon
 çağırdı.</p>
 </div>
 <div class="section" id="fonksiyonlarin-icinde-fonksiyon-olusturulabilir">
-<h2>Fonksiyonların içinde fonksiyon oluşturulabilir<a class="headerlink" href="#fonksiyonlarin-icinde-fonksiyon-olusturulabilir" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<h2>Fonksiyonların içinde fonksiyon oluşturulabilir<a class="headerlink" href="#fonksiyonlarin-icinde-fonksiyon-olusturulabilir" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Örnek Olarak:</p>
 <div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">merhaba_de</span><span class="p">():</span>
    <span class="k">def</span> <span class="nf">merhabaci</span><span class="p">():</span>
@@ -129,7 +135,7 @@ fonksiyonu <em>merhaba_de</em> fonksiyonunun içinde tanımlanıp çağrılıyor
 bize bir hata verecektir çünkü <em>merhabaci</em> fonksiyonu <em>merhaba_de</em> fonksiyonunun dışında tanımlanmamıştır.</p>
 </div>
 <div class="section" id="bezeyici-decoratorlar">
-<h2>Bezeyici (Decoratorlar)<a class="headerlink" href="#bezeyici-decoratorlar" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<h2>Bezeyici (Decoratorlar)<a class="headerlink" href="#bezeyici-decoratorlar" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Bezeyici, fonksiyonlarımızı veya nesnelerimizi modifiye etmemizi sağlayan çağrılabilir nesnelerdir.</p>
 <p>Çağrılabilir objeleri örnek verecek olursak, fonksiyonlar ve objeleri örnek verebiliriz. Bunu “callable”
 fonksiyonu ile kontrol edebilirsiniz, örneğin:</p>
@@ -216,7 +222,8 @@ hemen argüman olarak verip, çağırıyoruz. Peki bezeyicilere argüman verebil
           <a href="ileri_fonksiyonlar.html" title="İleri Düzey Fonksiyonlar"
              >önceki</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
- 
+
+        <li class="nav-item nav-item-this"><a href="">Fonksiyonlarda Bezeyicilerin (Decorator) Kullanımı</a></li> 
       </ul>
     </div> </div>
 
@@ -251,6 +258,7 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 
 
+            <div class="clearer"></div>
           </div>
       </div>
       <div class="clearer"></div>
@@ -265,14 +273,15 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
           <a href="ileri_fonksiyonlar.html" title="İleri Düzey Fonksiyonlar"
              >önceki</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
- 
+
+        <li class="nav-item nav-item-this"><a href="">Fonksiyonlarda Bezeyicilerin (Decorator) Kullanımı</a></li> 
       </ul>
     </div> 
 
 <div class="footer">
 &copy; Copyright 2007-2020, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 30.03.2020.
-<a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4 ile oluşturulmuştur.
+Son güncelleme: 17.06.2020.
+<a href="http://sphinx-doc.org/">Sphinx</a> 3.1.0 kullanılarak oluşturuldu.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img

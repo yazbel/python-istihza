@@ -6,6 +6,8 @@
 Fonksiyonlarda Bezeyicilerin (Decorator) Kullanımı
 **************************************************
 
+.. warning:: Bu makale eksikler içermektedir. İleride güncellenecektir.
+
 Bu bölüme kadar fonksiyonları nasıl kullanabileceğimizi işlemiştik.
 Bu yazıda bezeyicilerin nasıl çalıştığını, bezeyicilerin ne olduğunu
 kendimize özgü bezeyicileri nasıl oluşturabileceğimizi anlayacağız.
