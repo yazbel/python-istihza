@@ -1500,7 +1500,7 @@ baştaki `modüller` listesini güncellemek olacaktır. Mesela bu listeye bir de
 Gördüğünüz gibi, bu kodlar işimizi epey kolaylaştırdı. Sadece tek bir noktada
 değişiklik yaparak istediğimiz sonucu elde ettik.
 
-Bu arada, ``__import__()`` fonksiyonu hariç, bu kodlardaki her şeyi daha önceki
+Bu arada, ``__import__`` fonksiyonu hariç, bu kodlardaki her şeyi daha önceki
 derslerimizde öğrenmiştik. Ama gelin isterseniz biz yine de bu kodların
 üzerinden şöyle bir geçelim.
 
@@ -1526,14 +1526,14 @@ Fonksiyonumuzun gövdesinde ilk olarak şöyle bir kod yazıyoruz::
 
     kümeler = [set(dir(__import__(modül))) for modül in modüller]
 
-Burada `modüller` adlı listedeki her öğe üzerine sırasıyla ``__import()``
+Burada `modüller` adlı listedeki her öğe üzerine sırasıyla ``__import__``
 fonksiyonunu, ``dir()`` fonksiyonunu ve ``set()`` fonksiyonunu uyguluyoruz. Daha
 sonra elde ettiğimiz sonucu bir liste üreteci yardımıyla liste haline getirip
 `kümeler` değişkenine atıyoruz.
 
-Gelelim ``__import__()`` fonksiyonunun ne olduğuna...
+Gelelim ``__import__`` fonksiyonunun ne olduğuna...
 
-Bir gömülü fonksiyon olan ``__import__()`` fonksiyonu, modül adlarını içeren
+Bir gömülü fonksiyon olan ``__import__`` fonksiyonu, modül adlarını içeren
 karakter dizilerini kullanarak, herhangi bir modülü içe aktarmamızı sağlayan bir
 araçtır. Bu fonksiyonunu şöyle kullanıyoruz::
 
@@ -1554,7 +1554,7 @@ içine alamıyorken::
       File "<stdin>", line 2, in <module>
     ImportError: No module named 'modül'
 
-``__import__()`` fonksiyonu bize böyle bir işlem yapabilme olanağı sunuyor::
+``__import__`` fonksiyonu bize böyle bir işlem yapabilme olanağı sunuyor::
 
     >>> modüller = ['os', 'sys', 'random']
     >>> for modül in modüller:
@@ -1582,10 +1582,10 @@ kullanamıyoruz::
 
     >>> os = __import__('os')
 
-Eğer ``__import__()`` fonksiyonu yardımıyla içe aktardığımız `os` modülünü bu
+Eğer ``__import__`` fonksiyonu yardımıyla içe aktardığımız `os` modülünü bu
 şekilde bir isme atamazsak, ``__import__('os')`` komutu ile içe aktarılan bütün
 `os` fonksiyon ve nitelikleri, bu komut bir kez çalıştıktan sonra unutulacaktır.
-Eğer ``__import__()`` fonksiyonunu bir isme atamadan, içe aktarılan modülün
+Eğer ``__import__`` fonksiyonunu bir isme atamadan, içe aktarılan modülün
 niteliklerine erişmek isterseniz içe aktarma işlemi ile niteliğe erişme işlemini
 aynı satırda gerçekleştirmeniz gerekir::
 
@@ -1593,7 +1593,7 @@ aynı satırda gerçekleştirmeniz gerekir::
 
     'nt'
 
-``__import__()`` fonksiyonu çok sık kullanacağınız bir araç değildir. Ancak
+``__import__`` fonksiyonu çok sık kullanacağınız bir araç değildir. Ancak
 özellikle tek satırda hem bir modülü içe aktarmanız, hem de hemen ardından başka
 işlemler yapmanız gereken durumlarda bu fonksiyon işinize yarayabilir::
 
