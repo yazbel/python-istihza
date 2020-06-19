@@ -15,4 +15,6 @@ Belgeleri inşa etmek ve pull request (çekme isteği) yapmaya hazır hale getir
 
 Belgeleri düzgün bir şekilde inşa ettikten sonra değiştirdiğiniz bütün HTML ve reStructuredText dosyalarını çekme isteğine dahil edin. Yaptığınız değişimler hakkında bilgi vermeyi de unutmayın. 
 
+**Not:** Çekme isteğinize değişen bütün dosyaları değil, sadece değiştirdiğiniz ``.rst`` dosyalarını ve inşa sonrasında bu `.rst` dosyalarına göre değişmiş olan HTML dosyalarını ekleyin. Örneğin ``sphinx_source/print.rst`` dosyasında bir değişim yaptıysanız çekme isteğine sadece ``sphinx_source/print.rst`` ve `print.html` dosyalarını dahil edin. Bu sayede değişimler daha rahat takip edilecektir.
+
 Katkılarınız için teşekkürler. 
