@@ -207,7 +207,7 @@ sahasına dökmüş oluruz, hem de yeni şeyler öğrenmiş oluruz.</p>
 
         <span class="k">if</span> <span class="n">sonuç</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">SONUÇ: rakibinizden darbe aldınız&#39;</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">darbele</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+            <span class="n">rakip</span><span class="o">.</span><span class="n">darbele</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">saldırı_sonucunu_hesapla</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
          <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
@@ -412,7 +412,7 @@ fonksiyonunu incelemeye:</p>
 
     <span class="k">if</span> <span class="n">sonuç</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">SONUÇ: rakibinizden darbe aldınız&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">darbele</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">rakip</span><span class="o">.</span><span class="n">darbele</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Bu fonksiyon, <cite>self</cite> dışında tek bir parametre alıyor. Fonksiyonu çalıştırırken
@@ -483,7 +483,7 @@ kullanıyoruz:</p>
 
 <span class="k">if</span> <span class="n">sonuç</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">SONUÇ: rakibinizden darbe aldınız&#39;</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">darbele</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+    <span class="n">rakip</span><span class="o">.</span><span class="n">darbele</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Eğer <code class="docutils literal notranslate"><span class="pre">randint()</span></code> metodu 0 sayısını üretirse, rakibimize karşı
@@ -501,7 +501,7 @@ hükmediyoruz:</p>
 
 <span class="k">if</span> <span class="n">sonuç</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">SONUÇ: rakibinizden darbe aldınız&#39;</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">darbele</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+    <span class="n">rakip</span><span class="o">.</span><span class="n">darbele</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Saldırı sonucunda rakibimizi darbelediğimizde ve rakibimizden darbe yediğimizde
@@ -593,12 +593,11 @@ bakalım:</p>
 
 <span class="k">if</span> <span class="n">sonuç</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">SONUÇ: rakibinizden darbe aldınız&#39;</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">darbele</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+    <span class="n">rakip</span><span class="o">.</span><span class="n">darbele</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Bildiğiniz gibi, <code class="docutils literal notranslate"><span class="pre">darbele()</span></code> fonksiyonu, <cite>self</cite> dışında 1 adet parametre daha
-alıyor. Bu parametre, darbeyi hangi oyuncunun alacağını gösteriyor. Yani darbeyi
-alan oyuncu biz miyiz yoksa rakibimiz mi? İşte bunu tespit etmek için
+alıyor. Bu parametre, darbeyi hangi oyuncunun alacağını gösteriyor. İşte bunu tespit etmek için
 <cite>darbelenen</cite> adlı bir parametre belirledik. Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">darbele()</span></code>
 fonksiyonu <code class="docutils literal notranslate"><span class="pre">saldır()</span></code> adlı başka bir fonksiyonun içinden çağrılıyor.
 <code class="docutils literal notranslate"><span class="pre">saldır()</span></code> fonksiyonu da <cite>rakip</cite> adlı bir parametre alıyor. İşte darbe alan
@@ -607,10 +606,9 @@ oyuncunun can ve enerji değerlerini yenilemek istediğimizde bu parametreyi,
 <div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">darbele</span><span class="p">(</span><span class="n">rakip</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Burada darbelenen oyuncu karşı taraf. Yani rakibimiz darbe yemiş. Eğer
-darbelenen kişi kendimizsek, kendimize atıfta bulunmak için de <cite>self</cite>
-parametresini kullanıyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">darbele</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<p>Burada darbelenen oyuncu karşı taraf. Yani rakibimiz bizden (<cite>self</cite>’den) darbe yemiş. Eğer
+darbelenen kişi kendimizsek, <code class="docutils literal notranslate"><span class="pre">rakip</span></code> oyuncusunun bizi darbelemesini istiyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">rakip</span><span class="o">.</span><span class="n">darbele</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Pek çok kez söylediğimiz gibi, <cite>self</cite> kelimesi mevcut sınıf örneğini temsil
@@ -642,7 +640,8 @@ olduğu gibi <cite>self</cite>’i kullanabiliriz.</p>
 <p>Gördüğünüz gibi, eğer rakibi darbeleyip onun can ve enerji durumunu yenilemek
 istiyorsak, ilgili fonksiyonu <code class="docutils literal notranslate"><span class="pre">rakip.darbele()</span></code> şeklinde çağırıyoruz.
 Kendimizin durumunu yenilemek istediğimizde ise <code class="docutils literal notranslate"><span class="pre">self.darbele()</span></code> komutunu
-kullanıyoruz.</p>
+kullanıyoruz. Tabii <cite>darbele</cite> fonksiyonunu bu şekilde tanımlayacaksak ismini <cite>darbe_al</cite>
+olarak belirlemek daha anlamlı olur.</p>
 <p>Sınıfımızı tanımladığımıza göre artık bu sınıfı nasıl kullanacağımızı incelemeye
 geçebiliriz:</p>
 <div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">siz</span> <span class="o">=</span> <span class="n">Oyuncu</span><span class="p">(</span><span class="s1">&#39;Ahmet&#39;</span><span class="p">)</span>
@@ -711,10 +710,10 @@ görüntülüyoruz:</p>
 </div>
 <p>Eğer kullanıcı ‘k’ tuşuna basarsa:</p>
 <div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">hamle</span> <span class="o">==</span> <span class="s1">&#39;k&#39;</span><span class="p">:</span>
-    <span class="o">...</span>
+    <span class="n">siz</span><span class="o">.</span><span class="n">kaç</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>…sınıf içinde tanımladığımız <code class="docutils literal notranslate"><span class="pre">kaç()</span></code> metodunu çalıştırıyoruz:</p>
+<p>sınıf içinde tanımladığımız <code class="docutils literal notranslate"><span class="pre">kaç()</span></code> metodunu çalıştırıyoruz:</p>
 <div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">kaç</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Kaçılıyor...&#39;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
@@ -847,7 +846,7 @@ olması anlamına geliyor. İşte tıpkı bunun gibi, Python’daki sınıf yap�
 özelliklere sahiptir:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>Başka bir fonksiyona veya sınıfa parametre olarak atanabilirler</p></li>
+<li><p>Başka bir fonksiyona veya sınıfa parametre olarak verilebilirler</p></li>
 <li><p>Bir fonksiyondan döndürülebilirler</p></li>
 <li><p>Bir değişkene atanabilirler</p></li>
 </ol>
@@ -988,7 +987,7 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 <div class="footer">
 &copy; Copyright 2007-2020, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 18.06.2020.
+Son güncelleme: 19.06.2020.
 <a href="http://sphinx-doc.org/">Sphinx</a> 3.1.0 kullanılarak oluşturuldu.
 <br>
 <br>
