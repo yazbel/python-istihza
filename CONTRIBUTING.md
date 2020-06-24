@@ -13,6 +13,6 @@ Belgeleri inşa etmek ve pull request (çekme isteği) yapmaya hazır hale getir
 
 ### Çekme isteği açmak
 
-Belgeleri düzgün bir şekilde inşa ettikten sonra değiştirdiğiniz bütün HTML ve reStructuredText dosyalarını çekme isteğine dahil edin. Yaptığınız değişimler hakkında bilgi vermeyi de unutmayın. Çekme isteklerinizde değiştirdiğiniz bütün reStructuredText dosyalarını açıklamaya yazmak değişikliklerin takip edilmesini kolaylaştıracaktır.
+Belgeleri düzgün bir şekilde inşa ettikten sonra değiştirdiğiniz bütün HTML ve reStructuredText dosyalarını çekme isteğine dahil edin. Yaptığınız değişimler hakkında bilgi vermeyi de unutmayın.
 
 Katkılarınız için teşekkürler. 
