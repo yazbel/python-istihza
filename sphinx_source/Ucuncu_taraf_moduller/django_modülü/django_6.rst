@@ -217,3 +217,5 @@ Sıra tüm işi yapacak `views.py` dosyasında.
 * #6 Google doğrulama sunucusundan gelen değeri json haline getiriyoruz.
 * #7 Eğer dönen sonuç başarılı ise fonksiyon `True` döndürür
 * #8 Sonuç başarısız olursa neden başarısız olduğu dahil bir sözlük değeri döndürür.
+
+Bu anlatımda hazırlanan kodlara `buradan <https://github.com/mehmetkiran/reCAPTCHA>`_ ulaşabilirisniz.
