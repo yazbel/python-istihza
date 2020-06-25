@@ -391,3 +391,11 @@ Axolotl Axolotl
     - 'oyununun' olarak yazılan kelime 'oyunun' olarak düzeltildi.
     - 'O' olarak yazılması gerekirken 'Y' olarak yazılan karakter düzeltildi.
     - 'programımın' olarak yazılan kelime 'programın' olarak düzeltildi.
+
+
+Mehmet Kıran
+===============
+
+    - 'argparse' modülü eklendi.
+    - Bazı yazım yanlışları düzeltildi.
+    - 'Context Processors (İçerik İşleci)' eklendi.
