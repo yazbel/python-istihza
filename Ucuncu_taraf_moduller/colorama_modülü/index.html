@@ -1,0 +1,245 @@
+
+ <!DOCTYPE html>
+ <html lang="tr">
+
+
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta content="Colorama modülünün kullanımı" name="description" />
+<meta content="python, colorama" name="keywords" />
+
+    <title>Colorama Modülü &#8212; Python 3 için Türkçe Kılavuz</title>
+    <link rel="stylesheet" href="../../_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/translations.js"></script>
+    <link rel="search" title="Ara" href="../../search.html" />
+    <link rel="next" title="Pyperclip Modülü" href="../pyperclip_modülü/index.html" />
+    <link rel="prev" title="Pencere Araçları - 2" href="../kivy_dersleri/widgets2.html" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+<div class='header'><a href='https://yazbel.com'>yazbel.com</a></div>
+
+<ul class='navbar'>
+    <li><a href="#"><del>pdf desteği sonlanmıştır</del></a></li>
+    <li class="forum"><a href="http://forum.yazbel.com">forum</a></li>
+</ul>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../pyperclip_modülü/index.html" title="Pyperclip Modülü"
+             accesskey="N">sonraki</a></li>
+        <li class="right" >
+          <a href="../kivy_dersleri/widgets2.html" title="Pencere Araçları - 2"
+             accesskey="P">önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Üçüncü Taraf Modüller</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Colorama Modülü</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+
+  <div class="section" id="colorama-modulu">
+<h1>Colorama Modülü<a class="headerlink" href="#colorama-modulu" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<p>Colorama modülü, konsol penceresindeki yazıları renklendirmeyi ve stil vermeyi sağlar.</p>
+<div class="section" id="kurulum">
+<h2>Kurulum<a class="headerlink" href="#kurulum" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Varsayılan python’a colorama modülünü kurmak için bilgisayarınızın komut satırına şunları girin:</p>
+<blockquote>
+<div><p>pip install colorama</p>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Bu komutları Windows ortamında verebilmek için python’u yola eklemeniz gerekir. Python kurulum aşamasında altta bulunan add to Path seçeneğini işaretlediyseniz python yola eklenmiştir.</p>
+</div>
+</div>
+<div class="section" id="kullanim">
+<h2>Kullanım<a class="headerlink" href="#kullanim" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Colorama modülünü anlayabilmek için basit bir örnek yapalım:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">colorama</span> <span class="kn">import</span> <span class="n">Fore</span><span class="p">,</span> <span class="n">Back</span><span class="p">,</span> <span class="n">Style</span><span class="p">,</span> <span class="n">init</span>
+<span class="n">init</span><span class="p">(</span><span class="n">autoreset</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Fore</span><span class="o">.</span><span class="n">RED</span> <span class="o">+</span> <span class="s1">&#39;sade kırmızı yazı&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Back</span><span class="o">.</span><span class="n">GREEN</span> <span class="o">+</span> <span class="s1">&#39;Yeşil arkaplan&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Style</span><span class="o">.</span><span class="n">DIM</span> <span class="o">+</span> <span class="s1">&#39;Python&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Style</span><span class="o">.</span><span class="n">RESET_ALL</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Tekrar normal haline döndü&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Gördüğünüz üzere colorama modülünün Fore, Back ve Style sınıflarının belirlenmiş nitelikleri ile herhangi bir karakter dizimizi birleştirip yazdırdığımızda niteliğe göre renkli yazılar elde ediyoruz. Fore yazının kendisi, Back arka planı, Style ise stilini ilgilendirir.</p>
+<p>Peki neden init fonksiyonunu çağırdık?</p>
+<p>İnit bildiğiniz üzere “initalization” (ilklendirme) sözcüğünün kısaltılmışıdır. Buradaki kullanımı da sözcük anlamıyla uyumludur. Yani bizim renklendirme işlemimizde birtakım ayarları yapmamız için bir başlangıçtır. Bunu yapmamız zorunludur. Yapmazsak kodlarımız renklenmeyecek, sadece renk kodu sadece ekrana bastırılacaktır.</p>
+<p>Bu noktada bir detaya değinelim: Bu Fore, Back ve Style sınıflarının belirlenmiş nitelikleri aslında alelade bir karakter dizisidir:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\033</span><span class="s1">[31m&#39;</span> <span class="o">+</span> <span class="s1">&#39;sade kırmızı yazı&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\033</span><span class="s1">[30m&#39;</span><span class="p">)</span> <span class="c1"># Ve yeniden öntanımlı renge döndük</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi yukarıdakiyle aynı sonucu elde ettik.</p>
+<p>Şimdi Fore, Back ve Style sınıflarının en çok kullanılan renk niteliklerini görelim:</p>
+<blockquote>
+<div><p>Fore: BLACK, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, WHITE, RESET.</p>
+<p>Back: BLACK, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, WHITE, RESET.</p>
+<p>Style: DIM, NORMAL, BRIGHT, RESET_ALL</p>
+</div></blockquote>
+<div class="section" id="colorama-modulunun-termcolor-modulu-ile-kullanimi">
+<h3>Colorama modülünün termcolor modülü ile kullanımı<a class="headerlink" href="#colorama-modulunun-termcolor-modulu-ile-kullanimi" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p>Termcolor modülü colorama modülünü kullanırken işimiz çok kolaylaştırır.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">colorama</span> <span class="kn">import</span> <span class="n">init</span>
+<span class="kn">from</span> <span class="nn">termcolor</span> <span class="kn">import</span> <span class="n">colored</span>
+<span class="c1">#termcolor modülü colorama kullandığı için ilklendirme şarttır</span>
+<span class="n">init</span><span class="p">()</span>
+
+<span class="c1">#İlk parametremiz karakter dizimiz, ikinci parametremiz rengi, üçüncü ise arkaplan rengidir.</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">colored</span><span class="p">(</span><span class="s1">&#39;Hello, World!&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;on_red&#39;</span><span class="p">))</span>
+<span class="c1"># colored fonksiyonundan dönen değeri kullanabilmek için yazdırmamız gerekir.</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>termcolor modülü yüklü gelmemektedir, kurulum aşamasındaki kodlarda colorama yerine termcolor yazarak kurabilirsiniz.</p>
+</div>
+<p>Termcolor modülü ile daha fazla bilgi için:  <a class="reference external" href="https://pypi.org/project/termcolor/">https://pypi.org/project/termcolor/</a></p>
+</div>
+</div>
+<div class="section" id="init-fonksiyonun-argumanlari">
+<h2>İnit fonksiyonun argümanları<a class="headerlink" href="#init-fonksiyonun-argumanlari" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>İnit fonksiyonunun birçok isimli argümanı bulunur:</p>
+<div class="section" id="autoreset-false">
+<h3>autoreset=False<a class="headerlink" href="#autoreset-false" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>from colorama import Fore, init
+init(autoreset=False)
+print(Fore.RED + “Bu kırmızı olur ama;”)
+print(“Bunun rengi default’tur”)
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>from colorama import Fore, init
+init(autoreset=False) #Böyle yapsak da değişmez: init()
+#çünkü bu zaten öntanımlıdır
+print(Fore.RED+”Artık bundan sonra yazdırılan her şey değiştirilmediği sürece kırmızıdır”)
+print(“mesela bu kırmızı”)
+</pre></div>
+</div>
+<p>Diğerlerine ihtiyacınızın olmayacağını düşündüğümüz için buraya yazmadık.
+Diğer argümanları colorama PyPI sayfasında görebilirsiniz.</p>
+</div>
+</div>
+</div>
+
+
+
+<div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
+<div class='extrarelbar'> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../pyperclip_modülü/index.html" title="Pyperclip Modülü"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="../kivy_dersleri/widgets2.html" title="Pencere Araçları - 2"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="../index.html" >Üçüncü Taraf Modüller</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Colorama Modülü</a></li> 
+      </ul>
+    </div> </div>
+
+<div class='addcomment'>Yorumlar</div>
+
+<div class='how-to-use'>
+<h3>Önemli Not</h3>
+Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
+<span class='tag'>&lt;pre&gt;&lt;code&gt;</span> etiketleri içine alın. Örneğin:
+
+<pre>
+    <span class='tag'>&lt;pre&gt;&lt;code class="python"&gt;</span>
+    <span class='keyword'>print</span>(<span class='string'>"Merhaba Dünya!"</span>)
+    <span class='tag'>&lt;/code&gt;&lt;/pre&gt;</span>
+</pre>
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'istihza';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4eca48eb2d83faf9" async="async"></script>
+
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../pyperclip_modülü/index.html" title="Pyperclip Modülü"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="../kivy_dersleri/widgets2.html" title="Pencere Araçları - 2"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="../index.html" >Üçüncü Taraf Modüller</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Colorama Modülü</a></li> 
+      </ul>
+    </div> 
+
+<div class="footer">
+&copy; Copyright 2007-2020, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 27.06.2020.
+<a href="http://sphinx-doc.org/">Sphinx</a> 3.1.1 kullanılarak oluşturuldu.
+<br>
+<br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
+alt="Creative Commons License" style="border-width:0"
+src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a><br />
+<br>
+</div>
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=10396326;
+var sc_invisible=1;
+var sc_security="fb5cd679";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="hit counter"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="http://c.statcounter.com/10396326/0/fb5cd679/1/"
+alt="hit counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+  </body>
+</html>

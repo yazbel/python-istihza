@@ -1,0 +1,623 @@
+
+ <!DOCTYPE html>
+ <html lang="tr">
+
+
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta content="Bu bölümde django API'ını öğreneceğiz." name="description" />
+<meta content="python, django, çeviri" name="keywords" />
+
+    <title>İLK DJANGO PROJENİ YAZ, part 2 &#8212; Python 3 için Türkçe Kılavuz</title>
+    <link rel="stylesheet" href="../../_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/translations.js"></script>
+    <link rel="search" title="Ara" href="../../search.html" />
+    <link rel="next" title="İLK DJANGO PROJENİ YAZ, part 3" href="django_3.html" />
+    <link rel="prev" title="İLK DJANGO PROJENİ YAZ, part 1" href="django_1.html" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+<div class='header'><a href='https://yazbel.com'>yazbel.com</a></div>
+
+<ul class='navbar'>
+    <li><a href="#"><del>pdf desteği sonlanmıştır</del></a></li>
+    <li class="forum"><a href="http://forum.yazbel.com">forum</a></li>
+</ul>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="django_3.html" title="İLK DJANGO PROJENİ YAZ, part 3"
+             accesskey="N">sonraki</a></li>
+        <li class="right" >
+          <a href="django_1.html" title="İLK DJANGO PROJENİ YAZ, part 1"
+             accesskey="P">önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="../index.html" >Üçüncü Taraf Modüller</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">django Paketi</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">İLK DJANGO PROJENİ YAZ, part 2</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+
+  <div class="section" id="ilk-django-projeni-yaz-part-2">
+<h1>İLK DJANGO PROJENİ YAZ, part 2<a class="headerlink" href="#ilk-django-projeni-yaz-part-2" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<div class="section" id="veritabani-kurulumu">
+<h2>Veritabanı Kurulumu<a class="headerlink" href="#veritabani-kurulumu" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Şimdi <strong>mysite/settings.py</strong> dosyasını açın. Önce TIME_ZONE
+değerini <cite>Europe/Istanbul</cite>  yaparak İstanbul’a ayarlayın.</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Dosyanın en başındaki INSTALLED_APPS ayarına dikkat edin.
+Projenizde kullandığınız uygulamaları tutar. Yeni bir uygulama
+kullanacağınız zaman bu listeye eklemelisiniz.</p>
+</div>
+<p>Varsayılan olarak gelen uygulamalar şunlardır:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">django</span><span class="o">.</span><span class="n">contrib</span><span class="o">.</span><span class="n">admin</span> <span class="o">--&gt;</span> <span class="n">Yönetici</span> <span class="n">panelini</span> <span class="n">oluşturur</span><span class="o">.</span>
+<span class="n">django</span><span class="o">.</span><span class="n">contrib</span><span class="o">.</span><span class="n">auth</span> <span class="o">--&gt;</span> <span class="n">Bir</span> <span class="n">kimlik</span> <span class="n">doğrulama</span> <span class="n">sistemi</span><span class="o">.</span>
+<span class="n">django</span><span class="o">.</span><span class="n">contrib</span><span class="o">.</span><span class="n">contenttypes</span> <span class="o">--&gt;</span> <span class="n">İçerik</span> <span class="n">türleri</span> <span class="n">için</span> <span class="n">bir</span> <span class="n">framework</span><span class="o">.</span>
+<span class="n">django</span><span class="o">.</span><span class="n">contrib</span><span class="o">.</span><span class="n">sessions</span> <span class="o">--&gt;</span> <span class="n">Bir</span> <span class="n">oturum</span> <span class="n">frameworku</span>
+<span class="n">django</span><span class="o">.</span><span class="n">contrib</span><span class="o">.</span><span class="n">messages</span> <span class="o">--&gt;</span> <span class="n">Bir</span> <span class="n">mesajlaşma</span> <span class="n">frameworku</span>
+<span class="n">django</span><span class="o">.</span><span class="n">contrib</span><span class="o">.</span><span class="n">staticfiles</span> <span class="o">--&gt;</span> <span class="n">Statik</span> <span class="n">dosyaları</span> <span class="n">yönetmek</span> <span class="n">için</span> <span class="n">bir</span> <span class="n">framework</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Bu uygulamalardan bazıları en az bir veritabanı kullanıyor.
+Ancak bu veritabanlarının kullanılabilmesi için bir
+tablo oluşturmalıyız. O tablo da şu komutla oluşuyor:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">migrate</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="model-olusturalim">
+<h2>Model oluşturalım<a class="headerlink" href="#model-olusturalim" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Şimdi modellerimizi tanımlayacağız.
+Anket uygulamamızda iki tane model olacak: Question(Soru), Choice(Seçenek).
+Question modeli bir soru ve yayınlama tarihi içerecek. Choice modeli ise iki alandan
+oluşacak: Bir yazı alanı ve oy çetelesi. Her Choice bir Question ile ilişkili olacak.
+Şimdi <strong>polls/models.py</strong> dosyasını şu şekilde düzenleyin:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+
+
+<span class="k">class</span> <span class="nc">Question</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">question_text</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">pub_date</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="s1">&#39;date published&#39;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Choice</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">question</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Question</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span>
+    <span class="n">choice_text</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">votes</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada iki model oluşturduk. Bu modeller django.db.models.Model
+sınıfını miras alıyor ve veritabanı alanını temsil eden
+değişkenlere sahip. Bu veritabanı alanlarının her biri bir
+Field sınıfı ile ilişkili. Mesela CharField karakter
+dizilerini , DateTimeField tarih ve zamanı veritabanına
+eklemek için. Bu sistem Django’nun, her alanın hangi veri
+tipini tuttuğunu anlamasını sağlar. Bazı Field sınıfları
+zorunlu olarak parametreye ihtiyaç duyuyor. Buna en iyi
+örnek olan CharField sınıfı max_length değeri olmadan
+çalışmıyor.Field sınıfları isteğe bağlı parametrelere de
+sahip.Mesela votes değerinin default parametresi-ki biz
+bu örnekte 0 olarak ayarladık-buna bir örnek.Son olarak
+ForeignKey kullanarak  her Choice  örneğini bir Question
+örneği ile ilişkilendirdik.</p>
+</div>
+<div class="section" id="modellerin-aktiflestirilmesi">
+<h2>Modellerin Aktifleştirilmesi<a class="headerlink" href="#modellerin-aktiflestirilmesi" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Model kodları Django’ya bazı bilgiler verir.
+Django bu bilgilerle şunları yapabilir:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Uygulama için bir veritabanı şeması oluşturmak.</p></li>
+<li><p>Question ve Choice nesneleri için bir veritabanı erişim API’ı oluşturmak.</p></li>
+</ol>
+</div></blockquote>
+<p>Fakat önce polls uygulamasını projeye yüklemeliyiz.
+Projeye yüklemek için  <strong>setting.py</strong> dosyasını açıp
+INSTALLED_APPS  ayarını düzenlemeliyiz. Bu listeye
+<strong>polls/apps.py</strong> dosyasındaki PollsConfig sınıfını referans
+olarak ekleyelim. <strong>setting.py</strong> dosyasındaki INSTALLED_APPS
+son hali şöyle olmalı:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;polls.apps.PollsConfig&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.admin&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.auth&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.contenttypes&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.sessions&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.messages&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.staticfiles&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Artık Django, polls isimli uygulamamızı projeye eklediğimizi biliyor.
+Şimdi farklı bir komutu çalıştıralım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">makemigrations</span> <span class="n">polls</span>
+</pre></div>
+</div>
+<p>Talimatlara benzer şeyler görmelisiniz:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">Migrations</span> <span class="k">for</span> <span class="s1">&#39;polls&#39;</span><span class="p">:</span>
+  <span class="n">polls</span><span class="o">/</span><span class="n">migrations</span><span class="o">/</span><span class="mi">0001</span><span class="n">_initial</span><span class="o">.</span><span class="n">py</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">Create</span> <span class="n">model</span> <span class="n">Choice</span>
+    <span class="o">-</span> <span class="n">Create</span> <span class="n">model</span> <span class="n">Question</span>
+    <span class="o">-</span> <span class="n">Add</span> <span class="n">field</span> <span class="n">question</span> <span class="n">to</span> <span class="n">choice</span>
+</pre></div>
+</div>
+<p><cite>makemigrations</cite> komutu ile ürettiğimiz modellerde değişiklik
+yaptığımızı (Aynı zamanda yeni modeller ürettiğimizi de) ve
+değişikliklerin migration olarak depolanmasını istediğimizi
+söyledik. Migrationlar senin modellerindeki değişiklerin
+depolanma şeklidir(ve bu yüzden veritabanı şeması).
+İstersen yeni modelinin migrationını okuyabilirsin.
+Migration <strong>polls/migrations/0001_inital.py</strong> isimli dosyada.
+Endişelenmeyin, bu dosyayı her zaman okumak zorunda değilsiniz.
+“<cite>migrate</cite>” komutu, senin veritabanı
+şemanı otomatik olarak yönetmek için  migrationları çalıştırır.
+Birazdan bu konuya tekrar geleceğiz. Ama önce migrationın çalıştırdığı
+SQL dosyasına bakalım. “<cite>sqlmigrate</cite>” komutuna migration adını
+parametre olarak verin ve SQL çıktısını alın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">sqlmigrate</span> <span class="n">polls</span> <span class="mi">0001</span>
+</pre></div>
+</div>
+<p>İngilizce yönerge tarzında bir şeyler görüyor olmalısın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">BEGIN</span><span class="p">;</span>
+<span class="o">--</span>
+<span class="o">--</span> <span class="n">Create</span> <span class="n">model</span> <span class="n">Choice</span>
+<span class="o">--</span>
+<span class="n">CREATE</span> <span class="n">TABLE</span> <span class="s2">&quot;polls_choice&quot;</span> <span class="p">(</span>
+    <span class="s2">&quot;id&quot;</span> <span class="n">serial</span> <span class="n">NOT</span> <span class="n">NULL</span> <span class="n">PRIMARY</span> <span class="n">KEY</span><span class="p">,</span>
+    <span class="s2">&quot;choice_text&quot;</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span> <span class="n">NOT</span> <span class="n">NULL</span><span class="p">,</span>
+    <span class="s2">&quot;votes&quot;</span> <span class="n">integer</span> <span class="n">NOT</span> <span class="n">NULL</span>
+<span class="p">);</span>
+<span class="o">--</span>
+<span class="o">--</span> <span class="n">Create</span> <span class="n">model</span> <span class="n">Question</span>
+<span class="o">--</span>
+<span class="n">CREATE</span> <span class="n">TABLE</span> <span class="s2">&quot;polls_question&quot;</span> <span class="p">(</span>
+    <span class="s2">&quot;id&quot;</span> <span class="n">serial</span> <span class="n">NOT</span> <span class="n">NULL</span> <span class="n">PRIMARY</span> <span class="n">KEY</span><span class="p">,</span>
+    <span class="s2">&quot;question_text&quot;</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span> <span class="n">NOT</span> <span class="n">NULL</span><span class="p">,</span>
+    <span class="s2">&quot;pub_date&quot;</span> <span class="n">timestamp</span> <span class="k">with</span> <span class="n">time</span> <span class="n">zone</span> <span class="n">NOT</span> <span class="n">NULL</span>
+<span class="p">);</span>
+<span class="o">--</span>
+<span class="o">--</span> <span class="n">Add</span> <span class="n">field</span> <span class="n">question</span> <span class="n">to</span> <span class="n">choice</span>
+<span class="o">--</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span> <span class="s2">&quot;polls_choice&quot;</span> <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="s2">&quot;question_id&quot;</span> <span class="n">integer</span> <span class="n">NOT</span> <span class="n">NULL</span><span class="p">;</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span> <span class="s2">&quot;polls_choice&quot;</span> <span class="n">ALTER</span> <span class="n">COLUMN</span> <span class="s2">&quot;question_id&quot;</span> <span class="n">DROP</span> <span class="n">DEFAULT</span><span class="p">;</span>
+<span class="n">CREATE</span> <span class="n">INDEX</span> <span class="s2">&quot;polls_choice_7aa0f6ee&quot;</span> <span class="n">ON</span> <span class="s2">&quot;polls_choice&quot;</span> <span class="p">(</span><span class="s2">&quot;question_id&quot;</span><span class="p">);</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span> <span class="s2">&quot;polls_choice&quot;</span>
+<span class="n">ADD</span> <span class="n">CONSTRAINT</span> <span class="s2">&quot;polls_choice_question_id_246c99a640fbbd72_fk_polls_question_id&quot;</span>
+    <span class="n">FOREIGN</span> <span class="n">KEY</span> <span class="p">(</span><span class="s2">&quot;question_id&quot;</span><span class="p">)</span>
+    <span class="n">REFERENCES</span> <span class="s2">&quot;polls_question&quot;</span> <span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">)</span>
+    <span class="n">DEFERRABLE</span> <span class="n">INITIALLY</span> <span class="n">DEFERRED</span><span class="p">;</span>
+
+<span class="n">COMMIT</span><span class="p">;</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt>Aşağıdakilere dikkat et:</dt><dd><ul class="simple">
+<li><p>Çıktı kullandığınız veritabanına göre değişir.
+Yukarıdaki örnek PostgreSQL için yazılmıştır.</p></li>
+<li><p>Tablo adı, uygulamanın adını ve modelin adını
+(küçük harflerle) kullanarak otomatik olarak oluşturulur .
+(Bu davranış geçersiz kılınabilir.)</p></li>
+<li><p>Birincil anahtarlar(ID) otomatik olarak eklenir.
+(Bu da geçersiz kılınabilir.)</p></li>
+<li><p>Düzenlenirken  Django, foreign key alanının adına “_id”
+ekler.(Evet, bunu da geçersiz kılabilirsiniz.)</p></li>
+<li><p>Kullandığınız veritabanına göre düzenlenmiştir. Bu yüzden
+auto_increment(MySQL), serial(PostgreSQL) gibi veritabanına
+özgü alan türleri otomatik olarak ayarlanır. Aynı şey alan
+adlarının alıntılanması için de geçerlidir.</p></li>
+<li><p><cite>sqlmigrate</cite> komutu aslında veritabanındaki migrationları
+çalıştırmaz. Sadece onları senin görebileceğin SQL kodları
+halinde ekrana yazdırır.  Bu Djangonun yaptıklarını
+kontrol etmek veya SQL kodlarını düzenlemek için kullanışlıdır.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Eğer bunu ilgi çekici bulduysan bir de şunu çalıştır:<cite>python manage.py check</cite>.
+Bu kod projende herhangi bir problem olup olmadığını veritabanıyla
+uğraşmadan kontrol eder. Şimdi <cite>migrate</cite> komutunu tekrar
+çalıştırıp modelleri veritabanında oluştur:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">migrate</span>
+</pre></div>
+</div>
+<p><cite>migrate</cite> komutu daha önce uygulanmayan tüm migrationları alır
+(Django, veritabanınızda django_migrations adlı özel bir tablo
+kullanarak hangi uygulamaların uygulandığını izler) ve bunları
+veritabanınıza karşı çalıştırır - temel olarak modelinize yaptığınız
+değişiklikleri veritabanındaki şema ile senkronize eder.
+Migrationlar çok güçlüdür ve zamanla, projenizi geliştirirken, veritabanınızı
+veya tablolarınızı silmenize ve yenilerini oluşturmanıza gerek kalmadan
+modellerinizi değiştirmenize izin verir -
+veri kaybetmeden veritabanınızı canlı hale getirme konusunda
+uzmanlaşmıştır. Eğiticinin daha sonraki bir bölümünde bunları
+daha ayrıntılı bir şekilde ele alacağız, ancak şimdilik, model
+değişikliklerini yapmak için üç adımlı kılavuzu hatırlayın:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Modeli değiştirin (<strong>models.py</strong> de)</p></li>
+<li><p><cite>python manage.py makemigrations</cite> komutunu çalıştırarak bu değişiklikler için  migration oluşturun.</p></li>
+<li><p><cite>python manage.py migrate</cite> komutunu çalıştırarak bu değişiklikleri veritabanına uygulayın.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="api-ile-oynayalim">
+<h2>API ile oynayalım<a class="headerlink" href="#api-ile-oynayalim" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Şimdi etkileşimli kabuğa atlayıp Django’nun sunduğu API ile uğraşalım.
+Etkileşimli kabuğu çağırmak için şu komutu kullanın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">shell</span>
+</pre></div>
+</div>
+<p>Basitçe <cite>python</cite> yazmak yerine bunu kullanıyoruz.
+Çünkü manage.py dosyası kullanacağımız django dosyalarını içe aktarıyor.
+Kabuğa girdikten sonra veritabanı API’ını keşfedin:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">polls.models</span> <span class="kn">import</span> <span class="n">Choice</span><span class="p">,</span> <span class="n">Question</span>  <span class="c1"># Az önce yazdığımız model sınıflarını içe aktar.</span>
+
+<span class="go">#Henüz sistemde Question nesnesi yok.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="go">&lt;QuerySet []&gt;</span>
+
+<span class="go"># Yeni bir Question nesnesi oluştur.</span>
+<span class="go"># Varsayılan ayarlar dosyasında saat dilimleri desteği etkinleştirilmiştir, bu nedenle</span>
+<span class="go"># Django pub_date değişkeni için tzinfo ile bir tarih bekler. timezone.now()&#39;ı kullanın.</span>
+<span class="go"># datetime.datetime.now () yerine ve doğru olanı yapacağız.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">django.utils</span> <span class="kn">import</span> <span class="n">timezone</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">question_text</span><span class="o">=</span><span class="s2">&quot;What&#39;s new?&quot;</span><span class="p">,</span> <span class="n">pub_date</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">())</span>
+
+<span class="go"># Oluşturduğumuz nesneyi veritabanına kaydedelim. Bunun için save() metodunu kullanmalısın.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+<span class="go"># Şimdi bir ID&#39;ye sahip.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="o">.</span><span class="n">id</span>
+<span class="go">1</span>
+
+<span class="go"># Python ile model alan değerlerine erişin.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="o">.</span><span class="n">question_text</span>
+<span class="go">&quot;What&#39;s new?&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="o">.</span><span class="n">pub_date</span>
+<span class="go">datetime.datetime(2012, 2, 26, 13, 0, 0, 775217, tzinfo=&lt;UTC&gt;)</span>
+
+<span class="go"># Öznitelikleri değiştirip save() metodunu çağıralım.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="o">.</span><span class="n">question_text</span> <span class="o">=</span> <span class="s2">&quot;What&#39;s up?&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+<span class="go"># objects.all(), veritabanındaki tüm Questionları görüntüler.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="go">&lt;QuerySet [&lt;Question: Question object (1)&gt;]&gt;</span>
+</pre></div>
+</div>
+<p>Bir dakika! &lt;Question: Question object (1)&gt; bu nesne
+ilişkisi hiç yararlı değil. Question modeline (<strong>polls/models.py</strong> dosyasında)
+__str__() metodunu ekleyelim(Choice modeline de):</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+
+<span class="k">class</span> <span class="nc">Question</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="c1"># ...</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">question_text</span>
+
+<span class="k">class</span> <span class="nc">Choice</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="c1"># ...</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">choice_text</span>
+</pre></div>
+</div>
+<p>Modellerinize, yalnızca etkileşimli komut istemiyle
+çalışırken kendi rahatlığınız için değil, aynı zamanda nesnelerin
+temsillerinin Django’nun otomatik olarak oluşturulan yöneticisi
+boyunca kullanılmasından dolayı <cite>__str__()</cite> yöntemlerini eklemeniz
+önemlidir. Bunların normal Python yöntemleri olduğunu unutmayın.
+Bunu kanıtlamak için özel bir yöntem ekleyelim:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#polls/models.py</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+
+<span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<span class="kn">from</span> <span class="nn">django.utils</span> <span class="kn">import</span> <span class="n">timezone</span>
+
+
+<span class="k">class</span> <span class="nc">Question</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="c1"># ...</span>
+    <span class="k">def</span> <span class="nf">was_published_recently</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pub_date</span> <span class="o">&gt;=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Python standart kütüphanesinden datetime modülünü ve Django’nun
+saat dilimleri ile ilgili kütüphanesinden timezone modülünü içe
+aktaralım.</p>
+<p>Bu yaptığımız değişiklikleri kaydetmek için şu komutla yeni bir
+kabuk açalım::
+<cite>python manage.py shell</cite></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">polls.models</span> <span class="kn">import</span> <span class="n">Choice</span><span class="p">,</span> <span class="n">Question</span>
+
+<span class="go"># Eklediğimiz __str__() fonksiyonunun çalıştığından emin olalım.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="go">&lt;QuerySet [&lt;Question: What&#39;s up?&gt;]&gt;</span>
+
+<span class="go"># Django&#39;nun içinde veritabanı araması için zengin bir API var.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">&lt;QuerySet [&lt;Question: What&#39;s up?&gt;]&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">question_text__startswith</span><span class="o">=</span><span class="s1">&#39;What&#39;</span><span class="p">)</span>
+<span class="go">&lt;QuerySet [&lt;Question: What&#39;s up?&gt;]&gt;</span>
+
+<span class="go"># Bu yıl paylaşılan question nesnelerini bulalım.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">django.utils</span> <span class="kn">import</span> <span class="n">timezone</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">current_year</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">year</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pub_date__year</span><span class="o">=</span><span class="n">current_year</span><span class="p">)</span>
+<span class="go">&lt;Question: What&#39;s up?&gt;</span>
+
+<span class="go"># Veritabanında olmayan bir ID değerini parametre olarak verirseniz</span>
+<span class="go"># size bir hata çıktısı verecektir.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+    <span class="o">...</span>
+<span class="gr">DoesNotExist</span>: <span class="n">Question matching query does not exist.</span>
+
+<span class="go"># Birincil anahtar aramalarda en çok kullanılan ifadedir, bundan dolayı</span>
+<span class="go"># Django birincil anahtar aramaları için bir kısayola sahip.</span>
+<span class="go"># Sonraki örnek şu kodla aynı :Question.objects.get(id=1).</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">&lt;Question: What&#39;s up?&gt;</span>
+
+<span class="go"># Yazdığımız metodun da çalıştığından emin olalım.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="o">.</span><span class="n">was_published_recently</span><span class="p">()</span>
+<span class="go">True</span>
+
+<span class="go"># Question nesnemize birkaç Choice nesnesi oluşturalım.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="go"># Bu Question nesnesine hiçbir Choice nesnesi bağlı değil(şimdilik)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="o">.</span><span class="n">choice_set</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="go">&lt;QuerySet []&gt;</span>
+
+<span class="go"># 3 Choice nesnesi oluşturalım.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="o">.</span><span class="n">choice_set</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">choice_text</span><span class="o">=</span><span class="s1">&#39;Not much&#39;</span><span class="p">,</span> <span class="n">votes</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">&lt;Choice: Not much&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="o">.</span><span class="n">choice_set</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">choice_text</span><span class="o">=</span><span class="s1">&#39;The sky&#39;</span><span class="p">,</span> <span class="n">votes</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">&lt;Choice: The sky&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">choice_set</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">choice_text</span><span class="o">=</span><span class="s1">&#39;Just hacking again&#39;</span><span class="p">,</span> <span class="n">votes</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="go"># Choice nesnelerinin Question nesnelerine erişimi var.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">question</span>
+<span class="go">&lt;Question: What&#39;s up?&gt;</span>
+
+<span class="go"># Ve tam tersi: Question nesnelerinin de Choice nesnelerine erişimi var.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="o">.</span><span class="n">choice_set</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="go">&lt;QuerySet [&lt;Choice: Not much&gt;, &lt;Choice: The sky&gt;, &lt;Choice: Just hacking again&gt;]&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="o">.</span><span class="n">choice_set</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<span class="go">3</span>
+
+<span class="go"># API, ihtiyaç duyduğunuz kadarıyla ilişkileri otomatik olarak takip eder.</span>
+<span class="go"># İlişkileri ayırmak için çift alt çizgi kullanın.</span>
+<span class="go"># Bu, istediğiniz kadar derin bir seviyede çalışır. Sınır yok.</span>
+<span class="go"># Bir Question nesnesi için bu yıl yayımlanan tüm Choice nesnelerini bulalım.</span>
+<span class="go"># (Yukarıda oluşturduğumuz current_year değişkenini kullanalım).</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Choice</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">question__pub_date__year</span><span class="o">=</span><span class="n">current_year</span><span class="p">)</span>
+<span class="go">&lt;QuerySet [&lt;Choice: Not much&gt;, &lt;Choice: The sky&gt;, &lt;Choice: Just hacking again&gt;]&gt;</span>
+
+<span class="go"># delete() fonksiyonunu kullanarak bir Choice nesnesini silelim.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">choice_set</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">choice_text__startswith</span><span class="o">=</span><span class="s1">&#39;Just hacking&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="yonetici-paneli">
+<h2>Yönetici Paneli<a class="headerlink" href="#yonetici-paneli" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<div class="section" id="bir-yonetici-kullanicisi-olusturalim">
+<h3>Bir yönetici kullanıcısı oluşturalım<a class="headerlink" href="#bir-yonetici-kullanicisi-olusturalim" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p>Yönetici paneline giriş yapmak için bir süper kullanıcıya ihtiyacımız
+var. Komut satırında şu kodu çalıştıralım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">createsuperuser</span>
+</pre></div>
+</div>
+<p>İstediğiniz kullanıcı adını girin ve entera basın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">Username</span><span class="p">:</span> <span class="n">admin</span>
+</pre></div>
+</div>
+<p>Sizden email adresi istenecektir. Doldurmak istemezseniz boş bırakın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">Email</span> <span class="n">address</span><span class="p">:</span> <span class="n">admin</span><span class="nd">@example</span><span class="o">.</span><span class="n">com</span>
+</pre></div>
+</div>
+<p>Son olarak şifrenizi girin. Sizden iki kere şifre isteyecek
+(İkincisi doğrulama için).</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">Password</span><span class="p">:</span> <span class="o">**********</span>
+<span class="n">Password</span> <span class="p">(</span><span class="n">again</span><span class="p">):</span> <span class="o">*********</span>
+<span class="n">Superuser</span> <span class="n">created</span> <span class="n">successfully</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="gelistirme-sunucusunu-baslatin">
+<h3>Geliştirme Sunucusunu Başlatın<a class="headerlink" href="#gelistirme-sunucusunu-baslatin" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p>Django’da yönetici paneli varsayılan olarak aktiftir. Geliştirme
+sunucusunu başlatalım ve onu biraz araştıralım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">runserver</span>
+</pre></div>
+</div>
+<p>Şimdi tarayıcınızı açın ve yerel alan adınızda “<cite>/admin/</cite>” sayfasına
+gidin.(Mesela şöyle <cite>http://127.0.0.1:8000/admin/</cite>) Şöyle bir
+yönetici sayfası görüyor olmalısın:</p>
+<img alt="https://docs.djangoproject.com/en/2.0/_images/admin01.png" src="https://docs.djangoproject.com/en/2.0/_images/admin01.png" />
+</div>
+<div class="section" id="yonetici-paneline-giris-yapalim">
+<h3>Yönetici Paneline Giriş yapalım<a class="headerlink" href="#yonetici-paneline-giris-yapalim" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p>Şimdi oluşturduğun süper kullanıcı ile yönetici paneline giriş yap.
+Yönetici panelinin anasayfasını görüyor olmalısın:</p>
+<img alt="https://docs.djangoproject.com/en/2.0/_images/admin02.png" src="https://docs.djangoproject.com/en/2.0/_images/admin02.png" />
+<p>Birkaç düzenlenebilen içerik türü görmelisiniz: gruplar ve
+kullanıcılar. Django tarafından gönderilen kimlik doğrulama
+çerçevesi <cite>django.contrib.auth</cite> tarafından sağlanmıştır.</p>
+</div>
+<div class="section" id="anket-uygulamamizi-yonetici-panelinden-kontrol-edelim">
+<h3>Anket uygulamamızı yönetici panelinden kontrol edelim<a class="headerlink" href="#anket-uygulamamizi-yonetici-panelinden-kontrol-edelim" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p>Fakat bizim anket uygulamamız nerede? Yönetici panelinin
+anasayfasında gözükmüyor.</p>
+<p>Bu sorunu çözmek için yapmanız gereken tek şey:
+Yönetici paneline Question nesnelerimizin yönetici panelinden
+düzenlenebildiğini söylemek. Bunu yapmak için <strong>polls/admin.py</strong>
+dosyasını açıp şu kodla düzenlemek:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Question</span>
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Question</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="yonetici-panelinin-islevselligini-kesfedelim">
+<h3>Yönetici panelinin işlevselliğini keşfedelim<a class="headerlink" href="#yonetici-panelinin-islevselligini-kesfedelim" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p>Question nesnelerini kaydettiğimize göre yönetici panelinin
+anasayfası şu şekilde gözükmeli:</p>
+<img alt="https://docs.djangoproject.com/en/2.0/_images/admin03t.png" src="https://docs.djangoproject.com/en/2.0/_images/admin03t.png" />
+<p><cite>Question</cite> yazısına tıkla. Şimdi Question nesnelerinin değiştirme
+sayfasındasın. Bu sayfa veritabanındaki tüm Question nesnelerini
+gösterir ve değiştirmek için birini seçmeni sağlar. Şu an daha
+önce oluşturduğumuz “What’s up?” nesnesi var:</p>
+<img alt="https://docs.djangoproject.com/en/2.0/_images/admin04t.png" src="https://docs.djangoproject.com/en/2.0/_images/admin04t.png" />
+<p>Düzenlemek için “What’s up?” nesnesine tıkla:</p>
+<img alt="https://docs.djangoproject.com/en/2.0/_images/admin05t.png" src="https://docs.djangoproject.com/en/2.0/_images/admin05t.png" />
+<p>Burada birkaç not:</p>
+<ul class="simple">
+<li><p>Bu form Question modelinden otomatik olarak oluşturulur.</p></li>
+<li><p>Farklı model alanlarına karşılık olarak uygun HTML etiketleri kullanılır.</p></li>
+<li><p>DateTimeField alanı için “Bugün” veya “Şimdi” gibi kısayollar bulunur.</p></li>
+</ul>
+<p>Alt tarafta birkaç ayar bulunuyor:</p>
+<ul class="simple">
+<li><p>Save – Değişiklikleri kaydeder ve değişiklik listesi sayfasına nesne tipini ekler.</p></li>
+<li><p>Save and continue editing – Değişiklikleri kaydeder ve sayfayı yeniden yükler.</p></li>
+<li><p>Save and add another – Değişiklikleri kaydeder ve yeni bir yükleme sayfası açar.</p></li>
+<li><p>Delete – Gösterilen nesneyi siler.</p></li>
+</ul>
+<p>“Date Published” değeri, part 1’de oluşturduğunuz zamanla uyuşmuyorsa
+muhtemelen TIME_ZONE ayarı için doğru değeri ayarlamamışsınız.
+Değiştirin, sayfayı yeniden yükleyin ve doğru değerin görünüp görünmediğini
+kontrol edin.</p>
+<p>“Today” ve “Now” kısayollarını tıklayarak “Date Published” değerini değiştirin.
+Ardından “Save and continue editing” i tıklayın. Daha sonra sağ üstteki
+“History”yi tıklayın. Bu nesnede yapılan tüm değişiklikleri, değişikliği yapan
+kişinin değişiklik yaptığı zaman ve kullanıcı adıyla listeleyen bir sayfa görürsünüz:</p>
+<img alt="https://docs.djangoproject.com/en/2.0/_images/admin06t.png" src="https://docs.djangoproject.com/en/2.0/_images/admin06t.png" />
+</div>
+</div>
+</div>
+
+
+
+<div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
+<div class='extrarelbar'> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="django_3.html" title="İLK DJANGO PROJENİ YAZ, part 3"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="django_1.html" title="İLK DJANGO PROJENİ YAZ, part 1"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="../index.html" >Üçüncü Taraf Modüller</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >django Paketi</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">İLK DJANGO PROJENİ YAZ, part 2</a></li> 
+      </ul>
+    </div> </div>
+
+<div class='addcomment'>Yorumlar</div>
+
+<div class='how-to-use'>
+<h3>Önemli Not</h3>
+Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
+<span class='tag'>&lt;pre&gt;&lt;code&gt;</span> etiketleri içine alın. Örneğin:
+
+<pre>
+    <span class='tag'>&lt;pre&gt;&lt;code class="python"&gt;</span>
+    <span class='keyword'>print</span>(<span class='string'>"Merhaba Dünya!"</span>)
+    <span class='tag'>&lt;/code&gt;&lt;/pre&gt;</span>
+</pre>
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'istihza';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4eca48eb2d83faf9" async="async"></script>
+
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="django_3.html" title="İLK DJANGO PROJENİ YAZ, part 3"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="django_1.html" title="İLK DJANGO PROJENİ YAZ, part 1"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="../index.html" >Üçüncü Taraf Modüller</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >django Paketi</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">İLK DJANGO PROJENİ YAZ, part 2</a></li> 
+      </ul>
+    </div> 
+
+<div class="footer">
+&copy; Copyright 2007-2020, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 27.06.2020.
+<a href="http://sphinx-doc.org/">Sphinx</a> 3.1.1 kullanılarak oluşturuldu.
+<br>
+<br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
+alt="Creative Commons License" style="border-width:0"
+src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a><br />
+<br>
+</div>
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=10396326;
+var sc_invisible=1;
+var sc_security="fb5cd679";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="hit counter"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="http://c.statcounter.com/10396326/0/fb5cd679/1/"
+alt="hit counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+  </body>
+</html>

@@ -1,0 +1,990 @@
+
+ <!DOCTYPE html>
+ <html lang="tr">
+
+
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta content="Bu bölümde temel dosya işlemleri konusunu ayrıntılı bir şekilde inceleyeceğiz." name="description" />
+<meta content="python, python3, dosyalar" name="keywords" />
+
+    <title>Temel Dosya İşlemleri &#8212; Python 3 için Türkçe Kılavuz</title>
+    <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="search" title="Ara" href="search.html" />
+    <link rel="next" title="Dosyaların Metot ve Nitelikleri" href="dosyalarin_metot_ve_nitelikleri.html" />
+    <link rel="prev" title="Sayılar" href="sayilar.html" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+<div class='header'><a href='https://yazbel.com'>yazbel.com</a></div>
+
+<ul class='navbar'>
+    <li><a href="#"><del>pdf desteği sonlanmıştır</del></a></li>
+    <li class="forum"><a href="http://forum.yazbel.com">forum</a></li>
+</ul>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="dosyalarin_metot_ve_nitelikleri.html" title="Dosyaların Metot ve Nitelikleri"
+             accesskey="N">sonraki</a></li>
+        <li class="right" >
+          <a href="sayilar.html" title="Sayılar"
+             accesskey="P">önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+        <li class="nav-item nav-item-this"><a href="">Temel Dosya İşlemleri</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+
+  <div class="section" id="temel-dosya-islemleri">
+<h1>Temel Dosya İşlemleri<a class="headerlink" href="#temel-dosya-islemleri" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<p>Hatırlarsanız <code class="docutils literal notranslate"><span class="pre">print()</span></code> fonksiyonunu anlatırken, bu fonksiyonun <cite>file</cite> adlı
+bir parametresi olduğundan söz etmiştik. Bu parametre yardımıyla <code class="docutils literal notranslate"><span class="pre">print()</span></code>
+fonksiyonunun çıktılarını bir dosyaya gönderebiliyorduk. Böylece <code class="docutils literal notranslate"><span class="pre">print()</span></code>
+fonksiyonunun bu özelliği sayesinde, Python’daki ‘Dosya Girdi/Çıktısı’ (<em>File
+I/O</em>) konusuyla da ilk kez tanışmış olmuştuk.</p>
+<p>Ayrıca <code class="docutils literal notranslate"><span class="pre">print()</span></code> fonksiyonu dışında, <code class="docutils literal notranslate"><span class="pre">open()</span></code> adlı başka bir fonksiyon
+yardımıyla da dosyaları açabileceğimizi ve bu dosyaların üzerinde çeşitli
+işlemleri gerçekleştirebileceğimizi öğrenmiştik. Ancak gerek <code class="docutils literal notranslate"><span class="pre">print()</span></code>
+fonksiyonunun <cite>file</cite> parametresi, gerekse <code class="docutils literal notranslate"><span class="pre">open()</span></code> fonksiyonuyla şimdiye kadar
+yaptığımız örnekler aracılığıyla öğrendiklerimiz dosyalara ilişkin çok sınırlı
+işlemleri yerine getirmemizi sağlıyordu.</p>
+<p>İşte biz bu bölümde, dosya girdi/çıktısı konusuna ilişkin bildiklerimizi bir
+adım öteye götüreceğiz ve gerçek anlamda dosyaları nasıl manipüle edeceğimizi
+öğreneceğiz.</p>
+<p>Programcılık maceramız boyunca dosyalarla bol bol muhatap olacaksınız. O yüzden
+bu konuyu olabildiğince ayrıntılı ve anlaşılır bir şekilde anlatmaya
+çalışacağız.</p>
+<p>Dediğimiz gibi, biz esasında bu noktaya gelinceye kadar çeşitli fonksiyonlar ve
+bunların birtakım parametreleri aracılığıyla dosya işlemlerinden az da olsa
+zaten söz etmiştik. Dolayısıyla aslında tamamen yabancısı olduğunuz bir konuyla
+karşı karşıya olmanız gibi bir durum söz konusu değil. Biz bu bölümde, zaten
+aşina olduğumuz bir konuyu çok daha derinlemesine ele alacağız.</p>
+<p>Python programlama dilinde dosyalarla uğraşırken bütün dosya işlemleri için
+temel olarak tek bir fonksiyondan yararlanacağız. Bu fonksiyonu siz zaten
+tanıyorsunuz. Fonksiyonumuzun adı <code class="docutils literal notranslate"><span class="pre">open()</span></code>.</p>
+<div class="section" id="dosya-olusturmak">
+<h2>Dosya Oluşturmak<a class="headerlink" href="#dosya-olusturmak" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Dediğimiz gibi, Python programlama dilinde dosya işlemleri için <code class="docutils literal notranslate"><span class="pre">open()</span></code> adlı
+bir fonksiyondan yararlanacağız. İşte dosya oluşturmak için de bu fonksiyonu
+kullanacağız.</p>
+<p>Önceki derslerimizde verdiğimiz örneklerden de bildiğiniz gibi, <code class="docutils literal notranslate"><span class="pre">open()</span></code>
+fonksiyonunu temel olarak şöyle kullanıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">dosya_adı</span><span class="p">,</span> <span class="n">kip</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p><code class="docutils literal notranslate"><span class="pre">open()</span></code> fonksiyonu <cite>dosya_adı</cite> ve <cite>kip</cite> dışında başka parametreler
+de alır. İlerleyen sayfalarda bu parametrelerden de söz edeceğiz.</p>
+</div>
+<p>Mesela “tahsilat.txt” adlı bir dosyayı <strong>yazma</strong> kipinde açmak için şöyle bir
+komut kullanıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">tahsilat_dosyası</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;tahsilat_dosyası.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada ‘tahsilat_dosyası.txt’ ifadesi dosyamızın adını belirtiyor. <cite>“w”</cite> harfi
+ise bu dosyanın yazma kipinde açıldığını söylüyor.</p>
+<p>Yukarıdaki komutu çalıştırdığınızda, o anda hangi dizin altında bulunuyorsanız
+o dizin içinde <cite>tahsilat_dosyası.txt</cite> adlı boş bir dosyanın oluştuğunu
+göreceksiniz.</p>
+<p>Bu arada, dosya adını yazarken, dosya adı ile birlikte o dosyanın hangi dizin
+altında oluşturulacağını da belirleyebilirsiniz. Örneğin:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">dosya</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/dosyayı/oluşturmak/istediğimiz/dizin/dosya_adı&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Eğer dosya adını dizin belirtmeden yazarsanız, oluşturduğunuz dosya, o anda
+hangi dizin altında bulunuyorsanız orada oluşacaktır.</p>
+<p>Ayrıca dosyayı barındıran dizin adlarını yazarken, dizinleri ayırmak için ters
+taksim (<cite>\</cite>) yerine düz taksim (<cite>/</cite>) kullanmaya dikkat edin. Aksi halde, dizin
+adı oluşturmaya çalışırken yanlışlıkla kaçış dizileri oluşturabilirsiniz.
+Esasında siz bu olguya hiç yabancı değilsiniz. Zira kaçış dizilerini anlatırken
+şöyle bir örnek verdiğimizi hatırlıyor olmalısınız:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C:</span><span class="se">\a</span><span class="s2">ylar</span><span class="se">\n</span><span class="s2">isan</span><span class="se">\t</span><span class="s2">oplam masraf&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>İşte eğer bu örnekte olduğu gibi ters taksim işaretleri ile oluşturulmuş dizin
+adları kullanırsanız programınız hata verecektir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:</span><span class="se">\a</span><span class="s2">ylar</span><span class="se">\n</span><span class="s2">isan</span><span class="se">\t</span><span class="s2">oplam masraf\masraf.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">OSError</span>: <span class="n">[Errno 22] Invalid argument: &#39;C:\x07ylar\nisan\toplam masraf\masraf.txt&#39;</span>
+</pre></div>
+</div>
+<p>Bunun sebebi, bildiğiniz gibi, Python’ın <cite>\a</cite>, <cite>\n</cite> ve <cite>\t</cite> ifadelerini birer
+kaçış dizisi olarak algılamasıdır. Bu durumdan kaçabilmek için, dizin adlarını
+ters taksim işareti ile ayırmanın dışında, <cite>r</cite> adlı kaçış dizisinden de
+yararlanabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">open</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\aylar\nisan\toplam masraf\masraf.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>…veya ters taksim işaretlerini çiftleyebilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:</span><span class="se">\\</span><span class="s2">aylar</span><span class="se">\\</span><span class="s2">nisan</span><span class="se">\\</span><span class="s2">toplam masraf</span><span class="se">\\</span><span class="s2">masraf.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu şekilde, eğer bilgisayarınızda <cite>C:\aylar\nisan\toplam masraf\</cite> adlı bir
+dizin varsa, o dizin içinde <cite>masraf.txt</cite> adlı bir dosya oluşturulacaktır.</p>
+<p>Böylece Python programlama dilinde boş bir dosyanın nasıl oluşturulacağını
+öğrenmiş olduk. O halde gelin isterseniz şimdi bu dosyanın içini nasıl
+dolduracağımızı öğrenelim.</p>
+</div>
+<div class="section" id="dosyaya-yazmak">
+<h2>Dosyaya Yazmak<a class="headerlink" href="#dosyaya-yazmak" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Bir dosyayı, yukarıda gösterdiğimiz şekilde yazma kipinde açtığımız zaman,
+Python bizim için içi boş bir dosya oluşturacaktır. Peki biz bu dosyanın içini
+nasıl dolduracağız?</p>
+<p>Python programlama dilinde, <code class="docutils literal notranslate"><span class="pre">open()</span></code> fonksiyonu ile yazma kipinde açtığımız
+bir dosyaya bir veri yazabilmek için dosyaların <code class="docutils literal notranslate"><span class="pre">write()</span></code> adlı
+metodundan yararlanacağız.</p>
+<p>Siz aslında bu metodun da nasıl kullanılacağını çok iyi biliyorsunuz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">dosya</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">yazılacak_şeyler</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Gelin bu formülü somutlaştıracak bir örnek verelim. Mesela yukarıda
+oluşturduğumuz tahsilat dosyasının içine bazı veriler girelim.</p>
+<p>Önce dosyamızı nasıl oluşturacağımızı hatırlayalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">ths</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;tahsilat_dosyası.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Şimdi de bu dosyaya şu bilgileri girelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">ths</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Halil Pazarlama: 120.000 TL&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Yani programımız şöyle görünsün:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">ths</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;tahsilat_dosyası.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">ths</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Halil Pazarlama: 120.000 TL&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu komutları verdiğinizde, <cite>tahsilat_dosyası.txt</cite> adlı dosyanın içine şu
+bilgilerin işlendiğini göreceksiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">Halil</span> <span class="n">Pazarlama</span><span class="p">:</span> <span class="mf">120.000</span> <span class="n">TL</span>
+</pre></div>
+</div>
+<p>Eğer dosyayı açtığınızda bu bilgi yerine hâlâ boş bir dosya görüyorsanız, sebebi
+tamponda tutulan verilerin henüz dosyaya işlenmemiş olmasıdır.</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Bu konuyu <code class="docutils literal notranslate"><span class="pre">print()</span></code> fonksiyonunun <cite>flush</cite> adlı parametresini
+incelerken öğrendiğimizi hatırlıyor olmalısınız.</p>
+</div>
+<p>Eğer durum böyleyse, dosyanızı kapatmanız gerekiyor. Bunu <code class="docutils literal notranslate"><span class="pre">close()</span></code> adlı başka
+bir metotla yapabildiğimizi biliyorsunuz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">ths</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Bu arada, bu söylediklerimizden, eğer yazdığınız bilgiler zaten dosyaya
+işlenmişse dosyayı kapatmanıza gerek olmadığı anlamını çıkarmayın. Herhangi bir
+şekilde açtığınız dosyaları kapatmanız, özellikle dosyanın açılmasıyla birlikte
+kullanılmaya başlayan ve arka planda çalışan kaynakların serbest bırakılması
+açısından büyük önem taşıyor. O yüzden açtığımız dosyaların tamamını programın
+işleyişi sona erdiğinde kapatmayı unutmuyoruz. Yani yukarıdaki programı tam
+olarak şöyle yazıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">ths</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;tahsilat_dosyası.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">ths</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Halil Pazarlama: 120.000 TL&quot;</span><span class="p">),</span>
+<span class="n">ths</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Bu kodlarda sırasıyla şu işlemleri gerçekleştirdik:</p>
+<ol class="arabic simple">
+<li><p><cite>tahsilat_dosyası</cite> adlı bir dosyayı yazma kipinde açarak, bu adda bir
+dosya oluşturulmasını sağladık,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">write()</span></code> metodunu kullanarak bu dosyaya bazı bilgiler girdik,</p></li>
+<li><p>Dosyamıza yazdığımız bilgilerin dosyaya işlendiğinden emin olmak ve
+işletim sisteminin dosyanın açılması ve dosyaya veri işlenmesi için devreye
+soktuğu bütün kaynakları serbest bırakmak için <code class="docutils literal notranslate"><span class="pre">close()</span></code> metoduyla
+programımızı kapattık.</p></li>
+</ol>
+<p>Bu arada, bu başlığı kapatmadan önce önemli bir bilgi daha verelim. Python’da
+bir dosyayı <cite>“w”</cite> kipinde açtığımızda, eğer o adda bir dosya ilgili dizin içinde
+zaten varsa, Python bu dosyayı sorgusuz sualsiz silip, yerine aynı adda başka
+bir boş dosya oluşturacaktır. Yani mesela yukarıda <cite>tahsilat_dosyası.txt</cite> adlı
+dosyayı oluşturup içine bir şeyler yazdıktan sonra bu dosyayı yine <cite>“w”</cite> kipinde
+açmaya çalışırsanız, Python bu dosyanın bütün içeriğini silip, yine
+<cite>tahsilat_dosyası.txt</cite> adını taşıyan başka bir dosya oluşturacaktır. O yüzden
+dosya işlemleri sırasında bu <cite>“w”</cite> kipini kullanırken dikkat ediyoruz ve disk
+üzerinde var olan dosyalarımızı yanlışlıkla silmiyoruz.</p>
+<p>Böylece bir dosyanın nasıl oluşturulacağını, nasıl açılacağını ve içine birtakım
+bilgilerin nasıl girileceğini kabataslak da olsa öğrenmiş olduk. Şimdi de
+dosyaları nasıl <strong>okuyacağımızı</strong> öğrenelim.</p>
+</div>
+<div class="section" id="dosya-okumak">
+<h2>Dosya Okumak<a class="headerlink" href="#dosya-okumak" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Bir önceki başlıkta dosyaların içine bilgi girme işleminin Python programlama
+dilinde nasıl yapıldığını inceledik. Elbette bir dosyaya yazabilmenin yanısıra,
+bilgisayarınızda halihazırda var olan bir dosyayı okumak da isteyeceksiniz. Peki
+bunu nasıl yapacaksınız?</p>
+<p>Python’da bir dosyayı okumak için yukarıda anlattığımız yazma yöntemine benzer
+bir yöntem kullanacağız. Bildiğiniz gibi, bir dosyayı yazma kipinde açmak için
+<cite>“w”</cite> harfini kullanıyoruz. Bir dosyayı okuma kipinde açmak için ise <cite>“r”</cite>
+harfini kullanacağız.</p>
+<p>Mesela, bilgisayarımızda var olan <cite>fihrist.txt</cite> adlı dosyayı okumak üzere
+açalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">fihrist</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;fihrist.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bir dosyayı <code class="docutils literal notranslate"><span class="pre">open()</span></code> fonksiyonu yardımıyla açarken kip parametresi için <cite>“r”</cite>
+harfini kullanırsak, Python o dosyayı okuma yetkisiyle açacaktır. Yalnız burada
+şöyle bir özellik var: Eğer bir dosyayı okuma kipinde açacaksanız, bu <cite>“r”</cite>
+harfini hiç belirtmeseniz de olur. Yani şu komut bilgisayarımızdaki
+<cite>fihrist.txt</cite> adlı dosyayı okuma kipinde açacaktır:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">fihrist</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;fihrist.txt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Dolayısıyla bir dosyayı açarken kip belirtmediğimizde Python bizim o dosyayı
+okuma kipinde açmak istediğimizi varsayacaktır.</p>
+<p>Hatırlarsanız, <cite>“w”</cite> kipiyle açtığımız bir dosyaya yazmak için <code class="docutils literal notranslate"><span class="pre">write()</span></code> adlı
+bir metottan yararlanıyorduk. <cite>“r”</cite> kipiyle açtığımız bir dosyayı okumak için
+ise <code class="docutils literal notranslate"><span class="pre">read()</span></code>, <code class="docutils literal notranslate"><span class="pre">readline()</span></code> ve <code class="docutils literal notranslate"><span class="pre">readlines()</span></code> adlı üç farklı metottan
+yararlanacağız.</p>
+<p>Yukarıdaki üç metot da Python’da dosya okuma işlemlerini gerçekleştirmemizi
+sağlar. Peki bu metotların üçü de aynı işi yapıyorsa neden tek bir metot değil
+de üç farklı metot var?</p>
+<p>Bu metotların üçü de dosya okumaya yarasa da, verdikleri çıktılar birbirinden
+farklıdır. O yüzden farklı amaçlar için farklı metodu kullanmanız gereken
+durumlarla karşılaşabilirsiniz.</p>
+<p>Bu metotlar arasındaki farkı anlamanın en kolay yolu bu üç metodu sırayla
+kullanıp, çıktıları incelemektir.</p>
+<p>Öncelikle içeriği şu olan, <cite>fihrist.txt</cite> adlı bir dosyamızın olduğunu
+varsayalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ahmet</span> <span class="n">Özbudak</span> <span class="p">:</span> <span class="mi">0533</span> <span class="mi">123</span> <span class="mi">23</span> <span class="mi">34</span>
+<span class="n">Mehmet</span> <span class="n">Sülün</span>  <span class="p">:</span> <span class="mi">0532</span> <span class="mi">212</span> <span class="mi">22</span> <span class="mi">22</span>
+<span class="n">Sami</span> <span class="n">Sam</span>      <span class="p">:</span> <span class="mi">0542</span> <span class="mi">333</span> <span class="mi">34</span> <span class="mi">34</span>
+</pre></div>
+</div>
+<p>Şimdi bir dosya açıp şu kodları yazalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">fihrist</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;fihrist.txt&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fihrist</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Bu kodları çalıştırdığımızda, eğer kullandığınız işletim sistemi GNU/Linux ise
+muhtemelen şu çıktıyı elde edeceksiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ahmet</span> <span class="n">Özbudak</span> <span class="p">:</span> <span class="mi">0533</span> <span class="mi">123</span> <span class="mi">23</span> <span class="mi">34</span>
+<span class="n">Mehmet</span> <span class="n">Sülün</span>  <span class="p">:</span> <span class="mi">0532</span> <span class="mi">212</span> <span class="mi">22</span> <span class="mi">22</span>
+<span class="n">Sami</span> <span class="n">Sam</span>      <span class="p">:</span> <span class="mi">0542</span> <span class="mi">333</span> <span class="mi">34</span> <span class="mi">34</span>
+</pre></div>
+</div>
+<p>Ama eğer bu kodları Windows’ta çalıştırdıysanız Türkçe karakterler bozuk çıkmış
+olabilir. Bu durumu şimdilik görmezden gelin. Birazdan bu durumun nedenini
+açıklayacağız.</p>
+<p>Yukarıda elde ettiğimiz şey bir karakter dizisidir bunu şu şekilde teyit
+edebileceğinizi biliyorsunuz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">fihrist</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;fihrist.txt&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">fihrist</span><span class="o">.</span><span class="n">read</span><span class="p">()))</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">read()</span></code> metodu bize, dosyanın bütün içeriğini bir karakter
+dizisi olarak veriyor. Bir de şuna bakalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">fihrist</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;fihrist.txt&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fihrist</span><span class="o">.</span><span class="n">readline</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Burada da <code class="docutils literal notranslate"><span class="pre">readline()</span></code> metodunu kullandık. Bu kodlar bize şöyle bir çıktı
+veriyor:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ahmet</span> <span class="n">Özbudak</span> <span class="p">:</span> <span class="mi">0533</span> <span class="mi">123</span> <span class="mi">23</span> <span class="mi">34</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">read()</span></code> metodu bize dosya içeriğinin tamamını veriyordu. Gördüğünüz gibi
+<code class="docutils literal notranslate"><span class="pre">readline()</span></code> metodu tek bir satır veriyor. Yani bu metot yardımıyla dosyaları
+satır satır okuyabiliyoruz.</p>
+<p>Bu metodun işleyiş tarzını daha iyi görebilmek için bu kodları dosyaya yazıp
+çalıştırmak yerine etkileşimli kabuk üzerinden de çalıştırabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fihrist</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;fihrist.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">fihrist</span><span class="o">.</span><span class="n">readline</span><span class="p">())</span>
+
+<span class="go">Ahmet Özbudak : 0533 123 23 34</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">fihrist</span><span class="o">.</span><span class="n">readline</span><span class="p">())</span>
+
+<span class="go">Mehmet Sülün  : 0532 212 22 22</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">fihrist</span><span class="o">.</span><span class="n">readline</span><span class="p">())</span>
+
+<span class="go">Sami Sam      : 0542 333 34 34</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">readline()</span></code> metodu gerçekten de dosyayı satır satır okuyor.</p>
+<p>Son satırı da okuduktan sonra, <code class="docutils literal notranslate"><span class="pre">readline()</span></code> metodunu tekrar çalıştırırsak ne
+olur peki? Bakalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">fihrist</span><span class="o">.</span><span class="n">readline</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, bu defa hiçbir çıktı almadık. Çünkü dosyada okunacak satır
+kalmadı. Bu yüzden de Python bize boş bir çıktı verdi. Bu durumu daha net görmek
+için kodu etkileşimli kabukta <code class="docutils literal notranslate"><span class="pre">print()</span></code> olmadan yazabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fihrist</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+
+<span class="go">&#39;&#39;</span>
+</pre></div>
+</div>
+<p>Gerçekten de elimizdeki şey boş bir karakter dizisi… Demek ki bir dosya
+tamamen okunduktan sonra, Python otomatik olarak tekrar dosyanın başına
+dönmüyor. Böyle bir durumda dosyanın başına nasıl geri döneceğimizi
+inceleyeceğiz, ama isterseniz biz başka bir konuyla devam edelim.</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Bir dosyanın tamamı okunduktan sonra otomatik olarak başa sarılmaması
+özelliği sadece <code class="docutils literal notranslate"><span class="pre">readline()</span></code> metodu için değil, öteki bütün dosya okuma
+metotları için de geçerlidir. Yani bir dosyayı <code class="docutils literal notranslate"><span class="pre">read()</span></code>, <code class="docutils literal notranslate"><span class="pre">readline()</span></code> veya
+<code class="docutils literal notranslate"><span class="pre">readlines()</span></code> metotlarından herhangi biri ile okuduğunuzda imleç başa dönmez.</p>
+</div>
+<p>Dediğimiz ve gösterdiğimiz gibi, <code class="docutils literal notranslate"><span class="pre">read()</span></code> ve <code class="docutils literal notranslate"><span class="pre">readline()</span></code> metotları bize bir
+karakter dizisi döndürüyor. Bu iki metot arasındaki fark ise, <code class="docutils literal notranslate"><span class="pre">read()</span></code>
+metodunun dosyanın tamamını önümüze sererken, <code class="docutils literal notranslate"><span class="pre">readline()</span></code> metodunun dosyayı
+satır satır okuyup, her defasında tek bir satırı önümüze sürmesidir. Bir de
+<code class="docutils literal notranslate"><span class="pre">readlines()</span></code> metodunun ne yaptığına bakalım…</p>
+<p>Şu kodları yazalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">fihrist</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;fihrist.txt&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fihrist</span><span class="o">.</span><span class="n">readlines</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Bu kodları yazdığımızda şuna benzer bir çıktı alacağız:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;Ahmet Özbudak : 0533 123 23 34</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;Mehmet Sülün  : 0532 212 22 22</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Sami Sam      : 0542 333 34 34&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, bu defa karakter dizisi yerine bir liste ile karşılaşıyoruz.
+Demek ki <code class="docutils literal notranslate"><span class="pre">read()</span></code> ve <code class="docutils literal notranslate"><span class="pre">readline()</span></code> metotları çıktı olarak bize bir karakter
+dizisi verirken, <code class="docutils literal notranslate"><span class="pre">readlines()</span></code> metodu liste veriyormuş. Bunun neden önemli bir
+bilgi olduğunu artık gayet iyi biliyor olmanız lazım. Zira bir verinin tipi, o
+veriyle neler yapıp neler yapamayacağımızı doğrudan etkiler…</p>
+</div>
+<div class="section" id="dosyalari-otomatik-kapatma">
+<h2>Dosyaları Otomatik Kapatma<a class="headerlink" href="#dosyalari-otomatik-kapatma" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Daha önce de söylediğimiz gibi, bir dosyayı açıp bu dosya üzerinde gerekli
+işlemleri yaptıktan sonra bu dosyayı açık bırakmamak büyük önem taşır.
+Dolayısıyla üzerinde işlem yaptığımız bütün dosyaları, işimiz bittikten sonra,
+mutlaka kapatmalıyız. Çünkü bir dosya açıldığında işletim sistemi, sistem
+kaynaklarının bir kısmını bu dosyaya ayırır. Eğer dosyayı açık bırakırsak,
+sistem kaynaklarını gereksiz yere meşgul etmiş oluruz. Ancak farklı sebeplerden,
+dosyalar açıldıktan sonra kapanmayabilir. Örneğin açtığınız dosyayı kapatmayı
+unutmuş olabilirsiniz. Yani programınızın hiçbir yerinde <code class="docutils literal notranslate"><span class="pre">close()</span></code> metodunu
+kullanmamışsınızdır. Bunun dışında, programınızdaki bir hata da dosyaların
+kapanmasını engelleyebilir. Örneğin bir dosya açıldıktan sonra programda
+beklenmeyen bir hata gerçekleşirse, programınız asla <code class="docutils literal notranslate"><span class="pre">close()</span></code> satırına
+ulaşamayabilir. Bu durumda da açılan dosya kapanmadan öylece bekler.</p>
+<p>Bu tür durumlara karşı iki seçeneğiniz var:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">try...</span> <span class="pre">except...</span> <span class="pre">finally...</span></code> bloklarından yararlanmak</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">with</span></code> adlı bir deyimi kullanmak</p></li>
+</ol>
+</div></blockquote>
+<p>Birinci yöntemden daha önce de bahsettiğimizi hatırlıyorsunuz. Hata yakalama
+bölümünü anlatırken bununla ilgili şöyle bir örnek vermiştik:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">dosya</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;dosyaadı&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+    <span class="o">...</span><span class="n">burada</span> <span class="n">dosyayla</span> <span class="n">bazı</span> <span class="n">işlemler</span> <span class="n">yapıyoruz</span><span class="o">...</span>
+    <span class="o">...</span><span class="n">ve</span> <span class="n">ansızın</span> <span class="n">bir</span> <span class="n">hata</span> <span class="n">oluşuyor</span><span class="o">...</span>
+<span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;bir hata oluştu!&quot;</span><span class="p">)</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="n">dosya</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Bu yöntem gayet uygun ve iyi bir yöntemdir. Ancak Python bize bu tür durumlar
+için çok daha pratik bir yöntem sunar. Dikkatlice bakın:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;dosyaadı&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">dosya</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">dosya</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Dosyalarımızı bu şekilde açıp üzerlerinde işlemlerimizi yaptığımızda Python
+dosyayı bizim için kendisi kapatacaktır. Bu şekilde bizim ayrıca bir <code class="docutils literal notranslate"><span class="pre">close()</span></code>
+satırı yazmamıza gerek yok. <code class="docutils literal notranslate"><span class="pre">with</span></code> deyimini kullanmamız sayesinde, dosya
+açıldıktan sonra arada bir hata oluşsa bile Python dosyayı sağsalim kapatıp
+sistem kaynaklarının israf edilmesini önleyecektir.</p>
+</div>
+<div class="section" id="dosyayi-ileri-geri-sarmak">
+<h2>Dosyayı İleri-Geri Sarmak<a class="headerlink" href="#dosyayi-ileri-geri-sarmak" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Dosya okumak için kullanılan metotları anlatırken, dosya bir kez okunduktan
+sonra imlecin otomatik olarak dosyanın başına dönmediğini görmüştük. Yani mesela
+<code class="docutils literal notranslate"><span class="pre">read()</span></code> metoduyla dosyayı bir kez okuduktan sonra, dosyayı tekrar okumak
+istersek elde edeceğimiz şey boş bir karakter dizisi olacaktır. Çünkü dosya
+okunduktan sonra okunacak başka bir satır kalmamış, imleç dosya sonuna ulaşmış
+ve otomatik olarak da başa dönmemiştir. Bu olguyu etkileşimli kabuk üzerinde
+daha net bir şekilde görebileceğinizi biliyorsunuz.</p>
+<p>Peki dosyayı tamamen okuduktan sonra tekrar başa dönmek istersek ne yapacağız?
+Bir dosya tamamen okunduktan sonra tekrar başa dönmek için dosyaların <code class="docutils literal notranslate"><span class="pre">seek()</span></code>
+adlı bir metodundan yararlanacağız.</p>
+<p>Mesela şu örneklere bakalım. Bu örnekleri daha iyi anlamak için bunları
+Python’ın etkileşimli kabuğunda çalıştırmanızı tavsiye ederim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;python.txt&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="go">&#39;Bu programlama dili Guido Van Rossum adlı Hollandalı bir</span>
+<span class="go">programcı\ntarafından 90’lı yılların başında geliştirilmeye başlanmıştır.</span>
+<span class="go">Çoğu insan,\nisminin Python olmasına aldanarak, bu programlama dilinin,</span>
+<span class="go">adını piton\nyılanından aldığını düşünür. Ancak zannedildiğinin aksine bu</span>
+<span class="go">programlama dilinin\nadı piton yılanından gelmez. Guido Van Rossum bu</span>
+<span class="go">programlama dilini, The Monty\nPython adlı bir İngiliz komedi grubunun,</span>
+<span class="go">Monty Python’s Flying Circus adlı\ngösterisinden esinlenerek adlandırmıştır.</span>
+<span class="go">Ancak her ne kadar gerçek böyle olsa\nda, Python programlama dilinin pek çok</span>
+<span class="go">yerde bir yılan figürü ile temsil\nedilmesi neredeyse bir gelenek halini</span>
+<span class="go">almıştır.\n&#39;</span>
+</pre></div>
+</div>
+<p>Burada <code class="docutils literal notranslate"><span class="pre">open()</span></code> fonksiyonunu kullanarak <cite>python.txt</cite> adlı bir dosyayı açıp,
+<code class="docutils literal notranslate"><span class="pre">read()</span></code> metodu yardımıyla da bu dosyanın içeriğini okuduk. Bu noktada dosyayı
+tekrar okumaya çalışırsak elde edeceğimiz şey boş bir karakter dizisi
+olacaktır:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="go">&#39;&#39;</span>
+</pre></div>
+</div>
+<p>Çünkü dosya bir kez tamamen okunduktan sonra imleç otomatik olarak başa
+dönmüyor. Dosyayı tekrar okumak istiyorsak, bunu başa bizim sarmamız lazım. İşte
+bunun için <code class="docutils literal notranslate"><span class="pre">seek()</span></code> metodunu kullanacağız:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi <code class="docutils literal notranslate"><span class="pre">seek()</span></code> metodunu bir parametre ile birlikte kullandık. Bu
+metoda verdiğimiz parametre, dosya içinde kaçıncı bayt konumuna gideceğimizi
+gösteriyor. Biz burada <cite>0</cite> sayısını kullanarak dosyanın ilk baytına, yani en
+başına dönmüş olduk. Artık dosyayı tekrar okuyabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="go">&#39;Bu programlama dili Guido Van Rossum adlı Hollandalı bir</span>
+<span class="go">programcı\ntarafından 90’lı yılların başında geliştirilmeye başlanmıştır.</span>
+<span class="go">Çoğu insan,\nisminin Python olmasına aldanarak, bu programlama dilinin,</span>
+<span class="go">adını piton\nyılanından aldığını düşünür. Ancak zannedildiğinin aksine bu</span>
+<span class="go">programlama dilinin\nadı piton yılanından gelmez. Guido Van Rossum bu</span>
+<span class="go">programlama dilini, The Monty\nPython adlı bir İngiliz komedi grubunun,</span>
+<span class="go">Monty Python’s Flying Circus adlı\ngösterisinden esinlenerek adlandırmıştır.</span>
+<span class="go">Ancak her ne kadar gerçek böyle olsa\nda, Python programlama dilinin pek çok</span>
+<span class="go">yerde bir yılan figürü ile temsil\nedilmesi neredeyse bir gelenek halini</span>
+<span class="go">almıştır.\n&#39;</span>
+</pre></div>
+</div>
+<p>Elbette <code class="docutils literal notranslate"><span class="pre">seek()</span></code> metodunu kullanarak istediğiniz bayt konumuna dönebilirsiniz.
+Mesela eğer dosyanın <cite>10.</cite> baytının bulunduğu konuma dönmek isterseniz bu metodu
+şöyle kullanabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Eğer o anda dosyanın hangi bayt konumunda bulunduğunuzu öğrenmek isterseniz de
+<code class="docutils literal notranslate"><span class="pre">tell()</span></code> adlı başka bir metottan yararlanabilirsiniz. Bu metodu parametresiz
+olarak kullanıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">tell</span><span class="p">()</span>
+
+<span class="go">20</span>
+</pre></div>
+</div>
+<p>Bu çıktıya göre o anda dosyanın <cite>20.</cite> baytının üzerindeyiz…</p>
+<p>Bu arada, dosya içinde bulunduğumuz konumu baytlar üzerinden tarif etmemizi
+biraz yadırgamış olabilirsiniz. Acaba neden karakter değil de bayt? Biraz sonra
+bu konuya geleceğiz. Biz şimdilik önemli başka bir konuya değinelim.</p>
+</div>
+<div class="section" id="dosyalarda-degisiklik-yapmak">
+<h2>Dosyalarda Değişiklik Yapmak<a class="headerlink" href="#dosyalarda-degisiklik-yapmak" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Buraya kadar, Python’da bir dosyanın nasıl oluşturulacağını, boş bir dosyaya
+nasıl veri girileceğini ve varolan bir dosyadan nasıl veri okunacağını öğrendik.
+Ama varolan ve içi halihazırda dolu bir dosyaya nasıl veri ekleneceğini
+bilmiyoruz. İşte şimdi bu işlemin nasıl yapılacağını tartışacağız.</p>
+<p>Ancak burada önemli bir ayrıntıya dikkatinizi çekmek istiyorum. Dosyaların
+neresinde değişiklik yapmak istediğiniz büyük önem taşır. Unutmayın, dosyaların
+başında, ortasında ve sonunda değişiklik yapmak birbirlerinden farklı kavramlar
+olup, birbirinden farklı işlemlerin uygulanmasını gerektirir.</p>
+<p>Biz bu bölümde dosyaların baş tarafına, ortasına ve sonuna nasıl veri eklenip
+çıkarılacağını ayrı ayrı tartışacağız.</p>
+<div class="section" id="dosyalarin-sonunda-degisiklik-yapmak">
+<h3>Dosyaların Sonunda Değişiklik Yapmak<a class="headerlink" href="#dosyalarin-sonunda-degisiklik-yapmak" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p>Daha önce de söylediğimiz gibi, Python’da bir dosyayı açarken, o dosyayı hangi
+kipte açacağımızı belirtmemiz gerekiyor. Yani eğer bir dosyayı okumak istiyorsak
+dosyayı <cite>“r”</cite> kipinde, yazmak istiyorsak da <cite>“w”</cite> kipinde açmamız gerekiyor.
+Bildiğiniz gibi <cite>“w”</cite> kipi dosya içeriğini tamamen siliyor.</p>
+<p>Eğer bir dosyayı <strong>tamamen silmeden</strong>, o dosyaya ekleme yapmak veya o dosyada
+herhangi bir değişiklik yapmak istiyorsak, dosyamızı buraya kadar öğrendiğimiz
+iki kipten daha farklı bir kiple açmamız gerekiyor. Şimdi öğreneceğimiz bu yeni
+kipin adı <cite>“a”</cite>. Yani Python’da içi boş olmayan bir dosyada değişiklik
+yapabilmek için <cite>“a”</cite> adlı bir kipten yararlanacağız:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">dosya_adı</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Örneğin yukarıda verdiğimiz <cite>fihrist.txt</cite> adlı dosyayı bu kipte açalım ve
+dosyaya yeni bir girdi ekleyelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;fihrist.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Selin Özden</span><span class="se">\t</span><span class="s2">: 0212 222 22 22&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, dosyaya yeni eklediğimiz girdiler otomatik olarak dosyanın
+sonuna ilave ediliyor. Burada şu noktaya dikkat etmeniz lazım. Dosyanın sonunda
+bir satır başı karakterinin (<cite>\n</cite>) bulunup bulunmamasına bağlı olarak, dosyaya
+eklediğiniz yeni satırlar düzgün bir şekilde bir alt satıra geçebileceği gibi,
+dosyanın son satırının yanına da eklenebilir. Dolayısıyla duruma göre yukarıdaki
+satırı şu şekilde yazmanız gerekebilir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;fihrist.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Selin Özden</span><span class="se">\t</span><span class="s2">: 0212 222 22 22&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada bir alt satıra geçebilmek için ‘Selin’ ifadesinden önce bir satır başı
+karakteri eklediğimize dikkat edin. Ayrıca eğer bu satırdan sonra bir başka
+satır daha ekleyecekseniz, ilgili satırın sonuna da bir satır başı karakteri
+koymanız gerekebilir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;fihrist.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Selin Özden</span><span class="se">\t</span><span class="s2">: 0212 222 22 22</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Karşı karşıya olduğunuz duruma göre, satır başı karakterlerine ihtiyacınız olup
+olmadığını ve ihtiyacınız varsa bunları nereye yerleştireceğinizi kendiniz
+değerlendirmelisiniz.</p>
+</div>
+<div class="section" id="dosyalarin-basinda-degisiklik-yapmak">
+<h3>Dosyaların Başında Değişiklik Yapmak<a class="headerlink" href="#dosyalarin-basinda-degisiklik-yapmak" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p>Bir önceki bölümde dosya sonuna nasıl yeni satır ekleyeceğimizi öğrendik. Ama
+siz programcılık maceranız sırasında muhtemelen dosyaların sonuna değil de, en
+başına ekleme yapmanız gereken durumlarla da karşılaşacaksınız. Python’da bu işi
+yapmak da çok kolaydır.</p>
+<p>Örnek olması açısından, <cite>fihrist.txt</cite> adlı dosyanın içeriğini ele alalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ahmet</span> <span class="n">Özbudak</span> <span class="p">:</span> <span class="mi">0533</span> <span class="mi">123</span> <span class="mi">23</span> <span class="mi">34</span>
+<span class="n">Mehmet</span> <span class="n">Sülün</span>  <span class="p">:</span> <span class="mi">0532</span> <span class="mi">212</span> <span class="mi">22</span> <span class="mi">22</span>
+<span class="n">Sami</span> <span class="n">Sam</span>      <span class="p">:</span> <span class="mi">0542</span> <span class="mi">333</span> <span class="mi">34</span> <span class="mi">34</span>
+<span class="n">Selin</span> <span class="n">Özden</span>   <span class="p">:</span> <span class="mi">0212</span> <span class="mi">222</span> <span class="mi">22</span> <span class="mi">22</span>
+</pre></div>
+</div>
+<p>Dosya içeriği bu. Eğer bu dosyayı <cite>“a”</cite> kipi ile açtıktan sonra doğrudan
+<code class="docutils literal notranslate"><span class="pre">write()</span></code> metodunu kullanarak bir ekleme yaparsak, yeni değer dosyanın sonuna
+eklenecektir. Ama biz mesela şu veriyi:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">Sedat</span> <span class="n">Köz</span>     <span class="p">:</span> <span class="mi">0322</span> <span class="mi">234</span> <span class="mi">45</span> <span class="mi">45</span>
+</pre></div>
+</div>
+<p>‘Ahmet Özbudak : 0533 123 23 34’ girdisinin hemen üstüne, yani dosyanın sonuna
+değil de en başına eklemek istersek ne yapacağız?</p>
+<p>Öncelikle şu kodları deneyelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;fihrist.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">veri</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1">#Dosyayı başa sarıyoruz</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Sedat Köz</span><span class="se">\t</span><span class="s2">: 0322 234 45 45</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="n">veri</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu kodları bir dosyaya kaydedip çalıştırdığımızda Python bize şu hatayı
+verecektir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span>istihza@netbook:~/Desktop$ python3 deneme.py
+Traceback (most recent call last):
+  File &quot;deneme.py&quot;, line 4, in &lt;module&gt;
+    f.write(&quot;Sedat Köz\t: 0322 234 45 45\n&quot;+veri)
+io.UnsupportedOperation: not writable
+</pre></div>
+</div>
+<p>Bu hatayı almamızın sebebi dosyayı ‘okuma’ kipinde açmış olmamız. Çünkü bir
+dosyayı okuma kipinde açtığımızda o dosya üzerinde yalnızca okuma işlemleri
+yapabiliriz. Dosyaya yeni veri ekleme kısmına gelindiğinde, dosya yalnızca okuma
+yetkisine sahip olduğu için, Python bize yukarıdaki hata mesajını verecek,
+dosyanın ‘yazılamaz’ olduğundan şikayet edecektir.</p>
+<p>Peki dosyayı <cite>“w”</cite> karakteri yardımıyla yazma kipinde açarsak ne olur? O zaman
+da şu meş’um hatayı alırız:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span>istihza@netbook:~/Desktop$ python3 deneme.py
+Traceback (most recent call last):
+  File &quot;deneme.py&quot;, line 2, in &lt;module&gt;
+    veri = f.read()
+io.UnsupportedOperation: not readable
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, bu kez de dosyanın okunamadığına ilişkin bir hata alıyoruz.
+Çünkü biz bu kez de dosyayı ‘yazma’ kipinde açtık. Ancak burada şöyle bir durum
+var. Bildiğiniz gibi, bir dosyayı <cite>“w”</cite> kipi ile açtığımızda, Python bize hiçbir
+şey sormadan varolan içeriği silecektir. Burada da yukarıda yazdığımız kodlar
+yüzünden dosya içeriğini kaybettik. Unutmayın, dosya okuma-yazma işlemleri belli
+bir takım riskleri içinde barındırır. O yüzden bu tür işlemleri yaparken
+fazladan dikkat göstermeliyiz.</p>
+<p>Yukarıda da gördüğümüz gibi, dosyamızı <cite>“r”</cite> veya <cite>“w”</cite> kiplerinde açmak işe
+yaramadı. Peki ne yapacağız? Bunun cevabı çok basit: Dosyamızı hem okuma hem de
+yazma kipinde açacağız. Bunun için de farklı bir kip kullanacağız. Dikkatlice
+bakın:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;fihrist.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r+&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">veri</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1">#Dosyayı başa sarıyoruz</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Sedat Köz</span><span class="se">\t</span><span class="s2">: 0322 234 45 45</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="n">veri</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada <cite>“r+”</cite> adlı yeni bir kip kullandığımıza dikkat edin. <cite>“+”</cite> işareti bir
+dosyayı hem okuma hem de yazma kipinde açmamıza yardımcı olur. İşte bu işareti
+<cite>“r”</cite> kipiyle birlikte <cite>“r+”</cite> şeklinde kullanarak dosyamızı hem okuma hem de
+yazma kipinde açmayı başardık. Artık ilgili dosya üzerinde hem okuma hem de
+yazma işlemlerini aynı anda gerçekleştirebiliriz.</p>
+<p>Yukarıdaki kodlarda ilk satırın ardından şöyle bir kod yazdık:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">veri</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Böylece dosyanın bütün içeriğini <cite>veri</cite> adlı bir değişkene atamış olduk. Peki bu
+işlemi yapmazsak ne olur? Yani mesela şöyle bir kod yazarsak:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;fihrist.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r+&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Sedat Köz</span><span class="se">\t</span><span class="s2">: 0322 234 45 45</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu şekilde ‘Sedat Köz\t: 0322 234 45 45\n’ satırı, dosyadaki ilk satırı silip
+onun yerine geçecektir. Çünkü <cite>f.seek(0)</cite> ile dosyanın başına dönüp o noktaya,
+yani dosyanın ilk satırına bir veri ekledikten sonra Python öbür satırları
+otomatik olarak bir alt satıra kaydırmaz. Bunun yerine ilk satırdaki verileri
+silip onun yerine, yeni eklenen satırı getirir. Eğer yapmak istediğiniz şey
+buysa ne âlâ. Bu kodları kullanabilirsiniz. Ama bizim istediğimiz şey bu değil.
+O yüzden <cite>veri = f.read()</cite> satırını kullanarak dosya içeriğini bir değişken
+içinde depoluyoruz ve böylece bu verileri kaybetmemiş oluyoruz.</p>
+<p>Bu satırın ardından gelen <cite>f.seek(0)</cite> satırının ne işe yaradığını biliyorsunuz.
+Biz yeni veriyi dosyanın en başına eklemek istediğimiz için, doğal olarak bu kod
+yardımıyla dosyanın en başına sarıyoruz. Böylece şu kod:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Sedat Köz</span><span class="se">\t</span><span class="s2">: 0322 234 45 45</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="n">veri</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sedat Köz\t: 0322 234 45 45\n’ satırını dosyanın en başına ekliyor. Ayrıca
+burada, biraz önce <cite>veri</cite> değişkenine atadığımız dosya içeriğini de yeni
+eklediğimiz satırın hemen arkasına ilave ettiğimize dikkat edin. Eğer bunu
+yapmazsanız, elinizde sadece Sedat Köz’ün iletişim bilgilerini barındıran bir
+dosya olacaktır…</p>
+</div>
+<div class="section" id="dosyalarin-ortasinda-degisiklik-yapmak">
+<h3>Dosyaların Ortasında Değişiklik Yapmak<a class="headerlink" href="#dosyalarin-ortasinda-degisiklik-yapmak" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p>Gördüğünüz gibi, Python’da bir dosyanın en sonuna ve en başına veri eklemek çok
+zor değil. Birkaç satır yardımıyla bu işlemleri rahatlıkla yapabiliyoruz. Peki
+ya bir dosyanın en başına veya en sonuna değil de rastgele bir yerine ekleme
+yapmak istersek ne olacak?</p>
+<p>Hatırlarsanız, Python’da her veri tipinin farklı özellikleri olduğundan, her
+veri tipinin farklı açılardan birbirlerine karşı üstünlükleri ya da zayıflıkları
+olduğundan söz etmiştik. Dediğimiz gibi, Python’da bazı işler için bazı veri
+tiplerini kullanmak daha pratik ve avantajlı olabilir. Örneğin karakter dizileri
+değiştirilemeyen veri tipleri olduğu için, mesela bir metinde değişiklik
+yapmamız gereken durumlarda, eğer mümkünse listeleri kullanmak daha mantıklı
+olabilir. Zira bildiğiniz gibi, karakter dizilerinin aksine listeler
+değiştirilebilir veri tipleridir.</p>
+<p>Önceki sayfalarda bir dosyayı okurken üç farklı metottan yararlanabileceğimizi
+öğrenmiştik. Bu metotların <code class="docutils literal notranslate"><span class="pre">read()</span></code>, <code class="docutils literal notranslate"><span class="pre">readline()</span></code> ve <code class="docutils literal notranslate"><span class="pre">readlines()</span></code> adlı
+metotlar olduğunu biliyorsunuz. Bu üç metottan <code class="docutils literal notranslate"><span class="pre">read()</span></code> adlı olanı bize çıktı
+olarak bir karakter dizisi veriyor. <code class="docutils literal notranslate"><span class="pre">readline()</span></code> metodu ise dosyaları satır
+satır okuyor ve bize yine bir karakter dizisi veriyor. Sonuncu metot olan
+<code class="docutils literal notranslate"><span class="pre">readlines()</span></code> ise bize bir liste veriyor. <code class="docutils literal notranslate"><span class="pre">readline()</span></code> metodundan
+farklı olarak <code class="docutils literal notranslate"><span class="pre">readlines()</span></code> metodu dosyanın tamamını bir çırpıda okuyor.</p>
+<p>Bu üç metot arasından, adı <code class="docutils literal notranslate"><span class="pre">readlines()</span></code> olanının, dosyaların herhangi bir
+yerinde değişiklik yapmak konusunda bize yardımcı olabileceğini tahmin etmiş
+olabilirsiniz. Çünkü dediğimiz gibi <code class="docutils literal notranslate"><span class="pre">readlines()</span></code> metodu bize bir dosyanın
+içeriğini liste halinde veriyor. Bildiğiniz gibi listeler, üzerinde değişiklik
+yapılabilen veri tipleridir. Listelerin bu özelliğinden yararlanarak, dosyaların
+herhangi bir yerinde yapmak istediğimiz değişiklikleri rahatlıkla yapabiliriz.
+Şimdi dikkatlice bakın şu kodlara:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;fihrist.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r+&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">veri</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+    <span class="n">veri</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;Sedat Köz</span><span class="se">\t</span><span class="s2">: 0322 234 45 45</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span><span class="n">veri</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu kodları bir dosyaya kaydedip çalıştırdıysanız, istediğimiz işlemi başarıyla
+yerine getirdiğini görmüşsünüzdür. Peki ama bu kodlar nasıl çalışıyor?</p>
+<p>Yukarıdaki kodlarda dikkatimizi çeken pek çok özellik var. İlk olarak gözümüze
+çarpan şey, dosyayı <cite>“r+”</cite> kipinde açmış olmamız. Bu şekilde dosyayı hem okuma
+hem de yazma kipinde açmış oluyoruz. Çünkü dosyada aynı anda hem okuma hem de
+yazma işlemleri gerçekleştireceğiz.</p>
+<p>Daha sonra şöyle bir satır yazdık:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">veri</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Bu sayede dosyadaki bütün verileri bir liste olarak almış olduk. Liste adlı veri
+tipi ile ne yapabiliyorsak, bu şekilde aldığımız dosya içeriği üzerinde de aynı
+şeyleri yapabiliriz. Bizim amacımız bu listenin <cite>2.</cite> sırasına yeni bir satır
+eklemek. Bu işlemi listelerin <code class="docutils literal notranslate"><span class="pre">insert()</span></code> adlı metodu yardımıyla rahatlıkla
+yapabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">veri</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;Sedat Köz</span><span class="se">\t</span><span class="s2">: 0322 234 45 45</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu şekilde liste üzerinde istediğimiz değişiklikleri yaptıktan sonra tekrar
+dosyanın başına dönmemiz lazım. Çünkü <code class="docutils literal notranslate"><span class="pre">readlines()</span></code> metoduyla dosyayı bir kez
+tam olarak okuduktan sonra imleç o anda dosyanın en sonunda bulunuyor. Eğer
+dosyanın en başına dönmeden herhangi bir yazma işlemi gerçekleştirirsek, yazılan
+veriler dosyanın sonuna eklenecektir. Bizim yapmamız gereken şey dosyanın en
+başına sarıp, değiştirilmiş verilerin dosyaya yazılmasını sağlamak olmalı. Bunu
+da şu satır yardımıyla yapıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Son olarak da bütün verileri dosyaya yazıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span><span class="n">veri</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Şimdiye kadar dosyaya yazma işlemleri için <code class="docutils literal notranslate"><span class="pre">write()</span></code> adlı bir metottan
+yararlanmıştık. Burada ise <code class="docutils literal notranslate"><span class="pre">writelines()</span></code> adlı başka bir metot görüyoruz. Peki
+bu iki metot arasındaki fark nedir?</p>
+<p><code class="docutils literal notranslate"><span class="pre">write()</span></code> metodu bir dosyaya yalnızca karakter dizilerini yazabilir. Bu metot
+yardımıyla dosyaya liste tipinde herhangi bir veri yazamazsınız. Eğer mutlaka
+<code class="docutils literal notranslate"><span class="pre">write()</span></code> metodunu kullanmak isterseniz, liste üzerinde bir <code class="docutils literal notranslate"><span class="pre">for</span></code> döngüsü
+kurmanız gerekir. O zaman yukarıdaki kodları şöyle yazmanız gerekir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;fihrist.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r+&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">veri</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+    <span class="n">veri</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;Sedat Köz</span><span class="se">\t</span><span class="s2">: 0322 234 45 45</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">öğe</span> <span class="ow">in</span> <span class="n">veri</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">öğe</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">writelines()</span></code> adlı metot ise bize dosyaya liste tipinde verileri yazma imkanı
+verir. Dolayısıyla herhangi bir döngü kurmak zorunda kalmadan listeleri
+dosyalarımıza yazabiliriz.</p>
+<p>Böylece Python’da dosyaların herhangi bir yerine nasıl yazabileceğimizi öğrenmiş
+olduk. Bu arada eğer isteseydik yukarıdaki kodları şöyle de yazabilirdik:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;fihrist.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">veri</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;fihrist.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">veri</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;Sedat Köz</span><span class="se">\t</span><span class="s2">: 0322 234 45 45</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span><span class="n">veri</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bir önceki kodlardan farklı olarak bu kodlarda dosyamızı önce okuma kipinde açıp
+verileri <cite>veri</cite> adlı bir değişken içinde sakladık. Ardından aynı dosyayı bir kez
+de yazma kipinde açarak, gerekli değişiklikleri liste üzerinde
+gerçekleştirdikten sonra bütün verileri dosyaya yazdık.</p>
+<p>Unutmayın, Python’da herhangi bir işlemi pek çok farklı şekilde
+gerçekleştirebilirsiniz. Biz yukarıda olası yöntemlerden bazılarını ele aldık.
+Zaten bütün yöntemleri tek tek göstermemiz pek mümkün olmazdı. Siz dosyalara
+ilişkin bilgilerinizi ve farklı araçları kullanarak aynı işlemleri çok daha
+farklı şekillerde de yapabilirsiniz. Yani karşı karşıya olduğunuz durumu
+değerlendirip, yukarıdaki kodlardan uygun olanını veya kendi bulduğunuz bambaşka
+bir yöntemi kullanabilirsiniz.</p>
+<p>Bu arada, aslında yukarıdaki kodlarda uyguladığımız yöntem biraz güvensiz. Çünkü
+aynı dosyayı hem okuyup hem de bu dosyaya yeni veri ekliyoruz. Eğer bu
+işlemlerin herhangi bir aşamasında bir hata oluşursa, bütün değişiklikleri
+dosyaya işleyemeden dosya içeriğini tümden kaybedebiliriz. Bu tür risklere karşı
+en uygun çözüm, okuma ve yazma işlemlerini ayrı dosyalar üzerinde
+gerçekleştirmektir. Bunun nasıl yapılacağından biraz sonra söz edeceğiz. Biz
+şimdi başka bir konuya değinelim.</p>
+</div>
+</div>
+<div class="section" id="dosyaya-erisme-kipleri">
+<h2>Dosyaya Erişme Kipleri<a class="headerlink" href="#dosyaya-erisme-kipleri" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Dosyalar konusunu anlatırken yukarıda verdiğimiz örneklerden de gördüğünüz gibi,
+Python’da dosyalara erişimin türünü ve niteliğini belirleyen bazı kipler var. Bu
+kipler dosyaların açılırken hangi yetkilere sahip olacağını veya olmayacağını
+belirliyor. Gelin isterseniz bu kipleri tek tek ele alalım.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Kip</strong></p></td>
+<td><p><strong>Açıklaması</strong></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;r&quot;</span></code></p></td>
+<td><p>Bu öntanımlı kiptir. Bu kip dosyayı okuma yetkisiyle açar. Ancak bu kipi
+kullanabilmemiz için, ilgili dosyanın disk üzerinde halihazırda var olması
+gerekir. Eğer bu kipte açılmak istenen dosya mevcut değilse Python bize bir
+hata mesajı gösterecektir. Dediğimiz gibi, bu öntanımlı kiptir. Dolayısıyla
+dosyayı açarken herhangi bir kip belirtmezsek Python dosyayı bu kipte açmak
+istediğimizi varsayacaktır.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;w&quot;</span></code></p></td>
+<td><p>Bu kip dosyayı yazma yetkisiyle açar. Eğer belirttiğiniz adda bir dosya zaten
+disk üzerinde varsa, Python hiçbir şey sormadan dosya içeriğini silecektir.
+Eğer belirttiğiniz adda bir dosya diskte yoksa, Python o adda bir dosyayı
+otomatik olarak oluşturur.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;a&quot;</span></code></p></td>
+<td><p>Bu kip dosyayı yazma yetkisiyle açar. Eğer dosya zaten disk üzerinde
+mevcutsa içeriğinde herhangi bir değişiklik yapılmaz. Bu kipte açtığınız bir
+dosyaya eklediğiniz veriler varolan verilere ilave edilir. Eğer
+belirttiğiniz adda bir dosya yoksa Python otomatik olarak o adda bir dosyayı
+sizin için oluşturacaktır.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;x&quot;</span></code></p></td>
+<td><p>Bu kip dosyayı yazma yetkisiyle açar. Eğer belirttiğiniz adda bir dosya
+zaten disk üzerinde varsa, Python varolan dosyayı silmek yerine size bir
+hata mesajı gösterir. Zaten bu kipin <cite>“w”</cite> kipinden farkı, varolan dosyaları
+silmemesidir. Eğer belirttiğiniz adda bir dosya diskte yoksa, bu kip
+yardımıyla o ada sahip bir dosya oluşturabilirsiniz.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;r+&quot;</span></code></p></td>
+<td><p>Bu kip, bir dosyayı hem yazma hem de okuma yetkisiyle açar. Bu kipi
+kullanabilmeniz için, belirttiğiniz dosyanın disk üzerinde mevcut olması
+gerekir.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;w+&quot;</span></code></p></td>
+<td><p>Bu kip bir dosyayı hem yazma hem de okuma yetkisiyle açar. Eğer dosya
+mevcutsa içerik silinir, eğer dosya mevcut değilse oluşturulur.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;a+&quot;</span></code></p></td>
+<td><p>Bu kip bir dosyayı hem yazma hem de okuma yetkisiyle açar. Eğer dosya zaten
+disk üzerinde mevcutsa içeriğinde herhangi bir değişiklik yapılmaz. Bu kipte
+açtığınız bir dosyaya eklediğiniz veriler varolan verilere ilave edilir.
+Eğer belirttiğiniz adda bir dosya yoksa Python otomatik olarak o adda bir
+dosyayı sizin için oluşturacaktır.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;x+&quot;</span></code></p></td>
+<td><p>Bu kip dosyayı hem okuma hem de yazma yetkisiyle açar. Eğer belirttiğiniz
+adda bir dosya zaten disk üzerinde varsa, Python varolan dosyayı silmek
+yerine size bir hata mesajı gösterir. Zaten bu kipin <cite>“w+”</cite> kipinden farkı,
+varolan dosyaları silmemesidir. Eğer belirttiğiniz adda bir dosya diskte
+yoksa, bu kip yardımıyla o ada sahip bir dosya oluşturup bu dosyayı hem
+okuma hem de yazma yetkisiyle açabilirsiniz.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;rb&quot;</span></code></p></td>
+<td><p>Bu kip, metin dosyaları ile ikili (<em>binary</em>) dosyaları ayırt eden
+sistemlerde ikili dosyaları okuma yetkisiyle açmak için kullanılır. <cite>“r”</cite>
+kipi için söylenenler bu kip için de geçerlidir.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;wb&quot;</span></code></p></td>
+<td><p>Bu kip, metin dosyaları ile ikili dosyaları ayırt eden sistemlerde ikili
+dosyaları yazma yetkisiyle açmak için kullanılır. <cite>“w”</cite> kipi için
+söylenenler bu kip için de geçerlidir.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;ab&quot;</span></code></p></td>
+<td><p>Bu kip, metin dosyaları ile ikili dosyaları ayırt eden sistemlerde ikili
+dosyaları yazma yetkisiyle açmak için kullanılır. <cite>“a”</cite> kipi için
+söylenenler bu kip için de geçerlidir.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;xb&quot;</span></code></p></td>
+<td><p>Bu kip, metin dosyaları ile ikili dosyaları ayırt eden sistemlerde ikili
+dosyaları yazma yetkisiyle açmak için kullanılır. <cite>“x”</cite> kipi için
+söylenenler bu kip için de geçerlidir.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;rb+&quot;</span></code></p></td>
+<td><p>Bu kip, metin dosyaları ile ikili dosyaları ayırt eden sistemlerde ikili
+dosyaları hem okuma hem de yazma yetkisiyle açmak için kullanılır. <cite>“r+”</cite>
+kipi için söylenenler bu kip için de geçerlidir.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;wb+&quot;</span></code></p></td>
+<td><p>Bu kip, metin dosyaları ile ikili dosyaları ayırt eden sistemlerde ikili
+dosyaları hem okuma hem de yazma yetkisiyle açmak için kullanılır. <cite>“w+”</cite>
+kipi için söylenenler bu kip için de geçerlidir.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;ab+&quot;</span></code></p></td>
+<td><p>Bu kip, metin dosyaları ile ikili dosyaları ayırt eden sistemlerde ikili
+dosyaları hem okuma hem de yazma yetkisiyle açmak için kullanılır. <cite>“a+”</cite>
+kipi için söylenenler bu kip için de geçerlidir.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;xb+&quot;</span></code></p></td>
+<td><p>Bu kip, metin dosyaları ile ikili dosyaları ayırt eden sistemlerde ikili
+dosyaları hem okuma hem de yazma yetkisiyle açmak için kullanılır. <cite>“x+”</cite>
+kipi için söylenenler bu kip için de geçerlidir.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Bütün bu tabloya baktığınızda ilk bakışta sanki bir sürü farklı erişim kipi
+olduğunu düşünmüş olabilirsiniz. Ama aslında tabloyu biraz daha incelerseniz,
+temel olarak <cite>“r”</cite>, <cite>“w”</cite>, <cite>“a”</cite>, “<cite>x</cite>” ve <cite>“b”</cite> kiplerinin olduğunu, geri kalan
+kiplerin ise bunların kombinasyonlarından oluştuğunu göreceksiniz.</p>
+<p>Daha önce de söylediğimiz gibi, dosya işlemlerini pek çok farklı yöntemle
+gerçekleştirebilirsiniz. Yukarıdaki tabloyu dikkatlice inceleyerek, yapmak
+istediğiniz işleme uygun kipi rahatlıkla seçebilirsiniz.</p>
+<p>Bu arada, yukarıdaki tabloda değindiğimiz ikili (<em>binary</em>) dosyalardan henüz söz
+etmedik. Bir sonraki bölümde bu dosya türünü de ele alacağız.</p>
+</div>
+</div>
+
+
+
+<div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
+<div class='extrarelbar'> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="dosyalarin_metot_ve_nitelikleri.html" title="Dosyaların Metot ve Nitelikleri"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="sayilar.html" title="Sayılar"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+        <li class="nav-item nav-item-this"><a href="">Temel Dosya İşlemleri</a></li> 
+      </ul>
+    </div> </div>
+
+<div class='addcomment'>Yorumlar</div>
+
+<div class='how-to-use'>
+<h3>Önemli Not</h3>
+Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
+<span class='tag'>&lt;pre&gt;&lt;code&gt;</span> etiketleri içine alın. Örneğin:
+
+<pre>
+    <span class='tag'>&lt;pre&gt;&lt;code class="python"&gt;</span>
+    <span class='keyword'>print</span>(<span class='string'>"Merhaba Dünya!"</span>)
+    <span class='tag'>&lt;/code&gt;&lt;/pre&gt;</span>
+</pre>
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'istihza';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4eca48eb2d83faf9" async="async"></script>
+
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="dosyalarin_metot_ve_nitelikleri.html" title="Dosyaların Metot ve Nitelikleri"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="sayilar.html" title="Sayılar"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+        <li class="nav-item nav-item-this"><a href="">Temel Dosya İşlemleri</a></li> 
+      </ul>
+    </div> 
+
+<div class="footer">
+&copy; Copyright 2007-2020, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 27.06.2020.
+<a href="http://sphinx-doc.org/">Sphinx</a> 3.1.1 kullanılarak oluşturuldu.
+<br>
+<br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
+alt="Creative Commons License" style="border-width:0"
+src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a><br />
+<br>
+</div>
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=10396326;
+var sc_invisible=1;
+var sc_security="fb5cd679";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="hit counter"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="http://c.statcounter.com/10396326/0/fb5cd679/1/"
+alt="hit counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+  </body>
+</html>

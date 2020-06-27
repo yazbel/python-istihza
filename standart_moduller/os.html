@@ -1,0 +1,1205 @@
+
+ <!DOCTYPE html>
+ <html lang="tr">
+
+
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta content="Bu bölümde os modülünü inceleyeceğiz." name="description" />
+<meta content="python, modül, import, os" name="keywords" />
+
+    <title>os Modülü &#8212; Python 3 için Türkçe Kılavuz</title>
+    <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="search" title="Ara" href="../search.html" />
+    <link rel="next" title="time Modülü" href="time.html" />
+    <link rel="prev" title="Sqlite ile Veritabanı Programlama" href="sqlite.html" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+<div class='header'><a href='https://yazbel.com'>yazbel.com</a></div>
+
+<ul class='navbar'>
+    <li><a href="#"><del>pdf desteği sonlanmıştır</del></a></li>
+    <li class="forum"><a href="http://forum.yazbel.com">forum</a></li>
+</ul>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="time.html" title="time Modülü"
+             accesskey="N">sonraki</a></li>
+        <li class="right" >
+          <a href="sqlite.html" title="Sqlite ile Veritabanı Programlama"
+             accesskey="P">önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Önemli Standart Kütüphane Modülleri</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">os Modülü</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+
+  <div class="section" id="os-modulu">
+<h1>os Modülü<a class="headerlink" href="#os-modulu" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<p>Bildiğiniz gibi, işletim sistemlerinin çalışma mantığı birbirinden farklıdır.
+Örneğin Windows ve GNU/Linux işletim sistemleri aynı işi birbirlerinden farklı
+şekillerde yaparlar. Mesela Windows’ta bir dizin içinde hangi klasör ve
+dosyaların olduğunu öğrenmek için <code class="docutils literal notranslate"><span class="pre">dir</span></code> komutunu kullanırız. GNU/Linux’ta ise
+aynı işlev için <code class="docutils literal notranslate"><span class="pre">ls</span></code> adlı bir komut vardır.</p>
+<p>Aynı şekilde, iki işletim sistemi arasında dizin ayraçları konusunda da
+farklılık bulunur. Windows’ta dizinleri birbirinden ayırmak için ters taksim
+(<strong>\</strong>) işareti kullanılırken, GNU/Linux’ta aynı iş için düz taksim (<strong>/</strong>)
+işareti kullanılır.</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Düz taksim işaretini Windows da kabul eder, ancak Windows’un doğal
+dizin ayracı ters taksimdir.</p>
+</div>
+<p>İşte biz hem Windows’ta, hem de GNU/Linux’ta çalışacak bir program yazmak
+istediğimizde bu farklılıkları göz önünde bulundurmamız ve farklı durumların
+her biri için ayrı kodlar yazmamız gerekirken, <code class="docutils literal notranslate"><span class="pre">os</span></code> modülü bizi bu zahmetten
+kurtarır ve bize ortak bir arayüz üzerinden farklı işletim sistemleri ile
+tutarlı bir şekilde iletişim kurabilmemizi sağlayacak pek çok fonksiyon ve
+nitelik sunar.</p>
+<p>Bu nitelik ve fonksiyonların neler olduğunu <code class="docutils literal notranslate"><span class="pre">dir(os)</span></code> komutuyla
+görebileceğinizi biliyorsunuz.</p>
+<p>Bu bölümde, <code class="docutils literal notranslate"><span class="pre">os</span></code> modülünün sunduğu bu fonksiyon ve niteliklerin en
+önemlilerini ve en yaygın kullanılanlarını olabildiğince ayrıntılı bir şekilde
+ele almaya çalışacağız.</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Burada <code class="docutils literal notranslate"><span class="pre">os</span></code> modülünü <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">os</span></code> komutuyla içe aktarmış olduğunuz
+varsayılmaktadır.</p>
+</div>
+<div class="section" id="os-name">
+<h2>os.name<a class="headerlink" href="#os-name" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">os</span></code> modülünün, önceki derslerde şöyle bir değinip geçtiğimiz <cite>name</cite> niteliği,
+kullanıcılarımızın, yazdığımız kodları hangi işletim sisteminde çalıştırdığı
+konusunda bize bilgi verir.</p>
+<p>Bu niteliği şöyle kullanıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">name</span>
+</pre></div>
+</div>
+<p>Eğer kodlarımız Windows işletim sistemi üzerinde çalıştırılmışsa buradan şu
+çıktıyı alırız:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;nt&#39;</span>
+</pre></div>
+</div>
+<p>MacOS ve GNU/Linux işletim sistemleri ise bu komuta şu cevabı verir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;posix&#39;</span>
+</pre></div>
+</div>
+<p>Dolayısıyla <code class="docutils literal notranslate"><span class="pre">os.name</span></code> niteliğini kullanarak farklı işletim sistemlerinde
+farklı çalışan programlar yazabiliriz.</p>
+</div>
+<div class="section" id="os-sep">
+<h2>os.sep<a class="headerlink" href="#os-sep" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">os</span></code> modülünün <cite>sep</cite> niteliği, kodlarımızın çalıştığı işletim sisteminin dizin
+ayracının ne olduğunu bize gösterir.</p>
+<p>Eğer bu niteliği Windows işletim sistemi üzerinde kullanırsak şu çıktıyı
+alırız:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">sep</span>
+
+<span class="go">&#39;\\&#39;</span>
+</pre></div>
+</div>
+<p>MacOS ve GNU/Linux işletim sistemleri ise bu komuta şu cevabı verir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">sep</span>
+
+<span class="go">&#39;/&#39;</span>
+</pre></div>
+</div>
+<p>Peki bu nitelik ne işe yarar?</p>
+<p>Bu niteliği kullanarak, farklı işletim sistemlerine özgü dizin yolları
+oluşturabilirsiniz. Mesela:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;aylar&#39;</span><span class="p">,</span> <span class="s1">&#39;mayıs&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada karakter dizilerinin <code class="docutils literal notranslate"><span class="pre">join()</span></code> metodunu <code class="docutils literal notranslate"><span class="pre">os.sep</span></code> ile birlikte
+kullandığımıza dikkat edin.</p>
+<p>Bu komutu Windows’ta verdiğinizde şu çıktıyı alırsınız:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;aylar</span><span class="se">\\</span><span class="s1">mayıs</span><span class="se">\\</span><span class="s1">test&#39;</span>
+</pre></div>
+</div>
+<p>Aynı komutu GNU/Linux’ta verdiğinizde ise şu çıktıyı:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;aylar/mayıs/test&#39;</span>
+</pre></div>
+</div>
+<p>Yani yukarıdaki komutu Windows’ta verdiğinizde Python şu komutu almış gibi
+davranır:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;aylar&#39;</span><span class="p">,</span> <span class="s1">&#39;mayıs&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>GNU/Linux’ta ise şu komutu:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;aylar&#39;</span><span class="p">,</span> <span class="s1">&#39;mayıs&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;/&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Böylece yazdığınız programlarda hangi işletim sisteminin hangi dizin ayracını
+kullandığını düşünmenize gerek kalmaz; bunu sizin yerinize Python düşünür…</p>
+</div>
+<div class="section" id="os-getcwd">
+<h2>os.getcwd()<a class="headerlink" href="#os-getcwd" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">os</span></code> modülünün <code class="docutils literal notranslate"><span class="pre">getcwd()</span></code> fonksiyonu bize o anda içinde bulunduğumuz dizinin
+adını verir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+
+<span class="go">&#39;/home/istihza/Desktop&#39; #GNU/Linux</span>
+</pre></div>
+</div>
+<p>veya:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+
+<span class="go">&#39;C:\\Documents and Settings\\fozgul&#39; #Windows</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="os-chdir">
+<h2>os.chdir()<a class="headerlink" href="#os-chdir" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">os</span></code> modülünün <code class="docutils literal notranslate"><span class="pre">chdir()</span></code> fonksiyonu bize bir dizinden başka bir dizine geçme
+imkanı verir.</p>
+<p>Mesela GNU/Linux’ta, o anda bulunduğumuz dizinden <cite>/usr/bin</cite> adlı dizine geçmek
+için şu komutu kullanabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;/usr/bin/&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>veya Windows’ta <cite>C:\Documents and Settings\fozgul\Desktop</cite> adlı dizine geçmek
+için şunu:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Documents and Settings</span><span class="se">\\</span><span class="s1">fozgul</span><span class="se">\\</span><span class="s1">Desktop&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, gitmek istediğimiz dizin adını <code class="docutils literal notranslate"><span class="pre">os.chdir()</span></code> fonksiyonuna
+parametre olarak vermemiz yeterli oluyor.</p>
+</div>
+<div class="section" id="os-listdir">
+<h2>os.listdir()<a class="headerlink" href="#os-listdir" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">os</span></code> modülünün <code class="docutils literal notranslate"><span class="pre">listdir()</span></code> fonksiyonu, bize bir dizin içindeki dosya ve
+klasörleri listeleme imkanı verir. <code class="docutils literal notranslate"><span class="pre">listdir()</span></code>, <code class="docutils literal notranslate"><span class="pre">os</span></code> modülünün en kullanışlı
+fonksiyonlarından biridir.</p>
+<p>Mesela o anda içinde bulunduğumuz dizindeki dosya ve klasörleri listelemek
+istersek bu fonksiyonu şöyle kullanabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mevcut_dizin</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">mevcut_dizin</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Eğer farklı bir dizinin içeriğini listelemek istersek, parametre olarak o
+dizinin adını yazmamız yeterli olacaktır:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;/var/www&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">os.listdir()</span></code> komutunun çıktısı liste türünde bir veri
+tipidir. Dolayısıyla listelerle yapabildiğiniz her şeyi bununla da
+yababilirsiniz. Mesela bu liste üzerinde bir döngü kurabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Ya da bir dizin içindeki, belli bir uzantıya sahip dosyaları süzebilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()):</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.doc&#39;</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu kodlar bize, adı <cite>.doc</cite> ile biten bütün dosyaları listeleyecektir.</p>
+<p>Bu arada karakter dizilerinin <code class="docutils literal notranslate"><span class="pre">endswith()</span></code> adlı metodunu hatırlıyorsunuz,
+değil mi?</p>
+</div>
+<div class="section" id="os-curdir">
+<h2>os.curdir<a class="headerlink" href="#os-curdir" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Çoğu işletim sisteminde mevcut dizini göstermek için ‘.’ adlı karakter dizisi
+kullanılır. Örneğin:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>gibi bir komut yerine şu komutu da kullanabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">listdir()</span></code> fonksiyonuna parametre olarak verdiğimiz ‘.’ karakter dizisi o
+anda içinde bulunduğumuz dizini temsil eder.</p>
+<p>Eğer bu karakter dizisini elle yazmak istemiyorsanız <code class="docutils literal notranslate"><span class="pre">os</span></code> modülü içindeki
+<cite>curdir</cite> adlı nitelikten de yararlanabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">curdir</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu arada <code class="docutils literal notranslate"><span class="pre">os.getcwd()</span></code> ile <cite>os.curdir</cite>’i birbirine karıştırmamalısınız. Bu
+ikisi aynı şey değildir. <code class="docutils literal notranslate"><span class="pre">os.getcwd()</span></code> çıktı olarak o anda içinde bulunduğumuz
+dizinin adını verir. <cite>os.curdir</cite> ise, bir işletim sisteminde, o anda içinde
+bulunulan dizini temsil eden karakter dizisi ne ise onun değerini barındırır. Bu
+değer çoğu işletim sisteminde ‘.’ adlı karakter dizisidir.</p>
+</div>
+<div class="section" id="os-pardir">
+<h2>os.pardir<a class="headerlink" href="#os-pardir" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Tıpkı ‘.’ karakter dizisi gibi, çoğu işletim sisteminde bir üst dizini göstermek
+için ‘..’ adlı karakter dizisi kullanılır. Örneğin:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>komutu, o anda içinde bulunduğunuz dizindeki değil, bir üst dizindeki dosya ve
+dizin adlarını listeleyecektir. Yine tıpkı <cite>os.curdir</cite> niteliğinde olduğu gibi,
+eğer bu karakter dizisini kendiniz elle yazmak istemezseniz, bu karakter
+dizisini içinde barındıran <cite>os.pardir</cite> adlı bir nitelikten yararlanabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">pardir</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu komut, <code class="docutils literal notranslate"><span class="pre">os.listdir('..')</span></code> ile aynı çıktıyı verir.</p>
+</div>
+<div class="section" id="os-startfile">
+<h2>os.startfile()<a class="headerlink" href="#os-startfile" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Uyarı</p>
+<p>Bu fonksiyon yalnızca Windows’ta çalışır. GNU/Linux işletim
+sistemlerinde bu fonksiyon tanımlı değildir.</p>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">os</span></code> modülü içindeki <code class="docutils literal notranslate"><span class="pre">startfile()</span></code> adlı fonksiyonun görevi bilgisayarımızda
+bulunan herhangi bir dosyayı, ilişkilendirilmiş olduğu programla açmaktır.</p>
+<p>Hemen bir örnek verelim.</p>
+<p>O anda içinde bulunduğumuz dizinde <cite>deneme.txt</cite> adlı bir dosya olduğunu
+varsayalım. Şimdi de şu komutu verelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">startfile</span><span class="p">(</span><span class="s1">&#39;deneme.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>İşletim sisteminiz <cite>.txt</cite> uzantılı dosyaları hangi programla ilişkilendirmişse,
+<code class="docutils literal notranslate"><span class="pre">startfile()</span></code> fonksiyonu <cite>deneme.txt</cite> adlı dosyayı o programla açacaktır.
+Windows’ta <cite>.txt</cite> dosyaları genellikle Notepad programıyla ilişkilendirildiği
+için yukarıdaki komutu verdiğinizde muhtemelen <cite>deneme.txt</cite> dosyasının içeriği
+Notepad programı aracılığıyla görüntülenecektir.</p>
+<p>Aynı şekilde, o anda bulunduğuz dizin içinde <cite>deneme.docx</cite> adlı bir dosyanın
+olduğunu varsayalım ve şu komutu verelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">startfile</span><span class="p">(</span><span class="s1">&#39;deneme.docx&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu komut da <cite>deneme.docx</cite> dosyasının Microsoft Word adlı yazılımla açılmasını
+sağlayacaktır.</p>
+<p>Eğer <code class="docutils literal notranslate"><span class="pre">startfile()</span></code> fonksiyonuna parametre olarak bir dosya değil de dizin adı
+verecek olursanız, o dizin Windows Explorer ile açılır. Mesela içinde
+bulunduğumuz dizini Windows Explorer ile açalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">startfile</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">curdir</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bunun yerine şu komutu kullanabileceğinizi de biliyorsunuz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">startfile</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>veya:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">startfile</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Bu üç komut da aynı işlevi yerine getirir.</p>
+<p>Peki bir üst dizini açmak istersek ne yapacağız?</p>
+<p>Dikkatlice bakın:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">startfile</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">pardir</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>veya:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">startfile</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Her iki komut da Windows Explorer yardımıyla bir üst dizinin görüntülenmesini
+sağlayacaktır.</p>
+<p>Elbette <code class="docutils literal notranslate"><span class="pre">startfile()</span></code> fonksiyonuna parametre olarak belirli bir dizinin adını
+da verebilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">startfile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Documents and Settings\fozgul&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">os.startfile()</span></code> oldukça faydalı bir fonksiyondur. Hatta bu fonksiyonu sadece
+dosyaları açmak için değil, internet sayfalarını açmak için dahi
+kullanabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">startfile</span><span class="p">(</span><span class="s1">&#39;www.istihza.com&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Ancak bu komutun yalnızca Windows’ta çalışacağını unutmayın. O yüzden bunun
+yerine, daha önce öğrendiğimiz <code class="docutils literal notranslate"><span class="pre">webbrowser</span></code> modülünü kullanmak daha doğru
+olacaktır.</p>
+</div>
+<div class="section" id="os-mkdir">
+<h2>os.mkdir()<a class="headerlink" href="#os-mkdir" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">os</span></code> modülünün <code class="docutils literal notranslate"><span class="pre">mkdir()</span></code> fonksiyonu yeni dizinler oluşturabilmemizi sağlar.</p>
+<p>Örneğin:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s1">&#39;yenidizin&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu komut, o anda içinde bulunduğumuz dizin içinde ‘yenidizin’ adlı bir dizin
+oluşturacaktır.</p>
+<p>Elbette eğer dizini o anda içinde bulunduğunuz dizin içinde değil de farklı bir
+konumda oluşturmak isterseniz, o konumun açık adresini belirtebilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s1">&#39;/home/istihza/Desktop/yenidizin&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>veya:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;C:\Documents and Settings\fozgul\yenidizin&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Eğer oluşturmaya çalıştığınız dizin zaten varsa <code class="docutils literal notranslate"><span class="pre">os.mkdir()</span></code> hata verecektir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;C:\Documents and Settings\fozgul\yenidizin&#39;</span><span class="p">)</span>
+
+<span class="go">FileExistsError: [WinError 183] Halen varolan bir</span>
+<span class="go">dosya oluşturulamaz: &#39;yenidizin&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="os-makedirs">
+<h2>os.makedirs()<a class="headerlink" href="#os-makedirs" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">os.makedirs()</span></code> fonksiyonu biraz önce öğrendiğimiz <code class="docutils literal notranslate"><span class="pre">os.mkdir()</span></code> fonksiyonuna
+çok benzese de aralarında önemli farklar bulunur.</p>
+<p>Biraz önce <code class="docutils literal notranslate"><span class="pre">os.mkdir()</span></code> fonksiyonunu anlatırken şöyle bir örnek vermiştik:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;C:\Documents and Settings\fozgul\yenidizin&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu komutun çalışabilmesi için, bilgisayarımızda halihazırda <cite>C:Documents and
+Settingsfozgul` yolunun varolması gerekir. Eğer bu yolu oluşturan dizinlerden
+herhangi biri mevcut değilse, ``mkdir()`</cite> fonksiyonu <cite>yenidizin</cite> adlı dizini
+oluşturamaz. Bu fonksiyonun çalışabilmesi için, varolmayan bütün dizinleri tek
+tek oluşturmanız gerekir.</p>
+<p><code class="docutils literal notranslate"><span class="pre">os.makedirs()</span></code> ise <code class="docutils literal notranslate"><span class="pre">os.mkdir()</span></code> fonksiyonunun aksine, varolmayan üst ve alt
+dizinleri de oluşturma yeteneğine sahiptir. Örneğin:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;/home/istihza/Desktop/aylar/mayıs/ödeme/&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu komut sırasıyla <cite>aylar</cite>, <cite>mayıs</cite> ve <cite>ödeme</cite> adlı dizinleri iç içe
+oluşturacaktır. Yani <code class="docutils literal notranslate"><span class="pre">os.makedirs()</span></code> komutunun <cite>ödeme</cite> adlı dizini oluşturması
+için <cite>aylar</cite> ve <cite>mayıs</cite> adlı dizinlerin önceden varolması zorunlu değildir. Bu
+dizinler varolsa da olmasa da <code class="docutils literal notranslate"><span class="pre">os.makedirs()</span></code> komutu <cite>ödeme</cite> dizinini
+oluşturabilir. Ama <code class="docutils literal notranslate"><span class="pre">os.mkdir()</span></code> fonksiyonu böyle değildir. Eğer <code class="docutils literal notranslate"><span class="pre">os.mkdir()</span></code>
+fonksiyonuyla <cite>ödeme</cite> dizinini oluşturmak isterseniz, öncelikle <cite>aylar</cite> ve
+<cite>mayıs</cite> adlı dizinleri oluşturmanız gerekir.</p>
+</div>
+<div class="section" id="os-rename">
+<h2>os.rename()<a class="headerlink" href="#os-rename" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">os</span></code> modülünün <code class="docutils literal notranslate"><span class="pre">rename()</span></code> adlı fonksiyonunu kullanarak dizinlerin adlarını
+değiştirebiliriz. Bu fonksiyon iki parametre alır:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;dizinin_şimdiki_adı&#39;</span><span class="p">,</span> <span class="s1">&#39;dizinin_yeni_adı&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Mesela mevcut çalışma dizininde ‘deneme’ adlı bir dizin varsa, bu dizinin adını
+‘test’ olarak değiştirmek için şu komutu verebiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;deneme&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Eğer zaten ‘test’ adlı bir dizin varsa (ve içi boşsa), yukarıdaki komut
+GNU/Linux’ta ‘test’ adlı dizinin üzerine yazacak, Windows’ta ise hata
+verecektir.</p>
+</div>
+<div class="section" id="os-replace">
+<h2>os.replace()<a class="headerlink" href="#os-replace" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">os</span></code> modülünün <code class="docutils literal notranslate"><span class="pre">replace()</span></code> fonksiyonu biraz önce öğrendiğimiz <code class="docutils literal notranslate"><span class="pre">rename()</span></code>
+fonksiyonu gibi çalışır:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;deneme&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu komut, tıpkı <code class="docutils literal notranslate"><span class="pre">rename()</span></code> fonksiyonunda olduğu gibi, <cite>deneme</cite> adlı dizinin
+adını <cite>test</cite> olarak değiştirecektir.</p>
+<p>Eğer <cite>test</cite> adlı bir dizin zaten varsa, <code class="docutils literal notranslate"><span class="pre">replace()</span></code> fonksiyonu, hem Windows’ta
+hem de GNU/Linux’ta, varolan bu <cite>test</cite> dizininin üzerine yazmaya çalışır.
+GNU/Linux’ta çoğu durumda bunu başarır, ancak Windows’ta yine de çeşitli izin
+hataları ile karşılaşabilirsiniz.</p>
+</div>
+<div class="section" id="os-remove">
+<h2>os.remove()<a class="headerlink" href="#os-remove" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">os</span></code> modülünün <code class="docutils literal notranslate"><span class="pre">remove()</span></code> adlı fonksiyonu, bilgisayarımızdaki dosyaları
+silmemizi sağlar:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;dosya_adı&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Yalnız bu komutu çok dikkatli kullanmalısınız. Çünkü bu komut, silme işleminden
+önce herhangi bir soru sormadan, dosyayı doğrudan siler.</p>
+</div>
+<div class="section" id="os-rmdir">
+<h2>os.rmdir()<a class="headerlink" href="#os-rmdir" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">os</span></code> modülünün <code class="docutils literal notranslate"><span class="pre">rmdir()</span></code> fonksiyonu, içi boş bir dizini silmek için
+kullanılır:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="s1">&#39;dizin_adı&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Eğer silmeye çalıştığınız dizin içinde herhangi bir başka dizin veya dosya varsa
+bu fonksiyon hata verecektir.</p>
+<p>Mesela şöyle bir dizin yapısı düşünelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="o">|</span><span class="n">___</span> <span class="n">anadizin</span>
+    <span class="o">|</span><span class="n">___</span> <span class="n">dizin1</span>
+        <span class="o">|</span><span class="n">___</span> <span class="n">dizin2</span>
+            <span class="o">|</span><span class="n">___</span> <span class="n">dizin3</span>
+                <span class="o">|</span><span class="n">___</span> <span class="n">dizin4</span>
+</pre></div>
+</div>
+<p>Bu arada, bu dizin yapısını kolayca oluşturmak için ne yapmanız gerektiğini
+biliyorsunuz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;anadizin/dizin1/dizin2/dizin3/dizin4&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Anadizin altındayken şu komutlar hata verecektir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="s1">&#39;anadizin&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;anadizin/dizin1&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;anadizin/dizin1/dizin2/dizin3&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Çünkü bu dizinlerinin hiçbirinin içi boş değil; her birinin içinde birer dizin
+var. Ama şu komut başarılı olacaktır:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;anadizin/dizin1/dizin2/dizin3/dizin4&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu şekilde yukarı doğru ilerleyerek sırayla bütün dizinleri silebilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;anadizin/dizin1/dizin2/dizin3/&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;anadizin/dizin1/dizin2/&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;anadizin/dizin1&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;anadizin/&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="os-removedirs">
+<h2>os.removedirs()<a class="headerlink" href="#os-removedirs" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">os</span></code> modülünün <code class="docutils literal notranslate"><span class="pre">removedirs()</span></code> fonksiyonu, içi boş dizin yollarını silmemizi
+sağlar. Peki bu ne demek?</p>
+<p>Diyelim ki elimizde şöyle bir dizin yapısı var:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="o">|</span><span class="n">___</span> <span class="n">anadizin</span>
+    <span class="o">|</span><span class="n">___</span> <span class="n">dizin1</span>
+        <span class="o">|</span><span class="n">___</span> <span class="n">dizin2</span>
+            <span class="o">|</span><span class="n">___</span> <span class="n">dizin3</span>
+                <span class="o">|</span><span class="n">___</span> <span class="n">dizin4</span>
+</pre></div>
+</div>
+<p>Anadizin altından şu komutu verdiğimizde:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">removedirs</span><span class="p">(</span><span class="s1">&#39;anadizin/dizin1/dizin2/dizin3/dizin4&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Eğer bütün dizinlerin içi boşsa, <cite>anadizin</cite>’den <cite>dizin4</cite>’e kadar olan bütün
+dizinler (<cite>anadizin</cite> ve <cite>dizin4</cite> dahil) silinecektir.</p>
+</div>
+<div class="section" id="os-stat">
+<h2>os.stat()<a class="headerlink" href="#os-stat" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">os</span></code> modülünün <code class="docutils literal notranslate"><span class="pre">stat()</span></code> fonksiyonu dosyalar hakkında bilgi almamızı sağlar.
+Bu fonksiyonu kullanarak bir dosyanın boyutunu, oluşturulma tarihini,
+değiştirilme tarihini ve erişilme tarihini sorgulayabiliriz.</p>
+<p><code class="docutils literal notranslate"><span class="pre">stat()</span></code> fonksiyonunu şöyle kullanıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dosya</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">stat</span><span class="p">(</span><span class="s1">&#39;dosya_adı&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dosya</span>
+</pre></div>
+</div>
+<p>Buradan şuna benzer bir çıktı alırız:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">stat_result</span><span class="p">(</span><span class="n">st_mode</span><span class="o">=</span><span class="mi">33279</span><span class="p">,</span> <span class="n">st_ino</span><span class="o">=</span><span class="mi">17732923532961356</span><span class="p">,</span>
+<span class="n">st_dev</span><span class="o">=</span><span class="mi">1745874298</span><span class="p">,</span> <span class="n">st_nlink</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">st_uid</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">st_gid</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="n">st_size</span><span class="o">=</span><span class="mi">495616</span><span class="p">,</span> <span class="n">st_atime</span><span class="o">=</span><span class="mi">1416488851</span><span class="p">,</span> <span class="n">st_mtime</span><span class="o">=</span><span class="mi">1415275662</span><span class="p">,</span>
+<span class="n">st_ctime</span><span class="o">=</span><span class="mi">1415275658</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu, kendi içinde birtakım nitelikler barındıran özel bir veri tipidir. Bu veri
+tipinin barındırdığı nitelikleri görmek için, her zaman olduğu gibi <code class="docutils literal notranslate"><span class="pre">dir()</span></code>
+fonksiyonundan yararlanabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">dir</span><span class="p">(</span><span class="n">dosya</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada özellikle işimize yarayacak olan nitelikler şunlardır:</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd"><cite>st_atime</cite></dt>
+<dd class="field-odd"><p>dosyaya en son erişilme tarihi</p>
+</dd>
+<dt class="field-even"><cite>st_ctime</cite></dt>
+<dd class="field-even"><p>dosyanın oluşturulma tarihi (Windows’ta)</p>
+</dd>
+<dt class="field-odd"><cite>st_mtime</cite></dt>
+<dd class="field-odd"><p>dosyanın son değiştirilme tarihi</p>
+</dd>
+<dt class="field-even"><cite>st_size</cite></dt>
+<dd class="field-even"><p>dosyanın boyutu</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>Mesela bir dosyanın boyutunu öğrenmek için <cite>st_size</cite> niteliğini şu şekilde
+kullanabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dosya</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">stat</span><span class="p">(</span><span class="s1">&#39;dosya_adı&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dosya</span><span class="o">.</span><span class="n">st_size</span>
+</pre></div>
+</div>
+<p>Bu fonksiyon bize ‘bayt’ cinsinden bir çıktı verir. Bunu kilobayta çevirmek
+için, bu değeri 1024’e bölebilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dosya</span><span class="o">.</span><span class="n">st_size</span> <span class="o">/</span> <span class="mi">1024</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">os</span></code> modülünün <code class="docutils literal notranslate"><span class="pre">stat()</span></code> fonksiyonunu kullanarak bir dosyanın oluşturulma,
+erişilme ve değiştirilme tarihlerini de elde edebilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dosya</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">stat</span><span class="p">(</span><span class="s1">&#39;dosya_adı&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dosya</span><span class="o">.</span><span class="n">st_ctime</span> <span class="c1">#oluşturulma tarihi</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dosya</span><span class="o">.</span><span class="n">st_atime</span> <span class="c1">#erişilme tarihi</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dosya</span><span class="o">.</span><span class="n">st_mtime</span> <span class="c1">#değiştirme tarihi</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Uyarı</p>
+<p>GNU/Linux’ta bir dosyanın ne zaman oluşturulduğunu öğrenmek mümkün
+değildir. Dolayısıyla <code class="docutils literal notranslate"><span class="pre">dosya.st_ctime</span></code> komutu yalnızca Windows’ta bir dosyanın
+oluşturulma tarihi verir. Bu komutu GNU/Linux’ta verdiğimizde elde edeceğimiz
+şey dosyanın son değiştirilme tarihidir.</p>
+</div>
+<p>Bu arada, yukarıdaki komutların çıktısı size anlamsız gelmiş olabilir. Birazdan,
+<code class="docutils literal notranslate"><span class="pre">datetime</span></code> adlı bir modülü öğrendiğimizde bu anlamsız görünen sayıları anlamlı
+tarih bilgilerine nasıl dönüştüreceğimizi de anlatacağız.</p>
+</div>
+<div class="section" id="os-system">
+<h2>os.system()<a class="headerlink" href="#os-system" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">os</span></code> modülünün <code class="docutils literal notranslate"><span class="pre">system()</span></code> fonksiyonu Python içinden sistem komutlarını veya
+başka programları çalıştırabilmemizi sağlar. Mesela:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;notepad.exe&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="os-urandom">
+<h2>os.urandom()<a class="headerlink" href="#os-urandom" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">os</span></code> modülünün <code class="docutils literal notranslate"><span class="pre">urandom()</span></code> fonksiyonu rastgele bayt dizileri elde etmek için
+kullanılabilir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">urandom</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu komut, 12 bayttan oluşan rastgele bir dizi oluşturur. Buradan elde ettiğiniz
+rastgele değeri kriptografik çalışmalarda veya rastgele parola üretme
+işlemlerinde kullanabilirsiniz.</p>
+</div>
+<div class="section" id="os-walk">
+<h2>os.walk()<a class="headerlink" href="#os-walk" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Hatırlarsanız önceki sayfalarda <code class="docutils literal notranslate"><span class="pre">os</span></code> modülü içindeki <code class="docutils literal notranslate"><span class="pre">listdir()</span></code> adlı bir
+fonksiyondan söz etmiştik. Bu fonksiyon, bir dizinin içeriğini listeleme imkanı
+veriyordu bize. Mesela o anda içinde bulunduğumuz dizinde hangi dosya ve
+alt dizinlerin olduğunu öğrenmek için şöyle bir komut kullanabiliyorduk:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+
+<span class="go">[&#39;build.py&#39;, &#39;gtk&#39;, &#39;kitap&#39;, &#39;make.bat&#39;, &#39;Makefile&#39;,</span>
+<span class="go"> &#39;meta_conf.py&#39;, &#39;py2&#39;, &#39;py3&#39;, &#39;theme&#39;, &#39;tk2&#39;, &#39;__pycache__&#39;]</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi bu fonksiyon yalnızca kendisine parametre olarak verilen dizinin
+içeriğini listeliyor. Örneğin yukarıdaki çıktıda görünen <cite>gtk</cite>, <cite>kitap</cite>,
+<cite>py2</cite>, <cite>py3</cite>, <cite>theme</cite>, <cite>tk2</cite> ve <cite>__pycache__</cite> birer dizin. Ama <code class="docutils literal notranslate"><span class="pre">listdir()</span></code>
+fonksiyonu bu dizinlerin de içine girip buradaki içeriği listelemeye çalışmıyor.
+Eğer biz mesela <cite>theme</cite> dizininin içeriğini de listelemek istersek bunu açıkça
+belirtmemiz gerekir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;theme&#39;</span><span class="p">)</span>
+
+<span class="go">[&#39;layout.html&#39;, &#39;localtoc.html&#39;, &#39;pydoctheme&#39;,</span>
+<span class="go"> &#39;sidebar.html&#39;, &#39;static&#39;]</span>
+</pre></div>
+</div>
+<p>Veya <cite>theme</cite> dizini içindeki <cite>static</cite> adlı dizine de erişmek istersek bunu da şu
+şekilde açık açık ifade etmemiz gerekir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;theme/static&#39;</span><span class="p">)</span>
+
+<span class="go">[&#39;basic.css&#39;, &#39;copybutton.js&#39;, &#39;py.png&#39;, &#39;sidebar.js&#39;]</span>
+</pre></div>
+</div>
+<p>Peki ya biz o anda içinde bulunduğumuz dizinden itibaren içe doğru bütün
+dizinleri otomatik olarak taramak istersek ne yapacağız?</p>
+<p>Bunun için <code class="docutils literal notranslate"><span class="pre">listdir()</span></code> fonksiyonunu kullanarak özyinelemeli (recursive) bir
+fonksiyon yazabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">def</span> <span class="nf">tara</span><span class="p">(</span><span class="n">dizin</span><span class="p">):</span>
+    <span class="n">başlangıç</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+    <span class="n">dosyalar</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">dizin</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">öğe</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">curdir</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">öğe</span><span class="p">):</span>
+            <span class="n">dosyalar</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">öğe</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">dosyalar</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">tara</span><span class="p">(</span><span class="n">öğe</span><span class="p">))</span>
+
+    <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">başlangıç</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dosyalar</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Bu kodlarda henüz öğrenmediğimiz tek şey <code class="docutils literal notranslate"><span class="pre">os.path.isdir()</span></code>
+fonksiyonu. Bu fonksiyon, kendisine parametre olarak verilen bir değerin
+dizin olup olmadığını tespit etmemizi sağlıyor.</p>
+</div>
+<p>Yukarıdaki kodlarda öncelikle o anda içinde bulunduğumuz dizinin konumunu
+<cite>başlangıç</cite> adlı bir değişkene atıyoruz. Çünkü daha sonra buraya dönmemiz
+gerekecek:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">başlangıç</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Ardından <cite>dosyalar</cite> adlı bir liste oluşturuyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">dosyalar</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+</div>
+<p>Bu liste, dizinler içindeki bütün dosyaları içinde barındıracak.</p>
+<p>Daha sonra, <code class="docutils literal notranslate"><span class="pre">tara()</span></code> fonksiyonuna parametre olarak verilen <cite>dizin</cite> adlı
+dizinin içine giriyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">dizin</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu dizinin içine girdikten sonra, mevcut dizin içindeki bütün öğeleri
+<code class="docutils literal notranslate"><span class="pre">listdir()</span></code> fonksiyonu ile tek tek tarıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">öğe</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">curdir</span><span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>Eğer tarama sırasında karşılaştığımız öğe bir dizin değil ise:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">öğe</span><span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>Bu öğeyi, doğrudan en başta tanımladığımız <cite>dosyalar</cite> adlı listeye
+gönderiyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">dosyalar</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">öğe</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Ama eğer tarama sırasında karşılaştığımız öğe bir dizin ise:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">else</span><span class="p">:</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">tara()</span></code> fonksiyonunun en başına dönüp, tanımladığımız bütün işlemleri bu
+dizin üzerine özyinelemeli olarak uyguluyoruz ve elde ettiğimiz öğeleri
+<code class="docutils literal notranslate"><span class="pre">dosyalar</span></code> adlı listeye <code class="docutils literal notranslate"><span class="pre">extend()</span></code> metodu ile işliyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">dosyalar</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">tara</span><span class="p">(</span><span class="n">öğe</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Burada neden <code class="docutils literal notranslate"><span class="pre">append()</span></code> değil de <code class="docutils literal notranslate"><span class="pre">extend()</span></code> kullandığımızı anlamak için,
+yukarıdaki kodu bir de <code class="docutils literal notranslate"><span class="pre">append()</span></code> ile yazıp elde ettiğiniz çıktıyı
+değerlendirebilirsiniz.</p>
+<p><code class="docutils literal notranslate"><span class="pre">for</span></code> döngüsünden çıktıktan sonra da tekrar en baştaki konuma dönebilmek için
+aşağıdaki komutu çalıştırıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">başlangıç</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Eğer bu şekilde başa dönmezsek, dizin yapısı içindeki ilk alt dizine girildikten
+sonra programımız o konumda takılı kalacağı için öteki üst dizinlerin içini
+tarayamaz. Bunun ne demek olduğunu anlamak için kodları bir de
+<code class="docutils literal notranslate"><span class="pre">os.chdir(başlangıç)</span></code> kodu olmadan çalıştırmayı deneyebilirsiniz.</p>
+<p>Yukarıdaki yöntem doğru olsa da, Python’da bir dizini en dibe kadar taramanın en
+iyi yolu değildir. Python bize bu iş için özel bir fonksiyon sunar. İşte, bu
+bölümde ele alacağımız bu fonksiyonun adı <code class="docutils literal notranslate"><span class="pre">walk()</span></code>.</p>
+<p><em>Walk</em> kelimesi İngilizcede ‘yürümek’ anlamına gelir. <code class="docutils literal notranslate"><span class="pre">walk()</span></code> fonksiyonu da,
+kelimenin bu anlamına uygun olarak, dizinler içinde ‘yürünmesini’ sağlar. Gelin
+bunu biraz açıklayalım.</p>
+<p>Şöyle bir durum düşünün: Sabit diskinizde, bir dizin içinde pek çok alt dizine
+dağılmış bir sürü dosya var. Yani şunun gibi:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="o">+</span><span class="n">anadizin</span>
+    <span class="o">|</span><span class="n">dosya</span><span class="o">.</span><span class="n">txt</span>
+    <span class="o">|</span><span class="n">dosya</span><span class="o">.</span><span class="n">doc</span>
+    <span class="o">|</span><span class="n">dosya</span><span class="o">.</span><span class="n">xls</span>
+    <span class="o">|</span><span class="n">dosya</span><span class="o">.</span><span class="n">jpeg</span>
+    <span class="o">+</span><span class="n">resimler</span>
+        <span class="o">|</span><span class="n">resim1</span><span class="o">.</span><span class="n">jpeg</span>
+        <span class="o">|</span><span class="n">resim2</span><span class="o">.</span><span class="n">jpeg</span>
+        <span class="o">|</span><span class="n">resim3</span><span class="o">.</span><span class="n">jpeg</span>
+        <span class="o">|</span><span class="n">resim4</span><span class="o">.</span><span class="n">jpeg</span>
+        <span class="o">+</span><span class="n">başkadosyalar</span>
+            <span class="o">|</span><span class="n">dosya</span><span class="o">.</span><span class="n">pdf</span>
+            <span class="o">|</span><span class="n">dosya</span><span class="o">.</span><span class="n">zip</span>
+            <span class="o">|</span><span class="n">dosya</span><span class="o">.</span><span class="n">mp3</span>
+            <span class="o">|</span><span class="n">dosya</span><span class="o">.</span><span class="n">ogg</span>
+            <span class="o">|</span><span class="n">dosya</span><span class="o">.</span><span class="n">jpeg</span>
+</pre></div>
+</div>
+<p>Siz bu iç içe geçmiş dosya yığını içinden, sonu <cite>.jpeg</cite> ile bitenleri tek bir
+yerde toplamak istiyorsunuz. Elbette, eğer isterseniz bu <cite>.jpeg</cite> dosyalarını tek
+tek elle bulup istediğiniz yere taşıyabilirsiniz. Ama bu yöntem bir Python
+programcısına yakışmaz, değil mi?</p>
+<p>Python programcıları bu tür angaryaları kendi yapmak yerine Python’a yaptırmayı
+tercih eder. O yüzden biz de bu işi yapmak için Python’dan yararlanacağız.</p>
+<p><code class="docutils literal notranslate"><span class="pre">os</span></code> modülünün <code class="docutils literal notranslate"><span class="pre">walk()</span></code> fonksiyonunu kullanarak bu görevi rahatlıkla yerine
+getirebilirsiniz.</p>
+<p>Peki ama nasıl?</p>
+<p>Öncelikle şu kodlar yardımıyla, yukarıdaki sözünü ettiğimiz dosya-dizin yapısını
+oluşturalım. Böylece daha somut bir yapı üzerinde çalışma imkanı elde etmiş
+oluruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">uzantılar</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;txt&#39;</span><span class="p">,</span> <span class="s1">&#39;doc&#39;</span><span class="p">,</span> <span class="s1">&#39;xls&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;jpeg&#39;</span><span class="p">,</span> <span class="s1">&#39;pdf&#39;</span><span class="p">,</span> <span class="s1">&#39;zip&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;mp3&#39;</span><span class="p">,</span> <span class="s1">&#39;ogg&#39;</span><span class="p">,</span> <span class="s1">&#39;jpeg&#39;</span><span class="p">]</span>
+
+<span class="n">şablon1</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">.</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;dosya&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">uzantılar</span><span class="p">[:</span><span class="mi">4</span><span class="p">]]</span>
+<span class="n">şablon2</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;resim</span><span class="si">{}</span><span class="s1">.</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">uzantılar</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)]</span>
+<span class="n">şablon3</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">.</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;dosya&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">uzantılar</span><span class="p">[</span><span class="mi">4</span><span class="p">:]]</span>
+
+<span class="n">dosyalar</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;anadizin&#39;</span><span class="p">,</span>  <span class="n">şablon1</span><span class="p">),</span>
+            <span class="p">(</span><span class="s1">&#39;resimler&#39;</span><span class="p">,</span> <span class="n">şablon2</span><span class="p">),</span>
+            <span class="p">(</span><span class="s1">&#39;başkadosyalar&#39;</span><span class="p">,</span> <span class="n">şablon3</span><span class="p">)]</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">dosya</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">dosya</span> <span class="ow">in</span> <span class="n">dosyalar</span><span class="p">]))</span>
+
+<span class="k">for</span> <span class="n">dizin</span><span class="p">,</span> <span class="n">şablon</span> <span class="ow">in</span> <span class="n">dosyalar</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">şablon</span><span class="p">:</span>
+        <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">dizin</span><span class="p">,</span> <span class="n">s</span><span class="p">]),</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">dizin</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu kodlarda, şu ana kadar görmediğimiz, öğrenmediğimiz hiçbir şey yok. Bu
+kodları rahatlıkla anlayabilecek kadar Python bilgisine sahipsiniz.</p>
+<p>Dosya-dizin yapımızı oluşturduğumuza göre, <code class="docutils literal notranslate"><span class="pre">os</span></code> modülünün <code class="docutils literal notranslate"><span class="pre">walk()</span></code>
+fonksiyonunu bu yapı üzerinde nasıl kullanacağımıza geçebiliriz.</p>
+<p>Şimdi ‘anadizin’ adlı klasörün bulunduğu dizin içinde etkileşimli kabuğu
+başlatalım ve şu komutları verelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s1">&#39;anadizin&#39;</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Buradan şu çıktıyı alacağız:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s1">&#39;anadizin&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;resimler&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;dosya.doc&#39;</span><span class="p">,</span> <span class="s1">&#39;dosya.jpeg&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;dosya.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;dosya.xls&#39;</span><span class="p">])</span>
+<span class="p">(</span><span class="s1">&#39;anadizin</span><span class="se">\\</span><span class="s1">resimler&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;başkadosyalar&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;resim1.jpeg&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;resim2.jpeg&#39;</span><span class="p">,</span> <span class="s1">&#39;resim3.jpeg&#39;</span><span class="p">,</span> <span class="s1">&#39;resim4.jpeg&#39;</span><span class="p">])</span>
+<span class="p">(</span><span class="s1">&#39;anadizin</span><span class="se">\\</span><span class="s1">resimler</span><span class="se">\\</span><span class="s1">başkadosyalar&#39;</span><span class="p">,</span> <span class="p">[],</span> <span class="p">[</span><span class="s1">&#39;dosya.jpeg&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;dosya.mp3&#39;</span><span class="p">,</span> <span class="s1">&#39;dosya.ogg&#39;</span><span class="p">,</span> <span class="s1">&#39;dosya.pdf&#39;</span><span class="p">,</span> <span class="s1">&#39;dosya.zip&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>İnceleme kolaylığı açısından bu çıktının ilk kısmını ele alalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s1">&#39;anadizin&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;resimler&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;dosya.doc&#39;</span><span class="p">,</span> <span class="s1">&#39;dosya.jpeg&#39;</span><span class="p">,</span>
+                            <span class="s1">&#39;dosya.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;dosya.xls&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, burada üç öğeli bir demet var. Çıktının diğer kısımlarını da
+incelerseniz aynı yapıyı göreceksiniz. Dolayısıyla <code class="docutils literal notranslate"><span class="pre">os.walk()</span></code> komutu bize şu
+üç öğeden oluşan bir demet verir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">kökdizin</span><span class="p">,</span> <span class="n">altdizinler</span><span class="p">,</span> <span class="n">dosyalar</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Yukarıdaki çıktıyı incelediğinizde bu yapıyı rahatlıkla görebilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">kökdizin</span>    <span class="o">=&gt;</span> <span class="s1">&#39;anadizin&#39;</span>
+<span class="n">altdizinler</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;resimler&#39;</span><span class="p">]</span>
+<span class="n">dosyalar</span>    <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;dosya.doc&#39;</span><span class="p">,</span> <span class="s1">&#39;dosya.jpeg&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;dosya.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;dosya.xls&#39;</span><span class="p">]</span>
+
+<span class="n">kökdizin</span>    <span class="o">=&gt;</span> <span class="s1">&#39;anadizin</span><span class="se">\\</span><span class="s1">resimler&#39;</span>
+<span class="n">altdizinler</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;başkadosyalar&#39;</span><span class="p">]</span>
+<span class="n">dosyalar</span>    <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;resim1.jpeg&#39;</span><span class="p">,</span> <span class="s1">&#39;resim2.jpeg&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;resim3.jpeg&#39;</span><span class="p">,</span> <span class="s1">&#39;resim4.jpeg&#39;</span><span class="p">]</span>
+
+<span class="n">kökdizin</span>    <span class="o">=&gt;</span> <span class="s1">&#39;anadizin</span><span class="se">\\</span><span class="s1">resimler</span><span class="se">\\</span><span class="s1">başkadosyalar&#39;</span>
+<span class="n">altdizinler</span> <span class="o">=&gt;</span> <span class="p">[]</span>
+<span class="n">dosyalar</span>    <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;dosya.jpeg&#39;</span><span class="p">,</span> <span class="s1">&#39;dosya.mp3&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;dosya.ogg&#39;</span><span class="p">,</span> <span class="s1">&#39;dosya.pdf&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;dosya.zip&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Mesela bu üç öğeli demet içinden yalnızca dosyaları almak isterseniz şöyle bir
+komut verebilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">kökdizin</span><span class="p">,</span> <span class="n">altdizinler</span><span class="p">,</span> <span class="n">dosyalar</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s1">&#39;anadizin&#39;</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">dosyalar</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada, <code class="docutils literal notranslate"><span class="pre">os.walk('anadizin')</span></code> komutunun bize sunduğu üç öğeli demetin her bir
+öğesini, şu satır yardımıyla tek tek <cite>kökdizin</cite>, <cite>altdizinler</cite> ve <cite>dosyalar</cite>
+adlı değişkenlere atıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">kökdizin</span><span class="p">,</span> <span class="n">altdizinler</span><span class="p">,</span> <span class="n">dosyalar</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s1">&#39;anadizin&#39;</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="o">...</span>
+</pre></div>
+</div>
+<p>Sonra da bu üçlü içinden, <cite>dosyalar</cite> adlı değişkeni ekrana yazdırıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">dosyalar</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu da bize şöyle bir çıktı veriyor:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;dosya.doc&#39;</span><span class="p">,</span> <span class="s1">&#39;dosya.jpeg&#39;</span><span class="p">,</span> <span class="s1">&#39;dosya.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;dosya.xls&#39;</span><span class="p">]</span>
+<span class="p">[</span><span class="s1">&#39;resim1.jpeg&#39;</span><span class="p">,</span> <span class="s1">&#39;resim2.jpeg&#39;</span><span class="p">,</span> <span class="s1">&#39;resim3.jpeg&#39;</span><span class="p">,</span> <span class="s1">&#39;resim4.jpeg&#39;</span><span class="p">]</span>
+<span class="p">[</span><span class="s1">&#39;dosya.jpeg&#39;</span><span class="p">,</span> <span class="s1">&#39;dosya.mp3&#39;</span><span class="p">,</span> <span class="s1">&#39;dosya.ogg&#39;</span><span class="p">,</span> <span class="s1">&#39;dosya.pdf&#39;</span><span class="p">,</span> <span class="s1">&#39;dosya.zip&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, bu çıktıda ‘anadizin’ ve bunun altındaki bütün dizinlerde yer
+alan bütün dosyalar var. Bu konunun başında <code class="docutils literal notranslate"><span class="pre">walk()</span></code> fonksiyonunu tanımlarken
+dediğimiz gibi, <code class="docutils literal notranslate"><span class="pre">walk()</span></code> fonksiyonu gerçekten de dizinler içinde ‘yürünmesini’
+sağlıyor.</p>
+<p>Bu fonksiyonu daha iyi anlamak için birkaç deneme daha yapalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">kökdizin</span><span class="p">,</span> <span class="n">altdizinler</span><span class="p">,</span> <span class="n">dosyalar</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s1">&#39;anadizin&#39;</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">altdizinler</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">[&#39;resimler&#39;]</span>
+<span class="go">[&#39;başkadosyalar&#39;]</span>
+</pre></div>
+</div>
+<p>Bu da bize ‘anadizin’ içindeki alt dizinlerin isimlerini veriyor.</p>
+<p>Bir de <cite>kökdizin</cite> değişkeninin ne olduğuna bakalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">kökdizin</span><span class="p">,</span> <span class="n">altdizinler</span><span class="p">,</span> <span class="n">dosyalar</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s1">&#39;anadizin&#39;</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">yol</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">anadizin</span>
+<span class="go">anadizin\resimler</span>
+<span class="go">anadizin\resimler\başkadosyalar</span>
+</pre></div>
+</div>
+<p>Burada da o üçlü değişkenler arasından <cite>kökdizin</cite>’i yazdırdık ve gördük ki bu
+değişken bize bütün kök dizinlere ilişkin yol bilgilerini, yani dizinlerin
+adresini veriyor. Dolayısıyla <cite>kökdizin</cite> değişkeni ile <cite>dosyalar</cite> değişkenini
+birleştirerek bir dosyanın tam adresini elde edebiliriz.</p>
+<p>Dikkatlice bakın:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">kökdizin</span><span class="p">,</span> <span class="n">altdizinler</span><span class="p">,</span> <span class="n">dosyalar</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s1">&#39;anadizin&#39;</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">for</span> <span class="n">dosya</span> <span class="ow">in</span> <span class="n">dosyalar</span><span class="p">:</span>
+<span class="gp">... </span>            <span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">yol</span><span class="p">,</span> <span class="n">dosya</span><span class="p">]))</span>
+<span class="gp">...</span>
+<span class="go">anadizin\dosya.doc</span>
+<span class="go">anadizin\dosya.jpeg</span>
+<span class="go">anadizin\dosya.txt</span>
+<span class="go">anadizin\dosya.xls</span>
+<span class="go">anadizin\resimler\resim1.jpeg</span>
+<span class="go">anadizin\resimler\resim2.jpeg</span>
+<span class="go">anadizin\resimler\resim3.jpeg</span>
+<span class="go">anadizin\resimler\resim4.jpeg</span>
+<span class="go">anadizin\resimler\başkadosyalar\dosya.jpeg</span>
+<span class="go">anadizin\resimler\başkadosyalar\dosya.mp3</span>
+<span class="go">anadizin\resimler\başkadosyalar\dosya.ogg</span>
+<span class="go">anadizin\resimler\başkadosyalar\dosya.pdf</span>
+<span class="go">anadizin\resimler\başkadosyalar\dosya.zip</span>
+</pre></div>
+</div>
+<p>Bildiğiniz gibi, <cite>dosya</cite> değişkeninin bize verdiği veri tipi bir listedir. O
+yüzden bu listenin öğelerini tek tek alabilmek için bu liste üzerinde de bir
+<code class="docutils literal notranslate"><span class="pre">for</span></code> döngüsü kurduğumuza dikkat edin.</p>
+<p>Eğer yukarıdaki dizinler içinde yer alan bütün <cite>.jpeg</cite> dosyalarını listelemek
+istersek de şöyle bir kod yazabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">kökdizin</span><span class="p">,</span> <span class="n">altdizinler</span><span class="p">,</span> <span class="n">dosyalar</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s1">&#39;anadizin&#39;</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">for</span> <span class="n">dosya</span> <span class="ow">in</span> <span class="n">dosyalar</span><span class="p">:</span>
+<span class="gp">... </span>            <span class="k">if</span> <span class="n">dosya</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.jpeg&#39;</span><span class="p">):</span>
+<span class="gp">... </span>                    <span class="nb">print</span><span class="p">(</span><span class="n">dosya</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">dosya.jpeg</span>
+<span class="go">resim1.jpeg</span>
+<span class="go">resim2.jpeg</span>
+<span class="go">resim3.jpeg</span>
+<span class="go">resim4.jpeg</span>
+<span class="go">dosya.jpeg</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">os.walk()</span></code> fonksiyonu gayet pratik ve kullanışlı bir araç.</p>
+</div>
+<div class="section" id="os-environ">
+<h2>os.environ<a class="headerlink" href="#os-environ" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">os</span></code> modülünün <cite>environ</cite> adlı niteliği, kullandığımız işletim sistemindeki
+çevre değişkenleri hakkında bilgi edinmemizi sağlar.</p>
+<p>Bu nitelik alelade bir sözlüktür. Dolayısıyla bu sözlüğün içinde neler olduğunu
+şu kodlarla görebilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">v</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sözlük içindeki istediğiniz bir değere nasıl erişeceğinizi biliyorsunuz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;HOMEPATH&#39;</span><span class="p">]</span>
+
+<span class="go">&#39;\\Documents and Settings\\fozgul&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;USERNAME&#39;</span><span class="p">]</span>
+
+<span class="go">&#39;FOZGUL&#39;</span>
+</pre></div>
+</div>
+<p>Yalnız, Windows ve GNU/Linux işletim sistemlerinde çevre değişkenleri ve
+bunların adları birbirinden farklı olduğu için, doğal olarak <cite>environ</cite> niteliği
+de farklı işletim sistemlerinde farklı çıktılar verir. Birden fazla işletim
+sistemi üzerinde çalışacak şekilde tasarladığımız programlarda bu duruma dikkat
+etmeliyiz. Örneğin Windows’ta kullanıcı adını veren çevre değişkeni ‘USERNAME’
+iken, GNU/Linux’ta bu değişken ‘USER’ olarak adlandırılır.</p>
+</div>
+<div class="section" id="os-path">
+<h2>os.path<a class="headerlink" href="#os-path" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">os</span></code> modülü üzerinde <code class="docutils literal notranslate"><span class="pre">dir()</span></code> fonksiyonunu uyguladığınızda, orada <cite>path</cite> adlı
+bir niteliğin olduğunu göreceksiniz. Bu nitelik, kendi içinde pek çok önemli
+fonksiyon ve başka nitelik barındırır.</p>
+<p>Şimdi bu bölümde <code class="docutils literal notranslate"><span class="pre">os.path</span></code> adlı bu niteliğin içeriğini inceleyeceğiz.</p>
+<div class="section" id="os-path-abspath">
+<h3>os.path.abspath()<a class="headerlink" href="#os-path-abspath" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">abspath()</span></code> fonksiyonu, bir dosyanın tam yolunun ne olduğunu söyler:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;falanca.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="os-path-dirname">
+<h3>os.path.dirname()<a class="headerlink" href="#os-path-dirname" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">dirname()</span></code> fonksiyonu, bir dosya yolunun dizin kısmını verir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="s1">&#39;/home/istihza/Desktop/falanca.txt&#39;</span><span class="p">)</span>
+
+<span class="go">&#39;/home/istihza/Desktop&#39;</span>
+</pre></div>
+</div>
+<p>Bu fonksiyonu <code class="docutils literal notranslate"><span class="pre">abspath()</span></code> fonksiyonu ile birlikte kullanabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;falanca.txt&#39;</span><span class="p">))</span>
+
+<span class="go">&#39;/home/istihza/Desktop&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="os-path-exists">
+<h3>os.path.exists()<a class="headerlink" href="#os-path-exists" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">exists()</span></code> fonksiyonu bir dosya veya dizinin varolup olmadığını kontrol eder:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;/home/istihza/Desktop/falanca.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Eğer böyle bir dosya varsa yukarıdaki kod <code class="docutils literal notranslate"><span class="pre">True</span></code> çıktısı, yoksa <code class="docutils literal notranslate"><span class="pre">False</span></code>
+çıktısı verir.</p>
+</div>
+<div class="section" id="os-path-expanduser">
+<h3>os.path.expanduser()<a class="headerlink" href="#os-path-expanduser" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">expanduser()</span></code> fonksiyonu bilgisayardaki kullanıcıya ait dizinin adresini
+verir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~&#39;</span><span class="p">)</span>
+
+<span class="go">&#39;C:\\Documents and Settings\\fozgul&#39;</span>
+</pre></div>
+</div>
+<p>veya:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~&#39;</span><span class="p">)</span>
+
+<span class="go">&#39;/home/istihza&#39;</span>
+</pre></div>
+</div>
+<p>Bu fonksiyonu kullanarak, Windows’ta belirli bir kullanıcı ismi ve dizini de
+oluşturabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~denizege&#39;</span><span class="p">)</span>
+
+<span class="go">&#39;C:\\Documents and Settings\\denizege&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="os-path-isdir">
+<h3>os.path.isdir()<a class="headerlink" href="#os-path-isdir" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">isdir()</span></code> fonksiyonu, kendisine parametre olarak verilen öğenin bir dizin olup
+olmadığını sorgular:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="s1">&#39;/home/istihza&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Eğer parametre bir dizin ise <code class="docutils literal notranslate"><span class="pre">True</span></code>, eğer bir dosya ise <code class="docutils literal notranslate"><span class="pre">False</span></code> çıktısı
+alınır.</p>
+</div>
+<div class="section" id="os-path-isfile">
+<h3>os.path.isfile()<a class="headerlink" href="#os-path-isfile" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">isfile()</span></code> fonksiyonu, kendisine parametre olarak verilen öğenin bir dosya
+olup olmadığını sorgular:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s1">&#39;/home/istihza/falance.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Eğer parametre bir dosya ise <code class="docutils literal notranslate"><span class="pre">True</span></code>, eğer bir dizin ise <code class="docutils literal notranslate"><span class="pre">False</span></code> çıktısı
+alınır.</p>
+</div>
+<div class="section" id="os-path-join">
+<h3>os.path.join()<a class="headerlink" href="#os-path-join" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">join()</span></code> fonksiyonu, kendisine verilen parametrelerden, ilgili işletim
+sistemine uygun yol adresleri oluşturur:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;dizin1&#39;</span><span class="p">,</span> <span class="s1">&#39;dizin2&#39;</span><span class="p">,</span> <span class="s1">&#39;dizin3&#39;</span><span class="p">)</span> <span class="c1">#Windows</span>
+
+<span class="go">&#39;dizin1\\dizin2\\dizin3&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;dizin1&#39;</span><span class="p">,</span> <span class="s1">&#39;dizin2&#39;</span><span class="p">,</span> <span class="s1">&#39;dizin3&#39;</span><span class="p">)</span>
+
+<span class="go">&#39;dizin1/dizin2/dizin3&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="os-path-split">
+<h3>os.path.split()<a class="headerlink" href="#os-path-split" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">split()</span></code> fonksiyonu, bir yol adresinin son kısmını baş kısmından ayırır:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/home/istihza/Desktop&#39;</span><span class="p">)</span>
+
+<span class="go">(&#39;/home/istihza&#39;, &#39;Desktop&#39;)</span>
+</pre></div>
+</div>
+<p>Bu fonksiyonu kullanarak dosya adlarını dizin adlarından ayırabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dizin</span><span class="p">,</span> <span class="n">dosya</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/home/istihza/Desktop/falanca.txt&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dizin</span>
+
+<span class="go">&#39;/home/istihza/Desktop&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dosya</span>
+
+<span class="go">&#39;falanca.txt&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="os-path-splitext">
+<h3>os.path.splitext()<a class="headerlink" href="#os-path-splitext" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">splitext()</span></code> fonksiyonu dosya adı ile uzantısını birbirinden ayırmak için
+kullanılır:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dosya</span><span class="p">,</span> <span class="n">uzantı</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="s1">&#39;falanca.txt&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dosya</span>
+
+<span class="go">&#39;falanca&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">uzantı</span>
+
+<span class="go">&#39;.txt&#39;</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, kendi içinde pek çok nitelik ve fonksiyon barındıran <cite>os.path</cite>,
+kullandığımız işletim sistemine uygun şekilde dizin işlemleri yapabilmemizi
+sağlayan son derece faydalı bir araçtır.</p>
+<p>Gelin isterseniz şimdi biraz bu <cite>os.path</cite> niteliğinin bazı önemli
+özelliklerinden söz edelim.</p>
+<p>Hatırlarsanız önceki derslerimizde, modüllerin kaynak dosyalarını görmemizi
+sağlayan <code class="docutils literal notranslate"><span class="pre">__file__</span></code> adlı bir araçtan söz etmiştik. Mesela bu aracı <code class="docutils literal notranslate"><span class="pre">os</span></code>
+modülü üzerinde uyguladığımızda şuna benzer bir çıktı alıyorduk:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="vm">__file__</span>
+
+<span class="go">&#39;C:\\Python\\lib\\os.py&#39;</span>
+</pre></div>
+</div>
+<p>Demek ki <code class="docutils literal notranslate"><span class="pre">os</span></code> modülünün kaynak kodları bu dizin içinde yer alıyormuş…</p>
+<p>Normalde <code class="docutils literal notranslate"><span class="pre">__file__</span></code> niteliğini yalnızca modül adlarına uygulayabilirsiniz.
+Modüllerin nitelik ve fonksiyonları üzerinde <code class="docutils literal notranslate"><span class="pre">__file__</span></code> aracı kullanılamaz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="vm">__file__</span>
+
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">AttributeError</span>: <span class="n">&#39;str&#39; object has no attribute &#39;__file__&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="o">.</span><span class="vm">__file__</span>
+
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">AttributeError</span>: <span class="n">&#39;function&#39; object has no attribute &#39;__file__&#39;</span>
+</pre></div>
+</div>
+<p>Ama <code class="docutils literal notranslate"><span class="pre">os</span></code> modülünün <cite>path</cite> niteliği için durum biraz farklıdır:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="vm">__file__</span>
+</pre></div>
+</div>
+<p>Eğer bu komutu Windows’ta verdiyseniz şu çıktıyı alırsınız:</p>
+<pre class="literal-block">'C:\Python37\lib\ntpath.py'</pre>
+<p>Ama eğer bu komutu GNU/Linux’ta verdiyseniz şuna benzer bir çıktı alırsınız:</p>
+<pre class="literal-block">'/home/python37/lib/python3.7/posixpath.py'</pre>
+<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">__file__</span></code>, <cite>os.path</cite> üzerinde kullanılabiliyor. Yukarıdaki
+çıktılardan anladığımıza göre <cite>os.path</cite> niteliği Windows’ta <cite>ntpath</cite>,
+GNU/Linux’ta ise <cite>posixpath</cite> adlı bir modüle atıfta bulunuyor.</p>
+<p>Dolayısıyla aslında biz <cite>os.path</cite> niteliğini kullanırken, eğer Windows’ta isek
+<code class="docutils literal notranslate"><span class="pre">ntpath</span></code> adlı bir modülü, ama eğer GNU/Linux’ta isek <code class="docutils literal notranslate"><span class="pre">posixpath</span></code> adlı bir
+modülü içe aktarmış oluyoruz.</p>
+<p>Eğer <cite>os.path</cite> adlı ortak bir arayüz olmasaydı, yukarıda <cite>os.path</cite> başlığı
+altında incelediğimiz araçları kullanabilmek için, kullandığımız işletim
+sistemine göre <code class="docutils literal notranslate"><span class="pre">posixpath</span></code> veya <code class="docutils literal notranslate"><span class="pre">ntpath</span></code> modüllerinden uygun olanını
+kendimiz elle içe aktarmak zorunda kalacaktık:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;nt&#39;</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">ntpath</span> <span class="k">as</span> <span class="nn">path</span>
+
+<span class="k">else</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">posixpath</span> <span class="k">as</span> <span class="nn">path</span>
+</pre></div>
+</div>
+<p>Ama Python programlama dilinin bize <cite>os.path</cite> adlı niteliği sunmuş olması
+sayesinde Windows işletim sistemi için <code class="docutils literal notranslate"><span class="pre">ntpath</span></code>, GNU/Linux işletim sistemi
+için ise <code class="docutils literal notranslate"><span class="pre">posixpath</span></code> modülünü ayrı ayrı içe aktarmamıza gerek kalmıyor. Bütün
+işi bizim yerimize Python hallediyor. Böylece farklı işletim sistemlerine
+ilişkin birbirinden farklı işlemleri, <cite>os.path</cite> adlı tek bir arayüz üzerinden
+gerçekleştirebiliyoruz.</p>
+</div>
+</div>
+</div>
+
+
+
+<div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
+<div class='extrarelbar'> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="time.html" title="time Modülü"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="sqlite.html" title="Sqlite ile Veritabanı Programlama"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Önemli Standart Kütüphane Modülleri</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">os Modülü</a></li> 
+      </ul>
+    </div> </div>
+
+<div class='addcomment'>Yorumlar</div>
+
+<div class='how-to-use'>
+<h3>Önemli Not</h3>
+Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
+<span class='tag'>&lt;pre&gt;&lt;code&gt;</span> etiketleri içine alın. Örneğin:
+
+<pre>
+    <span class='tag'>&lt;pre&gt;&lt;code class="python"&gt;</span>
+    <span class='keyword'>print</span>(<span class='string'>"Merhaba Dünya!"</span>)
+    <span class='tag'>&lt;/code&gt;&lt;/pre&gt;</span>
+</pre>
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'istihza';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4eca48eb2d83faf9" async="async"></script>
+
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="time.html" title="time Modülü"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="sqlite.html" title="Sqlite ile Veritabanı Programlama"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Önemli Standart Kütüphane Modülleri</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">os Modülü</a></li> 
+      </ul>
+    </div> 
+
+<div class="footer">
+&copy; Copyright 2007-2020, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 27.06.2020.
+<a href="http://sphinx-doc.org/">Sphinx</a> 3.1.1 kullanılarak oluşturuldu.
+<br>
+<br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
+alt="Creative Commons License" style="border-width:0"
+src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a><br />
+<br>
+</div>
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=10396326;
+var sc_invisible=1;
+var sc_security="fb5cd679";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="hit counter"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="http://c.statcounter.com/10396326/0/fb5cd679/1/"
+alt="hit counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+  </body>
+</html>
