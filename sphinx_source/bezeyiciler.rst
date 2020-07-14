@@ -40,7 +40,7 @@ Biz bu fonksiyonu başka bir değişkene referanslayarak, o değişkenin merhaba
 
    # Çıktı: Merhaba, dünya!
 
-Gördüğümüz kadarıyla dunyaci fonksiyonuda "Merhaba, dünya!" çıktısını verdi. Peki niye?
+Gördüğümüz kadarıyla dunyaci fonksiyonu da "Merhaba, dünya!" çıktısını verdi. Peki niye?
 
 Niye olduğuna bir bakalım. mrb_dunya'yı çağırmadan yazdırırsak ne olur?::
 
@@ -77,7 +77,7 @@ Python fonksiyon = mrb_dunya yaptı ve onu çağırınca 0x7f576e924bf8 lokasyon
 Fonksiyonların içinde fonksiyon oluşturulabilir
 ===============================================
 
-Örnek Olarak::
+Örnek olarak::
 
    def merhaba_de():
       def merhabaci():
@@ -96,7 +96,7 @@ Bezeyici (Decoratorlar)
 
 Bezeyici, fonksiyonlarımızı veya nesnelerimizi modifiye etmemizi sağlayan çağrılabilir nesnelerdir.
 
-Çağrılabilir objeleri örnek verecek olursak, fonksiyonlar ve objeleri örnek verebiliriz. Bunu "callable"
+Çağrılabilir objelere örnek verecek olursak, fonksiyonlar ve objeleri örnek verebiliriz. Bunu "callable"
 fonksiyonu ile kontrol edebilirsiniz, örneğin::
 
     def f():
@@ -105,7 +105,7 @@ fonksiyonu ile kontrol edebilirsiniz, örneğin::
     print(callable(f))
     #=> True
 
-ya da objemizin "__call\__" magic methodunun var olup olmadığını kontrol ederek de anlayabilirsiniz.
+ya da objemizin "__call\__" magic metodunun var olup olmadığını kontrol ederek de anlayabilirsiniz.
 
 Şimdi bezeyici fonksiyonları bir örnek ile anlayalım::
 
@@ -128,7 +128,7 @@ ya da objemizin "__call\__" magic methodunun var olup olmadığını kontrol ede
    # Wrapper fonksiyonu bitti.
 
 Şeklinde bir çıktımız olacaktır. Peki bu bezeyici fonksiyonları
-daha okunabilir bir şekilde çağırabilir miyiz? Tabiki::
+daha okunabilir bir şekilde çağırabilir miyiz? Tabii ki::
 
    @bezeyici
    def merhaba():
@@ -136,16 +136,17 @@ daha okunabilir bir şekilde çağırabilir miyiz? Tabiki::
 
    merhaba()
 
-Yukarıdaki program ile bir önceki programımız ile aynı çıktıyı verecektir.
+Yukarıdaki program, bir önceki programımız ile aynı çıktıyı verecektir.
 Mantık aynı; fonksiyonu al, çağır. Fakat bu sefer fonksiyonu tanımlandıktan sonra
 hemen argüman olarak verip, çağırıyoruz. Peki bezeyicilere argüman verebilir miyiz?::
 
    def baslik(fonksiyon):
       def wrapper(basligimiz):
          print(basligimiz)
-         fonksiyon()
+         fonksiyon(basligimiz)
+      return wrapper
 
-   @baslik()
+   @baslik
    def makale(basligimiz):
       print("Python 3.7 ile dataclasses gibi birçok güzel özellik eklendi.")
 
@@ -163,5 +164,5 @@ veya onun çıktısını alarak çıktının üzerinde işlemler uygulayabiliriz
            print(cikti * 2)
        return wrapper
 
-Gördüğümüz kadarıyla oldukça basit. Bezeyiciler ne işe yarayacak diye soracak isek, bazı fonksiyonlarda istediğiniz
+Gördüğümüz kadarıyla oldukça basit. Bezeyiciler ne işe yarayacak diye soracak olur isek, bazı fonksiyonlarda istediğiniz
 özelliği eklemede veya Flask gibi frameworklerde kullanıldığını unutmayın. Hadi sonraki dersimize geçelim :)
