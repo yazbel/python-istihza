@@ -88,7 +88,7 @@ yapabileceklerinden birkaç tanesini öğrenelim.</p>
 <span class="c1"># Çıktı: Merhaba, dünya!</span>
 </pre></div>
 </div>
-<p>Gördüğümüz kadarıyla dunyaci fonksiyonuda “Merhaba, dünya!” çıktısını verdi. Peki niye?</p>
+<p>Gördüğümüz kadarıyla dunyaci fonksiyonu da “Merhaba, dünya!” çıktısını verdi. Peki niye?</p>
 <p>Niye olduğuna bir bakalım. mrb_dunya’yı çağırmadan yazdırırsak ne olur?:</p>
 <div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">mrb_dunya</span><span class="p">)</span>
 </pre></div>
@@ -121,7 +121,7 @@ Python fonksiyon = mrb_dunya yaptı ve onu çağırınca 0x7f576e924bf8 lokasyon
 </div>
 <div class="section" id="fonksiyonlarin-icinde-fonksiyon-olusturulabilir">
 <h2>Fonksiyonların içinde fonksiyon oluşturulabilir<a class="headerlink" href="#fonksiyonlarin-icinde-fonksiyon-olusturulabilir" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
-<p>Örnek Olarak:</p>
+<p>Örnek olarak:</p>
 <div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">merhaba_de</span><span class="p">():</span>
    <span class="k">def</span> <span class="nf">merhabaci</span><span class="p">():</span>
       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Merhaba istihza!&quot;</span><span class="p">)</span>
@@ -137,7 +137,7 @@ bize bir hata verecektir çünkü <em>merhabaci</em> fonksiyonu <em>merhaba_de</
 <div class="section" id="bezeyici-decoratorlar">
 <h2>Bezeyici (Decoratorlar)<a class="headerlink" href="#bezeyici-decoratorlar" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Bezeyici, fonksiyonlarımızı veya nesnelerimizi modifiye etmemizi sağlayan çağrılabilir nesnelerdir.</p>
-<p>Çağrılabilir objeleri örnek verecek olursak, fonksiyonlar ve objeleri örnek verebiliriz. Bunu “callable”
+<p>Çağrılabilir objelere örnek verecek olursak, fonksiyonlar ve objeleri örnek verebiliriz. Bunu “callable”
 fonksiyonu ile kontrol edebilirsiniz, örneğin:</p>
 <div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">():</span>
     <span class="o">...</span>
@@ -146,7 +146,7 @@ fonksiyonu ile kontrol edebilirsiniz, örneğin:</p>
 <span class="c1">#=&gt; True</span>
 </pre></div>
 </div>
-<p>ya da objemizin “__call__” magic methodunun var olup olmadığını kontrol ederek de anlayabilirsiniz.</p>
+<p>ya da objemizin “__call__” magic metodunun var olup olmadığını kontrol ederek de anlayabilirsiniz.</p>
 <p>Şimdi bezeyici fonksiyonları bir örnek ile anlayalım:</p>
 <div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bezeyici</span><span class="p">(</span><span class="n">fonksiyon</span><span class="p">):</span>
    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">():</span>
@@ -168,7 +168,7 @@ fonksiyonu ile kontrol edebilirsiniz, örneğin:</p>
 </pre></div>
 </div>
 <p>Şeklinde bir çıktımız olacaktır. Peki bu bezeyici fonksiyonları
-daha okunabilir bir şekilde çağırabilir miyiz? Tabiki:</p>
+daha okunabilir bir şekilde çağırabilir miyiz? Tabii ki:</p>
 <div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@bezeyici</span>
 <span class="k">def</span> <span class="nf">merhaba</span><span class="p">():</span>
    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Merhaba!&quot;</span><span class="p">)</span>
@@ -176,15 +176,16 @@ daha okunabilir bir şekilde çağırabilir miyiz? Tabiki:</p>
 <span class="n">merhaba</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Yukarıdaki program ile bir önceki programımız ile aynı çıktıyı verecektir.
+<p>Yukarıdaki program, bir önceki programımız ile aynı çıktıyı verecektir.
 Mantık aynı; fonksiyonu al, çağır. Fakat bu sefer fonksiyonu tanımlandıktan sonra
 hemen argüman olarak verip, çağırıyoruz. Peki bezeyicilere argüman verebilir miyiz?:</p>
 <div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">baslik</span><span class="p">(</span><span class="n">fonksiyon</span><span class="p">):</span>
    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="n">basligimiz</span><span class="p">):</span>
       <span class="nb">print</span><span class="p">(</span><span class="n">basligimiz</span><span class="p">)</span>
-      <span class="n">fonksiyon</span><span class="p">()</span>
+      <span class="n">fonksiyon</span><span class="p">(</span><span class="n">basligimiz</span><span class="p">)</span>
+   <span class="k">return</span> <span class="n">wrapper</span>
 
-<span class="nd">@baslik</span><span class="p">()</span>
+<span class="nd">@baslik</span>
 <span class="k">def</span> <span class="nf">makale</span><span class="p">(</span><span class="n">basligimiz</span><span class="p">):</span>
    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Python 3.7 ile dataclasses gibi birçok güzel özellik eklendi.&quot;</span><span class="p">)</span>
 
@@ -203,7 +204,7 @@ hemen argüman olarak verip, çağırıyoruz. Peki bezeyicilere argüman verebil
     <span class="k">return</span> <span class="n">wrapper</span>
 </pre></div>
 </div>
-<p>Gördüğümüz kadarıyla oldukça basit. Bezeyiciler ne işe yarayacak diye soracak isek, bazı fonksiyonlarda istediğiniz
+<p>Gördüğümüz kadarıyla oldukça basit. Bezeyiciler ne işe yarayacak diye soracak olur isek, bazı fonksiyonlarda istediğiniz
 özelliği eklemede veya Flask gibi frameworklerde kullanıldığını unutmayın. Hadi sonraki dersimize geçelim :)</p>
 </div>
 </div>
@@ -280,8 +281,8 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 <div class="footer">
 &copy; Copyright 2007-2020, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 28.06.2020.
-<a href="http://sphinx-doc.org/">Sphinx</a> 3.1.1 kullanılarak oluşturuldu.
+Son güncelleme: 14.07.2020.
+<a href="http://sphinx-doc.org/">Sphinx</a> 3.1.0 kullanılarak oluşturuldu.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
