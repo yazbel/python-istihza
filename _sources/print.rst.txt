@@ -324,7 +324,7 @@ Elbette eğer istersek bu metni önce bir değişkene atamayı da tercih edebili
     insan, isminin "Python" olmasına bakarak, bu programlama
     dilinin, adını piton yılanından aldığını düşünür.
     Ancak zannedildiğinin aksine bu programlama dilinin
-    dı piton yılanından gelmez.
+    adı piton yılanından gelmez.
 
 Siz yukarıdaki çıktıyı tek veya çift tırnak kullanarak nasıl ekrana
 yazdırabileceğinizi düşünedurun, biz önemli bir konuya geçiş yapalım!

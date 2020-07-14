@@ -1772,7 +1772,7 @@ sağlar::
 Burada `0` ile `500` arasında rastgele bir sayı ürettik.
 
 Gördüğünüz gibi `random` son derece faydalı olabilecek bir modüldür. Dilerseniz
-şimdi `random` fonksiyonunu bir kenara bırakıp kodlarımıza geri dönelim::
+şimdi `random` modülünü bir kenara bırakıp kodlarımıza geri dönelim::
 
     import random
 

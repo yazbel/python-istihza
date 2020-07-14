@@ -1,25 +1,18 @@
 Bu belgeler topluluk desteğiyle geliştirilmektedir. Bu sebeple katkılarınız çok değerlidir.
 
-### Gereklilikler
+### Belgelere Katkıda Bulunmak
 
-`make html` komutununun çalışabilmesi için ***make***, ***Python*** ve ***Sphinx***'in sisteminizde kurulu olması gerekmektedir.
+Katkıda bulunmak için veri havuzunu bilgisayarınıza indirtikten sonra [sphinx_source](sphinx_source) dizini altındaki ***.rst*** uzantılı dosyaları değiştirmelisiniz. Belgeler reStructuredText formatında yazılmıştır, bu format hakkında bilginiz yoksa [buraya](https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html) başvurabilirsiniz.
 
-Bu araçları Ubuntu'da şu komutla kurabilirsiniz:
+Belgelere katkıda bulunduktan sonra dilerseniz isminizi ve yaptığınız eklemeleri [``sphinx_source/katkida_bulunanlar.rst``](https://github.com/yazbel/python-istihza/blob/master/sphinx_source/katkida_bulunanlar.rst) dosyasına uygun bir şekilde yazabilirsiniz.
 
-```sudo apt install make python3 python3-sphinx```
+### Belgeleri inşa etmek
 
-Eğer Windows kullanıyorsanız, Windows Store uygulamasından Ubuntu'yu yükleyip, WSL üzerinden Ubuntu kullarak aynı komut ile kurulumu gerçekleştirebilirsiniz.
+Belgeleri inşa etmek ve pull request (çekme isteği) yapmaya hazır hale getirmek için [burayı](https://github.com/yazbel/python-istihza#belgeleri-in%C5%9Fa-etme) takip edin.
 
-### Katkıda Bulunmak
 
-Katkıda bulunmak için [sphinx_source](sphinx_source) dizini altındaki ***rst*** uzantılı dosyaları değiştirmelisiniz.
+### Çekme isteği açmak
 
-Daha sonra ***sphinx_source*** dizini içerisinde iken aşağıdaki komut ile rst dosyalarından yeni HTML dosyalarını oluşturabilirsiniz.
-
-```make html```
-
-HTML dosyalarını oluşturduktan sonra bunları ***build/html*** dizini altından kopyalayıp ana dizine yapıştırmanız ve bu şekilde commit etmeniz gerekmektedir. Aşağıdaki komut ile ***build/html*** dizini içerisindeki yeni HTML dosyalarını ana dizine kopyalayabilirsiniz.
-
-```cp -R build/html/* ./```
+Belgeleri düzgün bir şekilde inşa ettikten sonra değiştirdiğiniz bütün HTML ve reStructuredText dosyalarını çekme isteğine dahil edin. Yaptığınız değişimler hakkında bilgi vermeyi de unutmayın.
 
 Katkılarınız için teşekkürler. 

@@ -1031,7 +1031,7 @@ Bu örnekte ekrana hazır bir metin eklemek yerine Türkçe karakterler eklemeye
         karakterler.remove(num2)
 
 
-    while q != 27
+    while q != 27:
         q = ekran.getch()
         ekran.refresh()
         karakterler.append(q)

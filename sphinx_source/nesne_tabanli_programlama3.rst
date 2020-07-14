@@ -175,7 +175,7 @@ Oyunumuzun kodları şöyle::
 
             if sonuç == 2:
                 print('\nSONUÇ: rakibinizden darbe aldınız')
-                self.darbele(self)
+                rakip.darbele(self)
 
         def saldırı_sonucunu_hesapla(self):
              return random.randint(0, 2)
@@ -392,7 +392,7 @@ fonksiyonunu incelemeye::
 
         if sonuç == 2:
             print('\nSONUÇ: rakibinizden darbe aldınız')
-            self.darbele(self)
+            rakip.darbele(self)
 
 Bu fonksiyon, `self` dışında tek bir parametre alıyor. Fonksiyonu çalıştırırken
 kullanacağımız `rakip` parametresi, saldırının kime karşı (yani sınıf
@@ -467,7 +467,7 @@ kullanıyoruz::
 
     if sonuç == 2:
         print('\nSONUÇ: rakibinizden darbe aldınız')
-        self.darbele(self)
+        rakip.darbele(self)
 
 Eğer ``randint()`` metodu 0 sayısını üretirse, rakibimize karşı
 gerçekleştirdiğimiz saldırının sonuçsuz kaldığına hükmediyoruz::
@@ -485,7 +485,7 @@ hükmediyoruz::
 
     if sonuç == 2:
         print('\nSONUÇ: rakibinizden darbe aldınız')
-        self.darbele(self)
+        rakip.darbele(self)
 
 Saldırı sonucunda rakibimizi darbelediğimizde ve rakibimizden darbe yediğimizde
 ``darbele()`` adlı bir başka örnek metodunu çağırdığımızı da gözden
@@ -583,11 +583,10 @@ bakalım::
 
     if sonuç == 2:
         print('\nSONUÇ: rakibinizden darbe aldınız')
-        self.darbele(self)
+        rakip.darbele(self)
 
 Bildiğiniz gibi, ``darbele()`` fonksiyonu, `self` dışında 1 adet parametre daha
-alıyor. Bu parametre, darbeyi hangi oyuncunun alacağını gösteriyor. Yani darbeyi
-alan oyuncu biz miyiz yoksa rakibimiz mi? İşte bunu tespit etmek için
+alıyor. Bu parametre, darbeyi hangi oyuncunun alacağını gösteriyor. İşte bunu tespit etmek için
 `darbelenen` adlı bir parametre belirledik. Gördüğünüz gibi, ``darbele()``
 fonksiyonu ``saldır()`` adlı başka bir fonksiyonun içinden çağrılıyor.
 ``saldır()`` fonksiyonu da `rakip` adlı bir parametre alıyor. İşte darbe alan
@@ -596,11 +595,10 @@ oyuncunun can ve enerji değerlerini yenilemek istediğimizde bu parametreyi,
 
     self.darbele(rakip)
 
-Burada darbelenen oyuncu karşı taraf. Yani rakibimiz darbe yemiş. Eğer
-darbelenen kişi kendimizsek, kendimize atıfta bulunmak için de `self`
-parametresini kullanıyoruz::
+Burada darbelenen oyuncu karşı taraf. Yani rakibimiz bizden (`self`'den) darbe yemiş. Eğer
+darbelenen kişi kendimizsek, ``rakip`` oyuncusunun bizi darbelemesini istiyoruz::
 
-    self.darbele(self)
+    rakip.darbele(self)
 
 Pek çok kez söylediğimiz gibi, `self` kelimesi mevcut sınıf örneğini temsil
 eder. Dolayısıyla kendimize atıfta bulunmak istediğimiz durumlarda, yukarıda
@@ -632,7 +630,8 @@ Burada `darbelenen` parametresini iptal ettik. Kimin durumunun yenileceğini
 Gördüğünüz gibi, eğer rakibi darbeleyip onun can ve enerji durumunu yenilemek
 istiyorsak, ilgili fonksiyonu ``rakip.darbele()`` şeklinde çağırıyoruz.
 Kendimizin durumunu yenilemek istediğimizde ise ``self.darbele()`` komutunu
-kullanıyoruz.
+kullanıyoruz. Tabii `darbele` fonksiyonunu bu şekilde tanımlayacaksak ismini `darbe_al` 
+olarak belirlemek daha anlamlı olur.
 
 Sınıfımızı tanımladığımıza göre artık bu sınıfı nasıl kullanacağımızı incelemeye
 geçebiliriz::
@@ -704,9 +703,9 @@ görüntülüyoruz::
 Eğer kullanıcı 'k' tuşuna basarsa::
 
     if hamle == 'k':
-        ...
+        siz.kaç()
 
-...sınıf içinde tanımladığımız ``kaç()`` metodunu çalıştırıyoruz::
+sınıf içinde tanımladığımız ``kaç()`` metodunu çalıştırıyoruz::
 
     def kaç(self):
         print('Kaçılıyor...')
@@ -850,7 +849,7 @@ olması anlamına geliyor. İşte tıpkı bunun gibi, Python'daki sınıf yapıl
 özelliklere ve kabiliyetlere sahip olması demektir. Yani Python'daki sınıflar şu
 özelliklere sahiptir:
 
-    #. Başka bir fonksiyona veya sınıfa parametre olarak atanabilirler
+    #. Başka bir fonksiyona veya sınıfa parametre olarak verilebilirler
     #. Bir fonksiyondan döndürülebilirler
     #. Bir değişkene atanabilirler
 

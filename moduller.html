@@ -609,7 +609,7 @@ aktaralım:</p>
 </pre></div>
 </div>
 <p>Burada alacağımız çıktı şu olur:</p>
-<pre class="literal-block">'3.7.0 (default, 11.06.2020, 12:24:55)
+<pre class="literal-block">'3.7.0 (default, 28.06.2020, 12:24:55)
 [GCC 4.4.7 20120313 (Red Hat 4.4.7-3)] on linux'</pre>
 <p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">sys</span></code> modülünün içindeki <cite>version</cite> niteliği bizim önceden
 tanımladığımız <cite>version</cite> değişkeniyle çakıştı ve herhangi bir uyarı vermeden,
@@ -1433,7 +1433,7 @@ baştaki <cite>modüller</cite> listesini güncellemek olacaktır. Mesela bu lis
 </div>
 <p>Gördüğünüz gibi, bu kodlar işimizi epey kolaylaştırdı. Sadece tek bir noktada
 değişiklik yaparak istediğimiz sonucu elde ettik.</p>
-<p>Bu arada, <code class="docutils literal notranslate"><span class="pre">__import__()</span></code> fonksiyonu hariç, bu kodlardaki her şeyi daha önceki
+<p>Bu arada, <code class="docutils literal notranslate"><span class="pre">__import__</span></code> fonksiyonu hariç, bu kodlardaki her şeyi daha önceki
 derslerimizde öğrenmiştik. Ama gelin isterseniz biz yine de bu kodların
 üzerinden şöyle bir geçelim.</p>
 <p>Burada ilk yaptığımız iş, kullanmak istediğimiz modül adlarını tutması için bir
@@ -1456,12 +1456,12 @@ tanımlıyoruz:</p>
 <div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">kümeler</span> <span class="o">=</span> <span class="p">[</span><span class="nb">set</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="nb">__import__</span><span class="p">(</span><span class="n">modül</span><span class="p">)))</span> <span class="k">for</span> <span class="n">modül</span> <span class="ow">in</span> <span class="n">modüller</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>Burada <cite>modüller</cite> adlı listedeki her öğe üzerine sırasıyla <code class="docutils literal notranslate"><span class="pre">__import()</span></code>
+<p>Burada <cite>modüller</cite> adlı listedeki her öğe üzerine sırasıyla <code class="docutils literal notranslate"><span class="pre">__import__</span></code>
 fonksiyonunu, <code class="docutils literal notranslate"><span class="pre">dir()</span></code> fonksiyonunu ve <code class="docutils literal notranslate"><span class="pre">set()</span></code> fonksiyonunu uyguluyoruz. Daha
 sonra elde ettiğimiz sonucu bir liste üreteci yardımıyla liste haline getirip
 <cite>kümeler</cite> değişkenine atıyoruz.</p>
-<p>Gelelim <code class="docutils literal notranslate"><span class="pre">__import__()</span></code> fonksiyonunun ne olduğuna…</p>
-<p>Bir gömülü fonksiyon olan <code class="docutils literal notranslate"><span class="pre">__import__()</span></code> fonksiyonu, modül adlarını içeren
+<p>Gelelim <code class="docutils literal notranslate"><span class="pre">__import__</span></code> fonksiyonunun ne olduğuna…</p>
+<p>Bir gömülü fonksiyon olan <code class="docutils literal notranslate"><span class="pre">__import__</span></code> fonksiyonu, modül adlarını içeren
 karakter dizilerini kullanarak, herhangi bir modülü içe aktarmamızı sağlayan bir
 araçtır. Bu fonksiyonunu şöyle kullanıyoruz:</p>
 <div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">__import__</span><span class="p">(</span><span class="s1">&#39;os&#39;</span><span class="p">)</span>
@@ -1482,7 +1482,7 @@ içine alamıyorken:</p>
 <span class="gr">ImportError</span>: <span class="n">No module named &#39;modül&#39;</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">__import__()</span></code> fonksiyonu bize böyle bir işlem yapabilme olanağı sunuyor:</p>
+<p><code class="docutils literal notranslate"><span class="pre">__import__</span></code> fonksiyonu bize böyle bir işlem yapabilme olanağı sunuyor:</p>
 <div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">modüller</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;os&#39;</span><span class="p">,</span> <span class="s1">&#39;sys&#39;</span><span class="p">,</span> <span class="s1">&#39;random&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">modül</span> <span class="ow">in</span> <span class="n">modüller</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="nb">__import__</span><span class="p">(</span><span class="n">modül</span><span class="p">)</span>
@@ -1510,10 +1510,10 @@ kullanamıyoruz:</p>
 <div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span> <span class="o">=</span> <span class="nb">__import__</span><span class="p">(</span><span class="s1">&#39;os&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Eğer <code class="docutils literal notranslate"><span class="pre">__import__()</span></code> fonksiyonu yardımıyla içe aktardığımız <cite>os</cite> modülünü bu
+<p>Eğer <code class="docutils literal notranslate"><span class="pre">__import__</span></code> fonksiyonu yardımıyla içe aktardığımız <cite>os</cite> modülünü bu
 şekilde bir isme atamazsak, <code class="docutils literal notranslate"><span class="pre">__import__('os')</span></code> komutu ile içe aktarılan bütün
 <cite>os</cite> fonksiyon ve nitelikleri, bu komut bir kez çalıştıktan sonra unutulacaktır.
-Eğer <code class="docutils literal notranslate"><span class="pre">__import__()</span></code> fonksiyonunu bir isme atamadan, içe aktarılan modülün
+Eğer <code class="docutils literal notranslate"><span class="pre">__import__</span></code> fonksiyonunu bir isme atamadan, içe aktarılan modülün
 niteliklerine erişmek isterseniz içe aktarma işlemi ile niteliğe erişme işlemini
 aynı satırda gerçekleştirmeniz gerekir:</p>
 <div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">__import__</span><span class="p">(</span><span class="s1">&#39;os&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">name</span>
@@ -1521,7 +1521,7 @@ aynı satırda gerçekleştirmeniz gerekir:</p>
 <span class="go">&#39;nt&#39;</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">__import__()</span></code> fonksiyonu çok sık kullanacağınız bir araç değildir. Ancak
+<p><code class="docutils literal notranslate"><span class="pre">__import__</span></code> fonksiyonu çok sık kullanacağınız bir araç değildir. Ancak
 özellikle tek satırda hem bir modülü içe aktarmanız, hem de hemen ardından başka
 işlemler yapmanız gereken durumlarda bu fonksiyon işinize yarayabilir:</p>
 <div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;den.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;merhaba&#39;</span><span class="p">);</span> <span class="nb">__import__</span><span class="p">(</span><span class="s1">&#39;subprocess&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s1">&#39;notepad.exe den.txt&#39;</span><span class="p">)</span>
@@ -1968,8 +1968,8 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 <div class="footer">
 &copy; Copyright 2007-2020, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 11.06.2020.
-<a href="http://sphinx-doc.org/">Sphinx</a> 3.1.0 kullanılarak oluşturuldu.
+Son güncelleme: 28.06.2020.
+<a href="http://sphinx-doc.org/">Sphinx</a> 3.1.1 kullanılarak oluşturuldu.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img

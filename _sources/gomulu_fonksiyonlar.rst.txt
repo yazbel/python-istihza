@@ -2896,20 +2896,20 @@ listeledik. Bu yönüyle ``vars()`` fonksiyonu ``dir()`` fonksiyonuna benzer.
 Böylece Python'daki gömülü fonksiyonları tek tek incelemiş olduk. Bu bölümde
 incelemediğimiz gömülü fonksiyonlar şunlar:
 
-    #. ``memoryview()``
-    #. ``iter()``
-    #. ``next()``
-    #. ``object()``
-    #. ``property()``
-    #. ``staticmethod()``
-    #. ``super()``
-    #. ``getattr()``
-    #. ``hasattr()``
-    #. ``delattr()``
-    #. ``classmethod()``
-    #. ``issubclass()``
-    #. ``setattr()``
-    #. ``__import()``
+    #. ``memoryview``
+    #. ``iter``
+    #. ``next``
+    #. ``object``
+    #. ``property``
+    #. ``staticmethod``
+    #. ``super``
+    #. ``getattr``
+    #. ``hasattr``
+    #. ``delattr``
+    #. ``classmethod``
+    #. ``issubclass``
+    #. ``setattr``
+    #. ``__import__``
 
 Bu fonksiyonları, ilerleyen derslerle birlikte Python bilgimiz biraz daha
 arttığında ele alacağız.

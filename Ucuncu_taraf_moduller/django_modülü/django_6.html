@@ -1,0 +1,365 @@
+
+ <!DOCTYPE html>
+ <html lang="tr">
+
+
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta content="Bu bölümde reCAPTCHA s2 ile güvenlik konusunu inceleyeceğiz." name="description" />
+<meta content="python, python3, django, reCAPTCHA" name="keywords" />
+
+    <title>Django ile reCAPTCHA Kullanımı &#8212; Python 3 için Türkçe Kılavuz</title>
+    <link rel="stylesheet" href="../../_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/translations.js"></script>
+    <link rel="search" title="Ara" href="../../search.html" />
+    <link rel="next" title="Kivy Paketi" href="../kivy_dersleri/index.html" />
+    <link rel="prev" title="İçerik İşlemcileri" href="django_5.html" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+<div class='header'><a href='https://yazbel.com'>yazbel.com</a></div>
+
+<ul class='navbar'>
+    <li><a href="#"><del>pdf desteği sonlanmıştır</del></a></li>
+    <li class="forum"><a href="http://forum.yazbel.com">forum</a></li>
+</ul>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../kivy_dersleri/index.html" title="Kivy Paketi"
+             accesskey="N">sonraki</a></li>
+        <li class="right" >
+          <a href="django_5.html" title="İçerik İşlemcileri"
+             accesskey="P">önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="../index.html" >Üçüncü Taraf Modüller</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">django Paketi</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Django ile reCAPTCHA Kullanımı</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+
+  <div class="section" id="django-ile-recaptcha-kullanimi">
+<h1>Django ile reCAPTCHA Kullanımı<a class="headerlink" href="#django-ile-recaptcha-kullanimi" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>Giriş.</dt><dd><p>1.1 reCAPTCHA Nedir?</p>
+</dd>
+</dl>
+</li>
+</ol>
+<dl class="simple">
+<dt>reCAPTCHA temelinde internet sayfalarının güvenliği insan ve bot davranışlarının ayrılmasını sağlayan bir uygulamadır.</dt><dd><p>1.2 Neden reCAPTCHA Kullanmalıyım?</p>
+</dd>
+</dl>
+<p>Bir yorum sistemi düşünelim herhangi bir güvenlik önlemi olmayan, bir gece basit bir saldırı ile milyonlarca istenmeyen yorum eklenebilir.
+Bu tür olayların önüne geçmek için bazı önlemler alabiliriz. Yorum eklerken basit bir matematik sorusu veya
+eski yöntem captcha kullanabiliriz ancak bunlar artık pek kullanışlı değiller. En basitinden eski usul captchalar size
+bozulmuş bir görüntü verir ve o görüntüde bulunan matematik işlemini veya harfleri ister. Bazen bunlar aşırı bozulmalar oluyor ve
+görüntünün okunması neredeyse imkânsız hale geliyor. Bunun yerine reCAPTCHA gibi bir servis kullanarak bu tür sıkıntıların önüne geçebiliriz.</p>
+<ol class="arabic simple" start="2">
+<li><dl class="simple">
+<dt>Kurulum.</dt><dd><p>2.1 reCAPTCHA Servisine Kayıt Olmak.</p>
+</dd>
+</dl>
+</li>
+</ol>
+<p>reCAPTCHA kullanmak için öncelikle sitesi üzerinden bir uygulama oluşturmak gerekli.
+Bu <a class="reference external" href="https://www.google.com/recaptcha/admin/create">adres</a> üzerinden Google reCAPTCHA servisine kaydolmak gerekli.</p>
+<a class="reference external image-reference" href="_images/recaptcha/config.png:align:center"><img alt="../../_images/config.png" src="../../_images/config.png" /></a>
+<p>Kaydolma sayfasını açtığımız zaman bizi böyle bir sayfa karşılıyor. Burada bulunan bölümleri açıklayalım.</p>
+<ul class="simple">
+<li><p>Etiket: Uygulamamızı açıklayacak isim.</p></li>
+<li><dl class="simple">
+<dt>reCAPTCHA türü: İnternet sitemizde kullanacağımız reCAPTCHA türünü buradan seçiyoruz.</dt><dd><ul>
+<li><p>reCAPTCHA s3: Bu sürümde kullanıcının bot olup olmadığını bir puan yardımıyla hesaplayan ve size bu puanı döndüren bir Javascript API’dır.</p></li>
+<li><p>reCAPTCHA s2: Kullanıcı isteklerini yine kullanıcının eylemleri ile doğrulayan sürümdür.</p></li>
+<li><p>“Robot değilim” Onay Kutusu:  Kullanıcıya “Ben Robot Değilim” şeklinde bir kutu işaretletir.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<a class="reference external image-reference" href="_images/recaptcha/notrobot.gif"><img alt="../../_images/notrobot.gif" class="align-center" src="../../_images/notrobot.gif" /></a>
+<dl class="simple">
+<dt>.</dt><dd><ul class="simple">
+<li><p>Görünmez reCAPTCHA rozeti: İstekleri arka planda doğrular. Görünmez reCAPTCHA rozeti ile kullanıcının bir onay kutusuna tıklaması gerekmez. Bunun yerine kullanıcı sitenizde bulunan düğmeye tıkladığı zaman bir Javascript API çağrısı başlatılır.</p></li>
+</ul>
+</dd>
+</dl>
+<a class="reference external image-reference" href="_images/recaptcha/invisible_badge.png"><img alt="../../_images/invisible_badge.png" class="align-center" src="../../_images/invisible_badge.png" /></a>
+<dl class="simple">
+<dt>.</dt><dd><ul class="simple">
+<li><p>reCAPTCHA v2 (Android): Android servisleri için kullanılacak olan seçimdir.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Detaylar için <a class="reference external" href="https://developers.google.com/recaptcha/docs/version">adrese</a> bakabilirsiniz.</p>
+<ul class="simple">
+<li><p>Alan Adları: Bu uygulamayı hazırlayacağınız servislerin hangi alan adları altında kullanacağınızı belirler.</p></li>
+</ul>
+<p><cite>Not: Kayıt işleminiz burada girdiğiniz alan adları ve alt alan adlarıyla sınırlıdır. Başka bir deyişle example.com kayıt işlemi subdomain.example.com adresini de kaydeder. Geçerli bir alan adında ana makine bulunmalıdır; yol, bağlantı noktası, sorgu veya parça bulunmamalıdır.</cite></p>
+<ul class="simple">
+<li><p>Sahipler: reCAPTCHA uygulamasına yeni yöneticiler ekleyebilirsiniz. Varsayılan olarak sizin hesabınız eklidir.</p></li>
+<li><p>reCAPTCHA Hizmet Şartları’nı kabul edin: Servisi kullanmak için servis sahibi tarafından bizlere sunulan şartları kabul etmemiz gerekli.</p></li>
+<li><p>Site sahiplerine uyarı gönder: Şüpheli trafik gibi durumlarda mail yardımıyla uyarılar gönderir.</p></li>
+</ul>
+<p>Yapılandırma işlemi oldukça kolay biz bu metin boyunda reCAPTCHA s2 <cite>Robot Değilim</cite> onay kutusunu kullanacağız.
+Uygulamamızı kayıt ettiğimiz zaman bize iki adet anahtar hazırlanacak.
+Bu anahtarlardan <cite>Site Anahtarı</cite> olan sitemizin HTML tarafında <cite>Gizli Anahtar</cite> olan ise sitemizin arka planında olacaktır.
+<strong>Gizli Anahtarı asla kullanıcılar ile paylaşmayın ve sitenizin HTML tarafında kullanmayınız.</strong></p>
+<a class="reference external image-reference" href="_images/recaptcha/keys.png"><img alt="../../_images/keys.png" class="align-center" src="../../_images/keys.png" /></a>
+<p>reCAPTCHA tarafıyla işimiz bitti. Şimdi reCAPTCHA’yı uygulamamıza entegre etme kaldı.</p>
+<dl>
+<dt>2.2 reCAPTCHA Servisini Uygulamaya Ekleme.</dt><dd><p>reCAPTCHA servisini sitemize eklerken iki aşamalı olarak yapacağız. İlk aşaması sitemizin ön yüz için ikincisi için arka uç tarafında yapacağız. Bu belgede anlatılacak reCAPTCHA servisini bir yorum sistemine ekleyeceğiz.</p>
+<p>2.2.1 reCAPTCHA Servisini Ön Yüz için Hazırlama.</p>
+<p><a class="reference external" href="https://developers.google.com/recaptcha/docs/display">Google Geliştirici Belgelerine</a> baktığımız zaman ön yüz tarafı için işimiz aşırı kolay. Öncelikle reCAPTCHA Javascript dosyasını projemize dahil ediyoruz.:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">script</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://www.google.com/recaptcha/api.js&quot;</span> <span class="k">async</span> <span class="n">defer</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>reCAPTCHA servisne ihtiyaç duyduğumuz forma aşağıdaki kodu ekliyoruz.:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;g-recaptcha&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">sitekey</span><span class="o">=</span><span class="s2">&quot;your_site_key&quot;</span><span class="o">&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</dd>
+<dt><cite>data-sitekey</cite> niteliğine reCAPTCHA tarafından bize sağlanan <cite>Site Anahtarı</cite> nı ekliyoruz. Ön yüz ile tüm işimiz bu.</dt><dd><p>2.2.2 reCAPTCHA Servisini Arka Uç Tarafına Ekleme.</p>
+<p>Kendimize örnek bir proje ve bu proje için bir uygulama oluşturuyoruz. Gerekli anlatımlar önceki derslerde mevcuttur. Öncelikle örnek bir model oluşturuyoruz. Ben reCAPTCHA servisini yorum sisteminde kullanacağım içi yorumlar için bir model oluşturuyorum.</p>
+</dd>
+</dl>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+
+<span class="k">class</span> <span class="nc">Comments</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">AutoField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">55</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s1">&#39;Kullanıcı Adınız&#39;</span><span class="p">)</span>
+    <span class="n">comment</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">verbose_name</span><span class="o">=</span><span class="s1">&#39;Yorumunuz&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Ardından yorum uygulamamızın içine <cite>forms.py</cite> adında bir dosya oluşturuyoruz.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+<span class="kn">from</span> <span class="nn">blog.models</span> <span class="kn">import</span> <span class="o">*</span>
+
+
+<span class="k">class</span> <span class="nc">CommentForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Comments</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;name&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;comment&#39;</span><span class="p">,</span>
+        <span class="p">]</span>
+</pre></div>
+</div>
+<p>Şimdi ise kullanıcıyı karşılayacak sayfayı yazıyoruz. <cite>templates</cite> klasörü altında <cite>index.html</cite> adında bir dosya oluşturalım ve içine bu kodları yazalım.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">head</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">title</span><span class="o">&gt;</span><span class="n">reCAPTCHA</span> <span class="n">Demo</span><span class="o">&lt;/</span><span class="n">title</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">script</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://www.google.com/recaptcha/api.js&quot;</span> <span class="k">async</span> <span class="n">defer</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">head</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">h4</span><span class="o">&gt;</span><span class="n">Yorum</span> <span class="n">Gönder</span><span class="o">&lt;/</span><span class="n">h4</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">form</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;POST&quot;</span><span class="o">&gt;</span>
+    <span class="p">{</span><span class="o">%</span> <span class="n">csrf_token</span> <span class="o">%</span><span class="p">}</span>
+    <span class="p">{{</span> <span class="n">form</span><span class="o">.</span><span class="n">as_p</span> <span class="p">}}</span>
+    <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;g-recaptcha&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">sitekey</span><span class="o">=</span><span class="s2">&quot;6LdBO6cZAAAAAKVrVb26js1qHkeg23ks213nQgpBq7L6dva9lMuwTmX&quot;</span><span class="o">&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="nb">input</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;submit&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;Gönder&quot;</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">form</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">hr</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">h4</span><span class="o">&gt;</span><span class="n">Gelen</span> <span class="n">Yorumlar</span><span class="p">:</span><span class="o">&lt;/</span><span class="n">h4</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">hr</span><span class="o">&gt;</span>
+<span class="p">{</span><span class="o">%</span> <span class="k">for</span> <span class="n">comment</span> <span class="ow">in</span> <span class="n">comments</span> <span class="o">%</span><span class="p">}</span>
+    <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;&lt;</span><span class="n">b</span><span class="o">&gt;</span><span class="n">İsim</span><span class="p">:</span> <span class="p">{{</span> <span class="n">comment</span><span class="o">.</span><span class="n">name</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">b</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span><span class="n">Yorum</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">b</span><span class="o">&gt;</span><span class="p">{{</span> <span class="n">comment</span><span class="o">.</span><span class="n">comment</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">b</span><span class="o">&gt;&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">hr</span><span class="o">&gt;</span>
+<span class="p">{</span><span class="o">%</span> <span class="n">endfor</span> <span class="o">%</span><span class="p">}</span>
+<span class="o">&lt;/</span><span class="n">body</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">html</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Kısaca HTML kodlarımızdan bahsedersek <cite>POST</cite> yöntemiyle gönderilecek bir form hazırladık. Ardından <cite>{% csrf_token %}</cite> değişkenini ekledik. Böylece formumuz doğru şekilde çalışacak. Ardından <cite>forms.py`</cite> sayfasında hazırladığımız formu kullanıcıya gösteriyoruz. Son olarak da Google Belgelerinde aldığımız reCAPTCHA kodunu ekledik.
+Gelen yorumlar kısmında ise başarıyla kaydedilen yorumlar yer alacak.</p>
+<p>Sıra tüm işi yapacak <cite>views.py</cite> dosyasında.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span> <span class="c1">#1</span>
+<span class="kn">from</span> <span class="nn">blog.models</span> <span class="kn">import</span> <span class="n">Comments</span>    <span class="c1">#2</span>
+<span class="kn">from</span> <span class="nn">recaptcha</span> <span class="kn">import</span> <span class="n">recaptcha_check</span> <span class="c1">#3</span>
+<span class="kn">from</span> <span class="nn">blog.forms</span> <span class="kn">import</span> <span class="n">CommentForm</span>  <span class="c1">#4</span>
+
+
+<span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span> <span class="c1">#5</span>
+    <span class="n">comments</span> <span class="o">=</span> <span class="n">Comments</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span> <span class="c1">#6</span>
+    <span class="n">comment_form</span> <span class="o">=</span> <span class="n">CommentForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span> <span class="ow">or</span> <span class="kc">None</span><span class="p">)</span> <span class="c1">#7</span>
+    <span class="n">recaptcha_response</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;g-recaptcha-response&#39;</span><span class="p">)</span> <span class="c1">#8</span>
+    <span class="n">recaptcha_response_result</span> <span class="o">=</span> <span class="n">recaptcha_check</span><span class="p">(</span><span class="n">recaptcha_response</span><span class="p">)</span> <span class="c1">#9</span>
+    <span class="k">if</span> <span class="n">recaptcha_response_result</span> <span class="ow">is</span> <span class="kc">True</span> <span class="ow">and</span> <span class="n">comment_form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span> <span class="c1">#10</span>
+        <span class="n">comment_form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span> <span class="c1">#11</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>   <span class="c1"># 12</span>
+        <span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">comment_form</span><span class="p">,</span>
+        <span class="s1">&#39;comments&#39;</span><span class="p">:</span> <span class="n">comments</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;index.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span> <span class="c1">#13</span>
+</pre></div>
+</div>
+<p>Örnek kodumuz yukarıda. Bu kodu satır satır inceleyelim.</p>
+<ul class="simple">
+<li><p>#1, #2, #3, #4 Bu 4 kod satırı gerekli ihtiyaç duyduğumuz kütüphane ve modülleri dahil ediyoruz.</p></li>
+<li><p>#5 <cite>index</cite> isminde bir fonksiyon oluşturuyoruz.</p></li>
+<li><p>#6 Ana sayfamızda tüm yorumları listelemek bu satırda <cite>Comments</cite> modelinde bulunan tüm kayıtları listeliyoruz.</p></li>
+<li><p>#7 <cite>forms.py</cite> sayfasında oluşturduğumuz formu burada çağırıp bir değişkene atıyoruz.</p></li>
+<li><p>#8 reCAPTCHA  Django Formunda olmadığı için bu satırda <cite>POST</cite> yöntemiyle <cite>‘g-recaptcha-response</cite> değişkenin değerini alıyoruz.</p></li>
+<li><p>#9 <cite>recaptcha_check</cite> isimli bir fonksiyon hazırladık böylece daha temiz bir görünüm elde ediyoruz. Bu fonksiyon ön yüz tarafından gelen kodu Google’ın doğrulama sunucusuna gönderiyor. Eğer sunucu doğrulamayı yaparsa sonuç olarak <cite>True</cite> veya hata olursa hatanın sebebini içeren bir sonuç dönecektir.</p></li>
+<li><p>#10 Bu satırda hazırladığımız <cite>recaptcha_check</cite> fonksiyonundan gelen değer ve Django Formunun geçerliliğini kontrol ediyoruz. Eğer iki karşılama da olumlu ise kod if bloğu devam eder.</p></li>
+<li><p>#11 Django Formunu kayıt ediyor.</p></li>
+<li><p>#12 <cite>context</cite> isimli bir sözlük hazırlıyoruz ve içine Django Formunu ve kayıt edilen tüm yorumları ekliyoruz.</p></li>
+<li><p>#13 <cite>render</cite> fonksiyonu ile <cite>index.html</cite> dosyasını <cite>context</cite> değişkenini ekliyoruz.</p></li>
+</ul>
+<p><cite>recaptcha_check</cite> fonksiyonunu satır satır inceleyelim.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span> <span class="c1">#1</span>
+
+
+<span class="k">def</span> <span class="nf">recaptcha_check</span><span class="p">(</span><span class="n">recaptcha_response</span><span class="p">):</span> <span class="c1">#2</span>
+    <span class="n">verify_url</span> <span class="o">=</span> <span class="s1">&#39;https://www.google.com/recaptcha/api/siteverify&#39;</span> <span class="c1">#3</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="p">{</span> <span class="c1">#4</span>
+        <span class="s1">&#39;secret&#39;</span><span class="p">:</span> <span class="s1">&#39;6LdBO6cZAAAAAAALlKFW656QWAPLOKasoPfLfYTVWV91Quo0H2tWBfRrc&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;response&#39;</span><span class="p">:</span> <span class="n">recaptcha_response</span>
+    <span class="p">}</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">verify_url</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="c1">#5</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span> <span class="c1">#6</span>
+    <span class="k">if</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;success&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span> <span class="c1">#7</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span> <span class="c1">#8</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;success&#39;</span><span class="p">],</span> <span class="s1">&#39;reason&#39;</span><span class="p">:</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;error-codes&#39;</span><span class="p">]}</span> <span class="c1">#</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>#1 <cite>requests</cite> kütüphanesini dahil ediyoruz.</p></li>
+<li><p>#2 <cite>recaptcha_response</cite> parametresini alan <cite>recaptcha_check</cite> isimli bir fonksiyon hazırlıyoruz.</p></li>
+<li><p>#3 Google doğrulama sunucusunun adresini yazıyoruz.</p></li>
+<li><p>#4 <cite>value</cite> isimli değişken oluşturuyoruz ve içine reCAPTCHA’nın uygulamasını kurulumunu yaparken bize sağlanan <cite>Gizli Anahtar</cite> değerini <cite>secret</cite> anahtarına, fonksiyona gelen <cite>recaptcha_response</cite> değerini <cite>response</cite> anahtarına atıyoruz.</p></li>
+<li><p>#5 requests kütüphanesini kullanarak <cite>POST</cite> yöntemiyle Google doğrulama sunucusuna <cite>value</cite> değişkenini gönderiyoruz.</p></li>
+<li><p>#6 Google doğrulama sunucusundan gelen değeri json haline getiriyoruz.</p></li>
+<li><p>#7 Eğer dönen sonuç başarılı ise fonksiyon <cite>True</cite> döndürür</p></li>
+<li><p>#8 Sonuç başarısız olursa neden başarısız olduğu dahil bir sözlük değeri döndürür.</p></li>
+</ul>
+<p>Bu anlatımda hazırlanan kodlara <a class="reference external" href="https://github.com/mehmetkiran/reCAPTCHA">buradan</a> ulaşabilirisniz.</p>
+</div>
+
+
+
+<div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
+<div class='extrarelbar'> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../kivy_dersleri/index.html" title="Kivy Paketi"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="django_5.html" title="İçerik İşlemcileri"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="../index.html" >Üçüncü Taraf Modüller</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >django Paketi</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Django ile reCAPTCHA Kullanımı</a></li> 
+      </ul>
+    </div> </div>
+
+<div class='addcomment'>Yorumlar</div>
+
+<div class='how-to-use'>
+<h3>Önemli Not</h3>
+Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
+<span class='tag'>&lt;pre&gt;&lt;code&gt;</span> etiketleri içine alın. Örneğin:
+
+<pre>
+    <span class='tag'>&lt;pre&gt;&lt;code class="python"&gt;</span>
+    <span class='keyword'>print</span>(<span class='string'>"Merhaba Dünya!"</span>)
+    <span class='tag'>&lt;/code&gt;&lt;/pre&gt;</span>
+</pre>
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'istihza';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4eca48eb2d83faf9" async="async"></script>
+
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../kivy_dersleri/index.html" title="Kivy Paketi"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="django_5.html" title="İçerik İşlemcileri"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="../index.html" >Üçüncü Taraf Modüller</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >django Paketi</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Django ile reCAPTCHA Kullanımı</a></li> 
+      </ul>
+    </div> 
+
+<div class="footer">
+&copy; Copyright 2007-2020, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 28.06.2020.
+<a href="http://sphinx-doc.org/">Sphinx</a> 3.1.1 kullanılarak oluşturuldu.
+<br>
+<br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
+alt="Creative Commons License" style="border-width:0"
+src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a><br />
+<br>
+</div>
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=10396326;
+var sc_invisible=1;
+var sc_security="fb5cd679";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="hit counter"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="http://c.statcounter.com/10396326/0/fb5cd679/1/"
+alt="hit counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+  </body>
+</html>
