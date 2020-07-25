@@ -63,7 +63,6 @@ istihza.com
     fonksiyonlar
     gomulu_fonksiyonlar
     ileri_fonksiyonlar
-    bezeyiciler
     moduller
     nesne_tabanli_programlama1
     nesne_tabanli_programlama2
