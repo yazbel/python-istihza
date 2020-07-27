@@ -25,4 +25,4 @@ for i in os.listdir(builds):
     shutil.move(full_path, current_path)
 
 
-shutil.rmtree("build")
+##shutil.rmtree("build") # zaten .gitignore'da bulunuyor

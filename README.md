@@ -41,7 +41,7 @@ $ make html
 Belgeleri inşa ettikten sonra `move.py` betiği `python-istihza/build/html/` içindeki dosyaları `python-istihza/` dizinine çıkaracak ve `python-istihza/build` klasörünü silecektir:
 
 ```shell
-> python move.py
+$ python move.py
 ```
 
 ### Windows
