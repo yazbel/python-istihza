@@ -251,16 +251,62 @@ GNU/Linux'ta Farklı Sürümleri Birlikte Kullanmak
 
 Daha önce de dediğimiz gibi, şu anda piyasada iki farklı Python serisi bulunuyor:
 Python2 ve Python3.
-Çok uzun zamandan beri kullanımda olduğu için, Python2 Python3'e kıyasla daha yaygın.
-Eğer hem Python2 ile yazılmış programları çalıştırmak, hem de Python3 ile geliştirme yapmak istiyorsanız, sisteminizde hem Python2'yi hem de Python3'ü aynı anda bulundurmayı tercih edebilirsiniz.
+2020 yılı itibariyle Python2 desteği bitmiştir fakat hem Python2 ile yazılmış programları çalıştırmak, hem de Python3 ile geliştirme yapmak istiyorsanız, sisteminizde hem Python2'yi hem de Python3'ü aynı anda bulundurmayı tercih edebilir veya yazdığınız kodu farklı sürümlerde test etmek isteyebilirsiniz.
 Peki bunu nasıl yapacaksınız?
 
 En başta da söylediğimiz gibi, hemen hemen bütün GNU/Linux dağıtımlarında Python2 kurulu olarak gelir.
 Dolayısıyla eğer sisteminize ek olarak Python3'ü de kurduysanız (kaynaktan veya paket deposundan), başka herhangi bir şey yapmanıza gerek yok.
-Yukarıda anlattığımız yönergeleri takip ettiyseniz, konsolda ``python`` komutu verdiğinizde Python2 çalışacak, ``python3`` (veya ``py3``) komutunu verdiğinizde ise Python3 çalışacaktır.
+Yukarıda anlattığımız yönergeleri takip ettiyseniz, konsolda ``python`` komutu verdiğinizde Python2, ``python3`` (veya ``py3``) komutunu verdiğinizde ise Python3 çalışacaktır.
 
 Ama eğer sisteminizde Python2 bile kurulu değilse, ki bu çok çok düşük bir ihtimaldir, Python2'yi paket yöneticiniz yardımıyla sisteminize kurabilirsiniz.
 Şu anda piyasada olup da paket deposunda Python bulundurmayan GNU/Linux dağıtımı pek azdır.
+
+pyenv ile Sürümleri Yönetmek
+----------------------------
+
+`Sürüm Yöneticisi ile Kurulum <kurulum.html#surum-yoneticisi-ile-kurulum-pyenv>`__ kısmında anlatıldığı şekilde pyenv kurulumu yaptıktan sonra ``pyenv install <python-sürümü>`` ile istediğiniz python sürümünü kolayca kurabilir ve sürümler arasında geçiş yapabilirsiniz. Sürüm geçişlerini şu şekilde örneklendirebiliriz. Sisteminizde 3.8.5 sürümünün aktif olduğunu varsayarak sisteme 2 yeni Python sürümü daha kuralım::
+
+    pyenv install 2.7.18
+    pyenv install 3.6.9
+
+Bu durumda ``pyenv versions`` komutunun çıktısı şu şekilde olacaktır::
+
+    system
+    2.7.18
+    3.6.9
+    * 3.8.5 (set by /home/{kullanıcı-adınız}/.pyenv/version)
+
+`pyenv` ile kurulan sürümlerin kullanılabilmesi için 3 farklı komut bulunmaktadır. 
+
+* ``pyenv local``::
+
+    pyenv local <python-sürümü>
+
+``local`` komutu ile sürüm seçtiğinizde, bulunduğunuz dizinde .python-version isimli bir dosya oluşur. Bu dosya içerisinde yalnızca seçtiğiniz Python sürümü numarası bulunur ve bu sürüm yalnızca mevcut dizin içerisinde aktif olur. Aşağıdaki şekilde bir klasör yapısında `proje1` dizininde ``pyenv local 3.6.9`` komutunu çalıştırdığımızı düşünelim::
+
+    projeler
+    ├── proje1
+    │   └── .python-version # 3.6.9
+    └── proje2
+
+Bu durumda `proje1` dizininde ``python`` komutu `3.6.9` sürümü, bunun dışındaki bütün dizinlerde `3.8.5` sürümü çalışacaktır.
+
+* ``pyenv global``::
+
+    pyenv global <python-sürümü> 
+
+Kurulum kısmında da bahsettiğimiz gibi aktif kullandığınız Python sürümünü ``global`` komutu ile etkinleştirerek sürekli olarak kullanabilirsiniz. Python2 yüklü sistemlerde ``python`` komutu Python2 sürümünü çalıştırırken, ``global`` komutu ile aktifleştirme sonrasında ``python`` yazdığınızda seçtiğiniz Python sürümü çalışacaktır. 
+    
+    ``pyenv global 3.8.5``
+
+* ``pyenv shell``::
+
+    pyenv shell <python-sürümü>
+
+``shell`` komutu ile aktifleştirdiğiniz Python sürümü mevcut terminal oturumunuz süresince aktif olacaktır. ``shell`` komutu ``local`` ve ``global`` sürümleri geçersiz kılar. Yani local olarak ayarladığınız bir dizine girdiğinizde bile hala shell ile aktifleştirdiğiniz sürüm çalışır. Normal şekilde kullanmaya devam edebilmek için ``pyenv shell --unset`` komutunu çalıştırmalı veya terminali yeniden başlatmalısınız.
+
+Yeni Python sürümleri çıktıkça ``pyenv``'e eklenmektedir. Yeni sürümleri indirebilmek için ``pyenv update`` komutu ile ``pyenv`` aracını güncellemelisiniz.
+
 
 GNU/Linux'ta Python'ı nasıl çalıştıracağımızı ve farklı Python sürümlerini bir arada nasıl kullanacağımızı öğrendiğimize göre, Windows kullanıcılarının durumuna bakabiliriz.
 
