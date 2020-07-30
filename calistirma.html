@@ -69,7 +69,7 @@ Bu bölümde, her bir kurulum türü için Python3’ün nasıl çalıştırıla
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python
 </pre></div>
 </div>
-<p>Ancak daha önce de dediğimiz gibi, 25.07.2020 tarihi itibariyle pek çok GNU/Linux dağıtımında öntanımlı olarak Python2 kuruludur.
+<p>Ancak daha önce de dediğimiz gibi, 29.07.2020 tarihi itibariyle pek çok GNU/Linux dağıtımında öntanımlı olarak Python2 kuruludur.
 Dolayısıyla <code class="docutils literal notranslate"><span class="pre">python</span></code> komutunu verdiğinizde çalışan sürüm muhtemelen Python2 olacaktır.
 Bu yüzden sistemimizde öntanımlı olarak hangi sürümün kurulu olduğuna ve <code class="docutils literal notranslate"><span class="pre">python</span></code> komutunun hangi sürümü başlattığına çok dikkat etmelisiniz.</p>
 <p>Yine daha önce de söylediğimiz gibi, sisteminizde hem Python2 hem de Python3 zaten kurulu durumda olabilir.
@@ -78,7 +78,7 @@ O yüzden yukarıdaki komutu bir de <code class="docutils literal notranslate"><
 </div>
 <div class="section" id="python3-u-depodan-kuranlar">
 <h3>Python3’ü Depodan Kuranlar<a class="headerlink" href="#python3-u-depodan-kuranlar" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
-<p>Dediğimiz gibi, 25.07.2020 tarihi itibariyle GNU/Linux dağıtımlarında öntanımlı Python sürümü ağırlıklı olarak Python2’dir.
+<p>Dediğimiz gibi, 29.07.2020 tarihi itibariyle GNU/Linux dağıtımlarında öntanımlı Python sürümü ağırlıklı olarak Python2’dir.
 Dolayısıyla <code class="docutils literal notranslate"><span class="pre">python</span></code> komutu Python’ın 2.x sürümlerini çalıştırır.
 Bu durumdan ötürü, herhangi bir çakışmayı önlemek için GNU/Linux dağıtımları Python3 paketini farklı bir şekilde adlandırma yoluna gider.
 Şu anda piyasada bulunan dağıtımların ezici çoğunluğu Python3 paketini ‘python3’ şeklinde adlandırıyor.
@@ -89,7 +89,7 @@ O yüzden GNU/Linux kullanıcıları, eğer paket yöneticilerini kullanarak Pyt
 <p>Bu komutun ardından şuna benzer bir ekranla karşılaşmış olmalısınız:</p>
 <div class="screenshot docutils container">
 <p><cite>yazbel&#64;ubuntu:~$</cite> # python3
-Python 3.7.0 (default, 25.07.2020, 12:24:55)
+Python 3.7.0 (default, 29.07.2020, 12:24:55)
 [GCC 4.4.7 20120313 (Red Hat 4.4.7-3)] on linux
 Type “help”, “copyright”, “credits” or “license” for more information.
 &gt;&gt;&gt;</p>
@@ -256,15 +256,65 @@ Yardım almak için <a class="reference external" href="https://forum.yazbel.com
 <h3>GNU/Linux’ta Farklı Sürümleri Birlikte Kullanmak<a class="headerlink" href="#gnu-linux-ta-farkli-surumleri-birlikte-kullanmak" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
 <p>Daha önce de dediğimiz gibi, şu anda piyasada iki farklı Python serisi bulunuyor:
 Python2 ve Python3.
-Çok uzun zamandan beri kullanımda olduğu için, Python2 Python3’e kıyasla daha yaygın.
-Eğer hem Python2 ile yazılmış programları çalıştırmak, hem de Python3 ile geliştirme yapmak istiyorsanız, sisteminizde hem Python2’yi hem de Python3’ü aynı anda bulundurmayı tercih edebilirsiniz.
+2020 yılı itibariyle Python2 desteği bitmiştir fakat hem Python2 ile yazılmış programları çalıştırmak, hem de Python3 ile geliştirme yapmak istiyorsanız, sisteminizde hem Python2’yi hem de Python3’ü aynı anda bulundurmayı tercih edebilir veya yazdığınız kodu farklı sürümlerde test etmek isteyebilirsiniz.
 Peki bunu nasıl yapacaksınız?</p>
 <p>En başta da söylediğimiz gibi, hemen hemen bütün GNU/Linux dağıtımlarında Python2 kurulu olarak gelir.
 Dolayısıyla eğer sisteminize ek olarak Python3’ü de kurduysanız (kaynaktan veya paket deposundan), başka herhangi bir şey yapmanıza gerek yok.
-Yukarıda anlattığımız yönergeleri takip ettiyseniz, konsolda <code class="docutils literal notranslate"><span class="pre">python</span></code> komutu verdiğinizde Python2 çalışacak, <code class="docutils literal notranslate"><span class="pre">python3</span></code> (veya <code class="docutils literal notranslate"><span class="pre">py3</span></code>) komutunu verdiğinizde ise Python3 çalışacaktır.</p>
+Yukarıda anlattığımız yönergeleri takip ettiyseniz, konsolda <code class="docutils literal notranslate"><span class="pre">python</span></code> komutu verdiğinizde Python2, <code class="docutils literal notranslate"><span class="pre">python3</span></code> (veya <code class="docutils literal notranslate"><span class="pre">py3</span></code>) komutunu verdiğinizde ise Python3 çalışacaktır.</p>
 <p>Ama eğer sisteminizde Python2 bile kurulu değilse, ki bu çok çok düşük bir ihtimaldir, Python2’yi paket yöneticiniz yardımıyla sisteminize kurabilirsiniz.
 Şu anda piyasada olup da paket deposunda Python bulundurmayan GNU/Linux dağıtımı pek azdır.</p>
+<div class="section" id="pyenv-ile-surumleri-yonetmek">
+<h4>pyenv ile Sürümleri Yönetmek<a class="headerlink" href="#pyenv-ile-surumleri-yonetmek" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
+<p><a class="reference external" href="kurulum.html#surum-yoneticisi-ile-kurulum-pyenv">Sürüm Yöneticisi ile Kurulum</a> kısmında anlatıldığı şekilde pyenv kurulumu yaptıktan sonra <code class="docutils literal notranslate"><span class="pre">pyenv</span> <span class="pre">install</span> <span class="pre">&lt;python-sürümü&gt;</span></code> ile istediğiniz python sürümünü kolayca kurabilir ve sürümler arasında geçiş yapabilirsiniz. Sürüm geçişlerini şu şekilde örneklendirebiliriz. Sisteminizde 3.8.5 sürümünün aktif olduğunu varsayarak sisteme 2 yeni Python sürümü daha kuralım:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pyenv install 2.7.18
+pyenv install 3.6.9
+</pre></div>
+</div>
+<p>Bu durumda <code class="docutils literal notranslate"><span class="pre">pyenv</span> <span class="pre">versions</span></code> komutunun çıktısı şu şekilde olacaktır:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>system
+2.7.18
+3.6.9
+* 3.8.5 (set by /home/{kullanıcı-adınız}/.pyenv/version)
+</pre></div>
+</div>
+<p><cite>pyenv</cite> ile kurulan sürümlerin kullanılabilmesi için 3 farklı komut bulunmaktadır.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">pyenv</span> <span class="pre">local</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pyenv local &lt;python-sürümü&gt;
+</pre></div>
+</div>
+</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">local</span></code> komutu ile sürüm seçtiğinizde, bulunduğunuz dizinde .python-version isimli bir dosya oluşur. Bu dosya içerisinde yalnızca seçtiğiniz Python sürümü numarası bulunur ve bu sürüm yalnızca mevcut dizin içerisinde aktif olur. Aşağıdaki şekilde bir klasör yapısında <cite>proje1</cite> dizininde <code class="docutils literal notranslate"><span class="pre">pyenv</span> <span class="pre">local</span> <span class="pre">3.6.9</span></code> komutunu çalıştırdığımızı düşünelim:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>projeler
+├── proje1
+│   └── .python-version # 3.6.9
+└── proje2
+</pre></div>
+</div>
+<p>Bu durumda <cite>proje1</cite> dizininde <code class="docutils literal notranslate"><span class="pre">python</span></code> komutu <cite>3.6.9</cite> sürümü, bunun dışındaki bütün dizinlerde <cite>3.8.5</cite> sürümü çalışacaktır.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">pyenv</span> <span class="pre">global</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pyenv global &lt;python-sürümü&gt;
+</pre></div>
+</div>
+</li>
+</ul>
+<p>Kurulum kısmında da bahsettiğimiz gibi aktif kullandığınız Python sürümünü <code class="docutils literal notranslate"><span class="pre">global</span></code> komutu ile etkinleştirerek sürekli olarak kullanabilirsiniz. Python2 yüklü sistemlerde <code class="docutils literal notranslate"><span class="pre">python</span></code> komutu Python2 sürümünü çalıştırırken, <code class="docutils literal notranslate"><span class="pre">global</span></code> komutu ile aktifleştirme sonrasında <code class="docutils literal notranslate"><span class="pre">python</span></code> yazdığınızda seçtiğiniz Python sürümü çalışacaktır.</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">pyenv</span> <span class="pre">global</span> <span class="pre">3.8.5</span></code></p>
+</div></blockquote>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">pyenv</span> <span class="pre">shell</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pyenv shell &lt;python-sürümü&gt;
+</pre></div>
+</div>
+</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">shell</span></code> komutu ile aktifleştirdiğiniz Python sürümü mevcut terminal oturumunuz süresince aktif olacaktır. <code class="docutils literal notranslate"><span class="pre">shell</span></code> komutu <code class="docutils literal notranslate"><span class="pre">local</span></code> ve <code class="docutils literal notranslate"><span class="pre">global</span></code> sürümleri geçersiz kılar. Yani local olarak ayarladığınız bir dizine girdiğinizde bile hala shell ile aktifleştirdiğiniz sürüm çalışır. Normal şekilde kullanmaya devam edebilmek için <code class="docutils literal notranslate"><span class="pre">pyenv</span> <span class="pre">shell</span> <span class="pre">--unset</span></code> komutunu çalıştırmalı veya terminali yeniden başlatmalısınız.</p>
+<p>Yeni Python sürümleri çıktıkça <code class="docutils literal notranslate"><span class="pre">pyenv</span></code>’e eklenmektedir. Yeni sürümleri indirebilmek için <code class="docutils literal notranslate"><span class="pre">pyenv</span> <span class="pre">update</span></code> komutu ile <code class="docutils literal notranslate"><span class="pre">pyenv</span></code> aracını güncellemelisiniz.</p>
 <p>GNU/Linux’ta Python’ı nasıl çalıştıracağımızı ve farklı Python sürümlerini bir arada nasıl kullanacağımızı öğrendiğimize göre, Windows kullanıcılarının durumuna bakabiliriz.</p>
+</div>
 </div>
 </div>
 <div class="section" id="windows-kullanicilari">
@@ -287,7 +337,7 @@ Bunun için komut satırına ulaşın ve orada şu komutu çalıştırın:</p>
 <p>Bu komutu verdiğinizde şuna benzer bir ekranla karşılaşacaksınız:</p>
 <div class="screenshot docutils container">
 <p><cite>C:\Users\yazbel&gt;</cite> python3
-Python 3.7.0 (v3.7.0:c0e311e010fc, 25.07.2020, 12:24:55) [MSC v.1600 32 bit (Intel)] on win32
+Python 3.7.0 (v3.7.0:c0e311e010fc, 29.07.2020, 12:24:55) [MSC v.1600 32 bit (Intel)] on win32
 Type “help”, “copyright”, “credits” or “license” for more information.
 &gt;&gt;&gt;</p>
 </div>
@@ -458,7 +508,7 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 <div class="footer">
 &copy; Copyright 2007-2020, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 25.07.2020.
+Son güncelleme: 29.07.2020.
 <a href="http://sphinx-doc.org/">Sphinx</a> 3.1.2 kullanılarak oluşturuldu.
 <br>
 <br>

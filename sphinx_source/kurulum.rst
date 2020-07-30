@@ -48,7 +48,7 @@ Sisteminizde Python2 ile birlikte Python3 de halihazırda kurulu olabilir.
 Kullandığınız GNU/Linux dağıtımında durumun ne olduğunu denetlemek için yukarıdaki komutu bir de ``python3 -V`` şeklinde çalıştırmayı deneyebilirsiniz.
 Eğer bu komut size bir hata mesajı yerine bir sürüm numarası veriyorsa sisteminizde Python3 de kuruludur.
 
-Sisteminizdeki Python sürümlerine ilişkin daha kesin bir rapor için ise şu komutu kullanabilirsiniz::
+Sisteminizdeki Python sürümlerine ilişkin daha kesin bir rapor içinse şu komutu kullanabilirsiniz::
 
     ls -g {,/usr{,/local}}/bin | grep python
 
@@ -224,6 +224,77 @@ Bu önemli uyarıları da yaptığımıza göre gönül rahatlığıyla yolumuza
 
 Kurduğumuz yeni Python'ı nasıl çalıştıracağımızı biraz sonra göreceğiz.
 Ama önce Windows kullanıcılarının Python3'ü nasıl kuracaklarına bakalım.
+
+Sürüm Yöneticisi ile Kurulum (pyenv)
+====================================
+
+Sisteminize bir veya birden fazla Python sürümü kurmak istiyorsunuz fakat root hakları, kaynaktan sürüm derlemeleri vb. işlemler gözünüzü mü korkutuyor? Bütün bu işlemleri çok daha hızlı, pratik ve güvenli bir şekilde `pyenv` ile gerçekleştirebilirsiniz. `pyenv` sisteminizde birden fazla Python sürümünü kullanabilmenizi sağlayan ve birçok kolaylığı da beraberinde getiren bir araçtır. Bunun için öncelikle `pyenv-installer` ile sistemimize `pyenv` kurmamız gerekmektedir. Kurulum için aşağıdaki komutu çalıştırmanız yeterlidir::
+
+    curl https://pyenv.run | bash 
+
+Kurulum tamamlandıktan sonra aşağıdaki şekilde bir mesaj çıkacaktır::
+
+    # Load pyenv automatically by adding
+    # the following to ~/.bashrc:
+
+    export PATH="$HOME/.pyenv/bin:$PATH"
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+    
+Buradaki son 3 satırı ana dizininizdeki ``.bashrc`` dosyanızın *(veya farklı bir shell kullanıyorsanız ilgili dosyanın)* sonuna eklemeniz gerekmektedir. Eklemeyi yapıp kaydettikten sonra `pyenv`'i kullanmaya başlamak için terminali yeniden başlatmanız veya terminale ``source ~/.bashrc`` yazmanız yeterlidir.
+
+`pyenv` ile yükleyebileceğiniz Python sürümlerini listeleyebilmek için tek yapmanız gereken şu komutu çalıştırmaktır::
+
+    pyenv install --list
+
+Yalnızca 3.8.x sürümlerini listelemek içinse::
+
+    pyenv install --list |grep " 3.8.*"
+
+Komutunu çalıştırabilirsiniz. Eğer bütün sürümleri listelediyseniz görebileceğiniz üzere, `pyenv` ile kurabileceğiniz Python sürümü sayısı oldukça fazladır. Bu sürümlerden herhangi bir tanesini kurmadan önce `pyenv`'in kurulumları tamamlayabilmesi için ihtiyaç duyduğu bağımlılıkları kurmanızı tavsiye ederim. Aksi takdirde kurulumu bekleyip hata alma olasılığınız yüksektir. O hata mesajı da sizi şu linke yönlendirecektir: `(pyenv | Sık Karşılaşılan Hatalar) <https://github.com/pyenv/pyenv/wiki/Common-build-problems>`_
+
+pyenv Bağımlılıkların Kurulumu
+------------------------------
+
+- Ubuntu/Debian::
+
+    sudo apt-get install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
+    libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
+    xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
+
+- Fedora/CentOS/RHEL::
+
+    sudo dnf install zlib-devel bzip2 bzip2-devel readline-devel sqlite \
+    sqlite-devel openssl-devel xz xz-devel libffi-devel findutils
+
+- Arch ve türevleri::
+
+    pacman -S --needed base-devel openssl zlib bzip2 readline sqlite curl \
+    llvm ncurses xz tk libffi python-pyopenssl git
+
+Yeni Sürümlerin Kurulumu
+-------------------------
+
+`pyenv` için gerekli ayarları yaptıktan sonra yeni bir Python sürümü kurabilmek için tek yapmanız gereken ``pyenv install <python-sürümü>`` şeklinde bir komut çalıştırmaktır. ``<python-sürümü>`` kısmına yazağımız sürüm bilgisi ``pyenv install --list`` sonuçları ile aynı isimde olmalıdır. Python 3.8.5 sürümünü kurmak için yapmanız gereken aşağıdaki komutu çalıştırmaktır::
+
+    pyenv install 3.8.5
+
+Bu komut ile ``3.8.5`` sürümü sisteminize yüklenecektir.
+
+Yüklenen Sürümün Kullanımı 
+---------------------------
+
+Yüklediğiniz sürümün doğrulamasını yapmak için ``pyenv versions`` komutunu çalıştırabilirsiniz. Eğer yükleme uygun bir şekilde tamamlandı ise komutu çalıştırdığınızda görmeniz gereken çıktı şu şekildedir::
+
+    * system
+    3.8.5
+
+`*` işareti hali hazırda aktif olan sürümü temsil etmektedir. Kurduğunuz sürümü aktif olarak kullanabilmek için çalıştırmanız gereken komut şudur::
+
+    pyenv global 3.8.5
+
+`pyenv` ile temel seviyede Python yükleme ve etkinleştirme kısmı bu şekilde özetlenebilir. ``pyenv`` kullanımıyla ilgili detaylara `GNU/Linux’ta Farklı Sürümleri Birlikte Kullanmak <calistirma.html#gnu-linux-ta-farkli-surumleri-birlikte-kullanmak>`__  kısmında değineceğiz.
+
 
 Windows Kullanıcıları
 *********************

@@ -88,7 +88,7 @@ Sisteminizde Python2 ile birlikte Python3 de halihazırda kurulu olabilir.
 Örneğin Ubuntu GNU/Linux’un <strong>12.10</strong> sürümünden itibaren hem Python2, hem de Python3 sistemde kurulu vaziyettedir.</p>
 <p>Kullandığınız GNU/Linux dağıtımında durumun ne olduğunu denetlemek için yukarıdaki komutu bir de <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-V</span></code> şeklinde çalıştırmayı deneyebilirsiniz.
 Eğer bu komut size bir hata mesajı yerine bir sürüm numarası veriyorsa sisteminizde Python3 de kuruludur.</p>
-<p>Sisteminizdeki Python sürümlerine ilişkin daha kesin bir rapor için ise şu komutu kullanabilirsiniz:</p>
+<p>Sisteminizdeki Python sürümlerine ilişkin daha kesin bir rapor içinse şu komutu kullanabilirsiniz:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ls -g {,/usr{,/local}}/bin | grep python
 </pre></div>
 </div>
@@ -244,6 +244,77 @@ Yukarıdaki uyarıların amacı, kullanıcının Python’ı kaynaktan derlerken
 Ama önce Windows kullanıcılarının Python3’ü nasıl kuracaklarına bakalım.</p>
 </div>
 </div>
+<div class="section" id="surum-yoneticisi-ile-kurulum-pyenv">
+<h3>Sürüm Yöneticisi ile Kurulum (pyenv)<a class="headerlink" href="#surum-yoneticisi-ile-kurulum-pyenv" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p>Sisteminize bir veya birden fazla Python sürümü kurmak istiyorsunuz fakat root hakları, kaynaktan sürüm derlemeleri vb. işlemler gözünüzü mü korkutuyor? Bütün bu işlemleri çok daha hızlı, pratik ve güvenli bir şekilde <cite>pyenv</cite> ile gerçekleştirebilirsiniz. <cite>pyenv</cite> sisteminizde birden fazla Python sürümünü kullanabilmenizi sağlayan ve birçok kolaylığı da beraberinde getiren bir araçtır. Bunun için öncelikle <cite>pyenv-installer</cite> ile sistemimize <cite>pyenv</cite> kurmamız gerekmektedir. Kurulum için aşağıdaki komutu çalıştırmanız yeterlidir:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>curl https://pyenv.run | bash
+</pre></div>
+</div>
+<p>Kurulum tamamlandıktan sonra aşağıdaki şekilde bir mesaj çıkacaktır:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Load pyenv automatically by adding
+# the following to ~/.bashrc:
+
+export PATH=&quot;$HOME/.pyenv/bin:$PATH&quot;
+eval &quot;$(pyenv init -)&quot;
+eval &quot;$(pyenv virtualenv-init -)&quot;
+</pre></div>
+</div>
+<p>Buradaki son 3 satırı ana dizininizdeki <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> dosyanızın <em>(veya farklı bir shell kullanıyorsanız ilgili dosyanın)</em> sonuna eklemeniz gerekmektedir. Eklemeyi yapıp kaydettikten sonra <cite>pyenv</cite>’i kullanmaya başlamak için terminali yeniden başlatmanız veya terminale <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">~/.bashrc</span></code> yazmanız yeterlidir.</p>
+<p><cite>pyenv</cite> ile yükleyebileceğiniz Python sürümlerini listeleyebilmek için tek yapmanız gereken şu komutu çalıştırmaktır:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pyenv install --list
+</pre></div>
+</div>
+<p>Yalnızca 3.8.x sürümlerini listelemek içinse:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pyenv install --list |grep &quot; 3.8.*&quot;
+</pre></div>
+</div>
+<p>Komutunu çalıştırabilirsiniz. Eğer bütün sürümleri listelediyseniz görebileceğiniz üzere, <cite>pyenv</cite> ile kurabileceğiniz Python sürümü sayısı oldukça fazladır. Bu sürümlerden herhangi bir tanesini kurmadan önce <cite>pyenv</cite>’in kurulumları tamamlayabilmesi için ihtiyaç duyduğu bağımlılıkları kurmanızı tavsiye ederim. Aksi takdirde kurulumu bekleyip hata alma olasılığınız yüksektir. O hata mesajı da sizi şu linke yönlendirecektir: <a class="reference external" href="https://github.com/pyenv/pyenv/wiki/Common-build-problems">(pyenv | Sık Karşılaşılan Hatalar)</a></p>
+<div class="section" id="pyenv-bagimliliklarin-kurulumu">
+<h4>pyenv Bağımlılıkların Kurulumu<a class="headerlink" href="#pyenv-bagimliliklarin-kurulumu" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
+<ul>
+<li><p>Ubuntu/Debian:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo apt-get install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
+libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
+xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
+</pre></div>
+</div>
+</li>
+<li><p>Fedora/CentOS/RHEL:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo dnf install zlib-devel bzip2 bzip2-devel readline-devel sqlite \
+sqlite-devel openssl-devel xz xz-devel libffi-devel findutils
+</pre></div>
+</div>
+</li>
+<li><p>Arch ve türevleri:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pacman -S --needed base-devel openssl zlib bzip2 readline sqlite curl \
+llvm ncurses xz tk libffi python-pyopenssl git
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="yeni-surumlerin-kurulumu">
+<h4>Yeni Sürümlerin Kurulumu<a class="headerlink" href="#yeni-surumlerin-kurulumu" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
+<p><cite>pyenv</cite> için gerekli ayarları yaptıktan sonra yeni bir Python sürümü kurabilmek için tek yapmanız gereken <code class="docutils literal notranslate"><span class="pre">pyenv</span> <span class="pre">install</span> <span class="pre">&lt;python-sürümü&gt;</span></code> şeklinde bir komut çalıştırmaktır. <code class="docutils literal notranslate"><span class="pre">&lt;python-sürümü&gt;</span></code> kısmına yazağımız sürüm bilgisi <code class="docutils literal notranslate"><span class="pre">pyenv</span> <span class="pre">install</span> <span class="pre">--list</span></code> sonuçları ile aynı isimde olmalıdır. Python 3.8.5 sürümünü kurmak için yapmanız gereken aşağıdaki komutu çalıştırmaktır:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pyenv install 3.8.5
+</pre></div>
+</div>
+<p>Bu komut ile <code class="docutils literal notranslate"><span class="pre">3.8.5</span></code> sürümü sisteminize yüklenecektir.</p>
+</div>
+<div class="section" id="yuklenen-surumun-kullanimi">
+<h4>Yüklenen Sürümün Kullanımı<a class="headerlink" href="#yuklenen-surumun-kullanimi" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
+<p>Yüklediğiniz sürümün doğrulamasını yapmak için <code class="docutils literal notranslate"><span class="pre">pyenv</span> <span class="pre">versions</span></code> komutunu çalıştırabilirsiniz. Eğer yükleme uygun bir şekilde tamamlandı ise komutu çalıştırdığınızda görmeniz gereken çıktı şu şekildedir:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* system
+3.8.5
+</pre></div>
+</div>
+<p><cite>*</cite> işareti hali hazırda aktif olan sürümü temsil etmektedir. Kurduğunuz sürümü aktif olarak kullanabilmek için çalıştırmanız gereken komut şudur:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pyenv global 3.8.5
+</pre></div>
+</div>
+<p><cite>pyenv</cite> ile temel seviyede Python yükleme ve etkinleştirme kısmı bu şekilde özetlenebilir. <code class="docutils literal notranslate"><span class="pre">pyenv</span></code> kullanımıyla ilgili detaylara <a class="reference external" href="calistirma.html#gnu-linux-ta-farkli-surumleri-birlikte-kullanmak">GNU/Linux’ta Farklı Sürümleri Birlikte Kullanmak</a>  kısmında değineceğiz.</p>
+</div>
+</div>
 </div>
 <div class="section" id="windows-kullanicilari">
 <h2>Windows Kullanıcıları<a class="headerlink" href="#windows-kullanicilari" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
@@ -381,7 +452,7 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 <div class="footer">
 &copy; Copyright 2007-2020, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 25.07.2020.
+Son güncelleme: 29.07.2020.
 <a href="http://sphinx-doc.org/">Sphinx</a> 3.1.2 kullanılarak oluşturuldu.
 <br>
 <br>
