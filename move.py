@@ -1,6 +1,5 @@
 import shutil
 import os
-import add_logo
 
 current_path = os.path.dirname(os.path.abspath(__file__))
 os.chdir(current_path)
@@ -27,4 +26,4 @@ for i in os.listdir(builds):
 
 
 ##shutil.rmtree("build") # zaten .gitignore'da bulunuyor
-add_logo.main()
+
