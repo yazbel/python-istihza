@@ -681,15 +681,29 @@ sayıya dönüştürülemez.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="mf">543.34</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><cite>“5654”</cite> veya <cite>“543.34”</cite> gibi bir karakter dizisini <code class="docutils literal notranslate"><span class="pre">int()</span></code> veya <code class="docutils literal notranslate"><span class="pre">float()</span></code>
-fonksiyonu yardımıyla tamsayıya ya da kayan noktalı sayıya da dönüştürebiliriz:</p>
+<p><cite>“5654”</cite> karakter dizisini <code class="docutils literal notranslate"><span class="pre">int()</span></code> fonksiyonu ile tamsayıya, <code class="docutils literal notranslate"><span class="pre">float()</span></code> fonksiyonu ile de
+bir kayan noktalı sayıya dönüştürebiliriz:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="s2">&quot;5654&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="s2">&quot;543.34&quot;</span><span class="p">)</span>
-
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;5654&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;543.34&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>veya <cite>“543.34”</cite> gibi bir karakter dizisini <code class="docutils literal notranslate"><span class="pre">float()</span></code>
+fonksiyonu yardımıyla kayan noktalı sayıya dönüştürebiliriz:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;543.34&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Ancak <cite>“543.34”</cite> karakter dizisini <cite>int()</cite> fonksiyonu ile birlikte kullanırsak hata alırız, çünkü
+<cite>543.34</cite> bir tamsayı olamaz. Eğer amacımız <cite>“543.34”</cite> karakter dizisini sayısal değer gibi düşünüp
+aşağı yuvarlamak olsaydı şöyle bir şey yapabilirdik:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;543.34&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<span class="go">543.34</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">543</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>Aşağı değil de yukarı yuvarlamak istersek en son elde ettiğimiz <cite>543</cite> değerine bir eklemek yeterli olurdu.</p>
 <p>Ama <cite>“elma”</cite> gibi bir karakter dizisini ne <code class="docutils literal notranslate"><span class="pre">int()</span></code> ne de <code class="docutils literal notranslate"><span class="pre">float()</span></code>
 fonksiyonuyla tamsayıya veya kayan noktalı sayıya dönüştürebiliriz! Çünkü
 <cite>“elma”</cite> verisi sayı değerli değildir.</p>
@@ -1445,7 +1459,7 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 <div class="footer">
 &copy; Copyright 2007-2020, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 16.11.2020.
+Son güncelleme: 29.11.2020.
 <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.1 kullanılarak oluşturuldu.
 <br>
 <br>
