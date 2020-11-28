@@ -157,4 +157,10 @@ Ama her halükarda Python3'ün bu dilin geleceği olduğunu ve günün birinde P
 
 .. warning:: 1 Ocak 2020 itibarıyla Python2'ye verilen destek bitmiştir. Artık `Python Yazılım Vakfı  
              <https://tr.wikipedia.org/wiki/Python_Yaz%C4%B1l%C4%B1m_Vakf%C4%B1>`_ Python2.x sürümlerini geliştirmemektedir.
-             Ayrıntılı bilgi için bu    linklere bakabilirsiniz: https://www.python.org/doc/sunset-python-2/, https://pythonclock.org/,              https://python3statement.org/
+             Yukarıda yazarın yazdığı satırların günümüzde bir geçerliliği kalmamış, büyük Python kütüphanelerin neredeyse hepsi Python3'e
+             geçmiş ve Python2 desteklerini 2021'de bırakacaklarını duyurmuştur. Python'u yeni öğrenen biri olarak Python2 yerine Python3'ü seçmeniz
+             çok daha doğru olur.
+             Ayrıntılı bilgi için bu linklere bakabilirsiniz: 
+             https://www.python.org/doc/sunset-python-2/, 
+             https://pythonclock.org/,              
+             https://python3statement.org/
