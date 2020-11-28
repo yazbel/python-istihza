@@ -911,15 +911,14 @@ Bir de `b` kümesinde bulunup `a` kümesinde bulunmayan öğelere bakalım::
 	{4}
 
 Bu da bize "4" çıktısını verdi. Demek ki bu öğe ``b`` kümesinde bulunuyor, ama
-``a`` kümesinde bulunmuyormuş. Peki ya kümelerin ikisinde de bulunmayan öğeleri
-aynı anda nasıl alacağız? işte bu noktada yardımımıza `symmetric_difference()`
-adlı metot yetişecek::
+``a`` kümesinde bulunmuyormuş. Peki ya kümelerin sadece birinde bulunan öğeleri nasıl alacağız? 
+İşte bu noktada yardımımıza `symmetric_difference()` adlı metot yetişecek::
 
 	>>> a.symmetric_difference(b)
 
 	{2, 4}
 
-Böylece iki kümede de bulunmayan öğeleri aynı anda almış olduk.
+Böylece iki kümenin ortak olarak sahip olmadığı öğeleri almış olduk.
 
 symmetric_difference_update()
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
