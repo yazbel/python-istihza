@@ -1195,7 +1195,7 @@ karakteri ekrana eklemek istediğimizde sorun çıkmasın::
 
 Şimdi de, *ESC* tuşuna basılmadığı sürece çalışan bir döngü oluşturalım::
 
-    while q != 27
+    while q != 27:
 
 *q* bütün tuşları temsil etsin::
 

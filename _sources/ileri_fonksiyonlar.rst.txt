@@ -4,7 +4,7 @@
               özyinelemeli, bezeyiciler, kapalı fonksiyonlar ,
               nested , nonlocal , nested function , iç ,
               iç içe , iç içe fonksiyonlar, generator, üreteç , yield ,
-              iterate , iterator
+              iterate , iterator, yield from
 
 .. highlight:: py3
 
@@ -1049,7 +1049,7 @@ inceleceğiz.
 =============================
 
 İsminden anlayabileceğimiz gibi içe içe olan birden fazla fonksiyonumuz
-olunca bunlara *Nested*, yani iç içe fonksiyonlar diyoruz.
+olunca bunlara *nested*, yani iç içe fonksiyonlar diyoruz.
 Aşağıdaki gibi iki fonksiyonumuz olduğunu düşünelim::
 
 	def fonk1():

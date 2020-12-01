@@ -533,7 +533,7 @@ koyacaktır::
 
     'istihza'
 
-    >>> site[12:16]
+    >>> site[12:15]
 
     'com'
 

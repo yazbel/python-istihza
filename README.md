@@ -86,6 +86,9 @@ konu açarak aklınızdaki soruları sorabilirsiniz. Topluluk size yardım etmek
 
 Belgelere ekleme yaparak veya yazım ve bilgi yanlışlarını düzelterek yardım edebilirsiniz:
 
+- Topluluk tarafından eksikliği hissedilen bazı konular ve belgelerdeki düzeltilmesi gereken hatalar [TODO.md](TODO.md) 
+dosyasında listelenmiş halde bulunuyor. Bu konular hakkında çalışma yapabilirsiniz.
+
 - Belgelerde değişiklik yaparak çekme isteği (pull request) gönderebilirsiniz. Yazım yanlışları ve küçük hatalar için
 GitHub arayüzünü kullanabilirsiniz ancak daha büyük ve karmaşık düzeltmeler için veri havuzunu bilgisayarınıza çekmeli,
 daha sonrasında düzeltmeleri yapmalı ve belgeleri inşa edip çekme isteği göndermelisiniz. Her iki durumda da kısa ve öz bir

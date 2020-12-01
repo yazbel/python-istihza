@@ -33,7 +33,7 @@ Argüman Eklemek
     ayristirici.add_argument('-i', '--ilk_arguman', nargs='+', required=False, help="Bu ilk argümandır")
     ayristirici.add_argument('-a', '--ikinci_arguman', required=False, help="Bu ikinci argümandır")
 
-İki argümanımızı eklemiş olduk. Şimdi `ayristiri.print_help()` ile çıktımızı bastıralım ve inceleyelim.
+İki argümanımızı eklemiş olduk. Şimdi `ayristirici.print_help()` ile çıktımızı bastıralım ve inceleyelim.
 
 
 **Not: Normal şartlarda argparse modülü komut satırı için uygundur ancak etkileşimli kabukta çalışırken sonuçları

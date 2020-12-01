@@ -683,14 +683,29 @@ olanak tanıdı:
     >>> str(5654)
     >>> str(543.34)
 
-`"5654"` veya `"543.34"` gibi bir karakter dizisini ``int()`` veya ``float()``
-fonksiyonu yardımıyla tamsayıya ya da kayan noktalı sayıya da dönüştürebiliriz::
+`"5654"` karakter dizisini ``int()`` fonksiyonu ile tamsayıya, ``float()`` fonksiyonu ile de
+bir kayan noktalı sayıya dönüştürebiliriz::
 
     >>> int("5654")
-    >>> int("543.34")
-
     >>> float("5654")
+
+veya `"543.34"` gibi bir karakter dizisini ``float()``
+fonksiyonu yardımıyla kayan noktalı sayıya dönüştürebiliriz::
+
     >>> float("543.34")
+
+Ancak `"543.34"` karakter dizisini `int()` fonksiyonu ile birlikte kullanırsak hata alırız, çünkü
+`543.34` bir tamsayı olamaz. Eğer amacımız `"543.34"` karakter dizisini sayısal değer gibi düşünüp 
+aşağı yuvarlamak olsaydı şöyle bir şey yapabilirdik::
+
+    >>> x = float("543.34")
+    >>> x
+    543.34
+    >>> int(x)
+    543
+    >>>
+
+Aşağı değil de yukarı yuvarlamak istersek en son elde ettiğimiz `543` değerine bir eklemek yeterli olurdu.
 
 Ama `"elma"` gibi bir karakter dizisini ne ``int()`` ne de ``float()``
 fonksiyonuyla tamsayıya veya kayan noktalı sayıya dönüştürebiliriz! Çünkü
