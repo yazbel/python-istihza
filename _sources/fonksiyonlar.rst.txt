@@ -1329,7 +1329,7 @@ parametrelerin nasıl belirleneceğini tartıştık. Aynı bu şekilde, rastgele
 
 Bu kodları çalıştırdığımızda şöyle bir çıktı alıyoruz::
 
-    {'şehir': 'Ankara', 'isim': 'Ahmet', 'soyisim': 'Öz', 'meslek': 'Mühendis'}
+    {'isim': 'Ahmet', 'soyisim': 'Öz', 'meslek': 'Mühendis', 'şehir': 'Ankara'}
 
 Gördüğünüz gibi, fonksiyonu tanımlarken parametremizin sol tarafına
 yerleştirdiğimiz `**` işareti, bu fonksiyonu çağırırken yazdığımız isimli
