@@ -11,6 +11,7 @@ karakter dizisini bir sayıyla çarpmaya kalkarsak hata alıyoruz.` bölümü d�
 * Bezeyiciler (decorator) konusunun anlatımı.
 * Üreteçler (generators) konusunda daha çok örnek.
 * Magic metodlar, diğer bir deyişle dunder metodlar eklenmeli.
+  * Bir örnek, `__build_class__()`
 * ``Ellipsis`` nesnesi hakkında özet bir anlatım.
 * Fonksiyonel programlama örnekleri ve `itertools` modülünün anlatımı.
 * `logging` modülünün anlatımı.
@@ -19,3 +20,4 @@ karakter dizisini bir sayıyla çarpmaya kalkarsak hata alıyoruz.` bölümü d�
 * Basit bir expression parser örneği. Pratt parser kullanılabilir.
 * `socket` modülünün anlatımı.
 * Metasınıfların anlatımı.
+* Şu şekildeki `lambda` kullanımı: `(lambda x: x + 1)(2) # = 3` eklenmeli.
