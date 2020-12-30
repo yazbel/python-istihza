@@ -495,3 +495,8 @@ Yunus Kale
 ===========
 
     - Fonksiyonlar konusundaki kod hatası düzeltildi.
+
+Adem Kurtipek
+==============
+
+    - Kaçış dizileri kısmındaki ``print("\N{LATIN CAPITAL LETTER S WITH CEDILLA}")`` komutunun, çıktısı olarak gösterilen `ş` değeri `Ş` olarak değiştirildi.

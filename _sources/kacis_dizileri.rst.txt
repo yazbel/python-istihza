@@ -852,7 +852,7 @@ bakın::
 
     >>> print("\N{LATIN CAPITAL LETTER S WITH CEDILLA}")
 
-    ş
+    Ş
 
     >>> print("\Nisan")
 
