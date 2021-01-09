@@ -19,3 +19,4 @@ karakter dizisini bir sayıyla çarpmaya kalkarsak hata alıyoruz.` bölümü d�
 * Basit bir expression parser örneği. Pratt parser kullanılabilir.
 * `socket` modülünün anlatımı.
 * Metasınıfların anlatımı.
+* DataClass'ların anlatımı.
