@@ -1,31 +1,43 @@
 
  <!DOCTYPE html>
- <html lang="tr">
+ <html lang="">
 
 
-<html lang="tr">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta content="Buğra İşgüzar &lt;biisguzar&#64;gmail.com&gt;" name="author" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="Buğra İşgüzar &lt;biisguzar&#64;gmail.com&gt;" name="author" />
 <meta content="Bu bölümde Python'daki f-string yapısından ve özelliklerinden söz edeceğiz." name="description" />
 <meta content="python, f-string, formatted string" name="keywords" />
 
-    <title>f-string &#8212; Python 3 için Türkçe Kılavuz</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <title>f-string &mdash; Python 3 için Türkçe Kılavuz</title>
+    
     <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/translations.js"></script>
-    <link rel="search" title="Ara" href="search.html" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="top" title="Python 3 için Türkçe Kılavuz" href="index.html" />
     <link rel="next" title="Listeler ve Demetler" href="listeler_ve_demetler.html" />
     <link rel="prev" title="Karakter Dizilerini Biçimlendirmek" href="karakter_dizilerini_bicimlendirmek.html" />
 <!--[if lte IE 6]>
 <link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
 <![endif]-->
 
-  </head><body>
+  </head>
+  <body>
 <div class='header'><a href='https://yazbel.com'><img src="_static/logo.png"></a></div>
 
 <ul class='navbar'>
@@ -34,66 +46,66 @@
 </ul>
 
 
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Gezinti</h3>
+    <div class="related">
+      <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="listeler_ve_demetler.html" title="Listeler ve Demetler"
-             accesskey="N">sonraki</a></li>
+             accesskey="N">next</a></li>
         <li class="right" >
           <a href="karakter_dizilerini_bicimlendirmek.html" title="Karakter Dizilerini Biçimlendirmek"
-             accesskey="P">önceki</a> |</li>
+             accesskey="P">previous</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
-
-        <li class="nav-item nav-item-this"><a href="">f-string</a></li> 
+ 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
-          <div class="body" role="main">
+          <div class="body">
             
 
   <div class="section" id="f-string">
-<h1>f-string<a class="headerlink" href="#f-string" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
-<p>Daha önceki bölümlerde <strong>format()</strong> fonksiyonuyla karakter dizilerini nasıl biçimlendirebileceğimizi görmüştük. 3.6 sürümü ile Python’a eklenen f-string yapısı da buna benzer bir şekilde çalışıyor. Öncelikle format() fonksiyonunu nasıl kullandığımızı hatırlayalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">isim</span> <span class="o">=</span> <span class="s1">&#39;Buğra&#39;</span>
+<h1>f-string<a class="headerlink" href="#f-string" title="Permalink to this headline">¶</a></h1>
+<p>Daha önceki bölümlerde <strong>format()</strong> fonksiyonuyla karakter dizilerini nasıl biçimlendirebileceğimizi görmüştük. 3.6 sürümü ile Python&#8217;a eklenen f-string yapısı da buna benzer bir şekilde çalışıyor. Öncelikle format() fonksiyonunu nasıl kullandığımızı hatırlayalım:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">isim</span> <span class="o">=</span> <span class="s1">&#39;Buğra&#39;</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Selam </span><span class="si">{kime}</span><span class="s1">!&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">kime</span><span class="o">=</span><span class="n">isim</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>Burada öncelikle <em>isim</em> adında bir değişken tanımladık ve bu değişkene <em>Buğra</em> değerini atadık. Daha sonra da <em>‘Selam {isim}!’</em> diye bir karakter dizisini ekrana yazdırdık. format() fonksiyonunu kullanarak Python’a yazdırma işlemini yapmadan önce karakter dizimizdeki <em>kime</em> kısımını <em>isim</em> değişkeninin değeri ile değiştirmesi gerektiğini söyledik.</p>
+<p>Burada öncelikle <em>isim</em> adında bir değişken tanımladık ve bu değişkene <em>Buğra</em> değerini atadık. Daha sonra da <em>&#8216;Selam {isim}!&#8217;</em> diye bir karakter dizisini ekrana yazdırdık. format() fonksiyonunu kullanarak Python&#8217;a yazdırma işlemini yapmadan önce karakter dizimizdeki <em>kime</em> kısımını <em>isim</em> değişkeninin değeri ile değiştirmesi gerektiğini söyledik.</p>
 <p>format() fonksiyonumuz kendisine verdiğimiz değerleri kapsama alanı içerisinde uygun yerlere yerleştirir. Hatırlarsanız format() fonksiyonunu ilgilendiren kısımları süslü parantezlerin içine yazıyorduk. Yukarıdaki örneği şu şekilde de yapabiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">isim</span> <span class="o">=</span> <span class="s1">&#39;Buğra&#39;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">isim</span> <span class="o">=</span> <span class="s1">&#39;Buğra&#39;</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Selam </span><span class="si">{}</span><span class="s1">!&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">isim</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>Bu sefer format() fonksiyonuna belirli bir yer göstermediğimiz için sırasıyla ilgili alanlara verdiğimiz parametreleri dolduracak. Zaten bir parametre ve bir alan olduğu için yukarıdaki örnekle aynı çıktıyı alacağız. format() fonksiyonunu bu kadar hatırlamak yeter, hadi f-string’lere geçelim!</p>
+<p>Bu sefer format() fonksiyonuna belirli bir yer göstermediğimiz için sırasıyla ilgili alanlara verdiğimiz parametreleri dolduracak. Zaten bir parametre ve bir alan olduğu için yukarıdaki örnekle aynı çıktıyı alacağız. format() fonksiyonunu bu kadar hatırlamak yeter, hadi f-string&#8217;lere geçelim!</p>
 <div class="section" id="kullanim">
-<h2>Kullanım<a class="headerlink" href="#kullanim" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
-<p>String nedir hepimiz biliyoruz, Türkçeye karakter dizisi olarak çeviriyoruz. Bu yapıya da f-string diyoruz çünkü bu yapıyı kullanmak istediğimiz stringin (karakter dizisinin) başına <strong>f</strong> veya <strong>F</strong> ekliyoruz. Yani bir ön ek ekleyerek Python’a artık onun normal, sıradan bir karakter dizisi olmadığını ve bir ön işlemden geçmesi gerektiğini belirtiyoruz.:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Selam Dünya!&quot;</span> <span class="c1"># Normal bir karakter dizisi</span>
-<span class="sa">f</span><span class="s2">&quot;Selam Dünya!&quot;</span> <span class="c1"># Bu artık bir f-string</span>
+<h2>Kullanım<a class="headerlink" href="#kullanim" title="Permalink to this headline">¶</a></h2>
+<p>String nedir hepimiz biliyoruz, Türkçeye karakter dizisi olarak çeviriyoruz. Bu yapıya da f-string diyoruz çünkü bu yapıyı kullanmak istediğimiz stringin (karakter dizisinin) başına <strong>f</strong> veya <strong>F</strong> ekliyoruz. Yani bir ön ek ekleyerek Python&#8217;a artık onun normal, sıradan bir karakter dizisi olmadığını ve bir ön işlemden geçmesi gerektiğini belirtiyoruz.:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="s2">&quot;Selam Dünya!&quot;</span> <span class="c1"># Normal bir karakter dizisi</span>
+<span class="n">f</span><span class="s2">&quot;Selam Dünya!&quot;</span> <span class="c1"># Bu artık bir f-string</span>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="admonition-title">Not</p>
-<p>f-string’leri kullanabilmeniz için Python 3.6 ya da daha yeni bir sürüm kullanmamız gerektiğini unutmayalım!</p>
+<p class="first admonition-title">Note</p>
+<p class="last">f-string&#8217;leri kullanabilmeniz için Python 3.6 ya da daha yeni bir sürüm kullanmamız gerektiğini unutmayalım!</p>
 </div>
-<p>Bu örnekte f-string’imizin normal bir karakter dizisinden farkı yok gibi görünüyor. Aslında şuanlık bir farkı yok. Çünkü biz <strong>f-string</strong>’in özelliklerini henüz kullanmadık. Yukarıda format() fonksiyonu için yazdığımız örneği bir de f-string için yazalım.:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">isim</span> <span class="o">=</span> <span class="s1">&#39;Buğra&#39;</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Selam </span><span class="si">{</span><span class="n">isim</span><span class="si">}</span><span class="s1">!&#39;</span><span class="p">)</span>
+<p>Bu örnekte f-string&#8217;imizin normal bir karakter dizisinden farkı yok gibi görünüyor. Aslında şuanlık bir farkı yok. Çünkü biz <strong>f-string</strong>&#8216;in özelliklerini henüz kullanmadık. Yukarıda format() fonksiyonu için yazdığımız örneği bir de f-string için yazalım.:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">isim</span> <span class="o">=</span> <span class="s1">&#39;Buğra&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Selam </span><span class="si">{isim}</span><span class="s1">!&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Bu örneği de çalıştırdığınızda yukarıdaki örneklerin çıktılarıyla aynı çıktıyı verdiğini göreceksiniz. Ama çok daha düzenli bir görünümle elde ettik bu sefer aynı çıktıyı. format() fonksiyonuna ilgileneceği kısımları, işlem yapacağı kısımları, süslü parantezler ile belirttiğimizi biliyoruz. f-string için de aynı şey geçerli ancak ufak bir farkla. Artık harici bir işlem yapılıp karakter dizimiz düzenlenmiyor, işlemler doğrudan karakter dizimiz içinde gerçekleştirilip yerini kendi alıyor!</p>
 <p>Bir örnek daha hazırlayalım ve üzerinde konuşalım.:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">isim</span> <span class="o">=</span> <span class="s1">&#39;Buğra&#39;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">isim</span> <span class="o">=</span> <span class="s1">&#39;Buğra&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">yas</span> <span class="o">=</span> <span class="mi">18</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="sa">f</span><span class="s1">&#39;Onun adı </span><span class="si">{</span><span class="n">isim</span><span class="si">}</span><span class="s1"> ve o </span><span class="si">{</span><span class="n">yas</span><span class="si">}</span><span class="s1"> yaşında.&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="s1">&#39;Onun adı </span><span class="si">{isim}</span><span class="s1"> ve o </span><span class="si">{yas}</span><span class="s1"> yaşında.&#39;</span>
 <span class="go">&#39;Onun adı Buğra ve o 18 yaşında.&#39;</span>
 </pre></div>
 </div>
-<dl>
-<dt>Aynı örneği format() fonksiyonu ile de yazıp arasındaki farka bakalım.::</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">isim</span> <span class="o">=</span> <span class="s1">&#39;Buğra&#39;</span>
+<dl class="docutils">
+<dt>Aynı örneği format() fonksiyonu ile de yazıp arasındaki farka bakalım.::</dt>
+<dd><div class="first last highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">isim</span> <span class="o">=</span> <span class="s1">&#39;Buğra&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">yas</span> <span class="o">=</span> <span class="mi">18</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;Onun adı </span><span class="si">{}</span><span class="s2"> ve o </span><span class="si">{}</span><span class="s2"> yaşında.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">isim</span><span class="p">,</span> <span class="n">yas</span><span class="p">)</span>
 <span class="go">&#39;Onun adı Buğra ve o 18 yaşında.&#39;</span>
@@ -102,35 +114,36 @@
 </dd>
 </dl>
 <p>Yukarıdaki kodu en basit haliyle değişken isimleri kullanmadan yazdım, yani değişkenleri sırasıyla ilgili yerlere yerleştirecek. Buna rağmen f-string örneğimizdekinden çok daha uzun oldu ve okunabilirlik azaldı.</p>
-<dl>
-<dt>Aynı zamanda f-string’lerin içinde Python işlemleri de yapabiliriz.::</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">birinci_rakam</span> <span class="o">=</span> <span class="mi">5</span>
+<dl class="docutils">
+<dt>Aynı zamanda f-string&#8217;lerin içinde Python işlemleri de yapabiliriz.::</dt>
+<dd><div class="first last highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">birinci_rakam</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ikinci_rakam</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="sa">f</span><span class="s1">&#39;Rakamların toplamı </span><span class="si">{</span><span class="n">birinci_rakam</span> <span class="o">+</span> <span class="n">ikinci_rakam</span><span class="si">}</span><span class="s1"> eder.&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="s1">&#39;Rakamların toplamı {birinci_rakam + ikinci_rakam} eder.&#39;</span>
 <span class="go">&#39;Rakamların toplamı 8 eder.&#39;</span>
 </pre></div>
 </div>
 </dd>
 </dl>
 <p>Hadi sadece toplama işlemi yapan bir hesap makinesi yapalım.:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">birinci_sayi</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Birinci sayıyı girin: &#39;</span><span class="p">))</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">birinci_sayi</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Birinci sayıyı girin: &#39;</span><span class="p">))</span>
 <span class="n">ikinci_sayi</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;İkinci sayıyı girin: &#39;</span><span class="p">))</span>
 
 <span class="nb">print</span><span class="p">(</span>
-        <span class="sa">f</span><span class="s1">&#39;Sayıların toplamı </span><span class="si">{</span><span class="n">birinci_sayi</span><span class="o">+</span><span class="n">ikinci_sayi</span><span class="si">}</span><span class="s1"> eder.&#39;</span>
+        <span class="n">f</span><span class="s1">&#39;Sayıların toplamı {birinci_sayi+ikinci_sayi} eder.&#39;</span>
         <span class="p">)</span>
 </pre></div>
 </div>
-<p>Kullanıcının girdiği sayıları toplayan bir hesap makinesi yaptık. Az önce f-string’lerin içinde Python kodu yazabildiğimizi öğrenmiştik. Bu bilgimizi de kullanıp bu basit programı daha güncel hale getirelim.:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="sa">f</span><span class="s1">&#39;Sayıların toplamı </span><span class="si">{</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Birinci sayıyı girin: &quot;</span><span class="p">))</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;İkinci sayıyı girin: &quot;</span><span class="p">))</span> <span class="si">}</span><span class="s1"> eder.&#39;</span>
+<p>Kullanıcının girdiği sayıları toplayan bir hesap makinesi yaptık. Az önce f-string&#8217;lerin içinde Python kodu yazabildiğimizi öğrenmiştik. Bu bilgimizi de kullanıp bu basit programı daha güncel hale getirelim.:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="s1">&#39;Sayıların toplamı { int(input(&quot;Birinci sayıyı girin: &quot;)) + int(input(&quot;İkinci sayıyı girin: &quot;)) } eder.&#39;</span>
 <span class="go">Birinci sayıyı girin: 10</span>
 <span class="go">İkinci sayıyı girin: 7</span>
 <span class="go">&#39;Sayıların toplamı 17 eder.&#39;</span>
 </pre></div>
 </div>
-<p>Kullanıcıdan girdileri f-string’in içinde alarak tek satırlık bir hesap makinesi yazmış olduk.</p>
+<p>Kullanıcıdan girdileri f-string&#8217;in içinde alarak tek satırlık bir hesap makinesi yazmış olduk.</p>
 <div class="admonition note">
-<p class="admonition-title">Not</p>
-<p>f-string’in içinde Python kodu yazmak her zaman en iyi yol olmayabilir.</p>
+<p class="first admonition-title">Note</p>
+<p class="last">f-string&#8217;in içinde Python kodu yazmak her zaman en iyi yol olmayabilir.</p>
 </div>
 </div>
 </div>
@@ -139,18 +152,17 @@
 
 <div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
 <div class='extrarelbar'> 
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Gezinti</h3>
+    <div class="related">
+      <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="listeler_ve_demetler.html" title="Listeler ve Demetler"
-             >sonraki</a></li>
+             >next</a></li>
         <li class="right" >
           <a href="karakter_dizilerini_bicimlendirmek.html" title="Karakter Dizilerini Biçimlendirmek"
-             >önceki</a> |</li>
+             >previous</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
-
-        <li class="nav-item nav-item-this"><a href="">f-string</a></li> 
+ 
       </ul>
     </div> </div>
 
@@ -185,30 +197,28 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 
 
-            <div class="clearer"></div>
           </div>
       </div>
       <div class="clearer"></div>
     </div> 
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Gezinti</h3>
+    <div class="related">
+      <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="listeler_ve_demetler.html" title="Listeler ve Demetler"
-             >sonraki</a></li>
+             >next</a></li>
         <li class="right" >
           <a href="karakter_dizilerini_bicimlendirmek.html" title="Karakter Dizilerini Biçimlendirmek"
-             >önceki</a> |</li>
+             >previous</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
-
-        <li class="nav-item nav-item-this"><a href="">f-string</a></li> 
+ 
       </ul>
     </div> 
 
 <div class="footer">
 &copy; Copyright 2007-2021, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 26.01.2021.
-<a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3 kullanılarak oluşturuldu.
+Last updated on 30.01.2021.
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img

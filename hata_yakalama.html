@@ -1,30 +1,42 @@
 
  <!DOCTYPE html>
- <html lang="tr">
+ <html lang="">
 
 
-<html lang="tr">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta content="Bu bölümde hata yakalama konusunu inceleyeceğiz" name="description" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="Bu bölümde hata yakalama konusunu inceleyeceğiz" name="description" />
 <meta content="python, hata, try, except, exception, error" name="keywords" />
 
-    <title>Hata Yakalama &#8212; Python 3 için Türkçe Kılavuz</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <title>Hata Yakalama &mdash; Python 3 için Türkçe Kılavuz</title>
+    
     <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/translations.js"></script>
-    <link rel="search" title="Ara" href="search.html" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="top" title="Python 3 için Türkçe Kılavuz" href="index.html" />
     <link rel="next" title="Karakter Dizileri" href="karakter_dizileri.html" />
     <link rel="prev" title="Döngüler (Loops)" href="donguler.html" />
 <!--[if lte IE 6]>
 <link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
 <![endif]-->
 
-  </head><body>
+  </head>
+  <body>
 <div class='header'><a href='https://yazbel.com'><img src="_static/logo.png"></a></div>
 
 <ul class='navbar'>
@@ -33,28 +45,27 @@
 </ul>
 
 
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Gezinti</h3>
+    <div class="related">
+      <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="karakter_dizileri.html" title="Karakter Dizileri"
-             accesskey="N">sonraki</a></li>
+             accesskey="N">next</a></li>
         <li class="right" >
           <a href="donguler.html" title="Döngüler (Loops)"
-             accesskey="P">önceki</a> |</li>
+             accesskey="P">previous</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
-
-        <li class="nav-item nav-item-this"><a href="">Hata Yakalama</a></li> 
+ 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
-          <div class="body" role="main">
+          <div class="body">
             
 
   <div class="section" id="hata-yakalama">
-<h1>Hata Yakalama<a class="headerlink" href="#hata-yakalama" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<h1>Hata Yakalama<a class="headerlink" href="#hata-yakalama" title="Permalink to this headline">¶</a></h1>
 <p>Şimdiye kadar yazdığımız bütün programlar, dikkat ettiyseniz tek bir ortak
 varsayım üzerine kurulu. Buna göre biz, yazdığımız programın kullanıcı
 tarafından nasıl kullanılmasını istiyorsak, her zaman o şekilde kullanılacağını
@@ -65,7 +76,7 @@ gitmeyebilir. Örneğin, dediğimiz gibi, yazdığımız programı, kullanıcın
 sayı girmesi temeli üzerine kurgulamışsak, kullanıcının her zaman sayı değerli
 bir veri gireceğinden emin olamayız.</p>
 <p>Mesela şöyle bir program yazdığımızı düşünün:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">veri1</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Karekökünü hesaplamak istediğiniz sayı: &quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">veri1</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Karekökünü hesaplamak istediğiniz sayı: &quot;</span><span class="p">)</span>
 <span class="n">karekök</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">veri1</span><span class="p">)</span> <span class="o">**</span> <span class="mf">0.5</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">veri1</span><span class="p">,</span> <span class="s2">&quot;sayısının karekökü: &quot;</span><span class="p">,</span> <span class="n">karekök</span><span class="p">)</span>
@@ -80,23 +91,23 @@ bir veri gireceğinden emin olamayız.</p>
 inceleyelim.</p>
 <p>Gördüğünüz gibi, burada kullanıcının gireceği sayılara göre karekök ve kare alma
 işlemleri yapıyoruz. Bu kodlarda gördüğümüz <cite>**</cite> işleci yardımıyla bir sayının
-herhangi bir kuvvetini hesaplayabileceğimizi biliyorsunuz. Mesela 21<sup>7</sup>’nin kaç ettiğini hesaplamak için <cite>**</cite> işlecini kullanabiliyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">21</span> <span class="o">**</span> <span class="mi">7</span>
+herhangi bir kuvvetini hesaplayabileceğimizi biliyorsunuz. Mesela 21<sup>7</sup>&#8216;nin kaç ettiğini hesaplamak için <cite>**</cite> işlecini kullanabiliyoruz:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">21</span> <span class="o">**</span> <span class="mi">7</span>
 
 <span class="go">1801088541</span>
 </pre></div>
 </div>
 <p>Yine bildiğiniz gibi, bu işleçten, bir sayının karesini hesaplamak için de
 yararlanabiliyoruz. Çünkü neticede bir sayının karesi, o sayının 2. kuvvetidir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">12</span> <span class="o">**</span> <span class="mi">2</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">12</span> <span class="o">**</span> <span class="mi">2</span>
 
 <span class="go">144</span>
 </pre></div>
 </div>
-<p>Aynı şekilde, eğer bir sayının, 0.5’inci kuvvetini hesaplarsak o sayının
+<p>Aynı şekilde, eğer bir sayının, 0.5&#8217;inci kuvvetini hesaplarsak o sayının
 karekökünü bulmuş oluyoruz. (Bu bilgileri önceki konulardan hatırlıyor
 olmalısınız):</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">144</span> <span class="o">**</span> <span class="mf">0.5</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">144</span> <span class="o">**</span> <span class="mf">0.5</span>
 
 <span class="go">12</span>
 </pre></div>
@@ -108,7 +119,7 @@ başlayabiliriz.</p>
 şey girerse ne olur?</p>
 <p>Örneğin kullanıcı yukarıdaki programa bir sayı yerine, (bilerek veya bilmeyerek)
 içinde harf barındıran bir veri girerse şuna benzer bir hata alır:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
   <span class="n">File</span> <span class="s2">&quot;deneme.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">2</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
     <span class="n">karekök</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">veri1</span><span class="p">)</span> <span class="o">**</span> <span class="mf">0.5</span>
 <span class="ne">ValueError</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">literal</span> <span class="k">for</span> <span class="nb">int</span><span class="p">()</span> <span class="k">with</span> <span class="n">base</span> <span class="mi">10</span><span class="p">:</span> <span class="s1">&#39;fds&#39;</span>
@@ -127,26 +138,26 @@ esnasında vermesi muhtemel hataları önceden kestirip, programınızda buna g�
 bazı önlemler almanızdır. İşte biz de bu bölümde bu önlemleri nasıl alacağımızı
 anlamaya çalışacağız.</p>
 <div class="section" id="hata-turleri">
-<h2>Hata Türleri<a class="headerlink" href="#hata-turleri" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Hata Türleri<a class="headerlink" href="#hata-turleri" title="Permalink to this headline">¶</a></h2>
 <p>Biz bu bölümde hatalardan bahsedeceğimizi söylemiştik. Ancak her şeyden önce
-‘hata’ kavramının çok boyutlu olduğunu hatırlatmakta fayda var. Özellikle
+&#8216;hata&#8217; kavramının çok boyutlu olduğunu hatırlatmakta fayda var. Özellikle
 programcılık açısından hata kavramının ne anlama geldiğini biraz incelememiz
 gerekiyor.</p>
 <p>Biz bu bölümde hataları üç farklı başlık altında ele alacağız:</p>
 <ol class="arabic simple">
-<li><p>Programcı Hataları (<em>Error</em>)</p></li>
-<li><p>Program Kusurları (<em>Bug</em>)</p></li>
-<li><p>İstisnalar (<em>Exception</em>)</p></li>
+<li>Programcı Hataları (<em>Error</em>)</li>
+<li>Program Kusurları (<em>Bug</em>)</li>
+<li>İstisnalar (<em>Exception</em>)</li>
 </ol>
 <p>Öncelikle programcı hatalarından bahsedelim.</p>
 <p>Programcıdan kaynaklanan hatalar doğrudan doğruya programı yazan kişinin
 dikkatsizliğinden ötürü ortaya çıkan bariz hatalardır. Örneğin şu kod bir
 programcı hatası içerir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="s2">&quot;Merhaba Python!&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="s2">&quot;Merhaba Python!&quot;</span>
 </pre></div>
 </div>
 <p>Bu kodu çalıştırdığınızda şöyle bir hata mesajı görürsünüz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="s2">&quot;Merhaba Python!&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="s2">&quot;Merhaba Python!&quot;</span>
 
 <span class="go">File &quot;&lt;stdin&gt;&quot;, line 1</span>
 <span class="go">   print &quot;Merhaba Python!&quot;</span>
@@ -155,22 +166,22 @@ programcı hatası içerir:</p>
 </pre></div>
 </div>
 <p>Bu hata mesajında bizi ilgilendiren kısım son cümlede yer alıyor:
-<code class="docutils literal notranslate"><span class="pre">SyntaxError</span></code>, yani Söz dizimi hatası.</p>
+<tt class="docutils literal"><span class="pre">SyntaxError</span></tt>, yani Söz dizimi hatası.</p>
 <p>Bu hatalar, programlama diline ilişkin bir özelliğin yanlış kullanımından veya
 en basit şekilde programcının yaptığı yazım hatalarından kaynaklanır.
-Programcının hataları genellikle <code class="docutils literal notranslate"><span class="pre">SyntaxError</span></code> şeklinde ortaya çıkar. Bu
+Programcının hataları genellikle <tt class="docutils literal"><span class="pre">SyntaxError</span></tt> şeklinde ortaya çıkar. Bu
 hatalar çoğunlukla programcı tarafından farkedilir ve program kullanıcıya
 ulaşmadan önce programcı tarafından düzeltilir. Bu tür hataların tespiti diğer
 hatalara kıyasla kolaydır. Çünkü bu tür hatalar programınızın çalışmasını
-engellediği için bunları farketmemek pek mümkün değildir…</p>
-<p>Program kusurları, başka bir deyişle <em>bug</em>’lar ise çok daha karmaşıktır. Kusurlu
+engellediği için bunları farketmemek pek mümkün değildir...</p>
+<p>Program kusurları, başka bir deyişle <em>bug</em>&#8216;lar ise çok daha karmaşıktır. Kusurlu
 programlar çoğu zaman herhangi bir hata vermeden çalışır. Ancak programın
 ürettiği çıktılar beklediğiniz gibi değildir. Örneğin yazdığınız programda bir
 formül hatası yapmış olabilirsiniz. Bu durumda programınız hiçbir şey yokmuş
 gibi çalışır, ancak formül hatalı olduğu için hesaplamaların sonuçları
 yanlıştır. Örneğin daha önceki derslerimizde yazdığımız şu program yukarıdaki
 gibi bir kusur içerir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sayı1</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Toplama işlemi için ilk sayıyı girin: &quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">sayı1</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Toplama işlemi için ilk sayıyı girin: &quot;</span><span class="p">)</span>
 <span class="n">sayı2</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Toplama işlemi için ikinci sayıyı girin: &quot;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">sayı1</span><span class="p">,</span> <span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="n">sayı2</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">sayı1</span> <span class="o">+</span> <span class="n">sayı2</span><span class="p">)</span>
@@ -181,16 +192,16 @@ karakter dizisi birleştirme işlemi yapacaktır. Böyle bir program çalışma
 sırasında hata vermeyeceği için buradaki sorunu tespit etmek, özellikle büyük
 programlarda çok güçtür. Yani sizin düzgün çalıştığını zannettiğiniz program
 aslında gizliden gizliye bir <em>bug</em> barındırıyor olabilir.</p>
-<p>Aynı şekilde, mesela <code class="docutils literal notranslate"><span class="pre">eval()</span></code> fonksiyonunun dikkatsizce kullanıldığı
+<p>Aynı şekilde, mesela <tt class="docutils literal"><span class="pre">eval()</span></tt> fonksiyonunun dikkatsizce kullanıldığı
 programlar da güvenlik açısından kusurludur. Yani bu tür programlar bir güvenlik
 kusuru (<em>security bug</em> veya <em>security flaw</em>) barındırır.</p>
 <p>Dediğimiz gibi, program kusurları çok boyutlu olup, burada anlattığımızdan çok
 daha karmaşıktır.</p>
-<p>Gelelim üçüncü kategori olan istisnalara (<em>exceptions</em>)…</p>
+<p>Gelelim üçüncü kategori olan istisnalara (<em>exceptions</em>)...</p>
 <p>İstisnalar, adından da az çok anlaşılacağı gibi, bir programın çalışması
 sırasında ortaya çıkan, normalden farklı, istisnai durumlardır. Örneğin şu
 programa bakalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">ilk_sayı</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;ilk sayı: &quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">ilk_sayı</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;ilk sayı: &quot;</span><span class="p">)</span>
 <span class="n">ikinci_sayı</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;ikinci sayı: &quot;</span><span class="p">)</span>
 
 <span class="n">ilk_sayı</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">ilk_sayı</span><span class="p">)</span>
@@ -202,13 +213,13 @@ programa bakalım:</p>
 <p>Burada ilk sayıyı ikinci sayıya bölen bir program yazdık. Bu program her türlü
 bölme işlemini yapabilir. Ama burada hesaba katmamız gereken iki şey var:</p>
 <ol class="arabic simple">
-<li><p>Kullanıcı sayı yerine, sayı değerli olmayan bir veri tipi girebilir. Mesela
-ilk sayıya karşılık <cite>23</cite>, ikinci sayıya karşılık ‘fdsfd’ gibi bir şey yazabilir.</p></li>
-<li><p>Kullanıcı bir sayıyı <cite>0</cite>’a bölmeye çalışabilir. Mesela ilk sayıya karşılık
-<cite>23</cite>, ikinci sayıya karşılık <cite>0</cite> yazabilir.</p></li>
+<li>Kullanıcı sayı yerine, sayı değerli olmayan bir veri tipi girebilir. Mesela
+ilk sayıya karşılık <cite>23</cite>, ikinci sayıya karşılık &#8216;fdsfd&#8217; gibi bir şey yazabilir.</li>
+<li>Kullanıcı bir sayıyı <cite>0</cite>&#8216;a bölmeye çalışabilir. Mesela ilk sayıya karşılık
+<cite>23</cite>, ikinci sayıya karşılık <cite>0</cite> yazabilir.</li>
 </ol>
 <p>İlk durumda programımız şöyle bir hata verir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">ilk</span> <span class="n">sayı</span><span class="p">:</span> <span class="mi">23</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">ilk</span> <span class="n">sayı</span><span class="p">:</span> <span class="mi">23</span>
 <span class="n">ikinci</span> <span class="n">sayı</span><span class="p">:</span> <span class="n">fdsfd</span>
 <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
   <span class="n">File</span> <span class="s2">&quot;deneme.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">5</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
@@ -216,10 +227,10 @@ ilk sayıya karşılık <cite>23</cite>, ikinci sayıya karşılık ‘fdsfd’ 
 <span class="ne">ValueError</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">literal</span> <span class="k">for</span> <span class="nb">int</span><span class="p">()</span> <span class="k">with</span> <span class="n">base</span> <span class="mi">10</span><span class="p">:</span> <span class="s1">&#39;fdsfd&#39;</span>
 </pre></div>
 </div>
-<p>Buradaki sorun, sayı değerli olmayan bir verinin, <code class="docutils literal notranslate"><span class="pre">int()</span></code> fonksiyonu
+<p>Buradaki sorun, sayı değerli olmayan bir verinin, <tt class="docutils literal"><span class="pre">int()</span></tt> fonksiyonu
 aracılığıyla sayıya çevrilmeye çalışılıyor olması.</p>
 <p>İkinci durumda ise programımız şöyle bir hata verir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">ilk</span> <span class="n">sayı</span><span class="p">:</span> <span class="mi">23</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">ilk</span> <span class="n">sayı</span><span class="p">:</span> <span class="mi">23</span>
 <span class="n">ikinci</span> <span class="n">sayı</span><span class="p">:</span> <span class="mi">0</span>
 <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
   <span class="n">File</span> <span class="s2">&quot;deneme.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">7</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
@@ -227,33 +238,33 @@ aracılığıyla sayıya çevrilmeye çalışılıyor olması.</p>
 <span class="ne">ZeroDivisionError</span><span class="p">:</span> <span class="n">division</span> <span class="n">by</span> <span class="n">zero</span>
 </pre></div>
 </div>
-<p>Buradaki sorun ise, bir sayının <cite>0</cite>’a bölünmeye çalışılıyor olması. Matematikte
-sayılar <cite>0</cite>’a bölünemez…</p>
-<p>İşte bu iki örnekte gördüğümüz <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> ve <code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code> birer
+<p>Buradaki sorun ise, bir sayının <cite>0</cite>&#8216;a bölünmeye çalışılıyor olması. Matematikte
+sayılar <cite>0</cite>&#8216;a bölünemez...</p>
+<p>İşte bu iki örnekte gördüğümüz <tt class="docutils literal"><span class="pre">ValueError</span></tt> ve <tt class="docutils literal"><span class="pre">ZeroDivisionError</span></tt> birer
 istisnadır. Yani kullanıcıların, kendilerinden sayı beklenirken sayı değerli
-olmayan veri girmesi veya bir sayıyı 0’a bölmeye çalışması istisnai birer
+olmayan veri girmesi veya bir sayıyı 0&#8217;a bölmeye çalışması istisnai birer
 durumdur ve yazdığımız programların <em>exception</em> (istisna) üretmesine yol açar.</p>
 <p>Böylece hata (<em>error</em>), kusur (<em>bug</em>) ve istisna (<em>exception</em>) arasındaki
 farkları şöyle bir gözden geçirmiş olduk. Yalnız burada şunu söylemekte yarar
 var: Bu üç kavram arasındaki fark belli belirsizdir. Yani bu kavramların çoğu
 yerde birbirlerinin yerine kullanıldığını da görebilirsiniz. Örneğin <em>exception</em>
-kavramı için Türkçe’de çoğu zaman ‘hata’ kelimesini kullanıyoruz. Zaten dikkat
-ederseniz bu bölümün başlığı da ‘İstisna Yakalama’ değil, ‘Hata Yakalama’dır.
+kavramı için Türkçe&#8217;de çoğu zaman &#8216;hata&#8217; kelimesini kullanıyoruz. Zaten dikkat
+ederseniz bu bölümün başlığı da &#8216;İstisna Yakalama&#8217; değil, &#8216;Hata Yakalama&#8217;dır.
 Aynı şekilde, İngilizcede de bu kavramların çoğu yerde birbirlerinin yerine
 kullanıldığını görebilirsiniz. Dolayısıyla, konuya karşı özel bir ilginiz yoksa,
 hata, kusur ve istisna kavramlarını birbirinden ayırmak için kendinizi
 zorlamanıza gerek yok. Bu üç kavram çoğu zaman birbirinin yerine kullanılıyor da
 olsa, aslında aralarında bazı farklar olduğunu öğrenmişseniz bu bölüm amacına
 ulaşmış demektir.</p>
-<p>Konuyla ilgili temel bilgileri edindiğimize göre asıl meseleye geçebiliriz…</p>
+<p>Konuyla ilgili temel bilgileri edindiğimize göre asıl meseleye geçebiliriz...</p>
 </div>
 <div class="section" id="try-except">
-<h2>try… except…<a class="headerlink" href="#try-except" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>try... except...<a class="headerlink" href="#try-except" title="Permalink to this headline">¶</a></h2>
 <p>Bir önceki bölümde hatalardan ve hataları yakalamaktan söz ettik. Peki bu
 hataları nasıl yakalayacağız?</p>
-<p>Python’da hata yakalama işlemleri için <code class="docutils literal notranslate"><span class="pre">try...</span> <span class="pre">except...</span></code> bloklarından
+<p>Python&#8217;da hata yakalama işlemleri için <tt class="docutils literal"><span class="pre">try...</span> <span class="pre">except...</span></tt> bloklarından
 yararlanılır. Hemen bir örnek verelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">ilk_sayı</span>    <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;ilk sayı: &quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">ilk_sayı</span>    <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;ilk sayı: &quot;</span><span class="p">)</span>
 <span class="n">ikinci_sayı</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;ikinci sayı: &quot;</span><span class="p">)</span>
 
 <span class="k">try</span><span class="p">:</span>
@@ -266,42 +277,41 @@ yararlanılır. Hemen bir örnek verelim:</p>
 </div>
 <p>Biliyoruz ki, bir veriyi sayıya dönüştürmek istediğimizde eğer kullanıcı sayı
 değerli bir veri yerine harf değerli bir veri girerse programımız çöker.
-Dolayısıyla <code class="docutils literal notranslate"><span class="pre">int(ilk_sayı)</span></code> ve <code class="docutils literal notranslate"><span class="pre">int(ikinci_sayı)</span></code> kodları, kullanıcının
+Dolayısıyla <tt class="docutils literal"><span class="pre">int(ilk_sayı)</span></tt> ve <tt class="docutils literal"><span class="pre">int(ikinci_sayı)</span></tt> kodları, kullanıcının
 gireceği veri türüne göre hata üretme potansiyeline sahiptir. O yüzden, burada
-hata vereceğini bildiğimiz o kodları <code class="docutils literal notranslate"><span class="pre">try</span></code> bloğu içine aldık.</p>
+hata vereceğini bildiğimiz o kodları <tt class="docutils literal"><span class="pre">try</span></tt> bloğu içine aldık.</p>
 <p>Yine bildiğimiz gibi, veri dönüştürme işlemi sırasında kullanıcının uygun
-olmayan bir veri girmesi halinde üretilecek hata bir <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>’dır.
-Dolayısıyla <code class="docutils literal notranslate"><span class="pre">except</span></code> bloğu içine yazacağımız hata türünün adı da
-<code class="docutils literal notranslate"><span class="pre">ValueError</span></code> olacaktır. O yüzden <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> adlı hatayı yakalayabilmek
+olmayan bir veri girmesi halinde üretilecek hata bir <tt class="docutils literal"><span class="pre">ValueError</span></tt>&#8216;dır.
+Dolayısıyla <tt class="docutils literal"><span class="pre">except</span></tt> bloğu içine yazacağımız hata türünün adı da
+<tt class="docutils literal"><span class="pre">ValueError</span></tt> olacaktır. O yüzden <tt class="docutils literal"><span class="pre">ValueError</span></tt> adlı hatayı yakalayabilmek
 için şu satırları yazdık:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Lütfen sadece sayı girin!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Burada bu kodlarla Python’a şu emri vermiş olduk:</p>
+<p>Burada bu kodlarla Python&#8217;a şu emri vermiş olduk:</p>
 <blockquote>
-<div><p>Eğer <code class="docutils literal notranslate"><span class="pre">try</span></code> bloğu içinde belirtilen işlemler sırasında bir <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>
+<div>Eğer <tt class="docutils literal"><span class="pre">try</span></tt> bloğu içinde belirtilen işlemler sırasında bir <tt class="docutils literal"><span class="pre">ValueError</span></tt>
 ile karşılaşırsan bunu görmezden gel ve normal şartlar altında kullanıcıya
-göstereceğin hata mesajını gösterme. Onun yerine kullanıcıya <code class="docutils literal notranslate"><span class="pre">Lütfen</span> <span class="pre">sadece</span>
-<span class="pre">sayı</span> <span class="pre">girin!</span></code> uyarısını göster.</p>
-</div></blockquote>
+göstereceğin hata mesajını gösterme. Onun yerine kullanıcıya <tt class="docutils literal"><span class="pre">Lütfen</span> <span class="pre">sadece</span>
+<span class="pre">sayı</span> <span class="pre">girin!</span></tt> uyarısını göster.</div></blockquote>
 <p>Yukarıda Türkçeye çevirdiğimiz emri Pythoncada nasıl ifade ettiğimize dikkat
 edin. Temel olarak şöyle bir yapıyla karşı karşıyayız:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="n">hata</span> <span class="n">verebileceğini</span> <span class="n">bildiğimiz</span> <span class="n">kodlar</span>
 <span class="k">except</span> <span class="n">HataAdı</span><span class="p">:</span>
     <span class="n">hata</span> <span class="n">durumunda</span> <span class="n">yapılacak</span> <span class="n">işlem</span>
 </pre></div>
 </div>
 <p>Gelin isterseniz bir örnek daha verelim.</p>
-<p>Hatırlarsanız bir sayının <cite>0</cite>’a bölünmesinin mümkün olmadığını, böyle bir
+<p>Hatırlarsanız bir sayının <cite>0</cite>&#8216;a bölünmesinin mümkün olmadığını, böyle bir
 durumda programımızın hata vereceğini söylemiştik. Bu durumu teyit etmek için
 etkileşimli kabukta şu kodu deneyebilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">2</span> <span class="o">/</span> <span class="mi">0</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">2</span> <span class="o">/</span> <span class="mi">0</span>
 </pre></div>
 </div>
 <p>Bu kod şöyle bir hata mesajı verecektir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">2</span> <span class="o">/</span> <span class="mi">0</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">2</span> <span class="o">/</span> <span class="mi">0</span>
 
 <span class="gt">Traceback (most recent call last):</span>
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
@@ -309,9 +319,9 @@ etkileşimli kabukta şu kodu deneyebilirsiniz:</p>
 </pre></div>
 </div>
 <p>Daha önce de söylediğimiz gibi, bu hata mesajında bizi ilgilendiren kısım
-<code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code>. Demek ki bir sayı <cite>0</cite>’a bölündüğünde Python
-<code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code> veriyormuş. O halde şöyle bir kod yazabiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">ilk_sayı</span>    <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;ilk sayı: &quot;</span><span class="p">)</span>
+<tt class="docutils literal"><span class="pre">ZeroDivisionError</span></tt>. Demek ki bir sayı <cite>0</cite>&#8216;a bölündüğünde Python
+<tt class="docutils literal"><span class="pre">ZeroDivisionError</span></tt> veriyormuş. O halde şöyle bir kod yazabiliriz:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">ilk_sayı</span>    <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;ilk sayı: &quot;</span><span class="p">)</span>
 <span class="n">ikinci_sayı</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;ikinci sayı: &quot;</span><span class="p">)</span>
 
 <span class="k">try</span><span class="p">:</span>
@@ -322,18 +332,18 @@ etkileşimli kabukta şu kodu deneyebilirsiniz:</p>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bir sayıyı 0&#39;a bölemezsiniz!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Gördüğünüz gibi, Python’ın <code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code> vereceğini bildiğimiz durumlara
+<p>Gördüğünüz gibi, Python&#8217;ın <tt class="docutils literal"><span class="pre">ZeroDivisionError</span></tt> vereceğini bildiğimiz durumlara
 karşı bu hata türünü yakalama yoluna gidiyoruz. Böylece kullanıcıya anlamsız ve
 karmaşık hata mesajları göstermek ve daha da kötüsü, programımızın çökmesine
 sebep olmak yerine daha anlaşılır mesajlar üretiyoruz.</p>
 <p>Yukarıdaki kodlarda özellikle bir nokta dikkatinizi çekmiş olmalı: Dikkat
 ederseniz yukarıdaki kodlar aslında bir değil iki farklı hata üretme
 potansiyeline sahip. Eğer kullanıcı sayı değerli veri yerine harf değerli bir
-veri girerse <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>, eğer bir sayıyı <cite>0</cite>’a bölmeye çalışırsa da
-<code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code> hatası alıyoruz. Peki aynı kodlarda iki farklı hata türünü
+veri girerse <tt class="docutils literal"><span class="pre">ValueError</span></tt>, eğer bir sayıyı <cite>0</cite>&#8216;a bölmeye çalışırsa da
+<tt class="docutils literal"><span class="pre">ZeroDivisionError</span></tt> hatası alıyoruz. Peki aynı kodlarda iki farklı hata türünü
 nasıl yakalayacağız?</p>
 <p>Çok basit:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">ilk_sayı</span>    <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;ilk sayı: &quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">ilk_sayı</span>    <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;ilk sayı: &quot;</span><span class="p">)</span>
 <span class="n">ikinci_sayı</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;ikinci sayı: &quot;</span><span class="p">)</span>
 
 <span class="k">try</span><span class="p">:</span>
@@ -347,8 +357,8 @@ nasıl yakalayacağız?</p>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi çözüm gayet mantıklı. Birden fazla hata türü üreteceğini
-bildiğimiz kodları yine tek bir <code class="docutils literal notranslate"><span class="pre">try</span></code> bloğu içine alıyoruz. Hata türlerini ise
-ayrı <code class="docutils literal notranslate"><span class="pre">except</span></code> blokları içinde ele alıyoruz.</p>
+bildiğimiz kodları yine tek bir <tt class="docutils literal"><span class="pre">try</span></tt> bloğu içine alıyoruz. Hata türlerini ise
+ayrı <tt class="docutils literal"><span class="pre">except</span></tt> blokları içinde ele alıyoruz.</p>
 <p>Bir program yazarken, en iyi yaklaşım, yukarıda yaptığımız gibi, her hata türü
 için kullanıcıya ayrı bir uyarı mesajı göstermektir. Böylece kullanıcılarımız
 bir hatayla karşılaştıklarında sorunu nasıl çözebilecekleri konusunda en azından
@@ -356,7 +366,7 @@ bir fikir sahibi olabilirler.</p>
 <p>Dediğimiz gibi, her hata için ayrı bir mesaj göstermek en iyisidir. Ama tabii
 dilerseniz hata türlerini gruplayıp hepsi için tek bir hata mesajı göstermeyi de
 tercih edebilirsiniz. Bunu nasıl yapacağımızı görelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">ilk_sayı</span>    <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;ilk sayı: &quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">ilk_sayı</span>    <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;ilk sayı: &quot;</span><span class="p">)</span>
 <span class="n">ikinci_sayı</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;ikinci sayı: &quot;</span><span class="p">)</span>
 
 <span class="k">try</span><span class="p">:</span>
@@ -367,14 +377,14 @@ tercih edebilirsiniz. Bunu nasıl yapacağımızı görelim:</p>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bir hata oluştu!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Gördüğünüz gibi, burada <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> ve <code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code> adlı hata
+<p>Gördüğünüz gibi, burada <tt class="docutils literal"><span class="pre">ValueError</span></tt> ve <tt class="docutils literal"><span class="pre">ZeroDivisionError</span></tt> adlı hata
 türlerini tek bir parantez içinde topladık. Burada dikkat edeceğimiz nokta, bu
 hata türlerini gruplarken bunları parantez içine almak ve birbirlerinden
 virgülle ayırmaktır.</p>
 <p>Bu arada, gördüğünüz gibi yukarıdaki programlar sadece bir kez çalışıp
 kapanıyor. Ama biz bu programları tekrar tekrar nasıl çalıştırabileceğimizi
 gayet iyi biliyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
     <span class="n">ilk_sayı</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;ilk sayı (Programdan çıkmak için q tuşuna basın): &quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">ilk_sayı</span> <span class="o">==</span> <span class="s2">&quot;q&quot;</span><span class="p">:</span>
@@ -391,25 +401,25 @@ gayet iyi biliyoruz:</p>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Lütfen tekrar deneyin!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Python’da hata yakalamanın en yaygın yolu yukarıda gösterdiğimiz gibi kodları
-<code class="docutils literal notranslate"><span class="pre">try...</span> <span class="pre">except</span></code> blokları içine almaktır. Programcılık maceranızın büyük
+<p>Python&#8217;da hata yakalamanın en yaygın yolu yukarıda gösterdiğimiz gibi kodları
+<tt class="docutils literal"><span class="pre">try...</span> <span class="pre">except</span></tt> blokları içine almaktır. Programcılık maceranızın büyük
 bölümünde bu yapıyı kullanacaksınız. Ama bazen, karşı karşıya olduğunuz duruma
-veya ihtiyacınıza göre <code class="docutils literal notranslate"><span class="pre">try...</span> <span class="pre">except</span></code> bloklarının farklı varyasyonlarını
+veya ihtiyacınıza göre <tt class="docutils literal"><span class="pre">try...</span> <span class="pre">except</span></tt> bloklarının farklı varyasyonlarını
 kullanmanız gerekebilir. İşte şimdi biz de bu farklı varyasyonların neler
 olduğunu incelemeye çalışacağız.</p>
 </div>
 <div class="section" id="try-except-as">
-<h2>try… except… as…<a class="headerlink" href="#try-except-as" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>try... except... as...<a class="headerlink" href="#try-except-as" title="Permalink to this headline">¶</a></h2>
 <p>Bildiğiniz gibi, Python bir programın çalışması esnasında hata üretirken çıktıda
 hata türünün adıyla birlikte kısa bir hata açıklaması veriyor. Yani mesela şöyle
 bir çıktı üretiyor:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="ne">ValueError</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">literal</span> <span class="k">for</span> <span class="nb">int</span><span class="p">()</span> <span class="k">with</span> <span class="n">base</span> <span class="mi">10</span><span class="p">:</span> <span class="s1">&#39;f&#39;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="ne">ValueError</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">literal</span> <span class="k">for</span> <span class="nb">int</span><span class="p">()</span> <span class="k">with</span> <span class="n">base</span> <span class="mi">10</span><span class="p">:</span> <span class="s1">&#39;f&#39;</span>
 </pre></div>
 </div>
-<p>Burada ‘ValueError’ hata türünün adı, ‘invalid literal for int() with base 10:
-‘f’’ ise hatanın açıklamasıdır. Eğer istersek, yazdığımız programda bu hata
+<p>Burada &#8216;ValueError&#8217; hata türünün adı, &#8216;invalid literal for int() with base 10:
+&#8216;f&#8217;&#8217; ise hatanın açıklamasıdır. Eğer istersek, yazdığımız programda bu hata
 açıklamasına erişebiliriz. Dikkatlice bakın:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">ilk_sayı</span>    <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;ilk sayı: &quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">ilk_sayı</span>    <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;ilk sayı: &quot;</span><span class="p">)</span>
 <span class="n">ikinci_sayı</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;ikinci sayı: &quot;</span><span class="p">)</span>
 
 <span class="k">try</span><span class="p">:</span>
@@ -422,15 +432,15 @@ açıklamasına erişebiliriz. Dikkatlice bakın:</p>
 </div>
 <p>Bu programı çalıştırıp sayı değerli olmayan bir veri girersek hata çıktısı şöyle
 olacaktır:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">invalid</span> <span class="n">literal</span> <span class="k">for</span> <span class="nb">int</span><span class="p">()</span> <span class="k">with</span> <span class="n">base</span> <span class="mi">10</span><span class="p">:</span> <span class="s1">&#39;f&#39;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">invalid</span> <span class="n">literal</span> <span class="k">for</span> <span class="nb">int</span><span class="p">()</span> <span class="k">with</span> <span class="n">base</span> <span class="mi">10</span><span class="p">:</span> <span class="s1">&#39;f&#39;</span>
 </pre></div>
 </div>
-<p>Gördüğünüz gibi, bu defa çıktıda hata türünün adı (<code class="docutils literal notranslate"><span class="pre">ValueError</span></code>) görünmüyor.
+<p>Gördüğünüz gibi, bu defa çıktıda hata türünün adı (<tt class="docutils literal"><span class="pre">ValueError</span></tt>) görünmüyor.
 Onun yerine sadece hata açıklaması var.</p>
 <p>Diyelim ki kullanıcıya olası bir hata durumunda hem kendi yazdığınız hata
 mesajını, hem de özgün hata mesajını göstermek istiyorsunuz. İşte yukarıdaki
 yapı böyle durumlarda işe yarayabilir:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">ilk_sayı</span>    <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;ilk sayı: &quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">ilk_sayı</span>    <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;ilk sayı: &quot;</span><span class="p">)</span>
 <span class="n">ikinci_sayı</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;ikinci sayı: &quot;</span><span class="p">)</span>
 
 <span class="k">try</span><span class="p">:</span>
@@ -444,7 +454,7 @@ yapı böyle durumlarda işe yarayabilir:</p>
 </div>
 <p>Bu arada, biraz önce yaptığımız gibi, hata türlerini grupladığınızda da bu
 yöntemi kullanabilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">ilk_sayı</span>    <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;ilk sayı: &quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">ilk_sayı</span>    <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;ilk sayı: &quot;</span><span class="p">)</span>
 <span class="n">ikinci_sayı</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;ikinci sayı: &quot;</span><span class="p">)</span>
 
 <span class="k">try</span><span class="p">:</span>
@@ -456,7 +466,7 @@ yöntemi kullanabilirsiniz:</p>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;orijinal hata mesajı: &quot;</span><span class="p">,</span> <span class="n">hata</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Burada <code class="docutils literal notranslate"><span class="pre">except</span> <span class="pre">falancaHata</span> <span class="pre">as</span> <span class="pre">filanca</span></code> yapısını kullanarak <code class="docutils literal notranslate"><span class="pre">falancaHata</span></code>’yı
+<p>Burada <tt class="docutils literal"><span class="pre">except</span> <span class="pre">falancaHata</span> <span class="pre">as</span> <span class="pre">filanca</span></tt> yapısını kullanarak <tt class="docutils literal"><span class="pre">falancaHata</span></tt>&#8216;yı
 <cite>filanca</cite> olarak isimlendiriyor ve daha sonra bu ismi istediğimiz gibi
 kullanabiliyoruz. Böylece bütün hata türleri için hem kendi yazdığınız mesajı
 görüntüleyebiliyor, hem de özgün hata mesajını da çıktıya eklediğimiz için,
@@ -464,18 +474,18 @@ kullanıcıya hata hakkında en azından bir fikir sahibi olma imkanı vermiş
 oluyoruz.</p>
 </div>
 <div class="section" id="try-except-else">
-<h2>try… except… else…<a class="headerlink" href="#try-except-else" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
-<p>Daha önce de dediğimiz gibi, Python’da hata yakalama işlemleri için çoğunlukla
-<code class="docutils literal notranslate"><span class="pre">try...</span> <span class="pre">except...</span></code> bloklarını bilmek yeterli olacaktır. İşlerimizin büyük
+<h2>try... except... else...<a class="headerlink" href="#try-except-else" title="Permalink to this headline">¶</a></h2>
+<p>Daha önce de dediğimiz gibi, Python&#8217;da hata yakalama işlemleri için çoğunlukla
+<tt class="docutils literal"><span class="pre">try...</span> <span class="pre">except...</span></tt> bloklarını bilmek yeterli olacaktır. İşlerimizin büyük
 kısmını sadece bu blokları kullanarak halledebiliriz. Ancak Python bize bu
 konuda, zaman zaman işimize yarayabilecek başka araçlar da sunmaktadır. İşte
-<code class="docutils literal notranslate"><span class="pre">try...</span> <span class="pre">except...</span> <span class="pre">else...</span></code> blokları da bu araçlardan biridir. Bu bölümde
+<tt class="docutils literal"><span class="pre">try...</span> <span class="pre">except...</span> <span class="pre">else...</span></tt> blokları da bu araçlardan biridir. Bu bölümde
 kısaca bu blokların ne işe yaradığından söz edeceğiz.</p>
-<p>Öncelikle <code class="docutils literal notranslate"><span class="pre">try...</span> <span class="pre">except...</span> <span class="pre">else...</span></code> bloğunun ne işe yaradığına bakalım.
-Esasında biz bu <code class="docutils literal notranslate"><span class="pre">else</span></code> deyimini daha önce de ‘koşullu ifadeler’ konusunu
+<p>Öncelikle <tt class="docutils literal"><span class="pre">try...</span> <span class="pre">except...</span> <span class="pre">else...</span></tt> bloğunun ne işe yaradığına bakalım.
+Esasında biz bu <tt class="docutils literal"><span class="pre">else</span></tt> deyimini daha önce de &#8216;koşullu ifadeler&#8217; konusunu
 işlerken görmüştük. Buradaki kullanımı da zaten hemen hemen aynıdır. Diyelim ki
 elimizde şöyle bir şey var:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="n">bölünen</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;bölünecek sayı: &quot;</span><span class="p">))</span>
     <span class="n">bölen</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;bölen sayı: &quot;</span><span class="p">))</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">bölünen</span><span class="o">/</span><span class="n">bölen</span><span class="p">)</span>
@@ -483,14 +493,14 @@ elimizde şöyle bir şey var:</p>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hata!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Burada eğer kullanıcı sayı yerine harf girerse <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> hatası alırız. Bu
-hatayı <code class="docutils literal notranslate"><span class="pre">except</span> <span class="pre">ValueError:</span></code> ifadesiyle yakalıyoruz ve hata verildiğinde
+<p>Burada eğer kullanıcı sayı yerine harf girerse <tt class="docutils literal"><span class="pre">ValueError</span></tt> hatası alırız. Bu
+hatayı <tt class="docutils literal"><span class="pre">except</span> <span class="pre">ValueError:</span></tt> ifadesiyle yakalıyoruz ve hata verildiğinde
 kullanıcıya bir mesaj göstererek programımızın çökmesini engelliyoruz. Ama
-biliyoruz ki, bu kodları çalıştırdığımızda Python’ın verebileceği tek hata
-<code class="docutils literal notranslate"><span class="pre">ValueError</span></code> değildir. Eğer kullanıcı bir sayıyı 0’a bölmeye çalışırsa Python
-<code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code> adlı hatayı verecektir. Dolayısıyla bu hatayı da yakalamak
+biliyoruz ki, bu kodları çalıştırdığımızda Python&#8217;ın verebileceği tek hata
+<tt class="docutils literal"><span class="pre">ValueError</span></tt> değildir. Eğer kullanıcı bir sayıyı 0&#8217;a bölmeye çalışırsa Python
+<tt class="docutils literal"><span class="pre">ZeroDivisionError</span></tt> adlı hatayı verecektir. Dolayısıyla bu hatayı da yakalamak
 için şöyle bir şey yazabiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="n">bölünen</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;bölünecek sayı: &quot;</span><span class="p">))</span>
     <span class="n">bölen</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;bölen sayı: &quot;</span><span class="p">))</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">bölünen</span><span class="o">/</span><span class="n">bölen</span><span class="p">)</span>
@@ -500,13 +510,13 @@ için şöyle bir şey yazabiliriz:</p>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bir sayıyı 0&#39;a bölemezsiniz!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Bu şekilde hem <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> hatasını hem de <code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code> hatasını
-yakalamış oluruz. Bu kodların özelliği, <code class="docutils literal notranslate"><span class="pre">except...</span></code> bloklarının tek bir
-<code class="docutils literal notranslate"><span class="pre">try...</span></code> bloğunu temel almasıdır. Yani biz burada bütün kodlarımızı tek bir
-<code class="docutils literal notranslate"><span class="pre">try...</span></code> bloğu içine tıkıştırıyoruz. Bu blok içinde gerçekleşen hataları da
-daha sonra tek tek <code class="docutils literal notranslate"><span class="pre">except...</span></code> blokları yardımıyla yakalıyoruz. Ama eğer biz
+<p>Bu şekilde hem <tt class="docutils literal"><span class="pre">ValueError</span></tt> hatasını hem de <tt class="docutils literal"><span class="pre">ZeroDivisionError</span></tt> hatasını
+yakalamış oluruz. Bu kodların özelliği, <tt class="docutils literal"><span class="pre">except...</span></tt> bloklarının tek bir
+<tt class="docutils literal"><span class="pre">try...</span></tt> bloğunu temel almasıdır. Yani biz burada bütün kodlarımızı tek bir
+<tt class="docutils literal"><span class="pre">try...</span></tt> bloğu içine tıkıştırıyoruz. Bu blok içinde gerçekleşen hataları da
+daha sonra tek tek <tt class="docutils literal"><span class="pre">except...</span></tt> blokları yardımıyla yakalıyoruz. Ama eğer biz
 istersek bu kodlarda verilebilecek hataları gruplamayı da tercih edebiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="n">bölünen</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;bölünecek sayı: &quot;</span><span class="p">))</span>
     <span class="n">bölen</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;bölen sayı: &quot;</span><span class="p">))</span>
 <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
@@ -518,39 +528,39 @@ istersek bu kodlarda verilebilecek hataları gruplamayı da tercih edebiliriz:</
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bir sayıyı 0&#39;a bölemezsiniz!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Burada yaptığımız şey şu: İlk <code class="docutils literal notranslate"><span class="pre">try...</span> <span class="pre">except...</span></code> bloğu yardımıyla öncelikle
-<code class="docutils literal notranslate"><span class="pre">int(input())</span></code> fonksiyonu ile kullanıcıdan gelecek verinin sayı olup
-olmadığını denetliyoruz. Ardından bir <code class="docutils literal notranslate"><span class="pre">else...</span></code> bloğu açarak, bunun içinde
-ikinci <code class="docutils literal notranslate"><span class="pre">try...</span> <span class="pre">except...</span></code> bloğumuzu devreye sokuyoruz. Burada da bölme
+<p>Burada yaptığımız şey şu: İlk <tt class="docutils literal"><span class="pre">try...</span> <span class="pre">except...</span></tt> bloğu yardımıyla öncelikle
+<tt class="docutils literal"><span class="pre">int(input())</span></tt> fonksiyonu ile kullanıcıdan gelecek verinin sayı olup
+olmadığını denetliyoruz. Ardından bir <tt class="docutils literal"><span class="pre">else...</span></tt> bloğu açarak, bunun içinde
+ikinci <tt class="docutils literal"><span class="pre">try...</span> <span class="pre">except...</span></tt> bloğumuzu devreye sokuyoruz. Burada da bölme
 işlemini gerçekleştiriyoruz. Kullanıcının bölme işlemi sırasında <cite>0</cite> sayısını
-girmesi ihtimaline karşı da <code class="docutils literal notranslate"><span class="pre">except</span> <span class="pre">ZeroDivisionError</span></code> ifadesi yardımıyla
+girmesi ihtimaline karşı da <tt class="docutils literal"><span class="pre">except</span> <span class="pre">ZeroDivisionError</span></tt> ifadesi yardımıyla
 olası hatayı göğüslüyoruz. Bu şekilde bir kodlamanın bize getireceği avantaj,
 hatalar üzerinde belli bir kontrol sağlamamıza yardımcı olmasıdır. Yukarıdaki
-kodlar sayesinde hatalara bir nevi ‘teker teker gelin!’ mesajı vermiş oluyoruz.
+kodlar sayesinde hatalara bir nevi &#8216;teker teker gelin!&#8217; mesajı vermiş oluyoruz.
 Böylelikle her blok içinde sadece almayı beklediğimiz hatayı karşılıyoruz.
-Mesela yukarıda ilk <code class="docutils literal notranslate"><span class="pre">try...</span></code> bloğu içindeki dönüştürme işlemi yalnızca
-<code class="docutils literal notranslate"><span class="pre">ValueError</span></code> hatası verebilir. <code class="docutils literal notranslate"><span class="pre">else:</span></code> bloğundan sonraki <code class="docutils literal notranslate"><span class="pre">try...</span></code> bloğunda
-yer alan işlem ise ancak <code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code> verecektir. Biz yukarıda
+Mesela yukarıda ilk <tt class="docutils literal"><span class="pre">try...</span></tt> bloğu içindeki dönüştürme işlemi yalnızca
+<tt class="docutils literal"><span class="pre">ValueError</span></tt> hatası verebilir. <tt class="docutils literal"><span class="pre">else:</span></tt> bloğundan sonraki <tt class="docutils literal"><span class="pre">try...</span></tt> bloğunda
+yer alan işlem ise ancak <tt class="docutils literal"><span class="pre">ZeroDivisionError</span></tt> verecektir. Biz yukarıda
 kullandığımız yapı sayesinde her bir hatayı tek tek ve yeri geldiğinde
-karşılıyoruz. Bu durumun aksine, bölümün ilk başında verdiğimiz <code class="docutils literal notranslate"><span class="pre">try...</span>
-<span class="pre">except</span></code> bloğunda hem <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> hem de <code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code> hatalarının
+karşılıyoruz. Bu durumun aksine, bölümün ilk başında verdiğimiz <tt class="docutils literal"><span class="pre">try...</span>
+<span class="pre">except</span></tt> bloğunda hem <tt class="docutils literal"><span class="pre">ValueError</span></tt> hem de <tt class="docutils literal"><span class="pre">ZeroDivisionError</span></tt> hatalarının
 gerçekleşme ihtimali bulunuyor. Dolayısıyla biz orada bütün hataları tek bir
-<code class="docutils literal notranslate"><span class="pre">try...</span></code> bloğu içine sıkıştırmış oluyoruz. İşte <code class="docutils literal notranslate"><span class="pre">else:</span></code> bloğu bu sıkışıklığı
+<tt class="docutils literal"><span class="pre">try...</span></tt> bloğu içine sıkıştırmış oluyoruz. İşte <tt class="docutils literal"><span class="pre">else:</span></tt> bloğu bu sıkışıklığı
 gidermiş oluyor. Ancak sizi bir konuda uyarmak isterim: Bu yapı, her akla
 geldiğinde kullanılacak bir yapı değildir. Büyük programlarda bu tarz bir
 kullanım kodlarınızın darmadağın olmasına, kodlarınız üzerindeki denetimi
 tamamen kaybetmenize de yol açabilir. Sonunda da elinizde bölük pörçük bir kod
-yığını kalabilir. Zaten açıkça söylemek gerekirse <code class="docutils literal notranslate"><span class="pre">try...</span> <span class="pre">except...</span> <span class="pre">else...</span></code>
+yığını kalabilir. Zaten açıkça söylemek gerekirse <tt class="docutils literal"><span class="pre">try...</span> <span class="pre">except...</span> <span class="pre">else...</span></tt>
 yapısının çok geniş bir kullanım alanı yoktur. Bu yapı ancak çok nadir
 durumlarda kullanılmayı gerektirebilir. Dolayısıyla bu üçlü yapıyı hiç
 kullanmadan bir ömrü rahatlıkla geçirebilirsiniz.</p>
 </div>
 <div class="section" id="try-except-finally">
-<h2>try… except… finally…<a class="headerlink" href="#try-except-finally" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">try...</span> <span class="pre">except...</span> <span class="pre">else...</span></code> yapılarının dışında, Python’ın bize sunduğu bir
-başka yapı da <code class="docutils literal notranslate"><span class="pre">try...</span> <span class="pre">except...</span> <span class="pre">finally...</span></code> yapılarıdır. Bunu şöyle
+<h2>try... except... finally...<a class="headerlink" href="#try-except-finally" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">try...</span> <span class="pre">except...</span> <span class="pre">else...</span></tt> yapılarının dışında, Python&#8217;ın bize sunduğu bir
+başka yapı da <tt class="docutils literal"><span class="pre">try...</span> <span class="pre">except...</span> <span class="pre">finally...</span></tt> yapılarıdır. Bunu şöyle
 kullanıyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="o">...</span><span class="n">bir</span> <span class="n">takım</span> <span class="n">işler</span><span class="o">...</span>
 <span class="k">except</span> <span class="n">birHata</span><span class="p">:</span>
     <span class="o">...</span><span class="n">hata</span> <span class="n">alınınca</span> <span class="n">yapılacak</span> <span class="n">işlemler</span><span class="o">...</span>
@@ -558,21 +568,21 @@ kullanıyoruz:</p>
     <span class="o">...</span><span class="n">hata</span> <span class="n">olsa</span> <span class="n">da</span> <span class="n">olmasa</span> <span class="n">da</span> <span class="n">yapılması</span> <span class="n">gerekenler</span><span class="o">...</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">finally..</span></code> bloğunun en önemli özelliği, programın çalışması sırasında
+<p><tt class="docutils literal"><span class="pre">finally..</span></tt> bloğunun en önemli özelliği, programın çalışması sırasında
 herhangi bir hata gerçekleşse de gerçekleşmese de işletilecek olmasıdır. Eğer
 yazdığınız programda mutlaka ama mutlaka işletilmesi gereken bir kısım varsa, o
-kısmı <code class="docutils literal notranslate"><span class="pre">finally...</span></code> bloğu içine yazabilirsiniz.</p>
-<p><code class="docutils literal notranslate"><span class="pre">finally...</span></code> bloğu özellikle dosya işlemlerinde işimize yarayabilir. Henüz
-Python’da dosyalarla nasıl çalışacağımızı öğrenmedik, ama ben şimdilik size en
+kısmı <tt class="docutils literal"><span class="pre">finally...</span></tt> bloğu içine yazabilirsiniz.</p>
+<p><tt class="docutils literal"><span class="pre">finally...</span></tt> bloğu özellikle dosya işlemlerinde işimize yarayabilir. Henüz
+Python&#8217;da dosyalarla nasıl çalışacağımızı öğrenmedik, ama ben şimdilik size en
 azından dosyalarla çalışma prensibi hakkında bir şeyler söyleyeyim.</p>
-<p>Genel olarak Python’da dosyalarla çalışabilmek için öncelikle bilgisayarda
+<p>Genel olarak Python&#8217;da dosyalarla çalışabilmek için öncelikle bilgisayarda
 bulunan bir dosyayı okuma veya yazma kipinde açarız. Dosyayı açtıktan sonra bu
 dosyayla ihtiyacımız olan birtakım işlemler gerçekleştiririz. Dosyayla işimiz
 bittikten sonra ise dosyamızı mutlaka kapatmamız gerekir. Ancak eğer dosya
 üzerinde işlem yapılırken bir hata ile karşılaşılırsa dosyamızı kapatma işlemini
-gerçekleştirdiğimiz bölüme hiç ulaşılamayabilir. İşte <code class="docutils literal notranslate"><span class="pre">finally...</span></code> bloğu böyle
+gerçekleştirdiğimiz bölüme hiç ulaşılamayabilir. İşte <tt class="docutils literal"><span class="pre">finally...</span></tt> bloğu böyle
 bir durumda işimize yarayacaktır:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="n">dosya</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;dosyaadı&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
     <span class="o">...</span><span class="n">burada</span> <span class="n">dosyayla</span> <span class="n">bazı</span> <span class="n">işlemler</span> <span class="n">yapıyoruz</span><span class="o">...</span>
     <span class="o">...</span><span class="n">ve</span> <span class="n">ansızın</span> <span class="n">bir</span> <span class="n">hata</span> <span class="n">oluşuyor</span><span class="o">...</span>
@@ -582,18 +592,18 @@ bir durumda işimize yarayacaktır:</p>
     <span class="n">dosya</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Burada <code class="docutils literal notranslate"><span class="pre">finally...</span></code> bloğu içine yazdığımız <code class="docutils literal notranslate"><span class="pre">dosya.close()</span></code> ifadesi dosyamızı
+<p>Burada <tt class="docutils literal"><span class="pre">finally...</span></tt> bloğu içine yazdığımız <tt class="docutils literal"><span class="pre">dosya.close()</span></tt> ifadesi dosyamızı
 güvenli bir şekilde kapatmaya yarıyor. Bu blok, yazdığımız program hata verse de
 vermese de işletilecektir.</p>
 </div>
 <div class="section" id="raise">
-<h2>raise<a class="headerlink" href="#raise" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>raise<a class="headerlink" href="#raise" title="Permalink to this headline">¶</a></h2>
 <p>Bazen, yazdığımız bir programda, kullanıcının yaptığı bir işlem normal şartlar
-altında hata vermeyecek olsa bile biz ona ‘Python tarzı’ bir hata mesajı
-göstermek isteyebiliriz. Böyle bir durumda ihtiyacımız olan şey Python’ın bize
-sunduğu <code class="docutils literal notranslate"><span class="pre">raise</span></code> adlı deyimdir. Bu deyim yardımıyla duruma özgü hata mesajları
+altında hata vermeyecek olsa bile biz ona &#8216;Python tarzı&#8217; bir hata mesajı
+göstermek isteyebiliriz. Böyle bir durumda ihtiyacımız olan şey Python&#8217;ın bize
+sunduğu <tt class="docutils literal"><span class="pre">raise</span></tt> adlı deyimdir. Bu deyim yardımıyla duruma özgü hata mesajları
 üretebiliriz. Bir örnek verelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">bölünen</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;bölünecek sayı: &quot;</span><span class="p">))</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">bölünen</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;bölünecek sayı: &quot;</span><span class="p">))</span>
 
 <span class="k">if</span> <span class="n">bölünen</span> <span class="o">==</span> <span class="mi">23</span><span class="p">:</span>
     <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Bu programda 23 sayısını görmek istemiyorum!&quot;</span><span class="p">)</span>
@@ -603,12 +613,12 @@ sunduğu <code class="docutils literal notranslate"><span class="pre">raise</spa
 </pre></div>
 </div>
 <p>Burada eğer kullanıcı <cite>23</cite> sayısını girerse, kullanıcıya bir hata mesajı
-gösterilip programdan çıkılacaktır. Biz bu kodlarda <code class="docutils literal notranslate"><span class="pre">Exception</span></code> adlı genel
-hata mesajını kullandık. Burada <code class="docutils literal notranslate"><span class="pre">Exception</span></code> yerine her istediğimizi yazamayız.
-Yazabileceklerimiz ancak Python’da tanımlı hata mesajları olabilir. Örneğin
-<code class="docutils literal notranslate"><span class="pre">NameError</span></code>, <code class="docutils literal notranslate"><span class="pre">TypeError</span></code>, <code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code>, <code class="docutils literal notranslate"><span class="pre">IOError</span></code>, vb…</p>
+gösterilip programdan çıkılacaktır. Biz bu kodlarda <tt class="docutils literal"><span class="pre">Exception</span></tt> adlı genel
+hata mesajını kullandık. Burada <tt class="docutils literal"><span class="pre">Exception</span></tt> yerine her istediğimizi yazamayız.
+Yazabileceklerimiz ancak Python&#8217;da tanımlı hata mesajları olabilir. Örneğin
+<tt class="docutils literal"><span class="pre">NameError</span></tt>, <tt class="docutils literal"><span class="pre">TypeError</span></tt>, <tt class="docutils literal"><span class="pre">ZeroDivisionError</span></tt>, <tt class="docutils literal"><span class="pre">IOError</span></tt>, vb...</p>
 <p>Bir örnek verelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">tr_karakter</span> <span class="o">=</span> <span class="s2">&quot;şçğüöıİ&quot;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">tr_karakter</span> <span class="o">=</span> <span class="s2">&quot;şçğüöıİ&quot;</span>
 
 <span class="n">parola</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Parolanız: &quot;</span><span class="p">)</span>
 
@@ -622,13 +632,13 @@ Yazabileceklerimiz ancak Python’da tanımlı hata mesajları olabilir. Örneğ
 </pre></div>
 </div>
 <p>Bu kodlar çalıştırıldığında, eğer kullanıcı, içinde Türkçe karakter geçen bir
-parola yazarsa kendisine <code class="docutils literal notranslate"><span class="pre">TypeError</span></code> tipinde bir hata mesajı gösteriyoruz.
+parola yazarsa kendisine <tt class="docutils literal"><span class="pre">TypeError</span></tt> tipinde bir hata mesajı gösteriyoruz.
 Eğer kullanıcının parolası Türkçe karakter içermiyorsa hiçbir şey yapmadan
-geçiyoruz ve bir sonraki satırda kendisine ‘Parola kabul edildi!’ mesajını
+geçiyoruz ve bir sonraki satırda kendisine &#8216;Parola kabul edildi!&#8217; mesajını
 gösteriyoruz.</p>
-<p><code class="docutils literal notranslate"><span class="pre">raise</span></code> deyimini, bir hata mesajına ek olarak bir işlem yapmak istediğimizde
+<p><tt class="docutils literal"><span class="pre">raise</span></tt> deyimini, bir hata mesajına ek olarak bir işlem yapmak istediğimizde
 de kullanabiliriz. Örneğin:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="n">bölünen</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;bölünecek sayı: &quot;</span><span class="p">))</span>
     <span class="n">bölen</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;bölen sayı: &quot;</span><span class="p">))</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">bölünen</span><span class="o">/</span><span class="n">bölen</span><span class="p">)</span>
@@ -637,112 +647,112 @@ de kullanabiliriz. Örneğin:</p>
     <span class="k">raise</span>
 </pre></div>
 </div>
-<p>Burada, eğer kullanıcı bir sayıyı <cite>0</cite>’a bölmeye çalışırsa, normal bir şekilde
-<code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code> hatası verilecek ve programdan çıkılacaktır. Ama bu hata
-mesajıyla birlikte kullanıcıya ‘bir sayıyı 0’a bölemezsiniz,’ uyarısını da
-gösterme imkanını elde edeceğiz. Yani burada <code class="docutils literal notranslate"><span class="pre">except</span> <span class="pre">ZeroDivisionError</span></code>
+<p>Burada, eğer kullanıcı bir sayıyı <cite>0</cite>&#8216;a bölmeye çalışırsa, normal bir şekilde
+<tt class="docutils literal"><span class="pre">ZeroDivisionError</span></tt> hatası verilecek ve programdan çıkılacaktır. Ama bu hata
+mesajıyla birlikte kullanıcıya &#8216;bir sayıyı 0&#8217;a bölemezsiniz,&#8217; uyarısını da
+gösterme imkanını elde edeceğiz. Yani burada <tt class="docutils literal"><span class="pre">except</span> <span class="pre">ZeroDivisionError</span></tt>
 bloğunu herhangi bir hatayı engellemek için değil, hataya ilave bilgi eklemek
 için kullanıyoruz. Bunu yapmamızı sağlayan şey tabii ki bu kodlar içinde görünen
-<code class="docutils literal notranslate"><span class="pre">raise</span></code> adlı deyimdir…</p>
+<tt class="docutils literal"><span class="pre">raise</span></tt> adlı deyimdir...</p>
 </div>
 <div class="section" id="assert">
-<h2>assert<a class="headerlink" href="#assert" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>assert<a class="headerlink" href="#assert" title="Permalink to this headline">¶</a></h2>
 <p>Bazen programımızda bir hata yaptığımızda bu hatayı bulmakta zorlanabiliriz.
-<code class="docutils literal notranslate"><span class="pre">print</span></code> fonksiyonunu kullanarak bu hatamızı bulmaya çalışabiliriz ancak
+<tt class="docutils literal"><span class="pre">print</span></tt> fonksiyonunu kullanarak bu hatamızı bulmaya çalışabiliriz ancak
 bu da programımız ekrana çok fazla yazdırma işlemi yapıyorsa gözden kaçabilir.
-Böyle durumlarda <code class="docutils literal notranslate"><span class="pre">assert</span></code> ifadesini kullanabiliriz. <code class="docutils literal notranslate"><span class="pre">assert</span></code> ifadesi
-aynı zamanda hata yükseltmenin kısa bir yoludur. Ancak <code class="docutils literal notranslate"><span class="pre">assert</span></code> ifadesini
-kullanarak sadece <code class="docutils literal notranslate"><span class="pre">AssertionError</span></code> türünde bir hata yükseltebiliriz. Normalde
-<code class="docutils literal notranslate"><span class="pre">raise</span></code> kullanmamız daha doğru olacaktır. Dediğimiz gibi <code class="docutils literal notranslate"><span class="pre">assert</span></code> ifadesi
+Böyle durumlarda <tt class="docutils literal"><span class="pre">assert</span></tt> ifadesini kullanabiliriz. <tt class="docutils literal"><span class="pre">assert</span></tt> ifadesi
+aynı zamanda hata yükseltmenin kısa bir yoludur. Ancak <tt class="docutils literal"><span class="pre">assert</span></tt> ifadesini
+kullanarak sadece <tt class="docutils literal"><span class="pre">AssertionError</span></tt> türünde bir hata yükseltebiliriz. Normalde
+<tt class="docutils literal"><span class="pre">raise</span></tt> kullanmamız daha doğru olacaktır. Dediğimiz gibi <tt class="docutils literal"><span class="pre">assert</span></tt> ifadesi
 hızlı bir şekilde kodumuzdaki hataları belirlemek için kullanılır.
 Şimdi şöyle bir kodumuz olduğunu düşünelim:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">giriş</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Merhaba! Adın ne? &quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">giriş</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Merhaba! Adın ne? &quot;</span><span class="p">)</span>
 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">giriş</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
     <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;İsim bölümü boş.&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hoşgeldiniz.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Bu kodu <code class="docutils literal notranslate"><span class="pre">assert</span></code> kullanarak şu şekilde de yazabilirdik:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">giriş</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Merhaba! Adın ne? &quot;</span><span class="p">)</span>
+<p>Bu kodu <tt class="docutils literal"><span class="pre">assert</span></tt> kullanarak şu şekilde de yazabilirdik:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">giriş</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Merhaba! Adın ne? &quot;</span><span class="p">)</span>
 <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">giriş</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">,</span> <span class="s2">&quot;İsim bölümü boş.&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hoşgeldiniz.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Dikkat ederseniz <code class="docutils literal notranslate"><span class="pre">assert</span></code> ifadesinin şu şekilde kullanıldığını görebilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">ifade</span> <span class="p">,</span> <span class="n">mesaj</span>
+<p>Dikkat ederseniz <tt class="docutils literal"><span class="pre">assert</span></tt> ifadesinin şu şekilde kullanıldığını görebilirsiniz:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">ifade</span> <span class="p">,</span> <span class="n">mesaj</span>
 </pre></div>
 </div>
-<p>Burada <code class="docutils literal notranslate"><span class="pre">ifade</span></code> bir <code class="docutils literal notranslate"><span class="pre">bool</span></code> yani <code class="docutils literal notranslate"><span class="pre">True</span></code> veya <code class="docutils literal notranslate"><span class="pre">False</span></code> olabileceği gibi, (aynı <code class="docutils literal notranslate"><span class="pre">if</span></code>’deki gibi)
-<code class="docutils literal notranslate"><span class="pre">bool</span></code> fonksiyonu ile birlikte kullanılabilecek bir nesne de olabilir. Sonuç olarak
-eğer <code class="docutils literal notranslate"><span class="pre">ifade</span></code>’nin değeri <code class="docutils literal notranslate"><span class="pre">True</span></code> ise <code class="docutils literal notranslate"><span class="pre">assert</span></code> ifademiz çalışmayacak, <code class="docutils literal notranslate"><span class="pre">False</span></code> ise
-çalışacaktır. Yani <code class="docutils literal notranslate"><span class="pre">assert</span></code> ifademizin içine doğru olmasını istediğimiz durumu yazmalıyız ki
-eğer yanlış olursa hata yükseltsin. Zaten <code class="docutils literal notranslate"><span class="pre">assert</span></code> kelimesi <em>“iddia etmek”</em> anlamına gelir. Yani biz <code class="docutils literal notranslate"><span class="pre">assert</span></code> ifadesini kullanarak bir ifadenin doğru olduğunu iddia ediyoruz, bu iddiamız yanlış ise Python bir hata yükseltiyor. Ayrıca <code class="docutils literal notranslate"><span class="pre">assert</span></code> ifademiz çalıştığında bir hata yükseleceği için program da sonlanacaktır, yani bu özelliği istemediğimiz bir durum gerçekleştiğinde
-programı sonlandırmak için de kullanabiliriz. <code class="docutils literal notranslate"><span class="pre">mesaj</span></code> ise hata verildiğinde ekrana yazılmasını
-istediğimiz mesajdır. Tabii ki <code class="docutils literal notranslate"><span class="pre">raise</span></code> ifadesinde olduğu gibi burada da bir mesaj vermek zorunda
-değiliz. Yani <code class="docutils literal notranslate"><span class="pre">assert</span></code> ifadesini şu şekilde de kullanabiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">ifade</span>
+<p>Burada <tt class="docutils literal"><span class="pre">ifade</span></tt> bir <tt class="docutils literal"><span class="pre">bool</span></tt> yani <tt class="docutils literal"><span class="pre">True</span></tt> veya <tt class="docutils literal"><span class="pre">False</span></tt> olabileceği gibi, (aynı <tt class="docutils literal"><span class="pre">if</span></tt>&#8216;deki gibi)
+<tt class="docutils literal"><span class="pre">bool</span></tt> fonksiyonu ile birlikte kullanılabilecek bir nesne de olabilir. Sonuç olarak
+eğer <tt class="docutils literal"><span class="pre">ifade</span></tt>&#8216;nin değeri <tt class="docutils literal"><span class="pre">True</span></tt> ise <tt class="docutils literal"><span class="pre">assert</span></tt> ifademiz çalışmayacak, <tt class="docutils literal"><span class="pre">False</span></tt> ise
+çalışacaktır. Yani <tt class="docutils literal"><span class="pre">assert</span></tt> ifademizin içine doğru olmasını istediğimiz durumu yazmalıyız ki
+eğer yanlış olursa hata yükseltsin. Zaten <tt class="docutils literal"><span class="pre">assert</span></tt> kelimesi <em>“iddia etmek”</em> anlamına gelir. Yani biz <tt class="docutils literal"><span class="pre">assert</span></tt> ifadesini kullanarak bir ifadenin doğru olduğunu iddia ediyoruz, bu iddiamız yanlış ise Python bir hata yükseltiyor. Ayrıca <tt class="docutils literal"><span class="pre">assert</span></tt> ifademiz çalıştığında bir hata yükseleceği için program da sonlanacaktır, yani bu özelliği istemediğimiz bir durum gerçekleştiğinde
+programı sonlandırmak için de kullanabiliriz. <tt class="docutils literal"><span class="pre">mesaj</span></tt> ise hata verildiğinde ekrana yazılmasını
+istediğimiz mesajdır. Tabii ki <tt class="docutils literal"><span class="pre">raise</span></tt> ifadesinde olduğu gibi burada da bir mesaj vermek zorunda
+değiliz. Yani <tt class="docutils literal"><span class="pre">assert</span></tt> ifadesini şu şekilde de kullanabiliriz:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">ifade</span>
 </pre></div>
 </div>
 <p>Şimdi baştaki örneğimize geri dönersek:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">giriş</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Merhaba! Adın ne? &quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">giriş</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Merhaba! Adın ne? &quot;</span><span class="p">)</span>
 <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">giriş</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">,</span> <span class="s2">&quot;İsim bölümü boş.&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hoşgeldiniz.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Bu kodumuzu çalıştırdığımızda:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span>Merhaba! Adın ne? Ali
+<div class="highlight-py3"><div class="highlight"><pre><span></span>Merhaba! Adın ne? Ali
 Hoşgeldiniz.
 &gt;&gt;&gt;
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">giriş</span></code> değişkenimizin uzunluğu <code class="docutils literal notranslate"><span class="pre">0</span></code> olmadığı için bir hata verilmedi. Şimdi
-aynı kodu çalıştırıp hiçbir şey yazmadan <code class="docutils literal notranslate"><span class="pre">enter</span></code> tuşuna basalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span>Merhaba! Adın ne?
+<p><tt class="docutils literal"><span class="pre">giriş</span></tt> değişkenimizin uzunluğu <tt class="docutils literal"><span class="pre">0</span></tt> olmadığı için bir hata verilmedi. Şimdi
+aynı kodu çalıştırıp hiçbir şey yazmadan <tt class="docutils literal"><span class="pre">enter</span></tt> tuşuna basalım:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span>Merhaba! Adın ne?
 Traceback (most recent call last):
   File &quot;C:\Users\Kullanıcı\Desktop\assert_ifadesi.py&quot;, line 2, in &lt;module&gt;
     assert len(giriş) != 0 , &quot;İsim bölümü boş.&quot;
 AssertionError: İsim bölümü boş.
 </pre></div>
 </div>
-<p>Gördüğünüz gibi <code class="docutils literal notranslate"><span class="pre">assert</span></code> ifadesini de bu şeklide kullanıyoruz. Burada bir şeye
-dikkat etmek lazım ki <code class="docutils literal notranslate"><span class="pre">assert</span></code> bir fonksiyon değildir, bu yüzden parantezler
+<p>Gördüğünüz gibi <tt class="docutils literal"><span class="pre">assert</span></tt> ifadesini de bu şeklide kullanıyoruz. Burada bir şeye
+dikkat etmek lazım ki <tt class="docutils literal"><span class="pre">assert</span></tt> bir fonksiyon değildir, bu yüzden parantezler
 ile şu şekilde <strong>kullanılmamalıdır</strong>:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span><span class="p">(</span><span class="n">ifade</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">assert</span><span class="p">(</span><span class="n">ifade</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Bu kullanım hata vermeyecek olsa da farkında olmadan -ileride öğreneceğimiz
 bir konu- bir demet oluşturmuş oluyoruz.</p>
 <p>Son olarak büyük bir proje yazdığımızda, şu örnekteki gibi:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">giriş</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Merhaba! Adın ne? &quot;</span><span class="p">)</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">giriş</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Merhaba! Adın ne? &quot;</span><span class="p">)</span>
 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">giriş</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
     <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;İsim bölümü boş.&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hoşgeldiniz.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">if</span></code> ve <code class="docutils literal notranslate"><span class="pre">raise</span></code> ifadesi kullanmak yerine <code class="docutils literal notranslate"><span class="pre">assert</span></code> kullanmamızın iki avantajından bahsedelim. Öncelikle istediğiniz zaman geliştirme arayüzünüzün <strong>“Bul (Find)”</strong> özelliğini kullanarak bu anahtar kelimeleri
+<p><tt class="docutils literal"><span class="pre">if</span></tt> ve <tt class="docutils literal"><span class="pre">raise</span></tt> ifadesi kullanmak yerine <tt class="docutils literal"><span class="pre">assert</span></tt> kullanmamızın iki avantajından bahsedelim. Öncelikle istediğiniz zaman geliştirme arayüzünüzün <strong>&#8220;Bul (Find)&#8221;</strong> özelliğini kullanarak bu anahtar kelimeleri
 bulup silebilir veya yorum satırı haline getirebilirsiniz. Bu özellik uzun bir kod yazdığımızda zaman kazanmamızı sağlar.
-İkinci olarak da python yorumlayıcısını komut satırından <code class="docutils literal notranslate"><span class="pre">-O</span></code> parametresi (<em>optimize</em> anlamına gelir) ile şu şekilde çağırdığımızda:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">User</span><span class="o">&gt;</span> <span class="n">python</span> <span class="o">-</span><span class="n">O</span> <span class="n">kod_dosyası</span>
+İkinci olarak da python yorumlayıcısını komut satırından <tt class="docutils literal"><span class="pre">-O</span></tt> parametresi (<em>optimize</em> anlamına gelir) ile şu şekilde çağırdığımızda:</p>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">User</span><span class="o">&gt;</span> <span class="n">python</span> <span class="o">-</span><span class="n">O</span> <span class="n">kod_dosyası</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">kod_dosyası</span></code> programımızdaki bütün <code class="docutils literal notranslate"><span class="pre">assert</span></code> ifadeleri python yorumlayıcısı tarafından yok sayılır ve hiçbiri çalıştırılmaz. Yani <code class="docutils literal notranslate"><span class="pre">assert</span></code> ifadelerinin hepsini yorum satırı haline getirmek istediğimizde bunun ile uğraşmak yerine bu özelliği kullanabiliriz.</p>
+<p><tt class="docutils literal"><span class="pre">kod_dosyası</span></tt> programımızdaki bütün <tt class="docutils literal"><span class="pre">assert</span></tt> ifadeleri python yorumlayıcısı tarafından yok sayılır ve hiçbiri çalıştırılmaz. Yani <tt class="docutils literal"><span class="pre">assert</span></tt> ifadelerinin hepsini yorum satırı haline getirmek istediğimizde bunun ile uğraşmak yerine bu özelliği kullanabiliriz.</p>
 <p>Konu ile alakalı daha çok örnek için <a class="reference external" href="https://forum.yazbel.com/t/assert-deyimi-nasil-kullanilir/231">buraya</a> bakabilirsiniz.</p>
 </div>
 <div class="section" id="butun-hatalari-yakalamak">
-<h2>Bütün Hataları Yakalamak<a class="headerlink" href="#butun-hatalari-yakalamak" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
-<p>Şimdiye kadar yaptığımız bütün örneklerde <code class="docutils literal notranslate"><span class="pre">except...</span></code> bloğunu bir hata mesajı
+<h2>Bütün Hataları Yakalamak<a class="headerlink" href="#butun-hatalari-yakalamak" title="Permalink to this headline">¶</a></h2>
+<p>Şimdiye kadar yaptığımız bütün örneklerde <tt class="docutils literal"><span class="pre">except...</span></tt> bloğunu bir hata mesajı
 adıyla birlikte kullandık. Yani örneklerimiz şuna benziyordu:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="o">....</span><span class="n">birtakım</span> <span class="n">işler</span><span class="o">...</span>
 <span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
     <span class="o">...</span><span class="n">hata</span> <span class="n">mesajı</span><span class="o">...</span>
 </pre></div>
 </div>
-<p>Yukarıdaki kod yardımıyla sadece <code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code> adlı hatayı
+<p>Yukarıdaki kod yardımıyla sadece <tt class="docutils literal"><span class="pre">ZeroDivisionError</span></tt> adlı hatayı
 yakalayabiliriz. Eğer yazdığımız program başka bir hata daha veriyorsa, o hata
 mesajı yukarıdaki blokların kapsamı dışında kalacaktır. Ama eğer istersek
 yukarıdaki kodu şu şekilde yazarak olası bütün hataları yakalayabiliriz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="o">....</span><span class="n">birtakım</span> <span class="n">işler</span><span class="o">...</span>
 <span class="k">except</span><span class="p">:</span>
     <span class="o">...</span><span class="n">hata</span> <span class="n">mesajı</span><span class="o">...</span>
@@ -760,12 +770,12 @@ düzgün bilgilendiremeyeceğimiz anlamına geliyor. Yani kullanıcı bir hataya
 olduğunda tersliğin nereden kaynaklandığını tam olarak kestiremeyecektir.</p>
 <p>Ayrıca, eğer kendimiz bir program geliştirirken sürekli olarak bu tarz bir
 yazımı benimsersek, kendi kodlarımızdaki hataları da maskelemiş oluruz.
-Dolayısıyla, Python yukarıdaki geniş kapsamlı <code class="docutils literal notranslate"><span class="pre">except...</span></code> bloğu nedeniyle
+Dolayısıyla, Python yukarıdaki geniş kapsamlı <tt class="docutils literal"><span class="pre">except...</span></tt> bloğu nedeniyle
 programımızdaki bütün hataları gizleyeceği için, programımızdaki potansiyel
 aksaklıkları görme imkanımız olmaz. Dolayısıyla bu tür bir yapıdan olabildiğince
 kaçınmakta fayda var. Ancak elbette böyle bir kod yazmanızı gerektiren bir
 durumla da karşılaşabilirsiniz. Örneğin:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="n">birtakım</span> <span class="n">kodlar</span>
 <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Yanlış değer&quot;</span><span class="p">)</span>
@@ -776,17 +786,17 @@ durumla da karşılaşabilirsiniz. Örneğin:</p>
 </pre></div>
 </div>
 <p>Burada olası bütün hata türlerini yakaladıktan sonra, bunların dışında bizim o
-anda öngöremediğimiz bir hatanın oluşması ihtimaline karşı <code class="docutils literal notranslate"><span class="pre">except:</span></code> kodunu
+anda öngöremediğimiz bir hatanın oluşması ihtimaline karşı <tt class="docutils literal"><span class="pre">except:</span></tt> kodunu
 kullanarak kullanıcıya genel bir hata mesajı göstermeyi tercih edebiliriz.
 Böylece beklenmeyen bir hata meydana gelmesi durumunda da programımız çökmek
 yerine çalışmaya devam edebilecektir.</p>
 </div>
 <div class="section" id="ornek-uygulama">
-<h2>Örnek Uygulama<a class="headerlink" href="#ornek-uygulama" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Örnek Uygulama<a class="headerlink" href="#ornek-uygulama" title="Permalink to this headline">¶</a></h2>
 <p>Hata yakalama konusunu bütün ayrıntılarıyla inceledik. Gelin şimdi isterseniz
 ufak bir örnek yapalım.</p>
 <p>Hatırlarsanız bir kaç bölüm önce şöyle bir uygulama yazmıştık:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 
 <span class="n">_2x_metni</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">Python&#39;ın 2.x sürümlerinden birini kullanıyorsunuz.</span>
@@ -804,21 +814,21 @@ ufak bir örnek yapalım.</p>
 <p>Bu programın ne iş yaptığını biliyorsunuz. Bu program yardımıyla,
 kullanıcılarımızın bilgisayarlarındaki Python sürümünü kontrol edip,
 programımızın kullanılan sürüme göre tepki vermesini sağlıyoruz.</p>
-<p>Ancak burada çok ciddi bir problem var. Python’ın 2.7 öncesi sürümlerinde <cite>sys</cite>
-modülünün <code class="docutils literal notranslate"><span class="pre">version_info()</span></code> metodu farklı çıktılar verir. Mesela Python’ın 2.7
-öncesi sürümlerinde <code class="docutils literal notranslate"><span class="pre">version_info()</span></code> metodunun <cite>major</cite>, <cite>minor</cite> veya <cite>micro</cite>
+<p>Ancak burada çok ciddi bir problem var. Python&#8217;ın 2.7 öncesi sürümlerinde <cite>sys</cite>
+modülünün <tt class="docutils literal"><span class="pre">version_info()</span></tt> metodu farklı çıktılar verir. Mesela Python&#8217;ın 2.7
+öncesi sürümlerinde <tt class="docutils literal"><span class="pre">version_info()</span></tt> metodunun <cite>major</cite>, <cite>minor</cite> veya <cite>micro</cite>
 gibi nitelikleri bulunmaz. Bu nitelikler Python programlama diline 2.7 sürümüyle
-birlikte geldi. Dolayısıyla yukarıdaki programı Python’ın 2.7 öncesi
+birlikte geldi. Dolayısıyla yukarıdaki programı Python&#8217;ın 2.7 öncesi
 sürümlerinden biriyle çalıştıran kullanıcılarınız istediğiniz çıktıyı
 alamayacak, Python bu kullanıcalara şuna benzer bir hata mesajı göstererek
 programın çökmesine sebep olacaktır:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="ne">AttributeError</span><span class="p">:</span> <span class="s1">&#39;tuple&#39;</span> <span class="nb">object</span> <span class="n">has</span> <span class="n">no</span> <span class="n">attribute</span> <span class="s1">&#39;major&#39;</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="ne">AttributeError</span><span class="p">:</span> <span class="s1">&#39;tuple&#39;</span> <span class="nb">object</span> <span class="n">has</span> <span class="n">no</span> <span class="n">attribute</span> <span class="s1">&#39;major&#39;</span>
 </pre></div>
 </div>
-<p>Python’ın 2.7 öncesi sürümlerinin kurulu olduğu bilgisayarlarda da programınızın
+<p>Python&#8217;ın 2.7 öncesi sürümlerinin kurulu olduğu bilgisayarlarda da programınızın
 en azından çökmemesi ve makul bir çıktı verebilmesi için yukarıdaki kodlar şöyle
 yazabilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 
 <span class="n">_2x_metni</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">Python&#39;ın 2.x sürümlerinden birini kullanıyorsunuz.</span>
@@ -836,14 +846,14 @@ yazabilirsiniz:</p>
     <span class="nb">print</span><span class="p">(</span><span class="n">_2x_metni</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">AttributeError</span></code> adlı hatayı vereceğini bildiğimiz kısmı bir
-<code class="docutils literal notranslate"><span class="pre">try...</span> <span class="pre">except</span></code> bloğu içine aldık. Eğer programımız <code class="docutils literal notranslate"><span class="pre">AttributeError</span></code>
-hatasını veriyorsa, programımızın çalıştırıldığı sistem Python’ın 2.7 sürümünden
-daha düşük bir sürümü kullanıyor demektir. O yüzden kullanıcıya <cite>_2x_metni</cite>’ni
+<p>Gördüğünüz gibi, <tt class="docutils literal"><span class="pre">AttributeError</span></tt> adlı hatayı vereceğini bildiğimiz kısmı bir
+<tt class="docutils literal"><span class="pre">try...</span> <span class="pre">except</span></tt> bloğu içine aldık. Eğer programımız <tt class="docutils literal"><span class="pre">AttributeError</span></tt>
+hatasını veriyorsa, programımızın çalıştırıldığı sistem Python&#8217;ın 2.7 sürümünden
+daha düşük bir sürümü kullanıyor demektir. O yüzden kullanıcıya <cite>_2x_metni</cite>&#8216;ni
 gösteriyoruz.</p>
 <p>Elbette yukarıdaki programı yazmanın çok daha düzgün yolları vardır. Ama biz
 hata yakalama yöntemlerinin buna benzer durumlarda da bir alternatif olarak
-kullanılabileceğini bilelim. Ayrıca, dediğimiz gibi, <code class="docutils literal notranslate"><span class="pre">try...</span> <span class="pre">except</span></code> blokları
+kullanılabileceğini bilelim. Ayrıca, dediğimiz gibi, <tt class="docutils literal"><span class="pre">try...</span> <span class="pre">except</span></tt> blokları
 yukarıdaki sorunun çözümü için en uygun araçlar olmasa da, bazı durumlarda
 hatayı önlemenin makul tek yoludur.</p>
 </div>
@@ -853,18 +863,17 @@ hatayı önlemenin makul tek yoludur.</p>
 
 <div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
 <div class='extrarelbar'> 
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Gezinti</h3>
+    <div class="related">
+      <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="karakter_dizileri.html" title="Karakter Dizileri"
-             >sonraki</a></li>
+             >next</a></li>
         <li class="right" >
           <a href="donguler.html" title="Döngüler (Loops)"
-             >önceki</a> |</li>
+             >previous</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
-
-        <li class="nav-item nav-item-this"><a href="">Hata Yakalama</a></li> 
+ 
       </ul>
     </div> </div>
 
@@ -899,30 +908,28 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 
 
-            <div class="clearer"></div>
           </div>
       </div>
       <div class="clearer"></div>
     </div> 
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Gezinti</h3>
+    <div class="related">
+      <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="karakter_dizileri.html" title="Karakter Dizileri"
-             >sonraki</a></li>
+             >next</a></li>
         <li class="right" >
           <a href="donguler.html" title="Döngüler (Loops)"
-             >önceki</a> |</li>
+             >previous</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
-
-        <li class="nav-item nav-item-this"><a href="">Hata Yakalama</a></li> 
+ 
       </ul>
     </div> 
 
 <div class="footer">
 &copy; Copyright 2007-2021, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 26.01.2021.
-<a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3 kullanılarak oluşturuldu.
+Last updated on 30.01.2021.
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img

@@ -1,28 +1,41 @@
 
  <!DOCTYPE html>
- <html lang="tr">
+ <html lang="">
 
 
-<html lang="tr">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Uygulama 1 - Resim Görüntüleyici &#8212; Python 3 için Türkçe Kılavuz</title>
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Uygulama 1 - Resim Görüntüleyici &mdash; Python 3 için Türkçe Kılavuz</title>
+    
     <link rel="stylesheet" href="../../_static/pyramid.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/translations.js"></script>
-    <link rel="search" title="Ara" href="../../search.html" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/translations.js"></script>
+    <link rel="top" title="Python 3 için Türkçe Kılavuz" href="../../index.html" />
+    <link rel="up" title="Kivy Paketi" href="index.html" />
     <link rel="next" title="Olaylar" href="events.html" />
     <link rel="prev" title="Temel Pencere Araçları" href="widgets.html" />
 <!--[if lte IE 6]>
 <link rel="stylesheet" href="../../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
 <![endif]-->
 
-  </head><body>
+  </head>
+  <body>
 <div class='header'><a href='https://yazbel.com'><img src="../../_static/logo.png"></a></div>
 
 <ul class='navbar'>
@@ -31,34 +44,33 @@
 </ul>
 
 
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Gezinti</h3>
+    <div class="related">
+      <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="events.html" title="Olaylar"
-             accesskey="N">sonraki</a></li>
+             accesskey="N">next</a></li>
         <li class="right" >
           <a href="widgets.html" title="Temel Pencere Araçları"
-             accesskey="P">önceki</a> |</li>
+             accesskey="P">previous</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
 
-          <li class="nav-item nav-item-1"><a href="../index.html" >Üçüncü Taraf Modüller</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">Kivy Paketi</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Uygulama 1 - Resim Görüntüleyici</a></li> 
+          <li><a href="../index.html" >Üçüncü Taraf Modüller</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">Kivy Paketi</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
-          <div class="body" role="main">
+          <div class="body">
             
 
   <div class="section" id="uygulama-1-resim-goruntuleyici">
-<h1>Uygulama 1 - Resim Görüntüleyici<a class="headerlink" href="#uygulama-1-resim-goruntuleyici" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<h1>Uygulama 1 - Resim Görüntüleyici<a class="headerlink" href="#uygulama-1-resim-goruntuleyici" title="Permalink to this headline">¶</a></h1>
 <p>Şimdiye kadar öğrendiklerimiz ile örnek bir uygulama yapma zamanı geldi. Çünkü uygulamadıkça öğrenmemiz eksik kalır. O yüzden bir örnek yapalım</p>
 <p>Örneğimiz bir resim görüntüleyici. Bir klasör içinde bulunan resimleri listeler, sonra bunları ileri ve geri butonlarına bastıkça görüntüler. Planımız ise şöyle. Girişte bir yazı ve bir progressbar olacak. Resimler yüklenirken progressbar üzerinde yüklenme durumu gösterilecek. Tabi, resimler az olduğunda çok hızlı bir şekilde yüklenecek. Ancak örnekte de bulunsun diye bir progressbar eklemek istedim.</p>
-<p>Resimlerimiz yüklendikten sonra, ekrandaki yazıyı ve progressbar’ı kaldırıp yerine ana ekranımızı koyacağız. Bunu da ayrı bir fonksiyon içinde yaptık. O zaman şimdi kodumuzu görelim, sonra da incelemeye başlayalım</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<p>Resimlerimiz yüklendikten sonra, ekrandaki yazıyı ve progressbar&#8217;ı kaldırıp yerine ana ekranımızı koyacağız. Bunu da ayrı bir fonksiyon içinde yaptık. O zaman şimdi kodumuzu görelim, sonra da incelemeye başlayalım</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="c1"># Resim Görüntüleyici</span>
 <span class="c1"># Yazbel</span>
 
@@ -110,21 +122,21 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">govde</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bar</span><span class="p">)</span>
 
         <span class="c1"># Resimleri yüklemek üzere, self.resimYukle fonksiyonuna git</span>
-        <span class="n">Clock</span><span class="o">.</span><span class="n">schedule_once</span><span class="p">(</span><span class="k">lambda</span> <span class="n">event</span> <span class="o">=</span> <span class="kc">None</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">resimYukle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">resimYolu</span><span class="p">),</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">Clock</span><span class="o">.</span><span class="n">schedule_once</span><span class="p">(</span><span class="k">lambda</span> <span class="n">event</span> <span class="o">=</span> <span class="bp">None</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">resimYukle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">resimYolu</span><span class="p">),</span><span class="mi">1</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">govde</span>
 
-    <span class="k">def</span> <span class="nf">basla</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">basla</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span> <span class="o">=</span> <span class="bp">None</span><span class="p">):</span>
         <span class="c1"># Ekrandaki tüm araçları kaldırıyoruz</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">govde</span><span class="o">.</span><span class="n">clear_widgets</span><span class="p">()</span>
 
         <span class="c1"># Ve yeni araçlarımızı ekliyoruz</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">bilgi</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;[color=#05f]Yazbel[/color] Resim Görüntüleyici&quot;</span><span class="p">,</span>
-                               <span class="n">markup</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+                               <span class="n">markup</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span>
                                <span class="n">size_hint_y</span> <span class="o">=</span> <span class="o">.</span><span class="mi">1</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">resim</span> <span class="o">=</span> <span class="n">Image</span><span class="p">(</span><span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resimYolu</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">resimListesi</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                           <span class="n">allow_stretch</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-                           <span class="n">keep_ratio</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+                           <span class="n">allow_stretch</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span>
+                           <span class="n">keep_ratio</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
 
 
         <span class="c1"># Geri ve ileri butonlarını taşıyan BoxLayout</span>
@@ -148,7 +160,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">govde</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">butonBar</span><span class="p">)</span>
 
 
-    <span class="k">def</span> <span class="nf">ileriYukle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">ileriYukle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span> <span class="o">=</span> <span class="bp">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">resimSirasi</span> <span class="o">+=</span> <span class="mi">1</span>
 
         <span class="c1"># Eğer resim sırası listemizin boyutunu aşmamışsa</span>
@@ -157,7 +169,7 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">resim</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resimYolu</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">resimListesi</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">resimSirasi</span><span class="p">]</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">bilgi</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resimListesi</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">resimSirasi</span><span class="p">]</span>
             <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">bilgi</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Yuklenemedi: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">resimListesi</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">resimSirasi</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">bilgi</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Yuklenemedi: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">resimListesi</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">resimSirasi</span><span class="p">])</span>
 
         <span class="c1"># Eğer liste boyutunu aşmışsa, bunu sıfırlıyoruz</span>
         <span class="k">else</span><span class="p">:</span>
@@ -167,10 +179,10 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">bilgi</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resimListesi</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">resimSirasi</span><span class="p">]</span>
 
             <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">bilgi</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Yuklenemedi: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">resimListesi</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">resimSirasi</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">bilgi</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Yuklenemedi: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">resimListesi</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">resimSirasi</span><span class="p">])</span>
 
 
-    <span class="k">def</span> <span class="nf">geriYukle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">geriYukle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span> <span class="o">=</span> <span class="bp">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">resimSirasi</span> <span class="o">-=</span> <span class="mi">1</span>
 
         <span class="c1"># Eğer resim sırası listemizin boyutunun altına düşmemişse</span>
@@ -179,8 +191,8 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">resim</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resimYolu</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">resimListesi</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">resimSirasi</span><span class="p">]</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">bilgi</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resimListesi</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">resimSirasi</span><span class="p">]</span>
             <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">bilgi</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Yuklenemedi: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">resimListesi</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">resimSirasi</span><span class="p">])</span>
+                <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">bilgi</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Yuklenemedi: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">resimListesi</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">resimSirasi</span><span class="p">])</span>
 
         <span class="c1"># Eğer düşmüşse, yani negatif olduysa</span>
         <span class="c1"># sırayı listenin sonuna alıyoruz</span>
@@ -190,14 +202,14 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">resim</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resimYolu</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">resimListesi</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">resimSirasi</span><span class="p">]</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">bilgi</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resimListesi</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">resimSirasi</span><span class="p">]</span>
             <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">bilgi</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Yuklenemedi: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">resimListesi</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">resimSirasi</span><span class="p">])</span>
+                <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">bilgi</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Yuklenemedi: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">resimListesi</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">resimSirasi</span><span class="p">])</span>
 
 <span class="n">Program</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Öncelikle, programımız başlar başlamaz yazıyı ve progressbar’ı ekliyoruz sonra da resimlerin yüklenmesi için self.resimYukle fonksiyonuna gidiyoruz.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">resimYukle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">dosya_yolu</span><span class="p">):</span>
+<p>Öncelikle, programımız başlar başlamaz yazıyı ve progressbar&#8217;ı ekliyoruz sonra da resimlerin yüklenmesi için self.resimYukle fonksiyonuna gidiyoruz.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">resimYukle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">dosya_yolu</span><span class="p">):</span>
     <span class="c1"># Format listesi</span>
     <span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;png&quot;</span><span class="p">,</span><span class="s2">&quot;gif&quot;</span><span class="p">,</span><span class="s2">&quot;jpeg&quot;</span><span class="p">,</span><span class="s2">&quot;jpg&quot;</span><span class="p">]</span>
 
@@ -225,17 +237,17 @@
 <p>Formatlarımızı tanımladıktan sonra, os.listdir() yardımıyla hangi klasördeki resimleri göstermek istiyorsak, o klasördeki dosyaları liste olarak elde ediyoruz. Bakın resimleri değil, dosyaları diyorum. Çünkü os.listdir() sadece verilen dizindeki dosyaların listesini verir. Bu listeden resim dosyalarını, bizim belirlediğimiz formatta olanları, ayırt etmek bizim işimiz.</p>
 <p>Bu yüzden hemen aşağısında for döngüsü ile bu listenin elemanlarını tek tek kontrol ettik, ve uzantısı bizim belirttiğimiz uzantılardan biriyle eşleşiyorsa, self.resimListesi adlı listemize ekledik.</p>
 <p>Tüm resimleri tespit ettikten sonra, 1 saniye sonra self.basla fonksiyonuna gidiyoruz. Bu fonksiyonda, ekrandaki tüm araçları self.govde.clear_widgets() ile temizledik ve yeni araçlarımızı ekledik.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">basla</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">basla</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span> <span class="o">=</span> <span class="bp">None</span><span class="p">):</span>
     <span class="c1"># Ekrandaki tüm araçları kaldırıyoruz</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">govde</span><span class="o">.</span><span class="n">clear_widgets</span><span class="p">()</span>
 
     <span class="c1"># Ve yeni araçlarımızı ekliyoruz</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">bilgi</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;[color=#05f]Yazbel[/color] Resim Görüntüleyici&quot;</span><span class="p">,</span>
-                           <span class="n">markup</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+                           <span class="n">markup</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span>
                            <span class="n">size_hint_y</span> <span class="o">=</span> <span class="o">.</span><span class="mi">1</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">resim</span> <span class="o">=</span> <span class="n">Image</span><span class="p">(</span><span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resimYolu</span><span class="o">+</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">resimListesi</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                       <span class="n">allow_stretch</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-                       <span class="n">keep_ratio</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+                       <span class="n">allow_stretch</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span>
+                       <span class="n">keep_ratio</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
 
 
     <span class="c1"># Geri ve ileri butonlarını taşıyan BoxLayout</span>
@@ -261,7 +273,7 @@
 </div>
 <p>Bu fonksiyonda yabancı olduğumuz bir kod yok sanırım.Kullandığımız tüm pencere araçlarını daha önce gördük. Sadece butonBar içine eklediğimiz bir adet boş widget var. Onu da iki butonun arasını doldurmak için ekledik. Eklemeseydik de olurdu tabi.</p>
 <p>Butonlarımızı ekledik ve ileri butonuna tıklandığı zaman, self.ileriYukle fonksiyonumuzun çalışmasını sağladık.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ileriYukle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ileriYukle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span> <span class="o">=</span> <span class="bp">None</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">resimSirasi</span> <span class="o">+=</span> <span class="mi">1</span>
 
     <span class="c1"># Eğer resim sırası listemizin boyutunu aşmamışsa</span>
@@ -270,7 +282,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">resim</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resimYolu</span><span class="o">+</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">resimListesi</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">resimSirasi</span><span class="p">]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">bilgi</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resimListesi</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">resimSirasi</span><span class="p">]</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">bilgi</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Yuklenemedi: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">resimListesi</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">resimSirasi</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">bilgi</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Yuklenemedi: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">resimListesi</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">resimSirasi</span><span class="p">])</span>
 
     <span class="c1"># Eğer liste boyutunu aşmışsa, bunu sıfırlıyoruz</span>
     <span class="k">else</span><span class="p">:</span>
@@ -280,12 +292,12 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">bilgi</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resimListesi</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">resimSirasi</span><span class="p">]</span>
 
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">bilgi</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Yuklenemedi: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">resimListesi</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">resimSirasi</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">bilgi</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Yuklenemedi: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">resimListesi</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">resimSirasi</span><span class="p">])</span>
 </pre></div>
 </div>
-<p>İlk olarak resimSirasi değişkenini 1 arttırıyoruz ve sonra da bu değerin listemizin boyutunu aşıp aşmadığını kontrol ediyoruz. Çünkü eğer boyutunu aşarsa, “liste boyutu aşıldı” hatası alabiliriz. Bu yüzden eğer boyutu aştıysa, değerini tekrardan 0 yapıyoruz</p>
+<p>İlk olarak resimSirasi değişkenini 1 arttırıyoruz ve sonra da bu değerin listemizin boyutunu aşıp aşmadığını kontrol ediyoruz. Çünkü eğer boyutunu aşarsa, &#8220;liste boyutu aşıldı&#8221; hatası alabiliriz. Bu yüzden eğer boyutu aştıysa, değerini tekrardan 0 yapıyoruz</p>
 <p>Geri butonumuz için de benzer şeyleri yapıyoruz</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">geriYukle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">geriYukle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span> <span class="o">=</span> <span class="bp">None</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">resimSirasi</span> <span class="o">-=</span> <span class="mi">1</span>
 
     <span class="c1"># Eğer resim sırası listemizin boyutunun altına düşmemişse</span>
@@ -294,8 +306,8 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">resim</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resimYolu</span><span class="o">+</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">resimListesi</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">resimSirasi</span><span class="p">]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">bilgi</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resimListesi</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">resimSirasi</span><span class="p">]</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">bilgi</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Yuklenemedi: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">resimListesi</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">resimSirasi</span><span class="p">])</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">bilgi</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Yuklenemedi: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">resimListesi</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">resimSirasi</span><span class="p">])</span>
 
     <span class="c1"># Eğer düşmüşse, yani negatif olduysa</span>
     <span class="c1"># sırayı listenin sonuna alıyoruz</span>
@@ -305,20 +317,20 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">resim</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resimYolu</span><span class="o">+</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">resimListesi</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">resimSirasi</span><span class="p">]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">bilgi</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resimListesi</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">resimSirasi</span><span class="p">]</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">bilgi</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Yuklenemedi: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">resimListesi</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">resimSirasi</span><span class="p">])</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">bilgi</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Yuklenemedi: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">resimListesi</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">resimSirasi</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>Burada farklı olarak, resimSirasi değerinin eksiye düşüp düşmediğini kontrol ettik. Eksiye düştüyse, tekrar listenin sonuna alıyoruz. Böylece bir döngü içinde resimlerin görüntülenmesini sağladık.</p>
-<p>Örnekte bulunan os.sep, bulunduğunuz işletim sisteminde kullanılan dizin ayracını verir. Linux kullanıyorsanız, “/” Windows kullanıyorsanız “\” veya “&quot; olarak belirlenir. Örnekte kullanmamızın sebebi, resim yolu ve resim adını birleştirdiğimizde araya dizin ayracı koymak. Eğer koymazsak, resmin bulunamadığına dair hata alırız.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">resimYolu</span><span class="o">+</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">+</span><span class="n">resim</span>
+<p>Örnekte bulunan os.sep, bulunduğunuz işletim sisteminde kullanılan dizin ayracını verir. Linux kullanıyorsanız, &#8220;/&#8221; Windows kullanıyorsanız &#8220;\&#8221; veya &#8220;&#8221; olarak belirlenir. Örnekte kullanmamızın sebebi, resim yolu ve resim adını birleştirdiğimizde araya dizin ayracı koymak. Eğer koymazsak, resmin bulunamadığına dair hata alırız.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">resimYolu</span><span class="o">+</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">+</span><span class="n">resim</span>
 <span class="go">&quot;resim/resim.jpg&quot;</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">resimYolu</span><span class="o">+</span><span class="n">resim</span>
 <span class="go">&quot;resimresim.jpg&quot;</span>
 </pre></div>
 </div>
-<p>Ben örnekte görüntülemek istediğim resimleri, program ile aynı klasörde bulunan “resim” adlı klasöre koydum. Eğer aynı klasörde bulunmayan başka bir klasörü listelemek isterseniz, tam dizini vermeniz gerekiyor. Yani “C:\resimler” gibi.</p>
+<p>Ben örnekte görüntülemek istediğim resimleri, program ile aynı klasörde bulunan &#8220;resim&#8221; adlı klasöre koydum. Eğer aynı klasörde bulunmayan başka bir klasörü listelemek isterseniz, tam dizini vermeniz gerekiyor. Yani &#8220;C:\resimler&#8221; gibi.</p>
 <p>Programın görüntüsü şöyle</p>
 <img alt="../../_images/uygulama-1.png" src="../../_images/uygulama-1.png" />
 <p>Gayet güzel çalışıyor. Kodu elimden geldiği kadar anlaşılır yazmaya çalıştım. Eğer anlamadığınız bir kısım olursa, veya hata olduğunu düşündüğünüz bir kısım varsa <a class="reference external" href="https://forum.yazbel.com">Forum</a> üzerinden ulaşabilirsiniz.</p>
@@ -328,20 +340,19 @@
 
 <div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
 <div class='extrarelbar'> 
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Gezinti</h3>
+    <div class="related">
+      <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="events.html" title="Olaylar"
-             >sonraki</a></li>
+             >next</a></li>
         <li class="right" >
           <a href="widgets.html" title="Temel Pencere Araçları"
-             >önceki</a> |</li>
+             >previous</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
 
-          <li class="nav-item nav-item-1"><a href="../index.html" >Üçüncü Taraf Modüller</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="index.html" >Kivy Paketi</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Uygulama 1 - Resim Görüntüleyici</a></li> 
+          <li><a href="../index.html" >Üçüncü Taraf Modüller</a> &raquo;</li>
+          <li><a href="index.html" >Kivy Paketi</a> &raquo;</li> 
       </ul>
     </div> </div>
 
@@ -376,32 +387,30 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 
 
-            <div class="clearer"></div>
           </div>
       </div>
       <div class="clearer"></div>
     </div> 
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Gezinti</h3>
+    <div class="related">
+      <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="events.html" title="Olaylar"
-             >sonraki</a></li>
+             >next</a></li>
         <li class="right" >
           <a href="widgets.html" title="Temel Pencere Araçları"
-             >önceki</a> |</li>
+             >previous</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
 
-          <li class="nav-item nav-item-1"><a href="../index.html" >Üçüncü Taraf Modüller</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="index.html" >Kivy Paketi</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Uygulama 1 - Resim Görüntüleyici</a></li> 
+          <li><a href="../index.html" >Üçüncü Taraf Modüller</a> &raquo;</li>
+          <li><a href="index.html" >Kivy Paketi</a> &raquo;</li> 
       </ul>
     </div> 
 
 <div class="footer">
 &copy; Copyright 2007-2021, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 26.01.2021.
-<a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3 kullanılarak oluşturuldu.
+Last updated on 30.01.2021.
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
