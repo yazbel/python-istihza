@@ -1,30 +1,43 @@
 
  <!DOCTYPE html>
- <html lang="tr">
+ <html lang="">
 
 
-<html lang="tr">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta content="Bu bölümde sched modülünü inceleyeceğiz." name="description" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="Bu bölümde sched modülünü inceleyeceğiz." name="description" />
 <meta content="python, modül, import, sched, zamanlı işlemler" name="keywords" />
 
-    <title>sched modülü &#8212; Python 3 için Türkçe Kılavuz</title>
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <title>sched modülü &mdash; Python 3 için Türkçe Kılavuz</title>
+    
     <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/translations.js"></script>
-    <link rel="search" title="Ara" href="../search.html" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <link rel="top" title="Python 3 için Türkçe Kılavuz" href="../index.html" />
+    <link rel="up" title="Önemli Standart Kütüphane Modülleri" href="index.html" />
     <link rel="next" title="json Modülü" href="json.html" />
     <link rel="prev" title="threading Modülü" href="threading.html" />
 <!--[if lte IE 6]>
 <link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
 <![endif]-->
 
-  </head><body>
+  </head>
+  <body>
 <div class='header'><a href='https://yazbel.com'><img src="../_static/logo.png"></a></div>
 
 <ul class='navbar'>
@@ -33,35 +46,34 @@
 </ul>
 
 
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Gezinti</h3>
+    <div class="related">
+      <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="json.html" title="json Modülü"
-             accesskey="N">sonraki</a></li>
+             accesskey="N">next</a></li>
         <li class="right" >
           <a href="threading.html" title="threading Modülü"
-             accesskey="P">önceki</a> |</li>
+             accesskey="P">previous</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
 
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Önemli Standart Kütüphane Modülleri</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">sched modülü</a></li> 
+          <li><a href="index.html" accesskey="U">Önemli Standart Kütüphane Modülleri</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
-          <div class="body" role="main">
+          <div class="body">
             
 
   <div class="section" id="sched-modulu">
-<h1>sched modülü<a class="headerlink" href="#sched-modulu" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<h1>sched modülü<a class="headerlink" href="#sched-modulu" title="Permalink to this headline">¶</a></h1>
 <p>Bu modülün amacı belirli fonksiyonları sırayla çalıştırmaktır.
 Modülün içinde scheduler diye bir sınıf mevcut.
 (Sınıfın adı dikkat ettiyseniz küçük harfle başlıyor.)
 Bu modülü kullanmadan önce <cite>scheduler</cite> sınıfından bir örnek
 oluşturmalısınız:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sched</span>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sched</span>
 <span class="n">s</span><span class="o">=</span><span class="n">sched</span><span class="o">.</span><span class="n">scheduler</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -74,13 +86,13 @@ birazdan açıklayacağım. İkinci ve son parametre ise <cite>delayfunc</cite>.
 Bu parametrenin varsayılan değeri <cite>time.sleep</cite>. Bu parametreyi de
 kodun okunaklılığı açısından belirtelim. Sonuç olarak örneğimizi
 şu şekilde tanımlayalım:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sched</span><span class="o">,</span> <span class="nn">time</span>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sched</span><span class="o">,</span> <span class="nn">time</span>
 <span class="n">s</span><span class="o">=</span><span class="n">sched</span><span class="o">.</span><span class="n">scheduler</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Şimdi sıra bu örneğin metodlarında.</p>
 <div class="section" id="scheduler-enter">
-<h2>scheduler.enter()<a class="headerlink" href="#scheduler-enter" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>scheduler.enter()<a class="headerlink" href="#scheduler-enter" title="Permalink to this headline">¶</a></h2>
 <p>Bu metod çalıştırılacak fonksiyonların sıraya eklenmesini sağlıyor.
 5 tane parametresi var. İlki bekleme süresini belirliyor.
 İkincisi önceliğini belirliyor. Eğer aynı zamanda çalışacak
@@ -92,38 +104,38 @@ sözlük olarak fonksiyonun isimli parametreleri.</p>
 <p><cite>scheduler</cite> sınıfının <cite>delayfunc</cite> parametresi burada kullanılıyor.</p>
 </div>
 <div class="section" id="scheduler-enterabs">
-<h2>scheduler.enterabs()<a class="headerlink" href="#scheduler-enterabs" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>scheduler.enterabs()<a class="headerlink" href="#scheduler-enterabs" title="Permalink to this headline">¶</a></h2>
 <p>Bu metod <cite>enter</cite> metodundan çok da farklı değil. Tek farkı ilk
 değeri bekleme süresini değil çalışacağı süreyi belirliyor.</p>
 <p><cite>scheduler</cite> sınıfının <cite>timefunc</cite> parametresi burada kullanılıyor.</p>
 </div>
 <div class="section" id="scheduler-cancel">
-<h2>scheduler.cancel()<a class="headerlink" href="#scheduler-cancel" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>scheduler.cancel()<a class="headerlink" href="#scheduler-cancel" title="Permalink to this headline">¶</a></h2>
 <p><cite>enter</cite> veya <cite>enterabs</cite> ile sıraya eklenmiş fonksiyonları
 sıradan çıkarmayı sağlıyor.</p>
 </div>
 <div class="section" id="scheduler-empty">
-<h2>scheduler.empty()<a class="headerlink" href="#scheduler-empty" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>scheduler.empty()<a class="headerlink" href="#scheduler-empty" title="Permalink to this headline">¶</a></h2>
 <p>Eğer sırada herhangi bir fonksiyon yoksa <cite>True</cite> döndürür.
 Eğer fonksiyon varsa <cite>False</cite> döndürür.</p>
 </div>
 <div class="section" id="scheduler-run">
-<h2>scheduler.run()<a class="headerlink" href="#scheduler-run" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>scheduler.run()<a class="headerlink" href="#scheduler-run" title="Permalink to this headline">¶</a></h2>
 <p>Sıradaki fonksiyonları hazırlandığı şekilde çalıştırır.
 Tek parametresi olan <cite>blocking</cite> eğer <cite>False</cite> ise ilk çalışacak
 fonksiyonun çalışmasına kalan süreyi döndürür.</p>
 </div>
 <div class="section" id="scheduler-queue">
-<h2>scheduler.queue<a class="headerlink" href="#scheduler-queue" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>scheduler.queue<a class="headerlink" href="#scheduler-queue" title="Permalink to this headline">¶</a></h2>
 <p>Bu değişken <cite>scheduler</cite> nesnelerinin sahip olduğu ve bizim
 kullanabileceğimiz tek değişken. Daha önce sıraya eklenmiş
 <cite>Event</cite> nesnelerini tutuyor.</p>
 </div>
 <div class="section" id="ornekler">
-<h2>Örnekler<a class="headerlink" href="#ornekler" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Örnekler<a class="headerlink" href="#ornekler" title="Permalink to this headline">¶</a></h2>
 <p>Anlatım biraz kafa karıştırıcı oldu. Ancak şimdi birkaç
 Örnek yaparak mantığını kavramanızı sağlayalım.</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sched</span><span class="o">,</span><span class="nn">time</span>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sched</span><span class="o">,</span><span class="nn">time</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">=</span><span class="n">sched</span><span class="o">.</span><span class="n">scheduler</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">,</span><span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">zamanı_yazdır</span><span class="p">(</span><span class="n">sıra</span><span class="p">):</span>
 <span class="go">    print(f&quot;Zaman: {time.time()} ,{sıra}&quot;)</span>
@@ -146,13 +158,13 @@ kullanabileceğimiz tek değişken. Daha önce sıraya eklenmiş
 <span class="go">1532176269.7111597</span>
 </pre></div>
 </div>
-<p>Çalışmaya başladıktan 5 saniye sonra “İkinci”, “Üçüncü” ve “Dördüncü”
-çalıştı. “İkinci” ve “Dördüncü”nün sırası aynıydı. O yüzden
-tanımlanma sıralarına bakıldı. “Üçüncü”nün öncelik sırası
-2 olduğu için onlardan daha sonra yazıldı. “Birinci” onlardan 5
+<p>Çalışmaya başladıktan 5 saniye sonra &#8220;İkinci&#8221;, &#8220;Üçüncü&#8221; ve &#8220;Dördüncü&#8221;
+çalıştı. &#8220;İkinci&#8221; ve &#8220;Dördüncü&#8221;nün sırası aynıydı. O yüzden
+tanımlanma sıralarına bakıldı. &#8220;Üçüncü&#8221;nün öncelik sırası
+2 olduğu için onlardan daha sonra yazıldı. &#8220;Birinci&#8221; onlardan 5
 saniye sonra yani çalışmaya başladıktan 10 saniye sonra çalıştı.</p>
 <p>Bir başka örnek:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sched</span><span class="o">,</span><span class="nn">time</span>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sched</span><span class="o">,</span><span class="nn">time</span>
 <span class="n">s</span><span class="o">=</span><span class="n">sched</span><span class="o">.</span><span class="n">scheduler</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">,</span><span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">)</span>
 <span class="n">yazdırılacak_değer</span><span class="o">=</span><span class="s2">&quot;Merhaba Dünya&quot;</span>
 <span class="k">def</span> <span class="nf">değiştir</span><span class="p">():</span>
@@ -180,7 +192,7 @@ Ancak hemen sonra çalışan <cite>değiştir</cite> fonksiyonu ile <cite>yazdı
 değiştiği için 10. saniyede çalışan <cite>yazdır</cite> fonksiyonu
 farklı bir çıktı veriyor.</p>
 <p>Şu şekilde fantastik bir döngü oluşturulabilir:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sched</span><span class="o">,</span><span class="nn">time</span>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sched</span><span class="o">,</span><span class="nn">time</span>
 <span class="n">s</span><span class="o">=</span><span class="n">sched</span><span class="o">.</span><span class="n">scheduler</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">,</span><span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">)</span>
 <span class="n">suan</span><span class="o">=</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="k">def</span> <span class="nf">çıktı</span><span class="p">():</span>
@@ -194,7 +206,7 @@ farklı bir çıktı veriyor.</p>
 </pre></div>
 </div>
 <p>Her iki saniyede bir aynı kod çalışacaktır.
-Eğer <cite>2</cite>’yi değiştirirseniz süreyi de düzenlemiş olursunuz.</p>
+Eğer <cite>2</cite>&#8216;yi değiştirirseniz süreyi de düzenlemiş olursunuz.</p>
 </div>
 </div>
 
@@ -202,19 +214,18 @@ Eğer <cite>2</cite>’yi değiştirirseniz süreyi de düzenlemiş olursunuz.</
 
 <div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
 <div class='extrarelbar'> 
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Gezinti</h3>
+    <div class="related">
+      <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="json.html" title="json Modülü"
-             >sonraki</a></li>
+             >next</a></li>
         <li class="right" >
           <a href="threading.html" title="threading Modülü"
-             >önceki</a> |</li>
+             >previous</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
 
-          <li class="nav-item nav-item-1"><a href="index.html" >Önemli Standart Kütüphane Modülleri</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">sched modülü</a></li> 
+          <li><a href="index.html" >Önemli Standart Kütüphane Modülleri</a> &raquo;</li> 
       </ul>
     </div> </div>
 
@@ -249,31 +260,29 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 
 
-            <div class="clearer"></div>
           </div>
       </div>
       <div class="clearer"></div>
     </div> 
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Gezinti</h3>
+    <div class="related">
+      <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="json.html" title="json Modülü"
-             >sonraki</a></li>
+             >next</a></li>
         <li class="right" >
           <a href="threading.html" title="threading Modülü"
-             >önceki</a> |</li>
+             >previous</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
 
-          <li class="nav-item nav-item-1"><a href="index.html" >Önemli Standart Kütüphane Modülleri</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">sched modülü</a></li> 
+          <li><a href="index.html" >Önemli Standart Kütüphane Modülleri</a> &raquo;</li> 
       </ul>
     </div> 
 
 <div class="footer">
 &copy; Copyright 2007-2021, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 26.01.2021.
-<a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3 kullanılarak oluşturuldu.
+Last updated on 30.01.2021.
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
