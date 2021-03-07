@@ -1,43 +1,31 @@
 
  <!DOCTYPE html>
- <html lang="">
+ <html lang="tr">
 
 
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="tr">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta content="Bu bölümde time modülünü inceleyeceğiz." name="description" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta content="Bu bölümde time modülünü inceleyeceğiz." name="description" />
 <meta content="python, modül, import, time" name="keywords" />
 
-    <title>time Modülü &mdash; Python 3 için Türkçe Kılavuz</title>
-    
+    <title>time Modülü &#8212; Python 3 için Türkçe Kılavuz</title>
     <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '3',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/translations.js"></script>
-    <link rel="top" title="Python 3 için Türkçe Kılavuz" href="../index.html" />
-    <link rel="up" title="Önemli Standart Kütüphane Modülleri" href="index.html" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="search" title="Ara" href="../search.html" />
     <link rel="next" title="curses Modülü" href="curses.html" />
     <link rel="prev" title="os Modülü" href="os.html" />
 <!--[if lte IE 6]>
 <link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
 <![endif]-->
 
-  </head>
-  <body>
+  </head><body>
 <div class='header'><a href='https://yazbel.com'><img src="../_static/logo.png"></a></div>
 
 <ul class='navbar'>
@@ -46,56 +34,57 @@
 </ul>
 
 
-    <div class="related">
-      <h3>Navigation</h3>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="curses.html" title="curses Modülü"
-             accesskey="N">next</a></li>
+             accesskey="N">sonraki</a></li>
         <li class="right" >
           <a href="os.html" title="os Modülü"
-             accesskey="P">previous</a> |</li>
+             accesskey="P">önceki</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
 
-          <li><a href="index.html" accesskey="U">Önemli Standart Kütüphane Modülleri</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Önemli Standart Kütüphane Modülleri</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">time Modülü</a></li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
-          <div class="body">
+          <div class="body" role="main">
             
 
   <div class="section" id="time-modulu">
-<h1>time Modülü<a class="headerlink" href="#time-modulu" title="Permalink to this headline">¶</a></h1>
-<p><tt class="docutils literal"><span class="pre">time</span></tt> modülü, bir önceki bölümde öğrendiğimiz <tt class="docutils literal"><span class="pre">datetime</span></tt> modülüne benzer.
+<h1>time Modülü<a class="headerlink" href="#time-modulu" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">time</span></code> modülü, bir önceki bölümde öğrendiğimiz <code class="docutils literal notranslate"><span class="pre">datetime</span></code> modülüne benzer.
 Hatta bu iki modülün aynı işi yapan ortak nitelik ve fonksiyonları vardır.
-Ancak <tt class="docutils literal"><span class="pre">datetime</span></tt> modülünden farklı olarak <tt class="docutils literal"><span class="pre">time</span></tt> modülünü daha çok saatle
+Ancak <code class="docutils literal notranslate"><span class="pre">datetime</span></code> modülünden farklı olarak <code class="docutils literal notranslate"><span class="pre">time</span></code> modülünü daha çok saatle
 ilgili işlemleri yapmak için kullanacağız.</p>
 <p>Her zaman olduğu gibi, bu modülü kullanabilmek için de öncelikle modülü içe
 aktarmamız gerekiyor:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">time</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">time</span>
 </pre></div>
 </div>
 <p>Modülü içe aktardığımıza göre, artık modülün içeriğinden yararlanabiliriz.</p>
 <div class="section" id="gmtime">
-<h2>gmtime()<a class="headerlink" href="#gmtime" title="Permalink to this headline">¶</a></h2>
-<p>Python&#8217;da (ve başka programlama dillerinde), zaman-tarih hesaplamalarında
-&#8216;zamanın başlangıcı&#8217; (EPOCH) diye bir kavram bulunur. &#8216;Zamanın başlangıcı&#8217;, bir
+<h2>gmtime()<a class="headerlink" href="#gmtime" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Python’da (ve başka programlama dillerinde), zaman-tarih hesaplamalarında
+‘zamanın başlangıcı’ (EPOCH) diye bir kavram bulunur. ‘Zamanın başlangıcı’, bir
 işletim sisteminin, tarih hesaplamalarında sıfır noktası olarak aldığı tarihtir.
-Kullandığınız işletim sisteminin hangi tarihi &#8216;zamanın başlangıcı&#8217; olarak kabul
+Kullandığınız işletim sisteminin hangi tarihi ‘zamanın başlangıcı’ olarak kabul
 ettiğini bulmak için şu komutu verebilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">gmtime</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">gmtime</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Buradan şu çıktıyı alıyoruz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">time</span><span class="o">.</span><span class="n">struct_time</span><span class="p">(</span><span class="n">tm_year</span><span class="o">=</span><span class="mi">1970</span><span class="p">,</span> <span class="n">tm_mon</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">tm_mday</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">tm_hour</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">time</span><span class="o">.</span><span class="n">struct_time</span><span class="p">(</span><span class="n">tm_year</span><span class="o">=</span><span class="mi">1970</span><span class="p">,</span> <span class="n">tm_mon</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">tm_mday</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">tm_hour</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
 <span class="n">tm_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">tm_sec</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">tm_wday</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">tm_yday</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">tm_isdst</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Bu, <cite>struct_time</cite> adlı özel bir veri tipidir. Bu veri tipi içindeki niteliklere
 şu şekilde ulaşabilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">epoch</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">gmtime</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">epoch</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">gmtime</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">epoch</span><span class="o">.</span><span class="n">tm_year</span> <span class="c1">#yıl</span>
 
 <span class="go">1970</span>
@@ -109,30 +98,31 @@ ettiğini bulmak için şu komutu verebilirsiniz:</p>
 <span class="go">1</span>
 </pre></div>
 </div>
-<p>Demek ki zamanın başlangıcı 1 Ocak 1970 tarihi olarak alınıyormuş... İşte
+<p>Demek ki zamanın başlangıcı 1 Ocak 1970 tarihi olarak alınıyormuş… İşte
 bilgisayarımız, içinde bulunduğumuz zaman ve saati, bu başlangıç zamanından bu
 yana geçen saniyeleri hesaplayarak bulur.</p>
-<p><tt class="docutils literal"><span class="pre">gmtime()</span></tt> fonksiyonunu parametresiz olarak kullandığınızda, o anda içinde
+<p><code class="docutils literal notranslate"><span class="pre">gmtime()</span></code> fonksiyonunu parametresiz olarak kullandığınızda, o anda içinde
 bulunduğunuz tarih ve saat bilgisini elde edersiniz.</p>
 <blockquote>
-<div>time.struct_time(tm_year=2014, tm_mon=12, tm_mday=10,
+<div><p>time.struct_time(tm_year=2014, tm_mon=12, tm_mday=10,
 tm_hour=12, tm_min=5, tm_sec=33, tm_wday=2, tm_yday=344,
-tm_isdst=0)</div></blockquote>
+tm_isdst=0)</p>
+</div></blockquote>
 <p>Ancak bu çıktı, özellikle saat kısmı konusunda her zaman doğru olmayabilir.
 Çıktının birkaç saat saptığını görebilirsiniz.</p>
 </div>
 <div class="section" id="time">
-<h2>time()<a class="headerlink" href="#time" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">time()</span></tt> fonksiyonu, zamanın başlangıcından, o anda içinde bulunduğumuz ana
+<h2>time()<a class="headerlink" href="#time" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">time()</span></code> fonksiyonu, zamanın başlangıcından, o anda içinde bulunduğumuz ana
 kadar geçen toplam saniye miktarını verir:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 
 <span class="go">1418213083.726988</span>
 </pre></div>
 </div>
-<p>Elde ettiğiniz bu değeri, <tt class="docutils literal"><span class="pre">gmtime()</span></tt> fonksiyonunu kullanarak anlamlı bir tarih
+<p>Elde ettiğiniz bu değeri, <code class="docutils literal notranslate"><span class="pre">gmtime()</span></code> fonksiyonunu kullanarak anlamlı bir tarih
 değerine dönüştürebilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">gmtime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">gmtime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
 
 <span class="go">time.struct_time(tm_year=2014, tm_mon=12, tm_mday=10,</span>
 <span class="go">tm_hour=12, tm_min=9, tm_sec=19, tm_wday=2, tm_yday=344,</span>
@@ -142,11 +132,11 @@ değerine dönüştürebilirsiniz:</p>
 <p>Ancak bu çıktı da özellikle saat kısmında sapmalara uğrayabilir.</p>
 </div>
 <div class="section" id="localtime">
-<h2>localtime()<a class="headerlink" href="#localtime" title="Permalink to this headline">¶</a></h2>
-<p>Tıpkı <tt class="docutils literal"><span class="pre">gmtime()</span></tt> fonksiyonundan olduğu gibi, anlık tarih ve zaman bilgisini
-bir <cite>struct_time</cite> nesnesi olarak almak için <tt class="docutils literal"><span class="pre">localtime()</span></tt> fonksiyonunu da
+<h2>localtime()<a class="headerlink" href="#localtime" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Tıpkı <code class="docutils literal notranslate"><span class="pre">gmtime()</span></code> fonksiyonundan olduğu gibi, anlık tarih ve zaman bilgisini
+bir <cite>struct_time</cite> nesnesi olarak almak için <code class="docutils literal notranslate"><span class="pre">localtime()</span></code> fonksiyonunu da
 kullanabiliriz. Bu fonksiyon bize yerel saati doğru bir şekilde verecektir:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">()</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">()</span>
 
 <span class="go">time.struct_time(tm_year=2014, tm_mon=12, tm_mday=10,</span>
 <span class="go">tm_hour=14, tm_min=24, tm_sec=21, tm_wday=2, tm_yday=344, tm_isdst=0)</span>
@@ -156,32 +146,32 @@ kullanabiliriz. Bu fonksiyon bize yerel saati doğru bir şekilde verecektir:</p
 erişebileceğinizi biliyorsunuz.</p>
 </div>
 <div class="section" id="asctime">
-<h2>asctime()<a class="headerlink" href="#asctime" title="Permalink to this headline">¶</a></h2>
-<p>Başta da söylediğimiz gibi, <tt class="docutils literal"><span class="pre">time</span></tt> modülü, <tt class="docutils literal"><span class="pre">datetime</span></tt> modülüne benzer.
+<h2>asctime()<a class="headerlink" href="#asctime" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Başta da söylediğimiz gibi, <code class="docutils literal notranslate"><span class="pre">time</span></code> modülü, <code class="docutils literal notranslate"><span class="pre">datetime</span></code> modülüne benzer.
 Bunların aynı işi gören çeşitli fonksiyonları vardır. Bir örnek verelim.</p>
 <p>Hatırlarsanız, bugünün tarihini bir karakter dizisi olarak almak için
-<tt class="docutils literal"><span class="pre">datetime</span></tt> modülünü şu şekilde kullanabiliyorduk:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">datetime</span>
+<code class="docutils literal notranslate"><span class="pre">datetime</span></code> modülünü şu şekilde kullanabiliyorduk:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">datetime</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">an</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">ctime</span><span class="p">(</span><span class="n">an</span><span class="p">)</span>
 
 <span class="go">&#39;Wed Dec 10 13:56:22 2014&#39;</span>
 </pre></div>
 </div>
-<p>Yukarıdaki işlemi <tt class="docutils literal"><span class="pre">time</span></tt> modülünün <tt class="docutils literal"><span class="pre">asctime()</span></tt> fonksiyonunu kullanarak da
+<p>Yukarıdaki işlemi <code class="docutils literal notranslate"><span class="pre">time</span></code> modülünün <code class="docutils literal notranslate"><span class="pre">asctime()</span></code> fonksiyonunu kullanarak da
 yapabiliriz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">time</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">time</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">asctime</span><span class="p">()</span>
 
 <span class="go">&#39;Wed Dec 10 13:58:31 2014&#39;</span>
 </pre></div>
 </div>
-<p><tt class="docutils literal"><span class="pre">asctime()</span></tt> fonksiyonu tercihe bağlı bir parametre de alabilir. İsterseniz bu
+<p><code class="docutils literal notranslate"><span class="pre">asctime()</span></code> fonksiyonu tercihe bağlı bir parametre de alabilir. İsterseniz bu
 fonksiyona 9 öğeli bir demet veya bir <cite>struct_time</cite> nesnesi verebilirsiniz.</p>
-<p>Yukarıda, <tt class="docutils literal"><span class="pre">gmtime()</span></tt> fonksiyonunun bir <cite>struct_time</cite> nesnesi ürettiğini
-öğrenmiştik. Dolayısıyla bu nesneyi <tt class="docutils literal"><span class="pre">asctime()</span></tt> fonksiyonuna parametre olarak
+<p>Yukarıda, <code class="docutils literal notranslate"><span class="pre">gmtime()</span></code> fonksiyonunun bir <cite>struct_time</cite> nesnesi ürettiğini
+öğrenmiştik. Dolayısıyla bu nesneyi <code class="docutils literal notranslate"><span class="pre">asctime()</span></code> fonksiyonuna parametre olarak
 verebilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">asctime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">gmtime</span><span class="p">())</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">asctime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">gmtime</span><span class="p">())</span>
 
 <span class="go">&#39;Wed Dec 10 12:14:29 2014&#39;</span>
 
@@ -190,19 +180,19 @@ verebilirsiniz:</p>
 <span class="go">&#39;Thu Jan  1 00:00:00 1970&#39;</span>
 </pre></div>
 </div>
-<p>Aynı şekilde <tt class="docutils literal"><span class="pre">localtime()</span></tt> fonksiyonunun da bize bir <cite>struct_time()</cite> nesnesi
-verdiğini biliyoruz. Dolayısıyla bu fonksiyon da <tt class="docutils literal"><span class="pre">asctime()</span></tt> fonksiyonuna
+<p>Aynı şekilde <code class="docutils literal notranslate"><span class="pre">localtime()</span></code> fonksiyonunun da bize bir <cite>struct_time()</cite> nesnesi
+verdiğini biliyoruz. Dolayısıyla bu fonksiyon da <code class="docutils literal notranslate"><span class="pre">asctime()</span></code> fonksiyonuna
 parametre olarak verilebilir:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">asctime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">())</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">asctime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">())</span>
 
 <span class="go">&#39;Wed Dec 10 14:28:05 2014&#39;</span>
 </pre></div>
 </div>
 <p>Veya, sırasıyla yıl, ay, gün, saat, dakika, saniye, haftanın günü, yılın günü,
 gün ışığından yararlanma durumu değerini içeren bir demet de
-oluşturabilir, daha sonra bunu <tt class="docutils literal"><span class="pre">asctime()</span></tt> fonksiyonuna parametre olarak
+oluşturabilir, daha sonra bunu <code class="docutils literal notranslate"><span class="pre">asctime()</span></code> fonksiyonuna parametre olarak
 verebilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">demet</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2014</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">demet</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2014</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">asctime</span><span class="p">(</span><span class="n">demet</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -211,77 +201,86 @@ bilgilerini doğru tahmin etmek zor olduğu için, bu demeti elle oluşturmanız
 tavsiye etmem.</p>
 </div>
 <div class="section" id="strftime">
-<h2>strftime()<a class="headerlink" href="#strftime" title="Permalink to this headline">¶</a></h2>
-<p>Hatırlarsanız <tt class="docutils literal"><span class="pre">datetime</span></tt> modülünü anlatırken, <cite>datetime</cite> sınıfı içindeki
-<tt class="docutils literal"><span class="pre">strftime()</span></tt> adlı bir fonksiyondan söz etmiştik. Bu fonksiyonun, tarih-saat
+<h2>strftime()<a class="headerlink" href="#strftime" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Hatırlarsanız <code class="docutils literal notranslate"><span class="pre">datetime</span></code> modülünü anlatırken, <cite>datetime</cite> sınıfı içindeki
+<code class="docutils literal notranslate"><span class="pre">strftime()</span></code> adlı bir fonksiyondan söz etmiştik. Bu fonksiyonun, tarih-saat
 bilgisi içeren karakter dizilerini manipüle edebilmemizi sağladığını
 biliyorsunuz.</p>
 <p>Bu fonksiyonu şöyle kullanıyorduk:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">datetime</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">datetime</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">an</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="n">an</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%c</span><span class="s1">&#39;</span><span class="p">)</span>
 
 <span class="go">&#39;10.12.2014 14:57:48&#39;</span>
 </pre></div>
 </div>
-<p>İşte yukarıdaki işlemi, <tt class="docutils literal"><span class="pre">time</span></tt> modülünün <tt class="docutils literal"><span class="pre">strftime()</span></tt> fonksiyonunu
+<p>İşte yukarıdaki işlemi, <code class="docutils literal notranslate"><span class="pre">time</span></code> modülünün <code class="docutils literal notranslate"><span class="pre">strftime()</span></code> fonksiyonunu
 kullanarak biraz daha pratik bir şekilde gerçekleştirebiliriz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">time</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">time</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%c</span><span class="s1">&#39;</span><span class="p">)</span>
 
 <span class="go">&#39;10.12.2014 14:58:02&#39;</span>
 </pre></div>
 </div>
-<p><tt class="docutils literal"><span class="pre">datetime</span></tt> modülünü incelerken gördüğümüz tarih biçimlendiricileri <tt class="docutils literal"><span class="pre">time</span></tt>
+<p><code class="docutils literal notranslate"><span class="pre">datetime</span></code> modülünü incelerken gördüğümüz tarih biçimlendiricileri <code class="docutils literal notranslate"><span class="pre">time</span></code>
 modülü için de geçerlidir:</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name"><tt class="docutils literal"><span class="pre">%a</span></tt>:</th><td class="field-body">hafta gününün kısaltılmış adı</td>
-</tr>
-<tr class="field-even field"><th class="field-name"><tt class="docutils literal"><span class="pre">%A</span></tt>:</th><td class="field-body">hafta gününün tam adı</td>
-</tr>
-<tr class="field-odd field"><th class="field-name"><tt class="docutils literal"><span class="pre">%b</span></tt>:</th><td class="field-body">ayın kısaltılmış adı</td>
-</tr>
-<tr class="field-even field"><th class="field-name"><tt class="docutils literal"><span class="pre">%B</span></tt>:</th><td class="field-body">ayın tam adı</td>
-</tr>
-<tr class="field-odd field"><th class="field-name"><tt class="docutils literal"><span class="pre">%c</span></tt>:</th><td class="field-body">tam tarih, saat ve zaman bilgisi</td>
-</tr>
-<tr class="field-even field"><th class="field-name"><tt class="docutils literal"><span class="pre">%d</span></tt>:</th><td class="field-body">sayı değerli bir karakter dizisi olarak gün</td>
-</tr>
-<tr class="field-odd field"><th class="field-name"><tt class="docutils literal"><span class="pre">%j</span></tt>:</th><td class="field-body">belli bir tarihin, yılın kaçıncı gününe denk geldiğini gösteren 1-366 arası bir sayı</td>
-</tr>
-<tr class="field-even field"><th class="field-name"><tt class="docutils literal"><span class="pre">%m</span></tt>:</th><td class="field-body">sayı değerli bir karakter dizisi olarak ay</td>
-</tr>
-<tr class="field-odd field"><th class="field-name"><tt class="docutils literal"><span class="pre">%U</span></tt>:</th><td class="field-body">belli bir tarihin yılın kaçıncı haftasına geldiğini gösteren 0-53 arası bir sayı</td>
-</tr>
-<tr class="field-even field"><th class="field-name"><tt class="docutils literal"><span class="pre">%y</span></tt>:</th><td class="field-body">yılın son iki rakamı</td>
-</tr>
-<tr class="field-odd field"><th class="field-name"><tt class="docutils literal"><span class="pre">%Y</span></tt>:</th><td class="field-body">yılın dört haneli tam hali</td>
-</tr>
-<tr class="field-even field"><th class="field-name"><tt class="docutils literal"><span class="pre">%x</span></tt>:</th><td class="field-body">tam tarih bilgisi</td>
-</tr>
-<tr class="field-odd field"><th class="field-name"><tt class="docutils literal"><span class="pre">%X</span></tt>:</th><td class="field-body">tam saat bilgisi</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">%a</span></code></dt>
+<dd class="field-odd"><p>hafta gününün kısaltılmış adı</p>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">%A</span></code></dt>
+<dd class="field-even"><p>hafta gününün tam adı</p>
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">%b</span></code></dt>
+<dd class="field-odd"><p>ayın kısaltılmış adı</p>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">%B</span></code></dt>
+<dd class="field-even"><p>ayın tam adı</p>
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">%c</span></code></dt>
+<dd class="field-odd"><p>tam tarih, saat ve zaman bilgisi</p>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">%d</span></code></dt>
+<dd class="field-even"><p>sayı değerli bir karakter dizisi olarak gün</p>
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">%j</span></code></dt>
+<dd class="field-odd"><p>belli bir tarihin, yılın kaçıncı gününe denk geldiğini gösteren 1-366 arası bir sayı</p>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">%m</span></code></dt>
+<dd class="field-even"><p>sayı değerli bir karakter dizisi olarak ay</p>
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">%U</span></code></dt>
+<dd class="field-odd"><p>belli bir tarihin yılın kaçıncı haftasına geldiğini gösteren 0-53 arası bir sayı</p>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">%y</span></code></dt>
+<dd class="field-even"><p>yılın son iki rakamı</p>
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">%Y</span></code></dt>
+<dd class="field-odd"><p>yılın dört haneli tam hali</p>
+</dd>
+<dt class="field-even"><code class="docutils literal notranslate"><span class="pre">%x</span></code></dt>
+<dd class="field-even"><p>tam tarih bilgisi</p>
+</dd>
+<dt class="field-odd"><code class="docutils literal notranslate"><span class="pre">%X</span></code></dt>
+<dd class="field-odd"><p>tam saat bilgisi</p>
+</dd>
+</dl>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p>Sistem yerelinin <tt class="docutils literal"><span class="pre">locale</span></tt> modülü aracılığıyla Türkçeye ayarlanmış
+<p class="admonition-title">Uyarı</p>
+<p>Sistem yerelinin <code class="docutils literal notranslate"><span class="pre">locale</span></code> modülü aracılığıyla Türkçeye ayarlanmış
 olması gerektiğini unutmuyoruz:</p>
-<div class="last highlight-py3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">locale</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">locale</span>
 <span class="n">locale</span><span class="o">.</span><span class="n">setlocale</span><span class="p">(</span><span class="n">locale</span><span class="o">.</span><span class="n">LC_ALL</span><span class="p">,</span> <span class="s1">&#39;turkish&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="strptime">
-<h2>strptime()<a class="headerlink" href="#strptime" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">time</span></tt> modülünün <tt class="docutils literal"><span class="pre">strptime()</span></tt> fonksiyonunun yaptığı iş, <tt class="docutils literal"><span class="pre">datetime</span></tt>
-modülünün <cite>datetime</cite> sınıfının <tt class="docutils literal"><span class="pre">strptime()</span></tt> fonksiyonunun yaptığı işe çok
+<h2>strptime()<a class="headerlink" href="#strptime" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">time</span></code> modülünün <code class="docutils literal notranslate"><span class="pre">strptime()</span></code> fonksiyonunun yaptığı iş, <code class="docutils literal notranslate"><span class="pre">datetime</span></code>
+modülünün <cite>datetime</cite> sınıfının <code class="docutils literal notranslate"><span class="pre">strptime()</span></code> fonksiyonunun yaptığı işe çok
 benzer:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">datetime</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">datetime</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="s1">&#39;27 Mayıs 1980&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tarih</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%d</span><span class="s1"> %B %Y&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tarih</span>
@@ -289,9 +288,9 @@ benzer:</p>
 <span class="go">datetime.datetime(1980, 5, 27, 0, 0)</span>
 </pre></div>
 </div>
-<p>Burada &#8216;27 Mayıs 1980&#8217; tarihini, <tt class="docutils literal"><span class="pre">strptime()</span></tt> fonksiyonu yardımıyla bir
+<p>Burada ‘27 Mayıs 1980’ tarihini, <code class="docutils literal notranslate"><span class="pre">strptime()</span></code> fonksiyonu yardımıyla bir
 <cite>datetime</cite> nesnesine dönüştürdük. Aynı şeyi şu şekilde de yapabiliriz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">time</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">time</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="s1">&#39;27 Mayıs 1980&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tarih</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%d</span><span class="s1"> %B %Y&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tarih</span>
@@ -301,32 +300,32 @@ benzer:</p>
 <span class="go">tm_isdst=-1)</span>
 </pre></div>
 </div>
-<p>Gördüğünüz gibi, <tt class="docutils literal"><span class="pre">time</span></tt> modülünün <tt class="docutils literal"><span class="pre">strptime()</span></tt> fonksiyonu <tt class="docutils literal"><span class="pre">datetime</span></tt>
-modülü içindeki <tt class="docutils literal"><span class="pre">strptime()</span></tt> fonksiyonunun aksine bir <cite>struct_time</cite> nesnesi
+<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">time</span></code> modülünün <code class="docutils literal notranslate"><span class="pre">strptime()</span></code> fonksiyonu <code class="docutils literal notranslate"><span class="pre">datetime</span></code>
+modülü içindeki <code class="docutils literal notranslate"><span class="pre">strptime()</span></code> fonksiyonunun aksine bir <cite>struct_time</cite> nesnesi
 veriyor.</p>
 </div>
 <div class="section" id="sleep">
-<h2>sleep()<a class="headerlink" href="#sleep" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">sleep()</span></tt> fonksiyonu, <tt class="docutils literal"><span class="pre">time</span></tt> modülünün en sık kullanılan araçlarından bir
+<h2>sleep()<a class="headerlink" href="#sleep" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">sleep()</span></code> fonksiyonu, <code class="docutils literal notranslate"><span class="pre">time</span></code> modülünün en sık kullanılan araçlarından bir
 tanesidir. Bu fonksiyonu kullanarak kodlarımızın işleyişini belli sürelerle
 kesintiye uğratabiliriz.</p>
 <p>Basit bir örnek verelim:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Bu kodları çalıştırdığınızda, 0&#8217;dan 10&#8217;a kadar olan sayılar ekrana basılırken
-her bir sayı arasına 1&#8217;er saniyelik duraklamalar eklendiğini göreceksiniz. Eğer
+<p>Bu kodları çalıştırdığınızda, 0’dan 10’a kadar olan sayılar ekrana basılırken
+her bir sayı arasına 1’er saniyelik duraklamalar eklendiğini göreceksiniz. Eğer
 arzu ederseniz bu süreyi 1 saniyenin de altına çekebilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Gördüğünüz gibi, <tt class="docutils literal"><span class="pre">sleep()</span></tt> fonksiyonuna <cite>0.5</cite> parametresini vererek, duraklama
+<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">sleep()</span></code> fonksiyonuna <cite>0.5</cite> parametresini vererek, duraklama
 süresinin 500 milisaniye olmasını sağladık.</p>
-<p><tt class="docutils literal"><span class="pre">time</span></tt> modülünün <tt class="docutils literal"><span class="pre">sleep()</span></tt> fonksiyonunu, kodlarınız arasına duraklama
+<p><code class="docutils literal notranslate"><span class="pre">time</span></code> modülünün <code class="docutils literal notranslate"><span class="pre">sleep()</span></code> fonksiyonunu, kodlarınız arasına duraklama
 eklemek istediğiniz her durumda kullanabilirsiniz.</p>
 </div>
 </div>
@@ -335,18 +334,19 @@ eklemek istediğiniz her durumda kullanabilirsiniz.</p>
 
 <div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
 <div class='extrarelbar'> 
-    <div class="related">
-      <h3>Navigation</h3>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="curses.html" title="curses Modülü"
-             >next</a></li>
+             >sonraki</a></li>
         <li class="right" >
           <a href="os.html" title="os Modülü"
-             >previous</a> |</li>
+             >önceki</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
 
-          <li><a href="index.html" >Önemli Standart Kütüphane Modülleri</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" >Önemli Standart Kütüphane Modülleri</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">time Modülü</a></li> 
       </ul>
     </div> </div>
 
@@ -381,29 +381,31 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 
 
+            <div class="clearer"></div>
           </div>
       </div>
       <div class="clearer"></div>
     </div> 
-    <div class="related">
-      <h3>Navigation</h3>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="curses.html" title="curses Modülü"
-             >next</a></li>
+             >sonraki</a></li>
         <li class="right" >
           <a href="os.html" title="os Modülü"
-             >previous</a> |</li>
+             >önceki</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
 
-          <li><a href="index.html" >Önemli Standart Kütüphane Modülleri</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" >Önemli Standart Kütüphane Modülleri</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">time Modülü</a></li> 
       </ul>
     </div> 
 
 <div class="footer">
 &copy; Copyright 2007-2021, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Last updated on 30.01.2021.
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+Son güncelleme: 07.03.2021.
+<a href="http://sphinx-doc.org/">Sphinx</a> 3.2.1 kullanılarak oluşturuldu.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img

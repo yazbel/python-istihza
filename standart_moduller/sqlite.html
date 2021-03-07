@@ -1,43 +1,31 @@
 
  <!DOCTYPE html>
- <html lang="">
+ <html lang="tr">
 
 
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="tr">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta content="Python 2.x ve Veritabanı Programlama (Database Programming)" name="description" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta content="Python 2.x ve Veritabanı Programlama (Database Programming)" name="description" />
 <meta content="python, veritabanı, database, sqlite, SQL, SQL injection, sızma, güvenlik" name="keywords" />
 
-    <title>Sqlite ile Veritabanı Programlama &mdash; Python 3 için Türkçe Kılavuz</title>
-    
+    <title>Sqlite ile Veritabanı Programlama &#8212; Python 3 için Türkçe Kılavuz</title>
     <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '3',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/translations.js"></script>
-    <link rel="top" title="Python 3 için Türkçe Kılavuz" href="../index.html" />
-    <link rel="up" title="Önemli Standart Kütüphane Modülleri" href="index.html" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="search" title="Ara" href="../search.html" />
     <link rel="next" title="os Modülü" href="os.html" />
     <link rel="prev" title="random Modülü" href="random.html" />
 <!--[if lte IE 6]>
 <link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
 <![endif]-->
 
-  </head>
-  <body>
+  </head><body>
 <div class='header'><a href='https://yazbel.com'><img src="../_static/logo.png"></a></div>
 
 <ul class='navbar'>
@@ -46,158 +34,160 @@
 </ul>
 
 
-    <div class="related">
-      <h3>Navigation</h3>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="os.html" title="os Modülü"
-             accesskey="N">next</a></li>
+             accesskey="N">sonraki</a></li>
         <li class="right" >
           <a href="random.html" title="random Modülü"
-             accesskey="P">previous</a> |</li>
+             accesskey="P">önceki</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
 
-          <li><a href="index.html" accesskey="U">Önemli Standart Kütüphane Modülleri</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Önemli Standart Kütüphane Modülleri</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Sqlite ile Veritabanı Programlama</a></li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
-          <div class="body">
+          <div class="body" role="main">
             
 
   <div class="section" id="sqlite-ile-veritabani-programlama">
-<h1>Sqlite ile Veritabanı Programlama<a class="headerlink" href="#sqlite-ile-veritabani-programlama" title="Permalink to this headline">¶</a></h1>
+<h1>Sqlite ile Veritabanı Programlama<a class="headerlink" href="#sqlite-ile-veritabani-programlama" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
 <div class="section" id="giris">
-<h2>Giriş<a class="headerlink" href="#giris" title="Permalink to this headline">¶</a></h2>
-<p>Bu bölümde, Python&#8217;daki ileri düzey konulardan biri olan veritabanı
+<h2>Giriş<a class="headerlink" href="#giris" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Bu bölümde, Python’daki ileri düzey konulardan biri olan veritabanı
 programlamayı (<em>database programming</em>) inceleyeceğiz. Dilerseniz öncelikle
-&#8216;veritabanı&#8217; denen şeyin ne olduğunu anlamaya çalışarak işe başlayalım.</p>
+‘veritabanı’ denen şeyin ne olduğunu anlamaya çalışarak işe başlayalım.</p>
 <p>Esasında veritabanı, hiçbirimizin yabancısı olduğu bir kavram değil. Biz bu
 kelimeyi, teknik anlamının dışında, günlük hayatta da sıkça kullanıyoruz.
 Veritabanı, herkesin bildiği ve kullandığı anlamıyla, içinde veri barındıran bir
-&#8216;şey&#8217;dir. Günlük kullanımda, hakikaten, içinde veri barındıran her şeye
+‘şey’dir. Günlük kullanımda, hakikaten, içinde veri barındıran her şeye
 veritabanı dendiğini duyarsınız.</p>
 <p>Veritabanı kelimesinin günlük kullanımdaki anlamı dışında bir de teknik anlamı
 vardır. Bizi esas ilgilendiren de zaten terimin teknik anlamıdır. Mesela
-Vikipedi&#8217;de veritabanı şöyle tanımlanıyor:</p>
+Vikipedi’de veritabanı şöyle tanımlanıyor:</p>
 <blockquote>
-<div><em>Bilgisayar terminolojisinde, sistematik erişim imkânı olan, yönetilebilir,
+<div><p><em>Bilgisayar terminolojisinde, sistematik erişim imkânı olan, yönetilebilir,
 güncellenebilir, taşınabilir, birbirleri arasında tanımlı ilişkiler
 bulunabilen bilgiler kümesidir. Bir başka tanımı da, bir bilgisayarda
-sistematik şekilde saklanmış, programlarca işlenebilecek veri yığınıdır.</em></div></blockquote>
+sistematik şekilde saklanmış, programlarca işlenebilecek veri yığınıdır.</em></p>
+</div></blockquote>
 <p>Yukarıdaki tanım, veritabanının ne demek olduğunu gayet iyi ifade ediyor. Ama
 esasında bizim veritabanı tanımı üzerinde fazlaca durmamıza gerek yok. Biz her
 zaman olduğu gibi işin teknik boyutuyla değil, taktik boyutuyla ilgilenmeyi
 tercih edeceğiz. O halde yavaş yavaş işe koyulmaya başlayalım.</p>
-<p>Python&#8217;la veritabanı programlama işlemleri için pek çok alternatifimiz var.
-Python&#8217;la hangi veritabanı sistemlerini kullanabileceğinizi görmek için
+<p>Python’la veritabanı programlama işlemleri için pek çok alternatifimiz var.
+Python’la hangi veritabanı sistemlerini kullanabileceğinizi görmek için
 <a class="reference external" href="http://wiki.python.org/moin/DatabaseInterfaces">http://wiki.python.org/moin/DatabaseInterfaces</a> adresindeki listeyi
 inceleyebilirsiniz. Biz bunlar içinde, sadeliği, basitliği ve kullanım kolaylığı
 nedeniyle <strong>Sqlite</strong> adlı veritabanı yönetim sistemini ele alacağız.</p>
 </div>
 <div class="section" id="neden-sqlite">
-<h2>Neden Sqlite?<a class="headerlink" href="#neden-sqlite" title="Permalink to this headline">¶</a></h2>
-<p>Dediğimiz gibi, Python&#8217;da veritabanı işlemleri için kullanabileceğiniz pek çok
-alternatif bulunur. Ama biz bütün bu alternatifler içinde Sqlite&#8217;ı tercih
+<h2>Neden Sqlite?<a class="headerlink" href="#neden-sqlite" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Dediğimiz gibi, Python’da veritabanı işlemleri için kullanabileceğiniz pek çok
+alternatif bulunur. Ama biz bütün bu alternatifler içinde Sqlite’ı tercih
 edeceğiz. Peki neden Sqlite?</p>
-<p>Sqlite&#8217;ın öteki sistemlere göre pek çok avantajı bulunur. Gelin isterseniz
-Sqlite&#8217;ın bazı avantajlarına şöyle bir göz gezdirelim:</p>
+<p>Sqlite’ın öteki sistemlere göre pek çok avantajı bulunur. Gelin isterseniz
+Sqlite’ın bazı avantajlarına şöyle bir göz gezdirelim:</p>
 <ul class="simple">
-<li>Her şeyden önce Sqlite Python&#8217;un 2.5 sürümlerinden bu yana bu dilin bir
+<li><p>Her şeyden önce Sqlite Python’un 2.5 sürümlerinden bu yana bu dilin bir
 parçasıdır. Dolayısıyla eğer kullandığınız Python sürümü 2.5 veya üstü ise
-Sqlite&#8217;ı Python&#8217;daki herhangi bir modül gibi içe aktarabilir ve kullanmaya
-başlayabilirsiniz.</li>
-<li>Sqlite herhangi bir yazılım veya sunucu kurulumu gerektirmez. Bu sayede, bu
+Sqlite’ı Python’daki herhangi bir modül gibi içe aktarabilir ve kullanmaya
+başlayabilirsiniz.</p></li>
+<li><p>Sqlite herhangi bir yazılım veya sunucu kurulumu gerektirmez. Bu sayede, bu
 modülü kullanabilmek için öncelikle bir sunucu yapılandırmanıza da gerek
 yoktur. Bazı veritabanlarını kullanabilmek için arka planda bir veritabanı
-sunucusu çalıştırıyor olmanız gerekir. Sqlite&#8217;ta ise böyle bir şey
-yapmazsınız.</li>
-<li>Sqlite, öteki pek çok veritabanı alternatifine göre basittir. Bu yüzden
-Sqlite&#8217;ı çok kısa bir sürede kavrayıp kullanmaya başlayabilirsiniz.</li>
-<li>Sqlite özgür bir yazılımdır. Bu yazılımın baştan aşağı bütün kodları kamuya
+sunucusu çalıştırıyor olmanız gerekir. Sqlite’ta ise böyle bir şey
+yapmazsınız.</p></li>
+<li><p>Sqlite, öteki pek çok veritabanı alternatifine göre basittir. Bu yüzden
+Sqlite’ı çok kısa bir sürede kavrayıp kullanmaya başlayabilirsiniz.</p></li>
+<li><p>Sqlite özgür bir yazılımdır. Bu yazılımın baştan aşağı bütün kodları kamuya
 açıktır. Dolayısıyla Sqlite kodlarının her zerresini istediğiniz gibi
 kullanabilir, değişikliğe uğratabilir, satabilir ve ticari olan/olmayan bütün
-uygulamalarınızda gönül rahatlığıyla kullanabilirsiniz.</li>
-<li>Sqlite&#8217;ın sade ve basit olması sizi yanıltmasın. Bu özelliklerine bakarak,
-Sqlite&#8217;ın yeteneksiz bir veritabanı sistemi olduğunu düşünmeyin. Bugün
-Sqlite&#8217;ı aktif olarak kullanan pek çok büyük ve tanınmış şirket bulunur.
+uygulamalarınızda gönül rahatlığıyla kullanabilirsiniz.</p></li>
+<li><p>Sqlite’ın sade ve basit olması sizi yanıltmasın. Bu özelliklerine bakarak,
+Sqlite’ın yeteneksiz bir veritabanı sistemi olduğunu düşünmeyin. Bugün
+Sqlite’ı aktif olarak kullanan pek çok büyük ve tanınmış şirket bulunur.
 Mesela, Adobe, Apple, Mozilla/Firefox, Google, Symbian ve Sun bu şirketlerden
 bazılarıdır. Hatta GNOME masaüstü ortamının sevilen müzik ve video
-çalarlarından Banshee&#8217;de de veritabanı olarak Sqlite kullanıldığını
-söyleyelim.</li>
+çalarlarından Banshee’de de veritabanı olarak Sqlite kullanıldığını
+söyleyelim.</p></li>
 </ul>
 <p>Yukarıdaki sebeplerden ötürü, veritabanı konusunu Sqlite üzerinden anlatacağız.
 O halde hemen yola koyulalım.</p>
 </div>
 <div class="section" id="sqlite-in-yapisi">
-<h2>Sqlite&#8217;ın Yapısı<a class="headerlink" href="#sqlite-in-yapisi" title="Permalink to this headline">¶</a></h2>
+<h2>Sqlite’ın Yapısı<a class="headerlink" href="#sqlite-in-yapisi" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Bu bölümün en başında verdiğimiz veritabanı tanımından da anlaşılacağı gibi,
 veritabanları, verileri sonradan kullanılmak üzere içinde tutan bir sistemdir.
 Bütün <a class="reference external" href="http://tr.wikipedia.org/wiki/%C4%B0li%C5%9Fkisel_veri_taban%C4%B1_y%C3%B6netim_sistemi">ilişkisel veritabanları</a>nda
 olduğu gibi, Sqlite da bu verileri tablo benzeri bir yapı içinde tutar. Yani
 aslında bir Sqlite veritabanı içindeki veriler şöyle bir yapıya sahiptir:</p>
 <blockquote>
-<div><table border="1" class="docutils">
+<div><table class="docutils align-default">
 <colgroup>
-<col width="20%" />
-<col width="20%" />
-<col width="20%" />
-<col width="20%" />
-<col width="20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Sütun 1</th>
-<th class="head">Sütun 2</th>
-<th class="head">Sütun 3</th>
-<th class="head">Sütun 4</th>
-<th class="head">Sütun 5</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Sütun 1</p></th>
+<th class="head"><p>Sütun 2</p></th>
+<th class="head"><p>Sütun 3</p></th>
+<th class="head"><p>Sütun 4</p></th>
+<th class="head"><p>Sütun 5</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>Değer 1/1</td>
-<td>Değer 2/1</td>
-<td>Değer 3/1</td>
-<td>Değer 4/1</td>
-<td>Değer 5/1</td>
+<tbody>
+<tr class="row-even"><td><p>Değer 1/1</p></td>
+<td><p>Değer 2/1</p></td>
+<td><p>Değer 3/1</p></td>
+<td><p>Değer 4/1</p></td>
+<td><p>Değer 5/1</p></td>
 </tr>
-<tr class="row-odd"><td>Değer 1/2</td>
-<td>Değer 2/2</td>
-<td>Değer 3/2</td>
-<td>Değer 4/2</td>
-<td>Değer 5/2</td>
+<tr class="row-odd"><td><p>Değer 1/2</p></td>
+<td><p>Değer 2/2</p></td>
+<td><p>Değer 3/2</p></td>
+<td><p>Değer 4/2</p></td>
+<td><p>Değer 5/2</p></td>
 </tr>
-<tr class="row-even"><td>Değer 1/3</td>
-<td>Değer 2/3</td>
-<td>Değer 3/3</td>
-<td>Değer 4/3</td>
-<td>Değer 5/3</td>
+<tr class="row-even"><td><p>Değer 1/3</p></td>
+<td><p>Değer 2/3</p></td>
+<td><p>Değer 3/3</p></td>
+<td><p>Değer 4/3</p></td>
+<td><p>Değer 5/3</p></td>
 </tr>
-<tr class="row-odd"><td>Değer 1/4</td>
-<td>Değer 2/4</td>
-<td>Değer 3/4</td>
-<td>Değer 4/4</td>
-<td>Değer 5/4</td>
+<tr class="row-odd"><td><p>Değer 1/4</p></td>
+<td><p>Değer 2/4</p></td>
+<td><p>Değer 3/4</p></td>
+<td><p>Değer 4/4</p></td>
+<td><p>Değer 5/4</p></td>
 </tr>
 </tbody>
 </table>
 </div></blockquote>
 <p>Sqlite içinde oluşturulan yukarıdakine benzer her tablonun bir de ismi vardır.
 Daha doğrusu, Sqlite ile bir tablo oluştururken, bu tabloya bir de ad vermemiz
-gerekir. Mesela yukarıdaki tabloya &#8216;değerler&#8217; adını verdiğimizi
+gerekir. Mesela yukarıdaki tabloya ‘değerler’ adını verdiğimizi
 varsayabilirsiniz.</p>
 <p>Sqlite ile çalışırken veriler üzerinde yapacağımız işlemleri, yukarıdaki
 tablonun adını ve bu tablodaki sütunları kullanarak gerçekleştireceğiz. Bu
-yüzden Sqlite&#8217;ın yapısını anlamak büyük önem taşır. Gördüğünüz gibi, bu
+yüzden Sqlite’ın yapısını anlamak büyük önem taşır. Gördüğünüz gibi, bu
 veritabanı sisteminin yapısını anlamak da öyle zor bir iş değildir.</p>
 </div>
 <div class="section" id="yardimci-araclar">
-<h2>Yardımcı Araçlar<a class="headerlink" href="#yardimci-araclar" title="Permalink to this headline">¶</a></h2>
+<h2>Yardımcı Araçlar<a class="headerlink" href="#yardimci-araclar" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Veritabanları üzerinde yapacağımız çalışmalar sırasında, işlerimizi
 kolaylaştırmak için bazı harici araçlara da ihtiyaç duyacağız. Gelin şimdi bu
 araçları tanıyalım.</p>
 <div class="section" id="sqlitebrowser">
-<h3>Sqlitebrowser<a class="headerlink" href="#sqlitebrowser" title="Permalink to this headline">¶</a></h3>
+<h3>Sqlitebrowser<a class="headerlink" href="#sqlitebrowser" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
 <p>Sqlitebrowser, Sqlite veritabanlarının içeriğini grafik bir arayüz aracılığıyla
 görüntüleyebilmemizi sağlayan bir program. Bu program sayesinde, veritabanı
 üzerinde yaptığınız çalışmanın doğru sonuç verip vermediğini teyit edebilir,
@@ -212,7 +202,7 @@ seçenek var. Öncelikle, bu program çoğu GNU/Linux dağıtımının paket dep
 zaten bulunur. Dolayısıyla bu programı dağıtımınızın paket deposu aracılığıyla
 rahatlıkla kurabilirsiniz. Mesela Ubuntu kullananlar şu komutla programı
 kurabilir:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">sqlitebrowser</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">sqlitebrowser</span>
 </pre></div>
 </div>
 <p>GNU/Linux kullanıcıları, eğer arzu ederlerse, programın kaynak kodlarını
@@ -222,43 +212,43 @@ indirin.</p>
 <p>Bu programı derlemeye geçmeden önce şu bağımlılıkları kurmamız gerekiyor:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li>cmake</li>
-<li>libqt4-dev</li>
-<li>libsqlite3-dev</li>
+<li><p>cmake</p></li>
+<li><p>libqt4-dev</p></li>
+<li><p>libsqlite3-dev</p></li>
 </ol>
 </div></blockquote>
-<p>Ubuntu&#8217;da ayrıca <cite>build-essential</cite> paketine de ihtiyacınız olacak. Ubuntu
+<p>Ubuntu’da ayrıca <cite>build-essential</cite> paketine de ihtiyacınız olacak. Ubuntu
 kullanıcıları şu komutu vererek Sqlitebrowser programının bütün bağımlılıklarını
 sistemlerine kurabilir:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">build</span><span class="o">-</span><span class="n">essential</span> <span class="n">cmake</span> <span class="n">libqt4</span><span class="o">-</span><span class="n">dev</span> <span class="n">libsqlite3</span><span class="o">-</span><span class="n">dev</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">build</span><span class="o">-</span><span class="n">essential</span> <span class="n">cmake</span> <span class="n">libqt4</span><span class="o">-</span><span class="n">dev</span> <span class="n">libsqlite3</span><span class="o">-</span><span class="n">dev</span>
 </pre></div>
 </div>
 <p>Bağımlılıkları kurduktan sonra, indirdiğiniz <cite>.tar.gz</cite> dosyasını aşağıdaki
 komut yardımıyla açın:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="n">zxvf</span> <span class="n">sqlitebrowser</span><span class="o">-</span><span class="mf">3.7</span><span class="o">.</span><span class="mf">0.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="n">zxvf</span> <span class="n">sqlitebrowser</span><span class="o">-</span><span class="mf">3.7</span><span class="o">.</span><span class="mf">0.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 </pre></div>
 </div>
 <p>Ben burada indirdiğiniz program sürümünün 3.7.0 olduğunu varsaydım. Sizin
 indirdiğiniz sürüm farklıysa yukarıdaki komutu o sürüme göre vereceksiniz.</p>
 <p>Daha sonra şu komutu vererek, açtığınız klasörün içine girin:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">sqlitebrowser</span><span class="o">-</span><span class="mf">3.7</span><span class="o">.</span><span class="mi">0</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">sqlitebrowser</span><span class="o">-</span><span class="mf">3.7</span><span class="o">.</span><span class="mi">0</span>
 </pre></div>
 </div>
 <p>Yine, burada da klasör adı ve sürüm numarası sizde farklıysa komutu düzeltin.</p>
-<p>Ardından sırasıyla şu komutları verin (<tt class="docutils literal"><span class="pre">cmake</span></tt> komutunun yanındaki nokta
+<p>Ardından sırasıyla şu komutları verin (<code class="docutils literal notranslate"><span class="pre">cmake</span></code> komutunun yanındaki nokta
 işaretine dikkat!!):</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">.</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">.</span>
 </pre></div>
 </div>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">make</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">make</span>
 </pre></div>
 </div>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
 </pre></div>
 </div>
 <p>Böylece Sqlitebrowser programını sisteminize kurmuş oldunuz. Programın
 kurulduğunu teyit etmek için şu komutu çalıştırın:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">sqlitebrowser</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">sqlitebrowser</span>
 </pre></div>
 </div>
 <p>Eğer program penceresi açıldıysa her şey yolunda demektir. Eğer programı
@@ -268,8 +258,8 @@ tavsiye ederim. Ya da eğer arzu ederseniz, <a class="reference external" href="
 uğrayıp yardım talebinde bulunabilirsiniz.</p>
 </div>
 <div class="section" id="ornek-veritabani">
-<h3>Örnek Veritabanı<a class="headerlink" href="#ornek-veritabani" title="Permalink to this headline">¶</a></h3>
-<p>Sqlite&#8217;ı öğrenirken, içinde örnek veriler barındıran bir veritabanının elimizin
+<h3>Örnek Veritabanı<a class="headerlink" href="#ornek-veritabani" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p>Sqlite’ı öğrenirken, içinde örnek veriler barındıran bir veritabanının elimizin
 altında bulunması alıştırma yapabilmek açısından faydalı olacaktır. Bunun için
 <a class="reference external" href="https://web.archive.org/web/20170511004853/http://www.istihza.com/denemeler/kitaplar.sqlite">https://web.archive.org/web/20170511004853/http://www.istihza.com/denemeler/kitaplar.sqlite</a>
 adresindeki örnek veritabanını bilgisayarınıza indirin. Veritabanı sorgu çalışmalarımızı
@@ -280,10 +270,10 @@ veritabanı dosyasını açın. Eğer Sqlitebrowser programını Sqlite veritaba
 dosyaları ile ilişkilendirdiyseniz, <cite>kitaplar.sqlite</cite> dosyası üzerine çift
 tıkladığınızda da bu veritabanı dosyası otomatik olarak Sqlitebrowser programı
 ile açılacaktır. Ayrıca elbette veritabanı dosyası üzerine sağ tıklayıp,
-&#8216;Birlikte aç...&#8217; seçeneğini kullanarak da Sqlitebrowser programını çalıştırmayı
+‘Birlikte aç…’ seçeneğini kullanarak da Sqlitebrowser programını çalıştırmayı
 deneyebilirsiniz.</p>
 <p>Sqlitebrowser programını çalıştırıp, <cite>kitaplar.sqlite</cite> dosyasını da açtıktan
-sonra, program penceresi üzerindeki &#8216;Browse Data&#8217; sekmesine tıklayarak
+sonra, program penceresi üzerindeki ‘Browse Data’ sekmesine tıklayarak
 veritabanının içinde ne tür verilerin olduğunu inceleyin. Gördüğünüz gibi,
 Sqlitebrowser programı, veritabanı içindeki verileri görselleştirmek açısından
 epey kolaylık sağlıyor. Birazdan bu verilere Python aracılığıyla nasıl
@@ -291,47 +281,47 @@ erişebileceğimizi de öğreneceğiz.</p>
 </div>
 </div>
 <div class="section" id="yeni-bir-veritabani-olusturmak">
-<h2>Yeni Bir Veritabanı Oluşturmak<a class="headerlink" href="#yeni-bir-veritabani-olusturmak" title="Permalink to this headline">¶</a></h2>
+<h2>Yeni Bir Veritabanı Oluşturmak<a class="headerlink" href="#yeni-bir-veritabani-olusturmak" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Bu bölümde <cite>sqlite</cite> adlı bir modül aracılığıyla yeni bir veritabanını nasıl
 oluşturacağımızı öğreneceğiz.</p>
 <p>Yukarıda <cite>sqlite</cite> adlı bir modülden söz ettik. Dolayısıyla, tahmin
 edebileceğiniz gibi, bu modülü kullanabilmek için öncelikle modülü içe
-aktarmamız gerekiyor. Bu bölümün başında da söylediğimiz gibi, Sqlite, Python&#8217;ın
+aktarmamız gerekiyor. Bu bölümün başında da söylediğimiz gibi, Sqlite, Python’ın
 2.5 sürümünden bu yana dilin bir parçasıdır:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sqlite3</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sqlite3</span>
 </pre></div>
 </div>
-<p>Python&#8217;da Sqlite veritabanı sistemine ait modül &#8216;sqlite3&#8217; adını taşır. Bu
-yüzden, bu modülü içe aktarmak için <tt class="docutils literal"><span class="pre">import</span> <span class="pre">sqlite3</span></tt> ifadesini kullanmamız
+<p>Python’da Sqlite veritabanı sistemine ait modül ‘sqlite3’ adını taşır. Bu
+yüzden, bu modülü içe aktarmak için <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">sqlite3</span></code> ifadesini kullanmamız
 gerekiyor. Eğer bu isim size çok uzun geliyorsa veya modül adında sayıların ve
 harflerin birlikte bulunması nedeniyle hem sayı hem de harf girmeyi bir angarya
 olarak görüyorsanız elbette <cite>sqlite3</cite> modülünü farklı bir adla da içe
 aktarabileceğinizi biliyorsunuz. Mesela:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sqlite3</span> <span class="k">as</span> <span class="nn">sql</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sqlite3</span> <span class="k">as</span> <span class="nn">sql</span>
 </pre></div>
 </div>
 <p>Veya:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sqlite3</span> <span class="k">as</span> <span class="nn">lite</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sqlite3</span> <span class="k">as</span> <span class="nn">lite</span>
 </pre></div>
 </div>
-<p>Böylece <cite>sqlite3</cite> modülünü &#8216;sql&#8217; veya &#8216;lite&#8217; adıyla içe aktarmış olduk. Ancak
+<p>Böylece <cite>sqlite3</cite> modülünü ‘sql’ veya ‘lite’ adıyla içe aktarmış olduk. Ancak
 ben konuyu anlatırken, okur açısından kafa karışıklığına sebep olmamak için,
-modülü <tt class="docutils literal"><span class="pre">import</span> <span class="pre">sqlite3</span></tt> şeklinde içe aktarmışız gibi davranacağım.</p>
-<p>Gelelim bu modül yardımıyla nasıl veritabanı oluşturulacağına... Bunun için
-<cite>sqlite3</cite> modülünün <tt class="docutils literal"><span class="pre">connect()</span></tt> adlı metodundan yararlanacağız. Bu metodu şu
+modülü <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">sqlite3</span></code> şeklinde içe aktarmışız gibi davranacağım.</p>
+<p>Gelelim bu modül yardımıyla nasıl veritabanı oluşturulacağına… Bunun için
+<cite>sqlite3</cite> modülünün <code class="docutils literal notranslate"><span class="pre">connect()</span></code> adlı metodundan yararlanacağız. Bu metodu şu
 şekilde kullanıyoruz:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vt</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;veritabanı_adı&#39;</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vt</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;veritabanı_adı&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><tt class="docutils literal"><span class="pre">connect()</span></tt> metoduna verdiğimiz <cite>varitabanı_adı</cite> adlı argüman, kullanacağımız
+<p><code class="docutils literal notranslate"><span class="pre">connect()</span></code> metoduna verdiğimiz <cite>varitabanı_adı</cite> adlı argüman, kullanacağımız
 veritabanının adıdır. Eğer belirtilen isimde bir veritabanı sistemde
 bulunmuyorsa o adla yeni bir veritabanı oluşturulacaktır. Mesela:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vt</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;deneme.sqlite&#39;</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vt</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;deneme.sqlite&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Eğer bu komutu verdiğiniz dizin içinde <cite>deneme.sqlite</cite> adlı bir veritabanı
 yoksa, bu ada sahip bir veritabanı oluşturulacaktır.</p>
-<p>Bu arada, biz veritabanı dosyasının uzantısı olarak <cite>.sqlite</cite>&#8216;ı seçtik. Ama eğer
+<p>Bu arada, biz veritabanı dosyasının uzantısı olarak <cite>.sqlite</cite>’ı seçtik. Ama eğer
 siz isterseniz kendinize uygun başka bir uzantı da belirleyebilirsiniz.
 Veritabanı dosyasının uzantısının ne olması gerektiği konusunda kesin kurallar
 bulunmaz. <cite>.sqlite</cite> uzantısının yerine, <cite>.sqlite3</cite>, <cite>.db</cite> veya <cite>.db3</cite> gibi
@@ -339,28 +329,28 @@ uzantıları tercih edenler de vardır. Hatta eğer siz isterseniz veritabanın�
 uzantısını <cite>.osman</cite> olarak dahi belirleyebilirsiniz. Bu konuda herhangi bir
 kısıtlama bulunmaz.</p>
 <p>Yukarıdaki örnekte <cite>deneme.sqlite</cite> adını verdiğimiz bir veritabanı dosyasına,
-<tt class="docutils literal"><span class="pre">connect()</span></tt> metodu yardımıyla bağlandık. Elbette isteseydik <tt class="docutils literal"><span class="pre">connect()</span></tt>
+<code class="docutils literal notranslate"><span class="pre">connect()</span></code> metodu yardımıyla bağlandık. Elbette isteseydik <code class="docutils literal notranslate"><span class="pre">connect()</span></code>
 metoduna argüman olarak tam dosya yolu da verebilirdik:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sqlite3</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sqlite3</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">vt</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;/home/istihza/test.sqlite&#39;</span><span class="p">)</span> <span class="c1">#GNU/Linux</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">vt</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;c:/users/fozgul/desktop/test.sqlite&#39;</span><span class="p">)</span> <span class="c1">#Windows</span>
 </pre></div>
 </div>
 <p>Bu komut yardımıyla sabit disk üzerinde bir Sqlite veritabanı dosyası oluşturmuş
-oluyoruz. Ancak isterseniz <tt class="docutils literal"><span class="pre">sqlite3</span></tt> ile geçici bir veritabanı da
+oluyoruz. Ancak isterseniz <code class="docutils literal notranslate"><span class="pre">sqlite3</span></code> ile geçici bir veritabanı da
 oluşturabilirsiniz:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vt</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;:memory:&#39;</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vt</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;:memory:&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Oluşturduğunuz bu geçici veritabanı sabit disk üzerinde değil RAM (bellek)
 üzerinde çalışır. Veritabanını kapattığınız anda da bu geçici veritabanı
 silinir. Eğer arzu ederseniz, RAM üzerinde değil, disk üzerinde de geçici
 veritabanları oluşturabilirsiniz. Bunun için de şöyle bir komut kullanıyoruz:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vt</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vt</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi, disk üzerinde geçici bir veritabanı oluşturmak için boş bir
-karakter dizisi kullandık. Tıpkı <tt class="docutils literal"><span class="pre">:memory:</span></tt> kullanımında olduğu gibi, boş
+karakter dizisi kullandık. Tıpkı <code class="docutils literal notranslate"><span class="pre">:memory:</span></code> kullanımında olduğu gibi, boş
 karakter dizisiyle oluşturulan geçici veritabanları da veritabanı bağlantısının
 kesilmesiyle birlikte ortadan kalkacaktır.</p>
 <p>Geçici veritabanı oluşturmak, özellikle çeşitli testler veya denemeler
@@ -378,109 +368,109 @@ dizin içine atıldığını görecektiniz. Örneğin GNU/Linux sistemlerinde, M
 veritabanları <cite>/var/lib/mysql</cite> gibi bir dizinin içinde tutulur.</p>
 </div>
 <div class="section" id="varolan-bir-veritabaniyla-baglanti-kurmak">
-<h2>Varolan Bir Veritabanıyla Bağlantı Kurmak<a class="headerlink" href="#varolan-bir-veritabaniyla-baglanti-kurmak" title="Permalink to this headline">¶</a></h2>
+<h2>Varolan Bir Veritabanıyla Bağlantı Kurmak<a class="headerlink" href="#varolan-bir-veritabaniyla-baglanti-kurmak" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Biraz önce, <cite>deneme.sqlite</cite> adlı yeni bir Sqlite veritabanı oluşturmak için
 şöyle bir komut kullanmıştık:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vt</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;deneme.sqlite&#39;</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vt</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;deneme.sqlite&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Eğer bu komutu verdiğiniz dizin içinde <cite>deneme.sqlite</cite> adlı bir veritabanı
 yoksa, bu ada sahip bir veritabanı oluşturulur. Eğer zaten bu adla bir
-veritabanı dosyanız varsa, <tt class="docutils literal"><span class="pre">sqlite3</span></tt> bu veritabanına bağlanacaktır.
-Dolayısıyla Sqlite&#8217;ta hem yeni bir veritabanı oluşturmak hem de mevcut bir
+veritabanı dosyanız varsa, <code class="docutils literal notranslate"><span class="pre">sqlite3</span></code> bu veritabanına bağlanacaktır.
+Dolayısıyla Sqlite’ta hem yeni bir veritabanı oluşturmak hem de mevcut bir
 veritabanına bağlanmak için birbiriyle tamamen aynı kodları kullanıyoruz.</p>
 <p>Mesela biraz önce <a class="reference external" href="https://web.archive.org/web/20170511004853/http://www.istihza.com/denemeler/kitaplar.sqlite">https://web.archive.org/web/20170511004853/http://www.istihza.com/denemeler/kitaplar.sqlite</a> adresinden
 indirdiğimiz <cite>kitaplar.sqlite</cite> adlı veritabanına bağlanalım.</p>
 <p>Bu dosyanın bulunduğu konumda bir Python etkileşimli kabuk oturumu açtığımızı
 varsayarsak:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vt</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;kitaplar.sqlite&#39;</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vt</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;kitaplar.sqlite&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>komutunu kullanarak <cite>kitaplar.sqlite</cite> adlı veritabanıyla bağlantı kurabiliriz.</p>
 </div>
 <div class="section" id="imlec-olusturma">
-<h2>İmleç Oluşturma<a class="headerlink" href="#imlec-olusturma" title="Permalink to this headline">¶</a></h2>
-<p>Yukarıda <tt class="docutils literal"><span class="pre">connect()</span></tt> metodunu kullanarak hem Sqlite ile nasıl veritabanı
+<h2>İmleç Oluşturma<a class="headerlink" href="#imlec-olusturma" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Yukarıda <code class="docutils literal notranslate"><span class="pre">connect()</span></code> metodunu kullanarak hem Sqlite ile nasıl veritabanı
 bağlantısı kuracağımızı hem de nasıl yeni bir veritabanı oluşturacağımızı
 öğrendik.</p>
-<p><tt class="docutils literal"><span class="pre">connect()</span></tt> metodu, bir veritabanı üzerinde işlem yapabilmemizin ilk adımıdır.
+<p><code class="docutils literal notranslate"><span class="pre">connect()</span></code> metodu, bir veritabanı üzerinde işlem yapabilmemizin ilk adımıdır.
 Veritabanını oluşturduktan veya varolan bir veritabanı ile bağlantı kurduktan
 sonra, veritabanı üzerinde işlem yapabilmek için sonraki adımda bir imleç
 oluşturmamız gerekir.</p>
-<p>İmleç oluşturmak için <tt class="docutils literal"><span class="pre">cursor()</span></tt> adlı bir metottan yararlanacağız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span> <span class="o">=</span> <span class="n">vt</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<p>İmleç oluşturmak için <code class="docutils literal notranslate"><span class="pre">cursor()</span></code> adlı bir metottan yararlanacağız:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span> <span class="o">=</span> <span class="n">vt</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>İmleci oluşturduktan sonra artık önümüz iyice açılıyor. Böylece, yukarıda
-oluşturduğumuz <tt class="docutils literal"><span class="pre">im</span></tt> nesnesinin <tt class="docutils literal"><span class="pre">execute()</span></tt> metodunu kullanarak SQL
+oluşturduğumuz <code class="docutils literal notranslate"><span class="pre">im</span></code> nesnesinin <code class="docutils literal notranslate"><span class="pre">execute()</span></code> metodunu kullanarak SQL
 komutlarını çalıştırabileceğiz. Nasıl mı? Hemen bakalım.</p>
 </div>
 <div class="section" id="tablo-olusturma">
-<h2>Tablo Oluşturma<a class="headerlink" href="#tablo-olusturma" title="Permalink to this headline">¶</a></h2>
+<h2>Tablo Oluşturma<a class="headerlink" href="#tablo-olusturma" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Önceki bölümün sonunda söylediğimiz gibi, bir imleç nesnesi oluşturduktan sonra
-bunun <tt class="docutils literal"><span class="pre">execute()</span></tt> metodunu kullanarak SQL komutlarını işletebiliyoruz.</p>
+bunun <code class="docutils literal notranslate"><span class="pre">execute()</span></code> metodunu kullanarak SQL komutlarını işletebiliyoruz.</p>
 <p>Dilerseniz şimdi basit bir örnek yaparak neyin ne olduğunu anlamaya çalışalım.</p>
 <p>Öncelikle gerekli modülü içe aktaralım:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sqlite3</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sqlite3</span>
 </pre></div>
 </div>
 <p>Şimdi de yeni bir veritabanı dosyası oluşturalım (veya varolan bir veritabanı
 dosyasına bağlanalım):</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vt</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;veritabani.sqlite&#39;</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vt</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;veritabani.sqlite&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Bu veritabanı üzerinde işlem yapabilmek için öncelikle imlecimizi oluşturalım:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span> <span class="o">=</span> <span class="n">vt</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span> <span class="o">=</span> <span class="n">vt</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Şimdi de yukarıda oluşturduğumuz imlecin <tt class="docutils literal"><span class="pre">execute()</span></tt> adlı metodunu kullanarak
+<p>Şimdi de yukarıda oluşturduğumuz imlecin <code class="docutils literal notranslate"><span class="pre">execute()</span></code> adlı metodunu kullanarak
 veritabanı içinde bir tablo oluşturalım:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;CREATE TABLE adres_defteri (isim, soyisim)&quot;</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;CREATE TABLE adres_defteri (isim, soyisim)&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Hatırlarsanız, Sqlite veritabanı sisteminin tablo benzeri bir yapıya sahip
 olduğunu ve bu sistemdeki her tablonun da bir isminin bulunduğunu söylemiştik.
-İşte burada yaptığımız şey, &#8216;adres_defteri&#8217; adlı bir tablo oluşturup, bu tabloya
-&#8216;isim&#8217; ve &#8216;soyisim&#8217; adlı iki sütun eklemekten ibarettir. Yani aslında şöyle bir
+İşte burada yaptığımız şey, ‘adres_defteri’ adlı bir tablo oluşturup, bu tabloya
+‘isim’ ve ‘soyisim’ adlı iki sütun eklemekten ibarettir. Yani aslında şöyle bir
 şey oluşturmuş oluyoruz:</p>
 <blockquote>
-<div><table border="1" class="docutils">
+<div><table class="docutils align-default">
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">isim</th>
-<th class="head">soyisim</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>isim</p></th>
+<th class="head"><p>soyisim</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>&nbsp;</td>
-<td>&nbsp;</td>
+<tbody>
+<tr class="row-even"><td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
 </div></blockquote>
-<p>Ayrıca oluşturduğumuz bu tablonun adının da &#8216;adres_defteri&#8217; olduğunu
-unutmuyoruz...</p>
-<p>Bu işlemleri nasıl yaptığımıza dikkat edin. Burada <tt class="docutils literal"><span class="pre">CREATE</span> <span class="pre">TABLE</span> <span class="pre">adres_defteri</span>
-<span class="pre">(isim,</span> <span class="pre">soyisim)</span></tt> tek bir karakter dizisidir. Bu karakter dizisindeki <tt class="docutils literal"><span class="pre">CREATE</span>
-<span class="pre">TABLE</span></tt> kısmı bir SQL komutu olup, bu komut bir tablo oluşturulmasını sağlar.</p>
-<p>Burada <tt class="docutils literal"><span class="pre">CREATE</span> <span class="pre">TABLE</span></tt> ifadesini büyük harflerle yazdık. Ancak bu ifadeyi siz
+<p>Ayrıca oluşturduğumuz bu tablonun adının da ‘adres_defteri’ olduğunu
+unutmuyoruz…</p>
+<p>Bu işlemleri nasıl yaptığımıza dikkat edin. Burada <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span> <span class="pre">adres_defteri</span>
+<span class="pre">(isim,</span> <span class="pre">soyisim)</span></code> tek bir karakter dizisidir. Bu karakter dizisindeki <code class="docutils literal notranslate"><span class="pre">CREATE</span>
+<span class="pre">TABLE</span></code> kısmı bir SQL komutu olup, bu komut bir tablo oluşturulmasını sağlar.</p>
+<p>Burada <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span></code> ifadesini büyük harflerle yazdık. Ancak bu ifadeyi siz
 isterseniz küçük harflerle de yazabilirsiniz. Benim burada büyük harf
-kullanmaktaki amacım SQL komutlarının, &#8216;adres_defteri&#8217;, &#8216;isim&#8217; ve &#8216;soyisim&#8217; gibi
-öğelerden görsel olarak ayırt edilebilmesini sağlamak. Yani <tt class="docutils literal"><span class="pre">CREATE</span> <span class="pre">TABLE</span></tt>
-ifadesinin mesela &#8216;adres_defteri&#8217; öğesinden kolayca ayırt edilebilmesini
-istediğim için burada <tt class="docutils literal"><span class="pre">CREATE</span> <span class="pre">TABLE</span></tt> ifadesini büyük harflerle yazdım.</p>
-<p>Karakter dizisinin devamında <tt class="docutils literal"><span class="pre">(isim,</span> <span class="pre">soyisim)</span></tt> ifadesini görüyoruz. Tahmin
+kullanmaktaki amacım SQL komutlarının, ‘adres_defteri’, ‘isim’ ve ‘soyisim’ gibi
+öğelerden görsel olarak ayırt edilebilmesini sağlamak. Yani <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span></code>
+ifadesinin mesela ‘adres_defteri’ öğesinden kolayca ayırt edilebilmesini
+istediğim için burada <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span></code> ifadesini büyük harflerle yazdım.</p>
+<p>Karakter dizisinin devamında <code class="docutils literal notranslate"><span class="pre">(isim,</span> <span class="pre">soyisim)</span></code> ifadesini görüyoruz. Tahmin
 edebileceğiniz gibi, bunlar tablodaki sütun başlıklarının adını gösteriyor. Buna
-göre, oluşturduğumuz tabloda &#8216;isim&#8217; ve &#8216;soyisim&#8217; adlı iki farklı sütun başlığı
+göre, oluşturduğumuz tabloda ‘isim’ ve ‘soyisim’ adlı iki farklı sütun başlığı
 olacak.</p>
 <p>Bu arada, Sqlite tabloları oluştururken tablo adı ve sütun başlıklarında Türkçe
 karakter kullanmaktan kaçınmak iyi bir fikirdir. Ayrıca eğer tablo adı ve sütun
 başlıklarında birden fazla kelimeden oluşan etiketler kullanacaksanız bunları ya
 birbirine bitiştirin ya da tırnak içine alın. Örneğin:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
 
 <span class="n">vt</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;perso.sqlite&#39;</span><span class="p">)</span>
 <span class="n">im</span> <span class="o">=</span> <span class="n">vt</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
@@ -489,11 +479,11 @@ birbirine bitiştirin ya da tırnak içine alın. Örneğin:</p>
 <span class="s2">(&#39;personel ismi&#39;, &#39;personel soyismi&#39;, memleket)&quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Ayrıca, <tt class="docutils literal"><span class="pre">execute()</span></tt> metoduna parametre olarak verilen SQL komutlarının alelade
+<p>Ayrıca, <code class="docutils literal notranslate"><span class="pre">execute()</span></code> metoduna parametre olarak verilen SQL komutlarının alelade
 birer karakter dizisi olduğuna da dikkatinizi çekmek isterim. Bunlar
-Python&#8217;daki karakter dizilerinin bütün özelliklerini taşır. Mesela bu karakter
-dizisini <tt class="docutils literal"><span class="pre">execute()</span></tt> metoduna göndermeden önce bir değişkene atayabilirsiniz:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
+Python’daki karakter dizilerinin bütün özelliklerini taşır. Mesela bu karakter
+dizisini <code class="docutils literal notranslate"><span class="pre">execute()</span></code> metoduna göndermeden önce bir değişkene atayabilirsiniz:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
 
 <span class="n">vt</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;perso.sqlite&#39;</span><span class="p">)</span>
 <span class="n">im</span> <span class="o">=</span> <span class="n">vt</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
@@ -505,22 +495,22 @@ dizisini <tt class="docutils literal"><span class="pre">execute()</span></tt> me
 </pre></div>
 </div>
 <p>Bu kodları kullanarak oluşturduğunuz <cite>perso.sqlite</cite> adlı veritabanı dosyasının
-içeriğini Sqlitebrowser programı yardımıyla görüntüleyip, gerçekten &#8216;personel
-ismi&#8217;, &#8216;personel soyismi&#8217; ve &#8216;memleket&#8217; sütunlarının oluşup oluşmadığını kontrol
+içeriğini Sqlitebrowser programı yardımıyla görüntüleyip, gerçekten ‘personel
+ismi’, ‘personel soyismi’ ve ‘memleket’ sütunlarının oluşup oluşmadığını kontrol
 edin.</p>
 <p>Bu arada, bu kodları ikinci kez çalıştırdığınızda şöyle bir hata mesajı
 alacaksınız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">sqlite3</span><span class="o">.</span><span class="n">OperationalError</span><span class="p">:</span> <span class="n">table</span> <span class="s1">&#39;personel dosyasi&#39;</span> <span class="n">already</span> <span class="n">exists</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">sqlite3</span><span class="o">.</span><span class="n">OperationalError</span><span class="p">:</span> <span class="n">table</span> <span class="s1">&#39;personel dosyasi&#39;</span> <span class="n">already</span> <span class="n">exists</span>
 </pre></div>
 </div>
 <p>Bu hata mesajını almanız gayet normal. Bunun üstesinden nasıl geleceğinizi
-öğrenmek için okumaya devam edin...</p>
+öğrenmek için okumaya devam edin…</p>
 </div>
 <div class="section" id="sartli-tablo-olusturma">
-<h2>Şartlı Tablo Oluşturma<a class="headerlink" href="#sartli-tablo-olusturma" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">CREATE</span> <span class="pre">TABLE</span></tt> komutunu kullanarak tablo oluştururken şöyle bir problemle
+<h2>Şartlı Tablo Oluşturma<a class="headerlink" href="#sartli-tablo-olusturma" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span></code> komutunu kullanarak tablo oluştururken şöyle bir problemle
 karşılaşmış olabilirsiniz. Diyelim ki şu kodları yazdınız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
 
 <span class="n">vt</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;vt.sqlite&#39;</span><span class="p">)</span>
 
@@ -529,21 +519,21 @@ karşılaşmış olabilirsiniz. Diyelim ki şu kodları yazdınız:</p>
 </pre></div>
 </div>
 <p>Bu kodları ilk kez çalıştırdığınızda, mevcut dizin altında <cite>vt.sqlite</cite> adlı bir
-veritabanı dosyası oluşturulacak ve bu veritabanı içinde &#8216;isim&#8217;, &#8216;soyisim&#8217; ve
-&#8216;memleket&#8217; başlıklı sütunlara sahip, &#8216;personel&#8217; adlı bir tablo meydana
+veritabanı dosyası oluşturulacak ve bu veritabanı içinde ‘isim’, ‘soyisim’ ve
+‘memleket’ başlıklı sütunlara sahip, ‘personel’ adlı bir tablo meydana
 getirilecektir.</p>
 <p>Ancak aynı kodları ikinci kez çalıştırdığınızda şöyle bir hata mesajı ile
 karşılaşacaksınız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">sqlite3</span><span class="o">.</span><span class="n">OperationalError</span><span class="p">:</span> <span class="n">table</span> <span class="n">personel</span> <span class="n">already</span> <span class="n">exists</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">sqlite3</span><span class="o">.</span><span class="n">OperationalError</span><span class="p">:</span> <span class="n">table</span> <span class="n">personel</span> <span class="n">already</span> <span class="n">exists</span>
 </pre></div>
 </div>
-<p>Buradaki sorun, <cite>vt.sqlite</cite> dosyası içinde &#8216;personel&#8217; adlı bir tablonun zaten
+<p>Buradaki sorun, <cite>vt.sqlite</cite> dosyası içinde ‘personel’ adlı bir tablonun zaten
 bulunuyor olmasıdır. Bir veritabanı üzerinde işlem yaparken, aynı ada sahip iki
 tablo oluşturamayız. Bu hatayı önlemek için şartlı tablo oluşturma yönteminden
-yararlanacağız. Bunun için kullanacağımız SQL komutu şudur: <tt class="docutils literal"><span class="pre">CREATE</span> <span class="pre">TABLE</span> <span class="pre">IF</span>
-<span class="pre">NOT</span> <span class="pre">EXISTS</span></tt>.</p>
+yararlanacağız. Bunun için kullanacağımız SQL komutu şudur: <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span> <span class="pre">IF</span>
+<span class="pre">NOT</span> <span class="pre">EXISTS</span></code>.</p>
 <p>Örneğimizi bu yeni bilgiye göre tekrar yazalım:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
 
 <span class="n">vt</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;vt.sqlite&#39;</span><span class="p">)</span>
 
@@ -556,17 +546,17 @@ yararlanacağız. Bunun için kullanacağımız SQL komutu şudur: <tt class="do
 </pre></div>
 </div>
 <p>Bu kodları kaç kez çalıştırırsanız çalıştırın, programınız hata vermeden
-işleyecek; eğer veritabanında &#8216;personel&#8217; adlı bir tablo yoksa oluşturacak,
+işleyecek; eğer veritabanında ‘personel’ adlı bir tablo yoksa oluşturacak,
 bu adla zaten bir tablo varsa da sessizce yoluna devam edecektir.</p>
 </div>
 <div class="section" id="tabloya-veri-girme">
-<h2>Tabloya Veri Girme<a class="headerlink" href="#tabloya-veri-girme" title="Permalink to this headline">¶</a></h2>
+<h2>Tabloya Veri Girme<a class="headerlink" href="#tabloya-veri-girme" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Buraya kadar, <cite>sqlite3</cite> modülünü kullanarak nasıl bir veritabanı
 oluşturacağımızı ve çeşitli sütünlardan oluşan bir tabloyu bu veritabanına nasıl
 yerleştireceğimizi öğrendik. Şimdi de oluşturduğumuz bu sütun başlıklarının
 altını dolduracağız.</p>
 <p>Dikkatlice bakın:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
 
 <span class="n">vt</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;vt.sqlite&#39;</span><span class="p">)</span>
 <span class="n">im</span> <span class="o">=</span> <span class="n">vt</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
@@ -581,34 +571,34 @@ altını dolduracağız.</p>
 </pre></div>
 </div>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">Bu kodları çalıştırdıktan sonra, eğer veritabanının içeriğini
+<p class="admonition-title">Uyarı</p>
+<p>Bu kodları çalıştırdıktan sonra, eğer veritabanının içeriğini
 Sqlitebrowser ile kontrol ettiyseniz verilerin veritabanına işlenmediğini
 göreceksiniz. Endişe etmeyin; birazdan bunun neden böyle olduğunu açıklayacağız.</p>
 </div>
-<p>Burada <tt class="docutils literal"><span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">tablo_adı</span> <span class="pre">VALUES</span></tt> adlı yeni bir SQL komutu daha
-öğreniyoruz. <tt class="docutils literal"><span class="pre">CREATE</span> <span class="pre">TABLE</span></tt> ifadesi Türkçe&#8217;de &#8220;TABLO OLUŞTUR&#8221; anlamına
-geliyor. <tt class="docutils literal"><span class="pre">INSERT</span> <span class="pre">INTO</span></tt> ise &#8221;... İÇİNE YERLEŞTİR&#8221; anlamına gelir. Yukarıdaki
-karakter dizisi içinde görünen <tt class="docutils literal"><span class="pre">VALUES</span></tt> ise &#8220;DEĞERLER&#8221; demektir. Yani aslında
-yukarıdaki karakter dizisi şu anlama gelir: &#8220;<em>personel İÇİNE &#8216;Fırat&#8217;, &#8216;Özgül&#8217; ve
-&#8216;Adana&#8217; DEĞERLERİNİ YERLEŞTİR. Yani şöyle bir tablo oluştur</em>&#8221;:</p>
+<p>Burada <code class="docutils literal notranslate"><span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">tablo_adı</span> <span class="pre">VALUES</span></code> adlı yeni bir SQL komutu daha
+öğreniyoruz. <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span></code> ifadesi Türkçe’de “TABLO OLUŞTUR” anlamına
+geliyor. <code class="docutils literal notranslate"><span class="pre">INSERT</span> <span class="pre">INTO</span></code> ise “… İÇİNE YERLEŞTİR” anlamına gelir. Yukarıdaki
+karakter dizisi içinde görünen <code class="docutils literal notranslate"><span class="pre">VALUES</span></code> ise “DEĞERLER” demektir. Yani aslında
+yukarıdaki karakter dizisi şu anlama gelir: “<em>personel İÇİNE ‘Fırat’, ‘Özgül’ ve
+‘Adana’ DEĞERLERİNİ YERLEŞTİR. Yani şöyle bir tablo oluştur</em>”:</p>
 <blockquote>
-<div><table border="1" class="docutils">
+<div><table class="docutils align-default">
 <colgroup>
-<col width="32%" />
-<col width="32%" />
-<col width="36%" />
+<col style="width: 32%" />
+<col style="width: 32%" />
+<col style="width: 36%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">isim</th>
-<th class="head">soyisim</th>
-<th class="head">memleket</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>isim</p></th>
+<th class="head"><p>soyisim</p></th>
+<th class="head"><p>memleket</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>Fırat</td>
-<td>Özgül</td>
-<td>Adana</td>
+<tbody>
+<tr class="row-even"><td><p>Fırat</p></td>
+<td><p>Özgül</p></td>
+<td><p>Adana</p></td>
 </tr>
 </tbody>
 </table>
@@ -616,41 +606,41 @@ yukarıdaki karakter dizisi şu anlama gelir: &#8220;<em>personel İÇİNE &#821
 <p>Buraya kadar gayet güzel gidiyoruz. İsterseniz şimdi derin bir nefes alıp, şu
 ana kadar yaptığımız şeyleri bir gözden geçirelim:</p>
 <ul class="simple">
-<li>Öncelikle <tt class="docutils literal"><span class="pre">sqlite3</span></tt> modülünü içe aktardık. Bu modülün nimetlerinden
-yararlanabilmek için bunu yapmamız gerekiyordu. &#8220;sqlite3&#8221; kelimesini her
+<li><p>Öncelikle <code class="docutils literal notranslate"><span class="pre">sqlite3</span></code> modülünü içe aktardık. Bu modülün nimetlerinden
+yararlanabilmek için bunu yapmamız gerekiyordu. “sqlite3” kelimesini her
 defasında yazmak bize angarya gibi gelebileceği için bu modülü farklı bir adla
-içe aktarmayı tercih edebiliriz. Mesela <tt class="docutils literal"><span class="pre">import</span> <span class="pre">sqlite3</span> <span class="pre">as</span> <span class="pre">sql</span></tt> veya <tt class="docutils literal"><span class="pre">import</span>
-<span class="pre">sqlite3</span> <span class="pre">as</span> <span class="pre">lite</span></tt> gibi...</li>
-<li><tt class="docutils literal"><span class="pre">sqlite3</span></tt> modülünü içe aktardıktan sonra bir veritabanına bağlanmamız veya
+içe aktarmayı tercih edebiliriz. Mesela <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">sqlite3</span> <span class="pre">as</span> <span class="pre">sql</span></code> veya <code class="docutils literal notranslate"><span class="pre">import</span>
+<span class="pre">sqlite3</span> <span class="pre">as</span> <span class="pre">lite</span></code> gibi…</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sqlite3</span></code> modülünü içe aktardıktan sonra bir veritabanına bağlanmamız veya
 elimizde bir veritabanı yoksa yeni bir veritabanı oluşturmamız gerekiyor. Bunun
-için <tt class="docutils literal"><span class="pre">connect()</span></tt> adlı bir fonksiyondan yararlanıyoruz. Bu fonksiyonu,
-<tt class="docutils literal"><span class="pre">sqlite3.connect('veritabanı_adı')</span></tt> şeklinde kullanıyoruz. Eğer içinde
-bulunduğumuz dizinde, &#8220;veritabanı_adı&#8221; adlı bir veritabanı varsa Sqlite bu
+için <code class="docutils literal notranslate"><span class="pre">connect()</span></code> adlı bir fonksiyondan yararlanıyoruz. Bu fonksiyonu,
+<code class="docutils literal notranslate"><span class="pre">sqlite3.connect('veritabanı_adı')</span></code> şeklinde kullanıyoruz. Eğer içinde
+bulunduğumuz dizinde, “veritabanı_adı” adlı bir veritabanı varsa Sqlite bu
 veritabanına bağlanır. Eğer bu adda bir veritabanı yoksa, çalışma dizini altında
 bu ada sahip yeni bir veritabanı oluşturulur. Özellikle deneme amaçlı işlemler
 yapmamız gerektiğinde, sabit disk üzerinde bir veritabanı oluşturmak yerine RAM
 üstünde geçici bir veritabanı ile çalışmayı da tercih edebiliriz. Bunun için
-yukarıdaki komutu şöyle yazıyoruz: <tt class="docutils literal"><span class="pre">sqlite3.connect(':memory:')</span></tt>. Bu komutla
+yukarıdaki komutu şöyle yazıyoruz: <code class="docutils literal notranslate"><span class="pre">sqlite3.connect(':memory:')</span></code>. Bu komutla
 RAM üzerinde oluşturduğumuz veritabanı, bağlantı kesildiği anda ortadan
-kalkacaktır.</li>
-<li>Veritabanımızı oluşturduktan veya varolan bir veritabanına bağlandıktan sonra
+kalkacaktır.</p></li>
+<li><p>Veritabanımızı oluşturduktan veya varolan bir veritabanına bağlandıktan sonra
 yapmamız gereken şey bir imleç oluşturmak olacaktır. Daha sonra bu imlece ait
-metotlardan yararlanarak önemli işler yapabileceğiz. Sqlite&#8217;ta bir imleç
-oluşturabilmek için <tt class="docutils literal"><span class="pre">db.cursor()</span></tt> gibi bir komut kullanıyoruz. Tabii ben
-burada oluşturduğunuz veritabanına &#8220;db&#8221; adını verdiğinizi varsayıyorum.</li>
-<li>İmlecimizi de oluşturduktan sonra önümüz iyice açılmış oldu. Şimdi <tt class="docutils literal"><span class="pre">dir(im)</span></tt>
+metotlardan yararlanarak önemli işler yapabileceğiz. Sqlite’ta bir imleç
+oluşturabilmek için <code class="docutils literal notranslate"><span class="pre">db.cursor()</span></code> gibi bir komut kullanıyoruz. Tabii ben
+burada oluşturduğunuz veritabanına “db” adını verdiğinizi varsayıyorum.</p></li>
+<li><p>İmlecimizi de oluşturduktan sonra önümüz iyice açılmış oldu. Şimdi <code class="docutils literal notranslate"><span class="pre">dir(im)</span></code>
 gibi bir komut kullanarak imlecin metotlarının ne olduğunu inceleyebilirsiniz.
-Tabii ben burada imlece &#8220;im&#8221; adını verdiğinizi varsaydım. Gördüğünüz gibi,
-listede <tt class="docutils literal"><span class="pre">execute()</span></tt> adlı bir metot da var. Artık imlecin bu <tt class="docutils literal"><span class="pre">execute()</span></tt>
-metodunu kullanarak SQL komutlarını işletebiliriz.</li>
-<li>Yukarıda üç adet SQL komutu öğrendik. Bunlardan ilki <tt class="docutils literal"><span class="pre">CREATE</span> <span class="pre">TABLE</span></tt>. Bu komut
-veritabanı içinde bir tablo oluşturmamızı sağlıyor. İkinci komutumuz <tt class="docutils literal"><span class="pre">CREATE</span>
-<span class="pre">TABLE</span> <span class="pre">IF</span> <span class="pre">NOT</span> <span class="pre">EXISTS</span></tt>. Bu komut da bir tabloyu eğer yoksa oluşturmamızı
-sağlıyor. Üçüncü komutumuz ise <tt class="docutils literal"><span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">...</span> <span class="pre">VALUES</span> <span class="pre">...</span></tt>. Bu komut,
+Tabii ben burada imlece “im” adını verdiğinizi varsaydım. Gördüğünüz gibi,
+listede <code class="docutils literal notranslate"><span class="pre">execute()</span></code> adlı bir metot da var. Artık imlecin bu <code class="docutils literal notranslate"><span class="pre">execute()</span></code>
+metodunu kullanarak SQL komutlarını işletebiliriz.</p></li>
+<li><p>Yukarıda üç adet SQL komutu öğrendik. Bunlardan ilki <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span></code>. Bu komut
+veritabanı içinde bir tablo oluşturmamızı sağlıyor. İkinci komutumuz <code class="docutils literal notranslate"><span class="pre">CREATE</span>
+<span class="pre">TABLE</span> <span class="pre">IF</span> <span class="pre">NOT</span> <span class="pre">EXISTS</span></code>. Bu komut da bir tabloyu eğer yoksa oluşturmamızı
+sağlıyor. Üçüncü komutumuz ise <code class="docutils literal notranslate"><span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">...</span> <span class="pre">VALUES</span> <span class="pre">...</span></code>. Bu komut,
 oluşturduğumuz tabloya içerik eklememizi sağlıyor. Bunları şuna benzer bir
-şekilde kullandığımızı hatırlıyorsunuz:</li>
+şekilde kullandığımızı hatırlıyorsunuz:</p></li>
 </ul>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;CREATE TABLE personel (isim, soyisim, memleket)&quot;</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;CREATE TABLE personel (isim, soyisim, memleket)&quot;</span><span class="p">)</span>
 <span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO personel VALUES (&#39;Fırat&#39;, &#39;Özgül&#39;, &#39;Adana&#39;)&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -660,7 +650,7 @@ tırnakla başladık. Dolayısıyla karakter dizisini yazarken iç taraftaki <ci
 Karakter dizileri içindeki manevra alanınızı genişletmek için, SQL komutlarını
 üç tırnak içinde yazmayı da tercih edebilirsiniz. Böylece karakter dizisi
 içindeki tek ve çift tırnakları daha rahat bir şekilde kullanabilirsiniz. Yani:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;CREATE TABLE personel (isim, soyisim, memleket)&quot;&quot;&quot;</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;CREATE TABLE personel (isim, soyisim, memleket)&quot;&quot;&quot;</span><span class="p">)</span>
 <span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;INSERT INTO personel VALUES (&quot;Fırat&quot;, &quot;Özgül&quot;, &quot;Adana&quot;)&quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -668,11 +658,11 @@ içindeki tek ve çift tırnakları daha rahat bir şekilde kullanabilirsiniz. Y
 daha okunaklı kodlar da yazabileceğinizi biliyorsunuz.</p>
 </div>
 <div class="section" id="verilerin-veritabanina-islenmesi">
-<h2>Verilerin Veritabanına İşlenmesi<a class="headerlink" href="#verilerin-veritabanina-islenmesi" title="Permalink to this headline">¶</a></h2>
+<h2>Verilerin Veritabanına İşlenmesi<a class="headerlink" href="#verilerin-veritabanina-islenmesi" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Bir önceki bölümde bir Sqlite veritabanına nasıl veri gireceğimizi öğrendik. Ama
-aslında iş sadece veri girmeyle bitmiyor. Verileri veritabanına &#8220;işleyebilmek&#8221;
+aslında iş sadece veri girmeyle bitmiyor. Verileri veritabanına “işleyebilmek”
 için bir adım daha atmamız gerekiyor. Mesela şu örneğe bir bakalım:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
 
 <span class="n">vt</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;vt.sqlite&quot;</span><span class="p">)</span>
 
@@ -685,24 +675,24 @@ için bir adım daha atmamız gerekiyor. Mesela şu örneğe bir bakalım:</p>
 </pre></div>
 </div>
 <p>Burada öncelikle <cite>vt.sqlite</cite> adlı bir veritabanı oluşturduk ve bu veritabanına
-bağlandık. Ardından, <tt class="docutils literal"><span class="pre">vt.cursor()</span></tt> komutuyla imlecimizi de oluşturduktan
+bağlandık. Ardından, <code class="docutils literal notranslate"><span class="pre">vt.cursor()</span></code> komutuyla imlecimizi de oluşturduktan
 sonra, SQL komutlarımızı çalıştırıyoruz. Önce isim, soyisim, şehir ve eposta
-adlı sütunlardan oluşan, &#8220;personel&#8221; adlı bir tablo oluşturduk. Daha sonra
-&#8220;personel&#8221; tablosunun içine &#8220;Orçun&#8221;, &#8220;Kunek&#8221;, &#8220;Adana&#8221; ve &#8220;<a class="reference external" href="mailto:okunek&#37;&#52;&#48;gmail&#46;com">okunek<span>&#64;</span>gmail<span>&#46;</span>com</a>&#8221;
+adlı sütunlardan oluşan, “personel” adlı bir tablo oluşturduk. Daha sonra
+“personel” tablosunun içine “Orçun”, “Kunek”, “Adana” ve “<a class="reference external" href="mailto:okunek&#37;&#52;&#48;gmail&#46;com">okunek<span>&#64;</span>gmail<span>&#46;</span>com</a>”
 değerlerini yerleştirdik.</p>
 <p>Ancak her ne kadar veritabanına veri işlemiş gibi görünsek de aslında henüz
 işlenmiş bir şey yoktur. İsterseniz bu durumu teyit etmek için Sqlitebrowser
 programını kullanabilir, tabloya verilerin işlenmediğini kendi gözlerinizle
 görebilirsiniz.</p>
 <p>Biz henüz sadece verileri girdik. Ama verileri veritabanına işlemedik. Bu
-girdiğimiz verileri veritabanına işleyebilmek için <tt class="docutils literal"><span class="pre">commit()</span></tt> adlı bir
+girdiğimiz verileri veritabanına işleyebilmek için <code class="docutils literal notranslate"><span class="pre">commit()</span></code> adlı bir
 metottan yararlanacağız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vt</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vt</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Gördüğünüz gibi, <tt class="docutils literal"><span class="pre">commit()</span></tt> imlecin değil, bağlantı nesnesinin (yani burada
-<tt class="docutils literal"><span class="pre">vt</span></tt> değişkeninin) bir metodudur. Şimdi bu satırı da betiğimize ekleyelim:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
+<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">commit()</span></code> imlecin değil, bağlantı nesnesinin (yani burada
+<code class="docutils literal notranslate"><span class="pre">vt</span></code> değişkeninin) bir metodudur. Şimdi bu satırı da betiğimize ekleyelim:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
 
 <span class="n">vt</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;vt.sqlite&quot;</span><span class="p">)</span>
 
@@ -719,37 +709,37 @@ metottan yararlanacağız:</p>
 <p>Bu son satırı da ekledikten sonra Sqlite veritabanı içinde şöyle bir tablo
 oluşturmuş olduk:</p>
 <blockquote>
-<div><table border="1" class="docutils">
+<div><table class="docutils align-default">
 <colgroup>
-<col width="25%" />
-<col width="25%" />
-<col width="25%" />
-<col width="25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">isim</th>
-<th class="head">soyisim</th>
-<th class="head">şehir</th>
-<th class="head">eposta</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>isim</p></th>
+<th class="head"><p>soyisim</p></th>
+<th class="head"><p>şehir</p></th>
+<th class="head"><p>eposta</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>Orçun</td>
-<td>Kunek</td>
-<td>Adana</td>
-<td><a class="reference external" href="mailto:okunek&#37;&#52;&#48;gmail&#46;com">okunek<span>&#64;</span>gmail<span>&#46;</span>com</a></td>
+<tbody>
+<tr class="row-even"><td><p>Orçun</p></td>
+<td><p>Kunek</p></td>
+<td><p>Adana</p></td>
+<td><p><a class="reference external" href="mailto:okunek&#37;&#52;&#48;gmail&#46;com">okunek<span>&#64;</span>gmail<span>&#46;</span>com</a></p></td>
 </tr>
 </tbody>
 </table>
 </div></blockquote>
-<p>Eğer <tt class="docutils literal"><span class="pre">vt.commit()</span></tt> satırını yazmazsak, veritabanı, tablo ve sütun başlıkları
+<p>Eğer <code class="docutils literal notranslate"><span class="pre">vt.commit()</span></code> satırını yazmazsak, veritabanı, tablo ve sütun başlıkları
 oluşturulur, ama sütunların içeriği veritabanına işlenmez.</p>
 </div>
 <div class="section" id="veritabaninin-kapatilmasi">
-<h2>Veritabanının Kapatılması<a class="headerlink" href="#veritabaninin-kapatilmasi" title="Permalink to this headline">¶</a></h2>
+<h2>Veritabanının Kapatılması<a class="headerlink" href="#veritabaninin-kapatilmasi" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Bir veritabanı üzerinde yapacağımız bütün işlemleri tamamladıktan sonra, prensip
 olarak, o veritabanını kapatmamız gerekir. Mesela şu kodları ele alalım:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
 
 <span class="n">vt</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;vt.sqlite&quot;</span><span class="p">)</span>
 
@@ -764,9 +754,9 @@ olarak, o veritabanını kapatmamız gerekir. Mesela şu kodları ele alalım:</
 <span class="n">vt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Burada bütün işlemleri bitirdikten sonra veritabanını kapatmak için, <tt class="docutils literal"><span class="pre">close()</span></tt>
+<p>Burada bütün işlemleri bitirdikten sonra veritabanını kapatmak için, <code class="docutils literal notranslate"><span class="pre">close()</span></code>
 adlı bir metottan yararlandık:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">vt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">vt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Bu şekilde, veritabanının ilk açıldığı andan itibaren, işletim sisteminin
@@ -776,7 +766,7 @@ Ama yine de bu işlemi elle yapmak her zaman iyi bir fikirdir.</p>
 <p>Eğer üzerinde işlem yaptığınız veritabanının her şey bittikten sonra otomatik
 olarak kapanmasını garantilemek isterseniz, daha önce öğrendiğimiz <cite>with</cite>
 sözcüğünü kullanabilirsiniz:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
 
 <span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;vt.sqlite&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">vt</span><span class="p">:</span>
     <span class="n">im</span> <span class="o">=</span> <span class="n">vt</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
@@ -794,16 +784,16 @@ bütün işler bittikten sonra Python bizim için bağlantıyı otomatik olarak
 sonlandıracaktır.</p>
 </div>
 <div class="section" id="parametreli-sorgular">
-<h2>Parametreli Sorgular<a class="headerlink" href="#parametreli-sorgular" title="Permalink to this headline">¶</a></h2>
+<h2>Parametreli Sorgular<a class="headerlink" href="#parametreli-sorgular" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Şu ana kadar verdiğimiz örneklerde, veritabanına girilecek verileri tek tek elle
 yerine koyduk. Örneğin:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;INSERT INTO personel VALUES</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;INSERT INTO personel VALUES</span>
 <span class="s2">    (&#39;Fırat&#39;, &#39;Özgül&#39;, &#39;Adana&#39;)&quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Ancak çoğu durumda veritabanına girilecek veriler harici kaynaklardan
 gelecektir. Basit bir örnek verelim:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
 
 <span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;vt.sqlite&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">vt</span><span class="p">:</span>
     <span class="n">im</span> <span class="o">=</span> <span class="n">vt</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
@@ -825,26 +815,26 @@ gelecektir. Basit bir örnek verelim:</p>
 </div>
 <p>Burada veritabanına işlenecek veriler, <cite>veriler</cite> adlı bir değişkenden geliyor.
 Bu değişken içindeki verileri veritabanına nasıl yerleştirdiğimize dikkat edin:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">veri</span> <span class="ow">in</span> <span class="n">veriler</span><span class="p">:</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">veri</span> <span class="ow">in</span> <span class="n">veriler</span><span class="p">:</span>
     <span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;INSERT INTO personel VALUES</span>
 <span class="s2">        (?, ?, ?)&quot;&quot;&quot;</span><span class="p">,</span> <span class="n">veri</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Ayrıca her bir sütunun (&#8216;isim&#8217;, &#8216;soyisim&#8217;, &#8216;memleket&#8217;) altına gelecek her bir
-değer için (mesela sırasıyla &#8216;Fırat&#8217;, &#8216;Özgül&#8217;, &#8216;Adana&#8217;) bir adet &#8216;?&#8217; işareti
+<p>Ayrıca her bir sütunun (‘isim’, ‘soyisim’, ‘memleket’) altına gelecek her bir
+değer için (mesela sırasıyla ‘Fırat’, ‘Özgül’, ‘Adana’) bir adet ‘?’ işareti
 yerleştirdiğimizi de gözden kaçırmayın.</p>
 </div>
 <div class="section" id="tablodaki-verileri-secmek">
-<h2>Tablodaki Verileri Seçmek<a class="headerlink" href="#tablodaki-verileri-secmek" title="Permalink to this headline">¶</a></h2>
+<h2>Tablodaki Verileri Seçmek<a class="headerlink" href="#tablodaki-verileri-secmek" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Yukarıda, bir veritabanına nasıl veri gireceğimizi ve bu verileri veritabanına
 nasıl işleyeceğimizi gördük. İşin asıl önemli kısmı, bu verileri daha sonra
 veritabanından (yani tablodan) geri alabilmektir. Şimdi bu işlemi nasıl
 yapacağımıza bakalım.</p>
-<p>Veritabanından herhangi bir veri alabilmek için ilk olarak <tt class="docutils literal"><span class="pre">SELECT</span> <span class="pre">veri</span> <span class="pre">FROM</span>
-<span class="pre">tablo_adı</span></tt> adlı bir SQL komutundan yararlanarak ilgili verileri seçmemiz
+<p>Veritabanından herhangi bir veri alabilmek için ilk olarak <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">veri</span> <span class="pre">FROM</span>
+<span class="pre">tablo_adı</span></code> adlı bir SQL komutundan yararlanarak ilgili verileri seçmemiz
 gerekiyor.</p>
 <p>Dilerseniz önce bir tablo oluşturalım:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
 
 <span class="n">vt</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;vt.sqlite&#39;</span><span class="p">)</span>
 
@@ -855,65 +845,65 @@ gerekiyor.</p>
 </pre></div>
 </div>
 <p>Şimdi bu tabloya bazı veriler ekleyelim:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;INSERT INTO faturalar VALUES</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;INSERT INTO faturalar VALUES</span>
 <span class="s2">(&quot;Elektrik&quot;, 45, &quot;23 Ocak 2010&quot;, &quot;30 Ocak 2010&quot;)&quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Verileri veritabanına işleyelim:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">vt</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">vt</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Yukarıdaki kodlar bize şöyle bir tablo verdi:</p>
 <blockquote>
-<div><table border="1" class="docutils">
+<div><table class="docutils align-default">
 <colgroup>
-<col width="17%" />
-<col width="17%" />
-<col width="33%" />
-<col width="33%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">fatura</th>
-<th class="head">miktar</th>
-<th class="head">ilk_odeme_tarihi</th>
-<th class="head">son_odeme_tarihi</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>fatura</p></th>
+<th class="head"><p>miktar</p></th>
+<th class="head"><p>ilk_odeme_tarihi</p></th>
+<th class="head"><p>son_odeme_tarihi</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>Elektrik</td>
-<td>45</td>
-<td>23 Ocak 2010</td>
-<td>30 Ocak 2010</td>
+<tbody>
+<tr class="row-even"><td><p>Elektrik</p></td>
+<td><p>45</p></td>
+<td><p>23 Ocak 2010</p></td>
+<td><p>30 Ocak 2010</p></td>
 </tr>
 </tbody>
 </table>
 </div></blockquote>
 <p>Buraya kadar olan kısmı zaten biliyoruz. Bilmediğimiz ise bu veritabanından
 nasıl veri alacağımız. Onu da şöyle yapıyoruz:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT * FROM faturalar&quot;&quot;&quot;</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT * FROM faturalar&quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Burada özel bir SQL komutu olan <tt class="docutils literal"><span class="pre">SELECT</span> <span class="pre">veri</span> <span class="pre">FROM</span> <span class="pre">tablo_adı</span></tt> komutundan
-faydalandık. Burada joker karakterlerden biri olan &#8220;*&#8221; işaretini kullandığımıza
-dikkat edin. <tt class="docutils literal"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">faturalar</span></tt> ifadesi şu anlama gelir: &#8220;<em>faturalar
-adlı tablodaki bütün öğeleri seç!</em>&#8220;</p>
-<p>Burada &#8220;<em>SELECT</em>&#8221; kelimesi &#8220;SEÇMEK&#8221; demektir. &#8220;<em>FROM</em>&#8221; ise &#8221;...DEN/...DAN&#8221;
-anlamı verir. Yani &#8220;<em>SELECT FROM faturalar</em>&#8221; dediğimizde &#8220;faturalardan seç&#8221;
-demiş oluyoruz. Burada kullandığımız &#8220;*&#8221; işareti de &#8220;her şey&#8221; anlamına geldiği
-için, &#8220;<em>SELECT * FROM faturalar</em>&#8221; ifadesi &#8220;faturalardan her şeyi seç&#8221; gibi bir
+<p>Burada özel bir SQL komutu olan <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">veri</span> <span class="pre">FROM</span> <span class="pre">tablo_adı</span></code> komutundan
+faydalandık. Burada joker karakterlerden biri olan “*” işaretini kullandığımıza
+dikkat edin. <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">faturalar</span></code> ifadesi şu anlama gelir: “<em>faturalar
+adlı tablodaki bütün öğeleri seç!</em>”</p>
+<p>Burada “<em>SELECT</em>” kelimesi “SEÇMEK” demektir. “<em>FROM</em>” ise “…DEN/…DAN”
+anlamı verir. Yani “<em>SELECT FROM faturalar</em>” dediğimizde “faturalardan seç”
+demiş oluyoruz. Burada kullandığımız “*” işareti de “her şey” anlamına geldiği
+için, “<em>SELECT * FROM faturalar</em>” ifadesi “faturalardan her şeyi seç” gibi bir
 anlama gelmiş oluyor.</p>
 <p>Verileri seçtiğimize göre, artık seçtiğimiz bu verileri nasıl alacağımıza
-bakabiliriz. Bunun için de <tt class="docutils literal"><span class="pre">fetchone()</span></tt>, <tt class="docutils literal"><span class="pre">fetchall()</span></tt> veya <tt class="docutils literal"><span class="pre">fetchmany()</span></tt>
+bakabiliriz. Bunun için de <code class="docutils literal notranslate"><span class="pre">fetchone()</span></code>, <code class="docutils literal notranslate"><span class="pre">fetchall()</span></code> veya <code class="docutils literal notranslate"><span class="pre">fetchmany()</span></code>
 adlı metotlardan ya da <cite>for</cite> döngüsünden yararlanacağız.</p>
 </div>
 <div class="section" id="secilen-verileri-almak">
-<h2>Seçilen Verileri Almak<a class="headerlink" href="#secilen-verileri-almak" title="Permalink to this headline">¶</a></h2>
-<p>Bu bölümde, <tt class="docutils literal"><span class="pre">SELECT</span></tt> sorgusu ile veritabanından seçtiğimiz verileri farklı
+<h2>Seçilen Verileri Almak<a class="headerlink" href="#secilen-verileri-almak" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Bu bölümde, <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> sorgusu ile veritabanından seçtiğimiz verileri farklı
 yollarla nasıl çekebileceğimizi/alabileceğimizi inceleyeceğiz.</p>
 <div class="section" id="fetchall-metodu">
-<h3>fetchall() Metodu<a class="headerlink" href="#fetchall-metodu" title="Permalink to this headline">¶</a></h3>
+<h3>fetchall() Metodu<a class="headerlink" href="#fetchall-metodu" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
 <p>Biraz önce şöyle bir program yazmıştık:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
 
 <span class="n">vt</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;vt.sqlite&#39;</span><span class="p">)</span>
 
@@ -930,26 +920,26 @@ yollarla nasıl çekebileceğimizi/alabileceğimizi inceleyeceğiz.</p>
 <span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT * FROM faturalar&quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Burada <cite>vt.sqlite</cite> adlı bir veritabanında &#8216;faturalar&#8217; adlı bir tablo oluşturduk
-ve bu tabloya bazı veriler girdik. Daha sonra da <tt class="docutils literal"><span class="pre">SELECT</span></tt> adlı SQL komutu
+<p>Burada <cite>vt.sqlite</cite> adlı bir veritabanında ‘faturalar’ adlı bir tablo oluşturduk
+ve bu tabloya bazı veriler girdik. Daha sonra da <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> adlı SQL komutu
 yardımıyla bu verileri seçtik. Şimdi de seçtiğimiz bu verileri veritabanından
 alacağız.</p>
 <p>Yukarıdaki programa şu satırı ekliyoruz:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">veriler</span> <span class="o">=</span> <span class="n">im</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">veriler</span> <span class="o">=</span> <span class="n">im</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Burada da ilk defa gördüğümüz bir metot var: <tt class="docutils literal"><span class="pre">fetchall()</span></tt>. Gördüğünüz gibi,
-<tt class="docutils literal"><span class="pre">fetchall()</span></tt> imlecin bir metodudur. Yukarıda gördüğümüz <tt class="docutils literal"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span>
-<span class="pre">faturalar</span></tt> komutu &#8216;faturalar&#8217; adlı tablodaki bütün verileri seçiyordu.
-<tt class="docutils literal"><span class="pre">fetchall()</span></tt> metodu ise seçilen bu verileri alma işlevi görüyor. Yukarıda biz
-<tt class="docutils literal"><span class="pre">fetchall()</span></tt> metoduyla aldığımız bütün verileri <tt class="docutils literal"><span class="pre">veriler</span></tt> adlı bir değişkene
+<p>Burada da ilk defa gördüğümüz bir metot var: <code class="docutils literal notranslate"><span class="pre">fetchall()</span></code>. Gördüğünüz gibi,
+<code class="docutils literal notranslate"><span class="pre">fetchall()</span></code> imlecin bir metodudur. Yukarıda gördüğümüz <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span>
+<span class="pre">faturalar</span></code> komutu ‘faturalar’ adlı tablodaki bütün verileri seçiyordu.
+<code class="docutils literal notranslate"><span class="pre">fetchall()</span></code> metodu ise seçilen bu verileri alma işlevi görüyor. Yukarıda biz
+<code class="docutils literal notranslate"><span class="pre">fetchall()</span></code> metoduyla aldığımız bütün verileri <code class="docutils literal notranslate"><span class="pre">veriler</span></code> adlı bir değişkene
 atadık.</p>
 <p>Artık bu verileri rahatlıkla yazdırabiliriz:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">veriler</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">veriler</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Dilerseniz betiğimizi topluca görelim:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
 
 <span class="n">vt</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;vt.sqlite&#39;</span><span class="p">)</span>
 
@@ -971,24 +961,24 @@ atadık.</p>
 </pre></div>
 </div>
 <p>Bu betiği ilk kez çalıştırdığımızda şöyle bir çıktı alırız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="p">[(</span><span class="s1">&#39;Elektrik&#39;</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="s1">&#39;23 Ocak 2010&#39;</span><span class="p">,</span> <span class="s1">&#39;30 Ocak 2010&#39;</span><span class="p">)]</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="p">[(</span><span class="s1">&#39;Elektrik&#39;</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="s1">&#39;23 Ocak 2010&#39;</span><span class="p">,</span> <span class="s1">&#39;30 Ocak 2010&#39;</span><span class="p">)]</span>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi, veriler bir liste içinde demet halinde yer alıyor. Ama tabii
 siz bu verileri istediğiz gibi biçimlendirecek kadar Python bilgisine
-sahipsiniz. Ayrıca programı her çalıştırdığınızda <tt class="docutils literal"><span class="pre">INSERT</span> <span class="pre">INTO</span></tt> sorgusu tekrar
+sahipsiniz. Ayrıca programı her çalıştırdığınızda <code class="docutils literal notranslate"><span class="pre">INSERT</span> <span class="pre">INTO</span></code> sorgusu tekrar
 işletileceği için verilerin tabloya tekrar tekrar yazılacağını, bu verileri
 alırken de çıktı listesinin büyüyeceğini unutmayın. Peki eğer siz bir veritabanı
 dosyasına verilerin yalnızca bir kez yazılmasını istiyorsanız ne yapacaksınız?
 Yani mesela yukarıdaki kodlarda şu sorgu yalnızca tek bir kez işletilsin:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;INSERT INTO faturalar VALUES</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;INSERT INTO faturalar VALUES</span>
 <span class="s2">(&quot;Elektrik&quot;, 45, &quot;23 Ocak 2010&quot;, &quot;30 Ocak 2010&quot;)&quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Böylece veritabanını her çalıştırdığınızda <tt class="docutils literal"><span class="pre">(&quot;Elektrik&quot;,</span> <span class="pre">45,</span> <span class="pre">&quot;23</span> <span class="pre">Ocak</span> <span class="pre">2010&quot;,</span>
-<span class="pre">&quot;30</span> <span class="pre">Ocak</span> <span class="pre">2010&quot;)</span></tt> satırı dosyaya tekrar tekrar yazdırılmasın.</p>
+<p>Böylece veritabanını her çalıştırdığınızda <code class="docutils literal notranslate"><span class="pre">(&quot;Elektrik&quot;,</span> <span class="pre">45,</span> <span class="pre">&quot;23</span> <span class="pre">Ocak</span> <span class="pre">2010&quot;,</span>
+<span class="pre">&quot;30</span> <span class="pre">Ocak</span> <span class="pre">2010&quot;)</span></code> satırı dosyaya tekrar tekrar yazdırılmasın.</p>
 <p>Bunu şu kodlarla halledebilirsiniz:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span><span class="o">,</span> <span class="nn">os</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span><span class="o">,</span> <span class="nn">os</span>
 
 <span class="n">dosya</span> <span class="o">=</span> <span class="s1">&#39;vt.sqlite&#39;</span>
 <span class="n">dosya_mevcut</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">dosya</span><span class="p">)</span>
@@ -1013,38 +1003,38 @@ Yani mesela yukarıdaki kodlarda şu sorgu yalnızca tek bir kez işletilsin:</p
 <p>Burada kodlarımızın en başında <cite>vt.sqlite</cite> adlı bir veritabanının mevcut olup
 olmadığını kontrol ediyoruz (zira eğer ortada bir veritabanı dosyası yoksa, veri
 de yok demektir):</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">dosya_mevcut</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">dosya</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">dosya_mevcut</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">dosya</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Eğer böyle bir dosya mevcut değilse (dolayısıyla veri mevcut değilse) <tt class="docutils literal"><span class="pre">INSERT</span>
-<span class="pre">INTO</span></tt> sorgusu işletilerek gerekli veriler yerine yerleştirilecek:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">dosya_mevcut</span><span class="p">:</span>
+<p>Eğer böyle bir dosya mevcut değilse (dolayısıyla veri mevcut değilse) <code class="docutils literal notranslate"><span class="pre">INSERT</span>
+<span class="pre">INTO</span></code> sorgusu işletilerek gerekli veriler yerine yerleştirilecek:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">dosya_mevcut</span><span class="p">:</span>
     <span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;INSERT INTO faturalar VALUES</span>
 <span class="s2">    (&quot;Elektrik&quot;, 45, &quot;23 Ocak 2010&quot;, &quot;30 Ocak 2010&quot;)&quot;&quot;&quot;</span><span class="p">)</span>
     <span class="n">vt</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Eğer böyle bir dosya zaten mevcutsa bu sorgu işletilemeyecek, onun yerine
-doğrudan <tt class="docutils literal"><span class="pre">SELECT</span></tt> sorgusuna geçilecek. Böylece değerler veritabanına bir kez
+doğrudan <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> sorgusuna geçilecek. Böylece değerler veritabanına bir kez
 işlendikten sonra, programımız aynı verileri tekrar tekrar veritabanına
 yerleştirmeye çalışmayacak.</p>
 <p>Bu arada, daha önce de belirttiğimiz gibi, tablo oluştururken sütun adlarında
-boşluk (ve Türkçe karakter) kullanmak iyi bir fikir değildir. Mesela <tt class="docutils literal"><span class="pre">ilk</span> <span class="pre">ödeme</span>
-<span class="pre">tarihi</span></tt> yerine <tt class="docutils literal"><span class="pre">ilk_odeme_tarihi</span></tt> ifadesini tercih edin. Eğer kelimeler
+boşluk (ve Türkçe karakter) kullanmak iyi bir fikir değildir. Mesela <code class="docutils literal notranslate"><span class="pre">ilk</span> <span class="pre">ödeme</span>
+<span class="pre">tarihi</span></code> yerine <code class="docutils literal notranslate"><span class="pre">ilk_odeme_tarihi</span></code> ifadesini tercih edin. Eğer kelimeler
 arasında mutlaka boşluk bırakmak isterseniz bütün kelimeleri tırnak içine alın.
-Mesela: <tt class="docutils literal"><span class="pre">&quot;ilk</span> <span class="pre">odeme</span> <span class="pre">tarihi&quot;</span></tt> veya <tt class="docutils literal"><span class="pre">&quot;ilk</span> <span class="pre">ödeme</span> <span class="pre">tarihi&quot;</span></tt> gibi.</p>
-<p>Yukarıda gördüğünüz gibi, <tt class="docutils literal"><span class="pre">fetchall()</span></tt> metodu, bir veritabanından <tt class="docutils literal"><span class="pre">SELECT</span></tt>
+Mesela: <code class="docutils literal notranslate"><span class="pre">&quot;ilk</span> <span class="pre">odeme</span> <span class="pre">tarihi&quot;</span></code> veya <code class="docutils literal notranslate"><span class="pre">&quot;ilk</span> <span class="pre">ödeme</span> <span class="pre">tarihi&quot;</span></code> gibi.</p>
+<p>Yukarıda gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">fetchall()</span></code> metodu, bir veritabanından <code class="docutils literal notranslate"><span class="pre">SELECT</span></code>
 ile seçtiğimiz bütün verileri önümüze getiriyor. Eğer seçilen verilerden kaç
-tanesini almak istediğinizi kendiniz belirlemek istiyorsanız <tt class="docutils literal"><span class="pre">fetchall()</span></tt>
-yerine <tt class="docutils literal"><span class="pre">fetchone()</span></tt> veya <tt class="docutils literal"><span class="pre">fetchmany()</span></tt> metotlarından o anki amacınıza uygun
-olanını kullanmayı tercih edebilirsiniz. Birazdan <tt class="docutils literal"><span class="pre">fetchone()</span></tt> ve
-<tt class="docutils literal"><span class="pre">fetchmany()</span></tt> metotlarından da söz edeceğiz.</p>
-<p>Gelin isterseniz şimdi <tt class="docutils literal"><span class="pre">fetchall()</span></tt> metodunu kullanarak veritabanlarından veri
+tanesini almak istediğinizi kendiniz belirlemek istiyorsanız <code class="docutils literal notranslate"><span class="pre">fetchall()</span></code>
+yerine <code class="docutils literal notranslate"><span class="pre">fetchone()</span></code> veya <code class="docutils literal notranslate"><span class="pre">fetchmany()</span></code> metotlarından o anki amacınıza uygun
+olanını kullanmayı tercih edebilirsiniz. Birazdan <code class="docutils literal notranslate"><span class="pre">fetchone()</span></code> ve
+<code class="docutils literal notranslate"><span class="pre">fetchmany()</span></code> metotlarından da söz edeceğiz.</p>
+<p>Gelin isterseniz şimdi <code class="docutils literal notranslate"><span class="pre">fetchall()</span></code> metodunu kullanarak veritabanlarından veri
 çekme konusunda biraz alıştırma yapalım. Bu alıştırmalar için, daha önce söz
 ettiğimiz ve bilgisayarımıza indirdiğimiz <cite>kitaplar.sqlite</cite> adlı örnek
 veritabanını kullanacağız.</p>
 <p>Öncelikle veritabanına bağlanalım ve bir imleç oluşturalım:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sqlite3</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sqlite3</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">vt</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;kitaplar.sqlite&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">im</span> <span class="o">=</span> <span class="n">vt</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
 </pre></div>
@@ -1052,18 +1042,18 @@ veritabanını kullanacağız.</p>
 <p>Şimdi bu veritabanındaki tabloyu seçeceğiz. Peki ama seçeceğimiz tablonun adını
 nereden bileceğiz? Hatırlarsanız, bir tablodaki bütün verileri seçebilmek için
 şu SQL sorgusunu kullanıyorduk:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="s2">&quot;SELECT * FROM tablo_adı&quot;</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;SELECT * FROM tablo_adı&quot;</span>
 </pre></div>
 </div>
-<p>İşte bu sorguda &#8216;tablo_adı&#8217; kısmına ne geleceğini bulabilmek için birkaç farklı
+<p>İşte bu sorguda ‘tablo_adı’ kısmına ne geleceğini bulabilmek için birkaç farklı
 yöntemden yararlanabiliriz.</p>
 <p>Bir veritabanında hangi tabloların olduğunu öğrenmek için Sqlitebrowser
 programını kullanabiliriz. Bir veritabanı dosyasını Sqlitebrowser ile açtıktan
-sonra, &#8216;Browse Data&#8217; sekmesine gidip, &#8216;Table&#8217; ifadesinin karşısında ne yazdığına
+sonra, ‘Browse Data’ sekmesine gidip, ‘Table’ ifadesinin karşısında ne yazdığına
 bakabiliriz.</p>
 <p>Veritabanındaki tabloların adını öğrenmenin ikinci yolu şu komutları
 kullanmaktır:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sqlite3</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sqlite3</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">vt</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;kitaplar.sqlite&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">im</span> <span class="o">=</span> <span class="n">vt</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT name FROM sqlite_master&quot;</span><span class="p">)</span>
@@ -1071,22 +1061,22 @@ kullanmaktır:</p>
 </pre></div>
 </div>
 <p>Burada şu satıra dikkat edin:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT name FROM sqlite_master&quot;</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT name FROM sqlite_master&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Bütün Sqlite veritabanlarında, ilgili veritabanının şemasını gösteren
-&#8216;sqlite_master&#8217; adlı bir tablo bulunur. İşte bu tabloyu sorgulayarak veritabanı
-hakkında bilgi edinebiliriz. Yukarıdaki örnekte, bu &#8216;sqlite_master&#8217; tablosunun
-&#8216;name&#8217; (isim) niteliğini sorguladık. Bu sorgu bize şu cevabı verdi:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+‘sqlite_master’ adlı bir tablo bulunur. İşte bu tabloyu sorgulayarak veritabanı
+hakkında bilgi edinebiliriz. Yukarıdaki örnekte, bu ‘sqlite_master’ tablosunun
+‘name’ (isim) niteliğini sorguladık. Bu sorgu bize şu cevabı verdi:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
 
 <span class="go">[(&#39;kitaplar&#39;,)]</span>
 </pre></div>
 </div>
-<p>Demek ki <cite>kitaplar.sqlite</cite> adlı veritabanında &#8216;kitaplar&#8217; adlı tek bir tablo
+<p>Demek ki <cite>kitaplar.sqlite</cite> adlı veritabanında ‘kitaplar’ adlı tek bir tablo
 varmış.</p>
 <p>Gelin şimdi bu bu tablodaki bütün verileri alalım:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM kitaplar&quot;</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM kitaplar&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1098,37 +1088,37 @@ verilerin ne kadarını çekeceğimizi belirleyebilmemizi sağlayacak metotları
 inceleyelim.</p>
 </div>
 <div class="section" id="fetchone-metodu">
-<h3>fetchone() Metodu<a class="headerlink" href="#fetchone-metodu" title="Permalink to this headline">¶</a></h3>
-<p><tt class="docutils literal"><span class="pre">fetchone()</span></tt> metodu, bir veritabanından seçilen verilerin tek tek
+<h3>fetchone() Metodu<a class="headerlink" href="#fetchone-metodu" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">fetchone()</span></code> metodu, bir veritabanından seçilen verilerin tek tek
 alınabilmesine izin verir.</p>
-<p>Bu metodun nasıl kullanılacağını &#8216;kitaplar.sqlite&#8217; adlı örnek veritabanımız
+<p>Bu metodun nasıl kullanılacağını ‘kitaplar.sqlite’ adlı örnek veritabanımız
 üzerinden inceleyelim:</p>
 <p>Önce veritabanına bağlanalım:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sqlite3</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sqlite3</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">vt</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;kitaplar.sqlite&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">im</span> <span class="o">=</span> <span class="n">vt</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Şimdi &#8216;kitaplar&#8217; adlı tablodan bütün verileri seçelim:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT * FROM kitaplar&quot;&quot;&quot;</span><span class="p">)</span>
+<p>Şimdi ‘kitaplar’ adlı tablodan bütün verileri seçelim:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT * FROM kitaplar&quot;&quot;&quot;</span><span class="p">)</span>
 
 <span class="go">&lt;sqlite3.Cursor object at 0x003C2D20&gt;</span>
 </pre></div>
 </div>
 <p>Artık seçtiğimiz verileri tek tek almaya başlayabiliriz:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
 
 <span class="go">(&#39;UZMANLAR İÇİN PHP&#39;, &#39;Mehmet Şamlı&#39;, &#39;33,00 TL&#39;)</span>
 </pre></div>
 </div>
 <p>Bir tane daha alalım:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
 
 <span class="go">(&#39;ADOBE AİR&#39;, &#39;Engin Yöğen&#39;, &#39;28,00 TL&#39;)</span>
 </pre></div>
 </div>
-<p>İki tane daha...</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+<p>İki tane daha…</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
 
 <span class="go">(&#39;WEB TASARIM REHBERİ&#39;, &#39;Mustafa Aydemir&#39;, &#39;38,50 TL&#39;)</span>
 
@@ -1137,13 +1127,13 @@ alınabilmesine izin verir.</p>
 <span class="go">(&#39;ORACLE 11g R2&#39;, &#39;Teoman Dinçel&#39;, &#39;34,00 TL&#39;)</span>
 </pre></div>
 </div>
-<p><tt class="docutils literal"><span class="pre">fetchone()</span></tt>&#8216;ın gayet faydalı bir metot olduğu her halinden belli...</p>
+<p><code class="docutils literal notranslate"><span class="pre">fetchone()</span></code>’ın gayet faydalı bir metot olduğu her halinden belli…</p>
 </div>
 <div class="section" id="fetchmany-metodu">
-<h3>fetchmany() Metodu<a class="headerlink" href="#fetchmany-metodu" title="Permalink to this headline">¶</a></h3>
+<h3>fetchmany() Metodu<a class="headerlink" href="#fetchmany-metodu" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
 <p>Bu metot, bir veritabanından seçtiğiniz verilerin istediğiniz kadarını
 alabilmenize imkan tanır. Dikkatlice bakın:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="o">.</span><span class="n">fetchmany</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="o">.</span><span class="n">fetchmany</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 
 <span class="go">[(&#39;AS 3.0 İLE SUNUCU PROGRAMLAMA&#39;, &#39;Engin Yöğen&#39;, &#39;24,00 TL&#39;),</span>
 <span class="go"> (&#39;HACKING INTERFACE&#39;, &#39;Hamza Elbahadır&#39;, &#39;25,00 TL&#39;),</span>
@@ -1156,14 +1146,14 @@ alabilmenize imkan tanır. Dikkatlice bakın:</p>
 <p>Böylece bir veritabanından seçilen verileri almanın farklı yöntemlerini öğrenmiş
 olduk. Bu metotların dışında, eğer arzu ederseniz <cite>for</cite> döngüsünden yararlanarak
 da veri çekebilirsiniz. Bunun için herhangi bir metot kullanmanıza gerek yok:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">veri</span> <span class="ow">in</span> <span class="n">im</span><span class="p">:</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">veri</span> <span class="ow">in</span> <span class="n">im</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi, <cite>for</cite> döngüsünü doğrudan imleç üzerinde kuruyoruz.</p>
 <p>Eğer amacınız alınacak verilerin sayısını sınırlamaksa yine <cite>for</cite> döngüsünden ve
-<tt class="docutils literal"><span class="pre">fetchone()</span></tt> metodundan birlikte yararlanabilirsiniz:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+<code class="docutils literal notranslate"><span class="pre">fetchone()</span></code> metodundan birlikte yararlanabilirsiniz:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">im</span><span class="o">.</span><span class="n">fetchone</span><span class="p">())</span>
 </pre></div>
 </div>
@@ -1172,19 +1162,19 @@ daha verimli yollarını göreceğiz.</p>
 </div>
 </div>
 <div class="section" id="veri-suzme">
-<h2>Veri Süzme<a class="headerlink" href="#veri-suzme" title="Permalink to this headline">¶</a></h2>
+<h2>Veri Süzme<a class="headerlink" href="#veri-suzme" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Daha önce bir Sqlite veritabanında belli bir tablo içindeki bütün verileri
 seçmek için şu SQL komutunu kullanmamız gerektiğini öğrenmiştik:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">tablo_adi</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">tablo_adi</span>
 </pre></div>
 </div>
 <p>Ancak amacımız çoğu zaman bir tablo içindeki bütün verileri seçmek olmayacaktır.
 Programcılık maceramız boyunca genellikle yalnızca belli ölçütlere uyan verileri
 seçmek isteyeceğiz. Zira içinde milyonlarca veri barındırabilecek olan
 veritabanlarındaki verilerin tamamını seçmek akıl kârı değildir.</p>
-<p>Verileri süzme işini <tt class="docutils literal"><span class="pre">WHERE</span></tt> adlı bir SQL komutu yardımıyla
+<p>Verileri süzme işini <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> adlı bir SQL komutu yardımıyla
 gerçekleştireceğiz. Bu SQL komutunun sözdizimi şöyle:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">tablo_adı</span> <span class="n">WHERE</span> <span class="n">sütun_başlığı</span> <span class="o">=</span> <span class="n">aranan_veri</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">tablo_adı</span> <span class="n">WHERE</span> <span class="n">sütun_başlığı</span> <span class="o">=</span> <span class="n">aranan_veri</span>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi, bu sorguyu gerçekleştirebilmek için tablodaki sütun
@@ -1192,44 +1182,44 @@ başlıklarını bilmemiz gerekiyor.</p>
 <p>Önceki sayfalarda, <cite>kitaplar.sqlite</cite> adlı veritabanımızdaki tabloların adını
 nasıl öğrenebileceğimizi anlatmıştık. Hatırlarsanız bu iş için şu komutu
 kullanıyorduk:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT name FROM sqlite_master&quot;</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT name FROM sqlite_master&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Bu şekilde, bütün Sqlite veritabanlarında bulunan &#8216;sqlite_master&#8217; adlı özel bir
-tablonun &#8216;name&#8217; niteliğini sorgulayarak, elimizdeki veritabanında bulunan
+<p>Bu şekilde, bütün Sqlite veritabanlarında bulunan ‘sqlite_master’ adlı özel bir
+tablonun ‘name’ niteliğini sorgulayarak, elimizdeki veritabanında bulunan
 tabloların adını elde edebiliyoruz. Adını öğrendiğimiz tablodaki sütun
 başlıklarını elde etmek için yine buna benzer bir komuttan yararlanacağız.
 Dikkatlice bakın:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT sql FROM sqlite_master&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT sql FROM sqlite_master&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
 
 <span class="go">(&#39;CREATE TABLE &quot;kitaplar&quot;</span>
 <span class="go">(\n\t`KitapAdi`\tTEXT,\n\t`Yazar`\tTEXT,\n\t`Fiyati`\tTEXT\n)&#39;,)</span>
 </pre></div>
 </div>
-<p>&#8216;sqlite_master&#8217; adlı tablonun &#8216;sql&#8217; niteliğini sorguladığımızda, ilgili tabloyu
+<p>‘sqlite_master’ adlı tablonun ‘sql’ niteliğini sorguladığımızda, ilgili tabloyu
 oluşturmak için kullanılan SQL komutunu görüyoruz. Bu komuta dikkatli
-bakarsanız, tablonun &#8216;KitapAdi&#8217;, &#8216;Yazar&#8217; ve &#8216;Fiyati&#8217; olmak üzere üç sütundan
+bakarsanız, tablonun ‘KitapAdi’, ‘Yazar’ ve ‘Fiyati’ olmak üzere üç sütundan
 oluştuğunu göreceksiniz. Elbette sütun adlarını öğrenmek için Sqlitebrowser
 programını da kullanabileceğinizi artık biliyorsunuz.</p>
 <p>Sütun adlarını öğrendiğimize göre gelin şimdi yazar adına göre veritabanında bir
 sorgu yapalım:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM kitaplar WHERE Yazar = &#39;Fırat Özgül&#39;&quot;</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM kitaplar WHERE Yazar = &#39;Fırat Özgül&#39;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Burada sorguyu nasıl kurduğumuza dikkat edin. Bu sorgunun ilk kısmı olan
-<tt class="docutils literal"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">kitaplar</span></tt> ifadesini zaten daha önce öğrenmiştik. Yeni olan
-kısım <tt class="docutils literal"><span class="pre">WHERE</span> <span class="pre">Yazar</span> <span class="pre">=</span> <span class="pre">'Fırat</span> <span class="pre">Özgül'</span></tt>. Burada da anlaşılmayacak bir şey yok. Bu
-şekilde, veritabanındaki &#8216;kitaplar&#8217; tablosunun &#8216;Yazar&#8217; sütununda &#8216;Fırat Özgül&#8217;
+<code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">kitaplar</span></code> ifadesini zaten daha önce öğrenmiştik. Yeni olan
+kısım <code class="docutils literal notranslate"><span class="pre">WHERE</span> <span class="pre">Yazar</span> <span class="pre">=</span> <span class="pre">'Fırat</span> <span class="pre">Özgül'</span></code>. Burada da anlaşılmayacak bir şey yok. Bu
+şekilde, veritabanındaki ‘kitaplar’ tablosunun ‘Yazar’ sütununda ‘Fırat Özgül’
 bulunan bütün kayıtları seçiyoruz.</p>
 <p>Şimdi de seçtiğimiz bu verileri alalım:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
 
 <span class="go">(&#39;HERYÖNÜYLE PYTHON&#39;, &#39;Fırat Özgül&#39;, &#39;34,00 TL&#39;)</span>
 </pre></div>
 </div>
-<p>Gayet başarılı... Bu arada, verileri almak için <tt class="docutils literal"><span class="pre">fetchall()</span></tt> yerine <cite>for</cite>
+<p>Gayet başarılı… Bu arada, verileri almak için <code class="docutils literal notranslate"><span class="pre">fetchall()</span></code> yerine <cite>for</cite>
 döngüsü kullanabileceğinizi de biliyorsunuz:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">im</span><span class="p">:</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">im</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 <span class="gp">...</span>
 <span class="go">(&#39;HERYÖNÜYLE PYTHON&#39;, &#39;Fırat Özgül&#39;, &#39;34,00 TL&#39;)</span>
@@ -1237,15 +1227,15 @@ döngüsü kullanabileceğinizi de biliyorsunuz:</p>
 </div>
 <p>İmleç üzerinde <cite>for</cite> döngüsü kurabildiğimize göre yıldızlı parametrelerden de
 yararlanabileceğimizi tahmin etmişsinizdir:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="n">im</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="n">im</span><span class="p">)</span>
 
 <span class="go">(&#39;HERYÖNÜYLE PYTHON&#39;, &#39;Fırat Özgül&#39;, &#39;34,00 TL&#39;)</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="veritabani-guvenligi">
-<h2>Veritabanı Güvenliği<a class="headerlink" href="#veritabani-guvenligi" title="Permalink to this headline">¶</a></h2>
-<p>Python&#8217;da veritabanları ve Sqlite konusunda daha fazla ilerlemeden önce çok
+<h2>Veritabanı Güvenliği<a class="headerlink" href="#veritabani-guvenligi" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Python’da veritabanları ve Sqlite konusunda daha fazla ilerlemeden önce çok
 önemli bir konudan bahsetmemiz gerekiyor. Tahmin edebileceğiniz gibi, veritabanı
 denen şey oldukça hassas bir konudur. Bilgiyi bir araya toplayan bu sistem,
 içerdeki bilgilerin değerine ve önemine de bağlı olarak üçüncü şahısların
@@ -1257,18 +1247,18 @@ asli görevidir.</p>
 tehditlerden birisi hiç kuşkusuz kötü niyetli kişilerin veritabanınıza SQL
 komutu sızdırma (<em>SQL injection</em>) girişimleridir.</p>
 <p>Şimdi şöyle bir şey düşünün: Diyelim ki siz bir alışveriş karşılığı birine
-100.000 TL&#8217;lik bir çek verdiniz. Ancak çeki verdiğiniz kişi bu çek üzerindeki
+100.000 TL’lik bir çek verdiniz. Ancak çeki verdiğiniz kişi bu çek üzerindeki
 miktarı tahrif ederek artırdı ve banka da tahrif edilerek artırılan bu miktarı
 çeki getiren kişiye (hamiline) ödedi. Böyle bir durumda epey başınız
 ağrıyacaktır.</p>
 <p>İşte böyle tatsız bir durumla karşılaşmamak için, çek veren kişi çekin
 üzerindeki miktarı hem rakamla hem de yazıyla belirtmeye özen gösterir. Ayrıca
 rakam ve yazılara ekleme yapılmasını da engellemek için rakam ve yazıların
-sağına soluna &#8220;#&#8221; gibi işaretler de koyar. Böylece çeki alan kişinin, kendisine
+sağına soluna “#” gibi işaretler de koyar. Böylece çeki alan kişinin, kendisine
 izin verilenden daha fazla bir miktarı yazmasını engellemeye çalışır.</p>
 <p>Yukarıdakine benzer bir şey veritabanı uygulamalarında da karşımıza çıkabilir.
 Şimdi şu örneğe bakalım:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
 
 <span class="c1">#vt.sqlite adlı bir veritabanı dosyası oluşturup</span>
 <span class="c1">#bu veritabanına bağlanıyoruz.</span>
@@ -1334,7 +1324,7 @@ izin verilenden daha fazla bir miktarı yazmasını engellemeye çalışır.</p>
 kafanıza takmayın. Nasıl olsa bu kodlarda görünen her şeyi biraz sonra tek tek
 öğreneceğiz. Siz şimdilik sadece işin özüne odaklanın.</p>
 <p>Yukarıdaki kodları çalıştırdığınızda, eğer kullanıcı adı ve parolayı doğru
-girerseniz &#8216;Programa hoşgeldin&#8217; çıktısını göreceksiniz. Eğer kullanıcı adınız
+girerseniz ‘Programa hoşgeldin’ çıktısını göreceksiniz. Eğer kullanıcı adınız
 veya parolanız yanlışsa bununla ilgili bir uyarı alacaksınız.</p>
 <p>Her şey iyi hoş, ama bu kodlarda çok ciddi bir problem var.</p>
 <p>Dediğimiz gibi, bu kodlar çalışırken (teoride) eğer kullanıcı, veritabanında
@@ -1343,24 +1333,24 @@ doğru kullanıcı adı ve parola girilmezse sistem kullanıcıya giriş izni
 vermeyecektir. Ama acaba gerçekten öyle mi?</p>
 <p>Şimdi yukarıdaki programı tekrar çalıştırın. Kullanıcı adı ve parola
 sorulduğunda da her ikisi için şunu yazın:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">x</span><span class="s1">&#39; OR &#39;</span><span class="mi">1</span><span class="s1">&#39; = &#39;</span><span class="mi">1</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="s1">&#39; OR &#39;</span><span class="mi">1</span><span class="s1">&#39; = &#39;</span><span class="mi">1</span>
 </pre></div>
 </div>
-<p>O da ne! Program sizi içeri aldı... Hem de kullanıcı adı ve parola doğru
-olmadığı halde... Hatta şu kodu sadece kullanıcı adı kısmına girip parola
+<p>O da ne! Program sizi içeri aldı… Hem de kullanıcı adı ve parola doğru
+olmadığı halde… Hatta şu kodu sadece kullanıcı adı kısmına girip parola
 kısmını boş bırakmanız da sisteme giriş hakkı elde etmenize yetecektir.:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">x</span><span class="s1">&#39; OR &#39;</span><span class="mi">1</span><span class="s1">&#39; = &#39;</span><span class="mi">1</span><span class="s1">&#39; --</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="s1">&#39; OR &#39;</span><span class="mi">1</span><span class="s1">&#39; = &#39;</span><span class="mi">1</span><span class="s1">&#39; --</span>
 </pre></div>
 </div>
-<p>İşte yukarıda gösterdiğimiz bu işleme &#8220;SQL sızdırma&#8221; (SQL injection) adı verilir.
+<p>İşte yukarıda gösterdiğimiz bu işleme “SQL sızdırma” (SQL injection) adı verilir.
 Kullanıcı, tıpkı en başta verdiğimiz tahrif edilmiş çek örneğinde olduğu gibi,
 sistemin zaaflarından yararlanarak, elde etmeye hakkı olandan daha fazlasına
 erişim hakkı elde ediyor.</p>
-<p>Burada en basit şekliyle bool işleçlerinden biri olan <tt class="docutils literal"><span class="pre">or</span></tt>&#8216;dan yararlanıyoruz.
-<tt class="docutils literal"><span class="pre">or</span></tt>&#8216;un nasıl işlediğini gayet iyi biliyorsunuz, ama ben yine de birkaç
-örnekle <tt class="docutils literal"><span class="pre">or</span></tt>&#8216;un ne olduğunu ve ne yaptığını size hatırlatayım. Şu örneklere
+<p>Burada en basit şekliyle bool işleçlerinden biri olan <code class="docutils literal notranslate"><span class="pre">or</span></code>’dan yararlanıyoruz.
+<code class="docutils literal notranslate"><span class="pre">or</span></code>’un nasıl işlediğini gayet iyi biliyorsunuz, ama ben yine de birkaç
+örnekle <code class="docutils literal notranslate"><span class="pre">or</span></code>’un ne olduğunu ve ne yaptığını size hatırlatayım. Şu örneklere
 bakın:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">21</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">21</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">==</span> <span class="mi">22</span>
 
@@ -1382,22 +1372,22 @@ bakın:</p>
 <span class="go">Merhaba!</span>
 </pre></div>
 </div>
-<p>Örneklerden de gördüğünüz gibi, <tt class="docutils literal"><span class="pre">and</span></tt> işlecinin <tt class="docutils literal"><span class="pre">True</span></tt> sonucunu verebilmesi
-için her iki önermenin de doğru olması gerekir. O yüzden <tt class="docutils literal"><span class="pre">a</span> <span class="pre">==</span> <span class="pre">22</span> <span class="pre">and</span> <span class="pre">b</span> <span class="pre">==</span> <span class="pre">13</span></tt>
-gibi bir ifade <tt class="docutils literal"><span class="pre">False</span></tt> değeri veriyor. Ancak <tt class="docutils literal"><span class="pre">or</span></tt> işlecinin <tt class="docutils literal"><span class="pre">True</span></tt> sonucu
+<p>Örneklerden de gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">and</span></code> işlecinin <code class="docutils literal notranslate"><span class="pre">True</span></code> sonucunu verebilmesi
+için her iki önermenin de doğru olması gerekir. O yüzden <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">==</span> <span class="pre">22</span> <span class="pre">and</span> <span class="pre">b</span> <span class="pre">==</span> <span class="pre">13</span></code>
+gibi bir ifade <code class="docutils literal notranslate"><span class="pre">False</span></code> değeri veriyor. Ancak <code class="docutils literal notranslate"><span class="pre">or</span></code> işlecinin <code class="docutils literal notranslate"><span class="pre">True</span></code> sonucu
 verebilmesi için iki önermeden sadece birinin doğru olması yeterlidir. Bu
-yüzden, sadece <tt class="docutils literal"><span class="pre">b</span> <span class="pre">==</span> <span class="pre">13</span></tt> kısmı <tt class="docutils literal"><span class="pre">True</span></tt> olduğu halde <tt class="docutils literal"><span class="pre">a</span> <span class="pre">==</span> <span class="pre">22</span> <span class="pre">or</span> <span class="pre">b</span> <span class="pre">==</span> <span class="pre">13</span></tt>
-ifadesi <tt class="docutils literal"><span class="pre">True</span></tt> sonucu veriyor... İşte biz de yukarıdaki SQL sızdırma
-girişiminde <tt class="docutils literal"><span class="pre">or</span></tt>&#8216;un bu özelliğinden faydalanıyoruz.</p>
+yüzden, sadece <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">==</span> <span class="pre">13</span></code> kısmı <code class="docutils literal notranslate"><span class="pre">True</span></code> olduğu halde <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">==</span> <span class="pre">22</span> <span class="pre">or</span> <span class="pre">b</span> <span class="pre">==</span> <span class="pre">13</span></code>
+ifadesi <code class="docutils literal notranslate"><span class="pre">True</span></code> sonucu veriyor… İşte biz de yukarıdaki SQL sızdırma
+girişiminde <code class="docutils literal notranslate"><span class="pre">or</span></code>’un bu özelliğinden faydalanıyoruz.</p>
 <p>Dilerseniz neler olup bittiğini daha iyi anlayabilmek için, sızdırılan kodu
 doğrudan ilgili satıra uygulayalım:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT * FROM kullanicilar WHERE</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT * FROM kullanicilar WHERE</span>
 <span class="s2">kullanici_adi = &#39;x&#39; OR &#39;1&#39; = &#39;1&#39; AND parola = &#39;x&#39; OR &#39;1&#39; = &#39;1&#39;&quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Sanırım bu şekilde neler olup bittiği daha net görülüyor. Durumu biraz daha
-netleştirmek için Python&#8217;ı yardıma çağırabiliriz:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kullanici_adi</span> <span class="o">=</span> <span class="s1">&#39;ahmet123&#39;</span>
+netleştirmek için Python’ı yardıma çağırabiliriz:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kullanici_adi</span> <span class="o">=</span> <span class="s1">&#39;ahmet123&#39;</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">parola</span> <span class="o">=</span> <span class="s1">&#39;12345678&#39;</span>
 
@@ -1422,46 +1412,46 @@ netleştirmek için Python&#8217;ı yardıma çağırabiliriz:</p>
 <span class="go">True</span>
 </pre></div>
 </div>
-<p><tt class="docutils literal"><span class="pre">'1'</span> <span class="pre">==</span> <span class="pre">'1'</span></tt> ifadesi her zaman <tt class="docutils literal"><span class="pre">True</span></tt> değeri verecektir. Dolayısıyla
+<p><code class="docutils literal notranslate"><span class="pre">'1'</span> <span class="pre">==</span> <span class="pre">'1'</span></code> ifadesi her zaman <code class="docutils literal notranslate"><span class="pre">True</span></code> değeri verecektir. Dolayısıyla
 kullanıcı adının ve parolanın doğru olup olmaması hiçbir önem taşımaz. Yani her
-zaman <tt class="docutils literal"><span class="pre">True</span></tt> değerini vereceği kesin olan ifadeler yardımıyla yukarıdaki gibi
+zaman <code class="docutils literal notranslate"><span class="pre">True</span></code> değerini vereceği kesin olan ifadeler yardımıyla yukarıdaki gibi
 bir sızdırma girişiminde bulunabilirsiniz.</p>
-<p>Yukarıda yaptığımız şey, &#8216;%s&#8217; ile gösterilen yerlere kötü niyetli bir SQL komutu
+<p>Yukarıda yaptığımız şey, ‘%s’ ile gösterilen yerlere kötü niyetli bir SQL komutu
 sızdırmaktan ibarettir. Burada zaten başlangıç ve bitiş tırnakları olduğu için
 sızdırılan kodda başlangıç ve bitiş tırnaklarını yazmıyoruz. O yüzden sızdırılan
 kod şöyle görünüyor:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">x</span><span class="s1">&#39; OR &#39;</span><span class="mi">1</span><span class="s1">&#39; = &#39;</span><span class="mi">1</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="s1">&#39; OR &#39;</span><span class="mi">1</span><span class="s1">&#39; = &#39;</span><span class="mi">1</span>
 </pre></div>
 </div>
-<p>Gördüğünüz gibi, x&#8217;in başındaki ve 1&#8217;in sonundaki tırnak işaretleri koymuyoruz.</p>
+<p>Gördüğünüz gibi, x’in başındaki ve 1’in sonundaki tırnak işaretleri koymuyoruz.</p>
 <p>Peki yukarıda verdiğimiz şu kod nasıl çalışıyor:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">x</span><span class="s1">&#39; OR &#39;</span><span class="mi">1</span><span class="s1">&#39; = &#39;</span><span class="mi">1</span><span class="s1">&#39; --</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="s1">&#39; OR &#39;</span><span class="mi">1</span><span class="s1">&#39; = &#39;</span><span class="mi">1</span><span class="s1">&#39; --</span>
 </pre></div>
 </div>
-<p>Python&#8217;da yazdığımız kodlara yorum eklemek için &#8220;#&#8221; işaretinden yararlandığımızı
-biliyorsunuz. İşte SQL kodlarına yorum eklemek için de &#8220;&#8211;&#8221; işaretlerinden
+<p>Python’da yazdığımız kodlara yorum eklemek için “#” işaretinden yararlandığımızı
+biliyorsunuz. İşte SQL kodlarına yorum eklemek için de “–” işaretlerinden
 yararlanılır. Şimdi dilerseniz yukarıdaki kodu doğrudan ilgili satıra
 uygulayalım ve ne olduğunu görelim:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT * FROM kullanicilar WHERE</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT * FROM kullanicilar WHERE</span>
 <span class="s2">kullanici_adi = &#39;x&#39; OR &#39;1&#39;=&#39;1&#39; --AND parola = &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Burada yazdığımız &#8220;&#8211;&#8221; işareti <tt class="docutils literal"><span class="pre">AND</span> <span class="pre">parola</span> <span class="pre">=</span> <span class="pre">'%s'</span></tt> kısmının sistem tarafından
+<p>Burada yazdığımız “–” işareti <code class="docutils literal notranslate"><span class="pre">AND</span> <span class="pre">parola</span> <span class="pre">=</span> <span class="pre">'%s'</span></code> kısmının sistem tarafından
 yorum olarak algılanmasını sağlıyor. Bu yüzden kodların bu kısmı işletilmiyor.
 Dolayısıyla da sisteme giriş yapabilmek için sadece kullanıcı adını girmemiz
-yeterli oluyor. Burada ayrıca kodlarımızın çalışması için 1&#8217;in sonuna bir adet
+yeterli oluyor. Burada ayrıca kodlarımızın çalışması için 1’in sonuna bir adet
 tırnak yerleştirerek kodu kapattığımıza dikkat edin. Çünkü normal bitiş tırnağı
 yorum tarafında kaldı.</p>
-<p>Dikkat ederseniz SQL sızdırdığımızda &#8220;ahmet123&#8221; adlı kullanıcının hesabını ele
-geçirmiş olduk. Peki neden ötekiler değil de &#8220;ahmet123&#8221;? Bunun sebebi,
-&#8220;ahmet123&#8221; hesabının tablonun en başında yer alması. Eğer tablonun başında
-&#8220;admin&#8221; diye bir hesap olmuş olsaydı, veritabanına azami düzeyde zarar verme
+<p>Dikkat ederseniz SQL sızdırdığımızda “ahmet123” adlı kullanıcının hesabını ele
+geçirmiş olduk. Peki neden ötekiler değil de “ahmet123”? Bunun sebebi,
+“ahmet123” hesabının tablonun en başında yer alması. Eğer tablonun başında
+“admin” diye bir hesap olmuş olsaydı, veritabanına azami düzeyde zarar verme
 imkanına kavuşacaktınız.</p>
 <p>Peki SQL sızdırma girişimlerini nasıl önleyeceğiz? Bu girişime karşı
-alabileceğiniz başlıca önlem &#8220;%s&#8221; işaretlerini kullanmaktan kaçınmak olacaktır.
-Bu işaret yerine &#8221;?&#8221; işaretini kullanacaksınız. Yani yukarıdaki programı şöyle
+alabileceğiniz başlıca önlem “%s” işaretlerini kullanmaktan kaçınmak olacaktır.
+Bu işaret yerine “?” işaretini kullanacaksınız. Yani yukarıdaki programı şöyle
 yazacağız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
 
 <span class="n">db</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;vt.sqlite&quot;</span><span class="p">)</span>
 
@@ -1496,17 +1486,17 @@ yazacağız:</p>
 </pre></div>
 </div>
 <p>Dediğimiz gibi, SQL sızdırma girişimlerine karşı alabileceğiniz başlıca önlem
-&#8220;%s&#8221; işaretleri yerine &#8221;?&#8221; işaretini kullanmak olmalıdır. Bunun dışında, SQL
+“%s” işaretleri yerine “?” işaretini kullanmak olmalıdır. Bunun dışında, SQL
 komutlarını işletmeden önce bazı süzgeçler uygulamak da güvenlik açısından
 işinize yarayabilir. Örneğin kullanıcıdan alınacak verileri alfanümerik
 karakterlerle [<a class="reference external" href="https://web.archive.org/web/20161127183825/http://www.istihza.com/blog/alfanumerik-ne-demek.html">http://www.istihza.com/blog/alfanumerik-ne-demek.html/</a>]
 (arşiv linki) sınırlayabilirsiniz:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">kull</span><span class="o">.</span><span class="n">isalnum</span><span class="p">()</span> <span class="ow">and</span> <span class="n">paro</span><span class="o">.</span><span class="n">isalnum</span><span class="p">():</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">kull</span><span class="o">.</span><span class="n">isalnum</span><span class="p">()</span> <span class="ow">and</span> <span class="n">paro</span><span class="o">.</span><span class="n">isalnum</span><span class="p">():</span>
     <span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT * FROM kullanicilar WHERE</span>
 <span class="s2">    kullanici_adi = &#39;</span><span class="si">%s</span><span class="s2">&#39; AND parola = &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;&quot;&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">kull</span><span class="p">,</span> <span class="n">paro</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>Böylece kullanıcının bazı &#8220;tehlikeli&#8221; karakterleri girmesini engelleyebilir,
+<p>Böylece kullanıcının bazı “tehlikeli” karakterleri girmesini engelleyebilir,
 onları sadece harf ve sayı girmeye zorlayabilirsiniz.</p>
 <p>Her halükarda unutmamamız gereken şey, güvenliğin çok boyutlu bir kavram
 olduğudur. Birkaç önlemle pek çok güvenlik açığını engelleyebilirsiniz, ancak
@@ -1516,19 +1506,16 @@ taramak ve herhangi bir açık ortaya çıktığında da bunu derhal kapatmaya
 çalışmaktır.</p>
 </div>
 <div class="section" id="bolum-sorulari">
-<h2>Bölüm Soruları<a class="headerlink" href="#bolum-sorulari" title="Permalink to this headline">¶</a></h2>
+<h2>Bölüm Soruları<a class="headerlink" href="#bolum-sorulari" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <ol class="arabic">
-<li><p class="first">Bir veritabanı dosyasının var olup olmadığını nasıl tespit edersiniz?</p>
-</li>
-<li><p class="first">Bir veritabanı içinde belli bir tablonun var olup olmadığını tespit edin.
-Eğer yoksa o tabloyu oluşturun, varsa herhangi bir işlem yapmayın.</p>
-</li>
-<li><p class="first">Sqlite ile test amaçlı bir veritabanı oluşturun. Bu veritabanı dosyası,
-programınız kapanır kapanmaz ortadan kaybolmalı.</p>
-</li>
-<li><p class="first">Aşağıdaki kodların istenen veritabanını, tabloyu, satır ve sütunları
+<li><p>Bir veritabanı dosyasının var olup olmadığını nasıl tespit edersiniz?</p></li>
+<li><p>Bir veritabanı içinde belli bir tablonun var olup olmadığını tespit edin.
+Eğer yoksa o tabloyu oluşturun, varsa herhangi bir işlem yapmayın.</p></li>
+<li><p>Sqlite ile test amaçlı bir veritabanı oluşturun. Bu veritabanı dosyası,
+programınız kapanır kapanmaz ortadan kaybolmalı.</p></li>
+<li><p>Aşağıdaki kodların istenen veritabanını, tabloyu, satır ve sütunları
 oluşturup oluşturmadığını teyit edin:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
 
 <span class="n">vt</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;vt.sqlite&#39;</span><span class="p">)</span>
 
@@ -1541,37 +1528,30 @@ oluşturup oluşturmadığını teyit edin:</p>
 </div>
 <p>Eğer veritabanı içeriği beklediğiniz gibi değilse sebebini açıklayın.</p>
 </li>
-<li><p class="first">Sqlite ile bir veritabanının oluşturulması ve bu veritabanına birtakım
-bilgiler girilebilmesi için sırasıyla hangi işlemlerin yapılması gerekir?</p>
-</li>
-<li><p class="first">Aşağıdaki resimde yapılmaya çalışılan şey nedir?</p>
+<li><p>Sqlite ile bir veritabanının oluşturulması ve bu veritabanına birtakım
+bilgiler girilebilmesi için sırasıyla hangi işlemlerin yapılması gerekir?</p></li>
+<li><p>Aşağıdaki resimde yapılmaya çalışılan şey nedir?</p>
 <blockquote>
 <div><div class="figure align-center">
 <img alt="../_images/sql.jpg" src="../_images/sql.jpg" />
 </div>
 </div></blockquote>
 </li>
-<li><p class="first"><tt class="docutils literal"><span class="pre">sqlite3.connect('kitaplar.sqlite')</span></tt> boş bir veritabanının mı
+<li><p><code class="docutils literal notranslate"><span class="pre">sqlite3.connect('kitaplar.sqlite')</span></code> boş bir veritabanının mı
 oluşturulduğunu yoksa varolan <cite>kitaplar.sqlite</cite> adlı bir veritabanı dosyasına
-mı bağlandığınızı nasıl teyit edersiniz?</p>
-</li>
-<li><p class="first">Sqlitebrowser programını ne şekilde kurdunuz? Eğer Ubuntu dışında bir
+mı bağlandığınızı nasıl teyit edersiniz?</p></li>
+<li><p>Sqlitebrowser programını ne şekilde kurdunuz? Eğer Ubuntu dışında bir
 GNU/Linux dağıtımına bu programı kurduysanız, programın kurulum aşamalarını
-anlatın.</p>
-</li>
-<li><p class="first"><tt class="docutils literal"><span class="pre">cmake</span></tt> komutu ile birlikte kullandığımız <tt class="docutils literal"><span class="pre">.</span></tt> (nokta) işaretinin anlamı
-nedir?</p>
-</li>
-<li><p class="first">Yazdığınız bir programı kullanan kişilerin, programınızı ilk kez
+anlatın.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cmake</span></code> komutu ile birlikte kullandığımız <code class="docutils literal notranslate"><span class="pre">.</span></code> (nokta) işaretinin anlamı
+nedir?</p></li>
+<li><p>Yazdığınız bir programı kullanan kişilerin, programınızı ilk kez
 çalıştırdıklarında karşılarında görmeleri gereken verileri veritabanına
 yerleştirmek için nasıl bir yöntem takip edebilirsiniz? Kullanıcılarınız
-programınızı ikinci kez çalıştırdığında bu verileri görmemeli.</p>
-</li>
-<li><p class="first">Bir önceki soruda uyguladığınız yöntemin herhangi bir kısıtlaması var mı? Bu
-yöntem hangi durumlarda işe yaramaz?</p>
-</li>
-<li><p class="first">Bir veritabanındaki bütün tabloların adını nasıl listelersiniz?</p>
-</li>
+programınızı ikinci kez çalıştırdığında bu verileri görmemeli.</p></li>
+<li><p>Bir önceki soruda uyguladığınız yöntemin herhangi bir kısıtlaması var mı? Bu
+yöntem hangi durumlarda işe yaramaz?</p></li>
+<li><p>Bir veritabanındaki bütün tabloların adını nasıl listelersiniz?</p></li>
 </ol>
 </div>
 </div>
@@ -1580,18 +1560,19 @@ yöntem hangi durumlarda işe yaramaz?</p>
 
 <div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
 <div class='extrarelbar'> 
-    <div class="related">
-      <h3>Navigation</h3>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="os.html" title="os Modülü"
-             >next</a></li>
+             >sonraki</a></li>
         <li class="right" >
           <a href="random.html" title="random Modülü"
-             >previous</a> |</li>
+             >önceki</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
 
-          <li><a href="index.html" >Önemli Standart Kütüphane Modülleri</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" >Önemli Standart Kütüphane Modülleri</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Sqlite ile Veritabanı Programlama</a></li> 
       </ul>
     </div> </div>
 
@@ -1626,29 +1607,31 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 
 
+            <div class="clearer"></div>
           </div>
       </div>
       <div class="clearer"></div>
     </div> 
-    <div class="related">
-      <h3>Navigation</h3>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="os.html" title="os Modülü"
-             >next</a></li>
+             >sonraki</a></li>
         <li class="right" >
           <a href="random.html" title="random Modülü"
-             >previous</a> |</li>
+             >önceki</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
 
-          <li><a href="index.html" >Önemli Standart Kütüphane Modülleri</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" >Önemli Standart Kütüphane Modülleri</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Sqlite ile Veritabanı Programlama</a></li> 
       </ul>
     </div> 
 
 <div class="footer">
 &copy; Copyright 2007-2021, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Last updated on 30.01.2021.
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+Son güncelleme: 07.03.2021.
+<a href="http://sphinx-doc.org/">Sphinx</a> 3.2.1 kullanılarak oluşturuldu.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img

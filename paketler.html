@@ -1,42 +1,31 @@
 
  <!DOCTYPE html>
- <html lang="">
+ <html lang="tr">
 
 
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="tr">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta content="Bu bölümde paketler konusunu inceleyeceğiz." name="description" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta content="Bu bölümde paketler konusunu inceleyeceğiz." name="description" />
 <meta content="python, paket, import, __init__.py, init, Android, iOS, kivy, django, üçüncü şahıs paketleri, standart paketler, bağıl içe aktarma, relative import" name="keywords" />
 
-    <title>Paketler &mdash; Python 3 için Türkçe Kılavuz</title>
-    
+    <title>Paketler &#8212; Python 3 için Türkçe Kılavuz</title>
     <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '3',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/translations.js"></script>
-    <link rel="top" title="Python 3 için Türkçe Kılavuz" href="index.html" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="search" title="Ara" href="search.html" />
     <link rel="next" title="Önemli Standart Kütüphane Modülleri" href="standart_moduller/index.html" />
     <link rel="prev" title="Nesne Tabanlı Programlama (Devamı)" href="nesne_tabanli_programlama7.html" />
 <!--[if lte IE 6]>
 <link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
 <![endif]-->
 
-  </head>
-  <body>
+  </head><body>
 <div class='header'><a href='https://yazbel.com'><img src="_static/logo.png"></a></div>
 
 <ul class='navbar'>
@@ -45,46 +34,47 @@
 </ul>
 
 
-    <div class="related">
-      <h3>Navigation</h3>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="standart_moduller/index.html" title="Önemli Standart Kütüphane Modülleri"
-             accesskey="N">next</a></li>
+             accesskey="N">sonraki</a></li>
         <li class="right" >
           <a href="nesne_tabanli_programlama7.html" title="Nesne Tabanlı Programlama (Devamı)"
-             accesskey="P">previous</a> |</li>
+             accesskey="P">önceki</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
- 
+
+        <li class="nav-item nav-item-this"><a href="">Paketler</a></li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
-          <div class="body">
+          <div class="body" role="main">
             
 
   <div class="section" id="paketler">
-<h1>Paketler<a class="headerlink" href="#paketler" title="Permalink to this headline">¶</a></h1>
+<h1>Paketler<a class="headerlink" href="#paketler" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">Bu makale yoğun bir şekilde geliştirilmekte, içeriği sık sık
+<p class="admonition-title">Uyarı</p>
+<p>Bu makale yoğun bir şekilde geliştirilmekte, içeriği sık sık
 güncellenmektedir.</p>
 </div>
-<p>Birkaç bölüm önce, Python&#8217;ın belkemiği olduğunu söylediğimiz modüller konusundan
+<p>Birkaç bölüm önce, Python’ın belkemiği olduğunu söylediğimiz modüller konusundan
 söz etmiştik. Bu bölümde de yine modüllerle bağlantılı bir konuyu ele alacağız.
-Konumuz Python&#8217;daki paketler.</p>
+Konumuz Python’daki paketler.</p>
 <div class="section" id="paket-nedir">
-<h2>Paket Nedir?<a class="headerlink" href="#paket-nedir" title="Permalink to this headline">¶</a></h2>
-<p>Öncelikle paketin ne demek olduğunu anlamaya çalışarak başlayalım. Python&#8217;da bir
+<h2>Paket Nedir?<a class="headerlink" href="#paket-nedir" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Öncelikle paketin ne demek olduğunu anlamaya çalışarak başlayalım. Python’da bir
 dizin yapısı içinde bir araya getirilen, birbiriyle bağlantılı modüllere paket
 adı verilir. Dolayısıyla paketler modüllerden oluşur.</p>
 <p>Python programlama dilinde paketler hem geniş bir yer tutar, hem de büyük bir
-önem taşır. Hatta Python&#8217;ı bilmenin paketleri bilmek demek olduğunu söylersek
-çok da abartmış olmayız. Mesela Python&#8217;la web programları yazmak için kullanılan
+önem taşır. Hatta Python’ı bilmenin paketleri bilmek demek olduğunu söylersek
+çok da abartmış olmayız. Mesela Python’la web programları yazmak için kullanılan
 en gözde araçlardan biri olan <cite>django</cite> web çatısı, aslında birtakım üçüncü şahıs
 modüllerinin bir paket yapısı içinde bir araya getirilmiş halinden başka bir şey
-değildir. Aynı şekilde Python&#8217;la Android ve iOS üzerinde çalışabilecek
+değildir. Aynı şekilde Python’la Android ve iOS üzerinde çalışabilecek
 programlar yazmak isterseniz <cite>kivy</cite> adlı bir başka Python paketini öğrenmeniz
 gerekir. Python programlama dilini kullanarak grafik arayüzlü yazılımlar
 geliştirmemizi sağlayan <cite>tkinter</cite> ise standart kütüphanede bulunan pek çok
@@ -93,7 +83,7 @@ paketten yalnızca bir tanesidir.</p>
 bulabilirsiniz. Mesela standart kütüphanede bulunan <cite>sqlite3</cite>, Sqlite
 veritabanları üzerinde çalışmamıza imkan tanıyan çeşitli modülleri içinde
 barındıran bir Python paketidir. Yine standart kütüphanede bulunan <cite>urllib</cite>
-paketi yardımıyla internet adresleri (URL&#8217;ler) üzerinde çeşitli işlemler
+paketi yardımıyla internet adresleri (URL’ler) üzerinde çeşitli işlemler
 yapabilirsiniz. Python kurulum dizini içindeki <cite>Lib</cite> klasörü altında pek çok
 standart Python paketi görebilirsiniz.</p>
 <p>Peki modüllerle paketleri birbirinden ayıran şey nedir?</p>
@@ -105,56 +95,56 @@ dosyadan oluştuğu ve bir dizin yapısı içinde yer almadığı için bir mod�
 aktarma işlemi gerçekleştirmek son derece kolaydır. Paketlerden içe aktarma
 yaparken uymamız gereken kurallar ise haliyle biraz daha karmaşıktır.</p>
 <p>İkincisi, bütün paketler aynı zamanda birer modüldür, ancak bütün modüller birer
-paket değildir. Örneğin <cite>venv</cite> paketinden bahsederken &#8216;<cite>venv</cite> modülü&#8217; demek
-yanlış olmaz. Ancak <cite>os</cite> modülünden bahsederken &#8216;<cite>os</cite> paketi&#8217; demek biraz abes
+paket değildir. Örneğin <cite>venv</cite> paketinden bahsederken ‘<cite>venv</cite> modülü’ demek
+yanlış olmaz. Ancak <cite>os</cite> modülünden bahsederken ‘<cite>os</cite> paketi’ demek biraz abes
 kaçacaktır.</p>
 <p>Üçüncüsü, paketlerin <cite>__path__</cite> adlı özel bir niteliği bulunur. Modüllerde ise
 bu nitelik bulunmaz. Örneğin:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">__path__</span>
 
 <span class="go">AttributeError: &#39;module&#39; object has no attribute &#39;__path__&#39;</span>
 </pre></div>
 </div>
-<p><cite>os</cite> bir modül olduğu için, <tt class="docutils literal"><span class="pre">__path__</span></tt> niteliğine sahip değildir. Bir de
+<p><cite>os</cite> bir modül olduğu için, <code class="docutils literal notranslate"><span class="pre">__path__</span></code> niteliğine sahip değildir. Bir de
 <cite>json</cite> paketine bakalım:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">json</span><span class="o">.</span><span class="n">__path__</span>
 </pre></div>
 </div>
-<p><cite>json</cite> ise bir paket olduğu için, <tt class="docutils literal"><span class="pre">__path__</span></tt> niteliğine sahiptir. Birazdan
+<p><cite>json</cite> ise bir paket olduğu için, <code class="docutils literal notranslate"><span class="pre">__path__</span></code> niteliğine sahiptir. Birazdan
 bu niteliğin ne işe yaradığını anlatacağız. Ama ondan önce öğrenmeniz gereken
 başka şeyler var.</p>
 </div>
 <div class="section" id="paket-turleri">
-<h2>Paket Türleri<a class="headerlink" href="#paket-turleri" title="Permalink to this headline">¶</a></h2>
+<h2>Paket Türleri<a class="headerlink" href="#paket-turleri" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Tıpkı fonksiyonlarda ve modüllerde olduğu gibi, paketlerin de türleri vardır.
 Paketleri, kaynaklarına göre ikiye ayırabiliriz:</p>
 <blockquote>
 <div><ul class="simple">
-<li>Standart Paketler</li>
-<li>Üçüncü Şahıs Paketleri</li>
+<li><p>Standart Paketler</p></li>
+<li><p>Üçüncü Şahıs Paketleri</p></li>
 </ul>
 </div></blockquote>
 <p>Bu türlerin ne anlama geldiğini isimlerine bakarak rahatlıkla anlayabiliyoruz.
 Ama gelin isterseniz bunları kısaca gözden geçirelim.</p>
 <p>Öncelikle standart paketlerden başlayalım.</p>
 <div class="section" id="standart-paketler">
-<h3>Standart Paketler<a class="headerlink" href="#standart-paketler" title="Permalink to this headline">¶</a></h3>
-<p>Standart paketler, Python&#8217;ın standart kütüphanesinde bulunan paketlerdir. Tıpkı
+<h3>Standart Paketler<a class="headerlink" href="#standart-paketler" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p>Standart paketler, Python’ın standart kütüphanesinde bulunan paketlerdir. Tıpkı
 gömülü fonksiyonlar ve standart modüller gibi, standart paketler de dilin bir
 parçası olduklarından, bunlara erişebilmek için herhangi bir ek yazılım indirip
 kurmamıza gerek kalmaz; bu paketler her an emrimize amadedir. Standart paketlere
 Python kurulum dizini içindeki <cite>Lib</cite> klasöründen erişebilirsiniz. Bir standart
 paketin tam olarak hangi konumda bulunduğunu öğrenmek için ise ilgili paketin
-<tt class="docutils literal"><span class="pre">__path__</span></tt> niteliğini sorgulayabilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">urllib</span>
+<code class="docutils literal notranslate"><span class="pre">__path__</span></code> niteliğini sorgulayabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">urllib</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">urllib</span><span class="o">.</span><span class="n">__path__</span>
 </pre></div>
 </div>
-<p>Eğer sorguladığınız şeyin bir <tt class="docutils literal"><span class="pre">__path__</span></tt> niteliği yoksa, paket sandığınız o
+<p>Eğer sorguladığınız şeyin bir <code class="docutils literal notranslate"><span class="pre">__path__</span></code> niteliği yoksa, paket sandığınız o
 şey, aslında bir paket değildir. Örneğin:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">subprocess</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">subprocess</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">subprocess</span><span class="o">.</span><span class="n">__path__</span>
 
 <span class="gt">Traceback (most recent call last):</span>
@@ -162,15 +152,15 @@ paketin tam olarak hangi konumda bulunduğunu öğrenmek için ise ilgili paketi
 <span class="gr">AttributeError</span>: <span class="n">&#39;module&#39; object has no attribute &#39;__path__&#39;</span>
 </pre></div>
 </div>
-<p>Çünkü, bildiğiniz gibi, paketlerin aksine, modüllerin <tt class="docutils literal"><span class="pre">__path__</span></tt> adlı bir
+<p>Çünkü, bildiğiniz gibi, paketlerin aksine, modüllerin <code class="docutils literal notranslate"><span class="pre">__path__</span></code> adlı bir
 niteliği bulunmaz. <cite>subprocess</cite> de bir paket değil, modül olduğu için
 <cite>__path__</cite> sorgusu hata verecektir.</p>
-<p>Bir paketin <tt class="docutils literal"><span class="pre">__path__</span></tt> niteliğini sorguladığınızda çıktıda hangi dizini
+<p>Bir paketin <code class="docutils literal notranslate"><span class="pre">__path__</span></code> niteliğini sorguladığınızda çıktıda hangi dizini
 görüyorsanız, o paketin bilgisayardaki konumu odur. Mesela yukarıda adını
-andığımız <cite>urllib</cite> paketinin <tt class="docutils literal"><span class="pre">__path__</span></tt> niteliğini sorgulayıp, karşımıza çıkan
+andığımız <cite>urllib</cite> paketinin <code class="docutils literal notranslate"><span class="pre">__path__</span></code> niteliğini sorgulayıp, karşımıza çıkan
 klasöre gidelim. Paket dizininin içini açtığımızda karşımıza şu dosyalar
 çıkacak:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">error</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">error</span><span class="o">.</span><span class="n">py</span>
 <span class="n">parse</span><span class="o">.</span><span class="n">py</span>
 <span class="n">request</span><span class="o">.</span><span class="n">py</span>
 <span class="n">response</span><span class="o">.</span><span class="n">py</span>
@@ -184,17 +174,17 @@ dizini içindeki <cite>Lib</cite> klasörü altında yer alan paketleri inceleye
 paketin hangi modüllerden oluştuğunu kendiniz de görebilirsiniz.</p>
 </div>
 <div class="section" id="ucuncu-sahis-paketleri">
-<h3>Üçüncü Şahıs Paketleri<a class="headerlink" href="#ucuncu-sahis-paketleri" title="Permalink to this headline">¶</a></h3>
-<p>Python&#8217;da standart paketlerin dışında bir de üçüncü şahıs paketleri vardır.
+<h3>Üçüncü Şahıs Paketleri<a class="headerlink" href="#ucuncu-sahis-paketleri" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p>Python’da standart paketlerin dışında bir de üçüncü şahıs paketleri vardır.
 Bunlar Python geliştiricileri haricindeki kişilerce yazılıp kullanımımıza
 sunulmuş araçlardır. Bu paketler, standart paketlerin aksine dilin bir parçası
 olmadığından, bu paketleri kullanabilmek için öncelikle bunları bilgisayarımıza
 kurmamız gerekir. Mesela <cite>django</cite>, <cite>kivy</cite> ve ilk derslerimizden birinde
 bahsettiğimiz <cite>cx_freeze</cite> birer üçüncü şahıs paketidir.</p>
 <p>Peki bu üçüncü şahıs paketlerini nereden bulabiliriz?</p>
-<p>Hatırlarsanız Modüller konusunu işlerken &#8216;Üçüncü Şahıs Modüllerinden&#8217; de söz
+<p>Hatırlarsanız Modüller konusunu işlerken ‘Üçüncü Şahıs Modüllerinden’ de söz
 etmiştik. Üçüncü şahıs modüllerini bulabileceğimiz başlıca kaynağın
-<a class="reference external" href="https://pypi.org">https://pypi.org</a> adresi olduğunu ve buradan 60.000&#8217;in üzerinde
+<a class="reference external" href="https://pypi.org">https://pypi.org</a> adresi olduğunu ve buradan 60.000’in üzerinde
 üçüncü şahıs Python modülüne ulaşabileceğimizi de ifade etmiştik. İşte orada
 bahsettiğimiz üçüncü şahıs modülleri, aslında birer pakettir. Zira üçüncü şahıs
 modülleri çoğunlukla birer paket biçiminde sunulur. Dolayısıyla üçüncü şahıs
@@ -206,23 +196,23 @@ gereksinimleri yerine getirmeniz gerekiyor olabilir. Bu tür bilgilere de ancak
 ilgili paketi geliştiren kişi veya ekibin websitesinden ulaşabilirsiniz.</p>
 <p>Bir üçüncü şahıs paketinin <a class="reference external" href="https://pypi.org">https://pypi.org</a> adresindeki adını
 öğrendikten sonra, bu paketi şu komutla kurabilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">paket_adı</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">paket_adı</span>
 </pre></div>
 </div>
 <p>Mesela <cite>restructuredText</cite> biçimli metin dosyalarından şık ve kullanışlı
 belgeler üretmemizi sağlayan <cite>sphinx</cite> paketi PyPI sitesinde bulunuyor.
 Dolayısıyla bu paketi kurmak için şu komutu verebiliriz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">sphinx</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">sphinx</span>
 </pre></div>
 </div>
 <p>Elbette, eğer bir GNU/Linux dağıtımı kullanıyorsanız, bu komutu root haklarıyla
 çalıştırmanız gerektiğini söylememe herhalde gerek yok:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">pip3</span> <span class="n">install</span> <span class="n">sphinx</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">pip3</span> <span class="n">install</span> <span class="n">sphinx</span>
 </pre></div>
 </div>
 <p><cite>pip3</cite> adlı yazılım, <cite>sphinx</cite> paketinin bütün dosyalarını PyPI sitesinden çekip
 otomatik olarak bilgisayarımıza kuracaktır.</p>
-<p>Bir üçüncü şahıs paketini <tt class="docutils literal"><span class="pre">pip3</span></tt> komutuyla kurmak yerine elle kurmayı da
+<p>Bir üçüncü şahıs paketini <code class="docutils literal notranslate"><span class="pre">pip3</span></code> komutuyla kurmak yerine elle kurmayı da
 tercih edebilirsiniz. Örnek olarak bu defa <cite>django</cite> paketini alalım. Bu paketin
 en son sürümünü <a class="reference external" href="https://github.com/django/django/archive/master.tar.gz">https://github.com/django/django/archive/master.tar.gz</a>
 adresinden indirebilirsiniz. Ayrıca arzu ederseniz <a class="reference external" href="https://www.djangoproject.com">https://www.djangoproject.com</a>
@@ -231,79 +221,79 @@ adresine uğrayarak bu modülün resmi websitesine de gözatabilirsiniz.</p>
 çok dizin ve bu dizinlerin içinde de pek çok Python dosyası çıkacak. Django,
 geniş kapsamlı üçüncü şahıs paketlerine güzel bir örnektir.</p>
 <p>Django paketini açıp <cite>django-master</cite> adlı dizinin içine girdiğinizde, orada
-<cite>setup.py</cite> adlı bir dosya göreceksiniz. İşte <tt class="docutils literal"><span class="pre">pip3</span></tt> komutu yerine, bu dosyayı
+<cite>setup.py</cite> adlı bir dosya göreceksiniz. İşte <code class="docutils literal notranslate"><span class="pre">pip3</span></code> komutu yerine, bu dosyayı
 kullanarak da bu paketi bilgisayarımıza kurabiliriz.</p>
 <p>Dikkatlice bakın:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
 </pre></div>
 </div>
 <p>Bu komutta iki önemli unsur var. Birincisi, komutu çalıştırdığımız Python
 sürümü. Unutmayın, bir Python paketini hangi Python sürümü ile kurarsanız, o
 paketi o sürüm ile kullanabilirsiniz. Ben yukarıdaki komutta, sizin Python
-sürümünüzü başlatan komutun <tt class="docutils literal"><span class="pre">python3</span></tt> olduğunu varsaydım. Eğer siz Python&#8217;ı
+sürümünüzü başlatan komutun <code class="docutils literal notranslate"><span class="pre">python3</span></code> olduğunu varsaydım. Eğer siz Python’ı
 başlatmak için veya başka Python programlarını çalıştırmak için farklı bir komut
 kullanıyorsanız, <cite>setup.py</cite> dosyasını da o komutla çalıştıracaksınız. Neticede
 <cite>setup.py</cite> de sıradan bir Python programıdır. Bu programı <cite>install</cite> parametresi
 ile birlikte çalıştırarak Django paketini sisteminize kurmuş oluyorsunuz.
 Kurulum tamamlandıktan sonra, kurulumun başarılı olup olmadığını test etmek için
 Python komut satırında şu komutu verin:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">django</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">django</span>
 </pre></div>
 </div>
 <p>Eğer herhangi bir çıktı verilmeden alt satıra geçildiyse, bir üçüncü şahıs
-paketi olan <cite>django</cite>&#8216;yu bilgisayarınıza başarıyla kurmuşsunuz demektir. Bu
+paketi olan <cite>django</cite>’yu bilgisayarınıza başarıyla kurmuşsunuz demektir. Bu
 üçüncü şahıs modülünü nasıl kullanacağınızı öğrenmek için internet üzerindeki
 sayısız makaleden ve kitaptan yararlanabilirsiniz.</p>
 </div>
 </div>
 <div class="section" id="paketlerin-ice-aktarilmasi">
-<h2>Paketlerin İçe Aktarılması<a class="headerlink" href="#paketlerin-ice-aktarilmasi" title="Permalink to this headline">¶</a></h2>
+<h2>Paketlerin İçe Aktarılması<a class="headerlink" href="#paketlerin-ice-aktarilmasi" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Modüllerle paketler arasındaki önemli bir fark, paketlerin modüllere kıyasla
 daha karmaşık bir yapıda olmasıdır. Yalnızca tek bir dosyadan oluşan modüllerin
 bu basit yapısından ötürü, bir modülden nitelik veya metot içe aktarmak çok
-kolaydır. Mesela bir modül olan <cite>os</cite>&#8216;u şu şekilde içe aktarabiliriz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
+kolaydır. Mesela bir modül olan <cite>os</cite>’u şu şekilde içe aktarabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
 </pre></div>
 </div>
 <p>Eğer <cite>os</cite> modülünden <cite>name</cite> niteliğini almak istersek şu komutu kullanabiliriz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">os</span> <span class="k">import</span> <span class="n">name</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">name</span>
 </pre></div>
 </div>
 <p><cite>os</cite> modülü içindeki bütün nitelik ve metotları içe aktarmak istediğimizde
 yıldızlı içe aktarma yönteminden yararlanabiliriz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">os</span> <span class="k">import</span> <span class="o">*</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="o">*</span>
 </pre></div>
 </div>
 <p>Veya bu modül içindeki bir niteliği veya metodu başka bir isim altında da içe
 aktarabiliriz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">os</span> <span class="k">import</span> <span class="n">execv</span> <span class="k">as</span> <span class="n">exe</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">execv</span> <span class="k">as</span> <span class="n">exe</span>
 </pre></div>
 </div>
-<p>Gelelim paketlere...</p>
+<p>Gelelim paketlere…</p>
 <div class="section" id="import-paket">
-<h3>import paket<a class="headerlink" href="#import-paket" title="Permalink to this headline">¶</a></h3>
+<h3>import paket<a class="headerlink" href="#import-paket" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
 <p>Mesela <cite>urllib</cite> paketini ele alalım. Tıpkı <cite>os</cite> modülünde yaptığımız gibi,
 <cite>urllib</cite> paketini de şu şekilde içe aktarabiliriz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">urllib</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">urllib</span>
 </pre></div>
 </div>
 <p>Ancak <cite>os</cite> modülünün aksine, <cite>urllib</cite> paketini içe aktardığımızda mevcut isim
 alanına herhangi bir nitelik veya metot otomatik olarak aktarılmaz. Örneğin <cite>os</cite>
 modülünü içe aktardığımızda bu modülün içeriğinin, <cite>os</cite> öneki altında mevcut
 isim alanına döküldüğünü biliyoruz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">os</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">os</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi, modül içeriği kullanılabilir durumda. Listedeki nitelik ve
 metotlara <cite>os</cite> öneki ile erişebiliriz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">name</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">name</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
 </pre></div>
 </div>
-<p>gibi...</p>
-<p>Ancak <tt class="docutils literal"><span class="pre">import</span> <span class="pre">os</span></tt> komutunun aksine, <tt class="docutils literal"><span class="pre">import</span> <span class="pre">urllib</span></tt> komutu, paket içeriğini
+<p>gibi…</p>
+<p>Ancak <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">os</span></code> komutunun aksine, <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">urllib</span></code> komutu, paket içeriğini
 otomatik olarak mevcut isim alanına aktarmaz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">urllib</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">urllib</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">urllib</span><span class="p">)</span>
 
 <span class="go">[&#39;__builtins__&#39;, &#39;__cached__&#39;, &#39;__doc__&#39;, &#39;__file__&#39;,</span>
@@ -315,66 +305,66 @@ otomatik olarak mevcut isim alanına aktarmaz:</p>
 mesela paket içeriğinde olduğunu bildiğimiz <cite>error.py</cite>, <cite>parse.py</cite>,
 <cite>request.py</cite>, <cite>response.py</cite> ve <cite>robotparser.py</cite> gibi modülleri göremiyoruz. Eğer
 paket içinde bulunan belirli bir modülü içe aktarmak istiyorsak bunu açık açık
-belirtmeliyiz. Nasıl mı? Görelim...</p>
+belirtmeliyiz. Nasıl mı? Görelim…</p>
 </div>
 <div class="section" id="import-paket-modul">
-<h3>import paket.modül<a class="headerlink" href="#import-paket-modul" title="Permalink to this headline">¶</a></h3>
+<h3>import paket.modül<a class="headerlink" href="#import-paket-modul" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
 <p>Mesela <cite>urllib</cite> paketinden <cite>request</cite> modülünü içe aktarmak
 istersek şu komutu yazacağız:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">urllib.request</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">urllib.request</span>
 </pre></div>
 </div>
 <p>Bu modülü yukarıdaki şekilde içe aktardığımızda, modül içindeki nitelik ve
 metotlara <cite>urllib.request</cite> önekiyle erişebiliriz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s1">&#39;https://yazbel.com/&#39;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s1">&#39;https://yazbel.com/&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="from-paket-import-modul">
-<h3>from paket import modül<a class="headerlink" href="#from-paket-import-modul" title="Permalink to this headline">¶</a></h3>
-<p>Yukarıda olduğu gibi, <cite>urllib</cite> paketi içindeki <cite>request</cite> modülünü <tt class="docutils literal"><span class="pre">import</span>
-<span class="pre">paket.modül</span></tt> gibi bir komutla içe aktardığımızda ilgili modülün bütün nitelik
+<h3>from paket import modül<a class="headerlink" href="#from-paket-import-modul" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p>Yukarıda olduğu gibi, <cite>urllib</cite> paketi içindeki <cite>request</cite> modülünü <code class="docutils literal notranslate"><span class="pre">import</span>
+<span class="pre">paket.modül</span></code> gibi bir komutla içe aktardığımızda ilgili modülün bütün nitelik
 ve metotları <cite>urllib.request</cite> ismi altında içe aktarıldığından, <cite>urllib</cite> paketi
 içindeki <cite>request</cite> modülünün nitelik ve metotlarına ulaşabilmek için her
 defasında <cite>urllib.request</cite> önekini kullanmamız gerekir. Eğer her defasında uzun
 uzun <cite>urllib.request</cite> yazmak istemiyorsanız paket içindeki modülü şu şekilde içe
 aktarabilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">urllib</span> <span class="k">import</span> <span class="n">request</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">urllib</span> <span class="kn">import</span> <span class="n">request</span>
 </pre></div>
 </div>
 <p>Böylece <cite>request</cite> modülünün nitelik ve metotlarına yalnızca <cite>request</cite> önekiyle
 erişebilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s1">&#39;https://yazbel.com/&#39;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s1">&#39;https://yazbel.com/&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="from-paket-modul-import-nitelik-veya-metot">
-<h3>from paket.modül import nitelik_veya_metot<a class="headerlink" href="#from-paket-modul-import-nitelik-veya-metot" title="Permalink to this headline">¶</a></h3>
+<h3>from paket.modül import nitelik_veya_metot<a class="headerlink" href="#from-paket-modul-import-nitelik-veya-metot" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
 <p>Peki bir paket içinde yer alan herhangi bir modül içindeki nitelik ve metotlara
 öneksiz olarak erişmek istersek ne yapacağız? Python bize bu isteğimizi yerine
 getirmemizi sağlayacak bir yol da sunar.</p>
 <p>Dikkatlice bakın:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">urllib.request</span> <span class="k">import</span> <span class="n">urlopen</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span>
 </pre></div>
 </div>
 <p>Bu şekilde <cite>urllib</cite> paketi içindeki <cite>request</cite> modülünden <cite>urlopen</cite> adlı metodu
 doğrudan içe aktarmış olduk. Dolayısıyla bu metodu dümdüz kullanabiliriz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">urlopen</span><span class="p">(</span><span class="s1">&#39;https://yazbel.com/&#39;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">urlopen</span><span class="p">(</span><span class="s1">&#39;https://yazbel.com/&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Ancak, modüller konusunu işlerken öneksiz aktarmaya ilişkin söylediklerimizin
 paketler için de geçerli olduğunu aklımızdan çıkarmıyoruz.</p>
 </div>
 <div class="section" id="from-paket-modul-import">
-<h3>from paket.modül import *<a class="headerlink" href="#from-paket-modul-import" title="Permalink to this headline">¶</a></h3>
+<h3>from paket.modül import *<a class="headerlink" href="#from-paket-modul-import" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
 <p>Eğer bir paket içindeki bir modülün bütün nitelik ve metotlarını mevcut isim
 alanına olduğu gibi aktarmak isterseniz şu içe aktarma yöntemini
 kullanabilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">paket.modül</span> <span class="k">import</span> <span class="o">*</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">paket.modül</span> <span class="kn">import</span> <span class="o">*</span>
 </pre></div>
 </div>
 <p>Bu bilgiyi <cite>urllib</cite> modülüne uygulayalım:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">urllib.request</span> <span class="k">import</span> <span class="o">*</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="o">*</span>
 </pre></div>
 </div>
 <p>Bu şekilde <cite>urllib</cite> paketi içindeki <cite>request</cite> modülünün bütün nitelik ve
@@ -384,7 +374,7 @@ bildiğinizden eminim.</p>
 </div>
 </div>
 <div class="section" id="kendi-olusturdugumuz-paketler">
-<h2>Kendi Oluşturduğumuz Paketler<a class="headerlink" href="#kendi-olusturdugumuz-paketler" title="Permalink to this headline">¶</a></h2>
+<h2>Kendi Oluşturduğumuz Paketler<a class="headerlink" href="#kendi-olusturdugumuz-paketler" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Buraya kadar hep başkalarının yazdığı, hazır paketlerden söz ettik. Bu sayede
 bir Python paketinin yapı olarak neye benzediğini ve nasıl kullanılacağını
 kabataslak da olsa anlamış olduk. Elbette biz sadece başkalarının yazdığı
@@ -395,10 +385,10 @@ getirdiğimiz paketlerdir. Bu paketleri iyice geliştirdikten ve başkaları iç
 yararlı olabilecek hale getirdikten sonra, istersek <a class="reference external" href="https://pypi.org">https://pypi.org</a>
 adresindeki üçüncü şahıs paket deposuna yükleyebiliriz. Böylece kendi
 geliştirdiğimiz paketler de, üçüncü şahıs Python paketleri arasına girmiş
-olur...</p>
+olur…</p>
 <p>İşte bu bölümde, bu tür paketleri nasıl yazacağımızı ele alacağız.</p>
 <div class="section" id="paket-olusturmak">
-<h3>Paket Oluşturmak<a class="headerlink" href="#paket-olusturmak" title="Permalink to this headline">¶</a></h3>
+<h3>Paket Oluşturmak<a class="headerlink" href="#paket-olusturmak" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
 <p>Bir Python programı yazdığınızı düşünün. Programınızı ilk yazmaya başlarken
 doğal olarak programınız tek bir dosyadan oluşacaktır. Ancak elbette programınız
 büyüdükçe, bütün kodları tek bir dosyaya sıkıştırmak yerine, farklı işlevleri
@@ -410,30 +400,30 @@ farklı modüllere taşımanız, programınızı çok daha rahat bir şekilde id
 etmenizi sağlayacaktır. Yani, yazdığınız programı birkaç modüle bölüp, bunları
 bir paket yapısı içinde sunmanız hem kendiniz açısından, hem de kodlarınızı
 okuyan başkaları açısından işleri epey kolaylaştıracaktır.</p>
-<p>Python&#8217;da bir paket oluşturmak son derece kolaydır. Program kodlarını içeren
+<p>Python’da bir paket oluşturmak son derece kolaydır. Program kodlarını içeren
 <cite>.py</cite> dosyasını bir klasör içine koyduğunuz anda, o klasörün adını taşıyan bir
 paket meydana getirmiş olursunuz.</p>
 <p>Mesela bir sipariş takip programı yazdığımızı düşünelim. Ana klasörümüzün adını
 <cite>siparistakip</cite> koyalım. Bu klasör içinde de <cite>komut.py</cite>, <cite>veritabani.py</cite> ve
 <cite>siparis.py</cite> adlı modüller olsun. Yani şöyle bir dosya-dizin yapısı
 oluşturalım:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="o">+</span> <span class="n">siparistakip</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="o">+</span> <span class="n">siparistakip</span>
 <span class="o">|</span><span class="n">__</span> <span class="n">siparis</span><span class="o">.</span><span class="n">py</span>
 <span class="o">|</span><span class="n">__</span> <span class="n">komut</span><span class="o">.</span><span class="n">py</span>
 <span class="o">|</span><span class="n">__</span> <span class="n">veritabani</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 <p>İşte bu şekilde basit bir dosya-dizin yapısı oluşturduğumuzda, <cite>siparistakip</cite>
-adlı bir Python paketi meydana getirmiş oluyoruz<a class="footnote-reference" href="#id2" id="id1">[1]</a>.</p>
+adlı bir Python paketi meydana getirmiş oluyoruz<a class="footnote-reference superscript" href="#id2" id="id1">1</a>.</p>
 <p>Gelin isterseniz, <cite>siparistakip</cite> dizininin gerçekten bir paket olduğunu teyit
 edelim.</p>
 <p>Öncelikle paketimizi içe aktaralım. Bunun için <cite>siparistakip</cite> dizininin
 bulunduğu klasörde şu komutu verelim:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">siparistakip</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">siparistakip</span>
 </pre></div>
 </div>
 <p>Şimdi paket içeriğini kontrol edelim:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">siparistakip</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">siparistakip</span><span class="p">)</span>
 
 <span class="go">[&#39;__doc__&#39;, &#39;__loader__&#39;, &#39;__name__&#39;,</span>
 <span class="go"> &#39;__package__&#39;, &#39;__path__&#39;, &#39;__spec__&#39;]</span>
@@ -443,7 +433,7 @@ bulunduğu klasörde şu komutu verelim:</p>
 paketlerde bulunduğunu biliyorsunuz. Demek ki <cite>siparistakip</cite> gerçekten de bir
 Python paketiymiş. Bunun dışında, listede gördüğünüz <cite>__package__</cite> niteliğini
 kullanarak da bir modülün paket olup olmadığını kontrol edebilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">siparistakip</span><span class="o">.</span><span class="n">__package__</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">siparistakip</span><span class="o">.</span><span class="n">__package__</span>
 
 <span class="go">&#39;siparistakip&#39;</span>
 </pre></div>
@@ -452,7 +442,7 @@ kullanarak da bir modülün paket olup olmadığını kontrol edebilirsiniz:</p>
 verecektir. Yok eğer test ettiğimiz modül bir paket değil de alelade bir
 modülse, <cite>__package__</cite> niteliği boş bir karakter dizisi döndürecektir. Mesela
 <cite>os</cite> modülünün bir paket olmadığını biliyoruz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">__package__</span>
 
 <span class="go">&#39;&#39;</span>
@@ -461,7 +451,7 @@ modülse, <cite>__package__</cite> niteliği boş bir karakter dizisi döndürec
 <p>Gördüğünüz gibi, bu modülün <cite>__package__</cite> niteliği boş bir karakter dizisi.
 Ayrıca bu modül bir paket olmadığı için, <cite>__path__</cite> adlı bir nitelik de
 barındırmıyor:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">__path__</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">__path__</span>
 
 <span class="gt">Traceback (most recent call last):</span>
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
@@ -469,19 +459,19 @@ barındırmıyor:</p>
 </pre></div>
 </div>
 <p>Dolayısıyla bütün işaretler, gerçekten de <cite>siparistakip</cite> adlı bir paket
-oluşturduğumuzu gösteriyor...</p>
+oluşturduğumuzu gösteriyor…</p>
 </div>
 <div class="section" id="ice-aktarma-islemleri">
-<h3>İçe Aktarma İşlemleri<a class="headerlink" href="#ice-aktarma-islemleri" title="Permalink to this headline">¶</a></h3>
+<h3>İçe Aktarma İşlemleri<a class="headerlink" href="#ice-aktarma-islemleri" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
 <p>Standart paketleri anlatırken, bu paketlerin her konumdan içe aktarılabileceğini
 söylemiştik. Aynı şey üçüncü şahıs paketleri için de geçerlidir. Çünkü gerek
 Python geliştiricileri, gerekse üçüncü şahıs paketleri geliştirenler, bu
-paketleri bize sunarken bunları Python&#8217;ın <cite>sys.path</cite> çıktısına eklemişlerdir. O
+paketleri bize sunarken bunları Python’ın <cite>sys.path</cite> çıktısına eklemişlerdir. O
 yüzden standart ve üçüncü şahıs paketlerini içe aktarırken sorun yaşamayız.</p>
 <p>Ancak tabii ki kendi yazdığımız paketler <cite>sys.path</cite> listesine ekli olmadığı
 için, bunları içe aktarırken bazı noktalara dikkat etmeniz gerekir.</p>
 <p>Mesela masaüstünde şu yapıya sahip bir paket oluşturalım:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="o">+</span> <span class="n">paket</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="o">+</span> <span class="n">paket</span>
 <span class="o">|</span><span class="n">__</span> <span class="n">modul1</span><span class="o">.</span><span class="n">py</span>
 <span class="o">|</span><span class="n">__</span> <span class="n">modul2</span><span class="o">.</span><span class="n">py</span>
 <span class="o">|</span><span class="n">__</span> <span class="n">modul3</span><span class="o">.</span><span class="n">py</span>
@@ -492,48 +482,48 @@ için, bunları içe aktarırken bazı noktalara dikkat etmeniz gerekir.</p>
 </div>
 <p>Bu dizinde dosya içerikleri şöyle olsun:</p>
 <p><cite>modul1.py</cite>:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">isim1</span> <span class="o">=</span> <span class="s1">&#39;modul1&#39;</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">isim1</span> <span class="o">=</span> <span class="s1">&#39;modul1&#39;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">isim1</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><cite>modul2.py</cite>:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">isim2</span> <span class="o">=</span> <span class="s1">&#39;modul2&#39;</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">isim2</span> <span class="o">=</span> <span class="s1">&#39;modul2&#39;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">isim2</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><cite>modul3.py</cite>:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">isim3</span> <span class="o">=</span> <span class="s1">&#39;modul3&#39;</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">isim3</span> <span class="o">=</span> <span class="s1">&#39;modul3&#39;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">isim3</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><cite>altmodul1.py</cite>:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">altisim1</span> <span class="o">=</span> <span class="s1">&#39;altmodul1&#39;</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">altisim1</span> <span class="o">=</span> <span class="s1">&#39;altmodul1&#39;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">altisim1</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><cite>altmodul2.py</cite>:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">altisim2</span> <span class="o">=</span> <span class="s1">&#39;altmodul2&#39;</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">altisim2</span> <span class="o">=</span> <span class="s1">&#39;altmodul2&#39;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">altisim2</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Şimdi <cite>paket</cite> adlı dizinin bulunduğu klasörde bir etkileşimli kabuk oturumu
 açalım. Yalnız bu oturumu <cite>paket</cite> dizinin içinde değil, bir üst dizinde
 açacaksınız. Yani o anda bulunduğunuz dizinde <cite>dir</cite> veya <cite>ls</cite> komutu
-verdiğinizde <cite>paket</cite> adlı dizini görüyor olmanız lazım... Eğer <cite>dir</cite> veya <cite>ls</cite>
+verdiğinizde <cite>paket</cite> adlı dizini görüyor olmanız lazım… Eğer <cite>dir</cite> veya <cite>ls</cite>
 komutunun çıktısında <cite>altdizin</cite> adlı dizini görüyorsanız yanlış yerdesiniz
 demektir. Hemen bir üst dizine gidin.</p>
 <p>Bulunduğumuz konumda şu komutu verelim:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">paket</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">paket</span>
 </pre></div>
 </div>
 <p>Eğer hiçbir çıktı almadan bir alt satıra geçtiyseniz her şey yolunda demektir.
 Eğer bir hata mesajı görüyorsanız, etkileşimli kabuk oturumunu yanlış konumda
-açmışsınızdır. Oturumu doğru konumda açıp tekrar gelin...</p>
+açmışsınızdır. Oturumu doğru konumda açıp tekrar gelin…</p>
 <p>Standart paketlerde ve üçüncü şahıs paketlerinde gördüğümüz gibi, bir paketi
 yukarıdaki şekilde içe aktardığımızda, o pakete ait herhangi bir modül veya
-nitelik otomatik olarak içe aktarılmıyor. <tt class="docutils literal"><span class="pre">dir(paket)</span></tt> komutu verdiğinizde
+nitelik otomatik olarak içe aktarılmıyor. <code class="docutils literal notranslate"><span class="pre">dir(paket)</span></code> komutu verdiğinizde
 yalnızca standart niteliklerin içe aktarıldığını göreceksiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">paket</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">paket</span><span class="p">)</span>
 
 <span class="go">[&#39;__doc__&#39;, &#39;__loader__&#39;, &#39;__name__&#39;,</span>
 <span class="go"> &#39;__package__&#39;, &#39;__path__&#39;, &#39;__spec__&#39;]</span>
@@ -542,18 +532,18 @@ yalnızca standart niteliklerin içe aktarıldığını göreceksiniz:</p>
 <p>Gördüğünüz gibi, oluşturduğumuz paket, bir Python paketinin sahip olması gereken
 bütün niteliklere sahip.</p>
 <p>Şimdi bu paket içindeki <cite>modul1</cite> adlı modülü içe aktaralım:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">paket</span> <span class="k">import</span> <span class="n">modul1</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">paket</span> <span class="kn">import</span> <span class="n">modul1</span>
 
 <span class="go">modul1</span>
 </pre></div>
 </div>
 <p>Böylece <cite>modul1</cite> adlı modülün içindeki değişkenin değerini almış olduk. Paket
 içindeki öteki modülleri de aynı şekilde içe aktarabilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">paket</span> <span class="k">import</span> <span class="n">modul2</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">paket</span> <span class="kn">import</span> <span class="n">modul2</span>
 
 <span class="go">modul2</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">paket</span> <span class="k">import</span> <span class="n">modul3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">paket</span> <span class="kn">import</span> <span class="n">modul3</span>
 
 <span class="go">modul3</span>
 </pre></div>
@@ -561,18 +551,18 @@ içindeki öteki modülleri de aynı şekilde içe aktarabilirsiniz:</p>
 <p>Peki ya mesela <cite>modul1</cite> içindeki <cite>isim1</cite> değişkenini almak istersek ne
 yapacağız?</p>
 <p>Dikkatlice bakın:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">paket.modul1</span> <span class="k">import</span> <span class="n">isim1</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">paket.modul1</span> <span class="kn">import</span> <span class="n">isim1</span>
 
 <span class="go">modul1</span>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi, <cite>paket</cite> içindeki <cite>modul1</cite> modülünün <cite>isim1</cite> niteliğini
 başarıyla aldık. Örnek olması açısından ötekileri de alalım:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">paket.modul2</span> <span class="k">import</span> <span class="n">isim2</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">paket.modul2</span> <span class="kn">import</span> <span class="n">isim2</span>
 
 <span class="go">modul2</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">paket.modul3</span> <span class="k">import</span> <span class="n">isim3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">paket.modul3</span> <span class="kn">import</span> <span class="n">isim3</span>
 
 <span class="go">modul3</span>
 </pre></div>
@@ -582,63 +572,63 @@ bahsettiğimiz içe aktarma yöntemlerini tek tek yukarıdaki yapıya uygulayara
 buraya kadar anlattıklarımızı anlayıp anlamadığınızı test edebilirsiniz.
 Dilerseniz pratik yapmak açısından bir de <cite>altdizin</cite> içindeki modüllere
 uzanalım.</p>
-<p>Öncelikle <cite>altdizin</cite>&#8216;i içe aktaralım:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">paket.altdizin</span>
+<p>Öncelikle <cite>altdizin</cite>’i içe aktaralım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">paket.altdizin</span>
 </pre></div>
 </div>
 <p>Bu şekilde <cite>paket</cite> adlı paketin <cite>altdizin</cite> adlı alt dizinini içe aktarmış olduk.
 Artık bu alt dizin içindeki modüllere ve onların niteliklerine erişebiliriz.
 Mesela <cite>paket</cite> adlı paketin <cite>altdizin</cite> adlı alt dizini içindeki <cite>altmodul1</cite> adlı
 modülün <cite>altisim1</cite> niteliğini alalım:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">paket</span><span class="o">.</span><span class="n">altdizin</span><span class="o">.</span><span class="n">altmodul1</span><span class="o">.</span><span class="n">altisim1</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">paket</span><span class="o">.</span><span class="n">altdizin</span><span class="o">.</span><span class="n">altmodul1</span><span class="o">.</span><span class="n">altisim1</span>
 
 <span class="go">&#39;altmodul1&#39;</span>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi, <cite>altisim1</cite> niteliğine erişmek için uzun bir yol gitmemiz
 gerekiyor. Bu yolu kısaltmak isterseniz modülü şu şekilde içe aktarabilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">paket.altdizin</span> <span class="k">import</span> <span class="n">altmodul1</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">paket.altdizin</span> <span class="kn">import</span> <span class="n">altmodul1</span>
 </pre></div>
 </div>
-<p>Artık <cite>altmodul1</cite>&#8216;in niteliklerine yalnızca <cite>altmodul1</cite> önekiyle
+<p>Artık <cite>altmodul1</cite>’in niteliklerine yalnızca <cite>altmodul1</cite> önekiyle
 ulaşabilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">altmodul1</span><span class="o">.</span><span class="n">altisim1</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">altmodul1</span><span class="o">.</span><span class="n">altisim1</span>
 
 <span class="go">&#39;altmodul1&#39;</span>
 </pre></div>
 </div>
 <p>Hatta doğrudan <cite>altisim1</cite> niteliğinin kendisini de alabilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">paket.altdizin.altmodul1</span> <span class="k">import</span> <span class="n">altisim1</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">paket.altdizin.altmodul1</span> <span class="kn">import</span> <span class="n">altisim1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">altisim1</span>
 
 <span class="go">&#39;altmodul1&#39;</span>
 </pre></div>
 </div>
-<p>Gördüğünüz gibi, Python&#8217;ın içe aktarma mantığı gayet basit. Bulunduğunuz
+<p>Gördüğünüz gibi, Python’ın içe aktarma mantığı gayet basit. Bulunduğunuz
 konumdan itibaren, alt dizin ve modül adlarını sırasıyla kullanarak ve bunları
 birbiriyle nokta işareti ile birleştirerek her bir modüle ve modül içindeki
 niteliğe erişebiliyoruz.</p>
 </div>
 <div class="section" id="ice-aktarma-mantigi">
-<h3>İçe Aktarma Mantığı<a class="headerlink" href="#ice-aktarma-mantigi" title="Permalink to this headline">¶</a></h3>
-<p>Yukarıdaki örneklerden gördüğünüz gibi, Python&#8217;ın içe aktarma mekanizması gayet
+<h3>İçe Aktarma Mantığı<a class="headerlink" href="#ice-aktarma-mantigi" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p>Yukarıdaki örneklerden gördüğünüz gibi, Python’ın içe aktarma mekanizması gayet
 basit bir şekilde işliyor. Ancak yine de bu durum sizin rehavete kapılmanıza yol
 açmasın. Zira kimi zaman bu mekanizma hiç beklemediğiniz durumların ortaya
 çıkmasına da yol açabilir.</p>
-<p>Python&#8217;da paketler üzerinde çalışırken, Python programlama dilinin paketleri içe
+<p>Python’da paketler üzerinde çalışırken, Python programlama dilinin paketleri içe
 aktarma mekanizmasını çok iyi anlamış olmalısınız. Eğer bu mekanizmayı hakkıyla
-anlamadan paket yapmaya kalkışırsanız, Python&#8217;ın içe aktarma sırasında
+anlamadan paket yapmaya kalkışırsanız, Python’ın içe aktarma sırasında
 verebileceği sürpriz hatalar size saç baş yoldurabilir. İşte bu bölümde
-Python&#8217;ın paket içe aktarma mantığı üzerine eğilerek, engebeli yüzeyleri nasıl
+Python’ın paket içe aktarma mantığı üzerine eğilerek, engebeli yüzeyleri nasıl
 aşabileceğimizi anlamaya çalışacağız.</p>
 <div class="section" id="ice-aktarma-isleminin-konumu">
-<h4>İçe Aktarma İşleminin Konumu<a class="headerlink" href="#ice-aktarma-isleminin-konumu" title="Permalink to this headline">¶</a></h4>
-<p>Python&#8217;da herhangi bir içe aktarma işlemi yapacağımız zaman, unutmamamız gereken
-en önemli konu, Python&#8217;ın bütün içe aktarma işlemlerini tek bir konumdan
+<h4>İçe Aktarma İşleminin Konumu<a class="headerlink" href="#ice-aktarma-isleminin-konumu" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
+<p>Python’da herhangi bir içe aktarma işlemi yapacağımız zaman, unutmamamız gereken
+en önemli konu, Python’ın bütün içe aktarma işlemlerini tek bir konumdan
 gerçekleştirdiği gerçeğidir. Bunun ne demek olduğunu anlamak için çok basit bir
 örnek verelim.</p>
 <p>Yukarıda şöyle bir paket yapısı oluşturmuştuk:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="o">+</span> <span class="n">paket</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="o">+</span> <span class="n">paket</span>
 <span class="o">|</span><span class="n">__</span> <span class="n">modul1</span><span class="o">.</span><span class="n">py</span>
 <span class="o">|</span><span class="n">__</span> <span class="n">modul2</span><span class="o">.</span><span class="n">py</span>
 <span class="o">|</span><span class="n">__</span> <span class="n">modul3</span><span class="o">.</span><span class="n">py</span>
@@ -648,62 +638,62 @@ gerçekleştirdiği gerçeğidir. Bunun ne demek olduğunu anlamak için çok ba
 </pre></div>
 </div>
 <p>Burada <cite>altmodul2.py</cite> dosyasının içine şunu yazalım:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">altmodul1</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">altmodul1</span>
 </pre></div>
 </div>
 <p>Yani bu dosya ile aynı dizinde bulunan <cite>altmodul1.py</cite> dosyasını, <cite>altmodul2.py</cite>
 dosyası içinden bir modül olarak içe aktaralım.</p>
 <p>Şimdi, daha önce yaptığımız gibi, <cite>paket</cite> adlı dizinin bulunduğu klasörde bir
 etkileşimli kabuk oturumu açalım ve şu komutu yazalım:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">paket.altdizin</span> <span class="k">import</span> <span class="n">altmodul2</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">paket.altdizin</span> <span class="kn">import</span> <span class="n">altmodul2</span>
 </pre></div>
 </div>
 <p>Bu komut bize şöyle bir hata mesajı verecek:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="ne">ImportError</span><span class="p">:</span> <span class="n">No</span> <span class="n">module</span> <span class="n">named</span> <span class="s1">&#39;altmodul1&#39;</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="ne">ImportError</span><span class="p">:</span> <span class="n">No</span> <span class="n">module</span> <span class="n">named</span> <span class="s1">&#39;altmodul1&#39;</span>
 </pre></div>
 </div>
-<p>Bu hatanın sebebi, Python&#8217;ın <cite>altmodul1</cite> adlı modülü bulamıyor olmasıdır.
+<p>Bu hatanın sebebi, Python’ın <cite>altmodul1</cite> adlı modülü bulamıyor olmasıdır.
 Halbuki bu modül, <cite>altmodul2</cite> ile aynı dizinde bulunuyor. O halde acaba Python
 bu modülü neden bulamıyor?</p>
 <p>Bunu anlamak için şöyle bir deneme yapalım:</p>
 <p>Şimdi <cite>altmodul1.py</cite> ve <cite>altmodul2.py</cite> dosyalarının bulunduğu konumda bir
 etkileşimli kabuk oturumu başlatın ve şu komutu verin:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">altmodul2</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">altmodul2</span>
 </pre></div>
 </div>
-<p>Gördüğünüz gibi, bu defa Python herhangi bir hata mesajı vermeden, <tt class="docutils literal"><span class="pre">impport</span>
-<span class="pre">altmodul1</span></tt> komutuyla <cite>altmodul2.py</cite> dosyası içinden çağırdığımız <cite>altmodul1</cite>
+<p>Gördüğünüz gibi, bu defa Python herhangi bir hata mesajı vermeden, <code class="docutils literal notranslate"><span class="pre">impport</span>
+<span class="pre">altmodul1</span></code> komutuyla <cite>altmodul2.py</cite> dosyası içinden çağırdığımız <cite>altmodul1</cite>
 modülünün içeriğini alabildi. Peki ama neden?</p>
 <p>Başta da söylediğimiz gibi, Python bütün aktarma işlemlerini tek bir konumdan
 yapar. Yani eğer siz bir modülü üst dizinden içe aktardıysanız, o üst dizinin
 adı paket içindeki bütün aktarmalara önek olarak eklenecektir. Dolayısıyla
 <cite>paket</cite> adlı dizinin bulunduğu konumdan <cite>altdizin</cite> içindeki <cite>altmodul2.py</cite>
-dosyasını çağırdığınızda, <cite>altmodul2.py</cite> içindeki <tt class="docutils literal"><span class="pre">import</span> <span class="pre">altmodul1</span></tt> komutu,
+dosyasını çağırdığınızda, <cite>altmodul2.py</cite> içindeki <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">altmodul1</span></code> komutu,
 <cite>altmodul1.py</cite> dosyasını bulamayacaktır. Ama siz <cite>altmodul2.py</cite> dosyasını kendi
-dizini içinden çağırdığınızda, <tt class="docutils literal"><span class="pre">import</span> <span class="pre">altmodul1</span></tt> komutu, aynı dizin içindeki
+dizini içinden çağırdığınızda, <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">altmodul1</span></code> komutu, aynı dizin içindeki
 <cite>altmodul1.py</cite> dosyasını bulabilecektir.</p>
 <p>Bu okuduklarınız ilk bakışta size çok karmaşıkmış gibi gelebilir, ama aslında
 biraz dikkat ederseniz bu sistemin hiç de öyle karmaşık olmadığını, aksine son
 derece mantıklı olduğunu göreceksiniz.</p>
 <p>Durumu daha da netleştirmek için şöyle bir şey yapalım:</p>
-<p><cite>altmodul2.py</cite> dosyasını açıp, <tt class="docutils literal"><span class="pre">import</span> <span class="pre">altmodul1</span></tt> komutunu şöyle yazalım:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">paket.altdizin</span> <span class="k">import</span> <span class="n">altmodul1</span>
+<p><cite>altmodul2.py</cite> dosyasını açıp, <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">altmodul1</span></code> komutunu şöyle yazalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">paket.altdizin</span> <span class="kn">import</span> <span class="n">altmodul1</span>
 </pre></div>
 </div>
 <p>Bu değişikliği kaydettikten sonra tekrar <cite>paket</cite> dizininin bulunduğu konumda bir
 oturum açıp şu komutu verelim:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">paket.altdizin</span> <span class="k">import</span> <span class="n">altmodul2</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">paket.altdizin</span> <span class="kn">import</span> <span class="n">altmodul2</span>
 </pre></div>
 </div>
-<p>İşte bu kez komutumuz başarıyla çalıştı ve <cite>altmodul1</cite> modülünü bulabildi...</p>
+<p>İşte bu kez komutumuz başarıyla çalıştı ve <cite>altmodul1</cite> modülünü bulabildi…</p>
 <p>Şimdi de <cite>altmodul1.py</cite> ve <cite>altmodul2.py</cite> dosyalarının bulunduğu konuma tekrar
 dönüp burada yine bir etkileşimli kabuk oturumu başlatalım ve daha önce
 verdiğimiz şu komutu tekrar verelim:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">altmodul2</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">altmodul2</span>
 </pre></div>
 </div>
 <p>O da ne! Geçen sefer hatasız çalışan kod bu defa hata verdi:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="ne">ImportError</span><span class="p">:</span> <span class="n">No</span> <span class="n">module</span> <span class="n">named</span> <span class="s1">&#39;paket&#39;</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="ne">ImportError</span><span class="p">:</span> <span class="n">No</span> <span class="n">module</span> <span class="n">named</span> <span class="s1">&#39;paket&#39;</span>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi, modülü içe aktardığımız konumdan ötürü Python bu kez de
@@ -712,31 +702,31 @@ verdiğimiz şu komutu tekrar verelim:</p>
 konudan söz edelim.</p>
 </div>
 <div class="section" id="bagil-ice-aktarma">
-<h4>Bağıl İçe Aktarma<a class="headerlink" href="#bagil-ice-aktarma" title="Permalink to this headline">¶</a></h4>
+<h4>Bağıl İçe Aktarma<a class="headerlink" href="#bagil-ice-aktarma" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p>Dediğimiz gibi, bir içe aktarma işleminin başarılı olabilmesi, o içe aktarma
 işleminin yapıldığı konumun neresi olduğuna ve paket içinde bulunan öteki
 modüllerdeki içe aktarmaların nasıl yazıldığına bağlıdır. Yani mesela normalde
-aynı konumda bulunan iki modül birbirini yalnızca <tt class="docutils literal"><span class="pre">import</span> <span class="pre">modül_adı</span></tt> gibi bir
+aynı konumda bulunan iki modül birbirini yalnızca <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">modül_adı</span></code> gibi bir
 komutla içe aktarabilecekken, eğer bu modüller üst dizinin bulunduğu konumdan
 çağrılıyorsa, içe aktarma başarısız olabilir. Bunun bir örneğini yukarıda
 görmüştük. <cite>altdizin</cite> içinde bulunan <cite>altmodul1.py</cite> dosyasını, aynı dizindeki
-<cite>altmodul2.py</cite> dosyasından içe aktarmak için <cite>altmodul2.py</cite> dosyasına <tt class="docutils literal"><span class="pre">import</span>
-<span class="pre">altmodul1</span></tt> yazdığımızda, ana <cite>paket</cite> dizininin bulunduğu konumdan <cite>altdizin</cite>
-içindeki <cite>altmodul2.py</cite> dosyasını <tt class="docutils literal"><span class="pre">from</span> <span class="pre">paket.altdizin</span> <span class="pre">import</span> <span class="pre">altmodul2</span></tt> gibi
-bir komut ile içe aktarma girişimimiz başarısızlığa uğruyordu. Python&#8217;ın ilgili
-modülü bulabilmesini sağlamak için, <cite>altmodul2.py</cite> dosyasına <tt class="docutils literal"><span class="pre">import</span>
-<span class="pre">altmodul1</span></tt> yazmak yerine <tt class="docutils literal"><span class="pre">from</span> <span class="pre">paket.altdizin</span> <span class="pre">import</span> <span class="pre">altmodul1</span></tt> yazmıştık.
-İşte aynı şeyi &#8216;bağıl içe aktarma&#8217; (<em>relative import</em>) denen bir mekanizma
+<cite>altmodul2.py</cite> dosyasından içe aktarmak için <cite>altmodul2.py</cite> dosyasına <code class="docutils literal notranslate"><span class="pre">import</span>
+<span class="pre">altmodul1</span></code> yazdığımızda, ana <cite>paket</cite> dizininin bulunduğu konumdan <cite>altdizin</cite>
+içindeki <cite>altmodul2.py</cite> dosyasını <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">paket.altdizin</span> <span class="pre">import</span> <span class="pre">altmodul2</span></code> gibi
+bir komut ile içe aktarma girişimimiz başarısızlığa uğruyordu. Python’ın ilgili
+modülü bulabilmesini sağlamak için, <cite>altmodul2.py</cite> dosyasına <code class="docutils literal notranslate"><span class="pre">import</span>
+<span class="pre">altmodul1</span></code> yazmak yerine <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">paket.altdizin</span> <span class="pre">import</span> <span class="pre">altmodul1</span></code> yazmıştık.
+İşte aynı şeyi ‘bağıl içe aktarma’ (<em>relative import</em>) denen bir mekanizma
 yardımıyla da gerçekleştirebiliriz.</p>
 <p>Bu mekanizmada içe aktarma işlemi, içe aktaran modülün bulunduğu konuma göre
-gerçekleşir. Bir örnek verelim...</p>
-<p><cite>altmodul2.py</cite> dosyasına <tt class="docutils literal"><span class="pre">import</span> <span class="pre">altmodul1</span></tt> veya <tt class="docutils literal"><span class="pre">from</span> <span class="pre">paket.altdizin</span> <span class="pre">import</span>
-<span class="pre">altmodul1</span></tt> yerine şunu yazalım:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">altmodul1</span>
+gerçekleşir. Bir örnek verelim…</p>
+<p><cite>altmodul2.py</cite> dosyasına <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">altmodul1</span></code> veya <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">paket.altdizin</span> <span class="pre">import</span>
+<span class="pre">altmodul1</span></code> yerine şunu yazalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">altmodul1</span>
 </pre></div>
 </div>
 <p>Burada <cite>from</cite> kelimesinden sonra gelen nokta (<cite>.</cite>), içe aktaran modülle aynı
-dizine atıfta bulunuyor. Yani bu şekilde <cite>altmodul2.py</cite>&#8216;nin bulunduğu dizine
+dizine atıfta bulunuyor. Yani bu şekilde <cite>altmodul2.py</cite>’nin bulunduğu dizine
 atıfta bulunmuş, böylece bu dizinde bulunan <cite>altmodul1</cite> adlı modülü içe
 aktarabilmiş olduk. <cite>paket</cite> dizininden, hatta <cite>altdizin</cite> dizininden yapılacak
 içe aktarma işlemleri bu komut sayesinde başarılı olacaktır.</p>
@@ -745,20 +735,20 @@ ediyor. Eğer oraya yan yana iki nokta (<cite>..</cite>) koyacak olursanız, bir
 atıfta bulunabilirsiniz. Mesela bir üst dizinde bulunan <cite>modul3.py</cite> dosyasını
 <cite>altmodul2.py</cite> veya <cite>altmodul1.py</cite> dosyasından içe aktarmak isterseniz, bu
 dosyaların herhangi birine şu kodu yazabilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">..</span> <span class="k">import</span> <span class="n">modul3</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">..</span> <span class="kn">import</span> <span class="n">modul3</span>
 </pre></div>
 </div>
-<p>Üç nokta yan yana koyduğunuzda ise (<cite>...</cite>) iki üst dizine atıfta bulunmuş
+<p>Üç nokta yan yana koyduğunuzda ise (<cite>…</cite>) iki üst dizine atıfta bulunmuş
 olursunuz. Ancak bu şekilde paketin dışına çıkamayacağınızı da unutmayın. Yani
 mesela <cite>paket</cite> dizininin bulunduğu konuma göre bir üst dizinde bulunan, yani
 paket dışındaki <cite>falanca.py</cite> adlı bir modülü şu şekilde içe aktaramazsınız:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">...</span> <span class="k">import</span> <span class="n">falanca</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">...</span> <span class="kn">import</span> <span class="n">falanca</span>
 </pre></div>
 </div>
 <p>Ama tabii eğer paketinizin dizin yapısı iki üst dizine çıkılmasına müsaade
 ediyorsa yukarıdaki komut çalışacaktır. Yani elinizdeki, aşağıdakine benzer
 yapıda bir pakette:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="o">+</span> <span class="n">paket</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="o">+</span> <span class="n">paket</span>
 <span class="o">|</span><span class="n">__</span> <span class="n">modul1</span><span class="o">.</span><span class="n">py</span>
 <span class="o">|</span><span class="n">__</span> <span class="n">modul2</span><span class="o">.</span><span class="n">py</span>
 <span class="o">|</span><span class="n">__</span> <span class="n">modul3</span><span class="o">.</span><span class="n">py</span>
@@ -772,99 +762,98 @@ yapıda bir pakette:</p>
 </div>
 <p><cite>altaltmodul1.py</cite> dosyasının bulunduğu konumdan itibaren iki üst dizine çıkarak
 <cite>modul2.py</cite> dosyasını içe aktarabilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">...</span> <span class="k">import</span> <span class="n">modul2</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">...</span> <span class="kn">import</span> <span class="n">modul2</span>
 </pre></div>
 </div>
 <p>Yukarıda gösterdiğimiz bağıl içe aktarma mekanizması, paket adı belirtmeden içe
-aktarma işlemi gerçekleştirmenizi sağlar. Yani bu mekanizma sayesinde <tt class="docutils literal"><span class="pre">from</span>
-<span class="pre">paketadi.modul</span> <span class="pre">import</span> <span class="pre">altmodul</span></tt> yerine <tt class="docutils literal"><span class="pre">from</span> <span class="pre">.</span> <span class="pre">import</span> <span class="pre">modul</span></tt> gibi bir kod
+aktarma işlemi gerçekleştirmenizi sağlar. Yani bu mekanizma sayesinde <code class="docutils literal notranslate"><span class="pre">from</span>
+<span class="pre">paketadi.modul</span> <span class="pre">import</span> <span class="pre">altmodul</span></code> yerine <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">.</span> <span class="pre">import</span> <span class="pre">modul</span></code> gibi bir kod
 yazarak, aynı dizin içinde veya üst dizinlerde bulunan modüllere atıfta
 bulunabilirsiniz.</p>
 </div>
 </div>
 <div class="section" id="paketlerin-yola-eklenmesi">
-<h3>Paketlerin Yola Eklenmesi<a class="headerlink" href="#paketlerin-yola-eklenmesi" title="Permalink to this headline">¶</a></h3>
+<h3>Paketlerin Yola Eklenmesi<a class="headerlink" href="#paketlerin-yola-eklenmesi" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
 <p>Daha önce de birkaç kez vurguladığımız gibi, içe aktarma işlemlerinde Python
 aradığımız modülü veya paketi bulabilmek için <cite>sys.path</cite> adlı listede görünen
 dizinlerin içine bakar. Eğer içe aktarmak istediğiniz paket dizini bu listede
 değilse, o paketi içe aktarabilmek için, komut satırını o dizinin bulunduğu
 klasörde açmanız gerekir. Yani standart paketler ve üçüncü şahıs paketlerin
-aksine, <cite>sys.path</cite>&#8216;e eklenmemiş bir paketi her yerden içe aktaramazsınız.</p>
+aksine, <cite>sys.path</cite>’e eklenmemiş bir paketi her yerden içe aktaramazsınız.</p>
 <p>Peki bir paketi <cite>sys.path</cite> listesine nasıl ekleyeceğiz?</p>
 <p>Aslında bu sorunun cevabı çok basit. Bildiğiniz gibi, <cite>sys.path</cite> aslında basit
 bir listeden ibarettir. Dolayısıyla listeler üzerinde nasıl değişiklik
 yapıyorsanız, <cite>sys.path</cite> üzerinde de o şekilde değişiklik yapacaksınız.</p>
 <p>Gelin isterseniz, yukarıda oluşturduğumuz <cite>paket</cite> adlı paket üzerinden bir
 uygulama yapalım.</p>
-<p>Python&#8217;da bir paketi <cite>sys.path</cite> listesine eklerken dikkat etmemiz gereken çok
+<p>Python’da bir paketi <cite>sys.path</cite> listesine eklerken dikkat etmemiz gereken çok
 önemli bir konu var: Bir paketi <cite>sys.path</cite> listesine eklerken, paket adına
 karşılık gelen dizini değil, paketi içeren dizini bu listeye eklemeliyiz. Yani
 mesela <cite>paket</cite> adlı dizin masaüstündeyse, bizim listeye masaüstünün olduğu
-dizini eklememiz gerekiyor, paketin olduğu dizini değil...</p>
+dizini eklememiz gerekiyor, paketin olduğu dizini değil…</p>
 <p>Dikkatlice bakın:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">kullanıcı</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;HOME&#39;</span><span class="p">]</span> <span class="c1">#Windows&#39;ta os.environ[&#39;HOMEPATH&#39;]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">masaüstü</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">kullanıcı</span><span class="p">,</span> <span class="s1">&#39;Desktop&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">masaüstü</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Böylece masaüstünün bulunduğu dizini <cite>sys.path</cite>&#8216;e eklemiş olduk. Burada
+<p>Böylece masaüstünün bulunduğu dizini <cite>sys.path</cite>’e eklemiş olduk. Burada
 uyguladığımız adımlara şöyle bir bakalım.</p>
 <p>Öncelikle gerekli modülleri içe aktardık:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span>
 </pre></div>
 </div>
-<p>Amacımız masaüstünün yolunu <cite>sys.path</cite>&#8216;e eklemek. Dolayısıyla öncelikle
+<p>Amacımız masaüstünün yolunu <cite>sys.path</cite>’e eklemek. Dolayısıyla öncelikle
 kullanıcı dizininin nerede olduğunu tespit etmemiz lazım. Bildiğiniz gibi,
 kullanıcı dizinleri, bilgisayarı kuran kişinin ismine göre belirlendiği için,
 bütün bilgisayarlarda bu değer farklı olur. Bu değerin ne olduğu tespit
 edebilmek için <cite>os</cite> modülünün <cite>environ</cite> niteliğinden yararlanabiliriz. Bu
 nitelik, işletim sistemine özgü çevre değişkenlerini tutar.</p>
-<p>GNU/Linux&#8217;ta kullanıcı dizinini tutan çevre değişkeni &#8216;HOME&#8217; anahtarı ile
+<p>GNU/Linux’ta kullanıcı dizinini tutan çevre değişkeni ‘HOME’ anahtarı ile
 gösterilir:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kullanıcı</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;HOME&#39;</span><span class="p">]</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kullanıcı</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;HOME&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>Windows&#8217;ta ise &#8216;HOMEPATH&#8217; anahtarını kullanıyoruz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kullanıcı</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;HOMEPATH&#39;</span><span class="p">]</span>
+<p>Windows’ta ise ‘HOMEPATH’ anahtarını kullanıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kullanıcı</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;HOMEPATH&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>Kullanıcı dizinini elde ettikten sonra, masaüstüne giden yolu bulabilmek için şu
 komutu kullanıyoruz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">masaüstü</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">kullanıcı</span><span class="p">,</span> <span class="s1">&#39;Desktop&#39;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">masaüstü</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">kullanıcı</span><span class="p">,</span> <span class="s1">&#39;Desktop&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Sıra geldi elde ettiğimiz tam dizin yolunu <cite>sys.path</cite>&#8216;e eklemeye:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">masaüstü</span><span class="p">)</span>
+<p>Sıra geldi elde ettiğimiz tam dizin yolunu <cite>sys.path</cite>’e eklemeye:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">masaüstü</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Gördüğünüz gibi, listelerin <tt class="docutils literal"><span class="pre">append()</span></tt> metodu yardımıyla masaüstünün yolunu
+<p>Gördüğünüz gibi, listelerin <code class="docutils literal notranslate"><span class="pre">append()</span></code> metodu yardımıyla masaüstünün yolunu
 <cite>sys.path</cite> adlı listeye ekledik.</p>
 <p>Artık masaüstünde bulunan paketleri rahatlıkla her yerden içe aktarabiliriz.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last"><cite>os</cite> modülü hakkında daha geniş bilgi için <a class="reference internal" href="standart_moduller/os.html"><em>os Modülü</em></a>
+<p class="admonition-title">Not</p>
+<p><cite>os</cite> modülü hakkında daha geniş bilgi için <a class="reference internal" href="standart_moduller/os.html"><span class="doc">os Modülü</span></a>
 başlıklı konuyu inceleyebilirsiniz. <cite>sys</cite> modülü hakkında bilgi için ise
-<a class="reference internal" href="standart_moduller/sys.html"><em>sys Modülü</em></a> başlığını ziyaret edebilirsiniz.</p>
+<a class="reference internal" href="standart_moduller/sys.html"><span class="doc">sys Modülü</span></a> başlığını ziyaret edebilirsiniz.</p>
 </div>
 </div>
 <div class="section" id="paketlerde-isim-cakismalari">
-<h3>Paketlerde İsim Çakışmaları<a class="headerlink" href="#paketlerde-isim-cakismalari" title="Permalink to this headline">¶</a></h3>
+<h3>Paketlerde İsim Çakışmaları<a class="headerlink" href="#paketlerde-isim-cakismalari" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
 <div class="section" id="init-py-dosyasi">
-<h4>__init__.py Dosyası<a class="headerlink" href="#init-py-dosyasi" title="Permalink to this headline">¶</a></h4>
+<h4>__init__.py Dosyası<a class="headerlink" href="#init-py-dosyasi" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p class="rubric">Dipnotları:</p>
-<table class="docutils footnote" frame="void" id="id2" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Daha önce Python&#8217;ın 2.x sürümlerini kullanmış olanlar, bu yapının
-bir paket oluşturmak için yeterli olmadığını düşünebilir. Çünkü Python&#8217;ın 2.x
+<dl class="footnote superscript">
+<dt class="label" id="id2"><span class="superscript"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Daha önce Python’ın 2.x sürümlerini kullanmış olanlar, bu yapının
+bir paket oluşturmak için yeterli olmadığını düşünebilir. Çünkü Python’ın 2.x
 sürümlerinde bir paket oluşturabilmek için, <cite>siparistakip</cite> dizininin içinde
-<cite>__init__.py</cite> adlı bir dosya daha oluşturmamız gerekiyordu. Ancak Python3&#8217;te
+<cite>__init__.py</cite> adlı bir dosya daha oluşturmamız gerekiyordu. Ancak Python3’te
 bu zorunluluk ortadan kaldırıldı. Eğer bu söylediğimiz şeyin ne anlama
 geldiğini bilmiyorsanız, bu uyarıyı görmezden gelip yolunuza devam
-edebilirsiniz.</td></tr>
-</tbody>
-</table>
+edebilirsiniz.</p>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -874,17 +863,18 @@ edebilirsiniz.</td></tr>
 
 <div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
 <div class='extrarelbar'> 
-    <div class="related">
-      <h3>Navigation</h3>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="standart_moduller/index.html" title="Önemli Standart Kütüphane Modülleri"
-             >next</a></li>
+             >sonraki</a></li>
         <li class="right" >
           <a href="nesne_tabanli_programlama7.html" title="Nesne Tabanlı Programlama (Devamı)"
-             >previous</a> |</li>
+             >önceki</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
- 
+
+        <li class="nav-item nav-item-this"><a href="">Paketler</a></li> 
       </ul>
     </div> </div>
 
@@ -919,28 +909,30 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 
 
+            <div class="clearer"></div>
           </div>
       </div>
       <div class="clearer"></div>
     </div> 
-    <div class="related">
-      <h3>Navigation</h3>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="standart_moduller/index.html" title="Önemli Standart Kütüphane Modülleri"
-             >next</a></li>
+             >sonraki</a></li>
         <li class="right" >
           <a href="nesne_tabanli_programlama7.html" title="Nesne Tabanlı Programlama (Devamı)"
-             >previous</a> |</li>
+             >önceki</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
- 
+
+        <li class="nav-item nav-item-this"><a href="">Paketler</a></li> 
       </ul>
     </div> 
 
 <div class="footer">
 &copy; Copyright 2007-2021, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Last updated on 30.01.2021.
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+Son güncelleme: 07.03.2021.
+<a href="http://sphinx-doc.org/">Sphinx</a> 3.2.1 kullanılarak oluşturuldu.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img

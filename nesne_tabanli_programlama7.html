@@ -1,42 +1,31 @@
 
  <!DOCTYPE html>
- <html lang="">
+ <html lang="tr">
 
 
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="tr">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta content="Bu bölümde nesne tabanlı programlamadan söz edeceğiz." name="description" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta content="Bu bölümde nesne tabanlı programlamadan söz edeceğiz." name="description" />
 <meta content="python, python3, nesne, oop, sınıf, class, miras alma, inheritance, nesne yönelimli programlama, nesne tabanlı programlama, object oriented programming, self, instantiation, instance, örnek, örneklendirme, örnekleme" name="keywords" />
 
-    <title>Nesne Tabanlı Programlama (Devamı) &mdash; Python 3 için Türkçe Kılavuz</title>
-    
+    <title>Nesne Tabanlı Programlama (Devamı) &#8212; Python 3 için Türkçe Kılavuz</title>
     <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '3',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/translations.js"></script>
-    <link rel="top" title="Python 3 için Türkçe Kılavuz" href="index.html" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="search" title="Ara" href="search.html" />
     <link rel="next" title="Paketler" href="paketler.html" />
     <link rel="prev" title="Nesne Tabanlı Programlama (Devamı)" href="nesne_tabanli_programlama6.html" />
 <!--[if lte IE 6]>
 <link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
 <![endif]-->
 
-  </head>
-  <body>
+  </head><body>
 <div class='header'><a href='https://yazbel.com'><img src="_static/logo.png"></a></div>
 
 <ul class='navbar'>
@@ -45,125 +34,126 @@
 </ul>
 
 
-    <div class="related">
-      <h3>Navigation</h3>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="paketler.html" title="Paketler"
-             accesskey="N">next</a></li>
+             accesskey="N">sonraki</a></li>
         <li class="right" >
           <a href="nesne_tabanli_programlama6.html" title="Nesne Tabanlı Programlama (Devamı)"
-             accesskey="P">previous</a> |</li>
+             accesskey="P">önceki</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
- 
+
+        <li class="nav-item nav-item-this"><a href="">Nesne Tabanlı Programlama (Devamı)</a></li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
-          <div class="body">
+          <div class="body" role="main">
             
 
   <div class="section" id="nesne-tabanli-programlama-devami">
-<h1>Nesne Tabanlı Programlama (Devamı)<a class="headerlink" href="#nesne-tabanli-programlama-devami" title="Permalink to this headline">¶</a></h1>
+<h1>Nesne Tabanlı Programlama (Devamı)<a class="headerlink" href="#nesne-tabanli-programlama-devami" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
 <p>Nesne tabanlı programlamaya ilişkin bu son bölümde önceki derslerde incelemeye
 fırsat bulamadığımız ileri düzey konulardan söz edeceğiz.</p>
 <div class="section" id="insa-ilklendirme-ve-sonlandirma">
-<h2>İnşa, İlklendirme ve Sonlandırma<a class="headerlink" href="#insa-ilklendirme-ve-sonlandirma" title="Permalink to this headline">¶</a></h2>
-<p>Python&#8217;da bir sınıfın ömrü üç aşamadan oluşur:</p>
+<h2>İnşa, İlklendirme ve Sonlandırma<a class="headerlink" href="#insa-ilklendirme-ve-sonlandirma" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Python’da bir sınıfın ömrü üç aşamadan oluşur:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li>İnşa (<em>Construction</em>)</li>
-<li>İlklendirme (<em>initialization</em>)</li>
-<li>Sonlandırma (<em>destruction</em>)</li>
+<li><p>İnşa (<em>Construction</em>)</p></li>
+<li><p>İlklendirme (<em>initialization</em>)</p></li>
+<li><p>Sonlandırma (<em>destruction</em>)</p></li>
 </ol>
 </div></blockquote>
 <p>Biz bundan önceki derslerimizde ilklendirme sürecinin nasıl yürüdüğünü
 görmüştük. Bu dersimizde ise, ilklendirme sürecine de tekrar değinmekle
 birlikte, özellikle inşa ve sonlandırma süreçlerini ele alacağız.</p>
-<p>Önceki derslerimizden de bildiğimiz gibi, Python&#8217;da bir sınıfı ilklendirmek için
-<tt class="docutils literal"><span class="pre">__init__()</span></tt> adlı bir metottan yararlanıyoruz. Ancak, adının aksine,
+<p>Önceki derslerimizden de bildiğimiz gibi, Python’da bir sınıfı ilklendirmek için
+<code class="docutils literal notranslate"><span class="pre">__init__()</span></code> adlı bir metottan yararlanıyoruz. Ancak, adının aksine,
 ilklendirme, sınıfların oluşturulmasına ilişkin ilk basamak değildir. Python,
 bir sınıfın ilklendirilmesinden önce o sınıfı inşa eder. Bu inşa işleminden
-sorumlu metodun adı ise <tt class="docutils literal"><span class="pre">__new__()</span></tt>&#8216;dur. Gelin bu metodu yakından tanımaya
+sorumlu metodun adı ise <code class="docutils literal notranslate"><span class="pre">__new__()</span></code>’dur. Gelin bu metodu yakından tanımaya
 çalışalım.</p>
 <div class="section" id="new-metodu">
-<h3>__new__() Metodu<a class="headerlink" href="#new-metodu" title="Permalink to this headline">¶</a></h3>
-<p>Bildiğiniz gibi, Python&#8217;da basit bir sınıfı şu şekilde tanımlıyoruz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">():</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<h3>__new__() Metodu<a class="headerlink" href="#new-metodu" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p>Bildiğiniz gibi, Python’da basit bir sınıfı şu şekilde tanımlıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;merhaba sınıf!&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Burada <tt class="docutils literal"><span class="pre">__init__()</span></tt> metodu, sınıfımız örneklenir örneklenmez hangi işlemlerin
-yapılacağını gösteriyor. Yani mesela <tt class="docutils literal"><span class="pre">sınıf</span> <span class="pre">=</span> <span class="pre">Sınıf()</span></tt> gibi bir kod yardımıyla
-<tt class="docutils literal"><span class="pre">Sınıf()</span></tt> adlı sınıfı örneklediğimiz anda ne olacağını bu <tt class="docutils literal"><span class="pre">__init__()</span></tt>
+<p>Burada <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> metodu, sınıfımız örneklenir örneklenmez hangi işlemlerin
+yapılacağını gösteriyor. Yani mesela <code class="docutils literal notranslate"><span class="pre">sınıf</span> <span class="pre">=</span> <span class="pre">Sınıf()</span></code> gibi bir kod yardımıyla
+<code class="docutils literal notranslate"><span class="pre">Sınıf()</span></code> adlı sınıfı örneklediğimiz anda ne olacağını bu <code class="docutils literal notranslate"><span class="pre">__init__()</span></code>
 metodu içinde tanımlıyoruz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Yukarıdaki kodların `sınıf.py` adlı bir dosyada olduğunu varsayalım</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Yukarıdaki kodların `sınıf.py` adlı bir dosyada olduğunu varsayalım</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sınıf</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">snf</span> <span class="o">=</span> <span class="n">sınıf</span><span class="o">.</span><span class="n">Sınıf</span><span class="p">()</span>
 
 <span class="go">merhaba sınıf!</span>
 </pre></div>
 </div>
-<p>Gördüğünüz gibi, tam da <tt class="docutils literal"><span class="pre">__init__()</span></tt> metodunda tanımladığımız şekilde,
-sınıfımızı örneklediğimiz anda ekrana &#8216;merhaba sınıf&#8217; çıktısı verildi.</p>
+<p>Gördüğünüz gibi, tam da <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> metodunda tanımladığımız şekilde,
+sınıfımızı örneklediğimiz anda ekrana ‘merhaba sınıf’ çıktısı verildi.</p>
 <p>Ancak yukarıda da belirttiğimiz gibi, bir sınıf örneklendiğinde çalışan ilk
-metot aslında <tt class="docutils literal"><span class="pre">__init__()</span></tt> değildir. Python bu süreçte alttan alta
-<tt class="docutils literal"><span class="pre">__new__()</span></tt> adlı başka bir metodu çalıştırır. Gelin bunu kanıtlayalım:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">():</span>
-    <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+metot aslında <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> değildir. Python bu süreçte alttan alta
+<code class="docutils literal notranslate"><span class="pre">__new__()</span></code> adlı başka bir metodu çalıştırır. Gelin bunu kanıtlayalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
         <span class="k">pass</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;merhaba sınıf&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Bu sınıfı örneklediğinizde, bir önceki kodların aksine, ekrana &#8216;merhaba sınıf&#8217;
-yazısı çıktı olarak verilmeyecektir. İşte bunun sebebi, Python&#8217;ın öntanımlı
-<tt class="docutils literal"><span class="pre">__new__()</span></tt> metodunun üzerine yazıp, o metodun işlevselliğini ortadan
-kaldırmış olmanızdır. Eğer <tt class="docutils literal"><span class="pre">__new__()</span></tt> metodunun öntanımlı davranışını taklit
+<p>Bu sınıfı örneklediğinizde, bir önceki kodların aksine, ekrana ‘merhaba sınıf’
+yazısı çıktı olarak verilmeyecektir. İşte bunun sebebi, Python’ın öntanımlı
+<code class="docutils literal notranslate"><span class="pre">__new__()</span></code> metodunun üzerine yazıp, o metodun işlevselliğini ortadan
+kaldırmış olmanızdır. Eğer <code class="docutils literal notranslate"><span class="pre">__new__()</span></code> metodunun öntanımlı davranışını taklit
 etmek isterseniz yukarıdaki kodları şu şekilde yazmalısınız:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">():</span>
-    <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">object</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;merhaba sınıf&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Burada yaptığımız şeyin aslında temel olarak basit bir miras alma işleminden
-ibaret olduğunu görüyor olmalısınız. Bildiğiniz gibi, Python&#8217;daki bütün
+ibaret olduğunu görüyor olmalısınız. Bildiğiniz gibi, Python’daki bütün
 sınıflar, eğer başka bir sınıfı miras olarak almıyorlarsa, otomatik olarak
-<tt class="docutils literal"><span class="pre">object</span></tt> sınıfını miras alırlar. Yani aslında yukarıdaki sınıf tanımını Python
+<code class="docutils literal notranslate"><span class="pre">object</span></code> sınıfını miras alırlar. Yani aslında yukarıdaki sınıf tanımını Python
 şöyle görür:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="o">...</span>
 </pre></div>
 </div>
-<p>Burada <tt class="docutils literal"><span class="pre">object</span></tt> taban sınıf olmuş oluyor. Bu taban sınıfın <tt class="docutils literal"><span class="pre">__new__()</span></tt>
-metodunun sahip olduğu işlevselliği <tt class="docutils literal"><span class="pre">Sınıf</span></tt> adlı alt sınıfa aktarabilmek için
-taban sınıfı kendi <tt class="docutils literal"><span class="pre">__new__()</span></tt> metodumuz içinde çağırıyoruz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">():</span>
-    <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<p>Burada <code class="docutils literal notranslate"><span class="pre">object</span></code> taban sınıf olmuş oluyor. Bu taban sınıfın <code class="docutils literal notranslate"><span class="pre">__new__()</span></code>
+metodunun sahip olduğu işlevselliği <code class="docutils literal notranslate"><span class="pre">Sınıf</span></code> adlı alt sınıfa aktarabilmek için
+taban sınıfı kendi <code class="docutils literal notranslate"><span class="pre">__new__()</span></code> metodumuz içinde çağırıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">object</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>İşte eğer bir sınıfın inşa edilme sürecinin nasıl işleyeceğini kontrol etmek
-isterseniz bu <tt class="docutils literal"><span class="pre">__new__()</span></tt> metodunun üzerine yazarak metodu değişikliğe
+isterseniz bu <code class="docutils literal notranslate"><span class="pre">__new__()</span></code> metodunun üzerine yazarak metodu değişikliğe
 uğratabilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">():</span>
-    <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Yeni sınıf inşa edilirken lütfen bekleyiniz...&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="nb">object</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;merhaba sınıf&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Ancak bu noktada şunu belirtmeden de geçmeyelim. <tt class="docutils literal"><span class="pre">__new__()</span></tt> metodu, sık sık
-muhatap olmanız gereken bir metot değil. <tt class="docutils literal"><span class="pre">__new__()</span></tt> metodunu kullanarak
-yapacağınız pek çok şeyi aslında doğrudan <tt class="docutils literal"><span class="pre">__init__()</span></tt> metodu aracılığıyla da
+<p>Ancak bu noktada şunu belirtmeden de geçmeyelim. <code class="docutils literal notranslate"><span class="pre">__new__()</span></code> metodu, sık sık
+muhatap olmanız gereken bir metot değil. <code class="docutils literal notranslate"><span class="pre">__new__()</span></code> metodunu kullanarak
+yapacağınız pek çok şeyi aslında doğrudan <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> metodu aracılığıyla da
 yapabilirsiniz.</p>
 </div>
 </div>
@@ -173,17 +163,18 @@ yapabilirsiniz.</p>
 
 <div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
 <div class='extrarelbar'> 
-    <div class="related">
-      <h3>Navigation</h3>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="paketler.html" title="Paketler"
-             >next</a></li>
+             >sonraki</a></li>
         <li class="right" >
           <a href="nesne_tabanli_programlama6.html" title="Nesne Tabanlı Programlama (Devamı)"
-             >previous</a> |</li>
+             >önceki</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
- 
+
+        <li class="nav-item nav-item-this"><a href="">Nesne Tabanlı Programlama (Devamı)</a></li> 
       </ul>
     </div> </div>
 
@@ -218,28 +209,30 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 
 
+            <div class="clearer"></div>
           </div>
       </div>
       <div class="clearer"></div>
     </div> 
-    <div class="related">
-      <h3>Navigation</h3>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="paketler.html" title="Paketler"
-             >next</a></li>
+             >sonraki</a></li>
         <li class="right" >
           <a href="nesne_tabanli_programlama6.html" title="Nesne Tabanlı Programlama (Devamı)"
-             >previous</a> |</li>
+             >önceki</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
- 
+
+        <li class="nav-item nav-item-this"><a href="">Nesne Tabanlı Programlama (Devamı)</a></li> 
       </ul>
     </div> 
 
 <div class="footer">
 &copy; Copyright 2007-2021, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Last updated on 30.01.2021.
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+Son güncelleme: 07.03.2021.
+<a href="http://sphinx-doc.org/">Sphinx</a> 3.2.1 kullanılarak oluşturuldu.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img

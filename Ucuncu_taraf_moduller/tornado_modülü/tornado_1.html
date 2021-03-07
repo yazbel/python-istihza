@@ -1,43 +1,31 @@
 
  <!DOCTYPE html>
- <html lang="">
+ <html lang="tr">
 
 
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="tr">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta content="Bu bölümde tornado ile web uygulaması geliştirmeye başlıyoruz." name="description" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta content="Bu bölümde tornado ile web uygulaması geliştirmeye başlıyoruz." name="description" />
 <meta content="python, tornado, Kurulum, Proje Oluşturma, View, Template" name="keywords" />
 
-    <title>Tornado &mdash; Python 3 için Türkçe Kılavuz</title>
-    
+    <title>Tornado &#8212; Python 3 için Türkçe Kılavuz</title>
     <link rel="stylesheet" href="../../_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../',
-        VERSION:     '3',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/translations.js"></script>
-    <link rel="top" title="Python 3 için Türkçe Kılavuz" href="../../index.html" />
-    <link rel="up" title="Tornado paketi" href="index.html" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/translations.js"></script>
+    <link rel="search" title="Ara" href="../../search.html" />
     <link rel="next" title="Tornado(devamı)" href="tornado_2.html" />
     <link rel="prev" title="Tornado paketi" href="index.html" />
 <!--[if lte IE 6]>
 <link rel="stylesheet" href="../../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
 <![endif]-->
 
-  </head>
-  <body>
+  </head><body>
 <div class='header'><a href='https://yazbel.com'><img src="../../_static/logo.png"></a></div>
 
 <ul class='navbar'>
@@ -46,48 +34,49 @@
 </ul>
 
 
-    <div class="related">
-      <h3>Navigation</h3>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="tornado_2.html" title="Tornado(devamı)"
-             accesskey="N">next</a></li>
+             accesskey="N">sonraki</a></li>
         <li class="right" >
           <a href="index.html" title="Tornado paketi"
-             accesskey="P">previous</a> |</li>
+             accesskey="P">önceki</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
 
-          <li><a href="../index.html" >Üçüncü Taraf Modüller</a> &raquo;</li>
-          <li><a href="index.html" accesskey="U">Tornado paketi</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../index.html" >Üçüncü Taraf Modüller</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">Tornado paketi</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Tornado</a></li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
-          <div class="body">
+          <div class="body" role="main">
             
 
   <div class="section" id="tornado">
-<h1>Tornado<a class="headerlink" href="#tornado" title="Permalink to this headline">¶</a></h1>
+<h1>Tornado<a class="headerlink" href="#tornado" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
 <p>Eğer yazdığınız sitede gerçek zamanlı(real-time) bağlantılar kullanacaksanız
 ya da bir mikro çerçeveye(micro framework) ihtiyacınız varsa tornado tamamen
 sizin ihtiyaçlarınız için tasarlanmış bir çerçeve.</p>
 <div class="section" id="kurulum">
-<h2>Kurulum<a class="headerlink" href="#kurulum" title="Permalink to this headline">¶</a></h2>
-<p>Tornado&#8217;yu kullanmak için önce indirmemiz gerekiyor. Aşağıdaki komutu komut
+<h2>Kurulum<a class="headerlink" href="#kurulum" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Tornado’yu kullanmak için önce indirmemiz gerekiyor. Aşağıdaki komutu komut
 istemcisinde yazın:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">tornado</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">tornado</span>
 </pre></div>
 </div>
 <p><cite>Successfully installed tornado-6.1</cite> yazısını gördüyseniz sorunsuzca inmiştir.</p>
 </div>
 <div class="section" id="proje-olusturma">
-<h2>Proje Oluşturma<a class="headerlink" href="#proje-olusturma" title="Permalink to this headline">¶</a></h2>
+<h2>Proje Oluşturma<a class="headerlink" href="#proje-olusturma" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Tornado, herhangi bir dizinde açtığınız herhangi bir dosyada çalışabilir. Yani
 normal bir python dosyası açalım ve yazmaya başlayalım. Ben <cite>torn</cite> isimli bir
 klasör açıp <cite>__init__.py</cite> dosyasında yazacağım. Önce dosyanın ana
 bileşenlerini yazalım:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tornado.web</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tornado.web</span>
 <span class="kn">import</span> <span class="nn">tornado.ioloop</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">Application</span><span class="p">()</span>
@@ -98,12 +87,12 @@ bileşenlerini yazalım:</p>
 </div>
 <p>Hemen burada ne yaptığımızı açıklayalım.</p>
 <p>Önce kullanacağımız modülleri içeri aktardık:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tornado.web</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tornado.web</span>
 <span class="kn">import</span> <span class="nn">tornado.ioloop</span>
 </pre></div>
 </div>
 <p>Daha sonra bir sitemizi çalıştırmak için gerekli ayarları yaptık:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">app</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">Application</span><span class="p">()</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">app</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">Application</span><span class="p">()</span>
 <span class="c1"># İleride yönlendirme(routing) için kullanacağımız araç.</span>
 <span class="n">app</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">8888</span><span class="p">)</span>
 <span class="c1"># Port olarak 8888 belirledik. Siz başka bir sayı seçebilirsiniz.</span>
@@ -119,13 +108,13 @@ portu değiştirmeyi unutmayın.</p>
 hiç sayfa oluşturmadık. Hadi şimdi bir sayfa oluşturalım.</p>
 </div>
 <div class="section" id="sayfa-sunma">
-<h2>Sayfa Sunma<a class="headerlink" href="#sayfa-sunma" title="Permalink to this headline">¶</a></h2>
+<h2>Sayfa Sunma<a class="headerlink" href="#sayfa-sunma" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Sitemizde sayfa sunmak için bir view yazmalıyız. Geleneği bozmayalım ve
-&#8220;Merhaba Zalim Dünya&#8221; yazarak başlayalım. Bu iş için <cite>Application</cite>&#8216;da olduğu
+“Merhaba Zalim Dünya” yazarak başlayalım. Bu iş için <cite>Application</cite>’da olduğu
 gibi <cite>tornado.web</cite> modülünü kullancağız. Bu sefer <cite>RequestHandler</cite> isimli
 bir sınıf bize yardımcı olacak.</p>
 <p>Şimdi yazacağımız kodları içe aktarma ile <cite>app</cite> değişkeni arasına yazalım:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Merhaba</span><span class="p">(</span><span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">RequestHandler</span><span class="p">):</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Merhaba</span><span class="p">(</span><span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">RequestHandler</span><span class="p">):</span>
     <span class="c1"># View için bir sınıf oluşturduk</span>
     <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># Sayfayı yollayan fonksiyonumuz</span>
@@ -141,10 +130,10 @@ Hadi hemen yapalım.</p>
 kullanıcının adres çubuğuna yazdığı ifadeyle doğrudan ilişkilidir.
 Mesela kullanıcı <cite>http://localhost:8888/istihza/</cite> yazarsa bizden <cite>/istihza/</cite>
 adresini istemiştir. Eğer biz bu adresi bir view ile ilişkilendirdiysek bu view
-çalışır. Eğer ilişkilendirmediysek <cite>404</cite> hatası alırız. Biz <cite>Tornado</cite>&#8216;da bu
-ilişkilendirme işini <cite>Application</cite>&#8216;dan faydalanarak yapıyoruz. Yani
+çalışır. Eğer ilişkilendirmediysek <cite>404</cite> hatası alırız. Biz <cite>Tornado</cite>’da bu
+ilişkilendirme işini <cite>Application</cite>’dan faydalanarak yapıyoruz. Yani
 <cite>app = tornado.web.Application()</cite> diye yazdığımız bölümü düzenleyeceğiz:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">app</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">Application</span><span class="p">([</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">app</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">Application</span><span class="p">([</span>
     <span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">Merhaba</span><span class="p">)</span>
 <span class="p">])</span>
 </pre></div>
@@ -155,7 +144,7 @@ bir demet. Eğer daha fazla view eklemek isterseniz aynı liste içine demet
 ekleyerek yapabilirsiniz. <cite>http://localhost:8888/</cite> adresine giderek
 <cite>Merhaba, Zalim Dünya!</cite> yazdığını görebiliriz.</p>
 <p>Yazdığımız kodları topluca paylaşayım:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tornado.web</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tornado.web</span>
 <span class="kn">import</span> <span class="nn">tornado.ioloop</span>
 
 <span class="k">class</span> <span class="nc">Merhaba</span><span class="p">(</span><span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">RequestHandler</span><span class="p">):</span>
@@ -175,69 +164,94 @@ ekleyerek yapabilirsiniz. <cite>http://localhost:8888/</cite> adresine giderek
 </div>
 </div>
 <div class="section" id="template-sablon-sistemi">
-<h2>Template(Şablon) Sistemi<a class="headerlink" href="#template-sablon-sistemi" title="Permalink to this headline">¶</a></h2>
+<h2>Template(Şablon) Sistemi<a class="headerlink" href="#template-sablon-sistemi" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Sitemizde göstereceğimiz sayfaları <cite>html</cite> formatında yazıp kaydetmeliyiz.
 Daha sonra bu dosyaları <cite>Tornado</cite> ile çağırıp servis etmeliyiz.</p>
-<p>Göstereceğimiz sayfalar ikiye ayrılıyor: &#8220;Statik&#8221; ve &#8220;Dinamik&#8221;. Statik sayfalar
-<cite>Tornado</cite>&#8216;nun çağırıp değiştirmeden servis ettiği dosyalardır. Dinamik sayfalar
-ise <cite>Tornado</cite>&#8216;nun çağırdıktan sonra düzenleyip servis ettiği dosyalardır.</p>
+<p>Göstereceğimiz sayfalar ikiye ayrılıyor: “Statik” ve “Dinamik”. Statik sayfalar
+<cite>Tornado</cite>’nun çağırıp değiştirmeden servis ettiği dosyalardır. Dinamik sayfalar
+ise <cite>Tornado</cite>’nun çağırdıktan sonra düzenleyip servis ettiği dosyalardır.</p>
 <p>Önce bir <cite>html</cite> dosyası oluşturalım, ardından bu dosyayı servis edelim.</p>
-<p>Bu dosyayı &#8220;<cite>index.html</cite>&#8221; ismiyle <cite>torn</cite> klasörüme kaydedeceğim. Siz başka bir
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Merhaba Zalim Dünya&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Merhaba Zalim Dünya&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+</div>
+<p>Bu dosyayı “<cite>index.html</cite>” ismiyle <cite>torn</cite> klasörüme kaydedeceğim. Siz başka bir
 isimle başka bir klasöre de kaydedebilirsiniz. Hemen servis etmek için <cite>Merhaba</cite>
-<cite>view</cite>&#8216;ını düzenleyelim:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Merhaba</span><span class="p">(</span><span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">RequestHandler</span><span class="p">):</span>
+<cite>view</cite>’ını düzenleyelim:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Merhaba</span><span class="p">(</span><span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">RequestHandler</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">loader</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">Loader</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
         <span class="n">sayfa</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;index.html&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">generate</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">sayfa</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Ben servis etmek için <cite>Merhaba view</cite>&#8216;ını düzenlemeyi tercih ettim. Ancak siz yeni
-bir <cite>view</cite> yazmak isteyebilirsiniz. Bu durumda yazdığınız <cite>view</cite>&#8216;ı yeni bir istek
+<p>Ben servis etmek için <cite>Merhaba view</cite>’ını düzenlemeyi tercih ettim. Ancak siz yeni
+bir <cite>view</cite> yazmak isteyebilirsiniz. Bu durumda yazdığınız <cite>view</cite>’ı yeni bir istek
 ile eşleştirmeniz gerekir. Bu iş için de bir örnek verip kodlarımızı açıklayayım.
-Oluşturduğunuz <cite>view</cite>&#8216;ın adı <cite>Yazbel</cite> olsun ve <cite>/yazbel/</cite> isteği ile
+Oluşturduğunuz <cite>view</cite>’ın adı <cite>Yazbel</cite> olsun ve <cite>/yazbel/</cite> isteği ile
 ilişkilendirelim:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">app</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">Application</span><span class="p">([</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">app</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">Application</span><span class="p">([</span>
     <span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">Merhaba</span><span class="p">),</span> <span class="c1"># Buradaki virgülü koymayı unutmayınız</span>
     <span class="p">(</span><span class="s2">&quot;/yazbel/&quot;</span><span class="p">,</span> <span class="n">Yazbel</span><span class="p">)</span>
 <span class="p">])</span>
 </pre></div>
 </div>
 <p>Bu durumu geçip yukarıdaki kodlara tekrar bakalım. İlk satırda eklediğimiz kod:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">loader</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">Loader</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">loader</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">Loader</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Burada <cite>Html</cite> dosyalarımızın bulunduğu dizini <cite>Tornado</cite>&#8216;ya bildirdik. Eğer
+<p>Burada <cite>Html</cite> dosyalarımızın bulunduğu dizini <cite>Tornado</cite>’ya bildirdik. Eğer
 <cite>Html</cite> dosyalarınız farklı bir dizinde yer alıyorsa benim <cite>.</cite> yazdığım yeri
 o dizin ile değiştirmelisiniz.</p>
 <p>Peki neden bildirdik? Çünkü web programlamada
 <cite>Html</cite>, <cite>Css</cite>, <cite>Js</cite>, <cite>Resim</cite> gibi dosyalar kendilerine ait bir klasörde bulunur.
 Biz <cite>Html</cite> dosyalarının bulunduğu klasörü bildirerek tekrar tekrar yazmaktan
 kurtulduk. İkinci eklediğimiz satıra bakalım:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">sayfa</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;index.html&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">generate</span><span class="p">()</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">sayfa</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;index.html&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">generate</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Burada daha önce oluşturduğumuz <cite>loader</cite> değişkenini kullanarak sayfamızı
-getirdik. <cite>generate</cite> fonksiyonunu kullanarak sayfayı <cite>Tornado</cite>&#8216;nun sunabileceği
+getirdik. <cite>generate</cite> fonksiyonunu kullanarak sayfayı <cite>Tornado</cite>’nun sunabileceği
 bir hale dönüştürdük. Daha sonra <cite>write</cite> fonksiyonuyla sayfamızı gösterdik:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">sayfa</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">sayfa</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Şimdi de dinamik sayfaların nasıl oluşturulduğuna bakalım. Dinamik sayfaların
 çağrıldıktan sonra düzenlendiğini söylemiştik. Düzenleyeceğimiz yeri
-<cite>Tornado</cite>&#8216;ya bildirmek için <cite>Template`(Şablon) denen bir yöntemden faydalanacağız.
+<cite>Tornado</cite>’ya bildirmek için <cite>Template`(Şablon) denen bir yöntemden faydalanacağız.
 Değişiklik yapmak istediğimiz yeri 2 tane küme parantezi içinde bir isimle
 `Html</cite> dosyamızda kullanıyoruz. Hemen bir <cite>index.html</cite> dosyasını düzenleyerek bir
 örnek verelim.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Merhaba {{ yazbel }}&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Merhaba {{ yazbel }}&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+</div>
 <p>Burada <cite>{{ yazbel }}</cite> yazarak <cite>yazbel</cite> isimli bir değişken tanımladık. Tabi ki
 siz farklı bir değişken isimi seçebilirsiniz.</p>
 <p>Şu an <cite>__init__.py</cite> dosyamızı çalıştırıp <cite>http://localhost:8888/</cite> adresine
-gidersek <cite>500</cite> hatasıyla karşılaşacağız. <cite>__init__.py</cite>&#8216;nin çalıştığı komut
+gidersek <cite>500</cite> hatasıyla karşılaşacağız. <cite>__init__.py</cite>’nin çalıştığı komut
 istemcisine bakarsak bir hata göreceğiz.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="ne">NameError</span><span class="p">:</span> <span class="n">name</span> <span class="s1">&#39;yazbel&#39;</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">defined</span>
+</pre></div>
+</div>
 <p>Bu hatadan <cite>yazbel</cite> isimli bir değişken tanımlayıp ona bir değer vermediğimiz
 için karşımıza çıktı. Bu değişkene değer vermek için <cite>generate</cite> fonksiyonunu
 kullanacağız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">sayfa</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;index.html&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">yazbel</span><span class="o">=</span><span class="s2">&quot;Yazbel&quot;</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">sayfa</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;index.html&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">yazbel</span><span class="o">=</span><span class="s2">&quot;Yazbel&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><cite>__init__.py</cite> dosyasını tekrar çalıştırdığımızda <cite>Merhaba Yazbel</cite> yazısıyla
@@ -247,7 +261,7 @@ dosyasını düzenlemek daha kolay olmaz mı?</p>
 <p>Elbetteki olabilir ancak aynı işi yapan birkaç view daha yazdığımızda
 birkaç <cite>Html</cite> dosyası daha oluşturmamız gerekir. Mesela sitemize şu iki
 <cite>view</cite> da katıldığında dinamik olarak oluşturmak daha mantıklı oluyor:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Merhaba_istihza</span><span class="p">(</span><span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">RequestHandler</span><span class="p">):</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Merhaba_istihza</span><span class="p">(</span><span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">RequestHandler</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">loader</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">Loader</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
         <span class="n">sayfa</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;index.html&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">yazbel</span><span class="o">=</span><span class="s2">&quot;İstihza&quot;</span><span class="p">)</span>
@@ -265,7 +279,7 @@ birkaç <cite>Html</cite> dosyası daha oluşturmamız gerekir. Mesela sitemize 
 işareti arasında kullanıyoruz: <cite>{% else %}</cite>. Bu özelliği anlatma için
 listelerden faydalanalım. <cite>Merhaba</cite> viewımızı <cite>yazbel</cite> değişkenine bir liste
 verecek şekilde düzenleyelim:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Merhaba</span><span class="p">(</span><span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">RequestHandler</span><span class="p">):</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Merhaba</span><span class="p">(</span><span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">RequestHandler</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">loader</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">Loader</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
         <span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
@@ -275,6 +289,20 @@ verecek şekilde düzenleyelim:</p>
 </div>
 <p>Hemen bu sayıları listeleyecek bir <a href="#id1"><span class="problematic" id="id2">`</span></a>Template`(Şablon) yazalım. Bu listede
 çift sayılar büyük, tek sayılar küçük gözüksün.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+    {% for sayı in yazbel %}
+        {% if sayı%2==0 %}
+            &lt;h1&gt; {{ sayı }} &lt;/h1&gt;
+        {% else %}
+            &lt;h4&gt; {{ sayı }} &lt;/h4&gt;
+        {% end %}
+    {% end %}
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+</div>
 <p>Gördüğünüz gibi genel olarak <cite>python</cite> ile çok benzer bir yapıya sahip ancak
 çok önemli bir fark var. <cite>for</cite> döngüsü bir <cite>end</cite> ifadesiyle bitiyor. Aynı
 şekilde birbiriyle ilişkili kontrol ifadeleri(<cite>if</cite>, <cite>else</cite>) hep birlikte
@@ -286,19 +314,20 @@ bir <cite>end</cite> ile bitiyor.</p>
 
 <div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
 <div class='extrarelbar'> 
-    <div class="related">
-      <h3>Navigation</h3>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="tornado_2.html" title="Tornado(devamı)"
-             >next</a></li>
+             >sonraki</a></li>
         <li class="right" >
           <a href="index.html" title="Tornado paketi"
-             >previous</a> |</li>
+             >önceki</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
 
-          <li><a href="../index.html" >Üçüncü Taraf Modüller</a> &raquo;</li>
-          <li><a href="index.html" >Tornado paketi</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../index.html" >Üçüncü Taraf Modüller</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >Tornado paketi</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Tornado</a></li> 
       </ul>
     </div> </div>
 
@@ -333,30 +362,32 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 
 
+            <div class="clearer"></div>
           </div>
       </div>
       <div class="clearer"></div>
     </div> 
-    <div class="related">
-      <h3>Navigation</h3>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="tornado_2.html" title="Tornado(devamı)"
-             >next</a></li>
+             >sonraki</a></li>
         <li class="right" >
           <a href="index.html" title="Tornado paketi"
-             >previous</a> |</li>
+             >önceki</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
 
-          <li><a href="../index.html" >Üçüncü Taraf Modüller</a> &raquo;</li>
-          <li><a href="index.html" >Tornado paketi</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../index.html" >Üçüncü Taraf Modüller</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >Tornado paketi</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Tornado</a></li> 
       </ul>
     </div> 
 
 <div class="footer">
 &copy; Copyright 2007-2021, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Last updated on 30.01.2021.
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+Son güncelleme: 07.03.2021.
+<a href="http://sphinx-doc.org/">Sphinx</a> 3.2.1 kullanılarak oluşturuldu.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img

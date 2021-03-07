@@ -1,43 +1,31 @@
 
  <!DOCTYPE html>
- <html lang="">
+ <html lang="tr">
 
 
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="tr">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta content="Bu bölümde django ile site yapmaya başlayacağız." name="description" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta content="Bu bölümde django ile site yapmaya başlayacağız." name="description" />
 <meta content="python, django, çeviri" name="keywords" />
 
-    <title>İLK DJANGO PROJENİ YAZ, part 1 &mdash; Python 3 için Türkçe Kılavuz</title>
-    
+    <title>İLK DJANGO PROJENİ YAZ, part 1 &#8212; Python 3 için Türkçe Kılavuz</title>
     <link rel="stylesheet" href="../../_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../',
-        VERSION:     '3',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/translations.js"></script>
-    <link rel="top" title="Python 3 için Türkçe Kılavuz" href="../../index.html" />
-    <link rel="up" title="django Paketi" href="index.html" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/translations.js"></script>
+    <link rel="search" title="Ara" href="../../search.html" />
     <link rel="next" title="İLK DJANGO PROJENİ YAZ, part 2" href="django_2.html" />
     <link rel="prev" title="django Paketi" href="index.html" />
 <!--[if lte IE 6]>
 <link rel="stylesheet" href="../../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
 <![endif]-->
 
-  </head>
-  <body>
+  </head><body>
 <div class='header'><a href='https://yazbel.com'><img src="../../_static/logo.png"></a></div>
 
 <ul class='navbar'>
@@ -46,51 +34,52 @@
 </ul>
 
 
-    <div class="related">
-      <h3>Navigation</h3>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="django_2.html" title="İLK DJANGO PROJENİ YAZ, part 2"
-             accesskey="N">next</a></li>
+             accesskey="N">sonraki</a></li>
         <li class="right" >
           <a href="index.html" title="django Paketi"
-             accesskey="P">previous</a> |</li>
+             accesskey="P">önceki</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
 
-          <li><a href="../index.html" >Üçüncü Taraf Modüller</a> &raquo;</li>
-          <li><a href="index.html" accesskey="U">django Paketi</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../index.html" >Üçüncü Taraf Modüller</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">django Paketi</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">İLK DJANGO PROJENİ YAZ, part 1</a></li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
-          <div class="body">
+          <div class="body" role="main">
             
 
   <div class="section" id="ilk-django-projeni-yaz-part-1">
-<h1>İLK DJANGO PROJENİ YAZ, part 1<a class="headerlink" href="#ilk-django-projeni-yaz-part-1" title="Permalink to this headline">¶</a></h1>
+<h1>İLK DJANGO PROJENİ YAZ, part 1<a class="headerlink" href="#ilk-django-projeni-yaz-part-1" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
 <p>Bir örnekle öğrenmeye başlayalım. Bu örnekte basit bir anket uygulaması oluşturacağız.
 Uygulama iki kısımdan oluşacak:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li>Anketlerin oylanması için herkese açık bir site</li>
-<li>Anketleri düzenlemek veya ekleyip silmek için bir admin paneli</li>
+<li><p>Anketlerin oylanması için herkese açık bir site</p></li>
+<li><p>Anketleri düzenlemek veya ekleyip silmek için bir admin paneli</p></li>
 </ol>
 </div></blockquote>
 <p>Senin Djangoyu yüklediğini varsayıyoruz. Komut isteminde aşağıdaki komutu çalıştırarak Djangonun yüklü olup olmadığına ve Django sürümüne ulaşabilirsin:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">django</span> <span class="o">--</span><span class="n">version</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">django</span> <span class="o">--</span><span class="n">version</span>
 </pre></div>
 </div>
-<p>Eğer Django yüklüyse yüklü olan versiyonu görmelisin. Eğer değilse &#8220;No module named django&#8221; yazısı ile karşılaşmalısın.</p>
+<p>Eğer Django yüklüyse yüklü olan versiyonu görmelisin. Eğer değilse “No module named django” yazısı ile karşılaşmalısın.</p>
 <div class="section" id="bir-proje-olustur">
-<h2>Bir proje oluştur<a class="headerlink" href="#bir-proje-olustur" title="Permalink to this headline">¶</a></h2>
+<h2>Bir proje oluştur<a class="headerlink" href="#bir-proje-olustur" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Komut satırında cd komutuyla komutunuzu saklamak istediğiniz dizine gidin ve aşağıdaki kodu çalıştırın:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">django</span><span class="o">-</span><span class="n">admin</span> <span class="n">startproject</span> <span class="n">mysite</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">django</span><span class="o">-</span><span class="n">admin</span> <span class="n">startproject</span> <span class="n">mysite</span>
 </pre></div>
 </div>
 <p>Bu kod bulunduğunuz dizinde mysite dizinini yaratacak.
 Şimdi <cite>startproject</cite> komutunun oluşturduklarına bakalım:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">mysite</span><span class="o">/</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">mysite</span><span class="o">/</span>
     <span class="n">manage</span><span class="o">.</span><span class="n">py</span>
     <span class="n">mysite</span><span class="o">/</span>
         <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
@@ -104,17 +93,17 @@ Uygulama iki kısımdan oluşacak:</p>
 İçerideki <cite>mysite/</cite> dizini , projeniz için gerçek bir python paketidir.
 <cite>mysite/init.py</cite>: Boş bir python dosyasıdır. mysite/ dizininin python paketi olmasını sağlar.
 <cite>mysite/setting.py</cite>: Django projesinin ayarları ile ilgili bir dosya.
-<cite>mysite/urls.py</cite>: Projeniz için URL&#8217;leri barındıran dosya.
+<cite>mysite/urls.py</cite>: Projeniz için URL’leri barındıran dosya.
 <cite>mysite/wsgi.py</cite>: WSGI uyumlu web sunucuları için projenize hizmet edecek bir giriş noktası.</p>
 </div>
 <div class="section" id="gelistirme-sunucusu">
-<h2>Geliştirme sunucusu<a class="headerlink" href="#gelistirme-sunucusu" title="Permalink to this headline">¶</a></h2>
+<h2>Geliştirme sunucusu<a class="headerlink" href="#gelistirme-sunucusu" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Şimdi django projemizin çalışıp çalışmadığını kontrol edelim. Komut satırında dışarıdaki <cite>mysite</cite> dizinine gidin ve aşağıdaki kodu çalıştırın:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">runserver</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">runserver</span>
 </pre></div>
 </div>
 <p>Çıktı olarak şunu görmelisin:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">Performing</span> <span class="n">system</span> <span class="n">checks</span><span class="o">...</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">Performing</span> <span class="n">system</span> <span class="n">checks</span><span class="o">...</span>
 
 <span class="n">System</span> <span class="n">check</span> <span class="n">identified</span> <span class="n">no</span> <span class="n">issues</span> <span class="p">(</span><span class="mi">0</span> <span class="n">silenced</span><span class="p">)</span><span class="o">.</span>
 
@@ -128,34 +117,34 @@ Uygulama iki kısımdan oluşacak:</p>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Veritabanıyla ilgili uyarıyı dikkate almayın.</p>
+<p class="admonition-title">Not</p>
+<p>Veritabanıyla ilgili uyarıyı dikkate almayın.</p>
 </div>
 <p>Django geliştirme sunucusunu başlattınız.</p>
 </div>
 <div class="section" id="kullanilan-portu-degistirme">
-<h2>Kullanılan portu değiştirme<a class="headerlink" href="#kullanilan-portu-degistirme" title="Permalink to this headline">¶</a></h2>
+<h2>Kullanılan portu değiştirme<a class="headerlink" href="#kullanilan-portu-degistirme" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p><cite>runserver</cite> komutu geliştirme sunucusu için standart olarak 8000 portunu kullanır.
 Eğer bu portu değiştirmek isterseniz bunu komuta argüman olarak verin. Mesela aşağıdaki komut 8080 portunda geliştirme sunucusunu çalıştırıyor:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span>  <span class="n">runserver</span> <span class="mi">8080</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span>  <span class="n">runserver</span> <span class="mi">8080</span>
 </pre></div>
 </div>
-<p>Eğer sunucunun IP adresini değiştirmek isterseniz port ile birlikte belirtin. Örnek olarak kullanılabilir tüm IP&#8217;leri dinlemek istiyorsanız şu kodu çalıştırın:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">runserver</span> <span class="mi">0</span><span class="p">:</span><span class="mi">8000</span>
+<p>Eğer sunucunun IP adresini değiştirmek isterseniz port ile birlikte belirtin. Örnek olarak kullanılabilir tüm IP’leri dinlemek istiyorsanız şu kodu çalıştırın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">runserver</span> <span class="mi">0</span><span class="p">:</span><span class="mi">8000</span>
 </pre></div>
 </div>
-<p>Yukarıda yazdığımız kodda 0&#8217;ın anlamı 0.0.0.0 (Yani bir kısaltma).</p>
+<p>Yukarıda yazdığımız kodda 0’ın anlamı 0.0.0.0 (Yani bir kısaltma).</p>
 </div>
 <div class="section" id="bir-anket-uygulamasi-olusturalim">
-<h2>Bir anket uygulaması oluşturalım<a class="headerlink" href="#bir-anket-uygulamasi-olusturalim" title="Permalink to this headline">¶</a></h2>
+<h2>Bir anket uygulaması oluşturalım<a class="headerlink" href="#bir-anket-uygulamasi-olusturalim" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Artık proje ortamımız kuruldu. Çalışmaya başlayabiliriz.
-Django&#8217;da yazdığımız her uygulama bir python paketinden oluşur ve Django&#8217;da uygulamanın dizini otomatik olarak oluşturulur. Bu sayede dizin oluşturmakla uğraşacağımız zamanda kod yazabiliriz.
+Django’da yazdığımız her uygulama bir python paketinden oluşur ve Django’da uygulamanın dizini otomatik olarak oluşturulur. Bu sayede dizin oluşturmakla uğraşacağımız zamanda kod yazabiliriz.
 Bir uygulama oluşturmak için komut satırında <cite>manage.py</cite> ile aynı dizine gelin ve şu komutu yazın:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">startapp</span> <span class="n">polls</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">startapp</span> <span class="n">polls</span>
 </pre></div>
 </div>
 <p><cite>polls</cite> isimli bir dizin oluşturulacak. Bakaklım içinde neler var:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">polls</span><span class="o">/</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">polls</span><span class="o">/</span>
     <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
     <span class="n">admin</span><span class="o">.</span><span class="n">py</span>
     <span class="n">apps</span><span class="o">.</span><span class="n">py</span>
@@ -169,16 +158,16 @@ Bir uygulama oluşturmak için komut satırında <cite>manage.py</cite> ile ayn�
 <p>Bu dizin anket uygulamamızın merkezi olacak.</p>
 </div>
 <div class="section" id="ilk-view-imizi-yazalim">
-<h2>İlk view&#8217;ımızı yazalım<a class="headerlink" href="#ilk-view-imizi-yazalim" title="Permalink to this headline">¶</a></h2>
+<h2>İlk view’ımızı yazalım<a class="headerlink" href="#ilk-view-imizi-yazalim" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Hadi yazmaya başlayalım. Şimdi <cite>polls/views.py</cite> açın ve şu kodları yazın:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.http</span> <span class="k">import</span> <span class="n">HttpResponse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
 <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s2">&quot;Hello, world. You&#39;re at the polls index.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Bu Django&#8217;da yazılabilecek en basit view. Artık bu view ı çağırabilmek için bir URL haritasına ihtiyacımız var ve URL haritası için de URL şemasına.
+<p>Bu Django’da yazılabilecek en basit view. Artık bu view ı çağırabilmek için bir URL haritasına ihtiyacımız var ve URL haritası için de URL şemasına.
 polls dizininde <cite>urls.py</cite> isimli bir dosya oluşturarak uygulamanın URL şemasını da oluşturmuş oluruz.(Dosya Gezgininden kendiniz urls.py isimli bir python modülü oluşturun.)  Uygulama dizini son olarak şöyle görünmeli:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">polls</span><span class="o">/</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">polls</span><span class="o">/</span>
     <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
     <span class="n">admin</span><span class="o">.</span><span class="n">py</span>
     <span class="n">apps</span><span class="o">.</span><span class="n">py</span>
@@ -191,8 +180,8 @@ polls dizininde <cite>urls.py</cite> isimli bir dosya oluşturarak uygulamanın 
 </pre></div>
 </div>
 <p>Şimdi de yeni oluşturduğumuz polls dizinindeki urls.py dosyasında şu kodlar yazılı olmalı:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.urls</span> <span class="k">import</span> <span class="n">path</span>
-<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">views</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span>
 
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">path</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">),</span>
@@ -200,8 +189,8 @@ polls dizininde <cite>urls.py</cite> isimli bir dosya oluşturarak uygulamanın 
 </pre></div>
 </div>
 <p>Burada oluşturduğumuz URL şemasını gerçek Url şemasında tanıtmanın vakti geldi. Bunun için mysite dizinindeki urls.py dosyasında include fonksiyonunu içe aktarıp  url listesini aktarmada kullanacağız. Sonuç olarak mysite dizinindeki urls.py dosyanız şu hale gelmeli:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="k">import</span> <span class="n">admin</span>
-<span class="kn">from</span> <span class="nn">django.urls</span> <span class="k">import</span> <span class="n">include</span><span class="p">,</span> <span class="n">path</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">include</span><span class="p">,</span> <span class="n">path</span>
 
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">path</span><span class="p">(</span><span class="s1">&#39;polls/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s1">&#39;polls.urls&#39;</span><span class="p">)),</span>
@@ -209,11 +198,11 @@ polls dizininde <cite>urls.py</cite> isimli bir dosya oluşturarak uygulamanın 
 <span class="p">]</span>
 </pre></div>
 </div>
-<p>Artık index view&#8217;ını bir dizine bağladınız. Test etmenin vakti geldi. Komut satırında şu kodu çalıştırın:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">runserver</span>
+<p>Artık index view’ını bir dizine bağladınız. Test etmenin vakti geldi. Komut satırında şu kodu çalıştırın:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">runserver</span>
 </pre></div>
 </div>
-<p><cite>include()</cite> fonksiyonu diğer URL şemalarına ulaşmamıza izin verir. Django include ile karşılaştığında eşleşen URL&#8217;yi kalan işlemler için verilen URL şemasına gönderir.</p>
+<p><cite>include()</cite> fonksiyonu diğer URL şemalarına ulaşmamıza izin verir. Django include ile karşılaştığında eşleşen URL’yi kalan işlemler için verilen URL şemasına gönderir.</p>
 </div>
 </div>
 
@@ -221,19 +210,20 @@ polls dizininde <cite>urls.py</cite> isimli bir dosya oluşturarak uygulamanın 
 
 <div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
 <div class='extrarelbar'> 
-    <div class="related">
-      <h3>Navigation</h3>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="django_2.html" title="İLK DJANGO PROJENİ YAZ, part 2"
-             >next</a></li>
+             >sonraki</a></li>
         <li class="right" >
           <a href="index.html" title="django Paketi"
-             >previous</a> |</li>
+             >önceki</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
 
-          <li><a href="../index.html" >Üçüncü Taraf Modüller</a> &raquo;</li>
-          <li><a href="index.html" >django Paketi</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../index.html" >Üçüncü Taraf Modüller</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >django Paketi</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">İLK DJANGO PROJENİ YAZ, part 1</a></li> 
       </ul>
     </div> </div>
 
@@ -268,30 +258,32 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 
 
+            <div class="clearer"></div>
           </div>
       </div>
       <div class="clearer"></div>
     </div> 
-    <div class="related">
-      <h3>Navigation</h3>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="django_2.html" title="İLK DJANGO PROJENİ YAZ, part 2"
-             >next</a></li>
+             >sonraki</a></li>
         <li class="right" >
           <a href="index.html" title="django Paketi"
-             >previous</a> |</li>
+             >önceki</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
 
-          <li><a href="../index.html" >Üçüncü Taraf Modüller</a> &raquo;</li>
-          <li><a href="index.html" >django Paketi</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../index.html" >Üçüncü Taraf Modüller</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >django Paketi</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">İLK DJANGO PROJENİ YAZ, part 1</a></li> 
       </ul>
     </div> 
 
 <div class="footer">
 &copy; Copyright 2007-2021, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Last updated on 30.01.2021.
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+Son güncelleme: 07.03.2021.
+<a href="http://sphinx-doc.org/">Sphinx</a> 3.2.1 kullanılarak oluşturuldu.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img

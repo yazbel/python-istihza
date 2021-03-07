@@ -1,42 +1,31 @@
 
  <!DOCTYPE html>
- <html lang="">
+ <html lang="tr">
 
 
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="tr">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta content="Python 3.x'te karakter dizileri" name="description" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta content="Python 3.x'te karakter dizileri" name="description" />
 <meta content="python, string, karakter dizisi, metotlar" name="keywords" />
 
-    <title>Karakter Dizilerini Biçimlendirmek &mdash; Python 3 için Türkçe Kılavuz</title>
-    
+    <title>Karakter Dizilerini Biçimlendirmek &#8212; Python 3 için Türkçe Kılavuz</title>
     <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '3',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/translations.js"></script>
-    <link rel="top" title="Python 3 için Türkçe Kılavuz" href="index.html" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="search" title="Ara" href="search.html" />
     <link rel="next" title="f-string" href="fstring.html" />
     <link rel="prev" title="Karakter Dizilerinin Metotları (Devamı)" href="karakter_dizilerinin_metotlari3.html" />
 <!--[if lte IE 6]>
 <link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
 <![endif]-->
 
-  </head>
-  <body>
+  </head><body>
 <div class='header'><a href='https://yazbel.com'><img src="_static/logo.png"></a></div>
 
 <ul class='navbar'>
@@ -45,28 +34,29 @@
 </ul>
 
 
-    <div class="related">
-      <h3>Navigation</h3>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="fstring.html" title="f-string"
-             accesskey="N">next</a></li>
+             accesskey="N">sonraki</a></li>
         <li class="right" >
           <a href="karakter_dizilerinin_metotlari3.html" title="Karakter Dizilerinin Metotları (Devamı)"
-             accesskey="P">previous</a> |</li>
+             accesskey="P">önceki</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
- 
+
+        <li class="nav-item nav-item-this"><a href="">Karakter Dizilerini Biçimlendirmek</a></li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
-          <div class="body">
+          <div class="body" role="main">
             
 
   <div class="section" id="karakter-dizilerini-bicimlendirmek">
-<h1>Karakter Dizilerini Biçimlendirmek<a class="headerlink" href="#karakter-dizilerini-bicimlendirmek" title="Permalink to this headline">¶</a></h1>
-<p>Bu bölüme gelinceye kadar, Python&#8217;da karakter dizilerinin biçimlendirilmesine
+<h1>Karakter Dizilerini Biçimlendirmek<a class="headerlink" href="#karakter-dizilerini-bicimlendirmek" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<p>Bu bölüme gelinceye kadar, Python’da karakter dizilerinin biçimlendirilmesine
 ilişkin epey söz söyledik. Ancak bu konu ile ilgili bilgilerimiz hem çok
 dağınık, hem de çok yüzeysel. İşte bu bölümde amacımız, daha önce farklı
 yerlerde dile getirdiğimiz bu önemli konuya ait bilgi kırıntılarını bir araya
@@ -86,9 +76,9 @@ almanız gerekiyor. Programınızın işleyişi gereğince, eğer isim <cite>5</
 veya bundan küçükse ismin tamamı görüntülenecek, ama eğer isim <cite>5</cite> karakterden
 büyükse <cite>5</cite> karakteri aşan kısım yerine üç nokta işareti koyulacak. Yani eğer
 isim <cite>Fırat</cite> ise bu ismin tamamı görüntülenecek. Ama eğer isim mesela <cite>Abdullah</cite>
-ise, o zaman bu isim <cite>Abdul...</cite> şeklinde görüntülenecek.</p>
+ise, o zaman bu isim <cite>Abdul…</cite> şeklinde görüntülenecek.</p>
 <p>Bu amaca ulaşmak için ilk denememizi yapalım:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">isim</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;isminiz: &quot;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">isim</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;isminiz: &quot;</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">isim</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">isim</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
@@ -99,15 +89,15 @@ ise, o zaman bu isim <cite>Abdul...</cite> şeklinde görüntülenecek.</p>
 <p>Buradan elde ettiğimiz çıktı ihtiyacımızı kısmen karşılıyor. Ama çıktı tam
 istediğimiz gibi değil. Çünkü normalde isme bitişik olması gereken üç nokta
 işareti, isimden bir boşluk ile ayrılmış. Yani biz şöyle bir çıktı isterken:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">Abdul</span><span class="o">...</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">Abdul</span><span class="o">...</span>
 </pre></div>
 </div>
 <p>Şöyle bir çıktı elde ediyoruz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">Abdul</span> <span class="o">...</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">Abdul</span> <span class="o">...</span>
 </pre></div>
 </div>
 <p>Bu sorunu şu şekilde halledebiliriz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">isim</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;isminiz: &quot;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">isim</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;isminiz: &quot;</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">isim</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">isim</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
@@ -116,7 +106,7 @@ işareti, isimden bir boşluk ile ayrılmış. Yani biz şöyle bir çıktı ist
 </pre></div>
 </div>
 <p>veya:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">isim</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;isminiz: &quot;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">isim</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;isminiz: &quot;</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">isim</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">isim</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
@@ -134,11 +124,11 @@ olacaktır.</p>
 programınızda belirlediğiniz ölçütlere uyup uymadığını tespit etmek. Eğer
 kullanıcı tarafından belirlenen parola uygunsa ona şu çıktıyı göstermek
 istiyorsunuz (parolanın <cite>b5tY6g</cite> olduğunu varsayalım):</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span>Girdiğiniz parola (b5tY6g) kurallara uygun bir paroladır!
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span>Girdiğiniz parola (b5tY6g) kurallara uygun bir paroladır!
 </pre></div>
 </div>
 <p>Bu çıktıyı elde etmek için şöyle bir kod yazabilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">parola</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;parola: &quot;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">parola</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;parola: &quot;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Girdiğiniz parola (&quot;</span> <span class="o">+</span> <span class="n">parola</span> <span class="o">+</span> <span class="s2">&quot;) kurallara uygun bir paroladır!&quot;</span><span class="p">)</span>
 </pre></div>
@@ -148,7 +138,7 @@ istediğimiz çıktıyı elde ettik, ama farkettiyseniz bu defa işler biraz da 
 zorlaştı.</p>
 <p>Bir de uzun ve karmaşık bir metnin içine dışarıdan değerler yerleştirmeniz
 gereken şöyle bir metinle karşı karşıya olduğunuzu düşünün:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">Sayın</span> <span class="o">.........</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">Sayın</span> <span class="o">.........</span>
 
 <span class="o">....</span> <span class="n">tarihinde</span> <span class="n">yapmış</span> <span class="n">olduğunuz</span><span class="p">,</span> <span class="o">........</span> <span class="n">hakkındaki</span> <span class="n">başvurunuz</span> <span class="n">incelemeye</span> <span class="n">alınmıştır</span><span class="o">.</span>
 
@@ -163,32 +153,32 @@ gereken şöyle bir metinle karşı karşıya olduğunuzu düşünün:</p>
 <p>Böyle bir metin içine dışarıdan değer yerleştirmek için karakter dizisi
 birleştirme yöntemlerine başvurmak işinizi epey zorlaştıracaktır.</p>
 <p>İşte klasik karakter dizisi birleştirme işlemlerinin yetersiz kaldığı veya
-işleri büsbütün zorlaştırdığı bu tür durumlarda Python&#8217;ın size sunduğu &#8216;karakter
-dizisi biçimlendirme&#8217; araçlarından yararlanabilirsiniz.</p>
+işleri büsbütün zorlaştırdığı bu tür durumlarda Python’ın size sunduğu ‘karakter
+dizisi biçimlendirme’ araçlarından yararlanabilirsiniz.</p>
 <p>Bunun için biz bu bölümde iki farklı yöntemden söz edeceğiz:</p>
 <ol class="arabic simple">
-<li><cite>%</cite> işareti ile biçimlendirme</li>
-<li><tt class="docutils literal"><span class="pre">format()</span></tt> metodu ile biçimlendirme.</li>
+<li><p><cite>%</cite> işareti ile biçimlendirme</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">format()</span></code> metodu ile biçimlendirme.</p></li>
 </ol>
 <p><cite>%</cite> işareti ile biçimlendirme, karakter dizisi biçimlendirmenin eski yöntemidir.
-Bu yöntem ağırlıklı olarak Python&#8217;ın 3.x sürümlerinden önce kullanılıyordu. Ama
-Python&#8217;ın 3.x sürümlerinde de bu yöntemi kullanma imkanımız var. Her ne kadar bu
-yöntem Python3&#8217;te geçerliliğini korusa da muhtemelen ileride dilden tamamen
+Bu yöntem ağırlıklı olarak Python’ın 3.x sürümlerinden önce kullanılıyordu. Ama
+Python’ın 3.x sürümlerinde de bu yöntemi kullanma imkanımız var. Her ne kadar bu
+yöntem Python3’te geçerliliğini korusa da muhtemelen ileride dilden tamamen
 kaldırılacak. Ancak hem etrafta bu yöntemle yazılmış eski programlar olması, hem
 de bu yöntemin halen geçerliliğini koruması nedeniyle bu yöntemi (kendimiz
 kullanmayacak bile olsak) mutlaka öğrenmemiz gerekiyor.</p>
-<p><tt class="docutils literal"><span class="pre">format()</span></tt> metodu ise Python&#8217;ın 3.x sürümleri ile dile dahil olan bir
-özelliktir. Python&#8217;ın 2.x sürümlerinde bu metodu kullanamazsınız. Dilin
-geleceğinde bu metot olduğu için, yeni yazılan kodlarda <tt class="docutils literal"><span class="pre">format()</span></tt> metodunu
+<p><code class="docutils literal notranslate"><span class="pre">format()</span></code> metodu ise Python’ın 3.x sürümleri ile dile dahil olan bir
+özelliktir. Python’ın 2.x sürümlerinde bu metodu kullanamazsınız. Dilin
+geleceğinde bu metot olduğu için, yeni yazılan kodlarda <code class="docutils literal notranslate"><span class="pre">format()</span></code> metodunu
 kullanmak daha akıllıca olacaktır.</p>
 <p>Biz bu sayfalarda yukarıda adını andığımız her iki yöntemi de inceleyeceğiz. İlk
 olarak <cite>%</cite> işareti ile biçimlendirmeden söz edelim.</p>
 <div class="section" id="isareti-ile-bicimlendirme-eski-yontem">
-<h2>% İşareti ile Biçimlendirme (Eski Yöntem)<a class="headerlink" href="#isareti-ile-bicimlendirme-eski-yontem" title="Permalink to this headline">¶</a></h2>
+<h2>% İşareti ile Biçimlendirme (Eski Yöntem)<a class="headerlink" href="#isareti-ile-bicimlendirme-eski-yontem" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Daha önce de söylediğimiz gibi, Python programlama dilinin 3.x sürümlerinden
 önce, bir karakter dizisini biçimlendirebilmek için <cite>%</cite> işaretinden
 yararlanıyorduk. Bununla ilgili basit bir örnek verelim:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">parola</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;parola: &quot;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">parola</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;parola: &quot;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Girdiğiniz parola (</span><span class="si">%s</span><span class="s2">) kurallara uygun bir paroladır!&quot;</span> <span class="o">%</span><span class="n">parola</span><span class="p">)</span>
 </pre></div>
@@ -197,37 +187,34 @@ yararlanıyorduk. Bununla ilgili basit bir örnek verelim:</p>
 içinde görünecektir.</p>
 <p>Yukarıdaki yapıyı incelediğimizde iki nokta gözümüze çarpıyor:</p>
 <ol class="arabic simple">
-<li>İlk olarak, karakter dizisinin içinde bir <cite>%</cite> işareti ve buna bitişik
-olarak yazılmış bir <cite>s</cite> harfi görüyoruz.</li>
-<li>İkincisi, karakter dizisinin dışında <cite>%parola</cite> gibi bir ifade daha var.</li>
+<li><p>İlk olarak, karakter dizisinin içinde bir <cite>%</cite> işareti ve buna bitişik
+olarak yazılmış bir <cite>s</cite> harfi görüyoruz.</p></li>
+<li><p>İkincisi, karakter dizisinin dışında <cite>%parola</cite> gibi bir ifade daha var.</p></li>
 </ol>
 <p>Rahatlıkla tahmin edebileceğiniz gibi, bu ifadeler birbiriyle doğrudan
 bağlantılıdır. Dilerseniz bu yapıyı açıklamaya geçmeden önce bir örnek daha
 verelim. Bu örnek sayesinde benim açıklamama gerek kalmadan karakter dizisi
 biçimlendirme mantığını derhal kavrayacağınızı zannediyorum:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> ve </span><span class="si">%s</span><span class="s2"> iyi bir ikilidir!&quot;</span> <span class="o">%</span><span class="p">(</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s2">&quot;Django&quot;</span><span class="p">))</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> ve </span><span class="si">%s</span><span class="s2"> iyi bir ikilidir!&quot;</span> <span class="o">%</span><span class="p">(</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s2">&quot;Django&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>Dediğim gibi, bu basit örnek karakter dizilerinin nasıl biçimlendirildiğini
 gayet açık bir şekilde gösteriyor. Dilerseniz yapıyı şöyle bir inceleyelim:</p>
 <ol class="arabic">
-<li><p class="first">Python&#8217;da <cite>%s</cite> yapısı, karakter dizisi içinde bir yer tutma vazifesi görür.</p>
-</li>
-<li><p class="first"><cite>%s</cite> yapısı bir anlamda değişkenlere benzer. Tıpkı değişkenlerde olduğu
-gibi, <cite>%s</cite> yapısının değeri değişebilir.</p>
-</li>
-<li><p class="first">Bir karakter dizisi içindeki her <cite>%s</cite> ifadesi için, karakter dizisi
+<li><p>Python’da <cite>%s</cite> yapısı, karakter dizisi içinde bir yer tutma vazifesi görür.</p></li>
+<li><p><cite>%s</cite> yapısı bir anlamda değişkenlere benzer. Tıpkı değişkenlerde olduğu
+gibi, <cite>%s</cite> yapısının değeri değişebilir.</p></li>
+<li><p>Bir karakter dizisi içindeki her <cite>%s</cite> ifadesi için, karakter dizisi
 dışında bu ifadeye karşılık gelen bir değer olmalıdır. Python, karakter
 dizisi içinde geçen her <cite>%s</cite> ifadesinin yerine, karakter dizisi dışındaki
 her bir değeri tek tek yerleştirir. Bizim örneğimizde karakter dizisi
-içindeki ilk <cite>%s</cite> ifadesinin karakter dizisi dışındaki karşılığı <cite>&#8220;Python&#8221;</cite>;
+içindeki ilk <cite>%s</cite> ifadesinin karakter dizisi dışındaki karşılığı <cite>“Python”</cite>;
 karakter dizisi içindeki ikinci <cite>%s</cite> ifadesinin karakter dizisi dışındaki
-karşılığı ise <cite>&#8220;Django&#8221;</cite>&#8216;dur.</p>
-</li>
-<li><p class="first">Eğer karakter dizisi içindeki <cite>%s</cite> işaretlerinin sayısı ile karakter
+karşılığı ise <cite>“Django”</cite>’dur.</p></li>
+<li><p>Eğer karakter dizisi içindeki <cite>%s</cite> işaretlerinin sayısı ile karakter
 dizisi dışında bu işaretlere karşılık gelen değerlerin sayısı birbirini
 tutmazsa Python bize bir hata mesajı gösterecektir. Mesela:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Benim adım </span><span class="si">%s</span><span class="s2">, soyadım </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span><span class="s2">&quot;istihza&quot;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Benim adım </span><span class="si">%s</span><span class="s2">, soyadım </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span><span class="s2">&quot;istihza&quot;</span><span class="p">)</span>
 
 <span class="gt">Traceback (most recent call last):</span>
     <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
@@ -238,9 +225,9 @@ tutmazsa Python bize bir hata mesajı gösterecektir. Mesela:</p>
 </ol>
 <p>Gördüğünüz gibi bu kodlar hata verdi. Çünkü karakter dizisi içindeki iki adet
 <cite>%s</cite> ifadesine karşılık, karakter dizisinin dışında tek bir değer var
-(<cite>&#8220;istihza&#8221;</cite>). Halbuki bizim şöyle bir kod yazmamız gerekiyordu:</p>
+(<cite>“istihza”</cite>). Halbuki bizim şöyle bir kod yazmamız gerekiyordu:</p>
 <blockquote>
-<div><div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">isim</span> <span class="o">=</span> <span class="s2">&quot;istihza&quot;</span>
+<div><div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">isim</span> <span class="o">=</span> <span class="s2">&quot;istihza&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> adlı kişinin mekanı www.</span><span class="si">%s</span><span class="s2">.com adresidir.&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">isim</span><span class="p">,</span> <span class="n">isim</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -254,18 +241,18 @@ yok. Ama eğer karakter dizisi içinde birden fazla <cite>%s</cite> işareti var
 karşılık gelen değerleri parantez içinde gösteriyoruz. Mesela yukarıdaki parola
 örneğinde, karakter dizisinin içinde tek bir <cite>%s</cite> ifadesi var. Dolayısıyla
 karakter dizisi dışında bu ifadeye karşılık gelen <cite>parola</cite> değişkenini parantez
-içine almıyoruz. Ama <cite>&#8220;Python&#8221;</cite> ve <cite>&#8220;Django&#8221;</cite> örneğinde karakter dizisi içinde
+içine almıyoruz. Ama <cite>“Python”</cite> ve <cite>“Django”</cite> örneğinde karakter dizisi içinde
 iki adet <cite>%s</cite> ifadesi yer aldığı için, karakter dizisi dışında bu ifadelere
-karşılık gelen <cite>&#8220;Python&#8221;</cite> ve <cite>&#8220;Django&#8221;</cite> kelimelerini parantez içinde
+karşılık gelen <cite>“Python”</cite> ve <cite>“Django”</cite> kelimelerini parantez içinde
 gösteriyoruz.</p>
 <p>Bütün bu anlattıklarımızı sindirebilmek için dilerseniz bir örnek verelim:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;istihza&quot;</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;istihza&quot;</span>
 
 <span class="k">for</span> <span class="n">sıra</span><span class="p">,</span> <span class="n">karakter</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">kardiz</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">. karakter: &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">sıra</span><span class="p">,</span> <span class="n">karakter</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>Gördüğünüz gibi, <cite>&#8220;istihza&#8221;</cite> adlı karakter dizisi içindeki her bir harfin
+<p>Gördüğünüz gibi, <cite>“istihza”</cite> adlı karakter dizisi içindeki her bir harfin
 sırasını ve harfin kendisini uygun bir düzen içinde ekrana yazdırdık. Karakter
 sırasının ve karakterin kendisinin cümle içinde geleceği yerleri <cite>%s</cite> işaretleri
 ile gösteriyoruz. Python da her bir değeri, ilgili konumlara tek tek
@@ -273,7 +260,7 @@ yerleştiriyor.</p>
 <p>Hatırlarsanız önceki derslerimizde basit bir hesap makinesi örneği vermiştik.
 İşte şimdi öğrendiklerimizi o programa uygularsak karakter dizisi
 biçimlendiricileri üzerine epey pratik yapmış oluruz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">giriş</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">giriş</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">    (1) topla</span>
 <span class="s2">    (2) çıkar</span>
 <span class="s2">    (3) çarp</span>
@@ -332,20 +319,20 @@ biçimlendiricileri üzerine epey pratik yapmış oluruz:</p>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Aşağıdaki seçeneklerden birini giriniz:&quot;</span><span class="p">,</span> <span class="n">giriş</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Bu arada, gördüğünüz gibi, Python&#8217;da biçim düzenleyici olarak kullanılan simge
-aynı zamanda &#8216;yüzde&#8217; (<cite>%</cite>) anlamına da geliyor. O halde size şöyle bir soru
-sorayım: Acaba <cite>0</cite>&#8216;dan <cite>100</cite>&#8216;e kadar olan sayıların başına birer yüzde işareti
-koyarak bu sayıları nasıl gösterirsiniz? <cite>%0</cite>, <cite>%1</cite>, <cite>%10</cite>, <cite>%15</cite> gibi... Önce
+<p>Bu arada, gördüğünüz gibi, Python’da biçim düzenleyici olarak kullanılan simge
+aynı zamanda ‘yüzde’ (<cite>%</cite>) anlamına da geliyor. O halde size şöyle bir soru
+sorayım: Acaba <cite>0</cite>’dan <cite>100</cite>’e kadar olan sayıların başına birer yüzde işareti
+koyarak bu sayıları nasıl gösterirsiniz? <cite>%0</cite>, <cite>%1</cite>, <cite>%10</cite>, <cite>%15</cite> gibi… Önce
 şöyle bir şey deneyelim:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span><span class="n">i</span><span class="p">)</span>
 <span class="gp">...</span>
 </pre></div>
 </div>
-<p>Bu kodlar tabii ki sadece <cite>0</cite>&#8216;dan <cite>100</cite>&#8216;e kadar olan sayıları ekrana dökmekle
+<p>Bu kodlar tabii ki sadece <cite>0</cite>’dan <cite>100</cite>’e kadar olan sayıları ekrana dökmekle
 yetinecektir. Sayıların başında <cite>%</cite> işaretini göremeyeceğiz.</p>
 <p>Bir de şöyle bir şey deneyelim:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%%</span><span class="s2">s&quot;</span> <span class="o">%</span><span class="n">i</span><span class="p">)</span>
 <span class="gp">...</span>
 <span class="gt">Traceback (most recent call last):</span>
@@ -354,14 +341,14 @@ yetinecektir. Sayıların başında <cite>%</cite> işaretini göremeyeceğiz.</
 </pre></div>
 </div>
 <p>Bu defa da hata mesajı aldık. Halbuki doğru cevap şu olmalıydı:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%%%s</span><span class="s2">&quot;</span> <span class="o">%</span><span class="n">i</span><span class="p">)</span>
 <span class="gp">...</span>
 </pre></div>
 </div>
 <p>Burada <cite>%</cite> işaretini arka arkaya iki kez kullanarak bir adet <cite>%</cite> işareti elde
 ettik. Daha sonra da normal bir şekilde <cite>%s</cite> biçimini kullandık. Yani üç adet
-&#8216;%&#8217; işaretini yan yana getirmiş olduk.</p>
+‘%’ işaretini yan yana getirmiş olduk.</p>
 <p>Bütün bu örneklerden sonra, karakter dizisi biçimlendiricilerinin işimizi ne
 kadar kolaylaştırdığını görmüş olmalısınız. İstediğimiz etkiyi elde etmek için
 karakter dizisi biçimlendiricilerini kullanmak, karakter dizilerini birleştirme
@@ -372,48 +359,48 @@ yönlerini gösteriyor. Ama aslında bu aracı kullanarak çok daha karmaşık
 biçimlendirme işlemleri de yapabiliriz.</p>
 <p>Yani yukarıdaki örneklerde <cite>%s</cite> yapısını en basit şekilde mesela şöyle
 kullandık:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Karakter dizilerinin toplam </span><span class="si">%s</span><span class="s2"> adet metodu vardır&quot;</span> <span class="o">%</span><span class="nb">len</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="nb">str</span><span class="p">)))</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Karakter dizilerinin toplam </span><span class="si">%s</span><span class="s2"> adet metodu vardır&quot;</span> <span class="o">%</span><span class="nb">len</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="nb">str</span><span class="p">)))</span>
 </pre></div>
 </div>
 <p>Ama eğer istersek bundan daha karmaşık biçimlendirme işlemleri de
 gerçekleştirebiliriz. Şu örneğe bakın:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="nb">str</span><span class="p">):</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="nb">str</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%15s</span><span class="s2">&quot;</span> <span class="o">%</span><span class="n">i</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi <cite>%</cite> ile <cite>s</cite> işaretleri arasına bir sayı yerleştirdik. Bu sayı,
 biçimlendirilecek karakter dizisinin toplam kaç karakterlik yer kaplayacağını
 gösteriyor. Durumu daha net görebilmeniz için şöyle bir örnek verelim:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|</span><span class="si">%15s</span><span class="s2">|&quot;</span> <span class="o">%</span><span class="s2">&quot;istihza&quot;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|</span><span class="si">%15s</span><span class="s2">|&quot;</span> <span class="o">%</span><span class="s2">&quot;istihza&quot;</span><span class="p">)</span>
 
 <span class="go">|        istihza|</span>
 </pre></div>
 </div>
-<p>Karakter dizisinin başına ve sonuna eklediğimiz &#8216;|&#8217; işaretleri sayesinde
+<p>Karakter dizisinin başına ve sonuna eklediğimiz ‘|’ işaretleri sayesinde
 karakter dizisinin nasıl ve ne şekilde hizalandığını daha belirgin bir şekilde
 görebiliyoruz. Aslında yukarıdaki örneğin yaptığı iş size hiç yabancı değil.
-Aynı etkiyi, karakter dizisi metotlarından <tt class="docutils literal"><span class="pre">rjust()</span></tt> ile de yapabileceğimizi
+Aynı etkiyi, karakter dizisi metotlarından <code class="docutils literal notranslate"><span class="pre">rjust()</span></code> ile de yapabileceğimizi
 biliyorsunuz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;istihza&quot;</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;istihza&quot;</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>Aynen yukarıdaki çıktıyı <tt class="docutils literal"><span class="pre">rjust()</span></tt> metodunu kullanarak elde etmek için ise
+<p>Aynen yukarıdaki çıktıyı <code class="docutils literal notranslate"><span class="pre">rjust()</span></code> metodunu kullanarak elde etmek için ise
 şöyle bir şey yazabilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|</span><span class="si">%s</span><span class="s2">|&quot;</span> <span class="o">%</span><span class="s2">&quot;istihza&quot;</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|</span><span class="si">%s</span><span class="s2">|&quot;</span> <span class="o">%</span><span class="s2">&quot;istihza&quot;</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span>
 
 <span class="go">|        istihza|</span>
 </pre></div>
 </div>
-<p>Yukarıdaki örnekte <cite>&#8220;istihza&#8221;</cite> karakter dizisini sağa doğru yasladık. Sola
+<p>Yukarıdaki örnekte <cite>“istihza”</cite> karakter dizisini sağa doğru yasladık. Sola
 yaslamak için ise negatif sayılardan yararlanabilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|</span><span class="si">%-15s</span><span class="s2">|&quot;</span> <span class="o">%</span><span class="s2">&quot;istihza&quot;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|</span><span class="si">%-15s</span><span class="s2">|&quot;</span> <span class="o">%</span><span class="s2">&quot;istihza&quot;</span><span class="p">)</span>
 
 <span class="go">|istihza        |</span>
 </pre></div>
 </div>
-<p>Tıpkı biraz önce verdiğimiz örnekteki gibi, aynı etkiyi <tt class="docutils literal"><span class="pre">ljust()</span></tt> metoduyla da
+<p>Tıpkı biraz önce verdiğimiz örnekteki gibi, aynı etkiyi <code class="docutils literal notranslate"><span class="pre">ljust()</span></code> metoduyla da
 elde edebilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|</span><span class="si">%s</span><span class="s2">|&quot;</span> <span class="o">%</span><span class="s2">&quot;istihza&quot;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|</span><span class="si">%s</span><span class="s2">|&quot;</span> <span class="o">%</span><span class="s2">&quot;istihza&quot;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span>
 
 <span class="go">|istihza        |</span>
 </pre></div>
@@ -423,7 +410,7 @@ elde edebilirsiniz:</p>
 kullanarak yapabileceklerimiz bunlarla da sınırlı değildir. Mesela size şöyle
 bir soru sorduğumu düşünün: Acaba aşağıdaki içeriğe sahip bir <cite>HTML</cite> şablonunu
 nasıl elde edebiliriz?</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span>&lt;html&gt;
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span>&lt;html&gt;
     &lt;head&gt;
         &lt;title&gt; {{ sayfa başlığı }} &lt;/title&gt;
     &lt;/head&gt;
@@ -438,7 +425,7 @@ nasıl elde edebiliriz?</p>
 <p>Burada bütün değişkenler tek bir değere sahip olacak. Örneğin değişkenimiz
 <cite>Python Programlama Dili</cite> ise yukarıdaki şablon şöyle bir <cite>HTML</cite> sayfası
 üretecek:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span>&lt;html&gt;
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span>&lt;html&gt;
     &lt;head&gt;
         &lt;title&gt; Python Programlama Dili &lt;/title&gt;
     &lt;/head&gt;
@@ -451,7 +438,7 @@ nasıl elde edebiliriz?</p>
 </pre></div>
 </div>
 <p>Aklınıza ilk olarak şöyle bir çözüm gelmiş olabilir:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">sayfa</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sayfa</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">&lt;html&gt;</span>
 <span class="s2">    &lt;head&gt;</span>
 <span class="s2">        &lt;title&gt; </span><span class="si">%s</span><span class="s2"> &lt;/title&gt;</span>
@@ -470,12 +457,12 @@ nasıl elde edebiliriz?</p>
 </pre></div>
 </div>
 <p>Bu gayet makul ve doğru bir çözümdür. Ancak gördüğünüz gibi yukarıdaki kodlarda
-bizi rahatsız eden bir nokta var. Bu kodlarda aynı karakter dizisini (<cite>&#8220;Python
-Programlama Dili&#8221;</cite>) üç kez tekrar ediyoruz. En baştan beri söylediğimiz gibi,
+bizi rahatsız eden bir nokta var. Bu kodlarda aynı karakter dizisini (<cite>“Python
+Programlama Dili”</cite>) üç kez tekrar ediyoruz. En baştan beri söylediğimiz gibi,
 kod yazarken tekrarlardan olabildiğince kaçınmaya çalışmamız programımızın
 performansını artıracaktır. Burada da tekrardan kaçınmak amacıyla şöyle bir kod
 yazmayı tercih edebiliriz. Dikkatlice inceleyin:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">sayfa</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sayfa</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">&lt;html&gt;</span>
 <span class="s2">    &lt;head&gt;</span>
 <span class="s2">        &lt;title&gt; </span><span class="si">%(dil)s</span><span class="s2"> &lt;/title&gt;</span>
@@ -494,17 +481,17 @@ yazmayı tercih edebiliriz. Dikkatlice inceleyin:</p>
 <p>Gördüğünüz gibi, yukarıdaki kodlar bizi aynı karakter dizisini tekrar tekrar
 yazma zahmetinden kurtardı. Peki ama nasıl? Gelin isterseniz bu yapıyı daha iyi
 anlayabilmek için daha basit bir örnek verelim:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;depoda </span><span class="si">%(miktar)s</span><span class="s2"> kilo </span><span class="si">%(ürün)s</span><span class="s2"> kaldı&quot;</span> <span class="o">%</span><span class="p">{</span><span class="s2">&quot;miktar&quot;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;depoda </span><span class="si">%(miktar)s</span><span class="s2"> kilo </span><span class="si">%(ürün)s</span><span class="s2"> kaldı&quot;</span> <span class="o">%</span><span class="p">{</span><span class="s2">&quot;miktar&quot;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
                                                 <span class="s2">&quot;ürün&quot;</span><span class="p">:</span> <span class="s2">&quot;elma&quot;</span><span class="p">})</span>
 </pre></div>
 </div>
 <p>Burada şöyle bir yapıyla karşı karşıyayız:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="s2">&quot;</span><span class="si">%(değişken_adı)s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">{</span><span class="s2">&quot;değişken_adı&quot;</span><span class="p">:</span> <span class="s2">&quot;değişken_değeri&quot;</span><span class="p">}</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;</span><span class="si">%(değişken_adı)s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">{</span><span class="s2">&quot;değişken_adı&quot;</span><span class="p">:</span> <span class="s2">&quot;değişken_değeri&quot;</span><span class="p">}</span>
 </pre></div>
 </div>
-<p><cite>{&#8220;değişken_adı&#8221;: &#8220;değişken_değeri&#8221;}</cite> yapısıyla önceki derslerimizde
+<p><cite>{“değişken_adı”: “değişken_değeri”}</cite> yapısıyla önceki derslerimizde
 karşılaşmıştınız. Dolayısıyla bu yapının temel olarak ne işe yaradığını
-biliyorsunuz. Hatta bu yapının adının &#8216;sözlük&#8217; olduğunu da öğrenmiştiniz. İşte
+biliyorsunuz. Hatta bu yapının adının ‘sözlük’ olduğunu da öğrenmiştiniz. İşte
 burada, sözlük adlı veri tipinden yararlanarak değişken adları ile değişken
 değerlerini eşleştirdik. Böylece aynı şeyleri tekrar tekrar yazmamıza gerek
 kalmadı. Ayrıca yukarıdaki örnekte değerleri sırasına göre değil, ismine göre
@@ -513,16 +500,16 @@ zahmetinden de kurtulmuş olduk.</p>
 <p>Böylece <cite>%</cite> yapısının tüm temel ayrıntılarını öğrenmiş olduk. Artık <cite>%</cite>
 işaretinin başka yönlerini incelemeye başlayabiliriz.</p>
 <div class="section" id="bicimlendirme-karakterleri">
-<h3>Biçimlendirme Karakterleri<a class="headerlink" href="#bicimlendirme-karakterleri" title="Permalink to this headline">¶</a></h3>
-<p>Biraz önce, Python&#8217;da eski usul karakter dizisi biçimlendirme yöntemi olan <cite>%</cite>
+<h3>Biçimlendirme Karakterleri<a class="headerlink" href="#bicimlendirme-karakterleri" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p>Biraz önce, Python’da eski usul karakter dizisi biçimlendirme yöntemi olan <cite>%</cite>
 işareti üzerine en temel bilgileri edindik. Buraya kadar öğrendiklerimiz,
 yazdığımız programlarda genellikle yolumuzu yordamımızı bulmamıza yetecektir.
 Ama isterseniz şimdi karakter dizisi biçimlendirme konusunu biraz daha
-derinlemesine ele alalım. Mesela Python&#8217;daki biçimlendirme karakterlerinin neler
+derinlemesine ele alalım. Mesela Python’daki biçimlendirme karakterlerinin neler
 olduğunu inceleyelim.</p>
 <div class="section" id="s">
-<h4>s<a class="headerlink" href="#s" title="Permalink to this headline">¶</a></h4>
-<p>Önceki örneklerden de gördüğünüz gibi, Python&#8217;da biçim düzenleme işlemleri için
+<h4>s<a class="headerlink" href="#s" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
+<p>Önceki örneklerden de gördüğünüz gibi, Python’da biçim düzenleme işlemleri için
 <cite>%s</cite> adlı bir yapıdan faydalanıyoruz. Bu yapıyı şöyle bir masaya yatırdığımızda
 aslında bu yapının iki parçadan oluştuğunu görebiliriz. Bu parçalar <cite>%</cite> ve <cite>s</cite>
 karakterleridir. Burada gördüğümüz parçalardan <cite>%</cite> sabit, <cite>s</cite> ise değişkendir.
@@ -530,20 +517,20 @@ Yani <cite>%</cite> sabit değerini bazı harflerle birlikte kullanarak, farklı
 dizisi biçimlendirme işlemleri gerçekleştirebiliriz.</p>
 <p>Biz önceki sayfalarda verdiğimiz örneklerde bu simgeyi <cite>s</cite> harfiyle birlikte
 kullandık. Örneğin:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Benim adım </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span><span class="s2">&quot;istihza&quot;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Benim adım </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span><span class="s2">&quot;istihza&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Bu kodlardaki <cite>s</cite> karakteri İngilizce <em>string</em>, yani &#8216;karakter dizisi&#8217;
+<p>Bu kodlardaki <cite>s</cite> karakteri İngilizce <em>string</em>, yani ‘karakter dizisi’
 ifadesinin kısaltmasıdır. Esasında en yaygın çift de budur. Yani etraftaki
-Python programlarında yaygın olarak <cite>%s</cite> yapısını görürüz. Ancak Python&#8217;da <cite>%</cite>
+Python programlarında yaygın olarak <cite>%s</cite> yapısını görürüz. Ancak Python’da <cite>%</cite>
 biçim düzenleyicisiyle birlikte kullanılabilecek tek karakter <cite>s</cite> değildir. Daha
-önce de dediğimiz gibi, <cite>s</cite> karakteri <em>string</em>, yani &#8216;karakter dizisi&#8217;
-ifadesinin kısaltmasıdır. Yani aslında <cite>%s</cite> yapısı Python&#8217;da özel olarak
+önce de dediğimiz gibi, <cite>s</cite> karakteri <em>string</em>, yani ‘karakter dizisi’
+ifadesinin kısaltmasıdır. Yani aslında <cite>%s</cite> yapısı Python’da özel olarak
 karakter dizilerini temsil eder.</p>
 <p>Peki bu ne demek oluyor?</p>
 <p>Bir karakter dizisi içinde <cite>%s</cite> yapısını kullandığımızda, dışarıda buna karşılık
 gelen değerin de bir karakter dizisi veya karakter dizisine çevrilebilecek bir
-değer olması gerekir. Python&#8217;da her şey bir karakter dizisi olarak temsil
+değer olması gerekir. Python’da her şey bir karakter dizisi olarak temsil
 edilebilir. Dolayısıyla bütün işlemlerinizde <cite>%</cite> işaretini <cite>s</cite> karakteri ile
 birlikte kullanabilirsiniz. Ama bazı özel durumlarda <cite>%</cite> işaretini <cite>s</cite> dışında
 başka harflerle birlikte kullanmanız da gerekebilir.</p>
@@ -553,11 +540,11 @@ birlikteliği üzerinde daha fazla durmayacağız. Bunun yerine, <cite>%</cite> 
 kullanılan öteki karakterleri inceleyeceğiz. O halde yola koyulalım.</p>
 </div>
 <div class="section" id="d">
-<h4>d<a class="headerlink" href="#d" title="Permalink to this headline">¶</a></h4>
+<h4>d<a class="headerlink" href="#d" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p>Bir önceki başlıkta gördüğümüz <cite>s</cite> harfi nasıl karakter dizilerini temsil
 ediyorsa, <cite>d</cite> harfi de sayıları temsil eder. İsterseniz küçük bir örnekle
 açıklamaya çalışalım durumu:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Şubat ayı bu yıl </span><span class="si">%d</span><span class="s2"> gün çekiyor&quot;</span> <span class="o">%</span><span class="mi">28</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Şubat ayı bu yıl </span><span class="si">%d</span><span class="s2"> gün çekiyor&quot;</span> <span class="o">%</span><span class="mi">28</span><span class="p">)</span>
 
 <span class="go">Şubat ayı bu yıl 28 gün çekiyor.</span>
 </pre></div>
@@ -565,15 +552,15 @@ açıklamaya çalışalım durumu:</p>
 <p>Gördüğünüz gibi, <cite>%</cite> işaretiyle birlikte bu defa <cite>s</cite> yerine <cite>d</cite> harfini
 kullandık. Buna uygun olarak da dış tarafta <cite>28</cite> sayısını kullandık. Peki
 yukarıdaki ifadeyi şöyle de yazamaz mıydık?</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Şubat ayı bu yıl </span><span class="si">%s</span><span class="s2"> gün çekiyor&quot;</span> <span class="o">%</span><span class="mi">28</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Şubat ayı bu yıl </span><span class="si">%s</span><span class="s2"> gün çekiyor&quot;</span> <span class="o">%</span><span class="mi">28</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Elbette yazabilirdik. Bu kod da bize doğru çıktı verecektir. Çünkü daha önce de
 dediğimiz gibi, <cite>s</cite> harfi karakter dizilerini ve karakter dizisine çevrilebilen
-değerleri temsil eder. Python&#8217;da sayılar karakter dizisine çevrilebildiği için
+değerleri temsil eder. Python’da sayılar karakter dizisine çevrilebildiği için
 <cite>%s</cite> gibi bir yapıyı hata almadan kullanabiliyoruz. Ama mesela şöyle bir şey
 yazamayız:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Şubat ayı bu yıl </span><span class="si">%d</span><span class="s2"> gün çekiyor&quot;</span> <span class="o">%</span><span class="s2">&quot;yirmi sekiz&quot;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Şubat ayı bu yıl </span><span class="si">%d</span><span class="s2"> gün çekiyor&quot;</span> <span class="o">%</span><span class="s2">&quot;yirmi sekiz&quot;</span><span class="p">)</span>
 
 <span class="gt">Traceback (most recent call last):</span>
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
@@ -586,15 +573,15 @@ temsil edebilir. Bu harfle birlikte karakter dizilerini kullanamayız.</p>
 temsil eder. Eğer bu harfin kullanıldığı bir karakter dizisinde değer olarak
 mesela bir kayan noktalı sayı (<em>float</em>) verirsek, bu değer tamsayıya
 çevrilecektir. Bunun ne demek olduğunu hemen bir örnekle görelim:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span><span class="mf">13.5</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span><span class="mf">13.5</span><span class="p">)</span>
 
 <span class="go">13</span>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi, <cite>%d</cite> ifadesi, <cite>13.5</cite> sayısının ondalık kısmını çıktıda
 göstermiyor. Çünkü <cite>d</cite> harfi sadece tamsayıları temsil etme işlevi görüyor.</p>
-<p>Burada şöyle bir soru aklınıza gelmiş olabilir: &#8216;Acaba <cite>%d</cite> ifadesi ile hiç
-uğraşmasak, bunun yerine her yerde <cite>%s</cite> ifadesini kullansak olmaz mı?&#8217;.</p>
+<p>Burada şöyle bir soru aklınıza gelmiş olabilir: ‘Acaba <cite>%d</cite> ifadesi ile hiç
+uğraşmasak, bunun yerine her yerde <cite>%s</cite> ifadesini kullansak olmaz mı?’.</p>
 <p>Çoğu zaman olur, ama mesela şöyle bir durum düşünün: Yazdığınız programda
 kullanıcıdan sadece tam sayı girmesini istiyor olabilirsiniz. Yani mesela
 kullanıcının ondalık sayı girmesi halinde, siz bu sayının sadece tam sayı
@@ -602,17 +589,17 @@ kısmını almak istiyor olabilirsiniz. Örneğin kullanıcı <cite>23.8</cite> 
 girmişse, siz bu sayıda ihtiyacınız olan <cite>23</cite> kısmını almak isteyebilirsiniz.
 İşte bu <cite>%d</cite> işaretinden yararlanarak, kullanıcının girdiği ondalık sayının
 sadece tam sayı kısmını çekebilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">sayı</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;sayı: &quot;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sayı</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;sayı: &quot;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span><span class="nb">float</span><span class="p">(</span><span class="n">sayı</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>Elbette Python&#8217;da bir ondalık sayının sadece taban kısmını almanın başka
+<p>Elbette Python’da bir ondalık sayının sadece taban kısmını almanın başka
 yöntemleri de vardır. Ama yukarıda verdiğimiz örnek bir ondalık sayının sadece
 tabanını almanın gayet basit ve etkili bir yoludur.</p>
 <p><cite>%s</cite> yapısını anlatırken gösterdiğimiz ileri düzey biçimlendirme tekniklerini
 <cite>%d</cite> ile de kullanabilirsiniz. Örneğin:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|</span><span class="si">%7d</span><span class="s2">|&quot;</span> <span class="o">%</span><span class="mi">23</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|</span><span class="si">%7d</span><span class="s2">|&quot;</span> <span class="o">%</span><span class="mi">23</span><span class="p">)</span>
 
 <span class="go">|     23|</span>
 
@@ -622,27 +609,27 @@ tabanını almanın gayet basit ve etkili bir yoludur.</p>
 </pre></div>
 </div>
 <p>veya:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%(sayı)d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">{</span><span class="s2">&quot;sayı&quot;</span><span class="p">:</span> <span class="mi">23</span><span class="p">})</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%(sayı)d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">{</span><span class="s2">&quot;sayı&quot;</span><span class="p">:</span> <span class="mi">23</span><span class="p">})</span>
 
 <span class="go">23</span>
 </pre></div>
 </div>
 <p><cite>%s</cite> yapısına ek olarak, sayının kaplayacağı alandaki boşluklara birer <cite>0</cite> da
 yerleştirebilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%05d</span><span class="s2">&quot;</span> <span class="o">%</span><span class="mi">23</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%05d</span><span class="s2">&quot;</span> <span class="o">%</span><span class="mi">23</span><span class="p">)</span>
 
 <span class="go">00023</span>
 </pre></div>
 </div>
-<p>...veya:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%.5d</span><span class="s2">&quot;</span> <span class="o">%</span><span class="mi">23</span><span class="p">)</span>
+<p>…veya:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%.5d</span><span class="s2">&quot;</span> <span class="o">%</span><span class="mi">23</span><span class="p">)</span>
 
 <span class="go">00023</span>
 </pre></div>
 </div>
 <p>Hatta hem sayının kaplayacağı boşluk miktarını hem de bu boşlukların ne
 kadarının <cite>0</cite> ile doldurulacağını da belirleyebilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%10.5d</span><span class="s2">&quot;</span> <span class="o">%</span><span class="mi">23</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%10.5d</span><span class="s2">&quot;</span> <span class="o">%</span><span class="mi">23</span><span class="p">)</span>
 
 <span class="go">     00023</span>
 </pre></div>
@@ -651,7 +638,7 @@ kadarının <cite>0</cite> ile doldurulacağını da belirleyebilirsiniz:</p>
 boşluğun <cite>5</cite> tanesinin içine <cite>0</cite> sayılarının ve <cite>23</cite> sayısının sığdırılmasını
 istedik.</p>
 <p>Bir de şuna bakalım:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;%010.d&quot;</span> <span class="o">%</span><span class="mi">23</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;%010.d&quot;</span> <span class="o">%</span><span class="mi">23</span><span class="p">)</span>
 
 <span class="go">0000000023</span>
 </pre></div>
@@ -659,9 +646,9 @@ istedik.</p>
 <p>Burada ise <cite>23</cite> sayısının toplam <cite>10</cite> boşlukluk bir yer kaplamasını ve bu <cite>10</cite>
 adet boşluğa <cite>23</cite> sayısı yerleştirildikten sonra arta kalan kısmın <cite>0</cite> sayıları
 ile doldurulmasını istedik.</p>
-<p>Bu arada, son örnekte yaptığımız şeyi, daha önce öğrendiğimiz <tt class="docutils literal"><span class="pre">zfill()</span></tt>
+<p>Bu arada, son örnekte yaptığımız şeyi, daha önce öğrendiğimiz <code class="docutils literal notranslate"><span class="pre">zfill()</span></code>
 metoduyla da yapabileceğimizi biliyorsunuz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;23&quot;</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;23&quot;</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 
 <span class="go">&#39;0000000023&#39;</span>
 </pre></div>
@@ -672,7 +659,7 @@ olmadığını anlarsınız. İsterseniz bu biçimlerle neler yapabileceğimizi 
 kısaca tarif edelim:</p>
 <p><cite>d</cite> harfi, <cite>%</cite> işaretiyle birlikte kullanıldığında sayıları temsil eder. Bu iki
 karakterin en temel kullanımı şöyledir:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span><span class="mi">10</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span><span class="mi">10</span>
 
 <span class="go">&#39;10&#39;</span>
 </pre></div>
@@ -680,7 +667,7 @@ karakterin en temel kullanımı şöyledir:</p>
 <p><cite>d</cite> harfi ile <cite>%</cite> işareti arasına bir pozitif veya negatif sayı getirerek,
 temsil edilecek sayının toplam kaç boşluktan oluşan bir alan içine
 yerleştirileceğini belirleyebiliyoruz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;</span><span class="si">%5d</span><span class="s2">&quot;</span> <span class="o">%</span><span class="mi">10</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;</span><span class="si">%5d</span><span class="s2">&quot;</span> <span class="o">%</span><span class="mi">10</span>
 
 <span class="go">&#39;   10&#39;</span>
 </pre></div>
@@ -689,7 +676,7 @@ yerleştirileceğini belirleyebiliyoruz:</p>
 Gördüğünüz gibi, bir pozitif sayı kullandığımızda, sayımız kendisine ayrılan
 alan içinde sağa yaslanıyor. Eğer bu sayıyı sola yaslamak istersek negatif
 sayılardan yararlanabiliriz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;</span><span class="si">%-5d</span><span class="s2">&quot;</span> <span class="o">%</span><span class="mi">10</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;</span><span class="si">%-5d</span><span class="s2">&quot;</span> <span class="o">%</span><span class="mi">10</span>
 
 <span class="go">&#39;10   &#39;</span>
 </pre></div>
@@ -697,115 +684,115 @@ sayılardan yararlanabiliriz:</p>
 <p>Eğer sağa yasladığımız bir sayının sol tarafını sıfırla doldurmak istersek,
 hizalama miktarını belirtmek için kullandığımız sayının soluna bir sıfır
 ekleyebiliriz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;</span><span class="si">%05d</span><span class="s2">&quot;</span> <span class="o">%</span><span class="mi">10</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;</span><span class="si">%05d</span><span class="s2">&quot;</span> <span class="o">%</span><span class="mi">10</span>
 
 <span class="go">&#39;00010&#39;</span>
 </pre></div>
 </div>
 <p>Aynı etkiyi şu şekilde de elde edebilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;</span><span class="si">%.5d</span><span class="s2">&quot;</span> <span class="o">%</span><span class="mi">10</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;</span><span class="si">%.5d</span><span class="s2">&quot;</span> <span class="o">%</span><span class="mi">10</span>
 
 <span class="go">&#39;00010&#39;</span>
 </pre></div>
 </div>
 <p>Eğer nokta işaretinden önce bir sayı belirtirseniz, karakter dizisi o
 belirttiğiniz sayı kadar sağa yaslanacaktır. Yani:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;</span><span class="si">%10.5d</span><span class="s2">&quot;</span> <span class="o">%</span><span class="mi">10</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;</span><span class="si">%10.5d</span><span class="s2">&quot;</span> <span class="o">%</span><span class="mi">10</span>
 
 <span class="go">&#39;     00010&#39;</span>
 </pre></div>
 </div>
-<p>... veya sola:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;</span><span class="si">%-10.5d</span><span class="s2">&quot;</span> <span class="o">%</span><span class="mi">10</span>
+<p>… veya sola:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;</span><span class="si">%-10.5d</span><span class="s2">&quot;</span> <span class="o">%</span><span class="mi">10</span>
 
 <span class="go">&#39;00010     &#39;</span>
 </pre></div>
 </div>
 <p>Her iki şekilde de, karakter dizisini toplam <cite>10</cite> boşluktan oluşan bir alan
 içine yerleştirmiş olduk. Bu toplam alanın <cite>5</cite> boşlukluk kısmı sayının kendisi
-ve sayının soluna gelecek <cite>0</cite>&#8216;lar arasında paylaştırıldı.</p>
+ve sayının soluna gelecek <cite>0</cite>’lar arasında paylaştırıldı.</p>
 <p>Gördüğünüz gibi, biçimlendirme mantığının aslında o kadar da korkulacak bir yanı
 yok. Kendi kendinize yukarıdakilere benzer örnekler yaparak bu yapıyı daha iyi
 bir şekilde anlamaya çalışabilirsiniz.</p>
 </div>
 <div class="section" id="i">
-<h4>i<a class="headerlink" href="#i" title="Permalink to this headline">¶</a></h4>
-<p>Bu harf de <em>integer</em>, yani &#8216;tam sayı&#8217; kelimesinin kısaltmasıdır. Kullanım ve
+<h4>i<a class="headerlink" href="#i" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
+<p>Bu harf de <em>integer</em>, yani ‘tam sayı’ kelimesinin kısaltmasıdır. Kullanım ve
 işlev olarak, <cite>d</cite> harfinden hiç bir farkı yoktur.</p>
 </div>
 <div class="section" id="o">
-<h4>o<a class="headerlink" href="#o" title="Permalink to this headline">¶</a></h4>
+<h4>o<a class="headerlink" href="#o" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p>Bu harf <em>octal</em> (sekizli) kelimesinin kısaltmasıdır. Adından da anlaşılacağı
 gibi, sekizli düzendeki sayıları temsil eder. Dolayısıyla bu harfi kullanarak
 onlu düzendeki bir sayıyı sekizli düzendeki karşılığına dönüştürebilirsiniz.
 Örneğin:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%i</span><span class="s2"> sayısının sekizli düzendeki karşılığı </span><span class="si">%o</span><span class="s2"> sayısıdır.&quot;</span> <span class="o">%</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%i</span><span class="s2"> sayısının sekizli düzendeki karşılığı </span><span class="si">%o</span><span class="s2"> sayısıdır.&quot;</span> <span class="o">%</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 
 <span class="go">10 sayısının sekizli düzendeki karşılığı 12 sayısıdır.</span>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last"><cite>%d</cite> yapısını anlatırken gösterdiğimiz ileri düzey biçimlendirme
+<p class="admonition-title">Not</p>
+<p><cite>%d</cite> yapısını anlatırken gösterdiğimiz ileri düzey biçimlendirme
 tekniklerinin tamamını <cite>%o</cite> ile de kullanabilirsiniz.</p>
 </div>
 </div>
 <div class="section" id="x">
-<h4>x<a class="headerlink" href="#x" title="Permalink to this headline">¶</a></h4>
+<h4>x<a class="headerlink" href="#x" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p>Bu harf <em>hexadecimal</em>, yani onaltılı düzendeki sayıları temsil eder.
 Dolayısıyla bu harfi kullanarak onlu düzendeki bir sayıyı onaltılı düzendeki
 karşılığına çevirebilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%i</span><span class="s2"> sayısının onaltılı düzendeki karşılığı </span><span class="si">%x</span><span class="s2"> sayısıdır.&quot;</span> <span class="o">%</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%i</span><span class="s2"> sayısının onaltılı düzendeki karşılığı </span><span class="si">%x</span><span class="s2"> sayısıdır.&quot;</span> <span class="o">%</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
 
 <span class="go">20 sayısının onaltılı düzendeki karşılığı 14 sayısıdır.</span>
 </pre></div>
 </div>
-<p>Buradaki &#8216;x&#8217; küçük harf olarak kullanıldığında, onaltılı düzende harfle
+<p>Buradaki ‘x’ küçük harf olarak kullanıldığında, onaltılı düzende harfle
 gösterilen sayılar da küçük harfle temsil edilecektir:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%i</span><span class="s2"> sayısının onaltılı düzendeki karşılığı </span><span class="si">%x</span><span class="s2"> sayısıdır.&quot;</span> <span class="o">%</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%i</span><span class="s2"> sayısının onaltılı düzendeki karşılığı </span><span class="si">%x</span><span class="s2"> sayısıdır.&quot;</span> <span class="o">%</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 
 <span class="go">10 sayısının onaltılı düzendeki karşılığı a sayısıdır.</span>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last"><cite>%d</cite> yapısını anlatırken gösterdiğimiz ileri düzey biçimlendirme
+<p class="admonition-title">Not</p>
+<p><cite>%d</cite> yapısını anlatırken gösterdiğimiz ileri düzey biçimlendirme
 tekniklerinin tamamını <cite>%x</cite> ile de kullanabilirsiniz.</p>
 </div>
 </div>
 <div class="section" id="id1">
-<h4>X<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<h4>X<a class="headerlink" href="#id1" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p>Bu da tıpkı <cite>x</cite> harfinde olduğu gibi, onaltılı düzendeki sayıları temsil eder.
 Ancak bunun farkı, harfle gösterilen onaltılı sayıları büyük harfle temsil
 etmesidir:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%i</span><span class="s2"> sayısının onaltılı düzendeki karşılığı </span><span class="si">%X</span><span class="s2"> sayısıdır.&quot;</span> <span class="o">%</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%i</span><span class="s2"> sayısının onaltılı düzendeki karşılığı </span><span class="si">%X</span><span class="s2"> sayısıdır.&quot;</span> <span class="o">%</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 
 <span class="go">10 sayısının onaltılı düzendeki karşılığı A sayısıdır.</span>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last"><cite>%d</cite> yapısını anlatırken gösterdiğimiz ileri düzey biçimlendirme
+<p class="admonition-title">Not</p>
+<p><cite>%d</cite> yapısını anlatırken gösterdiğimiz ileri düzey biçimlendirme
 tekniklerinin tamamını <cite>%X</cite> ile de kullanabilirsiniz.</p>
 </div>
 </div>
 <div class="section" id="f">
-<h4>f<a class="headerlink" href="#f" title="Permalink to this headline">¶</a></h4>
-<p>Python&#8217;da karakter dizilerini biçimlendirirken <cite>s</cite> harfinden sonra en çok
-kullanılan harf <cite>f</cite> harfidir. Bu harf İngilizce&#8217;deki <em>float</em>, yani &#8216;kayan
-noktalı sayı&#8217; kelimesinin kısaltmasıdır. Adından da anlaşılacağı gibi, karakter
+<h4>f<a class="headerlink" href="#f" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
+<p>Python’da karakter dizilerini biçimlendirirken <cite>s</cite> harfinden sonra en çok
+kullanılan harf <cite>f</cite> harfidir. Bu harf İngilizce’deki <em>float</em>, yani ‘kayan
+noktalı sayı’ kelimesinin kısaltmasıdır. Adından da anlaşılacağı gibi, karakter
 dizileri içindeki kayan noktalı sayıları temsil etmek için kullanılır.</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dolar </span><span class="si">%f</span><span class="s2"> TL olmuş...&quot;</span> <span class="o">%</span><span class="mf">1.4710</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dolar </span><span class="si">%f</span><span class="s2"> TL olmuş...&quot;</span> <span class="o">%</span><span class="mf">1.4710</span><span class="p">)</span>
 
 <span class="go">Dolar 1.471000 TL olmuş...</span>
 </pre></div>
 </div>
 <p>Bu çıktı sizi biraz şaşırtmış olabilir. Çünkü gördüğünüz gibi, çıktıda bizim
 eklemediğimiz haneler var.</p>
-<p>Python&#8217;da bir karakter dizisi içindeki sayıyı <cite>%f</cite> yapısı ile kayan noktalı
+<p>Python’da bir karakter dizisi içindeki sayıyı <cite>%f</cite> yapısı ile kayan noktalı
 sayıya çevirdiğimizde noktadan sonra öntanımlı olarak <cite>6</cite> hane yer alacaktır.
 Yani mesela:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%f</span><span class="s2">&quot;</span> <span class="o">%</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%f</span><span class="s2">&quot;</span> <span class="o">%</span><span class="mi">10</span><span class="p">)</span>
 
 <span class="go">10.000000</span>
 </pre></div>
@@ -813,16 +800,16 @@ Yani mesela:</p>
 <p>Gördüğünüz gibi, gerçekten de <cite>10</cite> tam sayısı <cite>%f</cite> yapısı ile kayan noktalı
 sayıya dönüştürüldüğünde noktadan sonra <cite>6</cite> adet sıfıra sahip oluyor.</p>
 <p>Başka bir örnek daha verelim:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%f</span><span class="s2">&quot;</span><span class="o">%</span><span class="mf">23.6</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%f</span><span class="s2">&quot;</span><span class="o">%</span><span class="mf">23.6</span><span class="p">)</span>
 
 <span class="go">23.600000</span>
 </pre></div>
 </div>
 <p>Bu örnek, <cite>%f</cite> yapısının, kayan noktalı sayıların noktadan sonraki hane sayısını
-da <cite>6</cite>&#8216;ya tamamladığını gösteriyor. Ama elbette biz istersek, daha önce
+da <cite>6</cite>’ya tamamladığını gösteriyor. Ama elbette biz istersek, daha önce
 öğrendiğimiz teknikleri kullanarak, noktadan sonra kaç hane olacağını
 belirleyebiliriz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="mi">10</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="mi">10</span><span class="p">)</span>
 
 <span class="go">10.00</span>
 </pre></div>
@@ -830,22 +817,22 @@ belirleyebiliriz:</p>
 <p><cite>%f</cite> yapısında, <cite>%</cite> ile <cite>f</cite> arasına <cite>.2</cite> gibi bir ifade yerleştirerek noktadan
 sonra <cite>2</cite> hane olmasını sağladık.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Daha önce gösterdiğimiz ileri düzey biçimlendirme tekniklerini <cite>%f</cite>
+<p class="admonition-title">Not</p>
+<p>Daha önce gösterdiğimiz ileri düzey biçimlendirme tekniklerini <cite>%f</cite>
 ile de kullanabilirsiniz.</p>
 </div>
 </div>
 <div class="section" id="c">
-<h4>c<a class="headerlink" href="#c" title="Permalink to this headline">¶</a></h4>
-<p>Bu harf de Python&#8217;daki önemli karakter dizisi biçimlendiricilerinden biridir. Bu
+<h4>c<a class="headerlink" href="#c" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
+<p>Bu harf de Python’daki önemli karakter dizisi biçimlendiricilerinden biridir. Bu
 harf tek bir karakteri temsil eder:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%c</span><span class="s2">&quot;</span> <span class="o">%</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%c</span><span class="s2">&quot;</span> <span class="o">%</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
 
 <span class="go">a</span>
 </pre></div>
 </div>
 <p>Ama:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%c</span><span class="s2">&quot;</span> <span class="o">%</span><span class="s2">&quot;istihza&quot;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%c</span><span class="s2">&quot;</span> <span class="o">%</span><span class="s2">&quot;istihza&quot;</span><span class="p">)</span>
 
 <span class="gt">Traceback (most recent call last):</span>
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
@@ -856,29 +843,29 @@ harf tek bir karakteri temsil eder:</p>
 sayısı birden fazla olduğunda bu komut hata veriyor.</p>
 <p><cite>c</cite> harfinin bir başka özelliği de ASCII tablosunda sayılara karşılık gelen
 karakterleri de gösterebilmesidir:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%c</span><span class="s2">&quot;</span> <span class="o">%</span><span class="mi">65</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%c</span><span class="s2">&quot;</span> <span class="o">%</span><span class="mi">65</span><span class="p">)</span>
 
 <span class="go">A</span>
 </pre></div>
 </div>
-<p>ASCII tablosunda 65 sayısı &#8216;A&#8217; harfine karşılık geldiği için yukarıdaki komutun
-çıktısı &#8216;A&#8217; harfini gösteriyor. Eğer isterseniz <cite>c</cite> harfini kullanarak bütün
+<p>ASCII tablosunda 65 sayısı ‘A’ harfine karşılık geldiği için yukarıdaki komutun
+çıktısı ‘A’ harfini gösteriyor. Eğer isterseniz <cite>c</cite> harfini kullanarak bütün
 ASCII tablosunu ekrana dökebilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">128</span><span class="p">):</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">128</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> ==&gt; </span><span class="si">%c</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last"><cite>%s</cite> yapısını anlatırken gösterdiğimiz ileri düzey biçimlendirme
+<p class="admonition-title">Not</p>
+<p><cite>%s</cite> yapısını anlatırken gösterdiğimiz ileri düzey biçimlendirme
 tekniklerinin tamamını <cite>%c</cite> ile de kullanabilirsiniz.</p>
 </div>
-<p>Böylece Python&#8217;da <cite>%</cite> işareti kullanarak nasıl biçimlendirme yapabileceğimizi
+<p>Böylece Python’da <cite>%</cite> işareti kullanarak nasıl biçimlendirme yapabileceğimizi
 öğrenmiş olduk. Dilerseniz pratik olması açısından, karakter dizisi
 biçimlendiricilerinin kullanımını gösteren bir örnek vererek bu bölümü
 noktalayalım.</p>
 <p>Dikkatlice inceleyin:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">sıra</span><span class="p">,</span> <span class="n">karakter</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="nb">str</span><span class="p">)):</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">sıra</span><span class="p">,</span> <span class="n">karakter</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="nb">str</span><span class="p">)):</span>
     <span class="k">if</span> <span class="n">sıra</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%-20s</span><span class="s2">&quot;</span> <span class="o">%</span><span class="n">karakter</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
@@ -887,47 +874,47 @@ noktalayalım.</p>
 <p>Burada, gördüğünüz gibi, karakter dizisi metotlarını bir tablo görünümü içinde
 ekrana yazdırdık. Şu satırlar yardımıyla tablodaki sütun sayısını <cite>3</cite> olarak
 belirledik:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">sıra</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">sıra</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Burada modülüs işlecini nasıl kullandığımıza çok dikkat edin. <cite>sıra</cite>
-değişkeninin değerini <cite>3</cite>&#8216;e böldüğümüzde kalan değerin <cite>0</cite> olduğu her sayıda
+değişkeninin değerini <cite>3</cite>’e böldüğümüzde kalan değerin <cite>0</cite> olduğu her sayıda
 satır başına geçiyoruz. Böylece her <cite>3.</cite> sütunda bir satır aşağı geçilmiş
 oluyor.</p>
 <p>Bununla ilgili bir örnek daha verelim:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%5d%5o%5x</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>Burada <cite>0</cite>&#8216;dan <cite>20</cite>&#8216;ye kadar olan sayıların onlu, sekizli ve onaltılı düzendeki
+<p>Burada <cite>0</cite>’dan <cite>20</cite>’ye kadar olan sayıların onlu, sekizli ve onaltılı düzendeki
 karşılıklarını bir tablo görünümü içinde ekrana çıktı verdik. Bu arada, eğer
 isterseniz yukarıdaki kodları şöyle de yazabileceğinizi biliyorsunuz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%(deger)5d%(deger)5o%(deger)5x</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">({</span><span class="s2">&quot;deger&quot;</span><span class="p">:</span> <span class="n">i</span><span class="p">}))</span>
 </pre></div>
 </div>
-<p>Burada da, tablomuzu biçimlendirmek için &#8216;sözlük&#8217; adını verdiğimiz yapıdan
+<p>Burada da, tablomuzu biçimlendirmek için ‘sözlük’ adını verdiğimiz yapıdan
 yararlandık.</p>
 </div>
 </div>
 </div>
 <div class="section" id="format-metodu-ile-bicimlendirme-yeni-yontem">
-<h2>format() Metodu ile Biçimlendirme (Yeni Yöntem)<a class="headerlink" href="#format-metodu-ile-bicimlendirme-yeni-yontem" title="Permalink to this headline">¶</a></h2>
+<h2>format() Metodu ile Biçimlendirme (Yeni Yöntem)<a class="headerlink" href="#format-metodu-ile-bicimlendirme-yeni-yontem" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>En başta da söylediğimiz gibi, <cite>%</cite> işaretini kullanarak karakter dizisi
-biçimlendirme eskide kalmış bir yöntemdir. Bu yöntem ağırlıklı olarak Python&#8217;ın
-2.x sürümlerinde kullanılıyordu. Her ne kadar bu yöntemi Python&#8217;ın 3.x
+biçimlendirme eskide kalmış bir yöntemdir. Bu yöntem ağırlıklı olarak Python’ın
+2.x sürümlerinde kullanılıyordu. Her ne kadar bu yöntemi Python’ın 3.x
 sürümlerinde de kullanmak mümkün olsa da yeni yazılan kodlarda bu yöntem yerine
-biraz sonra göreceğimiz <tt class="docutils literal"><span class="pre">format()</span></tt> metodunu kullanmak çok daha akıllıca
+biraz sonra göreceğimiz <code class="docutils literal notranslate"><span class="pre">format()</span></code> metodunu kullanmak çok daha akıllıca
 olacaktır. Çünkü muhtemelen <cite>%</cite> ile biçimlendirme yöntemi, ileriki bir Python
 sürümünde dilden tamamen kaldırılacak. Bu yüzden bu eski metoda fazla bel
 bağlamamak gerekiyor.</p>
-<p>Daha önceki derslerimizde verdiğimiz örnekler sayesinde <tt class="docutils literal"><span class="pre">format()</span></tt> metodunun
+<p>Daha önceki derslerimizde verdiğimiz örnekler sayesinde <code class="docutils literal notranslate"><span class="pre">format()</span></code> metodunun
 temel olarak nasıl kullanılacağını biliyoruz. Ama isterseniz biz yine de
-bütünlük açısından <tt class="docutils literal"><span class="pre">format()</span></tt> metodunun temel kullanımını burada tekrar ele
+bütünlük açısından <code class="docutils literal notranslate"><span class="pre">format()</span></code> metodunun temel kullanımını burada tekrar ele
 alalım.</p>
-<p><tt class="docutils literal"><span class="pre">format()</span></tt> metodunu en basit şekilde şöyle kullanıyoruz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> ve </span><span class="si">{}</span><span class="s2"> iyi bir ikilidir!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;Django&quot;</span><span class="p">,</span> <span class="s2">&quot;Python&quot;</span><span class="p">))</span>
+<p><code class="docutils literal notranslate"><span class="pre">format()</span></code> metodunu en basit şekilde şöyle kullanıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> ve </span><span class="si">{}</span><span class="s2"> iyi bir ikilidir!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;Django&quot;</span><span class="p">,</span> <span class="s2">&quot;Python&quot;</span><span class="p">))</span>
 
 <span class="go">Django ve Python iyi bir ikilidir!</span>
 </pre></div>
@@ -935,25 +922,25 @@ alalım.</p>
 <p>Gördüğünüz gibi, eski yöntemdeki <cite>%</cite> işaretine karşılık, yeni yöntemde <cite>{}</cite>
 işaretini kullanıyoruz.</p>
 <p>Çok basit bir örnek daha verelim:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">isim</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;İsminiz: &quot;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">isim</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;İsminiz: &quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Merhaba </span><span class="si">{}</span><span class="s2">. Nasılsın?&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">isim</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>Elbette bu örneği şu şekilde de yazabilirdik:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">isim</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;İsminiz: &quot;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">isim</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;İsminiz: &quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Merhaba&quot;</span><span class="p">,</span> <span class="n">isim</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="s2">&quot;Nasılsın?&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Burada <tt class="docutils literal"><span class="pre">format()</span></tt> metodunu ve biçim düzenleyicileri hiç kullanmadan, sadece
+<p>Burada <code class="docutils literal notranslate"><span class="pre">format()</span></code> metodunu ve biçim düzenleyicileri hiç kullanmadan, sadece
 karakter dizilerini birleştirerek istediğimiz çıktıyı elde ettik. Ama siz de
-görüyorsunuz; karakter dizilerini birleştirmekle uğraşacağımıza <tt class="docutils literal"><span class="pre">format()</span></tt>
+görüyorsunuz; karakter dizilerini birleştirmekle uğraşacağımıza <code class="docutils literal notranslate"><span class="pre">format()</span></code>
 metodunu kullanmak hem daha pratiktir, hem de bu şekilde yazdığımız kodlar daha
 okunaklı olur.</p>
-<p>Yukarıdaki örnekte <tt class="docutils literal"><span class="pre">format()</span></tt> metodunu tek bir parametre ile birlikte
+<p>Yukarıdaki örnekte <code class="docutils literal notranslate"><span class="pre">format()</span></code> metodunu tek bir parametre ile birlikte
 kullandık (<cite>isim</cite>). Bu parametre (tıpkı eski <cite>%</cite> işaretinde olduğu gibi),
 karakter dizisi içindeki <cite>{}</cite> işaretine karşılık geliyor.</p>
 <p>Bu konuyu daha iyi anlayabilmek için bir örnek daha verelim:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">kalkış</span>       <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Kalkış yeri: &quot;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">kalkış</span>       <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Kalkış yeri: &quot;</span><span class="p">)</span>
 <span class="n">varış</span>        <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Varış yeri: &quot;</span><span class="p">)</span>
 <span class="n">isim_soyisim</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;İsim ve soyisim: &quot;</span><span class="p">)</span>
 <span class="n">bilet_sayısı</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Bilet sayısı: &quot;</span><span class="p">)</span>
@@ -965,11 +952,11 @@ karakter dizisi içindeki <cite>{}</cite> işaretine karşılık geliyor.</p>
                                                          <span class="n">bilet_sayısı</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>Gördüğünüz gibi, <cite>{}</cite> işaretleri karakter dizisi içinde bir &#8216;yer tutma&#8217; görevi
-görüyor. Tutulan bu yerlere nelerin geleceğini <tt class="docutils literal"><span class="pre">format()</span></tt> metodunun
+<p>Gördüğünüz gibi, <cite>{}</cite> işaretleri karakter dizisi içinde bir ‘yer tutma’ görevi
+görüyor. Tutulan bu yerlere nelerin geleceğini <code class="docutils literal notranslate"><span class="pre">format()</span></code> metodunun
 parametreleri vasıtasıyla belirliyoruz.</p>
 <p>Elbette eğer isterseniz yukarıdaki örneği şu şekilde de yazabilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">kalkış</span>       <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Kalkış yeri: &quot;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">kalkış</span>       <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Kalkış yeri: &quot;</span><span class="p">)</span>
 <span class="n">varış</span>        <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Varış yeri: &quot;</span><span class="p">)</span>
 <span class="n">isim_soyisim</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;İsim ve soyisim: &quot;</span><span class="p">)</span>
 <span class="n">bilet_sayısı</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Bilet sayısı: &quot;</span><span class="p">)</span>
@@ -981,14 +968,14 @@ parametreleri vasıtasıyla belirliyoruz.</p>
 </pre></div>
 </div>
 <p>Ancak yaygın olarak kullanılan yöntem, karakter dizisini herhangi bir değişkene
-atamadan, doğrudan <tt class="docutils literal"><span class="pre">format()</span></tt> metoduna bağlamaktır. Elbette hangi yöntem
+atamadan, doğrudan <code class="docutils literal notranslate"><span class="pre">format()</span></code> metoduna bağlamaktır. Elbette hangi yöntem
 kolayınıza geliyorsa onu tercih etmekte özgürsünüz. Ama özellikle
 biçimlendirilecek karakter dizisinin çok uzun olduğu durumlarda, yukarıdaki
 gibi, karakter dizisini önce bir değişkene atayıp, sonra da bu değişken üzerine
-<tt class="docutils literal"><span class="pre">format()</span></tt> metodunu uygulamak daha mantıklı olabilir.</p>
-<p>Verdiğimiz bu örneği, her zaman olduğu gibi, <tt class="docutils literal"><span class="pre">format()</span></tt> metoduna başvurmadan
+<code class="docutils literal notranslate"><span class="pre">format()</span></code> metodunu uygulamak daha mantıklı olabilir.</p>
+<p>Verdiğimiz bu örneği, her zaman olduğu gibi, <code class="docutils literal notranslate"><span class="pre">format()</span></code> metoduna başvurmadan
 yazmak da mümkündür:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">kalkış</span>       <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Kalkış yeri: &quot;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">kalkış</span>       <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Kalkış yeri: &quot;</span><span class="p">)</span>
 <span class="n">varış</span>        <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Varış yeri: &quot;</span><span class="p">)</span>
 <span class="n">isim_soyisim</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;İsim ve soyisim: &quot;</span><span class="p">)</span>
 <span class="n">bilet_sayısı</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Bilet sayısı: &quot;</span><span class="p">)</span>
@@ -997,14 +984,14 @@ yazmak da mümkündür:</p>
 <span class="s2">sefer için&quot;</span><span class="p">,</span> <span class="n">isim_soyisim</span><span class="p">,</span> <span class="s2">&quot;adına&quot;</span><span class="p">,</span> <span class="n">bilet_sayısı</span><span class="p">,</span> <span class="s2">&quot;adet bilet ayrılmıştır!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Tıpkı daha önce verdiğimiz örnekte olduğu gibi, burada da <tt class="docutils literal"><span class="pre">format()</span></tt> metodunu
+<p>Tıpkı daha önce verdiğimiz örnekte olduğu gibi, burada da <code class="docutils literal notranslate"><span class="pre">format()</span></code> metodunu
 kullanmak karakter dizilerini birleştirme yöntemine göre daha mantıklı ve kolay
 görünüyor. Ayrıca bir karakter dizisi karmaşıklaştıkça bu karakter dizisini
 sadece karakter dizisi birleştirme yöntemleriyle biçimlendirmeye çalışmak bir
-süre sonra tam bir eziyet halini alabilir. O yüzden, &#8216;Ben <tt class="docutils literal"><span class="pre">format()</span></tt> metodunu
-öğrenmesem de olur,&#8217; diye düşünmeyin sakın. Mesela şöyle bir programı
-<tt class="docutils literal"><span class="pre">format()</span></tt> metodu kullanmadan yazmaya çalışmak hiç akıl kârı değildir:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">kodlama</span>  <span class="o">=</span> <span class="s2">&quot;utf-8&quot;</span>
+süre sonra tam bir eziyet halini alabilir. O yüzden, ‘Ben <code class="docutils literal notranslate"><span class="pre">format()</span></code> metodunu
+öğrenmesem de olur,’ diye düşünmeyin sakın. Mesela şöyle bir programı
+<code class="docutils literal notranslate"><span class="pre">format()</span></code> metodu kullanmadan yazmaya çalışmak hiç akıl kârı değildir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">kodlama</span>  <span class="o">=</span> <span class="s2">&quot;utf-8&quot;</span>
 <span class="n">site_adı</span> <span class="o">=</span> <span class="s2">&quot;Python Programlama Dili&quot;</span>
 <span class="n">dosya</span>    <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;deneme.html&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">kodlama</span><span class="p">)</span>
 <span class="n">içerik</span>   <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
@@ -1029,15 +1016,15 @@ süre sonra tam bir eziyet halini alabilir. O yüzden, &#8216;Ben <tt class="doc
 </pre></div>
 </div>
 <p>Burada şu satırın bir kısmı hariç bütün kodları anlayabilecek düzeydesiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">dosya</span>  <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;deneme.html&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">kodlama</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">dosya</span>  <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;deneme.html&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">kodlama</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Bu kodlarla, <cite>deneme.html</cite> adlı bir dosya oluşturduğumuzu biliyorsunuz. Daha
-önceki derslerimizde birkaç kez gördüğümüz <tt class="docutils literal"><span class="pre">open()</span></tt> fonksiyonu Python&#8217;da dosya
+önceki derslerimizde birkaç kez gördüğümüz <code class="docutils literal notranslate"><span class="pre">open()</span></code> fonksiyonu Python’da dosya
 oluşturmamıza imkan veriyor. Bu fonksiyon içinde kullandığımız üç parametrenin
 ilk ikisi size tanıdık gelecektir. İlk parametre dosyanın adını, ikinci
 parametre ise bu dosyanın hangi kipte açılacağını gösteriyor. Burada
-kullandığımız <cite>&#8220;w&#8221;</cite> parametresi <cite>deneme.html</cite> adlı dosyanın yazma kipinde
+kullandığımız <cite>“w”</cite> parametresi <cite>deneme.html</cite> adlı dosyanın yazma kipinde
 açılacağını gösteriyor. Bu fonksiyona atadığımız <cite>encoding</cite> parametresi ise
 oluşturulacak dosyanın kodlama biçimini gösteriyor. Bu da Türkçe karakterlerin
 dosyada düzgün görüntülenebilmesi açısından önem taşıyor.</p>
@@ -1047,28 +1034,28 @@ parantezleriyle, karakter dizisi dışındaki değerleri teker teker ve sırası
 eşleştirecektir. Ama isterseniz küme parantezleri içine birer sayı yazarak,
 karakter dizisi dışındaki değerlerin hangi sırayla kullanılacağını
 belirleyebilirsiniz. Örneğin:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2"> </span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;Fırat&quot;</span><span class="p">,</span> <span class="s2">&quot;Özgül&quot;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2"> </span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;Fırat&quot;</span><span class="p">,</span> <span class="s2">&quot;Özgül&quot;</span><span class="p">)</span>
 
 <span class="go">&#39;Fırat Özgül&#39;</span>
 </pre></div>
 </div>
 <p>Küme parantezleri içinde sayı kullanabilme imkanı sayesinde değerlerin sırasını
 istediğiniz gibi düzenleyebilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;</span><span class="si">{1}</span><span class="s2"> </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;Fırat&quot;</span><span class="p">,</span> <span class="s2">&quot;Özgül&quot;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;</span><span class="si">{1}</span><span class="s2"> </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;Fırat&quot;</span><span class="p">,</span> <span class="s2">&quot;Özgül&quot;</span><span class="p">)</span>
 
 <span class="go">&#39;Özgül Fırat&#39;</span>
 </pre></div>
 </div>
 <p>Hatta bu özellik sayesinde değerleri bir kez yazıp, birden fazla sayıda tekrar
 edebilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2"> </span><span class="si">{1}</span><span class="s2"> (</span><span class="si">{1}</span><span class="s2"> </span><span class="si">{0}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;Fırat&quot;</span><span class="p">,</span> <span class="s2">&quot;Özgül&quot;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2"> </span><span class="si">{1}</span><span class="s2"> (</span><span class="si">{1}</span><span class="s2"> </span><span class="si">{0}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;Fırat&quot;</span><span class="p">,</span> <span class="s2">&quot;Özgül&quot;</span><span class="p">)</span>
 
 <span class="go">&#39;Fırat Özgül (Özgül Fırat)&#39;</span>
 </pre></div>
 </div>
 <p>Dolayısıyla, <cite>{}</cite> işaretleri içinde öğelerin sırasını da belirterek, biraz önce
 verdiğimiz <cite>HTML</cite> sayfası örneğini şu şekilde yazabilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">kodlama</span>  <span class="o">=</span> <span class="s2">&quot;utf-8&quot;</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">kodlama</span>  <span class="o">=</span> <span class="s2">&quot;utf-8&quot;</span>
 <span class="n">site_adı</span> <span class="o">=</span> <span class="s2">&quot;Python Programlama Dili&quot;</span>
 <span class="n">dosya</span>    <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;deneme.html&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">kodlama</span><span class="p">)</span>
 <span class="n">içerik</span>   <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
@@ -1093,16 +1080,16 @@ verdiğimiz <cite>HTML</cite> sayfası örneğini şu şekilde yazabilirsiniz:</
 </pre></div>
 </div>
 <p>Gördüğünüz gibi, öğelerin sıra numarasını belirtmemiz sayesinde, karakter dizisi
-içinde iki kez ihtiyaç duyduğumuz <cite>site_adı</cite> adlı değişkeni <tt class="docutils literal"><span class="pre">format()</span></tt> metodu
+içinde iki kez ihtiyaç duyduğumuz <cite>site_adı</cite> adlı değişkeni <code class="docutils literal notranslate"><span class="pre">format()</span></code> metodu
 içinde iki kez yazmak zorunda kalmadık.</p>
-<p>Yukarıdaki örnekler bize, <tt class="docutils literal"><span class="pre">format()</span></tt> metodunun parametrelerine sıra numarasına
+<p>Yukarıdaki örnekler bize, <code class="docutils literal notranslate"><span class="pre">format()</span></code> metodunun parametrelerine sıra numarasına
 göre erişebileceğimizi gösteriyor. Biz aynı zamanda bu metodun parametrelerine
 isme göre de erişebiliriz. Çok basit bir örnek:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{dil}</span><span class="s2"> dersleri&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dil</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">))</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{dil}</span><span class="s2"> dersleri&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dil</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>Bu yöntemi kullanarak, aynı değişkeni birkaç farklı yerde kullanabilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">sayfa</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sayfa</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">&lt;html&gt;</span>
 
 <span class="s2">&lt;head&gt;</span>
@@ -1121,12 +1108,12 @@ isme göre de erişebiliriz. Çok basit bir örnek:</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">sayfa</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">konu</span><span class="o">=</span><span class="s2">&quot;Python Programlama Dili&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
-<p><tt class="docutils literal"><span class="pre">format()</span></tt> metodunun yetenekleri yukarıda gösterdiğimiz şeylerle sınırlı
+<p><code class="docutils literal notranslate"><span class="pre">format()</span></code> metodunun yetenekleri yukarıda gösterdiğimiz şeylerle sınırlı
 değildir. Tıpkı eski biçimlendirme yönteminde olduğu gibi, <cite>{}</cite> işaretleri
 arasında bazı sayılar kullanarak, karakter dizileri üzerinde hizalama işlemleri
 de yapabiliriz.</p>
 <p>Dikkatlice bakın:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:&gt;15}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;istihza&quot;</span><span class="p">))</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:&gt;15}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;istihza&quot;</span><span class="p">))</span>
 
 <span class="go">        istihza</span>
 </pre></div>
@@ -1141,7 +1128,7 @@ sayısı ise bu hizalama işleminin 15 karakterlik bir alan ile ilgili olduğunu
 söylüyor. Bu şekilde karakter dizisini <cite>15</cite> karakterlik bir alan içine
 yerleştirip karakter dizisini sağa yasladık. Yukarıdaki çıktıyı daha iyi
 anlayabilmek için kodları şöyle de yazabilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|</span><span class="si">{:&gt;15}</span><span class="s2">|&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;istihza&quot;</span><span class="p">))</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|</span><span class="si">{:&gt;15}</span><span class="s2">|&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;istihza&quot;</span><span class="p">))</span>
 
 <span class="go">|       istihza|</span>
 </pre></div>
@@ -1150,7 +1137,7 @@ anlayabilmek için kodları şöyle de yazabilirsiniz:</p>
 içinde sağa yaslanmış vaziyette duruyor.</p>
 <p>Eğer aynı karakter dizisini sola yaslamak isterseniz şöyle bir şey
 yazabilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|</span><span class="si">{:&lt;15}</span><span class="s2">|&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;istihza&quot;</span><span class="p">))</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|</span><span class="si">{:&lt;15}</span><span class="s2">|&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;istihza&quot;</span><span class="p">))</span>
 
 <span class="go">|istihza        |</span>
 </pre></div>
@@ -1158,28 +1145,28 @@ yazabilirsiniz:</p>
 <p>Bu defa <cite>&lt;</cite> adlı işaretten yararlandığımıza dikkat edin.</p>
 <p>Yukarıdaki yöntemi kullanarak, karakter dizilerini sola veya sağa yaslamanın
 yanısıra, kendilerine ayrılan alan içinde ortalayabilirsiniz de:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|</span><span class="si">{:^15}</span><span class="s2">|&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;istihza&quot;</span><span class="p">))</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|</span><span class="si">{:^15}</span><span class="s2">|&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;istihza&quot;</span><span class="p">))</span>
 
 <span class="go">|    istihza    |</span>
 </pre></div>
 </div>
-<p>Gördüğünüz gibi, python3 ile gelen <tt class="docutils literal"><span class="pre">format()</span></tt> metodunu hizalama işlemleri için
+<p>Gördüğünüz gibi, python3 ile gelen <code class="docutils literal notranslate"><span class="pre">format()</span></code> metodunu hizalama işlemleri için
 kullanırken üç farklı işaretten yararlanıyoruz:</p>
 <blockquote>
-<div><table border="1" class="docutils">
+<div><table class="docutils align-default">
 <colgroup>
-<col width="13%" />
-<col width="88%" />
+<col style="width: 13%" />
+<col style="width: 88%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><cite>&gt;</cite></td>
-<td>sağa yaslama</td>
+<tbody>
+<tr class="row-odd"><td><p><cite>&gt;</cite></p></td>
+<td><p>sağa yaslama</p></td>
 </tr>
-<tr class="row-even"><td><cite>&lt;</cite></td>
-<td>sola yaslama</td>
+<tr class="row-even"><td><p><cite>&lt;</cite></p></td>
+<td><p>sola yaslama</p></td>
 </tr>
-<tr class="row-odd"><td><cite>^</cite></td>
-<td>ortalama</td>
+<tr class="row-odd"><td><p><cite>^</cite></p></td>
+<td><p>ortalama</p></td>
 </tr>
 </tbody>
 </table>
@@ -1187,14 +1174,14 @@ kullanırken üç farklı işaretten yararlanıyoruz:</p>
 <p>Yukarıdaki işaretler, yaptıkları işi çağrıştırdıkları için, bunları akılda
 tutmak çok zor olmasa gerek. Mesela örnek olması açısından, eski biçimlendirme
 yönteminin son kısmında verdiğimiz şu örneği:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">sıra</span><span class="p">,</span> <span class="n">karakter</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="nb">str</span><span class="p">)):</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">sıra</span><span class="p">,</span> <span class="n">karakter</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="nb">str</span><span class="p">)):</span>
     <span class="k">if</span> <span class="n">sıra</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%-20s</span><span class="s2">&quot;</span> <span class="o">%</span><span class="n">karakter</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>... bir de yeni <tt class="docutils literal"><span class="pre">format()</span></tt> metoduyla yazalım:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">sıra</span><span class="p">,</span> <span class="n">karakter</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="nb">str</span><span class="p">)):</span>
+<p>… bir de yeni <code class="docutils literal notranslate"><span class="pre">format()</span></code> metoduyla yazalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">sıra</span><span class="p">,</span> <span class="n">karakter</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="nb">str</span><span class="p">)):</span>
     <span class="k">if</span> <span class="n">sıra</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:&lt;20}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">karakter</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
@@ -1203,20 +1190,20 @@ yönteminin son kısmında verdiğimiz şu örneği:</p>
 <p>Bu örneği inceleyerek, eski ile yeni yöntem arasında nelerin değiştiğini, neyin
 neye karşılık geldiğini görebilirsiniz.</p>
 <div class="section" id="id2">
-<h3>Biçimlendirme Karakterleri<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<p>Hatırlarsanız Python2&#8217;de geçerli olan eski biçimlendirme yönteminde <cite>%</cite>
+<h3>Biçimlendirme Karakterleri<a class="headerlink" href="#id2" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p>Hatırlarsanız Python2’de geçerli olan eski biçimlendirme yönteminde <cite>%</cite>
 karakteri ile bazı harfleri birlikte kullanarak karakter dizileri üzerinde
 biçimlendirme ve dönüştürme işlemleri yapabiliyorduk. Aynı şey Python3 ile
-birlikte gelen bu <tt class="docutils literal"><span class="pre">format()</span></tt> metodu için de geçerlidir. Yani benzer harfleri
-kullanarak <tt class="docutils literal"><span class="pre">format()</span></tt> metodu ile de karakter dizileri üzerinde biçimlendirme
+birlikte gelen bu <code class="docutils literal notranslate"><span class="pre">format()</span></code> metodu için de geçerlidir. Yani benzer harfleri
+kullanarak <code class="docutils literal notranslate"><span class="pre">format()</span></code> metodu ile de karakter dizileri üzerinde biçimlendirme
 ve dönüştürme işlemleri yapabiliriz.</p>
-<p><tt class="docutils literal"><span class="pre">format()</span></tt> metodu ile birlikte şu harfleri kullanabiliyoruz:</p>
+<p><code class="docutils literal notranslate"><span class="pre">format()</span></code> metodu ile birlikte şu harfleri kullanabiliyoruz:</p>
 <div class="section" id="id3">
-<h4>s<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<h4>s<a class="headerlink" href="#id3" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p>Bu harf karakter dizilerini temsil eder.</p>
 <p>Yalnız bu biçimlendirici karakterlerin <cite>{}</cite> işaretleri içindeki kullanımı ilk
 bakışta gözünüze biraz karışık gelebilir:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:s}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;karakter dizisi&quot;</span><span class="p">))</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:s}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;karakter dizisi&quot;</span><span class="p">))</span>
 
 <span class="go">karakter dizisi</span>
 </pre></div>
@@ -1224,49 +1211,49 @@ bakışta gözünüze biraz karışık gelebilir:</p>
 <p>Bu arada, harfleri <cite>{}</cite> yapısının içinde nasıl kullandığımıza dikkat edin.
 Gördüğünüz gibi biçimlendirme karakterini kullanırken, karakterin sol tarafına
 bir adet <cite>:</cite> işareti de yerleştiriyoruz. Bir örnek verelim:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:s}</span><span class="s2"> ve </span><span class="si">{:s}</span><span class="s2"> iyi bir ikilidir!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s2">&quot;Django&quot;</span><span class="p">))</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:s}</span><span class="s2"> ve </span><span class="si">{:s}</span><span class="s2"> iyi bir ikilidir!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s2">&quot;Django&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>Yalnız, <cite>s</cite> harfi karakter dizilerini temsil ettiği için, <cite>{}</cite> işaretleri
-arasında bu harfi kullandığımızda, <tt class="docutils literal"><span class="pre">format()</span></tt> metodunun alabileceği
+arasında bu harfi kullandığımızda, <code class="docutils literal notranslate"><span class="pre">format()</span></code> metodunun alabileceği
 parametreyi karakter dizisiyle sınırlandırmış oluruz. Dolayısıyla bu harfi
-kullandıktan sonra <tt class="docutils literal"><span class="pre">format()</span></tt> metodu içinde sadece karakter dizilerini
+kullandıktan sonra <code class="docutils literal notranslate"><span class="pre">format()</span></code> metodu içinde sadece karakter dizilerini
 kullanabiliriz. Eğer sayı kullanırsak Python bize bir hata mesajı
 gösterecektir:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:s}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">12</span><span class="p">))</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:s}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">12</span><span class="p">))</span>
 
 <span class="gt">Traceback (most recent call last):</span>
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
 <span class="gr">ValueError</span>: <span class="n">Unknown format code &#39;s&#39; for object of type &#39;int&#39;</span>
 </pre></div>
 </div>
-<p>Bu yüzden, eğer amacınız <tt class="docutils literal"><span class="pre">format()</span></tt> metoduna parametre olarak karakter dizisi
+<p>Bu yüzden, eğer amacınız <code class="docutils literal notranslate"><span class="pre">format()</span></code> metoduna parametre olarak karakter dizisi
 vermekse, <cite>{}</cite> işaretleri içinde herhangi bir harf kullanmamak daha akıllıca
 olabilir:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> ve </span><span class="si">{}</span><span class="s2"> iyi bir ikilidir!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s2">&quot;Django&quot;</span><span class="p">))</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> ve </span><span class="si">{}</span><span class="s2"> iyi bir ikilidir!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s2">&quot;Django&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id4">
-<h4>c<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<h4>c<a class="headerlink" href="#id4" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p>Bu harf <cite>0</cite> ile <cite>256</cite> arası sayıların ASCII tablosundaki karşılıklarını temsil
 eder:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:c}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">65</span><span class="p">))</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:c}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">65</span><span class="p">))</span>
 
 <span class="go">A</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id5">
-<h4>d<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<h4>d<a class="headerlink" href="#id5" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p>Bu harf sayıları temsil eder:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">65</span><span class="p">))</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">65</span><span class="p">))</span>
 
 <span class="go">65</span>
 </pre></div>
 </div>
 <p>Eğer sayı dışında bir değer kullanırsanız Python size bir hata mesajı gösterir:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;65&quot;</span><span class="p">))</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;65&quot;</span><span class="p">))</span>
 
 <span class="gt">Traceback (most recent call last):</span>
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
@@ -1275,28 +1262,28 @@ eder:</p>
 </div>
 </div>
 <div class="section" id="id6">
-<h4>o<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<h4>o<a class="headerlink" href="#id6" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p>Bu harf onlu düzendeki sayıları sekizli düzendeki karşılıklarına çevirir:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:o}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">65</span><span class="p">))</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:o}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">65</span><span class="p">))</span>
 
 <span class="go">101</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id7">
-<h4>x<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<h4>x<a class="headerlink" href="#id7" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p>Bu harf onlu düzendeki sayıları onaltılı düzendeki karşılıklarına çevirir:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:x}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">65</span><span class="p">))</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:x}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">65</span><span class="p">))</span>
 
 <span class="go">41</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id8">
-<h4>X<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<h4>X<a class="headerlink" href="#id8" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p>Tıpkı <cite>x</cite> harfinde olduğu gibi, bu harf de onlu düzendeki sayıları onaltılı
 düzendeki karşılıklarına çevirir:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;</span><span class="si">{:X}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">65</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;</span><span class="si">{:X}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">65</span><span class="p">)</span>
 
 <span class="go">&#39;41&#39;</span>
 </pre></div>
@@ -1305,7 +1292,7 @@ düzendeki karşılıklarına çevirir:</p>
 harfle gösterilen sayıları küçük harf şeklinde temsil eder. <cite>X</cite> işareti bu
 sayıları büyük harf şeklinde temsil eder. Bu ikisi arasındaki farkı daha net
 görmek için şöyle bir kod yazabilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:x}{:10X}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span>
 <span class="gp">...</span>
 <span class="go">0         0</span>
@@ -1334,34 +1321,34 @@ görmek için şöyle bir kod yazabilirsiniz:</p>
 sayıları küçük harf olarak; <cite>X</cite> harfi ise büyük harf olarak temsil ediyor.</p>
 </div>
 <div class="section" id="b">
-<h4>b<a class="headerlink" href="#b" title="Permalink to this headline">¶</a></h4>
+<h4>b<a class="headerlink" href="#b" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p>Bu işaret, onlu düzendeki sayıları ikili düzendeki karşılıklarına çevirir:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;</span><span class="si">{:b}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;</span><span class="si">{:b}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="go">&#39;10&#39;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id9">
-<h4>f<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
+<h4>f<a class="headerlink" href="#id9" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p>Bu işaret, eski biçimlendirme yöntemini anlatırken gösterdiğimiz <cite>f</cite> işaretiyle
 benzer bir işleve sahiptir:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">50</span><span class="p">))</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">50</span><span class="p">))</span>
 
 <span class="mf">50.00</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id10">
-<h4>,<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+<h4>,<a class="headerlink" href="#id10" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p><cite>:</cite> işaretini <cite>,</cite> işareti (basamak ayracı) ile birlikte kullanarak, sayıları
 basamaklarına ayırabilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;</span><span class="si">{:,}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1234567890</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;</span><span class="si">{:,}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1234567890</span><span class="p">)</span>
 
 <span class="go">&#39;1,234,567,890&#39;</span>
 </pre></div>
 </div>
-<p>Böylece Python&#8217;da karakter dizisi biçimlendirmenin hem eski hem de yeni
+<p>Böylece Python’da karakter dizisi biçimlendirmenin hem eski hem de yeni
 yöntemini, şu ana kadarki Python bilgimiz elverdiği ölçüde ayrıntılı bir şekilde
 incelemiş olduk. Buradaki bilgileri kullanarak bol bol örnek yapmak bu konuyu
 daha iyi anlamanıza yardımcı olacaktır.</p>
@@ -1374,17 +1361,18 @@ daha iyi anlamanıza yardımcı olacaktır.</p>
 
 <div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
 <div class='extrarelbar'> 
-    <div class="related">
-      <h3>Navigation</h3>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="fstring.html" title="f-string"
-             >next</a></li>
+             >sonraki</a></li>
         <li class="right" >
           <a href="karakter_dizilerinin_metotlari3.html" title="Karakter Dizilerinin Metotları (Devamı)"
-             >previous</a> |</li>
+             >önceki</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
- 
+
+        <li class="nav-item nav-item-this"><a href="">Karakter Dizilerini Biçimlendirmek</a></li> 
       </ul>
     </div> </div>
 
@@ -1419,28 +1407,30 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 
 
+            <div class="clearer"></div>
           </div>
       </div>
       <div class="clearer"></div>
     </div> 
-    <div class="related">
-      <h3>Navigation</h3>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="fstring.html" title="f-string"
-             >next</a></li>
+             >sonraki</a></li>
         <li class="right" >
           <a href="karakter_dizilerinin_metotlari3.html" title="Karakter Dizilerinin Metotları (Devamı)"
-             >previous</a> |</li>
+             >önceki</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
- 
+
+        <li class="nav-item nav-item-this"><a href="">Karakter Dizilerini Biçimlendirmek</a></li> 
       </ul>
     </div> 
 
 <div class="footer">
 &copy; Copyright 2007-2021, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Last updated on 30.01.2021.
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+Son güncelleme: 07.03.2021.
+<a href="http://sphinx-doc.org/">Sphinx</a> 3.2.1 kullanılarak oluşturuldu.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
