@@ -1,42 +1,31 @@
 
  <!DOCTYPE html>
- <html lang="">
+ <html lang="tr">
 
 
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="tr">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta content="Bu bölümde Python'daki koşul deyimlerinden söz edeceğiz." name="description" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta content="Bu bölümde Python'daki koşul deyimlerinden söz edeceğiz." name="description" />
 <meta content="python, if, elif, else" name="keywords" />
 
-    <title>Koşullu Durumlar &mdash; Python 3 için Türkçe Kılavuz</title>
-    
+    <title>Koşullu Durumlar &#8212; Python 3 için Türkçe Kılavuz</title>
     <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '3',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/translations.js"></script>
-    <link rel="top" title="Python 3 için Türkçe Kılavuz" href="index.html" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="search" title="Ara" href="search.html" />
     <link rel="next" title="İşleçler" href="islecler.html" />
     <link rel="prev" title="Kullanıcıdan Bilgi Almak" href="input.html" />
 <!--[if lte IE 6]>
 <link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
 <![endif]-->
 
-  </head>
-  <body>
+  </head><body>
 <div class='header'><a href='https://yazbel.com'><img src="_static/logo.png"></a></div>
 
 <ul class='navbar'>
@@ -45,39 +34,40 @@
 </ul>
 
 
-    <div class="related">
-      <h3>Navigation</h3>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="islecler.html" title="İşleçler"
-             accesskey="N">next</a></li>
+             accesskey="N">sonraki</a></li>
         <li class="right" >
           <a href="input.html" title="Kullanıcıdan Bilgi Almak"
-             accesskey="P">previous</a> |</li>
+             accesskey="P">önceki</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
- 
+
+        <li class="nav-item nav-item-this"><a href="">Koşullu Durumlar</a></li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
-          <div class="body">
+          <div class="body" role="main">
             
 
   <div class="section" id="kosullu-durumlar">
-<h1>Koşullu Durumlar<a class="headerlink" href="#kosullu-durumlar" title="Permalink to this headline">¶</a></h1>
+<h1>Koşullu Durumlar<a class="headerlink" href="#kosullu-durumlar" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
 <p>Artık Python programlama dilinde belli bir noktaya geldik sayılır. Ama eğer
 farkettiyseniz, yine de elimizi kolumuzu bağlayan, istediğimiz şeyleri yapmamıza
 engel olan bir şeyler var. İşte bu bölümde, Python programlama dilinde hareket
 alanımızı bir hayli genişletecek araçları tanıyacağız.</p>
 <p>Aslında sadece bu bölümde değil, bu bölümü takip eden her bölümde, hareket
 alanımızı kısıtlayan duvarları tek tek yıktığımıza şahit olacaksınız. Özellikle
-bu bölümde inceleyeceğimiz &#8216;koşullu durumlar&#8217; konusu, tabir yerindeyse,
-Python&#8217;da boyut atlamamızı sağlayacak.</p>
-<p>O halde hiç vakit kaybetmeden yola koyulalım...</p>
+bu bölümde inceleyeceğimiz ‘koşullu durumlar’ konusu, tabir yerindeyse,
+Python’da boyut atlamamızı sağlayacak.</p>
+<p>O halde hiç vakit kaybetmeden yola koyulalım…</p>
 <p>Şimdiye kadar öğrendiğimiz Python bilgilerini kullanarak şöyle bir program
 yazabileceğimizi biliyorsunuz:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">yaş</span> <span class="o">=</span> <span class="mi">15</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">yaş</span> <span class="o">=</span> <span class="mi">15</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;Programa hoşgeldiniz!</span>
 
@@ -95,13 +85,13 @@ yazdırdık.</p>
 kullanıcıyla herhangi bir etkileşim yok. Burada bütün değerleri/değişkenleri
 programcı olarak kendimiz belirliyoruz. Bu programın ne kadar yavan olduğunu
 herhalde söylemeye gerek yok.</p>
-<p>Ancak yine önceki derslerde öğrendiğimiz <tt class="docutils literal"><span class="pre">input()</span></tt> fonksiyonu yardımıyla
+<p>Ancak yine önceki derslerde öğrendiğimiz <code class="docutils literal notranslate"><span class="pre">input()</span></code> fonksiyonu yardımıyla
 yukarıdaki programın üzerindeki yavanlığı bir nebze de olsa atabilir, bu
 programı rahatlıkla çok sesli bir hale getirebilir, yani kullanıcıyla etkileşim
 içine girebiliriz.</p>
-<p>Yukarıdaki tek sesli uygulamayı, <tt class="docutils literal"><span class="pre">input()</span></tt> fonksiyonunu kullanarak çok sesli
+<p>Yukarıdaki tek sesli uygulamayı, <code class="docutils literal notranslate"><span class="pre">input()</span></code> fonksiyonunu kullanarak çok sesli
 bir hale nasıl getireceğimizi gayet iyi bildiğinize eminim:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;Programa hoşgeldiniz!</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;Programa hoşgeldiniz!</span>
 
 <span class="s2">Programımızı kullanabilmek için en az</span>
 <span class="s2">13 yaşında olmalısınız.&quot;&quot;&quot;</span><span class="p">)</span>
@@ -122,10 +112,10 @@ dizileri de artık sizin için oldukça tanıdık. <cite>\n</cite> kaçış dizi
 alt satıra geçtiğimizi, <cite>\t</cite> adlı kaçış dizisi yardımıyla da bir sekmelik
 boşluk bıraktığımızı biliyorsunuz.</p>
 <p>Gördüğünüz gibi, şu ana kadar öğrendiklerimizle ancak kullanıcıdan gelen yaş
-bilgisini ekrana yazdırabiliyoruz. Öğrendiğimiz <tt class="docutils literal"><span class="pre">input()</span></tt> fonksiyonu bize
+bilgisini ekrana yazdırabiliyoruz. Öğrendiğimiz <code class="docutils literal notranslate"><span class="pre">input()</span></code> fonksiyonu bize
 kullanıcıdan bilgi alma imkanı sağlıyor. Ama kullanıcıdan gelen bu bilgiyi
 şimdilik ancak olduğu gibi kullanabiliyoruz. Yani mesela yukarıdaki örneği
-dikkate alarak konuşacak olursak, kullanıcının yaşı eğer 13&#8217;ün üzerindeyse onu
+dikkate alarak konuşacak olursak, kullanıcının yaşı eğer 13’ün üzerindeyse onu
 programa kabul edecek, yok eğer 13 yaşın altındaysa da programdan atacak bir
 mekanizma üretemiyoruz. Yapabildiğimiz tek şey, kullanıcının girdiği veriyi
 ekrana yazdırmak.</p>
@@ -135,15 +125,15 @@ Yani aslında yapmak istediğimiz şey, kullanıcının yaşını denetleyip, on
 programa kabul edilmesini 13 yaşından büyük olma koşuluna bağlamak.</p>
 <p>İsterseniz tam olarak neden bahsettiğimizi anlayabilmek için, birkaç vaka örneği
 verelim.</p>
-<p>Diyelim ki Google&#8217;ın Gmail hizmeti aracılığıyla bir e.posta hesabı aldınız. Bu
+<p>Diyelim ki Google’ın Gmail hizmeti aracılığıyla bir e.posta hesabı aldınız. Bu
 hesaba gireceğiniz zaman Gmail size bir kullanıcı adı ve parola sorar. Siz de
 kendinize ait kullanıcı adını ve parolayı sayfadaki kutucuklara yazarsınız. Eğer
 yazdığınız kullanıcı adı ve parola doğruysa hesabınıza erişebilirsiniz. Ama eğer
 kullanıcı adınız ve parolanız doğru değilse hesabınıza erişemezsiniz. Yani
 e.posta hesabınıza erişmeniz, kullanıcı adı ve parolayı doğru girme koşuluna
 bağlıdır.</p>
-<p>Ya da şu vaka örneğini düşünelim: Diyelim ki Pardus&#8217;ta komut satırı aracılığıyla
-güncelleme işlemi yapacaksınız. <tt class="docutils literal"><span class="pre">sudo</span> <span class="pre">pisi</span> <span class="pre">up</span></tt> komutunu verdiğiniz zaman
+<p>Ya da şu vaka örneğini düşünelim: Diyelim ki Pardus’ta komut satırı aracılığıyla
+güncelleme işlemi yapacaksınız. <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">pisi</span> <span class="pre">up</span></code> komutunu verdiğiniz zaman
 güncellemelerin listesi size bildirilecek, bu güncellemeleri yapmak isteyip
 istemediğiniz sorulacaktır. Eğer evet cevabı verirseniz güncelleme işlemi
 başlar. Ama eğer hayır cevabı verirseniz güncelleme işlemi başlamaz. Yani
@@ -151,116 +141,117 @@ güncelleme işleminin başlaması kullanıcının evet cevabı vermesi koşulun
 bağlıdır.</p>
 <p>İşte bu bölümde biz bu tür koşullu durumlardan söz edeceğiz.</p>
 <div class="section" id="kosul-deyimleri">
-<h2>Koşul Deyimleri<a class="headerlink" href="#kosul-deyimleri" title="Permalink to this headline">¶</a></h2>
-<p>Hiç kuşkusuz, koşula bağlı durumlar Python&#8217;daki en önemli konulardan biridir.
-Giriş bölümünde bahsettiğimiz koşullu işlemleri yapabilmek için &#8216;koşul
-deyimleri&#8217; adı verilen birtakım araçlardan yararlanacağız. Gelin şimdi bu
+<h2>Koşul Deyimleri<a class="headerlink" href="#kosul-deyimleri" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Hiç kuşkusuz, koşula bağlı durumlar Python’daki en önemli konulardan biridir.
+Giriş bölümünde bahsettiğimiz koşullu işlemleri yapabilmek için ‘koşul
+deyimleri’ adı verilen birtakım araçlardan yararlanacağız. Gelin şimdi bu
 araçların neler olduğunu görelim.</p>
 <div class="section" id="if">
-<h3>if<a class="headerlink" href="#if" title="Permalink to this headline">¶</a></h3>
+<h3>if<a class="headerlink" href="#if" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
 <p>Python programlama dilinde koşullu durumları belirtmek için üç adet deyimden
 yararlanıyoruz:</p>
 <ul class="simple">
-<li><tt class="docutils literal"><span class="pre">if</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">elif</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">else</span></tt></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">if</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">elif</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">else</span></code></p></li>
 </ul>
-<p>İsterseniz önce <tt class="docutils literal"><span class="pre">if</span></tt> deyimi ile başlayalım...</p>
+<p>İsterseniz önce <code class="docutils literal notranslate"><span class="pre">if</span></code> deyimi ile başlayalım…</p>
 <p>Eğer daha önceden herhangi bir programlama dilini az da olsa kurcalama
-fırsatınız olduysa, bir programlama dilinde <tt class="docutils literal"><span class="pre">if</span></tt> deyimlerinin ne işe
+fırsatınız olduysa, bir programlama dilinde <code class="docutils literal notranslate"><span class="pre">if</span></code> deyimlerinin ne işe
 yaradığını az çok biliyorsunuzdur. Daha önceden hiç programcılık deneyiminiz
-olmamışsa da ziyanı yok. Zira bu bölümde <tt class="docutils literal"><span class="pre">if</span></tt> deyimlerinin ne işe yaradığını
+olmamışsa da ziyanı yok. Zira bu bölümde <code class="docutils literal notranslate"><span class="pre">if</span></code> deyimlerinin ne işe yaradığını
 ve nerelerde kullanıldığını enine boyuna tartışacağız.</p>
-<p>İngilizce bir kelime olan &#8216;<em>if</em>&#8216;, Türkçede &#8216;eğer&#8217; anlamına gelir. Anlamından da
-çıkarabileceğimiz gibi, bu kelime bir koşul bildiriyor. Yani &#8216;<em>eğer bir şey
-falanca ise...</em>&#8216; ya da &#8216;<em>eğer bir şey filanca ise...</em>&#8216; gibi... İşte biz
-Python&#8217;da bir koşula bağlamak istediğimiz durumları <tt class="docutils literal"><span class="pre">if</span></tt> deyimi aracılığıyla
+<p>İngilizce bir kelime olan ‘<em>if</em>’, Türkçede ‘eğer’ anlamına gelir. Anlamından da
+çıkarabileceğimiz gibi, bu kelime bir koşul bildiriyor. Yani ‘<em>eğer bir şey
+falanca ise…</em>’ ya da ‘<em>eğer bir şey filanca ise…</em>’ gibi… İşte biz
+Python’da bir koşula bağlamak istediğimiz durumları <code class="docutils literal notranslate"><span class="pre">if</span></code> deyimi aracılığıyla
 göstereceğiz.</p>
 <p>Gelin isterseniz bu deyimi nasıl kullanacağımıza dair ufacık bir örnek vererek
 işe başlayalım:</p>
 <p>Öncelikle elimizde şöyle bir değişken olsun:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">255</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">255</span>
 </pre></div>
 </div>
 <p>Yukarıda verdiğimiz değişkenin değerinin bir karakter dizisi değil, aksine bir
 sayı olduğunu görüyoruz. Şimdi bu değişkenin değerini sorgulayalım:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
 </pre></div>
 </div>
-<p>Burada sayının 10&#8217;dan büyük olup olmadığına bakıyoruz.</p>
+<p>Burada sayının 10’dan büyük olup olmadığına bakıyoruz.</p>
 <p>Burada gördüğümüz <cite>&gt;</cite> işaretinin ne demek olduğunu açıklamaya gerek yok sanırım.
-Hepimizin bildiği &#8216;büyüktür&#8217; işareti Python&#8217;da da aynen bildiğimiz şekilde
-kullanılıyor. Mesela &#8216;küçüktür&#8217; demek isteseydik, <cite>&lt;</cite> işaretini kullanacaktık.
+Hepimizin bildiği ‘büyüktür’ işareti Python’da da aynen bildiğimiz şekilde
+kullanılıyor. Mesela ‘küçüktür’ demek isteseydik, <cite>&lt;</cite> işaretini kullanacaktık.
 İsterseniz hemen şurada araya girip bu işaretleri yeniden hatırlayalım:</p>
 <blockquote>
-<div><table border="1" class="docutils">
+<div><table class="docutils align-default">
 <colgroup>
-<col width="30%" />
-<col width="70%" />
+<col style="width: 30%" />
+<col style="width: 70%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">İşleç</th>
-<th class="head">Anlamı</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>İşleç</p></th>
+<th class="head"><p>Anlamı</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>&gt;</td>
-<td>büyüktür</td>
+<tbody>
+<tr class="row-even"><td><p>&gt;</p></td>
+<td><p>büyüktür</p></td>
 </tr>
-<tr class="row-odd"><td>&lt;</td>
-<td>küçüktür</td>
+<tr class="row-odd"><td><p>&lt;</p></td>
+<td><p>küçüktür</p></td>
 </tr>
-<tr class="row-even"><td>&gt;=</td>
-<td>büyük eşittir</td>
+<tr class="row-even"><td><p>&gt;=</p></td>
+<td><p>büyük eşittir</p></td>
 </tr>
-<tr class="row-odd"><td>&lt;=</td>
-<td>küçük eşittir</td>
+<tr class="row-odd"><td><p>&lt;=</p></td>
+<td><p>küçük eşittir</p></td>
 </tr>
-<tr class="row-even"><td>==</td>
-<td>eşittir</td>
+<tr class="row-even"><td><p>==</p></td>
+<td><p>eşittir</p></td>
 </tr>
-<tr class="row-odd"><td>!=</td>
-<td>eşit değildir</td>
+<tr class="row-odd"><td><p>!=</p></td>
+<td><p>eşit değildir</p></td>
 </tr>
 </tbody>
 </table>
 </div></blockquote>
 <p>Gördüğünüz gibi hiçbiri bize yabancı gelecek gibi değil. Yalnızca en sondaki
-&#8216;eşittir&#8217; (<cite>==</cite>) ve &#8216;eşit değildir&#8217; (<cite>!=</cite>) işaretleri biraz değişik gelmiş
-olabilir. Burada &#8216;eşittir&#8217; işaretinin <cite>=</cite> olmadığına dikkat edin. Python&#8217;da <cite>=</cite>
+‘eşittir’ (<cite>==</cite>) ve ‘eşit değildir’ (<cite>!=</cite>) işaretleri biraz değişik gelmiş
+olabilir. Burada ‘eşittir’ işaretinin <cite>=</cite> olmadığına dikkat edin. Python’da <cite>=</cite>
 işaretini değer atama işlemleri için kullanıyoruz. <cite>==</cite> işaretini ise iki adet
-değerin birbirine eşit olup olmadığını denetlemek için... Mesela:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">26</span>
+değerin birbirine eşit olup olmadığını denetlemek için… Mesela:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">26</span>
 </pre></div>
 </div>
 <p>Burada değeri <cite>26</cite> olan <cite>a</cite> adlı bir değişken belirledik. Yani <cite>a</cite> değişkenine
 değer olarak <cite>26</cite> sayısını atadık. Ayrıca burada, değer atama işleminin ardından
 <cite>Enter</cite> tuşuna bastıktan sonra Python hiçbir şey yapmadan bir alt satıra geçti.
 Bir de şuna bakalım:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">==</span> <span class="mi">26</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">==</span> <span class="mi">26</span>
 
 <span class="go">True</span>
 </pre></div>
 </div>
 <p>Burada ise yaptığımız şey <cite>a</cite> değişkeninin değerinin <cite>26</cite> olup olmadığını
-sorgulamak <tt class="docutils literal"><span class="pre">a</span> <span class="pre">==</span> <span class="pre">26</span></tt> komutunu verdikten sonra Python bize <cite>True</cite> diye bir
+sorgulamak <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">==</span> <span class="pre">26</span></code> komutunu verdikten sonra Python bize <cite>True</cite> diye bir
 çıktı verdi. Bu çıktının anlamını biraz sonra öğreneceğiz. Ama şimdi isterseniz
 konuyu daha fazla dağıtmayalım. Biz şimdilik sadece <cite>=</cite> ve <cite>==</cite> işaretlerinin
 birbirinden tamamen farklı anlamlara geldiğini bilelim yeter.</p>
 <p>Ne diyorduk?</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
 </pre></div>
 </div>
-<p>Bu ifadeyle Python&#8217;a şöyle bir şey demiş oluyoruz:</p>
+<p>Bu ifadeyle Python’a şöyle bir şey demiş oluyoruz:</p>
 <blockquote>
-<div>Eğer <cite>n</cite> sayısının değeri 10&#8217;dan büyükse...</div></blockquote>
+<div><p>Eğer <cite>n</cite> sayısının değeri 10’dan büyükse…</p>
+</div></blockquote>
 <p>Burada kullandığımız işaretlere dikkat edin. En sonda bir adet <cite>:</cite> işaretinin
 olduğunu gözden kaçırmıyoruz. Bu tür işaretler Python için çok önemlidir.
 Bunları yazmayı unutursak Python gözümüzün yaşına bakmayacaktır.</p>
-<p>Dedik ki, <tt class="docutils literal"><span class="pre">if</span> <span class="pre">n</span> <span class="pre">&gt;</span> <span class="pre">10:</span></tt> ifadesi, &#8216;eğer n değişkeninin değeri 10&#8217;dan büyükse...&#8217;
+<p>Dedik ki, <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">n</span> <span class="pre">&gt;</span> <span class="pre">10:</span></code> ifadesi, ‘eğer n değişkeninin değeri 10’dan büyükse…’
 anlamına gelir. Bu ifadenin eksik olduğu apaçık ortada. Yani belli ki bu
 cümlenin bir de devamı olması gerekiyor. O halde biz de devamını getirelim:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sayı 10&#39;dan büyüktür!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -280,64 +271,64 @@ klavyedeki sekme (<cite>Tab</cite>) tuşuna basarak da yapabilirsiniz. Ama aynı
 içinde sekmelerle boşlukları karıştırmayın. Yani eğer girintileme işlemini
 klavyedeki boşluk (<cite>Space</cite>) tuşuna basarak yapıyorsanız, program boyunca aynı
 şekilde yapın. (Ben size girinti verirken <cite>Tab</cite> tuşu yerine <cite>Space</cite> tuşunu
-kullanmanızı tavsiye ederim). Kısaca söylemek gerekirse; Python&#8217;da girintileme
+kullanmanızı tavsiye ederim). Kısaca söylemek gerekirse; Python’da girintileme
 ve girintilemede tutarlılık çok önemlidir. Özellikle büyük programlarda,
 girintilemeler açısından tutarsızlık gösterilmesi programın çalışmamasına sebep
 olabilir.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Python&#8217;da girintileme konusuyla ilgili daha ayrıntılı bilgi için:
+<p class="admonition-title">Not</p>
+<p>Python’da girintileme konusuyla ilgili daha ayrıntılı bilgi için:
 <a class="reference external" href="http://web.archive.org/web/20161122123704/http://www.istihza.com/blog/python-ve-metin-duzenleyiciler.html">http://www.istihza.com/blog/python-ve-metin-duzenleyiciler.html</a> (arşiv linki)</p>
 </div>
-<p>Eğer yukarıdaki <tt class="docutils literal"><span class="pre">if</span></tt> bloğunu bir metin düzenleyici içine değil de doğrudan
+<p>Eğer yukarıdaki <code class="docutils literal notranslate"><span class="pre">if</span></code> bloğunu bir metin düzenleyici içine değil de doğrudan
 etkileşimli kabuğa yazmışsanız bazı şeyler dikkatinizi çekmiş olmalı.
-Etkileşimli kabukta <tt class="docutils literal"><span class="pre">if</span> <span class="pre">sayı</span> <span class="pre">&gt;</span> <span class="pre">10:</span></tt> satırını yazıp <cite>Enter</cite> tuşuna bastığınızda
+Etkileşimli kabukta <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">sayı</span> <span class="pre">&gt;</span> <span class="pre">10:</span></code> satırını yazıp <cite>Enter</cite> tuşuna bastığınızda
 şöyle bir görüntüyle karşılaşmış olmalısınız:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
 <span class="gp">...</span>
 </pre></div>
 </div>
-<p>Dikkat ederseniz, <cite>&gt;&gt;&gt;</cite> işareti, <cite>...</cite> işaretine dönüştü. Eğer bu noktada
+<p>Dikkat ederseniz, <cite>&gt;&gt;&gt;</cite> işareti, <cite>…</cite> işaretine dönüştü. Eğer bu noktada
 herhangi bir şey yazmadan <cite>Enter</cite> tuşuna basacak olursanız Python size şöyle bir
 hata mesajı verecektir:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">2</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">2</span>
     <span class="o">^</span>
 <span class="ne">IndentationError</span><span class="p">:</span> <span class="n">expected</span> <span class="n">an</span> <span class="n">indented</span> <span class="n">block</span>
 </pre></div>
 </div>
 <p>Hata mesajında da söylendiği gibi, Python bizden girintilenmiş bir blok
 beklerken, biz onun bu beklentisini karşılamamışız. Dolayısıyla bize yukarıdaki
-hata mesajını göstermiş. <cite>...</cite> işaretini gördükten sonra yapmamız gereken şey,
-dört kez boşluk (<cite>Space</cite>) tuşuna basarak girinti oluşturmak ve <tt class="docutils literal"><span class="pre">if</span></tt> bloğunun
+hata mesajını göstermiş. <cite>…</cite> işaretini gördükten sonra yapmamız gereken şey,
+dört kez boşluk (<cite>Space</cite>) tuşuna basarak girinti oluşturmak ve <code class="docutils literal notranslate"><span class="pre">if</span></code> bloğunun
 devamını yazmak olmalıydı. Yani şöyle:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
 <span class="gp">... </span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sayı 10&#39;dan büyüktür!&quot;</span><span class="p">)</span>
 <span class="gp">...</span>
 </pre></div>
 </div>
-<p>Gördüğünüz gibi, <tt class="docutils literal"><span class="pre">print()</span></tt> fonksiyonunu yazıp <cite>Enter</cite> tuşuna bastıktan sonra
-yine <cite>...</cite> işaretini gördük. Python burada bizden yeni bir satır daha bekliyor.
+<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">print()</span></code> fonksiyonunu yazıp <cite>Enter</cite> tuşuna bastıktan sonra
+yine <cite>…</cite> işaretini gördük. Python burada bizden yeni bir satır daha bekliyor.
 Ama bizim yazacak başka bir kodumuz olmadığı için tekrar <cite>Enter</cite> tuşuna
 basıyoruz ve nihai olarak şöyle bir görüntü elde ediyoruz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
 <span class="gp">... </span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sayı 10&#39;dan büyüktür!&quot;</span><span class="p">)</span>
 <span class="gp">...</span>
 <span class="go">sayı 10&#39;dan büyüktür!</span>
 <span class="go">&gt;&gt;&gt;</span>
 </pre></div>
 </div>
-<p>Demek ki <cite>250</cite> sayısı <cite>10</cite>&#8216;dan büyükmüş! Ne büyük bir buluş! Merak etmeyin, daha
+<p>Demek ki <cite>250</cite> sayısı <cite>10</cite>’dan büyükmüş! Ne büyük bir buluş! Merak etmeyin, daha
 çok şey öğrendikçe daha mantıklı programlar yazacağız. Burada amacımız işin
 temelini kavramak. Bunu da en iyi, (çok mantıklı olmasa bile) basit programlar
 yazarak yapabiliriz.</p>
 <p>Şimdi metin düzenleyicimizi açarak daha mantıklı şeyler yazmaya çalışalım. Zira
 yukarıdaki örnekte değişkeni kendimiz belirlediğimiz için, bu değişkenin
-değerini <tt class="docutils literal"><span class="pre">if</span></tt> deyimleri yardımıyla denetlemek pek akla yatkın görünmüyor. Ne
+değerini <code class="docutils literal notranslate"><span class="pre">if</span></code> deyimleri yardımıyla denetlemek pek akla yatkın görünmüyor. Ne
 de olsa değişkenin değerinin ne olduğunu biliyoruz. Dolayısıyla bu değişkenin
-<cite>10</cite> sayısından büyük olduğunu da biliyoruz! Bunu <tt class="docutils literal"><span class="pre">if</span></tt> deyimiyle kontrol etmek
+<cite>10</cite> sayısından büyük olduğunu da biliyoruz! Bunu <code class="docutils literal notranslate"><span class="pre">if</span></code> deyimiyle kontrol etmek
 çok gerekli değil. Ama şimdi daha makul bir iş yapacağız. Değişkeni biz
 belirlemek yerine kullanıcıya belirleteceğiz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">sayı</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Bir sayı giriniz: &quot;</span><span class="p">))</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sayı</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Bir sayı giriniz: &quot;</span><span class="p">))</span>
 
 <span class="k">if</span> <span class="n">sayı</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Girdiğiniz sayı 10&#39;dan büyüktür!&quot;</span><span class="p">)</span>
@@ -349,30 +340,30 @@ belirlemek yerine kullanıcıya belirleteceğiz:</p>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Girdiğiniz sayı 10&#39;dur!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Gördüğünüz gibi, art arda üç adet <tt class="docutils literal"><span class="pre">if</span></tt> bloğu kullandık. Bu kodlara göre, eğer
-kullanıcının girdiği sayı <cite>10</cite>&#8216;dan büyükse, ilk <tt class="docutils literal"><span class="pre">if</span></tt> bloğu işletilecek; eğer
-sayı <cite>10</cite>&#8216;dan küçükse ikinci <tt class="docutils literal"><span class="pre">if</span></tt> bloğu işletilecek; eğer sayı 10&#8217;a eşit ise
-üçüncü <tt class="docutils literal"><span class="pre">if</span></tt> bloğu işletilecektir. Peki ya kullanıcı muziplik yapıp sayı yerine
+<p>Gördüğünüz gibi, art arda üç adet <code class="docutils literal notranslate"><span class="pre">if</span></code> bloğu kullandık. Bu kodlara göre, eğer
+kullanıcının girdiği sayı <cite>10</cite>’dan büyükse, ilk <code class="docutils literal notranslate"><span class="pre">if</span></code> bloğu işletilecek; eğer
+sayı <cite>10</cite>’dan küçükse ikinci <code class="docutils literal notranslate"><span class="pre">if</span></code> bloğu işletilecek; eğer sayı 10’a eşit ise
+üçüncü <code class="docutils literal notranslate"><span class="pre">if</span></code> bloğu işletilecektir. Peki ya kullanıcı muziplik yapıp sayı yerine
 harf yazarsa ne olacak? Böyle bir ihtimal için programımıza herhangi bir
 denetleyici yerleştirmedik. Dolayısıyla eğer kullanıcı sayı yerine harf girerse
 programımız hata verecek, yani çökecektir. Bu tür durumlara karşı nasıl önlem
 alacağımızı ilerleyen derslerimizde göreceğiz. Biz şimdilik bildiğimiz yolda
 yürüyelim.</p>
-<p>Yukarıdaki örnekte <tt class="docutils literal"><span class="pre">input()</span></tt> ile gelen karakter dizisini, <tt class="docutils literal"><span class="pre">int()</span></tt> fonksiyonu
+<p>Yukarıdaki örnekte <code class="docutils literal notranslate"><span class="pre">input()</span></code> ile gelen karakter dizisini, <code class="docutils literal notranslate"><span class="pre">int()</span></code> fonksiyonu
 yardımıyla bir sayıya dönüştürdüğümüze dikkat edin. Kullanıcıdan gelen veriyi
 büyüklük-küçüklük ölçütüne göre inceleyeceğimiz için, gelen veriyi bir sayıya
-dönüştürmemiz gerekiyor. Bunu da <tt class="docutils literal"><span class="pre">int()</span></tt> fonksiyonu ile yapabileceğimizi
+dönüştürmemiz gerekiyor. Bunu da <code class="docutils literal notranslate"><span class="pre">int()</span></code> fonksiyonu ile yapabileceğimizi
 biliyorsunuz.</p>
 <p>Elbette yukarıdaki dönüştürme işlemini şöyle de yapabilirdik:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">sayı</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Bir sayı giriniz: &quot;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sayı</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Bir sayı giriniz: &quot;</span><span class="p">)</span>
 <span class="n">sayı</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">sayı</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Burada önce <tt class="docutils literal"><span class="pre">input()</span></tt> fonksiyonuyla veriyi aldık, daha sonra bu veriyi ayrı
+<p>Burada önce <code class="docutils literal notranslate"><span class="pre">input()</span></code> fonksiyonuyla veriyi aldık, daha sonra bu veriyi ayrı
 bir yerde sayıya dönüştürüp tekrar <cite>sayı</cite> adlı değişkene atadık.</p>
-<p><tt class="docutils literal"><span class="pre">if</span></tt> deyimlerini kullanıcı adı veya parola denetlerken de kullanabiliriz.
+<p><code class="docutils literal notranslate"><span class="pre">if</span></code> deyimlerini kullanıcı adı veya parola denetlerken de kullanabiliriz.
 Mesela şöyle bir program taslağı yazabiliriz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">Dünyanın en gelişmiş e.posta hizmetine</span>
 <span class="s2">hoşgeldiniz. Yalnız hizmetimizden</span>
 <span class="s2">yararlanmak için önce sisteme giriş</span>
@@ -388,38 +379,38 @@ Mesela şöyle bir program taslağı yazabiliriz:</p>
 <p>Gördüğünüz gibi, programın başında üç tırnak işaretlerinden yararlanarak uzun
 bir metni kullanıcıya gösterdik. Bu bölümü, kendiniz göze hoş gelecek bir
 şekilde süsleyebilirsiniz de. Eğer kullanıcı, kendisine parola sorulduğunda
-cevap olarak <cite>&#8220;12345678&#8221;</cite> yazarsa kullanıcıyı sisteme alıyoruz.</p>
-<p>Yukarıdaki örnekte, kullanıcının girdiği parola <cite>&#8220;12345678&#8221;</cite> ise kendisine
-<cite>&#8220;Sisteme Hoşgeldiniz!&#8221;</cite> mesajını gösteriyoruz. Mantık olarak bunun tersini
+cevap olarak <cite>“12345678”</cite> yazarsa kullanıcıyı sisteme alıyoruz.</p>
+<p>Yukarıdaki örnekte, kullanıcının girdiği parola <cite>“12345678”</cite> ise kendisine
+<cite>“Sisteme Hoşgeldiniz!”</cite> mesajını gösteriyoruz. Mantık olarak bunun tersini
 yapmak da mümkündür. Yani:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">parola</span> <span class="o">!=</span> <span class="s2">&quot;12345678&quot;</span><span class="p">:</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">parola</span> <span class="o">!=</span> <span class="s2">&quot;12345678&quot;</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ne yazık ki yanlış parola girdiniz!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Burada ise bir önceki örneğin mantığını ters çevirdik. Önceki örnekte <cite>parola</cite>
-değişkeni <cite>&#8220;12345678&#8221;</cite> adlı karakter dizisine eşitse (<tt class="docutils literal"><span class="pre">if</span> <span class="pre">parola</span> <span class="pre">==</span>
-<span class="pre">&quot;12345678&quot;</span></tt>) bir işlem yapıyorduk. Yukarıdaki örnekte ise <cite>parola</cite> değişkeni
-<cite>&#8220;12345678&#8221;</cite> adlı karakter dizisine eşit değilse (<tt class="docutils literal"><span class="pre">if</span> <span class="pre">parola</span> <span class="pre">!=</span> <span class="pre">&quot;12345678&quot;</span></tt>)
+değişkeni <cite>“12345678”</cite> adlı karakter dizisine eşitse (<code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">parola</span> <span class="pre">==</span>
+<span class="pre">&quot;12345678&quot;</span></code>) bir işlem yapıyorduk. Yukarıdaki örnekte ise <cite>parola</cite> değişkeni
+<cite>“12345678”</cite> adlı karakter dizisine eşit değilse (<code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">parola</span> <span class="pre">!=</span> <span class="pre">&quot;12345678&quot;</span></code>)
 bir işlem yapıyoruz.</p>
 <p>Bu iki örneğin de aslında aynı kapıya çıktığını görüyorsunuz. Tek değişiklik,
 kullanıcıya gösterilen mesajlardadır.</p>
-<p>Böylece Python&#8217;daki koşullu durumlar üzerindeki incelememizin ilk ve en önemli
-aşamasını geride bırakmış olduk. Dikkat ettiyseniz <tt class="docutils literal"><span class="pre">if</span></tt> deyimi sayesinde
+<p>Böylece Python’daki koşullu durumlar üzerindeki incelememizin ilk ve en önemli
+aşamasını geride bırakmış olduk. Dikkat ettiyseniz <code class="docutils literal notranslate"><span class="pre">if</span></code> deyimi sayesinde
 programlarımıza karar vermeyi öğrettik. Bu deyim yardımıyla, kullanıcıdan
 aldığımız herhangi bir verinin niteliği üzerinde kapsamlı bir karar verme işlemi
 yürütebiliyoruz. Yani artık programlarımız kullanıcıdan alınan veriyi olduğu
 gibi kabul etmekle yetinmiyor. Kullanıcının girdiği verinin ne olduğuna bağlı
 olarak programlarımızın farklı işlemler yapmasını da sağlayabiliyoruz.</p>
-<p>Daha önce de söylediğimiz gibi, <tt class="docutils literal"><span class="pre">if</span></tt> deyimi dışında Python&#8217;da koşullu
-durumları ifade etmek için kullandığımız, <tt class="docutils literal"><span class="pre">elif</span></tt> ve <tt class="docutils literal"><span class="pre">else</span></tt> adlı iki deyim
-daha vardır. Bunlar <tt class="docutils literal"><span class="pre">if</span></tt> ile birlikte kullanılırlar. Gelin isterseniz bu iki
-deyimden, adı <tt class="docutils literal"><span class="pre">elif</span></tt> olana bakalım.</p>
+<p>Daha önce de söylediğimiz gibi, <code class="docutils literal notranslate"><span class="pre">if</span></code> deyimi dışında Python’da koşullu
+durumları ifade etmek için kullandığımız, <code class="docutils literal notranslate"><span class="pre">elif</span></code> ve <code class="docutils literal notranslate"><span class="pre">else</span></code> adlı iki deyim
+daha vardır. Bunlar <code class="docutils literal notranslate"><span class="pre">if</span></code> ile birlikte kullanılırlar. Gelin isterseniz bu iki
+deyimden, adı <code class="docutils literal notranslate"><span class="pre">elif</span></code> olana bakalım.</p>
 </div>
 <div class="section" id="elif">
-<h3>elif<a class="headerlink" href="#elif" title="Permalink to this headline">¶</a></h3>
-<p>Python&#8217;da, <tt class="docutils literal"><span class="pre">if</span></tt> deyimleriyle birlikte kullanılan ve yine koşul belirten bir
-başka deyim de <tt class="docutils literal"><span class="pre">elif</span></tt> deyimidir. Buna şöyle bir örnek verebiliriz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">yaş</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Yaşınız: &quot;</span><span class="p">))</span>
+<h3>elif<a class="headerlink" href="#elif" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p>Python’da, <code class="docutils literal notranslate"><span class="pre">if</span></code> deyimleriyle birlikte kullanılan ve yine koşul belirten bir
+başka deyim de <code class="docutils literal notranslate"><span class="pre">elif</span></code> deyimidir. Buna şöyle bir örnek verebiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">yaş</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Yaşınız: &quot;</span><span class="p">))</span>
 
 <span class="k">if</span> <span class="n">yaş</span> <span class="o">==</span> <span class="mi">18</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;18 iyidir!&quot;</span><span class="p">)</span>
@@ -435,7 +426,7 @@ başka deyim de <tt class="docutils literal"><span class="pre">elif</span></tt> 
 </pre></div>
 </div>
 <p>Yukarıdaki örneği şöyle yazmayı da deneyebilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">yaş</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Yaşınız: &quot;</span><span class="p">))</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">yaş</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Yaşınız: &quot;</span><span class="p">))</span>
 
 <span class="k">if</span> <span class="n">yaş</span> <span class="o">==</span> <span class="mi">18</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;18 iyidir!&quot;</span><span class="p">)</span>
@@ -453,13 +444,13 @@ başka deyim de <tt class="docutils literal"><span class="pre">elif</span></tt> 
 <p>Bu iki programın da aynı işlevi gördüğünü düşünebilirsiniz. Ancak ilk bakışta
 pek belli olmasa da, aslında yukarıdaki iki program birbirinden farklı
 davranacaktır. Örneğin ikinci programda eğer kullanıcı eksi değerli bir sayı
-girerse hem <tt class="docutils literal"><span class="pre">if</span> <span class="pre">yaş</span> <span class="pre">&lt;</span> <span class="pre">0</span></tt> bloğu, hem de <tt class="docutils literal"><span class="pre">if</span> <span class="pre">yaş</span> <span class="pre">&lt;</span> <span class="pre">18</span></tt> bloğu çalışacaktır.
+girerse hem <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">yaş</span> <span class="pre">&lt;</span> <span class="pre">0</span></code> bloğu, hem de <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">yaş</span> <span class="pre">&lt;</span> <span class="pre">18</span></code> bloğu çalışacaktır.
 İsterseniz yukarıdaki programı çalıştırıp, cevap olarak eksi değerli bir sayı
 verin. Ne demek istediğimiz gayet net anlaşılacaktır.</p>
-<p>Bu durum <tt class="docutils literal"><span class="pre">if</span></tt> ile <tt class="docutils literal"><span class="pre">elif</span></tt> arasındaki çok önemli bir farktan kaynaklanır. Buna
-göre <tt class="docutils literal"><span class="pre">if</span></tt> bize olası bütün sonuçları listeler, <tt class="docutils literal"><span class="pre">elif</span></tt> ise sadece doğru olan
+<p>Bu durum <code class="docutils literal notranslate"><span class="pre">if</span></code> ile <code class="docutils literal notranslate"><span class="pre">elif</span></code> arasındaki çok önemli bir farktan kaynaklanır. Buna
+göre <code class="docutils literal notranslate"><span class="pre">if</span></code> bize olası bütün sonuçları listeler, <code class="docutils literal notranslate"><span class="pre">elif</span></code> ise sadece doğru olan
 ilk sonucu verir. Bu soyut tanımlamayı biraz daha somutlaştıralım:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Bir sayı giriniz: &quot;</span><span class="p">))</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Bir sayı giriniz: &quot;</span><span class="p">))</span>
 
 <span class="k">if</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;verdiğiniz sayı 100&#39;den küçüktür.&quot;</span><span class="p">)</span>
@@ -480,13 +471,13 @@ ilk sonucu verir. Bu soyut tanımlamayı biraz daha somutlaştıralım:</p>
 <p>Yukarıdaki kodları çalıştırdığımızda, doğru olan bütün sonuçlar listelenecektir.
 Yani mesela kullanıcı <cite>40</cite> sayısını girmişse, ekrana verilecek çıktı şöyle
 olacaktır:</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>verdiğiniz sayı 100&#39;den küçüktür.
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>verdiğiniz sayı 100&#39;den küçüktür.
 verdiğiniz sayı 50&#39;den küçüktür.
 </pre></div>
 </div>
-<p>Burada <cite>40</cite> sayısı hem <cite>100</cite>&#8216;den, hem de <cite>50</cite>&#8216;den küçük olduğu için iki sonuç da
+<p>Burada <cite>40</cite> sayısı hem <cite>100</cite>’den, hem de <cite>50</cite>’den küçük olduğu için iki sonuç da
 çıktı olarak verilecektir. Ama eğer yukarıdaki kodları şöyle yazarsak:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Bir sayı giriniz: &quot;</span><span class="p">))</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Bir sayı giriniz: &quot;</span><span class="p">))</span>
 
 <span class="k">if</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;verdiğiniz sayı 100&#39;den küçüktür.&quot;</span><span class="p">)</span>
@@ -506,35 +497,35 @@ verdiğiniz sayı 50&#39;den küçüktür.
 </div>
 <p>Kullanıcının <cite>40</cite> sayısını girdiğini varsaydığımızda, bu defa programımımız
 yalnızca şu çıktıyı verecektir:</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>verdiğiniz sayı 100&#39;den küçüktür.
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>verdiğiniz sayı 100&#39;den küçüktür.
 </pre></div>
 </div>
-<p>Gördüğünüz gibi, <tt class="docutils literal"><span class="pre">elif</span></tt> deyimlerini kullandığımız zaman, ekrana yalnızca doğru
-olan ilk sonuç veriliyor. Yukarıda <cite>40</cite> sayısı hem <cite>100</cite>&#8216;den hem de <cite>50</cite>&#8216;den
-küçük olduğu halde, Python bu sayının <cite>100</cite>&#8216;den küçük olduğunu görür görmez
-sonucu ekrana basıp, öteki koşul bloklarını incelemeyi bırakıyor. <tt class="docutils literal"><span class="pre">if</span></tt>
+<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">elif</span></code> deyimlerini kullandığımız zaman, ekrana yalnızca doğru
+olan ilk sonuç veriliyor. Yukarıda <cite>40</cite> sayısı hem <cite>100</cite>’den hem de <cite>50</cite>’den
+küçük olduğu halde, Python bu sayının <cite>100</cite>’den küçük olduğunu görür görmez
+sonucu ekrana basıp, öteki koşul bloklarını incelemeyi bırakıyor. <code class="docutils literal notranslate"><span class="pre">if</span></code>
 deyimlerini arka arkaya sıraladığımızda ise, Python bütün olasılıkları tek tek
 değerlendirip, geçerli olan bütün sonuçları ekrana döküyor.</p>
-<p>Bir sonraki bölümde <tt class="docutils literal"><span class="pre">else</span></tt> deyimini öğrendiğimiz zaman, <tt class="docutils literal"><span class="pre">elif</span></tt>&#8216;in tam olarak
+<p>Bir sonraki bölümde <code class="docutils literal notranslate"><span class="pre">else</span></code> deyimini öğrendiğimiz zaman, <code class="docutils literal notranslate"><span class="pre">elif</span></code>’in tam olarak
 ne işe yaradığını çok daha iyi anlamanızı sağlayacak bir örnek vereceğiz.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Şimdiye kadar verdiğimiz örneklerden de rahatlıkla anlayabileceğiniz
-gibi, ilk koşul bloğunda asla <tt class="docutils literal"><span class="pre">elif</span></tt> deyimi kullanılamaz. Bu deyimin
-kullanılabilmesi için kendisinden önce en az bir adet <tt class="docutils literal"><span class="pre">if</span></tt> bloğu olmalıdır.
-Yani Python&#8217;da koşullu durumları ifade ederken ilk koşul bloğumuz her zaman
-<tt class="docutils literal"><span class="pre">if</span></tt> deyimi ile başlamalıdır.</p>
+<p class="admonition-title">Not</p>
+<p>Şimdiye kadar verdiğimiz örneklerden de rahatlıkla anlayabileceğiniz
+gibi, ilk koşul bloğunda asla <code class="docutils literal notranslate"><span class="pre">elif</span></code> deyimi kullanılamaz. Bu deyimin
+kullanılabilmesi için kendisinden önce en az bir adet <code class="docutils literal notranslate"><span class="pre">if</span></code> bloğu olmalıdır.
+Yani Python’da koşullu durumları ifade ederken ilk koşul bloğumuz her zaman
+<code class="docutils literal notranslate"><span class="pre">if</span></code> deyimi ile başlamalıdır.</p>
 </div>
-<p><tt class="docutils literal"><span class="pre">elif</span></tt>&#8216;i de incelediğimize göre, koşul bildiren deyimlerin sonuncusuna göz
-atabiliriz: <tt class="docutils literal"><span class="pre">else</span></tt></p>
+<p><code class="docutils literal notranslate"><span class="pre">elif</span></code>’i de incelediğimize göre, koşul bildiren deyimlerin sonuncusuna göz
+atabiliriz: <code class="docutils literal notranslate"><span class="pre">else</span></code></p>
 </div>
 <div class="section" id="else">
-<h3>else<a class="headerlink" href="#else" title="Permalink to this headline">¶</a></h3>
-<p>Şimdiye kadar Python&#8217;da koşul bildiren iki deyimi öğrendik. Bunlar <tt class="docutils literal"><span class="pre">if</span></tt> ve
-<tt class="docutils literal"><span class="pre">elif</span></tt> idi. Bu bölümde ise koşul deyimlerinin sonuncusu olan <tt class="docutils literal"><span class="pre">else</span></tt> deyimini
+<h3>else<a class="headerlink" href="#else" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p>Şimdiye kadar Python’da koşul bildiren iki deyimi öğrendik. Bunlar <code class="docutils literal notranslate"><span class="pre">if</span></code> ve
+<code class="docutils literal notranslate"><span class="pre">elif</span></code> idi. Bu bölümde ise koşul deyimlerinin sonuncusu olan <code class="docutils literal notranslate"><span class="pre">else</span></code> deyimini
 göreceğiz. Öğrendiğimiz şeyleri şöyle bir gözden geçirecek olursak, temel olarak
 şöyle bir durumla karşı karşıya olduğumuzu görürüz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">falanca</span><span class="p">:</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">falanca</span><span class="p">:</span>
     <span class="n">bu</span> <span class="n">işlemi</span> <span class="n">yap</span>
 
 <span class="k">if</span> <span class="n">filanca</span><span class="p">:</span>
@@ -542,21 +533,21 @@ göreceğiz. Öğrendiğimiz şeyleri şöyle bir gözden geçirecek olursak, te
 </pre></div>
 </div>
 <p>Veya şöyle bir durum:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">falanca</span><span class="p">:</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">falanca</span><span class="p">:</span>
     <span class="n">bu</span> <span class="n">işlemi</span> <span class="n">yap</span>
 
 <span class="k">elif</span> <span class="n">filanca</span><span class="p">:</span>
     <span class="n">şu</span> <span class="n">işlemi</span> <span class="n">yap</span>
 </pre></div>
 </div>
-<p><tt class="docutils literal"><span class="pre">if</span></tt> ile <tt class="docutils literal"><span class="pre">elif</span></tt> arasındaki farkı biliyoruz. Eğer <tt class="docutils literal"><span class="pre">if</span></tt> deyimlerini art arda
+<p><code class="docutils literal notranslate"><span class="pre">if</span></code> ile <code class="docutils literal notranslate"><span class="pre">elif</span></code> arasındaki farkı biliyoruz. Eğer <code class="docutils literal notranslate"><span class="pre">if</span></code> deyimlerini art arda
 sıralayacak olursak, Python doğru olan bütün sonuçları listeleyecektir. Ama eğer
-<tt class="docutils literal"><span class="pre">if</span></tt> deyiminden sonra <tt class="docutils literal"><span class="pre">elif</span></tt> deyimini kullanırsak, Python doğru olan ilk
+<code class="docutils literal notranslate"><span class="pre">if</span></code> deyiminden sonra <code class="docutils literal notranslate"><span class="pre">elif</span></code> deyimini kullanırsak, Python doğru olan ilk
 sonucu listelemekle yetinecektir.</p>
-<p>Bu bölümde göreceğimiz <tt class="docutils literal"><span class="pre">else</span></tt> deyimi, yukarıdaki tabloya bambaşka bir boyut
+<p>Bu bölümde göreceğimiz <code class="docutils literal notranslate"><span class="pre">else</span></code> deyimi, yukarıdaki tabloya bambaşka bir boyut
 kazandırıyor. Dikkat ederseniz şimdiye kadar öğrendiğimiz deyimleri
 kullanabilmek için ilgili bütün durumları tanımlamamız gerekiyordu. Yani:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">eğer</span> <span class="n">böyle</span> <span class="n">bir</span> <span class="n">durum</span> <span class="n">varsa</span><span class="p">:</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">eğer</span> <span class="n">böyle</span> <span class="n">bir</span> <span class="n">durum</span> <span class="n">varsa</span><span class="p">:</span>
     <span class="n">bunu</span> <span class="n">yap</span>
 
 <span class="n">eğer</span> <span class="n">şöyle</span> <span class="n">bir</span> <span class="n">durum</span> <span class="n">varsa</span><span class="p">:</span>
@@ -569,14 +560,15 @@ kullanabilmek için ilgili bütün durumları tanımlamamız gerekiyordu. Yani:<
     <span class="n">böyle</span> <span class="n">gel</span>
 </pre></div>
 </div>
-<p>gibi...</p>
-<p>Ancak her durum için bir <tt class="docutils literal"><span class="pre">if</span></tt> bloğu yazmak bir süre sonra yorucu ve sıkıcı
-olacaktır. İşte bu noktada devreye <tt class="docutils literal"><span class="pre">else</span></tt> deyimi girecek. <tt class="docutils literal"><span class="pre">else</span></tt>&#8216;in anlamı
+<p>gibi…</p>
+<p>Ancak her durum için bir <code class="docutils literal notranslate"><span class="pre">if</span></code> bloğu yazmak bir süre sonra yorucu ve sıkıcı
+olacaktır. İşte bu noktada devreye <code class="docutils literal notranslate"><span class="pre">else</span></code> deyimi girecek. <code class="docutils literal notranslate"><span class="pre">else</span></code>’in anlamı
 kabaca şudur:</p>
 <blockquote>
-<div>Eğer yukarıdaki koşulların hiçbiri gerçekleşmezse...</div></blockquote>
+<div><p>Eğer yukarıdaki koşulların hiçbiri gerçekleşmezse…</p>
+</div></blockquote>
 <p>Gelin isterseniz bununla ilgili şöyle bir örnek verelim:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">soru</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Bir meyve adı söyleyin bana:&quot;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">soru</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Bir meyve adı söyleyin bana:&quot;</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="n">soru</span> <span class="o">==</span> <span class="s2">&quot;elma&quot;</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;evet, elma bir meyvedir...&quot;</span><span class="p">)</span>
@@ -591,16 +583,17 @@ kabaca şudur:</p>
     <span class="nb">print</span><span class="p">(</span><span class="n">soru</span><span class="p">,</span> <span class="s2">&quot;gerçekten bir meyve midir?&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Eğer kullanıcı soruya &#8216;elma&#8217;, &#8216;karpuz&#8217; veya &#8216;armut&#8217; cevabı verirse, <cite>evet, ...
+<p>Eğer kullanıcı soruya ‘elma’, ‘karpuz’ veya ‘armut’ cevabı verirse, <cite>evet, …
 bir meyvedir</cite> çıktısı verilecektir. Ama eğer kullanıcı bu üçü dışında bir cevap
-verirse, <cite>... gerçekten bir meyve midir?</cite> çıktısını görürüz. Burada <tt class="docutils literal"><span class="pre">else</span></tt>
+verirse, <cite>… gerçekten bir meyve midir?</cite> çıktısını görürüz. Burada <code class="docutils literal notranslate"><span class="pre">else</span></code>
 deyimi, programımıza şu anlamı katıyor:</p>
 <blockquote>
-<div>Eğer kullanıcı yukarıda belirlenen meyve adlarından hiç birini girmez, bunların yerine bambaşka bir şey yazarsa, o zaman <tt class="docutils literal"><span class="pre">else</span></tt> bloğu içinde belirtilen işlemi gerçekleştir.</div></blockquote>
-<p>Dikkat ederseniz yukarıdaki kodlarda <tt class="docutils literal"><span class="pre">if</span></tt> deyimlerini art arda sıralamak
-yerine ilk <tt class="docutils literal"><span class="pre">if</span></tt>&#8216;ten sonra <tt class="docutils literal"><span class="pre">elif</span></tt> ile devam ettik. Peki şöyle bir şey
+<div><p>Eğer kullanıcı yukarıda belirlenen meyve adlarından hiç birini girmez, bunların yerine bambaşka bir şey yazarsa, o zaman <code class="docutils literal notranslate"><span class="pre">else</span></code> bloğu içinde belirtilen işlemi gerçekleştir.</p>
+</div></blockquote>
+<p>Dikkat ederseniz yukarıdaki kodlarda <code class="docutils literal notranslate"><span class="pre">if</span></code> deyimlerini art arda sıralamak
+yerine ilk <code class="docutils literal notranslate"><span class="pre">if</span></code>’ten sonra <code class="docutils literal notranslate"><span class="pre">elif</span></code> ile devam ettik. Peki şöyle bir şey
 yazarsak ne olur?</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">soru</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Bir meyve adı söyleyin bana:&quot;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">soru</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Bir meyve adı söyleyin bana:&quot;</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="n">soru</span> <span class="o">==</span> <span class="s2">&quot;elma&quot;</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;evet, elma bir meyvedir...&quot;</span><span class="p">)</span>
@@ -617,51 +610,51 @@ yazarsak ne olur?</p>
 </div>
 <p>Bu kodlar beklediğiniz sonucu vermeyecektir. İsterseniz yukarıdaki kodları
 çalıştırıp ne demek istediğimizi daha iyi anlayabilirsiniz. Eğer yukarıda olduğu
-gibi <tt class="docutils literal"><span class="pre">if</span></tt> deyimlerini art arda sıralar ve son olarak da bir <tt class="docutils literal"><span class="pre">else</span></tt> bloğu
+gibi <code class="docutils literal notranslate"><span class="pre">if</span></code> deyimlerini art arda sıralar ve son olarak da bir <code class="docutils literal notranslate"><span class="pre">else</span></code> bloğu
 tanımlarsak, ekrana ilk bakışta anlamsız gibi görünen bir çıktı verilecektir:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span>evet, elma bir meyvedir...
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span>evet, elma bir meyvedir...
 elma gerçekten bir meyve midir?
 </pre></div>
 </div>
 <p>Burada olan şey şu:</p>
-<p>Soruya &#8216;elma&#8217; cevabını verdiğimizi düşünelim. Bu durumda, Python ilk olarak ilk
-<tt class="docutils literal"><span class="pre">if</span></tt> bloğunu değerlendirecek ve soruya verdiğimiz cevap &#8216;elma&#8217; olduğu için
-<cite>evet, elma bir meyvedir...</cite> çıktısını verecektir.</p>
-<p><tt class="docutils literal"><span class="pre">if</span></tt> ile <tt class="docutils literal"><span class="pre">elif</span></tt> arasındaki farkı anlatırken, hatırlarsanız art arda gelen <tt class="docutils literal"><span class="pre">if</span></tt> bloklarında Python&#8217;ın olası bütün sonuçları değerlendireceğini söylemiştik. İşte burada da böyle bir durum söz konusu. Gördüğünüz gibi, ilk <tt class="docutils literal"><span class="pre">if</span></tt> bloğundan sonra yine bir <tt class="docutils literal"><span class="pre">if</span></tt> bloğu geliyor. Bu nedenle Python olası bütün sonuçları değerlendirebilmek için blokları okumaya devam edecek ve sorunun cevabı &#8216;karpuz&#8217; olmadığı için ikinci <tt class="docutils literal"><span class="pre">if</span></tt> bloğunu atlayacaktır.</p>
-<p>Sonraki blok yine bir <tt class="docutils literal"><span class="pre">if</span></tt> bloğu olduğu için Python kodları okumaya devam
-ediyor. Ancak sorunun cevabı &#8216;armut&#8217; da olmadığı için, Python sonraki <tt class="docutils literal"><span class="pre">if</span></tt>
-bloğunu da geçiyor ve böylece <tt class="docutils literal"><span class="pre">else</span></tt> bloğuna ulaşıyor.</p>
-<p>Yukarıda verdiğimiz örnekteki gibi art arda <tt class="docutils literal"><span class="pre">if</span></tt> deyimlerinin sıralanıp en
-sona <tt class="docutils literal"><span class="pre">else</span></tt> deyiminin yerleştirildiği durumlarda <tt class="docutils literal"><span class="pre">else</span></tt> deyimi sadece bir
-önceki <tt class="docutils literal"><span class="pre">if</span></tt> deyimini dikkate alarak işlem yapar. Yani yukarıdaki örnekte
-kullanıcının verdiği cevap &#8216;armut&#8217; olmadığı için <tt class="docutils literal"><span class="pre">else</span></tt> deyiminin olduğu blok
-çalışmaya başlar. Yukarıdaki örneğe &#8216;armut&#8217; cevabını verirseniz ne demek
-istediğimi biraz daha iyi anlayabilirsiniz. &#8216;armut&#8217; cevabı verilmesi durumunda
-sadece <tt class="docutils literal"><span class="pre">if</span> <span class="pre">soru</span> <span class="pre">==</span> <span class="pre">&quot;armut&quot;</span></tt> ifadesinin olduğu blok çalışır, <tt class="docutils literal"><span class="pre">else</span></tt> bloğu ise
-çalışmaz. Çünkü dediğim gibi, eğer <tt class="docutils literal"><span class="pre">else</span></tt> bloğundan önce art arda gelen <tt class="docutils literal"><span class="pre">if</span></tt>
-blokları varsa, <tt class="docutils literal"><span class="pre">else</span></tt> deyimi yalnızca kendisinden önceki son <tt class="docutils literal"><span class="pre">if</span></tt> bloğunu
+<p>Soruya ‘elma’ cevabını verdiğimizi düşünelim. Bu durumda, Python ilk olarak ilk
+<code class="docutils literal notranslate"><span class="pre">if</span></code> bloğunu değerlendirecek ve soruya verdiğimiz cevap ‘elma’ olduğu için
+<cite>evet, elma bir meyvedir…</cite> çıktısını verecektir.</p>
+<p><code class="docutils literal notranslate"><span class="pre">if</span></code> ile <code class="docutils literal notranslate"><span class="pre">elif</span></code> arasındaki farkı anlatırken, hatırlarsanız art arda gelen <code class="docutils literal notranslate"><span class="pre">if</span></code> bloklarında Python’ın olası bütün sonuçları değerlendireceğini söylemiştik. İşte burada da böyle bir durum söz konusu. Gördüğünüz gibi, ilk <code class="docutils literal notranslate"><span class="pre">if</span></code> bloğundan sonra yine bir <code class="docutils literal notranslate"><span class="pre">if</span></code> bloğu geliyor. Bu nedenle Python olası bütün sonuçları değerlendirebilmek için blokları okumaya devam edecek ve sorunun cevabı ‘karpuz’ olmadığı için ikinci <code class="docutils literal notranslate"><span class="pre">if</span></code> bloğunu atlayacaktır.</p>
+<p>Sonraki blok yine bir <code class="docutils literal notranslate"><span class="pre">if</span></code> bloğu olduğu için Python kodları okumaya devam
+ediyor. Ancak sorunun cevabı ‘armut’ da olmadığı için, Python sonraki <code class="docutils literal notranslate"><span class="pre">if</span></code>
+bloğunu da geçiyor ve böylece <code class="docutils literal notranslate"><span class="pre">else</span></code> bloğuna ulaşıyor.</p>
+<p>Yukarıda verdiğimiz örnekteki gibi art arda <code class="docutils literal notranslate"><span class="pre">if</span></code> deyimlerinin sıralanıp en
+sona <code class="docutils literal notranslate"><span class="pre">else</span></code> deyiminin yerleştirildiği durumlarda <code class="docutils literal notranslate"><span class="pre">else</span></code> deyimi sadece bir
+önceki <code class="docutils literal notranslate"><span class="pre">if</span></code> deyimini dikkate alarak işlem yapar. Yani yukarıdaki örnekte
+kullanıcının verdiği cevap ‘armut’ olmadığı için <code class="docutils literal notranslate"><span class="pre">else</span></code> deyiminin olduğu blok
+çalışmaya başlar. Yukarıdaki örneğe ‘armut’ cevabını verirseniz ne demek
+istediğimi biraz daha iyi anlayabilirsiniz. ‘armut’ cevabı verilmesi durumunda
+sadece <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">soru</span> <span class="pre">==</span> <span class="pre">&quot;armut&quot;</span></code> ifadesinin olduğu blok çalışır, <code class="docutils literal notranslate"><span class="pre">else</span></code> bloğu ise
+çalışmaz. Çünkü dediğim gibi, eğer <code class="docutils literal notranslate"><span class="pre">else</span></code> bloğundan önce art arda gelen <code class="docutils literal notranslate"><span class="pre">if</span></code>
+blokları varsa, <code class="docutils literal notranslate"><span class="pre">else</span></code> deyimi yalnızca kendisinden önceki son <code class="docutils literal notranslate"><span class="pre">if</span></code> bloğunu
 dikkate alır ve sanki yukarıdaki örnek şöyleymiş gibi davranır:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">soru</span> <span class="o">==</span> <span class="s2">&quot;armut&quot;</span><span class="p">:</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">soru</span> <span class="o">==</span> <span class="s2">&quot;armut&quot;</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;evet, armut bir meyvedir...&quot;</span><span class="p">)</span>
 
 <span class="k">else</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">soru</span><span class="p">,</span> <span class="s2">&quot;gerçekten bir meyve midir?&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Bu tür durumlarda <tt class="docutils literal"><span class="pre">else</span></tt> deyimi bir önceki <tt class="docutils literal"><span class="pre">if</span></tt> bloğundan önce gelen bütün
-<tt class="docutils literal"><span class="pre">if</span></tt> bloklarını görmezden gelir ve böylece şu anlamsız görünen çıktı elde
+<p>Bu tür durumlarda <code class="docutils literal notranslate"><span class="pre">else</span></code> deyimi bir önceki <code class="docutils literal notranslate"><span class="pre">if</span></code> bloğundan önce gelen bütün
+<code class="docutils literal notranslate"><span class="pre">if</span></code> bloklarını görmezden gelir ve böylece şu anlamsız görünen çıktı elde
 edilir:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span>evet, elma bir meyvedir...
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span>evet, elma bir meyvedir...
 elma gerçekten bir meyve midir?
 </pre></div>
 </div>
-<p>Sözün özü, kullanıcının cevabı &#8216;elma&#8217; olduğu için, yukarıdaki çıktıda yer alan
-ilk cümle ilk <tt class="docutils literal"><span class="pre">if</span></tt> bloğunun çalışması sonucu ekrana basılıyor. İkinci cümle
-ise <tt class="docutils literal"><span class="pre">else</span></tt> bloğundan bir önceki <tt class="docutils literal"><span class="pre">if</span></tt> bloğu kullanıcının cevabıyla uyuşmadığı
+<p>Sözün özü, kullanıcının cevabı ‘elma’ olduğu için, yukarıdaki çıktıda yer alan
+ilk cümle ilk <code class="docutils literal notranslate"><span class="pre">if</span></code> bloğunun çalışması sonucu ekrana basılıyor. İkinci cümle
+ise <code class="docutils literal notranslate"><span class="pre">else</span></code> bloğundan bir önceki <code class="docutils literal notranslate"><span class="pre">if</span></code> bloğu kullanıcının cevabıyla uyuşmadığı
 için ekrana basılıyor.</p>
-<p>Yalnız bu dediğimizden, <tt class="docutils literal"><span class="pre">else</span></tt> ifadesi <tt class="docutils literal"><span class="pre">if</span></tt> ile birlikte kullanılmaz, anlamı
+<p>Yalnız bu dediğimizden, <code class="docutils literal notranslate"><span class="pre">else</span></code> ifadesi <code class="docutils literal notranslate"><span class="pre">if</span></code> ile birlikte kullanılmaz, anlamı
 çıkarılmamalı. Mesela şöyle bir örnek yapılabilir:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">soru</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Programdan çıkmak istediğinize emin misiniz? </span><span class="se">\</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">soru</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Programdan çıkmak istediğinize emin misiniz? </span><span class="se">\</span>
 <span class="s2">Eminseniz &#39;e&#39; harfine basın : &quot;</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="n">soru</span> <span class="o">==</span> <span class="s2">&quot;e&quot;</span><span class="p">:</span>
@@ -671,11 +664,11 @@ için ekrana basılıyor.</p>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Peki, biraz daha sohbet edelim!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Burada eğer kullanıcının cevabı &#8216;e&#8217; ise <tt class="docutils literal"><span class="pre">if</span></tt> bloğu işletilecek, eğer cevap &#8216;e&#8217;
-dışında herhangi bir şey ise <tt class="docutils literal"><span class="pre">else</span></tt> bloğu çalışacaktır. Gayet mantıklı bir
-süreç. Ama eğer yukarıdaki örneğe bir <tt class="docutils literal"><span class="pre">if</span></tt> bloğu daha eklerseniz işler
+<p>Burada eğer kullanıcının cevabı ‘e’ ise <code class="docutils literal notranslate"><span class="pre">if</span></code> bloğu işletilecek, eğer cevap ‘e’
+dışında herhangi bir şey ise <code class="docutils literal notranslate"><span class="pre">else</span></code> bloğu çalışacaktır. Gayet mantıklı bir
+süreç. Ama eğer yukarıdaki örneğe bir <code class="docutils literal notranslate"><span class="pre">if</span></code> bloğu daha eklerseniz işler
 beklediğiniz gibi gitmez:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">soru</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Programdan çıkmak istediğinize emin misiniz? </span><span class="se">\</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">soru</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Programdan çıkmak istediğinize emin misiniz? </span><span class="se">\</span>
 <span class="s2">Eminseniz &#39;e&#39; harfine basın : &quot;</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="n">soru</span> <span class="o">==</span> <span class="s2">&quot;e&quot;</span><span class="p">:</span>
@@ -688,23 +681,23 @@ beklediğiniz gibi gitmez:</p>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Peki, biraz daha sohbet edelim!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Bu soruya &#8216;e&#8217; cevabı verdiğimizi düşünelim. Bu cevap ilk <tt class="docutils literal"><span class="pre">if</span></tt> bloğuyla
-uyuşuyor ve böylece ekrana <cite>Güle güle!</cite> çıktısı veriliyor. İlk <tt class="docutils literal"><span class="pre">if</span></tt> bloğundan
-sonra tekrar bir <tt class="docutils literal"><span class="pre">if</span></tt> bloğu daha geldiği için Python bütün olasılıkları
-değerlendirmek amacıyla blokları okumaya devam ediyor ve cevap &#8216;b&#8217; olmadığı için
-ikinci <tt class="docutils literal"><span class="pre">if</span></tt> bloğunu atlıyor ve böylece <tt class="docutils literal"><span class="pre">else</span></tt> bloğuna ulaşıyor. Bir önceki
-örnekte de söylediğimiz gibi, <tt class="docutils literal"><span class="pre">else</span></tt> bloğu art arda gelen <tt class="docutils literal"><span class="pre">if</span></tt> blokları
-gördüğünde sadece bir önceki <tt class="docutils literal"><span class="pre">if</span></tt> bloğunu dikkate aldığı ve kullanıcının
-cevabı da &#8216;b&#8217; olmadığı için ekrana <cite>Peki, biraz daha sohbet edelim!</cite> çıktısını
+<p>Bu soruya ‘e’ cevabı verdiğimizi düşünelim. Bu cevap ilk <code class="docutils literal notranslate"><span class="pre">if</span></code> bloğuyla
+uyuşuyor ve böylece ekrana <cite>Güle güle!</cite> çıktısı veriliyor. İlk <code class="docutils literal notranslate"><span class="pre">if</span></code> bloğundan
+sonra tekrar bir <code class="docutils literal notranslate"><span class="pre">if</span></code> bloğu daha geldiği için Python bütün olasılıkları
+değerlendirmek amacıyla blokları okumaya devam ediyor ve cevap ‘b’ olmadığı için
+ikinci <code class="docutils literal notranslate"><span class="pre">if</span></code> bloğunu atlıyor ve böylece <code class="docutils literal notranslate"><span class="pre">else</span></code> bloğuna ulaşıyor. Bir önceki
+örnekte de söylediğimiz gibi, <code class="docutils literal notranslate"><span class="pre">else</span></code> bloğu art arda gelen <code class="docutils literal notranslate"><span class="pre">if</span></code> blokları
+gördüğünde sadece bir önceki <code class="docutils literal notranslate"><span class="pre">if</span></code> bloğunu dikkate aldığı ve kullanıcının
+cevabı da ‘b’ olmadığı için ekrana <cite>Peki, biraz daha sohbet edelim!</cite> çıktısını
 veriyor ve ilk bakışta tuhaf görünen şöyle bir çıktı üretiyor:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span>Güle güle!
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span>Güle güle!
 Peki, biraz daha sohbet edelim!
 </pre></div>
 </div>
-<p>Dolayısıyla, eğer programınızda bir <tt class="docutils literal"><span class="pre">else</span></tt> bloğuna yer verecekseniz, ondan
-önce gelen koşullu durumların ilkini <tt class="docutils literal"><span class="pre">if</span></tt> ile sonrakileri ise <tt class="docutils literal"><span class="pre">elif</span></tt> ile
+<p>Dolayısıyla, eğer programınızda bir <code class="docutils literal notranslate"><span class="pre">else</span></code> bloğuna yer verecekseniz, ondan
+önce gelen koşullu durumların ilkini <code class="docutils literal notranslate"><span class="pre">if</span></code> ile sonrakileri ise <code class="docutils literal notranslate"><span class="pre">elif</span></code> ile
 bağlayın. Yani:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">koşul_1</span><span class="p">:</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">koşul_1</span><span class="p">:</span>
     <span class="n">sonuç_1</span>
 
 <span class="k">elif</span> <span class="n">koşul_2</span><span class="p">:</span>
@@ -717,9 +710,9 @@ bağlayın. Yani:</p>
     <span class="n">sonuç_4</span>
 </pre></div>
 </div>
-<p>Ama eğer <tt class="docutils literal"><span class="pre">else</span></tt> bloğundan önce sadece tek bir koşul bloğu yer alacaksa bunu
-<tt class="docutils literal"><span class="pre">if</span></tt> ile bağlayın. Yani:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">koşul_1</span><span class="p">:</span>
+<p>Ama eğer <code class="docutils literal notranslate"><span class="pre">else</span></code> bloğundan önce sadece tek bir koşul bloğu yer alacaksa bunu
+<code class="docutils literal notranslate"><span class="pre">if</span></code> ile bağlayın. Yani:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">koşul_1</span><span class="p">:</span>
     <span class="n">sonuç_1</span>
 
 <span class="k">else</span><span class="p">:</span>
@@ -730,9 +723,9 @@ bağlayın. Yani:</p>
 ayrıntılara olabildiğince dikkat etmemiz gerekiyor. Neticede koşullu durumlar
 mantıkla ilgilidir. Dolayısıyla koşullu durumlarla muhatap olurken mantığınızı
 hiçbir zaman devre dışı bırakmamalısınız.</p>
-<p>Bir önceki bölümde <tt class="docutils literal"><span class="pre">elif</span></tt> deyiminin tam olarak ne işe yaradığını anlamamızı
+<p>Bir önceki bölümde <code class="docutils literal notranslate"><span class="pre">elif</span></code> deyiminin tam olarak ne işe yaradığını anlamamızı
 sağlayacak bir örnek vereceğimizi söylemiştik. Şimdi bu örneğe bakalım:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">boy</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;boyunuz kaç cm?&quot;</span><span class="p">))</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">boy</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;boyunuz kaç cm?&quot;</span><span class="p">))</span>
 
 <span class="k">if</span> <span class="n">boy</span> <span class="o">&lt;</span> <span class="mi">170</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;boyunuz kısa&quot;</span><span class="p">)</span>
@@ -744,28 +737,28 @@ sağlayacak bir örnek vereceğimizi söylemiştik. Şimdi bu örneğe bakalım:
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;boyunuz uzun&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Yukarıda yedi satırla hallettiğimiz işi sadece <tt class="docutils literal"><span class="pre">if</span></tt> deyimleriyle yapmaya
+<p>Yukarıda yedi satırla hallettiğimiz işi sadece <code class="docutils literal notranslate"><span class="pre">if</span></code> deyimleriyle yapmaya
 çalışırsanız bunun ne kadar zor olduğunu göreceksiniz. Diyelim ki kullanıcı
-&#8216;165&#8217; cevabını verdi. Python bu <cite>165</cite> sayısının <cite>170</cite>&#8216;ten küçük olduğunu görünce
+‘165’ cevabını verdi. Python bu <cite>165</cite> sayısının <cite>170</cite>’ten küçük olduğunu görünce
 <cite>boyunuz kısa</cite> cevabını verecek, öteki satırları değerlendirmeyecektir. <cite>165</cite>
-sayısı, <tt class="docutils literal"><span class="pre">elif</span></tt> ile gösterdiğimiz koşullu duruma da uygun olduğu halde (<tt class="docutils literal"><span class="pre">165</span> <span class="pre">&lt;</span>
-<span class="pre">180</span></tt>), koşul ilk blokta karşılandığı için ikinci blok değerlendirmeye
+sayısı, <code class="docutils literal notranslate"><span class="pre">elif</span></code> ile gösterdiğimiz koşullu duruma da uygun olduğu halde (<code class="docutils literal notranslate"><span class="pre">165</span> <span class="pre">&lt;</span>
+<span class="pre">180</span></code>), koşul ilk blokta karşılandığı için ikinci blok değerlendirmeye
 alınmayacaktır.</p>
-<p>Kullanıcının &#8216;175&#8217; cevabını verdiğini varsayalım: Python <cite>175</cite> sayısını görünce
+<p>Kullanıcının ‘175’ cevabını verdiğini varsayalım: Python <cite>175</cite> sayısını görünce
 önce ilk koşula bakacak, verilen <cite>175</cite> sayısının ilk koşulu karşılamadığını
-görecektir (<tt class="docutils literal"><span class="pre">175</span> <span class="pre">&gt;</span> <span class="pre">170</span></tt>). Bunun üzerine Python kodları incelemeye devam edecek
-ve <tt class="docutils literal"><span class="pre">elif</span></tt> bloğunu değerlendirmeye alacaktır. <cite>175</cite> sayısının <cite>180</cite>&#8216;den küçük
+görecektir (<code class="docutils literal notranslate"><span class="pre">175</span> <span class="pre">&gt;</span> <span class="pre">170</span></code>). Bunun üzerine Python kodları incelemeye devam edecek
+ve <code class="docutils literal notranslate"><span class="pre">elif</span></code> bloğunu değerlendirmeye alacaktır. <cite>175</cite> sayısının <cite>180</cite>’den küçük
 olduğunu görünce de çıktı olarak <cite>boyunuz normal</cite> cevabını verecektir.</p>
-<p>Peki ya kullanıcı &#8216;190&#8217; cevabını verirse ne olacak? Python yine önce ilk <tt class="docutils literal"><span class="pre">if</span></tt>
+<p>Peki ya kullanıcı ‘190’ cevabını verirse ne olacak? Python yine önce ilk <code class="docutils literal notranslate"><span class="pre">if</span></code>
 bloğuna bakacak ve <cite>190</cite> cevabının bu bloğa uymadığını görecektir. Dolayısıyla
 ilk bloğu bırakıp ikinci bloğa bakacaktır. <cite>190</cite> cevabının bu bloğa da
 uymadığını görünce, bir sonraki bloğu değerlendirmeye alacaktır. Bir sonraki
-blokta ise <tt class="docutils literal"><span class="pre">else</span></tt> deyimimiz var. Bu bölümde öğrendiğimiz gibi, <tt class="docutils literal"><span class="pre">else</span></tt>
-deyimi, &#8216;eğer kullanıcının cevabı yukarıdaki koşulların hiçbirine uymazsa bu
-bloğu çalıştır,&#8217; anlamına geliyor. Kullanıcının girdiği <cite>190</cite> cevabı ne birinci
-ne de ikinci bloktaki koşula uyduğu için, normal bir şekilde <tt class="docutils literal"><span class="pre">else</span></tt> bloğu
+blokta ise <code class="docutils literal notranslate"><span class="pre">else</span></code> deyimimiz var. Bu bölümde öğrendiğimiz gibi, <code class="docutils literal notranslate"><span class="pre">else</span></code>
+deyimi, ‘eğer kullanıcının cevabı yukarıdaki koşulların hiçbirine uymazsa bu
+bloğu çalıştır,’ anlamına geliyor. Kullanıcının girdiği <cite>190</cite> cevabı ne birinci
+ne de ikinci bloktaki koşula uyduğu için, normal bir şekilde <code class="docutils literal notranslate"><span class="pre">else</span></code> bloğu
 işletilecek, dolayısıyla da ekrana <cite>boyunuz uzun</cite> çıktısı verilecektir.</p>
-<p>Böylece Python&#8217;da <tt class="docutils literal"><span class="pre">if</span></tt>, <tt class="docutils literal"><span class="pre">elif</span></tt> ve <tt class="docutils literal"><span class="pre">else</span></tt> deyimlerini incelemiş olduk.
+<p>Böylece Python’da <code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">elif</span></code> ve <code class="docutils literal notranslate"><span class="pre">else</span></code> deyimlerini incelemiş olduk.
 Ancak tabii ki bu deyimlerle işimiz henüz bitmedi. Elimizdeki bilgiler şimdilik
 bu deyimleri ancak bu kadar incelememize yetiyor, ama ilerleyen sayfalarda bazı
 başka araçları da bilgi dağarcığımıza kattıktan sonra bu deyimlerin daha farklı
@@ -773,16 +766,17 @@ yönlerini öğrenme imkanına kavuşacağız.</p>
 </div>
 </div>
 <div class="section" id="ornek-uygulama">
-<h2>Örnek Uygulama<a class="headerlink" href="#ornek-uygulama" title="Permalink to this headline">¶</a></h2>
-<p>Önceki derslerimizde <tt class="docutils literal"><span class="pre">len()</span></tt> fonksiyonunu anlatırken şöyle bir program
+<h2>Örnek Uygulama<a class="headerlink" href="#ornek-uygulama" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Önceki derslerimizde <code class="docutils literal notranslate"><span class="pre">len()</span></code> fonksiyonunu anlatırken şöyle bir program
 tasarısından bahsetmiştik hatırlarsanız:</p>
 <blockquote>
-<div>Diyelim ki sisteme kayıt için kullanıcı adı ve parola belirlenmesini isteyen
+<div><p>Diyelim ki sisteme kayıt için kullanıcı adı ve parola belirlenmesini isteyen
 bir program yazıyorsunuz. Yazacağınız bu programda, belirlenebilecek
-kullanıcı adı ve parolanın toplam uzunluğu <cite>40</cite> karakteri geçmeyecek.</div></blockquote>
+kullanıcı adı ve parolanın toplam uzunluğu <cite>40</cite> karakteri geçmeyecek.</p>
+</div></blockquote>
 <p>O zaman henüz koşullu durumları öğrenmemiş olduğumuz için, yukarıda
 bahsettiğimiz programın ancak şu kadarlık kısmını yazabilmiştik:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">kullanıcı_adı</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Kullanıcı adınız: &quot;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">kullanıcı_adı</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Kullanıcı adınız: &quot;</span><span class="p">)</span>
 <span class="n">parola</span>        <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Parolanız       : &quot;</span><span class="p">)</span>
 
 <span class="n">toplam_uzunluk</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">kullanıcı_adı</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">parola</span><span class="p">)</span>
@@ -792,7 +786,7 @@ bahsettiğimiz programın ancak şu kadarlık kısmını yazabilmiştik:</p>
 alıp, bu bilgilerin karakter uzunluğunu ölçebilmekti. Ama artık koşullu
 durumları öğrendiğimize göre bu programı eksiksiz olarak yazabiliriz. Şu kodları
 dikkatlice inceleyin:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">kullanıcı_adı</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Kullanıcı adınız: &quot;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">kullanıcı_adı</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Kullanıcı adınız: &quot;</span><span class="p">)</span>
 <span class="n">parola</span>        <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Parolanız       : &quot;</span><span class="p">)</span>
 
 <span class="n">toplam_uzunluk</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">kullanıcı_adı</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">parola</span><span class="p">)</span>
@@ -810,10 +804,10 @@ dikkatlice inceleyin:</p>
 </div>
 <p>Burada öncelikle kullanıcıdan kullanıcı adı ve parola bilgilerini alıyoruz. Daha
 sonra da kullanıcıdan gelen bu bilgilerin toplam karakter uzunluğunu
-hesaplıyoruz. Bunun için <tt class="docutils literal"><span class="pre">len()</span></tt> fonksiyonundan yararlanmamız gerektiğini
+hesaplıyoruz. Bunun için <code class="docutils literal notranslate"><span class="pre">len()</span></code> fonksiyonundan yararlanmamız gerektiğini
 hatırlıyor olmalısınız.</p>
-<p>Eğer toplam uzunluk 40 karakterden fazla ise, <tt class="docutils literal"><span class="pre">if</span></tt> bloğunda verilen mesajı
-gösteriyoruz. Bunun dışındaki bütün durumlarda ise <tt class="docutils literal"><span class="pre">else</span></tt> bloğunu devreye
+<p>Eğer toplam uzunluk 40 karakterden fazla ise, <code class="docutils literal notranslate"><span class="pre">if</span></code> bloğunda verilen mesajı
+gösteriyoruz. Bunun dışındaki bütün durumlarda ise <code class="docutils literal notranslate"><span class="pre">else</span></code> bloğunu devreye
 sokuyoruz.</p>
 </div>
 </div>
@@ -822,17 +816,18 @@ sokuyoruz.</p>
 
 <div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
 <div class='extrarelbar'> 
-    <div class="related">
-      <h3>Navigation</h3>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="islecler.html" title="İşleçler"
-             >next</a></li>
+             >sonraki</a></li>
         <li class="right" >
           <a href="input.html" title="Kullanıcıdan Bilgi Almak"
-             >previous</a> |</li>
+             >önceki</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
- 
+
+        <li class="nav-item nav-item-this"><a href="">Koşullu Durumlar</a></li> 
       </ul>
     </div> </div>
 
@@ -867,28 +862,30 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 
 
+            <div class="clearer"></div>
           </div>
       </div>
       <div class="clearer"></div>
     </div> 
-    <div class="related">
-      <h3>Navigation</h3>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="islecler.html" title="İşleçler"
-             >next</a></li>
+             >sonraki</a></li>
         <li class="right" >
           <a href="input.html" title="Kullanıcıdan Bilgi Almak"
-             >previous</a> |</li>
+             >önceki</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
- 
+
+        <li class="nav-item nav-item-this"><a href="">Koşullu Durumlar</a></li> 
       </ul>
     </div> 
 
 <div class="footer">
 &copy; Copyright 2007-2021, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Last updated on 30.01.2021.
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+Son güncelleme: 12.03.2021.
+<a href="http://sphinx-doc.org/">Sphinx</a> 3.2.1 kullanılarak oluşturuldu.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img

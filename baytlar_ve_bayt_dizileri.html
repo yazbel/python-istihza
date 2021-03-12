@@ -1,42 +1,31 @@
 
  <!DOCTYPE html>
- <html lang="">
+ <html lang="tr">
 
 
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="tr">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta content="Python 3.x'te baytlar adlı veri tipi" name="description" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta content="Python 3.x'te baytlar adlı veri tipi" name="description" />
 <meta content="python, bayt, baytlar, bytes, karakter, karakter dizisi, encode" name="keywords" />
 
-    <title>Baytlar (Bytes) ve Bayt Dizileri (Bytearrays) &mdash; Python 3 için Türkçe Kılavuz</title>
-    
+    <title>Baytlar (Bytes) ve Bayt Dizileri (Bytearrays) &#8212; Python 3 için Türkçe Kılavuz</title>
     <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '3',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/translations.js"></script>
-    <link rel="top" title="Python 3 için Türkçe Kılavuz" href="index.html" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="search" title="Ara" href="search.html" />
     <link rel="next" title="Sözlükler" href="sozlukler.html" />
     <link rel="prev" title="Karakter Kodlama (Character Encoding)" href="karakter_kodlama.html" />
 <!--[if lte IE 6]>
 <link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
 <![endif]-->
 
-  </head>
-  <body>
+  </head><body>
 <div class='header'><a href='https://yazbel.com'><img src="_static/logo.png"></a></div>
 
 <ul class='navbar'>
@@ -45,52 +34,53 @@
 </ul>
 
 
-    <div class="related">
-      <h3>Navigation</h3>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="sozlukler.html" title="Sözlükler"
-             accesskey="N">next</a></li>
+             accesskey="N">sonraki</a></li>
         <li class="right" >
           <a href="karakter_kodlama.html" title="Karakter Kodlama (Character Encoding)"
-             accesskey="P">previous</a> |</li>
+             accesskey="P">önceki</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
- 
+
+        <li class="nav-item nav-item-this"><a href="">Baytlar (Bytes) ve Bayt Dizileri (Bytearrays)</a></li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
-          <div class="body">
+          <div class="body" role="main">
             
 
   <div class="section" id="baytlar-bytes-ve-bayt-dizileri-bytearrays">
-<h1>Baytlar (Bytes) ve Bayt Dizileri (Bytearrays)<a class="headerlink" href="#baytlar-bytes-ve-bayt-dizileri-bytearrays" title="Permalink to this headline">¶</a></h1>
+<h1>Baytlar (Bytes) ve Bayt Dizileri (Bytearrays)<a class="headerlink" href="#baytlar-bytes-ve-bayt-dizileri-bytearrays" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
 <p>Bu bölüme gelinceye kadar veri tipi olarak karakter dizilerinden, listelerden ve
 dosyalardan söz etmiştik. Bu bölümde ise Python programlama dilindeki iki veri
 tipinden daha söz edeceğiz. Birbirleriyle doğrudan bağlantılı oldukları için
-bu bölümde birlikte ele alacağımız bu veri tiplerinin adı &#8216;baytlar&#8217;(<em>bytes</em>) ve
-&#8216;bayt dizileri&#8217; (<em>bytearrays</em>).</p>
-<p>Bu bölümde yalnızca &#8216;baytlar&#8217; ve &#8216;bayt dizileri&#8217; adlı veri tiplerinden söz
+bu bölümde birlikte ele alacağımız bu veri tiplerinin adı ‘baytlar’(<em>bytes</em>) ve
+‘bayt dizileri’ (<em>bytearrays</em>).</p>
+<p>Bu bölümde yalnızca ‘baytlar’ ve ‘bayt dizileri’ adlı veri tiplerinden söz
 etmeyeceğiz. Bu iki yeni veri tipini bilgi dağarcığımıza eklemenin yanısıra,
 önceki bölümlerde öğrendiğimiz konuları zihnimizde pekiştirmeye ve
 sağlamlaştırmaya da devam edeceğiz.</p>
 <div class="section" id="giris">
-<h2>Giriş<a class="headerlink" href="#giris" title="Permalink to this headline">¶</a></h2>
-<p>Bilgisayar teknolojisi ve bilimi açısından &#8216;karakter&#8217; tamamen soyut bir
+<h2>Giriş<a class="headerlink" href="#giris" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Bilgisayar teknolojisi ve bilimi açısından ‘karakter’ tamamen soyut bir
 kavramdır. Son birkaç bölümdür üstüne basa basa tekrar ettiğimiz gibi, karakter
 dediğimiz şey, bilgisayarların anlayabildiği tek kavram olan sayılara biz
 insanların atadığı birtakım işaretlerden ibarettir. Dolayısıyla bilgisayarlar
 açısından karakterler değil, ikili sayma düzenindeki birtakım sayılar, yani
 bitler ve baytlar vardır.</p>
 <p>Teknik olarak 1 bit, ikili sayma sistemindeki her bir basamağa verilen isimdir.
-Zaten &#8216;bit&#8217; kelimesinin de İngilizcede &#8216;ikili basamak&#8217; anlamına gelen &#8216;<em>binary
+Zaten ‘bit’ kelimesinin de İngilizcede ‘ikili basamak’ anlamına gelen ‘<em>binary
 digit</em> ifadesinin kısaltması olduğunu geçen bölümde öğrenmiştiniz.</p>
 <p>Örneğin ikili sayma sistemindeki <cite>0</cite>, bir bitlik bir sayı iken, <cite>100</cite> üç bitlik
-bir sayıdır. Bu bit&#8217;lerin <cite>8</cite> tanesi bir araya gelince &#8216;bayt&#8217; denen birimi
-oluşturur. Yani bayt, 8 adet bit&#8217;ten oluşan bir birimdir. Nasıl bir düzinede 10,
+bir sayıdır. Bu bit’lerin <cite>8</cite> tanesi bir araya gelince ‘bayt’ denen birimi
+oluşturur. Yani bayt, 8 adet bit’ten oluşan bir birimdir. Nasıl bir düzinede 10,
 bir destede de 12 öğe olmasını biz insanlar tercih etmiş ve belirlemişsek, bir
-bayt&#8217;ta da 8 bit olmasını yine biz insanlar tercih etmiş ve belirlemişizdir.</p>
+bayt’ta da 8 bit olmasını yine biz insanlar tercih etmiş ve belirlemişizdir.</p>
 <p>Önceki derslerimizde de öğrendiğimiz gibi, 8 adet bit, yani 1 bayt,
 Genişletilmiş ASCII sisteminde bir adet karakteri temsil etmek için
 kullanılabilecek en büyük birim olarak tasarlanmıştır. Yani Genişletilmiş ASCII
@@ -107,14 +97,14 @@ edebilirsiniz. UTF-8, değişken boyutlu bir kodlama sistemi olması sayesinde, 
 karakteri temsil edebilmek için kaç bayt gerekiyorsa, o karakteri temsil etmek
 için o kadar bayt kullanır. Ama mesela UTF-32 adlı kod çözücü hangi karakter
 olursa olsun hepsini 4 bayt (32 bit) ile temsil eder. Bu durumda aslında tek
-baytla temsil edilebilecek &#8216;a&#8217;, &#8216;b&#8217;, &#8216;c&#8217; gibi karakterler de boşu boşuna 4 bayt
-yer kaplamış olur. Zaten UTF-8&#8217;in bu kadar yaygın ve gözde olmasının nedeni de
+baytla temsil edilebilecek ‘a’, ‘b’, ‘c’ gibi karakterler de boşu boşuna 4 bayt
+yer kaplamış olur. Zaten UTF-8’in bu kadar yaygın ve gözde olmasının nedeni de
 hem çok sayıda karakteri kodlayabilmesi, hem de bu işi yaparken tasarruflu
 olmayı başarabilmesidir.</p>
 <p>Python programlama dilinde karakter dizileri UNICODE kod konumları şeklinde
 temsil edilir. Dolayısıyla <cite>str</cite> adı verilen veri tipi esasında karakter
 dizilerini birtakım UNICODE kod konumları şeklinde gösteren soyut bir yapıdır.
-Yani biz Python&#8217;da karakter dizileri üzerinde işlem yaparken aslında baytlarla
+Yani biz Python’da karakter dizileri üzerinde işlem yaparken aslında baytlarla
 değil, UNICODE kod konumları ile muhatap oluyoruz. Ancak UNICODE kod konumları
 da tamamen soyut kavramlardır. Bunları bilgisayarın belleğinde bu şekilde temsil
 edemezsiniz ya da bu kod konumlarını herhangi bir ağ üzerinden başka
@@ -146,7 +136,7 @@ karakterlik verilerin girilmesi temeli üzerinden bir işlem yaptığınızı d�
 Yani programınız içinde yapacağınız bir işlem, birden fazla karakter girişinin
 engellenmesini gerektiriyor olsun.</p>
 <p>Bunun için şöyle bir şey yazmış olun:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;k&quot;</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;k&quot;</span>
 
 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Lütfen yalnızca tek bir karakter giriniz!&quot;</span><span class="p">)</span>
@@ -155,10 +145,10 @@ engellenmesini gerektiriyor olsun.</p>
 </pre></div>
 </div>
 <p>Ben burada temsili olarak <cite>a</cite> adlı bir değişken oluşturdum ve örnek olması
-açısından da bunun değerini &#8216;k&#8217; olarak belirledim. Bu değerlerle programımız
+açısından da bunun değerini ‘k’ olarak belirledim. Bu değerlerle programımız
 düzgün bir şekilde çalışır. Çünkü <cite>a</cite> değişkeninin değeri tek bir karakter olan
-&#8216;k&#8217; harfi. Ama eğer <cite>a</cite> değişkeninin değeri mesela &#8216;kz&#8217; gibi bir şey olsaydı
-programımız &#8216;Lütfen yalnızca tek bir karakter giriniz!&#8217; uyarısı verecekti...</p>
+‘k’ harfi. Ama eğer <cite>a</cite> değişkeninin değeri mesela ‘kz’ gibi bir şey olsaydı
+programımız ‘Lütfen yalnızca tek bir karakter giriniz!’ uyarısı verecekti…</p>
 <p>Şimdi bu <cite>a</cite> değişkeninin sizin tarafınızdan belirlenmediğini, bu değerin başka
 bir kaynaktan geldiğini düşünün. Eğer size bu değeri gönderen kaynak, bu değeri
 UNICODE kod konumu olarak gönderiyorsa programınız düzgün çalışır. Ama peki ya
@@ -171,68 +161,68 @@ bittiğini ve baytların neden bu kadar önemli olduğunu gayet iyi anlıyor
 olacaksınız.</p>
 </div>
 <div class="section" id="eskisi-ve-yenisi">
-<h2>Eskisi ve Yenisi<a class="headerlink" href="#eskisi-ve-yenisi" title="Permalink to this headline">¶</a></h2>
+<h2>Eskisi ve Yenisi<a class="headerlink" href="#eskisi-ve-yenisi" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Gelin isterseniz tam olarak ne ile karşı karşıya olduğumuzu daha iyi
 anlayabilmek için Python3 öncesi durumun nasıl olduğuna bakalım. Eğer geçmişte
 Python programlama dilinin karakter dizileri ve baytları nasıl ele aldığını
 bilirsek bugünkü durumu ve dolayısıyla genel olarak karakter dizisi ve bayt
 kavramını çok daha net bir şekilde kavrayabiliriz.</p>
-<p>Python&#8217;ın 2.x sürümlerinde, bir karakter dizisi tanımladığınızda Python bu
+<p>Python’ın 2.x sürümlerinde, bir karakter dizisi tanımladığınızda Python bu
 karakter dizisini bir bayt dizisi olarak temsil ediyordu. Örneğin:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;e&quot;</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;e&quot;</span>
 </pre></div>
 </div>
 <p>Burada <cite>kardiz</cite> adlı değişkenin değeri, bir baytlık bir karakter dizisidir. Bunu
-<tt class="docutils literal"><span class="pre">len()</span></tt> fonksiyonu ile teyit edelim:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">kardiz</span><span class="p">)</span>
+<code class="docutils literal notranslate"><span class="pre">len()</span></code> fonksiyonu ile teyit edelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">kardiz</span><span class="p">)</span>
 
 <span class="go">1</span>
 </pre></div>
 </div>
 <p>Bir de şuna bakalım:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;ş&quot;</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;ş&quot;</span>
 </pre></div>
 </div>
 <p>Burada ise <cite>kardiz</cite> adlı değişkenin değerinin kaç baytlık bir karakter dizisi
-olduğu, yani bir bakıma <tt class="docutils literal"><span class="pre">len()</span></tt> fonksiyonunun ne çıktı vereceği işletim
+olduğu, yani bir bakıma <code class="docutils literal notranslate"><span class="pre">len()</span></code> fonksiyonunun ne çıktı vereceği işletim
 sisteminden işletim sistemine farklılık gösterir. Eğer kullandığınız işletim
-sistemi Windows ise muhtemelen <tt class="docutils literal"><span class="pre">len(kardiz)</span></tt> komutu <cite>1</cite> çıktısı verecektir.
+sistemi Windows ise muhtemelen <code class="docutils literal notranslate"><span class="pre">len(kardiz)</span></code> komutu <cite>1</cite> çıktısı verecektir.
 Ama eğer bu komutu GNU/Linux dağıtımlarından birinde veriyorsanız alacağınız
 çıktı büyük ihtimalle <cite>2</cite> olacaktır.</p>
-<p>Dediğimiz gibi, Python2&#8217;de <cite>str</cite> veri tipi bize bir dizi bayt verir. Dolayısıyla
+<p>Dediğimiz gibi, Python2’de <cite>str</cite> veri tipi bize bir dizi bayt verir. Dolayısıyla
 bu veri tipinin içinde tuttuğu karakter dizisinin kaç bayt ile gösterileceği,
 sistemdeki öntanımlı kod çözücünün hangisi olduğuna bağlıdır. Kullandığınız
 işletim sisteminde öntanımlı kod çözücünün hangisi olduğunu şu komutla
 bulabilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">locale</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">locale</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">locale</span><span class="o">.</span><span class="n">getpreferredencoding</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Eğer Windows kullanıyorsanız buradan alacağınız çıktı muhtemelen cp1254
-olacaktır. cp1254, Microsoft&#8217;un Türkçe için özel olarak kullandığı bir kod
+olacaktır. cp1254, Microsoft’un Türkçe için özel olarak kullandığı bir kod
 sayfası olduğu için, 128 ile 256 sayıları arasında Türkçe karakterleri içerir. O
 yüzden bu kodlama sisteminde Türkçe karakterler 1 bayt ile gösterilebilir. Bu
 kod sayfasının içeriğinde hangi karakterlerin hangi sayılara karşılık geldiğini
 görmek için <a class="reference external" href="http://en.wikipedia.org/wiki/Windows-1254">en.wikipedia.org/wiki/Windows-1254</a> adresindeki tabloyu
 inceleyebilirsiniz.</p>
 <p>Ama eğer yukarıdaki komutların çıktısı UTF-8 veya başka bir kod çözücü ise,
-Türkçe karakterler 1 bayt ile gösterilemeyeceği için <tt class="docutils literal"><span class="pre">len(kardiz)</span></tt> komutu <cite>1</cite>
+Türkçe karakterler 1 bayt ile gösterilemeyeceği için <code class="docutils literal notranslate"><span class="pre">len(kardiz)</span></code> komutu <cite>1</cite>
 değil, <cite>2</cite> çıktısı verecektir.</p>
 <p>Bir de şuna bakalım:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;€&quot;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;€&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Bu komutu hangi işletim sisteminde verdiğinize bağlı olarak yukarıdaki komuttan
-alacağınız çıktı farklı olacaktır. <cite>str</cite> tipi Python2&#8217;de karakter dizilerini
+alacağınız çıktı farklı olacaktır. <cite>str</cite> tipi Python2’de karakter dizilerini
 bayt olarak temsil eder. Bu temsilin de hangi kurallara göre yapılacağı
 kullanılan kod çözücüye bağlıdır. Eğer karakter dizileri baytlara çevrilirken
-cp1254 adlı kod çözücü kullanılırsa, bu kod çözücü &#8216;€&#8217; simgesini tek bayt
+cp1254 adlı kod çözücü kullanılırsa, bu kod çözücü ‘€’ simgesini tek bayt
 ile gösterilebildiği için yukarıdaki komut <cite>1</cite> çıktısı verir. Ama UTF-8 adlı kod
-çözücü &#8216;€&#8217; simgesini <cite>3</cite> baytla gösterebildiği için yukarıdaki komutun çıktısı
+çözücü ‘€’ simgesini <cite>3</cite> baytla gösterebildiği için yukarıdaki komutun çıktısı
 da buna paralel olarak <cite>3</cite> olacaktır.</p>
 <p><cite>str</cite> veri tipi ile gösterilen bu karakter dizilerinin içindeki baytlara ulaşmak
 için şu yöntemi kullanabilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;ş&quot;</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;ş&quot;</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="go">&#39;\xc5&#39;</span>
 
@@ -244,7 +234,7 @@ için şu yöntemi kullanabilirsiniz:</p>
 <p>Gördüğünüz gibi, <cite>str</cite> veri tipi gerçekten de bize bir dizi bayt veriyor. Eğer
 karakter dizilerini baytlarına göre değil de sahip oldukları karakter sayısına
 göre saymak isterseniz bunları UNICODE olarak tanımlanız gerekiyor:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;ş&#39;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;ş&#39;</span><span class="p">)</span>
 
 <span class="go">1</span>
 </pre></div>
@@ -252,7 +242,7 @@ göre saymak isterseniz bunları UNICODE olarak tanımlanız gerekiyor:</p>
 <p>Python3 ile birlikte yukarıda bahsettiğimiz durumda bazı değişiklikler oldu.
 Artık <cite>str</cite> veri tipi UNICODE kod konumlarını döndürüyor. Dolayısıyla artık her
 karakter dizisi, sahip oldukları karakter sayısına göre sayılabiliyor:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;ş&quot;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;ş&quot;</span><span class="p">)</span>
 
 <span class="go">1</span>
 
@@ -261,35 +251,35 @@ karakter dizisi, sahip oldukları karakter sayısına göre sayılabiliyor:</p>
 <span class="go">1</span>
 </pre></div>
 </div>
-<p>İşte eğer Python2&#8217;deki <cite>str</cite> veri tipini elde etmek istiyorsanız, Python3&#8217;te
+<p>İşte eğer Python2’deki <cite>str</cite> veri tipini elde etmek istiyorsanız, Python3’te
 <cite>bytes</cite> adlı yeni veri tipini kullanmanız gerekiyor.</p>
 </div>
 <div class="section" id="bayt-tanimlamak">
-<h2>Bayt Tanımlamak<a class="headerlink" href="#bayt-tanimlamak" title="Permalink to this headline">¶</a></h2>
+<h2>Bayt Tanımlamak<a class="headerlink" href="#bayt-tanimlamak" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Bildiğiniz gibi Python programlama dilinde her veri tipinin kendine özgü bir
 tanımlanma biçimi var. Örneğin bir liste tanımlamak için şöyle bir şey
 yazıyoruz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span> <span class="o">=</span> <span class="p">[]</span>
 </pre></div>
 </div>
 <p>Böylece boş bir liste tanımlamış olduk. Aynı şekilde karakter dizilerini de
 şöyle tanımlıyorduk:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
 </pre></div>
 </div>
 <p>Bu şekilde de boş bir karakter dizisi tanımlamış olduk. İşte boş bir bayt
 tanımlamak için de şu yapıyı kullanıyoruz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bayt</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;&#39;</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bayt</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;&#39;</span>
 </pre></div>
 </div>
 <p>Gelin tanımladığımız bu veri tipinin bayt olduğunu teyit edelim:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">bayt</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">bayt</span><span class="p">)</span>
 
 <span class="go">&lt;class &#39;bytes&#39;</span>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi, gerçekten de bayt tipinde bir veri tanımlamışız. Nasıl karakter
-dizileri &#8216;str&#8217;, listeler &#8216;list&#8217; ifadesiyle gösteriliyorsa, baytlar da &#8216;bytes&#8217;
+dizileri ‘str’, listeler ‘list’ ifadesiyle gösteriliyorsa, baytlar da ‘bytes’
 ifadesi ile gösterilir.</p>
 <p>Peki bu şekilde bir bayt veri tipi tanımlamak ne işimize yarar?</p>
 <p>Hatırlarsanız bayt veri tipini ikili (<em>binary</em>) dosyaları anlatırken de
@@ -301,26 +291,26 @@ işlemler yapacaksanız bu bayt veri tipini yoğun olarak kullanacağınızdan h
 gereksiz bir veri tipi değildir.</p>
 </div>
 <div class="section" id="bytes-fonksiyonu">
-<h2>bytes() Fonksiyonu<a class="headerlink" href="#bytes-fonksiyonu" title="Permalink to this headline">¶</a></h2>
+<h2>bytes() Fonksiyonu<a class="headerlink" href="#bytes-fonksiyonu" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Bayt veri tipi temel olarak ASCII karakterleri kabul eder. Dolayısıyla ASCII
 tablosu dışında kalan karakterleri doğrudan bayt olarak temsil edemezsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="sa">b</span><span class="s1">&#39;ş&#39;</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="sa">b</span><span class="s1">&#39;ş&#39;</span>
 
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>
 <span class="gr">SyntaxError</span>: <span class="n">bytes can only contain ASCII literal characters.</span>
 </pre></div>
 </div>
-<p>Ama ASCII dışında kalan karakterleri de bayt&#8217;a dönüştürmenin bir yolu var. Bunun
-için <tt class="docutils literal"><span class="pre">bytes()</span></tt> adlı bir fonksiyondan yararlanacağız:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s2">&quot;ş&quot;</span><span class="p">,</span> <span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+<p>Ama ASCII dışında kalan karakterleri de bayt’a dönüştürmenin bir yolu var. Bunun
+için <code class="docutils literal notranslate"><span class="pre">bytes()</span></code> adlı bir fonksiyondan yararlanacağız:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s2">&quot;ş&quot;</span><span class="p">,</span> <span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi, ilgili karakterin hangi kod çözücü ile kodlanacağını
 belirterek, bayt tipinde bir veri oluşturabiliyoruz.</p>
-<p>Tahmin edebileceğiniz gibi, <tt class="docutils literal"><span class="pre">bytes()</span></tt> fonksiyonu, belirttiğimiz kod çözücü ile
+<p>Tahmin edebileceğiniz gibi, <code class="docutils literal notranslate"><span class="pre">bytes()</span></code> fonksiyonu, belirttiğimiz kod çözücü ile
 kodlanamayan karakterlerle karşılaşılması durumunda ne yapılacağını
 belirlememizi sağlayan <cite>errors</cite> adlı bir parametreye de sahiptir:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s2">&quot;Fırat&quot;</span><span class="p">,</span> <span class="s2">&quot;ascii&quot;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;xmlcharrefreplace&quot;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s2">&quot;Fırat&quot;</span><span class="p">,</span> <span class="s2">&quot;ascii&quot;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;xmlcharrefreplace&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>
 
 <span class="go">b&#39;F&amp;#305;rat&#39;</span>
@@ -330,17 +320,17 @@ belirlememizi sağlayan <cite>errors</cite> adlı bir parametreye de sahiptir:</
 tartışmıştık. Orada anlattığımız şeyler burada da geçerlidir.</p>
 </div>
 <div class="section" id="baytlarin-metotlari">
-<h2>Baytların Metotları<a class="headerlink" href="#baytlarin-metotlari" title="Permalink to this headline">¶</a></h2>
+<h2>Baytların Metotları<a class="headerlink" href="#baytlarin-metotlari" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Bütün veri tiplerinde olduğu gibi, <cite>bytes</cite> adlı veri tipinin de birtakım
 metotları bulunur. Bu metotların listesini almak için şu komutu
 kullanabileceğinizi biliyorsunuz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="nb">bytes</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="nb">bytes</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Listeye baktığınızda bu metotları karakter dizilerinin metotları ile hemen hemen
 aynı olduğunu göreceksiniz. Baytların metotları arasında olup da karakter
 dizilerinin metotları arasında olmayan metotları şu şekilde elde edebilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="nb">bytes</span><span class="p">):</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="nb">bytes</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="nb">str</span><span class="p">):</span>
 <span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 
@@ -348,29 +338,29 @@ dizilerinin metotları arasında olmayan metotları şu şekilde elde edebilirsi
 <span class="go">fromhex</span>
 </pre></div>
 </div>
-<p>Gördüğünüz gibi, <tt class="docutils literal"><span class="pre">decode()</span></tt> ve <tt class="docutils literal"><span class="pre">fromhex()</span></tt> adlı metotlar baytlarda var, ama
+<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">decode()</span></code> ve <code class="docutils literal notranslate"><span class="pre">fromhex()</span></code> adlı metotlar baytlarda var, ama
 karakter dizilerinde yok. O yüzden biz de bu bölümde yalnızca bu iki metodu
 incelemekle yetineceğiz. Çünkü öteki metotları zaten karakter dizilerinden
 tanıyorsunuz.</p>
 <div class="section" id="decode">
-<h3>decode<a class="headerlink" href="#decode" title="Permalink to this headline">¶</a></h3>
-<p>Hatırlarsanız karakter dizilerinin <tt class="docutils literal"><span class="pre">encode()</span></tt> adlı bir metodu vardı. Bu metot
+<h3>decode<a class="headerlink" href="#decode" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p>Hatırlarsanız karakter dizilerinin <code class="docutils literal notranslate"><span class="pre">encode()</span></code> adlı bir metodu vardı. Bu metot
 yardımıyla karakter dizilerini belli bir kodlama biçimine göre kodlayabiliyor,
-yani bunları baytlara çevirebiliyorduk. Mesela &#8216;İ&#8217; harfini UTF-8 ile
+yani bunları baytlara çevirebiliyorduk. Mesela ‘İ’ harfini UTF-8 ile
 kodlayalım:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;İ&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;İ&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
 
 <span class="go">b&#39;\xc4\xb0&#39;</span>
 </pre></div>
 </div>
 <p>Aynı harfi cp1254 ile kodlarsak şu çıktıyı elde ederiz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;İ&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;cp1254&quot;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;İ&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;cp1254&quot;</span><span class="p">)</span>
 
 <span class="go">b&#39;\xdd&#39;</span>
 </pre></div>
 </div>
 <p>Tahmin edebileceğiniz gibi, bu harfi ASCII ile kodlayamayız:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;İ&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;İ&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">)</span>
 
 <span class="gt">Traceback (most recent call last):</span>
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
@@ -379,27 +369,27 @@ kodlayalım:</p>
 </pre></div>
 </div>
 <p>İşte bu kodlama işlemini tersine çevirebilmek, yani baytları belli bir kodlama
-biçimine göre karakter dizilerine dönüştürebilmek için <tt class="docutils literal"><span class="pre">decode()</span></tt> metodundan
+biçimine göre karakter dizilerine dönüştürebilmek için <code class="docutils literal notranslate"><span class="pre">decode()</span></code> metodundan
 yararlanacağız:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\xc4\xb0</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\xc4\xb0</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
 
 <span class="go">&#39;İ&#39;</span>
 </pre></div>
 </div>
 <p>Bu baytları bir de başka kodlama sistemleri ile kodlamayı deneyelim:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\xc4\xb0</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;cp1254&quot;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\xc4\xb0</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;cp1254&quot;</span><span class="p">)</span>
 
 <span class="go">&#39;Ä°&#39;</span>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi, cp1254 adlı kod çözücü bu baytı çözebiliyor, ama yanlış
-çözüyor! Çünkü bu baytın gösterdiği sayı cp1254 adlı kod sayfasında &#8216;İ&#8217;ye değil,
+çözüyor! Çünkü bu baytın gösterdiği sayı cp1254 adlı kod sayfasında ‘İ’ye değil,
 başka bir karaktere karşılık geliyor. Aslında başka iki karaktere, yani C4 ve B0
-ile gösterilen <cite>Ä</cite> ve <cite>°</cite> karakterlerine karşılık geliyor... Bu durumu
+ile gösterilen <cite>Ä</cite> ve <cite>°</cite> karakterlerine karşılık geliyor… Bu durumu
 <a class="reference external" href="http://en.wikipedia.org/wiki/Windows-1254">http://en.wikipedia.org/wiki/Windows-1254</a> adresine gidip kendiniz de
 görebilirsiniz.</p>
 <p>Bu baytları bir de ASCII ile çözmeye çalışalım:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\xc4\xb0</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\xc4\xb0</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">)</span>
 
 <span class="gt">Traceback (most recent call last):</span>
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
@@ -407,28 +397,28 @@ görebilirsiniz.</p>
 <span class="go">not in range(128)</span>
 </pre></div>
 </div>
-<p>Elbette, bu karakter 128&#8217;den büyük bir sayıya karşılık geldiği için ASCII
+<p>Elbette, bu karakter 128’den büyük bir sayıya karşılık geldiği için ASCII
 tarafından çözülemeyecektir.</p>
 </div>
 <div class="section" id="fromhex">
-<h3>fromhex<a class="headerlink" href="#fromhex" title="Permalink to this headline">¶</a></h3>
+<h3>fromhex<a class="headerlink" href="#fromhex" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
 <p>Bu metot, onaltılı sayma sistemindeki bir sayıdan oluşan bir karakter dizisini
 alıp, bayta dönüştürür. Bu metodu şöyle kullanıyoruz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">bytes</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span><span class="s2">&quot;c4b0&quot;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">bytes</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span><span class="s2">&quot;c4b0&quot;</span><span class="p">)</span>
 
 <span class="go">b&#39;\xc4\xb0&#39;</span>
 </pre></div>
 </div>
-<p>Gördüğünüz gibi, bu metot bir onaltılı sayı olan <cite>c4b0</cite>&#8216;ı alıp, bize bir bayt
+<p>Gördüğünüz gibi, bu metot bir onaltılı sayı olan <cite>c4b0</cite>’ı alıp, bize bir bayt
 nesnesi veriyor.</p>
 </div>
 </div>
 <div class="section" id="bayt-dizileri">
-<h2>Bayt Dizileri<a class="headerlink" href="#bayt-dizileri" title="Permalink to this headline">¶</a></h2>
+<h2>Bayt Dizileri<a class="headerlink" href="#bayt-dizileri" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p><cite>bytes</cite> adlı veri tipi ile elde ettiğimiz veri tıpkı karakter dizileri gibi,
 üzerinde değişiklik yapılamayan bir veridir. Dolayısıyla bir <cite>bytes</cite> nesnesi
 üzerinde değişiklik yapabilmek için o nesneyi tekrar tanımlamamız gerekir:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;PDF&#39;</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;PDF&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;-1.7&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="o">+</span> <span class="n">v</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>
@@ -439,74 +429,74 @@ nesnesi veriyor.</p>
 <p>Ama Python programlama dilinde <cite>bytes</cite> veri tipi dışında, baytlara ilişkin ikinci
 veri tipi daha bulunur. <cite>bytearray</cite> adlı bu veri tipi, <cite>bytes</cite> veri tipinin
 aksine, üzerinde değişiklik yapılabilen bir veri tipidir.</p>
-<p>Python&#8217;da <cite>bytearray</cite> veri tipini şu şekilde tanımlıyoruz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pdf</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;PDF-1.7&#39;</span><span class="p">)</span>
+<p>Python’da <cite>bytearray</cite> veri tipini şu şekilde tanımlıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pdf</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;PDF-1.7&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Gördüğünüz gibi, bir bayt dizisi tanımlayabilmek için <tt class="docutils literal"><span class="pre">bytearray()</span></tt> adlı bir
+<p>Gördüğünüz gibi, bir bayt dizisi tanımlayabilmek için <code class="docutils literal notranslate"><span class="pre">bytearray()</span></code> adlı bir
 fonksiyondan faydalanıyoruz.</p>
 </div>
 <div class="section" id="bayt-dizilerinin-metotlari">
-<h2>Bayt Dizilerinin Metotları<a class="headerlink" href="#bayt-dizilerinin-metotlari" title="Permalink to this headline">¶</a></h2>
-<p>Bayt dizileri bir bakıma listelerle baytların karışımı gibidir. <tt class="docutils literal"><span class="pre">dir(bytearray)</span></tt>
+<h2>Bayt Dizilerinin Metotları<a class="headerlink" href="#bayt-dizilerinin-metotlari" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Bayt dizileri bir bakıma listelerle baytların karışımı gibidir. <code class="docutils literal notranslate"><span class="pre">dir(bytearray)</span></code>
 gibi bir komutla bu veri tipinin metotlarını inceleyecek olursanız, bu veri
 tipinin hem baytlardan hem de listelerden birtakım metotlar aldığını görürsünüz.</p>
 <p>Bu veri tipi listelerin şu metotlarına sahiptir:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li>append</li>
-<li>clear</li>
-<li>copy</li>
-<li>count</li>
-<li>extend</li>
-<li>index</li>
-<li>insert</li>
-<li>pop</li>
-<li>remove</li>
-<li>reverse</li>
+<li><p>append</p></li>
+<li><p>clear</p></li>
+<li><p>copy</p></li>
+<li><p>count</p></li>
+<li><p>extend</p></li>
+<li><p>index</p></li>
+<li><p>insert</p></li>
+<li><p>pop</p></li>
+<li><p>remove</p></li>
+<li><p>reverse</p></li>
 </ol>
 </div></blockquote>
 <p>Bu veri tipi baytların ise şu metotlarına sahiptir:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li>capitalize</li>
-<li>center</li>
-<li>count</li>
-<li>decode</li>
-<li>endswith</li>
-<li>expandtabs</li>
-<li>find</li>
-<li>fromhex</li>
-<li>index</li>
-<li>isalnum</li>
-<li>isalpha</li>
-<li>isdigit</li>
-<li>islower</li>
-<li>isspace</li>
-<li>istitle</li>
-<li>isupper</li>
-<li>join</li>
-<li>ljust</li>
-<li>lower</li>
-<li>lstrip</li>
-<li>maketrans</li>
-<li>partition</li>
-<li>replace</li>
-<li>rfind</li>
-<li>rindex</li>
-<li>rjust</li>
-<li>rpartition</li>
-<li>rsplit</li>
-<li>rstrip</li>
-<li>split</li>
-<li>splitlines</li>
-<li>startswith</li>
-<li>strip</li>
-<li>swapcase</li>
-<li>title</li>
-<li>translate</li>
-<li>upper</li>
-<li>zfill</li>
+<li><p>capitalize</p></li>
+<li><p>center</p></li>
+<li><p>count</p></li>
+<li><p>decode</p></li>
+<li><p>endswith</p></li>
+<li><p>expandtabs</p></li>
+<li><p>find</p></li>
+<li><p>fromhex</p></li>
+<li><p>index</p></li>
+<li><p>isalnum</p></li>
+<li><p>isalpha</p></li>
+<li><p>isdigit</p></li>
+<li><p>islower</p></li>
+<li><p>isspace</p></li>
+<li><p>istitle</p></li>
+<li><p>isupper</p></li>
+<li><p>join</p></li>
+<li><p>ljust</p></li>
+<li><p>lower</p></li>
+<li><p>lstrip</p></li>
+<li><p>maketrans</p></li>
+<li><p>partition</p></li>
+<li><p>replace</p></li>
+<li><p>rfind</p></li>
+<li><p>rindex</p></li>
+<li><p>rjust</p></li>
+<li><p>rpartition</p></li>
+<li><p>rsplit</p></li>
+<li><p>rstrip</p></li>
+<li><p>split</p></li>
+<li><p>splitlines</p></li>
+<li><p>startswith</p></li>
+<li><p>strip</p></li>
+<li><p>swapcase</p></li>
+<li><p>title</p></li>
+<li><p>translate</p></li>
+<li><p>upper</p></li>
+<li><p>zfill</p></li>
 </ol>
 </div></blockquote>
 </div>
@@ -516,17 +506,18 @@ tipinin hem baytlardan hem de listelerden birtakım metotlar aldığını görü
 
 <div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
 <div class='extrarelbar'> 
-    <div class="related">
-      <h3>Navigation</h3>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="sozlukler.html" title="Sözlükler"
-             >next</a></li>
+             >sonraki</a></li>
         <li class="right" >
           <a href="karakter_kodlama.html" title="Karakter Kodlama (Character Encoding)"
-             >previous</a> |</li>
+             >önceki</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
- 
+
+        <li class="nav-item nav-item-this"><a href="">Baytlar (Bytes) ve Bayt Dizileri (Bytearrays)</a></li> 
       </ul>
     </div> </div>
 
@@ -561,28 +552,30 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 
 
+            <div class="clearer"></div>
           </div>
       </div>
       <div class="clearer"></div>
     </div> 
-    <div class="related">
-      <h3>Navigation</h3>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="sozlukler.html" title="Sözlükler"
-             >next</a></li>
+             >sonraki</a></li>
         <li class="right" >
           <a href="karakter_kodlama.html" title="Karakter Kodlama (Character Encoding)"
-             >previous</a> |</li>
+             >önceki</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
- 
+
+        <li class="nav-item nav-item-this"><a href="">Baytlar (Bytes) ve Bayt Dizileri (Bytearrays)</a></li> 
       </ul>
     </div> 
 
 <div class="footer">
 &copy; Copyright 2007-2021, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Last updated on 30.01.2021.
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+Son güncelleme: 12.03.2021.
+<a href="http://sphinx-doc.org/">Sphinx</a> 3.2.1 kullanılarak oluşturuldu.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
