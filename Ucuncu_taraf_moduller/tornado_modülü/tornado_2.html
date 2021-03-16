@@ -18,6 +18,8 @@
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/translations.js"></script>
     <link rel="search" title="Ara" href="../../search.html" />
+    <link rel="next" title="Katkıda Bulunanlar" href="../../katkida_bulunanlar.html" />
+    <link rel="prev" title="Tornado" href="tornado_1.html" />
 <!--[if lte IE 6]>
 <link rel="stylesheet" href="../../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
 <![endif]-->
@@ -34,8 +36,16 @@
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Gezinti</h3>
       <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../katkida_bulunanlar.html" title="Katkıda Bulunanlar"
+             accesskey="N">sonraki</a></li>
+        <li class="right" >
+          <a href="tornado_1.html" title="Tornado"
+             accesskey="P">önceki</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
 
+          <li class="nav-item nav-item-1"><a href="../index.html" >Üçüncü Taraf Modüller</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">Tornado paketi</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Tornado(devamı)</a></li> 
       </ul>
     </div>  
@@ -57,16 +67,16 @@ Kullanıcı istek yollar, sunucu isteğe karşılık sayfa yollar, bağlantı ke
 Sürekli olarak bağlantı kurmak istediğimizde yeni bir protokol kullanmalıyız: <cite>WS</cite>.
 <cite>WS</cite> protokolü kullanıcı veya sunucu kapatana kadar bağlantı açık kalır.
 Sunucu veya kullanıcı herhangi bir istek olmadan birbirine veri yollayabilir.</p>
-<p><cite>Websocket</cite>’ler, en basit tabirle <cite>HTTP</cite> yerine <cite>WS</cite> protokolü kullanan
-<cite>view`lardır. Biz bir `view</cite> tanımlarken sadece <cite>get</cite> metodunu yazmıştık.
-Çünkü bir <cite>view</cite> sadece sayfamızı sunuyordu. Ancak <cite>websocket`ler sadece
+<p>Websocket’ler, en basit tabirle <cite>HTTP</cite> yerine <cite>WS</cite> protokolü kullanan
+viewlardır. Biz bir <cite>view</cite> tanımlarken sadece <cite>get</cite> metodunu yazmıştık.
+Çünkü bir <cite>view</cite> sadece sayfamızı sunuyordu. Ancak websocketler sadece
 sayfa sunmuyorlar, aynı zamanda veri de alıyorlar. Bu yüzden 3 tane
-metoda sahipler: `on_open</cite>, <cite>on_message</cite>, <cite>on_close</cite>.</p>
+metoda sahipler: <cite>on_open</cite>, <cite>on_message</cite>, <cite>on_close</cite>.</p>
 <p><cite>Websocket</cite> ile bağlantı kurulduğunda <cite>on_open</cite> metodu çağrılıyor.
-<cite>Websocket</cite>’e mesaj geldiğinde <cite>on_message</cite> metodu çağrılıyor.
-<cite>Websocket</cite>’in bağlantısı kapatıldığında <cite>on_close</cite> metodu çağrılıyor.</p>
+Websocket’e mesaj geldiğinde <cite>on_message</cite> metodu çağrılıyor.
+Websocket’in bağlantısı kapatıldığında <cite>on_close</cite> metodu çağrılıyor.</p>
 <p>Biz <cite>view</cite> ile kullanıcıya veri yollarken <cite>write</cite> metodundan faydalanmıştık.
-Fakat <cite>websocket`ler bu iş için `write_message</cite> metodunu kullanıyor.</p>
+Fakat websocketler bu iş için <cite>write_message</cite> metodunu kullanıyor.</p>
 <p>Şimdi gelen mesajları geri gönderen bir <cite>websocket</cite> yazalım:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tornado.web</span>
 <span class="kn">import</span> <span class="nn">tornado.ioloop</span>
@@ -102,7 +112,7 @@ yazmamız için gerekli sınıfı bulunduruyor.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Geri</span><span class="p">(</span><span class="n">tornado</span><span class="o">.</span><span class="n">websocket</span><span class="o">.</span><span class="n">WebSocketHandler</span><span class="p">):</span>
 </pre></div>
 </div>
-<p>Bu sınıf bizim <cite>websocket`imiz. Daha önce `view</cite> yazarken
+<p>Bu sınıf bizim websocketimiz. Daha önce <cite>view</cite> yazarken
 <cite>tornado.web.RequestHandler</cite> sınıfından faydalanmıştık. Şimdi ise
 <cite>tornado.websocket.WebSocketHandler</cite> sınıfından faydalandık.</p>
 <p><cite>Websocket</cite> ile bağlantı kurulduğunda bize <cite>Bağlantı kuruldu</cite> yazması için
@@ -111,7 +121,7 @@ yazmamız için gerekli sınıfı bulunduruyor.</p>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bağlantı kuruldu&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><cite>Websocket`e mesaj geldiğinde onu yazdırıp geri yollaması için `on_message</cite>
+<p>Websockete mesaj geldiğinde onu yazdırıp geri yollaması için <cite>on_message</cite>
 metodunu düzenledik. Burada metodumuzun bir parametresi daha olduğuna dikkat
 edelim:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">on_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mesaj</span><span class="p">):</span>
@@ -132,46 +142,45 @@ edelim:</p>
 <span class="p">])</span>
 </pre></div>
 </div>
-<p>Burada 2 önemli nokta var. Biz hem <cite>websocket`leri hem `view`ları aynı
-`Application</cite> nesnesine yazıyoruz. Burada ayrım yapmak için genelde
-<cite>websocket`lerin isteklerini “</cite>/ws/<cite>” ile başlatmaya önem veriyoruz. Diğer
-sıkıntı ise gelen isteklerin protokollerine göre ayrılmadan işlenmesi. Yani
-kullanıcı “`HTTP</cite> ile mi istekte bulundu, <cite>WS</cite> ile mi istekte bulundu?” diye
-sorulmuyor. Bu ayrım direkt olarak bizim o isteğe karşı ne yazdımız ile ilgili.</p>
-<p><cite>Websocket`lere tarayıcımızdaki adres çubuğuna yazarak ulaşamayız.
-Tarayıcımızdaki adres çubuğu sadece `HTTP</cite> protokolünü kullanır.
-<a href="#id1"><span class="problematic" id="id2">`</span></a>Websocket`lere ulaşmak için kütüphaneleri kullanıyoruz. Ben size javascript
-ile nasıl bağlantı kurabileceğinizi göstereceğim. Bu noktada basit seviyede
-javascript bilgisine sahip olmanız gerekiyor.</p>
+<p>Biz hem websocketleri hem viewları aynı <cite>Application</cite> nesnesine yazıyoruz.
+Burada ayrım yapmak için genelde websocketlerin isteklerini “<cite>/ws/</cite>” ile
+başlatmaya önem veriyoruz.</p>
+<p>Websocketlere tarayıcımızdaki adres çubuğuna yazarak ulaşamayız.
+Tarayıcımızdaki adres çubuğu sadece <cite>HTTP</cite> protokolünü kullanır.
+Websocketlere ulaşmak için kütüphaneleri kullanıyoruz. Neredeyse
+her programlama dilinde bu iş için bir kütüphane bulunuyor. Python da
+böyle bir kütüphaneye sahip ancak genelde Javascript daha çok tercih
+edildiği için ben Size Javascript’teki <cite>websocket</cite> kullanımı üzerine bir örnek
+yazmak istiyorum. Elbette bu noktada temel seviyede Javascript bilgisi
+gerekecektir.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">ws</span> <span class="o">=</span> <span class="n">WebSocket</span><span class="p">(</span><span class="s2">&quot;ws://localhost/ws/geri/&quot;</span><span class="p">)</span>
+<span class="o">//</span> <span class="n">Bir</span> <span class="n">websocket</span> <span class="n">örneği</span> <span class="n">oluşturduk</span><span class="o">.</span>
+<span class="o">//</span> <span class="n">Bu</span> <span class="n">iş</span> <span class="n">için</span> <span class="n">http</span> <span class="n">yerine</span> <span class="n">ws</span> <span class="n">kullandığımıza</span> <span class="n">dikkat</span> <span class="n">edelim</span>
+
+<span class="n">ws</span><span class="o">.</span><span class="n">onopen</span> <span class="o">=</span> <span class="n">function</span><span class="p">(){</span>
+    <span class="o">//</span> <span class="n">Bağlantı</span> <span class="n">kurulduğunda</span> <span class="n">çalışan</span> <span class="n">fonksiyon</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;Bağlantı kuruldu!&quot;</span><span class="p">)</span>
+    <span class="o">//</span> <span class="n">Konsola</span> <span class="s1">&#39;Bağlantı Kuruldu&#39;</span> <span class="n">yazdırdık</span>
+    <span class="n">ws</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;Merhaba Zalim Dünya&quot;</span><span class="p">)</span>
+    <span class="o">//</span> <span class="n">Sunucuya</span> <span class="n">mesaj</span> <span class="n">yolladık</span>
+<span class="p">}</span>
+
+<span class="n">ws</span><span class="o">.</span><span class="n">onmessage</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">mesaj</span><span class="p">){</span>
+    <span class="o">//</span> <span class="n">Mesaj</span> <span class="n">geldiğinde</span> <span class="n">çalışan</span> <span class="n">fonksiyon</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">mesaj</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+    <span class="o">//</span> <span class="n">Mesajımızın</span> <span class="n">içeriğini</span> <span class="n">konsola</span> <span class="n">yazdırdık</span>
+    <span class="n">ws</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="o">//</span> <span class="n">Bağlantıyı</span> <span class="n">kapattık</span>
+    <span class="o">//</span> <span class="n">Burada</span> <span class="n">kapatmak</span> <span class="n">zorunda</span> <span class="n">değiliz</span><span class="o">.</span>
+    <span class="o">//</span> <span class="n">Sadece</span> <span class="n">kapatma</span> <span class="n">yöntemini</span> <span class="n">göstermek</span> <span class="n">istedim</span><span class="o">.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Not</p>
-<p>Burada javascript için yazdığımız kodları tarayıcınızın konsolunda
-yazabilirsiniz. (Tarayıcınızda F12 tuşuna basın ve yukarıdaki
-sekmelerden “console” yazanı seçin.)</p>
+<p>Bu kodları sadece localhost alan adı altında ve <cite>__init__.py</cite>
+dosyası çalışırken çalıştırabilirsiniz.</p>
 </div>
-<p><cite>__init__.py</cite> dosyamızı çalıştıralım ve javascript kodlarımızı yazmaya
-başlayalım.</p>
-<p><cite>ws</cite> isminde bir <cite>Websocket</cite> nesnesi oluşturacağız. Javascript’te nesne
-oluşturmak için <cite>var</cite> deyimi kullanılıyor ve satır sonuna <cite>;</cite> koyuluyor.
-Bir <cite>Websocket</cite> nesnesi oluştururken hangi siteye bağlanacağımızı belirtiyoruz:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">ws</span> <span class="o">=</span> <span class="n">new</span> <span class="n">WebSocket</span><span class="p">(</span><span class="s2">&quot;ws://localhost/ws/geri/&quot;</span><span class="p">);</span>
-</pre></div>
-</div>
-<p>Bu kodda <cite>HTTP</cite> yerine <cite>WS</cite> protokolünü kullandığıza ve nasıl kullanıldığına
-dikkat edelim: Normalde <cite>http</cite> yazdığımız yere <a href="#id3"><span class="problematic" id="id4">`</span></a>ws`yazdık.</p>
-<p>Şimdi mesaj geldiğinde çalışacak olan <cite>onmessage</cite> fonksiyonumuzu yazalım.
-Bizim Python’da yaptığımız gibi nesnenin devamına <cite>.</cite> koyup <cite>on_message</cite>
-ekleyerek tanımlayacağız. Javascript’te fonksiyon tanımlarken <cite>function</cite> deyimi
-kullanılıyor. Parametreler <cite>function</cite> deyiminden hemen sonra parantez içinde
-tanımlanıyor. Fonksiyon ile ilgili kodlar küme parantezleri içinde yine <cite>;</cite>
-kullanarak yazılıyor.</p>
-<p>Yazdığımız fonksiyon gelen mesajları konsolumuzda yazdırsın. Konsolda yazdırmak
-istediğimiz yazıları <cite>console.log</cite> fonksiyonuna parametre olarak veriyoruz.</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ws</span><span class="o">.</span><span class="n">onmessage</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">mesaj</span><span class="p">){</span><span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">mesaj</span><span class="p">)}</span>
-</pre></div>
-</div>
-<p>Tornado’da mesaj yollamak için <cite>write_message</cite> metodunu kullanmıştık.
-Javascript’te ise <cite>send</cite> metodunu kullanacağız.</p>
 </div>
 </div>
 
@@ -182,8 +191,16 @@ Javascript’te ise <cite>send</cite> metodunu kullanacağız.</p>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Gezinti</h3>
       <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../katkida_bulunanlar.html" title="Katkıda Bulunanlar"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="tornado_1.html" title="Tornado"
+             >önceki</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
 
+          <li class="nav-item nav-item-1"><a href="../index.html" >Üçüncü Taraf Modüller</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >Tornado paketi</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Tornado(devamı)</a></li> 
       </ul>
     </div> </div>
@@ -227,16 +244,24 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Gezinti</h3>
       <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../katkida_bulunanlar.html" title="Katkıda Bulunanlar"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="tornado_1.html" title="Tornado"
+             >önceki</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
 
+          <li class="nav-item nav-item-1"><a href="../index.html" >Üçüncü Taraf Modüller</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >Tornado paketi</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Tornado(devamı)</a></li> 
       </ul>
     </div> 
 
 <div class="footer">
 &copy; Copyright 2007-2021, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 26.01.2021.
-<a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3 kullanılarak oluşturuldu.
+Son güncelleme: 17.03.2021.
+<a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2 kullanılarak oluşturuldu.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img

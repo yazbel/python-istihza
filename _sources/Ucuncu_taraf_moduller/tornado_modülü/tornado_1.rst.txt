@@ -129,8 +129,8 @@ Sitemizde göstereceğimiz sayfaları `html` formatında yazıp kaydetmeliyiz.
 Daha sonra bu dosyaları `Tornado` ile çağırıp servis etmeliyiz.
 
 Göstereceğimiz sayfalar ikiye ayrılıyor: "Statik" ve "Dinamik". Statik sayfalar 
-`Tornado`'nun çağırıp değiştirmeden servis ettiği dosyalardır. Dinamik sayfalar 
-ise `Tornado`'nun çağırdıktan sonra düzenleyip servis ettiği dosyalardır.
+Tornado'nun çağırıp değiştirmeden servis ettiği dosyalardır. Dinamik sayfalar 
+ise Tornado'nun çağırdıktan sonra düzenleyip servis ettiği dosyalardır.
 
 Önce bir `html` dosyası oluşturalım, ardından bu dosyayı servis edelim.
 
@@ -148,7 +148,7 @@ ise `Tornado`'nun çağırdıktan sonra düzenleyip servis ettiği dosyalardır.
 
 Bu dosyayı "`index.html`" ismiyle `torn` klasörüme kaydedeceğim. Siz başka bir 
 isimle başka bir klasöre de kaydedebilirsiniz. Hemen servis etmek için `Merhaba` 
-`view`'ını düzenleyelim::
+view'ını düzenleyelim::
 
     class Merhaba(tornado.web.RequestHandler):
         def get(self):
@@ -156,10 +156,10 @@ isimle başka bir klasöre de kaydedebilirsiniz. Hemen servis etmek için `Merha
             sayfa = loader.load("index.html").generate()
             self.write(sayfa)
 
-Ben servis etmek için `Merhaba view`'ını düzenlemeyi tercih ettim. Ancak siz yeni 
-bir `view` yazmak isteyebilirsiniz. Bu durumda yazdığınız `view`'ı yeni bir istek 
+Ben servis etmek için Merhaba view'ını düzenlemeyi tercih ettim. Ancak siz yeni 
+bir `view` yazmak isteyebilirsiniz. Bu durumda yazdığınız view'ı yeni bir istek 
 ile eşleştirmeniz gerekir. Bu iş için de bir örnek verip kodlarımızı açıklayayım. 
-Oluşturduğunuz `view`'ın adı `Yazbel` olsun ve `/yazbel/` isteği ile 
+Oluşturduğunuz view'ın adı `Yazbel` olsun ve `/yazbel/` isteği ile 
 ilişkilendirelim::
 
     app = tornado.web.Application([
@@ -183,14 +183,14 @@ kurtulduk. İkinci eklediğimiz satıra bakalım::
     sayfa = loader.load("index.html").generate()
 
 Burada daha önce oluşturduğumuz `loader` değişkenini kullanarak sayfamızı 
-getirdik. `generate` fonksiyonunu kullanarak sayfayı `Tornado`'nun sunabileceği 
+getirdik. `generate` fonksiyonunu kullanarak sayfayı Tornado'nun sunabileceği 
 bir hale dönüştürdük. Daha sonra `write` fonksiyonuyla sayfamızı gösterdik::
 
     self.write(sayfa)
 
 Şimdi de dinamik sayfaların nasıl oluşturulduğuna bakalım. Dinamik sayfaların 
 çağrıldıktan sonra düzenlendiğini söylemiştik. Düzenleyeceğimiz yeri 
-`Tornado`'ya bildirmek için `Template`(Şablon) denen bir yöntemden faydalanacağız.
+Tornado'ya bildirmek için `Template` (Şablon) denen bir yöntemden faydalanacağız.
 Değişiklik yapmak istediğimiz yeri 2 tane küme parantezi içinde bir isimle 
 `Html` dosyamızda kullanıyoruz. Hemen bir `index.html` dosyasını düzenleyerek bir 
 örnek verelim.
@@ -259,7 +259,7 @@ verecek şekilde düzenleyelim::
             sayfa = loader.load("index.html").generate(yazbel=liste)
             self.write(sayfa)
 
-Hemen bu sayıları listeleyecek bir `Template`(Şablon) yazalım. Bu listede 
+Hemen bu sayıları listeleyecek bir `Template` (Şablon) yazalım. Bu listede 
 çift sayılar büyük, tek sayılar küçük gözüksün.
 
 .. code-block ::
