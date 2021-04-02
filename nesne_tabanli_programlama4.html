@@ -1,42 +1,31 @@
 
  <!DOCTYPE html>
- <html lang="">
+ <html lang="tr">
 
 
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="tr">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta content="Bu bölümde nesne tabanlı programlamadan söz edeceğiz." name="description" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta content="Bu bölümde nesne tabanlı programlamadan söz edeceğiz." name="description" />
 <meta content="python, python3, nesne, oop, sınıf, class, miras alma, inheritance, nesne yönelimli programlama, nesne tabanlı programlama, object oriented programming, self, instantiation, instance, örnek, örneklendirme, örnekleme" name="keywords" />
 
-    <title>Nesne Tabanlı Programlama (Devamı) &mdash; Python 3 için Türkçe Kılavuz</title>
-    
+    <title>Nesne Tabanlı Programlama (Devamı) &#8212; Python 3 için Türkçe Kılavuz</title>
     <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '3',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/translations.js"></script>
-    <link rel="top" title="Python 3 için Türkçe Kılavuz" href="index.html" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="search" title="Ara" href="search.html" />
     <link rel="next" title="Nesne Tabanlı Programlama (Devamı)" href="nesne_tabanli_programlama5.html" />
     <link rel="prev" title="Nesne Tabanlı Programlama (Devamı)" href="nesne_tabanli_programlama3.html" />
 <!--[if lte IE 6]>
 <link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
 <![endif]-->
 
-  </head>
-  <body>
+  </head><body>
 <div class='header'><a href='https://yazbel.com'><img src="_static/logo.png"></a></div>
 
 <ul class='navbar'>
@@ -45,27 +34,28 @@
 </ul>
 
 
-    <div class="related">
-      <h3>Navigation</h3>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="nesne_tabanli_programlama5.html" title="Nesne Tabanlı Programlama (Devamı)"
-             accesskey="N">next</a></li>
+             accesskey="N">sonraki</a></li>
         <li class="right" >
           <a href="nesne_tabanli_programlama3.html" title="Nesne Tabanlı Programlama (Devamı)"
-             accesskey="P">previous</a> |</li>
+             accesskey="P">önceki</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
- 
+
+        <li class="nav-item nav-item-this"><a href="">Nesne Tabanlı Programlama (Devamı)</a></li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
-          <div class="body">
+          <div class="body" role="main">
             
 
   <div class="section" id="nesne-tabanli-programlama-devami">
-<h1>Nesne Tabanlı Programlama (Devamı)<a class="headerlink" href="#nesne-tabanli-programlama-devami" title="Permalink to this headline">¶</a></h1>
+<h1>Nesne Tabanlı Programlama (Devamı)<a class="headerlink" href="#nesne-tabanli-programlama-devami" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
 <p>Geçen bölümlerde, nesne tabanlı programlamaya ilişkin hem temel, hem orta, hem
 de ileri düzey sayılabilecek pek çok konuya değindik. Şimdiye kadar
 öğrendiklerimiz, nesne tabanlı programlama yaklaşımı çerçevesinde yazılım
@@ -76,30 +66,30 @@ barındırır. İşte bu bölümde, geçen derslerimizde incelemeye fırsat
 bulamadığımız, ancak nesne tabanlı programlamayı daha derinlemesine tanımak
 bakımından bilmemizin iyi olacağı birtakım ileri düzey kavramlardan söz
 edeceğiz.</p>
-<p>Bu bölümde inceleyeceğimiz ilk konu &#8216;sınıf üyeleri&#8217;.</p>
+<p>Bu bölümde inceleyeceğimiz ilk konu ‘sınıf üyeleri’.</p>
 <div class="section" id="sinif-uyeleri">
-<h2>Sınıf Üyeleri<a class="headerlink" href="#sinif-uyeleri" title="Permalink to this headline">¶</a></h2>
-<p>Python&#8217;da bir sınıf içinde bulunan nitelikler, değişkenler, metotlar,
+<h2>Sınıf Üyeleri<a class="headerlink" href="#sinif-uyeleri" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Python’da bir sınıf içinde bulunan nitelikler, değişkenler, metotlar,
 fonksiyonlar ve buna benzer başka veri tipleri, o sınıfın üyelerini meydana
 getirir. Bir sınıfın üyelerini genel olarak üçe ayırarak inceleyebiliriz:</p>
 <ul class="simple">
-<li>Aleni üyeler (<em>public members</em>)</li>
-<li>Gizli üyeler (<em>private members</em>)</li>
-<li>Yarı-gizli üyeler (<em>semi-private members</em>).</li>
+<li><p>Aleni üyeler (<em>public members</em>)</p></li>
+<li><p>Gizli üyeler (<em>private members</em>)</p></li>
+<li><p>Yarı-gizli üyeler (<em>semi-private members</em>).</p></li>
 </ul>
 <p>Bu bölümde bu üç üye türünü ve bunların birbirinden farkını ele alacağız.
 Öncelikle aleni üyelerden başlayalım.</p>
 <div class="section" id="aleni-uyeler">
-<h3>Aleni Üyeler<a class="headerlink" href="#aleni-uyeler" title="Permalink to this headline">¶</a></h3>
+<h3>Aleni Üyeler<a class="headerlink" href="#aleni-uyeler" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
 <p>Eğer bir sınıf üyesi dışarıya açıksa, yani bu üyeye sınıf dışından <em>normal
-yöntemlerle</em> erişilebiliyorsa bu tür üyelere &#8216;aleni üyeler&#8217; adı verilir.
+yöntemlerle</em> erişilebiliyorsa bu tür üyelere ‘aleni üyeler’ adı verilir.
 Programlama maceranız boyunca karşınıza çıkacak veri üyelerinin tamamına yakını
 alenidir. Biz de bu kitapta şimdiye kadar yalnızca aleni üyeleri gördük.</p>
 <p>Eğer bildiğiniz tek programlama dili Python ise, şu anda tam olarak neden
 bahsediyor olduğumuza anlam verememiş olabilirsiniz. Dilerseniz durumu
 zihninizde biraz olsun netleştirebilmek için basit bir örnek verelim.</p>
 <p>Diyelim ki elimizde şöyle bir sınıf var:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">():</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">():</span>
     <span class="n">sınıf_niteliği</span> <span class="o">=</span> <span class="s1">&#39;sınıf niteliği&#39;</span>
 
     <span class="k">def</span> <span class="nf">örnek_metodu</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -116,7 +106,7 @@ zihninizde biraz olsun netleştirebilmek için basit bir örnek verelim.</p>
 </div>
 <p>Bu kodların <cite>sinif.py</cite> adlı bir dosya içinde yer aldığını varsayarsak şöyle bir
 şeyler yazabiliriz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sinif</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sinif</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">sinif</span><span class="o">.</span><span class="n">Sınıf</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 
@@ -129,12 +119,12 @@ zihninizde biraz olsun netleştirebilmek için basit bir örnek verelim.</p>
 </pre></div>
 </div>
 <p>Burada öncelikle kodlarımızı barındıran modülü içe aktardık. Daha sonra, içe
-aktardığımız modülün içindeki <tt class="docutils literal"><span class="pre">Sınıf()</span></tt> adlı sınıfımızı <cite>s</cite> örneğine atadık ve
-ardından <tt class="docutils literal"><span class="pre">dir()</span></tt> komutunu kullanarak, içe aktardığımız bu sınıfın içeriğini
+aktardığımız modülün içindeki <code class="docutils literal notranslate"><span class="pre">Sınıf()</span></code> adlı sınıfımızı <cite>s</cite> örneğine atadık ve
+ardından <code class="docutils literal notranslate"><span class="pre">dir()</span></code> komutunu kullanarak, içe aktardığımız bu sınıfın içeriğini
 sorguladık.</p>
 <p>Gördüğünüz gibi, içe aktardığımız sınıfın bütün öğeleri listede var. Yani biz bu
 sınıf içindeki bütün öğelere normal yollardan erişme imkanına sahibiz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">statik_metot</span><span class="p">()</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">statik_metot</span><span class="p">()</span>
 
 <span class="go">&#39;statik metot&#39;</span>
 
@@ -151,24 +141,24 @@ sınıf içindeki bütün öğelere normal yollardan erişme imkanına sahibiz:<
 <span class="go">&#39;sınıf niteliği&#39;</span>
 </pre></div>
 </div>
-<p>İşte <tt class="docutils literal"><span class="pre">dir()</span></tt> komutunun çıktısında görünen ve normal yollardan erişebildiğimiz
+<p>İşte <code class="docutils literal notranslate"><span class="pre">dir()</span></code> komutunun çıktısında görünen ve normal yollardan erişebildiğimiz
 bütün bu öğeler birer aleni üyedir.</p>
 <p>Yukarıda da ifade ettiğimiz gibi, program yazarken çoğu zaman yalnızca aleni
 üyelerle muhatap olacaksınız. Ancak bazı durumlarda, yazdığınız bir sınıftaki
 bütün sınıf üyelerinin dışarıya açık olmasını istemeyebilirsiniz. Eğer
 kodlarınızda, sınıfın yalnızca iç işleyişini ilgilendiren, bu yüzden de
 dışarıdan erişilmesine gerek olmadığını veya erişilirse problem çıkacağını
-düşündüğünüz birtakım öğeler varsa bunları dışarıya kapatarak bir &#8216;gizli üye&#8217;
+düşündüğünüz birtakım öğeler varsa bunları dışarıya kapatarak bir ‘gizli üye’
 haline getirmek isteyebilirsiniz. Peki ama nasıl?</p>
 </div>
 <div class="section" id="gizli-uyeler">
-<h3>Gizli Üyeler<a class="headerlink" href="#gizli-uyeler" title="Permalink to this headline">¶</a></h3>
-<p>Python&#8217;da şimdiye kadar gördüğümüz ve yukarıda andığımız aleni üyelerin dışında,
+<h3>Gizli Üyeler<a class="headerlink" href="#gizli-uyeler" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p>Python’da şimdiye kadar gördüğümüz ve yukarıda andığımız aleni üyelerin dışında,
 bir de gizli üyeler bulunur. Aleni üyelerin aksine gizli üyeler dışarıya açık
 değildir. Gizli üyelere, normal yöntemleri kullanarak sınıf dışından erişemeyiz.</p>
 <p>Konuyu açıklığa kavuşturmak için, aleni üyeleri anlatırken verdiğimiz sınıf
 örneğinde şu değişikliği yapalım:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">():</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">():</span>
     <span class="n">__gizli</span> <span class="o">=</span> <span class="s1">&#39;gizli&#39;</span>
 
     <span class="k">def</span> <span class="nf">örnek_metodu</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -186,12 +176,12 @@ değildir. Gizli üyelere, normal yöntemleri kullanarak sınıf dışından eri
 </div>
 <p>Burada <cite>__gizli</cite> adlı bir gizli sınıf niteliği tanımladık. Bu değişkenin
 yalnızca baş tarafında iki adet alt çizgi olduğuna, ancak uç tarafında alt
-çizgi bulunmadığına dikkat edin. İşte Python&#8217;da baş tarafında yukarıdaki gibi
+çizgi bulunmadığına dikkat edin. İşte Python’da baş tarafında yukarıdaki gibi
 iki adet alt çizgi olan, ancak uç tarafında alt çizgi bulunmayan (veya yalnızca
 tek bir alt çizgi bulunan) bütün öğeler birer gizli üyedir. Dışarıya kapalı olan
 bu gizli üyelere, normal yöntemleri kullanarak sınıf dışından erişemezsiniz.</p>
 <p>İsterseniz deneyelim:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sinif</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sinif</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">sinif</span><span class="o">.</span><span class="n">Sınıf</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">__gizli</span>
 
@@ -202,7 +192,7 @@ bu gizli üyelere, normal yöntemleri kullanarak sınıf dışından erişemezsi
 </div>
 <p>Gördüğünüz gibi, örnek adı üzerinden <cite>__gizli</cite> niteliğine erişemiyoruz. Bir de
 sınıf adı üzerinden erişmeyi deneyelim:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sinif</span><span class="o">.</span><span class="n">Sınıf</span><span class="o">.</span><span class="n">__gizli</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sinif</span><span class="o">.</span><span class="n">Sınıf</span><span class="o">.</span><span class="n">__gizli</span>
 
 <span class="gt">Traceback (most recent call last):</span>
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
@@ -215,7 +205,7 @@ gizli öğelere <strong>normal yollardan</strong> erişemeyiz.</p>
 <p>Dilerseniz gizli üye oluşturma kurallarını şöyle bir netleştirelim:</p>
 <p>Bir üyenin gizli olabilmesi için başında <strong>en az</strong> iki adet, ucunda da <strong>en
 fazla</strong> bir adet alt çizgi bulunmalıdır. Yani şunlar birer gizli üyedir:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">__gizli</span> <span class="o">=</span> <span class="s1">&#39;gizli&#39;</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">__gizli</span> <span class="o">=</span> <span class="s1">&#39;gizli&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">__gizli_</span> <span class="o">=</span> <span class="s1">&#39;gizli&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">__gizli_üye</span> <span class="o">=</span> <span class="s1">&#39;gizli&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">__gizli_üye_</span> <span class="o">=</span> <span class="s1">&#39;gizli&#39;</span>
@@ -224,15 +214,15 @@ fazla</strong> bir adet alt çizgi bulunmalıdır. Yani şunlar birer gizli üye
 <p>Burada önemli bir noktaya dikkatinizi çekmek istiyorum: Gizli üyeler yalnızca
 <strong>sınıf dışına</strong> kapalıdır. Bu üyelere <strong>sınıf içinden</strong> rahatlıkla
 erişebiliriz. Mesela yukarıdaki örnekte bu durumu görüyorsunuz. <cite>__gizli</cite> adlı
-değişkene <tt class="docutils literal"><span class="pre">örnek_metodu()</span></tt> içinden normal bir şekilde erişebiliyoruz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">örnek_metodu</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+değişkene <code class="docutils literal notranslate"><span class="pre">örnek_metodu()</span></code> içinden normal bir şekilde erişebiliyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">örnek_metodu</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__gizli</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;örnek metodu&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Bu durumda sınıf dışından bu <tt class="docutils literal"><span class="pre">örnek_metodu()</span></tt>&#8216;na eriştiğimizde gizli üye olan
-<cite>__gizli</cite>&#8216;ye de erişmiş oluyoruz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sinif</span>
+<p>Bu durumda sınıf dışından bu <code class="docutils literal notranslate"><span class="pre">örnek_metodu()</span></code>’na eriştiğimizde gizli üye olan
+<cite>__gizli</cite>’ye de erişmiş oluyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sinif</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">sinif</span><span class="o">.</span><span class="n">Sınıf</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">örnek_metodu</span><span class="p">()</span>
 
@@ -240,15 +230,15 @@ değişkene <tt class="docutils literal"><span class="pre">örnek_metodu()</span
 <span class="go">&#39;örnek metodu&#39;</span>
 </pre></div>
 </div>
-<p>Burada <tt class="docutils literal"><span class="pre">örnek_metodu()</span></tt>, <cite>__gizli</cite> adlı gizli üyeye erişmemiz için bize
+<p>Burada <code class="docutils literal notranslate"><span class="pre">örnek_metodu()</span></code>, <cite>__gizli</cite> adlı gizli üyeye erişmemiz için bize
 aracılık etmiş oluyor.</p>
 <p>Peki ama bir insan neden bu şekilde birtakım gizli üyeler tanımlamak istiyor
 olabilir?</p>
 <p>Hatırlarsanız geçen bölümde şöyle bir örnek vermiştik:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
     <span class="n">personel</span> <span class="o">=</span> <span class="p">[]</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="n">isim</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">kabiliyetleri</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">personele_ekle</span><span class="p">()</span>
@@ -277,15 +267,15 @@ olabilir?</p>
 </pre></div>
 </div>
 <p>Burada <cite>personel</cite> adlı bir sınıf niteliğimiz var. Bu niteliğe sınıf içinde hem
-<tt class="docutils literal"><span class="pre">personele_ekle()</span></tt> adlı örnek metodundan hem de
-<tt class="docutils literal"><span class="pre">personel_sayısını_görüntüle()</span></tt> ve <tt class="docutils literal"><span class="pre">personeli_görüntüle()</span></tt> adlı sınıf
+<code class="docutils literal notranslate"><span class="pre">personele_ekle()</span></code> adlı örnek metodundan hem de
+<code class="docutils literal notranslate"><span class="pre">personel_sayısını_görüntüle()</span></code> ve <code class="docutils literal notranslate"><span class="pre">personeli_görüntüle()</span></code> adlı sınıf
 metotlarından erişmek suretiyle bu nitelik üzerinde çeşitli işlemler yapıyoruz.</p>
 <p>Esasında şöyle bir düşününce, <cite>personel</cite> adlı niteliğin yalnızca sınıfın iç
 işleyişi açısından önem taşıdığını rahatlıkla söyleyebiliriz. Bu niteliğe sınıf
 dışından doğrudan erişilerek personel üzerinde işlem yapılmaya çalışılması çok
 mantıksız. Yani sınıfımızı kullanacak kişilerin şu tür bir kod yazması biraz
 abes kaçacaktır:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">calisan</span> <span class="k">import</span> <span class="n">Çalışan</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">calisan</span> <span class="kn">import</span> <span class="n">Çalışan</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Çalışan</span><span class="o">.</span><span class="n">personel</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;Ahmet&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -295,32 +285,32 @@ abes kaçacaktır:</p>
 kodlarımızın kullanım kurallarının bir bakıma ihlal edilmesi anlamına geliyor.
 Çünkü biz personele eleman ekleme işlemleri için halihazırda ayrı bir metot
 tanımlamış durumdayız. Eğer personele adam eklenecekse, bu işlem doğrudan
-<cite>personel</cite> listesi üzerinden değil, <tt class="docutils literal"><span class="pre">personele_ekle()</span></tt> adlı örnek metodu
-üzerinden gerçekleştirilmeli. Yukarıdaki kodlarda bu <tt class="docutils literal"><span class="pre">personele_ekle()</span></tt> metodu
-doğrudan sınıfın kendi <tt class="docutils literal"><span class="pre">__init__()</span></tt> metodu tarafından kullanılıyor.
+<cite>personel</cite> listesi üzerinden değil, <code class="docutils literal notranslate"><span class="pre">personele_ekle()</span></code> adlı örnek metodu
+üzerinden gerçekleştirilmeli. Yukarıdaki kodlarda bu <code class="docutils literal notranslate"><span class="pre">personele_ekle()</span></code> metodu
+doğrudan sınıfın kendi <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> metodu tarafından kullanılıyor.
 Dolayısıyla yukarıdaki sınıfı kullanmanın doğru yolu, ilgili sınıfı
 örneklemektir:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">calisan</span> <span class="k">import</span> <span class="n">Çalışan</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">calisan</span> <span class="kn">import</span> <span class="n">Çalışan</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ahmet</span> <span class="o">=</span> <span class="n">Çalışan</span><span class="p">(</span><span class="s1">&#39;Ahmet&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Aynı şekilde personel listesini görüntülemek için de doğrudan <cite>personel</cite>
 listesine erişmeye çalışmayacağız. Yani şöyle bir şey yazmayacağız:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Çalışan</span><span class="o">.</span><span class="n">personel</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Çalışan</span><span class="o">.</span><span class="n">personel</span>
 </pre></div>
 </div>
-<p>Bunun yerine, bu iş için özel olarak tasarladığımız <tt class="docutils literal"><span class="pre">personeli_görüntüle()</span></tt>
+<p>Bunun yerine, bu iş için özel olarak tasarladığımız <code class="docutils literal notranslate"><span class="pre">personeli_görüntüle()</span></code>
 fonksiyonunu kullanacağız:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Çalışan</span><span class="o">.</span><span class="n">personeli_görüntüle</span><span class="p">()</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Çalışan</span><span class="o">.</span><span class="n">personeli_görüntüle</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>İşte yukarıdaki kodlarda yer alan <cite>personel</cite> listesinin usulsüz bir şekilde
 kullanılmasını önlemek amacıyla bu listeyi bir gizli üye haline
 getirebilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
     <span class="n">__personel</span> <span class="o">=</span> <span class="p">[]</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="n">isim</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">kabiliyetleri</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">personele_ekle</span><span class="p">()</span>
@@ -349,7 +339,7 @@ getirebilirsiniz:</p>
 </div>
 <p>Burada <cite>personel</cite> listesinin baş tarafına iki alt çizgi ekleyerek bunu sınıf
 dışından, normal yollarla erişilmez hale getirdik:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Çalışan</span><span class="o">.</span><span class="n">__personel</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Çalışan</span><span class="o">.</span><span class="n">__personel</span>
 
 <span class="gt">Traceback (most recent call last):</span>
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
@@ -360,33 +350,33 @@ dışından, normal yollarla erişilmez hale getirdik:</p>
 rağmen, Python bu niteliğe sınıf dışından erişilmesine izin vermiyor. Eğer
 amacımız personel üzerinde çeşitli işlemler yapmaksa, bu iş için sınıfın bize
 sunduğu metotları kullanmamız gerekiyor:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Çalışan</span><span class="o">.</span><span class="n">personel_sayısını_görüntüle</span><span class="p">()</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Çalışan</span><span class="o">.</span><span class="n">personel_sayısını_görüntüle</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Bu tip durumlarda gizli üyeler epey işinize yarayabilir...</p>
+<p>Bu tip durumlarda gizli üyeler epey işinize yarayabilir…</p>
 <p>Bir örnek daha verelim.</p>
-<p>Yukarıdaki kodlarda, tıpkı <cite>personel</cite> listesi gibi, aslında <tt class="docutils literal"><span class="pre">personele_ekle()</span></tt>
+<p>Yukarıdaki kodlarda, tıpkı <cite>personel</cite> listesi gibi, aslında <code class="docutils literal notranslate"><span class="pre">personele_ekle()</span></code>
 fonksiyonu da dışarıdan erişilmesine gerek olmayan, hatta dışarıdan erişilirse
 kafa karıştırıcı olabilecek bir sınıf üyesidir.</p>
-<p><tt class="docutils literal"><span class="pre">personele_ekle()</span></tt> adlı örnek metodu, sınıfımız içinde <tt class="docutils literal"><span class="pre">__init__()</span></tt>
+<p><code class="docutils literal notranslate"><span class="pre">personele_ekle()</span></code> adlı örnek metodu, sınıfımız içinde <code class="docutils literal notranslate"><span class="pre">__init__()</span></code>
 fonksiyonu tarafından kullanılıyor. Dolayısıyla sınıfımız örneklendiğinde
-<tt class="docutils literal"><span class="pre">personele_ekle()</span></tt> metodu devreye girerek yeni elemanı personel listesine
+<code class="docutils literal notranslate"><span class="pre">personele_ekle()</span></code> metodu devreye girerek yeni elemanı personel listesine
 ekliyor:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ayşe</span> <span class="o">=</span> <span class="n">Çalışan</span><span class="p">(</span><span class="s1">&#39;Ayşe&#39;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ayşe</span> <span class="o">=</span> <span class="n">Çalışan</span><span class="p">(</span><span class="s1">&#39;Ayşe&#39;</span><span class="p">)</span>
 
 <span class="go">&#39;Ayşe adlı kişi personele eklendi&#39;</span>
 </pre></div>
 </div>
 <p>Öte yandan, bu fonksiyon aleni bir üye olduğu için, buna dışarıdan erişmemizin
 önünde herhangi bir engel yok:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ayşe</span><span class="o">.</span><span class="n">personele_ekle</span><span class="p">()</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ayşe</span><span class="o">.</span><span class="n">personele_ekle</span><span class="p">()</span>
 
 <span class="go">&#39;Ayşe adlı kişi personele eklendi&#39;</span>
 </pre></div>
 </div>
 <p>Bu fonksiyon sınıf dışından çağrıldığında, kendisini çağıran örnek adını
 personel listesine tekrar ekleyecektir:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Çalışan</span><span class="o">.</span><span class="n">personeli_görüntüle</span><span class="p">()</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Çalışan</span><span class="o">.</span><span class="n">personeli_görüntüle</span><span class="p">()</span>
 
 <span class="go">Ayşe</span>
 <span class="go">Ayşe</span>
@@ -397,10 +387,10 @@ Dolayısıyla bu fonksiyona sınıf dışından erişilmesi son derece mantıks�
 derece yanlış ve hatta son derece kafa karıştırıcıdır. O yüzden, herhangi bir
 sıkıntı yaşanmasını engellemek amacıyla bu fonksiyonu da bir gizli üye olarak
 tanımlayabiliriz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
     <span class="n">__personel</span> <span class="o">=</span> <span class="p">[]</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="n">isim</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">kabiliyetleri</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__personele_ekle</span><span class="p">()</span>
@@ -428,35 +418,35 @@ tanımlayabiliriz:</p>
             <span class="nb">print</span><span class="p">(</span><span class="n">kabiliyet</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Bu şekilde <tt class="docutils literal"><span class="pre">personele_ekle()</span></tt> fonksiyonunu da dışarıya kapatmış olduk. Artık
+<p>Bu şekilde <code class="docutils literal notranslate"><span class="pre">personele_ekle()</span></code> fonksiyonunu da dışarıya kapatmış olduk. Artık
 bu fonksiyon da, olması gerektiği gibi, yalnızca sınıf içinde kullanılabilecek.</p>
 <p>Yukarıdaki örnekler, bazı durumlarda veri gizlemenin epey işimize
 yarayabileceğini bariz bir biçimde gösteriyor. Ama elbette, yukarıdaki
 işlemlerin hiçbiri zorunlu değildir. Yani siz, yazdığınız kodlarda hiçbir sınıf
 üyesini gizlemek mecburiyetinde değilsiniz. Yukarıda gösterdiğimiz kullanımlar
-tamamen tercih meselesidir. Zaten birkaç nadir durum dışında, Python&#8217;da
-verilerinizi gizlemek zorunda da kalmazsınız. Ama tabii kendiniz Python&#8217;ın bu
+tamamen tercih meselesidir. Zaten birkaç nadir durum dışında, Python’da
+verilerinizi gizlemek zorunda da kalmazsınız. Ama tabii kendiniz Python’ın bu
 özelliğinden yararlanmasanız da, sırf bu özellikten yararlanan başka
 programcıların yazdığı kodları anlayabilmek için bile olsa bu özellikten
 haberdar olmalısınız.</p>
 </div>
 <div class="section" id="isim-bulandirma">
-<h3>İsim Bulandırma<a class="headerlink" href="#isim-bulandirma" title="Permalink to this headline">¶</a></h3>
+<h3>İsim Bulandırma<a class="headerlink" href="#isim-bulandirma" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
 <p>Gelin isterseniz gizli üyelere ilişkin ilginç bir özellikten söz edelim.</p>
-<p>Python&#8217;da &#8216;gizli&#8217; olarak adlandırdığımız öğeler aslında o kadar da gizli
-değildir... Çünkü Python&#8217;da gerçek anlamda gizli ve dışarıya tamamen kapalı
+<p>Python’da ‘gizli’ olarak adlandırdığımız öğeler aslında o kadar da gizli
+değildir… Çünkü Python’da gerçek anlamda gizli ve dışarıya tamamen kapalı
 üyeler bulunmaz. Peki bu ne anlama geliyor?</p>
 <p>Bu şu anlama geliyor: Her ne kadar yukarıdaki örneklerde üyeleri dışarıya
 kapatmak için kullandığımız alt çizgi işaretleri ilgili değişkeni gizlese de,
-bunu tamamen erişilmez hale getirmez. Dediğimiz gibi, Python&#8217;da gerçek anlamda
+bunu tamamen erişilmez hale getirmez. Dediğimiz gibi, Python’da gerçek anlamda
 dışa kapalı sınıf üyeleri bulunmadığı için biz bu üyelere <strong>bir şekilde</strong> erişme
 imkanına sahibiz. Peki ama nasıl?</p>
-<p>Python, kodlar içinde gizli bir üye ile karşılaştığında özel bir &#8216;isim
-bulandırma&#8217; (<em>name mangling</em>) işlemi gerçekleştirir ve ilgili gizli üyenin
-görünüşünü değiştirir. Eğer Python&#8217;ın arkaplanda neler çevirdiğini bilirseniz,
+<p>Python, kodlar içinde gizli bir üye ile karşılaştığında özel bir ‘isim
+bulandırma’ (<em>name mangling</em>) işlemi gerçekleştirir ve ilgili gizli üyenin
+görünüşünü değiştirir. Eğer Python’ın arkaplanda neler çevirdiğini bilirseniz,
 gizli üyeye de erişebilirsiniz.</p>
 <p>Örnek sınıfımız şöyleydi:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">():</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">():</span>
     <span class="n">__gizli</span> <span class="o">=</span> <span class="s1">&#39;gizli&#39;</span>
 
     <span class="k">def</span> <span class="nf">örnek_metodu</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -474,7 +464,7 @@ gizli üyeye de erişebilirsiniz.</p>
 </div>
 <p>Şimdi, bu sınıf içindeki gizli üyeye erişeceğiz.</p>
 <p>Dikkatlice bakın:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sinif</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sinif</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">sinif</span><span class="o">.</span><span class="n">Sınıf</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">_Sınıf__gizli</span>
 
@@ -485,25 +475,25 @@ gizli üyeye de erişebilirsiniz.</p>
 <p>İşte Python, siz bir sınıf üyesini <cite>__gizli</cite> şeklinde tanımladığınızda, bu
 öğe üzerinde şu işlemleri gerçekleştirir:</p>
 <p>Öncelikle değişkenin baş tarafına bir alt çizgi ekler:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">_</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span>
 </pre></div>
 </div>
 <p>Daha sonra, bu alt çizginin sağ tarafına bu gizli üyeyi barındıran sınıfın adını
 iliştirir:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">_Sınıf</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">_Sınıf</span>
 </pre></div>
 </div>
 <p>Son olarak da gizli üyeyi sınıf adının sağ tarafına yapıştırır:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="n">_Sınıf__gizli</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">_Sınıf__gizli</span>
 </pre></div>
 </div>
-<p>Dolayısıyla <tt class="docutils literal"><span class="pre">_Sınıf__gizli</span></tt> kodunu kullanarak, <cite>__gizli</cite> adlı üyeye sınıf
+<p>Dolayısıyla <code class="docutils literal notranslate"><span class="pre">_Sınıf__gizli</span></code> kodunu kullanarak, <cite>__gizli</cite> adlı üyeye sınıf
 dışından erişebilirsiniz.</p>
 <p>Pratik olması bakımından bir örnek daha verelim. Mesela şu örneği ele alalım:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
     <span class="n">__personel</span> <span class="o">=</span> <span class="p">[]</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="n">isim</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">kabiliyetleri</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__personele_ekle</span><span class="p">()</span>
@@ -531,17 +521,17 @@ dışından erişebilirsiniz.</p>
             <span class="nb">print</span><span class="p">(</span><span class="n">kabiliyet</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Burada <tt class="docutils literal"><span class="pre">__personele_ekle()</span></tt> adlı fonksiyon bir gizli üyedir. Dolayısıyla buna
+<p>Burada <code class="docutils literal notranslate"><span class="pre">__personele_ekle()</span></code> adlı fonksiyon bir gizli üyedir. Dolayısıyla buna
 dışarıdan normal yöntemlerle erişemeyiz.</p>
 <p>Bunu test etmek için önce gerekli verileri oluşturalım:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">calisan</span> <span class="k">import</span> <span class="n">Çalışan</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">calisan</span> <span class="kn">import</span> <span class="n">Çalışan</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ahmet</span> <span class="o">=</span> <span class="n">Çalışan</span><span class="p">(</span><span class="s1">&#39;Ahmet&#39;</span><span class="p">)</span>
 
 <span class="go">Ahmet adlı kişi personele eklendi.</span>
 </pre></div>
 </div>
 <p>Şimdi <cite>ahmet</cite> örneği üzerinden bu gizli üyeye erişmeye çalışalım:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ahmet</span><span class="o">.</span><span class="n">__personele_ekle</span><span class="p">()</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ahmet</span><span class="o">.</span><span class="n">__personele_ekle</span><span class="p">()</span>
 
 <span class="gt">Traceback (most recent call last):</span>
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
@@ -554,25 +544,25 @@ gerçekleştiriyor. Bu bulandırma işleminin nasıl gerçekleştirildiğini bil
 göre gizli üyeye erişebiliriz.</p>
 <p>Öncelikle örneğimizin adını yazalım. Zira gizli üyeye bu ad üzerinden
 erişeceğiz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ahmet</span><span class="o">.</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ahmet</span><span class="o">.</span>
 </pre></div>
 </div>
 <p>Şimdi bulandırma işlemini uygulamaya geçebiliriz.</p>
 <p>Öncelikle bir alt çizgi ekleyelim:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ahmet</span><span class="o">.</span><span class="n">_</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ahmet</span><span class="o">.</span><span class="n">_</span>
 </pre></div>
 </div>
 <p>Daha sonra sınıf adını iliştirelim:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ahmet</span><span class="o">.</span><span class="n">_Çalışan</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ahmet</span><span class="o">.</span><span class="n">_Çalışan</span>
 </pre></div>
 </div>
 <p>Son olarak da gizli üyenin kendisini yazalım:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ahmet</span><span class="o">.</span><span class="n">_Çalışan__personele_ekle</span><span class="p">()</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ahmet</span><span class="o">.</span><span class="n">_Çalışan__personele_ekle</span><span class="p">()</span>
 
 <span class="go">Ahmet adlı kişi personele eklendi.</span>
 </pre></div>
 </div>
-<p>Gayet başarılı...</p>
+<p>Gayet başarılı…</p>
 <p>Yalnız buraya şöyle bir not düşelim: Her ne kadar Python bize gizli üyelere
 erişme imkanı sunsa da, başkasının yazdığı kodları kullanırken, o kodlardaki
 gizli üyelere erişmeye çalışmamak çoğu zaman iyi bir fikirdir. Nihayetinde eğer
@@ -580,10 +570,10 @@ bir programcı, bir sınıf üyesini gizlemişse bunun bir nedeni vardır. Eğer
 erişmenizin istenmediği bir üyeye erişirseniz ve bunun sonucunda birtakım
 sorunlarla karşılaşırsanız bu durum o programı yazan programcının değil, tamamen
 sizin kabahatinizdir. Python programcılarının da sık sık söylediği gibi:
-&#8216;Neticede hepimiz, doğruyu yanlışı bilen, yetişkin insanlarız.&#8217;</p>
+‘Neticede hepimiz, doğruyu yanlışı bilen, yetişkin insanlarız.’</p>
 </div>
 <div class="section" id="yari-gizli-uyeler">
-<h3>Yarı-gizli Üyeler<a class="headerlink" href="#yari-gizli-uyeler" title="Permalink to this headline">¶</a></h3>
+<h3>Yarı-gizli Üyeler<a class="headerlink" href="#yari-gizli-uyeler" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
 <p>Buraya kadar Python’a dair anlattığımız şeylerden, yerleşmiş adetlerin ve
 geleneklerin Python açısından ne kadar önemli olduğunu anlamış olmalısınız. Daha
 önce verdiğimiz örnekler, bu dildeki pek çok meselenin uzlaşma esası üzerinden
@@ -597,9 +587,9 @@ kelimeleri değil de yukarıdaki kelimeleri kullanmaya teşvik eder. Aynı şeki
 kod yazarken girinti sayısının dört boşluk olarak belirlenmiş olması da bir
 gelenekten ibarettir. Yazdığınız kodlarda, aynı program içinde hep aynı sayıda
 olmak şartıyla, istediğiniz sayıda boşluktan oluşan girintiler
-kullanabilirsiniz. Ama Python&#8217;ın topluluk içi gelenekleri bizi dört boşlukluk
+kullanabilirsiniz. Ama Python’ın topluluk içi gelenekleri bizi dört boşlukluk
 bir girintileme sistemi kullanmaya yöneltir.</p>
-<p>İşte tıpkı yukarıdakiler gibi, Python&#8217;daki sınıf üyelerinin dışa açık veya dışa
+<p>İşte tıpkı yukarıdakiler gibi, Python’daki sınıf üyelerinin dışa açık veya dışa
 kapalı olup olmaması da hep belli birtakım gelenekler üzerinden belirlenen bir
 durumdur.</p>
 <p>Bunun bir örneğini, yukarıda gizli üyeleri anlatırken vermiştik. Bir sınıf
@@ -608,16 +598,16 @@ yazan kişinin, bu niteliğe sınıf dışından erişilmesini istemediğini anl
 Python her ne kadar nitelikleri gizlememiz için bize özel bir mekanizma sunmuş
 olsa da bu niteliğe erişmemizi tamamen engellemiyor, ancak ilgili sınıfı yazan
 kişinin niyetine saygı göstereceğimizi varsayıyor.</p>
-<p>Python&#8217;da sınıf üyelerinin gizliliği, yukarıda da gördüğümüz gibi, hem özel bir
+<p>Python’da sınıf üyelerinin gizliliği, yukarıda da gördüğümüz gibi, hem özel bir
 mekanizma ile hem de topluluk içi gelenekler tarafından korunur.</p>
-<p>Python&#8217;da bir de yalnızca topluluk içi gelenekler tarafından korunan
-&#8216;yarı-gizli&#8217; üyeler (<em>semi-private members</em>) vardır. İşte bu bölümde, bir gizli
+<p>Python’da bir de yalnızca topluluk içi gelenekler tarafından korunan
+‘yarı-gizli’ üyeler (<em>semi-private members</em>) vardır. İşte bu bölümde, bir gizli
 üye türü olan yarı-gizli üyelerden söz edeceğiz.</p>
 <p>Yarı-gizli üyeler, herhangi bir özel mekanizma aracılığıyla değil de yalnızca
 topluluk içi gelenekler tarafından korunan niteliklerdir. Herhangi bir üyeyi
 yarı-gizli olarak işaretlemek için yapmamız gereken tek şey başına bir adet alt
 çizgi yerleştirmektir. Örneğin:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Falanca</span><span class="p">():</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Falanca</span><span class="p">():</span>
     <span class="n">_yarıgizli</span> <span class="o">=</span> <span class="s1">&#39;yarıgizli&#39;</span>
 </pre></div>
 </div>
@@ -629,15 +619,15 @@ gerektiğini anlarız.</p>
 </div>
 </div>
 <div class="section" id="property-bezeyicisi">
-<h2>&#64;property Bezeyicisi<a class="headerlink" href="#property-bezeyicisi" title="Permalink to this headline">¶</a></h2>
+<h2>&#64;property Bezeyicisi<a class="headerlink" href="#property-bezeyicisi" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Yukarıda aleni, gizli ve yarı-gizli sınıf üyelerinden söz ettik. İsterseniz
 özellikle yarı-gizli öğelerin kullanıldığı bir kod örneği vererek yukarıda
 anlattıklarımızı somut bir örnek üzerinden netleştirmeye çalışalım.</p>
 <p>Diyelim ki şöyle bir kod yazdık:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
     <span class="n">personel</span> <span class="o">=</span> <span class="p">[]</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="n">isim</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">personele_ekle</span><span class="p">()</span>
 
@@ -655,7 +645,7 @@ anlattıklarımızı somut bir örnek üzerinden netleştirmeye çalışalım.</
 <p>Burada personel veritabanına kişi eklememizi ve veritabanındaki kişileri
 görüntülememizi sağlayan birtakım metotlar var.</p>
 <p>Bu metotları şöyle kullanıyoruz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">calisan</span> <span class="k">import</span> <span class="n">Çalışan</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">calisan</span> <span class="kn">import</span> <span class="n">Çalışan</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ç1</span> <span class="o">=</span> <span class="n">Çalışan</span><span class="p">(</span><span class="s1">&#39;Ahmet&#39;</span><span class="p">)</span>
 
 <span class="go">Ahmet adlı kişi personele eklendi</span>
@@ -676,36 +666,36 @@ sonradan değiştirmek isterse ne yapacak?</p>
 <p>Kodlarımız içinde, isim değişikliği yapılmasını sağlayan özel bir metot yok.
 Dolayısıyla kodlarımızı kullananlar, doğrudan <cite>isim</cite> adlı örnek değişkenine
 erişerek isim değişikliğini şu şekilde yapabilir:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ç1</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="s1">&#39;Selim&#39;</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ç1</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="s1">&#39;Selim&#39;</span>
 </pre></div>
 </div>
-<p>Bu şekilde &#8216;Ahmet&#8217; adlı kişinin ismini değiştirdik. Bunu teyit edelim:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">ç1</span><span class="o">.</span><span class="n">isim</span><span class="p">)</span>
+<p>Bu şekilde ‘Ahmet’ adlı kişinin ismini değiştirdik. Bunu teyit edelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">ç1</span><span class="o">.</span><span class="n">isim</span><span class="p">)</span>
 
 <span class="go">Selim</span>
 </pre></div>
 </div>
 <p>Ancak burada şöyle bir sorun var. Bu isim değişikliği personel listesine
 yansımadı. Kontrol edelim:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Çalışan</span><span class="o">.</span><span class="n">personeli_görüntüle</span><span class="p">()</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Çalışan</span><span class="o">.</span><span class="n">personeli_görüntüle</span><span class="p">()</span>
 
 <span class="go">Personel listesi:</span>
 <span class="go">Ahmet</span>
 <span class="go">Mehmet</span>
 </pre></div>
 </div>
-<p>Gördüğünüz gibi, &#8216;Ahmet&#8217; ismi hâlâ orada duruyor. Bu sorunu gidermek için,
+<p>Gördüğünüz gibi, ‘Ahmet’ ismi hâlâ orada duruyor. Bu sorunu gidermek için,
 personel listesine de müdahale edilmesi gerekir:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kişi</span> <span class="o">=</span> <span class="n">Çalışan</span><span class="o">.</span><span class="n">personel</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;Ahmet&#39;</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kişi</span> <span class="o">=</span> <span class="n">Çalışan</span><span class="o">.</span><span class="n">personel</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;Ahmet&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Çalışan</span><span class="o">.</span><span class="n">personel</span><span class="p">[</span><span class="n">kişi</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Selim&#39;</span>
 </pre></div>
 </div>
-<p>Burada öncelikle listelerin <tt class="docutils literal"><span class="pre">index()</span></tt> metodunu kullanarak, değiştirmek
+<p>Burada öncelikle listelerin <code class="docutils literal notranslate"><span class="pre">index()</span></code> metodunu kullanarak, değiştirmek
 istediğimiz kişinin <cite>personel</cite> listesindeki sırasını bulduk. Daha sonra da bu
 bilgiyi kullanarak listede gerekli değişikliği yaptık.</p>
 <p>Personel listesini tekrar kontrol ettiğimizde her şeyin yolunda olduğunu
 görebiliriz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Çalışan</span><span class="o">.</span><span class="n">personeli_görüntüle</span><span class="p">()</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Çalışan</span><span class="o">.</span><span class="n">personeli_görüntüle</span><span class="p">()</span>
 
 <span class="go">Personel listesi:</span>
 <span class="go">Selim</span>
@@ -716,10 +706,10 @@ görebiliriz:</p>
 değişikliği için, kullanıcılarımız bir sürü kod yazmak zorunda kalıyor.
 Kullanıcılarımızın hayatını kolaylaştırmak için onlara pratik bir metot
 sunabiliriz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
     <span class="n">personel</span> <span class="o">=</span> <span class="p">[]</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="n">isim</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">personele_ekle</span><span class="p">()</span>
 
@@ -739,10 +729,10 @@ sunabiliriz:</p>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;yeni isim:&#39;</span><span class="p">,</span> <span class="n">yeni_isim</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Burada <tt class="docutils literal"><span class="pre">isim_değiştir()</span></tt> adlı yeni bir fonksiyon tanımladık. Artık
+<p>Burada <code class="docutils literal notranslate"><span class="pre">isim_değiştir()</span></code> adlı yeni bir fonksiyon tanımladık. Artık
 kodlarımızdan istifade edenler yalnızca bu yeni fonksiyonu kullanarak, personele
 önceden ekledikleri kişilerin ismini kolayca değiştirebilir:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">calisan</span> <span class="k">import</span> <span class="n">Çalışan</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">calisan</span> <span class="kn">import</span> <span class="n">Çalışan</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ç1</span> <span class="o">=</span> <span class="n">Çalışan</span><span class="p">(</span><span class="s1">&#39;Ahmet&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ç2</span> <span class="o">=</span> <span class="n">Çalışan</span><span class="p">(</span><span class="s1">&#39;Mehmet&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ç3</span> <span class="o">=</span> <span class="n">Çalışan</span><span class="p">(</span><span class="s1">&#39;Selim&#39;</span><span class="p">)</span>
@@ -771,10 +761,10 @@ arzu ederseniz</strong>, kullanıcılarınızın <cite>personel</cite> ve <cite>
 doğrudan erişmesini engellemek için bunları tek alt çizgi veya çift alt çizgi
 kullanarak gizleyebilirsiniz.</p>
 <p>Çift alt çizgi ile:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
     <span class="n">__personel</span> <span class="o">=</span> <span class="p">[]</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__isim</span> <span class="o">=</span> <span class="n">isim</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">personele_ekle</span><span class="p">()</span>
 
@@ -795,10 +785,10 @@ kullanarak gizleyebilirsiniz.</p>
 </pre></div>
 </div>
 <p>Tek alt çizgi ile:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
     <span class="n">_personel</span> <span class="o">=</span> <span class="p">[]</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_isim</span> <span class="o">=</span> <span class="n">isim</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">personele_ekle</span><span class="p">()</span>
 
@@ -819,21 +809,21 @@ kullanarak gizleyebilirsiniz.</p>
 </pre></div>
 </div>
 <p><cite>personel</cite> ve <cite>self.isim</cite> adlı nitelikleri çift alt çizgi ile gizlediğimizde
-Python&#8217;ın isim bulandırma mekanizmasını işleteceğini, tek alt çizgi ile
+Python’ın isim bulandırma mekanizmasını işleteceğini, tek alt çizgi ile
 gizlediğimizde ise bu mekanizmanın işletilmeyeceğini biliyorsunuz.</p>
 <p>Peki size şöyle bir soru sorayım:</p>
 <p>Acaba, personel listesindeki bir ismi, mesela yalnızca şöyle bir komut vererek
 değiştiremez miyiz?</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ç1</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="s1">&#39;Emre&#39;</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ç1</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="s1">&#39;Emre&#39;</span>
 </pre></div>
 </div>
 <p>Elbette değiştirebiliriz. Ancak bunun için özel bir araçtan yararlanmamız
 gerekir. Bu iş için <cite>&#64;property</cite> adlı özel bir bezeyiciyi kullanacağız.</p>
 <p>Dikkatlice bakın:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Çalışan</span><span class="p">():</span>
     <span class="n">_personel</span> <span class="o">=</span> <span class="p">[]</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isim</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_isim</span> <span class="o">=</span> <span class="n">isim</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">personele_ekle</span><span class="p">()</span>
 
@@ -860,11 +850,11 @@ gerekir. Bu iş için <cite>&#64;property</cite> adlı özel bir bezeyiciyi kull
 </div>
 <p>Bu kodları çalıştırdığınızda, tıpkı yukarıda bahsettiğimiz gibi, herhangi bir
 çalışanın ismini yalnızca şu şekilde değiştirebildiğinizi göreceksiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ç1</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="s1">&#39;Emre&#39;</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ç1</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="s1">&#39;Emre&#39;</span>
 </pre></div>
 </div>
 <p>Üstelik bu kod, isim değişikliğinin personel listesine de yansımasını sağlıyor:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Çalışan</span><span class="o">.</span><span class="n">personeli_görüntüle</span><span class="p">()</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Çalışan</span><span class="o">.</span><span class="n">personeli_görüntüle</span><span class="p">()</span>
 
 <span class="go">Emre</span>
 </pre></div>
@@ -873,21 +863,21 @@ gerekir. Bu iş için <cite>&#64;property</cite> adlı özel bir bezeyiciyi kull
 <cite>&#64;property</cite> bezeyicisinden biraz söz edelim. Böylelikle yukarıdaki kodları
 anlamamız kolaylaşır.</p>
 <div class="section" id="metottan-nitelige">
-<h3>Metottan Niteliğe<a class="headerlink" href="#metottan-nitelige" title="Permalink to this headline">¶</a></h3>
+<h3>Metottan Niteliğe<a class="headerlink" href="#metottan-nitelige" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
 <p>Şimdiye kadar verdiğimiz örneklerden anlamış olabileceğiniz gibi, bir sınıf
-içinde salt verileri tutan değişkenlere &#8216;nitelik&#8217; adı veriyoruz. Mesela:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Falanca</span><span class="p">():</span>
+içinde salt verileri tutan değişkenlere ‘nitelik’ adı veriyoruz. Mesela:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Falanca</span><span class="p">():</span>
     <span class="n">nitelik</span> <span class="o">=</span> <span class="s1">&#39;nitelik&#39;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nitelik</span> <span class="o">=</span> <span class="s1">&#39;nitelik&#39;</span>
 </pre></div>
 </div>
 <p>Burada <cite>nitelik</cite> bir sınıf niteliği, <cite>self.nitelik</cite> ise bir örnek niteliğidir.</p>
 <p>Buna karşılık, bir sınıf içinde fonksiyon biçiminde yer alan ve bir işlemi veya
 prosedürü yerine getiren öğelere ise metot adı veriyoruz. Mesela:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Falanca</span><span class="p">():</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Falanca</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">pass</span>
 
     <span class="k">def</span> <span class="nf">örnek_fonk</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -902,53 +892,53 @@ prosedürü yerine getiren öğelere ise metot adı veriyoruz. Mesela:</p>
         <span class="k">pass</span>
 </pre></div>
 </div>
-<p>Burada <tt class="docutils literal"><span class="pre">örnek_fonk()</span></tt> adlı fonksiyon bir örnek metodu, <tt class="docutils literal"><span class="pre">sınıf_fonk()</span></tt> adlı
-fonksiyon bir sınıf metodu, <tt class="docutils literal"><span class="pre">statik_fonk()</span></tt> adlı fonksiyon ise bir statik
+<p>Burada <code class="docutils literal notranslate"><span class="pre">örnek_fonk()</span></code> adlı fonksiyon bir örnek metodu, <code class="docutils literal notranslate"><span class="pre">sınıf_fonk()</span></code> adlı
+fonksiyon bir sınıf metodu, <code class="docutils literal notranslate"><span class="pre">statik_fonk()</span></code> adlı fonksiyon ise bir statik
 metottur. Metotlar ile niteliklerin gerçekleştirebilecekleri işlemlerin
 karmaşıklığının birbirinden farklı olmasının yanı sıra, bunlar arasında kullanım
-açısından da farklılık vardır. Mesela <tt class="docutils literal"><span class="pre">Falanca()</span></tt> sınıfı içindeki <cite>nitelik</cite>
+açısından da farklılık vardır. Mesela <code class="docutils literal notranslate"><span class="pre">Falanca()</span></code> sınıfı içindeki <cite>nitelik</cite>
 adlı sınıf niteliğini şu şekilde kullanıyoruz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Falanca</span><span class="o">.</span><span class="n">nitelik</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Falanca</span><span class="o">.</span><span class="n">nitelik</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Falanca</span><span class="o">.</span><span class="n">nitelik</span> <span class="o">=</span> <span class="s1">&#39;yeni değer&#39;</span>
 </pre></div>
 </div>
-<p>Aynı sınıf içindeki <tt class="docutils literal"><span class="pre">sınıf_fonk()</span></tt> adlı sınıf metoduna ise şöyle erişiyoruz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Falanca</span><span class="o">.</span><span class="n">sınıf_fonk</span><span class="p">()</span>
+<p>Aynı sınıf içindeki <code class="docutils literal notranslate"><span class="pre">sınıf_fonk()</span></code> adlı sınıf metoduna ise şöyle erişiyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Falanca</span><span class="o">.</span><span class="n">sınıf_fonk</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Niteliklerin aksine, metotlarda atama yoluyla değer değiştirme gibi bir şey söz
 konusu değildir. Yani şuna benzer bir şey yazamayız:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Falanca</span><span class="o">.</span><span class="n">sınıf_fonk</span><span class="p">()</span> <span class="o">=</span> <span class="s1">&#39;yeni değer&#39;</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Falanca</span><span class="o">.</span><span class="n">sınıf_fonk</span><span class="p">()</span> <span class="o">=</span> <span class="s1">&#39;yeni değer&#39;</span>
 </pre></div>
 </div>
 <p>Eğer metot bir parametre alıyorsa (yukarıdaki örneklerde metotlar parametre
 almıyor), bu parametreyi kullanarak metotla iletişim kurabiliriz. Mesela:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Falanca</span><span class="o">.</span><span class="n">sınıf_fonk</span><span class="p">(</span><span class="n">yeni_değer</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Falanca</span><span class="o">.</span><span class="n">sınıf_fonk</span><span class="p">(</span><span class="n">yeni_değer</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><em>Property</em> kelimesi (<em>attribute</em> kelimesine benzer bir şekilde) İngilizcede
-&#8216;özellik, nitelik&#8217; gibi anlamlara gelir. Kelime anlamına uygun olarak,
+‘özellik, nitelik’ gibi anlamlara gelir. Kelime anlamına uygun olarak,
 <cite>&#64;property</cite> bezeyicisinin yaptığı en temel iş, bir metodu, nitelik gibi
 kullanılabilecek hale getirmektir. Çok basit bir örnek verelim:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Program</span><span class="p">():</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Program</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">pass</span>
 
     <span class="k">def</span> <span class="nf">versiyon</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="s1">&#39;0.1&#39;</span>
 </pre></div>
 </div>
-<p>Burada <tt class="docutils literal"><span class="pre">versiyon()</span></tt> adlı bir örnek metodu tanımladık. Bu programı şöyle
+<p>Burada <code class="docutils literal notranslate"><span class="pre">versiyon()</span></code> adlı bir örnek metodu tanımladık. Bu programı şöyle
 kullanıyoruz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">program</span> <span class="o">=</span> <span class="n">Program</span><span class="p">()</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">program</span> <span class="o">=</span> <span class="n">Program</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">program</span><span class="o">.</span><span class="n">versiyon</span><span class="p">()</span>
 
 <span class="go">&#39;0.1&#39;</span>
 </pre></div>
 </div>
 <p>Şimdi programımızda şu değişikliği yapalım:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Program</span><span class="p">():</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Program</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">pass</span>
 
     <span class="nd">@property</span>
@@ -956,54 +946,54 @@ kullanıyoruz:</p>
         <span class="k">return</span> <span class="s1">&#39;0.1&#39;</span>
 </pre></div>
 </div>
-<p>Burada <tt class="docutils literal"><span class="pre">versiyon()</span></tt> adlı metodu <cite>&#64;property</cite> bezeyicisi ile &#8216;bezedik&#8217;. Böylece
-bu metodu bir &#8216;nitelik&#8217; haline getirmiş olduk. Artık bunu şöyle kullanabiliriz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">program</span> <span class="o">=</span> <span class="n">Program</span><span class="p">()</span>
+<p>Burada <code class="docutils literal notranslate"><span class="pre">versiyon()</span></code> adlı metodu <cite>&#64;property</cite> bezeyicisi ile ‘bezedik’. Böylece
+bu metodu bir ‘nitelik’ haline getirmiş olduk. Artık bunu şöyle kullanabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">program</span> <span class="o">=</span> <span class="n">Program</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">program</span><span class="o">.</span><span class="n">versiyon</span>
 
 <span class="go">&#39;0.1&#39;</span>
 </pre></div>
 </div>
-<p><tt class="docutils literal"><span class="pre">versiyon()</span></tt> fonksiyonunu, <cite>&#64;property</cite> bezeyicisi yardımıyla bir niteliğe
+<p><code class="docutils literal notranslate"><span class="pre">versiyon()</span></code> fonksiyonunu, <cite>&#64;property</cite> bezeyicisi yardımıyla bir niteliğe
 dönüştürdüğümüz için, artık bu fonksiyonu parantezsiz kullandığımıza dikkat
 edin.</p>
 <p>Gördüğünüz gibi, <cite>&#64;property</cite> bezeyicisinin ilk görevi bir metodu niteliğe
 dönüştürmek. Peki acaba neden bir metodu niteliğe dönüştürmek istiyor
 olabiliriz?</p>
 <p>Şöyle bir program yazdığınızı düşünün:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Program</span><span class="p">():</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Program</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 </div>
 <p>Yazdığınız bu programı kullananlar, sınıf içindeki <cite>data</cite> niteliğine şu şekilde
 erişiyor:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Program</span><span class="p">()</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Program</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">data</span>
 
 <span class="go">0</span>
 </pre></div>
 </div>
 <p>Hatta duruma göre bu niteliği şu şekilde değişikliğe de uğratıyor:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="mi">1</span>
 </pre></div>
 </div>
-<p>Günün birinde, &#8216;data&#8217; kelimesi yerine &#8216;veri&#8217; kelimesinin daha uygun olduğunu
-düşünerek, &#8216;data&#8217; kelimesini &#8216;veri&#8217; olarak değiştirmek istediğinizi varsayalım.
+<p>Günün birinde, ‘data’ kelimesi yerine ‘veri’ kelimesinin daha uygun olduğunu
+düşünerek, ‘data’ kelimesini ‘veri’ olarak değiştirmek istediğinizi varsayalım.
 Bunun için kodlarınızda şu değişikliği yapabilirsiniz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Program</span><span class="p">():</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Program</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">veri</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 </div>
 <p>Ancak bu şekilde, programınızı eskiden beri kullananların, sizin yazdığınız bu
-programı temel alarak oluşturdukları programları bozmuş oldunuz... Çünkü eğer bu
+programı temel alarak oluşturdukları programları bozmuş oldunuz… Çünkü eğer bu
 programdan faydalanan birisi, yazdığı kodda eski <cite>self.data</cite> değişkenini
 kullanmışsa, yukarıdaki isim değişikliği yüzünden programı kullanılamaz hale
 gelecektir. İşte bunu önlemek için <cite>&#64;property</cite> bezeyicisini kullanabilirsiniz.</p>
 <p>Dikkatlice bakın:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Program</span><span class="p">():</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Program</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">veri</span> <span class="o">=</span> <span class="mi">0</span>
 
     <span class="nd">@property</span>
@@ -1011,14 +1001,14 @@ gelecektir. İşte bunu önlemek için <cite>&#64;property</cite> bezeyicisini k
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">veri</span>
 </pre></div>
 </div>
-<p>Bu şekilde, <cite>self.data</cite> niteliğine yapılan bütün çağrılar <tt class="docutils literal"><span class="pre">data()</span></tt> adlı metot
+<p>Bu şekilde, <cite>self.data</cite> niteliğine yapılan bütün çağrılar <code class="docutils literal notranslate"><span class="pre">data()</span></code> adlı metot
 vasıtasıyla <cite>self.veri</cite> niteliğine yönlendirilecek. Böylece başkalarının bu
 programı kullanarak yazdığı eski kodları bozmadan, programımızda istediğimiz
 değişikliği yapmış olduk. Yani programımızda geriye dönük uyumluluğu (<em>backwards
 compatibility</em>) sağlamış olduk.</p>
-<p>Yukarıdaki kodlarda <cite>&#64;property</cite> bezeyicisini kullanarak <tt class="docutils literal"><span class="pre">data()</span></tt> metodunu bir
+<p>Yukarıdaki kodlarda <cite>&#64;property</cite> bezeyicisini kullanarak <code class="docutils literal notranslate"><span class="pre">data()</span></code> metodunu bir
 niteliğe dönüştürdüğümüz için artık şöyle bir kullanım mümkün:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Program</span><span class="p">()</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Program</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">data</span>
 
 <span class="go">0</span>
@@ -1030,7 +1020,7 @@ niteliğe dönüştürdüğümüz için artık şöyle bir kullanım mümkün:</
 </div>
 <p>Bu yapıda, <cite>self.veri</cite> üzerindeki değişiklikler <cite>self.data</cite> niteliğine de
 yansıyacaktır:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">veri</span> <span class="o">=</span> <span class="mi">5</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">veri</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">data</span>
 
 <span class="go">5</span>
@@ -1038,11 +1028,11 @@ yansıyacaktır:</p>
 </div>
 </div>
 <div class="section" id="salt-okunur-nitelikler">
-<h3>Salt Okunur Nitelikler<a class="headerlink" href="#salt-okunur-nitelikler" title="Permalink to this headline">¶</a></h3>
+<h3>Salt Okunur Nitelikler<a class="headerlink" href="#salt-okunur-nitelikler" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
 <p><cite>&#64;property</cite> bezeyicisinin bir başka kabiliyeti de salt okunur nitelikler
 oluşturabilmesidir.</p>
 <p>Mesela yukarıdaki programı temel alarak şöyle bir şey deneyelim:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Program</span><span class="p">()</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Program</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="mi">5</span>
 
 <span class="gt">Traceback (most recent call last):</span>
@@ -1051,32 +1041,32 @@ oluşturabilmesidir.</p>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi, <cite>data</cite> niteliği üzerinde değişiklik yapamıyoruz. Dolayısıyla,
-kodlarınızı kullananların değiştirmesini istemediğiniz, &#8216;salt okunur&#8217; nitelikler
+kodlarınızı kullananların değiştirmesini istemediğiniz, ‘salt okunur’ nitelikler
 oluşturmak için <cite>&#64;property</cite> bezeyicisinden yararlanabilirsiniz.</p>
 </div>
 <div class="section" id="veri-dogrulamasi">
-<h3>Veri Doğrulaması<a class="headerlink" href="#veri-dogrulamasi" title="Permalink to this headline">¶</a></h3>
+<h3>Veri Doğrulaması<a class="headerlink" href="#veri-dogrulamasi" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
 <p><cite>&#64;property</cite> bezeyicisinin üç önemli işlevi bulunur:</p>
 <ul class="simple">
-<li>Değer döndürmek</li>
-<li>Değer atamak</li>
-<li>Değer silmek</li>
+<li><p>Değer döndürmek</p></li>
+<li><p>Değer atamak</p></li>
+<li><p>Değer silmek</p></li>
 </ul>
 <p>Yukarıdaki örneklerde bu bezeyicinin değer döndürme işlevini görmüştük. Şimdi
 ise bu bezeyicinin değer atama işlevini anlamaya çalışalım.</p>
-<p>Bildiğiniz gibi, <cite>&#64;property</cite> bezeyicisinin &#8216;değer döndürme&#8217; işlevini kullanarak,
+<p>Bildiğiniz gibi, <cite>&#64;property</cite> bezeyicisinin ‘değer döndürme’ işlevini kullanarak,
 bir niteliğe erişimi kısıtlayabiliyoruz. Örneğin, zamanında şöyle bir kod
 yazdığımızı varsayalım:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Program</span><span class="p">():</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Program</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sayı</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 </div>
 <p>Daha sonra herhangi bir sebepten ötürü buradaki <cite>self.sayı</cite> niteliğine erişimi
 kısıtlayıp bu niteliği üzerinde değişiklik yapılamaz hale getirmek istersek
 <cite>&#64;property</cite> bezeyicisinden yararlanabiliriz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Program</span><span class="p">():</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Program</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_sayı</span> <span class="o">=</span> <span class="mi">0</span>
 
     <span class="nd">@property</span>
@@ -1087,23 +1077,23 @@ kısıtlayıp bu niteliği üzerinde değişiklik yapılamaz hale getirmek ister
 <p>Gördüğünüz gibi, öncelikle <cite>self.sayı</cite> adlı niteliği, başına bir alt çizgi
 getirerek normal erişime kapatmak istediğimizi belirttik. Bu kodları görenler,
 <cite>sayı</cite> niteliğinin yarı-gizli bir üye olduğunu anlayıp ona göre davranacak.
-Ayrıca biraz sonra tanımlayacağımız <tt class="docutils literal"><span class="pre">sayı()</span></tt> fonksiyonuyla bu değişkenin
-adının birbirine karışmaması için de bir önlem almış olacağız. Python&#8217;da bir
+Ayrıca biraz sonra tanımlayacağımız <code class="docutils literal notranslate"><span class="pre">sayı()</span></code> fonksiyonuyla bu değişkenin
+adının birbirine karışmaması için de bir önlem almış olacağız. Python’da bir
 değişkenin adını değiştirmeden o değişkene erişimi kontrol altına almak
 istediğimizde tek alt çizgi kullanmak tercih edilen bir yöntemdir.</p>
-<p>Daha sonra da <tt class="docutils literal"><span class="pre">sayı()</span></tt> fonksiyonumuzu tanımlıyoruz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="nd">@property</span>
+<p>Daha sonra da <code class="docutils literal notranslate"><span class="pre">sayı()</span></code> fonksiyonumuzu tanımlıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@property</span>
 <span class="k">def</span> <span class="nf">sayı</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sayı</span>
 </pre></div>
 </div>
-<p>Bu <tt class="docutils literal"><span class="pre">sayı()</span></tt> fonksiyonunu <cite>&#64;property</cite> ile bezediğimiz için, fonksiyon bir
+<p>Bu <code class="docutils literal notranslate"><span class="pre">sayı()</span></code> fonksiyonunu <cite>&#64;property</cite> ile bezediğimiz için, fonksiyon bir
 niteliğe dönüştü ve <cite>sayı</cite> değişkenini salt okunur hale getirdi. Eğer amacınız
 değişkeni salt okunur hale getirmek değilse <cite>&#64;property</cite> ile bezediğimiz
 fonksiyon için bir <cite>setter</cite> parametresi tanımlayabilirsiniz. Nasıl mı?
 Dikkatlice inceleyin:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Program</span><span class="p">():</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Program</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_sayı</span> <span class="o">=</span> <span class="mi">0</span>
 
     <span class="nd">@property</span>
@@ -1121,7 +1111,7 @@ hale getirmek ve bu yazma işleminin nasıl olacağını belirlemek için özel 
 <cite>.setter</cite> bezeyicisi ile bezenmiş yeni bir fonksiyon tanımlayabilirsiniz.</p>
 <p>Biz yukarıda, yine <cite>sayı</cite> adını taşıyan, <cite>.setter</cite> ile bezenmiş bir fonksiyon
 daha tanımladık:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="nd">@sayı</span><span class="o">.</span><span class="n">setter</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@sayı</span><span class="o">.</span><span class="n">setter</span>
 <span class="k">def</span> <span class="nf">sayı</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">yeni_değer</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_sayı</span> <span class="o">=</span> <span class="n">yeni_değer</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sayı</span>
@@ -1129,7 +1119,7 @@ daha tanımladık:</p>
 </div>
 <p>Yukarıdaki kodları çalıştırdığımızda, <cite>_sayı</cite> değişkenine <cite>sayı</cite> adı ile normal
 bir şekilde erişip istediğimiz değişikliği yapabiliyoruz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Program</span><span class="p">()</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Program</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">sayı</span>
 
 <span class="go">0</span>
@@ -1145,8 +1135,8 @@ tanımlamış olmamız sayesinde değişiklik kabul ediyor.</p>
 <p><cite>.setter</cite> bezeyicisini, bir niteliği yazılabilir hale getirmenin yanı sıra,
 doğrulama işlemleri için de kullanabilirsiniz.</p>
 <p>Basit bir örnek verelim:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Program</span><span class="p">():</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Program</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_sayı</span> <span class="o">=</span> <span class="mi">0</span>
 
     <span class="nd">@property</span>
@@ -1166,9 +1156,9 @@ doğrulama işlemleri için de kullanabilirsiniz.</p>
 <p>Burada, <cite>self.sayı</cite> niteliğinin değerini çift sayılarla sınırlandırdık. Veri
 doğrulama/kısıtlama işlemini <cite>.setter</cite> bezeyicisi içinden gerçekleştirdiğimize
 dikkatinizi çekmek isterim. Buna göre, eğer <cite>self.sayı</cite> değişkenine girilen
-değer bir çift sayı ise bu değişikliği kabul ediyoruz. Aksi halde &#8216;çift değil!&#8217;
+değer bir çift sayı ise bu değişikliği kabul ediyoruz. Aksi halde ‘çift değil!’
 uyarısı gösteriyoruz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Program</span><span class="p">()</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Program</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">sayı</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">sayı</span> <span class="o">=</span> <span class="mi">5</span>
 
@@ -1177,8 +1167,8 @@ uyarısı gösteriyoruz:</p>
 </div>
 <p>Bu arada, <cite>.setter</cite> dışında <cite>.deleter</cite> adlı özel bir <cite>&#64;property</cite> bezeyicisi daha
 bulunur. Bunu da bir değeri silmek için kullanıyoruz:</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Program</span><span class="p">():</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Program</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_sayı</span> <span class="o">=</span> <span class="mi">0</span>
 
     <span class="nd">@property</span>
@@ -1202,12 +1192,12 @@ bulunur. Bunu da bir değeri silmek için kullanıyoruz:</p>
 <p>Gördüğünüz gibi, <cite>&#64;property</cite> bezeyicisini kullanırken üç ayrı metot
 tanımlıyoruz:</p>
 <ul class="simple">
-<li>İlgili niteliğe nasıl ulaşacağımızı gösteren bir metot: Bu metodu <cite>&#64;property</cite>
-ile beziyoruz.</li>
-<li>İlgili niteliği nasıl ayarlayacağımızı gösteren bir metot: Bu metodu
-<cite>&#64;metot_adı.setter</cite> şeklinde beziyoruz.</li>
-<li>İlgili niteliği nasıl sileceğimizi gösteren bir metot: Bu metodu
-<cite>&#64;metot_adı.deleter</cite> şeklinde beziyoruz.</li>
+<li><p>İlgili niteliğe nasıl ulaşacağımızı gösteren bir metot: Bu metodu <cite>&#64;property</cite>
+ile beziyoruz.</p></li>
+<li><p>İlgili niteliği nasıl ayarlayacağımızı gösteren bir metot: Bu metodu
+<cite>&#64;metot_adı.setter</cite> şeklinde beziyoruz.</p></li>
+<li><p>İlgili niteliği nasıl sileceğimizi gösteren bir metot: Bu metodu
+<cite>&#64;metot_adı.deleter</cite> şeklinde beziyoruz.</p></li>
 </ul>
 <p>Bu bölümde nesne tabanlı programlamanın orta-ileri düzey sayılabilecek yönlerine
 temas ettik. Artık nesne tabanlı programlamanın temellerinden biraz daha
@@ -1220,17 +1210,18 @@ fazlasını bildiğinizi rahatlıkla iddia edebilirsiniz.</p>
 
 <div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
 <div class='extrarelbar'> 
-    <div class="related">
-      <h3>Navigation</h3>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="nesne_tabanli_programlama5.html" title="Nesne Tabanlı Programlama (Devamı)"
-             >next</a></li>
+             >sonraki</a></li>
         <li class="right" >
           <a href="nesne_tabanli_programlama3.html" title="Nesne Tabanlı Programlama (Devamı)"
-             >previous</a> |</li>
+             >önceki</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
- 
+
+        <li class="nav-item nav-item-this"><a href="">Nesne Tabanlı Programlama (Devamı)</a></li> 
       </ul>
     </div> </div>
 
@@ -1265,28 +1256,30 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 
 
+            <div class="clearer"></div>
           </div>
       </div>
       <div class="clearer"></div>
     </div> 
-    <div class="related">
-      <h3>Navigation</h3>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="nesne_tabanli_programlama5.html" title="Nesne Tabanlı Programlama (Devamı)"
-             >next</a></li>
+             >sonraki</a></li>
         <li class="right" >
           <a href="nesne_tabanli_programlama3.html" title="Nesne Tabanlı Programlama (Devamı)"
-             >previous</a> |</li>
+             >önceki</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
- 
+
+        <li class="nav-item nav-item-this"><a href="">Nesne Tabanlı Programlama (Devamı)</a></li> 
       </ul>
     </div> 
 
 <div class="footer">
 &copy; Copyright 2007-2021, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Last updated on 30.01.2021.
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+Son güncelleme: 12.03.2021.
+<a href="http://sphinx-doc.org/">Sphinx</a> 3.2.1 kullanılarak oluşturuldu.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img

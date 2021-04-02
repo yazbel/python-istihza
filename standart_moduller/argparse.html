@@ -1,43 +1,31 @@
 
  <!DOCTYPE html>
- <html lang="">
+ <html lang="tr">
 
 
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="tr">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta content="Bu bölümde argparse modülünü inceleyeceğiz." name="description" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta content="Bu bölümde argparse modülünü inceleyeceğiz." name="description" />
 <meta content="python, python3, argparse" name="keywords" />
 
-    <title>argparse Modülü &mdash; Python 3 için Türkçe Kılavuz</title>
-    
+    <title>argparse Modülü &#8212; Python 3 için Türkçe Kılavuz</title>
     <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '3',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/translations.js"></script>
-    <link rel="top" title="Python 3 için Türkçe Kılavuz" href="../index.html" />
-    <link rel="up" title="Önemli Standart Kütüphane Modülleri" href="index.html" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="search" title="Ara" href="../search.html" />
     <link rel="next" title="Üçüncü Taraf Modüller" href="../Ucuncu_taraf_moduller/index.html" />
     <link rel="prev" title="sys Modülü" href="sys.html" />
 <!--[if lte IE 6]>
 <link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
 <![endif]-->
 
-  </head>
-  <body>
+  </head><body>
 <div class='header'><a href='https://yazbel.com'><img src="../_static/logo.png"></a></div>
 
 <ul class='navbar'>
@@ -46,48 +34,49 @@
 </ul>
 
 
-    <div class="related">
-      <h3>Navigation</h3>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="../Ucuncu_taraf_moduller/index.html" title="Üçüncü Taraf Modüller"
-             accesskey="N">next</a></li>
+             accesskey="N">sonraki</a></li>
         <li class="right" >
           <a href="sys.html" title="sys Modülü"
-             accesskey="P">previous</a> |</li>
+             accesskey="P">önceki</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
 
-          <li><a href="index.html" accesskey="U">Önemli Standart Kütüphane Modülleri</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Önemli Standart Kütüphane Modülleri</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">argparse Modülü</a></li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
-          <div class="body">
+          <div class="body" role="main">
             
 
   <div class="section" id="argparse-modulu">
-<h1>argparse Modülü<a class="headerlink" href="#argparse-modulu" title="Permalink to this headline">¶</a></h1>
+<h1>argparse Modülü<a class="headerlink" href="#argparse-modulu" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
 <div class="section" id="giris">
-<h2>Giriş<a class="headerlink" href="#giris" title="Permalink to this headline">¶</a></h2>
+<h2>Giriş<a class="headerlink" href="#giris" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Yazdığımız her uygulama grafik arayüzüne sahip olmaz. Bazı uygulamalar komut satırına daha uygundur ve bu uygulamalar bazı parametrelere ihtiyaç duyar. argparse modülü kullanıcıdan aldığımız parametreler için yardım mesajları, nasıl kullanıldığına yönelik mesajları üretir. Ayrıca bu modül kullanıcı geçersiz parametre girerse uygun hata mesajını bastırır.</p>
 <div class="section" id="ayristirici-olusturmak">
-<h3>Ayrıştırıcı Oluşturmak<a class="headerlink" href="#ayristirici-olusturmak" title="Permalink to this headline">¶</a></h3>
+<h3>Ayrıştırıcı Oluşturmak<a class="headerlink" href="#ayristirici-olusturmak" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
 <p>İlk olarak modülümüzü dahil etmemiz gerekiyor. Modülümüzü dahil ettikten sonra ayrıştırıcımız için nesne oluşturuyoruz.:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 </pre></div>
 </div>
 <p>Ardından <cite>ArgumentParser</cite> üzerinden yeni bir nesne oluşturuyoruz.:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">ayristirici</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Bu uygulama bazı işler yapıyor.&#39;</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ayristirici</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Bu uygulama bazı işler yapıyor.&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Artık argümanlar ekleyebiliriz.</p>
 </div>
 <div class="section" id="arguman-eklemek">
-<h3>Argüman Eklemek<a class="headerlink" href="#arguman-eklemek" title="Permalink to this headline">¶</a></h3>
+<h3>Argüman Eklemek<a class="headerlink" href="#arguman-eklemek" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
 <p><cite>ArgumentParser</cite> nesnesine gerekli tüm bilgileri verdikten sonra, <cite>add_argument()</cite> fonksiyonu ile argümanları ekleyebiliriz.</p>
 <p>Örnek:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">ayristirici</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-i&#39;</span><span class="p">,</span> <span class="s1">&#39;--ilk_arguman&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Bu ilk argümandır&quot;</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ayristirici</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-i&#39;</span><span class="p">,</span> <span class="s1">&#39;--ilk_arguman&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Bu ilk argümandır&quot;</span><span class="p">)</span>
 <span class="n">ayristirici</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-a&#39;</span><span class="p">,</span> <span class="s1">&#39;--ikinci_arguman&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Bu ikinci argümandır&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -96,55 +85,55 @@
 görmek için argparse modülünün print_help() fonksiyonunu kullanacağız.</strong></p>
 </div>
 <div class="section" id="arguman-ayristirmak">
-<h3>Argüman Ayrıştırmak<a class="headerlink" href="#arguman-ayristirmak" title="Permalink to this headline">¶</a></h3>
+<h3>Argüman Ayrıştırmak<a class="headerlink" href="#arguman-ayristirmak" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
 <p><cite>ArgumentParser</cite> nesnesi <cite>parse_args()</cite> fonksiyonu yardımıyla argümanları ayrıştırmamıza sağlar.
 Etkileşimli kabuğumuza:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">ayristirici</span><span class="o">.</span><span class="n">parse_args</span><span class="p">([</span><span class="s1">&#39;-a&#39;</span><span class="p">,</span> <span class="s1">&#39;7&#39;</span><span class="p">])</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ayristirici</span><span class="o">.</span><span class="n">parse_args</span><span class="p">([</span><span class="s1">&#39;-a&#39;</span><span class="p">,</span> <span class="s1">&#39;7&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>yazalım ve çıktımızı inceleyelim.</p>
 <p>Çıktımız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">ikinci_arguman</span><span class="o">=</span><span class="s1">&#39;7&#39;</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">ikinci_arguman</span><span class="o">=</span><span class="s1">&#39;7&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><cite>parse_args</cite> fonksionuna biz &#8216;-a&#8217; parametresine vermemize rağmen ayrıştırıcımız bize argümanin ikinci ismini ve ona atadığımız değeri -7- verdi.</p>
+<p><cite>parse_args</cite> fonksionuna biz ‘-a’ parametresine vermemize rağmen ayrıştırıcımız bize argümanin ikinci ismini ve ona atadığımız değeri -7- verdi.</p>
 </div>
 </div>
 <div class="section" id="argumentparser-nesnesi">
-<h2>ArgumentParser Nesnesi<a class="headerlink" href="#argumentparser-nesnesi" title="Permalink to this headline">¶</a></h2>
+<h2>ArgumentParser Nesnesi<a class="headerlink" href="#argumentparser-nesnesi" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Temel olarak <cite>ArgumentParser</cite> nesnemizin yapısı:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">prog</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">usage</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">epilog</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="p">[],</span> <span class="n">formatter_class</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">HelpFormatter</span><span class="p">,</span> <span class="n">prefix_chars</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">fromfile_prefix_chars</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">argument_default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">conflict_handler</span><span class="o">=</span><span class="s1">&#39;error&#39;</span><span class="p">,</span> <span class="n">add_help</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">allow_abbrev</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">prog</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">usage</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">epilog</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="p">[],</span> <span class="n">formatter_class</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">HelpFormatter</span><span class="p">,</span> <span class="n">prefix_chars</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">fromfile_prefix_chars</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">argument_default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">conflict_handler</span><span class="o">=</span><span class="s1">&#39;error&#39;</span><span class="p">,</span> <span class="n">add_help</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">allow_abbrev</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Yeni bir <cite>ArgumentParser</cite> nesnesi oluşturulduğunda alacağı tüm argümanlar anahtar kelime -keyword- olarak iletilmeli.</p>
 <div class="section" id="argumanlar-ve-aciklamalari">
-<h3>Argümanlar ve Açıklamaları<a class="headerlink" href="#argumanlar-ve-aciklamalari" title="Permalink to this headline">¶</a></h3>
+<h3>Argümanlar ve Açıklamaları<a class="headerlink" href="#argumanlar-ve-aciklamalari" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
 <ul class="simple">
-<li>prog: Uygulamanın adı (varsayılan: sys.argv[0])</li>
-<li>usage: Uygulamanın kullanım amacını açıklayan bir metin. (varsayılan: Uygulamaya eklenen parametrelerden oluşur)</li>
-<li>description: Argüman yardımından önce ekrana çıkar açıklama metni (varsayılan: <cite>None</cite>)</li>
-<li>epilog: Argüman yardımından sonra ekrana çıkan açıklama metni (varsayılan: <cite>None</cite>)</li>
-<li>parents: Farklı bir ArgumentParser nesnesinin sahip olduğu argümanları dahil eder.</li>
-<li>formatter_class: Yardım çıktılarını kişiselleştirir.</li>
-<li>prefix_chars: İsteğe bağlı argümanların önüne konulan karakteri ayarlar. (varsayılan: <cite>-</cite>)</li>
-<li>fromfile_prefix_chars: Ek argümanların okunması gereken dosyayı önekleyen karakter kümesi. (varsayılan: <cite>None</cite>)</li>
-<li>argument_default: Argümanlar için global değer. (varsayılan: <cite>None</cite>)</li>
-<li>conflict_handler: Çakışan argümanlar için çözüm stratejisi. (genellikle gereksiz)</li>
-<li>add_help: -h / &#8211;help seçeneğini ayrıştırıcıya ekler. (varsayılan: <cite>True</cite>)</li>
-<li>allow_abbrev: Kısaltmalar net değilse uzun seçeneklerin kısaltılmasını sağlar. (Varsayılan: <cite>None</cite>)</li>
+<li><p>prog: Uygulamanın adı (varsayılan: sys.argv[0])</p></li>
+<li><p>usage: Uygulamanın kullanım amacını açıklayan bir metin. (varsayılan: Uygulamaya eklenen parametrelerden oluşur)</p></li>
+<li><p>description: Argüman yardımından önce ekrana çıkar açıklama metni (varsayılan: <cite>None</cite>)</p></li>
+<li><p>epilog: Argüman yardımından sonra ekrana çıkan açıklama metni (varsayılan: <cite>None</cite>)</p></li>
+<li><p>parents: Farklı bir ArgumentParser nesnesinin sahip olduğu argümanları dahil eder.</p></li>
+<li><p>formatter_class: Yardım çıktılarını kişiselleştirir.</p></li>
+<li><p>prefix_chars: İsteğe bağlı argümanların önüne konulan karakteri ayarlar. (varsayılan: <cite>-</cite>)</p></li>
+<li><p>fromfile_prefix_chars: Ek argümanların okunması gereken dosyayı önekleyen karakter kümesi. (varsayılan: <cite>None</cite>)</p></li>
+<li><p>argument_default: Argümanlar için global değer. (varsayılan: <cite>None</cite>)</p></li>
+<li><p>conflict_handler: Çakışan argümanlar için çözüm stratejisi. (genellikle gereksiz)</p></li>
+<li><p>add_help: -h / –help seçeneğini ayrıştırıcıya ekler. (varsayılan: <cite>True</cite>)</p></li>
+<li><p>allow_abbrev: Kısaltmalar net değilse uzun seçeneklerin kısaltılmasını sağlar. (Varsayılan: <cite>None</cite>)</p></li>
 </ul>
 <div class="section" id="prog-argumani">
-<h4>prog argümanı<a class="headerlink" href="#prog-argumani" title="Permalink to this headline">¶</a></h4>
+<h4>prog argümanı<a class="headerlink" href="#prog-argumani" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p><cite>ArgumentParser</cite> nesnesi varsayılan olarak <cite>sys.argv[0]</cite> çıktısını uygulama ismi olarak kullanır. Bu genellikle tercih edilen bir yöntemdir çünkü çoğu zaman uygulama ismi ile dosya ismi aynı olur.</p>
 <p><cite>ilkuygulama.py</cite> isimli bir dosya oluşturalım ve içine kodlarımızı yazalım:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 <span class="n">ayristirici</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
 <span class="n">ayristirici</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--foo&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;foo yardım&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">ayristirici</span><span class="o">.</span><span class="n">print_help</span><span class="p">())</span>
 </pre></div>
 </div>
 <p>Çıktımız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">foo</span> <span class="n">FOO</span><span class="p">]</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">foo</span> <span class="n">FOO</span><span class="p">]</span>
 
 <span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
 <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>  <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
@@ -152,14 +141,14 @@ Etkileşimli kabuğumuza:</p>
 </pre></div>
 </div>
 <p>Gördüğümüz gibi uygulama ismimiz ekrana çıktı ancak biz uygulamamızın ismini farklı kullanmak istiyorsak? O zaman <cite>ArgumentParser</cite> nesnesine <cite>prog</cite> parametresini uygulama ismini verelim:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 <span class="n">ayristirici</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">prog</span><span class="o">=</span><span class="s1">&#39;Bu benim ilk uygulamam&#39;</span><span class="p">)</span>
 <span class="n">ayristirici</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--foo&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;foo yardım&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">ayristirici</span><span class="o">.</span><span class="n">print_help</span><span class="p">())</span>
 </pre></div>
 </div>
 <p>Çıktımız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">Bu</span> <span class="n">benim</span> <span class="n">ilk</span> <span class="n">uygulamam</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">foo</span> <span class="n">FOO</span><span class="p">]</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">Bu</span> <span class="n">benim</span> <span class="n">ilk</span> <span class="n">uygulamam</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">foo</span> <span class="n">FOO</span><span class="p">]</span>
 
 <span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
 <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>  <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
@@ -169,17 +158,17 @@ Etkileşimli kabuğumuza:</p>
 <p>Uygulamamızın ismi değişti.</p>
 </div>
 <div class="section" id="usage-argumani">
-<h4>usage argümanı<a class="headerlink" href="#usage-argumani" title="Permalink to this headline">¶</a></h4>
+<h4>usage argümanı<a class="headerlink" href="#usage-argumani" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p>Yazdığımız uygulamaya kullanıcı için küçük bir açıklama eklemek isteyebiliriz. Bu işlem için <cite>usage</cite> argümanı bize yetişiyor.</p>
 <p>Hemen kodumuzu deneyelim.:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 <span class="n">ayristirici</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">usage</span><span class="o">=</span><span class="s1">&#39;Bu uygulama şimdilik tek parametre alıyor. &#39;</span><span class="p">)</span>
 <span class="n">ayristirici</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--parametre&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;parametre yardım&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">ayristirici</span><span class="o">.</span><span class="n">print_help</span><span class="p">())</span>
 </pre></div>
 </div>
 <p>Çıktımız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">Bu</span> <span class="n">uygulama</span> <span class="n">şimdilik</span> <span class="n">tek</span> <span class="n">parametre</span> <span class="n">alıyor</span><span class="o">.</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">Bu</span> <span class="n">uygulama</span> <span class="n">şimdilik</span> <span class="n">tek</span> <span class="n">parametre</span> <span class="n">alıyor</span><span class="o">.</span>
 <span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
 <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>            <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
 <span class="o">--</span><span class="n">parametre</span> <span class="n">PARAMETRE</span>
@@ -187,7 +176,7 @@ Etkileşimli kabuğumuza:</p>
 </pre></div>
 </div>
 <p>Eğer biz <cite>usage</cite> parametresini kullanmasaydık o zaman uygulamamız varsayılan olarak tüm parametrelerin sıralı halini kullanacaktı.:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">parametre</span> <span class="n">PARAMETRE</span><span class="p">]</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">parametre</span> <span class="n">PARAMETRE</span><span class="p">]</span>
 <span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
 <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>            <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
 <span class="o">--</span><span class="n">parametre</span> <span class="n">PARAMETRE</span>
@@ -196,18 +185,18 @@ Etkileşimli kabuğumuza:</p>
 </div>
 </div>
 <div class="section" id="description-argumani">
-<h4>description argümanı<a class="headerlink" href="#description-argumani" title="Permalink to this headline">¶</a></h4>
+<h4>description argümanı<a class="headerlink" href="#description-argumani" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p><cite>description</cite> argümanı ile uygulamamız için kısa bilgi ve nasıl çalıştığı hakkında açıklama sunar.
 Yardım mesajı ve parametreler arasında açıklama sunar.</p>
 <p>Kodumuzu yazalım:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 <span class="n">ayristirici</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Uygulama hakkında açıklama metni&#39;</span><span class="p">)</span>
 <span class="n">ayristirici</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--parametre&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;parametre yardım&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">ayristirici</span><span class="o">.</span><span class="n">print_help</span><span class="p">())</span>
 </pre></div>
 </div>
 <p>Çıktımız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">parametre</span> <span class="n">PARAMETRE</span><span class="p">]</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">parametre</span> <span class="n">PARAMETRE</span><span class="p">]</span>
 
 <span class="n">Uygulama</span> <span class="n">hakkında</span> <span class="n">açıklama</span> <span class="n">metni</span>
 
@@ -220,17 +209,17 @@ Yardım mesajı ve parametreler arasında açıklama sunar.</p>
 <p><strong>Varsayılan olarak çıktımız belli bir alana sığdırılır ancak bunu değiştirmek isterseniz `formatter_class` argümanı kullanılır.</strong></p>
 </div>
 <div class="section" id="epilog-argumani">
-<h4>epilog argümanı<a class="headerlink" href="#epilog-argumani" title="Permalink to this headline">¶</a></h4>
+<h4>epilog argümanı<a class="headerlink" href="#epilog-argumani" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p>Yazdığımız bazı uygulamalar daha fazla açıklamaya ihtiyaç duyabilir. Bunun için <cite>epilog</cite> parametresini kullanırız.</p>
 <p>Örnek:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 <span class="n">ayristirici</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">epilog</span><span class="o">=</span><span class="s1">&#39;Uygulama hakkında ikinci açıklama&#39;</span><span class="p">)</span>
 <span class="n">ayristirici</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--parametre&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;parametre yardım&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">ayristirici</span><span class="o">.</span><span class="n">print_help</span><span class="p">())</span>
 </pre></div>
 </div>
 <p>Çıktımız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">parametre</span> <span class="n">PARAMETRE</span><span class="p">]</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">parametre</span> <span class="n">PARAMETRE</span><span class="p">]</span>
 
 <span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
 <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>            <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
@@ -243,11 +232,11 @@ Yardım mesajı ve parametreler arasında açıklama sunar.</p>
 <p><strong>Varsayılan olarak çıktımız belli bir alana sığdırılır ancak bunu değiştirmek isterseniz `formatter_class` argümanı kullanılır.</strong></p>
 </div>
 <div class="section" id="parents-argumani">
-<h4>parents argümanı<a class="headerlink" href="#parents-argumani" title="Permalink to this headline">¶</a></h4>
+<h4>parents argümanı<a class="headerlink" href="#parents-argumani" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p>Bazı durumlarda, argüman ayrıştırıcılar ortak argüman kümesini paylaşabilir. Argüman tanımlarını tekrarlamak yerine ortak argümanları bir kere tanımlayarak tanımlayıp <cite>parents</cite> argümanı ile farklı ayrıştırıcılarda kullanabiliriz.
 <cite>parents</cite> argümanı <cite>ArgumentParser</cite> nesnesi alır.
 Python dosyamızı açalım ve bu kodu yazalım:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 <span class="n">ana_ayristirici</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">add_help</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">ana_ayristirici</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--ilk_arguman&#39;</span><span class="p">)</span>
 <span class="n">ana_ayristirici</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--ikinci_arguman&#39;</span><span class="p">)</span>
@@ -258,7 +247,7 @@ Python dosyamızı açalım ve bu kodu yazalım:</p>
 </pre></div>
 </div>
 <p>Çıktımız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">ilk_arguman</span> <span class="n">ILK_ARGUMAN</span><span class="p">]</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">ilk_arguman</span> <span class="n">ILK_ARGUMAN</span><span class="p">]</span>
                  <span class="p">[</span><span class="o">--</span><span class="n">ikinci_arguman</span> <span class="n">IKINCI_ARGUMAN</span><span class="p">]</span>
                  <span class="n">ucuncu_arguman</span>
 <span class="n">positional</span> <span class="n">arguments</span><span class="p">:</span>
@@ -271,9 +260,9 @@ Python dosyamızı açalım ve bu kodu yazalım:</p>
 </pre></div>
 </div>
 <p><cite>parents</cite> argümanı ile <cite>ana_ayristirici</cite> mızın argümanlarını <cite>ikinci_ayristiri</cite> mizda kullanmış olduk.</p>
-<p><strong>NOT: Ana ayrıştırıcımıza `add_help=False` eklememiz gerekir çünkü her iki ayrıştırıcımız `-h/&#8211;help` argümanına sahip olur ve bu çakışma sebebiyle uygulamamız `raise` hatası verir.</strong></p>
-<p><tt class="docutils literal"><span class="pre">add_help</span></tt> argümanını kaldırıp kodumuzu çalıştıralım:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<p><strong>NOT: Ana ayrıştırıcımıza `add_help=False` eklememiz gerekir çünkü her iki ayrıştırıcımız `-h/–help` argümanına sahip olur ve bu çakışma sebebiyle uygulamamız `raise` hatası verir.</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">add_help</span></code> argümanını kaldırıp kodumuzu çalıştıralım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
   <span class="n">File</span> <span class="s2">&quot;ilkprogram.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">7</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
     <span class="n">ikinci_ayristirici</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="p">[</span><span class="n">ana_ayristirici</span><span class="p">])</span>
   <span class="n">File</span> <span class="s2">&quot;/usr/lib/python3.7/argparse.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1681</span><span class="p">,</span> <span class="ow">in</span> <span class="fm">__init__</span>
@@ -293,10 +282,10 @@ Python dosyamızı açalım ve bu kodu yazalım:</p>
 </div>
 </div>
 <div class="section" id="formatter-class-argumani">
-<h4>formatter_class argümanı<a class="headerlink" href="#formatter-class-argumani" title="Permalink to this headline">¶</a></h4>
+<h4>formatter_class argümanı<a class="headerlink" href="#formatter-class-argumani" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p><cite>ArgumentParser</cite> nesnesi alternatif bir biçimlendirme sınıfı tanımlayıp, yardım mesajlarını kişiselleştirilmesine izin verir.
 Şimdilik dört sınıfa sahiptir.:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">argparse</span><span class="o">.</span><span class="n">RawDescriptionHelpFormatter</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">argparse</span><span class="o">.</span><span class="n">RawDescriptionHelpFormatter</span>
 <span class="k">class</span> <span class="nc">argparse</span><span class="o">.</span><span class="n">RawTextHelpFormatter</span>
 <span class="k">class</span> <span class="nc">argparse</span><span class="o">.</span><span class="n">ArgumentDefaultsHelpFormatter</span>
 <span class="k">class</span> <span class="nc">argparse</span><span class="o">.</span><span class="n">MetavarTypeHelpFormatter</span>
@@ -305,7 +294,7 @@ Python dosyamızı açalım ve bu kodu yazalım:</p>
 <p><cite>RawDescriptionHelpFormatter</cite> ve <cite>RawTextHelpFormatter</cite> metinsel açıklamaların nasıl görüneceği üzerinde daha fazla kontrol sağlar.
 Varsayılan olarak <cite>ArgumentParser</cite> nesnesi <cite>description</cite> ve <cite>epilog</cite> için satır kaydırma özelliğine sahiptir.</p>
 <p>Kodumuzu deneyelim:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 
 <span class="n">ayristirici</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span>
     <span class="n">description</span><span class="o">=</span><span class="s1">&#39;&#39;&#39;Uzunca bir açıklama</span>
@@ -317,7 +306,7 @@ Varsayılan olarak <cite>ArgumentParser</cite> nesnesi <cite>description</cite> 
 </pre></div>
 </div>
 <p>Çıktımız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span>
 
 <span class="n">Uzunca</span> <span class="n">bir</span> <span class="n">açıklama</span> <span class="n">yazıyoruz</span> <span class="n">ve</span> <span class="n">alt</span> <span class="n">satıra</span> <span class="n">inelim</span><span class="o">.</span>
 
@@ -329,7 +318,7 @@ Varsayılan olarak <cite>ArgumentParser</cite> nesnesi <cite>description</cite> 
 </div>
 <p>Görüldüğü üzere biz alt satıra inmiş olsak bile çıktımız aynı satırda görünüyor. Şimdi uygulamamıza <cite>formatter_class</cite> parametresine <cite>RawDescriptionHelpFormatter</cite> ekleyelim.
 Kodumuzu bu şekilde değiştirelim:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 <span class="kn">import</span> <span class="nn">textwrap</span>
 
 <span class="n">ayristirici</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span>
@@ -341,7 +330,7 @@ Kodumuzu bu şekilde değiştirelim:</p>
 </pre></div>
 </div>
 <p>Çıktımızı inceleyelim:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span>
 
 <span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
   <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>  <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
@@ -355,7 +344,7 @@ Kodumuzu bu şekilde değiştirelim:</p>
 new lines are replaced with one. If you wish to preserve multiple blank lines, add spaces between the newlines.</p>
 <p><cite>ArgumentDefaultsHelpFormatter</cite> sınıfı ile argümanların varsayılan değerleri hakkında bilgi eklenebilir.
 Örnek:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 
 <span class="n">ayristirici</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span>
     <span class="n">formatter_class</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentDefaultsHelpFormatter</span><span class="p">)</span>
@@ -365,7 +354,7 @@ new lines are replaced with one. If you wish to preserve multiple blank lines, a
 </pre></div>
 </div>
 <p>Çıktımız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span>usage: ilkprogram.py [-h] [--ilk_arguman ILK_ARGUMAN] ikinci_argüman
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span>usage: ilkprogram.py [-h] [--ilk_arguman ILK_ARGUMAN] ikinci_argüman
 
 positional arguments:
   ikinci_argüman        İkinci argüman yardim mesajı! (default: [1, 2, 3])
@@ -379,7 +368,7 @@ optional arguments:
 <p>Çıktımıza baktığımız zaman yardım mesajlarının yanında varsayılan olarak aldığı değerleri bize gösteriyor.</p>
 <p><cite>MetavarTypeHelpFormatter</cite> sınıfı ile argümanın alacağı değerin tipini ekrana basılır.
 Örnek:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 
 <span class="n">ayristirici</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span>
     <span class="n">formatter_class</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">MetavarTypeHelpFormatter</span><span class="p">)</span>
@@ -389,7 +378,7 @@ optional arguments:
 </pre></div>
 </div>
 <p>Çıktımız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">a</span> <span class="nb">int</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">ikinci_argüman</span> <span class="nb">dict</span><span class="p">]</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">a</span> <span class="nb">int</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">ikinci_argüman</span> <span class="nb">dict</span><span class="p">]</span>
 
 <span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
   <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>            <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
@@ -400,11 +389,11 @@ optional arguments:
 <p>Çıktımıza baktığımızda hangi argümanın alacağı değer tipi argümanın yanında görünür.</p>
 </div>
 <div class="section" id="prefix-chars-argumani">
-<h4>prefix_chars argümanı<a class="headerlink" href="#prefix-chars-argumani" title="Permalink to this headline">¶</a></h4>
-<p>Genellikle komut satırı uygulamalrında argümanlar <cite>-</cite> ön ekini alır. (Örnek : <cite>-f</cite> / <cite>&#8211;arguman</cite>) Ayrıştırıcımız bazı durumlarda farklı veya ek ön eklere ihtiyaç duyabilir.
+<h4>prefix_chars argümanı<a class="headerlink" href="#prefix-chars-argumani" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
+<p>Genellikle komut satırı uygulamalrında argümanlar <cite>-</cite> ön ekini alır. (Örnek : <cite>-f</cite> / <cite>–arguman</cite>) Ayrıştırıcımız bazı durumlarda farklı veya ek ön eklere ihtiyaç duyabilir.
 Örneğin: <cite>+f</cite> veya <cite>/arguman</cite> <cite>ArgumentParser</cite> nesnemizi oluştururken <cite>prefix_chars</cite> argümanını kullanarak bu isteğimizi sağlarız.
 Örnek Kod:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 
 <span class="n">ayristirici</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">prefix_chars</span><span class="o">=</span><span class="s1">&#39;-+&#39;</span><span class="p">)</span>
 <span class="n">ayristirici</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;+f&#39;</span><span class="p">)</span>
@@ -413,7 +402,7 @@ optional arguments:
 </pre></div>
 </div>
 <p>Çıktımız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">+</span><span class="n">f</span> <span class="n">F</span><span class="p">]</span> <span class="p">[</span><span class="o">++</span><span class="n">arguman</span> <span class="n">ARGUMAN</span><span class="p">]</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">+</span><span class="n">f</span> <span class="n">F</span><span class="p">]</span> <span class="p">[</span><span class="o">++</span><span class="n">arguman</span> <span class="n">ARGUMAN</span><span class="p">]</span>
 
 <span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
   <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>         <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
@@ -423,12 +412,12 @@ optional arguments:
 </div>
 </div>
 <div class="section" id="fromfile-prefix-chars-argumani">
-<h4>fromfile_prefix_chars argümanı<a class="headerlink" href="#fromfile-prefix-chars-argumani" title="Permalink to this headline">¶</a></h4>
+<h4>fromfile_prefix_chars argümanı<a class="headerlink" href="#fromfile-prefix-chars-argumani" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p>Bazı zamanlar örneğin uzun argüman listelerini içeren bir uygulama yazdığımız zaman, argümanları komut satırında yazmak yerine
 bir dosya içerisinde tutmak daha mantıklı olur. <cite>ArgumentParser</cite> nesnesine <cite>fromfile_prefix_chars</cite> argümanı verildiği zaman
 daha sonra belirtilen karakterlerden herhangi biriyle başlayan argümanlar dosya olarak kabul edilir ve içerdikleri argümanlar ile değiştirilir.
 Kodumuzu yazalım:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;args.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
     <span class="n">fp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;-i</span><span class="se">\n</span><span class="s1">bar&#39;</span><span class="p">)</span>
@@ -440,26 +429,26 @@ Kodumuzu yazalım:</p>
 <p>Kodumuzu satır satır inceleyelim.</p>
 <blockquote>
 <div><ul class="simple">
-<li><cite>with open(...</cite> satırında <cite>args.txt</cite> dosyasını <cite>w</cite> modunda açıyoruz.</li>
-<li><cite>fp.write...</cite> satırında <cite>i</cite> argümanını ekliyoruz ve <cite>i</cite> argümanına <cite>bar</cite> parametresini dosyamıza yazıyoruz.</li>
-<li>Üçüncü satırımızda <cite>ayristirici</cite> nesnemizi oluşturuyoruz.</li>
-<li>Ardından <cite>i</cite> argümanını ekliyoruz.</li>
-<li>Bu satırda <cite>parse_args</cite> komutu ile argümanımızı ve alacağı değerini döndürüyoruz.</li>
+<li><p><cite>with open(…</cite> satırında <cite>args.txt</cite> dosyasını <cite>w</cite> modunda açıyoruz.</p></li>
+<li><p><cite>fp.write…</cite> satırında <cite>i</cite> argümanını ekliyoruz ve <cite>i</cite> argümanına <cite>bar</cite> parametresini dosyamıza yazıyoruz.</p></li>
+<li><p>Üçüncü satırımızda <cite>ayristirici</cite> nesnemizi oluşturuyoruz.</p></li>
+<li><p>Ardından <cite>i</cite> argümanını ekliyoruz.</p></li>
+<li><p>Bu satırda <cite>parse_args</cite> komutu ile argümanımızı ve alacağı değerini döndürüyoruz.</p></li>
 </ul>
 </div></blockquote>
 <p>Bir dosyadan okunan argümanlar varsayılan
 olarak her satırda bir tane olmalı ve komut satırındaki
 orijinal dosya başvuru argümanı ile aynı yerdeymiş gibi ele alınmalıdır.
-Bu nedenle  örnekte, [<a class="reference external" href="mailto:'&#37;&#52;&#48;args&#46;txt">'<span>&#64;</span>args<span>&#46;</span>txt</a>&#8216;] ifadesi [&#8216;-i&#8217;, &#8216;bar&#8217;] ifadesine eşdeğer olarak kabul edilir.</p>
+Bu nedenle  örnekte, [<a class="reference external" href="mailto:'&#37;&#52;&#48;args&#46;txt">‘<span>&#64;</span>args<span>&#46;</span>txt</a>’] ifadesi [‘-i’, ‘bar’] ifadesine eşdeğer olarak kabul edilir.</p>
 </div>
 <div class="section" id="argument-default-argumani">
-<h4>argument_default argümanı<a class="headerlink" href="#argument-default-argumani" title="Permalink to this headline">¶</a></h4>
+<h4>argument_default argümanı<a class="headerlink" href="#argument-default-argumani" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p>Genellikle, argüman varsayılanları, varsayılan olarak <cite>add_argument()</cite>
 fonksiyonu veya belirli bir ad-değer çiftleri kümesiyle <cite>set_defaults()</cite> fonksiyonunun çağrılmasıyla belirlenir.
 Ancak bazı durumlarda bağımsız değişkenler için tek bir ayrıştırıcıyı varsayılan olarak belirlemek yararlı olablir.
-Örneğin <cite>parse_args()</cite> çağrıldığında, nitelik oluşturmayı global olarak bastırmak için <cite>argument_default=SUPPRESS</cite>&#8216;i kullanırız.
+Örneğin <cite>parse_args()</cite> çağrıldığında, nitelik oluşturmayı global olarak bastırmak için <cite>argument_default=SUPPRESS</cite>’i kullanırız.
 Örnek Kod:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 
 <span class="n">ayristirici</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">argument_default</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">SUPPRESS</span><span class="p">)</span>
 <span class="n">ayristirici</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--arguman&#39;</span><span class="p">)</span>
@@ -469,25 +458,25 @@ Ancak bazı durumlarda bağımsız değişkenler için tek bir ayrıştırıcıy
 </pre></div>
 </div>
 <p>Çıktımız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">arguman</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="n">ikinci_arguman</span><span class="o">=</span><span class="s1">&#39;python&#39;</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">arguman</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="n">ikinci_arguman</span><span class="o">=</span><span class="s1">&#39;python&#39;</span><span class="p">)</span>
 <span class="n">Namespace</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Çıktımıza baktığımız zaman <cite>parse_args()</cite> fonksiyonuna değer verildiğinde bize ad alanı (namespace) olarak argümanımızı ve aldığı değeri döndürüyor.
-İlk ad alanımız istediğimiz gibi çıktıyı verdi ikincisi ise boş şimdi <cite>argument_default=argparse.SUPPRESS</cite>&#8216;i kaldıralım ve çıktıyı tekrar kontrol edelim.</p>
+İlk ad alanımız istediğimiz gibi çıktıyı verdi ikincisi ise boş şimdi <cite>argument_default=argparse.SUPPRESS</cite>’i kaldıralım ve çıktıyı tekrar kontrol edelim.</p>
 <p>Yeni Çıktımız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">arguman</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="n">ikinci_arguman</span><span class="o">=</span><span class="s1">&#39;python&#39;</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">arguman</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="n">ikinci_arguman</span><span class="o">=</span><span class="s1">&#39;python&#39;</span><span class="p">)</span>
 <span class="n">Namespace</span><span class="p">(</span><span class="n">arguman</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ikinci_arguman</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Görüldüğü üzere ikinci çıktımız bu sefer argümanın isimlerini ve değerlerini verdi ancak değerleri olmadığı için <cite>None</cite> olarak döndü.</p>
 </div>
 <div class="section" id="allow-abbrev-argumani">
-<h4>allow_abbrev argümanı<a class="headerlink" href="#allow-abbrev-argumani" title="Permalink to this headline">¶</a></h4>
+<h4>allow_abbrev argümanı<a class="headerlink" href="#allow-abbrev-argumani" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p>Normal şartlarda <cite>parse_args()</cite> fonksiyonuna argüman listesi verdiğiniz zaman uzun seçeneklerin kısaltmalarını kabul eder. Eğer bu özelliği devre dışı
 bırakmak isterseniz <cite>allow_abbrev=False</cite> şeklinde kullanabilirsiniz.</p>
 <p>Örnek Kod:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 
 <span class="n">ayristirici</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">allow_abbrev</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">ayristirici</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--foobar&#39;</span><span class="p">)</span>
@@ -496,22 +485,22 @@ bırakmak isterseniz <cite>allow_abbrev=False</cite> şeklinde kullanabilirsiniz
 </pre></div>
 </div>
 <p>Bu kodumuzda <cite>allow_abbrev</cite> değeri <cite>True</cite> çıktımıza baktığımız zaman:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">foobar</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">foonley</span><span class="o">=</span><span class="s1">&#39;Argüman Değeri&#39;</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">foobar</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">foonley</span><span class="o">=</span><span class="s1">&#39;Argüman Değeri&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><cite>parse_args()</cite> fonksiyonuna <cite>&#8211;foon</cite> değeri vermemize rağmen Python devamını tamamladı ve <cite>&#8211;foonley</cite> argümanına değeri atadı şimdi <cite>allow_abbrev</cite> değerini <cite>False</cite> yapalım.</p>
+<p><cite>parse_args()</cite> fonksiyonuna <cite>–foon</cite> değeri vermemize rağmen Python devamını tamamladı ve <cite>–foonley</cite> argümanına değeri atadı şimdi <cite>allow_abbrev</cite> değerini <cite>False</cite> yapalım.</p>
 <p>Çıktımız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">foobar</span> <span class="n">FOOBAR</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">foonley</span> <span class="n">FOONLEY</span><span class="p">]</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">foobar</span> <span class="n">FOOBAR</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">foonley</span> <span class="n">FOONLEY</span><span class="p">]</span>
 <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">unrecognized</span> <span class="n">arguments</span><span class="p">:</span> <span class="o">--</span><span class="n">foon</span> <span class="n">Argüman</span> <span class="n">Değeri</span>
 </pre></div>
 </div>
 <p>Görüldüğü üzere <cite>ilkprogram.py: error: unrecognized arguments</cite> hatası verdi. Bu hatanın sebebi kısaltma olarak verdiğimiz argümanı Python tanımadı.</p>
 </div>
 <div class="section" id="conflict-handler-argumani">
-<h4>conflict_handler argümanı<a class="headerlink" href="#conflict-handler-argumani" title="Permalink to this headline">¶</a></h4>
+<h4>conflict_handler argümanı<a class="headerlink" href="#conflict-handler-argumani" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p><cite>ArgumentParser</cite> nesnesi varsayılan olarak aynı argümanların kullanımına izin vermez. Eğer aynı argümanları kullanmaya denerseniz hata verecektir.
 Örnek:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 
 <span class="n">ayristirici</span><span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
 <span class="n">ayristirici</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-i&#39;</span><span class="p">,</span> <span class="s1">&#39;--ilk_argüman&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;eski argümanın yardım metni&#39;</span><span class="p">)</span>
@@ -519,7 +508,7 @@ bırakmak isterseniz <cite>allow_abbrev=False</cite> şeklinde kullanabilirsiniz
 </pre></div>
 </div>
 <p>Çıktımız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
 <span class="o">...</span>
     <span class="k">raise</span> <span class="n">ArgumentError</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">message</span> <span class="o">%</span> <span class="n">conflict_string</span><span class="p">)</span>
 <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentError</span><span class="p">:</span> <span class="n">argument</span> <span class="o">--</span><span class="n">ilk_argüman</span><span class="p">:</span> <span class="n">conflicting</span> <span class="n">option</span> <span class="n">string</span><span class="p">:</span> <span class="o">--</span><span class="n">ilk_argüman</span>
@@ -528,7 +517,7 @@ bırakmak isterseniz <cite>allow_abbrev=False</cite> şeklinde kullanabilirsiniz
 <p>İki argüman aynı olduğu için uygulamamız hata verdi.
 Bazen (örneğin <cite>parents</cite> argümanını kullandığımız zaman) Aynı argümanların eskisini geçersiz kılmak (üstüne yazmak) kullanışlı olablir. Bu özelliği kullanmak için <cite>conflict_handler</cite> argümanına <cite>resolve</cite> değerini veriyoruz.
 Örnek:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 
 <span class="n">ayristirici</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">conflict_handler</span><span class="o">=</span><span class="s1">&#39;resolve&#39;</span><span class="p">)</span>
 <span class="n">ayristirici</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-i&#39;</span><span class="p">,</span> <span class="s1">&#39;--ilk_argüman&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;eski argümanın yardım metni&#39;</span><span class="p">)</span>
@@ -538,7 +527,7 @@ Bazen (örneğin <cite>parents</cite> argümanını kullandığımız zaman) Ayn
 </pre></div>
 </div>
 <p>Çıktımız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">i</span> <span class="n">ILK_ARGÜMAN</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">ilk_argüman</span> <span class="n">ILK_ARGÜMAN</span><span class="p">]</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">i</span> <span class="n">ILK_ARGÜMAN</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">ilk_argüman</span> <span class="n">ILK_ARGÜMAN</span><span class="p">]</span>
 
 <span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
 <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>            <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
@@ -547,13 +536,13 @@ Bazen (örneğin <cite>parents</cite> argümanını kullandığımız zaman) Ayn
                         <span class="n">yeni</span> <span class="n">argümanın</span> <span class="n">yardım</span> <span class="n">metni</span>
 </pre></div>
 </div>
-<p><strong>NOT:`ArgumentParser` nesnesi yalnızca yeni verilen argümanın üzerine yazılır. Eğer eski argüman birden farklı seçeneği varsa (`-i/&#8211;ilk_argüman` gibi) yeni eklediğiniz hangi argüman ise onun üzerine yazılır. Çıktımıza baktığımız zaman sadece `&#8211;ilk_argüman` üzerine yazıldı `-i` argümanının üzerine yazılma olmadı.</strong></p>
+<p><strong>NOT:`ArgumentParser` nesnesi yalnızca yeni verilen argümanın üzerine yazılır. Eğer eski argüman birden farklı seçeneği varsa (`-i/–ilk_argüman` gibi) yeni eklediğiniz hangi argüman ise onun üzerine yazılır. Çıktımıza baktığımız zaman sadece `–ilk_argüman` üzerine yazıldı `-i` argümanının üzerine yazılma olmadı.</strong></p>
 </div>
 <div class="section" id="add-help-argumani">
-<h4>add_help argümanı<a class="headerlink" href="#add-help-argumani" title="Permalink to this headline">¶</a></h4>
+<h4>add_help argümanı<a class="headerlink" href="#add-help-argumani" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p><cite>ArgumentParser</cite> nesnesi varsayılan olarak ayrıştırıcıların yardım mesajlarını sade şekilde ekrana yazdırır.
 Örnek kodumuzu bir metin dosyasına yazıp ardından, terminalde dosyamızın bulunduğu dizinde terminalimizde <cite>python3 ilkprogram.py -h</cite> şeklinde  komutunu çalıştıralım:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 
 <span class="n">ayristirici</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
 <span class="n">ayristirici</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-i&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Yardım metni&#39;</span><span class="p">)</span>
@@ -561,7 +550,7 @@ Bazen (örneğin <cite>parents</cite> argümanını kullandığımız zaman) Ayn
 </pre></div>
 </div>
 <p>Çıktımız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">i</span> <span class="n">I</span><span class="p">]</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">i</span> <span class="n">I</span><span class="p">]</span>
 
 <span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
   <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>  <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
@@ -571,7 +560,7 @@ Bazen (örneğin <cite>parents</cite> argümanını kullandığımız zaman) Ayn
 <p>Görüldüğü üzere argümanlarımız hakkında basitçe bir yardim belgesi ekrana çıktı.
 Bazı durumlarda yardım metinlerini devre dışı bırakmak isteyebiliriz. Bu durumda <cite>add_help</cite> argümanına <cite>False</cite> değerini veririz.
 Az önce yazdığımız kodu bu şekilde değiştirip terminalden tekrar çalıştıralım.:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 
 <span class="n">ayristirici</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">add_help</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">ayristirici</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-i&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Yardım metni&#39;</span><span class="p">)</span>
@@ -579,22 +568,22 @@ Az önce yazdığımız kodu bu şekilde değiştirip terminalden tekrar çalı�
 </pre></div>
 </div>
 <p>Çıktımız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">i</span> <span class="n">I</span><span class="p">]</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">i</span> <span class="n">I</span><span class="p">]</span>
 <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">unrecognized</span> <span class="n">arguments</span><span class="p">:</span> <span class="o">-</span><span class="n">h</span>
 </pre></div>
 </div>
 <p>Artık yardım metni yok.</p>
-<p><strong>Yardım seçeneği genellikle `-h / &#8211;help`&#8217;dir. Bunun istisnası, eğer `prefix_chars` argümanı kullanılmışsa ve `-` içermezse,</strong>
-<strong>bu durumda `-h / &#8211;help` geçerli değildir. Bu durumda, prefix_chars içindeki ilk karakter yardım seçeneklerini ön ek olarak kullanılır:</strong></p>
+<p><strong>Yardım seçeneği genellikle `-h / –help`’dir. Bunun istisnası, eğer `prefix_chars` argümanı kullanılmışsa ve `-` içermezse,</strong>
+<strong>bu durumda `-h / –help` geçerli değildir. Bu durumda, prefix_chars içindeki ilk karakter yardım seçeneklerini ön ek olarak kullanılır:</strong></p>
 <p>Örnek:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 
 <span class="n">ayristirici</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">prefix_chars</span><span class="o">=</span><span class="s1">&#39;+/&#39;</span><span class="p">)</span>
 <span class="n">ayristirici</span><span class="o">.</span><span class="n">print_help</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Çıktı:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">+</span><span class="n">h</span><span class="p">]</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">+</span><span class="n">h</span><span class="p">]</span>
 
 <span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
    <span class="o">+</span><span class="n">h</span><span class="p">,</span> <span class="o">++</span><span class="n">help</span>  <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
@@ -604,41 +593,41 @@ Az önce yazdığımız kodu bu şekilde değiştirip terminalden tekrar çalı�
 </div>
 </div>
 <div class="section" id="add-argument-fonksiyonu">
-<h2>add_argument() Fonksiyonu<a class="headerlink" href="#add-argument-fonksiyonu" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">ArgumentParser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="n">name</span> <span class="ow">or</span> <span class="n">flags</span><span class="o">...</span><span class="p">[,</span> <span class="n">action</span><span class="p">][,</span> <span class="n">nargs</span><span class="p">][,</span> <span class="n">const</span><span class="p">][,</span> <span class="n">default</span><span class="p">][,</span> <span class="nb">type</span><span class="p">][,</span> <span class="n">choices</span><span class="p">][,</span> <span class="n">required</span><span class="p">][,</span> <span class="n">help</span><span class="p">][,</span> <span class="n">metavar</span><span class="p">][,</span> <span class="n">dest</span><span class="p">])</span>
+<h2>add_argument() Fonksiyonu<a class="headerlink" href="#add-argument-fonksiyonu" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ArgumentParser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="n">name</span> <span class="ow">or</span> <span class="n">flags</span><span class="o">...</span><span class="p">[,</span> <span class="n">action</span><span class="p">][,</span> <span class="n">nargs</span><span class="p">][,</span> <span class="n">const</span><span class="p">][,</span> <span class="n">default</span><span class="p">][,</span> <span class="nb">type</span><span class="p">][,</span> <span class="n">choices</span><span class="p">][,</span> <span class="n">required</span><span class="p">][,</span> <span class="n">help</span><span class="p">][,</span> <span class="n">metavar</span><span class="p">][,</span> <span class="n">dest</span><span class="p">])</span>
 </pre></div>
 </div>
 <div class="section" id="parametreler-ve-aciklamalari">
-<h3>Parametreler ve açıklamaları<a class="headerlink" href="#parametreler-ve-aciklamalari" title="Permalink to this headline">¶</a></h3>
+<h3>Parametreler ve açıklamaları<a class="headerlink" href="#parametreler-ve-aciklamalari" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
 <ul class="simple">
-<li>name veya flags: İsim veya seçenek tanımlamak için oluşturulan dizi. Örnek: <cite>-s</cite>, <cite>&#8211;sil</cite> veya <cite>sil</cite>.</li>
-<li>action: Komut satırında rastlanırsa yapılacak eylem.</li>
-<li>nargs: Kullanılması gereken komut satırı argümanlarının sayısı.</li>
-<li>const: Bazı eylem ve nargs seçeneklerinin seçimlerinin gerektirdiği sabit bir değer.</li>
-<li>default: Komut satırında argüman bulunmazsa varsayılan değer.</li>
-<li>type: Argümanın dönüştürüleceği değer türü.</li>
-<li>choices: Argümanlar için izin verilen değerlerin bir aralığı ayarlar.</li>
-<li>required: Argümanın ihmal edilip edilmeyeceği için kullanılır. (yalnızca isteğe bağlı)</li>
-<li>help: Argümanın yaptığı hakkında açıklama.</li>
-<li>metavar: Kullanım mesajlarındaki argüman için bir isim.</li>
-<li>dest: <cite>parse_args()</cite> tarafından döndürülen nesneye eklenecek niteliğin adı.</li>
+<li><p>name veya flags: İsim veya seçenek tanımlamak için oluşturulan dizi. Örnek: <cite>-s</cite>, <cite>–sil</cite> veya <cite>sil</cite>.</p></li>
+<li><p>action: Komut satırında rastlanırsa yapılacak eylem.</p></li>
+<li><p>nargs: Kullanılması gereken komut satırı argümanlarının sayısı.</p></li>
+<li><p>const: Bazı eylem ve nargs seçeneklerinin seçimlerinin gerektirdiği sabit bir değer.</p></li>
+<li><p>default: Komut satırında argüman bulunmazsa varsayılan değer.</p></li>
+<li><p>type: Argümanın dönüştürüleceği değer türü.</p></li>
+<li><p>choices: Argümanlar için izin verilen değerlerin bir aralığı ayarlar.</p></li>
+<li><p>required: Argümanın ihmal edilip edilmeyeceği için kullanılır. (yalnızca isteğe bağlı)</p></li>
+<li><p>help: Argümanın yaptığı hakkında açıklama.</p></li>
+<li><p>metavar: Kullanım mesajlarındaki argüman için bir isim.</p></li>
+<li><p>dest: <cite>parse_args()</cite> tarafından döndürülen nesneye eklenecek niteliğin adı.</p></li>
 </ul>
 <div class="section" id="name-veya-flags-isim-veya-bayrak">
-<h4>name veya flags (isim veya bayrak)<a class="headerlink" href="#name-veya-flags-isim-veya-bayrak" title="Permalink to this headline">¶</a></h4>
-<p><cite>Add_argument()</cite> fonksiyonu , -f veya &#8211;foo gibi isteğe bağlı bir argüman mı yoksa konumsal bir argüman mı olduğunu bilmesi gerekir.
+<h4>name veya flags (isim veya bayrak)<a class="headerlink" href="#name-veya-flags-isim-veya-bayrak" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
+<p><cite>Add_argument()</cite> fonksiyonu , -f veya –foo gibi isteğe bağlı bir argüman mı yoksa konumsal bir argüman mı olduğunu bilmesi gerekir.
 <cite>Add_argument()</cite> fonksiyonuna iletilen ilk argümanlar bu nedenle bir dizi bayrak veya basit bir argüman adı olmalıdır.
 Örneğin isteğe bağlı argüman eklemek için:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-f&#39;</span><span class="p">,</span> <span class="s1">&#39;--foo&#39;</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-f&#39;</span><span class="p">,</span> <span class="s1">&#39;--foo&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Eğer konumsal argüman eklemek istersek:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Bu şekilde ekleyebiliriz.</p>
 <p><cite>Parse_args()</cite> fobksiyonu çağrıldığında, isteğe bağlı argümanlar <cite>-</cite> ön eki tarafından tanımlanır ve kalan argümanların konumsal olduğu varsayılır:
 Kodları yazalım.:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 
 <span class="n">ayristirici</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">prog</span><span class="o">=</span><span class="s1">&#39;PROG&#39;</span><span class="p">)</span>
 <span class="n">ayristirici</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-f&#39;</span><span class="p">,</span> <span class="s1">&#39;--foo&#39;</span><span class="p">)</span>
@@ -649,7 +638,7 @@ Kodları yazalım.:</p>
 </pre></div>
 </div>
 <p>Çıktımız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">bar</span><span class="o">=</span><span class="s1">&#39;BAR&#39;</span><span class="p">,</span> <span class="n">foo</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">bar</span><span class="o">=</span><span class="s1">&#39;BAR&#39;</span><span class="p">,</span> <span class="n">foo</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 <span class="n">Namespace</span><span class="p">(</span><span class="n">bar</span><span class="o">=</span><span class="s1">&#39;BAR&#39;</span><span class="p">,</span> <span class="n">foo</span><span class="o">=</span><span class="s1">&#39;FOO&#39;</span><span class="p">)</span>
 <span class="n">usage</span><span class="p">:</span> <span class="n">PROG</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">f</span> <span class="n">FOO</span><span class="p">]</span> <span class="n">bar</span>
 <span class="n">PROG</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">the</span> <span class="n">following</span> <span class="n">arguments</span> <span class="n">are</span> <span class="n">required</span><span class="p">:</span> <span class="n">bar</span>
@@ -658,14 +647,14 @@ Kodları yazalım.:</p>
 <p>Çıktımıza baktığımız zaman <cite>bar</cite> argümanı konumsal olduğu için ve son <cite>parse_args()</cite> fonksiyonunda kullanmadığımız için uygulamamız hata verdi.</p>
 </div>
 <div class="section" id="action">
-<h4>action<a class="headerlink" href="#action" title="Permalink to this headline">¶</a></h4>
+<h4>action<a class="headerlink" href="#action" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p><cite>ArgumentParser</cite> nesnesi,argüman eylemleri ile ilişkilendirir.
 Bu eylemler, kendisiyle ilişkilendirilmiş komut satırı argümanları ile hemen hemen
 her şeyi yapabilir, ancak çoğu eylem yalnızca <cite>parse_args()</cite> fonksiyonunun döndürdüğü nesneye bir nitelik ekler.
 <cite>Action</cite> anahtar sözcüğü argümanı, komut satırı argümanlarının nasıl ele alınması gerektiğini belirtir. Bazı sağlanan eylemler:</p>
 <ul>
-<li><p class="first"><cite>store</cite> - Bu sadece argümanın değerini saklar. Bu varsayılan eylemdir. Örneğin:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<li><p><cite>store</cite> - Bu sadece argümanın değerini saklar. Bu varsayılan eylemdir. Örneğin:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 
  <span class="n">ayristirici</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
  <span class="n">ayristirici</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--arguman&#39;</span><span class="p">)</span>
@@ -675,14 +664,14 @@ her şeyi yapabilir, ancak çoğu eylem yalnızca <cite>parse_args()</cite> fonk
 </li>
 </ul>
 <p>Çıktımız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">arguman</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">arguman</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><cite>store_const</cite> - <cite>const</cite> anahtar sözcüğü argümanı tarafından belirtilen değeri saklar. <cite>store_const</cite> eylemi, genellikle bir tür bayrak belirten isteğe bağlı değişkenlerle birlikte kullanılır.</li>
+<li><p><cite>store_const</cite> - <cite>const</cite> anahtar sözcüğü argümanı tarafından belirtilen değeri saklar. <cite>store_const</cite> eylemi, genellikle bir tür bayrak belirten isteğe bağlı değişkenlerle birlikte kullanılır.</p></li>
 </ul>
 <p>Örnek:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 
 <span class="n">ayristirici</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
 <span class="n">ayristirici</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--arguman&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_const&#39;</span><span class="p">,</span> <span class="n">const</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
@@ -690,14 +679,14 @@ her şeyi yapabilir, ancak çoğu eylem yalnızca <cite>parse_args()</cite> fonk
 </pre></div>
 </div>
 <p>Çıktımız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">arguman</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">arguman</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><cite>store_true</cite> ve <cite>store_false</cite> - Bunlar, sırasıyla <cite>True</cite> ve <cite>False</cite> değerlerini depolamak için kullanılan <cite>store_cost</cite> durumlarıdır.</li>
+<li><p><cite>store_true</cite> ve <cite>store_false</cite> - Bunlar, sırasıyla <cite>True</cite> ve <cite>False</cite> değerlerini depolamak için kullanılan <cite>store_cost</cite> durumlarıdır.</p></li>
 </ul>
 <p>Örnek:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 
 <span class="n">ayristirici</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
 <span class="n">ayristirici</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--arguman&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">)</span>
@@ -707,14 +696,14 @@ her şeyi yapabilir, ancak çoğu eylem yalnızca <cite>parse_args()</cite> fonk
 </pre></div>
 </div>
 <p>Çıktımız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">arguman</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">arguman</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><cite>append</cite> - Liste saklar ve her argüman değerini listeye ekler. Bir seçeneğin birden çok kez belirtilmesine izin vermek için kullanışlıdır.</li>
+<li><p><cite>append</cite> - Liste saklar ve her argüman değerini listeye ekler. Bir seçeneğin birden çok kez belirtilmesine izin vermek için kullanışlıdır.</p></li>
 </ul>
 <p>Örnek:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 
 <span class="n">ayristirici</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
 <span class="n">ayristirici</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--arguman&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;append&#39;</span><span class="p">)</span>
@@ -722,14 +711,14 @@ her şeyi yapabilir, ancak çoğu eylem yalnızca <cite>parse_args()</cite> fonk
 </pre></div>
 </div>
 <p>Çıktımız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">arguman</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">])</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">arguman</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><cite>append_const</cite> - Bir listeyi depolar ve <cite>const</cite> anahtar sözcüğü argümanı tarafından belirtilen değeri listeye ekler. ( <cite>const</cite> anahtar sözcüğü argümanı varsayılan olarak <cite>None`dır) `append_const</cite> genellikle birden fazla argüman sabitlerini aynı listeye kaydetmesi gerektiğinde kullanışlıdır.</li>
+<li><p><cite>append_const</cite> - Bir listeyi depolar ve <cite>const</cite> anahtar sözcüğü argümanı tarafından belirtilen değeri listeye ekler. ( <cite>const</cite> anahtar sözcüğü argümanı varsayılan olarak <cite>None`dır) `append_const</cite> genellikle birden fazla argüman sabitlerini aynı listeye kaydetmesi gerektiğinde kullanışlıdır.</p></li>
 </ul>
 <p>Örnek:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 
 <span class="n">ayristirici</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
 <span class="n">ayristirici</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--str&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;types&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;append_const&#39;</span><span class="p">,</span> <span class="n">const</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
@@ -738,14 +727,14 @@ her şeyi yapabilir, ancak çoğu eylem yalnızca <cite>parse_args()</cite> fonk
 </pre></div>
 </div>
 <p>Çıktımız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span>Namespace(types=[&lt;class &#39;str&#39;&gt;, &lt;class &#39;dict&#39;&gt;])
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span>Namespace(types=[&lt;class &#39;str&#39;&gt;, &lt;class &#39;dict&#39;&gt;])
 </pre></div>
 </div>
 <ul class="simple">
-<li><cite>count</cite> - Anahtar kelime argümanının kullanılma sayısını sayar. Bu ayrıntı düzeylerini artırmak için kullanışlıdır.</li>
+<li><p><cite>count</cite> - Anahtar kelime argümanının kullanılma sayısını sayar. Bu ayrıntı düzeylerini artırmak için kullanışlıdır.</p></li>
 </ul>
 <p>Örnek:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 
 <span class="n">ayristirici</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
 <span class="n">ayristirici</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--say&#39;</span><span class="p">,</span> <span class="s1">&#39;-s&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">)</span>
@@ -753,15 +742,15 @@ her şeyi yapabilir, ancak çoğu eylem yalnızca <cite>parse_args()</cite> fonk
 </pre></div>
 </div>
 <p>Çıktımız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">say</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">say</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><cite>help</cite> - Geçerli ayrıştırıcıdaki tüm seçenekler için eksiksiz yardım mesajı yazdırır ve sonra uygulama sonlanır.</li>
-<li><cite>version</cite> - Sürüm bilgisi yazdırır.</li>
+<li><p><cite>help</cite> - Geçerli ayrıştırıcıdaki tüm seçenekler için eksiksiz yardım mesajı yazdırır ve sonra uygulama sonlanır.</p></li>
+<li><p><cite>version</cite> - Sürüm bilgisi yazdırır.</p></li>
 </ul>
 <p>Örnek:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 
 <span class="n">ayristirici</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">prog</span><span class="o">=</span><span class="s1">&#39;PROG&#39;</span><span class="p">)</span>
 <span class="n">ayristirici</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--v&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;version&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(prog)s</span><span class="s1"> 2.0&#39;</span><span class="p">)</span>
@@ -769,18 +758,18 @@ her şeyi yapabilir, ancak çoğu eylem yalnızca <cite>parse_args()</cite> fonk
 </pre></div>
 </div>
 <p>Çıktımız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">PROG</span> <span class="mf">2.0</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">PROG</span> <span class="mf">2.0</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="nargs">
-<h4>nargs<a class="headerlink" href="#nargs" title="Permalink to this headline">¶</a></h4>
+<h4>nargs<a class="headerlink" href="#nargs" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p><cite>ArgumentParser</cite> nesnesi her argümanı tek bir işlem ile ilişkilendirir. <cite>nargs</cite> anahtar sözcüğü bir argümanı farklı sayıda argümanı tek bir işlem ile ilişkilendirir.</p>
 <ul class="simple">
-<li>N (tam sayı) - N argümanları komut satırından bir liste halinde alınır.</li>
+<li><p>N (tam sayı) - N argümanları komut satırından bir liste halinde alınır.</p></li>
 </ul>
 <p>Örnek:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 
 <span class="n">ayristirici</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
 <span class="n">ayristirici</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--foo&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
@@ -789,15 +778,15 @@ her şeyi yapabilir, ancak çoğu eylem yalnızca <cite>parse_args()</cite> fonk
 </pre></div>
 </div>
 <p>Çıktımız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">bar</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">],</span> <span class="n">foo</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">])</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">bar</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">],</span> <span class="n">foo</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 <p><strong>nargs=1 bir adet liste elemanı listeler. Bu varsayılan değerden farklıdır</strong></p>
 <ul class="simple">
-<li><cite>?</cite> Komut satırından bir argüman alınacak ve tek bir öğe olarak üretilecektir. Eğer komut satırında argüman yoksa, varsayılan değer üretilir.</li>
+<li><p><cite>?</cite> Komut satırından bir argüman alınacak ve tek bir öğe olarak üretilecektir. Eğer komut satırında argüman yoksa, varsayılan değer üretilir.</p></li>
 </ul>
 <p>Örnek:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 
 <span class="n">ayristirici</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
 <span class="n">ayristirici</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--foo&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;?&#39;</span><span class="p">,</span> <span class="n">const</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">)</span>
@@ -808,14 +797,14 @@ her şeyi yapabilir, ancak çoğu eylem yalnızca <cite>parse_args()</cite> fonk
 </pre></div>
 </div>
 <p>Çıktımız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">foo</span><span class="o">=</span><span class="s1">&#39;YY&#39;</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">foo</span><span class="o">=</span><span class="s1">&#39;YY&#39;</span><span class="p">)</span>
 <span class="n">Namespace</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">foo</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
 <span class="n">Namespace</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="n">foo</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><cite>nargs=&#8217;?&#8217;</cite> bir kullanım alanı daha vardır. Bu alan isteğe bağlı dosya girdi ve çıktılarıdır.
+<p><cite>nargs=’?’</cite> bir kullanım alanı daha vardır. Bu alan isteğe bağlı dosya girdi ve çıktılarıdır.
 Python Etkileşimli Kabuğumuzda Kodumuzu Yazalım:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
 <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;infile&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;?&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">FileType</span><span class="p">(</span><span class="s1">&#39;r&#39;</span><span class="p">),</span>
@@ -827,17 +816,17 @@ Python Etkileşimli Kabuğumuzda Kodumuzu Yazalım:</p>
 </pre></div>
 </div>
 <p>Çıktımız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">infile</span><span class="o">=&lt;</span><span class="n">_io</span><span class="o">.</span><span class="n">TextIOWrapper</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;input.txt&#39;</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="o">&gt;</span><span class="p">,</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">infile</span><span class="o">=&lt;</span><span class="n">_io</span><span class="o">.</span><span class="n">TextIOWrapper</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;input.txt&#39;</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="o">&gt;</span><span class="p">,</span>
       <span class="n">outfile</span><span class="o">=&lt;</span><span class="n">_io</span><span class="o">.</span><span class="n">TextIOWrapper</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;output.txt&#39;</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="o">&gt;</span><span class="p">)</span>
 <span class="n">Namespace</span><span class="p">(</span><span class="n">infile</span><span class="o">=&lt;</span><span class="n">_io</span><span class="o">.</span><span class="n">TextIOWrapper</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;&lt;stdin&gt;&#39;</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="o">&gt;</span><span class="p">,</span>
       <span class="n">outfile</span><span class="o">=&lt;</span><span class="n">_io</span><span class="o">.</span><span class="n">TextIOWrapper</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;&lt;stdout&gt;&#39;</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="o">&gt;</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><cite>*</cite> - Mevcut tüm komut satırı argümanları bir liste halinde toplanır. Genel olarak <cite>nargs=&#8217;*&#8217;</cite> ile birden fazla konumsal argüman almanın  bir anlamı olmadığını unutmayın. Ancak birden fazla isteğe bağlı argümanı <cite>nargs=&#8217;*&#8217;</cite> ile almak mümkündür.</li>
+<li><p><cite>*</cite> - Mevcut tüm komut satırı argümanları bir liste halinde toplanır. Genel olarak <cite>nargs=’*’</cite> ile birden fazla konumsal argüman almanın  bir anlamı olmadığını unutmayın. Ancak birden fazla isteğe bağlı argümanı <cite>nargs=’*’</cite> ile almak mümkündür.</p></li>
 </ul>
 <p>Örnek:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 
 <span class="n">ayristirici</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
 <span class="n">ayristirici</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--foo&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">)</span>
@@ -847,20 +836,20 @@ Python Etkileşimli Kabuğumuzda Kodumuzu Yazalım:</p>
 </pre></div>
 </div>
 <p>Çıktımız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">bar</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">],</span> <span class="n">baz</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">],</span> <span class="n">foo</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">])</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">bar</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">],</span> <span class="n">baz</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">],</span> <span class="n">foo</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
-<p>Çıktımızı incelediğimiz zaman <cite>baz</cite> bizim konumsal argümanımızdır diğerleri ise isteğe bağlı argümandır. Eğer <cite>baz</cite> argümanından <cite>nargs=&#8217;*&#8217;</cite> kaldırırsak:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">foo</span> <span class="p">[</span><span class="n">FOO</span> <span class="p">[</span><span class="n">FOO</span> <span class="o">...</span><span class="p">]]]</span> <span class="p">[</span><span class="o">--</span><span class="n">bar</span> <span class="p">[</span><span class="n">BAR</span> <span class="p">[</span><span class="n">BAR</span> <span class="o">...</span><span class="p">]]]</span> <span class="n">baz</span>
+<p>Çıktımızı incelediğimiz zaman <cite>baz</cite> bizim konumsal argümanımızdır diğerleri ise isteğe bağlı argümandır. Eğer <cite>baz</cite> argümanından <cite>nargs=’*’</cite> kaldırırsak:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">foo</span> <span class="p">[</span><span class="n">FOO</span> <span class="p">[</span><span class="n">FOO</span> <span class="o">...</span><span class="p">]]]</span> <span class="p">[</span><span class="o">--</span><span class="n">bar</span> <span class="p">[</span><span class="n">BAR</span> <span class="p">[</span><span class="n">BAR</span> <span class="o">...</span><span class="p">]]]</span> <span class="n">baz</span>
 <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">unrecognized</span> <span class="n">arguments</span><span class="p">:</span> <span class="n">b</span>
 </pre></div>
 </div>
 <p>Şeklinde hata verir.</p>
 <ul class="simple">
-<li><cite>+</cite> - <cite>*</cite> gibi davranır. Mevcut tüm komut satırı argümanları bir liste halinde toplanır. Ayrıca, en az bir komut satırı argümanı yoksa, bir hata mesajı oluşturulur.</li>
+<li><p><cite>+</cite> - <cite>*</cite> gibi davranır. Mevcut tüm komut satırı argümanları bir liste halinde toplanır. Ayrıca, en az bir komut satırı argümanı yoksa, bir hata mesajı oluşturulur.</p></li>
 </ul>
 <p>Örnek:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 
 <span class="n">ayristirici</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">prog</span><span class="o">=</span><span class="s1">&#39;PROG&#39;</span><span class="p">)</span>
 <span class="n">ayristirici</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;+&#39;</span><span class="p">)</span>
@@ -869,7 +858,7 @@ Python Etkileşimli Kabuğumuzda Kodumuzu Yazalım:</p>
 </pre></div>
 </div>
 <p>Çıktımız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">foo</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">])</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">foo</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">])</span>
 
 <span class="n">usage</span><span class="p">:</span> <span class="n">PROG</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="n">foo</span> <span class="p">[</span><span class="n">foo</span> <span class="o">...</span><span class="p">]</span>
 <span class="n">PROG</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">the</span> <span class="n">following</span> <span class="n">arguments</span> <span class="n">are</span> <span class="n">required</span><span class="p">:</span> <span class="n">foo</span>
@@ -877,10 +866,10 @@ Python Etkileşimli Kabuğumuzda Kodumuzu Yazalım:</p>
 </div>
 <p>Çıktımıza baktığımız zaman <cite>parse_args()</cite> fonksiyonuna liste halinde değer gönderince bize ad alanını döndürüyor. Ancak boş bir liste gönderince hata veriyor.</p>
 <ul class="simple">
-<li><cite>argparse.REMAINDER</cite> - Kalan tüm komut satırı argümanları bir liste halinde toplanır. Diğer komut satırı yardımcılarını gönderilen komut satırı yardımcıları için kullanışlıdır.</li>
+<li><p><cite>argparse.REMAINDER</cite> - Kalan tüm komut satırı argümanları bir liste halinde toplanır. Diğer komut satırı yardımcılarını gönderilen komut satırı yardımcıları için kullanışlıdır.</p></li>
 </ul>
 <p>Örnek:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 
 <span class="n">ayristirici</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">prog</span><span class="o">=</span><span class="s1">&#39;PROG&#39;</span><span class="p">)</span>
 <span class="n">ayristirici</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--foo&#39;</span><span class="p">)</span>
@@ -890,25 +879,25 @@ Python Etkileşimli Kabuğumuzda Kodumuzu Yazalım:</p>
 </pre></div>
 </div>
 <p>Çıktımız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;--arg1&#39;</span><span class="p">,</span> <span class="s1">&#39;XX&#39;</span><span class="p">,</span> <span class="s1">&#39;ZZ&#39;</span><span class="p">],</span> <span class="n">command</span><span class="o">=</span><span class="s1">&#39;cmd&#39;</span><span class="p">,</span> <span class="n">foo</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;--arg1&#39;</span><span class="p">,</span> <span class="s1">&#39;XX&#39;</span><span class="p">,</span> <span class="s1">&#39;ZZ&#39;</span><span class="p">],</span> <span class="n">command</span><span class="o">=</span><span class="s1">&#39;cmd&#39;</span><span class="p">,</span> <span class="n">foo</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Eğer <cite>nargs</cite> anahtar sözcüğü sağlanmazsa, kullanılan argümanların sayısı <cite>action</cite> tarafından belirlenir. Genellikle bu, tek bir komut satırı argümanının kullanılacağı ve tek bir öğenin
 üretileceği anlamına gelir.</p>
 </div>
 <div class="section" id="const">
-<h4>const<a class="headerlink" href="#const" title="Permalink to this headline">¶</a></h4>
-<p>&#8216;const` argümanı komut satırından okunamayan ancak &#8216;ArgumentParser()` için gerekli sabit değerleri tutar. En yaygın iki kullanımı vardır.</p>
+<h4>const<a class="headerlink" href="#const" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
+<p>‘const` argümanı komut satırından okunamayan ancak ‘ArgumentParser()` için gerekli sabit değerleri tutar. En yaygın iki kullanımı vardır.</p>
 <ul class="simple">
-<li><cite>add_argument()</cite> fonksiyonu <cite>action=&#8217;store_const&#8217;</cite> veya <cite>action=&#8217;append_cost&#8217;</cite> ile çağrıldığı zaman bu iki eylem <cite>const</cite> değerini <cite>parse_args()</cite> tarafından döndürülen nesnenin niteliklerine ekler.</li>
-<li><cite>add_argument()</cite> fonksiyonu isteğe bağlı karakter dizisi (<cite>-f</cite> veya <cite>&#8211;foo</cite> gibi) ve <cite>nargs=&#8217;?&#8217;</cite> ile çağrıldığı zaman sıfır veya bir komut satırı argümanı tarafından takip edilebilecek isteğe bağlı argüman oluşturur. Komut satırı argümanları ayrıştırılırken isteğe bağlı seçenek dizesi bağımsız değişken ile karşılaşmazsa <cite>const</cite> değeri kabul edilir.</li>
+<li><p><cite>add_argument()</cite> fonksiyonu <cite>action=’store_const’</cite> veya <cite>action=’append_cost’</cite> ile çağrıldığı zaman bu iki eylem <cite>const</cite> değerini <cite>parse_args()</cite> tarafından döndürülen nesnenin niteliklerine ekler.</p></li>
+<li><p><cite>add_argument()</cite> fonksiyonu isteğe bağlı karakter dizisi (<cite>-f</cite> veya <cite>–foo</cite> gibi) ve <cite>nargs=’?’</cite> ile çağrıldığı zaman sıfır veya bir komut satırı argümanı tarafından takip edilebilecek isteğe bağlı argüman oluşturur. Komut satırı argümanları ayrıştırılırken isteğe bağlı seçenek dizesi bağımsız değişken ile karşılaşmazsa <cite>const</cite> değeri kabul edilir.</p></li>
 </ul>
 </div>
 <div class="section" id="default">
-<h4>default<a class="headerlink" href="#default" title="Permalink to this headline">¶</a></h4>
+<h4>default<a class="headerlink" href="#default" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p>Tüm isteğe bağlı argümanlar ve bazı konumsal argümanlar komut satırında bazen atlanabilir. <cite>default</cite> anahtar sözcüğü argümanı ile eğer argüman değer almazsa varsayılan bir değer atanabilir. Varsayılan olarak <cite>default</cite> <cite>None</cite> değerine sahiptir.
 Örnek:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 
 <span class="n">ayristirici</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
 <span class="n">ayristirici</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--foo&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
@@ -917,14 +906,14 @@ Python Etkileşimli Kabuğumuzda Kodumuzu Yazalım:</p>
 </pre></div>
 </div>
 <p>Çıktımız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">foo</span><span class="o">=</span><span class="s1">&#39;2&#39;</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">foo</span><span class="o">=</span><span class="s1">&#39;2&#39;</span><span class="p">)</span>
 <span class="n">Namespace</span><span class="p">(</span><span class="n">foo</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>İlk <cite>parse_args()</cite> fonksiyonunda değer atadığımız için <cite>foo</cite> argümanının yeni değeri <cite>&#8216;2&#8217;</cite> oluyor ancak ikinci <cite>parse_args()</cite> fonksiyonunda değer olmadığı için varsayılan değerimiz <cite>42</cite> ekrana çıkıyor.
+<p>İlk <cite>parse_args()</cite> fonksiyonunda değer atadığımız için <cite>foo</cite> argümanının yeni değeri <cite>‘2’</cite> oluyor ancak ikinci <cite>parse_args()</cite> fonksiyonunda değer olmadığı için varsayılan değerimiz <cite>42</cite> ekrana çıkıyor.
 <cite>default</cite> değeri karakter dizisi (string) ise ayrıştırıcı değeri argüman gibi ayırır. Eğer değerin tipi değiştirilmek istenirse <cite>type</cite> kullanılır.
 Örnek:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 
 <span class="n">ayristirici</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
 <span class="n">ayristirici</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--foo&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
@@ -933,18 +922,18 @@ Python Etkileşimli Kabuğumuzda Kodumuzu Yazalım:</p>
 </pre></div>
 </div>
 <p>Çıktımız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">foo</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">foo</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">Namespace</span><span class="p">(</span><span class="n">foo</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Görüldüğü üzere ilk değerimiz karakter dizisi yerine artık tam sayı (int) oldu.</p>
 </div>
 <div class="section" id="type">
-<h4>type<a class="headerlink" href="#type" title="Permalink to this headline">¶</a></h4>
+<h4>type<a class="headerlink" href="#type" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p><cite>ArgumentParser()</cite> nesnesi varsayılan olarak komut satırından okuduğu değerleri karakter dizisi (string) olarak alır. Bazı durumlarda farklı tiplerde değişkenlere ihtiyaç duyarız. Bunun için <cite>type</cite> kullanılır.
 Şimdi uygulamamızı çalıştırdığımız dizine <cite>args.txt</cite> dosyası oluşturalım ve kodumuzu çalıştıralım.
 Kod:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 
 <span class="n">ayristirici</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
 <span class="n">ayristirici</span> <span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
@@ -953,17 +942,17 @@ Kod:</p>
 </pre></div>
 </div>
 <p>Çıktımız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">bar</span><span class="o">=&lt;</span><span class="n">_io</span><span class="o">.</span><span class="n">TextIOWrapper</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;args.txt&#39;</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">foo</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">bar</span><span class="o">=&lt;</span><span class="n">_io</span><span class="o">.</span><span class="n">TextIOWrapper</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;args.txt&#39;</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">foo</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Çıktıya baktığımız zaman <cite>bar</cite> argümanının dosya hakkında bilgiler içeren bir takım detaylar var ve <cite>foo</cite> ise tam sayı değerine sahip.</p>
 </div>
 <div class="section" id="choices">
-<h4>choices<a class="headerlink" href="#choices" title="Permalink to this headline">¶</a></h4>
+<h4>choices<a class="headerlink" href="#choices" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p>Bazen argümanlar belirli değerler ile sınırlandırmak gerekir. Bu durumda <cite>choices</cite> kullanılır. Eğer kullanıcı geçerli argüman verdiyse uygulama devam edeğer ancak
 verilen argüman geçersiz ise hata mesajı döner.</p>
 <p>Örnek:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 
 <span class="n">ayristirici</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
 <span class="n">ayristirici</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;oyun&#39;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;tas&#39;</span><span class="p">,</span> <span class="s1">&#39;kagit&#39;</span><span class="p">,</span> <span class="s1">&#39;makas&#39;</span><span class="p">])</span>
@@ -972,7 +961,7 @@ verilen argüman geçersiz ise hata mesajı döner.</p>
 </pre></div>
 </div>
 <p>Çıktı:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">oyun</span><span class="o">=</span><span class="s1">&#39;kagit&#39;</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">oyun</span><span class="o">=</span><span class="s1">&#39;kagit&#39;</span><span class="p">)</span>
 <span class="n">usage</span><span class="p">:</span> <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">{</span><span class="n">tas</span><span class="p">,</span><span class="n">kagit</span><span class="p">,</span><span class="n">makas</span><span class="p">}</span>
 <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">argument</span> <span class="n">oyun</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">choice</span><span class="p">:</span> <span class="s1">&#39;ates&#39;</span> <span class="p">(</span><span class="n">choose</span> <span class="kn">from</span> <span class="s1">&#39;tas&#39;</span><span class="p">,</span> <span class="s1">&#39;kagit&#39;</span><span class="p">,</span> <span class="s1">&#39;makas&#39;</span><span class="p">)</span>
 </pre></div>
@@ -980,10 +969,10 @@ verilen argüman geçersiz ise hata mesajı döner.</p>
 <p>Çıktımıza baktığımız zaman ilk argümanımız geçerli olduğu için bir hata almadık. Ancak ikinci argümanımız geçersiz olduğundan dolayı uygulamamız bize geçerli argümanlar arasında seçim yapmamızı söylüyor.</p>
 </div>
 <div class="section" id="required">
-<h4><cite>required</cite><a class="headerlink" href="#required" title="Permalink to this headline">¶</a></h4>
-<p><cite>argparse</cite> modülü genellikle <cite>-f</cite> veya <cite>&#8211;foo</cite> gibi isteğe bağlı seçimler ile çalışır ancak bazı durumlarda zorunlu argümanlar vermek gerekebilir. Böyle durumlarda <cite>required=True</cite> kullanılır.</p>
+<h4><cite>required</cite><a class="headerlink" href="#required" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
+<p><cite>argparse</cite> modülü genellikle <cite>-f</cite> veya <cite>–foo</cite> gibi isteğe bağlı seçimler ile çalışır ancak bazı durumlarda zorunlu argümanlar vermek gerekebilir. Böyle durumlarda <cite>required=True</cite> kullanılır.</p>
 <p>Örnek Kod:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 
 <span class="n">ayristirici</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
 <span class="n">ayristirici</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--foo&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -992,7 +981,7 @@ verilen argüman geçersiz ise hata mesajı döner.</p>
 </pre></div>
 </div>
 <p>Çıktımız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">foo</span><span class="o">=</span><span class="s1">&#39;Degisken&#39;</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">foo</span><span class="o">=</span><span class="s1">&#39;Degisken&#39;</span><span class="p">)</span>
 <span class="n">usage</span><span class="p">:</span> <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="o">--</span><span class="n">foo</span> <span class="n">FOO</span>
 <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">the</span> <span class="n">following</span> <span class="n">arguments</span> <span class="n">are</span> <span class="n">required</span><span class="p">:</span> <span class="o">--</span><span class="n">foo</span>
 </pre></div>
@@ -1001,10 +990,10 @@ verilen argüman geçersiz ise hata mesajı döner.</p>
 <p><strong>NOT:Zorunlu seçimler genellikle kötü form olarak kabul edilir. Çünkü bu parametreler özünde isteğe bağlıdır ve kullanıcılar isteğe bağlı olmasını ister. Mümkün olduğunca kullanmamak gerekir.</strong></p>
 </div>
 <div class="section" id="help">
-<h4>help<a class="headerlink" href="#help" title="Permalink to this headline">¶</a></h4>
-<p><cite>help</cite> değeri karakter dizisi olarak değer alır ve bu değer argümanlar hakkında yardım metinleri içerir. Kullanıcı yardım istediğinde bulununca (genellikle <cite>-h</cite> veya <cite>&#8211;help</cite>) yardım metinleri görünür.</p>
+<h4>help<a class="headerlink" href="#help" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
+<p><cite>help</cite> değeri karakter dizisi olarak değer alır ve bu değer argümanlar hakkında yardım metinleri içerir. Kullanıcı yardım istediğinde bulununca (genellikle <cite>-h</cite> veya <cite>–help</cite>) yardım metinleri görünür.</p>
 <p>Örnek Kod:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 
 <span class="n">ayristirici</span><span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
 <span class="n">ayristirici</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--foo&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;foo için yardım metni&#39;</span><span class="p">)</span>
@@ -1013,7 +1002,7 @@ verilen argüman geçersiz ise hata mesajı döner.</p>
 </pre></div>
 </div>
 <p>Çıktımız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">foo</span> <span class="n">FOO</span><span class="p">]</span> <span class="n">bar</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">foo</span> <span class="n">FOO</span><span class="p">]</span> <span class="n">bar</span>
 
 <span class="n">positional</span> <span class="n">arguments</span><span class="p">:</span>
   <span class="n">bar</span>         <span class="n">bar</span> <span class="n">için</span> <span class="n">yardım</span> <span class="n">metni</span>
@@ -1025,7 +1014,7 @@ verilen argüman geçersiz ise hata mesajı döner.</p>
 </div>
 <p><cite>help</cite> çeşitli formatlama yöntemlerini içerir. Bu sayede değerlerinizi farklı yerlerde kullanabilirsiniz.
 Örnek:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 
 <span class="n">ayristirici</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">prog</span><span class="o">=</span><span class="s1">&#39;merhaba dünya&#39;</span><span class="p">)</span>
 <span class="n">ayristirici</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
@@ -1035,7 +1024,7 @@ verilen argüman geçersiz ise hata mesajı döner.</p>
 </pre></div>
 </div>
 <p>Çıktımız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">merhaba</span> <span class="n">dünya</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="n">bar</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">merhaba</span> <span class="n">dünya</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="n">bar</span>
 
 <span class="n">positional</span> <span class="n">arguments</span><span class="p">:</span>
   <span class="n">bar</span>          <span class="n">bar</span> <span class="n">argümanı</span> <span class="n">için</span> <span class="n">yardım</span> <span class="n">metni</span> <span class="n">ayrıca</span> <span class="n">bu</span> <span class="n">uygulamannın</span> <span class="n">adı</span><span class="p">:</span>
@@ -1048,11 +1037,11 @@ verilen argüman geçersiz ise hata mesajı döner.</p>
 <p>Görüldüğü üzere uygulamamızın adı ve varsayılan değerimiz ekrana basıldı.</p>
 </div>
 <div class="section" id="metavar">
-<h4>metavar<a class="headerlink" href="#metavar" title="Permalink to this headline">¶</a></h4>
-<p><cite>ArgumentParser()</cite> nesnesi yardım metinlerini oluşturduğu zaman, beklenen her argümana atıfta bulunmak için bir yola ihtiyaç duyar. Varsayılan olarak <cite>ArgumentParser()</cite> nesnesi <cite>dest</cite> değerini her nesnenin &#8220;ismi&#8221; olarak kullanır.
+<h4>metavar<a class="headerlink" href="#metavar" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
+<p><cite>ArgumentParser()</cite> nesnesi yardım metinlerini oluşturduğu zaman, beklenen her argümana atıfta bulunmak için bir yola ihtiyaç duyar. Varsayılan olarak <cite>ArgumentParser()</cite> nesnesi <cite>dest</cite> değerini her nesnenin “ismi” olarak kullanır.
 Varsayılan olarak, konumsal argüman eylemleri için <cite>dest</cite> değeri doğrudan kullanılır ve isteğe bağlı argüman eylemleri için <cite>dest</cite> değeri büyük harfe dönüştürülür.
 Örnek Kod:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 
 <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
 <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--foo&#39;</span><span class="p">)</span>
@@ -1062,7 +1051,7 @@ Varsayılan olarak, konumsal argüman eylemleri için <cite>dest</cite> değeri 
 </pre></div>
 </div>
 <p>Çıktımız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">bar</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="n">foo</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">bar</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="n">foo</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
 <span class="n">usage</span><span class="p">:</span> <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">foo</span> <span class="n">FOO</span><span class="p">]</span> <span class="n">bar</span>
 
 <span class="n">positional</span> <span class="n">arguments</span><span class="p">:</span>
@@ -1075,7 +1064,7 @@ Varsayılan olarak, konumsal argüman eylemleri için <cite>dest</cite> değeri 
 </div>
 <p>Ayrıca <cite>metavar</cite> alternatif isim belirtebilir.</p>
 <p>Örnek:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 
 <span class="n">ayristirici</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
 <span class="n">ayristirici</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--foo&#39;</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;YYY&#39;</span><span class="p">)</span>
@@ -1084,7 +1073,7 @@ Varsayılan olarak, konumsal argüman eylemleri için <cite>dest</cite> değeri 
 </pre></div>
 </div>
 <p>Çıktımız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">foo</span> <span class="n">YYY</span><span class="p">]</span> <span class="n">XXX</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">ilkprogram</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">foo</span> <span class="n">YYY</span><span class="p">]</span> <span class="n">XXX</span>
 
 <span class="n">positional</span> <span class="n">arguments</span><span class="p">:</span>
   <span class="n">XXX</span>
@@ -1098,10 +1087,10 @@ Varsayılan olarak, konumsal argüman eylemleri için <cite>dest</cite> değeri 
 <p><strong>NOT:`metavar` yalnızca ekran ismini değiştirir, `parse_args()` ile kontrol ettiğiniz zaman `dest` değerini kullandığını görebilirsiniz.</strong></p>
 </div>
 <div class="section" id="dest">
-<h4>dest<a class="headerlink" href="#dest" title="Permalink to this headline">¶</a></h4>
+<h4>dest<a class="headerlink" href="#dest" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p><cite>dest</cite> ile argümanlara kişiselleştirilmiş isimler verebilirsiniz.
 Örnek:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 
 <span class="n">ayristirici</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
 <span class="n">ayristirici</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--foo&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
@@ -1109,7 +1098,7 @@ Varsayılan olarak, konumsal argüman eylemleri için <cite>dest</cite> değeri 
 </pre></div>
 </div>
 <p>Çıktımız:</p>
-<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">bar</span><span class="o">=</span><span class="s1">&#39;XXX&#39;</span><span class="p">)</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">Namespace</span><span class="p">(</span><span class="n">bar</span><span class="o">=</span><span class="s1">&#39;XXX&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Bu yardım sayfası <a class="reference external" href="https://docs.python.org/3/library/argparse.html">https://docs.python.org/3/library/argparse.html</a> referans alınarak hazırlanmıştır.</p>
@@ -1122,18 +1111,19 @@ Varsayılan olarak, konumsal argüman eylemleri için <cite>dest</cite> değeri 
 
 <div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
 <div class='extrarelbar'> 
-    <div class="related">
-      <h3>Navigation</h3>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="../Ucuncu_taraf_moduller/index.html" title="Üçüncü Taraf Modüller"
-             >next</a></li>
+             >sonraki</a></li>
         <li class="right" >
           <a href="sys.html" title="sys Modülü"
-             >previous</a> |</li>
+             >önceki</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
 
-          <li><a href="index.html" >Önemli Standart Kütüphane Modülleri</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" >Önemli Standart Kütüphane Modülleri</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">argparse Modülü</a></li> 
       </ul>
     </div> </div>
 
@@ -1168,29 +1158,31 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 
 
+            <div class="clearer"></div>
           </div>
       </div>
       <div class="clearer"></div>
     </div> 
-    <div class="related">
-      <h3>Navigation</h3>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="../Ucuncu_taraf_moduller/index.html" title="Üçüncü Taraf Modüller"
-             >next</a></li>
+             >sonraki</a></li>
         <li class="right" >
           <a href="sys.html" title="sys Modülü"
-             >previous</a> |</li>
+             >önceki</a> |</li>
 <li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
 
-          <li><a href="index.html" >Önemli Standart Kütüphane Modülleri</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" >Önemli Standart Kütüphane Modülleri</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">argparse Modülü</a></li> 
       </ul>
     </div> 
 
 <div class="footer">
 &copy; Copyright 2007-2021, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Last updated on 30.01.2021.
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+Son güncelleme: 12.03.2021.
+<a href="http://sphinx-doc.org/">Sphinx</a> 3.2.1 kullanılarak oluşturuldu.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
