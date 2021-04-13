@@ -1,0 +1,222 @@
+
+ <!DOCTYPE html>
+ <html lang="tr">
+
+
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+<meta content="Bu bölümde Django ile gelen kullanıcı modülünü kişiselleştireceğiz." name="description" />
+<meta content="python, python3, django, model" name="keywords" />
+
+    <title>Django Kişiselleştirilmiş Kullanıcı Modelini Dahili Model ile Genişletmek &#8212; Python 3 için Türkçe Kılavuz</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pyramid.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/translations.js"></script>
+    <link rel="search" title="Ara" href="../../search.html" />
+    <link rel="next" title="Kivy Paketi" href="../kivy_dersleri/index.html" />
+    <link rel="prev" title="Django ile reCAPTCHA Kullanımı" href="django_6.html" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+<div class='header'><a href='https://yazbel.com'><img src="../../_static/logo.png"></a></div>
+
+<ul class='navbar'>
+    <li><a href="#"><del>pdf desteği sonlanmıştır</del></a></li>
+    <li class="forum"><a href="http://forum.yazbel.com">forum</a></li>
+</ul>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../kivy_dersleri/index.html" title="Kivy Paketi"
+             accesskey="N">sonraki</a></li>
+        <li class="right" >
+          <a href="django_6.html" title="Django ile reCAPTCHA Kullanımı"
+             accesskey="P">önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="../index.html" >Üçüncü Taraf Modüller</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">django Paketi</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Django Kişiselleştirilmiş Kullanıcı Modelini Dahili Model ile Genişletmek</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+
+  <section id="django-kisisellestirilmis-kullanici-modelini-dahili-model-ile-genisletmek">
+<h1>Django Kişiselleştirilmiş Kullanıcı Modelini Dahili Model ile Genişletmek<a class="headerlink" href="#django-kisisellestirilmis-kullanici-modelini-dahili-model-ile-genisletmek" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<p>Django içinde hazır birçok modül ve modeller ile gelir. Bunlardan biri de kullanıcı modeli. Bu model ile hazırladığınız Django projesine çok hızlı bir şekilde üyelik sistemi geliştirebilirsiniz. Ancak bazen bu model tek başına yeterli gelmez. Böyle durumlarda kendi yazdığımız modeli Django ile gelen kullanıcı modeli ile genişletebiliriz.</p>
+<section id="bu-yontemin-avantajlari-neler">
+<h2>Bu Yöntemin Avantajları Neler?<a class="headerlink" href="#bu-yontemin-avantajlari-neler" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Django kullanıcı modeli yetki yönetim sistemi ve bazı hazır fonksiyonlar ile beraber gelir. Bu sayede kullanıcıların yetkisiz erişimlerini, yetki yönetimlerini, giriş, çıkış, parola değiştirme fonksiyonlarına ve bazı bezeyicilere(decarator) sahip oluruz. Bunlar sayesinde projemiz çok hızlı şekilde ilerleyebilir.</p>
+<a class="reference external image-reference" href="_images/customusermodel/django_admin.png"><img alt="../../_images/django_admin.png" class="align-center" src="../../_images/django_admin.png" /></a>
+<p>Django Admin Panelinden Kullanıcı ve Grup İzinleri Yönetimi</p>
+</section>
+<section id="nasil-yapilir">
+<h2>Nasıl Yapılır?<a class="headerlink" href="#nasil-yapilir" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Projemize bir adet uygulama ekliyoruz. Bu uygulama kullanıcı modelimizi barındıracak ve Django’nun dahili kullanıcı modeli ile genişletilecek.
+<cite>settings.py</cite> dosyamıza <cite>AUTH_USER_MODEL = uygulama_adi.model_adi</cite> değişkenini ekliyoruz böylece varsayılan kullanıcı modelini geçersiz kılarak kendi modelimizi kullanabiliriz.</p>
+<blockquote>
+<div><p><a class="reference internal" href="../../_images/warning_icon.png"><img alt="warning" src="../../_images/warning_icon.png" style="width: 32px;" /></a> Hazırladığınız uygulamayı <cite>settings.py</cite> dosyasında <cite>INSTALLED_APPS</cite> kısmına eklemeyi unutmayın.</p>
+</div></blockquote>
+<p>Ardından uygulamamızın <cite>models.py</cite> dosyasında bir model oluşturmamız gerekli. Bu model dosyasını dahili Django kullanıcı modeli ile genişleteceğz. Öncelikle genişleşme sırasında doğru olan modeli seçmeliyiz. Django bize iki adet sınıf sunuyor bunlar
+<cite>Abstractuser</cite> ve <cite>AbstractBaseUser</cite>.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>AbstractUser: Bu model ile beraber temel kullanıcı veri giriş alanları da geliyor. (Ad, soyad, son giriş, kayıt tarihi vs.)</p></li>
+<li><p>AbstractBaseUser: Bu model ile beraber sadece kimlik doğrulama fonksiyonları gelmekte. Kullanıcı veri giriş alanları gelmiyor.</p></li>
+</ul>
+</div></blockquote>
+<p>Bu anlatıda AbstractUser ile genişletme yapacağız. Sınıfımızı yazıyoruz ve test etmek amacıyla fazladan veri giriş alanları ekleyelim.
+Örnek kod:</p>
+<blockquote>
+<div><div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CustomUserModel</span><span class="p">(</span><span class="n">AbstractUser</span><span class="p">):</span>
+    <span class="n">website</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">URL_Fields</span><span class="p">(</span><span class="n">verbose_name</span><span class="o">=</span><span class="s1">&#39;Web Sitesi&#39;</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">os</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">verbose_name</span><span class="o">=</span><span class="s1">&#39;Kullandığı İşletim Sistemi&#39;</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__int__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Hazırladığımız modeli veritabanı şemamıza uygulayacağız.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python manage.py makemigrations
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python manage.py migrate
+</pre></div>
+</div>
+</div></blockquote>
+<p>Yaptıklarımızı kontrol etmek için Python konsolunu açarak modelimizi dahil edelim.</p>
+<blockquote>
+<div><div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">user.models</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">CustomUserModel</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">get_fields</span><span class="p">()</span>
+</pre></div>
+</div>
+</div></blockquote>
+<dl class="simple">
+<dt>Çıktı:</dt><dd><p>(&lt;ManyToOneRel: admin.logentry&gt;, &lt;django.db.models.fields.AutoField: id&gt;, &lt;django.db.models.fields.CharField: password&gt;, &lt;django.db.models.fields.DateTimeField: last_login&gt;, &lt;django.db.models.fields.BooleanField: is_superuser&gt;, &lt;django.db.models.fields.CharField: username&gt;, &lt;django.db.models.fields.CharField: first_name&gt;, &lt;django.db.models.fields.CharField: last_name&gt;, &lt;django.db.models.fields.EmailField: email&gt;, &lt;django.db.models.fields.BooleanField: is_staff&gt;, &lt;django.db.models.fields.BooleanField: is_active&gt;, &lt;django.db.models.fields.DateTimeField: date_joined&gt;, &lt;django.db.models.fields.URLField: website&gt;, &lt;django.db.models.fields.CharField: os&gt;, &lt;django.db.models.fields.related.ManyToManyField: groups&gt;, &lt;django.db.models.fields.related.ManyToManyField: user_permissions&gt;)</p>
+</dd>
+</dl>
+<p>Çıktıyı incelediğimiz zaman <cite>&lt;django.db.models.fields.URLField: website&gt;, &lt;django.db.models.fields.CharField: os&gt;</cite> veri giriş yerlerini görüyoruz. Böylece yaptıklarımızın sıkıntısızca sisteme işlendiğini anlayabiliriz. Artık Django’nun dahili yetkliendirme ve kullanıcı sistemini kendi kullanıcı modelimiz üzerinden kullanabiliriz.</p>
+</section>
+</section>
+
+
+
+<div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
+<div class='extrarelbar'> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../kivy_dersleri/index.html" title="Kivy Paketi"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="django_6.html" title="Django ile reCAPTCHA Kullanımı"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="../index.html" >Üçüncü Taraf Modüller</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >django Paketi</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Django Kişiselleştirilmiş Kullanıcı Modelini Dahili Model ile Genişletmek</a></li> 
+      </ul>
+    </div> </div>
+
+<div class='addcomment'>Yorumlar</div>
+
+<div class='how-to-use'>
+<h3>Önemli Not</h3>
+Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
+<span class='tag'>&lt;pre&gt;&lt;code&gt;</span> etiketleri içine alın. Örneğin:
+
+<pre>
+    <span class='tag'>&lt;pre&gt;&lt;code class="python"&gt;</span>
+    <span class='keyword'>print</span>(<span class='string'>"Merhaba Dünya!"</span>)
+    <span class='tag'>&lt;/code&gt;&lt;/pre&gt;</span>
+</pre>
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'istihza';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4eca48eb2d83faf9" async="async"></script>
+
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../kivy_dersleri/index.html" title="Kivy Paketi"
+             >sonraki</a></li>
+        <li class="right" >
+          <a href="django_6.html" title="Django ile reCAPTCHA Kullanımı"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="../index.html" >Üçüncü Taraf Modüller</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >django Paketi</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Django Kişiselleştirilmiş Kullanıcı Modelini Dahili Model ile Genişletmek</a></li> 
+      </ul>
+    </div> 
+
+<div class="footer">
+&copy; Copyright 2007-2021, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 12.04.2021.
+<a href="http://sphinx-doc.org/">Sphinx</a> 3.5.3 kullanılarak oluşturuldu.
+<br>
+<br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
+alt="Creative Commons License" style="border-width:0"
+src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a><br />
+<br>
+</div>
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=10396326;
+var sc_invisible=1;
+var sc_security="fb5cd679";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="hit counter"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="http://c.statcounter.com/10396326/0/fb5cd679/1/"
+alt="hit counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+  </body>
+</html>

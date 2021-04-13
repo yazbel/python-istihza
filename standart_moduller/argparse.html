@@ -6,17 +6,17 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta content="Bu bölümde argparse modülünü inceleyeceğiz." name="description" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+<meta content="Bu bölümde argparse modülünü inceleyeceğiz." name="description" />
 <meta content="python, python3, argparse" name="keywords" />
 
     <title>argparse Modülü &#8212; Python 3 için Türkçe Kılavuz</title>
-    <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
     <script src="../_static/translations.js"></script>
     <link rel="search" title="Ara" href="../search.html" />
     <link rel="next" title="Üçüncü Taraf Modüller" href="../Ucuncu_taraf_moduller/index.html" />
@@ -55,12 +55,12 @@
           <div class="body" role="main">
             
 
-  <div class="section" id="argparse-modulu">
+  <section id="argparse-modulu">
 <h1>argparse Modülü<a class="headerlink" href="#argparse-modulu" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
-<div class="section" id="giris">
+<section id="giris">
 <h2>Giriş<a class="headerlink" href="#giris" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Yazdığımız her uygulama grafik arayüzüne sahip olmaz. Bazı uygulamalar komut satırına daha uygundur ve bu uygulamalar bazı parametrelere ihtiyaç duyar. argparse modülü kullanıcıdan aldığımız parametreler için yardım mesajları, nasıl kullanıldığına yönelik mesajları üretir. Ayrıca bu modül kullanıcı geçersiz parametre girerse uygun hata mesajını bastırır.</p>
-<div class="section" id="ayristirici-olusturmak">
+<section id="ayristirici-olusturmak">
 <h3>Ayrıştırıcı Oluşturmak<a class="headerlink" href="#ayristirici-olusturmak" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
 <p>İlk olarak modülümüzü dahil etmemiz gerekiyor. Modülümüzü dahil ettikten sonra ayrıştırıcımız için nesne oluşturuyoruz.:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
@@ -71,8 +71,8 @@
 </pre></div>
 </div>
 <p>Artık argümanlar ekleyebiliriz.</p>
-</div>
-<div class="section" id="arguman-eklemek">
+</section>
+<section id="arguman-eklemek">
 <h3>Argüman Eklemek<a class="headerlink" href="#arguman-eklemek" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
 <p><cite>ArgumentParser</cite> nesnesine gerekli tüm bilgileri verdikten sonra, <cite>add_argument()</cite> fonksiyonu ile argümanları ekleyebiliriz.</p>
 <p>Örnek:</p>
@@ -83,8 +83,8 @@
 <p>İki argümanımızı eklemiş olduk. Şimdi <cite>ayristirici.print_help()</cite> ile çıktımızı bastıralım ve inceleyelim.</p>
 <p><strong>Not: Normal şartlarda argparse modülü komut satırı için uygundur ancak etkileşimli kabukta çalışırken sonuçları
 görmek için argparse modülünün print_help() fonksiyonunu kullanacağız.</strong></p>
-</div>
-<div class="section" id="arguman-ayristirmak">
+</section>
+<section id="arguman-ayristirmak">
 <h3>Argüman Ayrıştırmak<a class="headerlink" href="#arguman-ayristirmak" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
 <p><cite>ArgumentParser</cite> nesnesi <cite>parse_args()</cite> fonksiyonu yardımıyla argümanları ayrıştırmamıza sağlar.
 Etkileşimli kabuğumuza:</p>
@@ -97,16 +97,16 @@ Etkileşimli kabuğumuza:</p>
 </pre></div>
 </div>
 <p><cite>parse_args</cite> fonksionuna biz ‘-a’ parametresine vermemize rağmen ayrıştırıcımız bize argümanin ikinci ismini ve ona atadığımız değeri -7- verdi.</p>
-</div>
-</div>
-<div class="section" id="argumentparser-nesnesi">
+</section>
+</section>
+<section id="argumentparser-nesnesi">
 <h2>ArgumentParser Nesnesi<a class="headerlink" href="#argumentparser-nesnesi" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Temel olarak <cite>ArgumentParser</cite> nesnemizin yapısı:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">prog</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">usage</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">epilog</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="p">[],</span> <span class="n">formatter_class</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">HelpFormatter</span><span class="p">,</span> <span class="n">prefix_chars</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">fromfile_prefix_chars</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">argument_default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">conflict_handler</span><span class="o">=</span><span class="s1">&#39;error&#39;</span><span class="p">,</span> <span class="n">add_help</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">allow_abbrev</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Yeni bir <cite>ArgumentParser</cite> nesnesi oluşturulduğunda alacağı tüm argümanlar anahtar kelime -keyword- olarak iletilmeli.</p>
-<div class="section" id="argumanlar-ve-aciklamalari">
+<section id="argumanlar-ve-aciklamalari">
 <h3>Argümanlar ve Açıklamaları<a class="headerlink" href="#argumanlar-ve-aciklamalari" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
 <ul class="simple">
 <li><p>prog: Uygulamanın adı (varsayılan: sys.argv[0])</p></li>
@@ -122,7 +122,7 @@ Etkileşimli kabuğumuza:</p>
 <li><p>add_help: -h / –help seçeneğini ayrıştırıcıya ekler. (varsayılan: <cite>True</cite>)</p></li>
 <li><p>allow_abbrev: Kısaltmalar net değilse uzun seçeneklerin kısaltılmasını sağlar. (Varsayılan: <cite>None</cite>)</p></li>
 </ul>
-<div class="section" id="prog-argumani">
+<section id="prog-argumani">
 <h4>prog argümanı<a class="headerlink" href="#prog-argumani" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p><cite>ArgumentParser</cite> nesnesi varsayılan olarak <cite>sys.argv[0]</cite> çıktısını uygulama ismi olarak kullanır. Bu genellikle tercih edilen bir yöntemdir çünkü çoğu zaman uygulama ismi ile dosya ismi aynı olur.</p>
 <p><cite>ilkuygulama.py</cite> isimli bir dosya oluşturalım ve içine kodlarımızı yazalım:</p>
@@ -156,8 +156,8 @@ Etkileşimli kabuğumuza:</p>
 </pre></div>
 </div>
 <p>Uygulamamızın ismi değişti.</p>
-</div>
-<div class="section" id="usage-argumani">
+</section>
+<section id="usage-argumani">
 <h4>usage argümanı<a class="headerlink" href="#usage-argumani" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p>Yazdığımız uygulamaya kullanıcı için küçük bir açıklama eklemek isteyebiliriz. Bu işlem için <cite>usage</cite> argümanı bize yetişiyor.</p>
 <p>Hemen kodumuzu deneyelim.:</p>
@@ -183,8 +183,8 @@ Etkileşimli kabuğumuza:</p>
                         <span class="n">parametre</span> <span class="n">yardım</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="description-argumani">
+</section>
+<section id="description-argumani">
 <h4>description argümanı<a class="headerlink" href="#description-argumani" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p><cite>description</cite> argümanı ile uygulamamız için kısa bilgi ve nasıl çalıştığı hakkında açıklama sunar.
 Yardım mesajı ve parametreler arasında açıklama sunar.</p>
@@ -207,8 +207,8 @@ Yardım mesajı ve parametreler arasında açıklama sunar.</p>
 </pre></div>
 </div>
 <p><strong>Varsayılan olarak çıktımız belli bir alana sığdırılır ancak bunu değiştirmek isterseniz `formatter_class` argümanı kullanılır.</strong></p>
-</div>
-<div class="section" id="epilog-argumani">
+</section>
+<section id="epilog-argumani">
 <h4>epilog argümanı<a class="headerlink" href="#epilog-argumani" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p>Yazdığımız bazı uygulamalar daha fazla açıklamaya ihtiyaç duyabilir. Bunun için <cite>epilog</cite> parametresini kullanırız.</p>
 <p>Örnek:</p>
@@ -230,8 +230,8 @@ Yardım mesajı ve parametreler arasında açıklama sunar.</p>
 </pre></div>
 </div>
 <p><strong>Varsayılan olarak çıktımız belli bir alana sığdırılır ancak bunu değiştirmek isterseniz `formatter_class` argümanı kullanılır.</strong></p>
-</div>
-<div class="section" id="parents-argumani">
+</section>
+<section id="parents-argumani">
 <h4>parents argümanı<a class="headerlink" href="#parents-argumani" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p>Bazı durumlarda, argüman ayrıştırıcılar ortak argüman kümesini paylaşabilir. Argüman tanımlarını tekrarlamak yerine ortak argümanları bir kere tanımlayarak tanımlayıp <cite>parents</cite> argümanı ile farklı ayrıştırıcılarda kullanabiliriz.
 <cite>parents</cite> argümanı <cite>ArgumentParser</cite> nesnesi alır.
@@ -280,8 +280,8 @@ Python dosyamızı açalım ve bu kodu yazalım:</p>
 <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentError</span><span class="p">:</span> <span class="n">argument</span> <span class="o">-</span><span class="n">h</span><span class="o">/--</span><span class="n">help</span><span class="p">:</span> <span class="n">conflicting</span> <span class="n">option</span> <span class="n">strings</span><span class="p">:</span> <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="formatter-class-argumani">
+</section>
+<section id="formatter-class-argumani">
 <h4>formatter_class argümanı<a class="headerlink" href="#formatter-class-argumani" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p><cite>ArgumentParser</cite> nesnesi alternatif bir biçimlendirme sınıfı tanımlayıp, yardım mesajlarını kişiselleştirilmesine izin verir.
 Şimdilik dört sınıfa sahiptir.:</p>
@@ -387,8 +387,8 @@ optional arguments:
 </pre></div>
 </div>
 <p>Çıktımıza baktığımızda hangi argümanın alacağı değer tipi argümanın yanında görünür.</p>
-</div>
-<div class="section" id="prefix-chars-argumani">
+</section>
+<section id="prefix-chars-argumani">
 <h4>prefix_chars argümanı<a class="headerlink" href="#prefix-chars-argumani" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p>Genellikle komut satırı uygulamalrında argümanlar <cite>-</cite> ön ekini alır. (Örnek : <cite>-f</cite> / <cite>–arguman</cite>) Ayrıştırıcımız bazı durumlarda farklı veya ek ön eklere ihtiyaç duyabilir.
 Örneğin: <cite>+f</cite> veya <cite>/arguman</cite> <cite>ArgumentParser</cite> nesnemizi oluştururken <cite>prefix_chars</cite> argümanını kullanarak bu isteğimizi sağlarız.
@@ -410,8 +410,8 @@ optional arguments:
   <span class="o">++</span><span class="n">arguman</span> <span class="n">ARGUMAN</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="fromfile-prefix-chars-argumani">
+</section>
+<section id="fromfile-prefix-chars-argumani">
 <h4>fromfile_prefix_chars argümanı<a class="headerlink" href="#fromfile-prefix-chars-argumani" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p>Bazı zamanlar örneğin uzun argüman listelerini içeren bir uygulama yazdığımız zaman, argümanları komut satırında yazmak yerine
 bir dosya içerisinde tutmak daha mantıklı olur. <cite>ArgumentParser</cite> nesnesine <cite>fromfile_prefix_chars</cite> argümanı verildiği zaman
@@ -440,8 +440,8 @@ Kodumuzu yazalım:</p>
 olarak her satırda bir tane olmalı ve komut satırındaki
 orijinal dosya başvuru argümanı ile aynı yerdeymiş gibi ele alınmalıdır.
 Bu nedenle  örnekte, [<a class="reference external" href="mailto:'&#37;&#52;&#48;args&#46;txt">‘<span>&#64;</span>args<span>&#46;</span>txt</a>’] ifadesi [‘-i’, ‘bar’] ifadesine eşdeğer olarak kabul edilir.</p>
-</div>
-<div class="section" id="argument-default-argumani">
+</section>
+<section id="argument-default-argumani">
 <h4>argument_default argümanı<a class="headerlink" href="#argument-default-argumani" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p>Genellikle, argüman varsayılanları, varsayılan olarak <cite>add_argument()</cite>
 fonksiyonu veya belirli bir ad-değer çiftleri kümesiyle <cite>set_defaults()</cite> fonksiyonunun çağrılmasıyla belirlenir.
@@ -470,8 +470,8 @@ Ancak bazı durumlarda bağımsız değişkenler için tek bir ayrıştırıcıy
 </pre></div>
 </div>
 <p>Görüldüğü üzere ikinci çıktımız bu sefer argümanın isimlerini ve değerlerini verdi ancak değerleri olmadığı için <cite>None</cite> olarak döndü.</p>
-</div>
-<div class="section" id="allow-abbrev-argumani">
+</section>
+<section id="allow-abbrev-argumani">
 <h4>allow_abbrev argümanı<a class="headerlink" href="#allow-abbrev-argumani" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p>Normal şartlarda <cite>parse_args()</cite> fonksiyonuna argüman listesi verdiğiniz zaman uzun seçeneklerin kısaltmalarını kabul eder. Eğer bu özelliği devre dışı
 bırakmak isterseniz <cite>allow_abbrev=False</cite> şeklinde kullanabilirsiniz.</p>
@@ -495,8 +495,8 @@ bırakmak isterseniz <cite>allow_abbrev=False</cite> şeklinde kullanabilirsiniz
 </pre></div>
 </div>
 <p>Görüldüğü üzere <cite>ilkprogram.py: error: unrecognized arguments</cite> hatası verdi. Bu hatanın sebebi kısaltma olarak verdiğimiz argümanı Python tanımadı.</p>
-</div>
-<div class="section" id="conflict-handler-argumani">
+</section>
+<section id="conflict-handler-argumani">
 <h4>conflict_handler argümanı<a class="headerlink" href="#conflict-handler-argumani" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p><cite>ArgumentParser</cite> nesnesi varsayılan olarak aynı argümanların kullanımına izin vermez. Eğer aynı argümanları kullanmaya denerseniz hata verecektir.
 Örnek:</p>
@@ -537,8 +537,8 @@ Bazen (örneğin <cite>parents</cite> argümanını kullandığımız zaman) Ayn
 </pre></div>
 </div>
 <p><strong>NOT:`ArgumentParser` nesnesi yalnızca yeni verilen argümanın üzerine yazılır. Eğer eski argüman birden farklı seçeneği varsa (`-i/–ilk_argüman` gibi) yeni eklediğiniz hangi argüman ise onun üzerine yazılır. Çıktımıza baktığımız zaman sadece `–ilk_argüman` üzerine yazıldı `-i` argümanının üzerine yazılma olmadı.</strong></p>
-</div>
-<div class="section" id="add-help-argumani">
+</section>
+<section id="add-help-argumani">
 <h4>add_help argümanı<a class="headerlink" href="#add-help-argumani" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p><cite>ArgumentParser</cite> nesnesi varsayılan olarak ayrıştırıcıların yardım mesajlarını sade şekilde ekrana yazdırır.
 Örnek kodumuzu bir metin dosyasına yazıp ardından, terminalde dosyamızın bulunduğu dizinde terminalimizde <cite>python3 ilkprogram.py -h</cite> şeklinde  komutunu çalıştıralım:</p>
@@ -589,15 +589,15 @@ Az önce yazdığımız kodu bu şekilde değiştirip terminalden tekrar çalı�
    <span class="o">+</span><span class="n">h</span><span class="p">,</span> <span class="o">++</span><span class="n">help</span>  <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="add-argument-fonksiyonu">
+</section>
+</section>
+</section>
+<section id="add-argument-fonksiyonu">
 <h2>add_argument() Fonksiyonu<a class="headerlink" href="#add-argument-fonksiyonu" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ArgumentParser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="n">name</span> <span class="ow">or</span> <span class="n">flags</span><span class="o">...</span><span class="p">[,</span> <span class="n">action</span><span class="p">][,</span> <span class="n">nargs</span><span class="p">][,</span> <span class="n">const</span><span class="p">][,</span> <span class="n">default</span><span class="p">][,</span> <span class="nb">type</span><span class="p">][,</span> <span class="n">choices</span><span class="p">][,</span> <span class="n">required</span><span class="p">][,</span> <span class="n">help</span><span class="p">][,</span> <span class="n">metavar</span><span class="p">][,</span> <span class="n">dest</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="section" id="parametreler-ve-aciklamalari">
+<section id="parametreler-ve-aciklamalari">
 <h3>Parametreler ve açıklamaları<a class="headerlink" href="#parametreler-ve-aciklamalari" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
 <ul class="simple">
 <li><p>name veya flags: İsim veya seçenek tanımlamak için oluşturulan dizi. Örnek: <cite>-s</cite>, <cite>–sil</cite> veya <cite>sil</cite>.</p></li>
@@ -612,7 +612,7 @@ Az önce yazdığımız kodu bu şekilde değiştirip terminalden tekrar çalı�
 <li><p>metavar: Kullanım mesajlarındaki argüman için bir isim.</p></li>
 <li><p>dest: <cite>parse_args()</cite> tarafından döndürülen nesneye eklenecek niteliğin adı.</p></li>
 </ul>
-<div class="section" id="name-veya-flags-isim-veya-bayrak">
+<section id="name-veya-flags-isim-veya-bayrak">
 <h4>name veya flags (isim veya bayrak)<a class="headerlink" href="#name-veya-flags-isim-veya-bayrak" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p><cite>Add_argument()</cite> fonksiyonu , -f veya –foo gibi isteğe bağlı bir argüman mı yoksa konumsal bir argüman mı olduğunu bilmesi gerekir.
 <cite>Add_argument()</cite> fonksiyonuna iletilen ilk argümanlar bu nedenle bir dizi bayrak veya basit bir argüman adı olmalıdır.
@@ -645,8 +645,8 @@ Kodları yazalım.:</p>
 </pre></div>
 </div>
 <p>Çıktımıza baktığımız zaman <cite>bar</cite> argümanı konumsal olduğu için ve son <cite>parse_args()</cite> fonksiyonunda kullanmadığımız için uygulamamız hata verdi.</p>
-</div>
-<div class="section" id="action">
+</section>
+<section id="action">
 <h4>action<a class="headerlink" href="#action" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p><cite>ArgumentParser</cite> nesnesi,argüman eylemleri ile ilişkilendirir.
 Bu eylemler, kendisiyle ilişkilendirilmiş komut satırı argümanları ile hemen hemen
@@ -761,8 +761,8 @@ her şeyi yapabilir, ancak çoğu eylem yalnızca <cite>parse_args()</cite> fonk
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">PROG</span> <span class="mf">2.0</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="nargs">
+</section>
+<section id="nargs">
 <h4>nargs<a class="headerlink" href="#nargs" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p><cite>ArgumentParser</cite> nesnesi her argümanı tek bir işlem ile ilişkilendirir. <cite>nargs</cite> anahtar sözcüğü bir argümanı farklı sayıda argümanı tek bir işlem ile ilişkilendirir.</p>
 <ul class="simple">
@@ -884,16 +884,16 @@ Python Etkileşimli Kabuğumuzda Kodumuzu Yazalım:</p>
 </div>
 <p>Eğer <cite>nargs</cite> anahtar sözcüğü sağlanmazsa, kullanılan argümanların sayısı <cite>action</cite> tarafından belirlenir. Genellikle bu, tek bir komut satırı argümanının kullanılacağı ve tek bir öğenin
 üretileceği anlamına gelir.</p>
-</div>
-<div class="section" id="const">
+</section>
+<section id="const">
 <h4>const<a class="headerlink" href="#const" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p>‘const` argümanı komut satırından okunamayan ancak ‘ArgumentParser()` için gerekli sabit değerleri tutar. En yaygın iki kullanımı vardır.</p>
 <ul class="simple">
 <li><p><cite>add_argument()</cite> fonksiyonu <cite>action=’store_const’</cite> veya <cite>action=’append_cost’</cite> ile çağrıldığı zaman bu iki eylem <cite>const</cite> değerini <cite>parse_args()</cite> tarafından döndürülen nesnenin niteliklerine ekler.</p></li>
 <li><p><cite>add_argument()</cite> fonksiyonu isteğe bağlı karakter dizisi (<cite>-f</cite> veya <cite>–foo</cite> gibi) ve <cite>nargs=’?’</cite> ile çağrıldığı zaman sıfır veya bir komut satırı argümanı tarafından takip edilebilecek isteğe bağlı argüman oluşturur. Komut satırı argümanları ayrıştırılırken isteğe bağlı seçenek dizesi bağımsız değişken ile karşılaşmazsa <cite>const</cite> değeri kabul edilir.</p></li>
 </ul>
-</div>
-<div class="section" id="default">
+</section>
+<section id="default">
 <h4>default<a class="headerlink" href="#default" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p>Tüm isteğe bağlı argümanlar ve bazı konumsal argümanlar komut satırında bazen atlanabilir. <cite>default</cite> anahtar sözcüğü argümanı ile eğer argüman değer almazsa varsayılan bir değer atanabilir. Varsayılan olarak <cite>default</cite> <cite>None</cite> değerine sahiptir.
 Örnek:</p>
@@ -927,8 +927,8 @@ Python Etkileşimli Kabuğumuzda Kodumuzu Yazalım:</p>
 </pre></div>
 </div>
 <p>Görüldüğü üzere ilk değerimiz karakter dizisi yerine artık tam sayı (int) oldu.</p>
-</div>
-<div class="section" id="type">
+</section>
+<section id="type">
 <h4>type<a class="headerlink" href="#type" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p><cite>ArgumentParser()</cite> nesnesi varsayılan olarak komut satırından okuduğu değerleri karakter dizisi (string) olarak alır. Bazı durumlarda farklı tiplerde değişkenlere ihtiyaç duyarız. Bunun için <cite>type</cite> kullanılır.
 Şimdi uygulamamızı çalıştırdığımız dizine <cite>args.txt</cite> dosyası oluşturalım ve kodumuzu çalıştıralım.
@@ -946,8 +946,8 @@ Kod:</p>
 </pre></div>
 </div>
 <p>Çıktıya baktığımız zaman <cite>bar</cite> argümanının dosya hakkında bilgiler içeren bir takım detaylar var ve <cite>foo</cite> ise tam sayı değerine sahip.</p>
-</div>
-<div class="section" id="choices">
+</section>
+<section id="choices">
 <h4>choices<a class="headerlink" href="#choices" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p>Bazen argümanlar belirli değerler ile sınırlandırmak gerekir. Bu durumda <cite>choices</cite> kullanılır. Eğer kullanıcı geçerli argüman verdiyse uygulama devam edeğer ancak
 verilen argüman geçersiz ise hata mesajı döner.</p>
@@ -967,8 +967,8 @@ verilen argüman geçersiz ise hata mesajı döner.</p>
 </pre></div>
 </div>
 <p>Çıktımıza baktığımız zaman ilk argümanımız geçerli olduğu için bir hata almadık. Ancak ikinci argümanımız geçersiz olduğundan dolayı uygulamamız bize geçerli argümanlar arasında seçim yapmamızı söylüyor.</p>
-</div>
-<div class="section" id="required">
+</section>
+<section id="required">
 <h4><cite>required</cite><a class="headerlink" href="#required" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p><cite>argparse</cite> modülü genellikle <cite>-f</cite> veya <cite>–foo</cite> gibi isteğe bağlı seçimler ile çalışır ancak bazı durumlarda zorunlu argümanlar vermek gerekebilir. Böyle durumlarda <cite>required=True</cite> kullanılır.</p>
 <p>Örnek Kod:</p>
@@ -988,8 +988,8 @@ verilen argüman geçersiz ise hata mesajı döner.</p>
 </div>
 <p>Çıktımızı incelediğimiz zaman bir değişken atadığımız için uygulama hatasız çalıştı ancak ikincisinde değişken olmadığı için hata verdi.</p>
 <p><strong>NOT:Zorunlu seçimler genellikle kötü form olarak kabul edilir. Çünkü bu parametreler özünde isteğe bağlıdır ve kullanıcılar isteğe bağlı olmasını ister. Mümkün olduğunca kullanmamak gerekir.</strong></p>
-</div>
-<div class="section" id="help">
+</section>
+<section id="help">
 <h4>help<a class="headerlink" href="#help" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p><cite>help</cite> değeri karakter dizisi olarak değer alır ve bu değer argümanlar hakkında yardım metinleri içerir. Kullanıcı yardım istediğinde bulununca (genellikle <cite>-h</cite> veya <cite>–help</cite>) yardım metinleri görünür.</p>
 <p>Örnek Kod:</p>
@@ -1035,8 +1035,8 @@ verilen argüman geçersiz ise hata mesajı döner.</p>
 </pre></div>
 </div>
 <p>Görüldüğü üzere uygulamamızın adı ve varsayılan değerimiz ekrana basıldı.</p>
-</div>
-<div class="section" id="metavar">
+</section>
+<section id="metavar">
 <h4>metavar<a class="headerlink" href="#metavar" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p><cite>ArgumentParser()</cite> nesnesi yardım metinlerini oluşturduğu zaman, beklenen her argümana atıfta bulunmak için bir yola ihtiyaç duyar. Varsayılan olarak <cite>ArgumentParser()</cite> nesnesi <cite>dest</cite> değerini her nesnenin “ismi” olarak kullanır.
 Varsayılan olarak, konumsal argüman eylemleri için <cite>dest</cite> değeri doğrudan kullanılır ve isteğe bağlı argüman eylemleri için <cite>dest</cite> değeri büyük harfe dönüştürülür.
@@ -1085,8 +1085,8 @@ Varsayılan olarak, konumsal argüman eylemleri için <cite>dest</cite> değeri 
 </div>
 <p>Konumsal argümanımızın ismi <cite>metavar</cite> ile değişti.</p>
 <p><strong>NOT:`metavar` yalnızca ekran ismini değiştirir, `parse_args()` ile kontrol ettiğiniz zaman `dest` değerini kullandığını görebilirsiniz.</strong></p>
-</div>
-<div class="section" id="dest">
+</section>
+<section id="dest">
 <h4>dest<a class="headerlink" href="#dest" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
 <p><cite>dest</cite> ile argümanlara kişiselleştirilmiş isimler verebilirsiniz.
 Örnek:</p>
@@ -1102,10 +1102,10 @@ Varsayılan olarak, konumsal argüman eylemleri için <cite>dest</cite> değeri 
 </pre></div>
 </div>
 <p>Bu yardım sayfası <a class="reference external" href="https://docs.python.org/3/library/argparse.html">https://docs.python.org/3/library/argparse.html</a> referans alınarak hazırlanmıştır.</p>
-</div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
+</section>
 
 
 
@@ -1181,8 +1181,8 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 <div class="footer">
 &copy; Copyright 2007-2021, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 12.03.2021.
-<a href="http://sphinx-doc.org/">Sphinx</a> 3.2.1 kullanılarak oluşturuldu.
+Son güncelleme: 12.04.2021.
+<a href="http://sphinx-doc.org/">Sphinx</a> 3.5.3 kullanılarak oluşturuldu.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
