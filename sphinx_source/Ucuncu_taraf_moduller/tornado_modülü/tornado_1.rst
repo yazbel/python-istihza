@@ -66,7 +66,7 @@ Sayfa Sunma
 ===========
 
 Sitemizde sayfa sunmak için bir view yazmalıyız. Geleneği bozmayalım ve 
-"Merhaba Zalim Dünya" yazarak başlayalım. Bu iş için `Application`'da olduğu 
+"Merhaba Zalim Dünya" yazarak başlayalım. Bu iş için `Application'da` olduğu 
 gibi `tornado.web` modülünü kullancağız. Bu sefer `RequestHandler` isimli 
 bir sınıf bize yardımcı olacak.
 
@@ -89,8 +89,8 @@ Kullanıcının siteye girmesiyle sunucuya bir istek yollanır. Bu istek
 kullanıcının adres çubuğuna yazdığı ifadeyle doğrudan ilişkilidir.
 Mesela kullanıcı `http://localhost:8888/istihza/` yazarsa bizden `/istihza/` 
 adresini istemiştir. Eğer biz bu adresi bir view ile ilişkilendirdiysek bu view 
-çalışır. Eğer ilişkilendirmediysek `404` hatası alırız. Biz `Tornado`'da bu 
-ilişkilendirme işini `Application`'dan faydalanarak yapıyoruz. Yani
+çalışır. Eğer ilişkilendirmediysek `404` hatası alırız. Biz `Tornado'da` bu 
+ilişkilendirme işini `Application'dan` faydalanarak yapıyoruz. Yani
 `app = tornado.web.Application()` diye yazdığımız bölümü düzenleyeceğiz::
 
     app = tornado.web.Application([
@@ -129,8 +129,8 @@ Sitemizde göstereceğimiz sayfaları `html` formatında yazıp kaydetmeliyiz.
 Daha sonra bu dosyaları `Tornado` ile çağırıp servis etmeliyiz.
 
 Göstereceğimiz sayfalar ikiye ayrılıyor: "Statik" ve "Dinamik". Statik sayfalar 
-`Tornado`'nun çağırıp değiştirmeden servis ettiği dosyalardır. Dinamik sayfalar 
-ise `Tornado`'nun çağırdıktan sonra düzenleyip servis ettiği dosyalardır.
+Tornado'nun çağırıp değiştirmeden servis ettiği dosyalardır. Dinamik sayfalar 
+ise Tornado'nun çağırdıktan sonra düzenleyip servis ettiği dosyalardır.
 
 Önce bir `html` dosyası oluşturalım, ardından bu dosyayı servis edelim.
 
@@ -148,7 +148,7 @@ ise `Tornado`'nun çağırdıktan sonra düzenleyip servis ettiği dosyalardır.
 
 Bu dosyayı "`index.html`" ismiyle `torn` klasörüme kaydedeceğim. Siz başka bir 
 isimle başka bir klasöre de kaydedebilirsiniz. Hemen servis etmek için `Merhaba` 
-`view`'ını düzenleyelim::
+viewını düzenleyelim::
 
     class Merhaba(tornado.web.RequestHandler):
         def get(self):
@@ -157,9 +157,9 @@ isimle başka bir klasöre de kaydedebilirsiniz. Hemen servis etmek için `Merha
             self.write(sayfa)
 
 Ben servis etmek için `Merhaba view`'ını düzenlemeyi tercih ettim. Ancak siz yeni 
-bir `view` yazmak isteyebilirsiniz. Bu durumda yazdığınız `view`'ı yeni bir istek 
+bir `view` yazmak isteyebilirsiniz. Bu durumda yazdığınız view'ı yeni bir istek 
 ile eşleştirmeniz gerekir. Bu iş için de bir örnek verip kodlarımızı açıklayayım. 
-Oluşturduğunuz `view`'ın adı `Yazbel` olsun ve `/yazbel/` isteği ile 
+Oluşturduğunuz viewın adı `Yazbel` olsun ve `/yazbel/` isteği ile 
 ilişkilendirelim::
 
     app = tornado.web.Application([
@@ -171,7 +171,7 @@ Bu durumu geçip yukarıdaki kodlara tekrar bakalım. İlk satırda eklediğimiz
 
     loader = tornado.template.Loader(".")
 
-Burada `Html` dosyalarımızın bulunduğu dizini `Tornado`'ya bildirdik. Eğer 
+Burada `Html` dosyalarımızın bulunduğu dizini Tornado'ya bildirdik. Eğer 
 `Html` dosyalarınız farklı bir dizinde yer alıyorsa benim `.` yazdığım yeri 
 o dizin ile değiştirmelisiniz. 
 
@@ -183,14 +183,14 @@ kurtulduk. İkinci eklediğimiz satıra bakalım::
     sayfa = loader.load("index.html").generate()
 
 Burada daha önce oluşturduğumuz `loader` değişkenini kullanarak sayfamızı 
-getirdik. `generate` fonksiyonunu kullanarak sayfayı `Tornado`'nun sunabileceği 
+getirdik. `generate` fonksiyonunu kullanarak sayfayı Tornado'nun sunabileceği 
 bir hale dönüştürdük. Daha sonra `write` fonksiyonuyla sayfamızı gösterdik::
 
     self.write(sayfa)
 
 Şimdi de dinamik sayfaların nasıl oluşturulduğuna bakalım. Dinamik sayfaların 
 çağrıldıktan sonra düzenlendiğini söylemiştik. Düzenleyeceğimiz yeri 
-`Tornado`'ya bildirmek için `Template`(Şablon) denen bir yöntemden faydalanacağız.
+Tornado'ya bildirmek için Template(Şablon) denen bir yöntemden faydalanacağız.
 Değişiklik yapmak istediğimiz yeri 2 tane küme parantezi içinde bir isimle 
 `Html` dosyamızda kullanıyoruz. Hemen bir `index.html` dosyasını düzenleyerek bir 
 örnek verelim.
@@ -211,7 +211,7 @@ Burada `{{ yazbel }}` yazarak `yazbel` isimli bir değişken tanımladık. Tabi 
 siz farklı bir değişken isimi seçebilirsiniz.
 
 Şu an `__init__.py` dosyamızı çalıştırıp `http://localhost:8888/` adresine 
-gidersek `500` hatasıyla karşılaşacağız. `__init__.py`'nin çalıştığı komut 
+gidersek `500` hatasıyla karşılaşacağız. `__init__.py'nin` çalıştığı komut 
 istemcisine bakarsak bir hata göreceğiz.
 
 .. code-block ::
@@ -259,7 +259,7 @@ verecek şekilde düzenleyelim::
             sayfa = loader.load("index.html").generate(yazbel=liste)
             self.write(sayfa)
 
-Hemen bu sayıları listeleyecek bir `Template`(Şablon) yazalım. Bu listede 
+Hemen bu sayıları listeleyecek bir Template(Şablon) yazalım. Bu listede 
 çift sayılar büyük, tek sayılar küçük gözüksün.
 
 .. code-block ::

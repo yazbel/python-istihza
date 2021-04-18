@@ -6,8 +6,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
-<meta content="Bu bölümde tornado ile web uygulaması geliştirmeye başlıyoruz." name="description" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta content="Bu bölümde tornado ile web uygulaması geliştirmeye başlıyoruz." name="description" />
 <meta content="python, tornado, Kurulum, Proje Oluşturma, View, Template" name="keywords" />
 
     <title>Tornado &#8212; Python 3 için Türkçe Kılavuz</title>
@@ -56,12 +55,12 @@
           <div class="body" role="main">
             
 
-  <section id="tornado">
+  <div class="section" id="tornado">
 <h1>Tornado<a class="headerlink" href="#tornado" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
 <p>Eğer yazdığınız sitede gerçek zamanlı(real-time) bağlantılar kullanacaksanız
 ya da bir mikro çerçeveye(micro framework) ihtiyacınız varsa tornado tamamen
 sizin ihtiyaçlarınız için tasarlanmış bir çerçeve.</p>
-<section id="kurulum">
+<div class="section" id="kurulum">
 <h2>Kurulum<a class="headerlink" href="#kurulum" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Tornado’yu kullanmak için önce indirmemiz gerekiyor. Aşağıdaki komutu komut
 istemcisinde yazın:</p>
@@ -69,8 +68,8 @@ istemcisinde yazın:</p>
 </pre></div>
 </div>
 <p><cite>Successfully installed tornado-6.1</cite> yazısını gördüyseniz sorunsuzca inmiştir.</p>
-</section>
-<section id="proje-olusturma">
+</div>
+<div class="section" id="proje-olusturma">
 <h2>Proje Oluşturma<a class="headerlink" href="#proje-olusturma" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Tornado, herhangi bir dizinde açtığınız herhangi bir dosyada çalışabilir. Yani
 normal bir python dosyası açalım ve yazmaya başlayalım. Ben <cite>torn</cite> isimli bir
@@ -106,11 +105,11 @@ bileşenlerini yazalım:</p>
 portu değiştirmeyi unutmayın.</p>
 <p>Siteye girdiğiniz zaman sizi <cite>404: Not Found</cite> yazısı karşılayacak. Çünkü daha
 hiç sayfa oluşturmadık. Hadi şimdi bir sayfa oluşturalım.</p>
-</section>
-<section id="sayfa-sunma">
+</div>
+<div class="section" id="sayfa-sunma">
 <h2>Sayfa Sunma<a class="headerlink" href="#sayfa-sunma" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Sitemizde sayfa sunmak için bir view yazmalıyız. Geleneği bozmayalım ve
-“Merhaba Zalim Dünya” yazarak başlayalım. Bu iş için <cite>Application</cite>’da olduğu
+“Merhaba Zalim Dünya” yazarak başlayalım. Bu iş için <cite>Application’da</cite> olduğu
 gibi <cite>tornado.web</cite> modülünü kullancağız. Bu sefer <cite>RequestHandler</cite> isimli
 bir sınıf bize yardımcı olacak.</p>
 <p>Şimdi yazacağımız kodları içe aktarma ile <cite>app</cite> değişkeni arasına yazalım:</p>
@@ -130,8 +129,8 @@ Hadi hemen yapalım.</p>
 kullanıcının adres çubuğuna yazdığı ifadeyle doğrudan ilişkilidir.
 Mesela kullanıcı <cite>http://localhost:8888/istihza/</cite> yazarsa bizden <cite>/istihza/</cite>
 adresini istemiştir. Eğer biz bu adresi bir view ile ilişkilendirdiysek bu view
-çalışır. Eğer ilişkilendirmediysek <cite>404</cite> hatası alırız. Biz <cite>Tornado</cite>’da bu
-ilişkilendirme işini <cite>Application</cite>’dan faydalanarak yapıyoruz. Yani
+çalışır. Eğer ilişkilendirmediysek <cite>404</cite> hatası alırız. Biz <cite>Tornado’da</cite> bu
+ilişkilendirme işini <cite>Application’dan</cite> faydalanarak yapıyoruz. Yani
 <cite>app = tornado.web.Application()</cite> diye yazdığımız bölümü düzenleyeceğiz:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">app</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">Application</span><span class="p">([</span>
     <span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">Merhaba</span><span class="p">)</span>
@@ -162,14 +161,14 @@ ekleyerek yapabilirsiniz. <cite>http://localhost:8888/</cite> adresine giderek
 <span class="n">tornado</span><span class="o">.</span><span class="n">ioloop</span><span class="o">.</span><span class="n">IOLoop</span><span class="o">.</span><span class="n">current</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </pre></div>
 </div>
-</section>
-<section id="template-sablon-sistemi">
+</div>
+<div class="section" id="template-sablon-sistemi">
 <h2>Template(Şablon) Sistemi<a class="headerlink" href="#template-sablon-sistemi" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Sitemizde göstereceğimiz sayfaları <cite>html</cite> formatında yazıp kaydetmeliyiz.
 Daha sonra bu dosyaları <cite>Tornado</cite> ile çağırıp servis etmeliyiz.</p>
 <p>Göstereceğimiz sayfalar ikiye ayrılıyor: “Statik” ve “Dinamik”. Statik sayfalar
-<cite>Tornado</cite>’nun çağırıp değiştirmeden servis ettiği dosyalardır. Dinamik sayfalar
-ise <cite>Tornado</cite>’nun çağırdıktan sonra düzenleyip servis ettiği dosyalardır.</p>
+Tornado’nun çağırıp değiştirmeden servis ettiği dosyalardır. Dinamik sayfalar
+ise Tornado’nun çağırdıktan sonra düzenleyip servis ettiği dosyalardır.</p>
 <p>Önce bir <cite>html</cite> dosyası oluşturalım, ardından bu dosyayı servis edelim.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -184,7 +183,7 @@ ise <cite>Tornado</cite>’nun çağırdıktan sonra düzenleyip servis ettiği 
 </div>
 <p>Bu dosyayı “<cite>index.html</cite>” ismiyle <cite>torn</cite> klasörüme kaydedeceğim. Siz başka bir
 isimle başka bir klasöre de kaydedebilirsiniz. Hemen servis etmek için <cite>Merhaba</cite>
-<cite>view</cite>’ını düzenleyelim:</p>
+viewını düzenleyelim:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Merhaba</span><span class="p">(</span><span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">RequestHandler</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">loader</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">Loader</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
@@ -193,9 +192,9 @@ isimle başka bir klasöre de kaydedebilirsiniz. Hemen servis etmek için <cite>
 </pre></div>
 </div>
 <p>Ben servis etmek için <cite>Merhaba view</cite>’ını düzenlemeyi tercih ettim. Ancak siz yeni
-bir <cite>view</cite> yazmak isteyebilirsiniz. Bu durumda yazdığınız <cite>view</cite>’ı yeni bir istek
+bir <cite>view</cite> yazmak isteyebilirsiniz. Bu durumda yazdığınız view’ı yeni bir istek
 ile eşleştirmeniz gerekir. Bu iş için de bir örnek verip kodlarımızı açıklayayım.
-Oluşturduğunuz <cite>view</cite>’ın adı <cite>Yazbel</cite> olsun ve <cite>/yazbel/</cite> isteği ile
+Oluşturduğunuz viewın adı <cite>Yazbel</cite> olsun ve <cite>/yazbel/</cite> isteği ile
 ilişkilendirelim:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">app</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">Application</span><span class="p">([</span>
     <span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">Merhaba</span><span class="p">),</span> <span class="c1"># Buradaki virgülü koymayı unutmayınız</span>
@@ -207,7 +206,7 @@ ilişkilendirelim:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">loader</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">Loader</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Burada <cite>Html</cite> dosyalarımızın bulunduğu dizini <cite>Tornado</cite>’ya bildirdik. Eğer
+<p>Burada <cite>Html</cite> dosyalarımızın bulunduğu dizini Tornado’ya bildirdik. Eğer
 <cite>Html</cite> dosyalarınız farklı bir dizinde yer alıyorsa benim <cite>.</cite> yazdığım yeri
 o dizin ile değiştirmelisiniz.</p>
 <p>Peki neden bildirdik? Çünkü web programlamada
@@ -218,16 +217,16 @@ kurtulduk. İkinci eklediğimiz satıra bakalım:</p>
 </pre></div>
 </div>
 <p>Burada daha önce oluşturduğumuz <cite>loader</cite> değişkenini kullanarak sayfamızı
-getirdik. <cite>generate</cite> fonksiyonunu kullanarak sayfayı <cite>Tornado</cite>’nun sunabileceği
+getirdik. <cite>generate</cite> fonksiyonunu kullanarak sayfayı Tornado’nun sunabileceği
 bir hale dönüştürdük. Daha sonra <cite>write</cite> fonksiyonuyla sayfamızı gösterdik:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">sayfa</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Şimdi de dinamik sayfaların nasıl oluşturulduğuna bakalım. Dinamik sayfaların
 çağrıldıktan sonra düzenlendiğini söylemiştik. Düzenleyeceğimiz yeri
-<cite>Tornado</cite>’ya bildirmek için <cite>Template`(Şablon) denen bir yöntemden faydalanacağız.
+Tornado’ya bildirmek için Template(Şablon) denen bir yöntemden faydalanacağız.
 Değişiklik yapmak istediğimiz yeri 2 tane küme parantezi içinde bir isimle
-`Html</cite> dosyamızda kullanıyoruz. Hemen bir <cite>index.html</cite> dosyasını düzenleyerek bir
+<cite>Html</cite> dosyamızda kullanıyoruz. Hemen bir <cite>index.html</cite> dosyasını düzenleyerek bir
 örnek verelim.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -243,7 +242,7 @@ Değişiklik yapmak istediğimiz yeri 2 tane küme parantezi içinde bir isimle
 <p>Burada <cite>{{ yazbel }}</cite> yazarak <cite>yazbel</cite> isimli bir değişken tanımladık. Tabi ki
 siz farklı bir değişken isimi seçebilirsiniz.</p>
 <p>Şu an <cite>__init__.py</cite> dosyamızı çalıştırıp <cite>http://localhost:8888/</cite> adresine
-gidersek <cite>500</cite> hatasıyla karşılaşacağız. <cite>__init__.py</cite>’nin çalıştığı komut
+gidersek <cite>500</cite> hatasıyla karşılaşacağız. <cite>__init__.py’nin</cite> çalıştığı komut
 istemcisine bakarsak bir hata göreceğiz.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="ne">NameError</span><span class="p">:</span> <span class="n">name</span> <span class="s1">&#39;yazbel&#39;</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">defined</span>
 </pre></div>
@@ -287,7 +286,7 @@ verecek şekilde düzenleyelim:</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">sayfa</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Hemen bu sayıları listeleyecek bir <a href="#id1"><span class="problematic" id="id2">`</span></a>Template`(Şablon) yazalım. Bu listede
+<p>Hemen bu sayıları listeleyecek bir Template(Şablon) yazalım. Bu listede
 çift sayılar büyük, tek sayılar küçük gözüksün.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -307,8 +306,8 @@ verecek şekilde düzenleyelim:</p>
 çok önemli bir fark var. <cite>for</cite> döngüsü bir <cite>end</cite> ifadesiyle bitiyor. Aynı
 şekilde birbiriyle ilişkili kontrol ifadeleri(<cite>if</cite>, <cite>else</cite>) hep birlikte
 bir <cite>end</cite> ile bitiyor.</p>
-</section>
-</section>
+</div>
+</div>
 
 
 
@@ -386,8 +385,8 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 <div class="footer">
 &copy; Copyright 2007-2021, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 12.04.2021.
-<a href="http://sphinx-doc.org/">Sphinx</a> 3.5.3 kullanılarak oluşturuldu.
+Son güncelleme: 18.04.2021.
+<a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2 kullanılarak oluşturuldu.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
