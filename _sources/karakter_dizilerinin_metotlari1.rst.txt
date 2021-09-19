@@ -572,7 +572,7 @@ programımızın büyük-küçük harfe duyarlı olmamasını nasıl sağlayabil
 Bu işi yapmanın iki yolu var: Birincisi ``if`` bloklarını her türlü ihtimali
 düşünerek yazabiliriz. Mesela::
 
-    if kişi == "Ahmet Öz" or "Ahmet öz" or "ahmet öz":
+    if kişi == "Ahmet Öz" or kişi == "Ahmet öz" or kişi == "ahmet öz":
         ...
 
 Ama burada bazı problemler var. Birincisi, kullanıcının kaç türlü veri

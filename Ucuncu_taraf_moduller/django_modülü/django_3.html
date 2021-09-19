@@ -6,14 +6,13 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
-<meta content="Bu bölümde django view yazmayı ve şablon yazmayı öğreneceğiz." name="description" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta content="Bu bölümde django view yazmayı ve şablon yazmayı öğreneceğiz." name="description" />
 <meta content="python, django, çeviri, şablon, view, görünüm, dinamik URL" name="keywords" />
 
     <title>İLK DJANGO PROJENİ YAZ, part 3 &#8212; Python 3 için Türkçe Kılavuz</title>
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pyramid.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pyramid.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
@@ -56,10 +55,10 @@
           <div class="body" role="main">
             
 
-  <section id="ilk-django-projeni-yaz-part-3">
-<h1>İLK DJANGO PROJENİ YAZ, part 3<a class="headerlink" href="#ilk-django-projeni-yaz-part-3" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
-<section id="genel-bakis">
-<h2>Genel Bakış<a class="headerlink" href="#genel-bakis" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+  <div class="section" id="ilk-django-projeni-yaz-part-3">
+<h1>İLK DJANGO PROJENİ YAZ, part 3<a class="headerlink" href="#ilk-django-projeni-yaz-part-3" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<div class="section" id="genel-bakis">
+<h2>Genel Bakış<a class="headerlink" href="#genel-bakis" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Görünüm, genellikle belirli bir işleve hizmet eden ve belirli
 bir şablona sahip olan Django uygulamanızdaki bir Web sayfası
 türüdür. Örneğin, bir blog uygulamasında aşağıdaki viewları (viyıvları)
@@ -93,9 +92,9 @@ bilmekten memnun olacaksınız.</p>
 <p>Bir URL’den viewa ulaşmak için Django, <cite>URLconfs</cite> olarak
 bilinen şeyi kullanır. Bir URLconf, URL modellerini viewlara
 eşler.</p>
-</section>
-<section id="birkac-view-yazalim">
-<h2>Birkaç view yazalım<a class="headerlink" href="#birkac-view-yazalim" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+</div>
+<div class="section" id="birkac-view-yazalim">
+<h2>Birkaç view yazalım<a class="headerlink" href="#birkac-view-yazalim" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Şimdi <strong>pools/views.py</strong> dosyasına birkaç view daha ekleyelim.
 Bu viewlar biraz farklı çünkü birer argümanları var:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">detail</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">question_id</span><span class="p">):</span>
@@ -111,9 +110,9 @@ Bu viewlar biraz farklı çünkü birer argümanları var:</p>
 </div>
 <p>Yeni viewlarımızı <strong>pools.urls</strong> dosyasına path fonksiyonuyla
 çağırarak ekleyelim:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.urls</span> <span class="k">import</span> <span class="n">path</span>
 
-<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">views</span>
 
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
     <span class="c1"># ex: /polls/</span>
@@ -153,9 +152,9 @@ gereken veri türünü belirtir.</p>
 </pre></div>
 </div>
 <p>Fakat bunu yapmayın. Çok saçma.</p>
-</section>
-<section id="gercekten-bir-seyler-yapan-viewlar-yazalim">
-<h2>Gerçekten bir şeyler yapan viewlar yazalım<a class="headerlink" href="#gercekten-bir-seyler-yapan-viewlar-yazalim" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+</div>
+<div class="section" id="gercekten-bir-seyler-yapan-viewlar-yazalim">
+<h2>Gerçekten bir şeyler yapan viewlar yazalım<a class="headerlink" href="#gercekten-bir-seyler-yapan-viewlar-yazalim" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Her view iki şeyi yapmak ile sorumludur: <cite>HttpResponse</cite> nesnesiyle
 istenen sayfayı döndürmek ve <cite>Http404</cite> gibi bir hata oluşturmak.
 Gerisi size kalmış.</p>
@@ -167,9 +166,9 @@ bir sayfa kalıbı). PDF, XML çıktısı veya ZIP dosyası oluşturabilir.
 İşte son 5 soruyu yayınlanma tarihine göre aralarına virgül
 koyarak sıralayıp sunan bir index viewı:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#polls/views.py</span>
-<span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="k">import</span> <span class="n">HttpResponse</span>
 
-<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Question</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="k">import</span> <span class="n">Question</span>
 
 
 <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
@@ -211,10 +210,10 @@ başvurabilirsiniz.</p>
 </div>
 <p>Şimdi <strong>polls/views.py</strong> index viewını şablonu kullanacak şekilde
 güncelleyelim:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
-<span class="kn">from</span> <span class="nn">django.template</span> <span class="kn">import</span> <span class="n">loader</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.http</span> <span class="k">import</span> <span class="n">HttpResponse</span>
+<span class="kn">from</span> <span class="nn">django.template</span> <span class="k">import</span> <span class="n">loader</span>
 
-<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Question</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="k">import</span> <span class="n">Question</span>
 
 
 <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
@@ -232,15 +231,15 @@ bir sözlüktür.</p>
 <p>Tarayıcınızda “/polls/” ekleyerek sayfayı yeniden yükleyin. Bir önceki
 bölümden “What’s up” sorusunu içeren bir liste görmelisiniz. Link sorunun
 detay sayfasına götürür.</p>
-</section>
-<section id="render">
-<h2>render()<a class="headerlink" href="#render" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+</div>
+<div class="section" id="render">
+<h2>render()<a class="headerlink" href="#render" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Bu şablon yüklemek için çok sıradan bir deyimdir, içeriği doldurur ve bir
 <cite>HttpResponse</cite> nesnesiyle işlenmiş şablon sonucunu döndürür. Burada
 index viewının tamamen tekrar yazılmış hali var:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="k">import</span> <span class="n">render</span>
 
-<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Question</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="k">import</span> <span class="n">Question</span>
 
 
 <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
@@ -256,15 +255,15 @@ isteyeceksiniz).</p>
 <p><cite>render</cite> fonksiyonu, ilk parametre olarak <cite>request</cite> nesnesini, ikinici
 parametre olarak şablonun adını ve üçüncü parametre olarak isteğe bağlı
 bir sözlük alır. İçerikle işlenmiş şablonun <cite>HttpResponse</cite> nesnesini döndürür.</p>
-</section>
-<section id="hatasi">
-<h2>404 hatası<a class="headerlink" href="#hatasi" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+</div>
+<div class="section" id="hatasi">
+<h2>404 hatası<a class="headerlink" href="#hatasi" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Şimdi soru detay sayfasını ele alalım. Bu sayfa verilen anket için
 soru metnini gösterir. Bu işi sağlayan view:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">Http404</span>
-<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.http</span> <span class="k">import</span> <span class="n">Http404</span>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="k">import</span> <span class="n">render</span>
 
-<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Question</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="k">import</span> <span class="n">Question</span>
 <span class="c1"># ...</span>
 <span class="k">def</span> <span class="nf">detail</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">question_id</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
@@ -282,15 +281,15 @@ yukarıdaki örneği hızlıca çalıştırmak istiyorsanız sadece şunu yazın
 </pre></div>
 </div>
 <p>Bu başlamak için yeterli.</p>
-</section>
-<section id="get-object-or-404">
-<h2>get_object_or_404()<a class="headerlink" href="#get-object-or-404" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+</div>
+<div class="section" id="get-object-or-404">
+<h2>get_object_or_404()<a class="headerlink" href="#get-object-or-404" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Bu eğer nesne varsa <cite>get</cite> fonksiyonunu kullanarak nesneyi getirir, yoksa
 <cite>Http404</cite> hatası yollar. Burada detay viewının tamamen tekrar yazılmış
 hali var:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">get_object_or_404</span><span class="p">,</span> <span class="n">render</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="k">import</span> <span class="n">get_object_or_404</span><span class="p">,</span> <span class="n">render</span>
 
-<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Question</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="k">import</span> <span class="n">Question</span>
 <span class="c1"># ...</span>
 <span class="k">def</span> <span class="nf">detail</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">question_id</span><span class="p">):</span>
     <span class="n">question</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Question</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">question_id</span><span class="p">)</span>
@@ -303,9 +302,9 @@ Eğer nesne yoksa <cite>Http404</cite> hatası yollar.</p>
 <p>Ayrıca, <cite>get_object_or_404</cite> fonksiyonu üzerine kurulu <cite>get_list_or_404</cite>
 fonkiyonu da vardır. Tek farkı <cite>get</cite> yerine <cite>filter</cite> kullanır. Eğer liste
 boşsa <cite>Http404</cite> hatası verir.</p>
-</section>
-<section id="sablon-sistemi-kullanalim">
-<h2>Şablon sistemi kullanalım<a class="headerlink" href="#sablon-sistemi-kullanalim" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+</div>
+<div class="section" id="sablon-sistemi-kullanalim">
+<h2>Şablon sistemi kullanalım<a class="headerlink" href="#sablon-sistemi-kullanalim" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Anket uygulamanızdaki detay viewına geri dönelim. İçerik değişkeni
 <cite>question</cite> göz önüne alınıp tekrar yazıldığında <strong>polls/detail.html</strong>
 şablonu şöyle görülmeli:</p>
@@ -325,9 +324,9 @@ dizini aramayı denerdi.</p>
 <p><cite>question.choice_set.all</cite> metodu <cite>{% for %}</cite> döngüsünde çağırılır. Metod
 Choice nesnelerini iterable olarak döndüren ve <cite>{% for %}</cite> döngüsünde
 kullanmak için en müsait kod olan <cite>question.choice_set.all()</cite> olarak yorumlanır.</p>
-</section>
-<section id="sablonlardaki-sabit-url-leri-kaldiralim">
-<h2>Şablonlardaki sabit URL’leri kaldıralım<a class="headerlink" href="#sablonlardaki-sabit-url-leri-kaldiralim" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+</div>
+<div class="section" id="sablonlardaki-sabit-url-leri-kaldiralim">
+<h2>Şablonlardaki sabit URL’leri kaldıralım<a class="headerlink" href="#sablonlardaki-sabit-url-leri-kaldiralim" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Hatırla, <cite>polls/index.html</cite> şablonunda sorular için link yazdığımızda
 linki kısmen böyle kodlamıştık:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;/polls/{{ question.id }}/&quot;</span><span class="o">&gt;</span><span class="p">{{</span> <span class="n">question</span><span class="o">.</span><span class="n">question_text</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
@@ -361,9 +360,9 @@ yapmanız yeterli:</p>
 <span class="o">...</span>
 </pre></div>
 </div>
-</section>
-<section id="url-alanlari">
-<h2>URL alanları<a class="headerlink" href="#url-alanlari" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+</div>
+<div class="section" id="url-alanlari">
+<h2>URL alanları<a class="headerlink" href="#url-alanlari" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Bu öğretici bir uygulamaya sahip:<cite>polls</cite>. Gerçek bir Django projesi
 belki beş belki on belki daha fazla uygulamaya sahip olur. Peki Django
 farklı URL alanlarını nasıl birbirinden ayırır? Mesela <cite>polls</cite> uygulaması
@@ -371,9 +370,9 @@ detay viewına sahip ve aynı projede bir de <cite>blog</cite> uygulaması detay
 Django hangi uygulamanın viewının çağırıldığını nasıl bilebilir?</p>
 <p>Cevap: URL şemasına alan adı eklemek. Alan adı oluşturmak için
 <strong>polls/urls.py</strong> dosyasında <cite>app_name</cite> değişkeni ekleyelim:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.urls</span> <span class="k">import</span> <span class="n">path</span>
 
-<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">views</span>
 
 <span class="n">app_name</span> <span class="o">=</span> <span class="s1">&#39;polls&#39;</span>
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
@@ -388,8 +387,8 @@ Django hangi uygulamanın viewının çağırıldığını nasıl bilebilir?</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;{</span><span class="si">% u</span><span class="s2">rl &#39;polls:detail&#39; question.id %}&quot;</span><span class="o">&gt;</span><span class="p">{{</span> <span class="n">question</span><span class="o">.</span><span class="n">question_text</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
 
@@ -467,8 +466,8 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 <div class="footer">
 &copy; Copyright 2007-2021, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 12.04.2021.
-<a href="http://sphinx-doc.org/">Sphinx</a> 3.5.3 kullanılarak oluşturuldu.
+Son güncelleme: 20.09.2021.
+<a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0 ile oluşturulmuştur.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
