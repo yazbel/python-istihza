@@ -896,6 +896,29 @@ Hatta yukarıdaki kodları şöyle de yazabilirsiniz::
 Bu kodlar bir öncekiyle aynı işi yapar. Yorumlardan da göreceğiniz gibi, bu iki
 kod arasında sadece mantık farkı var.
 
+Hatta, daha da ileri giderek aynı kodu çok daha basit hale getirmek isterseniz,
+aşağıdaki koda bakabilirsiniz.::
+
+    x = int(input("Notunuz: "))
+
+    if x > 100 or x < 0:
+        print("Böyle bir not yok")
+
+    elif x >= 90:
+        print("A aldınız.")
+
+    elif x >= 80:
+        print("B aldınız.")
+
+    elif x >= 70:
+        print("C aldınız.")
+
+    elif x >= 60:
+        print("D aldınız.")
+
+    elif x >= 0:
+        print("F aldınız.")
+
 Son bool işlecimiz `not`. Bu kelimenin İngilizce'deki anlamı 'değil'dir. Bu
 işleci şöyle kullanıyoruz::
 

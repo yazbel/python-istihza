@@ -6,14 +6,13 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
-<meta content="Bu bölümde Django ile gelen kullanıcı modülünü kişiselleştireceğiz." name="description" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta content="Bu bölümde Django ile gelen kullanıcı modülünü kişiselleştireceğiz." name="description" />
 <meta content="python, python3, django, model" name="keywords" />
 
     <title>Django Kişiselleştirilmiş Kullanıcı Modelini Dahili Model ile Genişletmek &#8212; Python 3 için Türkçe Kılavuz</title>
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pyramid.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pyramid.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
@@ -56,17 +55,17 @@
           <div class="body" role="main">
             
 
-  <section id="django-kisisellestirilmis-kullanici-modelini-dahili-model-ile-genisletmek">
-<h1>Django Kişiselleştirilmiş Kullanıcı Modelini Dahili Model ile Genişletmek<a class="headerlink" href="#django-kisisellestirilmis-kullanici-modelini-dahili-model-ile-genisletmek" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+  <div class="section" id="django-kisisellestirilmis-kullanici-modelini-dahili-model-ile-genisletmek">
+<h1>Django Kişiselleştirilmiş Kullanıcı Modelini Dahili Model ile Genişletmek<a class="headerlink" href="#django-kisisellestirilmis-kullanici-modelini-dahili-model-ile-genisletmek" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
 <p>Django içinde hazır birçok modül ve modeller ile gelir. Bunlardan biri de kullanıcı modeli. Bu model ile hazırladığınız Django projesine çok hızlı bir şekilde üyelik sistemi geliştirebilirsiniz. Ancak bazen bu model tek başına yeterli gelmez. Böyle durumlarda kendi yazdığımız modeli Django ile gelen kullanıcı modeli ile genişletebiliriz.</p>
-<section id="bu-yontemin-avantajlari-neler">
-<h2>Bu Yöntemin Avantajları Neler?<a class="headerlink" href="#bu-yontemin-avantajlari-neler" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<div class="section" id="bu-yontemin-avantajlari-neler">
+<h2>Bu Yöntemin Avantajları Neler?<a class="headerlink" href="#bu-yontemin-avantajlari-neler" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Django kullanıcı modeli yetki yönetim sistemi ve bazı hazır fonksiyonlar ile beraber gelir. Bu sayede kullanıcıların yetkisiz erişimlerini, yetki yönetimlerini, giriş, çıkış, parola değiştirme fonksiyonlarına ve bazı bezeyicilere(decarator) sahip oluruz. Bunlar sayesinde projemiz çok hızlı şekilde ilerleyebilir.</p>
 <a class="reference external image-reference" href="_images/customusermodel/django_admin.png"><img alt="../../_images/django_admin.png" class="align-center" src="../../_images/django_admin.png" /></a>
 <p>Django Admin Panelinden Kullanıcı ve Grup İzinleri Yönetimi</p>
-</section>
-<section id="nasil-yapilir">
-<h2>Nasıl Yapılır?<a class="headerlink" href="#nasil-yapilir" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+</div>
+<div class="section" id="nasil-yapilir">
+<h2>Nasıl Yapılır?<a class="headerlink" href="#nasil-yapilir" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Projemize bir adet uygulama ekliyoruz. Bu uygulama kullanıcı modelimizi barındıracak ve Django’nun dahili kullanıcı modeli ile genişletilecek.
 <cite>settings.py</cite> dosyamıza <cite>AUTH_USER_MODEL = uygulama_adi.model_adi</cite> değişkenini ekliyoruz böylece varsayılan kullanıcı modelini geçersiz kılarak kendi modelimizi kullanabiliriz.</p>
 <blockquote>
@@ -84,7 +83,7 @@
 Örnek kod:</p>
 <blockquote>
 <div><div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CustomUserModel</span><span class="p">(</span><span class="n">AbstractUser</span><span class="p">):</span>
-    <span class="n">website</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">URL_Fields</span><span class="p">(</span><span class="n">verbose_name</span><span class="o">=</span><span class="s1">&#39;Web Sitesi&#39;</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">website</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">URL_Fields</span><span class="p">(</span><span class="n">verbose_name</span><span class="o">=</span><span class="s1">&#39;Web Sitesi&#39;</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
     <span class="n">os</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">verbose_name</span><span class="o">=</span><span class="s1">&#39;Kullandığı İşletim Sistemi&#39;</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span>
     <span class="k">def</span> <span class="fm">__int__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span>
@@ -112,8 +111,8 @@
 </dd>
 </dl>
 <p>Çıktıyı incelediğimiz zaman <cite>&lt;django.db.models.fields.URLField: website&gt;, &lt;django.db.models.fields.CharField: os&gt;</cite> veri giriş yerlerini görüyoruz. Böylece yaptıklarımızın sıkıntısızca sisteme işlendiğini anlayabiliriz. Artık Django’nun dahili yetkliendirme ve kullanıcı sistemini kendi kullanıcı modelimiz üzerinden kullanabiliriz.</p>
-</section>
-</section>
+</div>
+</div>
 
 
 
@@ -191,8 +190,8 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 <div class="footer">
 &copy; Copyright 2007-2021, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 12.04.2021.
-<a href="http://sphinx-doc.org/">Sphinx</a> 3.5.3 kullanılarak oluşturuldu.
+Son güncelleme: 20.09.2021.
+<a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0 ile oluşturulmuştur.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img

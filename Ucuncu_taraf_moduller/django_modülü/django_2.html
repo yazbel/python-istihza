@@ -6,14 +6,13 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
-<meta content="Bu bölümde django API'ını öğreneceğiz." name="description" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta content="Bu bölümde django API'ını öğreneceğiz." name="description" />
 <meta content="python, django, çeviri" name="keywords" />
 
     <title>İLK DJANGO PROJENİ YAZ, part 2 &#8212; Python 3 için Türkçe Kılavuz</title>
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pyramid.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pyramid.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
@@ -56,10 +55,10 @@
           <div class="body" role="main">
             
 
-  <section id="ilk-django-projeni-yaz-part-2">
-<h1>İLK DJANGO PROJENİ YAZ, part 2<a class="headerlink" href="#ilk-django-projeni-yaz-part-2" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
-<section id="veritabani-kurulumu">
-<h2>Veritabanı Kurulumu<a class="headerlink" href="#veritabani-kurulumu" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+  <div class="section" id="ilk-django-projeni-yaz-part-2">
+<h1>İLK DJANGO PROJENİ YAZ, part 2<a class="headerlink" href="#ilk-django-projeni-yaz-part-2" title="Bu başlığın kalıcı bağlantısı">¶</a></h1>
+<div class="section" id="veritabani-kurulumu">
+<h2>Veritabanı Kurulumu<a class="headerlink" href="#veritabani-kurulumu" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Şimdi <strong>mysite/settings.py</strong> dosyasını açın. Önce TIME_ZONE
 değerini <cite>Europe/Istanbul</cite>  yaparak İstanbul’a ayarlayın.</p>
 <div class="admonition note">
@@ -83,15 +82,15 @@ tablo oluşturmalıyız. O tablo da şu komutla oluşuyor:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">migrate</span>
 </pre></div>
 </div>
-</section>
-<section id="model-olusturalim">
-<h2>Model oluşturalım<a class="headerlink" href="#model-olusturalim" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+</div>
+<div class="section" id="model-olusturalim">
+<h2>Model oluşturalım<a class="headerlink" href="#model-olusturalim" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Şimdi modellerimizi tanımlayacağız.
 Anket uygulamamızda iki tane model olacak: Question(Soru), Choice(Seçenek).
 Question modeli bir soru ve yayınlama tarihi içerecek. Choice modeli ise iki alandan
 oluşacak: Bir yazı alanı ve oy çetelesi. Her Choice bir Question ile ilişkili olacak.
 Şimdi <strong>polls/models.py</strong> dosyasını şu şekilde düzenleyin:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="k">import</span> <span class="n">models</span>
 
 
 <span class="k">class</span> <span class="nc">Question</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
@@ -119,9 +118,9 @@ sahip.Mesela votes değerinin default parametresi-ki biz
 bu örnekte 0 olarak ayarladık-buna bir örnek.Son olarak
 ForeignKey kullanarak  her Choice  örneğini bir Question
 örneği ile ilişkilendirdik.</p>
-</section>
-<section id="modellerin-aktiflestirilmesi">
-<h2>Modellerin Aktifleştirilmesi<a class="headerlink" href="#modellerin-aktiflestirilmesi" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+</div>
+<div class="section" id="modellerin-aktiflestirilmesi">
+<h2>Modellerin Aktifleştirilmesi<a class="headerlink" href="#modellerin-aktiflestirilmesi" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Model kodları Django’ya bazı bilgiler verir.
 Django bu bilgilerle şunları yapabilir:</p>
 <blockquote>
@@ -257,9 +256,9 @@ değişikliklerini yapmak için üç adımlı kılavuzu hatırlayın:</p>
 <li><p><cite>python manage.py migrate</cite> komutunu çalıştırarak bu değişiklikleri veritabanına uygulayın.</p></li>
 </ul>
 </div></blockquote>
-</section>
-<section id="api-ile-oynayalim">
-<h2>API ile oynayalım<a class="headerlink" href="#api-ile-oynayalim" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+</div>
+<div class="section" id="api-ile-oynayalim">
+<h2>API ile oynayalım<a class="headerlink" href="#api-ile-oynayalim" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
 <p>Şimdi etkileşimli kabuğa atlayıp Django’nun sunduğu API ile uğraşalım.
 Etkileşimli kabuğu çağırmak için şu komutu kullanın:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">shell</span>
@@ -268,7 +267,7 @@ Etkileşimli kabuğu çağırmak için şu komutu kullanın:</p>
 <p>Basitçe <cite>python</cite> yazmak yerine bunu kullanıyoruz.
 Çünkü manage.py dosyası kullanacağımız django dosyalarını içe aktarıyor.
 Kabuğa girdikten sonra veritabanı API’ını keşfedin:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">polls.models</span> <span class="kn">import</span> <span class="n">Choice</span><span class="p">,</span> <span class="n">Question</span>  <span class="c1"># Az önce yazdığımız model sınıflarını içe aktar.</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">polls.models</span> <span class="k">import</span> <span class="n">Choice</span><span class="p">,</span> <span class="n">Question</span>  <span class="c1"># Az önce yazdığımız model sınıflarını içe aktar.</span>
 
 <span class="go">#Henüz sistemde Question nesnesi yok.</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
@@ -278,7 +277,7 @@ Kabuğa girdikten sonra veritabanı API’ını keşfedin:</p>
 <span class="go"># Varsayılan ayarlar dosyasında saat dilimleri desteği etkinleştirilmiştir, bu nedenle</span>
 <span class="go"># Django pub_date değişkeni için tzinfo ile bir tarih bekler. timezone.now()&#39;ı kullanın.</span>
 <span class="go"># datetime.datetime.now () yerine ve doğru olanı yapacağız.</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">django.utils</span> <span class="kn">import</span> <span class="n">timezone</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">django.utils</span> <span class="k">import</span> <span class="n">timezone</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">question_text</span><span class="o">=</span><span class="s2">&quot;What&#39;s new?&quot;</span><span class="p">,</span> <span class="n">pub_date</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">())</span>
 
 <span class="go"># Oluşturduğumuz nesneyi veritabanına kaydedelim. Bunun için save() metodunu kullanmalısın.</span>
@@ -306,16 +305,16 @@ Kabuğa girdikten sonra veritabanı API’ını keşfedin:</p>
 <p>Bir dakika! &lt;Question: Question object (1)&gt; bu nesne
 ilişkisi hiç yararlı değil. Question modeline (<strong>polls/models.py</strong> dosyasında)
 __str__() metodunu ekleyelim(Choice modeline de):</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="k">import</span> <span class="n">models</span>
 
 <span class="k">class</span> <span class="nc">Question</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="c1"># ...</span>
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">question_text</span>
 
 <span class="k">class</span> <span class="nc">Choice</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="c1"># ...</span>
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">choice_text</span>
 </pre></div>
 </div>
@@ -328,8 +327,8 @@ Bunu kanıtlamak için özel bir yöntem ekleyelim:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#polls/models.py</span>
 <span class="kn">import</span> <span class="nn">datetime</span>
 
-<span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
-<span class="kn">from</span> <span class="nn">django.utils</span> <span class="kn">import</span> <span class="n">timezone</span>
+<span class="kn">from</span> <span class="nn">django.db</span> <span class="k">import</span> <span class="n">models</span>
+<span class="kn">from</span> <span class="nn">django.utils</span> <span class="k">import</span> <span class="n">timezone</span>
 
 
 <span class="k">class</span> <span class="nc">Question</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
@@ -344,7 +343,7 @@ aktaralım.</p>
 <p>Bu yaptığımız değişiklikleri kaydetmek için şu komutla yeni bir
 kabuk açalım::
 <cite>python manage.py shell</cite></p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">polls.models</span> <span class="kn">import</span> <span class="n">Choice</span><span class="p">,</span> <span class="n">Question</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">polls.models</span> <span class="k">import</span> <span class="n">Choice</span><span class="p">,</span> <span class="n">Question</span>
 
 <span class="go"># Eklediğimiz __str__() fonksiyonunun çalıştığından emin olalım.</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
@@ -357,7 +356,7 @@ kabuk açalım::
 <span class="go">&lt;QuerySet [&lt;Question: What&#39;s up?&gt;]&gt;</span>
 
 <span class="go"># Bu yıl paylaşılan question nesnelerini bulalım.</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">django.utils</span> <span class="kn">import</span> <span class="n">timezone</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">django.utils</span> <span class="k">import</span> <span class="n">timezone</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">current_year</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">year</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pub_date__year</span><span class="o">=</span><span class="n">current_year</span><span class="p">)</span>
 <span class="go">&lt;Question: What&#39;s up?&gt;</span>
@@ -417,11 +416,11 @@ kabuk açalım::
 <span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
 </pre></div>
 </div>
-</section>
-<section id="yonetici-paneli">
-<h2>Yönetici Paneli<a class="headerlink" href="#yonetici-paneli" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
-<section id="bir-yonetici-kullanicisi-olusturalim">
-<h3>Bir yönetici kullanıcısı oluşturalım<a class="headerlink" href="#bir-yonetici-kullanicisi-olusturalim" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+</div>
+<div class="section" id="yonetici-paneli">
+<h2>Yönetici Paneli<a class="headerlink" href="#yonetici-paneli" title="Bu başlığın kalıcı bağlantısı">¶</a></h2>
+<div class="section" id="bir-yonetici-kullanicisi-olusturalim">
+<h3>Bir yönetici kullanıcısı oluşturalım<a class="headerlink" href="#bir-yonetici-kullanicisi-olusturalim" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
 <p>Yönetici paneline giriş yapmak için bir süper kullanıcıya ihtiyacımız
 var. Komut satırında şu kodu çalıştıralım:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">createsuperuser</span>
@@ -442,9 +441,9 @@ var. Komut satırında şu kodu çalıştıralım:</p>
 <span class="n">Superuser</span> <span class="n">created</span> <span class="n">successfully</span><span class="o">.</span>
 </pre></div>
 </div>
-</section>
-<section id="gelistirme-sunucusunu-baslatin">
-<h3>Geliştirme Sunucusunu Başlatın<a class="headerlink" href="#gelistirme-sunucusunu-baslatin" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+</div>
+<div class="section" id="gelistirme-sunucusunu-baslatin">
+<h3>Geliştirme Sunucusunu Başlatın<a class="headerlink" href="#gelistirme-sunucusunu-baslatin" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
 <p>Django’da yönetici paneli varsayılan olarak aktiftir. Geliştirme
 sunucusunu başlatalım ve onu biraz araştıralım:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">runserver</span>
@@ -454,32 +453,32 @@ sunucusunu başlatalım ve onu biraz araştıralım:</p>
 gidin.(Mesela şöyle <cite>http://127.0.0.1:8000/admin/</cite>) Şöyle bir
 yönetici sayfası görüyor olmalısın:</p>
 <img alt="https://docs.djangoproject.com/en/2.0/_images/admin01.png" src="https://docs.djangoproject.com/en/2.0/_images/admin01.png" />
-</section>
-<section id="yonetici-paneline-giris-yapalim">
-<h3>Yönetici Paneline Giriş yapalım<a class="headerlink" href="#yonetici-paneline-giris-yapalim" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+</div>
+<div class="section" id="yonetici-paneline-giris-yapalim">
+<h3>Yönetici Paneline Giriş yapalım<a class="headerlink" href="#yonetici-paneline-giris-yapalim" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
 <p>Şimdi oluşturduğun süper kullanıcı ile yönetici paneline giriş yap.
 Yönetici panelinin anasayfasını görüyor olmalısın:</p>
 <img alt="https://docs.djangoproject.com/en/2.0/_images/admin02.png" src="https://docs.djangoproject.com/en/2.0/_images/admin02.png" />
 <p>Birkaç düzenlenebilen içerik türü görmelisiniz: gruplar ve
 kullanıcılar. Django tarafından gönderilen kimlik doğrulama
 çerçevesi <cite>django.contrib.auth</cite> tarafından sağlanmıştır.</p>
-</section>
-<section id="anket-uygulamamizi-yonetici-panelinden-kontrol-edelim">
-<h3>Anket uygulamamızı yönetici panelinden kontrol edelim<a class="headerlink" href="#anket-uygulamamizi-yonetici-panelinden-kontrol-edelim" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+</div>
+<div class="section" id="anket-uygulamamizi-yonetici-panelinden-kontrol-edelim">
+<h3>Anket uygulamamızı yönetici panelinden kontrol edelim<a class="headerlink" href="#anket-uygulamamizi-yonetici-panelinden-kontrol-edelim" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
 <p>Fakat bizim anket uygulamamız nerede? Yönetici panelinin
 anasayfasında gözükmüyor.</p>
 <p>Bu sorunu çözmek için yapmanız gereken tek şey:
 Yönetici paneline Question nesnelerimizin yönetici panelinden
 düzenlenebildiğini söylemek. Bunu yapmak için <strong>polls/admin.py</strong>
 dosyasını açıp şu kodla düzenlemek:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
-<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Question</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="k">import</span> <span class="n">admin</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="k">import</span> <span class="n">Question</span>
 <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Question</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-<section id="yonetici-panelinin-islevselligini-kesfedelim">
-<h3>Yönetici panelinin işlevselliğini keşfedelim<a class="headerlink" href="#yonetici-panelinin-islevselligini-kesfedelim" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+</div>
+<div class="section" id="yonetici-panelinin-islevselligini-kesfedelim">
+<h3>Yönetici panelinin işlevselliğini keşfedelim<a class="headerlink" href="#yonetici-panelinin-islevselligini-kesfedelim" title="Bu başlığın kalıcı bağlantısı">¶</a></h3>
 <p>Question nesnelerini kaydettiğimize göre yönetici panelinin
 anasayfası şu şekilde gözükmeli:</p>
 <img alt="https://docs.djangoproject.com/en/2.0/_images/admin03t.png" src="https://docs.djangoproject.com/en/2.0/_images/admin03t.png" />
@@ -512,9 +511,9 @@ Ardından “Save and continue editing” i tıklayın. Daha sonra sağ üstteki
 “History”yi tıklayın. Bu nesnede yapılan tüm değişiklikleri, değişikliği yapan
 kişinin değişiklik yaptığı zaman ve kullanıcı adıyla listeleyen bir sayfa görürsünüz:</p>
 <img alt="https://docs.djangoproject.com/en/2.0/_images/admin06t.png" src="https://docs.djangoproject.com/en/2.0/_images/admin06t.png" />
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
 
@@ -592,8 +591,8 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 <div class="footer">
 &copy; Copyright 2007-2021, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 12.04.2021.
-<a href="http://sphinx-doc.org/">Sphinx</a> 3.5.3 kullanılarak oluşturuldu.
+Son güncelleme: 20.09.2021.
+<a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0 ile oluşturulmuştur.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
