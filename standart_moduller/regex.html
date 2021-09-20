@@ -396,7 +396,7 @@ listeler üzerinde örnekler verelim.</p>
 <p>Ne oldu? Hata aldınız, değil mi? Bu normal. Çünkü düzenli ifadeler karakter
 dizileri üzerinde işler. Bunlar doğrudan listeler üzerinde işlem yapamaz. O
 yüzden bizim Python’a biraz yardımcı olmamız gerekiyor:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">::</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;kebap&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="k">if</span> <span class="n">nesne</span><span class="p">:</span>
 <span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
@@ -407,7 +407,7 @@ yüzden bizim Python’a biraz yardımcı olmamız gerekiyor:</p>
 <p>Hatta şimdiye kadar öğrendiklerimizle daha karmaşık bir şeyler de yapabiliriz:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">re</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">urllib.request</span> <span class="k">import</span> <span class="n">urlopen</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="s2">&quot;http://www.istihza.com&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="s2">&quot;https://python-istihza.yazbel.com/&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;programlama&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="k">if</span> <span class="n">nesne</span><span class="p">:</span>
@@ -417,7 +417,7 @@ yüzden bizim Python’a biraz yardımcı olmamız gerekiyor:</p>
 <span class="go">b&#39;programlama&#39;</span>
 </pre></div>
 </div>
-<p>Gördüğünüz gibi, www.istihza.com sayfasında kaç adet “programlama”
+<p>Gördüğünüz gibi, python-istihza.yazbel.com sayfasında kaç adet “programlama”
 kelimesi geçiyorsa hepsi ekrana dökülüyor.</p>
 <p>Bu arada, web sitesinde arama işlemi gerçekleştirirken <cite>urllib</cite> paketinin
 içindeki <cite>request</cite> modülünün <code class="docutils literal notranslate"><span class="pre">urlopen()</span></code> adlı fonksiyonunu kullandığımıza
@@ -430,9 +430,9 @@ değil, bayt dizisi verdiğimizi de gözden kaçırmayın:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="k">import</span> <span class="n">urlopen</span>
 
-<span class="n">kelime</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;istihza.com&#39;da aramak istediğiniz kelime: &quot;</span><span class="p">)</span>
+<span class="n">kelime</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;python-istihza.yazbel.com&#39;da aramak istediğiniz kelime: &quot;</span><span class="p">)</span>
 
-<span class="n">f</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="s2">&quot;http://www.istihza.com&quot;</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="s2">&quot;https://python-istihza.yazbel.com/&quot;</span><span class="p">)</span>
 <span class="n">data</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 
 <span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">kelime</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
