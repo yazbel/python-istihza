@@ -378,7 +378,7 @@ Ne oldu? Hata aldınız, değil mi? Bu normal. Çünkü düzenli ifadeler karakt
 dizileri üzerinde işler. Bunlar doğrudan listeler üzerinde işlem yapamaz. O
 yüzden bizim Python'a biraz yardımcı olmamız gerekiyor:
 
-    >>> for i in liste::
+    >>> for i in liste:
     ...     nesne = re.search("kebap", i)
     ...     if nesne:
     ...         print(nesne.group())
@@ -389,7 +389,7 @@ Hatta şimdiye kadar öğrendiklerimizle daha karmaşık bir şeyler de yapabili
 
     >>> import re
     >>> from urllib.request import urlopen
-    >>> f = urlopen("http://www.istihza.com")
+    >>> f = urlopen("https://python-istihza.yazbel.com/")
     >>> for i in f:
     ...     nesne = re.search(b'programlama', i)
     ...     if nesne:
@@ -398,7 +398,7 @@ Hatta şimdiye kadar öğrendiklerimizle daha karmaşık bir şeyler de yapabili
     b'programlama'
     b'programlama'
 
-Gördüğünüz gibi, www.istihza.com sayfasında kaç adet "programlama"
+Gördüğünüz gibi, python-istihza.yazbel.com sayfasında kaç adet "programlama"
 kelimesi geçiyorsa hepsi ekrana dökülüyor.
 
 Bu arada, web sitesinde arama işlemi gerçekleştirirken `urllib` paketinin
@@ -413,9 +413,9 @@ Siz isterseniz bu kodları biraz daha geliştirebilirsiniz::
     import re
     from urllib.request import urlopen
 
-    kelime = input("istihza.com'da aramak istediğiniz kelime: ")
+    kelime = input("python-istihza.yazbel.com'da aramak istediğiniz kelime: ")
 
-    f = urlopen("http://www.istihza.com")
+    f = urlopen("https://python-istihza.yazbel.com/")
     data = str(f.read())
 
     nesne = re.search(kelime, data)
