@@ -72,20 +72,20 @@
 <h2>Kullanım<a class="headerlink" href="#kullanim" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Colorama modülünü anlayabilmek için basit bir örnek yapalım:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">colorama</span> <span class="kn">import</span> <span class="n">Fore</span><span class="p">,</span> <span class="n">Back</span><span class="p">,</span> <span class="n">Style</span><span class="p">,</span> <span class="n">init</span>
-<span class="n">init</span><span class="p">(</span><span class="n">autoreset</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">Fore</span><span class="o">.</span><span class="n">RED</span> <span class="o">+</span> <span class="s1">&#39;sade kırmızı yazı&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">Back</span><span class="o">.</span><span class="n">GREEN</span> <span class="o">+</span> <span class="s1">&#39;Yeşil arkaplan&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">Style</span><span class="o">.</span><span class="n">DIM</span> <span class="o">+</span> <span class="s1">&#39;Python&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">Style</span><span class="o">.</span><span class="n">RESET_ALL</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Tekrar normal haline döndü&#39;</span><span class="p">)</span>
+<span class="n">init</span><span class="p">(</span><span class="n">autoreset</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Fore</span><span class="o">.</span><span class="n">RED</span> <span class="o">+</span> <span class="s1">&#39;sade kırmızı yazı&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Back</span><span class="o">.</span><span class="n">GREEN</span> <span class="o">+</span> <span class="s1">&#39;Yeşil arkaplan&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Style</span><span class="o">.</span><span class="n">DIM</span> <span class="o">+</span> <span class="s1">&#39;Python&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Style</span><span class="o">.</span><span class="n">RESET_ALL</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Tekrar normal haline döndü&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Gördüğünüz üzere colorama modülünün Fore, Back ve Style sınıflarının belirlenmiş nitelikleri ile herhangi bir karakter dizimizi birleştirip yazdırdığımızda niteliğe göre renkli yazılar elde ediyoruz. Fore yazının kendisi, Back arka planı, Style ise stilini ilgilendirir.</p>
 <p>Peki neden init fonksiyonunu çağırdık?</p>
 <p>İnit bildiğiniz üzere “initalization” (ilklendirme) sözcüğünün kısaltılmışıdır. Buradaki kullanımı da sözcük anlamıyla uyumludur. Yani bizim renklendirme işlemimizde birtakım ayarları yapmamız için bir başlangıçtır. Bunu yapmamız zorunludur. Yapmazsak kodlarımız renklenmeyecek, sadece renk kodu sadece ekrana bastırılacaktır.</p>
 <p>Bu noktada bir detaya değinelim: Bu Fore, Back ve Style sınıflarının belirlenmiş nitelikleri aslında alelade bir karakter dizisidir:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\033</span><span class="s1">[31m&#39;</span> <span class="o">+</span> <span class="s1">&#39;sade kırmızı yazı&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\033</span><span class="s1">[30m&#39;</span><span class="p">)</span> <span class="c1"># Ve yeniden öntanımlı renge döndük</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\033</span><span class="s1">[31m&#39;</span> <span class="o">+</span> <span class="s1">&#39;sade kırmızı yazı&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\033</span><span class="s1">[30m&#39;</span><span class="p">)</span> <span class="c1"># Ve yeniden öntanımlı renge döndük</span>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi yukarıdakiyle aynı sonucu elde ettik.</p>
@@ -104,7 +104,7 @@
 <span class="n">init</span><span class="p">()</span>
 
 <span class="c1">#İlk parametremiz karakter dizimiz, ikinci parametremiz rengi, üçüncü ise arkaplan rengidir.</span>
-<span class="k">print</span><span class="p">(</span><span class="n">colored</span><span class="p">(</span><span class="s1">&#39;Hello, World!&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;on_red&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">colored</span><span class="p">(</span><span class="s1">&#39;Hello, World!&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;on_red&#39;</span><span class="p">))</span>
 <span class="c1"># colored fonksiyonundan dönen değeri kullanabilmek için yazdırmamız gerekir.</span>
 </pre></div>
 </div>
@@ -213,7 +213,7 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 <div class="footer">
 &copy; Copyright 2007-2021, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 22.09.2021.
+Son güncelleme: 23.09.2021.
 Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.
 <br>
 <br>

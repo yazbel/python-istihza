@@ -80,7 +80,7 @@ sorumlu metodun adı ise <code class="docutils literal notranslate"><span class=
 <h3>__new__() Metodu<a class="headerlink" href="#new-metodu" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
 <p>Bildiğiniz gibi, Python’da basit bir sınıfı şu şekilde tanımlıyoruz:</p>
 <div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">():</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;merhaba sınıf!&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -101,10 +101,10 @@ sınıfımızı örneklediğimiz anda ekrana ‘merhaba sınıf’ çıktısı v
 metot aslında <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> değildir. Python bu süreçte alttan alta
 <code class="docutils literal notranslate"><span class="pre">__new__()</span></code> adlı başka bir metodu çalıştırır. Gelin bunu kanıtlayalım:</p>
 <div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">():</span>
-    <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
         <span class="k">pass</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;merhaba sınıf&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -114,10 +114,10 @@ yazısı çıktı olarak verilmeyecektir. İşte bunun sebebi, Python’ın önt
 kaldırmış olmanızdır. Eğer <code class="docutils literal notranslate"><span class="pre">__new__()</span></code> metodunun öntanımlı davranışını taklit
 etmek isterseniz yukarıdaki kodları şu şekilde yazmalısınız:</p>
 <div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">():</span>
-    <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">object</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;merhaba sınıf&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -134,7 +134,7 @@ sınıflar, eğer başka bir sınıfı miras olarak almıyorlarsa, otomatik olar
 metodunun sahip olduğu işlevselliği <code class="docutils literal notranslate"><span class="pre">Sınıf</span></code> adlı alt sınıfa aktarabilmek için
 taban sınıfı kendi <code class="docutils literal notranslate"><span class="pre">__new__()</span></code> metodumuz içinde çağırıyoruz:</p>
 <div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">():</span>
-    <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">object</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -142,11 +142,11 @@ taban sınıfı kendi <code class="docutils literal notranslate"><span class="pr
 isterseniz bu <code class="docutils literal notranslate"><span class="pre">__new__()</span></code> metodunun üzerine yazarak metodu değişikliğe
 uğratabilirsiniz:</p>
 <div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">():</span>
-    <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Yeni sınıf inşa edilirken lütfen bekleyiniz...&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="nb">object</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;merhaba sınıf&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -230,7 +230,7 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 <div class="footer">
 &copy; Copyright 2007-2021, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 22.09.2021.
+Son güncelleme: 23.09.2021.
 Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.
 <br>
 <br>

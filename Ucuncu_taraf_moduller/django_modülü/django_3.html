@@ -110,9 +110,9 @@ Bu viewlar biraz farklı çünkü birer argümanları var:</p>
 </div>
 <p>Yeni viewlarımızı <strong>pools.urls</strong> dosyasına path fonksiyonuyla
 çağırarak ekleyelim:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.urls</span> <span class="k">import</span> <span class="n">path</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
 
-<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">views</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span>
 
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
     <span class="c1"># ex: /polls/</span>
@@ -166,9 +166,9 @@ bir sayfa kalıbı). PDF, XML çıktısı veya ZIP dosyası oluşturabilir.
 İşte son 5 soruyu yayınlanma tarihine göre aralarına virgül
 koyarak sıralayıp sunan bir index viewı:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#polls/views.py</span>
-<span class="kn">from</span> <span class="nn">django.http</span> <span class="k">import</span> <span class="n">HttpResponse</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
 
-<span class="kn">from</span> <span class="nn">.models</span> <span class="k">import</span> <span class="n">Question</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Question</span>
 
 
 <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
@@ -210,10 +210,10 @@ başvurabilirsiniz.</p>
 </div>
 <p>Şimdi <strong>polls/views.py</strong> index viewını şablonu kullanacak şekilde
 güncelleyelim:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.http</span> <span class="k">import</span> <span class="n">HttpResponse</span>
-<span class="kn">from</span> <span class="nn">django.template</span> <span class="k">import</span> <span class="n">loader</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
+<span class="kn">from</span> <span class="nn">django.template</span> <span class="kn">import</span> <span class="n">loader</span>
 
-<span class="kn">from</span> <span class="nn">.models</span> <span class="k">import</span> <span class="n">Question</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Question</span>
 
 
 <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
@@ -237,9 +237,9 @@ detay sayfasına götürür.</p>
 <p>Bu şablon yüklemek için çok sıradan bir deyimdir, içeriği doldurur ve bir
 <cite>HttpResponse</cite> nesnesiyle işlenmiş şablon sonucunu döndürür. Burada
 index viewının tamamen tekrar yazılmış hali var:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="k">import</span> <span class="n">render</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
 
-<span class="kn">from</span> <span class="nn">.models</span> <span class="k">import</span> <span class="n">Question</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Question</span>
 
 
 <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
@@ -260,10 +260,10 @@ bir sözlük alır. İçerikle işlenmiş şablonun <cite>HttpResponse</cite> ne
 <h2>404 hatası<a class="headerlink" href="#hatasi" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Şimdi soru detay sayfasını ele alalım. Bu sayfa verilen anket için
 soru metnini gösterir. Bu işi sağlayan view:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.http</span> <span class="k">import</span> <span class="n">Http404</span>
-<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="k">import</span> <span class="n">render</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">Http404</span>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
 
-<span class="kn">from</span> <span class="nn">.models</span> <span class="k">import</span> <span class="n">Question</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Question</span>
 <span class="c1"># ...</span>
 <span class="k">def</span> <span class="nf">detail</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">question_id</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
@@ -287,9 +287,9 @@ yukarıdaki örneği hızlıca çalıştırmak istiyorsanız sadece şunu yazın
 <p>Bu eğer nesne varsa <cite>get</cite> fonksiyonunu kullanarak nesneyi getirir, yoksa
 <cite>Http404</cite> hatası yollar. Burada detay viewının tamamen tekrar yazılmış
 hali var:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="k">import</span> <span class="n">get_object_or_404</span><span class="p">,</span> <span class="n">render</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">get_object_or_404</span><span class="p">,</span> <span class="n">render</span>
 
-<span class="kn">from</span> <span class="nn">.models</span> <span class="k">import</span> <span class="n">Question</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Question</span>
 <span class="c1"># ...</span>
 <span class="k">def</span> <span class="nf">detail</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">question_id</span><span class="p">):</span>
     <span class="n">question</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Question</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">question_id</span><span class="p">)</span>
@@ -370,9 +370,9 @@ detay viewına sahip ve aynı projede bir de <cite>blog</cite> uygulaması detay
 Django hangi uygulamanın viewının çağırıldığını nasıl bilebilir?</p>
 <p>Cevap: URL şemasına alan adı eklemek. Alan adı oluşturmak için
 <strong>polls/urls.py</strong> dosyasında <cite>app_name</cite> değişkeni ekleyelim:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.urls</span> <span class="k">import</span> <span class="n">path</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
 
-<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">views</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span>
 
 <span class="n">app_name</span> <span class="o">=</span> <span class="s1">&#39;polls&#39;</span>
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
@@ -466,7 +466,7 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 <div class="footer">
 &copy; Copyright 2007-2021, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 22.09.2021.
+Son güncelleme: 23.09.2021.
 Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.
 <br>
 <br>

@@ -90,7 +90,7 @@ Anket uygulamamızda iki tane model olacak: Question(Soru), Choice(Seçenek).
 Question modeli bir soru ve yayınlama tarihi içerecek. Choice modeli ise iki alandan
 oluşacak: Bir yazı alanı ve oy çetelesi. Her Choice bir Question ile ilişkili olacak.
 Şimdi <strong>polls/models.py</strong> dosyasını şu şekilde düzenleyin:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="k">import</span> <span class="n">models</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
 
 
 <span class="k">class</span> <span class="nc">Question</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
@@ -267,7 +267,7 @@ Etkileşimli kabuğu çağırmak için şu komutu kullanın:</p>
 <p>Basitçe <cite>python</cite> yazmak yerine bunu kullanıyoruz.
 Çünkü manage.py dosyası kullanacağımız django dosyalarını içe aktarıyor.
 Kabuğa girdikten sonra veritabanı API’ını keşfedin:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">polls.models</span> <span class="k">import</span> <span class="n">Choice</span><span class="p">,</span> <span class="n">Question</span>  <span class="c1"># Az önce yazdığımız model sınıflarını içe aktar.</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">polls.models</span> <span class="kn">import</span> <span class="n">Choice</span><span class="p">,</span> <span class="n">Question</span>  <span class="c1"># Az önce yazdığımız model sınıflarını içe aktar.</span>
 
 <span class="go">#Henüz sistemde Question nesnesi yok.</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
@@ -277,7 +277,7 @@ Kabuğa girdikten sonra veritabanı API’ını keşfedin:</p>
 <span class="go"># Varsayılan ayarlar dosyasında saat dilimleri desteği etkinleştirilmiştir, bu nedenle</span>
 <span class="go"># Django pub_date değişkeni için tzinfo ile bir tarih bekler. timezone.now()&#39;ı kullanın.</span>
 <span class="go"># datetime.datetime.now () yerine ve doğru olanı yapacağız.</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">django.utils</span> <span class="k">import</span> <span class="n">timezone</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">django.utils</span> <span class="kn">import</span> <span class="n">timezone</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="p">(</span><span class="n">question_text</span><span class="o">=</span><span class="s2">&quot;What&#39;s new?&quot;</span><span class="p">,</span> <span class="n">pub_date</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">())</span>
 
 <span class="go"># Oluşturduğumuz nesneyi veritabanına kaydedelim. Bunun için save() metodunu kullanmalısın.</span>
@@ -305,16 +305,16 @@ Kabuğa girdikten sonra veritabanı API’ını keşfedin:</p>
 <p>Bir dakika! &lt;Question: Question object (1)&gt; bu nesne
 ilişkisi hiç yararlı değil. Question modeline (<strong>polls/models.py</strong> dosyasında)
 __str__() metodunu ekleyelim(Choice modeline de):</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="k">import</span> <span class="n">models</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
 
 <span class="k">class</span> <span class="nc">Question</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="c1"># ...</span>
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">question_text</span>
 
 <span class="k">class</span> <span class="nc">Choice</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="c1"># ...</span>
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">choice_text</span>
 </pre></div>
 </div>
@@ -327,8 +327,8 @@ Bunu kanıtlamak için özel bir yöntem ekleyelim:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#polls/models.py</span>
 <span class="kn">import</span> <span class="nn">datetime</span>
 
-<span class="kn">from</span> <span class="nn">django.db</span> <span class="k">import</span> <span class="n">models</span>
-<span class="kn">from</span> <span class="nn">django.utils</span> <span class="k">import</span> <span class="n">timezone</span>
+<span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<span class="kn">from</span> <span class="nn">django.utils</span> <span class="kn">import</span> <span class="n">timezone</span>
 
 
 <span class="k">class</span> <span class="nc">Question</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
@@ -343,7 +343,7 @@ aktaralım.</p>
 <p>Bu yaptığımız değişiklikleri kaydetmek için şu komutla yeni bir
 kabuk açalım::
 <cite>python manage.py shell</cite></p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">polls.models</span> <span class="k">import</span> <span class="n">Choice</span><span class="p">,</span> <span class="n">Question</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">polls.models</span> <span class="kn">import</span> <span class="n">Choice</span><span class="p">,</span> <span class="n">Question</span>
 
 <span class="go"># Eklediğimiz __str__() fonksiyonunun çalıştığından emin olalım.</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
@@ -356,7 +356,7 @@ kabuk açalım::
 <span class="go">&lt;QuerySet [&lt;Question: What&#39;s up?&gt;]&gt;</span>
 
 <span class="go"># Bu yıl paylaşılan question nesnelerini bulalım.</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">django.utils</span> <span class="k">import</span> <span class="n">timezone</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">django.utils</span> <span class="kn">import</span> <span class="n">timezone</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">current_year</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">year</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pub_date__year</span><span class="o">=</span><span class="n">current_year</span><span class="p">)</span>
 <span class="go">&lt;Question: What&#39;s up?&gt;</span>
@@ -471,8 +471,8 @@ anasayfasında gözükmüyor.</p>
 Yönetici paneline Question nesnelerimizin yönetici panelinden
 düzenlenebildiğini söylemek. Bunu yapmak için <strong>polls/admin.py</strong>
 dosyasını açıp şu kodla düzenlemek:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="k">import</span> <span class="n">admin</span>
-<span class="kn">from</span> <span class="nn">.models</span> <span class="k">import</span> <span class="n">Question</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Question</span>
 <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Question</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -591,7 +591,7 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 <div class="footer">
 &copy; Copyright 2007-2021, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 22.09.2021.
+Son güncelleme: 23.09.2021.
 Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.
 <br>
 <br>

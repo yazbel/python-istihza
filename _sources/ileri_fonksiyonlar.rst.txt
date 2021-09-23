@@ -2017,7 +2017,7 @@ Sonuçta üreteçlerin yinelenmesi bir defa bittikten sonra bir daha kullanamay�
 	>>> üreteç = (i for i in range(5))
 	>>> for i in üreteç:
 		print(i)
-
+    0
 	1
 	2
 	3
