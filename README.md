@@ -27,7 +27,7 @@ Bu şekilde indirdip kullandığınız belgelerin zaman ile güncelliğini yitir
 
 Buradaki belgeler [reStructuredText] formatında yazılmış ve [Sphinx] kullanılarak derlenmiştir.
 Belgeleri derlemek için öncelikle Sphinx'i kurmalısınız. Sphinx, Python'un 3.6 ve daha yukarı versiyonlarını desteklemektedir.
-Belgelere katkıda bulunmayı planlıyorsanız önce [`CONTRIBUTING.md`](https://github.com/yazbel/python-istihza/blob/master/CONTRIBUTING.md) dosyasına başvurun.
+Belgelere katkıda bulunmayı planlıyorsanız önce [`CONTRIBUTING.md`](CONTRIBUTING.md) dosyasına başvurun.
 
 ### Debian/Ubuntu
 
@@ -101,13 +101,13 @@ daha sonrasında düzeltmeleri yapmalı ve belgeleri inşa edip çekme isteği g
 işleme mesajı (commit message) yazdığınıza emin olmalısınız.
 
 - Eğer bir yanlış gördünüz ancak bir sebepten ötürü düzeltmeyi kendiniz yapmak istemediyseniz, bu hatayı bildirerek de
-yardım edebilirsiniz. Bunun için veri havuzunun [konular (issues)](https://github.com/yazbel/python-istihza/issues)
+yardım edebilirsiniz. Bunun için veri havuzunun [konular (issues)](issues)
 dizininde bir konu açın, başlık ve açıklama kısmına ilgili metinleri yazın ve gönderin. Başlık kısmının kısa ve öz
 olmasına dikkat edin.
 
 ## Lisans
 
-[`LICENSE`](https://github.com/yazbel/python-istihza/blob/master/LICENSE) dosyasında da belirtildiği üzere bu
+[`LICENSE`](LICENSE) dosyasında da belirtildiği üzere bu
 belgelerin lisansı **Creative Commons Atıf-GayriTicari-AynıLisanslaPaylaş 3.0 Yerelleştirilmemiş (CC BY-NC-SA 3.0)**
 lisansıdır. Daha fazla bilgi için lütfen dosyanın içeriğine bakınız.
 
