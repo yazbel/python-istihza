@@ -26,7 +26,7 @@ Belgelere katkıda bulunmadan önce [`CONTRIBUTING.md`](https://github.com/yazbe
 
 ### Debian/Ubuntu
 
-Sphinx'i siteminize kurmak için aşağıdaki 2 yöntemden herhangi birini deneyeibilirsiniz. Eğer ilk yöntemi başarıyla kurmayı başarırsanız, o zaman ikinci yöntemi geçebilirsiniz.
+Sphinx'i siteminize kurmak için aşağıdaki 2 yöntemden herhangi birini deneyebilirsiniz. Eğer ilk yöntemi başarıyla kurmayı başarırsanız, o zaman ikinci yöntemi geçebilirsiniz.
 
 1. Yöntem:
 
@@ -38,7 +38,13 @@ Sphinx'i siteminize kurmak için aşağıdaki 2 yöntemden herhangi birini deney
 
 2. Yöntem:
     
-    Sisteminizde Python ile beraber `pip`'in de kurulduğundan emin olun. Terminalinizde `pip` yazdığınızda bir hata ile karşılaşmıyorsanız, `pip`'i başarılı bir şekilde kurmuşsunuzdur. Bundan sonra aşağıdaki kod çıktısını terminailinizde çalıştırarak `pip` üzerinden de Sphinx kurulumunu cihazınıza kurabilirsiniz.
+    Sisteminizde Python ile beraber `pip`'in de kurulduğundan emin olun. Terminalinizde `pip` yazdığınızda bir hata ile karşılaşmıyorsanız, `pip`'i başarılı bir şekilde kurmuşsunuzdur. Eğer bir hata ile karşılaşırsanız, aşağıdaki komutu terminalde yazarak `pip`'i kurabilirsiniz.
+
+    ```shell
+    $ sudo apt install python3-pip
+    ```
+
+    Bundan sonra aşağıdaki kod çıktısını terminalinizde çalıştırarak `pip` üzerinden de Sphinx kurulumunu cihazınıza kurabilirsiniz.
 
     ```shell
     $ pip install -U sphinx
