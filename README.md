@@ -26,11 +26,23 @@ Belgelere katkıda bulunmadan önce [`CONTRIBUTING.md`](https://github.com/yazbe
 
 ### Debian/Ubuntu
 
-`make`'in sisteminizde kurulu olduğundan emin olduktan sonra Sphinx'i Debian veya Ubuntu'da şu komutla kurabilirsiniz:
+Sphinx'i siteminize kurmak için aşağıdaki 2 yöntemden herhangi birini deneyeibilirsiniz. Eğer ilk yöntemi başarıyla kurmayı başarırsanız, o zaman ikinci yöntemi geçebilirsiniz.
 
-```shell
-$ apt install python3-sphinx
-```
+1. Yöntem:
+
+    `make`'in sisteminizde kurulu olduğundan emin olduktan sonra Sphinx'i Debian veya Ubuntu'da şu komutla kurabilirsiniz:
+
+    ```shell
+    $ apt install python3-sphinx
+    ```
+
+2. Yöntem:
+    
+    Sisteminizde Python ile beraber `pip`'in de kurulduğundan emin olun. Terminalinizde `pip` yazdığınızda bir hata ile karşılaşmıyorsanız, `pip`'i başarılı bir şekilde kurmuşsunuzdur. Bundan sonra aşağıdaki kod çıktısını terminailinizde çalıştırarak `pip` üzerinden de Sphinx kurulumunu cihazınıza kurabilirsiniz.
+
+    ```shell
+    $ pip install -U sphinx
+    ```
 
 Daha sonra `python-istihza/` dizinine gidip bu komutla belgeleri inşa edebilirsiniz:
 
