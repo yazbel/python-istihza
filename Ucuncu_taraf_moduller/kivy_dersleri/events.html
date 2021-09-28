@@ -6,7 +6,8 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Olaylar &#8212; Python 3 için Türkçe Kılavuz</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/pyramid.css" />
@@ -53,13 +54,13 @@
           <div class="body" role="main">
             
 
-  <div class="section" id="olaylar">
+  <section id="olaylar">
 <h1>Olaylar<a class="headerlink" href="#olaylar" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
 <p>Olaylardan önceki bölümlerde bahsetmiştik, ancak detaylı olarak anlatmamıştık. Bu bölümde olaylardan biraz daha detaylı bir şekilde bahsedeceğiz. Öncelikle olay nedir tanımlamaya çalışalım. Bir olay, kullanıcı etkileşimi sonucu oluşabilen durumların tümüne denir. Örneğin kullanıcının bir butona tıklaması, bir pencere aracının üzerine mouse ile gelmesi, bir pencere aracından mouse tıklamasını kaldırması veya bir pencere aracını seçmesi(checkbox gibi araçlar) bütün hepsi birer olay olarak ele alınır.</p>
 <p>Kullanıcı taraflı gerçekleşmeyen, ancak birer olay olarak ele alınan durumlar da vardır. Örneğin bir resmin yüklenmeye başlaması, yüklenmesinin bitmesi durumları da birer olaydır. Bunlara da yeri geldiğinde değineceğiz.</p>
 <p>Olaylar, kullanıcı hareketlerini yorumlamanın iyi bir yoludur. Bu hareketleri yorumlamak için, fonksiyonlarımızı ilgili olaylara bağlamalıyız. Örneğin kullanıcı butona bastığı zaman şu fonksiyonum çalışsın, ben de gerekli bilgileri alarak işlem yapayım.</p>
 <p>Şimdi bazı belli başlı olayları inceleyelim.</p>
-<div class="section" id="clock-olaylari">
+<section id="clock-olaylari">
 <h2>Clock Olayları<a class="headerlink" href="#clock-olaylari" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Clock ile ilgili daha önce bir örnek yapmıştık. Clock sınıfı, belirtilen süre sonunda bir fonksiyon çalıştırmak üzere tasarlanmıştır. İşte bu süre sonunda fonksiyonu çalıştırması, bir olay olarak ele alınıyor. Clock için zamanlayıcı da diyebiliriz.</p>
 <p>Clock sınıfını iki şekilde kullanabiliriz. Birincisi, fonksiyonun sadece bir kez çağrılması. Yani belirtilen süre sonunda, fonksiyon çalıştırılır ve işlem tamamlanır. Bir örnekle görelim</p>
@@ -96,7 +97,7 @@
 
 <span class="k">class</span> <span class="nc">Program</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">yazi</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Merhaba&quot;</span><span class="p">,</span><span class="n">markup</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">yazi</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Merhaba&quot;</span><span class="p">,</span><span class="n">markup</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 
         <span class="n">Clock</span><span class="o">.</span><span class="n">schedule_interval</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">degistir</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># 1 saniye sonra, self.degistir adlı fonksiyonu çalıştır</span>
 
@@ -104,7 +105,7 @@
 
     <span class="k">def</span> <span class="nf">degistir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">):</span>
         <span class="n">zaman</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">saat</span> <span class="o">=</span> <span class="s2">&quot;[size=25sp]{}:{}:{}[/size]&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">zaman</span><span class="o">.</span><span class="n">hour</span><span class="p">,</span><span class="n">zaman</span><span class="o">.</span><span class="n">minute</span><span class="p">,</span><span class="n">zaman</span><span class="o">.</span><span class="n">second</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">saat</span> <span class="o">=</span> <span class="s2">&quot;[size=25sp]</span><span class="si">{}</span><span class="s2">:</span><span class="si">{}</span><span class="s2">:</span><span class="si">{}</span><span class="s2">[/size]&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">zaman</span><span class="o">.</span><span class="n">hour</span><span class="p">,</span><span class="n">zaman</span><span class="o">.</span><span class="n">minute</span><span class="p">,</span><span class="n">zaman</span><span class="o">.</span><span class="n">second</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">yazi</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">saat</span>
 
 
@@ -123,8 +124,8 @@
 <span class="n">Clock</span><span class="o">.</span><span class="n">unschedule</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">event2</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="girdi-olaylari">
+</section>
+<section id="girdi-olaylari">
 <h2>Girdi Olayları<a class="headerlink" href="#girdi-olaylari" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Kullanıcı girdisi sonucu oluşan olaylardır. Tıklama, basılı halde sürükleme, bırakma, mouse tekerleği hareketi gibi hareketler sonucu oluşan olaylardır. Daha önce buna benzer olayları bazı pencere araçlarımızda ele almıştık. Bunlardan birisi Button sınıfıydı. Bir butonun üzerine tıklanması on_press, bırakılma olayı da on_release ile dinleniyordu.</p>
 <p>Genelde bir pencere aracının sahip olduğu olaylar, ilgili <a class="reference external" href="https://kivy.org/doc/stable/api-index.html">API</a> kaynağında bulunur. Böylece kaynağa bakarak, ele almak istediğimiz olayları bind() yardımıyla bağlayabiliriz. Basit bir örnek yapalım isterseniz</p>
@@ -144,15 +145,15 @@
 
 
     <span class="k">def</span> <span class="nf">kontrol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">instance</span><span class="p">,</span><span class="n">value</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 
 <span class="n">Program</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>TextInput pencere aracı üzerinde herhangi bir yazı yazıldığında çalışacak olan kontrol fonksiyonumuzu tanımladık. Bu fonksiyon iki adet parametre alıyor(self hariç). Bunlardan instance, pencere aracının kendisi, diğeri ise bunun içerdiği metindir. Herhangi bir karakter girişinde kontrol fonksiyonumuz çağrılacaktır. Bağlama işlemini de bind() ile yaptığımıza dikkat edin.</p>
 <p>Bunun gibi birçok pencere aracının sahip olduğu olayları API kaynağından inceleyebilirsiniz. Biz de yeri geldiğinde bunlara değineceğiz ve kullanacağız.</p>
-</div>
-</div>
+</section>
+</section>
 
 
 
@@ -230,7 +231,7 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 <div class="footer">
 &copy; Copyright 2007-2021, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 26.09.2021.
+Son güncelleme: 28.09.2021.
 Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.
 <br>
 <br>

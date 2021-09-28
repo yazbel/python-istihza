@@ -1069,6 +1069,7 @@ söyleyebiliriz. Ayrıca bu fonksiyonları iyice anlamak, ileride üreteçleri
             print(mesaj)
         return yaz
 
+Kodu çalıştırıp etkileşimli kabuğu kullanalım::
 
 	>>> y = yazıcı()
 	>>> y("Merhaba")
@@ -1888,9 +1889,11 @@ fonksiyonlar oluşturmak da dahildir.
             print("Merhaba Dünya!")
             yield
 
-	>>> y = yaz(4)
-	>>> for i in y:
-		pass
+    y = yaz(4)
+    for i in y:
+        print(i)
+
+Kodun çıktısı::
 
 	Merhaba Dünya!
 	Merhaba Dünya!

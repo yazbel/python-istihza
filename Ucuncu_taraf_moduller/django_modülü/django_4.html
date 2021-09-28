@@ -6,7 +6,8 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta content="Bu bölümde formları ve kalıp viewları öğreneceğiz." name="description" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta content="Bu bölümde formları ve kalıp viewları öğreneceğiz." name="description" />
 <meta content="form, forms,Django, generic views, kalıp view," name="keywords" />
 
     <title>İLK DJANGO PROJENİ YAZ, part 4 &#8212; Python 3 için Türkçe Kılavuz</title>
@@ -55,9 +56,9 @@
           <div class="body" role="main">
             
 
-  <div class="section" id="ilk-django-projeni-yaz-part-4">
+  <section id="ilk-django-projeni-yaz-part-4">
 <h1>İLK DJANGO PROJENİ YAZ, part 4<a class="headerlink" href="#ilk-django-projeni-yaz-part-4" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
-<div class="section" id="basit-bir-form-yazalim">
+<section id="basit-bir-form-yazalim">
 <h2>Basit bir form yazalım<a class="headerlink" href="#basit-bir-form-yazalim" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Hadi bir <cite>&lt;form&gt;</cite> etiketi içerecek şekilde anket detay
 şablonumuzu (“polls/detail.html”) güncelleyelim:</p>
@@ -106,11 +107,11 @@ satırı içeren bir URLconf oluşturduk:</p>
 </div>
 <p>Ayrıca göstermelik bir <cite>vote</cite> viewı yazmıştık. Hadi gerçek bir viewa
 çevirelim:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.http</span> <span class="k">import</span> <span class="n">HttpResponse</span><span class="p">,</span> <span class="n">HttpResponseRedirect</span>
-<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="k">import</span> <span class="n">get_object_or_404</span><span class="p">,</span> <span class="n">render</span>
-<span class="kn">from</span> <span class="nn">django.urls</span> <span class="k">import</span> <span class="n">reverse</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span><span class="p">,</span> <span class="n">HttpResponseRedirect</span>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">get_object_or_404</span><span class="p">,</span> <span class="n">render</span>
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">reverse</span>
 
-<span class="kn">from</span> <span class="nn">.models</span> <span class="k">import</span> <span class="n">Choice</span><span class="p">,</span> <span class="n">Question</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Choice</span><span class="p">,</span> <span class="n">Question</span>
 <span class="c1"># ...</span>
 <span class="k">def</span> <span class="nf">vote</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">question_id</span><span class="p">):</span>
     <span class="n">question</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Question</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">question_id</span><span class="p">)</span>
@@ -167,7 +168,7 @@ dizisi döndürür. Bunun gibi:</p>
 son sayfayı görüntülemek için ‘results’ viewını çağırır.</p>
 <p>Birisi bir soruya oy verdikten sonra, <cite>vote</cite> viewı sorunun sonuç sayfasına
 yönlendirir. Bu görünümü yazalım:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="k">import</span> <span class="n">get_object_or_404</span><span class="p">,</span> <span class="n">render</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">get_object_or_404</span><span class="p">,</span> <span class="n">render</span>
 
 
 <span class="k">def</span> <span class="nf">results</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">question_id</span><span class="p">):</span>
@@ -192,8 +193,8 @@ Tek fark şablon adı. Bu gereksizliği daha sonra düzeltiriz.</p>
 <p>Şimdi tarayıcında <cite>/polls/1/</cite> adresine git ve soruyu oyla. Her oy verdiğinizde
 güncellenen bir sonuç sayfası görmelisiniz. Bir seçim yapmadan formu
 gönderirseniz, hata mesajını görmelisiniz.</p>
-</div>
-<div class="section" id="kalip-viewlar-kullanalim">
+</section>
+<section id="kalip-viewlar-kullanalim">
 <h2>Kalıp viewlar kullanalım<a class="headerlink" href="#kalip-viewlar-kullanalim" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p><cite>detail</cite> ve <cite>results</cite> viewları çok basitve biraz da gereksizler. Anketlerin
 listesini görüntüleyen index() viewı da onlara benzer bir viewdır.</p>
@@ -213,12 +214,12 @@ adımları uygulayacağız:</p>
 <li><p>Django’nun kalıp viewlarını temel alan yeni viewlar yaz.</p></li>
 </ol>
 </div></blockquote>
-<div class="section" id="urlconf-u-degistir">
+<section id="urlconf-u-degistir">
 <h3>URLconf’u değiştir<a class="headerlink" href="#urlconf-u-degistir" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
 <p>İlk önce, <strong>polls/urls.py</strong> dosyasını açın ve <cite>URLconf</cite>’u şöyle değiştirin:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.urls</span> <span class="k">import</span> <span class="n">path</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
 
-<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">views</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span>
 
 <span class="n">app_name</span> <span class="o">=</span> <span class="s1">&#39;polls&#39;</span>
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
@@ -231,18 +232,18 @@ adımları uygulayacağız:</p>
 </div>
 <p>İkinci ve üçüncü desenlerin yol dizilerinde eşleşen kalıbın adının
 <cite>&lt;question_id&gt;</cite>’den <cite>&lt;pk&gt;</cite>’ye değiştiğini</p>
-</div>
-<div class="section" id="gorunumleri-degistir">
+</section>
+<section id="gorunumleri-degistir">
 <h3>Görünümleri değiştir<a class="headerlink" href="#gorunumleri-degistir" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
 <p>Şimdi <cite>index</cite>,`detail` ve <cite>results</cite> viewlarını kaldıracağız ve Django’nun
 kalıp viewlarını kullanacağız. Bunu yapmak için <strong>polls/views.py</strong>
 dosyasını aç ve buna benzer şekilde değiştir:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.http</span> <span class="k">import</span> <span class="n">HttpResponseRedirect</span>
-<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="k">import</span> <span class="n">get_object_or_404</span><span class="p">,</span> <span class="n">render</span>
-<span class="kn">from</span> <span class="nn">django.urls</span> <span class="k">import</span> <span class="n">reverse</span>
-<span class="kn">from</span> <span class="nn">django.views</span> <span class="k">import</span> <span class="n">generic</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponseRedirect</span>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">get_object_or_404</span><span class="p">,</span> <span class="n">render</span>
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">reverse</span>
+<span class="kn">from</span> <span class="nn">django.views</span> <span class="kn">import</span> <span class="n">generic</span>
 
-<span class="kn">from</span> <span class="nn">.models</span> <span class="k">import</span> <span class="n">Choice</span><span class="p">,</span> <span class="n">Question</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Choice</span><span class="p">,</span> <span class="n">Question</span>
 
 
 <span class="k">class</span> <span class="nc">IndexView</span><span class="p">(</span><span class="n">generic</span><span class="o">.</span><span class="n">ListView</span><span class="p">):</span>
@@ -288,9 +289,9 @@ sahne arkasındaki DetailView olsa bile, farklı bir şablona sahip olmasını
 sağlar.</p>
 <p>Durum <cite>ListView</cite> ve <cite>IndexView</cite> için de aynı.</p>
 <p>Sunucuyu çalıştırın ve kalıp viewları temel alan yeni anket uygulamanı dene.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
 
@@ -368,7 +369,7 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 <div class="footer">
 &copy; Copyright 2007-2021, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 26.09.2021.
+Son güncelleme: 28.09.2021.
 Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.
 <br>
 <br>
