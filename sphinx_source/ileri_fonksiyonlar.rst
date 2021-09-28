@@ -1888,9 +1888,11 @@ fonksiyonlar oluşturmak da dahildir.
             print("Merhaba Dünya!")
             yield
 
-	>>> y = yaz(4)
-	>>> for i in y:
-		pass
+    y = yaz(4)
+    for i in y:
+        print(i)
+
+Kodun çıktısı::
 
 	Merhaba Dünya!
 	Merhaba Dünya!
