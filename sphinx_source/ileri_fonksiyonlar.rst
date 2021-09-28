@@ -1069,6 +1069,7 @@ söyleyebiliriz. Ayrıca bu fonksiyonları iyice anlamak, ileride üreteçleri
             print(mesaj)
         return yaz
 
+Kodu çalıştırıp etkileşimli kabuğu kullanalım::
 
 	>>> y = yazıcı()
 	>>> y("Merhaba")
