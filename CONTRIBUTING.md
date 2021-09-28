@@ -8,7 +8,7 @@ Belgelere katkıda bulunduktan sonra dilerseniz isminizi ve yaptığınız eklem
 
 ### Belgeleri inşa etmek
 
-Belgeleri inşa etmek ve pull request (çekme isteği) yapmaya hazır hale getirmek için [burayı](#belgeleri-in%C5%9Fa-etme) takip edin.
+Belgeleri inşa etmek ve pull request (çekme isteği) yapmaya hazır hale getirmek için [burayı](README.md#belgeleri-in%C5%9Fa-etme) takip edin.
 
 
 ### Çekme isteği açmak

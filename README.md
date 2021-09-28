@@ -101,7 +101,7 @@ daha sonrasında düzeltmeleri yapmalı ve belgeleri inşa edip çekme isteği g
 işleme mesajı (commit message) yazdığınıza emin olmalısınız.
 
 - Eğer bir yanlış gördünüz ancak bir sebepten ötürü düzeltmeyi kendiniz yapmak istemediyseniz, bu hatayı bildirerek de
-yardım edebilirsiniz. Bunun için veri havuzunun [konular (issues)](issues)
+yardım edebilirsiniz. Bunun için veri havuzunun [konular (issues)](https://github.com/yazbel/python-istihza/issues)
 dizininde bir konu açın, başlık ve açıklama kısmına ilgili metinleri yazın ve gönderin. Başlık kısmının kısa ve öz
 olmasına dikkat edin.
 
