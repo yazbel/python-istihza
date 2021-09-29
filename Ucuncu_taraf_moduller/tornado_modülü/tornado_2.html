@@ -69,15 +69,15 @@ Sürekli olarak bağlantı kurmak istediğimizde yeni bir protokol kullanmalıy�
 <cite>WS</cite> protokolü kullanıcı veya sunucu kapatana kadar bağlantı açık kalır.
 Sunucu veya kullanıcı herhangi bir istek olmadan birbirine veri yollayabilir.</p>
 <p><cite>Websocket</cite>’ler, en basit tabirle <cite>HTTP</cite> yerine <cite>WS</cite> protokolü kullanan
-<cite>view`lardır. Biz bir `view</cite> tanımlarken sadece <cite>get</cite> metodunu yazmıştık.
-Çünkü bir <cite>view</cite> sadece sayfamızı sunuyordu. Ancak <cite>websocket`ler sadece
+<cite>view</cite>’lardır. Biz bir <cite>view</cite> tanımlarken sadece <cite>get</cite> metodunu yazmıştık.
+Çünkü bir <cite>view</cite> sadece sayfamızı sunuyordu. Ancak <cite>websocket</cite>’ler sadece
 sayfa sunmuyorlar, aynı zamanda veri de alıyorlar. Bu yüzden 3 tane
-metoda sahipler: `on_open</cite>, <cite>on_message</cite>, <cite>on_close</cite>.</p>
+metoda sahipler: <cite>on_open</cite>, <cite>on_message</cite>, <cite>on_close</cite>.</p>
 <p><cite>Websocket</cite> ile bağlantı kurulduğunda <cite>on_open</cite> metodu çağrılıyor.
 <cite>Websocket</cite>’e mesaj geldiğinde <cite>on_message</cite> metodu çağrılıyor.
 <cite>Websocket</cite>’in bağlantısı kapatıldığında <cite>on_close</cite> metodu çağrılıyor.</p>
 <p>Biz <cite>view</cite> ile kullanıcıya veri yollarken <cite>write</cite> metodundan faydalanmıştık.
-Fakat <cite>websocket`ler bu iş için `write_message</cite> metodunu kullanıyor.</p>
+Fakat <cite>websocket</cite>’ler bu iş için <cite>write_message</cite> metodunu kullanıyor.</p>
 <p>Şimdi gelen mesajları geri gönderen bir <cite>websocket</cite> yazalım:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tornado.web</span>
 <span class="kn">import</span> <span class="nn">tornado.ioloop</span>
@@ -113,7 +113,7 @@ yazmamız için gerekli sınıfı bulunduruyor.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Geri</span><span class="p">(</span><span class="n">tornado</span><span class="o">.</span><span class="n">websocket</span><span class="o">.</span><span class="n">WebSocketHandler</span><span class="p">):</span>
 </pre></div>
 </div>
-<p>Bu sınıf bizim <cite>websocket`imiz. Daha önce `view</cite> yazarken
+<p>Bu sınıf bizim <cite>websocket</cite>’imiz. Daha önce <cite>view</cite> yazarken
 <cite>tornado.web.RequestHandler</cite> sınıfından faydalanmıştık. Şimdi ise
 <cite>tornado.websocket.WebSocketHandler</cite> sınıfından faydalandık.</p>
 <p><cite>Websocket</cite> ile bağlantı kurulduğunda bize <cite>Bağlantı kuruldu</cite> yazması için
@@ -122,7 +122,7 @@ yazmamız için gerekli sınıfı bulunduruyor.</p>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bağlantı kuruldu&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><cite>Websocket`e mesaj geldiğinde onu yazdırıp geri yollaması için `on_message</cite>
+<p><cite>Websocket</cite>’e mesaj geldiğinde onu yazdırıp geri yollaması için <cite>on_message</cite>
 metodunu düzenledik. Burada metodumuzun bir parametresi daha olduğuna dikkat
 edelim:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">on_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mesaj</span><span class="p">):</span>
@@ -143,15 +143,15 @@ edelim:</p>
 <span class="p">])</span>
 </pre></div>
 </div>
-<p>Burada 2 önemli nokta var. Biz hem <cite>websocket`leri hem `view`ları aynı
-`Application</cite> nesnesine yazıyoruz. Burada ayrım yapmak için genelde
-<cite>websocket`lerin isteklerini “</cite>/ws/<cite>” ile başlatmaya önem veriyoruz. Diğer
+<p>Burada 2 önemli nokta var. Biz hem <cite>websocket</cite>’leri hem <cite>view</cite>’ları aynı
+<cite>Application</cite> nesnesine yazıyoruz. Burada ayrım yapmak için genelde
+<cite>websocket</cite>’lerin isteklerini “<cite>/ws/</cite>” ile başlatmaya önem veriyoruz. Diğer
 sıkıntı ise gelen isteklerin protokollerine göre ayrılmadan işlenmesi. Yani
-kullanıcı “`HTTP</cite> ile mi istekte bulundu, <cite>WS</cite> ile mi istekte bulundu?” diye
+kullanıcı “<cite>HTTP</cite> ile mi istekte bulundu, <cite>WS</cite> ile mi istekte bulundu?” diye
 sorulmuyor. Bu ayrım direkt olarak bizim o isteğe karşı ne yazdımız ile ilgili.</p>
-<p><cite>Websocket`lere tarayıcımızdaki adres çubuğuna yazarak ulaşamayız.
-Tarayıcımızdaki adres çubuğu sadece `HTTP</cite> protokolünü kullanır.
-<a href="#id1"><span class="problematic" id="id2">`</span></a>Websocket`lere ulaşmak için kütüphaneleri kullanıyoruz. Ben size javascript
+<p><cite>Websocket</cite>’lere tarayıcımızdaki adres çubuğuna yazarak ulaşamayız.
+Tarayıcımızdaki adres çubuğu sadece <cite>HTTP</cite> protokolünü kullanır.
+<cite>Websocket</cite>’lere ulaşmak için kütüphaneleri kullanıyoruz. Ben size javascript
 ile nasıl bağlantı kurabileceğinizi göstereceğim. Bu noktada basit seviyede
 javascript bilgisine sahip olmanız gerekiyor.</p>
 <div class="admonition note">
@@ -169,7 +169,7 @@ Bir <cite>Websocket</cite> nesnesi oluştururken hangi siteye bağlanacağımız
 </pre></div>
 </div>
 <p>Bu kodda <cite>HTTP</cite> yerine <cite>WS</cite> protokolünü kullandığıza ve nasıl kullanıldığına
-dikkat edelim: Normalde <cite>http</cite> yazdığımız yere <a href="#id3"><span class="problematic" id="id4">`</span></a>ws`yazdık.</p>
+dikkat edelim: Normalde <cite>http</cite> yazdığımız yere <cite>ws</cite> yazdık.</p>
 <p>Şimdi mesaj geldiğinde çalışacak olan <cite>onmessage</cite> fonksiyonumuzu yazalım.
 Bizim Python’da yaptığımız gibi nesnenin devamına <cite>.</cite> koyup <cite>on_message</cite>
 ekleyerek tanımlayacağız. Javascript’te fonksiyon tanımlarken <cite>function</cite> deyimi
@@ -262,7 +262,7 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 <div class="footer">
 &copy; Copyright 2007-2021, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 28.09.2021.
+Son güncelleme: 30.09.2021.
 Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.
 <br>
 <br>
