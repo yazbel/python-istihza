@@ -18,11 +18,16 @@ Hatta bu gelişime siz de dahil olabilirsiniz!
 
 Bu arada proje sonlandığında bu belgede istihza.com'a verilen bağlantıların çalışmayabileceğini de unutmamalısınız.
 
+## Belgelerden çevrimdışı iken faydalanmak
+
+Belgeleri çevrimdışı iken de kullanabilmek için bu veri havuzunu cihazınıza indirebilir ve `/index.html` dosyasını tarayıcınız ile açabilirsiniz.
+Bu şekilde indirdip kullandığınız belgelerin zaman ile güncelliğini yitirip https://python-istihza.yazbel.com/ adresindeki belgelerin gerisinde kalabileceğini unutmayın.
+
 ## Belgeleri inşa etme
 
 Buradaki belgeler [reStructuredText] formatında yazılmış ve [Sphinx] kullanılarak derlenmiştir.
 Belgeleri derlemek için öncelikle Sphinx'i kurmalısınız. Sphinx, Python'un 3.6 ve daha yukarı versiyonlarını desteklemektedir.
-Belgelere katkıda bulunmadan önce [`CONTRIBUTING.md`](https://github.com/yazbel/python-istihza/blob/master/CONTRIBUTING.md) dosyasına başvurun.
+Belgelere katkıda bulunmayı planlıyorsanız önce [`CONTRIBUTING.md`](CONTRIBUTING.md) dosyasına başvurun.
 
 ### Debian/Ubuntu
 
@@ -32,21 +37,23 @@ Belgelere katkıda bulunmadan önce [`CONTRIBUTING.md`](https://github.com/yazbe
 $ apt install python3-sphinx
 ```
 
-Daha sonra `python-istihza/` dizinine gidip bu komutla belgeleri inşa edebilirsiniz:
+Daha sonra projenin kök dizinine gidip bu komutla belgeleri inşa edebilirsiniz:
 
 ```shell
 $ make html
 ```
 
-Belgeleri inşa ettikten sonra `move.py` betiği `python-istihza/build/html/` içindeki dosyaları `python-istihza/` dizinine çıkaracak ve `python-istihza/build` klasörünü silecektir:
+Belgeleri inşa ettikten sonra `move.py` betiği `/build/html/` içindeki dosya ve klasörleri projenin kök dizinine kopyalayacaktır:
 
 ```shell
-$ python move.py
+$ python3 move.py
 ```
+
+Bu şekilde inşa ettiğiniz dökümanı görüntülemek için `/index.html` dosyasını tarayıcınız ile açabilirsiniz.
 
 ### Windows
 
-[Python](https://www.python.org/downloads/)'un bilgisayarınızda kurulu olduğundan ve `python.exe`'nin PATH'da bulunduğundan emin olduktan sonra bu kodu ``cmd.exe``'de çalıştırarak Sphinx'i kurabilirsiniz:
+[Python]'un bilgisayarınızda kurulu olduğundan ve `python.exe`'nin PATH'da bulunduğundan emin olduktan sonra bu kodu ``cmd.exe``'de çalıştırarak Sphinx'i kurabilirsiniz:
 
 ```shell
 > python -m pip install sphinx
@@ -58,24 +65,23 @@ Yükleme işlemi başarıyla gerçekleşmiş ise şu komut size Sphinx'in versiy
 > sphinx-build --version
 ```
 
-Daha sonra `python-istihza/` dizinine gidip bu komutla belgeleri inşa edebilirsiniz:
+Daha sonra projenin kök dizinine gidip bu komutla belgeleri inşa edebilirsiniz:
 
 ```shell
 > make.bat html
 ```
 
-Belgeleri inşa ettikten sonra `move.py` betiği `python-istihza/build/html/` içindeki dosyaları `python-istihza/` dizinine çıkaracak ve `python-istihza/build` klasörünü silecektir:
+Belgeleri inşa ettikten sonra `move.py` betiği `/build/html/` içindeki dosya ve klasörleri projenin kök dizinine kopyalayacaktır:
 
 ```shell
 > python move.py
 ```
 
+Bu şekilde inşa ettiğiniz dökümanı görüntülemek için `/index.html` dosyasını tarayıcınız ile açabilirsiniz.
 
 ### Diğer işletim sistemleri
 
 Diğer işletim sistemlerinde Sphinx kurulumu ve ayrıntılı bilgi için [buraya](https://www.sphinx-doc.org/en/master/usage/installation.html) bakabilirsiniz.
-
-
 
 ## Nasıl yardım alabilirim?
 
@@ -87,7 +93,7 @@ konu açarak aklınızdaki soruları sorabilirsiniz. Topluluk size yardım etmek
 Belgelere ekleme yaparak veya yazım ve bilgi yanlışlarını düzelterek yardım edebilirsiniz:
 
 - Topluluk tarafından eksikliği hissedilen bazı konular ve belgelerdeki düzeltilmesi gereken hatalar [TODO.md](TODO.md) 
-dosyasında listelenmiş halde bulunuyor. Bu konular hakkında çalışma yapabilirsiniz.
+dosyasında listelenmiş halde bulunuyor. Bu konular üzerinde çalışma yapabilirsiniz.
 
 - Belgelerde değişiklik yaparak çekme isteği (pull request) gönderebilirsiniz. Yazım yanlışları ve küçük hatalar için
 GitHub arayüzünü kullanabilirsiniz ancak daha büyük ve karmaşık düzeltmeler için veri havuzunu bilgisayarınıza çekmeli,
@@ -101,7 +107,7 @@ olmasına dikkat edin.
 
 ## Lisans
 
-[`LICENSE`](https://github.com/yazbel/python-istihza/blob/master/LICENSE) dosyasında da belirtildiği üzere bu
+[`LICENSE`](LICENSE) dosyasında da belirtildiği üzere bu
 belgelerin lisansı **Creative Commons Atıf-GayriTicari-AynıLisanslaPaylaş 3.0 Yerelleştirilmemiş (CC BY-NC-SA 3.0)**
 lisansıdır. Daha fazla bilgi için lütfen dosyanın içeriğine bakınız.
 

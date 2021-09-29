@@ -6,7 +6,8 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta content="Bu bölümde threading modülünü inceleyeceğiz." name="description" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta content="Bu bölümde threading modülünü inceleyeceğiz." name="description" />
 <meta content="python, modül, import, threading" name="keywords" />
 
     <title>threading Modülü &#8212; Python 3 için Türkçe Kılavuz</title>
@@ -54,7 +55,7 @@
           <div class="body" role="main">
             
 
-  <div class="section" id="threading-modulu">
+  <section id="threading-modulu">
 <h1>threading Modülü<a class="headerlink" href="#threading-modulu" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
 <p><strong>Kaynak Kodu:</strong> <a class="reference external" href="https://hg.python.org/cpython/file/3.5/Lib/threading.py">https://hg.python.org/cpython/file/3.5/Lib/threading.py</a></p>
 <p>Bu modül; düşük seviyeli <cite>_thread</cite> modülü üzerine, yüksek seviyeli iş parçacığı yürütüm ara yüzleri inşa eder. Ayrıca <cite>queue</cite> modülüne de bakınız.</p>
@@ -104,7 +105,7 @@
 <p>Bu modül aşağıdaki kısımda ayrıntıları verilen birkaç sınıfı tanımlar.</p>
 <p>Bu modülün tasarımı yaklaşık olarak Java’nın threading modeli üzerine temellenmiştir. Ancak bununla birlikte, Java’daki her nesnenin temel davranışında olan kilit ve durum değişkenleri, Python’da ayrı nesnelerdir. Python’daki Thread sınıfı Java’daki Thread sınıfının davranışını bir alt set olarak destekler; şimdilik ne bir öncelik, ne bir iş parçacığı grubu vardır. İş parçacıkları yok edilemez, durdurulamaz, yasaklanamaz, devam ettirilemez ve sonlandırılamaz. Java’nın Thread sınıfının statik metotları, uygulandığında, modül düzeyindeki fonksiyonlarla eşleştirilir.
 Aşağıda açıklanmış metotların hepsi otomatik olarak çalıştırılır.</p>
-<div class="section" id="yerel-is-parcacigi-thread-local-verisi">
+<section id="yerel-is-parcacigi-thread-local-verisi">
 <h2>Yerel İş Parçacığı (Thread-Local) Verisi<a class="headerlink" href="#yerel-is-parcacigi-thread-local-verisi" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Yerel iş parçacığı (thread-local) verisi, değeri iş parçacığı olarak belirlenmiş bir değerdir. Yerel iş parçacığı verisini yönetmek için, sadece yerel sınıftan (veya bir alt sınıftan) bir tane örnek oluşturulur ve özellikler bu sınıfta tutulur:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">yerel_veri</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">local</span><span class="p">()</span>
@@ -117,8 +118,8 @@ Aşağıda açıklanmış metotların hepsi otomatik olarak çalıştırılır.<
 <div><p>Yerel iş parçacığı verisini temsil eden sınıftır.</p>
 <p>Daha fazla ayrıntı ve geniş örnekler için, <em>_threading_local</em> modülünün belge dizisine bakın.</p>
 </div></blockquote>
-</div>
-<div class="section" id="is-parcacigi-thread-nesneleri">
+</section>
+<section id="is-parcacigi-thread-nesneleri">
 <h2>İş Parçacığı (Thread) Nesneleri<a class="headerlink" href="#is-parcacigi-thread-nesneleri" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>İş parçacığı (thread) sınıfı, ayrı iş parçacıklarını kontrol eden bir etkinliği temsil eder. Bu etkinliği belirtmek için iki yol vardır: yapıcıya, çağrılabilir bir nesne atamak veya bir alt sınıfta <cite>run()</cite> metodunu iptal etmek. Yapıcı dışında hiçbir metot bir alt sınıfta iptal edilmemelidir. Başka bir deyişle, bu sınıfın sadece <cite>__init__()</cite> ve <cite>run()</cite> metotları iptal edilir.</p>
 <p>Bir iş parçacığı (thread) nesnesi oluşturulduğunda, bu nesnenin etkinliği, iş parçacığının <cite>start()</cite> metodu çağrılarak başlatılmalıdır. Bu ayrılmış bir iş parçacığının kontrolündeki <cite>run()</cite> metodunu çalıştırır.</p>
@@ -194,8 +195,8 @@ Aşağıda açıklanmış metotların hepsi otomatik olarak çalıştırılır.<
 </dd>
 </dl>
 <p><strong>CPython Uygulaması Hakkında Ayrıntı:</strong> CPython’da, Global Yorumlayıcı Kilidinden (Global Interpreter Lock) ötürü yalnızca bir adet iş parçacığı bir kere Python kodunu çalıştırabilir (belirli performans odaklı kütüphanelerin bu kısıtlamanın üstesinden gelmesine rağmen). Eğer uygulamanızın çok çekirdekli makinelerin hesaplama kaynaklarından daha fazla yararlanmasını istiyorsanız <cite>multiprocessing</cite>’i veya <cite>concurrent.futures.ProcessPoolExecutor</cite>’u kullanmanız tavsiye edilir. Yine de çoklu girdi/çıktı görevlerini eş zamanlı olarak çalıştırmak istiyorsanız, <cite>threading</cite> bunun için halen uygun bir modeldir.</p>
-</div>
-<div class="section" id="lock-kilit-nesneleri">
+</section>
+<section id="lock-kilit-nesneleri">
 <h2>Lock (Kilit) Nesneleri<a class="headerlink" href="#lock-kilit-nesneleri" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Bir ilkel kilit, kilitlendiğinde belirli bir iş parçacığına ait olmayan, bir eşzamanlama ilkelidir. Bu kilit, Python’da, doğrudan <cite>_thread</cite> uzantı modülünden uyarlanan,  hali hazırda kullanılabilir olan en düşük seviyedeki eşzamanlama ilkelidir.</p>
 <p>Bir ilkel kilitin “kilitli (=locked)” ve “kilitli değil (=unlocked)” olmak üzere iki tane durumu vardır. Bu kilit oluşturulurken “kilitli değil” durumundadır. Kilidin iki tane temel metodu vardır; <cite>acquire()</cite> ve <cite>release()</cite>. Kilidin durumu “kilitli değil” olduğunda, <cite>acquire()</cite> durumu “kilitli” hale çevirir ve acil olarak geri döndürülür. Kilidin durumu “kilitli” olduğunda, bir başka iş parçacığında <cite>release()</cite> çağrılıp, durumu “kilitli değil” şeklinde değiştirene kadar, <cite>acquire()</cite> iş parçacığını bloke eder, daha sonra <cite>acquire()</cite> çağrısı kilidi “kilitli” şeklinde sıfırlar ve geri döndürür. <cite>release()</cite> metodu, kilit sadece “kilitli” durumda iken çağrılmalıdır; bu metot, kilidin durumunu “kilitli değil” diye değiştirir ve acil olarak geri döndürülür. Şayet bir girişim kilitli olmayan bir kilidi serbest bırakmaya çalışırsa, bir adet <cite>RuntimeError</cite> hatası yükseltilir.</p>
@@ -224,8 +225,8 @@ Aşağıda açıklanmış metotların hepsi otomatik olarak çalıştırılır.<
 <p>Bu metot ile geri dönen bir değer yoktur.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="rlock-yeniden-girilir-kilit-nesneleri">
+</section>
+<section id="rlock-yeniden-girilir-kilit-nesneleri">
 <h2>Rlock (Yeniden Girilir Kilit) Nesneleri<a class="headerlink" href="#rlock-yeniden-girilir-kilit-nesneleri" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Bir yeniden girilir kilit, aynı iş parçacığı tarafından bir çok kere kullanıma sokulabilen bir eş zamanlama ilkelidir. Dahili olarak, bu kilit, ilkel kilitlerin kullandığı kilitli/kilitli değil durumuna ilaveten “sahip olunan iş parçacığı” ve “recursion (öz yineleme)” kavramlarını kullanır. Kilitli durumda, bazı iş parçacıkları bu kilide sahip olurken; kilitli olmadığı durumda, hiçbir iş parçacığı bu kilide sahip değildir.
 Kilidi kilitlemek için, iş parçacığı bu kilidin <cite>acquire()</cite> metodunu çağırır; bu işlem iş parçacığının kilide sahip olduğunu bir kez geri döndürür. Kilidi açmak için, iş parçacığı kilidin <cite>release()</cite> metodunu çağırır. <cite>acquire()</cite> / <cite>release()</cite> çağrı çiftleri iç içe geçebilir; sadece son <cite>release()</cite> çağrısı (en dıştaki çağrı çiftinden olan <cite>release()</cite>) kilidi “kilitli değil” duruma getirir ve <cite>acquire()</cite> ile bloklanmış diğer iş parçacığının ilerlemesi için izin verir.</p>
@@ -250,8 +251,8 @@ Kilidi kilitlemek için, iş parçacığı bu kilidin <cite>acquire()</cite> met
 <p>Geri dönen bir değer yoktur.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="condition-durum-nesneleri">
+</section>
+<section id="condition-durum-nesneleri">
 <h2>Condition (Durum) Nesneleri<a class="headerlink" href="#condition-durum-nesneleri" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Bir durum değişkeni her zaman bir kilitle ilişkilidir; bu değişken içeri aktarılabilir veya varsayılan olarak bir tane oluşturulabilir. Bir tanesini içeri aktarmak, bir kaç durum nesnesi aynı kilidi ortaklaşa kullandığında kullanışlıdır. Kilit, durum nesnesinin bir parçasıdır: onu ayrı olarak izleyemezsiniz.</p>
 <p>Bir durum nesnesi, içerik yönetim protokolüne uyar: Ekli engelleme süresi için durum değişkenini <cite>with</cite> deyimi ile birlikte kullanmak ilgili kilidi elde edilmesini sağlar. <cite>acquire()</cite> ve <cite>release()</cite> yöntemleri ayrıca bahsi geçen kilitle ilgili olan yöntemleri çağırır.</p>
@@ -326,8 +327,8 @@ güvenmek pek güvenilir değildir. İleride, iyileştirilmiş bir uygulama zama
 <div><p>Bu durumu bekleyen bütün iş parçacıklarını uyandırır. Bu yöntem <cite>notify()</cite> gibi davranır, fakat bir tanesi yerine, bekleyen bütün iş parçacıklarını uyandırır. Eğer bu yöntem çağrıldığında, çağıran iş parçacığı kilidi daha önce edinmemişse, bir <cite>RuntimeError</cite> hatası yükseltilir.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="semaphore-nesneleri">
+</section>
+<section id="semaphore-nesneleri">
 <h2>Semaphore Nesneleri<a class="headerlink" href="#semaphore-nesneleri" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Bu, bilgisayar bilimi tarihindedeki en eski senkronizasyon ilkellerinden biridir, Hollandalı bilgisayar bilimcisi Edsger W. Dijkstra tarafından icat edilmiştir (<cite>acquire()</cite> ve <cite>release()</cite> yerine <cite>P()</cite> ve <cite>V()</cite> isimlerini kullanıyordu.).</p>
 <p>Bir semafor, her <cite>acquire()</cite> çağrısında azaltılan ve her <cite>release()</cite> çağrısında arttırılan içsel bir sayacı yönetir. Sayaç sıfırın altına hiç
@@ -372,8 +373,8 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 </pre></div>
 </div>
 <p>Bağlanmış semaforun kullanılması, elde edildiğinden daha fazla serbest bırakılması gibi bir programlama hatasını tespit edememe şansını azaltır.</p>
-</div>
-<div class="section" id="event-olay-nesneleri">
+</section>
+<section id="event-olay-nesneleri">
 <h2>Event (Olay) Nesneleri<a class="headerlink" href="#event-olay-nesneleri" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Bu, iş parçacıkları arasındaki iletişim için en basit mekanizmadır: Bir iş parçacığı bir olayı sinyal eder ve diğer iş parçacığı da bunu bekler.</p>
 <p>Bir olay nesnesi <cite>set()</cite> yöntemi ile değeri <cite>True</cite> olan ve <cite>clear()</cite> yöntemiyle de değeri <cite>False</cite> olan bir iç işareti yönetir. <cite>wait()</cite> yöntemi işaretin değeri <cite>True</cite> olana kadar iş parçacığını engeller.</p>
@@ -401,8 +402,8 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 <p>Sürüm 3.1’de değiştirildi: Daha önceden, bu yöntem her zaman <cite>None</cite> değerini geri döndürürdü.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="timer-zamanlayici-nesneleri">
+</section>
+<section id="timer-zamanlayici-nesneleri">
 <h2>Timer (Zamanlayıcı) Nesneleri<a class="headerlink" href="#timer-zamanlayici-nesneleri" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Bu sınıf, sadece belirli bir zaman geçtikten sonra çalıştırılan bir eylemi, -bir zamanlayıcıyı- temsil eder. <cite>Timer</cite>, <cite>Thread</cite>’in bir alt sınıfı olup, ayrıca özel bir iş parçacığı oluşturma işlevi örneğidir.</p>
 <p>Zamanlayıcılar, tıpkı iş parçacıkları gibi <cite>start()</cite> yöntemi çağrılarak başlatılır. Zamanlayıcı (eylemi başlamadan önce) <cite>cancel()</cite> yöntemi çağrılarak durdurulabilir. Zamanlayıcının eyleminin gerçekleşmesininden önce bekleyeceği aralık, kullanıcının tanımladığı aralık olmayabilir.</p>
@@ -423,8 +424,8 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 <div><p>Zamanlayıcıyı durdurur ve zamanlayıcının eyleminin çalıştırılmasını iptal eder. Bu sadece eğer zamanlayıcı halen kendi bekleme evrendiseyse çalışır.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="barrier-engel-nesneleri">
+</section>
+<section id="barrier-engel-nesneleri">
 <h2>Barrier (Engel) Nesneleri<a class="headerlink" href="#barrier-engel-nesneleri" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Sürüm 3.2’de gelen yeni bir özelliktir.</p>
 <p>Bu sınıf, birbirini bekleme ihtiyacında olan sabit sayıdaki iş parçacıklarının kullanması için basit senkronizasyon ilkelleri sağlar. Her bir iş parçacığı <cite>wait()</cite> yöntemini çağırarak engeli aşmaya çalışır ve bütün iş parçacıkları aynı çağrıyı yapana kadar da iş parçacıkları engellenir. Bu noktada bütün iş parçacıkları aynı anda serbest bırakılır.</p>
@@ -490,8 +491,8 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 <blockquote>
 <div><p>Bu beklenti, <cite>RuntimeError</cite>’un bir alt sınıfıdır, <cite>Barrier</cite> nesnesi sıfırlandığında veya kırıldığında yükseltilir.</p>
 </div></blockquote>
-</div>
-<div class="section" id="kilitleri-durumlari-ve-semaforlari-with-deyimi-ile-birlikte-kullanmak">
+</section>
+<section id="kilitleri-durumlari-ve-semaforlari-with-deyimi-ile-birlikte-kullanmak">
 <h2>Kilitleri, Durumları ve Semaforları <cite>with</cite> deyimi ile birlikte kullanmak<a class="headerlink" href="#kilitleri-durumlari-ve-semaforlari-with-deyimi-ile-birlikte-kullanmak" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Bu modül tarafından sağlanan, <cite>acquire()</cite> ve <cite>release()</cite> fonksiyonuna sahip bütün nesneler içerik yönetimi olarak <cite>with</cite> deyimi için kullanılabilir.  <cite>acquire()</cite> yöntemi, engellemeye girildiğinde, <cite>release()</cite> yöntemi de engellemeden çıkıldığında çağrılacaktır. Bundan ötürü aşağıdaki kodlar:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">some_lock</span><span class="p">:</span>
@@ -507,8 +508,8 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 </pre></div>
 </div>
 <p>Hali hazırda, <cite>Lock</cite>, <cite>RLock</cite> <cite>Condition</cite>, <cite>Semaphore</cite> ve <cite>BoundedSemapgore</cite> nesneleri <cite>with</cite> deyimi içerik yönetimi olarak kullanılabilir.</p>
-</div>
-<div class="section" id="ornekler">
+</section>
+<section id="ornekler">
 <h2>Örnekler:<a class="headerlink" href="#ornekler" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p><strong>Örnek-1:</strong></p>
 <p>Thread’ı kullanmanın en kolay yolu; onu bir hedef fonksiyonuyla örnekleyip, <cite>start()</cite> fonksiyonunu çağırarak çalıştırmaktır.</p>
@@ -726,7 +727,7 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 
 
 <span class="k">class</span> <span class="nc">Thread</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lock</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lock</span><span class="p">):</span>
         <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lock</span> <span class="o">=</span> <span class="n">lock</span>
 
@@ -752,7 +753,7 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 </div>
 <p>Şimdi de <cite>threading.Thread</cite>’i miras alan bir sınıf oluşturalım. Ve bu sınıfın <em>lock</em> isminde bir tane de özelliği olsun:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Thread</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lock</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lock</span><span class="p">):</span>
         <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lock</span> <span class="o">=</span> <span class="n">lock</span>
 </pre></div>
@@ -787,7 +788,7 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 
 
 <span class="k">class</span> <span class="nc">Thread</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lock</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lock</span><span class="p">):</span>
         <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lock</span> <span class="o">=</span> <span class="n">lock</span>
 
@@ -812,7 +813,7 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 </div>
 <p><em>lock</em> parametresi olan ve <cite>threading.Thread()</cite> sınıfını miras alan bir sınıf oluşturuyoruz:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Thread</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lock</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lock</span><span class="p">):</span>
         <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lock</span> <span class="o">=</span> <span class="n">lock</span>
 </pre></div>
@@ -848,7 +849,7 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 
 
 <span class="k">class</span> <span class="nc">Uretici</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">condition</span><span class="p">,</span> <span class="n">liste</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">condition</span><span class="p">,</span> <span class="n">liste</span><span class="p">):</span>
         <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">condition</span> <span class="o">=</span> <span class="n">condition</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">liste</span> <span class="o">=</span> <span class="n">liste</span>
@@ -871,7 +872,7 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 
 
 <span class="k">class</span> <span class="nc">Tuketici</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">condition</span><span class="p">,</span> <span class="n">liste</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">condition</span><span class="p">,</span> <span class="n">liste</span><span class="p">):</span>
         <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">condition</span> <span class="o">=</span> <span class="n">condition</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">liste</span> <span class="o">=</span> <span class="n">liste</span>
@@ -912,7 +913,7 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 </div>
 <p>Şimdi, <cite>threading.Thread</cite> sınıfının özelliklerini miras alan bir üretici sınıf tanımlayalım; bu sınıftan bir örnek türetilmek istendiği zaman kullanıcı <em>condition</em> argümanını ve <em>liste</em> argümanını girmek zorunda kalsın:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Uretici</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">condition</span><span class="p">,</span> <span class="n">liste</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">condition</span><span class="p">,</span> <span class="n">liste</span><span class="p">):</span>
         <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">condition</span> <span class="o">=</span> <span class="n">condition</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">liste</span> <span class="o">=</span> <span class="n">liste</span>
@@ -971,7 +972,7 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 </div></blockquote>
 <p>Şimdi de, <cite>threading.Thread</cite> sınıfının özelliklerini miras alan bir tüketici sınıf tanımlayalım; yine bu sınıftan bir örnek türetilmek istendiği zaman kullanıcı <em>condition</em> argümanını ve <em>liste</em> argümanını girmek zorunda kalsın:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Tuketici</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">condition</span><span class="p">,</span> <span class="n">liste</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">condition</span><span class="p">,</span> <span class="n">liste</span><span class="p">):</span>
         <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">condition</span> <span class="o">=</span> <span class="n">condition</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">liste</span> <span class="o">=</span> <span class="n">liste</span>
@@ -1194,7 +1195,7 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 
 
 <span class="k">class</span> <span class="nc">Uretici</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">liste</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">liste</span><span class="p">):</span>
         <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">event</span> <span class="o">=</span> <span class="n">event</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">liste</span> <span class="o">=</span> <span class="n">liste</span>
@@ -1214,7 +1215,7 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 
 
 <span class="k">class</span> <span class="nc">Tuketici</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">liste</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">liste</span><span class="p">):</span>
         <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">event</span> <span class="o">=</span> <span class="n">event</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">liste</span> <span class="o">=</span> <span class="n">liste</span>
@@ -1244,7 +1245,7 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 </div>
 <p>Şimdi <cite>Uretici</cite> isminde, <em>event</em> ve <em>liste</em> argümanlarına sahip, <cite>threading.Thread()</cite> sınıfından türetilmiş bir sınıf oluşturalım:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Uretici</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">liste</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">liste</span><span class="p">):</span>
         <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">event</span> <span class="o">=</span> <span class="n">event</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">liste</span> <span class="o">=</span> <span class="n">liste</span>
@@ -1279,7 +1280,7 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 </div>
 <p>Şimdi de benzer şekilde <cite>Tuketici</cite> sınıfımızı oluşturalım:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Tuketici</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">liste</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">liste</span><span class="p">):</span>
         <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">event</span> <span class="o">=</span> <span class="n">event</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">liste</span> <span class="o">=</span> <span class="n">liste</span>
@@ -1366,8 +1367,8 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 </pre></div>
 </div>
 <p><strong>Not:</strong> <cite>Barrier()</cite> nesnesinin özelliğine göre, oluşturulan bu iş parçacıklarının uyandırılma zamanları farklı olsa da, iş parçacıkları aynı anda engeli aşarlar.</p>
-</div>
-</div>
+</section>
+</section>
 
 
 
@@ -1443,7 +1444,7 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 <div class="footer">
 &copy; Copyright 2007-2021, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 26.09.2021.
+Son güncelleme: 28.09.2021.
 Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.
 <br>
 <br>

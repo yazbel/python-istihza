@@ -6,7 +6,8 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta content="Bu bölümde timeit modülünü inceleyeceğiz." name="description" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta content="Bu bölümde timeit modülünü inceleyeceğiz." name="description" />
 <meta content="python, modül, import, timeit" name="keywords" />
 
     <title>timeit Modülü &#8212; Python 3 için Türkçe Kılavuz</title>
@@ -54,12 +55,12 @@
           <div class="body" role="main">
             
 
-  <div class="section" id="timeit-modulu">
+  <section id="timeit-modulu">
 <h1>timeit Modülü<a class="headerlink" href="#timeit-modulu" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
 <p><strong>Kaynak Kodu:</strong> <a class="reference external" href="https://github.com/python/cpython/blob/3.5/Lib/timeit.py">https://github.com/python/cpython/blob/3.5/Lib/timeit.py</a>
 <strong>Belge Kaynağı:</strong> <a class="reference external" href="https://docs.python.org/3.5/library/timeit.html">https://docs.python.org/3.5/library/timeit.html</a></p>
 <p>Bu modül küçük kod parçalarının çalışma sürelerini ölçmeyi sağlar. Hem komut satırı arayüzüne hem de çağrılabilir bir arayüze sahiptir. Çalışma sürelerini ölçmek için birçok ortak tuzaktan kaçınır. Tim Peters’in O’Reilly tarafından yayımlanan Python Cookbook kitabının “Algoritmalar” bölümünün girişine de göz atın.</p>
-<div class="section" id="temel-ornekler">
+<section id="temel-ornekler">
 <h2>Temel Örnekler<a class="headerlink" href="#temel-ornekler" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Takip eden örnek, komut satırı arayüzünün üç değişik deyimi nasıl karşılaştırdığını gösteriyor:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">timeit</span> <span class="s1">&#39;&quot;-&quot;.join(str(n) for n in range(100))&#39;</span>
@@ -86,8 +87,8 @@
 </pre></div>
 </div>
 <p>timeit sadece komut satırı arayüzü kullanıldığında yineleme sayısını otomatik olarak belirleyecektir. Örnekler bölümünde gelişmiş örnekler bulabilirsiniz.</p>
-</div>
-<div class="section" id="python-arayuzu">
+</section>
+<section id="python-arayuzu">
 <h2>Python Arayüzü<a class="headerlink" href="#python-arayuzu" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Modül, üç kolaylık fonksiyonu ve bir topluluk sınıfı tanımlar:</p>
 <p><strong>timeit.timeit(stmt=’pass’, setup=’pass’, timer=&lt;default timer&gt;, number=1000000, globals=None)</strong></p>
@@ -140,8 +141,8 @@
 <p>Standart geri izinin avantajı, derlenen şablondaki kaynak çizgilerinin görüntülenecek olmasıdır. İsteğe bağlı <em>file</em> argümanı geri izinin nereye gönderileceğini belirler, varsayılan değeri <cite>sys.stderr</cite>’dir.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="komut-satiri-arayuzu">
+</section>
+<section id="komut-satiri-arayuzu">
 <h2>Komut Satırı Arayüzü<a class="headerlink" href="#komut-satiri-arayuzu" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Bir program olarak komut satırı arayüzünden çağrılırken şu yapı kullanılır:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">timeit</span> <span class="p">[</span><span class="o">-</span><span class="n">n</span> <span class="n">N</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">r</span> <span class="n">N</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">u</span> <span class="n">U</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">s</span> <span class="n">S</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">t</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">c</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="n">statement</span> <span class="o">...</span><span class="p">]</span>
@@ -193,8 +194,8 @@
 <p>Şayet <em>-n</em> değeri girilmezse, uygun döngü sayısı, toplam süre 0.2 saniye olana kadar onun üstleri olacak şekilde hesaplanır.</p>
 <p><cite>default_timer()</cite> ölçümleri makinede çalışan diğer programlar tarafından etkilenebilir, bu yüzden hassas ölçüm yapmak gerektiğinde en iyisi, zamanlamayı bir kaç kez tekrar etmek ve en uygun zamanı seçmektir. <em>-r</em> seçeneği bu işlem için uygundur; varsayılan üç yineleme sayısı bir çok durumda yeterlidir. CPU süresini ölçmek için <cite>time.process_time()</cite>’ı kullanabilirsiniz.</p>
 <p><strong>Not:</strong> Bir geçiş ifadesi çalıştırmakla ilgili belirli bir temel yük vardır. Buradaki kod bunu gizlemeye çalışmaz fakat siz bunun farkında olmalısınız. Temel yük, programı argümansız çağırarak ölçülebilir ve Python sürümleri arasında farklılıklar gösterir.</p>
-</div>
-<div class="section" id="ornekler">
+</section>
+<section id="ornekler">
 <h2>Örnekler<a class="headerlink" href="#ornekler" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
 <p>Sadece başlangıçta bir kez çalıştırılmak üzere bir setup (kurulum) ifadesi kullanılabilir:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">timeit</span> <span class="o">-</span><span class="n">s</span> <span class="s1">&#39;text = &quot;sample string&quot;; char=&quot;g&quot;&#39;</span> <span class="s1">&#39;char in text&#39;</span>
@@ -328,8 +329,8 @@
 <span class="mf">0.1585119779992965</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
 
@@ -405,7 +406,7 @@ Eğer yazdığınız yorum içinde kod kullanacaksanız, kodlarınızı
 
 <div class="footer">
 &copy; Copyright 2007-2021, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 26.09.2021.
+Son güncelleme: 28.09.2021.
 Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.
 <br>
 <br>
