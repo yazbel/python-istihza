@@ -43,7 +43,7 @@ Daha sonra projenin kök dizinine gidip bu komutla belgeleri inşa edebilirsiniz
 $ make html
 ```
 
-Belgeleri inşa ettikten sonra `move.py` betiği `/build/html/` içindeki dosya ve klasörleri projenin kök dizinine çıkaracaktır:
+Belgeleri inşa ettikten sonra `move.py` betiği `/build/html/` içindeki dosya ve klasörleri projenin kök dizinine kopyalayacaktır:
 
 ```shell
 $ python3 move.py
@@ -71,7 +71,7 @@ Daha sonra projenin kök dizinine gidip bu komutla belgeleri inşa edebilirsiniz
 > make.bat html
 ```
 
-Belgeleri inşa ettikten sonra `move.py` betiği `/build/html/` içindeki dosya ve klasörleri projenin kök dizinine çıkaracaktır:
+Belgeleri inşa ettikten sonra `move.py` betiği `/build/html/` içindeki dosya ve klasörleri projenin kök dizinine kopyalayacaktır:
 
 ```shell
 > python move.py
