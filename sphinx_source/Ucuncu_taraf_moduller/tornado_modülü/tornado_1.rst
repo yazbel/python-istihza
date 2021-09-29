@@ -259,7 +259,7 @@ verecek şekilde düzenleyelim::
             sayfa = loader.load("index.html").generate(yazbel=liste)
             self.write(sayfa)
 
-Hemen bu sayıları listeleyecek bir `Template`(Şablon) yazalım. Bu listede 
+Hemen bu sayıları listeleyecek bir `Template` (Şablon) yazalım. Bu listede 
 çift sayılar büyük, tek sayılar küçük gözüksün.
 
 .. code-block ::

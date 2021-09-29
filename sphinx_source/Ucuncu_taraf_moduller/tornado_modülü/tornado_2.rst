@@ -21,8 +21,8 @@ Sürekli olarak bağlantı kurmak istediğimizde yeni bir protokol kullanmalıy�
 Sunucu veya kullanıcı herhangi bir istek olmadan birbirine veri yollayabilir. 
 
 `Websocket`'ler, en basit tabirle `HTTP` yerine `WS` protokolü kullanan 
-`view`lardır. Biz bir `view` tanımlarken sadece `get` metodunu yazmıştık. 
-Çünkü bir `view` sadece sayfamızı sunuyordu. Ancak `websocket`ler sadece 
+`view`'lardır. Biz bir `view` tanımlarken sadece `get` metodunu yazmıştık. 
+Çünkü bir `view` sadece sayfamızı sunuyordu. Ancak `websocket`'ler sadece 
 sayfa sunmuyorlar, aynı zamanda veri de alıyorlar. Bu yüzden 3 tane 
 metoda sahipler: `on_open`, `on_message`, `on_close`.
 
@@ -31,7 +31,7 @@ metoda sahipler: `on_open`, `on_message`, `on_close`.
 `Websocket`'in bağlantısı kapatıldığında `on_close` metodu çağrılıyor. 
 
 Biz `view` ile kullanıcıya veri yollarken `write` metodundan faydalanmıştık. 
-Fakat `websocket`ler bu iş için `write_message` metodunu kullanıyor.
+Fakat `websocket`'ler bu iş için `write_message` metodunu kullanıyor.
 
 Şimdi gelen mesajları geri gönderen bir `websocket` yazalım::
 
@@ -70,7 +70,7 @@ Yeni bir sınıf oluşturduk::
 
     class Geri(tornado.websocket.WebSocketHandler):
 
-Bu sınıf bizim `websocket`imiz. Daha önce `view` yazarken 
+Bu sınıf bizim `websocket`'imiz. Daha önce `view` yazarken 
 `tornado.web.RequestHandler` sınıfından faydalanmıştık. Şimdi ise 
 `tornado.websocket.WebSocketHandler` sınıfından faydalandık. 
 
@@ -80,7 +80,7 @@ Bu sınıf bizim `websocket`imiz. Daha önce `view` yazarken
     def on_open(self):
         print("Bağlantı kuruldu")
 
-`Websocket`e mesaj geldiğinde onu yazdırıp geri yollaması için `on_message` 
+`Websocket`'e mesaj geldiğinde onu yazdırıp geri yollaması için `on_message` 
 metodunu düzenledik. Burada metodumuzun bir parametresi daha olduğuna dikkat 
 edelim::
 
@@ -101,16 +101,16 @@ Gerekli yönlendirmeyi yapması için `Application` nesnemizi düzenledik::
         ("/ws/geri/", Geri)
     ])
 
-Burada 2 önemli nokta var. Biz hem `websocket`leri hem `view`ları aynı 
+Burada 2 önemli nokta var. Biz hem `websocket`'leri hem `view`'ları aynı 
 `Application` nesnesine yazıyoruz. Burada ayrım yapmak için genelde 
-`websocket`lerin isteklerini "`/ws/`" ile başlatmaya önem veriyoruz. Diğer 
+`websocket`'lerin isteklerini "`/ws/`" ile başlatmaya önem veriyoruz. Diğer 
 sıkıntı ise gelen isteklerin protokollerine göre ayrılmadan işlenmesi. Yani 
 kullanıcı "`HTTP` ile mi istekte bulundu, `WS` ile mi istekte bulundu?" diye 
 sorulmuyor. Bu ayrım direkt olarak bizim o isteğe karşı ne yazdımız ile ilgili.
 
-`Websocket`lere tarayıcımızdaki adres çubuğuna yazarak ulaşamayız. 
+`Websocket`'lere tarayıcımızdaki adres çubuğuna yazarak ulaşamayız. 
 Tarayıcımızdaki adres çubuğu sadece `HTTP` protokolünü kullanır. 
-`Websocket`lere ulaşmak için kütüphaneleri kullanıyoruz. Ben size javascript 
+`Websocket`'lere ulaşmak için kütüphaneleri kullanıyoruz. Ben size javascript 
 ile nasıl bağlantı kurabileceğinizi göstereceğim. Bu noktada basit seviyede 
 javascript bilgisine sahip olmanız gerekiyor.
 
@@ -129,8 +129,9 @@ Bir `Websocket` nesnesi oluştururken hangi siteye bağlanacağımızı belirtiy
 
     var ws = new WebSocket("ws://localhost/ws/geri/");
 
+
 Bu kodda `HTTP` yerine `WS` protokolünü kullandığıza ve nasıl kullanıldığına 
-dikkat edelim: Normalde `http` yazdığımız yere `ws`yazdık.
+dikkat edelim: Normalde `http` yazdığımız yere `ws` yazdık.
 
 Şimdi mesaj geldiğinde çalışacak olan `onmessage` fonksiyonumuzu yazalım. 
 Bizim Python'da yaptığımız gibi nesnenin devamına `.` koyup `on_message` 
