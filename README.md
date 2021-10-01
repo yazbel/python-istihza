@@ -53,7 +53,7 @@ Bu şekilde inşa ettiğiniz dökümanı görüntülemek için `/index.html` dos
 
 ### Windows
 
-[Python]'un bilgisayarınızda kurulu olduğundan ve `python.exe`'nin PATH'da bulunduğundan emin olduktan sonra bu kodu ``cmd.exe``'de çalıştırarak Sphinx'i kurabilirsiniz:
+Python'un bilgisayarınızda kurulu olduğundan ve `python.exe`'nin PATH'da bulunduğundan emin olduktan sonra bu kodu ``cmd.exe``'de çalıştırarak Sphinx'i kurabilirsiniz:
 
 ```shell
 > python -m pip install sphinx

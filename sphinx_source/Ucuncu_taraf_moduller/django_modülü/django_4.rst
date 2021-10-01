@@ -33,7 +33,7 @@ Hızlı bir özet:
   Her radyo düğmesinin değeri, ilişkili soru seçiminin ID'sidir. 
   Her radyo düğmesinin adı "choice" dır. Bunun anlamı, biri radyo 
   düğmelerinden birini seçip formu gönderdiğinde POST yöntemi ile şu veri 
-  yollanır: `choice=#ID#`. Burada `ID` değeri seçilen butonun `id`sidir. 
+  yollanır: `choice=#ID#`. Burada `ID` değeri seçilen butonun `id`'sidir. 
   HTML formları böyle çalışır.
 
 - Formun `action` değerini `{% url 'polls:vote' question.id %}` olarak ayarladık. 
