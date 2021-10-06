@@ -1,0 +1,432 @@
+
+ <!DOCTYPE html>
+ <html lang="tr">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta content="Bu bölümde timeit modülünü inceleyeceğiz." name="description" />
+<meta content="python, modül, import, timeit" name="keywords" />
+
+    <title>timeit Modülü</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/epub.css" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+<div class='header'><a href='https://yazbel.com'><img src="../_static/logo.png"></a></div>
+
+<ul class='navbar'>
+    <li class="forum"><a href="http://forum.yazbel.com">forum</a></li>
+    <li><a href="PythonProgramlamaDili.pdf">pdf</a></li>
+    <li><a href="PythonProgramlamaDili.epub">epub</a></li>
+    <li><a href="PythonProgramlamaDili.html">html</a></li>
+</ul>
+
+
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+
+  <section id="timeit-modulu">
+<h1>timeit Modülü</h1>
+<p><strong>Kaynak Kodu:</strong> <a class="reference external" href="https://github.com/python/cpython/blob/3.5/Lib/timeit.py">https://github.com/python/cpython/blob/3.5/Lib/timeit.py</a>
+<strong>Belge Kaynağı:</strong> <a class="reference external" href="https://docs.python.org/3.5/library/timeit.html">https://docs.python.org/3.5/library/timeit.html</a></p>
+<p>Bu modül küçük kod parçalarının çalışma sürelerini ölçmeyi sağlar. Hem komut satırı arayüzüne hem de çağrılabilir bir arayüze sahiptir. Çalışma sürelerini ölçmek için birçok ortak tuzaktan kaçınır. Tim Peters’in O’Reilly tarafından yayımlanan Python Cookbook kitabının “Algoritmalar” bölümünün girişine de göz atın.</p>
+<section id="temel-ornekler">
+<h2>Temel Örnekler</h2>
+<p>Takip eden örnek, komut satırı arayüzünün üç değişik deyimi nasıl karşılaştırdığını gösteriyor:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">timeit</span> <span class="s1">&#39;&quot;-&quot;.join(str(n) for n in range(100))&#39;</span>
+<span class="mi">10000</span> <span class="n">loops</span><span class="p">,</span> <span class="n">best</span> <span class="n">of</span> <span class="mi">3</span><span class="p">:</span> <span class="mi">29</span> <span class="n">usec</span> <span class="n">per</span> <span class="n">loop</span>
+
+<span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">timeit</span> <span class="s1">&#39;&quot;-&quot;.join([str(n) for n in range(100)])&#39;</span>
+<span class="mi">10000</span> <span class="n">loops</span><span class="p">,</span> <span class="n">best</span> <span class="n">of</span> <span class="mi">3</span><span class="p">:</span> <span class="mf">25.3</span> <span class="n">usec</span> <span class="n">per</span> <span class="n">loop</span>
+
+<span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">timeit</span> <span class="s1">&#39;&quot;-&quot;.join(map(str, range(100)))&#39;</span>
+<span class="mi">10000</span> <span class="n">loops</span><span class="p">,</span> <span class="n">best</span> <span class="n">of</span> <span class="mi">3</span><span class="p">:</span> <span class="mi">20</span> <span class="n">usec</span> <span class="n">per</span> <span class="n">loop</span>
+</pre></div>
+</div>
+<p>Bu, Python arayüzünden şu kodlarla gerçekleştirilebilir:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">timeit</span>
+
+<span class="n">timeit</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="s1">&#39;&quot;-&quot;.join(str(n) for n in range(100))&#39;</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+<span class="mf">0.30339929000001575</span>
+
+<span class="n">timeit</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="s1">&#39;&quot;-&quot;.join([str(n) for n in range(100)])&#39;</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+<span class="mf">0.2637243290000697</span>
+
+<span class="n">timeit</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="s1">&#39;&quot;-&quot;.join(map(str, range(100)))&#39;</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+<span class="mf">0.2151021940001101</span>
+</pre></div>
+</div>
+<p>timeit sadece komut satırı arayüzü kullanıldığında yineleme sayısını otomatik olarak belirleyecektir. Örnekler bölümünde gelişmiş örnekler bulabilirsiniz.</p>
+</section>
+<section id="python-arayuzu">
+<h2>Python Arayüzü</h2>
+<p>Modül, üç kolaylık fonksiyonu ve bir topluluk sınıfı tanımlar:</p>
+<p><strong>timeit.timeit(stmt=’pass’, setup=’pass’, timer=&lt;default timer&gt;, number=1000000, globals=None)</strong></p>
+<blockquote>
+<div><p>Verili ifadeyle, kurulum koduyla ve timer fonksiyonuyla bir Timer örneği oluşturun ve onun  <cite>timeit()</cite> yöntemini çalıştırma sayıları ile çalıştırın. İsteğe bağlı globals bağımsız değişkeni, kodun çalıştırılacağı ad alanını belirtir.</p>
+<p>Sürüm 3.5’de değiştirildi: İsteğe bağlı globals bağımsız değişkeni eklendi.</p>
+</div></blockquote>
+<p><strong>timeit.repeat(stmt=’pass’, setup=’pass’, timer=&lt;default timer&gt;, repeat=3, number=1000000, globals=None)</strong></p>
+<blockquote>
+<div><p>Verili ifadeyle, kurulum koduyla ve timer fonksiyonuyla bir Timer örneği oluşturun ve onun  <cite>repeat()</cite> yöntemini tekrarlanma sayısı ve çalıştırma sayıları ile çalıştırın.  İsteğe bağlı globals bağımsız değişkeni, kodun çalıştırılacağı ad alanını belirtir.</p>
+<p>Sürüm 3.5’de değiştirildi: İsteğe bağlı globals bağımsız değişkeni eklendi.</p>
+</div></blockquote>
+<p><strong>timeit.default_timer()</strong></p>
+<blockquote>
+<div><p>Her zaman <cite>time.perf_counter()</cite> olan varsayılan zamanlayıcı</p>
+<p>Sürüm 3.3’de değiştirildi: Şimdi varsayılan sayıcı <cite>time.perf_counter()</cite></p>
+</div></blockquote>
+<p><strong>class timeit.Timer(stmt=’pass’, setup=’pass’, timer=&lt;timer function&gt;, globals=None)</strong></p>
+<blockquote>
+<div><p>Küçük kod parçalarının çalışma hızının zamanlaması için sınıf.</p>
+<p>Yapıcı; zamanlamanın yapılması için bir ifade, kurulum için fazladan bir ifade ve zamanlama fonksiyonu alır. Her ifadenin varsayılan değeri <cite>pass</cite> olur; timer fonksiyonu platforma bağımlıdır (<cite>docstring</cite> modülüne bakınız). Ayrıca <em>stmt</em> ve <em>setup</em>, birbirlerinden ‘;’ işareti ile ayrılan çok sayıda ifadeyi içerebilir veya çok satır başı olan dizi değişkenlerini içermedikçe yeni satırları içerebilir.  Deyim    varsayılan olarak timeit’in ad alanında yürütülecektir; bu davranış, global alana bir isim alanı geçirerek kontrol edilebilir.</p>
+<p>Birinci ifadenin çalışma hızını ölçmek için <cite>timeit()</cite> yöntemini kullanın. <cite>repeat()</cite>, <cite>timeit()</cite> yöntemini bir çok kez çağırmak ve sonuç listesini geri döndürmek için bir kolaylıktır. <em>setup</em> parametresinin çalışma zamanı, bütün çalışma zamanından hariç tutulmuştur.</p>
+<p><em>stmt</em> ve <em>setup</em> parametreleri argümansız çağrılabilen nesneler alabilir. Bu, çağrıları, sonradan  <cite>timeit()</cite> fonksiyonuyla çalıştırılacak şekilde, timer fonksiyonunun içine gömer. Bu durumda ilave fonksiyon çağrıları nedeniyle zamanlama yükünün biraz daha fazla olacağını unutmayın.</p>
+<p>Sürüm 3.5’de değiştirildi: İsteğe bağlı olarak globals parametresi eklendi.</p>
+<p><strong>timeit(number=1000000)</strong></p>
+<blockquote>
+<div><p>Ana ifadenin zaman sayısıyla ilgili çalışmaları. Bu, bir kez setup ifadesini çalıştırır ve sonra ana ifadeyi birkaç kez çalıştırmak için, float tipinde saniyelerle ölçülen zamanı geri döndürür. Döngünün kaç kez tekrar edileceğini argüman belirler, varsayılan değeri bir milyondur. Ana ifade, setup ifadesi ve timer fonksiyonu yapıcıya geçirilmek için kullanılırlar.</p>
+<p><strong>Not:</strong> Varsayılan olarak, <cite>timeit()</cite> fonksiyonu zamanlama süresince <em>garbage collection</em>’u etkisiz bırakır. Bu yaklaşımın avantajı, bağımsız zamanlamaları daha çok karşılaştırılabilir yapmaktır. Dezavantajı ise, garbage collection (çöp toplayıcısı), ölçüm esnasında fonksiyonun performansının önemli bir parçası olabilir. Böylece garbage collection (çöp toplayıcısı) <em>setup</em> değişkeninin (stringinin) ilk ifadesi olarak yeniden aktif edilebilir. Örneğin:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">timeit</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;for i in range(10): oct(i)&quot;</span><span class="p">,</span> <span class="s2">&quot;gc.enable()&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>repeat(repeat=3, number=1000000)</strong></p>
+<blockquote>
+<div><p><cite>timeit()</cite>’i bir kaç kez çağırır.</p>
+<p>Bu <cite>timeit()</cite>’i tekrar çağıran, sonuçları listeleyen bir kolaylık fonksiyonudur. Birinci argüman <cite>timeit()</cite>’in kaç kez çağrılacağını belirler. İkinci parametre ise <cite>timeit()</cite>’in argümanıdır.</p>
+<p><strong>Not:</strong> Sonuç vektörlerinden alınan değerlerin aritmetik ortalamasını ve standart sapmasını rapor olarak sunmada cazip bir yöntemdir. Ancak bu çok kullanışlı değildir. Tipik bir durumda, en küçük değer, makinenin verili kod parçasını ne kadar hızlı şekilde çalıştırdığına dair zayıf bir göstergedir; sonuç vektörleri içindeki yüksek değerler Python’ın hızının değişkenliğinden kaynaklanmaz, ancak diğer işlemlerin  tutarlı zamanlama çalışmasına karışmasından kaynaklanır. Yani en düşük değer sizin ilgilenmeniz gereken tek değer olabilir. Ondan sonra, bütün vektöre bakıp istatistik yerine sağ duyuya başvurabilirsiniz.</p>
+</div></blockquote>
+<p><strong>print_exc(file=name)</strong></p>
+<blockquote>
+<div><p>Zamanlama kodunun geri izini bastırmaya yardımcı olur.</p>
+<p>Tipik kullanım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>              <span class="c1">#try/except bloğunun dışında</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>           <span class="c1"># ya da t.repeat(...)</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">print_exc</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Standart geri izinin avantajı, derlenen şablondaki kaynak çizgilerinin görüntülenecek olmasıdır. İsteğe bağlı <em>file</em> argümanı geri izinin nereye gönderileceğini belirler, varsayılan değeri <cite>sys.stderr</cite>’dir.</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="komut-satiri-arayuzu">
+<h2>Komut Satırı Arayüzü</h2>
+<p>Bir program olarak komut satırı arayüzünden çağrılırken şu yapı kullanılır:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">timeit</span> <span class="p">[</span><span class="o">-</span><span class="n">n</span> <span class="n">N</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">r</span> <span class="n">N</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">u</span> <span class="n">U</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">s</span> <span class="n">S</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">t</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">c</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="n">statement</span> <span class="o">...</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Takip eden seçenekler:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span>-n N, --number=N
+
+    İfadenin kaç kez çalıştırılacağını belirler.
+
+-r N, --repeat=N
+
+    timer&#39;ın kaç kez tekrar edileceğini (varsayılan değeri 3) belirler.
+
+-s S, --setup=S
+
+    Bir kez ilksel olarak çalıştırılacak ifadeyi (varsayılan değeri `pass`) belirler.
+
+-p, --process
+
+    Duvar saati zamanını değil de, işlem zamanını ölçer. Varsayılan değeri `time.perf_counter()` yerine `time.process_time()`&#39;dir.
+
+    Sürüm 3.3&#39;de gelmiş yeni bir özellik.
+
+-t, --time
+
+    (onaylanmamış) `time.time()`&#39;ı kullanır.
+
+-u, --unit=U
+
+    Zamanlayıcı çıktısının zaman birimini belirler; usec, msec veya sec birimleri seçilebilir.
+
+    Sürüm 3.5&#39;de gelmiş yeni bir özellik.
+
+-c, --clock
+
+    (onaylanmamış) `time.clock()`&#39;u kullanır.
+
+-v --verbose
+
+    Ham zamanlama sonuçlarını bastırır, daha fazla basamak kesinliği için tekrarlar.
+
+-h -help
+
+    Kısa bir kullanım mesajı bastırır ve sonlanır.
+</pre></div>
+</div>
+<p>Çok satırlı ifadeler, her bir satırı ayrı bir ifade argümanı olacak şekilde verilebilir; girintili çizgiler, bir argümanın tırnak işaretleri içine alınarak ve önde gelen boşluklarla kullanılabilir.</p>
+<p>Şayet <em>-n</em> değeri girilmezse, uygun döngü sayısı, toplam süre 0.2 saniye olana kadar onun üstleri olacak şekilde hesaplanır.</p>
+<p><cite>default_timer()</cite> ölçümleri makinede çalışan diğer programlar tarafından etkilenebilir, bu yüzden hassas ölçüm yapmak gerektiğinde en iyisi, zamanlamayı bir kaç kez tekrar etmek ve en uygun zamanı seçmektir. <em>-r</em> seçeneği bu işlem için uygundur; varsayılan üç yineleme sayısı bir çok durumda yeterlidir. CPU süresini ölçmek için <cite>time.process_time()</cite>’ı kullanabilirsiniz.</p>
+<p><strong>Not:</strong> Bir geçiş ifadesi çalıştırmakla ilgili belirli bir temel yük vardır. Buradaki kod bunu gizlemeye çalışmaz fakat siz bunun farkında olmalısınız. Temel yük, programı argümansız çağırarak ölçülebilir ve Python sürümleri arasında farklılıklar gösterir.</p>
+</section>
+<section id="ornekler">
+<h2>Örnekler</h2>
+<p>Sadece başlangıçta bir kez çalıştırılmak üzere bir setup (kurulum) ifadesi kullanılabilir:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">timeit</span> <span class="o">-</span><span class="n">s</span> <span class="s1">&#39;text = &quot;sample string&quot;; char=&quot;g&quot;&#39;</span> <span class="s1">&#39;char in text&#39;</span>
+<span class="mi">10000000</span> <span class="n">loops</span><span class="p">,</span> <span class="n">best</span> <span class="n">of</span> <span class="mi">3</span><span class="p">:</span> <span class="mf">0.0482</span> <span class="n">usec</span> <span class="n">per</span> <span class="n">loop</span>
+
+<span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">timeit</span> <span class="o">-</span><span class="n">s</span> <span class="s1">&#39;text = &quot;sample string&quot;; char=&quot;g&quot;&#39;</span> <span class="s1">&#39;text.find(char)&#39;</span>
+<span class="mi">10000000</span> <span class="n">loops</span><span class="p">,</span> <span class="n">best</span> <span class="n">of</span> <span class="mi">3</span><span class="p">:</span> <span class="mf">0.178</span> <span class="n">usec</span> <span class="n">per</span> <span class="n">loop</span>
+</pre></div>
+</div>
+<p>Python arayüzü için:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">timeit</span>
+
+<span class="n">timeit</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="s1">&#39;char in text&#39;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="s1">&#39;text = &quot;sample string&quot;; char = &quot;g&quot;&#39;</span><span class="p">)</span>
+<span class="mf">0.048954748002870474</span>
+
+<span class="n">timeit</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="s1">&#39;text.find(char)&#39;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="s1">&#39;text = &quot;sample string&quot;; char = &quot;g&quot;&#39;</span><span class="p">)</span>
+<span class="mf">0.2300617519977095</span>
+</pre></div>
+</div>
+<p>Aynı işlem timer() sınıfını ve metotlarını kullanarak da yapılabilir:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">timeit</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="s1">&#39;char in text&#39;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="s1">&#39;text = &quot;sample string&quot;; char = &quot;g&quot;&#39;</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">timeit</span><span class="p">()</span>
+<span class="mf">0.049284196000371594</span>
+<span class="n">t</span><span class="o">.</span><span class="n">repeat</span><span class="p">()</span>
+<span class="p">[</span><span class="mf">0.051710191000893246</span><span class="p">,</span> <span class="mf">0.04452369999853545</span><span class="p">,</span> <span class="mf">0.04527571799917496</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Sonraki örnekler çok satırlı ifadelerin zaman ölçümünün nasıl yapılacağını gösterir. Aşağıdaki örnekte, <cite>hasattr()</cite> ve <cite>try/except</cite>’in maliyeti, nesne özelliklerinin nasıl kaybedilip ortaya konduğunu test etmek için karşılaştırılmıştır:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">timeit</span> <span class="s1">&#39;try:&#39;</span> <span class="s1">&#39;  str.__bool__&#39;</span> <span class="s1">&#39;except AttributeError:&#39;</span> <span class="s1">&#39;  pass&#39;</span>
+<span class="mi">1000000</span> <span class="n">loops</span><span class="p">,</span> <span class="n">best</span> <span class="n">of</span> <span class="mi">3</span><span class="p">:</span> <span class="mf">0.99</span> <span class="n">usec</span> <span class="n">per</span> <span class="n">loop</span>
+
+<span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">timeit</span> <span class="s1">&#39;if hasattr(str, &quot;__bool__&quot;): pass&#39;</span>
+<span class="mi">1000000</span> <span class="n">loops</span><span class="p">,</span> <span class="n">best</span> <span class="n">of</span> <span class="mi">3</span><span class="p">:</span> <span class="mf">0.476</span> <span class="n">usec</span> <span class="n">per</span> <span class="n">loop</span>
+
+<span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">timeit</span> <span class="s1">&#39;try:&#39;</span> <span class="s1">&#39;  int.__bool__&#39;</span> <span class="s1">&#39;except AttributeError:&#39;</span> <span class="s1">&#39;  pass&#39;</span>
+<span class="mi">1000000</span> <span class="n">loops</span><span class="p">,</span> <span class="n">best</span> <span class="n">of</span> <span class="mi">3</span><span class="p">:</span> <span class="mf">0.966</span> <span class="n">usec</span> <span class="n">per</span> <span class="n">loop</span>
+
+<span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">timeit</span> <span class="s1">&#39;if hasattr(int, &quot;__bool__&quot;): pass&#39;</span>
+<span class="mi">1000000</span> <span class="n">loops</span><span class="p">,</span> <span class="n">best</span> <span class="n">of</span> <span class="mi">3</span><span class="p">:</span> <span class="mf">0.479</span> <span class="n">usec</span> <span class="n">per</span> <span class="n">loop</span>
+</pre></div>
+</div>
+<p>Python arayüzü için:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">timeit</span>
+
+<span class="c1"># özellik kayıp</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
+<span class="s2">try:</span>
+<span class="s2">    str.__bool__</span>
+<span class="s2">except AttributeError:</span>
+<span class="s2">    pass</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">timeit</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="n">s</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">100000</span><span class="p">)</span>
+<span class="mf">0.08558237599936547</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;if hasattr(str, &#39;__bool__&#39;): pass&quot;</span>
+<span class="n">timeit</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="n">s</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">100000</span><span class="p">)</span>
+<span class="mf">0.0541383109994058</span>
+
+<span class="c1"># özellik mevcut</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
+<span class="s2">try:</span>
+<span class="s2">    int.__bool__</span>
+<span class="s2">except AttributeError:</span>
+<span class="s2">    pass</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">timeit</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="n">s</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">100000</span><span class="p">)</span>
+<span class="mf">0.011753970000427216</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;if hasattr(int, &#39;__bool__&#39;): pass&quot;</span>
+<span class="n">timeit</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="n">s</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">100000</span><span class="p">)</span>
+<span class="mf">0.016129147999890847</span>
+</pre></div>
+</div>
+<p><cite>timeit()</cite>’i tanımladığınız fonksiyonda kullanmak için önemli bir ifade içeren bir setup parametresi geçirebilirsiniz:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Test fonksiyonu&quot;&quot;&quot;</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)]</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">timeit</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">timeit</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="s2">&quot;test()&quot;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="s2">&quot;from __main__ import test&quot;</span><span class="p">))</span>
+    <span class="mf">4.163065000997449</span>
+</pre></div>
+</div>
+<p>Bir diğer seçenek şimdiki global ad alanı içerisinde çalıştırılacak <cite>globals()</cite>’i genel alan parametrelerine geçirmektir. Bu bireysel olarak içe aktarmaları belirtmeye göre daha kolaydır:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="k">def</span> <span class="nf">g</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">4</span>
+
+<span class="k">def</span> <span class="nf">h</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">8</span>
+
+<span class="kn">import</span> <span class="nn">timeit</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">timeit</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="s1">&#39;[func(42) for func in (f,g,h)]&#39;</span><span class="p">,</span> <span class="nb">globals</span><span class="o">=</span><span class="nb">globals</span><span class="p">()))</span>
+<span class="mf">1.632076413003233</span>
+</pre></div>
+</div>
+<p><em>timeit</em>’i kullanarak benzer işlemleri yapan kodlardan hangisinin daha performanslı olduğunu görebilirsiniz:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">timeit</span> <span class="s1">&#39;&quot;a&quot; + &quot;b&quot;&#39;</span>
+<span class="mi">100000000</span> <span class="n">loops</span><span class="p">,</span> <span class="n">best</span> <span class="n">of</span> <span class="mi">3</span><span class="p">:</span> <span class="mf">0.0183</span> <span class="n">usec</span> <span class="n">per</span> <span class="n">loop</span>
+
+<span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">timeit</span> <span class="s1">&#39;&quot;</span><span class="si">{}</span><span class="s1">.</span><span class="si">{}</span><span class="s1">&quot;.format(&quot;a&quot;, &quot;b&quot;)&#39;</span>
+<span class="mi">1000000</span> <span class="n">loops</span><span class="p">,</span> <span class="n">best</span> <span class="n">of</span> <span class="mi">3</span><span class="p">:</span> <span class="mf">0.215</span> <span class="n">usec</span> <span class="n">per</span> <span class="n">loop</span>
+
+<span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">timeit</span> <span class="s1">&#39;&quot;</span><span class="si">%s%s</span><span class="s1">&quot; %(&quot;a&quot;, &quot;b&quot;)&#39;</span>
+<span class="mi">10000000</span> <span class="n">loops</span><span class="p">,</span> <span class="n">best</span> <span class="n">of</span> <span class="mi">3</span><span class="p">:</span> <span class="mf">0.117</span> <span class="n">usec</span> <span class="n">per</span> <span class="n">loop</span>
+
+<span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">timeit</span> <span class="s1">&#39;&quot;&quot;.join((&quot;a&quot;, &quot;b&quot;))&#39;</span>
+<span class="mi">10000000</span> <span class="n">loops</span><span class="p">,</span> <span class="n">best</span> <span class="n">of</span> <span class="mi">3</span><span class="p">:</span> <span class="mf">0.109</span> <span class="n">usec</span> <span class="n">per</span> <span class="n">loop</span>
+</pre></div>
+</div>
+<p>Python arayüzü için:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">timeit</span>
+
+<span class="n">timeit</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="s1">&#39;&quot;a&quot; + &quot;b&quot;&#39;</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1000000</span><span class="p">)</span>
+<span class="mf">0.018340642998737167</span>
+
+<span class="n">timeit</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="s1">&#39;&quot;</span><span class="si">{}{}</span><span class="s1">&quot;.format(&quot;a&quot;, &quot;b&quot;)&#39;</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1000000</span><span class="p">)</span>
+<span class="mf">0.3770097929991607</span>
+
+<span class="n">timeit</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="s1">&#39;&quot;</span><span class="si">%s%s</span><span class="s1">&quot; %(&quot;a&quot;, &quot;b&quot;)&#39;</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1000000</span><span class="p">)</span>
+<span class="mf">0.2078534940010286</span>
+
+<span class="n">timeit</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="s1">&#39;&quot;&quot;.join((&quot;a&quot;, &quot;b&quot;))&#39;</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1000000</span><span class="p">)</span>
+<span class="mf">0.1585119779992965</span>
+</pre></div>
+</div>
+</section>
+</section>
+<p class="rubric">Footnotes</p>
+
+
+
+<div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
+<div class='extrarelbar'> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.xhtml" title="Genel Dizin"
+             accesskey="I">dizin</a></li>
+        <li class="right" >
+          <a href="sys.xhtml" title="sys Modülü"
+             accesskey="N">sonraki</a> |</li>
+        <li class="right" >
+          <a href="json.xhtml" title="json Modülü"
+             accesskey="P">önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="index.xhtml" accesskey="U">Önemli Standart Kütüphane Modülleri</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">timeit Modülü</a></li> 
+      </ul>
+    </div> </div>
+
+<div class='addcomment'>Yorumlar</div>
+
+<div class='how-to-use'>
+<h3>Önemli Not</h3>
+Eğer yazdığınız yorum içinde kod kullanacaksanız kodlarınızı
+<span class='tag'>&lt;pre&gt;&lt;code&gt;</span> etiketleri içine alın. Örneğin:
+
+<pre>
+    <span class='tag'>&lt;pre&gt;&lt;code class="python"&gt;</span>
+    <span class='keyword'>print</span>(<span class='string'>"Merhaba Dünya!"</span>)
+    <span class='tag'>&lt;/code&gt;&lt;/pre&gt;</span>
+</pre>
+
+Sorularınızı yorumlarda dile getirmek yerine <a href="https://forum.yazbel.com/">Yazbel Forumu</a>nda sorarsanız çok daha hızlı cevap alabilirsiniz.
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'istihza';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+<noscript>
+<br>
+<a href="https://disqus.com/?ref_noscript" rel="nofollow">Disqus tarafından sağlanan yorumları</a> görmek için lütfen JavasScript'i etkinleştirin.
+<br>
+Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4eca48eb2d83faf9" async="async"></script>
+
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.xhtml" title="Genel Dizin"
+             >dizin</a></li>
+        <li class="right" >
+          <a href="sys.xhtml" title="sys Modülü"
+             >sonraki</a> |</li>
+        <li class="right" >
+          <a href="json.xhtml" title="json Modülü"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="index.xhtml" >Önemli Standart Kütüphane Modülleri</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">timeit Modülü</a></li> 
+      </ul>
+    </div> 
+
+<div class="footer">
+		&copy; Copyright 2007-2021, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 06.10.2021.
+	<a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0 kullanılarak oluşturuldu.
+<br>
+<br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
+alt="Creative Commons License" style="border-width:0"
+src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a>
+<br>
+<br>
+</div>
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=10396326;
+var sc_invisible=1;
+var sc_security="fb5cd679";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="hit counter"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="http://c.statcounter.com/10396326/0/fb5cd679/1/"
+alt="hit counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+  </body>
+</html>

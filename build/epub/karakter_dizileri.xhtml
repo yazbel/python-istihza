@@ -1,0 +1,1603 @@
+
+ <!DOCTYPE html>
+ <html lang="tr">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta content="Python 3.x'te karakter dizileri" name="description" />
+<meta content="python, string, karakter dizisi, metotlar, capitalize, center, count, encode, endswith, expandtabs, find, format, format_map, index, isalnum, isalpha, isdecimal, isdigit, isidentifier, islower, isnumeric, isprintable, isspace, istitle, isupper, join, ljust, lower, lstrip, maketrans, partition, replace, rfind, rindex, rjust, rpartition, rsplit, rstrip, split, splitlines, startswith, strip, swapcase, title, translate, upper, zfill" name="keywords" />
+
+    <title>Karakter Dizileri</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/epub.css" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+<div class='header'><a href='https://yazbel.com'><img src="_static/logo.png"></a></div>
+
+<ul class='navbar'>
+    <li class="forum"><a href="http://forum.yazbel.com">forum</a></li>
+    <li><a href="PythonProgramlamaDili.pdf">pdf</a></li>
+    <li><a href="PythonProgramlamaDili.epub">epub</a></li>
+    <li><a href="PythonProgramlamaDili.html">html</a></li>
+</ul>
+
+
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+
+  <section id="karakter-dizileri">
+<h1>Karakter Dizileri</h1>
+<p>Buraya gelene kadar Python programlama diline ilişkin epey bilgi edindik. Artık
+yazdığımız programlarda <code class="docutils literal notranslate"><span class="pre">input()</span></code> fonksiyonu sayesinde kullanıcıyla iletişim
+kurabiliyor; <code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">elif</span></code>, <code class="docutils literal notranslate"><span class="pre">else</span></code> deyimleri yardımıyla programlarımızın
+karar vermesini sağlayabiliyor; işleçler ve döngüler yoluyla programlarımızı
+istediğimiz sayıda çalıştırabiliyoruz. Eğer buraya kadar olan bölümleri
+dikkatlice takip ettiyseniz, şu ana kadar öğrendiklerinize dayanarak, Python’ı
+giriş düzeyinde bildiğinizi rahatlıkla iddia edebilirsiniz. Zira şimdiye kadar
+öğrendiklerinizi kullanarak ufak tefek de olsa işe yarar programlar yazabilecek
+durumdasınız.</p>
+<p>Buraya kadar öğrendiğimiz bilgiler Python programlama dilinin temellerini
+oluşturuyordu. Temel Python bilgilerini edindiğimize göre, artık başlangıç-orta
+düzey arası konuları incelemeye başlayabileceğiz.</p>
+<p>Bu bölümde, önceki derslerde üstünkörü bakıp geçtiğimiz bir konu olan karakter
+dizilerini çok daha derinlemesine ele alacağız. Python programlama dili içindeki
+önemi nedeniyle bu bölüm epey uzun olacak.</p>
+<p>Aslında biz karakter dizisi kavramının ne olduğunu biliyoruz. Çok kaba bir
+şekilde ifade etmek gerekirse, karakter dizileri, adından da anlaşılacağı gibi,
+karakterlerin bir araya gelmesiyle oluşan bir dizidir. Karakter dizileri; tek,
+çift veya üç tırnak içinde gösterilen, öteki veri tiplerinden de bu tırnaklar
+aracılığıyla ayırt edilen özel bir veri tipidir. Teknik olarak ifade etmek
+gerekirse, bir nesneyi <code class="docutils literal notranslate"><span class="pre">type()</span></code> fonksiyonu yardımıyla sorguladığımızda, eğer
+<cite>&lt;class ‘str’&gt;</cite> çıktısı alıyorsak bu nesne bir karakter dizisidir.</p>
+<p>Her ne kadar ayrıntılarına girmemiş de olsak, dediğimiz gibi, biz karakter
+dizilerini daha ilk bölümlerden bu yana her fırsatta kullanıyoruz. Dolayısıyla
+bu veri tipinin ne olduğu konusunda bir sıkıntımız yok. Bu bölümde, şimdiye
+kadar karakter dizileri ile ilgili öğrendiğimiz şeylere ek olarak, karakter
+dizilerin metotlarından da söz edeceğiz.</p>
+<p>Peki bu ‘metot’ denen şey de ne oluyor?</p>
+<p>Kabaca ifade etmek gerekirse, metotlar Python’da nesnelerin niteliklerini
+değiştirmemizi, sorgulamamızı veya bu nesnelere yeni özellikler katmamızı
+sağlayan araçlardır. Metotlar sayesinde karakter dizilerini istediğimiz gibi
+eğip bükebileceğiz.</p>
+<p>Elbette bu bölümde bahsedeceğimiz tek şey karakter dizilerinin metotları
+olmayacak. Bu bölümde aynı zamanda karakter dizilerinin yapısı ve özelliklerine
+dair söyleyeceklerimiz de olacak.</p>
+<p>Python’da şimdiye kadar yapabildiğimiz şeylerin sizi tatmin etmekten uzak
+olduğunu, daha fazlasını yapabilmek için sabırsızlandığınızı tahmin
+edebiliyorum. O halde ne duruyoruz, hiç vakit kaybetmeden yola koyulalım.</p>
+<section id="karakter-dizilerinin-ogelerine-erismek">
+<h2>Karakter Dizilerinin Öğelerine Erişmek</h2>
+<p>Python ile programlama yaparken karakter dizileri ile iki şekilde
+karşılaşabilirsiniz: Birincisi, bir karakter dizisini doğrudan kendiniz
+tanımlamış olabilirsiniz. İkincisi, karakter dizisi size başka bir kaynak
+aracılığıyla gelmiş olabilir (mesela <code class="docutils literal notranslate"><span class="pre">input()</span></code> fonksiyonu yardımıyla
+kullanıcıdan aldığınız bir veri).</p>
+<p>Python’da kendi tanımladığınız ya da herhangi başka bir kaynaktan gelen karakter
+dizilerine erişmenin birkaç farklı yolu vardır. Örneğin:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nesne</span> <span class="o">=</span> <span class="s2">&quot;karakter dizisi&quot;</span>
+</pre></div>
+</div>
+<p>Burada değeri <cite>“karakter dizisi”</cite> olan <cite>nesne</cite> adlı bir değişken tanımladık.
+Yazdığımız programlarda bu değişkene erişmek için, değişkenin adını kullanmamız
+yeterlidir. Örneğin:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">nesne</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu komut bize karakter dizisinin tamamını verecektir.</p>
+<p>Bir karakter dizisini yukarıda gördüğümüz gibi kendimiz tanımlayabiliriz. Bunun
+dışında, mesela <code class="docutils literal notranslate"><span class="pre">input()</span></code> fonksiyonuyla kullanıcıdan aldığımız verilerin de
+birer karakter dizisi olacağını biliyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">veri</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Herhangi bir şey: &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Tıpkı kendi tanımladığımız karakter dizilerinde olduğu gibi, kullanıcıdan gelen
+karakter dizilerini de aşağıdaki komut yardımıyla ekranda görüntüleyebiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu komut da bize <cite>veri</cite> değişkeninin tuttuğu karakter dizisinin tamamını
+verecektir.</p>
+<p>Ayrıca istersek bu karakter dizilerini bir <code class="docutils literal notranslate"><span class="pre">for</span></code> döngüsü içine alabilir,
+böylece bu dizinin öğelerine tek tek de erişebiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">karakter</span> <span class="ow">in</span> <span class="n">nesne</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">karakter</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">for</span></code> döngüsüyle elde ettiğimiz bu etkiyi şu kodlar yardımıyla da elde
+edebileceğimizi gayet iyi biliyor olmalısınız:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="n">nesne</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Önceki derslerde verdiğimiz örneklerden de bildiğiniz gibi, karakter dizilerinin
+öğelerine yukarıdaki yöntemlerle tek tek erişebilmemiz sayesinde herhangi bir
+işlemi karakter dizilerinin bütün öğelerine bir çırpıda uygulayabiliyoruz.
+Mesela:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">nesne</span> <span class="o">=</span> <span class="s2">&quot;123456789&quot;</span>
+
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nesne</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada <cite>nesne</cite> değişkeni içindeki sayı değerli karakter dizilerini <cite>n</cite> olarak
+adlandırdıktan sonra, <cite>n</cite> değişkenlerinin her birini tek tek <cite>2</cite> sayısı ile
+çarptık. Yani çarpma işlemini karakter dizisinin bütün öğelerine tek seferde
+uygulayabildik. Bu arada, yukarıdaki örnekte <cite>nesne</cite> değişkeninin her bir
+öğesini <code class="docutils literal notranslate"><span class="pre">for</span></code> döngüsü içinde <code class="docutils literal notranslate"><span class="pre">int()</span></code> fonksiyonu yardımıyla tam sayıya
+çevirdiğimizi görüyorsunuz. Daha önce de defalarca söylediğimiz gibi, Python’da
+o anda elinizde olan verinin tipini bilmeniz çok önemlidir. Eğer kendi
+yazdığınız veya mesela <code class="docutils literal notranslate"><span class="pre">input()</span></code> fonksiyonundan gelen bir verinin karakter
+dizisi olduğunu bilmezseniz yukarıdaki kodları şu şekilde yazma gafletine
+düşebilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">nesne</span> <span class="o">=</span> <span class="s2">&quot;123456789&quot;</span>
+
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nesne</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu kodlar çalıştırıldıktan sonra hiç beklemediğiniz sonuçlar verecektir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="mi">11</span>
+<span class="mi">22</span>
+<span class="mi">33</span>
+<span class="mi">44</span>
+<span class="mi">55</span>
+<span class="mi">66</span>
+<span class="mi">77</span>
+<span class="mi">88</span>
+<span class="mi">99</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, aslında <cite>nesne</cite> içindeki öğeleri <cite>2</cite> ile çarpmak isterken, biz
+her bir öğeyi iki kez ekrana yazdırmış olduk. Çünkü bildiğiniz gibi karakter
+dizileri ile aritmetik işlemler yapamıyoruz. Eğer sayı değerli karakter dizileri
+arasında aritmetik işlem yapacaksak öncelikle bu karakter dizilerini sayıya
+çevirmemiz gerekir. Ayrıca gerçek bir program içinde yukarıdaki gibi bir durumun
+ne kadar yıkıcı sonuçlar doğuracabileceğini düşünün. Yukarıdaki program çalışma
+sırasında hiçbir hata vermeyeceği için, siz programınızın düzgün çalıştığını
+zannederek hayatınıza devam edeceksiniz. Ama belki de yukarıdaki sinsi hata
+yüzünden, programınızı kullanan bir şirket veri, zaman ve para kaybına
+uğrayacak.</p>
+<p>Yukarıdaki örneklerde bir şey daha dikkatinizi çekmiş olmalı: Gördüğünüz gibi,
+karakter dizisinin öğelerine erişirken bu öğelerin tamamını elde ediyoruz.
+Mesela <code class="docutils literal notranslate"><span class="pre">print(nesne)</span></code> komutunu verdiğimizde veya <cite>nesne</cite> değişkenini bir döngü
+içine aldığımızda sonuç olarak elde ettiğimiz şey, ilgili karakter dizisinin
+tamamıdır. Yani aslında karakter dizisinin hangi öğesine erişeceğimizi
+seçemiyoruz. Peki ya biz bir karakter dizisinin öğelerinin tamamına değil de,
+sadece tek bir öğesine erişmek istersek ne yapacağız? Mesela yukarıdaki örnekte
+<cite>nesne</cite> adlı değişken içindeki sayıların tamamını değil de sadece tek bir
+öğesini (veya belli bir ölçüte göre yalnızca bazı öğelerini) <cite>2</cite> ile çarpmak
+istersek nasıl bir yol izleyeceğiz?</p>
+<p>Python’da karakter dizilerinin içindeki öğelerin bir sırası vardır. Örneğin
+<cite>“Python”</cite> dediğimizde, bu karakter dizisinin ilk öğesi olan <cite>“P”</cite> karakterinin
+sırası <cite>0</cite>’dır. <cite>“y”</cite> karakteri ise <cite>1.</cite> sıradadır. Aynı şekilde devam edersek,
+<cite>“t”</cite> karakteri <cite>2.</cite>, <cite>“h”</cite> karakteri <cite>3.</cite>, <cite>“o”</cite> karakteri <cite>4.</cite>, <cite>“n”</cite>
+karakteri ise <cite>5.</cite> sırada yer alır.</p>
+<p>Bu anlattığımız soyut durumu bir örnekle somutlaştırmaya çalışalım:</p>
+<p>Dedik ki, <cite>“Python”</cite> gibi bir karakter dizisinin her bir öğesinin belli bir
+sırası vardır. İşte eğer biz bu karakter dizisinin bütün öğelerini değil de,
+sadece belli karakterlerini almak istersek, karakter dizisindeki öğelerin sahip
+olduğu bu sıradan yararlanacağız.</p>
+<p>Diyelim ki <cite>“Python”</cite> karakter dizisinin ilk karakterini almak istiyoruz. Yani
+biz bu karakter dizisinin sadece <cite>“P”</cite> harfine ulaşmayı amaçlıyoruz.</p>
+<p>Bu isteğimizi nasıl yerine getirebileceğimizi basit bir örnek üzerinde
+göstermeye çalışalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;Python&quot;</span>
+</pre></div>
+</div>
+<p>Burada değeri <cite>“Python”</cite> olan <cite>kardiz</cite> adlı bir değişken tanımladık. Şimdi bu
+karakter dizisinin ilk öğesine erişeceğiz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="go">&#39;P&#39;</span>
+</pre></div>
+</div>
+<p>Burada yaptığımız işleme çok dikkat edin. Karakter dizisinin istediğimiz bir
+öğesine ulaşmak için, ilgili öğenin sırasını köşeli parantezler içinde
+belirttik. Biz bu örnekte karakter dizisinin ilk öğesine ulaşmak istediğimiz
+için köşeli parantez içinde <cite>0</cite> sayısını kullandık.</p>
+<p>Şimdi de, ilk verdiğimiz örnekteki <cite>nesne</cite> değişkeni içinde yer alan sayılar
+arasından sadece birini <cite>2</cite> ile çarpmak istediğimizi düşünelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nesne</span> <span class="o">=</span> <span class="s2">&quot;123456789&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="n">nesne</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">*</span> <span class="mi">2</span>
+
+<span class="go">4</span>
+</pre></div>
+</div>
+<p>Burada da öncelikle <cite>nesne</cite> değişkeninin birinci sırasında yer alan öğeyi
+(dikkat: sıfırıncı sırada yer alan öğeyi değil!) elde etmek için köşeli
+parantezler içinde <cite>1</cite> sayısını kullandık. Daha sonra <code class="docutils literal notranslate"><span class="pre">int()</span></code> fonksiyonu
+yardımıyla bu karakter dizisini tam sayıya çevirdik, ki bununla aritmetik işlem
+yapabilelim… Son olarak da elimizdeki tam sayıyı <cite>2</cite> ile çarparak istediğimiz
+sonuca ulaştık.</p>
+<p>Elbette yukarıdaki kodları şöyle de yazabilirdik:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nesne</span> <span class="o">=</span> <span class="s2">&quot;123456789&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sayı</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">nesne</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sayı</span> <span class="o">*</span> <span class="mi">2</span>
+
+<span class="go">4</span>
+</pre></div>
+</div>
+<p>Belki farkındasınız, belki de değilsiniz, ama aslında şu noktada karakter
+dizilerinin çok önemli bir özelliği ile karşı karşıyayız. Gördüğünüz gibi,
+yukarıda bahsettiğimiz sıra kavramı sayesinde Python’da karakter dizilerinin
+bütün öğelerine tek tek ve herhangi bir sıra gözetmeksizin erişmemiz mümkün.
+Mesela yukarıdaki ilk örnekte <code class="docutils literal notranslate"><span class="pre">kardiz[0]</span></code> gibi bir yapı kullanarak karakter
+dizisinin sıfırıncı (yani ilk) öğesini, <code class="docutils literal notranslate"><span class="pre">nesne[1]</span></code> gibi bir yapı kullanarak da
+karakter dizisinin birinci (yani aslında ikinci) öğesini alabildik.</p>
+<p>Bu yapının mantığını kavramak için şu örnekleri dikkatlice inceleyin:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;Python&quot;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="go">&#39;P&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="go">&#39;y&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+
+<span class="go">&#39;h&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+
+<span class="go">&#39;n&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="go">&#39;t&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+
+<span class="go">&#39;o&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nesne</span> <span class="o">=</span> <span class="s2">&quot;123456789&quot;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nesne</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="go">&#39;1&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nesne</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="go">&#39;2&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nesne</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="go">&#39;3&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nesne</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+
+<span class="go">&#39;4&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nesne</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+
+<span class="go">&#39;5&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nesne</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+
+<span class="go">&#39;6&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nesne</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+
+<span class="go">&#39;7&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nesne</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span>
+
+<span class="go">&#39;8&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nesne</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span>
+
+<span class="go">&#39;9&#39;</span>
+</pre></div>
+</div>
+<p>Burada şöyle bir formül yazabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">karakter_dizisi</span><span class="p">[</span><span class="n">öğe_sırası</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Bu formülü uygulayarak karakter dizilerinin her bir öğesine tek tek erişmemiz
+mümkün. Burada çok önemli bir noktaya daha dikkatinizi çekmek isterim.
+Yukarıdaki örneklerden de gördüğünüz gibi, Python’da öğe sıralaması <cite>0</cite>’dan
+başlıyor. Yani bir karakter dizisinin ilk öğesinin sırası <cite>0</cite> oluyor. Python
+programlama dilini özellikle yeni öğrenenlerin en sık yaptığı hatalardan biri de
+bir karakter dizisinin ilk öğesine ulaşmak için <cite>1</cite> sayısını kullanmalarıdır.
+Asla unutmayın, Python saymaya her zaman <cite>0</cite>’dan başlar. Dolayısıyla bir
+karakter dizisinin ilk öğesinin sırası <cite>0</cite>’dır. Eğer ilk öğeye ulaşayım derken
+<cite>1</cite> sayısını kullanırsanız ulaştığınız öğe ilk öğe değil, ikinci öğe olacaktır.
+Bu ayrıntıyı gözden kaçırmamaya dikkat etmelisiniz.</p>
+<p>Karakter dizilerinin öğelerine tek tek erişirken dikkat etmemiz gereken önemli
+noktalardan biri de, öğe sırası belirtirken, karakter dizisinin toplam uzunluğu
+dışına çıkmamaktır. Yani mesela <cite>7</cite> karakterlik bir karakter dizimiz varsa, bu
+karakter dizisinin son öğesinin sırası <cite>6</cite> olacaktır. Çünkü biliyorsunuz, Python
+saymaya <cite>0</cite>’dan başlıyor. Dolayısıyla ilk karakterin sırası <cite>0</cite> olacağı için,
+<cite>7</cite> karakterlik bir karakter dizisinde son öğenin sırası <cite>6</cite> olacaktır.
+Örneğin:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;istihza&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">kardiz</span><span class="p">)</span>
+
+<span class="go">7</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, <cite>“istihza”</cite> adlı karakter dizisinin uzunluğu <cite>7</cite>. Yani bu
+karakter dizisi içinde <cite>7</cite> adet karakter var. Bu karakter dizisini incelemeye
+devam edelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="go">&#39;i&#39;</span>
+</pre></div>
+</div>
+<p>Dediğimiz gibi, karakter dizisinin ilk öğesinin sırası <cite>0</cite>. Dolayısıyla son
+öğenin sırası <cite>6</cite> olacaktır:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+
+<span class="go">&#39;a&#39;</span>
+</pre></div>
+</div>
+<p>Bu durumu şöyle formüle edebiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">kardiz</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Yani;</p>
+<blockquote>
+<div><p>Bir karakter dizisinin uzunluğunun <cite>1</cite> eksiği, o karakter dizisinin son
+öğesini verir.</p>
+</div></blockquote>
+<p>Yukarıdaki formülü eğer şöyle yazsaydık hata alırdık:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">kardiz</span><span class="p">)]</span>
+
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">IndexError</span>: <span class="n">string index out of range</span>
+</pre></div>
+</div>
+<p>Çünkü <code class="docutils literal notranslate"><span class="pre">len(kardiz)</span></code> kodu bize karakter dizisinin uzunluğunu veriyor. Yani
+yukarıdaki <cite>“istihza”</cite> karakter dizisini göz önüne alırsak, <code class="docutils literal notranslate"><span class="pre">len(kardiz)</span></code>
+çıktısı <cite>7</cite> olacaktır. Dolayısıyla <cite>“istihza”</cite> karakter dizisinin son öğesine
+ulaşmak istersek bu değerin 1 eksiğini almamız gerekiyor. Yani
+<code class="docutils literal notranslate"><span class="pre">len(kardiz)-1</span></code>.</p>
+<p>Şu ana kadar öğe sırası olarak hep artı değerli sayılar kullandık. Ancak
+istersek öğe sırası olarak eksi değerli sayıları da kullanabiliriz. Eğer bir
+karakter dizisine öğe sırası olarak eksi değerli bir sayı verirsek Python o
+karakter dizisini sondan başa doğru okumaya başlayacaktır. Yani:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="go">&#39;a&#39;</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi <cite>-1</cite> sayısı karakter dizisini tersten okuyup, sondan başa doğru
+ilk öğeyi veriyor. Dolayısıyla, yukarıda anlattığımız <code class="docutils literal notranslate"><span class="pre">len(kardiz)-1</span></code>
+yönteminin yanısıra, <cite>-1</cite> sayısını kullanarak da karakter dizilerinin son
+karakterini elde edebiliyoruz. Bir de şuna bakalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="go">&#39;z&#39;</span>
+</pre></div>
+</div>
+<p>Dediğimiz gibi, eksi değerli sayılar karakter dizisindeki karakterleri sondan
+başa doğru elde etmemizi sağlar. Dolayısıyla <cite>-2</cite> sayısı, karakter dizisinde
+sondan bir önceki karakteri verecektir.</p>
+<p>Karakter dizilerinin öğelerine tek tek erişmek amacıyla öğe sırası belirtirken,
+karakter dizisinin toplam uzunluğu dışına çıkmamamız gerektiğini söylemiştik.
+Peki karakter dizisinin uzunluğunu aşan bir sayı verirsek ne olur? Ne olacağını
+yukarıdaki örneklerden birinde görmüştük aslında. Ama konunun öneminden dolayı
+bir kez daha tekrar edelim.</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;istihza&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span>
+
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">IndexError</span>: <span class="n">string index out of range</span>
+</pre></div>
+</div>
+<p>…veya:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="p">[</span><span class="o">-</span><span class="mi">8</span><span class="p">]</span>
+
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">IndexError</span>: <span class="n">string index out of range</span>
+</pre></div>
+</div>
+<p>Eğer karakter dizisinin uzunluğunu aşan bir sayı belirtirsek Python bize
+<code class="docutils literal notranslate"><span class="pre">IndexError</span></code> türünde bir hata mesajı verecektir.</p>
+<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">kardiz[0]</span></code>, <code class="docutils literal notranslate"><span class="pre">kardiz[1]</span></code>, <code class="docutils literal notranslate"><span class="pre">kardiz[2]</span></code>, vb. komutlarla
+karakter dizisinin öğelerine erişebiliyoruz. Burada öğe sıralarını tek tek
+yazmak yerine <code class="docutils literal notranslate"><span class="pre">range()</span></code> fonksiyonunu kullanarak da öğelere tek tek
+erişebilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">kardiz</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Bu kodlarda, <code class="docutils literal notranslate"><span class="pre">kardiz[0]</span></code>, <code class="docutils literal notranslate"><span class="pre">kardiz[1]</span></code>, <code class="docutils literal notranslate"><span class="pre">kardiz[2]</span></code> şeklinde öğe sıralarını
+tek tek elle yazmak yerine, <code class="docutils literal notranslate"><span class="pre">range(7)</span></code> aralığındaki sayıları bir <cite>for</cite>
+döngüsüne alıyoruz. Böylece Python <code class="docutils literal notranslate"><span class="pre">kardiz[öğe_sırası]</span></code> gibi bir yapı içinde
+<cite>öğe_sırası</cite> yerine <code class="docutils literal notranslate"><span class="pre">range(7)</span></code> aralığındaki bütün sayıları (yani <cite>0</cite>, <cite>1</cite>,
+<cite>2</cite>, <cite>3</cite>, <cite>4</cite>, <cite>5</cite>, <cite>6</cite> sayılarını) tek tek uyguluyor.</p>
+<p>Burada aklınıza hemen şöyle bir soru gelmiş olabilir:</p>
+<blockquote>
+<div><p>Biz kendi tanımladığımız karakter dizisinin uzunluğunun toplam <cite>7</cite> karakter
+olduğunu bildiğimiz için yukarıdaki örnekte <code class="docutils literal notranslate"><span class="pre">range()</span></code> fonksiyonunu
+<code class="docutils literal notranslate"><span class="pre">range(7)</span></code> şeklinde kullanabildik. Ama başka kaynaktan gelen bir karakter
+dizisinin uzunluğunu nasıl bileceğiz?</p>
+</div></blockquote>
+<p>Aslında bu sorunun cevabı çok basit. Uzunluğunu bilmediğiniz karakter dizileri
+için <code class="docutils literal notranslate"><span class="pre">range()</span></code> fonksiyonuyla birlikte <code class="docutils literal notranslate"><span class="pre">len()</span></code> fonksiyonundan
+yararlanabilirsiniz. Nasıl mı? Hemen bir örnek verelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">karakter</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">kardiz</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">kardiz</span><span class="p">[</span><span class="n">karakter</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Burada <code class="docutils literal notranslate"><span class="pre">range()</span></code> fonksiyonuna verdiğimiz <cite>len(kardiz)</cite> parametresine
+dikkatlice bakın. Biz <cite>kardiz</cite> adlı değişkenin tuttuğu karakter dizisinin <cite>7</cite>
+karakterden oluştuğunu biliyoruz. Ama eğer bu karakter dizisini biz
+belirlememişsek, karakter dizisinin tam olarak kaç karakterden oluşacağını
+bilemeyiz. Bu kodlarda <code class="docutils literal notranslate"><span class="pre">len(kardiz)</span></code> ifadesini kullanarak, sabit bir değer
+belirlemekten kaçınmış oluyoruz. Böylece, mesela kullanıcıdan aldığımız bir
+karakter dizisinin kaç karakterden oluştuğunu belirleme görevini Python’a
+bırakmış oluyoruz. Karakter dizisinin uzunluğu ne ise (<code class="docutils literal notranslate"><span class="pre">len(kardiz)</span></code>), Python
+<code class="docutils literal notranslate"><span class="pre">range()</span></code> fonksiyonuna o sayıyı parametre olarak kendisi atayacaktır.</p>
+<p>Yukarıdaki durumu daha iyi anlayabilmek için bir örnek daha verelim. Diyelim ki
+kullanıcıya ismini sorup, kendisine şöyle bir çıktı vermek istiyorsunuz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">isminizin</span> <span class="mf">1.</span> <span class="n">harfi</span> <span class="o">...</span>
+<span class="n">isminizin</span> <span class="mf">2.</span> <span class="n">harfi</span> <span class="o">...</span>
+<span class="n">isminizin</span> <span class="mf">3.</span> <span class="n">harfi</span> <span class="o">...</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>Bunu yapabilmek için şöyle bir uygulama yazabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">isim</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;isminiz: &quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">isim</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;isminizin </span><span class="si">{}</span><span class="s2">. harfi: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">isim</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, kullanıcının girdiği kelimenin uzunluğu kaç ise o sayı otomatik
+olarak <code class="docutils literal notranslate"><span class="pre">range()</span></code> fonksiyonuna atanıyor. Diyelim ki kullanıcı Ferhat ismini
+girmiş olsun. Bu kelimede toplam <cite>6</cite> karakter var. Dolayısıyla Python <code class="docutils literal notranslate"><span class="pre">for</span></code>
+satırını şöyle yorumlayacaktır:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>Python <code class="docutils literal notranslate"><span class="pre">for</span></code> döngüsünün ilk turunda şöyle bir işlem gerçekleştirir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;isminizin </span><span class="si">{}</span><span class="s2">. harfi: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">isim</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+</div>
+<p>İkinci turda ise şöyle bir işlem:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;isminizin </span><span class="si">{}</span><span class="s2">. harfi: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">isim</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+</pre></div>
+</div>
+<figure class="align-right" id="id1" style="width: 300px">
+<img alt="_images/string_index.png" src="_images/string_index.png" style="width: 300px; height: 159px;" />
+<figcaption>
+<p><span class="caption-text">Annenizin kızlık soyadının 0. harfi [<a class="reference external" href="https://pic.twitter.com/u1IE6Mma">kaynak</a><a class="footnote-reference brackets" href="#id3" id="id2">#1</a>]</span></p>
+</figcaption>
+</figure>
+<p>Bu döngü <cite>6</cite> sayısına gelene kadar devam eder. Burada <cite>i</cite> adlı değişkenin
+değerinin her döngüde nasıl değiştiğine dikkat edin. Python <cite>i</cite> adını verdiğimiz
+değişkene, <code class="docutils literal notranslate"><span class="pre">for</span></code> döngüsünün her turunda sırasıya <cite>0</cite>, <cite>1</cite>, <cite>2</cite>, <cite>3</cite>, <cite>4</cite> ve
+<cite>5</cite> sayılarını atayacağı için <cite>isim</cite> adlı değişkenin öğeleri
+<code class="docutils literal notranslate"><span class="pre">isim[öğe_sırası]</span></code> formülü sayesinde tek tek ekrana dökülecektir.</p>
+<p>Yalnız bu kodların çıktısında iki nokta dikkatinizi çekmiş olmalı. Birincisi,
+<cite>isminizin 0. harfi f</cite> gibi bir çıktıyı kullanıcılarınız yadırgayabilir. Çünkü
+‘<cite>0.</cite> harf’ çok yapay duran bir ifade. Onun yerine ilk harfi ‘1. harf’ olarak
+adlandırmamız çok daha mantıklı olacaktır. Bunun için kodlarınıza şu basit
+eklemeyi yapabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">isim</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;isminiz: &quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">isim</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;isminizin </span><span class="si">{}</span><span class="s2">. harfi: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">isim</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+</pre></div>
+</div>
+<p>Burada ilk <cite>i</cite> değişkeninin değerini <cite>1</cite> sayı artırdık. Böylece <cite>0</cite> sayısı
+<cite>1</cite>’e, <cite>1</cite> sayısı <cite>2</cite>’ye, <cite>2</cite> sayısı <cite>3</cite>’e… dönüşmüş oldu. Bu şekilde
+kullanıcılarınıza çok daha doğal görünen bir çıktı verebilmiş oluyorsunuz. Eğer
+bu işlemi yapmazsanız, kullanıcılarınızın ‘doğal görünmeyen’ bir çıktı
+almalarının yanısıra, programınızın verdiği çıktı kimi durumlarda epey yanıltıcı
+da olabilir…</p>
+</section>
+<section id="karakter-dizilerini-dilimlemek">
+<h2>Karakter Dizilerini Dilimlemek</h2>
+<p>Bir önceki bölümde bir karakter dizisinin istediğimiz öğesini, o öğenin sırasını
+belirterek nasıl elde edebileceğimizi gördük. Bu bölümde de benzer bir şey
+yapacağız. Ama burada yapacağımız şey, bir önceki bölümde yaptığımız işleme göre
+biraz daha kapsamlı bir işlem olacak.</p>
+<p>Bu bölümde karakter dizilerini ‘dilimlemekten’ söz edeceğiz. Peki ‘dilimlemek’
+derken neyi kastediyoruz? Aslında burada gerçek anlamda ‘karpuz gibi
+dilimlemekten’ söz ediyoruz… Şu örnek, ne demek istediğimizi daha net ortaya
+koyacaktır:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">site</span> <span class="o">=</span> <span class="s2">&quot;www.istihza.com&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">site</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">11</span><span class="p">]</span>
+
+<span class="go">&#39;istihza&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">site</span><span class="p">[</span><span class="mi">12</span><span class="p">:</span><span class="mi">15</span><span class="p">]</span>
+
+<span class="go">&#39;com&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">site</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+
+<span class="go">&#39;www&#39;</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, karakter dizisine köşeli parantez içinde bazı değerler vererek
+bu karakter dizisini dilim dilim ayırdık. Peki bunu nasıl yaptık? Yukarıdaki
+örneklerde şöyle bir yapı gözümüze çarpıyor:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">karakter_dizisi</span><span class="p">[</span><span class="n">alınacak_ilk_öğenin_sırası</span><span class="p">:</span><span class="n">alınacak_son_öğenin_sırasının_bir_fazlası</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Bu formülü çok basit bir örneğe uygulayalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">karakter_dizisi</span> <span class="o">=</span> <span class="s2">&quot;istanbul&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">karakter_dizisi</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+
+<span class="go">&#39;ist&#39;</span>
+</pre></div>
+</div>
+<p>Burada alacağımız ilk öğenin sıra numarası <cite>0</cite>. Yani <cite>“istanbul”</cite> karakter
+dizisindeki ‘i’ harfi. Alacağımız son öğenin sıra numarasının 1 fazlası ise <cite>3</cite>.
+Yani <cite>2.</cite> sıradaki ‘t’ harfi. İşte <code class="docutils literal notranslate"><span class="pre">karakter_dizisi[0:3]</span></code> dediğimizde, Python
+<cite>0.</cite> öğe ile <cite>3.</cite> öğe arasında kalan bütün öğeleri bize verecektir. Bizim
+örneğimizde bu aralıktaki öğeler ‘i’, ‘s’ ve ‘t’ harfleri. Dolayısıyla Python
+bize ‘istanbul’ kelimesindeki ‘ist’ kısmını dilimleyip veriyor.</p>
+<p>Bu bilgileri kullanarak şöyle bir uygulama yazalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">site1</span> <span class="o">=</span> <span class="s2">&quot;www.google.com&quot;</span>
+<span class="n">site2</span> <span class="o">=</span> <span class="s2">&quot;www.istihza.com&quot;</span>
+<span class="n">site3</span> <span class="o">=</span> <span class="s2">&quot;www.yahoo.com&quot;</span>
+<span class="n">site4</span> <span class="o">=</span> <span class="s2">&quot;www.gnu.org&quot;</span>
+
+<span class="k">for</span> <span class="n">isim</span> <span class="ow">in</span> <span class="n">site1</span><span class="p">,</span> <span class="n">site2</span><span class="p">,</span> <span class="n">site3</span><span class="p">,</span> <span class="n">site4</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;site: &quot;</span><span class="p">,</span> <span class="n">isim</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="o">-</span><span class="mi">4</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Bu örnek Python’da dilimleme işlemlerinin yapısı ve özellikleri hakkında bize
+epey bilgi veriyor. Gördüğünüz gibi, hem artı hem de eksi değerli sayıları
+kullanabiliyoruz. Önceki bölümden hatırlayacağınız gibi, eğer verilen sayı eksi
+değerliyse Python karakter dizisini sağdan sola (yani sondan başa doğru)
+okuyacaktır. Yukarıdaki örnekte <code class="docutils literal notranslate"><span class="pre">isim[4:-4]</span></code> yapısını kullanarak, <cite>site1</cite>,
+<cite>site2</cite>, <cite>site3</cite>, <cite>site4</cite> adlı karakter dizilerini, ilk dört ve son dört
+karakterler hariç olacak şekilde dilimledik. Böylece elimizde ilk dört ve son
+dört karakter arasındaki bütün karakterler kalmış oldu. Yani <cite>“google”</cite>,
+<cite>“istihza”</cite>, <cite>“yahoo”</cite> ve <cite>“gnu”</cite>.</p>
+<p>Bütün bu anlattıklarımızı daha iyi anlayabilmek için bir örnek daha verelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">ata1</span> <span class="o">=</span> <span class="s2">&quot;Akıllı bizi arayıp sormaz deli bacadan akar!&quot;</span>
+<span class="n">ata2</span> <span class="o">=</span> <span class="s2">&quot;Ağa güçlü olunca  kul suçlu olur!&quot;</span>
+<span class="n">ata3</span> <span class="o">=</span> <span class="s2">&quot;Avcı ne kadar hile bilirse ayı da o kadar yol bilir!&quot;</span>
+<span class="n">ata4</span> <span class="o">=</span> <span class="s2">&quot;Lafla pilav pişse deniz kadar yağ benden!&quot;</span>
+<span class="n">ata5</span> <span class="o">=</span> <span class="s2">&quot;Zenginin gönlü oluncaya kadar fukaranın canı çıkar!&quot;</span>
+</pre></div>
+</div>
+<p>Burada beş adet atasözü verdik. Bizim görevimiz, bu atasözlerinin sonunda
+bulunan ünlem işaretlerini ortadan kaldırmak:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">ata</span> <span class="ow">in</span> <span class="n">ata1</span><span class="p">,</span> <span class="n">ata2</span><span class="p">,</span> <span class="n">ata3</span><span class="p">,</span> <span class="n">ata4</span><span class="p">,</span> <span class="n">ata5</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">ata</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Burada yaptığımız şey şu: <cite>ata1</cite>, <cite>ata2</cite>, <cite>ata3</cite>, <cite>ata4</cite> ve <cite>ata5</cite> adlı
+değişkenlerin her birini <cite>ata</cite> olarak adlandırdıktan sonra <cite>ata</cite> adlı değişkenin
+en başından en sonuna kadar olan kısmı dilimleyip aldık. Yani <code class="docutils literal notranslate"><span class="pre">ata[0]</span></code> ile
+<code class="docutils literal notranslate"><span class="pre">ata[-1]</span></code> arasında kalan bütün karakterleri elde etmiş olduk. Peki bu ünlem
+işaretlerini kaldırdıktan sonra bunların yerine birer nokta koymak istersek ne
+yapacağız?</p>
+<p>O da çok basit bir işlem:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">ata</span> <span class="ow">in</span> <span class="n">ata1</span><span class="p">,</span> <span class="n">ata2</span><span class="p">,</span> <span class="n">ata3</span><span class="p">,</span> <span class="n">ata4</span><span class="p">,</span> <span class="n">ata5</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">ata</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, son karakter olan ünlem işaretini attıktan sonra onun yerine
+bir nokta işareti koymak için yaptığımız tek şey, dilimlediğimiz karakter
+dizisine, artı işareti (<cite>+</cite>) yardımıyla bir <cite>.</cite> karakteri eklemekten ibarettir.</p>
+<p>Böylece karakter dizilerini nasıl dilimleyeceğimizi öğrenmiş olduk. Bu konuyu
+kapatmadan önce dilimlemeye ilişkin bazı ayrıntılardan söz edelim. Diyelim ki
+elimizde şöyle bir karakter dizisi var:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;Sana Gül Bahçesi Vadetmedim&quot;</span>
+</pre></div>
+</div>
+<p>Bu karakter dizisi içinden sadece ‘Sana’ kısmını dilimlemek için şöyle bir şey
+yazabileceğimizi biliyorsunuz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+
+<span class="go">&#39;Sana&#39;</span>
+</pre></div>
+</div>
+<p>Burada <cite>0.</cite> karakterden <cite>4.</cite> karaktere kadar olan kısmı dilimlemiş oluyoruz.
+Python bize bu tür durumlarda şöyle bir kolaylık sağlar: Eğer karakter dizisi
+içinden alınan ilk karakterin sırasını gösteren sayı <cite>0</cite> ise, bu sayıyı
+belirtmesek de olur. Yani <code class="docutils literal notranslate"><span class="pre">kardiz[0:4]</span></code> kodunu şöyle de yazabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span>
+
+<span class="go">&#39;Sana&#39;</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, ilk sıra sayısını yazmazsak Python ilk sayıyı <cite>0</cite> kabul ediyor.</p>
+<p>Şimdi de aynı karakter dizisi içindeki ‘Vadetmedim’ kısmını dilimlemeye
+çalışalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="p">[</span><span class="mi">17</span><span class="p">:</span><span class="mi">27</span><span class="p">]</span>
+
+<span class="go">&#39;Vadetmedim&#39;</span>
+</pre></div>
+</div>
+<p>Burada da <cite>17.</cite> karakter ile <cite>27.</cite> karakter arasında kalan bütün karakterleri
+dilimledik. Tıpkı, alacağımız ilk karakterin sırası <cite>0</cite> olduğunda bu sayıyı
+belirtmemize gerek olmadığı gibi, alacağımız son karakterin sırası karakter
+dizisinin sonuncu karakterine denk geliyorsa o sayıyı da yazmamıza gerek yok.
+Yani yukarıdaki <code class="docutils literal notranslate"><span class="pre">kardiz[17:27]</span></code> kodunu şöyle de yazabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="p">[</span><span class="mi">17</span><span class="p">:]</span>
+
+<span class="go">&#39;Vadetmedim&#39;</span>
+</pre></div>
+</div>
+<p>Python’daki bu dilimleme özelliğini kullanarak karakter dizilerini istediğiniz
+gibi eğip bükebilir, evirip çevirebilirsiniz.</p>
+<p>Python’daki bu dilimleme yapısı ilk bakışta gözünüze biraz karmaşıkmış gibi
+görünebilir. Ama aslında hiç de öyle değildir. Bu yapının mantığını bir kez
+kavradıktan sonra kodlarınızı hatasız bir şekilde yazabilirsiniz.</p>
+<p>Dilimleme yapısını daha iyi anlayabilmek için kendi kendinize bazı denemeler
+yapmanızı tavsiye ederim. Bu yapının nasıl çalıştığını anlamanın en iyi yolu bol
+bol örnek kod yazmaktır.</p>
+</section>
+<section id="karakter-dizilerini-ters-cevirmek">
+<h2>Karakter Dizilerini Ters Çevirmek</h2>
+<p>Eğer amacınız bir karakter dizisini ters çevirmek, yani karakter dizisi içindeki
+her bir öğeyi tersten yazdırmaksa biraz önce öğrendiğimiz dilimleme yöntemini
+kullanabilirsiniz. Dikkatlice bakın:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="go">&#39;midemtedaV iseçhaB lüG anaS&#39;</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, <cite>“Sana Gül Bahçesi Vadetmedim”</cite> adlı karakter dizisi içindeki
+bütün karakterler sondan başa doğru ekrana dizildi.</p>
+<p>Aslında bu komutla Python’a şöyle bir emir vermiş oluyoruz:</p>
+<blockquote>
+<div><p><cite>kardiz</cite> değişkeni içindeki bütün karakterleri, en son karakterden ilk
+karaktere kadar sondan başa doğru tek tek ekrana yazdır!</p>
+</div></blockquote>
+<p>Bildiğiniz gibi, eğer almak istediğimiz karakter, dizi içindeki ilk karakterse
+bu karakterin dizi içindeki sırasını belirtmemize gerek yok. Aynı şekilde, eğer
+almak istediğimiz karakter, dizi içindeki son karakterse, bu karakterin de dizi
+içindeki sırasını belirtmemize gerek yok. İşte yukarıdaki örnekte bu kuraldan
+yararlandık.</p>
+<p>Eğer bir karakter dizisinin tamamının değil de, sadece belli bir kısmının ters
+çevrilmiş halini elde etmek istiyorsanız elbette yapmanız gereken şey, almak
+istediğiniz ilk ve son karakterlerin sırasını parantez içinde belirtmek
+olacaktır. Mesela yukarıdaki karakter dizisinde sadece ‘Gül’ kelimesini ters
+çevirmek istersek şöyle bir şey yazabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="p">[</span><span class="mi">7</span><span class="p">:</span><span class="mi">4</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="go">&#39;lüG&#39;</span>
+</pre></div>
+</div>
+<p>Yukarıdaki örnek, karakter dizisi dilimlemeye ilişkin olarak bize bazı başka
+ipuçları da veriyor. Gördüğünüz gibi, köşeli parantez içinde toplam üç adet
+parametre kullanabiliyoruz. Yani formülümüz şöyle:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">kardiz</span><span class="p">[</span><span class="n">ilk_karakter</span><span class="p">:</span><span class="n">son_karakter</span><span class="p">:</span><span class="n">atlama_sayısı</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Bir örnek verelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;istanbul&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="go">&#39;istanbul&#39;</span>
+</pre></div>
+</div>
+<p>Burada <cite>“istanbul”</cite> adlı karakter dizisinin bütün öğelerini birer birer ekrana
+döktük. Bir de şuna bakalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="go">&#39;itnu&#39;</span>
+</pre></div>
+</div>
+<p>Burada ise <cite>“istanbul”</cite> adlı karakter dizisinin bütün öğelerini ikişer ikişer
+atlayarak ekrana döktük. Yani bir karakter yazıp bir karakter atladık (<strong>i</strong>s<strong>t</strong>a<strong>n</strong>b<strong>u</strong>l).</p>
+<p>Python’ın kuralları gereğince yukarıdaki kodu şöyle yazabileceğimizi de
+biliyorsunuz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="p">[::</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="go">&#39;itnu&#39;</span>
+</pre></div>
+</div>
+<p>Eğer karakter dizisini ters çevirmek istiyorsak, yukarıdaki örneği eksi değerli
+bir atlama sayısı ile yazmamız gerekir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;istanbul&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="go">&#39;lubnatsi&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span><span class="p">[::</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="go">&#39;lbas&#39;</span>
+</pre></div>
+</div>
+<p>Dediğimiz gibi, yukarıdaki yöntemi kullanarak karakter dizilerini ters
+çevirebilirsiniz. Ama eğer isterseniz <code class="docutils literal notranslate"><span class="pre">reversed()</span></code> adlı bir fonksiyondan da
+yararlanabiliriz.</p>
+<p>Gelelim bu fonksiyonun nasıl kullanılacağına… Önce şöyle bir deneme yapalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">reversed</span><span class="p">(</span><span class="s2">&quot;Sana Gül Bahçesi Vadetmedim&quot;</span><span class="p">)</span>
+
+<span class="go">&lt;reversed object at 0x00E8E250&gt;</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, bu fonksiyonu düz bir şekilde kullandığımızda bize bir
+‘reversed’ nesnesi vermekle yetiniyor. Buna benzer bir olguyla <code class="docutils literal notranslate"><span class="pre">range()</span></code>
+fonksiyonunda da karşılaşmıştık:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="go">range(0, 10)</span>
+</pre></div>
+</div>
+<p>Hatırlarsanız, <code class="docutils literal notranslate"><span class="pre">range(10)</span></code> gibi bir komutun içeriğini görebilmek için bu komut
+üzerinde bir <code class="docutils literal notranslate"><span class="pre">for</span></code> döngüsü kurmamız gerekiyordu:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>…veya:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Aynı durum <code class="docutils literal notranslate"><span class="pre">reversed()</span></code> fonksiyonu için de geçerlidir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="s2">&quot;Sana Gül Bahçesi Vadetmedim&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>…veya:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="nb">reversed</span><span class="p">(</span><span class="s2">&quot;Sana Gül Bahçesi Vadetmedim&quot;</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Dilimleme veya <code class="docutils literal notranslate"><span class="pre">reversed()</span></code> fonksiyonunu kullanma yöntemlerinden hangisi
+kolayınıza geliyorsa onu tercih edebilirsiniz.</p>
+</section>
+<section id="karakter-dizilerini-alfabe-sirasina-dizmek">
+<h2>Karakter Dizilerini Alfabe Sırasına Dizmek</h2>
+<p>Python’da karakter dizilerinin öğelerine tek tek ulaşma, öğeleri dilimleme ve
+ters çevirmenin yanısıra, bu öğeleri alfabe sırasına dizmek de mümkündür. Bunun
+için <code class="docutils literal notranslate"><span class="pre">sorted()</span></code> adlı bir fonksiyondan yararlanacağız:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">sorted</span><span class="p">(</span><span class="s2">&quot;kitap&quot;</span><span class="p">)</span>
+
+<span class="go">[&#39;a&#39;, &#39;i&#39;, &#39;k&#39;, &#39;p&#39;, &#39;t&#39;]</span>
+</pre></div>
+</div>
+<p>Nasıl <code class="docutils literal notranslate"><span class="pre">input()</span></code> fonksiyonu çıktı olarak bir karakter dizisi ve <code class="docutils literal notranslate"><span class="pre">len()</span></code>
+fonksiyonu bir sayı veriyorsa, <code class="docutils literal notranslate"><span class="pre">sorted()</span></code> fonksiyonu da bize çıktı olarak,
+birkaç bölüm sonra inceleyeceğimiz ‘liste’ adlı bir veri tipi verir.</p>
+<p>Ama tabii eğer isterseniz bu çıktıyı alıştığınız biçimde alabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="nb">sorted</span><span class="p">(</span><span class="s2">&quot;kitap&quot;</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>…veya:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="s2">&quot;kitap&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bir örnek daha verelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">sorted</span><span class="p">(</span><span class="s2">&quot;elma&quot;</span><span class="p">)</span>
+
+<span class="go">[&#39;a&#39;, &#39;e&#39;, &#39;l&#39;, &#39;m&#39;]</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">sorted()</span></code> fonksiyonunu kullanmak çok kolay, ama aslında bu
+fonksiyonun önemli bir problemi var. Dikkatlice bakın:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">sorted</span><span class="p">(</span><span class="s2">&quot;çiçek&quot;</span><span class="p">)</span>
+
+<span class="go">[&#39;e&#39;, &#39;i&#39;, &#39;k&#39;, &#39;ç&#39;, &#39;ç&#39;]</span>
+</pre></div>
+</div>
+<p>Burada Türkçe bir karakter olan ‘ç’ harfinin düzgün sıralanamadığını görüyoruz.
+Bu sorun bütün Türkçe karakterler için geçerlidir.</p>
+<p>Bu sorunu aşmak için şöyle bir yöntem deneyebilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">locale</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">locale</span><span class="o">.</span><span class="n">setlocale</span><span class="p">(</span><span class="n">locale</span><span class="o">.</span><span class="n">LC_ALL</span><span class="p">,</span> <span class="s2">&quot;Turkish_Turkey.1254&quot;</span><span class="p">)</span> <span class="c1">#Windows için</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">locale</span><span class="o">.</span><span class="n">setlocale</span><span class="p">(</span><span class="n">locale</span><span class="o">.</span><span class="n">LC_ALL</span><span class="p">,</span> <span class="s2">&quot;tr_TR&quot;</span><span class="p">)</span> <span class="c1">#GNU/Linux için</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">sorted</span><span class="p">(</span><span class="s2">&quot;çiçek&quot;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">locale</span><span class="o">.</span><span class="n">strxfrm</span><span class="p">)</span>
+
+<span class="go">[&#39;ç&#39;, &#39;ç&#39;, &#39;e&#39;, &#39;i&#39;, &#39;k&#39;]</span>
+</pre></div>
+</div>
+<p>Burada <code class="docutils literal notranslate"><span class="pre">locale</span></code> adlı bir modülden yararlandık. <code class="docutils literal notranslate"><span class="pre">locale</span></code> de tıpkı <code class="docutils literal notranslate"><span class="pre">sys</span></code>,
+<code class="docutils literal notranslate"><span class="pre">os</span></code> ve <code class="docutils literal notranslate"><span class="pre">keyword</span></code> gibi bir modül olup, içinde pek çok değişken ve fonksiyon
+barındırır.</p>
+<p><code class="docutils literal notranslate"><span class="pre">locale</span></code> modülü bize belli bir dilin kendine has özelliklerine göre
+programlama yapma imkanı verir. Örneğin bu modülünün içinde yer alan
+fonksiyonlardan biri olan <code class="docutils literal notranslate"><span class="pre">setlocale()</span></code> fonksiyonunu kullanarak, programımızda
+öntanımlı dil ayarlarına uygun bir şekilde programlama yapma olanağı sağlarız.</p>
+<p>Bu modülü ilerleyen derslerde daha ayrıntılı bir şekilde inceleyeceğiz. O yüzden
+<code class="docutils literal notranslate"><span class="pre">locale</span></code> modülünü bir kenara bırakıp yolumuza devam edelim.</p>
+<p>Yukarıdaki örnekte Türkçe karakterleri doğru sıralayabilmek için <code class="docutils literal notranslate"><span class="pre">sorted()</span></code>
+fonksiyonunu nasıl kullandığımıza dikkat edin:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">sorted</span><span class="p">(</span><span class="s2">&quot;çiçek&quot;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">locale</span><span class="o">.</span><span class="n">strxfrm</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada <code class="docutils literal notranslate"><span class="pre">sorted()</span></code> metodunun <cite>key</cite> adlı özel bir parametresine <cite>locale.strxfrm</cite>
+değerini vererek Türkçeye duyarlı bir sıralama yapılmasını sağladık. Yukarıdaki
+yöntem pek çok durumda işinize yarar. Ancak bu yöntem tek bir yerde işe yaramaz.
+Dikkatlice bakın:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">sorted</span><span class="p">(</span><span class="s2">&quot;afgdhkıi&quot;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">locale</span><span class="o">.</span><span class="n">strxfrm</span><span class="p">)</span>
+
+<span class="go">[&#39;a&#39;, &#39;d&#39;, &#39;f&#39;, &#39;g&#39;, &#39;h&#39;, &#39;i&#39;, &#39;ı&#39;, &#39;k&#39;]</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, bu yöntem ‘i’ harfini ‘ı’ harfinden önce getiriyor. Halbuki
+Türk alfabesine göre bunun tersi olmalıydı. Buna benzer problemlerle İngiliz
+alfabesi dışındaki pek çok alfabede karşılaşırsınız. Dolayısıyla bu sadece
+Türkçeye özgü bir sorun değil.</p>
+<p>Bu soruna karşı şöyle bir kod da yazabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">harfler</span> <span class="o">=</span> <span class="s2">&quot;abcçdefgğhıijklmnoöprsştuüvyz&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">çevrim</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:</span> <span class="n">harfler</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">harfler</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">sorted</span><span class="p">(</span><span class="s2">&quot;afgdhkıi&quot;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">çevrim</span><span class="o">.</span><span class="n">get</span><span class="p">)</span>
+
+<span class="go">[&#39;a&#39;, &#39;d&#39;, &#39;f&#39;, &#39;g&#39;, &#39;h&#39;, &#39;ı&#39;, &#39;i&#39;, &#39;k&#39;]</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi burada ilk iş olarak Türk alfabesindeki bütün harfleri <cite>harfler</cite>
+adlı bir değişkene atadık. Daha sonra ise şöyle bir kod yazdık:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">çevrim</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:</span> <span class="n">harfler</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">harfler</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Burada henüz öğrenmediğimiz bir yapı var, ama ne olup bittiğini daha iyi anlamak
+için bu <cite>çevrim</cite> değişkeninin içeriğini kontrol etmeyi deneyebilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">çevrim</span><span class="p">)</span>
+
+<span class="go">{&#39;ğ&#39;: 8, &#39;ı&#39;: 10, &#39;v&#39;: 26, &#39;g&#39;: 7, &#39;ş&#39;: 22, &#39;a&#39;: 0, &#39;c&#39;: 2, &#39;b&#39;: 1, &#39;e&#39;: 5,</span>
+<span class="go">&#39;d&#39;: 4, &#39;ç&#39;: 3, &#39;f&#39;: 6, &#39;i&#39;: 11, &#39;h&#39;: 9, &#39;k&#39;: 13, &#39;j&#39;: 12, &#39;m&#39;: 15, &#39;l&#39;: 14,</span>
+<span class="go">&#39;o&#39;: 17, &#39;n&#39;: 16, &#39;p&#39;: 19, &#39;s&#39;: 21, &#39;r&#39;: 20, &#39;u&#39;: 24, &#39;t&#39;: 23, &#39;ö&#39;: 18,</span>
+<span class="go">&#39;y&#39;: 27, &#39;z&#39;: 28, &#39;ü&#39;: 25}</span>
+</pre></div>
+</div>
+<p>Bu çıktıya dikkatlice bakarsanız, her bir harfin bir sayıya karşılık gelecek
+şekilde birbiriyle eşleştirildiğini göreceksiniz. Mesela ‘ğ’ harfi <cite>8</cite> ile, ‘f’
+harfi <cite>6</cite> ile eşleşmiş. Yine dikkatlice bakarsanız, biraz önce bize sorun
+çıkaran ‘ı’ harfinin <cite>10</cite>, ‘i’ harfinin ise <cite>11</cite> ile eşleştiğini göreceksiniz.
+Evet, doğru tahmin ettiniz. Harfleri sayılarla eşleştirerek, Python’ın harfler
+yerine sayıları sıralamasını sağlayacağız. Bunu da yine <cite>key</cite> parametresini
+kullanarak yapıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">sorted</span><span class="p">(</span><span class="s2">&quot;afgdhkıi&quot;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">çevrim</span><span class="o">.</span><span class="n">get</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu yapıyı daha iyi anlayabilmek için kendi kendinize bazı denemeler yapın. Eğer
+burada olan biteni anlamakta zorlanıyorsanız hiç endişe etmeyin. Bir-iki bölüm
+sonra bunları da kolayca anlayabilecek duruma geleceksiniz. Bizim burada bu
+bilgileri vermekteki amacımız, Python’ın Türkçe harflerle sıralama işlemini
+sorunsuz bir şekilde yapabileceğini göstermektir. Bu esnada bir-iki yeni bilgi
+kırıntısı da kapmanızı sağlayabildiysek kendimizi başarılı sayacağız.</p>
+</section>
+<section id="karakter-dizileri-uzerinde-degisiklik-yapmak">
+<h2>Karakter Dizileri Üzerinde Değişiklik Yapmak</h2>
+<p>Bu kısımda karakter dizilerinin çok önemli bir özelliğinden söz edeceğiz.
+Konumuz karakter dizileri üzerinde değişiklik yapmak. İsterseniz neyle karşı
+karşıya olduğumuzu anlayabilmek için çok basit bir örnek verelim.</p>
+<p>Elimizde şöyle bir karakter dizisi olduğunu düşünün:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">meyve</span> <span class="o">=</span> <span class="s2">&quot;elma&quot;</span>
+</pre></div>
+</div>
+<p>Amacımız bu karakter dizisinin ilk harfini büyütmek olsun.</p>
+<p>Bunun için dilimleme yönteminden yararlanabileceğimizi biliyorsunuz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;E&quot;</span> <span class="o">+</span> <span class="n">meyve</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+
+<span class="go">&#39;Elma&#39;</span>
+</pre></div>
+</div>
+<p>Burada “E” harfi ile, <cite>meyve</cite> değişkeninin ilk harfi dışında kalan bütün
+harfleri birleştirdik.</p>
+<p>Bir örnek daha verelim.</p>
+<p>Elimizde şöyle dört adet internet sitesi adresi olsun:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">site1</span> <span class="o">=</span> <span class="s2">&quot;www.google.com&quot;</span>
+<span class="n">site2</span> <span class="o">=</span> <span class="s2">&quot;www.istihza.com&quot;</span>
+<span class="n">site3</span> <span class="o">=</span> <span class="s2">&quot;www.yahoo.com&quot;</span>
+<span class="n">site4</span> <span class="o">=</span> <span class="s2">&quot;www.gnu.org&quot;</span>
+</pre></div>
+</div>
+<p>Bizim amacımız bu adreslerin her birinin baş tarafına <cite>http://</cite> ifadesini
+eklemek. Bunun için de yine karakter dizisi birleştirme işlemlerinden
+yararlanabiliriz. Dikkatlice inceleyin:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">site1</span> <span class="o">=</span> <span class="s2">&quot;www.google.com&quot;</span>
+<span class="n">site2</span> <span class="o">=</span> <span class="s2">&quot;www.istihza.com&quot;</span>
+<span class="n">site3</span> <span class="o">=</span> <span class="s2">&quot;www.yahoo.com&quot;</span>
+<span class="n">site4</span> <span class="o">=</span> <span class="s2">&quot;www.gnu.org&quot;</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">site1</span><span class="p">,</span> <span class="n">site2</span><span class="p">,</span> <span class="n">site3</span><span class="p">,</span> <span class="n">site4</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;http://&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Eğer <cite>www.</cite> kısımlarını atmak isterseniz karakter dizisi birleştirme işlemleri
+ile birlikte dilimleme yöntemini de kullanmanız gerekir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">site1</span><span class="p">,</span> <span class="n">site2</span><span class="p">,</span> <span class="n">site3</span><span class="p">,</span> <span class="n">site4</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;http://&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">[</span><span class="mi">4</span><span class="p">:],</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Belki farkındayız, belki de değiliz, ama aslında yukarıdaki örnekler karakter
+dizileri hakkında bize çok önemli bir bilgi veriyor. Dikkat ettiyseniz
+yukarıdaki örneklerde karakter dizileri üzerinde bir değişiklik yapmışız gibi
+görünüyor. Esasında öyle de denebilir. Ancak burada önemli bir ayrıntı var.
+Yukarıdaki örneklerde gördüğümüz değişiklikler kalıcı değildir. Yani aslında bu
+değişikliklerin orijinal karakter dizisi üzerinde hiçbir etkisi yoktur. Gelin
+isterseniz bunu teyit edelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;istihza&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;İ&quot;</span> <span class="o">+</span> <span class="n">kardiz</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+
+<span class="go">&#39;İstihza&#39;</span>
+</pre></div>
+</div>
+<p>Dediğimiz gibi, sanki burada <cite>“istihza”</cite> karakter dizisini <cite>“İstihza”</cite> karakter
+dizisine çevirmişiz gibi duruyor. Ama aslında öyle değil:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">kardiz</span><span class="p">)</span>
+
+<span class="go">istihza</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, <cite>kardiz</cite> değişkeninin orijinalinde hiçbir değişiklik yok.
+Ayrıca burada <code class="docutils literal notranslate"><span class="pre">&quot;İ&quot;</span> <span class="pre">+</span> <span class="pre">kardiz[1:]</span></code> satırı ile elde ettiğiniz sonuca tekrar
+ulaşmanızın imkanı yok. Bu değişiklik kaybolmuş durumda. Peki bunun sebebi
+nedir?</p>
+<p>Bunun nedeni, karakter dizilerinin değiştirilemeyen (<em>immutable</em>) bir veri tipi
+olmasıdır. Python’da iki tür veri tipi bulunur: değiştirilemeyen veri tipleri
+(<em>immutable datatypes</em>) ve değiştirilebilen veri tipleri (<em>mutable datatypes</em>).
+Bizim şimdiye kadar gördüğümüz veri tipleri (sayılar ve karakter dizileri),
+değiştirilemeyen veri tipleridir. Henüz değiştirilebilen bir veri tipi görmedik.
+Ama birkaç bölüm sonra değiştirilebilen veri tiplerini de inceleyeceğiz.</p>
+<p>Neyse… Dediğimiz gibi, karakter dizileri üzerinde yaptığımız değişikliklerin
+kalıcı olmamasının nedeni, karakter dizilerinin değiştirilemeyen bir veri tipi
+olmasıdır. Python’da bir karakter dizisini bir kez tanımladıktan sonra bu
+karakter dizisi üzerinde artık değişiklik yapamazsınız. Eğer bir karakter dizisi
+üzerinde değişiklik yapmanız gerekiyorsa, yapabileceğiniz tek şey o karakter
+dizisini yeniden tanımlamaktır. Mesela yukarıdaki örnekte <cite>kardiz</cite> değişkeninin
+tuttuğu karakter dizisini değiştirmek isterseniz şöyle bir kod yazabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;İ&quot;</span> <span class="o">+</span> <span class="n">kardiz</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">kardiz</span><span class="p">)</span>
+
+<span class="go">İstihza</span>
+</pre></div>
+</div>
+<p>Burada yaptığımız şey <cite>kardiz</cite> değişkeninin değerini değiştirmek değildir. Biz
+burada aslında bambaşka bir <cite>kardiz</cite> değişkeni daha tanımlıyoruz. Yani ilk
+<cite>kardiz</cite> değişkeni ile sonraki <cite>kardiz</cite> değişkeni aynı şeyler değil. Bunu teyit
+etmek için önceki derslerimizde gördüğümüz <code class="docutils literal notranslate"><span class="pre">id()</span></code> fonksiyonundan
+yararlanabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;istihza&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">id</span><span class="p">(</span><span class="n">kardiz</span><span class="p">)</span>
+
+<span class="go">3075853248</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;İ&quot;</span> <span class="o">+</span> <span class="n">kardiz</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">id</span><span class="p">(</span><span class="n">kardiz</span><span class="p">)</span>
+
+<span class="go">3075853280</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, ilk <cite>kardiz</cite> değişkeni ile sonraki <cite>kardiz</cite> değişkeni farklı
+kimlik numaralarına sahip. Yani bu iki değişken bellek içinde farklı adreslerde
+tutuluyor. Daha doğrusu, ikinci <cite>kardiz</cite>, ilk <cite>kardiz</cite>’i silip üzerine yazıyor.</p>
+<p>Her ne kadar <code class="docutils literal notranslate"><span class="pre">kardiz</span> <span class="pre">=</span> <span class="pre">&quot;İ&quot;</span> <span class="pre">+</span> <span class="pre">kardiz[1:]</span></code> kodu <cite>kardiz</cite>’in değerini aslında
+değiştirmiyor olsa da, sanki <cite>kardiz</cite> değişkeninin tuttuğu karakter dizisi
+değişiyormuş gibi bir etki elde ediyoruz. Bu da bizi memnun etmeye yetiyor…</p>
+<p>Yukarıdaki örnekte karakter dizisinin baş kısmı üzerinde değişiklik yaptık. Eğer
+karakter dizisinin ortasında kalan bir kısmı değiştirmek isterseniz de şöyle bir
+şey yazabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;istihza&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="n">kardiz</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;İH&quot;</span> <span class="o">+</span> <span class="n">kardiz</span><span class="p">[</span><span class="mi">5</span><span class="p">:]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span>
+
+<span class="go">&#39;istİHza&#39;</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, yukarıdaki kodlarda karakter dizilerini dilimleyip
+birleştirerek, yani bir bakıma kesip biçerek istediğimiz çıktıyı elde ettik.</p>
+<p>Mesela ilk örnekte <cite>kardiz</cite> değişkeninin ilk karakteri dışında kalan kısmını
+(<code class="docutils literal notranslate"><span class="pre">kardiz[1:]</span></code>) “İ” harfi ile birleştirdik (<code class="docutils literal notranslate"><span class="pre">&quot;İ&quot;</span> <span class="pre">+</span> <span class="pre">kardiz[1:]&quot;</span></code>).</p>
+<p>İkinci örnekte ise <cite>kardiz</cite> değişkeninin ilk üç karakterine “İH” ifadesini
+ekledik ve sonra buna <cite>kardiz</cite> değişkeninin <cite>5.</cite> karakterinden sonraki kısmını
+ilave ettik.</p>
+<p>Karakter dizileri üzerinde değişiklik yapmanızın hangi durumlarda gerekli
+olacağını gösteren bir örnek daha verip bu konuyu kapatalım.</p>
+<p>Diyelim ki, bir kelime içindeki sesli ve sessiz harfleri birbirinden ayırmanız
+gereken bir program yazıyorsunuz. Yani mesela amacınız ‘istanbul’ kelimesi
+içinde geçen ‘i’, ‘a’ ve ‘u’ harflerini bir yerde, ‘s’, ‘t’, ‘n’, ‘b’ ve ‘l’
+harflerini ise ayrı bir yerde toplamak. Bunun için şöyle bir program
+yazabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sesli_harfler</span> <span class="o">=</span> <span class="s2">&quot;aeıioöuü&quot;</span>
+<span class="n">sessiz_harfler</span> <span class="o">=</span> <span class="s2">&quot;bcçdfgğhjklmnprsştvyz&quot;</span>
+
+<span class="n">sesliler</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="n">sessizler</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+<span class="n">kelime</span> <span class="o">=</span> <span class="s2">&quot;istanbul&quot;</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">kelime</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sesli_harfler</span><span class="p">:</span>
+        <span class="n">sesliler</span> <span class="o">+=</span> <span class="n">i</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">sessizler</span> <span class="o">+=</span> <span class="n">i</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sesli harfler: &quot;</span><span class="p">,</span> <span class="n">sesliler</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sessiz harfler: &quot;</span><span class="p">,</span> <span class="n">sessizler</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada öncelikle şu kodlar yardımıyla Türkçedeki sesli ve sessiz harfleri
+belirliyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sesli_harfler</span> <span class="o">=</span> <span class="s2">&quot;aeıioöuü&quot;</span>
+<span class="n">sessiz_harfler</span> <span class="o">=</span> <span class="s2">&quot;bcçdfgğhjklmnprsştvyz&quot;</span>
+</pre></div>
+</div>
+<p>Ardından da, sesli ve sessiz harflerini ayıklayacağımız kelimedeki sesli harfler
+ve sessiz harfler için boş birer karakter dizisi tanımlıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sesliler</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="n">sessizler</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+</pre></div>
+</div>
+<p>Programımız içinde ilgili harfleri, o harfin ait olduğu değişkene atayacağız.</p>
+<p>Kelimemiz <cite>“istanbul”</cite>:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">kelime</span> <span class="o">=</span> <span class="s2">&quot;istanbul&quot;</span>
+</pre></div>
+</div>
+<p>Şimdi bu kelime üzerinde bir <code class="docutils literal notranslate"><span class="pre">for</span></code> döngüsü kuruyoruz ve kelime içinde geçen
+herbir harfe tek tek bakıyoruz. Kelime içinde geçen harflerden, <cite>sesli_harfler</cite>
+değişkeninde tanımlı karakter dizisinde geçenleri <cite>sesliler</cite> adlı değişkene
+atıyoruz. Aksi durumda ise, yani kelime içinde geçen harflerden,
+<cite>sessiz_harfler</cite> değişkeninde tanımlı karakter dizisinde geçenleri, <cite>sessizler</cite>
+adlı değişkene gönderiyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">kelime</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sesli_harfler</span><span class="p">:</span>
+        <span class="n">sesliler</span> <span class="o">+=</span> <span class="n">i</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">sessizler</span> <span class="o">+=</span> <span class="n">i</span>
+</pre></div>
+</div>
+<p>Bunun için <code class="docutils literal notranslate"><span class="pre">for</span></code> döngüsü içinde basit bir ‘if-else’ bloğu tanımladığımızı
+görüyorsunuz. Ayrıca bunu yaparken, <cite>sesliler</cite> ve <cite>sessizler</cite> adlı değişkenlere,
+<code class="docutils literal notranslate"><span class="pre">for</span></code> döngüsünün her bir dönüşünde yeni bir harf gönderip, bu değişkenleri,
+döngünün her dönüşünde yeni baştan tanımladığımıza dikkat edin. Çünkü, dediğimiz
+gibi, karakter dizileri değiştirilemeyen veri tipleridir. Bir karakter dizisi
+üzerinde değişiklik yapmak istiyorsak, o karakter dizisini baştan tanımlamamız
+gerekir.</p>
+</section>
+<section id="uc-onemli-fonksiyon">
+<h2>Üç Önemli Fonksiyon</h2>
+<p>Karakter dizilerinin temel özellikleri hakkında söyleyeceklerimizin sonuna
+geldik sayılır. Biraz sonra karakter dizilerinin çok önemli bir parçası olan
+metotlardan söz edeceğiz. Ama isterseniz metotlara geçmeden önce, çok önemli üç
+fonksiyondan söz edelim. Bu fonksiyonlar sadece karakter dizileri ile değil,
+başka veri tipleri ile çalışırken de işlerimizi bir hayli kolaylaştıracak.</p>
+<section id="dir">
+<h3>dir()</h3>
+<p>İlk olarak <code class="docutils literal notranslate"><span class="pre">dir()</span></code> adlı özel bir fonksiyondan söz edeceğiz. Bu metot bize
+Python’daki bir nesnenin özellikleri hakkında bilgi edinme imkanı verecek.
+Mesela karakter dizilerinin bize hangi metotları sunduğunu görmek için bu
+fonksiyonu şöyle kullanabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+
+<span class="go">[&#39;__add__&#39;, &#39;__class__&#39;, &#39;__contains__&#39;, &#39;__delattr__&#39;, &#39;__doc__&#39;, &#39;__eq__&#39;,</span>
+<span class="go">&#39;__format__&#39;, &#39;__ge__&#39;, &#39;__getattribute__&#39;, &#39;__getitem__&#39;, &#39;__getnewargs__&#39;,</span>
+<span class="go">&#39;__gt__&#39;, &#39;__hash__&#39;, &#39;__init__&#39;, &#39;__iter__&#39;, &#39;__le__&#39;, &#39;__len__&#39;, &#39;__lt__&#39;,</span>
+<span class="go">&#39;__mod__&#39;, &#39;__mul__&#39;, &#39;__ne__&#39;, &#39;__new__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;,</span>
+<span class="go">&#39;__repr__&#39;, &#39;__rmod__&#39;, &#39;__rmul__&#39;, &#39;__setattr__&#39;, &#39;__sizeof__&#39;, &#39;__str__&#39;,</span>
+<span class="go">&#39;__subclasshook__&#39;, &#39;capitalize&#39;, &#39;center&#39;, &#39;count&#39;, &#39;encode&#39;, &#39;endswith&#39;,</span>
+<span class="go">&#39;expandtabs&#39;, &#39;find&#39;, &#39;format&#39;, &#39;format_map&#39;, &#39;index&#39;, &#39;isalnum&#39;, &#39;isalpha&#39;,</span>
+<span class="go">&#39;isdecimal&#39;, &#39;isdigit&#39;, &#39;isidentifier&#39;, &#39;islower&#39;, &#39;isnumeric&#39;, &#39;isprintable&#39;,</span>
+<span class="go">&#39;isspace&#39;, &#39;istitle&#39;, &#39;isupper&#39;, &#39;join&#39;, &#39;ljust&#39;, &#39;lower&#39;, &#39;lstrip&#39;,</span>
+<span class="go">&#39;maketrans&#39;, &#39;partition&#39;, &#39;replace&#39;, &#39;rfind&#39;, &#39;rindex&#39;, &#39;rjust&#39;, &#39;rpartition&#39;,</span>
+<span class="go">&#39;rsplit&#39;, &#39;rstrip&#39;, &#39;split&#39;, &#39;splitlines&#39;, &#39;startswith&#39;, &#39;strip&#39;, &#39;swapcase&#39;,</span>
+<span class="go">&#39;title&#39;, &#39;translate&#39;, &#39;upper&#39;, &#39;zfill&#39;]</span>
+</pre></div>
+</div>
+<p>İngilizcede ‘karakter dizisi’nin karşılığının <em>string</em>, bu kelimenin
+kısaltmasının da ‘str’ olduğunu hatırlıyor olmalısınız. İşte <code class="docutils literal notranslate"><span class="pre">dir()</span></code>
+fonksiyonuna parametre olarak bu ‘str’ kelimesini verdiğimizde, Python bize
+karakter dizilerinin bütün metotlarını listeliyor.</p>
+<p>Karakter dizileri dışında, şimdiye kadar öğrendiğimiz başka bir veri tipi de
+sayılar. Biz Python’da sayıların tam sayılar (<em>integer</em>), kayan noktalı sayılar
+(<em>float</em>) ve karmaşık sayılar (<em>complex</em>) olarak üçe ayrıldığını da biliyoruz.
+Örnek olması açısından <code class="docutils literal notranslate"><span class="pre">dir()</span></code> fonksiyonunu bir de sırasıyla, tam sayılar,
+kayan noktalı sayılar ve karmaşık sayılar üzerinde de uygulayalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="nb">complex</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">dir()</span></code> fonksiyonunu kullanmak için, metotlarını listelemek
+istediğimiz nesneyi alıp <code class="docutils literal notranslate"><span class="pre">dir()</span></code> fonksiyonuna parametre olarak veriyoruz.
+Örneğin yukarıda karakter dizileri için <cite>str</cite>; tam sayılar için <cite>int</cite>; kayan
+noktalı sayılar için <cite>float</cite>; karmaşık sayılar için ise <cite>complex</cite>
+parametrelerini kullandık.</p>
+<p><code class="docutils literal notranslate"><span class="pre">dir()</span></code> fonksiyonunu kullanabilmek için tek yöntemimiz, sorgulamak istediğimiz
+nesnenin adını kullanmak değil. Mesela karakter dizilerinin metotlarını
+sorgulamak için ‘str’ kelimesini kullanabileceğimiz gibi, herhangi bir karakter
+dizisini de kullanabiliriz. Yani:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada <code class="docutils literal notranslate"><span class="pre">dir()</span></code> fonksiyonuna parametre olarak boş bir karakter dizisi verdik.
+Bu kodun <code class="docutils literal notranslate"><span class="pre">dir(str)</span></code> kodundan hiçbir farkı yoktur. Bu komut da bize karakter
+dizilerinin metotlarını listeler.</p>
+<p>Aynı etkiyi dilersek şöyle de elde edebiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;karakter&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Karakter dizilerinin metotlarını listelemek için, siz hangi yöntem kolayınıza
+geliyorsa onu kullanabilirsiniz. Bu satırların yazarı genellikle şu yöntemi
+kullanıyor:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">dir(&quot;&quot;)</span></code> komutunun çıktısından da göreceğiniz gibi, karakter dizilerinin epey
+metodu var. Metot listesi içinde bizi ilgilendirenler başında veya sonunda <cite>_</cite>
+işareti olmayanlar. Yani şunlar:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="s2">&quot;_&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="gp">...</span>
+</pre></div>
+</div>
+<p>Bu arada bu metotları listelemek için nasıl bir kod kullandığımıza dikkat edin:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="s2">&quot;_&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada <code class="docutils literal notranslate"><span class="pre">dir(&quot;&quot;)</span></code> komutunun içerdiği her bir metoda tek tek bakıyoruz. Bu
+metotlar içinde, ilk harfi <cite>_</cite> karakteri olmayan bütün metotları listeliyoruz.
+Böylece istediğimiz listeyi elde etmiş oluyoruz. İsterseniz ilgilendiğimiz
+metotların sayısını da çıktıya ekleyebiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sayaç</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="s2">&quot;_&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+        <span class="n">sayaç</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Toplam </span><span class="si">{}</span><span class="s2"> adet metot ile ilgileniyoruz.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sayaç</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Burada da, ilk karakteri <cite>_</cite> olmayan her bir metot için <cite>sayaç</cite> değişkeninin
+değerini <cite>1</cite> artırıyoruz. Böylece programın sonunda <cite>sayaç</cite> değişkeni
+ilgilendiğimiz metot sayısını göstermiş oluyor.</p>
+<p>Eğer her metodun soluna, sıra numarasını da eklemek isterseniz elbette şöyle bir
+kod da yazabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sayaç</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="s2">&quot;_&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+        <span class="n">sayaç</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">sayaç</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Toplam </span><span class="si">{}</span><span class="s2"> adet metot ile ilgileniyoruz.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sayaç</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Bu noktada bir parantez açalım. Yukarıdaki yöntemi kullanarak metotları
+numaralandırabilirsiniz. Ama aslında Python bize numaralandırma işlemleri için
+özel bir fonksiyon sunar. Şimdi isterseniz bu özel fonksiyonu inceleyelim.</p>
+</section>
+<section id="enumerate">
+<h3>enumerate()</h3>
+<p>Eğer yazdığınız bir programda numaralandırmaya ilişkin işlemler yapmanız
+gerekiyorsa Python’ın size sunduğu çok özel bir fonksiyondan
+yararlanabilirsiniz. Bu fonksiyonun adı <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code>.</p>
+<p>Gelelim bu fonksiyonun nasıl kullanılacağına… Önce şöyle bir deneme yapalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">enumerate</span><span class="p">(</span><span class="s2">&quot;istihza&quot;</span><span class="p">)</span>
+
+<span class="go">&lt;enumerate object at 0x00E3BC88&gt;</span>
+</pre></div>
+</div>
+<p>Tıpkı <code class="docutils literal notranslate"><span class="pre">reversed()</span></code> fonksiyonunun bir ‘reversed’ nesnesi vermesi gibi, bu
+fonksiyonun da bize yalnızca bir ‘enumerate’ nesnesi verdiğini görüyorsunuz.</p>
+<p><code class="docutils literal notranslate"><span class="pre">reversed()</span></code> fonksiyonunu kullanabilmek için şöyle bir kod yazmıştık:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="nb">reversed</span><span class="p">(</span><span class="s2">&quot;istihza&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> için de benzer bir şeyi deneyebiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="nb">enumerate</span><span class="p">(</span><span class="s2">&quot;istihza&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Burada şu çıktıyı aldık:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">)</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">)</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;t&#39;</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">)</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">)</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">)</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>Enumerate</em> kelimesi İngilizcede ‘numaralamak, numaralandırmak’ gibi anlamlara
+gelir. Dolayısıyla <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> fonksiyonu, kendisine parametre olarak
+verilen değer hakkında bize iki farklı bilgi verir: Bir öğe ve bu öğeye ait bir
+sıra numarası. Yukarıdaki çıktıda gördüğünüz şey de işte her bir öğenin kendisi
+ve o öğeye ait bir sıra numarasıdır.</p>
+<p>Yukarıdaki çıktıyı daha iyi anlayabilmek için bir <code class="docutils literal notranslate"><span class="pre">for</span></code> döngüsü kullanmak daha
+açıklayıcı olabilir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="s2">&quot;istihza&quot;</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">(0, &#39;i&#39;)</span>
+<span class="go">(1, &#39;s&#39;)</span>
+<span class="go">(2, &#39;t&#39;)</span>
+<span class="go">(3, &#39;i&#39;)</span>
+<span class="go">(4, &#39;h&#39;)</span>
+<span class="go">(5, &#39;z&#39;)</span>
+<span class="go">(6, &#39;a&#39;)</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, gerçekten de bu fonksiyon bize bir öğe (mesela ‘i’ harfi) ve bu
+öğeye ait bir sıra numarası (mesela <cite>0</cite>) veriyor.</p>
+<p>Hatırlarsanız, <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> fonksiyonunu öğrenmeden önce, <code class="docutils literal notranslate"><span class="pre">dir(&quot;&quot;)</span></code>
+komutundan elde ettiğimiz çıktıları şu şekilde numaralandırabileceğimizi
+söylemiştik:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sayaç</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="s2">&quot;_&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+        <span class="n">sayaç</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">sayaç</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Ama artık <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> fonksiyonunu öğrendiğimize göre, aynı işi çok daha
+verimli bir şekilde gerçekleştirebiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">sıra</span><span class="p">,</span> <span class="n">metot</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">sıra</span><span class="p">,</span> <span class="n">metot</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> metodunun verdiği her bir çıktının iki öğeli olduğunu biliyoruz
+(öğenin kendisi ve o öğenin sıra numarası). Yukarıdaki kodlar yardımıyla, bu
+öğelerin her birini ayrı bir değişkene (<cite>sıra</cite> ve <cite>metot</cite>) atamış oluyoruz.
+Böylece bu çıktıyı manipüle etmek bizim için daha kolay oluyor. Mesela bu
+özelliği kullanarak metot ve sıra numarasının yerlerini değiştirebiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">sıra</span><span class="p">,</span> <span class="n">metot</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">metot</span><span class="p">,</span> <span class="n">sıra</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">__add__ 0</span>
+<span class="go">__class__ 1</span>
+<span class="go">__contains__ 2</span>
+<span class="go">__delattr__ 3</span>
+<span class="go">__doc__ 4</span>
+<span class="go">__eq__ 5</span>
+<span class="go">__format__ 6</span>
+<span class="go">__ge__ 7</span>
+
+<span class="go">(...)</span>
+</pre></div>
+</div>
+<p>Pratik olması açısından şöyle bir örnek daha verelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">sıra</span><span class="p">,</span> <span class="n">metot</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">sıra</span><span class="p">,</span> <span class="n">metot</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">metot</span><span class="p">))</span>
+<span class="gp">...</span>
+<span class="go">0 __add__ 7</span>
+<span class="go">1 __class__ 9</span>
+<span class="go">2 __contains__ 12</span>
+<span class="go">3 __delattr__ 11</span>
+<span class="go">4 __doc__ 7</span>
+<span class="go">5 __eq__ 6</span>
+
+<span class="go">(...)</span>
+</pre></div>
+</div>
+<p>Burada, <code class="docutils literal notranslate"><span class="pre">dir(&quot;&quot;)</span></code> ile elde ettiğimiz metotların sırasını (<cite>sıra</cite>), bu
+metotların adlarını (<cite>metot</cite>) ve her bir metodun kaç karakterden oluştuğunu
+(<code class="docutils literal notranslate"><span class="pre">len(metot)</span></code>) gösteren bir çıktı elde ettik.</p>
+<p>Bu arada, gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> fonksiyonu numaralandırmaya <cite>0</cite>’dan
+başlıyor. Elbette eğer isterseniz bu fonksiyonun numaralandırmaya kaçtan
+başlayacağını kendiniz de belirleyebilirsiniz. Dikkatlice bakın:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">sıra</span><span class="p">,</span> <span class="n">harf</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="s2">&quot;istihza&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">sıra</span><span class="p">,</span> <span class="n">harf</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">1 i</span>
+<span class="go">2 s</span>
+<span class="go">3 t</span>
+<span class="go">4 i</span>
+<span class="go">5 h</span>
+<span class="go">6 z</span>
+<span class="go">7 a</span>
+</pre></div>
+</div>
+<p>Burada ‘istihza’ kelimesi içindeki harfleri numaralandırdık. Bunu yaparken de
+numaralandırmaya <cite>1</cite>’den başladık. Bunun için <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> fonksiyonuna
+ikinci bir parametre verdiğimize dikkat edin.</p>
+<p><code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> fonksiyonunu da incelediğimize göre önemli bir başka
+fonksiyondan daha söz edebiliriz.</p>
+</section>
+<section id="help">
+<h3>help()</h3>
+<p>Python’la ilgili herhangi bir konuda yardıma ihtiyacınız olduğunda, internetten
+araştırma yaparak pek çok ayrıntılı belgeye ulaşabilirsiniz. Ama eğer herhangi
+bir nesne hakkında hızlı bir şekilde ve İngilizce olarak yardım almak isterseniz
+<code class="docutils literal notranslate"><span class="pre">help()</span></code> adlı özel bir fonksiyondan yararlanabilirsiniz.</p>
+<p>Bu fonksiyonu iki farklı şekilde kullanıyoruz. Birinci yöntemde, etkileşimli
+kabuğa <code class="docutils literal notranslate"><span class="pre">help()</span></code> yazıp <cite>Enter</cite> düğmesine basıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">help</span><span class="p">()</span>
+
+<span class="go">Welcome to Python 3.3!  This is the interactive help utility.</span>
+
+<span class="go">If this is your first time using Python, you should definitely check out</span>
+<span class="go">the tutorial on the Internet at http://docs.python.org/3.3/tutorial/.</span>
+
+<span class="go">Enter the name of any module, keyword, or topic to get help on writing</span>
+<span class="go">Python programs and using Python modules.  To quit this help utility and</span>
+<span class="go">return to the interpreter, just type &quot;quit&quot;.</span>
+
+<span class="go">To get a list of available modules, keywords, or topics, type &quot;modules&quot;,</span>
+<span class="go">&quot;keywords&quot;, or &quot;topics&quot;.  Each module also comes with a one-line summary</span>
+<span class="go">of what it does; to list the modules whose summaries contain a given word</span>
+<span class="go">such as &quot;spam&quot;, type &quot;modules spam&quot;.</span>
+
+<span class="go">help&gt;</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, Python bu komutu verdiğimizde özel bir yardım ekranı açıyor
+bize. Bu ekranda <cite>&gt;&gt;&gt;</cite> yerine <cite>help&gt;</cite> ifadesinin olduğuna dikkat edin. Mesela
+<code class="docutils literal notranslate"><span class="pre">dir()</span></code> fonksiyonu hakkında bilgi almak için <cite>help&gt;</cite> ifadesinden hemen sonra,
+hiç boşluk bırakmadan, şu komutu verebiliriz:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>help&gt; dir
+</pre></div>
+</div>
+<p>Bu komut bize şu çıktıyı veriyor:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Help on built-in function dir in module builtins:
+
+dir(...)
+    dir([object]) -&gt; list of strings
+
+    If called without an argument, return the names in the current scope.
+    Else, return an alphabetized list of names comprising (some of) the attributes
+    of the given object, and of attributes reachable from it.
+    If the object supplies a method named __dir__, it will be used; otherwise
+    the default dir() logic is used and returns:
+      for a module object: the module&#39;s attributes.
+      for a class object:  its attributes, and recursively the attributes of its bases.
+      for any other object: its attributes, its class&#39;s attributes, and
+      recursively the attributes of its class&#39;s base classes.
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">dir()</span></code> fonksiyonunun ne işe yaradığı ve nasıl kullanıldığı
+konusunda ayrıntılı bir bilgi ediniyoruz. Bu arada, hakkında bilgi almak
+istediğimiz fonksiyonu parantezsiz yazdığımıza dikkat edin.</p>
+<p>Örnek olması açısından mesela bir de <code class="docutils literal notranslate"><span class="pre">len()</span></code> fonksiyonu hakkında bilgi
+edinelim:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>help&gt; len
+
+Help on built-in function len in module builtins:
+
+len(...)
+    len(object) -&gt; integer
+
+    Return the number of items of a sequence or mapping.
+</pre></div>
+</div>
+<p>‘help’ ekranından çıkmak için <cite>Enter</cite> düğmesine basabilir veya <code class="docutils literal notranslate"><span class="pre">quit</span></code> komutu
+verebilirsiniz.</p>
+<p>En başta da dediğimiz gibi Python’da etkileşimli kabuk üzerinde İngilizce yardım
+almak için iki farklı yöntem kullanabiliyoruz. Bu yöntemlerden ilkini yukarıda
+anlattık. İkincisi ise doğrudan etkileşimli kabukta şu komutu kullanmaktır:
+(Mesela <code class="docutils literal notranslate"><span class="pre">dir()</span></code> fonksiyonu hakkında yardım alalım…)</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; help(dir)
+
+Help on built-in function dir in module builtins:
+
+dir(...)
+    dir([object]) -&gt; list of strings
+
+    If called without an argument, return the names in the current scope.
+    Else, return an alphabetized list of names comprising (some of) the attributes
+    of the given object, and of attributes reachable from it.
+    If the object supplies a method named __dir__, it will be used; otherwise
+    the default dir() logic is used and returns:
+      for a module object: the module&#39;s attributes.
+      for a class object:  its attributes, and recursively the attributes of its bases.
+      for any other object: its attributes, its class&#39;s attributes, and
+      recursively the attributes of its class&#39;s base classes.
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, ‘help’ ekranını açmadan, doğrudan etkileşimli kabuk üzerinden
+de <code class="docutils literal notranslate"><span class="pre">help()</span></code> fonksiyonunu herhangi bir fonksiyon gibi kullanıp, hakkında yardım
+almak istediğimiz nesneyi <code class="docutils literal notranslate"><span class="pre">help()</span></code> fonksiyonunun parantezleri içine parametre
+olarak yazabiliyoruz.</p>
+<p>Böylece <code class="docutils literal notranslate"><span class="pre">dir()</span></code>, <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> ve <code class="docutils literal notranslate"><span class="pre">help()</span></code> adlı üç önemli fonksiyonu da
+geride bırakmış olduk. Dilerseniz şimdi karakter dizilerine dair birkaç ufak not
+düşelim.</p>
+</section>
+</section>
+<section id="notlar">
+<h2>Notlar</h2>
+<p>Hatırlarsanız döngüleri anlatırken şöyle bir örnek vermiştik:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">tr_harfler</span> <span class="o">=</span> <span class="s2">&quot;şçöğüİı&quot;</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">while</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">tr_harfler</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">tr_harfler</span><span class="p">[</span><span class="n">a</span><span class="p">],</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">a</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Bu kodların <code class="docutils literal notranslate"><span class="pre">for</span></code> döngüsü ile yazılabilecek olan şu kodlara alternatif
+olduğundan söz etmiştik:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">tr_harfler</span> <span class="o">=</span> <span class="s2">&quot;şçöğüİı&quot;</span>
+
+<span class="k">for</span> <span class="n">tr_harf</span> <span class="ow">in</span> <span class="n">tr_harfler</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">tr_harf</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Yukarıdaki <code class="docutils literal notranslate"><span class="pre">while</span></code> örneğini verirken, henüz karakter dizilerinin öğelerine tek
+tek nasıl erişebileceğimizi öğrenmemiştik. Ama artık bu konuyu da öğrendiğimiz
+için yukarıdaki <code class="docutils literal notranslate"><span class="pre">while</span></code> döngüsünü rahatlıkla anlayabiliyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">tr_harfler</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">tr_harfler</span><span class="p">[</span><span class="n">a</span><span class="p">],</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">a</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Burada yaptığımız şey şu: <cite>a</cite> değişkeninin değeri <cite>tr_harfler</cite> değişkeninin
+uzunluğundan (<code class="docutils literal notranslate"><span class="pre">len(tr_harfler)</span></code>) küçük olduğu müddetçe <cite>a</cite> değişkeninin
+değerini <cite>1</cite> sayı artırıp yine <cite>a</cite> değişkenine gönderiyoruz (<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">+=</span> <span class="pre">1</span></code>).</p>
+<p><code class="docutils literal notranslate"><span class="pre">while</span></code> döngüsünün her dönüşünde de, <cite>a</cite> değişkeninin yeni değeri yardımıyla
+<cite>tr_harfler</cite> adlı karakter dizisinin öğelerine tek tek ve sırayla erişiyoruz
+(<code class="docutils literal notranslate"><span class="pre">print(tr_hafler[a])</span></code>).</p>
+<p>Yine hatırlarsanız, önceki derslerimizde <cite>sys</cite> adlı bir modül içindeki <cite>version</cite>
+adlı bir değişkenden söz etmiştik. Bu değişken bize kullandığımız Python’ın
+sürümünü bir karakter dizisi olarak veriyordu:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">version</span>
+</pre></div>
+</div>
+<p>Buradan şu çıktıyı alıyoruz:</p>
+<pre class="literal-block">'3.7.0 (default, 06.10.2021, 12:24:55)
+[GCC 4.4.7 20120313 (Red Hat 4.4.7-3)] on linux'</pre>
+<p>Bu çıktıda, kullandığımız Python sürümünün dışında başka birtakım bilgiler de
+var. İşte biz eğer istersek, bu bölümde öğrendiğimiz bilgileri kullanarak bu
+karakter dizisinin istediğimiz kısmını, mesela sadece sürüm bilgisini karakter
+dizisinin içinden dilimleyip alabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+<pre class="literal-block">3.7.0</pre>
+<p>Elbette, yukarıdaki karakter dizisini elde etmek için, kullanması ve yönetmesi
+daha kolay bir araç olan <cite>version_info</cite> değişkeninden de yararlanabilirdiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">.</span><span class="si">{}</span><span class="s1">.</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="o">.</span><span class="n">major</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="o">.</span><span class="n">minor</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="o">.</span><span class="n">micro</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre class="literal-block">3.7.0</pre>
+<p>Ancak burada şöyle bir sorun olduğunu biliyorsunuz: Python’ın 2.7 öncesi
+sürümlerinde <cite>version_info</cite>’nun <cite>major</cite>, <cite>minor</cite> ve <cite>micro</cite> gibi nitelikleri
+yok. Dolayısıyla 2.7 öncesi sürümlerde <cite>version_info</cite>’yu kullanırken hata
+almamak için <code class="docutils literal notranslate"><span class="pre">try...</span> <span class="pre">except</span></code> bloklarından yararlanabileceğimizi görmüştük.
+Ancak <cite>version_info</cite>’yu bütün Python sürümlerinde güvenli bir şekilde
+kullanmanın başka bir yöntemi daha var. Dikkatlice bakın:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">major</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">minor</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">micro</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">major</span><span class="p">,</span> <span class="n">minor</span><span class="p">,</span> <span class="n">micro</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre class="literal-block">3.7.0</pre>
+<p>Bu yöntem bütün Python sürümlerinde çalışır. Dolayısıyla, farklı Python
+sürümlerinde çalışmasını tasarladığınız programlarınızda sürüm kontrolünü
+<cite>sys.version_info</cite>’nun <cite>major</cite>, <cite>minor</cite> veya <cite>micro</cite> nitelikleri ile yapmak
+yerine yukarıdaki yöntemle yapabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kullandığınız Python sürümü eski!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, karakter dizisi dilimleme işlemleri pek çok farklı kullanım
+alanına sahip. Programlama maceranız boyunca karakter dizilerinin bu
+özelliğinden bol bol yararlanacağınızdan hiç kuşkunuz olmasın.</p>
+</section>
+</section>
+<p class="rubric">Footnotes</p>
+<dl class="footnote brackets">
+<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id2">#1</a></span></dt>
+<dd><p>https://pic.twitter.com/u1IE6Mma</p>
+</dd>
+</dl>
+
+
+
+<div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
+<div class='extrarelbar'> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.xhtml" title="Genel Dizin"
+             accesskey="I">dizin</a></li>
+        <li class="right" >
+          <a href="karakter_dizilerinin_metotlari1.xhtml" title="Karakter Dizilerinin Metotları"
+             accesskey="N">sonraki</a> |</li>
+        <li class="right" >
+          <a href="hata_yakalama.xhtml" title="Hata Yakalama"
+             accesskey="P">önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+        <li class="nav-item nav-item-this"><a href="">Karakter Dizileri</a></li> 
+      </ul>
+    </div> </div>
+
+<div class='addcomment'>Yorumlar</div>
+
+<div class='how-to-use'>
+<h3>Önemli Not</h3>
+Eğer yazdığınız yorum içinde kod kullanacaksanız kodlarınızı
+<span class='tag'>&lt;pre&gt;&lt;code&gt;</span> etiketleri içine alın. Örneğin:
+
+<pre>
+    <span class='tag'>&lt;pre&gt;&lt;code class="python"&gt;</span>
+    <span class='keyword'>print</span>(<span class='string'>"Merhaba Dünya!"</span>)
+    <span class='tag'>&lt;/code&gt;&lt;/pre&gt;</span>
+</pre>
+
+Sorularınızı yorumlarda dile getirmek yerine <a href="https://forum.yazbel.com/">Yazbel Forumu</a>nda sorarsanız çok daha hızlı cevap alabilirsiniz.
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'istihza';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+<noscript>
+<br>
+<a href="https://disqus.com/?ref_noscript" rel="nofollow">Disqus tarafından sağlanan yorumları</a> görmek için lütfen JavasScript'i etkinleştirin.
+<br>
+Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4eca48eb2d83faf9" async="async"></script>
+
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.xhtml" title="Genel Dizin"
+             >dizin</a></li>
+        <li class="right" >
+          <a href="karakter_dizilerinin_metotlari1.xhtml" title="Karakter Dizilerinin Metotları"
+             >sonraki</a> |</li>
+        <li class="right" >
+          <a href="hata_yakalama.xhtml" title="Hata Yakalama"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+        <li class="nav-item nav-item-this"><a href="">Karakter Dizileri</a></li> 
+      </ul>
+    </div> 
+
+<div class="footer">
+		&copy; Copyright 2007-2021, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 06.10.2021.
+	<a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0 kullanılarak oluşturuldu.
+<br>
+<br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
+alt="Creative Commons License" style="border-width:0"
+src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a>
+<br>
+<br>
+</div>
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=10396326;
+var sc_invisible=1;
+var sc_security="fb5cd679";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="hit counter"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="http://c.statcounter.com/10396326/0/fb5cd679/1/"
+alt="hit counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+  </body>
+</html>

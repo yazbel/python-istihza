@@ -1,0 +1,315 @@
+
+ <!DOCTYPE html>
+ <html lang="tr">
+
+
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta content="Bu bölümde tornado ile web uygulaması geliştirmeye başlıyoruz." name="description" />
+<meta content="python, tornado, Kurulum, Proje Oluşturma, View, Template" name="keywords" />
+
+    <title>Tornado(devamı) &#8212; Yazbel Python Belgeleri</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pyramid.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/translations.js"></script>
+    <link rel="canonical" href="python-istihza.yazbel.com/Ucuncu_taraf_moduller/tornado_modülü/tornado_2.html" />
+    <link rel="index" title="Dizin" href="../../genindex.html" />
+    <link rel="search" title="Ara" href="../../search.html" />
+    <link rel="next" title="Katkıda Bulunanlar" href="../../katkida_bulunanlar.html" />
+    <link rel="prev" title="Tornado" href="tornado_1.html" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+<div class='header'><a href='https://yazbel.com'><img src="../../_static/logo.png"></a></div>
+
+<ul class='navbar'>
+    <li class="forum"><a href="http://forum.yazbel.com">forum</a></li>
+    <li><a href="PythonProgramlamaDili.pdf">pdf</a></li>
+    <li><a href="PythonProgramlamaDili.epub">epub</a></li>
+    <li><a href="PythonProgramlamaDili.html">html</a></li>
+</ul>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Genel Dizin"
+             accesskey="I">dizin</a></li>
+        <li class="right" >
+          <a href="../../katkida_bulunanlar.html" title="Katkıda Bulunanlar"
+             accesskey="N">sonraki</a> |</li>
+        <li class="right" >
+          <a href="tornado_1.html" title="Tornado"
+             accesskey="P">önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="../index.html" >Üçüncü Taraf Modüller</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">Tornado paketi</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Tornado(devamı)</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+
+  <section id="tornado-devami">
+<h1>Tornado(devamı)<a class="headerlink" href="#tornado-devami" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<section id="websocket">
+<h2>Websocket<a class="headerlink" href="#websocket" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Bazen amacımız web sayfaları sunmak olmaz. Uygulamamızla sürekli olarak veri
+alışverişinde bulunmak isteriz. Mesela çevrimiçi oyunlarda veya mesajlaşma
+uygulamalarında bu durumla sık karşılaşırız. Ancak <cite>HTTP</cite> protokolü bu iş
+için yetersiz kalır. Çünkü <cite>HTTP</cite> protokolü en basit haliyle şu şekilde çalışır:
+Kullanıcı istek yollar, sunucu isteğe karşılık sayfa yollar, bağlantı kesilir.
+Sürekli olarak bağlantı kurmak istediğimizde yeni bir protokol kullanmalıyız: <cite>WS</cite>.
+<cite>WS</cite> protokolü kullanıcı veya sunucu kapatana kadar bağlantı açık kalır.
+Sunucu veya kullanıcı herhangi bir istek olmadan birbirine veri yollayabilir.</p>
+<p><cite>Websocket</cite>’ler, en basit tabirle <cite>HTTP</cite> yerine <cite>WS</cite> protokolü kullanan
+<cite>view</cite>’lardır. Biz bir <cite>view</cite> tanımlarken sadece <cite>get</cite> metodunu yazmıştık.
+Çünkü bir <cite>view</cite> sadece sayfamızı sunuyordu. Ancak <cite>websocket</cite>’ler sadece
+sayfa sunmuyorlar, aynı zamanda veri de alıyorlar. Bu yüzden 3 tane
+metoda sahipler: <cite>on_open</cite>, <cite>on_message</cite>, <cite>on_close</cite>.</p>
+<p><cite>Websocket</cite> ile bağlantı kurulduğunda <cite>on_open</cite> metodu çağrılıyor.
+<cite>Websocket</cite>’e mesaj geldiğinde <cite>on_message</cite> metodu çağrılıyor.
+<cite>Websocket</cite>’in bağlantısı kapatıldığında <cite>on_close</cite> metodu çağrılıyor.</p>
+<p>Biz <cite>view</cite> ile kullanıcıya veri yollarken <cite>write</cite> metodundan faydalanmıştık.
+Fakat <cite>websocket</cite>’ler bu iş için <cite>write_message</cite> metodunu kullanıyor.</p>
+<p>Şimdi gelen mesajları geri gönderen bir <cite>websocket</cite> yazalım:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tornado.web</span>
+<span class="kn">import</span> <span class="nn">tornado.ioloop</span>
+
+<span class="kn">import</span> <span class="nn">tornado.websocket</span>
+
+<span class="k">class</span> <span class="nc">Geri</span><span class="p">(</span><span class="n">tornado</span><span class="o">.</span><span class="n">websocket</span><span class="o">.</span><span class="n">WebSocketHandler</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">on_open</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bağlantı kuruldu&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">on_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mesaj</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">mesaj</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write_message</span><span class="p">(</span><span class="n">mesaj</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">on_close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bağlantı kapandı&quot;</span><span class="p">)</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">Application</span><span class="p">([</span>
+    <span class="p">(</span><span class="s2">&quot;/ws/geri&quot;</span><span class="p">,</span> <span class="n">Geri</span><span class="p">)</span>
+<span class="p">])</span>
+<span class="n">app</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">8888</span><span class="p">)</span>
+
+<span class="n">tornado</span><span class="o">.</span><span class="n">ioloop</span><span class="o">.</span><span class="n">IOLoop</span><span class="o">.</span><span class="n">current</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>İlk işimiz yeni bir kütüphane eklemek oldu.Bu kütüphane bizim <cite>websocket</cite>
+yazmamız için gerekli sınıfı bulunduruyor.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tornado.websocket</span>
+</pre></div>
+</div>
+<p>Yeni bir sınıf oluşturduk:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Geri</span><span class="p">(</span><span class="n">tornado</span><span class="o">.</span><span class="n">websocket</span><span class="o">.</span><span class="n">WebSocketHandler</span><span class="p">):</span>
+</pre></div>
+</div>
+<p>Bu sınıf bizim <cite>websocket</cite>’imiz. Daha önce <cite>view</cite> yazarken
+<cite>tornado.web.RequestHandler</cite> sınıfından faydalanmıştık. Şimdi ise
+<cite>tornado.websocket.WebSocketHandler</cite> sınıfından faydalandık.</p>
+<p><cite>Websocket</cite> ile bağlantı kurulduğunda bize <cite>Bağlantı kuruldu</cite> yazması için
+<cite>on_open</cite> metodunu düzenledik:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">on_open</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bağlantı kuruldu&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><cite>Websocket</cite>’e mesaj geldiğinde onu yazdırıp geri yollaması için <cite>on_message</cite>
+metodunu düzenledik. Burada metodumuzun bir parametresi daha olduğuna dikkat
+edelim:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">on_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mesaj</span><span class="p">):</span>
+    <span class="c1"># Mesajı yazdır</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">mesaj</span><span class="p">)</span>
+    <span class="c1"># Mesajı geri yolla</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">write_message</span><span class="p">(</span><span class="n">mesaj</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><cite>Websocket</cite> kapandığında ekrana yazdırması için <cite>on_close</cite> metodunu düzenledik:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">on_close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bağlantı kapandı&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Gerekli yönlendirmeyi yapması için <cite>Application</cite> nesnemizi düzenledik:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">app</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">Application</span><span class="p">([</span>
+    <span class="p">(</span><span class="s2">&quot;/ws/geri/&quot;</span><span class="p">,</span> <span class="n">Geri</span><span class="p">)</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+<p>Burada 2 önemli nokta var. Biz hem <cite>websocket</cite>’leri hem <cite>view</cite>’ları aynı
+<cite>Application</cite> nesnesine yazıyoruz. Burada ayrım yapmak için genelde
+<cite>websocket</cite>’lerin isteklerini “<cite>/ws/</cite>” ile başlatmaya önem veriyoruz. Diğer
+sıkıntı ise gelen isteklerin protokollerine göre ayrılmadan işlenmesi. Yani
+kullanıcı “<cite>HTTP</cite> ile mi istekte bulundu, <cite>WS</cite> ile mi istekte bulundu?” diye
+sorulmuyor. Bu ayrım direkt olarak bizim o isteğe karşı ne yazdımız ile ilgili.</p>
+<p><cite>Websocket</cite>’lere tarayıcımızdaki adres çubuğuna yazarak ulaşamayız.
+Tarayıcımızdaki adres çubuğu sadece <cite>HTTP</cite> protokolünü kullanır.
+<cite>Websocket</cite>’lere ulaşmak için kütüphaneleri kullanıyoruz. Ben size javascript
+ile nasıl bağlantı kurabileceğinizi göstereceğim. Bu noktada basit seviyede
+javascript bilgisine sahip olmanız gerekiyor.</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Burada javascript için yazdığımız kodları tarayıcınızın konsolunda
+yazabilirsiniz. (Tarayıcınızda F12 tuşuna basın ve yukarıdaki
+sekmelerden “console” yazanı seçin.)</p>
+</div>
+<p><cite>__init__.py</cite> dosyamızı çalıştıralım ve javascript kodlarımızı yazmaya
+başlayalım.</p>
+<p><cite>ws</cite> isminde bir <cite>Websocket</cite> nesnesi oluşturacağız. Javascript’te nesne
+oluşturmak için <cite>var</cite> deyimi kullanılıyor ve satır sonuna <cite>;</cite> koyuluyor.
+Bir <cite>Websocket</cite> nesnesi oluştururken hangi siteye bağlanacağımızı belirtiyoruz:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">ws</span> <span class="o">=</span> <span class="n">new</span> <span class="n">WebSocket</span><span class="p">(</span><span class="s2">&quot;ws://localhost/ws/geri/&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Bu kodda <cite>HTTP</cite> yerine <cite>WS</cite> protokolünü kullandığıza ve nasıl kullanıldığına
+dikkat edelim: Normalde <cite>http</cite> yazdığımız yere <cite>ws</cite> yazdık.</p>
+<p>Şimdi mesaj geldiğinde çalışacak olan <cite>onmessage</cite> fonksiyonumuzu yazalım.
+Bizim Python’da yaptığımız gibi nesnenin devamına <cite>.</cite> koyup <cite>on_message</cite>
+ekleyerek tanımlayacağız. Javascript’te fonksiyon tanımlarken <cite>function</cite> deyimi
+kullanılıyor. Parametreler <cite>function</cite> deyiminden hemen sonra parantez içinde
+tanımlanıyor. Fonksiyon ile ilgili kodlar küme parantezleri içinde yine <cite>;</cite>
+kullanarak yazılıyor.</p>
+<p>Yazdığımız fonksiyon gelen mesajları konsolumuzda yazdırsın. Konsolda yazdırmak
+istediğimiz yazıları <cite>console.log</cite> fonksiyonuna parametre olarak veriyoruz.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ws</span><span class="o">.</span><span class="n">onmessage</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">mesaj</span><span class="p">){</span><span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">mesaj</span><span class="p">)}</span>
+</pre></div>
+</div>
+<p>Tornado’da mesaj yollamak için <cite>write_message</cite> metodunu kullanmıştık.
+Javascript’te ise <cite>send</cite> metodunu kullanacağız.</p>
+</section>
+</section>
+
+
+
+<div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
+<div class='extrarelbar'> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Genel Dizin"
+             >dizin</a></li>
+        <li class="right" >
+          <a href="../../katkida_bulunanlar.html" title="Katkıda Bulunanlar"
+             >sonraki</a> |</li>
+        <li class="right" >
+          <a href="tornado_1.html" title="Tornado"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="../index.html" >Üçüncü Taraf Modüller</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >Tornado paketi</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Tornado(devamı)</a></li> 
+      </ul>
+    </div> </div>
+
+<div class='addcomment'>Yorumlar</div>
+
+<div class='how-to-use'>
+<h3>Önemli Not</h3>
+Eğer yazdığınız yorum içinde kod kullanacaksanız kodlarınızı
+<span class='tag'>&lt;pre&gt;&lt;code&gt;</span> etiketleri içine alın. Örneğin:
+
+<pre>
+    <span class='tag'>&lt;pre&gt;&lt;code class="python"&gt;</span>
+    <span class='keyword'>print</span>(<span class='string'>"Merhaba Dünya!"</span>)
+    <span class='tag'>&lt;/code&gt;&lt;/pre&gt;</span>
+</pre>
+
+Sorularınızı yorumlarda dile getirmek yerine <a href="https://forum.yazbel.com/">Yazbel Forumu</a>nda sorarsanız çok daha hızlı cevap alabilirsiniz.
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'istihza';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+<noscript>
+<br>
+<a href="https://disqus.com/?ref_noscript" rel="nofollow">Disqus tarafından sağlanan yorumları</a> görmek için lütfen JavasScript'i etkinleştirin.
+<br>
+Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4eca48eb2d83faf9" async="async"></script>
+
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Genel Dizin"
+             >dizin</a></li>
+        <li class="right" >
+          <a href="../../katkida_bulunanlar.html" title="Katkıda Bulunanlar"
+             >sonraki</a> |</li>
+        <li class="right" >
+          <a href="tornado_1.html" title="Tornado"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="../index.html" >Üçüncü Taraf Modüller</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >Tornado paketi</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Tornado(devamı)</a></li> 
+      </ul>
+    </div> 
+
+<div class="footer">
+		&copy; Copyright 2007-2021, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 06.10.2021.
+	<a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0 kullanılarak oluşturuldu.
+<br>
+<br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
+alt="Creative Commons License" style="border-width:0"
+src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a>
+<br>
+<br>
+</div>
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=10396326;
+var sc_invisible=1;
+var sc_security="fb5cd679";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="hit counter"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="http://c.statcounter.com/10396326/0/fb5cd679/1/"
+alt="hit counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+  </body>
+</html>

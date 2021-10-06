@@ -1,0 +1,1995 @@
+
+ <!DOCTYPE html>
+ <html lang="tr">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta content="Bu bölümde modüller konusunu inceleyeceğiz." name="description" />
+<meta content="python, modül, import" name="keywords" />
+
+    <title>Modüller</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/epub.css" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+<div class='header'><a href='https://yazbel.com'><img src="_static/logo.png"></a></div>
+
+<ul class='navbar'>
+    <li class="forum"><a href="http://forum.yazbel.com">forum</a></li>
+    <li><a href="PythonProgramlamaDili.pdf">pdf</a></li>
+    <li><a href="PythonProgramlamaDili.epub">epub</a></li>
+    <li><a href="PythonProgramlamaDili.html">html</a></li>
+</ul>
+
+
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+
+  <section id="moduller">
+<h1>Modüller</h1>
+<p>Bu bölümde, geçen derste ayrıntılı olarak incelediğimiz ‘Fonksiyonlar’ kadar
+önemli bir konuyu ele alacağız. Bu önemli konunun adı ‘modüller’.</p>
+<p>Biz şimdiye kadar modül konusunu hiç ayrıntılı olarak ele almamış olsak da
+esasında siz modül kavramına büsbütün yabancı sayılmazsınız. Zira biz önceki
+derslerimizde zaman zaman modüllerden söz etmiş, hatta yeri geldiğinde bunları
+kodlarımız içinde kullanmaktan da çekinmemiştik.</p>
+<p>Bu konuya gelene kadar, çeşitli bölümlerde şu modüllerden bahsettiğimizi
+hatırlıyorsunuzdur:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>sys</p></li>
+<li><p>os</p></li>
+<li><p>keyword</p></li>
+<li><p>random</p></li>
+<li><p>unicodedata</p></li>
+<li><p>locale</p></li>
+</ul>
+</div></blockquote>
+<p>İşte şimdi, daha önce farklı bölümlerde şöyle bir temas edip geçtiğimiz modüller
+konusunu bu bölümde derinlemesine incelemeye çalışacağız.</p>
+<section id="modul-nedir">
+<h2>Modül Nedir?</h2>
+<p>Dediğimiz gibi, bu bölümde Python’daki en önemli konulardan biri olan
+modüllerden söz edeceğiz. Ancak modülleri kullanabilmek için elbette öncelikle
+‘modül’ denen şeyin ne olduğunu iyice bir anlamamız gerekiyor. Peki, nedir bu
+modül denen şey?</p>
+<p>Bu soruyu, şimdiye kadar gördüğümüz modüllere bakarak cevaplayacak olursak,
+modüllerin, bazı işlevleri kolaylıkla yerine getirmemizi sağlayan birtakım
+fonksiyonları ve nitelikleri içinde barındıran araçlar olduğunu söyleyebiliriz.</p>
+<p>Mesela ‘Kümeler ve Dondurulmuş Kümeler’ adlı bölümde <code class="docutils literal notranslate"><span class="pre">random</span></code> adlı bir modüle
+değindiğimizi hatırlıyor olmalısınız. Orada bu modülle ilgili şöyle bir örnek
+vermiştik:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>Bu örnekte, <code class="docutils literal notranslate"><span class="pre">random</span></code> adlı modülün içindeki <code class="docutils literal notranslate"><span class="pre">randint()</span></code> adlı faydalı bir
+fonksiyondan yararlanarak 0 ile 10.000 sayıları arasında 1000 adet rastgele sayı
+içeren bir liste oluşturmuştuk. Dolayısıyla, yukarıdaki tanımda da belirttiğimiz
+gibi, bir modül olan <code class="docutils literal notranslate"><span class="pre">random</span></code>, örnekte bahsettiğimiz işlevi kolaylıkla yerine
+getirmemizi sağlayan bir fonksiyon barındırıyor. Biz de bu fonksiyonu kullanarak
+amacımızı rahatlıkla yerine getirebiliyoruz.</p>
+<p><code class="docutils literal notranslate"><span class="pre">random</span></code> modülünün dışında, önceki derslerimizde şöyle bir değinip geçtiğimiz,
+<code class="docutils literal notranslate"><span class="pre">sys</span></code>, <code class="docutils literal notranslate"><span class="pre">os</span></code> ve <code class="docutils literal notranslate"><span class="pre">locale</span></code> gibi modüllerin de çeşitli görevleri kolayca
+yerine getirmemizi sağlayan birtakım araçlar barındırdığını görmüştük.</p>
+<p>İşin doğrusu, modül denen şey Python programlama dilinin bel kemiğidir. Eğer
+modüller olmasaydı, Python programlama dili hem çok kullanışsız bir dil olurdu,
+hem de modüller sayesinde çok kolay bir şekilde üstesinden gelebildiğimiz
+zorluklar için her defasında kendimiz yeniden bir çözüm icat etmek zorunda
+kalırdık.</p>
+<p>Belki bu iddialı laf size şu anda pek anlamlı gelmemiş olabilir. Şu ana kadar
+modüllerle ilgili öğrendikleriniz, henüz zihninizde bu lafın iddiasını teyit
+etmiyor olabilir. Ama modüllerin neden bu kadar önemli olduğunu birazdan çok
+daha net bir şekilde anlayacaksınız. Şimdilik okumaya devam edin.</p>
+<p>Hatırlarsanız bir önceki bölümde Python’daki fonksiyonlardan bahsetmiştik. Yine
+hatırlarsanız o bölümde pek çok örnek fonksiyon da tanımlamıştık. Mesela
+<code class="docutils literal notranslate"><span class="pre">kayıt_oluştur()</span></code> adlı şöyle bir fonksiyon tanımladığımızı hatırlıyor
+olmalısınız:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">kayıt_oluştur</span><span class="p">(</span><span class="n">isim</span><span class="p">,</span> <span class="n">soyisim</span><span class="p">,</span> <span class="n">işsis</span><span class="p">,</span> <span class="n">şehir</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">30</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;isim           : &quot;</span><span class="p">,</span> <span class="n">isim</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;soyisim        : &quot;</span><span class="p">,</span> <span class="n">soyisim</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;işletim sistemi: &quot;</span><span class="p">,</span> <span class="n">işsis</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;şehir          : &quot;</span><span class="p">,</span> <span class="n">şehir</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu fonksiyonu bir kez tanımladıktan sonra, bu fonksiyonu aynı program içinde
+istediğimiz kadar kullanabiliyoruz. Yani <code class="docutils literal notranslate"><span class="pre">kayıt_oluştur</span></code> adlı bir fonksiyon
+tanımlamış olmamız sayesinde, bu fonksiyonun gövdesinde belirttiğimiz işlemleri
+her defasında tekrar tekrar yapmak zorunda kalmıyoruz; bütün bu işlemleri tek
+bir ‘kayıt_oluştur’ ismine atamış olduğumuz için, bu fonksiyonun bize sunduğu
+işleve ihtiyaç duyduğumuz her yerde bu fonksiyonu kullanabiliyoruz. Örneğin:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">kayıt_oluştur</span><span class="p">(</span><span class="s1">&#39;Fırat&#39;</span><span class="p">,</span> <span class="s1">&#39;Özgül&#39;</span><span class="p">,</span> <span class="s1">&#39;Debian&#39;</span><span class="p">,</span> <span class="s1">&#39;Arsuz&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Ya da:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">kayıt_oluştur</span><span class="p">(</span><span class="s1">&#39;Zerrin&#39;</span><span class="p">,</span> <span class="s1">&#39;Söz&#39;</span><span class="p">,</span> <span class="s1">&#39;Ubuntu&#39;</span><span class="p">,</span> <span class="s1">&#39;Bolvadin&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Eğer yukarıdaki işlevselliği bir fonksiyon olarak tanımlamış olmasaydık,
+<code class="docutils literal notranslate"><span class="pre">kayıt_oluştur('Fırat',</span> <span class="pre">'Özgül',</span> <span class="pre">'Debian',</span> <span class="pre">'Arsuz')</span></code> kodunun verdiği çıktıyı
+elde etmek için şu kodları yazmak zorunda kalacaktık:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;isim           : &quot;</span><span class="p">,</span> <span class="s2">&quot;Fırat&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;soyisim        : &quot;</span><span class="p">,</span> <span class="s2">&quot;Özgül&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;işletim sistemi: &quot;</span><span class="p">,</span> <span class="s2">&quot;Debian&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;şehir          : &quot;</span><span class="p">,</span> <span class="s2">&quot;Arsuz&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada isim, soyisim, işletim sistemi ve şehir bilgileri değiştiğinde de her
+defasında aynı şeyleri uzun uzadıya tekrar tekrar yazmamız gerekecekti:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;isim           : &quot;</span><span class="p">,</span> <span class="s2">&quot;Zerrin&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;soyisim        : &quot;</span><span class="p">,</span> <span class="s2">&quot;Söz&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;işletim sistemi: &quot;</span><span class="p">,</span> <span class="s2">&quot;Ubuntu&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;şehir          : &quot;</span><span class="p">,</span> <span class="s2">&quot;Bolvadin&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>İşte modüller de buna benzer bir vazife görür. Yani Python’ın fonksiyon sistemi
+nasıl bize bir işlevselliği <strong>aynı dosya içinde</strong> tekrar tekrar kullanma imkanı
+veriyorsa, modül sistemi de bir fonksiyonu <strong>farklı dosyalar ve programlar
+içinde</strong> tekrar tekrar kullanma imkanı verir.</p>
+<p>Dolayısıyla, eğer modül sistemi olmasaydı, biz bir kez yazdığımız (veya başka
+bir Python programcısı tarafından yazılmış) <code class="docutils literal notranslate"><span class="pre">kayıt_oluştur()</span></code> fonksiyonunu
+başka bir programda da kullanmak istediğimizde, bu fonksiyonu alıp her defasında
+yeni programa elle kopyalamak zorunda kalırdık. Ama modül sistemi sayesinde, bir
+program içinde bulunan fonksiyonları (ve diğer nitelikleri) başka Python
+programları içine ‘aktarabiliyoruz’. Böylece bir Python programındaki (veya
+modülündeki) işlevsellikten, başka bir Python programında da yararlanabiliyoruz.
+Dolayısıyla modüller sayesinde, bir kez yazdığımız kodları pek çok farklı
+program içinde kullanma imkanı elde ediyoruz. Bu da bizim;</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Daha az kod yazmamızı,</p></li>
+<li><p>Bir kez yazdığımız kodları tekrar tekrar kullanabilmemizi,</p></li>
+<li><p>Daha düzenli, daha derli toplu bir şekilde çalışabilmemizi</p></li>
+</ul>
+</div></blockquote>
+<p>sağlıyor.</p>
+<p>İşte bu bölümde, modüllerin bütün bu işlevleri nasıl yerine getirdiğini, modül
+denen şeyden nasıl faydalanabileceğimizi ve modüllerin neden bu kadar önemli
+olduğunu öğreneceğiz. Dilerseniz lafı daha fazla dolandırmadan modüller konusuna
+hızlı bir giriş yapalım.</p>
+</section>
+<section id="hazir-moduller">
+<h2>Hazır Modüller</h2>
+<p>Hatırlarsanız, Python’da iki farklı fonksiyon türü olduğundan söz etmiştik:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Kendi tanımladığımız fonksiyonlar</p></li>
+<li><p>Gömülü (‘built-in’) fonksiyonlar</p></li>
+</ol>
+</div></blockquote>
+<p>Aynı şekilde modüller de iki farklı başlık altında incelenebilir:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Kendi tanımladığımız modüller</p></li>
+<li><p>Hazır modüller</p></li>
+</ol>
+</div></blockquote>
+<p>Biz burada öncelikle hazır modülleri ele alacağız. Bu şekilde modül kavramını
+iyice anladıktan sonra da kendi modüllerimizi nasıl yazacağımızı öğreneceğiz.</p>
+<p>Hazır modüller, Python geliştiricilerinin veya bizim dışımızdaki Python
+programcılarının yazıp hizmetimize sunduğu modüllerdir.</p>
+<p>Hazır modüller de kendi içinde ikiye ayrılabilir:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Standart Kütüphane Modülleri</p></li>
+<li><p>Üçüncü Şahıs Modülleri</p></li>
+</ol>
+</div></blockquote>
+<p>Standart Kütüphane Modülleri, doğrudan Python geliştiricileri tarafından yazılıp
+dile kaynaştırılmış modüllerdir. Bu yönüyle bu modüller daha önce öğrendiğimiz
+gömülü fonksiyonlara çok benzer. Tıpkı gömülü fonksiyonlarda olduğu gibi,
+Standart Kütüphane Modülleri de her an emrimize amadedir. Biz bunları
+istediğimiz her an, herhangi bir ek yazılım kurmak zorunda kalmadan, kendi
+programlarımız içinde kullanabiliriz.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Ayrıca bakınız</p>
+<p>Python’ın Standart Kütüphanesi içinde hangi modüllerin olduğunu
+<a class="reference external" href="https://docs.python.org/3/library/">https://docs.python.org/3/library/</a> adresinden inceleyebilirsiniz.</p>
+</div>
+<p>Standart Kütüphane içinde, Python ile programlama yaparken işlerinizi bir hayli
+kolaylaştıracak pek çok modül bulacaksınız.</p>
+<p>Başta da söylediğimiz gibi, biz bu bölüme gelinceye kadar üstünkörü de olsa
+modüllerden söz etmiştik. Örneğin önceki derslerimizde andığımız <code class="docutils literal notranslate"><span class="pre">sys</span></code>,
+<code class="docutils literal notranslate"><span class="pre">os</span></code>, <code class="docutils literal notranslate"><span class="pre">random</span></code> ve benzeri modüller hep birer Standart Kütüphane modülüdür.
+Dolayısıyla bu modüllerin sunduğu işlevsellikten kendi programlarımızda
+istediğimiz her an yararlanabiliriz.</p>
+</section>
+<section id="modullerin-ice-aktarilmasi">
+<h2>Modüllerin İçe Aktarılması</h2>
+<p>Python’da herhangi bir modülü kullanabilmek için öncelikle onu ‘içe aktarmamız’
+gerekir. İçe aktarmak, bir modül içindeki fonksiyon ve nitelikleri başka bir
+program (veya ortam) içinden kullanılabilir hale getirmek demektir. İsterseniz
+bu soyut tanımlamayı bir örnek ile somutlaştıralım. Mesela, bir Standart
+Kütüphane modülü olduğunu öğrendiğimiz ve önceki derslerimizde de değindiğimiz
+<code class="docutils literal notranslate"><span class="pre">os</span></code> adlı modülü içe aktaralım. Bunun için öncelikle etkileşimli kabuğu
+çalıştıralım ve şu komutu verelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
+</pre></div>
+</div>
+<p>Böylece <code class="docutils literal notranslate"><span class="pre">os</span></code> adlı modülü içe aktarmış, yani bu modül içindeki fonksiyon ve
+nitelikleri kullanılabilir hale getirmiş olduk.</p>
+<p>Hatırlarsanız ‘modül’ kavramını tanımlarken, bunların bize birtakım yararlı
+fonksiyonlar ve nitelikler sunan araçlar olduğunu söylemiştik. İşte, mesela bu
+<code class="docutils literal notranslate"><span class="pre">os</span></code> modülünün bize hangi yararlı fonksiyonları ve nitelikleri sunduğunu
+öğrenmek için <code class="docutils literal notranslate"><span class="pre">dir()</span></code> fonksiyonunu kullanabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">os</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi bu modül pek çok fonksiyon ve nitelik barındırıyor.</p>
+<p>Bu modüle adını veren <code class="docutils literal notranslate"><span class="pre">os</span></code> kelimesi <em>operating system</em> (işletim sistemi)
+ifadesinin kısaltmasıdır. Bu modül, kullandığımız işletim sistemine ilişkin
+işlemler yapabilmemiz için bize çeşitli fonksiyonlar ve nitelikler sunar. Hemen
+bir örnek verelim.</p>
+<p>Diyelim ki bir program yazdınız. Ancak yazdığınız bu programın yalnızca Windows
+işletim sisteminde çalışmasını istiyorsunuz. Buna göre, eğer programınız Windows
+işletim sistemi kurulu bir bilgisayarda çalıştırılırsa programınızın normal bir
+şekilde başlamasını, ama eğer Windows dışı bir işletim sisteminde çalıştırılırsa
+da kullanıcıya bir uyarı mesajı verilmesini istiyorsunuz.</p>
+<p>İşte bunun için <code class="docutils literal notranslate"><span class="pre">os</span></code> modülünden yararlanabilirsiniz. Şimdi <code class="docutils literal notranslate"><span class="pre">dir(os)</span></code>
+komutuyla elde ettiğimiz listeye bakalım. Orada <cite>name</cite> adlı bir nitelik olduğunu
+göreceksiniz. Bu nitelik, bize kodlarımızın hangi işletim sisteminde çalıştığını
+gösterir. Dolayısıyla da yukarıda tarif ettiğimiz iş için gayet uygun bir
+araçtır.</p>
+<p>Önceden <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">os</span></code> komutuyla <code class="docutils literal notranslate"><span class="pre">os</span></code> modülünü içe aktarmış olduğumuzu
+varsayarsak, modülün bu niteliğini şöyle kullanıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">name</span>
+
+<span class="go">&#39;posix&#39;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">os</span></code> adlı modülün içindeki <cite>name</cite> niteliğine nasıl eriştiğimize çok dikkat
+edin. Önce modülümüzün adı olan ‘os’u yazıyoruz. Ardından bir nokta işareti
+koyup, ihtiyacımız olan niteliğin adını belirtiyoruz. Yani şöyle bir formül
+takip ediyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">modül_adı</span><span class="o">.</span><span class="n">fonksiyon_veya_nitelik</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">os.name</span></code> komutu, kullandığınız işletim sistemine bağlı olarak farklı çıktılar
+verir. Eğer bu komutu bir GNU/Linux dağıtımında veya bir Mac bilgisayarda
+verirsek yukarıdaki gibi ‘posix’ çıktısı alırız. Ama eğer aynı komutu Windows’ta
+verirsek ‘nt’ çıktısı alırız. Dolayısıyla <code class="docutils literal notranslate"><span class="pre">os</span></code> modülünün <cite>name</cite> niteliğini
+kullanarak, yazdığımız bir programın hangi işletim sisteminde çalıştığını
+denetleyebiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">name</span> <span class="o">!=</span> <span class="s1">&#39;nt&#39;</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Kusura bakmayın! Bu programı yalnızca&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;Windows</span><span class="se">\&#39;</span><span class="s1">ta kullanabilirsiniz!&#39;</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hoşgeldin Windows kullanıcısı!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Etkileşimli kabukta yazdığımız bu programı gelin bir de bir metin dosyasına
+kaydedelim. Zira biz henüz modülleri öğrenme aşamasında olduğumuz için şimdilik
+bunları etkileşimli kabukta test ediyor olsak da, gerçek hayatta programlarımızı
+etkileşimli kabuğa değil, program dosyaları içine yazacağız.</p>
+<p>Yukarıdaki kodları bir dosyaya kaydettiğimizde programımız şöyle görünür:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">name</span> <span class="o">!=</span> <span class="s1">&#39;nt&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Kusura bakmayın! Bu programı yalnızca&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;Windows</span><span class="se">\&#39;</span><span class="s1">ta kullanabilirsiniz!&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hoşgeldin Windows kullanıcısı!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, programımızı kaydederken, programımızın en başına <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">os</span></code>
+komutunu yazarak öncelikle ilgili modülü içe aktarıyoruz. Python’da modüller
+genellikle programın en başında içe aktarılır. Ama bu bir zorunluluk değildir.
+Modülleri programın istediğiniz her yerinde içe aktarabilirsiniz (bununla ilgili
+bir istisnadan biraz sonra söz edeceğiz).</p>
+<p>Modül içe aktarmaya ilişkin en önemli kural, modüle ait bir nitelik veya
+fonksiyonun kullanılmasından önce modülün içe aktarılmış olması gerekliliğidir.
+Yani mesela yukarıdaki programda <code class="docutils literal notranslate"><span class="pre">os</span></code> modülü içindeki <cite>name</cite> niteliğini
+kullanmadan önce <code class="docutils literal notranslate"><span class="pre">os</span></code> modülünü içe aktarmış olmamız gerekir. Eğer Python, <code class="docutils literal notranslate"><span class="pre">if</span>
+<span class="pre">os.name</span> <span class="pre">!=</span> <span class="pre">'nt':</span></code> satırından önce herhangi bir yerde <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">os</span></code> gibi bir
+komutla <code class="docutils literal notranslate"><span class="pre">os</span></code> modülünün içe aktarıldığını göremezse hata verecektir.</p>
+<p>Bu programı yukarıdaki gibi bir dosyaya kaydettikten sonra bunu herhangi bir
+Python programı gibi çalıştırabilirsiniz.</p>
+<p>Eğer bu programı Windows dışındaki bir işletim sisteminde çalıştırırsanız şu
+çıktıyı alırsınız:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span>Kusura bakmayın! Bu programı yalnızca
+Windows&#39;ta kullanabilirsiniz!
+</pre></div>
+</div>
+<p>Ama eğer bu program Windows işletim sisteminde çalıştırılırsa şu çıktıyı verir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span>Hoşgeldin Windows kullanıcısı!
+</pre></div>
+</div>
+<p>Böylece modül içindeki bir niteliğe erişmiş olduk. Yalnız burada asla
+unutmamamız gereken şey, öncelikle kullanacağımız modülü <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">modül_adı</span></code>
+komutuyla içe aktarmak olacaktır. Modülü içe aktarmazsak tabii ki o modüldeki
+fonksiyon veya niteliklere de erişemeyiz. (Sık yapılan bir hata olduğu için,
+bunu tekrar tekrar vurguluyoruz…)</p>
+<p>Bu arada bir modülü, her etkileşimli kabuk oturumunda yalnızca bir kez içe
+aktarmak yeterlidir. Yani siz etkileşimli kabuğu çalıştırdıktan sonra bir kez
+<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">os</span></code> komutuyla modülü içe aktardıktan sonra, o etkileşimli kabuk
+oturumunu kapatana kadar, aynı modülü tekrar içe aktarmak zorunda kalmadan bu
+modülün içeriğini kullanabilirsiniz.</p>
+<p>Aynı şekilde, eğer bu kodları etkileşimli kabuğa değil de bir program dosyasına
+yazıyorsanız, <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">os</span></code> komutunu dosyanın başına bir kez yazdıktan sonra
+aynı modülü programın ilerleyen kısımlarında tekrar içe aktarmak zorunda
+kalmadan, o modülünün içeriğinden yararlanabilirsiniz.</p>
+<p>Gördüğünüz gibi, bir Standart Kütüphane Modülü olan <code class="docutils literal notranslate"><span class="pre">os</span></code> bize <cite>name</cite> adlı çok
+kullanışlı bir nitelik sunuyor. Eğer <code class="docutils literal notranslate"><span class="pre">os</span></code> modülü olmasaydı, <cite>name</cite> adlı
+niteliğin sunduğu işlevi kendimiz icat etmek zorunda kalırdık.</p>
+<p>Başka bir örnek daha verelim…</p>
+<p>Diyelim ki yine bir program yazdınız. Programınızın çalışması için, programınızı
+kullanan kişinin bilgisayarında birtakım dizinler oluşturmanız gerekiyor. İşte
+bu iş için de <code class="docutils literal notranslate"><span class="pre">os</span></code> modülünden yararlanabilirsiniz.</p>
+<p>Bu modül içindeki <code class="docutils literal notranslate"><span class="pre">makedirs()</span></code> fonksiyonunu kullanarak, o anda içinde
+bulunduğunuz dizinde yeni bir dizin oluşturabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;DATA&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu komutu verdikten sonra, o anda altında bulunduğunuz dizinde <cite>DATA</cite> adlı bir
+dizin oluşacaktır. Eğer o anda hangi dizin altında bulunduğunuzu öğrenmek
+isterseniz de yine <code class="docutils literal notranslate"><span class="pre">os</span></code> modülünden faydalanabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">os</span></code> modülünün <code class="docutils literal notranslate"><span class="pre">getcwd()</span></code> fonksiyonu bize o anda hangi dizin altında
+bulunduğumuzu gösterir. Bu komutun çıktısında hangi dizin adını görüyorsanız,
+biraz önce <code class="docutils literal notranslate"><span class="pre">makedirs()</span></code> fonksiyonu ile oluşturduğunuz <cite>DATA</cite> dizini de o dizin
+altında oluşmuştur…</p>
+<p>Gördüğünüz gibi, bir çırpıda <code class="docutils literal notranslate"><span class="pre">os</span></code> modülünün birkaç özelliğinden birden
+yararlandık. Daha önce de söylediğimiz gibi, eğer <code class="docutils literal notranslate"><span class="pre">os</span></code> modülü olmasaydı
+yukarıda gerçekleştirdiğimiz bütün işlevleri kendiniz icat etmek zorunda
+kalırdınız.</p>
+<p>Böylece Python’daki modüllerin neye benzediğini ve nasıl kullanıldığını anlamış
+olduk. Modüllerin faydalı araçlar olduğu konusunda sizleri ikna edebilmiş
+olduğumuzu varsayarak bir sonraki bölüme geçelim.</p>
+<section id="farkli-ice-aktarma-yontemleri">
+<h3>Farklı İçe Aktarma Yöntemleri</h3>
+<p>Biz şimdiye kadar, modülleri <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">modül_adı</span></code> şeklinde içe aktardık.
+Esasında standart içe aktarma yöntemi de budur. Bir modülü bu şekilde içe
+aktardığımız zaman, modül adını kullanarak, o modülün içeriğine erişebiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">version</span> <span class="c1">#Python&#39;ın sürümünü verir</span>
+</pre></div>
+</div>
+<p>veya:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">name</span> <span class="c1">#İşletim sistemimizin adını verir</span>
+</pre></div>
+</div>
+<p>gibi…</p>
+<p>Ancak Python’da bir modülü içe aktarmanın tek yöntemi bu değildir. Eğer istersek
+modülleri daha farklı şekillerde de içe aktarabiliriz.</p>
+<p>Gelin şimdi bu alternatif modül aktarma biçimlerinin neler olduğunu görelim.</p>
+<section id="import-modul-adi-as-farkli-isim">
+<h4>import modül_adı as farklı_isim</h4>
+<p>Bazı koşullar, bir modülü kendi adıyla değil de başka bir isimle içe aktarmanızı
+gerektirebilir. Ya da siz bir modülü kendi adı dışında bir adla içe aktarmanın
+daha iyi bir fikir olduğunu düşünebilirsiniz.</p>
+<p>Peki ama ne tür koşullar bir modülü farklı bir adla içe aktarmamızı
+gerektirebilir veya biz hangi sebeple bir modülü farklı adla içe aktarmayı
+isteyebiliriz?</p>
+<p>Bu soruların cevabını verebilmek için, gelin isterseniz <code class="docutils literal notranslate"><span class="pre">subprocess</span></code> adlı bir
+Standart Kütüphane modülünden yararlanalım. Hem bu vesileyle yeni bir modül de
+öğrenmiş oluruz…</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p><code class="docutils literal notranslate"><span class="pre">subprocess</span></code> modülü, harici komutları Python içinden
+çalıştırabilmemizi sağlayan oldukça faydalı bir araçtır. Bu modülü kullanarak
+Python programlarımızın içinden başka programları çalıştırabiliriz.</p>
+</div>
+<p>Bir modülün içindeki fonksiyon ve nitelikleri her kullanmak isteyişimizde, o
+fonksiyon veya niteliğin başına modül adını da eklememiz gerektiğini artık gayet
+iyi biliyorsunuz. Örneğin <code class="docutils literal notranslate"><span class="pre">subprocess</span></code> adlı modülü</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">subprocess</span>
+</pre></div>
+</div>
+<p>komutuyla içe aktardıktan sonra, bu modül içindeki herhangi bir fonksiyon veya
+niteliği kullanabilmenin birinci şartı, modül adını ilgili fonksiyon veya
+niteliğin önüne getirmektir. Mesela biz <code class="docutils literal notranslate"><span class="pre">subprocess</span></code> modülünün <code class="docutils literal notranslate"><span class="pre">call()</span></code> adlı
+fonksiyonunu kullanmak istersek, şöyle bir kod yazmamız gerekir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s1">&#39;notepad.exe&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu şekilde ‘Notepad’ programını Python içinden çalıştırmış olduk.</p>
+<p>Ancak gördüğünüz gibi, ‘subprocess’ biraz uzun bir kelime. Bu modülü her
+kullanmak isteyişinizde nitelik veya fonksiyon adının önüne bu uzun kelimeyi
+getirmek bir süre sonra sıkıcı bir hal alabilir. Bu yüzden eğer isterseniz
+modülü <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">subprocess</span></code> şeklinde kendi adıyla değil de daha kısa bir adla
+içe aktarmayı tercih edebilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">subprocess</span> <span class="k">as</span> <span class="nn">sp</span>
+</pre></div>
+</div>
+<p>Burada şöyle bir formül uyguladığımıza dikkat edin:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">modül_adı</span> <span class="k">as</span> <span class="nn">farklı_bir_isim</span>
+</pre></div>
+</div>
+<p>Böylece artık bu modülü yalnızca <code class="docutils literal notranslate"><span class="pre">sp</span></code> önekiyle kullanabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sp</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s1">&#39;notepad.exe&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Örnek olması açısından başka bir modülü daha ele alalım. Modülümüzün adı
+<code class="docutils literal notranslate"><span class="pre">webbrowser</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p><code class="docutils literal notranslate"><span class="pre">webbrowser</span></code> modülü, bilgisayarımızda kurulu internet tarayıcısını
+kullanarak internet sitelerini açabilmemizi sağlar.</p>
+</div>
+<p>Tıpkı ‘subprocess’ gibi, ‘webbrowser’ kelimesi de, her defasında tekrar etmesi
+sıkıcı olabilecek bir kelime. Dolayısıyla dilerseniz bu modülü <code class="docutils literal notranslate"><span class="pre">import</span>
+<span class="pre">webbrowser</span></code> yerine farklı bir isimle içe aktarabilirsiniz. Örneğin:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">webbrowser</span> <span class="k">as</span> <span class="nn">br</span>
+</pre></div>
+</div>
+<p>veya:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">webbrowser</span> <span class="k">as</span> <span class="nn">web</span>
+</pre></div>
+</div>
+<p>Modülü hangi adla içe aktaracağınız tamamen size kalmış. Diyelim ki bu modülü
+‘web’ adıyla içe aktardık. Artık bu modülün içindeki araçları <code class="docutils literal notranslate"><span class="pre">web</span></code> önekiyle
+kullanabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">web</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;www.istihza.com&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Uyarı</p>
+<p>Bazı GNU/Linux dağıtımlarında websitesi adresini ‘http’ önekiyle
+birlikte belirtmeniz gerekebilir. Örn. <code class="docutils literal notranslate"><span class="pre">web.open('http://www.istihza.com')</span></code>.</p>
+</div>
+<p>Bu kod, bilgisayarımızdaki öntanımlı web tarayıcısı hangisiyse onu çalıştıracak
+ve bizi, parantez içinde gösterilen web sayfasına götürecektir.</p>
+<p>Eğer biz <code class="docutils literal notranslate"><span class="pre">webbrowser</span></code> modülünü doğrudan kendi adıyla içe aktarsaydık:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">webbrowser</span>
+</pre></div>
+</div>
+<p>Bu durumda yukarıdaki komutu şu şekilde vermek zorunda kalacaktık:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">webbrowser</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;www.istihza.com&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Ama bu modülü daha kısa bir adla içe aktarmış olmamız sayesinde, bu modülü gayet
+pratik bir şekilde kullanma imkanına kavuşuyoruz.</p>
+</section>
+<section id="from-modul-adi-import-isim1-isim2">
+<h4>from modül_adı import isim1, isim2</h4>
+<p>Şimdiye kadar verdiğimiz örneklerden de gördüğünüz gibi, Standart Kütüphane
+Modülleri’nin içinde çok sayıda fonksiyon ve nitelik bulunuyor. Mesela
+<code class="docutils literal notranslate"><span class="pre">os</span></code> modülünü ele alalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">os</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Listede epey isim var…</p>
+<p>Biz <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">os</span></code> komutunu verdiğimizde, listedeki bütün o isimleri ‘os’ ismi
+altında içe aktarmış oluyoruz. Bunun bir sakıncası yok, ancak yazdığımız
+programlarda bu fonksiyon ve niteliklerin hepsine ihtiyaç duymayız. O yüzden,
+eğer arzu ederseniz, <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">os</span></code> gibi bir komutla bütün o isimleri içe
+aktarmak yerine, yalnızca kullanacağınız isimleri içe aktarmayı tercih de
+edebilirsiniz. Mesela <code class="docutils literal notranslate"><span class="pre">os</span></code> modülünün yalnızca <cite>name</cite> niteliğini
+kullanacaksanız, modülü şu şekilde içe aktarabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">name</span>
+</pre></div>
+</div>
+<p>Bu şekilde <code class="docutils literal notranslate"><span class="pre">os</span></code> modülünden yalnızca <cite>name</cite> ismi içe aktarılmış olur ve
+yalnızca bu ismi kullanabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">name</span>
+
+<span class="go">&#39;posix&#39;</span>
+</pre></div>
+</div>
+<p>Bu durumda <code class="docutils literal notranslate"><span class="pre">os.name</span></code> komutu hata verecektir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">name</span>
+
+<span class="go">NameError: name &#39;os&#39; is not defined</span>
+</pre></div>
+</div>
+<p>Çünkü biz <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">os</span> <span class="pre">import</span> <span class="pre">name</span></code> komutunu verdiğimizde, <code class="docutils literal notranslate"><span class="pre">os</span></code> modülünü değil,
+bu modül içindeki bir nitelik olan <cite>name</cite>’i içe aktarmış oluyoruz. Dolayısıyla
+<code class="docutils literal notranslate"><span class="pre">os</span></code> ismini kullanamıyoruz.</p>
+<p>Bu şekilde, aynı modül içinden birkaç farklı nitelik ve fonksiyonu da içe
+aktarabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">name</span><span class="p">,</span> <span class="n">listdir</span><span class="p">,</span> <span class="n">getcwd</span>
+</pre></div>
+</div>
+<p>Bu komutla <code class="docutils literal notranslate"><span class="pre">os</span></code> modülü içinden yalnızca <code class="docutils literal notranslate"><span class="pre">name</span></code> niteliğini, <code class="docutils literal notranslate"><span class="pre">listdir()</span></code>
+fonksiyonunu ve <code class="docutils literal notranslate"><span class="pre">getcwd()</span></code> fonksiyonunu aktarmış olduk:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">listdir</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Bu fonksiyon, o anda içinde bulunduğumuz dizindeki dosyaları listeler.</p>
+<p><cite>name</cite> ve <code class="docutils literal notranslate"><span class="pre">getcwd()</span></code> isimlerinin görevini ise daha önce öğrenmiştik:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">name</span>
+
+<span class="go">&#39;nt&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">getcwd</span><span class="p">()</span>
+
+<span class="go">&#39;C:\\Documents and Settings\\fozgul\\&#39;</span>
+</pre></div>
+</div>
+<p>Gelelim bir başka modül aktarma biçimine…</p>
+</section>
+<section id="from-modul-adi-import-isim-as-farkli-isim">
+<h4>from modül_adı import isim as farklı_isim</h4>
+<p>Bir modülü, kendi adından farklı bir adla nasıl içe aktarabileceğinizi
+biliyorsunuz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">subprocess</span> <span class="k">as</span> <span class="nn">sp</span>
+</pre></div>
+</div>
+<p>Bu şekilde <code class="docutils literal notranslate"><span class="pre">subprocess</span></code> modülünü <code class="docutils literal notranslate"><span class="pre">sp</span></code> adıyla içe aktarmış oluyoruz.</p>
+<p>Aynı şekilde, bir modül içinden belli nitelik ve fonksiyonları da nasıl içe
+aktaracağınızı biliyorsunuz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span><span class="p">,</span> <span class="n">listdir</span>
+</pre></div>
+</div>
+<p>Bu şekilde <code class="docutils literal notranslate"><span class="pre">os</span></code> modülünden <cite>path</cite> niteliğini ve <code class="docutils literal notranslate"><span class="pre">listdir()</span></code> fonksiyonunu içe
+aktarmış oluyoruz.</p>
+<p>Peki ya bir modül içinden belli nitelik ve fonksiyonları farklı bir adla içe
+aktarmak isterseniz ne yapacaksınız?</p>
+<p>İşte Python size bunun için de bir yol sunar. Dikkatlice bakın:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span> <span class="k">as</span> <span class="n">p</span>
+</pre></div>
+</div>
+<p>veya:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">listdir</span> <span class="k">as</span> <span class="n">ld</span>
+</pre></div>
+</div>
+<p>gibi…</p>
+<p>Bu örneklerde, <code class="docutils literal notranslate"><span class="pre">os</span></code> modülü içinden <cite>path</cite> adlı niteliği <cite>p</cite> adıyla;
+<code class="docutils literal notranslate"><span class="pre">listdir()</span></code> fonksiyonunu ise <cite>ld</cite> adıyla içe aktardık. Böylece <cite>path</cite>
+niteliğini <cite>p</cite> adıyla; <code class="docutils literal notranslate"><span class="pre">listdir()</span></code> fonksiyonunu da <cite>ld</cite> adıyla kullanabiliriz.</p>
+<p>Yalnız bu yöntem çok sık kullanılmaz. Bunu da not edip, içe aktarma
+yöntemlerinin sonuncusuna geçelim.</p>
+</section>
+<section id="from-modul-adi-import">
+<h4>from modül_adı import *</h4>
+<p>Python’daki modülleri <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">modül_adı</span> <span class="pre">import</span> <span class="pre">*</span></code> formülüne göre içe aktarmak da
+mümkündür (bu yönteme ‘yıldızlı içe aktarma’ diyebilirsiniz). Bu şekilde bir
+modül içindeki bütün fonksiyon ve nitelikleri içe aktarmış oluruz (ismi <cite>_</cite> ile
+başlayanlar hariç):</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sys</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+<p>Böylece <code class="docutils literal notranslate"><span class="pre">sys</span></code> modülü içindeki bütün fonksiyon ve nitelikleri, başlarına modül
+adını eklemeye gerek olmadan kullanabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">version</span>
+</pre></div>
+</div>
+<p>Ancak bu yöntem pek tavsiye edilmez. Çünkü bu şekilde, modül içindeki bütün
+isimleri kontrolsüz bir şekilde mevcut ortama ‘boşaltmış’ oluyoruz. Mesela eğer
+modül bu şekilde içe aktarılmadan önce <cite>version</cite> diye başka bir değişken
+tanımlamışsanız, modül içe aktarıldıktan sonra, önceden tanımladığınız bu
+<cite>version</cite> değişkeninin değeri kaybolacaktır:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">version</span> <span class="o">=</span> <span class="s1">&#39;1.0&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">version</span><span class="p">)</span>
+
+<span class="go">1.0</span>
+</pre></div>
+</div>
+<p>Bu ortama <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">sys</span> <span class="pre">import</span> <span class="pre">*</span></code> komutuyla <code class="docutils literal notranslate"><span class="pre">sys</span></code> modülünün bütün içeriğini
+aktaralım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sys</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+<p>Şimdi de <cite>version</cite> değişkeninin değerini yazdıralım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">version</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada alacağımız çıktı şu olur:</p>
+<pre class="literal-block">'3.7.0 (default, 06.10.2021, 12:24:55)
+[GCC 4.4.7 20120313 (Red Hat 4.4.7-3)] on linux'</pre>
+<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">sys</span></code> modülünün içindeki <cite>version</cite> niteliği bizim önceden
+tanımladığımız <cite>version</cite> değişkeniyle çakıştı ve herhangi bir uyarı vermeden,
+bizim tanımladığımız <cite>version</cite> değerini silip kendi <cite>version</cite> değerini
+bizimkinin yerine geçirdi…</p>
+<p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">modül_adı</span> <span class="pre">import</span> <span class="pre">*</span></code> komutunun yaptığı şeyi, sıkıştırılmış bir klasörün
+bütün içeriğini olduğu gibi masaüstüne atmaya benzetebilirsiniz. Böyle bir
+durumda, eğer masaüstünde sıkıştırılmış klasördekilerle aynı adlı dosyalar
+varsa, sıkıştırılmış klasör içindeki dosya adları, masaüstünde halihazırda
+varolan dosya adlarıyla çakışacaktır.</p>
+<p>Bir sonraki konuya geçmeden önce, yıldızlı içe aktarma ile ilgili önemli bir
+noktaya değinelim.</p>
+<p>Hatırlarsanız, bu konunun başında, modülleri programımızın her yerinden içe
+aktarabileceğimizi söylemiştik. Mesela bir modülü, program dosyamızın en başında
+içe aktarabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+<p>Ama bunun bir istisnası var. Bir modülü yıldızlı olarak içe aktaracaksak, bu
+işlemi lokal etki alanları içinden gerçekleştiremeyiz. Yani mesela bir
+fonksiyonun lokal isim alanı içinde şöyle bir kod yazabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fonksiyon</span><span class="p">():</span>
+    <span class="kn">import</span> <span class="nn">os</span>
+</pre></div>
+</div>
+<p>Veya:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fonksiyon</span><span class="p">():</span>
+    <span class="kn">import</span> <span class="nn">subprocess</span> <span class="k">as</span> <span class="nn">sp</span>
+</pre></div>
+</div>
+<p>Ama şöyle bir kod yazamayız:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fonksiyon</span><span class="p">():</span>
+    <span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+<p>Bu kodları bir dosyaya kaydedip çalıştırdığımızda şuna benzer bir hata alırız:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span>  <span class="n">File</span> <span class="s2">&quot;falanca.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span>
+    <span class="k">def</span> <span class="nf">fonksiyon</span><span class="p">():</span>
+<span class="ne">SyntaxError</span><span class="p">:</span> <span class="kn">import</span> <span class="o">*</span> <span class="n">only</span> <span class="n">allowed</span> <span class="n">at</span> <span class="n">module</span> <span class="n">level</span>
+</pre></div>
+</div>
+<p>Bunun anlamı şu: Yıldızlı içe aktarma işlemleri ancak modül seviyesinde, yani
+global isim alanında gerçekleştirilebilir. Dolayısıyla yukarıdaki içe aktarma
+işlemini ancak fonksiyonun dışında gerçekleştirebiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">fonksiyon</span><span class="p">():</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Veya:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fonksiyon</span><span class="p">():</span>
+    <span class="k">pass</span>
+
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+<p>Bu istisnai duruma dikkat ediyoruz. Elbette modül içe aktarma işlemlerini
+gerçekleştirmenin en sağlıklı yolu bütün modülleri program dosyasının en başında
+içe aktarmaktır.</p>
+</section>
+</section>
+</section>
+<section id="kendi-tanimladigimiz-moduller">
+<h2>Kendi Tanımladığımız Modüller</h2>
+<p>Buraya gelene kadar sadece Python’daki hazır modüllerden söz ettik. Hazır
+modüllerin, ‘Standart Kütüphane Modülleri’ ve ‘Üçüncü Şahıs Modülleri’ olarak
+ikiye ayrıldığını öğrenmiştiniz. Yukarıda bu hazır modüllerin ‘Standart
+Kütüphane Modülleri’ adını verdiğimiz alt başlığını halihazırda ele aldık.
+Dolayısıyla artık standart modüllerin neler olduğunu ve genel olarak bunların
+nasıl kullanıldığını biliyoruz.</p>
+<p>Hazır modül başlığı altında bir de ‘üçüncü şahıs modülleri’nin bulunduğunu da
+söylemiştik. Birazdan üçüncü şahıs modüllerinden de söz edeceğiz. Ama isterseniz
+ondan önce hazır modüllere bir ara verelim ve biraz da kendi modüllerimizi nasıl
+yazabileceğimize bakalım. Kendi modüllerimizi yazmak, modül konusunu biraz daha
+net bir şekilde anlamamızı sağlayacaktır.</p>
+<section id="modullerin-tanimlanmasi">
+<h3>Modüllerin Tanımlanması</h3>
+<p>Hatırlarsanız bu bölümün başında, ‘modül nedir?’ sorusuna şu cevabı vermiştik:</p>
+<blockquote>
+<div><p><em>Bazı işlevleri kolaylıkla yerine getirmemizi sağlayan birtakım
+fonksiyonları ve nitelikleri içinde barındıran araçlar…</em></p>
+</div></blockquote>
+<p>Esasında Python’daki modülleri şöyle de tanımlayabiliriz:</p>
+<blockquote>
+<div><p><em>Diyelim ki bir program yazıyorsunuz. Yazdığınız bu programın içinde
+karakter dizileri, sayılar, değişkenler, listeler, demetler, sözlükler ve
+fonksiyonlar var. Programınız da .py uzantılı bir metin dosyası içinde yer
+alıyor. İşte bütün bu öğeleri ve veri tiplerini içeren .py uzantılı dosyaya
+‘modül’ adı verilir. Yani şimdiye kadar yazdığınız ve yazacağınız bütün
+Python programları aynı zamanda birer modül adayıdır.</em></p>
+</div></blockquote>
+<p>Gelin isterseniz yukarıdaki bu tanımın doğruluğunu test edelim.</p>
+<p>Şimdi Python’ın etkileşimli kabuğunu çalıştırın ve kütüphane modüllerinden biri
+olan <code class="docutils literal notranslate"><span class="pre">os</span></code> modülünü içe aktarın:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">dir(os)</span></code> komutunu kullanarak modülün içeriğini kontrol ettiğinizde, o listede
+<cite>__file__</cite> adlı bir niteliğin olduğunu göreceksiniz. Bu nitelik Python ile
+yazılmış tüm modüllerde bulunur. Bu niteliği şu şekilde kullanıyoruz:</p>
+<pre class="literal-block">&gt;&gt;&gt; os.__file__
+
+'C:\Python37\lib\os.py'</pre>
+<p>İşte buradan aldığımız çıktı bize <code class="docutils literal notranslate"><span class="pre">os</span></code> modülünün kaynak dosyasının nerede
+olduğunu gösteriyor. Hemen çıktıda görünen konuma gidelim ve <cite>os.py</cite> dosyasını
+açalım.</p>
+<p>Dosyayı açtığınızda, gerçekten de bu modülün aslında sıradan bir Python programı
+olduğunu göreceksiniz. Dosyanın içeriğini incelediğinizde, <code class="docutils literal notranslate"><span class="pre">dir(os)</span></code> komutuyla
+elde ettiğimiz nitelik ve fonksiyonların dosya içinde nasıl tanımlandığını
+görebilirsiniz. Mesela yeni dizinler oluşturmak için <code class="docutils literal notranslate"><span class="pre">os.makedirs()</span></code> şeklinde
+kullandığımız <code class="docutils literal notranslate"><span class="pre">makedirs</span></code> fonksiyonunun <cite>os.py</cite> içinde tanımlanmış alelade bir
+fonksiyon olduğunu görebilirsiniz.</p>
+<p>Aynı şekilde, önceki sayfalarda örneklerini verdiğimiz <code class="docutils literal notranslate"><span class="pre">webbrowser</span></code> modülü de,
+bilgisayarımızdaki sıradan bir Python programından ibarettir. Bu modülün nerede
+olduğunu da şu komutla görebilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">webbrowser</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">webbrowser</span><span class="o">.</span><span class="vm">__file__</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">webbrowser</span></code> modülü de, tıpkı <code class="docutils literal notranslate"><span class="pre">os</span></code> modülü gibi,
+bilgisayarımızdaki <cite>.py</cite> uzantılı bir dosyadan başka bir şey değil. İsterseniz
+bu dosyanın da içini açıp inceleyebilirsiniz.</p>
+<p>Yalnız şu gerçeği de unutmamalıyız: Python’daki bütün modüller Python
+programlama dili ile yazılmamıştır. Bazı modüller C ile yazılmıştır. Dolayısıyla
+C ile yazılmış bir modülün <cite>.py</cite> uzantılı bir Python dosyası bulunmaz. Mesela
+<code class="docutils literal notranslate"><span class="pre">sys</span></code> böyle bir modüldür. Bu modül C programlama dili ile yazıldığı için,
+kayıtlı bir <cite>.py</cite> dosyasına sahip değildir. Dolayısıyla bu modülün bir
+<cite>__file__</cite> niteliği de bulunmaz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="vm">__file__</span>
+
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">AttributeError</span>: <span class="n">&#39;module&#39; object has no attribute &#39;__file__&#39;</span>
+</pre></div>
+</div>
+<p>Ama tabii ki, Python’daki standart kütüphane modüllerinin çok büyük bölümü
+Python ile yazılmıştır ve bu modüllerin kaynak dosyalarını <code class="docutils literal notranslate"><span class="pre">os</span></code> ve
+<code class="docutils literal notranslate"><span class="pre">webbrowser</span></code> modüllerini bulduğunuz dizinde görebilirsiniz. Örneğin önceki
+derslerimizde bahsi geçen <code class="docutils literal notranslate"><span class="pre">locale</span></code> ve <code class="docutils literal notranslate"><span class="pre">random</span></code> gibi modüllerin kaynak
+dosyalarını da burada bulabilirsiniz.</p>
+<p>Gelelim asıl konumuz olan ‘modül tanımlama’ya…</p>
+<p>Hatırlarsanız, Python’da bir fonksiyon tanımlamak için şu söz dizimini
+kullanıyorduk:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fonksiyon_adı</span><span class="p">(</span><span class="n">parametreler</span><span class="p">):</span>
+    <span class="n">fonksiyon_gövdesi</span>
+</pre></div>
+</div>
+<p>Ancak yukarıdaki örneklerden de rahatlıkla görebileceğiniz gibi, modüller için
+böyle özel bir söz dizimi yoktur. Yazdığınız her Python programı aynı zamanda
+potansiyel bir modüldür.</p>
+<p>O halde şimdi gelin bir tane de kendimiz modül yazalım.</p>
+<p>Mesela bir program dosyası oluşturalım ve adını da <cite>sözlük.py</cite> koyalım. İşte bu
+program, aynı zamanda bir Python modülüdür. Bu modülün adı da ‘sözlük’tür.
+Dediğimiz gibi, Python’da modüller genellikle <cite>.py</cite> uzantısına sahiptir. Ancak
+bir modülün adı söylenirken bu <cite>.py</cite> uzantısı dikkate alınmaz. Bu yüzden
+elinizdeki ‘sözlük.py’ adlı programın modül adı ‘sözlük’ olacaktır.</p>
+<p>Gördüğünüz gibi, modül tanımlamakta herhangi bir özel zorluk yok. Yazdığımız her
+program, otomatik olarak, aynı zamanda bir modül oluyor.</p>
+<p><cite>sözlük.py</cite> adlı programımızın içeriği şöyle olsun:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;kitap&quot;</span>      <span class="p">:</span> <span class="s2">&quot;book&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;bilgisayar&quot;</span> <span class="p">:</span> <span class="s2">&quot;computer&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;programlama&quot;</span><span class="p">:</span> <span class="s2">&quot;programming&quot;</span><span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">ara</span><span class="p">(</span><span class="n">sözcük</span><span class="p">):</span>
+    <span class="n">hata</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> kelimesi sözlükte yok!&quot;</span>
+    <span class="k">return</span> <span class="n">sözlük</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">sözcük</span><span class="p">,</span> <span class="n">hata</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sözcük</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>İşte böylece ilk modülümüzü tanımlamış olduk. Şimdi de, yazdığımız bu modülü
+nasıl kullanacağımızı öğrenelim.</p>
+<p>Esasında kütüphane modülleriyle kendi yazdığımız modüller arasında kullanım
+açısından pek bir fark yoktur. Bu bölümün başında gördüğümüz kütüphane
+modüllerini nasıl kullanıyorsak, kendi modüllerimizi de öyle kullanıyoruz.</p>
+<p>Kütüphane modüllerini anlatırken gördüğümüz gibi, modül sistemi sayesinde, bir
+program içinde bulunan fonksiyon (ve nitelikleri) başka Python programları
+içine aktarabiliyoruz. Böylece bir Python programındaki (veya modülündeki)
+işlevsellikten, başka bir Python programında da yararlanabiliyoruz.</p>
+<p>Şimdi, eğer bu <cite>sözlük.py</cite> dosyasını, mesela masaüstüne kaydettiyseniz,
+masaüstünün bulunduğu konumda bir komut satırı açın ve Python’ın etkileşimli
+kabuğunu başlatın. Tıpkı kütüphane modüllerinde olduğu gibi, etkileşimli kabukta
+şu komutu vererek <code class="docutils literal notranslate"><span class="pre">sözlük</span></code> adlı modülü içe aktarın:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sözlük</span>
+</pre></div>
+</div>
+<p>Eğer hiçbir şey olmadan bir alt satıra geçildiyse modülünüzü başarıyla içe
+aktardınız demektir. Eğer <code class="docutils literal notranslate"><span class="pre">No</span> <span class="pre">module</span> <span class="pre">named</span> <span class="pre">sözlük</span></code> gibi bir hata mesajıyla
+karşılaşıyorsanız, muhtemelen Python’ı <cite>sözlük.py</cite> dosyasının olduğu dizinde
+başlatamamışsınızdır.</p>
+<p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">sözlük</span></code> komutunun başarılı olduğunu varsayarak yolumuza devam
+edelim…</p>
+</section>
+<section id="modullerin-yolu">
+<h3>Modüllerin Yolu</h3>
+<p>Python geliştiricilerinin yazıp dile kaynaştırdığı kütüphane modülleri ile
+kendi yazdığınız modüller arasında pek bir fark bulunmadığını ifade etmiştik.
+Her iki modül türü de, içinde Python komutlarını ve veri tiplerini barındıran
+alelade Python programlarından ibarettir.</p>
+<p>Ancak şimdiye kadar yaptığımız örneklerde bir şey dikkatinizi çekmiş olmalı.
+Kütüphane modüllerini her yerden içe aktarabiliyoruz. Yani, komut satırını
+çalıştırdığımız her konumda veya program dosyamızın bulunduğu her dizin altında
+bu modülleri rahatlıkla kullanabiliyoruz. Python’ın bu modülleri bulamaması
+gibi bir şey söz konusu değil.</p>
+<p>Ama kendi yazdığımız modülleri içe aktarabilmemiz için, bu modüllerin o anda
+içinde bulunduğumuz dizin altında yer alması gerekiyor. Yani mesela yukarıda
+örneğini verdiğimiz <code class="docutils literal notranslate"><span class="pre">sözlük</span></code> modülünü, <cite>sözlük.py</cite> dosyasını
+bilgisayarımızdaki hangi konuma kaydetmişsek o konumdan içe aktarabiliyoruz.</p>
+<p>Diyelim ki <cite>sözlük.py</cite> dosyasını masaüstüne kaydetmiştik. İşte bu modülü komut
+satırında içe aktarabilmemiz için, komut satırını da masaüstünün bulunduğu
+konumda çalıştırmış olmamız gerekiyor.</p>
+<p>Aynı şekilde eğer biz bu <code class="docutils literal notranslate"><span class="pre">sözlük</span></code> modülünü, <cite>deneme.py</cite> adlı başka bir program
+içinde kullanacaksak, bu <cite>deneme.py</cite> dosyasının da <cite>sözlük.py</cite> adlı dosya ile
+aynı dizinde yer alması gerekiyor.</p>
+<p>Aksi halde, <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">sözlük</span></code> komutu hata verecektir.</p>
+<p>Peki neden kütüphane modüllerini her yerden içe aktarabilirken, kendi yazdığımız
+modülleri yalnızca bulundukları dizin altında içe aktarabiliyoruz?</p>
+<p>Aslında bunun cevabı çok basit: Biz bir program dosyasında veya komut satırında
+<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">modül_adı</span></code> gibi bir komut verdiğimizde Python ‘modül_adı’ olarak
+belirttiğimiz modülü bulmak için bir arama işlemi gerçekleştirir. Elbette Python
+bu modülü sabit diskin tamamında aramaz. Python, içe aktarmak istediğimiz modülü
+bulmak için belli birtakım dizinlerin içini kontrol eder. Peki Python modül
+dosyasını bulmak için hangi dizinlerin içine bakar? Bu sorunun cevabını bize
+<code class="docutils literal notranslate"><span class="pre">sys</span></code> modülünün <cite>path</cite> adlı bir niteliği verecek. Hemen bakalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">path</span>
+</pre></div>
+</div>
+<p>İşte Python bir modül dosyasını ararken, <code class="docutils literal notranslate"><span class="pre">import</span></code> komutunun verildiği dizin
+ile birlikte, <code class="docutils literal notranslate"><span class="pre">sys.path</span></code> çıktısında görünen dizinlerin içine de bakar. Eğer
+modül dosyasını bu dizinlerin içinde bulursa modülü başarıyla içe aktarır, ama
+eğer bulamazsa <code class="docutils literal notranslate"><span class="pre">ImportError</span></code> cinsinden bir hata verir.</p>
+<p>Peki eğer biz kendi modüllerimizi de her yerden içe aktarabilmek istersek ne
+yapmamız gerekiyor?</p>
+<p>Bunun için iki seçeneğimiz var: Birincisi, modülün yolunu <code class="docutils literal notranslate"><span class="pre">sys.path</span></code> listesine
+ekleyebiliriz. İkincisi, modülümüzü <code class="docutils literal notranslate"><span class="pre">sys.path</span></code> içinde görünen dizinlerden
+birine kopyalayabilir veya taşıyabiliriz.</p>
+<p>Öncelikle birinci seçeneği ele alalım.</p>
+<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">sys.path</span></code> komutunun çıktısı aslında basit bir listeden başka
+bir şey değildir. Dolayısıyla Python’da liste adlı veri tipi üzerinde ne tür
+işlemler yapabiliyorsanız, <code class="docutils literal notranslate"><span class="pre">sys.path</span></code> üzerinde de aynı şeyleri yapabilirsiniz.</p>
+<p>Mesela, modül dosyasının <cite>/home/istihza/programlar</cite> adlı dizin içinde
+bulunduğunu varsayarsak, modül dosyasının yolunu <code class="docutils literal notranslate"><span class="pre">sys.path</span></code> listesinin en
+sonuna şu şekilde ekleyebiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;/home/istihza/programlar&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada listelerin <code class="docutils literal notranslate"><span class="pre">append()</span></code> metodunu kullandığımıza dikkat edin. Dediğimiz
+gibi, <code class="docutils literal notranslate"><span class="pre">sys.path</span></code> aslında basit bir listeden ibarettir. Dolayısıyla bir listeye
+nasıl öğe ekliyorsak, <code class="docutils literal notranslate"><span class="pre">sys.path</span></code>’e de aynı şekilde öğe ekliyoruz.</p>
+<p>Modül dosyasının bulunduğu <cite>/home/istihza/programlar</cite> yolunu <code class="docutils literal notranslate"><span class="pre">sys.path</span></code>
+listesine eklediğimize göre, artık modülümüzü her yerden içe aktarabiliriz.</p>
+<p>Kendi yazdığımız bir modülü her yerden içe aktarabilmenin ikinci yönteminin,
+ilgili modül dosyasını <code class="docutils literal notranslate"><span class="pre">sys.path</span></code> çıktısında görünen dizinlerden herhangi
+birine kopyalamak olduğunu söylemiştik. Dolayısıyla, <code class="docutils literal notranslate"><span class="pre">sys.path</span></code> çıktısına
+bakıp, modül dosyanızı orada görünen dizinlerden herhangi biri içine
+kopyalayabilirsiniz. Yaygın olarak tercih edilen konum, Python kurulum dizini
+içindeki <cite>site-packages</cite> adlı dizindir. Bu dizinin yerini şu şekilde tespit
+edebilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">distutils</span> <span class="kn">import</span> <span class="n">sysconfig</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sysconfig</span><span class="o">.</span><span class="n">get_python_lib</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Modül dosyanızı, bu komutlardan aldığınız çıktının gösterdiği dizin içine
+kopyaladıktan sonra, modülünüzü her yerden içe aktarabilirsiniz.</p>
+<p>Bu konuyu kapatmadan önce <code class="docutils literal notranslate"><span class="pre">sys.path</span></code> ile ilgili önemli bir bilgi daha verelim.
+Python, içe aktarmak istediğimiz bir modülü bulabilmek için dizinleri ararken
+<code class="docutils literal notranslate"><span class="pre">sys.path</span></code> listesindeki dizin adlarını soldan sağa doğru okur. Modül dosyasını
+bulduğu anda da arama işlemini sona erdirir ve modülü içe aktarır. Diyelim ki
+<code class="docutils literal notranslate"><span class="pre">sys.path</span></code> çıktımız şöyle:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Eğer hem <cite>A</cite>, hem de <cite>B</cite> dizininde <cite>sözlük.py</cite> adlı bir dosya varsa, Python <cite>A</cite>
+dizinindeki <code class="docutils literal notranslate"><span class="pre">sözlük</span></code> modülünü içe aktarır. Çünkü <code class="docutils literal notranslate"><span class="pre">sys.path</span></code> çıktısında <cite>A</cite>
+dizini <cite>B</cite> dizininden önce geliyor. Eğer siz içe aktarma sırasında bir dizine
+öncelik vermek isterseniz o dizini <code class="docutils literal notranslate"><span class="pre">append()</span></code> metoduyla <code class="docutils literal notranslate"><span class="pre">sys.path</span></code>
+listesinin sonuna eklemek yerine, <code class="docutils literal notranslate"><span class="pre">insert()</span></code> metoduyla listenin en başına
+ekleyebilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;dizin/adı&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Böylece Python, modülünüzü en başa eklediğiniz dizinden içe aktaracaktır.</p>
+<p>Tekrar tekrar söylediğimiz gibi, <code class="docutils literal notranslate"><span class="pre">sys.path</span></code> sıradan bir listedir. Dolayısıyla
+listelerin üzerine hangi metotları uygulayabiliyorsanız <code class="docutils literal notranslate"><span class="pre">sys.path</span></code> üzerine de
+o metotları uygulayabilirsiniz.</p>
+</section>
+<section id="modullerde-degisiklik-yapmak">
+<h3>Modüllerde Değişiklik Yapmak</h3>
+<p>Python’da bir modül başka bir ortama aktarıldığında, o modülün içinde yer alan
+nitelik ve fonksiyonların o ortam içinden kullanılabilir hale geldiğini
+biliyorsunuz. Yukarıdaki örnekte biz <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">sözlük</span></code> komutuyla, <code class="docutils literal notranslate"><span class="pre">sözlük</span></code>
+adlı modülün bütün içeriğini etkileşimli kabuk ortamına (veya program dosyasına)
+aktarmış olduk. Dolayısıyla da artık bu modülün bütün içeriğine erişebiliriz.
+Peki acaba bu modül içinde bizim erişebileceğimiz hangi nitelik ve fonksiyonlar
+bulunuyor?</p>
+<p>Tıpkı kütüphane modüllerini işlerken yaptığımız gibi, <code class="docutils literal notranslate"><span class="pre">dir()</span></code> fonksiyonundan
+yararlanarak, içe aktardığımız bu modül içindeki kullanılabilir fonksiyon ve
+nitelikleri görebilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">sözlük</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu komut bize şöyle bir çıktı verir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;__builtins__&#39;</span><span class="p">,</span> <span class="s1">&#39;__cached__&#39;</span><span class="p">,</span> <span class="s1">&#39;__doc__&#39;</span><span class="p">,</span>
+<span class="s1">&#39;__file__&#39;</span><span class="p">,</span> <span class="s1">&#39;__loader__&#39;</span><span class="p">,</span> <span class="s1">&#39;__name__&#39;</span><span class="p">,</span>
+<span class="s1">&#39;__package__&#39;</span><span class="p">,</span> <span class="s1">&#39;__spec__&#39;</span><span class="p">,</span> <span class="s1">&#39;ara&#39;</span><span class="p">,</span> <span class="s1">&#39;sözlük&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, nasıl <code class="docutils literal notranslate"><span class="pre">os</span></code> modülünün içinde <cite>name</cite>, <code class="docutils literal notranslate"><span class="pre">listdir()</span></code> ve
+<code class="docutils literal notranslate"><span class="pre">getcwd()</span></code> gibi nitelik ve fonksiyonlar varsa, kendi yazdığımız <code class="docutils literal notranslate"><span class="pre">sözlük</span></code>
+modülü içinde de <code class="docutils literal notranslate"><span class="pre">ara()</span></code> adlı bir fonksiyon ve <cite>sözlük</cite> adlı bir nitelik var.</p>
+<p>İşte biz bu fonksiyon ve niteliği kullanma imkanına sahibiz. Gelin birkaç deneme
+çalışması yapalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span><span class="o">.</span><span class="n">sözlük</span>
+</pre></div>
+</div>
+<p>Bu komutun, bir kütüphane modülündeki niteliklere erişmekten hiçbir farkı
+olmadığına dikkatinizi çekmek isterim. Mesela <code class="docutils literal notranslate"><span class="pre">sys</span></code> modülünün <cite>version</cite>
+niteliğine nasıl erişiyorsak, <code class="docutils literal notranslate"><span class="pre">sözlük</span></code> modülünün <cite>sözlük</cite> niteliğine de aynı
+şekilde erişiyoruz.</p>
+<p><code class="docutils literal notranslate"><span class="pre">sözlük.sözlük</span></code> komutu bize <code class="docutils literal notranslate"><span class="pre">sözlük</span></code> modülü içindeki <cite>sözlük</cite> adlı
+değişkenin içeriğini verecektir.</p>
+<p>Şimdi de aynı modül içindeki <code class="docutils literal notranslate"><span class="pre">ara()</span></code> fonksiyonuna erişelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span><span class="o">.</span><span class="n">ara</span><span class="p">(</span><span class="s1">&#39;kitap&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu da bize <code class="docutils literal notranslate"><span class="pre">ara()</span></code> fonksiyonunu <cite>kitap</cite> argümanıyla birlikte çağırma imkanı
+veriyor.</p>
+<p>Yukarıda verdiğimiz örnekte <code class="docutils literal notranslate"><span class="pre">sözlük</span></code> modülünü etkileşimli kabuk üzerinde
+kullandık. Elbette program yazarken modülleri etkileşimli kabukta değil, program
+dosyaları içinde kullanacağız. Ancak özellikle bir modülün geliştirilme
+aşamasında o modülü test etmek için etkileşimli kabuk üzerinde çalışmak oldukça
+pratik ve faydalı bir yoldur. Mesela yazmakta olduğunuz bir programın (diğer bir
+deyişle modülün) nitelik ve fonksiyonlarını test etmek için, o programı
+etkileşimli kabukta bir modül olarak içe aktarıp çeşitli deneme çalışmaları
+yapabilirsiniz.</p>
+<p>Dilerseniz yine yukarıdaki örnek üzerinden gidelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;kitap&quot;</span>      <span class="p">:</span> <span class="s2">&quot;book&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;bilgisayar&quot;</span> <span class="p">:</span> <span class="s2">&quot;computer&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;programlama&quot;</span><span class="p">:</span> <span class="s2">&quot;programming&quot;</span><span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">ara</span><span class="p">(</span><span class="n">sözcük</span><span class="p">):</span>
+    <span class="n">hata</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> kelimesi sözlükte yok!&quot;</span>
+    <span class="k">return</span> <span class="n">sözlük</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">sözcük</span><span class="p">,</span> <span class="n">hata</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sözcük</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Bu modülü içe aktaralım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sözlük</span>
+</pre></div>
+</div>
+<p>Modülün içeriğini kontrol edelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">sözlük</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu komutun çıktısında <cite>sözlük</cite> niteliğini ve <code class="docutils literal notranslate"><span class="pre">ara()</span></code> fonksiyonunu görüyoruz.
+Gelin şimdi programımıza bir ekleme yapalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;kitap&quot;</span>      <span class="p">:</span> <span class="s2">&quot;book&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;bilgisayar&quot;</span> <span class="p">:</span> <span class="s2">&quot;computer&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;programlama&quot;</span><span class="p">:</span> <span class="s2">&quot;programming&quot;</span><span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">ara</span><span class="p">(</span><span class="n">sözcük</span><span class="p">):</span>
+    <span class="n">hata</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> kelimesi sözlükte yok!&quot;</span>
+    <span class="k">return</span> <span class="n">sözlük</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">sözcük</span><span class="p">,</span> <span class="n">hata</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sözcük</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">ekle</span><span class="p">(</span><span class="n">sözcük</span><span class="p">,</span> <span class="n">anlam</span><span class="p">):</span>
+    <span class="n">mesaj</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> kelimesi sözlüğe eklendi!&quot;</span>
+    <span class="n">sözlük</span><span class="p">[</span><span class="n">sözcük</span><span class="p">]</span> <span class="o">=</span> <span class="n">anlam</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">mesaj</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sözcük</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Burada <code class="docutils literal notranslate"><span class="pre">sözlük</span></code> modülüne <code class="docutils literal notranslate"><span class="pre">ekle()</span></code> adlı bir fonksiyon ilave ettik. Bu
+fonksiyon, sözlüğe yeni kelimeler eklememizi sağlayacak. Şimdi tekrar
+modülümüzün içeriğini kontrol edelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">sözlük</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Ancak gördüğünüz gibi, modüle yeni eklediğimiz <code class="docutils literal notranslate"><span class="pre">ekle()</span></code> fonksiyonu bu çıktıda
+görünmüyor. Bunun nedeni, etkileşimli kabukta modül bir kez içe aktarıldıktan
+sonra, o modülde yapılan değişikliklerin otomatik olarak etkinleşmiyor oluşudur.
+Yani değişikliklerin etkileşimli kabukta etkinleşebilmesi için o modülü yeniden
+yüklememiz lazım. Bunu iki şekilde yapabiliriz:</p>
+<p>Birincisi, etkileşimli kabuğu kapatıp yeniden açtıktan sonra <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">sözlük</span></code>
+komutuyla <code class="docutils literal notranslate"><span class="pre">sözlük</span></code> modülünü tekrar içe aktarabiliriz.</p>
+<p>İkincisi, <code class="docutils literal notranslate"><span class="pre">importlib</span></code> adlı bir kütüphane modülünden yararlanarak kendi
+modülümüzün tekrar yüklenmesini sağlayabiliriz. Bu modülü şöyle kullanıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">importlib</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">importlib</span><span class="o">.</span><span class="n">reload</span><span class="p">(</span><span class="n">sözlük</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu iki komutu verdikten sonra, <code class="docutils literal notranslate"><span class="pre">sözlük</span></code> üzerinde tekrar <code class="docutils literal notranslate"><span class="pre">dir()</span></code> fonksiyonunu
+uygularsak, yeni eklediğimiz <code class="docutils literal notranslate"><span class="pre">ekle()</span></code> fonksiyonunun çıktıya yansıdığını
+görürüz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">sözlük</span><span class="p">)</span>
+
+<span class="go">[&#39;__builtins__&#39;, &#39;__cached__&#39;, &#39;__doc__&#39;, &#39;__file__&#39;,</span>
+<span class="go">&#39;__loader__&#39;, &#39;__name__&#39;, &#39;__package__&#39;, &#39;__spec__&#39;,</span>
+<span class="go">&#39;ara&#39;, &#39;ekle&#39;, &#39;sözlük&#39;]</span>
+</pre></div>
+</div>
+<p>Tıpkı önceki derslerimizde gördüğümüz <code class="docutils literal notranslate"><span class="pre">sys</span></code>, <code class="docutils literal notranslate"><span class="pre">os</span></code> ve <code class="docutils literal notranslate"><span class="pre">keyword</span></code> modülleri
+gibi, <code class="docutils literal notranslate"><span class="pre">importlib</span></code> de bir kütüphane modülüdür. Bu modülün bizim yukarıda
+yazdığımız <code class="docutils literal notranslate"><span class="pre">sözlük</span></code> adlı modülden farkı, Python geliştiricileri tarafından
+yazılıp dile entegre edilmiş bir ‘hazır modül’ olmasıdır. Yani <code class="docutils literal notranslate"><span class="pre">sözlük</span></code>
+modülünü biz kendimiz yazdık, <code class="docutils literal notranslate"><span class="pre">importlib</span></code> modülünü ise Python geliştiricileri
+yazdı. İkisi arasındaki tek fark bu.</p>
+<p>Ne diyorduk? Evet, <code class="docutils literal notranslate"><span class="pre">sözlük</span></code> adlı modüle <code class="docutils literal notranslate"><span class="pre">ekle()</span></code> adlı yeni bir fonksiyon
+ilave ettik. Bu fonksiyona da, tıpkı <cite>sözlük</cite> niteliğinde ve <code class="docutils literal notranslate"><span class="pre">ara()</span></code>
+fonksiyonunda olduğu gibi, modül adını kullanarak erişebiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span><span class="o">.</span><span class="n">ekle</span><span class="p">(</span><span class="s1">&#39;araba&#39;</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">)</span>
+
+<span class="go">araba kelimesi sözlüğe eklendi!</span>
+</pre></div>
+</div>
+<p>Sözlüğümüze, ‘araba’ adlı yeni bir kelimeyi, ‘car’ karşılığı ile birlikte
+ekledik. Hemen bunu sorgulayalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span><span class="o">.</span><span class="n">ara</span><span class="p">(</span><span class="s1">&#39;araba&#39;</span><span class="p">)</span>
+
+<span class="go">&#39;car&#39;</span>
+</pre></div>
+</div>
+<p>Gayet güzel! Şimdi sözlüğümüze bir ekleme daha yapalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;kitap&quot;</span>      <span class="p">:</span> <span class="s2">&quot;book&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;bilgisayar&quot;</span> <span class="p">:</span> <span class="s2">&quot;computer&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;programlama&quot;</span><span class="p">:</span> <span class="s2">&quot;programming&quot;</span><span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">ara</span><span class="p">(</span><span class="n">sözcük</span><span class="p">):</span>
+    <span class="n">hata</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> kelimesi sözlükte yok!&quot;</span>
+    <span class="k">return</span> <span class="n">sözlük</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">sözcük</span><span class="p">,</span> <span class="n">hata</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sözcük</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">ekle</span><span class="p">(</span><span class="n">sözcük</span><span class="p">,</span> <span class="n">anlam</span><span class="p">):</span>
+    <span class="n">mesaj</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> kelimesi sözlüğe eklendi!&quot;</span>
+    <span class="n">sözlük</span><span class="p">[</span><span class="n">sözcük</span><span class="p">]</span> <span class="o">=</span> <span class="n">anlam</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">mesaj</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sözcük</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">sil</span><span class="p">(</span><span class="n">sözcük</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">sözlük</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">sözcük</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="s2">&quot;kelimesi bulunamadı!&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> kelimesi sözlükten silindi!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sözcük</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Bu defa da modülümüze <code class="docutils literal notranslate"><span class="pre">sil()</span></code> adlı başka bir fonksiyon ekledik. Bu fonksiyon,
+sözlükten öğe silmemizi sağlayacak:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span><span class="o">.</span><span class="n">sil</span><span class="p">(</span><span class="s1">&#39;kitap&#39;</span><span class="p">)</span>
+
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">AttributeError</span>: <span class="n">&#39;module&#39; object has no attribute &#39;sil&#39;</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, bu kez bir hata mesajı aldık. Peki sizce neden? Elbette
+değişiklik yaptıktan sonra modülü yeniden yüklemediğimizden… O halde önce
+modülümüzü yeniden yükleyelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">importlib</span><span class="o">.</span><span class="n">reload</span><span class="p">(</span><span class="n">sözlük</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Şimdi bu fonksiyonu kullanabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span><span class="o">.</span><span class="n">sil</span><span class="p">(</span><span class="s1">&#39;kitap&#39;</span><span class="p">)</span>
+
+<span class="go">kitap kelimesi sözlükten silindi!</span>
+</pre></div>
+</div>
+<p>Bu noktada, <code class="docutils literal notranslate"><span class="pre">importlib</span></code> modülünün <code class="docutils literal notranslate"><span class="pre">reload()</span></code> fonksiyonunun çalışma sistemine
+ilişkin birkaç önemli bilgi verelim.</p>
+<p><code class="docutils literal notranslate"><span class="pre">importlib</span></code> modülünün <code class="docutils literal notranslate"><span class="pre">reload()</span></code> fonksiyonu, bir modüle yeni eklenen öğeleri
+yeniden yükleyerek, bunların etkileşimli kabukta kullanılabilir hale gelmesini
+sağlar. Bunun ne demek olduğunu biliyoruz. Yukarıda bunun örneklerini vermiştik.</p>
+<p>Eğer bir modüldeki bazı nitelik veya fonksiyonları silerseniz, <code class="docutils literal notranslate"><span class="pre">importlib</span></code>
+modülünün <code class="docutils literal notranslate"><span class="pre">reload()</span></code> fonksiyonu ile bu modülü yeniden yükledikten sonra bile
+bu nitelik ve fonksiyonlar önbellekte tutulmaya devam eder. Örneğin, yukarıdaki
+<code class="docutils literal notranslate"><span class="pre">sözlük</span></code> modülünü önce içe aktaralım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sözlük</span>
+</pre></div>
+</div>
+<p>Şimdi modülün içeriğini kontrol edelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">sözlük</span><span class="p">)</span>
+
+<span class="go">[&#39;__builtins__&#39;, &#39;__cached__&#39;, &#39;__doc__&#39;, &#39;__file__&#39;,</span>
+<span class="go">&#39;__loader__&#39;, &#39;__name__&#39;, &#39;__package__&#39;, &#39;__spec__&#39;,</span>
+<span class="go">&#39;ara&#39;, &#39;ekle&#39;, &#39;sil&#39;, &#39;sözlük&#39;]</span>
+</pre></div>
+</div>
+<p>Modül dosyasından <code class="docutils literal notranslate"><span class="pre">sil()</span></code> adlı fonksiyonu çıkaralım. Yani modülümüzün son hali
+şöyle olsun:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;kitap&quot;</span>      <span class="p">:</span> <span class="s2">&quot;book&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;bilgisayar&quot;</span> <span class="p">:</span> <span class="s2">&quot;computer&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;programlama&quot;</span><span class="p">:</span> <span class="s2">&quot;programming&quot;</span><span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">ara</span><span class="p">(</span><span class="n">sözcük</span><span class="p">):</span>
+    <span class="n">hata</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> kelimesi sözlükte yok!&quot;</span>
+    <span class="k">return</span> <span class="n">sözlük</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">sözcük</span><span class="p">,</span> <span class="n">hata</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sözcük</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">ekle</span><span class="p">(</span><span class="n">sözcük</span><span class="p">,</span> <span class="n">anlam</span><span class="p">):</span>
+    <span class="n">mesaj</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> kelimesi sözlüğe eklendi!&quot;</span>
+    <span class="n">sözlük</span><span class="p">[</span><span class="n">sözcük</span><span class="p">]</span> <span class="o">=</span> <span class="n">anlam</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">mesaj</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sözcük</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Tekrar etkileşimli kabuğa dönüp, <code class="docutils literal notranslate"><span class="pre">importlib</span></code> modülünün <code class="docutils literal notranslate"><span class="pre">reload()</span></code> fonksiyonu
+aracılığıyla modülümüzü yeniden yükleyelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">importlib</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">importlib</span><span class="o">.</span><span class="n">reload</span><span class="p">(</span><span class="n">sözlük</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Şimdi <code class="docutils literal notranslate"><span class="pre">sözlük</span></code> modülünün içeriğini tekrar kontrol edelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">sözlük</span><span class="p">)</span>
+
+<span class="go">[&#39;__builtins__&#39;, &#39;__cached__&#39;, &#39;__doc__&#39;, &#39;__file__&#39;,</span>
+<span class="go">&#39;__loader__&#39;, &#39;__name__&#39;, &#39;__package__&#39;, &#39;__spec__&#39;,</span>
+<span class="go">&#39;ara&#39;, &#39;ekle&#39;, &#39;sil&#39;, &#39;sözlük&#39;]</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, biz <code class="docutils literal notranslate"><span class="pre">sil()</span></code> fonksiyonunu çıkarmış olduğumuz halde,
+<code class="docutils literal notranslate"><span class="pre">dir(sözlük)</span></code> çıktısında bu öğe görünmeye devam ediyor. Üstelik bu fonksiyon
+halen kullanılabilir durumda!</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sözlük</span><span class="o">.</span><span class="n">sil</span><span class="p">(</span><span class="s1">&#39;programlama&#39;</span><span class="p">)</span>
+
+<span class="go">programlama kelimesi sözlükten silindi!</span>
+</pre></div>
+</div>
+<p>Ancak bu durumu rahatlıkla görmezden gelebilirsiniz. Ama eğer o öğenin orada
+olması sizi rahatsız ediyorsa, şu komutla o öğeyi silebilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">sözlük</span><span class="o">.</span><span class="n">sil</span>
+</pre></div>
+</div>
+<p>Dediğimiz gibi, modülden silinen öğeler, <code class="docutils literal notranslate"><span class="pre">reload()</span></code> ile yeniden yüklendikten
+sonra dahi kullanılır durumda kalmaya devam eder. Ama eğer modül içinde varolan
+bir öğe üzerinde değişiklik yaparsanız o değişiklik, <code class="docutils literal notranslate"><span class="pre">reload()</span></code> sonrası
+modülün görünümüne yansıyacaktır. Yani mesela, modülde halihazırda varolan
+<code class="docutils literal notranslate"><span class="pre">sil()</span></code> fonksiyonu üzerinde bir değişiklik yaparsanız, bu değişiklik
+<code class="docutils literal notranslate"><span class="pre">reload()</span></code> ile yeniden yükleme sonrasında etkileşimli kabuğa yansıyacaktır.</p>
+</section>
+</section>
+<section id="ucuncu-sahis-modulleri">
+<h2>Üçüncü Şahıs Modülleri</h2>
+<p>Buraya kadar Python’daki kütüphane modüllerinden ve kendi yazdığımız modüllerden
+söz ettik. Artık modüllerin ne olduğunu ve ne işe yaradığını gayet iyi
+biliyoruz. Bu bölümde ise, yine bir ‘hazır modül’ türü olan üçüncü şahıs
+modüllerinden bahsedeceğiz.</p>
+<p>Üçüncü şahıs modülleri, başka Python programcıları tarafından yazılıp
+hizmetimize sunulmuş programlardır. Bu yönüyle bunlar kütüphane modüllerine çok
+benzer. Ama bu ikisi arasında önemli bir fark bulunur: Kütüphane modülleri
+Python programlama dilinin bir parçasıdır. Dolayısıyla kütüphane modüllerini
+kullanmak için herhangi bir ek yazılım indirmemiz gerekmez. Üçüncü şahıs
+modülleri ise dilin bir parçası değildir. Bu modülleri kullanabilmek için,
+öncelikle bunları modül geliştiricisinin koyduğu yerden bilgisayarımıza
+indirmemiz gerekir.</p>
+<p>Hatırlarsanız ilk derslerimizde Cx_Freeze adlı bir yazılımdan söz etmiştik. İşte
+bu yazılım bir üçüncü şahıs modülüdür. Bu modülü kullanabilmek için öncelikle
+ilgili yazılımı programımıza kurmamız gerekmişti.</p>
+<p>Python için yazılmış üçüncü şahıs modüllerine çeşitli kaynaklardan
+ulaşabilirsiniz. Bu tür modülleri bulabileceğiniz en geniş kaynak
+<a class="reference external" href="https://pypi.org/">https://pypi.org/</a> adresidir. Burada 60.000’in üzerinde modüle
+ulaşabilirsiniz.</p>
+<p>Peki bu modülleri nasıl kuracağız?</p>
+<p>Eğer bir modül <a class="reference external" href="https://pypi.org/">https://pypi.org/</a> adresinde ise, bu modülü sistem
+komut satırında şu şekilde kurabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">modül_adı</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Python’ın 2.7.9 ve 3.4.0 sürümlerinden itibaren, pip adlı yazılım
+öntanımlı olarak Python kurulumuyla birlikte geliyor. Dolayısıyla Python2’deki
+pip’i kullanmak isterseniz <code class="docutils literal notranslate"><span class="pre">pip2</span></code> komutunu, Python3’teki pip’i kullanmak
+isterseniz de <code class="docutils literal notranslate"><span class="pre">pip3</span></code> komutunu kullanabilirsiniz.</p>
+</div>
+<p>Örneğin amacınız Django adlı üçüncü şahıs modülünü kurmak ise bu modülü şu komut
+ile kurabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">django</span>
+</pre></div>
+</div>
+<p>Eğer bir üçüncü şahıs modülünü <a class="reference external" href="https://pypi.org/">https://pypi.org/</a> adresinden değil de
+başka bir kaynaktan indiriyorsanız, kurulum için birkaç farklı seçenek olabilir.</p>
+<p>Eğer indireceğiniz dosya Windows işletim sistemine uyumlu bir <cite>.exe</cite> dosyasıysa,
+bunu herhangi bir Windows programı gibi kurabilirsiniz.</p>
+<p>Eğer indireceğiniz dosya <cite>.tar.gz</cite> veya <cite>.zip</cite> gibi sıkıştırılmış bir klasör
+olarak iniyorsa öncelikle bu sıkıştırılmış klasörü açın. Eğer klasör içeriğinde
+<cite>setup.py</cite> adlı bir dosya görürseniz bu dosyanın bulunduğu konumda bir komut
+satırı açın ve şu komutu verin:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+</pre></div>
+</div>
+<p>Tabii burada <code class="docutils literal notranslate"><span class="pre">python</span></code> komutunun <code class="docutils literal notranslate"><span class="pre">python3</span></code> mü, <code class="docutils literal notranslate"><span class="pre">py</span> <span class="pre">-3</span></code> mü yoksa başka bir
+şey mi olacağı tamamen sizin Python kurulumunu nasıl yaptığınıza bağlıdır.
+Neticede siz oraya, Python’ı hangi komutla başlatıyorsanız onu yazacaksınız.
+Yani eğer Python’ı <code class="docutils literal notranslate"><span class="pre">python3</span></code> komutuyla başlatıyorsanız yukarıdaki komutu şöyle
+vereceksiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+</pre></div>
+</div>
+<p>Aynı şekilde, GNU/Linux kullanıcılarının da bu komutu yetkili kullanıcı olarak
+vermesi gerekecektir muhtemelen:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">python3</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+</pre></div>
+</div>
+<p>Veya önce:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">su</span> <span class="o">-</span>
+</pre></div>
+</div>
+<p>Ardından:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+</pre></div>
+</div>
+<p>İndirip kurduğunuz bir üçüncü şahıs modülünü nasıl kullanacağınızı, indirdiğiniz
+modülün belgelerine bakarak öğrenebilirsiniz.</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Paketler konusunu işlerken üçüncü şahıs modüllerinden daha ayrıntılı
+bir şekilde söz edeceğiz.</p>
+</div>
+</section>
+<section id="all-listesi">
+<h2>__all__ Listesi</h2>
+<p>Önceki başlıklar altında da ifade ettiğimiz gibi, farklı içe aktarma
+yöntemlerini kullanarak, bir modül içindeki öğeleri farklı şekillerde içe
+aktarabiliyoruz. Gelin isterseniz Python’ın içe aktarma mekanizmasını
+anlayabilmek için ufak bir test yapalım.</p>
+<p>Şimdi masaüstünde, içeriği aşağıdaki gibi olan, <cite>modül.py</cite> adlı bir dosya
+oluşturun:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fonk1</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;fonk1&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">fonk2</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;fonk2&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">fonk3</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;fonk3&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">fonk4</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;fonk4&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">fonk5</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;fonk5&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">_fonk6</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;_fonk6&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">__fonk7</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;__fonk7&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">fonk8_</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;fonk8_&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Daha sonra, masaüstünün bulunduğu konumda bir komut penceresi açarak Python’ın
+etkileşimli kabuğunu çalıştırın ve orada şu komutu verip bu <cite>modül.py</cite> adlı
+dosyayı bir modül olarak içe aktarın:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">modül</span>
+</pre></div>
+</div>
+<p>Şimdi de şu komutu kullanarak modül içeriğini kontrol edin:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">modül</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Buradan şu çıktıyı alıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;__builtins__&#39;</span><span class="p">,</span> <span class="s1">&#39;__cached__&#39;</span><span class="p">,</span> <span class="s1">&#39;__doc__&#39;</span><span class="p">,</span> <span class="s1">&#39;__file__&#39;</span><span class="p">,</span> <span class="s1">&#39;__fonk7&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;__loader__&#39;</span><span class="p">,</span> <span class="s1">&#39;__name__&#39;</span><span class="p">,</span> <span class="s1">&#39;__package__&#39;</span><span class="p">,</span> <span class="s1">&#39;__spec__&#39;</span><span class="p">,</span> <span class="s1">&#39;_fonk6&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;fonk1&#39;</span><span class="p">,</span> <span class="s1">&#39;fonk2&#39;</span><span class="p">,</span> <span class="s1">&#39;fonk3&#39;</span><span class="p">,</span> <span class="s1">&#39;fonk4&#39;</span><span class="p">,</span> <span class="s1">&#39;fonk5&#39;</span><span class="p">,</span> <span class="s1">&#39;fonk8_&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, modül içinde tanımladığımız bütün fonksiyonlar bu listede var.
+Dolayısıyla bu fonksiyonlara şu şekilde erişebiliyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">modül</span><span class="o">.</span><span class="n">fonk1</span><span class="p">()</span>
+
+<span class="go">fonk1</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">modül</span><span class="o">.</span><span class="n">fonk2</span><span class="p">()</span>
+
+<span class="go">fonk2</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">modül</span><span class="o">.</span><span class="n">_fonk6</span><span class="p">()</span>
+
+<span class="go">_fonk6</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">modül</span><span class="o">.</span><span class="n">__fonk7</span><span class="p">()</span>
+
+<span class="go">__fonk7</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">modül</span><span class="o">.</span><span class="n">fonk8_</span><span class="p">()</span>
+
+<span class="go">fonk8_</span>
+</pre></div>
+</div>
+<p>Bu şekilde, istisnasız bütün fonksiyonlara erişim yetkisi elde ettiğimize
+dikkatinizi çekmek isterim.</p>
+<p>Şimdi etkileşimli kabuğu kapatıp tekrar açalım ve bu kez modülümüzü şu şekilde
+içe aktaralım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">modül</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+<p>Bu şekilde, ismi <code class="docutils literal notranslate"><span class="pre">_</span></code> ile başlayanlar hariç bütün fonksiyonları, modül öneki
+olmadan mevcut etki alanına aktardığımızı biliyoruz.</p>
+<p>Kontrol edelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Buradan şu çıktıyı alıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;__builtins__&#39;</span><span class="p">,</span> <span class="s1">&#39;__doc__&#39;</span><span class="p">,</span> <span class="s1">&#39;__loader__&#39;</span><span class="p">,</span> <span class="s1">&#39;__name__&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;__package__&#39;</span><span class="p">,</span> <span class="s1">&#39;__spec__&#39;</span><span class="p">,</span> <span class="s1">&#39;fonk1&#39;</span><span class="p">,</span> <span class="s1">&#39;fonk2&#39;</span><span class="p">,</span> <span class="s1">&#39;fonk3&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;fonk4&#39;</span><span class="p">,</span> <span class="s1">&#39;fonk5&#39;</span><span class="p">,</span> <span class="s1">&#39;fonk8_&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, gerçekten de ismi <code class="docutils literal notranslate"><span class="pre">_</span></code> ile başlayanlar hariç, bütün
+fonksiyonlar, modül öneki olmadan kullanılmaya hazır bir şekilde mevcut etki
+alanımız içinde görünüyor. Bunları şu şekilde kullanabileceğimizi biliyorsunuz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fonk4</span><span class="p">()</span>
+
+<span class="go">fonk4</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fonk8_</span><span class="p">()</span>
+
+<span class="go">fonk8_</span>
+</pre></div>
+</div>
+<p>Elbette, ismi <code class="docutils literal notranslate"><span class="pre">_</span></code> ile başlayan fonksiyonları, doğrudan isimlerini kullanarak
+içe aktarma imkanına sahipsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">modül</span> <span class="kn">import</span> <span class="n">__fonk7</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">modül</span> <span class="kn">import</span> <span class="n">_fonk6</span>
+</pre></div>
+</div>
+<p>Tabii, bu fonksiyonları içe aktarabilmek için bunların isimlerini biliyor
+olmanız lazım…</p>
+<p>Peki siz, yazdığınız bir programda yalnızca kendi belirlediğiniz isimlerin içe
+aktarılmasını isterseniz ne yapacaksınız? İşte bunun için, başlıkta sözünü
+ettiğimiz <code class="docutils literal notranslate"><span class="pre">__all__</span></code> adlı bir listeden yararlanabilirsiniz.</p>
+<p>Şimdi biraz önce oluşturduğunuz <cite>modül.py</cite> dosyasının en başına şu satırı
+ekleyin:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;fonk1&#39;</span><span class="p">,</span> <span class="s1">&#39;fonk2&#39;</span><span class="p">,</span> <span class="s1">&#39;fonk3&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Daha sonra etkileşimli kabukta modülünüzü şu şekilde içe aktarın:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">modül</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+<p>Şimdi de içe aktarılan fonksiyonların neler olduğunu kontrol edin:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">()</span>
+
+<span class="go">[&#39;__builtins__&#39;, &#39;__doc__&#39;, &#39;__loader__&#39;, &#39;__name__&#39;, &#39;__package__&#39;,</span>
+<span class="go"> &#39;__spec__&#39;, &#39;fonk1&#39;, &#39;fonk2&#39;, &#39;fonk3&#39;]</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, yalnızca <code class="docutils literal notranslate"><span class="pre">__all__</span></code> listesi içinde belirttiğimiz fonksiyonlar
+içe aktarıldı. Bu listeyi kullanarak, yıldızlı içe aktarmalarda nelerin içe
+aktarılıp nelerin dışarıda bırakılacağını kontrol edebilirsiniz. Yalnız
+unutmamanız gereken nokta, bu yöntemin öteki içe aktarma türlerinde hiçbir işe
+yaramayacağıdır. Yani mesela <code class="docutils literal notranslate"><span class="pre">modül</span></code> adlı modülümüzü <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">modül</span></code> şeklinde
+içe aktarırsak <code class="docutils literal notranslate"><span class="pre">__all__</span></code> listesi dikkate alınmayacaktır.</p>
+<p>Peki ya <code class="docutils literal notranslate"><span class="pre">__all__</span></code> listesini boş bırakırsak ne olur?</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">__all__</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+</div>
+<p>Tabii ki, bu şekilde yıldızlı aktarmalarda (modülün kendi varsayılan
+fonksiyonları hariç) hiçbir fonksiyon içe aktarılmaz…</p>
+</section>
+<section id="modullerin-ozel-nitelikleri">
+<h2>Modüllerin Özel Nitelikleri</h2>
+<p>Python’da bütün modüllerin ortak olarak sahip olduğu bazı nitelikler vardır. Bu
+niteliklerin hangileri olduğunu görmek için kesişim kümelerinden yararlanarak
+şöyle bir kod yazabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">random</span>
+
+<span class="n">set_os</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">os</span><span class="p">))</span>
+<span class="n">set_sys</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">sys</span><span class="p">))</span>
+<span class="n">set_random</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">random</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">set_os</span> <span class="o">&amp;</span> <span class="n">set_sys</span> <span class="o">&amp;</span> <span class="n">set_random</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu kodlar, <cite>os</cite>, <cite>sys</cite> ve <cite>random</cite> modüllerinin kesişim kümesini, yani her üç
+modülde ortak olarak bulunan nitelikleri verecektir. Bu kodları
+çalıştırdığımızda şu çıktıyı alıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;__doc__&#39;</span><span class="p">,</span> <span class="s1">&#39;__package__&#39;</span><span class="p">,</span> <span class="s1">&#39;__loader__&#39;</span><span class="p">,</span> <span class="s1">&#39;__name__&#39;</span><span class="p">,</span> <span class="s1">&#39;__spec__&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Demek ki hem <cite>os</cite> hem <cite>sys</cite> hem de <cite>random</cite> modülünde ortak olarak bulunan
+nitelikler bunlarmış… Eğer bu üç modülün bütün modülleri temsil etmiyor
+olabileceğinden endişe ediyorsanız, bildiğiniz başka modülleri de bu kodlara
+ekleyerek testinizin kapsamını genişletebilirsiniz.</p>
+<p>Mesela bu kodlara bir de <cite>subprocess</cite> modülünü ekleyelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">random</span><span class="o">,</span> <span class="nn">subprocess</span>
+
+<span class="n">set_os</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">os</span><span class="p">))</span>
+<span class="n">set_sys</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">sys</span><span class="p">))</span>
+<span class="n">set_random</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">random</span><span class="p">))</span>
+<span class="n">set_subprocess</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">subprocess</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">set_os</span> <span class="o">&amp;</span> <span class="n">set_sys</span> <span class="o">&amp;</span> <span class="n">set_random</span> <span class="o">&amp;</span> <span class="n">set_subprocess</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Yalnız  burada şöyle bir şey dikkatinizi çekmiş olmalı: Kesişim kümesini bulmak
+istediğimiz öğelere başka öğeler de eklemek istediğimizde her defasında birkaç
+farklı işlem yapmak zorunda kalıyoruz. Bu da hem kodlarımızı hatalara açık hale
+getiriyor, hem de aslında kolayca halledebileceğimiz bir işi gereksiz yere
+uzatmamıza yol açıyor.</p>
+<p>Gelin bu kodları biraz daha genel amaçlı bir hale getirelim. Zira ‘kodların
+yeniden kullanılabilir özellikte olması’ (<em>code reusability</em>) programcılıkta
+aranan bir niteliktir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">modüller</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;os&#39;</span><span class="p">,</span> <span class="s1">&#39;sys&#39;</span><span class="p">,</span> <span class="s1">&#39;random&#39;</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">kesişim_bul</span><span class="p">(</span><span class="n">modüller</span><span class="p">):</span>
+    <span class="n">kümeler</span> <span class="o">=</span> <span class="p">[</span><span class="nb">set</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="nb">__import__</span><span class="p">(</span><span class="n">modül</span><span class="p">)))</span> <span class="k">for</span> <span class="n">modül</span> <span class="ow">in</span> <span class="n">modüller</span><span class="p">]</span>
+    <span class="k">return</span> <span class="nb">set</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="o">*</span><span class="n">kümeler</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">kesişim_bul</span><span class="p">(</span><span class="n">modüller</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Eğer bu kodlara yeni bir modül eklemek istersek, yapmamız gereken tek şey en
+baştaki <cite>modüller</cite> listesini güncellemek olacaktır. Mesela bu listeye bir de
+<cite>subprocess</cite> modülünü ekleyelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">modüller</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;os&#39;</span><span class="p">,</span> <span class="s1">&#39;sys&#39;</span><span class="p">,</span> <span class="s1">&#39;random&#39;</span><span class="p">,</span> <span class="s1">&#39;subprocess&#39;</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">kesişim_bul</span><span class="p">(</span><span class="n">modüller</span><span class="p">):</span>
+    <span class="n">kümeler</span> <span class="o">=</span> <span class="p">[</span><span class="nb">set</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="nb">__import__</span><span class="p">(</span><span class="n">modül</span><span class="p">)))</span> <span class="k">for</span> <span class="n">modül</span> <span class="ow">in</span> <span class="n">modüller</span><span class="p">]</span>
+    <span class="k">return</span> <span class="nb">set</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="o">*</span><span class="n">kümeler</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">kesişim_bul</span><span class="p">(</span><span class="n">modüller</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, bu kodlar işimizi epey kolaylaştırdı. Sadece tek bir noktada
+değişiklik yaparak istediğimiz sonucu elde ettik.</p>
+<p>Bu arada, <code class="docutils literal notranslate"><span class="pre">__import__</span></code> fonksiyonu hariç, bu kodlardaki her şeyi daha önceki
+derslerimizde öğrenmiştik. Ama gelin isterseniz biz yine de bu kodların
+üzerinden şöyle bir geçelim.</p>
+<p>Burada ilk yaptığımız iş, kullanmak istediğimiz modül adlarını tutması için bir
+liste tanımlamak:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">modüller</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;os&#39;</span><span class="p">,</span> <span class="s1">&#39;sys&#39;</span><span class="p">,</span> <span class="s1">&#39;random&#39;</span><span class="p">,</span> <span class="s1">&#39;subprocess&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Bu listede modül adlarının birer karakter dizisi olarak gösterildiğine dikkat
+edin. Zaten bu modülleri henüz içe aktarmadığımız için, bunları doğrudan
+tırnaksız isimleriyle kullanamayız.</p>
+<p>Daha sonra, asıl işi yapacak olan <code class="docutils literal notranslate"><span class="pre">kesişim_bul()</span></code> adlı fonksiyonumuzu
+tanımlıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">kesişim_bul</span><span class="p">(</span><span class="n">modüller</span><span class="p">):</span>
+    <span class="n">kümeler</span> <span class="o">=</span> <span class="p">[</span><span class="nb">set</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="nb">__import__</span><span class="p">(</span><span class="n">modül</span><span class="p">)))</span> <span class="k">for</span> <span class="n">modül</span> <span class="ow">in</span> <span class="n">modüller</span><span class="p">]</span>
+    <span class="k">return</span> <span class="nb">set</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="o">*</span><span class="n">kümeler</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu fonksiyon, <cite>modüller</cite> adlı tek bir parametre alıyor.</p>
+<p>Fonksiyonumuzun gövdesinde ilk olarak şöyle bir kod yazıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">kümeler</span> <span class="o">=</span> <span class="p">[</span><span class="nb">set</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="nb">__import__</span><span class="p">(</span><span class="n">modül</span><span class="p">)))</span> <span class="k">for</span> <span class="n">modül</span> <span class="ow">in</span> <span class="n">modüller</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Burada <cite>modüller</cite> adlı listedeki her öğe üzerine sırasıyla <code class="docutils literal notranslate"><span class="pre">__import__</span></code>
+fonksiyonunu, <code class="docutils literal notranslate"><span class="pre">dir()</span></code> fonksiyonunu ve <code class="docutils literal notranslate"><span class="pre">set()</span></code> fonksiyonunu uyguluyoruz. Daha
+sonra elde ettiğimiz sonucu bir liste üreteci yardımıyla liste haline getirip
+<cite>kümeler</cite> değişkenine atıyoruz.</p>
+<p>Gelelim <code class="docutils literal notranslate"><span class="pre">__import__</span></code> fonksiyonunun ne olduğuna…</p>
+<p>Bir gömülü fonksiyon olan <code class="docutils literal notranslate"><span class="pre">__import__</span></code> fonksiyonu, modül adlarını içeren
+karakter dizilerini kullanarak, herhangi bir modülü içe aktarmamızı sağlayan bir
+araçtır. Bu fonksiyonunu şöyle kullanıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">__import__</span><span class="p">(</span><span class="s1">&#39;os&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">__import__</span><span class="p">(</span><span class="s1">&#39;sys&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu fonksiyonun parametre olarak bir karakter dizisi alıyor olmasının bize nasıl
+bir esneklik sağladığına dikkatinizi çekmek isterim. Bu fonksiyon sayesinde
+modül aktarma işlemini, kod parçaları içine programatik olarak yerleştirebilme
+imkanı elde ediyoruz. Yani, modül aktarma işlemini mesela bir <cite>for</cite> döngüsü
+içine alamıyorken:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">modüller</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;os&#39;</span><span class="p">,</span> <span class="s1">&#39;sys&#39;</span><span class="p">,</span> <span class="s1">&#39;random&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">modül</span> <span class="ow">in</span> <span class="n">modüller</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="kn">import</span> <span class="nn">modül</span>
+<span class="gp">...</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">2</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">ImportError</span>: <span class="n">No module named &#39;modül&#39;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">__import__</span></code> fonksiyonu bize böyle bir işlem yapabilme olanağı sunuyor:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">modüller</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;os&#39;</span><span class="p">,</span> <span class="s1">&#39;sys&#39;</span><span class="p">,</span> <span class="s1">&#39;random&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">modül</span> <span class="ow">in</span> <span class="n">modüller</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">__import__</span><span class="p">(</span><span class="n">modül</span><span class="p">)</span>
+
+<span class="go">&lt;module &#39;os&#39; from &#39;C:\\Python34\\lib\\os.py&#39;&gt;</span>
+<span class="go">&lt;module &#39;sys&#39; (built-in)&gt;</span>
+<span class="go">&lt;module &#39;random&#39; from &#39;C:\\Python34\\lib\\random.py&#39;&gt;</span>
+</pre></div>
+</div>
+<p>Yalnız, <code class="docutils literal notranslate"><span class="pre">__import__('os')</span></code> gibi bir komut verdiğimizde, ‘os’ ismi doğrudan
+kullanılabilir hale gelmiyor. Yani:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">__import__</span><span class="p">(</span><span class="s1">&#39;os&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>…komutunu verdiğimizde, mesela <cite>os</cite> modülünün bir niteliği olan <cite>name</cite>’i
+kullanamıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">name</span>
+
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">NameError</span>: <span class="n">name &#39;os&#39; is not defined</span>
+</pre></div>
+</div>
+<p>‘os’ ismini kullanabilmemiz için şöyle bir şey yazmış olmalıydık:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span> <span class="o">=</span> <span class="nb">__import__</span><span class="p">(</span><span class="s1">&#39;os&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Eğer <code class="docutils literal notranslate"><span class="pre">__import__</span></code> fonksiyonu yardımıyla içe aktardığımız <cite>os</cite> modülünü bu
+şekilde bir isme atamazsak, <code class="docutils literal notranslate"><span class="pre">__import__('os')</span></code> komutu ile içe aktarılan bütün
+<cite>os</cite> fonksiyon ve nitelikleri, bu komut bir kez çalıştıktan sonra unutulacaktır.
+Eğer <code class="docutils literal notranslate"><span class="pre">__import__</span></code> fonksiyonunu bir isme atamadan, içe aktarılan modülün
+niteliklerine erişmek isterseniz içe aktarma işlemi ile niteliğe erişme işlemini
+aynı satırda gerçekleştirmeniz gerekir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">__import__</span><span class="p">(</span><span class="s1">&#39;os&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">name</span>
+
+<span class="go">&#39;nt&#39;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">__import__</span></code> fonksiyonu çok sık kullanacağınız bir araç değildir. Ancak
+özellikle tek satırda hem bir modülü içe aktarmanız, hem de hemen ardından başka
+işlemler yapmanız gereken durumlarda bu fonksiyon işinize yarayabilir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;den.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;merhaba&#39;</span><span class="p">);</span> <span class="nb">__import__</span><span class="p">(</span><span class="s1">&#39;subprocess&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s1">&#39;notepad.exe den.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Gerekli modülleri içe aktardıktan ve kümemimizi tanımladıktan sonra da fonksiyon
+tanımını şu kodla bitiriyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">return</span> <span class="nb">set</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="o">*</span><span class="n">kümeler</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada kümelerin <code class="docutils literal notranslate"><span class="pre">intersection()</span></code> metodundan faydalandık. Bu metodu önceki
+derslerimizde ele almıştık. Bu metot yardımıyla birden fazla kümenin kesişimini
+bulabiliyoruz.</p>
+<p>Bu fonksiyonu normalde şöyle kullanıyorduk:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">küme1</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">küme2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu komut, <cite>küme1</cite> ile <cite>küme2</cite> adlı kümelerin kesişimini bulacaktır. Eğer bizim
+kodlarımızda olduğu gibi küme ismi belirtmeksizin birden fazla kümenin
+kesişimini bulmak isterseniz bu metodu doğrudan küme veri tipi (<cite>set</cite>) üzerine
+uygulayabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">set</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">küme1</span><span class="p">,</span> <span class="n">küme2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Eğer <code class="docutils literal notranslate"><span class="pre">intersection()</span></code> metoduna parametreleri bir liste içinden atamak
+isterseniz bu listeyi yıldız işleci yardımıyla çözmeniz gerekir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="n">küme1</span><span class="p">,</span> <span class="n">küme2</span><span class="p">,</span> <span class="n">küme3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">set</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="o">*</span><span class="n">liste</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>İşte bizim yukarıda <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">set.intersection(*kümeler)</span></code> komutuyla yaptığımız
+şey de tam olarak budur. Burada <code class="docutils literal notranslate"><span class="pre">intersection()</span></code> metodunu doğrudan <cite>set</cite> veri
+tipi üzerine uyguladık ve bu metodun parametrelerini <cite>kümeler</cite> adlı listeden
+yıldız işleci yardımıyla çözdük.</p>
+<p>Son olarak da, tanımladığımız <code class="docutils literal notranslate"><span class="pre">kesişim_bul()</span></code> fonksiyonunu <cite>modüller</cite> adlı
+parametre ile çağırdık:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">kesişim_bul</span><span class="p">(</span><span class="n">modüller</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Bütün bu kodları çalıştırdıktan sonra ise şöyle bir çıktı elde ettik:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;__doc__&#39;</span><span class="p">,</span> <span class="s1">&#39;__name__&#39;</span><span class="p">,</span> <span class="s1">&#39;__loader__&#39;</span><span class="p">,</span> <span class="s1">&#39;__spec__&#39;</span><span class="p">,</span> <span class="s1">&#39;__package__&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>İşte bu bölümün konusu, bütün modüllerde ortak olan bu beş özel nitelik. İlk
+olarak <code class="docutils literal notranslate"><span class="pre">__doc__</span></code> niteliği ile başlayalım.</p>
+<section id="doc-niteligi">
+<h3>__doc__ Niteliği</h3>
+<p>İsterseniz <code class="docutils literal notranslate"><span class="pre">__doc__</span></code> niteliğini tarif etmeye çalışmak yerine, bunu bir örnek
+üzerinden anlatalım. Şimdi Python kurulum dizini içinde <cite>os.py</cite> dosyasının
+bulunduğu konuma gidelim ve bu dosyayı açalım. Dosyayı açtığınızda, sayfanın en
+başında şu karakter dizisini göreceksiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;OS routines for NT or Posix depending on what system we&#39;re on.</span>
+
+<span class="sd">This exports:</span>
+<span class="sd">  - all functions from posix, nt or ce, e.g. unlink, stat, etc.</span>
+<span class="sd">  - os.path is either posixpath or ntpath</span>
+<span class="sd">  - os.name is either &#39;posix&#39;, &#39;nt&#39; or &#39;ce&#39;.</span>
+<span class="sd">  - os.curdir is a string representing the current directory (&#39;.&#39; or &#39;:&#39;)</span>
+<span class="sd">  - os.pardir is a string representing the parent directory (&#39;..&#39; or &#39;::&#39;)</span>
+<span class="sd">  - os.sep is the (or a most common) pathname separator (&#39;/&#39; or &#39;:&#39; or &#39;\\&#39;)</span>
+<span class="sd">  - os.extsep is the extension separator (always &#39;.&#39;)</span>
+<span class="sd">  - os.altsep is the alternate pathname separator (None or &#39;/&#39;)</span>
+<span class="sd">  - os.pathsep is the component separator used in $PATH etc</span>
+<span class="sd">  - os.linesep is the line separator in text files (&#39;\r&#39; or &#39;\n&#39; or &#39;\r\n&#39;)</span>
+<span class="sd">  - os.defpath is the default search path for executables</span>
+<span class="sd">  - os.devnull is the file path of the null device (&#39;/dev/null&#39;, etc.)</span>
+
+<span class="sd">Programs that import and use &#39;os&#39; stand a better chance of being</span>
+<span class="sd">portable between different platforms.  Of course, they must then</span>
+<span class="sd">only use functions that are defined by all platforms (e.g., unlink</span>
+<span class="sd">and opendir), and leave all pathname manipulation to os.path</span>
+<span class="sd">(e.g., split and join).</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>Şimdi Python’ın etkileşimli kabuğunu açın ve şu komutları verin:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu komutları verdiğinizde, yukarıdaki karakter dizisinin çıktı olarak
+verildiğini göreceksiniz. Teknik dilde, üç tırnak içinde gösterilen karakter
+dizilerine belge dizisi (<em>docstring</em>) veya belgelendirme dizisi (<em>documentation
+string</em>) adı verilir. Modüllerin <code class="docutils literal notranslate"><span class="pre">__doc__</span></code> niteliğini kullanarak, bir modül
+dosyasının en başında bulunan belgelendirme dizilerine erişebiliriz.</p>
+<p>Bir örnek daha verelim. Mesela <cite>random</cite> modülüne bakalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">random</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><cite>os.py</cite> dosyası ile aynı konumda bulunan <cite>random.py</cite> dosyasını açtığınızda,
+yukarıdaki komutlardan aldığınız çıktının <cite>random.py</cite> dosyasının en başındaki
+uzun karakter dizisi olduğunu göreceksiniz.</p>
+<p>Çeşitli yazılımlar, bu belge dizilerini kullanarak, ilgili modüle ilişkin kısa
+kılavuzlar oluşturur. Mesela Python’ın <code class="docutils literal notranslate"><span class="pre">help()</span></code> fonksiyonu bu belge
+dizilerinden yararlanır:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">help</span><span class="p">(</span><span class="n">os</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Siz de kendi yazdığınız modüllerde bu belge dizilerinden yararlanabilirsiniz.
+Ancak aklınızda bulundurmanız gereken önemli nokta, bu belge dizilerini üç
+tırnak içinde belirtmeniz gerektiğidir. Alt alta çift veya tek tırnak ile
+tanımladığınız karakter dizilerine <code class="docutils literal notranslate"><span class="pre">__doc__</span></code> niteliği aracılığıyla erişmeye
+çalıştığınızda sadece ilk satırdaki karakter dizisine ulaşırsınız. Yani:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;satır1&quot;</span>
+<span class="s2">&quot;satır2&quot;</span>
+<span class="s2">&quot;satır3&quot;</span>
+</pre></div>
+</div>
+<p>…şeklinde tanımladığınız karakter dizileri <code class="docutils literal notranslate"><span class="pre">__doc__</span></code> niteliği ile
+çağrıldığında yalnızca “satır1” görüntülenecektir. Eğer bu üç satırın da
+kapsama alanına girmesini istiyorsak yukarıdaki karakter dizilerini şöyle
+tanımlamalıyız:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">satır1</span>
+<span class="sd">satır2</span>
+<span class="sd">satır3</span>
+<span class="sd">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="name-niteligi">
+<h3>__name__ Niteliği</h3>
+<p>Şöyle bir program yazdığımızı varsayalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;kitap&quot;</span>      <span class="p">:</span> <span class="s2">&quot;book&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;bilgisayar&quot;</span> <span class="p">:</span> <span class="s2">&quot;computer&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;programlama&quot;</span><span class="p">:</span> <span class="s2">&quot;programming&quot;</span><span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">ara</span><span class="p">(</span><span class="n">sözcük</span><span class="p">):</span>
+    <span class="n">hata</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> kelimesi sözlükte yok!&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">sözlük</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">sözcük</span><span class="p">,</span> <span class="n">hata</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sözcük</span><span class="p">)))</span>
+
+<span class="k">def</span> <span class="nf">ekle</span><span class="p">(</span><span class="n">sözcük</span><span class="p">,</span> <span class="n">anlam</span><span class="p">):</span>
+    <span class="n">mesaj</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> kelimesi sözlüğe eklendi!&quot;</span>
+    <span class="n">sözlük</span><span class="p">[</span><span class="n">sözcük</span><span class="p">]</span> <span class="o">=</span> <span class="n">anlam</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">mesaj</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sözcük</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">sil</span><span class="p">(</span><span class="n">sözcük</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">sözlük</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">sözcük</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="s2">&quot;kelimesi bulunamadı!&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> kelimesi sözlükten silindi!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sözcük</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;1. Sözlükte kelime ara&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;2. Sözlüğe kelime ekle&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;3. Sözlükten kelime sil&#39;</span><span class="p">)</span>
+<span class="n">no</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Yapmak istediğiniz işlemin numarasını girin: &#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">no</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span><span class="p">:</span>
+    <span class="n">sözcük</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Aradığınız sözcük: &#39;</span><span class="p">)</span>
+    <span class="n">ara</span><span class="p">(</span><span class="n">sözcük</span><span class="p">)</span>
+
+<span class="k">elif</span> <span class="n">no</span> <span class="o">==</span> <span class="s1">&#39;2&#39;</span><span class="p">:</span>
+    <span class="n">sözcük</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Ekleyeceğiniz sözcük: &#39;</span><span class="p">)</span>
+    <span class="n">anlam</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Eklediğiniz sözcüğün anlamı: &#39;</span><span class="p">)</span>
+    <span class="n">ekle</span><span class="p">(</span><span class="n">sözcük</span><span class="p">,</span> <span class="n">anlam</span><span class="p">)</span>
+
+<span class="k">elif</span> <span class="n">no</span> <span class="o">==</span> <span class="s1">&#39;3&#39;</span><span class="p">:</span>
+    <span class="n">sözcük</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Sileceğiniz sözcük: &#39;</span><span class="p">)</span>
+    <span class="n">sil</span><span class="p">(</span><span class="n">sözcük</span><span class="p">)</span>
+
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Yanlış işlem&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><cite>sözlük.py</cite> adını verdiğimiz bu programı normal bir şekilde komut satırında</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">sözlük</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>gibi bir komutla çalıştırdığımızda bize birtakım sorular sorulacak ve verdiğimiz
+cevaplara göre sözlük üzerinde bazı işlemler yapılacaktır.</p>
+<p>Hatırlarsanız, modüller konusunu anlatmaya başlarken, yazdığımız bütün
+programların aslında birer modül olduğunu, dolayısıyla bunların başka
+programların içine aktarılarak, sahip oldukları işlevlerden başka programlarda
+da yararlananılabileceğini söylemiştik.</p>
+<p>Yukarıdaki kodları, komut satırı üzerinde bağımsız bir program gibi
+çalıştırabiliyoruz. Peki acaba biz bu programı doğrudan çalıştırmak değil de
+başka bir programın içine aktarıp sahip olduğu işlevlerden yararlanmak istersek
+ne yapacağız?</p>
+<p>İşte bunun için <code class="docutils literal notranslate"><span class="pre">__name__</span></code> adlı bir nitelikten yararlanacağız.</p>
+<p>Python’daki herhangi bir modülü içe aktardıktan sonra bu modül üzerine <code class="docutils literal notranslate"><span class="pre">dir()</span></code>
+fonksiyonunu uygularsanız, istisnasız her modülün <code class="docutils literal notranslate"><span class="pre">__name__</span></code> adlı bir niteliği
+olduğunu görürsünüz.</p>
+<p><code class="docutils literal notranslate"><span class="pre">__name__</span></code> niteliği iki farklı değer alabilir: İçinde bulunduğu modülün adı
+veya <code class="docutils literal notranslate"><span class="pre">&quot;__main__&quot;</span></code> adlı özel bir değer.</p>
+<p>Eğer bir Python programı başka bir program içinden modül olarak içe
+aktarılıyorsa, <code class="docutils literal notranslate"><span class="pre">__name__</span></code> niteliğinin değeri o modülün adı olacaktır.</p>
+<p>Eğer bir Python programı doğrudan bağımsız bir program olarak çalıştırılıyorsa,
+<code class="docutils literal notranslate"><span class="pre">__name__</span></code> niteliğinin değeri bu defa <code class="docutils literal notranslate"><span class="pre">&quot;__main__&quot;</span></code> olacaktır.</p>
+<p>Gelin isterseniz bu durumu bir örnek üzerinde somutlaştıralım. Mesela
+masaüstünde <cite>deneme.py</cite> adlı bir dosya oluşturup içine sadece şunu yazalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Şimdi önce bu dosyayı bağımsız bir program olarak çalıştıralım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">deneme</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Programımızı bu şekilde çalıştırdığımızda alacağımız çıktı şu olacaktır:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">__main__</span>
+</pre></div>
+</div>
+<p>Demek ki <code class="docutils literal notranslate"><span class="pre">__name__</span></code> niteliğinin değeri <code class="docutils literal notranslate"><span class="pre">&quot;__main__&quot;</span></code> imiş…</p>
+<p>Şimdi de <cite>deneme.py</cite> dosyasının bulunduğu konumda Python’ın etkileşimli kabuğunu
+çalıştıralım ve şu komut yardımıyla bu dosyayı bir modül olarak içe aktaralım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">deneme</span>
+</pre></div>
+</div>
+<p>Bu defa şu çıktıyı aldık:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">deneme</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">__name__</span></code> niteliğinin değeri bu kez de modül dosyasının adı
+oldu.</p>
+<p>İşte bu özellikten yararlanarak, yazdığınız programların bağımsız
+çalıştırılırken ayrı, modül olarak içe aktarılırken ayrı davranmasını
+sağlayabilirsiniz.</p>
+<p>Gelin bu bilgiyi yukarıdaki <cite>sözlük.py</cite> dosyasına uygulayalım.</p>
+<p>Bu programı komut satırı üzerinde bağımsız bir program olarak çalıştırdığınızda
+ne olacağını biliyorsunuz. Peki ya aynı programı bir modül olarak içe aktarırsak
+ne olur?</p>
+<p>Deneyelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sözlük</span>
+
+<span class="go">Yapmak istediğiniz işlemin numarasını girin:</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, programımız doğrudan çalışmaya başladı. Ama biz bunu
+istemiyoruz. Biz istiyoruz ki, <cite>sözlük.py</cite> bir modül olarak aktarıldığında
+çalışmaya başlamasın. Ama biz onun içindeki nitelikleri kullanabilelim.</p>
+<p>Bunun için <cite>sözlük.py</cite> dosyasında şu değişikliği yapacağız:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;kitap&quot;</span>      <span class="p">:</span> <span class="s2">&quot;book&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;bilgisayar&quot;</span> <span class="p">:</span> <span class="s2">&quot;computer&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;programlama&quot;</span><span class="p">:</span> <span class="s2">&quot;programming&quot;</span><span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">ara</span><span class="p">(</span><span class="n">sözcük</span><span class="p">):</span>
+    <span class="n">hata</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> kelimesi sözlükte yok!&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">sözlük</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">sözcük</span><span class="p">,</span> <span class="n">hata</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sözcük</span><span class="p">)))</span>
+
+<span class="k">def</span> <span class="nf">ekle</span><span class="p">(</span><span class="n">sözcük</span><span class="p">,</span> <span class="n">anlam</span><span class="p">):</span>
+    <span class="n">mesaj</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> kelimesi sözlüğe eklendi!&quot;</span>
+    <span class="n">sözlük</span><span class="p">[</span><span class="n">sözcük</span><span class="p">]</span> <span class="o">=</span> <span class="n">anlam</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">mesaj</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sözcük</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">sil</span><span class="p">(</span><span class="n">sözcük</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">sözlük</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">sözcük</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="s2">&quot;kelimesi bulunamadı!&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> kelimesi sözlükten silindi!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sözcük</span><span class="p">))</span>
+
+<span class="c1">#BURAYA DİKKAT!!!</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">no</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Yapmak istediğiniz işlemin numarasını girin: &#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;1. Sözlükte kelime ara&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;2. Sözlüğe kelime ekle&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;3. Sözlükten kelime sil&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">no</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span><span class="p">:</span>
+        <span class="n">sözcük</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Aradığınız sözcük: &#39;</span><span class="p">)</span>
+        <span class="n">ara</span><span class="p">(</span><span class="n">sözcük</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">no</span> <span class="o">==</span> <span class="s1">&#39;2&#39;</span><span class="p">:</span>
+        <span class="n">sözcük</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Ekleyeceğiniz sözcük: &#39;</span><span class="p">)</span>
+        <span class="n">anlam</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Eklediğiniz sözcüğün anlamı: &#39;</span><span class="p">)</span>
+        <span class="n">ekle</span><span class="p">(</span><span class="n">sözcük</span><span class="p">,</span> <span class="n">anlam</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">no</span> <span class="o">==</span> <span class="s1">&#39;3&#39;</span><span class="p">:</span>
+        <span class="n">sözcük</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Sileceğiniz sözcük: &#39;</span><span class="p">)</span>
+        <span class="n">sil</span><span class="p">(</span><span class="n">sözcük</span><span class="p">)</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Yanlış işlem&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, çok basit bir <cite>if</cite> deyimi yardımıyla dosyamızın bağımsız bir
+program olarak mı çalıştırıldığını yoksa bir modül olarak içe mi aktarıldığını
+kontrol ettik. Eğer <code class="docutils literal notranslate"><span class="pre">__name__</span></code> niteliğinin değeri <cite>‘__main__’</cite> ise, yani
+programımız bağımsız olarak çalıştırılıyorsa <cite>if</cite> bloğu içindeki kodları
+işletiyoruz. Eğer bu niteliğin değeri başka bir şey ise (yani modülün adı ise),
+bu durumda programımız bir modül olarak içe aktarılıyor demektir. Bu durumda
+<cite>if</cite> bloğu içindeki kodları çalıştırmıyoruz…</p>
+<p>Her şeyin yolunda olup olmadığını kontrol etmek için <cite>sözlük</cite> modülünü içe
+aktaralım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sözlük</span>
+</pre></div>
+</div>
+<p>Bu kez, tam da istediğimiz şekilde, programımız doğrudan çalışmaya başlamadan
+bize içindeki fonksiyonları kullanma imkanı sundu:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">sözlük</span><span class="p">)</span>
+
+<span class="go">[&#39;__builtins__&#39;, &#39;__cached__&#39;, &#39;__doc__&#39;, &#39;__file__&#39;,</span>
+<span class="go"> &#39;__loader__&#39;, &#39;__name__&#39;, &#39;__package__&#39;, &#39;__spec__&#39;,</span>
+<span class="go"> &#39;ara&#39;, &#39;ekle&#39;, &#39;sil&#39;, &#39;sözlük&#39;]</span>
+</pre></div>
+</div>
+</section>
+<section id="loader-niteligi">
+<h3>__loader__ Niteliği</h3>
+<p>Python’da içe aktarılan bütün modüllerin <cite>__loader__</cite> adlı bir niteliği
+bulunur. Bu nitelik, ilgili modülü içe aktaran mekanizma hakkında bize çeşitli
+bilgiler veren birtakım araçlar sunar:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">yükleyici</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">__loader__</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">yükleyici</span><span class="p">)</span>
+
+<span class="go">[&#39;__class__&#39;, &#39;__delattr__&#39;, &#39;__dict__&#39;, &#39;__dir__&#39;, &#39;__doc__&#39;, &#39;__eq__&#39;,</span>
+<span class="go"> &#39;__format__&#39;, &#39;__ge__&#39;, &#39;__getattribute__&#39;, &#39;__gt__&#39;, &#39;__hash__&#39;,</span>
+<span class="go"> &#39;__init__&#39;, &#39;__le__&#39;, &#39;__lt__&#39;, &#39;__module__&#39;, &#39;__ne__&#39;, &#39;__new__&#39;,</span>
+<span class="go"> &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__setattr__&#39;, &#39;__sizeof__&#39;,</span>
+<span class="go"> &#39;__str__&#39;, &#39;__subclasshook__&#39;, &#39;__weakref__&#39;, &#39;_cache_bytecode&#39;,</span>
+<span class="go"> &#39;exec_module&#39;, &#39;get_code&#39;, &#39;get_data&#39;, &#39;get_filename&#39;, &#39;get_source&#39;,</span>
+<span class="go"> &#39;is_package&#39;, &#39;load_module&#39;, &#39;name&#39;, &#39;path&#39;, &#39;path_mtime&#39;, &#39;path_stats&#39;,</span>
+<span class="go"> &#39;set_data&#39;, &#39;source_to_code&#39;]</span>
+</pre></div>
+</div>
+<p>Mesela, içe aktardığınız bir modülün kaynak kodlarını görüntülemek için bu
+modülden yararlanabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">webbrowser</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">yükleyici</span> <span class="o">=</span> <span class="n">webbrowser</span><span class="o">.</span><span class="n">__loader__</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kaynak</span> <span class="o">=</span> <span class="n">yükleyici</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">webbrowser</span><span class="o">.</span><span class="vm">__file__</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kaynak</span>
+</pre></div>
+</div>
+<p>Burada, daha önce öğrendiğimiz <cite>__file__</cite> niteliğini kullandığımıza dikkat
+edin. <cite>__loader__</cite> niteliğinin <cite>get_data()</cite> adlı metodu, parametre olarak,
+sorgulayacağımız modülün dizin adresini ister. Bir modülün dizin adresini
+<cite>__file__</cite> niteliği yardımıyla elde edebileceğimizi biliyoruz. Dolayısıyla da
+<cite>get_data()</cite> metoduna parametre olarak <code class="docutils literal notranslate"><span class="pre">webbrowser.__file__</span></code> kodunu
+veriyoruz. Elde ettiğimiz şey ise, sorguladığımız modülün kaynak kodlarını
+içeren bir bayt (<em>bytes</em>) veri tipi oluyor.</p>
+<p><cite>__loader__</cite>, günlük olarak kullanacağımız bir araç değil. Eğer yazdığınız
+kodlarda bu niteliğin sunduğu olanaklara ihtiyaç duyarsanız, doğrudan bu nitelik
+yerine <code class="docutils literal notranslate"><span class="pre">pkgutil</span></code> adlı bir modülü kullanabilirsiniz.</p>
+</section>
+<section id="spec-niteligi">
+<h3>__spec__ Niteliği</h3>
+<p><cite>__spec__</cite> niteliği de bize modüller hakkında çeşitli bilgiler sunan birtakım
+araçları içinde barındırır. Mesela bir modülün ad ve konum bilgilerine ulaşmak
+için bu niteliği kullanabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">adı</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">__spec__</span><span class="o">.</span><span class="n">name</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">konumu</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">__spec__</span><span class="o">.</span><span class="n">origin</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">adı</span>
+
+<span class="go">&#39;subprocess&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">konumu</span>
+
+<span class="go">&#39;C:\\Pythonxy\\lib\\subprocess.py&#39;</span>
+</pre></div>
+</div>
+<p>Tıpkı <cite>__loader__</cite> gibi, bu nitelik de günlük olarak kullanacağımız bir araç
+değil. Bu niteliğin içindeki araçların sunduğu bilgileri başka yollardan da elde
+edebileceğimizi biliyorsunuz.</p>
+</section>
+<section id="package-niteligi">
+<h3>__package__ Niteliği</h3>
+<p>Henüz bu niteliğin ne olduğunu anlayacak bilgiye sahip olmadığımız için, bu
+niteliğin incelemesini ‘Paketler’ konusunu işlediğimiz bölüme bırakıyoruz.</p>
+<p>Böylece modüller konusunu tamamlamış olduk. Bu bölümde modüllere ilişkin epey
+bilgi verdik. Eğer modüller konusunda aklınıza yatmayan yerler varsa, hiç
+ümitsizliğe kapılmadan okumaya devam edin. Birazdan ‘sınıflar’ konusunu
+işlerken, modüllerden ve modüllerin çeşitli özelliklerinden de söz edeceğiz. O
+zaman, burada anlamamış olabileceğiniz konuları çok daha net bir şekilde
+anlayacaksınız.</p>
+</section>
+</section>
+</section>
+<p class="rubric">Footnotes</p>
+
+
+
+<div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
+<div class='extrarelbar'> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.xhtml" title="Genel Dizin"
+             accesskey="I">dizin</a></li>
+        <li class="right" >
+          <a href="nesne_tabanli_programlama1.xhtml" title="Nesne Tabanlı Programlama (OOP)"
+             accesskey="N">sonraki</a> |</li>
+        <li class="right" >
+          <a href="ileri_fonksiyonlar.xhtml" title="İleri Düzey Fonksiyonlar"
+             accesskey="P">önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+        <li class="nav-item nav-item-this"><a href="">Modüller</a></li> 
+      </ul>
+    </div> </div>
+
+<div class='addcomment'>Yorumlar</div>
+
+<div class='how-to-use'>
+<h3>Önemli Not</h3>
+Eğer yazdığınız yorum içinde kod kullanacaksanız kodlarınızı
+<span class='tag'>&lt;pre&gt;&lt;code&gt;</span> etiketleri içine alın. Örneğin:
+
+<pre>
+    <span class='tag'>&lt;pre&gt;&lt;code class="python"&gt;</span>
+    <span class='keyword'>print</span>(<span class='string'>"Merhaba Dünya!"</span>)
+    <span class='tag'>&lt;/code&gt;&lt;/pre&gt;</span>
+</pre>
+
+Sorularınızı yorumlarda dile getirmek yerine <a href="https://forum.yazbel.com/">Yazbel Forumu</a>nda sorarsanız çok daha hızlı cevap alabilirsiniz.
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'istihza';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+<noscript>
+<br>
+<a href="https://disqus.com/?ref_noscript" rel="nofollow">Disqus tarafından sağlanan yorumları</a> görmek için lütfen JavasScript'i etkinleştirin.
+<br>
+Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4eca48eb2d83faf9" async="async"></script>
+
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.xhtml" title="Genel Dizin"
+             >dizin</a></li>
+        <li class="right" >
+          <a href="nesne_tabanli_programlama1.xhtml" title="Nesne Tabanlı Programlama (OOP)"
+             >sonraki</a> |</li>
+        <li class="right" >
+          <a href="ileri_fonksiyonlar.xhtml" title="İleri Düzey Fonksiyonlar"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+        <li class="nav-item nav-item-this"><a href="">Modüller</a></li> 
+      </ul>
+    </div> 
+
+<div class="footer">
+		&copy; Copyright 2007-2021, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 06.10.2021.
+	<a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0 kullanılarak oluşturuldu.
+<br>
+<br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
+alt="Creative Commons License" style="border-width:0"
+src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a>
+<br>
+<br>
+</div>
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=10396326;
+var sc_invisible=1;
+var sc_security="fb5cd679";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="hit counter"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="http://c.statcounter.com/10396326/0/fb5cd679/1/"
+alt="hit counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+  </body>
+</html>

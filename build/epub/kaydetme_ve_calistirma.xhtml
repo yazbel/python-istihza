@@ -1,0 +1,350 @@
+
+ <!DOCTYPE html>
+ <html lang="tr">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta content="Bu bölümde, Python programlarını temel olarak nasıl kaydedeceğimizi ve bu programları nasıl çalıştıracağımızı öğreneceğiz." name="description" />
+<meta content="Python, path, yol, Windows, GNU/Linux, Python programlarını çalıştırmak, kaydetmek" name="keywords" />
+
+    <title>Programları Kaydetme ve Çalıştırma</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/epub.css" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+<div class='header'><a href='https://yazbel.com'><img src="_static/logo.png"></a></div>
+
+<ul class='navbar'>
+    <li class="forum"><a href="http://forum.yazbel.com">forum</a></li>
+    <li><a href="PythonProgramlamaDili.pdf">pdf</a></li>
+    <li><a href="PythonProgramlamaDili.epub">epub</a></li>
+    <li><a href="PythonProgramlamaDili.html">html</a></li>
+</ul>
+
+
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+
+  <section id="programlari-kaydetme-ve-calistirma">
+<h1>Programları Kaydetme ve Çalıştırma</h1>
+<p>Bu noktaya kadar bütün işlerimizi Python’ın etkileşimli kabuğu üzerinden
+hallettik. Her ne kadar etkileşimli kabuk son derece kullanışlı bir ortam da
+olsa, bizim asıl çalışma alanımız değildir. Daha önce de dediğimiz gibi,
+etkileşimli kabuğu genellikle ufak tefek Python kodlarını test etmek için
+kullanacağız. Ama asıl programlarımızı tabii ki etkileşimli kabuğa değil,
+program dosyasına yazacağız.</p>
+<p>Ne dedik? Özellikle küçük kod parçaları yazıp bunları denemek için etkileşimli
+kabuk mükemmel bir ortamdır. Ancak kodlar çoğalıp büyümeye başlayınca bu ortam
+yetersiz gelmeye başlayacaktır. Üstelik tabii ki yazdığınız kodları bir yere
+kaydedip saklamak isteyeceksiniz. İşte burada metin düzenleyiciler devreye
+girecek.</p>
+<p>Python kodlarını yazmak için istediğiniz herhangi bir metin düzenleyiciyi
+kullanabilirsiniz. Hatta Notepad bile olur. Ancak Python kodlarını ayırt edip
+renklendirebilen bir metin düzenleyici ile yola çıkmak her bakımdan hayatınızı
+kolaylaştıracaktır.</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Python kodlarınızı yazmak için Microsoft Word veya OpenOffice.Org
+OOWriter gibi, belgeleri ikili (<em>binary</em>) düzende kaydeden programlar uygun
+değildir. Kullanacağınız metin düzenleyici, belgelerinizi düz metin (<em>plain
+text</em>) biçiminde kaydedebilmeli.</p>
+</div>
+<p>Biz bu bölümde farklı işletim sistemlerinde, metin düzenleyici kullanılarak
+Python programlarının nasıl yazılacağını ve bunların nasıl çalıştırılacağını tek
+tek inceleyeceğiz.</p>
+<p>Daha önce de söylediğimiz gibi, hangi işletim sistemini kullanıyor olursanız
+olun, hem Windows hem de GNU/Linux başlığı altında yazılanları okumalısınız.</p>
+<p>Dilerseniz önce GNU/Linux ile başlayalım:</p>
+<section id="gnu-linux">
+<h2>GNU/Linux</h2>
+<p>Eğer kullandığınız sistem GNU/Linux’ta Unity veya GNOME masaüstü ortamı ise
+başlangıç düzeyi için Gedit adlı metin düzenleyici yeterli olacaktır.</p>
+<p>Eğer kullandığınız sistem GNU/Linux’ta KDE masaüstü ortamı ise Kwrite veya Kate
+adlı metin düzenleyicilerden herhangi birini kullanabilirsiniz. Şu aşamada
+kullanım kolaylığı ve sadeliği nedeniyle Kwrite önerilebilir.</p>
+<p>İşe yeni bir Gedit belgesi açarak başlayalım. Yeni bir Gedit belgesi açmanın en
+kolay yolu <cite>Alt+F2</cite> tuşlarına bastıktan sonra çıkan ekranda:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">gedit</span>
+</pre></div>
+</div>
+<p>yazıp <cite>Enter</cite> düğmesine basmaktır.</p>
+<p>Eğer Gedit yerine mesela Kwrite kullanıyorsanız, yeni bir Kwrite belgesi
+oluşturmak için <cite>Alt+F2</cite> tuşlarına bastıktan sonra:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">kwrite</span>
+</pre></div>
+</div>
+<p>komutunu vermelisiniz. Elbette kullanacağınız metin düzenleyiciye, komut vermek
+yerine, dağıtımınızın menüleri aracılığıyla da ulaşabilirsiniz.</p>
+<p>Python kodlarımızı, karşımıza çıkan bu boş metin dosyasına yazıp kaydedeceğiz.</p>
+<p>Aslında kodları metin dosyasına yazmakla etkileşimli kabuğa yazmak arasında çok
+fazla fark yoktur. Dilerseniz hemen bir örnek vererek ne demek istediğimizi
+anlatmaya çalışalım:</p>
+<p>1. Boş bir Gedit ya da Kwrite belgesi açıyoruz ve bu belgeye şu kodları
+eksiksiz bir şekilde yazıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">tarih</span> <span class="o">=</span> <span class="s2">&quot;02.01.2012&quot;</span>
+<span class="n">gün</span> <span class="o">=</span> <span class="s2">&quot;Pazartesi&quot;</span>
+<span class="n">vakit</span> <span class="o">=</span> <span class="s2">&quot;öğleden sonra&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">tarih</span><span class="p">,</span> <span class="n">gün</span><span class="p">,</span> <span class="n">vakit</span><span class="p">,</span> <span class="s2">&quot;buluşalım&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>2. Bu kodları yazıp bitirdikten sonra dosyayı masaüstüne <cite>randevu.py</cite> adıyla
+kaydedelim.</p>
+<p>3. Sonra işletim sistemimize uygun bir şekilde komut satırına ulaşalım.</p>
+<p>4. Ardından komut satırı üzerinden masaüstüne gelelim. (Bunun nasıl
+yapılacağını hatırlıyorsunuz, değil mi?)</p>
+<p>5. Son olarak şu komutla programımızı çalıştıralım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">randevu</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Şöyle bir çıktı almış olmalıyız:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="mf">02.01.2012</span> <span class="n">Pazartesi</span> <span class="n">öğleden</span> <span class="n">sonra</span> <span class="n">buluşalım</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Eğer bu çıktı yerine bir hata mesajı alıyorsanız bunun birkaç farklı sebebi
+olabilir:</p>
+<ol class="arabic simple">
+<li><p>Kodlarda yazım hatası yapmış olabilirsiniz. Bu ihtimali bertaraf etmek için
+yukarıdaki kodlarla kendi yazdığınız kodları dikkatlice karşılaştırın.</p></li>
+<li><p>Kodlarınızı kaydettiğiniz <cite>randevu.py</cite> adlı dosyanın adını yanlış yazmış
+olabilirsiniz. Dolayısıyla <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">randevu.py</span></code> komutu, var olmayan bir dosyaya
+atıfta bulunuyor olabilir.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">randevu.py</span></code> komutunu verdiğiniz dizin konumu ile <cite>randevu.py</cite>
+dosyasının bulunduğu dizin konumu birbirinden farklı olabilir. Yani siz
+<cite>randevu.py</cite> dosyasını masaüstüne kaydetmişsinizdir, ama <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">randevu.py</span></code>
+komutunu yanlışlıkla başka bir dizin altında veriyor olabilirsiniz. Bu ihtimali
+ortadan kaldırmak için, önceki derslerde öğrendiğimiz yöntemleri kullanarak
+hangi dizin altında bulunduğunuzu kontrol edin. O anda içinde bulunduğunuz
+dizinin içeriğini listeleyerek, <cite>randevu.py</cite> dosyasının orada görünüp
+görünmediğini kontrol edebilirsiniz. Eğer program dosyanız bu listede
+görünmüyorsa, elbette <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">randevu.py</span></code> komutu çalışmayacaktır.</p></li>
+<li><p>Geçen derslerde anlattığımız şekilde Python3’ü kaynaktan <cite>root</cite> haklarıyla
+derlemenize rağmen, derleme sonrasında <cite>/usr/bin/</cite> dizini altına <cite>python3</cite> adlı
+bir sembolik bağ oluşturmadığınız için <code class="docutils literal notranslate"><span class="pre">python3</span></code> komutu çalışmıyor olabilir.</p></li>
+<li><p>Eğer Python3’ü yetkisiz kullanıcı olarak derlediyseniz, <cite>$HOME/python/bin/</cite>
+dizini altında hem <code class="docutils literal notranslate"><span class="pre">python3</span></code> adlı bir sembolik bağ oluşturmuş, hem de
+<cite>$HOME/python/bin/</cite> dizinini YOL’a (<em>PATH</em>) eklemiş olmanız gerekirken bunları
+yapmamış olabilirsiniz.</p></li>
+<li><p>Asla unutmayın, Python’ın etkileşimli kabuğunu başlatmak için hangi komutu
+kullanıyorsanız, <cite>randevu.py</cite> dosyasını çalıştırmak için de aynı komutu
+kullanacaksınız. Yani eğer Python’ın etkileşimli kabuğunu <code class="docutils literal notranslate"><span class="pre">python3.7</span></code> gibi bir
+komutla çalıştırıyorsanız, programınızı da <code class="docutils literal notranslate"><span class="pre">python3.7</span></code> <code class="docutils literal notranslate"><span class="pre">randevu.py</span></code> şeklinde
+çalıştırmanız gerekir. Aynı şekilde, eğer etkileşimli kabuğu mesela <code class="docutils literal notranslate"><span class="pre">python</span></code>
+(veya <code class="docutils literal notranslate"><span class="pre">py3</span></code>) gibi bir komutla çalıştırıyorsanız, programınızı da <code class="docutils literal notranslate"><span class="pre">python</span>
+<span class="pre">randevu.py</span></code> (veya <code class="docutils literal notranslate"><span class="pre">py3</span> <span class="pre">randevu.py</span></code>) şeklinde çalıştırmalısınız. Neticede
+etkileşimli kabuğu çalıştırırken de, bir program dosyası çalıştırırken de
+aslında temel olarak Python programlama dilini çalıştırmış oluyorsunuz. Python
+programını çalıştırırken bir dosya adı belirtmezseniz, yani Python’ı başlatan
+komutu tek başına kullanırsanız etkileşimli kabuk çalışmaya başlar. Ama eğer
+Python’ı başlatan komutla birlikte bir program dosyası ismi de belirtirseniz, o
+belirttiğiniz program dosyası çalışmaya başlar.</p></li>
+</ol>
+<p>Kodlarınızı düzgün bir şekilde çalıştırabildiğinizi varsayarak yolumuza devam
+edelim…</p>
+<p>Gördüğünüz gibi, kod dosyamızı çalıştırmak için <code class="docutils literal notranslate"><span class="pre">python3</span></code> komutundan
+yararlanıyoruz. Bu arada tekrar etmekte fayda var: Python’ın etkileşimli
+kabuğunu çalıştırmak için hangi komutu kullanıyorsanız, dosyaya kaydettiğiniz
+programlarınızı çalıştırmak için de aynı komutu kullanacaksınız.</p>
+<p>Gelelim Windows kullanıcılarına…</p>
+</section>
+<section id="windows">
+<h2>Windows</h2>
+<p>Daha önce de söylediğimiz gibi, Python kodlarımızı yazmak için istediğimiz bir
+metin düzenleyiciyi kullanabiliriz. Hatta Notepad’i bile kullansak olur. Ancak
+Notepad’den biraz daha gelişmiş bir metin düzenleyici ile başlamak işinizi
+kolaylaştıracaktır.</p>
+<p>Python programlama dilini öğrenmeye yeni başlayan Windows kullanıcıları için en
+uygun metin düzenleyici IDLE’dır. <em>Başlat &gt; Tüm Programlar &gt; Python</em>3.7 <em>&gt; IDLE (Python GUI)</em> yolunu takip ederek IDLE’a
+ulaşabilirsiniz.</p>
+<p>IDLE’ı açtığınızda şöyle bir ekranla karşılaşacaksınız:</p>
+<blockquote>
+<div><img alt="_images/idle_main.png" class="align-center" src="_images/idle_main.png" style="width: 65%;" />
+</div></blockquote>
+<p>Aslında bu ekran size bir yerlerden tanıdık geliyor olmalı. Dikkat ederseniz
+beyaz ekranın en sonunda bordo renkli bir <cite>&gt;&gt;&gt;</cite> işareti var. Evet, tahmin
+ettiğiniz gibi, burası aslında Python’ın etkileşimli kabuğudur. Yani o siyah
+etkileşimli kabuk ekranında ne yapabilirseniz burada da aynı şeyi
+yapabilirsiniz. Dilerseniz kendi kendinize bazı denemeler yapın. Ama şu anda biz
+IDLE’ın bu özelliğini değil, metin düzenleyici olma özelliğini kullanacağız. O
+yüzden yolumuza devam ediyoruz.</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Dediğimiz gibi, yukarıda görünen ekran aslında Python’ın
+etkileşimli kabuğudur. Dolayısıyla biraz sonra göstereceğimiz kodları buraya
+yazmayacağız. Python programlama diline yeni başlayanların en sık yaptığı
+hatalardan biri de, kaydetmek istedikleri kodları yukarıda görünen ekrana
+yazmaya çalışmalarıdır. Unutmayın, Python’ın etkileşimli kabuğunda ne
+yapabiliyorsanız, IDLE’ı açtığınızda ilk karşınıza çıkan ekranda da onu
+yapabilirsiniz. Python’ın etkileşimli kabuğunda yazdığınız kodlar etkileşimli
+kabuğu kapattığınızda nasıl kayboluyorsa, yukarıdaki ekrana yazdığınız kodlar da
+IDLE’ı kapattığınızda kaybolur…</p>
+</div>
+<p>Bir önceki ekranda sol üst köşede <em>File</em> [Dosya] menüsü görüyorsunuz. Oraya
+tıklayın ve menü içindeki <em>New Window</em> [Yeni Pencere] düğmesine basın. Şöyle bir
+ekranla karşılaşacaksınız:</p>
+<blockquote>
+<div><img alt="_images/idle_new.png" class="align-center" src="_images/idle_new.png" style="width: 65%;" />
+</div></blockquote>
+<p>İşte Python kodlarımızı bu beyaz ekrana yazacağız. Şimdi bu ekrana şu satırları
+yazalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">tarih</span> <span class="o">=</span> <span class="s2">&quot;02.01.2012&quot;</span>
+<span class="n">gün</span> <span class="o">=</span> <span class="s2">&quot;Pazartesi&quot;</span>
+<span class="n">vakit</span> <span class="o">=</span> <span class="s2">&quot;öğleden sonra&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">tarih</span><span class="p">,</span> <span class="n">gün</span><span class="p">,</span> <span class="n">vakit</span><span class="p">,</span> <span class="s2">&quot;buluşalım&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu noktadan sonra yapmamız gereken şey dosyamızı kaydetmek olacak. Bunun için
+<em>File &gt; Save as</em> yolunu takip ederek programımızı masaüstüne <cite>randevu.py</cite> adıyla
+kaydediyoruz.</p>
+<p>Şu anda programımızı yazdık ve kaydettik. Artık programımızı çalıştırabiliriz.
+Bunun için IDLE’da <em>Run &gt; Run Module</em> yolunu takip etmeniz veya kısaca <cite>F5</cite>
+tuşuna basmanız yeterli olacaktır. Bu iki yöntemden birini kullanarak
+programınızı çalıştırdığınızda şöyle bir çıktı elde edeceksiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="mf">02.01.2012</span> <span class="n">Pazartesi</span> <span class="n">öğleden</span> <span class="n">sonra</span> <span class="n">buluşalım</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Tebrikler! İlk Python programınızı yazıp çalıştırdınız… Eğer
+çalıştıramadıysanız veya yukarıdaki çıktı yerine bir hata mesajı aldıysanız
+muhtemelen kodları yazarken yazım hatası yapmışsınızdır. Kendi yazdığınız
+kodları buradaki kodlarla dikkatlice karşılaştırıp tekrar deneyin.</p>
+<p>Şimdi gelin isterseniz yukarıda yazdığımız kodları şöyle bir kısaca inceleyelim.</p>
+<p>Programımızda üç farklı değişken tanımladığımıza dikkat edin. Bu değişkenler
+<cite>tarih</cite>, <cite>gün</cite> ve <cite>vakit</cite> adlı değişkenlerdir. Daha sonra bu değişkenleri
+birbiriyle birleştiriyoruz. Bunun için <code class="docutils literal notranslate"><span class="pre">print()</span></code> fonksiyonundan nasıl
+yararlandığımızı görüyorsunuz. Ayrıca <code class="docutils literal notranslate"><span class="pre">print()</span></code> fonksiyonunu kullanış
+biçimimize de dikkat edin. Buradaki <cite>end</cite> parametresinin anlamını ve bunun ne
+işe yaradığını artık gayet iyi biliyorsunuz. <cite>end</cite> parametresi yardımıyla
+cümlenin en sonuna bir adet nokta yerleştirip, <cite>\n</cite> adlı kaçış dizisi
+yardımıyla da bir alt satıra geçiyoruz.</p>
+<p>Böylece basit bir Python programının temel olarak nasıl yazılıp bir dosyaya
+kaydedileceğini ve bu programın nasıl çalıştırılacağını öğrenmiş olduk.</p>
+</section>
+</section>
+<p class="rubric">Footnotes</p>
+
+
+
+<div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
+<div class='extrarelbar'> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.xhtml" title="Genel Dizin"
+             accesskey="I">dizin</a></li>
+        <li class="right" >
+          <a href="gelistirme_ortami.xhtml" title="Çalışma Ortamı Tavsiyesi"
+             accesskey="N">sonraki</a> |</li>
+        <li class="right" >
+          <a href="kacis_dizileri.xhtml" title="Kaçış Dizileri"
+             accesskey="P">önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+        <li class="nav-item nav-item-this"><a href="">Programları Kaydetme ve Çalıştırma</a></li> 
+      </ul>
+    </div> </div>
+
+<div class='addcomment'>Yorumlar</div>
+
+<div class='how-to-use'>
+<h3>Önemli Not</h3>
+Eğer yazdığınız yorum içinde kod kullanacaksanız kodlarınızı
+<span class='tag'>&lt;pre&gt;&lt;code&gt;</span> etiketleri içine alın. Örneğin:
+
+<pre>
+    <span class='tag'>&lt;pre&gt;&lt;code class="python"&gt;</span>
+    <span class='keyword'>print</span>(<span class='string'>"Merhaba Dünya!"</span>)
+    <span class='tag'>&lt;/code&gt;&lt;/pre&gt;</span>
+</pre>
+
+Sorularınızı yorumlarda dile getirmek yerine <a href="https://forum.yazbel.com/">Yazbel Forumu</a>nda sorarsanız çok daha hızlı cevap alabilirsiniz.
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'istihza';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+<noscript>
+<br>
+<a href="https://disqus.com/?ref_noscript" rel="nofollow">Disqus tarafından sağlanan yorumları</a> görmek için lütfen JavasScript'i etkinleştirin.
+<br>
+Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4eca48eb2d83faf9" async="async"></script>
+
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.xhtml" title="Genel Dizin"
+             >dizin</a></li>
+        <li class="right" >
+          <a href="gelistirme_ortami.xhtml" title="Çalışma Ortamı Tavsiyesi"
+             >sonraki</a> |</li>
+        <li class="right" >
+          <a href="kacis_dizileri.xhtml" title="Kaçış Dizileri"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+        <li class="nav-item nav-item-this"><a href="">Programları Kaydetme ve Çalıştırma</a></li> 
+      </ul>
+    </div> 
+
+<div class="footer">
+		&copy; Copyright 2007-2021, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 06.10.2021.
+	<a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0 kullanılarak oluşturuldu.
+<br>
+<br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
+alt="Creative Commons License" style="border-width:0"
+src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a>
+<br>
+<br>
+</div>
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=10396326;
+var sc_invisible=1;
+var sc_security="fb5cd679";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="hit counter"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="http://c.statcounter.com/10396326/0/fb5cd679/1/"
+alt="hit counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+  </body>
+</html>
