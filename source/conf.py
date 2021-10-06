@@ -59,6 +59,7 @@ epub_basename = basename
 epub_cover = (logo, '')
 epub_theme = 'epub'
 epub_show_urls = 'footnote'
+version = release
 
 # latex
 # also see: https://www.sphinx-doc.org/en/master/usage/builders/index.html#sphinx.builders.latex.LaTeXBuilder
