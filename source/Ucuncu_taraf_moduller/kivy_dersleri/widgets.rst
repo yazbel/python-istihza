@@ -453,7 +453,7 @@ kivy.uix.textinput.TextInput
 
 TextInput, kullanıcıdan girdi almayı sağlar, programlarda çok kullandığımız metin kutularıdır. Tek satırlı, çok satırlı, yıldızlı girdi alma ve daha birçok işlem için kullanılabilir. Aynı zamanda CTRL+C, CTRL+Z gibi kısayol tuşları da kullanılabilir.
 
-kivy.uix.textinput modülü içerisinde yer alır. Hatırlarsanız BoxLayout konusunda bir `örnek <layout.html#target>`__ yapmıştık. Bu örnek kullanıcıdan nick ve şifre almak üzere tasarlanmıştı ama henüz birşey yapamıyordu. İşte şimdi bu yazdığımız örneği kullanılabilir hale getireceğiz. 
+kivy.uix.textinput modülü içerisinde yer alır. Hatırlarsanız BoxLayout konusunda bir :ref:`örnek <kivy_layout_target>` yapmıştık. Bu örnek kullanıcıdan nick ve şifre almak üzere tasarlanmıştı ama henüz birşey yapamıyordu. İşte şimdi bu yazdığımız örneği kullanılabilir hale getireceğiz. 
 
 Öncelikle örneğimizi tekrar yazalım
 

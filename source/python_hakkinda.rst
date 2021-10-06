@@ -91,7 +91,7 @@ Dolayısıyla *python* kelimesini de [paytın] şeklinde telaffuz edebilirsiniz.
 *Python* kelimesini tamamen Türkçeleştirerek [piton] şeklinde telaffuz etmeyi yeğleyenler de var.
 Elbette siz de dilinizin döndüğü bir telaffuzu tercih etmekte özgürsünüz.
 
-Bu arada, eğer *python* kelimesinin İngilizce telaffuzunu dinlemek istiyorsanız `howjsay.com <http://www.howjsay.com/>`_ adresini ziyaret edebilir, Guido Van Rossum'un bu kelimeyi nasıl telaffuz ettiğini merak ediyorsanız da http://goo.gl/bx9iJu adresindeki tanıtım videosunu izleyebilirsiniz.
+Bu arada, eğer *python* kelimesinin İngilizce telaffuzunu dinlemek istiyorsanız `howjsay.com <https://howjsay.com/>`_ adresini ziyaret edebilir, Guido Van Rossum'un bu kelimeyi nasıl telaffuz ettiğini merak ediyorsanız da https://www.youtube.com/watch?v=UIDdgeISLUI adresindeki tanıtım videosunu izleyebilirsiniz.
 
 Platform Desteği
 ****************

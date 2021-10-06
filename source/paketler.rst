@@ -182,7 +182,7 @@ otomatik olarak bilgisayarımıza kuracaktır.
 
 Bir üçüncü şahıs paketini ``pip3`` komutuyla kurmak yerine elle kurmayı da
 tercih edebilirsiniz. Örnek olarak bu defa `django` paketini alalım. Bu paketin
-en son sürümünü https://github.com/django/django/archive/master.tar.gz
+en son sürümünü https://pypi.org/project/Django/#files
 adresinden indirebilirsiniz. Ayrıca arzu ederseniz https://www.djangoproject.com
 adresine uğrayarak bu modülün resmi websitesine de gözatabilirsiniz.
 

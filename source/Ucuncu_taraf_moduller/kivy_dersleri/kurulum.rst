@@ -24,17 +24,17 @@ Python 2.7 sürümünden Python 3.0 sürümüne kadar, aynı zamanda Python 3.4 
 
 Windows için kurulum:
 
-https://kivy.org/docs/installation/installation-windows.html
+https://kivy.org/doc/stable/installation/installation-windows.html
 
 
 Linux için kurulum:
 
-https://kivy.org/docs/installation/installation-linux.html
+https://kivy.org/doc/stable/installation/installation-linux.html
 
 
 OS X için kurulum
 
-https://kivy.org/docs/installation/installation-osx.html
+https://kivy.org/doc/stable/installation/installation-osx.html
 
 
 Türkçe kaynak:
@@ -58,4 +58,4 @@ Kodu kaydedip çalıştırırsanız, ekrana boş bir siyah pencere çıkacaktır
 
 Yukarıda da yazdığım gibi, detaylı olarak anlatmadık. Çünkü birden fazla platform için yazılmış bir kütüphane olduğu için, her birine ayrılmış anlatım sayfaları ile yetindik. Yine de bir sorununuz olursa, kuramazsanız foruma konu açabilirsiniz. Kivy resmi kaynaklarında bulunan kurulum kılavuzu için `şu`_ bağlantıya tıklayabilirsiniz.
 
-.. _şu: https://kivy.org/doc/stable/installation/installation.html
+.. _şu: https://kivy.org/doc/stable/gettingstarted/installation.html

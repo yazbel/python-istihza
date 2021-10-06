@@ -173,7 +173,7 @@ sayfası olduğu için, 128 ile 256 sayıları arasında Türkçe karakterleri i
 yüzden bu kodlama sisteminde Türkçe karakterler 1 bayt ile gösterilebilir. Bu
 kod sayfasının içeriğinde hangi karakterlerin hangi sayılara karşılık geldiğini
 görmek için `en.wikipedia.org/wiki/Windows-1254
-<http://en.wikipedia.org/wiki/Windows-1254>`_ adresindeki tabloyu
+<https://en.wikipedia.org/wiki/Windows-1254>`_ adresindeki tabloyu
 inceleyebilirsiniz.
 
 Ama eğer yukarıdaki komutların çıktısı UTF-8 veya başka bir kod çözücü ise,
@@ -367,7 +367,7 @@ Gördüğünüz gibi, cp1254 adlı kod çözücü bu baytı çözebiliyor, ama y
 çözüyor! Çünkü bu baytın gösterdiği sayı cp1254 adlı kod sayfasında 'İ'ye değil,
 başka bir karaktere karşılık geliyor. Aslında başka iki karaktere, yani C4 ve B0
 ile gösterilen `Ä` ve `°` karakterlerine karşılık geliyor... Bu durumu
-http://en.wikipedia.org/wiki/Windows-1254 adresine gidip kendiniz de
+https://en.wikipedia.org/wiki/Windows-1254 adresine gidip kendiniz de
 görebilirsiniz.
 
 Bu baytları bir de ASCII ile çözmeye çalışalım::

@@ -275,7 +275,7 @@ daha kolay anlamanızı sağlayacak yardımcı belgelerden de yardım alabilirsi
 JPEG
 -------
 
-`JPEG` biçimi ile ilgili bilgileri http://www.jpeg.org adresinde bulabilirsiniz.
+`JPEG` biçimi ile ilgili bilgileri https://jpeg.org/ adresinde bulabilirsiniz.
 `JPEG` dosya biçimini daha iyi anlamanızı sağlayacak yardımcı kaynak ise
 şudur:
 
@@ -398,7 +398,7 @@ PNG
 `PNG` dosya biçiminin teknik şartnamesine http://www.libpng.org/pub/png/spec/
 adresinden ulaşabilirsiniz.
 
-Ayrıca yardımcı kaynak olarak da http://www.fileformat.info/format/png/egff.htm
+Ayrıca yardımcı kaynak olarak da https://www.fileformat.info/format/png/egff.htm
 adresindeki belgeyi kullanabilirsiniz.
 
 Şartnamade,
@@ -488,7 +488,7 @@ Eğer bir dosyanın `GIF` olup olmadığını anlamak isterseniz dosyanın ilk `
 TIFF
 ------
 
-`TIFF` şartnamesine http://partners.adobe.com/public/developer/en/tiff/TIFF6.pdf
+`TIFF` şartnamesine https://www.adobe.io/content/dam/udp/en/open/standards/tiff/TIFF6.pdf
 adresinden ulaşabilirsiniz. Bu şartnameye göre bir `TIFF` dosyası şunlardan
 herhangi biri ile başlar:
 
@@ -515,7 +515,7 @@ BMP
 ------
 
 `BMP` türündeki resim dosyalarına ilişkin bilgi için
-http://www.digitalpreservation.gov/formats/fdd/fdd000189.shtml adresine
+https://www.loc.gov/preservation/digital/formats/fdd/fdd000189.shtml adresine
 başvurabilirsiniz.
 
 Buna göre, `BMP` dosyaları 'BM' ile başlar. Yani::

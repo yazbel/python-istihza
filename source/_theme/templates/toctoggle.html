@@ -1,0 +1,38 @@
+{% if pagename == 'index' %}
+    {% if project == 'resmi' %}
+    <script>
+    jQuery.fn.extend({
+            toggleText: function (a, b){
+                var isClicked = false;
+                var that = this;
+                this.click(function (){
+                    $(".toctree-l3, hr.docutils").toggle();
+                    if (isClicked) { that.text(a); isClicked = false; }
+                    else { that.text(b); isClicked = true; }
+                });
+                return this;
+            }
+        });
+
+    $('button').toggleText("+", "-");
+    </script>
+
+    {% else %}
+    <script>
+    jQuery.fn.extend({
+            toggleText: function (a, b){
+                var isClicked = false;
+                var that = this;
+                this.click(function (){
+                    $(".toctree-l2, hr.docutils").toggle();
+                    if (isClicked) { that.text(a); isClicked = false; }
+                    else { that.text(b); isClicked = true; }
+                });
+                return this;
+            }
+        });
+
+    $('button').toggleText("+", "-");
+    </script>
+    {% endif %}
+{% endif %}

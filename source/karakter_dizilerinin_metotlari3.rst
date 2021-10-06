@@ -916,7 +916,7 @@ Demek ki `"a"` karakteri basılabilen bir karaktermiş. Bir de şuna bakalım::
 
 Demek ki `\\n` karakteri gerçekten de basılamayan bir karaktermiş.
 
-Basılamayan karakterlerin listesini görmek için http://www.asciitable.com/
+Basılamayan karakterlerin listesini görmek için https://www.asciitable.com/
 adresini ziyaret edebilirsiniz. Listedeki ilk `32` karakter (`0`'dan başlayarak
 `32`'ye kadar olan karakterler) ve listedeki `127.` karakter basılamayan
 karakterlerdir.

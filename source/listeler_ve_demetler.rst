@@ -1623,7 +1623,7 @@ oyunu yazacağız.
 Yazacağımız oyunun İngilizce adı *Tic Tac Toe*. Bu oyunun ne olduğunu ve
 kurallarını bir önceki bölümde kabataslak bir şekilde vermiştik. Eğer isterseniz
 oyun kurallarına `wikipedia.org/wiki/Çocuk_oyunları#X_O_X_OYUNU
-<http://tr.wikipedia.org/wiki/Çocuk_oyunları#X_O_X_OYUNU>`_ adresinden de
+<https://tr.wikipedia.org/wiki/%C3%87ocuk_oyunlar%C4%B1#XOX>`_ adresinden de
 bakabilirsiniz.
 
 Oyunu ve kurallarını bildiğinizi varsayarak kodlamaya başlayalım.

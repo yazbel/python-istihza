@@ -85,7 +85,7 @@ Ekran görüntüsü
 
 Gördüğünüz gibi eklenen elemanları alt alta yerleştirdi. Peki ikisini birarada kullanabileceğimiz bir örnek yapabilir miyiz? Evet. Bir kullanıcı giriş ekranı yapalım. Ama sadece görüntü olarak, yani herhangi bir işlem yapmayacak. Sadece pencere düzenini göstermek için yapacağız.
 
-.. _target:
+.. _kivy_layout_target:
 
 Amacımız şuna benzer bir pencere oluşturmak;
 

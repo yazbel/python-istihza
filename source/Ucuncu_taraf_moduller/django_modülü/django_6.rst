@@ -26,7 +26,6 @@ reCAPTCHA kullanmak için öncelikle sitesi üzerinden bir uygulama oluşturmak 
 Bu `adres <https://www.google.com/recaptcha/admin/create>`_ üzerinden Google reCAPTCHA servisine kaydolmak gerekli.
 
 .. image:: ../../../images/recaptcha/config.png
-   :target: _images/recaptcha/config.png
     :align: center
 
 
@@ -38,21 +37,19 @@ Kaydolma sayfasını açtığımız zaman bizi böyle bir sayfa karşılıyor. B
     * reCAPTCHA s2: Kullanıcı isteklerini yine kullanıcının eylemleri ile doğrulayan sürümdür.
     * "Robot değilim" Onay Kutusu:  Kullanıcıya “Ben Robot Değilim” şeklinde bir kutu işaretletir.
 
-.. image:: ../../../images/recaptcha/notrobot.gif
-   :target: _images/recaptcha/notrobot.gif
+.. image:: ../../../images/recaptcha/notrobot.png
    :align: center
 
 .
     * Görünmez reCAPTCHA rozeti: İstekleri arka planda doğrular. Görünmez reCAPTCHA rozeti ile kullanıcının bir onay kutusuna tıklaması gerekmez. Bunun yerine kullanıcı sitenizde bulunan düğmeye tıkladığı zaman bir Javascript API çağrısı başlatılır.
 
 .. image:: ../../../images/recaptcha/invisible_badge.png
-   :target: _images/recaptcha/invisible_badge.png
    :align: center
 
 .
     * reCAPTCHA v2 (Android): Android servisleri için kullanılacak olan seçimdir.
 
-Detaylar için `adrese <https://developers.google.com/recaptcha/docs/version>`_ bakabilirsiniz.
+Detaylar için `adrese <https://developers.google.com/recaptcha>`_ bakabilirsiniz.
 
 * Alan Adları: Bu uygulamayı hazırlayacağınız servislerin hangi alan adları altında kullanacağınızı belirler.
 
@@ -71,7 +68,6 @@ Bu anahtarlardan `Site Anahtarı` olan sitemizin HTML tarafında `Gizli Anahtar`
 **Gizli Anahtarı asla kullanıcılar ile paylaşmayın ve sitenizin HTML tarafında kullanmayınız.**
 
 .. image:: ../../../images/recaptcha/keys.png
-   :target: _images/recaptcha/keys.png
    :align: center
 
 reCAPTCHA tarafıyla işimiz bitti. Şimdi reCAPTCHA’yı uygulamamıza entegre etme kaldı.

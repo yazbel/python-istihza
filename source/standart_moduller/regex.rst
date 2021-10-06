@@ -1051,7 +1051,7 @@ ki bir metin üzerinde arama yapacaksınız. Aradığınız kelime
     arası ilişkilere yeni aktörlerin girişi bu dalı sadece devletlerarası
     olmaktan çıkarmıştır."""
 
-.. note:: Bu metin http://tr.wikipedia.org/wiki/Uluslararas%C4%B1_hukuk
+.. note:: Bu metin https://tr.wikipedia.org/wiki/Uluslararas%C4%B1_hukuk
     adresinden alınıp üzerinde ufak değişiklikler yapılmıştır.
 
 Şimdi yapmak istediğimiz şey "uluslararası" kelimesini bulmak. Ama
@@ -1828,7 +1828,7 @@ Bu programı çalıştırdığımızda şu çıktıyı alıyoruz::
 
     ['Programlama', 'Programlama', 'programlama', 'programlama']
 
-.. note:: Bu metin http://tr.wikipedia.org/wiki/Programlama_dili adresinden
+.. note:: Bu metin https://tr.wikipedia.org/wiki/Programlama_dili adresinden
     alınmıştır.
 
 Gördüğünüz gibi, metinde geçen hem "programlama" kelimesini hem de "Programlama"
@@ -1921,7 +1921,7 @@ Aşağıdaki metne bakalım::
     çalışıyor. Her sabah 04.00'te kalkan Özhan, çileklerini özenle suluyor. Kasım
     başında ektiği çilek fideleri haziran başında meyve veriyor."""
 
-.. note:: Bu metin http://www.radikal.com.tr/haber.php?haberno=40130
+.. note:: Bu metin https://web.archive.org/web/20161013002254/http://www.radikal.com.tr:80/haber.php?haberno=40130
     adresinden alınmıştır.
 
 Gelin bu metin içinde geçen "çilek" kelimelerini "erik" kelimesi ile

@@ -482,13 +482,12 @@ Python ``for`` döngüsünün ilk turunda şöyle bir işlem gerçekleştirir::
     print("isminizin {}. harfi: {}".format(1, isim[1]))
 
 .. figure:: ../images/misc/string_index.png
-   :target: _images/misc/string_index.png
    :align: right
    :figwidth: 300px
    :width: 300px
    :height: 159px
 
-   Annenizin kızlık soyadının 0. harfi [`kaynak <http://pic.twitter.com/u1IE6Mma>`_]
+   Annenizin kızlık soyadının 0. harfi [`kaynak <https://pic.twitter.com/u1IE6Mma>`_]
 
 Bu döngü `6` sayısına gelene kadar devam eder. Burada `i` adlı değişkenin
 değerinin her döngüde nasıl değiştiğine dikkat edin. Python `i` adını verdiğimiz

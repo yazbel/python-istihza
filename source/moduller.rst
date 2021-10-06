@@ -1218,12 +1218,12 @@ ilgili yazılımı programımıza kurmamız gerekmişti.
 
 Python için yazılmış üçüncü şahıs modüllerine çeşitli kaynaklardan
 ulaşabilirsiniz. Bu tür modülleri bulabileceğiniz en geniş kaynak
-https://pypi.python.org/pypi adresidir. Burada 60.000'in üzerinde modüle
+https://pypi.org/ adresidir. Burada 60.000'in üzerinde modüle
 ulaşabilirsiniz.
 
 Peki bu modülleri nasıl kuracağız?
 
-Eğer bir modül https://pypi.python.org/pypi adresinde ise, bu modülü sistem
+Eğer bir modül https://pypi.org/ adresinde ise, bu modülü sistem
 komut satırında şu şekilde kurabilirsiniz::
 
     pip3 install modül_adı
@@ -1238,7 +1238,7 @@ ile kurabilirsiniz::
 
     pip3 install django
 
-Eğer bir üçüncü şahıs modülünü https://pypi.python.org/pypi adresinden değil de
+Eğer bir üçüncü şahıs modülünü https://pypi.org/ adresinden değil de
 başka bir kaynaktan indiriyorsanız, kurulum için birkaç farklı seçenek olabilir.
 
 Eğer indireceğiniz dosya Windows işletim sistemine uyumlu bir `.exe` dosyasıysa,

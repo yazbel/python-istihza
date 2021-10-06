@@ -14,7 +14,6 @@ Bu Yöntemin Avantajları Neler?
 Django kullanıcı modeli yetki yönetim sistemi ve bazı hazır fonksiyonlar ile beraber gelir. Bu sayede kullanıcıların yetkisiz erişimlerini, yetki yönetimlerini, giriş, çıkış, parola değiştirme fonksiyonlarına ve bazı bezeyicilere(decarator) sahip oluruz. Bunlar sayesinde projemiz çok hızlı şekilde ilerleyebilir.
 
 .. image:: ../../../images/customusermodel/django_admin.png
-   :target: _images/customusermodel/django_admin.png
    :align: center
 
 Django Admin Panelinden Kullanıcı ve Grup İzinleri Yönetimi

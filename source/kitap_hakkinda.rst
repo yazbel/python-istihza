@@ -65,7 +65,7 @@ Bu şekilde hem projeye destek olmuş, hem başkalarına yardım etmiş, hem de 
 Kullanım Koşulları
 ******************
 
-Bu kitaptaki bilgiler `Creative Commons lisansı <http://creativecommons.org/licenses/by-nc-sa/3.0>`__ altındadır.
+Bu kitaptaki bilgiler `Creative Commons lisansı <https://creativecommons.org/licenses/by-nc-sa/3.0/>`__ altındadır.
 Bu lisansa göre, bu kitaptaki bütün bilgilerden herkes ücretsiz olarak yararlanabilir.
 Eğer isterseniz burada gördüğünüz belgelerin çıktısını alabilir, tanıdığınız veya tanımadığınız herkesle gönül rahatlığıyla paylaşabilirsiniz.
 Ancak bu belgeleri başka bir yerde kullanacaksanız, yine bu lisans altında kullanmalı ve bu belgeleri kesinlikle satmamalısınız.

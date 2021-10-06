@@ -216,7 +216,7 @@ Eğer yukarıda anlatıldığı şekilde, kaynaktan Python derleyecekseniz, kar�
 Ayrıca GNU/Linux üzerinde kaynaktan program derlemek konusunda tecrübeli değilseniz ve eğer yukarıdaki açıklamalar size kafa karıştırıcı geliyorsa, mesela 'Ben bu komutları nereye yazacağım?' diye bir soru geçiyorsa aklınızdan, kesinlikle dağıtımınızla birlikte gelen Python sürümünü kullanmalısınız.
 Python sürümlerini başa baş takip ettiği için, ben size Ubuntu GNU/Linux'u denemenizi önerebilirim.
 Ubuntu'nun depolarında Python'ın en yeni sürümlerini rahatlıkla bulabilirsiniz.
-Ubuntu'nun resmi sitesine `ubuntu.com <http://www.ubuntu.com>`_ adresinden, yerel Türkiye sitesine ise `forum.ubuntu-tr.net <http://forum.ubuntu-tr.net/>`_ adresinden ulaşabilirsiniz.
+Ubuntu'nun resmi sitesine `ubuntu.com <https://ubuntu.com/>`_ adresinden, yerel Türkiye sitesine ise `forum.ubuntu-tr.net <https://forum.ubuntu-tr.net/>`_ adresinden ulaşabilirsiniz.
 Eğer şu anda kullandığınız GNU/Linux dağıtımından vazgeçmek istemiyorsanız, sabit diskinizden küçük bir bölüm ayırıp bu bölüme sadece Python çalışmalarınız için Ubuntu dağıtımını da kurmayı tercih edebilirsiniz.
 
 Yalnız küçük bir uyarı daha yapalım.
@@ -228,6 +228,8 @@ Bu önemli uyarıları da yaptığımıza göre gönül rahatlığıyla yolumuza
 
 Kurduğumuz yeni Python'ı nasıl çalıştıracağımızı biraz sonra göreceğiz.
 Ama önce Windows kullanıcılarının Python3'ü nasıl kuracaklarına bakalım.
+
+.. _surum-yoneticisi-ile-kurulum-pyenv:
 
 Sürüm Yöneticisi ile Kurulum (pyenv)
 ====================================
@@ -302,7 +304,7 @@ Yüklediğiniz sürümün doğrulamasını yapmak için ``pyenv versions`` komut
 
     pyenv global 3.8.5
 
-`pyenv` ile temel seviyede Python yükleme ve etkinleştirme kısmı bu şekilde özetlenebilir. ``pyenv`` kullanımıyla ilgili detaylara `GNU/Linux’ta Farklı Sürümleri Birlikte Kullanmak <calistirma.html#gnu-linux-ta-farkli-surumleri-birlikte-kullanmak>`__  kısmında değineceğiz.
+`pyenv` ile temel seviyede Python yükleme ve etkinleştirme kısmı bu şekilde özetlenebilir. ``pyenv`` kullanımıyla ilgili detaylara `GNU/Linux’ta Farklı Sürümleri Birlikte Kullanmak :ref:`gnu-linux-ta-farkli-surumleri-birlikte-kullanmak` kısmında değineceğiz.
 
 
 Windows Kullanıcıları
@@ -311,7 +313,7 @@ Windows Kullanıcıları
 Windows sürümlerinin hiçbirinde Python kurulu olarak gelmez.
 O yüzden Windows kullanıcıları, Python'ı sitesinden indirip kuracak.
 
-Bunun için öncelikle http://www.python.org/downloads adresine gidiyoruz.
+Bunun için öncelikle https://www.python.org/downloads/ adresine gidiyoruz.
 
 Bu adrese gittiğinizde, üzerinde 'Download Python |version3|' yazan bir düğme göreceksiniz.
 Daha önce de söylediğimiz gibi, eğer bir Python sürüm numarası '2' ile başlıyorsa o sürüm 2.x serisine, yok eğer '3' ile başlıyorsa 3.x serisine aittir.

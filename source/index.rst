@@ -1,6 +1,6 @@
 ﻿.. meta::
     :description: Python Programlama Dili için Türkçe Kaynak
-    :keywords: Python, 3, 3.x, belgelendirme, Türkçe, kaynak
+    :keywords: Python, 3, 3.x, belgelendirme, Türkçe, kaynak, istihza, belge, pdf, yazbel
 
 .. title:: Python Programlama Dili
 

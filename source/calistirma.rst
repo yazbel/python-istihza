@@ -246,6 +246,8 @@ Yardım almak için `forum.yazbel.com <https://forum.yazbel.com/>`_ adresine uğ
 
 Python3'ü başarıyla kurup çalıştırabildiğinizi varsayarak yolumuza devam edelim.
 
+.. _gnu-linux-ta-farkli-surumleri-birlikte-kullanmak:
+
 GNU/Linux'ta Farklı Sürümleri Birlikte Kullanmak
 ================================================
 
@@ -264,7 +266,7 @@ Ama eğer sisteminizde Python2 bile kurulu değilse, ki bu çok çok düşük bi
 pyenv ile Sürümleri Yönetmek
 ----------------------------
 
-`Sürüm Yöneticisi ile Kurulum <kurulum.html#surum-yoneticisi-ile-kurulum-pyenv>`__ kısmında anlatıldığı şekilde pyenv kurulumu yaptıktan sonra ``pyenv install <python-sürümü>`` ile istediğiniz python sürümünü kolayca kurabilir ve sürümler arasında geçiş yapabilirsiniz. Sürüm geçişlerini şu şekilde örneklendirebiliriz. Sisteminizde 3.8.5 sürümünün aktif olduğunu varsayarak sisteme 2 yeni Python sürümü daha kuralım::
+:ref:`surum-yoneticisi-ile-kurulum-pyenv` kısmında anlatıldığı şekilde pyenv kurulumu yaptıktan sonra ``pyenv install <python-sürümü>`` ile istediğiniz python sürümünü kolayca kurabilir ve sürümler arasında geçiş yapabilirsiniz. Sürüm geçişlerini şu şekilde örneklendirebiliriz. Sisteminizde 3.8.5 sürümünün aktif olduğunu varsayarak sisteme 2 yeni Python sürümü daha kuralım::
 
     pyenv install 2.7.18
     pyenv install 3.6.9
@@ -349,7 +351,7 @@ Eğer hem Python2 ile yazılmış programları çalıştırmak, hem de Python3 i
 Peki bunu nasıl yapacaksınız?
 
 Windows'ta bu işlemi yapmak çok kolaydır.
-`python.org/download <http://www.python.org/download/>`_ adresine giderek farklı Python sürümlerini bilgisayarınıza indirebilir ve bunları bilgisayarınıza normal bir şekilde kurabilirsiniz.
+`python.org/download <https://www.python.org/downloads/>`_ adresine giderek farklı Python sürümlerini bilgisayarınıza indirebilir ve bunları bilgisayarınıza normal bir şekilde kurabilirsiniz.
 Bu şekilde sisteminize istediğiniz sayıda farklı Python sürümü kurabilirsiniz.
 Peki bu farklı sürümlere nasıl ulaşacaksınız?
 

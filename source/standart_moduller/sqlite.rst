@@ -35,7 +35,7 @@ tercih edeceğiz. O halde yavaş yavaş işe koyulmaya başlayalım.
 
 Python'la veritabanı programlama işlemleri için pek çok alternatifimiz var.
 Python'la hangi veritabanı sistemlerini kullanabileceğinizi görmek için
-http://wiki.python.org/moin/DatabaseInterfaces adresindeki listeyi
+https://wiki.python.org/moin/DatabaseInterfaces adresindeki listeyi
 inceleyebilirsiniz. Biz bunlar içinde, sadeliği, basitliği ve kullanım kolaylığı
 nedeniyle **Sqlite** adlı veritabanı yönetim sistemini ele alacağız.
 
@@ -85,7 +85,7 @@ Sqlite'ın Yapısı
 Bu bölümün en başında verdiğimiz veritabanı tanımından da anlaşılacağı gibi,
 veritabanları, verileri sonradan kullanılmak üzere içinde tutan bir sistemdir.
 Bütün `ilişkisel veritabanları
-<http://tr.wikipedia.org/wiki/%C4%B0li%C5%9Fkisel_veri_taban%C4%B1_y%C3%B6netim_sistemi>`_\nda
+<https://tr.wikipedia.org/wiki/%C4%B0li%C5%9Fkisel_veri_taban%C4%B1_y%C3%B6netim_sistemi>`_\nda
 olduğu gibi, Sqlite da bu verileri tablo benzeri bir yapı içinde tutar. Yani
 aslında bir Sqlite veritabanı içindeki veriler şöyle bir yapıya sahiptir:
 
@@ -128,7 +128,7 @@ elinizdeki veritabanının içeriğinde hangi verilerin olduğunu açık seçik
 görebilirsiniz.
 
 Bu programı indirmek için ziyaret etmemiz gereken adres
-http://sqlitebrowser.org/.
+https://sqlitebrowser.org/.
 
 Eğer siz bir Windows kullanıcısı iseniz, sitedeki `.exe` dosyasını indirip,
 programı herhangi bir Windows programı gibi kurabilirsiniz.
@@ -143,7 +143,7 @@ kurabilir::
 
 GNU/Linux kullanıcıları, eğer arzu ederlerse, programın kaynak kodlarını
 sitesinden indirip programı kendileri derlemeyi de tercih edebilir. Bunun için
-öncelikle http://sqlitebrowser.org/ adresine gidip `.tar.gz` uzantılı dosyayı
+öncelikle https://sqlitebrowser.org/ adresine gidip `.tar.gz` uzantılı dosyayı
 indirin.
 
 Bu programı derlemeye geçmeden önce şu bağımlılıkları kurmamız gerekiyor:

@@ -902,7 +902,7 @@ gösterebilirsiniz. Dikkatlice bakın::
 
 Onaltılı sayma sistemindeki `41` sayısı 'A' harfine karşılık gelir. Eğer hangi
 karakterlerin hangi sayılara karşılık geldiğini merak ediyorsanız
-http://www.ascii.cl/ adresindeki tabloyu inceleyebilirsiniz. Bu tabloda 'hex'
+https://ascii.cl/ adresindeki tabloyu inceleyebilirsiniz. Bu tabloda 'hex'
 sütunu altında gösterilen sayılar onaltılı sayılar olup, 'symbol' sütununda
 gösterilen karakterlere karşılık gelirler. Örneğin 'hex' sütunundaki `4E` sayısı
 'symbol' sütunundaki 'N' harfine karşılık gelir. Bu durumu Python'la da teyit
@@ -1065,7 +1065,7 @@ kullanabilirsiniz::
 Böyle bir durumla ilk kez karşılaştığınızda bunun Python programlama dilinden
 kaynaklanan bir hata olduğunu düşünebilirsiniz, ancak bu durum Python'ın resmi
 internet sitesinde 'Sıkça Sorulan Sorular' bölümüne alınacak kadar önemli bir
-tasarım tercihidir: http://goo.gl/i3tkk
+tasarım tercihidir: https://docs.python.org/2/faq/design.html#why-can-t-raw-strings-r-strings-end-with-a-backslash
 
 Sayfa Başı (\\f)
 ******************

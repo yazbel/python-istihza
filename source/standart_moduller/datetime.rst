@@ -262,7 +262,7 @@ Eğer isterseniz, dili kendiniz de seçebilirsiniz. Mesela İtalyanca yapalım::
     'venerdì'
 
 .. seealso:: Yerel dil adları için Windows'ta
-    http://msdn.microsoft.com/en-us/library/39cwe7zf%28vs.71%29.aspx adresine
+    https://www.microsoft.com/en-us/download/details.aspx?id=55979 adresine
     bakabilirsiniz. GNU/Linux'ta ise, desteklenen yerel/dil adlarını görmek için
     sistem komut satırında ``locale - a`` komutunu verebilirsiniz.
 

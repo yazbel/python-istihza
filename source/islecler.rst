@@ -1479,7 +1479,7 @@ maceranız boyunca ``id()`` fonksiyonunu hiç kullanmayacaksınız, ancak bu
 fonksiyonun arkasındaki mantığı anlamak, Python'ın kimi yerlerde alttan alta
 neler çevirdiğini çok daha kolay kavramanızı sağlayacaktır.
 
-.. note:: http://forum.ceviz.net/showthread.php?t=87565 adresindeki tartışmaya
+.. note:: https://web.archive.org/web/20161121150306/http://forum.ceviz.net/t/sozluklerin-dinamik-olarak-kopyalanmasi-ve-clear-isleci.81605/ adresindeki tartışmaya
  bakınız.
 
 Böylece Python'daki bütün işleçleri ayrıntılı bir şekilde incelemiş olduk.
@@ -2037,7 +2037,7 @@ değiştirin. Bu işlemin ardından da komut satırında şu komutu verin::
 Böylece Türkçe karakterleri düzgün görüntüleyebilirsiniz.
 
 .. note:: MS-DOS'taki Türkçe karakter problemi hakkında daha ayrıntılı bilgi
-          için http://goo.gl/eRY1P adresindeki makalemizi inceleyebilirsiniz.
+          için https://web.archive.org/web/20150516030259/http://www.istihza.com/py2/python-programlarini-kaydetmek.html#ms-dos-ta-turkce-karakter-problemi adresindeki makalemizi inceleyebilirsiniz.
 
 Şimdiye kadar anlattıklarımızdan öğrendiğiniz gibi, `sys` modülü içinde sürüm
 denetlemeye yarayan iki farklı değişken var. Bunlardan biri `version`, öbürü ise

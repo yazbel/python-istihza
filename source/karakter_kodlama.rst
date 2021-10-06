@@ -214,10 +214,9 @@ Interchange*, yani 'Bilgi Alışverişi için Standart Amerikan Kodu' veya kısa
 
 ASCII adı verilen sistem, birtakım sayıların birtakım karakterlerle
 eşleştirildiği basit bir tablodan ibarettir. Bu tabloyu
-http://www.asciitable.com/ adresinde görebilirsiniz:
+https://www.asciitable.com/ adresinde görebilirsiniz:
 
 .. image:: ../images/misc/asciifull.png
-   :target: _images/misc/asciifull.png
    :align: center
    :width: 400px
    :height: 300px
@@ -284,7 +283,7 @@ karakterlerdir. Yani mesela ekranda görüntülenebilen 'a', 'b', 'c', '!', '?',
 Bunlara aynı zamanda 'kontrol karakterleri' (*control characters*) adı da
 verilir. Çünkü bu karakterler ekranda görüntülenmek yerine, metnin akışını
 kontrol eder. Bu karakterlerin ne işe yaradığını şu tabloyla tek tek
-gösterebiliriz (tablo http://tr.wikipedia.org/wiki/ASCII adresinden alıntıdır):
+gösterebiliriz (tablo https://tr.wikipedia.org/wiki/ASCII adresinden alıntıdır):
 
    +------+-----------------------------+--------+----------------------------+
    | Sayı | Karakter                    | Sayı   | Karakter                   |
@@ -473,7 +472,7 @@ birbirinden farklı karakterleri gösteren çeşitli tabloların ortaya çıkmas
 sebep oldu. Bu birbirinden farklı tablolara genel olarak 'kod sayfası' adı
 verilir. Örneğin Microsoft şirketinin Türkiye'ye gönderdiği bilgisayarlarda
 tanımlı 'cp857' adlı kod sayfasında 128 ile 256 aralığında Türkçe karakterlere
-de yer verilmişti (bkz. http://msdn.microsoft.com/en-us/library/cc195068.aspx)
+de yer verilmişti (bkz. https://docs.microsoft.com/en-us/previous-versions/cc195068(v=msdn.10)?redirectedfrom=MSDN)
 
 Bu tabloya baktığınızda baştan 128'e kadar olan karakterlerin standart ASCII
 tablosu ile aynı olduğunu göreceksiniz. 128. karakterden itibaren ise Türkçeye
@@ -533,7 +532,7 @@ kod çözücüsü ile kodlanamamaktadır.
 
 Dediğimiz gibi, Microsoft Türkiye'ye gönderdiği bilgisayarlarda 857 numaralı kod
 sayfasını tanımlıyordu. Ama mesela Arapça konuşulan ülkelere gönderdiği
-bilgisayarlarda ise, http://msdn.microsoft.com/en-us/library/cc195061.aspx
+bilgisayarlarda ise, https://docs.microsoft.com/en-us/previous-versions/cc195061(v=msdn.10)?redirectedfrom=MSDN
 adresinden görebileceğiniz 708 numaralı kod sayfasını tanımlıyordu. Bu kod
 sayfasını incelediğinizde, 128 altı karakterlerin standart ASCII ile aynı
 olduğunu ancak 128 üstü karakterlerin Türkçe kod sayfasındaki karakterlerden
@@ -559,7 +558,7 @@ sistemlerinden biridir. Almancada olup da ASCII sistemi ile temsil edilemeyen
 'ö', 'ß', 'ü' gibi harfler ve Fransızcada olup da yine ASCII sistemi ile temsil
 edilemeyen 'ç' ve 'é' gibi harfler bu karakter kümesinde temsil edilebiliyordu.
 Eğer dilerseniz bu karakter kümesini de
-http://www.fileformat.info/info/charset/ISO-8859-1/list.htm adresinden
+https://www.fileformat.info/info/charset/ISO-8859-1/list.htm adresinden
 inceleyebilirsiniz.
 
 Yalnız burada önemli bir ayrıntıyı not düşelim. 'Genişletilmiş ASCII', standart
@@ -681,8 +680,8 @@ tanımlı olduğu bir bilgisayarda, aynı sayıların her iki kod sayfasında fa
 karakterlere karşılık gelmesi nedeniyle düzgün görüntülenemez.
 
 .. note:: Windows-1254 adlı kod sayfası için
-    http://en.wikipedia.org/wiki/Windows-1254 adresine; Windows-1250 adlı kod
-    sayfası için ise http://en.wikipedia.org/wiki/Windows-1250 adresine
+    https://en.wikipedia.org/wiki/Windows-1254 adresine; Windows-1250 adlı kod
+    sayfası için ise https://en.wikipedia.org/wiki/Windows-1250 adresine
     bakabilirsiniz.
 
 İşte nasıl 1960'lı yılların başında Bob Bemer ve arkadaşları bilgisayarlar
@@ -768,7 +767,7 @@ bulunur. UTF-8, UNICODE sistemi içindeki en yaygın, en bilinen ve en kullanı�
 kod çözücüdür.
 
 UTF-8 adlı kod çözücünün kodlayabildiği karakterlerin listesine
-http://www.fileformat.info/info/charset/UTF-8/list.htm adresinden
+https://www.fileformat.info/info/charset/UTF-8/list.htm adresinden
 ulaşabilirsiniz. Bu listenin sayfalar dolusu olduğuna ve her sayfaya, sayfanın
 en altındaki 'More...' bağlantısı ile ulaşabileceğinize dikkat edin.
 
@@ -899,7 +898,7 @@ edeceğinizi biliyorsunuz::
 
     16
 
-http://www.fileformat.info/info/charset/UTF-8/list.htm adresine gittiğinizde de
+https://www.fileformat.info/info/charset/UTF-8/list.htm adresine gittiğinizde de
 UTF-8 tablosunda 'ç' harfinin 'c3a7' sayısıyla eşleştirildiğini göreceksiniz.
 
 Bir de UTF-8'in 'a' harfini nasıl temsil ettiğine bakalım::
