@@ -10,9 +10,9 @@ import datetime
 year = datetime.datetime.now().year
 
 # project information
-author = 'Fırat Özgül'
+author = 'Fırat Özgül | yazbel.com'
 project = 'Yazbel Python Belgeleri'
-copyright = '2007-{}, {}'.format(year, author)
+copyright = '2007-{}, {}'.format(year, 'Fırat Özgül')
 basename = project
 
 # project structure
