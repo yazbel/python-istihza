@@ -56,7 +56,7 @@ Bu şekilde inşa ettiğiniz dökümanı görüntülemek için `/index.html` dos
 Python'un bilgisayarınızda kurulu olduğundan ve `python.exe`'nin PATH'da bulunduğundan emin olduktan sonra bu kodu ``cmd.exe``'de çalıştırarak Sphinx'i kurabilirsiniz:
 
 ```shell
-> python -m pip install sphinx
+> python3 -m pip install sphinx
 ```
 
 Yükleme işlemi başarıyla gerçekleşmiş ise şu komut size Sphinx'in versiyonunu verecektir:
@@ -74,7 +74,7 @@ Daha sonra projenin kök dizinine gidip bu komutla belgeleri inşa edebilirsiniz
 Belgeleri inşa ettikten sonra `move.py` betiği `/build/html/` içindeki dosya ve klasörleri projenin kök dizinine kopyalayacaktır:
 
 ```shell
-> python move.py
+> python3 move.py
 ```
 
 Bu şekilde inşa ettiğiniz dökümanı görüntülemek için `/index.html` dosyasını tarayıcınız ile açabilirsiniz.
