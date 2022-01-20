@@ -20,6 +20,9 @@ for file in [epub_file, pdf_file, html_file]:
 	target_name = output_name + "." + file.rsplit('.', 1)[1]
 	shutil.copy2(file, join(target, target_name))
 
+# fix this, we shouldn't be deleting it altogether
 if exists(docs):
 	shutil.rmtree(docs)
+
+
 shutil.copytree(target, docs, copy_function = shutil.copy2)
