@@ -1,0 +1,890 @@
+
+ <!DOCTYPE html>
+ <html lang="tr">
+
+
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta content="Bu bölümde listelerin ve demetlerin metotlarını inceleyeceğiz." name="description" />
+<meta content="python, listeler, demetler, append, count, extend, index, insert, pop, remove, reverse, sort" name="keywords" />
+
+    <title>Listelerin ve Demetlerin Metotları &#8212; Yazbel Python Belgeleri</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pyramid.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="canonical" href="python-istihza.yazbel.com/listelerin_ve_demetlerin_metotlari.html" />
+    <link rel="index" title="Dizin" href="genindex.html" />
+    <link rel="search" title="Ara" href="search.html" />
+    <link rel="next" title="Sayma Sistemleri" href="sayma_sistemleri.html" />
+    <link rel="prev" title="Listeler ve Demetler" href="listeler_ve_demetler.html" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+<div class='header'><a href='https://yazbel.com'><img src="_static/logo.png"></a></div>
+
+<ul class='navbar'>
+    <li><a href="http://forum.yazbel.com">forum</a></li>
+    <li><a href="https://github.com/yazbel/python-istihza">github</a></li>
+    <li><a href="YazbelPythonProgramlamaDiliBelgeleri.pdf">pdf</a></li>
+    <li><a href="YazbelPythonProgramlamaDiliBelgeleri.epub">epub</a></li>
+    <li><a href="YazbelPythonProgramlamaDiliBelgeleri.html">html</a></li>
+</ul>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Genel Dizin"
+             accesskey="I">dizin</a></li>
+        <li class="right" >
+          <a href="sayma_sistemleri.html" title="Sayma Sistemleri"
+             accesskey="N">sonraki</a> |</li>
+        <li class="right" >
+          <a href="listeler_ve_demetler.html" title="Listeler ve Demetler"
+             accesskey="P">önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+        <li class="nav-item nav-item-this"><a href="">Listelerin ve Demetlerin Metotları</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+
+  <section id="listelerin-ve-demetlerin-metotlari">
+<h1>Listelerin ve Demetlerin Metotları<a class="headerlink" href="#listelerin-ve-demetlerin-metotlari" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<section id="listelerin-metotlari">
+<h2>Listelerin Metotları<a class="headerlink" href="#listelerin-metotlari" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Burada, geçen bölümde kaldığımız yerden devam edeceğiz listeleri anlatmaya.
+Ağırlıklı olarak bu bölümde listelerin metotlarından söz edeceğiz. ‘Metot’
+kavramını karakter dizilerinden hatırlıyorsunuz. Karakter dizilerini anlatırken
+bol miktarda metot görmüştük.</p>
+<p>Python’da bütün veri tipleri bize birtakım metotlar sunar. Bu metotlar
+yardımıyla, ilgili veri tipi üzerinde önemli değişiklikler veya sorgulamalar
+yapabiliyoruz.</p>
+<p>Hatırlarsanız bir veri tipinin hangi metotlara sahip olduğunu görmek için
+<code class="docutils literal notranslate"><span class="pre">dir()</span></code> fonksiyonundan yararlanıyorduk. Listelerde de durum farklı değil.
+Dolayısıyla şu komut bize listelerin metotlarını sıralayacaktır:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+
+<span class="go">[&#39;__add__&#39;, &#39;__class__&#39;, &#39;__contains__&#39;, &#39;__delattr__&#39;, &#39;__delitem__&#39;,</span>
+<span class="go"> &#39;__dir__&#39;, &#39;__doc__&#39;, &#39;__eq__&#39;, &#39;__format__&#39;, &#39;__ge__&#39;, &#39;__getattribute__&#39;,</span>
+<span class="go"> &#39;__getitem__&#39;, &#39;__gt__&#39;, &#39;__hash__&#39;, &#39;__iadd__&#39;, &#39;__imul__&#39;, &#39;__init__&#39;,</span>
+<span class="go"> &#39;__iter__&#39;, &#39;__le__&#39;, &#39;__len__&#39;, &#39;__lt__&#39;, &#39;__mul__&#39;, &#39;__ne__&#39;, &#39;__new__&#39;,</span>
+<span class="go"> &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__reversed__&#39;, &#39;__rmul__&#39;,</span>
+<span class="go"> &#39;__setattr__&#39;, &#39;__setitem__&#39;, &#39;__sizeof__&#39;, &#39;__str__&#39;, &#39;__subclasshook__&#39;,</span>
+<span class="go"> &#39;append&#39;, &#39;clear&#39;, &#39;copy&#39;, &#39;count&#39;, &#39;extend&#39;, &#39;index&#39;, &#39;insert&#39;, &#39;pop&#39;,</span>
+<span class="go"> &#39;remove&#39;, &#39;reverse&#39;, &#39;sort&#39;]</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, tıpkı karakter dizilerinde olduğu gibi, listelerin metotlarını
+görmek için de <code class="docutils literal notranslate"><span class="pre">dir()</span></code> fonksiyonuna parametre olarak veri tipinin teknik adını
+veriyoruz. Python’da listelerin teknik adı <cite>list</cite> olduğu için bu komutu
+<code class="docutils literal notranslate"><span class="pre">dir(list)</span></code> şeklinde kullanıyoruz. Elbette, eğer istersek, listelerin
+metotlarını almak için herhangi bir listeyi de kullanabiliriz. Mesela boş bir
+liste kullanalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">([])</span>
+</pre></div>
+</div>
+<p>Bu komut da <code class="docutils literal notranslate"><span class="pre">dir(list)</span></code> ile aynı çıktıyı verecektir. Bu listede bizi
+ilgilendiren metotlar ise şunlardır:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="s2">&quot;_&quot;</span> <span class="ow">in</span> <span class="n">i</span><span class="p">]</span>
+
+<span class="go">[&#39;append&#39;, &#39;clear&#39;, &#39;copy&#39;, &#39;count&#39;, &#39;extend&#39;, &#39;index&#39;,</span>
+<span class="go"> &#39;insert&#39;, &#39;pop&#39;, &#39;remove&#39;, &#39;reverse&#39;, &#39;sort&#39;]</span>
+</pre></div>
+</div>
+<p>Metotlar, bir programcının hayatını önemli ölçüde kolaylaştıran araçlardır. Bu
+yüzden, ‘Listeler’ konusunun ilk bölümünde öğrendiğimiz listeye öğe ekleme, öğe
+çıkarma, öğe değiştirme, öğe silme gibi işlemleri orada anlattığımız yöntemlerle
+değil, biraz sonra göreceğimiz metotlar aracılığıyla yapmayı tercih edeceğiz.
+Ama tabii ki, metotları tercih edecek olmamız, birinci bölümde anlattığımız
+yöntemleri bir kenara atmanızı gerektirmez. Unutmayın, bir dildeki herhangi bir
+özelliği siz kullanmasanız bile, etrafta bu özelliği kullanan başka programcılar
+var. Dolayısıyla en azından başkalarının yazdığı kodları anlayabilmek için dahi
+olsa, kendinizin kullanmayacağı yöntem ve yolları öğrenmeniz gerekir.</p>
+<p><code class="docutils literal notranslate"><span class="pre">append()</span></code> metoduyla başlayalım…</p>
+<section id="append">
+<h3>append()<a class="headerlink" href="#append" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p><em>append</em> kelimesi İngilizcede ‘eklemek, ilave etmek, iliştirmek’ gibi anlamlara
+gelir. <code class="docutils literal notranslate"><span class="pre">append()</span></code> metodunun görevi de kelime anlamıyla uyumludur. Bu metodu,
+bir listeye öğe eklemek için kullanıyoruz. Mesela:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;elma&quot;</span><span class="p">,</span> <span class="s2">&quot;armut&quot;</span><span class="p">,</span> <span class="s2">&quot;çilek&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;erik&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu metot, yeni öğeyi listenin en sonuna ekler. Mesela yukarıdaki örnekte
+<cite>“erik”</cite> adlı karakter dizisi listede <cite>“çilek”</cite> adlı karakter dizisinin sağına
+eklendi.</p>
+<p>Hatırlarsanız bir önceki bölümde listeye öğe ekleme işini <cite>+</cite> işleci ile de
+yapabileceğimizi söylemiştik. Dolayısıyla, aslında yukarıdaki kodu şöyle de
+yazabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;elma&quot;</span><span class="p">,</span> <span class="s2">&quot;armut&quot;</span><span class="p">,</span> <span class="s2">&quot;çilek&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span> <span class="o">=</span> <span class="n">liste</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;erik&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
+
+<span class="go">[&#39;elma&#39;, &#39;armut&#39;, &#39;çilek&#39;, &#39;erik&#39;]</span>
+</pre></div>
+</div>
+<p>Bu iki yöntem birbiriyle aynı sonucu verse de hem pratiklik hem de işleyiş
+bakımından bu iki yöntemin birbirinden farklı olduğunu görüyoruz.</p>
+<p>Pratiklik açısından bakarsak, <code class="docutils literal notranslate"><span class="pre">append()</span></code> metodununu kullanmanın <cite>+</cite> işlecini
+kullanmaya kıyasla daha kolay olduğunu herhalde kimse reddetmeyecektir. Bu iki
+yöntem işleyiş bakımından da birbirinden ayrılıyor. Zira <cite>+</cite> işlecini
+kullandığımızda listeye yeni bir öğe eklerken aslında <cite>liste</cite> adlı başka bir
+liste daha oluşturmuş oluyoruz. Hatırlarsanız önceki bölümlerde listelerin
+değiştirilebilir (<em>mutable</em>) veri tipleri olduğunu söylemiştik. İşte
+<code class="docutils literal notranslate"><span class="pre">append()</span></code> metodu sayesinde listelerin bu özelliğinden sonuna kadar
+yararlanabiliyoruz. <cite>+</cite> işlecini kullandığımızda ise, orijinal listeyi
+değiştirmek yerine yeni bir liste oluşturduğumuz için, sanki listelere karakter
+dizisi muamelesi yapmış gibi oluyoruz. Gördüğünüz gibi, listeye <code class="docutils literal notranslate"><span class="pre">append()</span></code>
+metodunu uyguladıktan sonra bunu bir değişkene atamamıza gerek kalmıyor.
+<code class="docutils literal notranslate"><span class="pre">append()</span></code> metodu orijinal liste üzerinde doğrudan değişiklik yapmamıza izin
+verdiği için daha az kod yazmamızı ve programımızın daha performanslı
+çalışmasını sağlıyor.</p>
+<p><cite>+</cite> işleci ile <code class="docutils literal notranslate"><span class="pre">append()</span></code> metodu işlev olarak birbirine benzese de bu iki
+yöntem arasında önemli farklılıklar da vardır. Mesela şu örneğe bir göz atalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">işletim_sistemleri</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Windows&quot;</span><span class="p">,</span> <span class="s2">&quot;GNU/Linux&quot;</span><span class="p">,</span> <span class="s2">&quot;Mac OS X&quot;</span><span class="p">]</span>
+<span class="n">platformlar</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;IPhone&quot;</span><span class="p">,</span> <span class="s2">&quot;Android&quot;</span><span class="p">,</span> <span class="s2">&quot;S60&quot;</span><span class="p">]</span>
+<span class="n">hepsi</span> <span class="o">=</span> <span class="n">işletim_sistemleri</span> <span class="o">+</span> <span class="n">platformlar</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">hepsi</span><span class="p">)</span>
+
+<span class="p">[</span><span class="s1">&#39;Windows&#39;</span><span class="p">,</span> <span class="s1">&#39;GNU/Linux&#39;</span><span class="p">,</span> <span class="s1">&#39;Mac OS X&#39;</span><span class="p">,</span> <span class="s1">&#39;IPhone&#39;</span><span class="p">,</span> <span class="s1">&#39;Android&#39;</span><span class="p">,</span> <span class="s1">&#39;S60&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Burada iki farklı listeyi, <cite>+</cite> işleci kullanarak birleştirdik. Aynı işi
+<code class="docutils literal notranslate"><span class="pre">append()</span></code> metoduyla şu şekilde yapabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">işletim_sistemleri</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Windows&quot;</span><span class="p">,</span> <span class="s2">&quot;GNU/Linux&quot;</span><span class="p">,</span> <span class="s2">&quot;Mac OS X&quot;</span><span class="p">]</span>
+<span class="n">platformlar</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;IPhone&quot;</span><span class="p">,</span> <span class="s2">&quot;Android&quot;</span><span class="p">,</span> <span class="s2">&quot;S60&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">platformlar</span><span class="p">:</span>
+    <span class="n">işletim_sistemleri</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">işletim_sistemleri</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada <cite>platformlar</cite> adlı liste üzerinde bir <code class="docutils literal notranslate"><span class="pre">for</span></code> döngüsü kurmamızın nedeni,
+<code class="docutils literal notranslate"><span class="pre">append()</span></code> metodunun yalnızca tek bir parametre alabilmesidir. Yani bu metodu
+kullanarak bir listeye birden fazla öğe ekleyemezsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">TypeError</span>: <span class="n">append() takes exactly one argument (3 given)</span>
+</pre></div>
+</div>
+<p>Bu sebeple, ekleyeceğiniz listenin öğeleri üzerinde bir <code class="docutils literal notranslate"><span class="pre">for</span></code> döngüsü kurmanız
+gerekir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]:</span>
+<span class="gp">... </span>    <span class="n">liste</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
+
+<span class="go">[1, 2, 3, 4, 5, 6]</span>
+</pre></div>
+</div>
+<p>Bir listeye birden fazla öğe eklemek için aklınıza şöyle bir yöntem de gelmiş
+olabilir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Ancak bu komutun çıktısı pek beklediğiniz gibi olmayabilir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
+
+<span class="go">[1, 2, 3, [4, 5, 6]]</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">[4,</span> <span class="pre">5,</span> <span class="pre">6]</span></code> öğesi listeye tek parça olarak eklendi. Eğer
+istediğiniz şey buysa ne âlâ! Ama değilse, <code class="docutils literal notranslate"><span class="pre">for</span></code> döngüsü ya da <cite>+</cite> işleci ile
+istediğiniz çıktıyı elde edebilirsiniz.</p>
+<p>Şöyle bir örnek daha düşünün: Diyelim ki kullanıcının girdiği bütün sayıları
+birbiriyle çarpan bir uygulama yazmak istiyoruz. Bunun için şöyle bir kod
+yazabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sonuç</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">sayı</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;sayı (hesaplamak için q): &quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">sayı</span> <span class="o">==</span> <span class="s2">&quot;q&quot;</span><span class="p">:</span>
+        <span class="k">break</span>
+
+    <span class="n">sonuç</span> <span class="o">*=</span> <span class="nb">int</span><span class="p">(</span><span class="n">sayı</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sonuç</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada kullanıcı her döngüde bir sayı girecek ve programımız girilen bu sayıyı
+<cite>sonuç</cite> değişkeninin o anki değeriyle çarparak yine <cite>sonuç</cite> değişkenine
+gönderecek. Böylece kullanıcı tarafından girilen bütün sayıların çarpımını elde
+etmiş olacağız. Kullanıcının ‘q’ harfine basmasıyla birlikte de <cite>sonuç</cite>
+değişkeninin değeri ekranda görünecek. Yalnız burada birkaç sorun var. Diyelim
+ki kullanıcı hiçbir sayı girmeden ‘q’ harfine basarsa, <cite>sonuç</cite> değişkeninin <cite>1</cite>
+olan değeri ekranda görünecek ve bu şekilde kullanıcı yanlış bir sonuç elde
+etmiş olacak. Ayrıca çarpma işlemi için en az <cite>2</cite> adet sayı gerekiyor.
+Dolayısıyla kullanıcı <cite>2</cite>’den az sayı girerse de programımız yanlış sonuç
+verecektir. Kullanıcının yeterli miktarda sayı girip girmediğini tespit
+edebilmek için yine listelerden ve listelerin <code class="docutils literal notranslate"><span class="pre">append()</span></code> metodundan
+yararlanabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">kontrol</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">sonuç</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">sayı</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;sayı (hesaplamak için q): &quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">sayı</span> <span class="o">==</span> <span class="s2">&quot;q&quot;</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="n">kontrol</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sayı</span><span class="p">)</span>
+    <span class="n">sonuç</span> <span class="o">*=</span> <span class="nb">int</span><span class="p">(</span><span class="n">sayı</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">kontrol</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Yeterli sayı girilmedi!&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">sonuç</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada önceki koda ilave olarak, <cite>kontrol</cite> adlı boş bir liste tanımladık. Bu
+liste kullanıcının girdiği sayıları depolayacak. Bir önceki örnekte kullanıcının
+girdiği sayıları hiçbir yerde depolamadık. Orada yaptığımız şey her döngüde
+kullanıcı tarafından girilen sayıyı <cite>sonuç</cite> değişkeninin değeriyle çarpıp yine
+<cite>sonuç</cite> değişkenine göndermekti. Dolayısıyla kullanıcı tarafından girilen
+sayılar bir yerde tutulmadığı için kaybolup gidiyordu. Burada ise <cite>kontrol</cite> adlı
+liste, kullanıcı tarafından girilen sayıları tuttuğu için, bu sayıları daha
+sonra istediğimiz gibi kullanabilme imkanına kavuşuyoruz.</p>
+<p>Ayrıca bu ikinci kodlarda <cite>kontrol</cite> değişkeninin boyutuna bakarak kullanıcının
+<cite>2</cite>’den az sayı girip girmediğini denetliyoruz. Eğer <cite>kontrol</cite> listesinin
+uzunluğu <cite>2</cite>’den azsa kullanıcı çarpma işlemi için yeterli sayı girmemiş
+demektir. Böyle bir durumda çarpma işlemini yapmak yerine, kullanıcıya ‘Yeterli
+sayı girilmedi!’ şeklinde bir uyarı mesajı gösteriyoruz.</p>
+<p><code class="docutils literal notranslate"><span class="pre">append()</span></code> metodu listelerin en önemli metotlarından biridir. Hem kendi
+yazdığınız, hem de başkalarının yazdığı programlarda <code class="docutils literal notranslate"><span class="pre">append()</span></code> metodunu sıkça
+göreceksiniz. Dolayısıyla listelerin hiçbir metodunu bilmeseniz bile
+<code class="docutils literal notranslate"><span class="pre">append()</span></code> metodunu öğrenmelisiniz.</p>
+</section>
+<section id="extend">
+<h3>extend()<a class="headerlink" href="#extend" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p><em>extend</em> kelimesi İngilizcede ‘genişletmek, yaymak’ gibi anlamlara gelir. İşte
+<code class="docutils literal notranslate"><span class="pre">extend()</span></code> adlı metot da kelime anlamına uygun olarak listeleri ‘genişletir’.</p>
+<p>Şöyle bir düşündüğünüzde <code class="docutils literal notranslate"><span class="pre">extend()</span></code> metodunun <code class="docutils literal notranslate"><span class="pre">append()</span></code> metoduyla aynı işi
+yaptığını zannedebilirsiniz. Ama aslında bu iki metot işleyiş olarak birbirinden
+çok farklıdır.</p>
+<p><code class="docutils literal notranslate"><span class="pre">append()</span></code> metodunu kullanarak yazdığımız şu koda dikkatlice bakın:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">li1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">li2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
+<span class="n">li1</span><span class="o">.</span> <span class="n">append</span><span class="p">(</span><span class="n">li2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">li1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">append()</span></code> metodunu anlatırken söylediğimiz gibi, bu metot bir listeye her
+defasında sadece tek bir öğe eklenmesine izin verir. Yukarıda olduğu gibi, eğer
+bu metodu kullanarak bir listeye yine bir liste eklemeye çalışırsanız,
+eklediğiniz liste tek bir öğe olarak eklenecektir. Yani yukarıdaki kodlar size
+şöyle bir çıktı verecektir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, <cite>[10, 11, 12]</cite> listesi öteki listeye tek bir liste halinde
+eklendi. İşte <code class="docutils literal notranslate"><span class="pre">extend()</span></code> metodu bu tür durumlarda işinize yarayabilir. Mesela
+yukarıdaki örneği bir de <code class="docutils literal notranslate"><span class="pre">extend()</span></code> metodunu kullanarak yazalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">li1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">li2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
+<span class="n">li1</span><span class="o">.</span> <span class="n">extend</span><span class="p">(</span><span class="n">li2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">li1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu defa şöyle bir çıktı alıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">extend()</span></code> metodu tam da kelime anlamına uygun olarak listeyi
+yeni öğelerle genişletti.</p>
+<p>Hatırlarsanız <code class="docutils literal notranslate"><span class="pre">append()</span></code> metodunu anlatırken şöyle bir örnek vermiştik:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">işletim_sistemleri</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Windows&quot;</span><span class="p">,</span> <span class="s2">&quot;GNU/Linux&quot;</span><span class="p">,</span> <span class="s2">&quot;Mac OS X&quot;</span><span class="p">]</span>
+<span class="n">platformlar</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;IPhone&quot;</span><span class="p">,</span> <span class="s2">&quot;Android&quot;</span><span class="p">,</span> <span class="s2">&quot;S60&quot;</span><span class="p">]</span>
+<span class="n">hepsi</span> <span class="o">=</span> <span class="n">işletim_sistemleri</span> <span class="o">+</span> <span class="n">platformlar</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">hepsi</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada <cite>+</cite> işlecini kullanarak <cite>işletim_sistemleri</cite> ve <cite>platformlar</cite> adlı
+listeleri birleştirerek <cite>hepsi</cite> adlı tek bir liste elde ettik. Aynı etkiyi
+<code class="docutils literal notranslate"><span class="pre">append()</span></code> metodunu kullanarak şu şekilde elde edebileceğimizi de söylemiştik
+orada:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">işletim_sistemleri</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Windows&quot;</span><span class="p">,</span> <span class="s2">&quot;GNU/Linux&quot;</span><span class="p">,</span> <span class="s2">&quot;Mac OS X&quot;</span><span class="p">]</span>
+<span class="n">platformlar</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;IPhone&quot;</span><span class="p">,</span> <span class="s2">&quot;Android&quot;</span><span class="p">,</span> <span class="s2">&quot;S60&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">platformlar</span><span class="p">:</span>
+    <span class="n">işletim_sistemleri</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">işletim_sistemleri</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Esasında, <code class="docutils literal notranslate"><span class="pre">append()</span></code> metodunu kullanmaya kıyasla, burada <cite>+</cite> işlecini
+kullanmak sanki daha pratikmiş gibi görünüyor. Bir de şuna bakın:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">işletim_sistemleri</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Windows&quot;</span><span class="p">,</span> <span class="s2">&quot;GNU/Linux&quot;</span><span class="p">,</span> <span class="s2">&quot;Mac OS X&quot;</span><span class="p">]</span>
+<span class="n">platformlar</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;IPhone&quot;</span><span class="p">,</span> <span class="s2">&quot;Android&quot;</span><span class="p">,</span> <span class="s2">&quot;S60&quot;</span><span class="p">]</span>
+<span class="n">işletim_sistemleri</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">platformlar</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">işletim_sistemleri</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, bu örnekte <code class="docutils literal notranslate"><span class="pre">extend()</span></code> metodunu kullanmak <code class="docutils literal notranslate"><span class="pre">append()</span></code>
+metodunu kullanmaya göre daha pratik ve makul. Çünkü bir listeye tek tek öğe
+eklemek açısından <code class="docutils literal notranslate"><span class="pre">append()</span></code> metodu daha uygundur, ama eğer yukarıda olduğu
+gibi bir listeye başka bir liste ekleyeceksek <code class="docutils literal notranslate"><span class="pre">extend()</span></code> metodunu kullanmayı
+tercih edebiliriz.</p>
+</section>
+<section id="insert">
+<h3>insert()<a class="headerlink" href="#insert" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p>Bildiğiniz gibi, <cite>+</cite> işleci, <code class="docutils literal notranslate"><span class="pre">append()</span></code> ve <code class="docutils literal notranslate"><span class="pre">extend()</span></code> metotları öğeleri
+listenin sonuna ekliyor. Peki biz bir öğeyi listenin sonuna değil de, liste
+içinde başka bir konuma eklemek istersek ne yapacağız? İşte bunun için
+<code class="docutils literal notranslate"><span class="pre">insert()</span></code> adlı başka bir metottan yararlanacağız.</p>
+<p><em>insert</em> kelimesi ‘yerleştirmek, sokmak’ gibi anlamlara gelir. <code class="docutils literal notranslate"><span class="pre">insert()</span></code>
+metodu da bu anlama uygun olarak, öğeleri listenin istediğimiz bir konumuna
+yerleştirir. Dikkatlice inceleyin:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;elma&quot;</span><span class="p">,</span> <span class="s2">&quot;armut&quot;</span><span class="p">,</span> <span class="s2">&quot;çilek&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;erik&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
+
+<span class="go">[&#39;erik&#39;, &#39;elma&#39;, &#39;armut&#39;, &#39;çilek&#39;]</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi <code class="docutils literal notranslate"><span class="pre">insert()</span></code> metodu iki parametre alıyor. İlk parametre, öğenin
+hangi konuma yerleştirileceğini, ikinci parametre ise yerleştirilecek öğenin ne
+olduğunu gösteriyor. Yukarıdaki örnekte <cite>“erik”</cite> öğesini listenin <cite>0.</cite> konumuna,
+yani listenin en başına yerleştiriyoruz.</p>
+<p><code class="docutils literal notranslate"><span class="pre">ìnsert()</span></code> metodu özellikle dosya işlemlerinde işinize yarar. Diyelim ki
+elimizde içeriği şöyle olan <cite>deneme.txt</cite> adlı bir dosya var:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ahmet</span> <span class="n">Özkoparan</span>
+<span class="n">Mehmet</span> <span class="n">Veli</span>
+<span class="n">Serdar</span> <span class="n">Güzel</span>
+<span class="n">Zeynep</span> <span class="n">Güz</span>
+</pre></div>
+</div>
+<p>Bizim amacımız, ‘Ahmet Özkoparan’ satırından sonra ‘Ferhat Yaz’ diye bir satır
+daha eklemek. Yani dosyamızı şu hale getirmek istiyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ahmet</span> <span class="n">Özkoparan</span>
+<span class="n">Ferhat</span> <span class="n">Yaz</span>
+<span class="n">Mehmet</span> <span class="n">Veli</span>
+<span class="n">Serdar</span> <span class="n">Güzel</span>
+<span class="n">Zeynep</span> <span class="n">Güz</span>
+</pre></div>
+</div>
+<p>Biz henüz Python’da dosya işlemlerinin nasıl yapılacağını öğrenmedik. Ama
+hatırlarsanız bundan önceki bölümlerde birkaç yerde <code class="docutils literal notranslate"><span class="pre">open()</span></code> adlı bir
+fonksiyondan bahsetmiş ve bu fonksiyonun dosya işlemlerinde kullanıldığını
+söylemiştik. Mesela yukarıda bahsettiğimiz <cite>deneme.txt</cite> adlı dosyayı açmak için
+<code class="docutils literal notranslate"><span class="pre">open()</span></code> fonksiyonunu şu şekilde kullanabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;deneme.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada <cite>deneme.txt</cite> adlı dosyayı okuma modunda açmış olduk. Şimdi dosya
+içeriğini okuyalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">içerik</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Bu satır sayesinde dosya içeriğini bir liste halinde alabildik. Eğer yukarıdaki
+kodlara şu eklemeyi yaparsanız, dosya içeriğini görebilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">içerik</span><span class="p">)</span>
+
+<span class="p">[</span><span class="s1">&#39;Ahmet Özkoparan</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;Mehmet Veli</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;Serdar Güzel</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;Zeynep Güz</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, dosya içeriği basit bir listeden ibaret. Dolayısıyla listelerle
+yapabildiğimiz her şeyi <cite>içerik</cite> adlı değişkenle de yapabiliriz. Yani bu listeye
+öğe ekleyebilir, listeden öğe çıkarabilir ya da bu listeyi başka bir liste ile
+birleştirebiliriz.</p>
+<p>Dosya içeriğini bir liste olarak aldığımıza göre şimdi bu listeye <cite>“Ahmet
+Özkoparan”</cite> öğesinden sonra <cite>“Ferhat Yaz”</cite> öğesini ekleyelim. Dikkatlice bakın:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">içerik</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Ferhat Yaz</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Dediğimiz gibi, <code class="docutils literal notranslate"><span class="pre">f.readlines()</span></code> satırı bize dosya içeriğini bir liste olarak
+verdi. Amacımız <cite>“Ahmet Özkoparan”</cite> öğesinden sonra <cite>“Ferhat Yaz”</cite> öğesini
+eklemek. Bunun için, liste metotlarından biri olan <code class="docutils literal notranslate"><span class="pre">insert()</span></code> metodunu
+kullanarak listenin <cite>1.</cite> sırasına <cite>“Ferhat Yaz”</cite> öğesini ekledik. Burada
+<cite>“Ferhat Yaz”</cite> öğesine <cite>n</cite> adlı satır başı karakterini de ilave ettiğimize
+dikkat edin. Bu eklemeyi neden yaptığımızı anlamak için satır başı karakterini
+çıkarmayı deneyebilirsiniz.</p>
+<p><cite>içerik</cite> adlı değişkenin değerini istediğimiz biçime getirdiğimize göre bu
+listeyi tekrar <cite>deneme.txt</cite> adlı dosyaya yazabiliriz. Ama bunun için öncelikle
+<cite>deneme.txt</cite> adlı dosyayı yazma modunda açmamız gerekiyor. Python’da dosyalar ya
+okuma ya da yazma modunda açılabilir. Okuma modunda açılan bir dosyaya
+yazılamaz. O yüzden dosyamızı bir de yazma modunda açmamız gerekiyor:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;deneme.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">open()</span></code> fonksiyonunun ilk parametresi dosya adını gösterirken, ikinci
+parametresi dosyanın hangi modda açılacağını gösteriyor. Biz burada <cite>deneme.txt</cite>
+adlı dosyayı yazma modunda açtık. Buradaki <cite>“w”</cite> parametresi İngilizcede
+‘yazmak’ anlamına gelen <em>write</em> kelimesinin ilk harfidir. Biraz önce ise
+<cite>deneme.txt</cite> dosyasını <cite>“r”</cite>, yani okuma (<em>read</em>) modunda açmıştık.</p>
+<p>Dosyamız artık üzerine yazmaya hazır. Dikkatlice bakın:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span><span class="n">içerik</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada, biraz önce istediğimiz biçime getirdiğimiz <cite>içerik</cite> adlı listeyi doğrudan
+dosyaya yazdık. Bu işlem için <code class="docutils literal notranslate"><span class="pre">writelines()</span></code> adlı özel bir metottan
+yararlandık. Bu metotları birkaç bölüm sonra ayrıntılı olarak inceleyeceğiz. Biz
+şimdilik sadece sonuca odaklanalım.</p>
+<p>Yapmamız gereken son işlem, açık dosyaları kapatmak olmalı:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">g</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Şimdi kodlara topluca bir bakalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;deneme.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="n">içerik</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+<span class="n">içerik</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Ferhat Yaz</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;deneme.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span><span class="n">içerik</span><span class="p">)</span>
+
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">g</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi yaptığımız işlem şu basamaklardan oluşuyor:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Öncelikle dosyamızı okuma modunda açıyoruz (<code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">=</span> <span class="pre">open(&quot;deneme.txt&quot;,</span> <span class="pre">&quot;r&quot;)</span></code>)</p></li>
+<li><p>Ardından dosya içeriğini bir liste olarak alıyoruz (<code class="docutils literal notranslate"><span class="pre">içerik</span> <span class="pre">=</span> <span class="pre">f.readlines()</span></code>)</p></li>
+<li><p>Aldığımız bu listenin <cite>2.</cite> sırasına <cite>“Ferhat Yaz”</cite> öğesini ekliyoruz
+(<code class="docutils literal notranslate"><span class="pre">içerik.insert(1,</span> <span class="pre">&quot;Ferhat</span> <span class="pre">Yaz\n&quot;)</span></code>)</p></li>
+<li><p>Listeyi istediğimiz şekle getirdikten sonra bu defa dosyamızı yazma
+modunda açıyoruz (<code class="docutils literal notranslate"><span class="pre">g</span> <span class="pre">=</span> <span class="pre">open(&quot;deneme.txt&quot;,</span> <span class="pre">&quot;w&quot;)</span></code>)</p></li>
+<li><p>Biraz önce düzenlediğimiz listeyi dosyaya yazıyoruz (<code class="docutils literal notranslate"><span class="pre">g.writelines(içerik)</span></code>)</p></li>
+<li><p>Son olarak da, hem yaptığımız değişikliklerin etkin hale gelebilmesi
+hem de işletim sisteminin programımıza tahsis ettiği kaynakların serbest
+kalması için dosyalarımızı kapatıyoruz (<code class="docutils literal notranslate"><span class="pre">f.close()</span></code> ve <code class="docutils literal notranslate"><span class="pre">g.close()</span></code>)</p></li>
+</ol>
+</div></blockquote>
+<p>Burada <code class="docutils literal notranslate"><span class="pre">insert()</span></code> metodunun bize nasıl kolaylık sağladığına dikkat edin.
+<code class="docutils literal notranslate"><span class="pre">insert()</span></code> metodu da listelerin önemli metotlarından biridir ve dediğimiz
+gibi, özellikle dosyaları manipüle ederken epey işimize yarar.</p>
+</section>
+<section id="remove">
+<h3>remove()<a class="headerlink" href="#remove" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p>Bu metot listeden öğe silmemizi sağlar. Örneğin:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;elma&quot;</span><span class="p">,</span> <span class="s2">&quot;armut&quot;</span><span class="p">,</span> <span class="s2">&quot;çilek&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;elma&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span>
+
+<span class="go">[&#39;armut&#39;, &#39;çilek&#39;]</span>
+</pre></div>
+</div>
+</section>
+<section id="reverse">
+<h3>reverse()<a class="headerlink" href="#reverse" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p>Daha önce verdiğimiz örneklerde, liste öğelerini ters çevirmek için dilimleme
+yöntemini kullanabileceğimizi öğrenmiştik:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">meyveler</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;elma&quot;</span><span class="p">,</span> <span class="s2">&quot;armut&quot;</span><span class="p">,</span> <span class="s2">&quot;çilek&quot;</span><span class="p">,</span> <span class="s2">&quot;kiraz&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">meyveler</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="go">[&#39;kiraz&#39;, &#39;çilek&#39;, &#39;armut&#39;, &#39;elma&#39;]</span>
+</pre></div>
+</div>
+<p>Eğer istersek, bu iş için, karakter dizilerini incelerken öğrendiğimiz
+<code class="docutils literal notranslate"><span class="pre">reversed()</span></code> fonksiyonunu da kullanabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">reversed</span><span class="p">(</span><span class="n">meyveler</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu komut bize şu çıktıyı verir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">list_reverseiterator</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x00DC9810</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Demek ki <code class="docutils literal notranslate"><span class="pre">reversed()</span></code> fonksiyonunu bir liste üzerine uyguladığımızda
+‘list_reverseiterator’ adı verilen bir nesne elde ediyoruz. Bu nesnenin
+içeriğini görmek için birkaç farklı yöntemden yararlanabiliriz. Örneğin:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="nb">reversed</span><span class="p">(</span><span class="n">meyveler</span><span class="p">))</span>
+
+<span class="go">kiraz çilek armut elma</span>
+</pre></div>
+</div>
+<p>… veya:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">meyveler</span><span class="p">)))</span>
+
+<span class="go">[&#39;kiraz&#39;, &#39;çilek&#39;, &#39;armut&#39;, &#39;elma&#39;]</span>
+</pre></div>
+</div>
+<p>… ya da:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">meyveler</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">kiraz</span>
+<span class="go">çilek</span>
+<span class="go">armut</span>
+<span class="go">elma</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, Python’da bir listeyi ters çevirmenin pek çok yöntemi var.
+Dilerseniz şimdi bu yöntemlere bir tane daha ekleyelim.</p>
+<p>Python’da listelerin öğelerini ters çevirmek için yukarıdaki yöntemlere ek
+olarak listelerin <code class="docutils literal notranslate"><span class="pre">reverse()</span></code> metodunu da kullanabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;elma&quot;</span><span class="p">,</span> <span class="s2">&quot;armut&quot;</span><span class="p">,</span> <span class="s2">&quot;çilek&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span>
+
+<span class="go">[&#39;çilek&#39;, &#39;armut&#39;, &#39;elma&#39;]</span>
+</pre></div>
+</div>
+<p>İhtiyacınız olan çıktının türüne ve şekline göre yukarıdaki yöntemlerden
+herhangi birini tercih edebilirsiniz.</p>
+</section>
+<section id="pop">
+<h3>pop()<a class="headerlink" href="#pop" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p>Tıpkı <code class="docutils literal notranslate"><span class="pre">remove()</span></code> metodu gibi, bu metot da bir listeden öğe silmemizi sağlar:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;elma&quot;</span><span class="p">,</span> <span class="s2">&quot;armut&quot;</span><span class="p">,</span> <span class="s2">&quot;çilek&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Ancak bu metot, <code class="docutils literal notranslate"><span class="pre">remove()</span></code> metodundan biraz farklı davranır. <code class="docutils literal notranslate"><span class="pre">pop()</span></code>
+metodunu kullanarak bir liste öğesini sildiğimizde, silinen öğe ekrana
+basılacaktır. Bu metot parametresiz olarak kullanıldığında listenin son öğesini
+listeden atar. Alternatif olarak, bu metodu bir parametre ile birlikte de
+kullanabilirsiniz. Örneğin:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu komut listenin <cite>0.</cite> öğesini listeden atar ve atılan öğeyi ekrana basar.</p>
+</section>
+<section id="sort">
+<h3>sort()<a class="headerlink" href="#sort" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p>Yine listelerin önemli bir metodu ile karşı karşıyayız. <code class="docutils literal notranslate"><span class="pre">sort()</span></code> adlı bu
+önemli metot bir listenin öğelerini belli bir ölçüte göre sıraya dizmemizi
+sağlar. Basit bir örnek verelim. Diyelim ki elimizde şöyle bir liste var:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">üyeler</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Ahmet&#39;</span><span class="p">,</span> <span class="s1">&#39;Mehmet&#39;</span><span class="p">,</span> <span class="s1">&#39;Ceylan&#39;</span><span class="p">,</span> <span class="s1">&#39;Seyhan&#39;</span><span class="p">,</span> <span class="s1">&#39;Mahmut&#39;</span><span class="p">,</span> <span class="s1">&#39;Zeynep&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;Abdullah&#39;</span><span class="p">,</span> <span class="s1">&#39;Kadir&#39;</span><span class="p">,</span> <span class="s1">&#39;Kemal&#39;</span><span class="p">,</span> <span class="s1">&#39;Kamil&#39;</span><span class="p">,</span> <span class="s1">&#39;Selin&#39;</span><span class="p">,</span> <span class="s1">&#39;Senem&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;Sinem&#39;</span><span class="p">,</span> <span class="s1">&#39;Tayfun&#39;</span><span class="p">,</span> <span class="s1">&#39;Tuna&#39;</span><span class="p">,</span> <span class="s1">&#39;Tolga&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Bu listedeki isimleri mesela alfabe sırasına dizmek için <code class="docutils literal notranslate"><span class="pre">sort()</span></code> metodunu
+kullanabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">üyeler</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">üyeler</span><span class="p">)</span>
+
+<span class="go">[&#39;Abdullah&#39;, &#39;Ahmet&#39;, &#39;Ceylan&#39;, &#39;Kadir&#39;, &#39;Kamil&#39;, &#39;Kemal&#39;, &#39;Mahmut&#39;,</span>
+<span class="go"> &#39;Mehmet&#39;, &#39;Selin&#39;, &#39;Senem&#39;, &#39;Seyhan&#39;, &#39;Sinem&#39;, &#39;Tayfun&#39;, &#39;Tolga&#39;,</span>
+<span class="go"> &#39;Tuna&#39;, &#39;Zeynep&#39;]</span>
+</pre></div>
+</div>
+<p>Bu metot elbette yalnızca harfleri alfabe sırasına dizmek için değil sayıları
+sıralamak için de kullanılabilir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sayılar</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sayılar</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">sayılar</span><span class="p">)</span>
+
+<span class="go">[-1, 0, 1, 3, 4, 6, 10]</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">sort()</span></code> metodu öğeleri artan sıralamaya tabi tutuyor. Yani
+öğeler ‘a, b, c’ veya 1, 2, 3 şeklinde sıralanıyor. Bunun tersini yapmak da
+mümkündür. Yani istersek Python’ın sıralama işlemini ‘c, b, a’ şeklinde
+yapmasını da sağlayabiliriz. Bunun için <code class="docutils literal notranslate"><span class="pre">sort()</span></code> metodunun <cite>reverse</cite>
+parametresini kullanacağız:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">üyeler</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Ahmet&#39;</span><span class="p">,</span> <span class="s1">&#39;Mehmet&#39;</span><span class="p">,</span> <span class="s1">&#39;Ceylan&#39;</span><span class="p">,</span> <span class="s1">&#39;Seyhan&#39;</span><span class="p">,</span> <span class="s1">&#39;Mahmut&#39;</span><span class="p">,</span> <span class="s1">&#39;Zeynep&#39;</span><span class="p">,</span>
+<span class="go">              &#39;Abdullah&#39;, &#39;Kadir&#39;, &#39;Kemal&#39;, &#39;Kamil&#39;, &#39;Selin&#39;, &#39;Senem&#39;,</span>
+<span class="go">             &#39;Sinem&#39;, &#39;Tayfun&#39;, &#39;Tuna&#39;, &#39;Tolga&#39;]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">üyeler</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi <code class="docutils literal notranslate"><span class="pre">sort()</span></code> metodunun <cite>reverse</cite> adlı bir parametresine verdiğimiz
+<cite>True</cite> değeri sayesinde liste öğelerini ters sıraladık. Bu parametrenin
+öntanımlı değeri <cite>False</cite>’tur. Yani <code class="docutils literal notranslate"><span class="pre">sort()</span></code> metodu öntanımlı olarak öğeleri
+artıra artıra sıralar. Öğeleri azalta azalta sıralamak için <cite>reverse</cite>
+parametresinin <cite>False</cite> olan öntanımlı değerini <cite>True</cite> yapmamız yeterli
+olacaktır.</p>
+<p>Gelin isterseniz <code class="docutils literal notranslate"><span class="pre">sort()</span></code> metodunu kullanarak bir örnek daha verelim. Elimizde
+şöyle bir liste olsun:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">isimler</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Ahmet&quot;</span><span class="p">,</span> <span class="s2">&quot;Işık&quot;</span><span class="p">,</span> <span class="s2">&quot;İsmail&quot;</span><span class="p">,</span> <span class="s2">&quot;Çiğdem&quot;</span><span class="p">,</span> <span class="s2">&quot;Can&quot;</span><span class="p">,</span> <span class="s2">&quot;Şule&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Bu listedeki isimleri alfabe sırasına dizelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">isimler</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">isimler</span>
+
+<span class="go">[&#39;Ahmet&#39;, &#39;Can&#39;, &#39;Işık&#39;, &#39;Çiğdem&#39;, &#39;İsmail&#39;, &#39;Şule&#39;]</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, çıktı pek beklediğimiz gibi değil. Tıpkı karakter dizilerini
+anlatırken öğrendiğimiz <code class="docutils literal notranslate"><span class="pre">sorted()</span></code> fonksiyonunda olduğu gibi, listelerin
+<code class="docutils literal notranslate"><span class="pre">sort()</span></code> metodu da Türkçe karakterleri düzgün sıralayamaz. Eğer Türkçe
+karakterleri sıralamamız gereken bir program yazıyorsak bizim <code class="docutils literal notranslate"><span class="pre">sort()</span></code>
+metodunun işleyişine müdahale etmemiz gerekir. Temel olarak, <code class="docutils literal notranslate"><span class="pre">sorted()</span></code>
+fonksiyonunu anlatırken söylediklerimiz burada da geçerlidir. Orada
+bahsettiğimiz <code class="docutils literal notranslate"><span class="pre">locale</span></code> modülü burada da çoğu durumda işimizi halletmemizi
+sağlar. Ama <code class="docutils literal notranslate"><span class="pre">sorted()</span></code> fonksiyonunu anlatırken de söylediğimiz gibi,
+<code class="docutils literal notranslate"><span class="pre">locale</span></code> modülü burada da ‘i’ ve ‘ı’ harflerini düzgün sıralayamaz. Türkçe
+harflerin tamamını düzgün sıralayabilmek için şöyle bir kod yazabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">harfler</span> <span class="o">=</span> <span class="s2">&quot;abcçdefgğhıijklmnoöprsştuüvyz&quot;</span>
+<span class="n">çevrim</span> <span class="o">=</span> <span class="p">{</span><span class="n">harf</span><span class="p">:</span> <span class="n">harfler</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">harf</span><span class="p">)</span> <span class="k">for</span> <span class="n">harf</span> <span class="ow">in</span> <span class="n">harfler</span><span class="p">}</span>
+
+
+<span class="n">isimler</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ahmet&quot;</span><span class="p">,</span> <span class="s2">&quot;ışık&quot;</span><span class="p">,</span> <span class="s2">&quot;ismail&quot;</span><span class="p">,</span> <span class="s2">&quot;çiğdem&quot;</span><span class="p">,</span> <span class="s2">&quot;can&quot;</span><span class="p">,</span> <span class="s2">&quot;şule&quot;</span><span class="p">]</span>
+
+<span class="n">isimler</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">çevrim</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">isimler</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu kodların bir kısmını anlayabiliyor, bir kısmını ise anlayamıyor
+olabilirsiniz. Çünkü burada henüz işlemediğimiz konular var. Zamanı geldiğinde
+bu kodların tamamını anlayabilecek duruma geleceksiniz. Siz şimdilik sadece bu
+kodlardan ne çıkarabildiğinize bakın yeter. Zaten bizim buradaki amacımız,
+<code class="docutils literal notranslate"><span class="pre">sort()</span></code> metodunun Türkçe harfleri de düzgün bir şekilde sıralayabileceğini
+göstermekten ibarettir.</p>
+<p>Bu arada ufak bir uyarı yapmadan geçmeyelim: Yukarıdaki kodlar da esasında
+Türkçe kelimeleri tam anlamıyla düzgün bir şekilde sıralamak için yeterli değil.
+‘Gömülü Fonksiyonlar’ konusunu incelerken, yeri geldiğinde bu konuya tekrar
+değinip, Türkçe kelimelerin nasıl doğru, tam ve eksiksiz bir biçimde
+sıralanacağını da tüm ayrıntılarıyla inceleyeceğiz.</p>
+</section>
+<section id="index">
+<h3>index()<a class="headerlink" href="#index" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p>Karakter dizileri konusunu anlatırken bu veri tipinin <code class="docutils literal notranslate"><span class="pre">index()</span></code> adlı bir
+metodu olduğundan söz etmiştik hatırlarsanız. İşte liste veri tipinin de
+<code class="docutils literal notranslate"><span class="pre">index()</span></code> adında ve karakter dizilerinin <code class="docutils literal notranslate"><span class="pre">index()</span></code> metoduyla aynı işi yapan
+bir metodu bulunur. Bu metot bir liste öğesinin liste içindeki konumunu söyler
+bize:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;elma&quot;</span><span class="p">,</span> <span class="s2">&quot;armut&quot;</span><span class="p">,</span> <span class="s2">&quot;çilek&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;elma&quot;</span><span class="p">)</span>
+
+<span class="go">0</span>
+</pre></div>
+</div>
+<p>Karakter dizilerinin <code class="docutils literal notranslate"><span class="pre">index()</span></code> metoduyla ilgili söylediğimiz her şey
+listelerin <code class="docutils literal notranslate"><span class="pre">index()</span></code> metodu için de geçerlidir.</p>
+</section>
+<section id="count">
+<h3>count()<a class="headerlink" href="#count" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p>Karakter dizileri ile listelerin ortak metotlarından biri de <code class="docutils literal notranslate"><span class="pre">count()</span></code>
+metodudur. Tıpkı karakter dizilerinde olduğu gibi, listelerin <code class="docutils literal notranslate"><span class="pre">count()</span></code> metodu
+da bir öğenin o veri tipi içinde kaç kez geçtiğini söyler:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;elma&quot;</span><span class="p">,</span> <span class="s2">&quot;armut&quot;</span><span class="p">,</span> <span class="s2">&quot;elma&quot;</span><span class="p">,</span> <span class="s2">&quot;çilek&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;elma&quot;</span><span class="p">)</span>
+
+<span class="go">2</span>
+</pre></div>
+</div>
+<p>Karakter dizilerinin <code class="docutils literal notranslate"><span class="pre">count()</span></code> metoduyla ilgili söylediğimiz her şey
+listelerin <code class="docutils literal notranslate"><span class="pre">count()</span></code> metodu için de geçerlidir.</p>
+</section>
+<section id="copy">
+<h3>copy()<a class="headerlink" href="#copy" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p>Hatırlarsanız, geçen bölümde, listeleri, birbirlerini etkilemeyecek şekilde
+kopyalamak için şu iki yöntemi kullanmıştık:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">liste1</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ahmet&quot;</span><span class="p">,</span> <span class="s2">&quot;mehmet&quot;</span><span class="p">,</span> <span class="s2">&quot;özlem&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">liste2</span> <span class="o">=</span> <span class="n">liste1</span><span class="p">[:]</span>
+</pre></div>
+</div>
+<p>ve:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">liste2</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">liste1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>İşte aynı iş için yukarıdakilere ek olarak <code class="docutils literal notranslate"><span class="pre">copy()</span></code> adlı bir metottan da
+yararlanabiliriz. Dikkatlice bakın:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">liste2</span> <span class="o">=</span> <span class="n">liste1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Hangi yöntemi seçeceğiniz size kalmış…</p>
+</section>
+<section id="clear">
+<h3>clear()<a class="headerlink" href="#clear" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p>Listelerle ilgili olarak ele alacağımız son metodun adı <code class="docutils literal notranslate"><span class="pre">clear()</span></code>. Bu metodun
+görevi bir listenin içeriğini silmektir.</p>
+<p>Diyelim ki elimizde şöyle bir liste var:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">45</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Bu listenin içini boşaltmak için <code class="docutils literal notranslate"><span class="pre">clear()</span></code> metodunu kullanabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span>
+
+<span class="go">[]</span>
+</pre></div>
+</div>
+<p>Bu metodun <code class="docutils literal notranslate"><span class="pre">del</span></code> sözcüğünden farklı olduğunu dikkat edin. <code class="docutils literal notranslate"><span class="pre">clear()</span></code> metodu
+listenin içeriğini boşaltırken, <code class="docutils literal notranslate"><span class="pre">del</span></code> sözcüğü listeyi olduğu gibi ortadan
+kaldırır.</p>
+</section>
+</section>
+<section id="demetlerin-metotlari">
+<h2>Demetlerin Metotları<a class="headerlink" href="#demetlerin-metotlari" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Listelerin metotlarını incelediğimize göre, artık demetlerin metotlarına
+bakabiliriz.</p>
+<p>Geçen bölümde de söylediğimiz gibi, listeler ve demetler birbirine benzer.
+Aralarındaki en önemli fark, listelerin değiştirilebilir bir veri tipi iken,
+demetlerin değiştirilemez bir veri tipi olmasıdır. Elbette bu fark, iki veri
+tipinin metotlarında da kendini gösterir. Demetler üzerinde değişiklik
+yapamadığımız için, bu veri tipi değişiklik yapmaya yarayan metotlara sahip
+değildir.</p>
+<p>Demetlerin hangi metotları olduğunu şu komutla görebilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="nb">tuple</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, bu veri tipinin bizi ilgilendiren iki metodu var:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">index()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">count()</span></code></p></li>
+</ol>
+<section id="id1">
+<h3>index()<a class="headerlink" href="#id1" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p>Listeler ve karakter dizileri konusunu anlatırken bu veri tiplerinin <code class="docutils literal notranslate"><span class="pre">index()</span></code>
+adlı bir metodu olduğundan söz etmiştik hatırlarsanız. İşte demet veri tipinin
+de <code class="docutils literal notranslate"><span class="pre">index()</span></code> adında ve listelerle karakter dizilerinin <code class="docutils literal notranslate"><span class="pre">index()</span></code> metoduyla
+aynı işi yapan bir metodu bulunur. Bu metot bir demet öğesinin demet içindeki
+konumunu söyler bize:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">demet</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;elma&quot;</span><span class="p">,</span> <span class="s2">&quot;armut&quot;</span><span class="p">,</span> <span class="s2">&quot;çilek&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">demet</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;elma&quot;</span><span class="p">)</span>
+
+<span class="go">0</span>
+</pre></div>
+</div>
+<p>Listelerin ve karakter dizilerinin <code class="docutils literal notranslate"><span class="pre">index()</span></code> metoduyla ilgili söylediğimiz her
+şey demetlerin <code class="docutils literal notranslate"><span class="pre">index()</span></code> metodu için de geçerlidir.</p>
+</section>
+<section id="id2">
+<h3>count()<a class="headerlink" href="#id2" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<p>Karakter dizileri, listeler ve demetlerin ortak metotlarından biri de
+<code class="docutils literal notranslate"><span class="pre">count()</span></code> metodudur. Tıpkı karakter dizileri ve listelerde olduğu gibi,
+demetlerin <code class="docutils literal notranslate"><span class="pre">count()</span></code> metodu da bir öğenin o veri tipi içinde kaç kez geçtiğini
+söyler:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">demet</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;elma&quot;</span><span class="p">,</span> <span class="s2">&quot;armut&quot;</span><span class="p">,</span> <span class="s2">&quot;elma&quot;</span><span class="p">,</span> <span class="s2">&quot;çilek&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">demet</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;elma&quot;</span><span class="p">)</span>
+
+<span class="go">2</span>
+</pre></div>
+</div>
+<p>Karakter dizilerinin ve listelerin <code class="docutils literal notranslate"><span class="pre">count()</span></code> metoduyla ilgili söylediğimiz her
+şeydemetlerin <code class="docutils literal notranslate"><span class="pre">count()</span></code> metodu için de geçerlidir.</p>
+</section>
+</section>
+</section>
+
+
+
+<div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
+<div class='extrarelbar'> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Genel Dizin"
+             >dizin</a></li>
+        <li class="right" >
+          <a href="sayma_sistemleri.html" title="Sayma Sistemleri"
+             >sonraki</a> |</li>
+        <li class="right" >
+          <a href="listeler_ve_demetler.html" title="Listeler ve Demetler"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+        <li class="nav-item nav-item-this"><a href="">Listelerin ve Demetlerin Metotları</a></li> 
+      </ul>
+    </div> </div>
+
+<div class='addcomment'>Yorumlar</div>
+
+<div class='how-to-use'>
+<h3>Önemli Not</h3>
+Eğer yazdığınız yorum içinde kod kullanacaksanız kodlarınızı
+<span class='tag'>&lt;pre&gt;&lt;code&gt;</span> etiketleri içine alın. Örneğin:
+
+<pre>
+    <span class='tag'>&lt;pre&gt;&lt;code class="python"&gt;</span>
+    <span class='keyword'>print</span>(<span class='string'>"Merhaba Dünya!"</span>)
+    <span class='tag'>&lt;/code&gt;&lt;/pre&gt;</span>
+</pre>
+
+Sorularınızı yorumlarda dile getirmek yerine <a href="https://forum.yazbel.com/">Yazbel Forumu</a>nda sorarsanız çok daha hızlı cevap alabilirsiniz.
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'istihza';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+<noscript>
+<br>
+<a href="https://disqus.com/?ref_noscript" rel="nofollow">Disqus tarafından sağlanan yorumları</a> görmek için lütfen JavasScript'i etkinleştirin.
+<br>
+Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4eca48eb2d83faf9" async="async"></script>
+
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Genel Dizin"
+             >dizin</a></li>
+        <li class="right" >
+          <a href="sayma_sistemleri.html" title="Sayma Sistemleri"
+             >sonraki</a> |</li>
+        <li class="right" >
+          <a href="listeler_ve_demetler.html" title="Listeler ve Demetler"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+        <li class="nav-item nav-item-this"><a href="">Listelerin ve Demetlerin Metotları</a></li> 
+      </ul>
+    </div> 
+
+<div class="footer">
+		&copy; Copyright 2007-2021, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 13.10.2021.
+	<a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0 kullanılarak oluşturuldu.
+<br>
+<br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
+alt="Creative Commons License" style="border-width:0"
+src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a>
+<br>
+<br>
+</div>
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=10396326;
+var sc_invisible=1;
+var sc_security="fb5cd679";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="hit counter"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="http://c.statcounter.com/10396326/0/fb5cd679/1/"
+alt="hit counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+  </body>
+</html>

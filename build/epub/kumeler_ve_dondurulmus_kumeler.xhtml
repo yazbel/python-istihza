@@ -1,0 +1,1077 @@
+
+ <!DOCTYPE html>
+ <html lang="tr">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta content="Bu bölümde kümeler ve dondurulmuş kümelerden söz edeceğiz." name="description" />
+<meta content="python, küme, dondurulmuş küme" name="keywords" />
+
+    <title>Kümeler ve Dondurulmuş Kümeler</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/epub.css" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+<div class='header'><a href='https://yazbel.com'><img src="_static/logo.png"></a></div>
+
+<ul class='navbar'>
+    <li class="forum"><a href="http://forum.yazbel.com">forum</a></li>
+    <li><a href="YazbelPythonProgramlamaDiliBelgeleri.pdf">pdf</a></li>
+    <li><a href="YazbelPythonProgramlamaDiliBelgeleri.epub">epub</a></li>
+    <li><a href="YazbelPythonProgramlamaDiliBelgeleri.html">html</a></li>
+</ul>
+
+
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+
+  <section id="kumeler-ve-dondurulmus-kumeler">
+<h1>Kümeler ve Dondurulmuş Kümeler</h1>
+<p>Bu bölümde Python’daki iki veri tipini daha inceleyeceğiz. İnceleyeceğimiz veri
+tiplerinin adı küme ve dondurulmuş küme.</p>
+<p>Özellikle kümeleri öğrendiğimizde, bu veri tipinin kendine has birtakım
+özellikleri sayesinde bunların kimi zaman hiç tahmin bile edemeyeceğimiz
+yerlerde işimize yaradığını göreceğiz. Normalde uzun uzun kod yazmayı gerektiren
+durumlarda kümeleri kullanmak, bir-iki satırla işlerimizi halletmemizi
+sağlayabilir.</p>
+<p>Bu bölümde kümeler dışında, bir de dondurulmuş kümelerden söz edeceğiz. Bu iki
+veri tipi birbiriyle ilişkilidir. O yüzden bu iki veri tipini tek bölümde ele
+alacağız.</p>
+<p>İsterseniz anlatmaya önce kümelerle başlayalım.</p>
+<section id="kumeler">
+<h2>Kümeler</h2>
+<p>Tıpkı listeler, demetler, karakter dizileri, sayılar ve dosyalar gibi kümeler de
+Python’daki veri tiplerinden biridir. Adından da az çok tahmin edebileceğiniz
+gibi kümeler, matematikten bildiğimiz “küme” kavramıyla sıkı sıkıya
+bağlantılıdır. Bu veri tipi, matematikteki kümelerin sahip olduğu bütün
+özellikleri taşır. Yani matematikteki kümelerden bildiğimiz kesişim, birleşim ve
+fark gibi özellikler Python’daki kümeler için de geçerlidir.</p>
+<section id="kume-olusturmak">
+<h3>Küme Oluşturmak</h3>
+<p>Kümelerin bize sunduklarından faydalanabilmek için elbette öncelikle bir küme
+oluşturmamız gerekiyor. Küme oluşturmak çok kolay bir işlemdir. Örneğin boş bir
+kümeyi şöyle oluşturuyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">boş_küme</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Listeler, demetler ve sözlüklerin aksine kümelerin ayırt edici bir işareti
+yoktur. Küme oluşturmak için set() adlı özel bir fonksiyondan yararlanıyoruz.</p>
+<p>Yukarıdaki boş veri tipinin bir küme olduğunu nasıl teyit edeceğinizi
+biliyorsunuz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">boş_küme</span><span class="p">)</span>
+
+<span class="go">&lt;class &#39;set&#39;&gt;</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, Python programlama dilinde kümeler <cite>set</cite> ifadesiyle
+gösteriliyor.</p>
+<p>Yukarıda boş bir küme oluşturduk. İçinde öğe de barındıran kümeleri ise şu
+şekilde oluşturuyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">küme</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="s2">&quot;elma&quot;</span><span class="p">,</span> <span class="s2">&quot;armut&quot;</span><span class="p">,</span> <span class="s2">&quot;kebap&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Böylelikle, içinde öğe barındıran ilk kümemizi başarıyla oluşturduk. Dikkat
+ederseniz, küme oluştururken listelerden faydalandık. Gördüğünüz gibi <cite>set()</cite>
+fonksiyonu içindeki öğeler bir liste içinde yer alıyor. Dolayısıyla yukarıdaki
+tanımlamayı şöyle de yapabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;elma&quot;</span><span class="p">,</span> <span class="s2">&quot;armut&quot;</span><span class="p">,</span> <span class="s2">&quot;kebap&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">küme</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu daha temiz bir görüntü oldu. Elbette küme tanımlamak için mutlaka liste
+kullanmak zorunda değiliz. İstersek demetleri de küme haline getirebiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">demet</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;elma&quot;</span><span class="p">,</span> <span class="s2">&quot;armut&quot;</span><span class="p">,</span> <span class="s2">&quot;kebap&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">küme</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">demet</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Hatta ve hatta karakter dizilerinden dahi küme yapabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;Python Programlama Dili için Türkçe Kaynak&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">küme</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">kardiz</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Kullandığımız karakter dizisinin böyle uzun olmasına da gerek yok. Tek
+karakterlik dizilerden bile küme oluşturabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;a&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">küme</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">kardiz</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Ama sayılardan küme oluşturamayız:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">küme</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="go">TypeError: &#39;int&#39; object is not iterable</span>
+</pre></div>
+</div>
+<p>Peki sözlükleri kullanarak küme oluşturabilir miyiz? Elbette, neden olmasın?</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bilgi</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;işletim sistemi&quot;</span><span class="p">:</span> <span class="s2">&quot;GNU&quot;</span><span class="p">,</span> <span class="s2">&quot;sistem çekirdeği&quot;</span><span class="p">:</span> <span class="s2">&quot;Linux&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="s2">&quot;dağıtım&quot;</span><span class="p">:</span> <span class="s2">&quot;Ubuntu GNU/Linux&quot;</span><span class="p">}</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">küme</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">bilgi</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Küme oluşturmanın son bir yönteminden daha söz edelim. En başta söylediğimiz
+gibi, listeler, demetler, sözlükler ve karakter dizilerinin aksine kümelerin <cite>[
+]</cite>, <cite>( )</cite>, <cite>{ }</cite>, <cite>‘ ‘</cite> gibi ayırt edici bir işareti yoktur. Ama eğer istersek
+sözlükleri oluşturmak için kullandığımız özel işaretleri küme oluşturmak için de
+kullanabiliriz. Dikkatlice bakın:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">küme</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="s1">&#39;C++&#39;</span><span class="p">,</span> <span class="s1">&#39;Ruby&#39;</span><span class="p">,</span> <span class="s1">&#39;PHP&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, aslında sözlüklerin ayırt edici işareti olan süslü parantezleri
+kullanarak ve öğeleri birbirinden virgülle ayırarak da küme adlı veri tipini
+elde edebiliyoruz. Teyit edelim bunu:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">küme</span><span class="p">)</span>
+
+<span class="go">&lt;class &#39;set&#39;&gt;</span>
+</pre></div>
+</div>
+<p>Ancak bu yapıyı kullanarak boş bir küme oluşturamazsınız:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">küme</span> <span class="o">=</span> <span class="p">{}</span>
+</pre></div>
+</div>
+<p>Bu şekilde oluşturduğunuz şey bir küme değil, sözlük olacaktır:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">küme</span><span class="p">)</span>
+
+<span class="go">&lt;class &#39;dict&#39;&gt;</span>
+</pre></div>
+</div>
+<p>Boş bir küme oluşturmak için <code class="docutils literal notranslate"><span class="pre">set()</span></code> fonksiyonunu kullanmanız gerektiğini
+biliyorsunuz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">küme</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">küme</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">küme</span><span class="p">)</span>
+
+<span class="go">&lt;class &#39;set&#39;&gt;</span>
+</pre></div>
+</div>
+<p>Böylece kümeleri nasıl oluşturacağımızı öğrendik. Eğer oluşturduğunuz kümeyi
+ekrana yazdırmak isterseniz, ne yapacağınızı biliyorsunuz. Tanımladığınız
+<code class="docutils literal notranslate"><span class="pre">küme</span></code> değişkenini kullanmanız yeterli olacaktır:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">küme</span>
+
+<span class="go">{&#39;işletim sistemi&#39;, &#39;sistem çekirdeği&#39;, &#39;dağıtım&#39;}</span>
+</pre></div>
+</div>
+<p>Bu arada, bir sözlüğü kümeye çevirdiğinizde, elbette sözlüğün yalnızca
+anahtarları kümeye eklenecektir. Sözlüğün değerleri ise böyle bir işlemin
+sonucunda ortadan kaybolur.</p>
+<p>Eğer bir sözlüğü kümeye çevirirken hem anahtarları hem de değerleri korumak
+gibi bir niyetiniz varsa şöyle bir şey yazabilirsiniz:</p>
+<p>Sözlüğümüz şu:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bilgi</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;işletim sistemi&quot;</span><span class="p">:</span> <span class="s2">&quot;GNU&quot;</span><span class="p">,</span> <span class="s2">&quot;sistem çekirdeği&quot;</span><span class="p">:</span> <span class="s2">&quot;Linux&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="s2">&quot;dağıtım&quot;</span><span class="p">:</span> <span class="s2">&quot;Ubuntu GNU/Linux&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Bu sözlükteki anahtar-değer çiftlerini bir küme içine, çift öğeli demetler
+olarak yerleştirebiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span> <span class="o">=</span> <span class="p">[(</span><span class="n">anahtar</span><span class="p">,</span> <span class="n">değer</span><span class="p">)</span> <span class="k">for</span> <span class="n">anahtar</span><span class="p">,</span> <span class="n">değer</span> <span class="ow">in</span> <span class="n">bilgi</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">küme</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, liste üreteçlerini kullanarak önce bir liste oluşturuyoruz. Bu
+liste her bir anahtarı ve değeri tek tek bir demet içine yerleştiriyor. Daha
+sonra da bu listeyi <code class="docutils literal notranslate"><span class="pre">set()</span></code> fonksiyonuna göndererek kümemizi oluşturuyoruz.</p>
+</section>
+<section id="kumelerin-yapisi">
+<h3>Kümelerin Yapısı</h3>
+<p>Bir önceki başlık altında kümelerin nasıl tanımlanacağını inceledik. Gelin şimdi
+de biraz kümelerin yapısından bahsedelim.</p>
+<p>Örneğin şöyle bir küme tanımlayalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;Python Programlama Dili&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">küme</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">kardiz</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">küme</span><span class="p">)</span>
+
+<span class="go">{&#39;g&#39;, &#39;D&#39;, &#39;a&#39;, &#39; &#39;, &#39;o&#39;, &#39;n&#39;, &#39;m&#39;, &#39;l&#39;, &#39;i&#39;, &#39;h&#39;, &#39;t&#39;, &#39;r&#39;, &#39;P&#39;, &#39;y&#39;}</span>
+</pre></div>
+</div>
+<p>Burada bir şey dikkatinizi çekmiş olmalı. Bir öğeyi küme olarak tanımlayıp
+ekrana yazdırdığımızda elde ettiğimiz çıktı, o öğe içindeki her bir alt öğeyi
+tek bir kez içeriyor. Yani mesela “Python Programlama Dili” içinde iki adet “P”
+karakteri var, ama çıktıda bu iki “P” karakterinin yalnızca biri görünüyor.
+Buradan anlıyoruz ki, kümeler aynı öğeyi birden fazla tekrar etmez. Bu çok
+önemli bir özelliktir ve pek çok yerde işimize yarar. Aynı durum karakter dizisi
+dışında kalan öteki veri tipleri için de geçerlidir. Yani mesela eğer bir
+listeyi küme haline getiriyorsak, o listedeki öğeler küme içinde yalnızca bir
+kez geçecektir. Listede aynı öğeden iki-üç tane bulunsa bile, kümemiz bu öğeleri
+teke indirecektir.</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;elma&quot;</span><span class="p">,</span> <span class="s2">&quot;armut&quot;</span><span class="p">,</span> <span class="s2">&quot;elma&quot;</span><span class="p">,</span> <span class="s2">&quot;kebap&quot;</span><span class="p">,</span> <span class="s2">&quot;şeker&quot;</span><span class="p">,</span> <span class="s2">&quot;armut&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="s2">&quot;çilek&quot;</span><span class="p">,</span> <span class="s2">&quot;ağaç&quot;</span><span class="p">,</span> <span class="s2">&quot;şeker&quot;</span><span class="p">,</span> <span class="s2">&quot;kebap&quot;</span><span class="p">,</span> <span class="s2">&quot;şeker&quot;</span><span class="p">]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">liste</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">ağaç</span>
+<span class="go">elma</span>
+<span class="go">şeker</span>
+<span class="go">kebap</span>
+<span class="go">çilek</span>
+<span class="go">armut</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, liste içinde birden fazla bulunan öğeler, Python’daki kümeler
+yardımıyla teke indirilebiliyor.</p>
+<p>Öğrendiğimiz bu bilgi sayesinde, daha önce gördüğümüz <cite>count()</cite> metodunu da
+kullanarak, şöyle bir kod yazabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;elma&quot;</span><span class="p">,</span> <span class="s2">&quot;armut&quot;</span><span class="p">,</span> <span class="s2">&quot;elma&quot;</span><span class="p">,</span> <span class="s2">&quot;kiraz&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="s2">&quot;çilek&quot;</span><span class="p">,</span> <span class="s2">&quot;kiraz&quot;</span><span class="p">,</span> <span class="s2">&quot;elma&quot;</span><span class="p">,</span> <span class="s2">&quot;kebap&quot;</span><span class="p">]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">liste</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> listede </span><span class="si">{}</span><span class="s2"> kez geçiyor!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">liste</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">i</span><span class="p">)))</span>
+
+<span class="go">kebap listede 1 kez geçiyor!</span>
+<span class="go">elma listede 3 kez geçiyor!</span>
+<span class="go">kiraz listede 2 kez geçiyor!</span>
+<span class="go">armut listede 1 kez geçiyor!</span>
+<span class="go">çilek listede 1 kez geçiyor!</span>
+</pre></div>
+</div>
+<p>Burada <code class="docutils literal notranslate"><span class="pre">set(liste)</span></code> ifadesini kullanarak, liste öğelerini eşşiz ve benzersiz
+bir hale getirdik.</p>
+<p>Kümelerin önemli bir özelliği de, tıpkı sözlükler gibi, herhangi bir şekilde
+‘öğe sırası’ kavramına sahip olmamasıdır.</p>
+<p>Dikkatlice bakın:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">arayüz_takımları</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Tkinter&#39;</span><span class="p">,</span> <span class="s1">&#39;PyQT&#39;</span><span class="p">,</span> <span class="s1">&#39;PyGobject&#39;</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">arayüz_takımları</span>
+
+<span class="go">{&#39;PyGobject&#39;, &#39;PyQT&#39;, &#39;Tkinter&#39;}</span>
+</pre></div>
+</div>
+<p>Sözlüklerde karşılaştığımız durumun aynısının kümeler için de geçerli olduğuna
+dikkatinizi çekmek isterim. Gördüğünüz gibi, <cite>arayüz_takımları</cite> adlı kümenin
+öğeleri, öğe tanımlama sırasını çıktıda korumuyor. Biz ‘Tkinter’ öğesini kümenin
+ilk sırasına yerleştirmiştik, ama bu öğe çıktıda en sona gitti… Aynen
+sözlüklerde olduğu gibi, kümelerde de öğelerin tanımlanma sırasına bel
+bağlayarak herhangi bir işlem yapamazsınız. Bu durumun bir yansıması olarak,
+küme öğelerine sıralarına göre de erişemezsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">arayüz_takımları</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">TypeError</span>: <span class="n">&#39;set&#39; object does not support indexing</span>
+</pre></div>
+</div>
+<p>Tıpkı hata mesajında da söylendiği gibi, küme adlı veri tipi açısından öğe
+sırası diye bir kavram yoktur…</p>
+<p>Esasında tek bir küme pek bir işe yaramaz. Kümeler ancak birden fazla olduğunda
+bunlarla yararlı işler yapabiliriz. Çünkü kümelerin en önemli özelliği, başka
+kümelerle karşılaştırılabilme kabiliyetidir. Yani mesela kümelerin kesişimini,
+birleşimini veya farkını bulabilmek için öncelikle elimizde birden fazla küme
+olması gerekiyor. İşte biz de şimdi bu tür işlemleri nasıl yapacağımızı
+öğreneceğiz. O halde hiç vakit kaybetmeden yolumuza devam edelim.</p>
+</section>
+<section id="kume-uretecleri-set-comprehensions">
+<h3>Küme Üreteçleri (<em>Set Comprehensions</em>)</h3>
+<p>Bildiğiniz gibi liste üreteçleri, liste oluşturmanın kısa ve temiz bir yoludur.
+Aynı şekilde sözlük üreteçleri de sözlük oluşturmanın kısa ve temiz bir yoludur.</p>
+<p>İşte liste üreteçlerini ve sözlük üreteçlerini kullanarak nasıl tek satırda ve
+hızlı bir şekilde listeler ve sözlükler üretebiliyorsak, aynı şekilde küme
+üreteçlerini kullanarak tek satırda ve hızlı bir şekilde kümeler de
+üretebiliriz.</p>
+<p>Örneğin elimizde şöyle bir liste olduğunu düşünelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>Bu arada, buradaki <cite>random</cite> adlı modüle şimdilik takılmayın. Birkaç bölüm sonra
+bu modülü inceleyeceğiz. Biz şimdilik <cite>random</cite>’un da tıpkı <cite>sys</cite> ve <cite>os</cite> gibi
+bir modül olduğunu ve rastgele sayılar üretmemizi sağladığını bilelim yeter.
+Yukarıdaki kodlarda da bu modül <cite>0</cite> ile <cite>10000</cite> arasında rastgele <cite>1000</cite> adet
+sayı üretmemizi sağladı.</p>
+<p>Şimdi amacımız bu liste içinde yer alan sayılardan, değeri <cite>100</cite>’den küçük
+olanları bulmak.</p>
+<p>Bunun için şu kodları kullanabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)]</span>
+
+<span class="n">yüzden_küçük_sayılar</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">liste</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">yüzden_küçük_sayılar</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Ancak ortaya çıkan listede aynı sayılardan birkaç tane olabilir. İşte eğer
+birbirinin aynı olmayan sayılardan oluşmuş bir listeyi hızlı ve pratik bir
+şekilde elde etmek istiyorsanız küme üreteçlerini kullanabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)]</span>
+
+<span class="n">küme</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">liste</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">küme</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, küme üreteçlerinin sözdizimi, liste ve sözlük üreteçlerinin
+sözdizimine çok benziyor.</p>
+</section>
+<section id="kumelerin-metotlari">
+<h3>Kümelerin Metotları</h3>
+<p>Daha önceki veri tiplerinde olduğu gibi, kümelerin de metotları vardır. Artık
+biz bir veri tipinin metotlarını nasıl listeleyeceğimizi çok iyi biliyoruz.
+Nasıl liste için <code class="docutils literal notranslate"><span class="pre">list()</span></code>; demet için <code class="docutils literal notranslate"><span class="pre">tuple()</span></code>; sözlük için de <code class="docutils literal notranslate"><span class="pre">dict()</span></code>
+fonksiyonlarını kullanıyorsak, kümeler için de <code class="docutils literal notranslate"><span class="pre">set()</span></code> adlı fonksiyondan
+yararlanacağız:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="nb">set</span><span class="p">)</span>
+
+<span class="go">[&#39;__and__&#39;, &#39;__class__&#39;, &#39;__contains__&#39;, &#39;__delattr__&#39;, &#39;__doc__&#39;,</span>
+<span class="go">&#39;__eq__&#39;, &#39;__format__&#39;, &#39;__ge__&#39;, &#39;__getattribute__&#39;, &#39;__gt__&#39;,</span>
+<span class="go">&#39;__hash__&#39;, &#39;__iand__&#39;, &#39;__init__&#39;, &#39;__ior__&#39;, &#39;__isub__&#39;, &#39;__iter__&#39;,</span>
+<span class="go">&#39;__ixor__&#39;, &#39;__le__&#39;, &#39;__len__&#39;, &#39;__lt__&#39;, &#39;__ne__&#39;, &#39;__new__&#39;,</span>
+<span class="go">&#39;__or__&#39;, &#39;__rand__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;,</span>
+<span class="go">&#39;__ror__&#39;, &#39;__rsub__&#39;, &#39;__rxor__&#39;, &#39;__setattr__&#39;, &#39;__sizeof__&#39;,</span>
+<span class="go">&#39;__str__&#39;, &#39;__sub__&#39;, &#39;__subclasshook__&#39;, &#39;__xor__&#39;, &#39;add&#39;,</span>
+<span class="go">&#39;clear&#39;,&#39;copy&#39;, &#39;difference&#39;, &#39;difference_update&#39;, &#39;discard&#39;,</span>
+<span class="go">&#39;intersection&#39;, &#39;intersection_update&#39;, &#39;isdisjoint&#39;, &#39;issubset&#39;,</span>
+<span class="go">&#39;issuperset&#39;, &#39;pop&#39;, &#39;remove&#39;, &#39;symmetric_difference&#39;,</span>
+<span class="go">&#39;symmetric_difference_update&#39;, &#39;union&#39;, &#39;update&#39;]</span>
+</pre></div>
+</div>
+<p>Hemen işimize yarayacak metotları alalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="nb">set</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="s2">&quot;__&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">i</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">add</span>
+<span class="go">clear</span>
+<span class="go">copy</span>
+<span class="go">difference</span>
+<span class="go">difference_update</span>
+<span class="go">discard</span>
+<span class="go">intersection</span>
+<span class="go">intersection_update</span>
+<span class="go">isdisjoint</span>
+<span class="go">issubset</span>
+<span class="go">issuperset</span>
+<span class="go">pop</span>
+<span class="go">remove</span>
+<span class="go">symmetric_difference</span>
+<span class="go">symmetric_difference_update</span>
+<span class="go">union</span>
+<span class="go">update</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi kümelerin epey metodu var. Bu arada <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">&quot;__&quot;</span> <span class="pre">not</span> <span class="pre">in</span> <span class="pre">i</span></code>
+satırında “_” yerine “__” kullandığımıza dikkat edin. Neden? Çünkü eğer sadece
+“_” kullanırsak <cite>symmetric_difference</cite> ve <cite>symmetric_difference_update</cite>
+metotları çıktımızda yer almayacaktır.</p>
+<p>Unutmadan söyleyelim: Kümeler de, tıpkı listeler ve sözlükler gibi,
+değiştirilebilir bir veri tipidir.</p>
+<section id="clear">
+<h4>clear()</h4>
+<p>Kümelerle ilgili olarak inceleyeceğimiz ilk metot <cite>clear()</cite>. Bu metodu daha önce
+sözlükleri çalışırken de görmüştük. Sözlüklerde bu metodun görevi sözlüğün içini
+boşaltmak idi. Burada da aynı vazifeyi görür:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">km</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="s2">&quot;adana&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">km</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">a</span>
+<span class="go">d</span>
+<span class="go">n</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">km</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">km</span>
+<span class="go">set()</span>
+</pre></div>
+</div>
+<p>Burada önce “km” adlı bir küme oluşturduk. Daha sonra da <cite>clear()</cite> metodunu
+kullanarak bu kümenin bütün öğelerini sildik. Artık elimizde boş bir küme var.</p>
+</section>
+<section id="copy">
+<h4>copy()</h4>
+<p>Listeler ve sözlükleri incelerken <code class="docutils literal notranslate"><span class="pre">copy()</span></code> adlı bir metot öğrenmiştik. Bu
+metot aynı zamanda kümelerle birlikte de kullanılabilir. Üstelik işlevi de
+aynıdır:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">km</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="s2">&quot;kahramanmaraş&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">yedek</span> <span class="o">=</span> <span class="n">km</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">yedek</span>
+
+<span class="go">{&#39;a&#39;, &#39;r&#39;, &#39;h&#39;, &#39;k&#39;, &#39;m&#39;, &#39;ş&#39;, &#39;n&#39;}</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">km</span>
+
+<span class="go">{&#39;a&#39;, &#39;h&#39;, &#39;k&#39;, &#39;m&#39;, &#39;n&#39;, &#39;r&#39;, &#39;ş&#39;}</span>
+</pre></div>
+</div>
+<p>Burada bir şey dikkatinizi çekmiş olmalı. “km” adlı kümeyi “yedek” adıyla
+kopyaladık, ama bu iki kümenin çıktılarına baktığımız zaman öğe sıralamasının
+birbirinden farklı olduğunu görüyoruz. Biliyorsunuz, tıpkı sözlüklerde olduğu
+gibi, kümeler de sırasız veri tipleridir. Bu yüzden, elde ettiğimiz çıktıda
+öğeler rastgele diziliyor. Dolayısıyla öğelere sıralarına göre erişemiyoruz.
+Aynen sözlüklerde olduğu gibi…</p>
+</section>
+<section id="add">
+<h4>add()</h4>
+<p>Kümelerden bahsederken, bunların değiştirilebilir bir veri tipi olduğunu
+söylemiştik. Dolayısıyla kümeler, üzerlerinde değişiklik yapmamıza müsaade eden
+metotlar da içerir. Örneğin <cite>add()</cite> bu tür metotlardan biridir. <em>Add</em> kelimesi
+Türkçe’de “eklemek” anlamına gelir. Adından da anlaşılacağı gibi, bu metot
+yardımıyla kümelerimize yeni öğeler ilave edebileceğiz. Hemen bunun nasıl
+kullanıldığına bakalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">küme</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="s2">&quot;elma&quot;</span><span class="p">,</span> <span class="s2">&quot;armut&quot;</span><span class="p">,</span> <span class="s2">&quot;kebap&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">küme</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;çilek&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">küme</span><span class="p">)</span>
+
+<span class="go">{&#39;elma&#39;, &#39;armut&#39;, &#39;kebap&#39;, &#39;çilek&#39;}</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, <cite>add()</cite> metodunu kullanarak, kümemize <cite>çilek</cite> adlı yeni bir öğe
+ekledik. Eğer kümede zaten varolan bir öğe eklemeye çalışırsak kümede herhangi
+bir değişiklik olmayacaktır. Çünkü, daha önce de söylediğimiz gibi, kümeler her
+bir öğeyi tek bir sayıda barındırır.</p>
+<p>Eğer bir kümeye birden fazla öğeyi aynı anda eklemek isterseniz <cite>for</cite>
+döngüsünden yararlanabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">yeni</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">yeni</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">küme</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="gp">...</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">küme</span>
+
+<span class="go">{1, 2, 3, &#39;elma&#39;, &#39;kebap&#39;, &#39;çilek&#39;, &#39;armut&#39;}</span>
+</pre></div>
+</div>
+<p>Burada <code class="docutils literal notranslate"><span class="pre">yeni</span></code> adlı listeyi kümeye <cite>for</cite> döngüsü ile ekledik. Ama bu işlemi
+yapmanın başka bir yolu daha vardır. Bu işlem için Python’da ayrı bir metot
+bulunur. Bu metodun adı <cite>update()</cite> metodudur. Sırası gelince bu metodu da
+göreceğiz.</p>
+<p>Bu arada, yeri gelmişken kümelerin önemli bir özelliğinden daha söz edelim. Bir
+kümeye herhangi bir öğe ekleyebilmemiz için, o öğenin değiştirilemeyen
+(<em>immutable</em>) bir veri tipi olması gerekiyor. Bildiğiniz gibi Python’daki şu
+veri tipleri değiştirilemeyen veri tipleridir:</p>
+<ol class="arabic simple">
+<li><p>Demetler</p></li>
+<li><p>Sayılar</p></li>
+<li><p>Karakter Dizileri</p></li>
+</ol>
+<p>Şu veri tipleri ise değiştirilebilen veri tipleridir:</p>
+<ol class="arabic simple">
+<li><p>Listeler</p></li>
+<li><p>Sözlükler</p></li>
+<li><p>Kümeler</p></li>
+</ol>
+<p>Dolayısıyla bir kümeye ancak şu veri tiplerini ekleyebiliriz:</p>
+<ol class="arabic simple">
+<li><p>Demetler</p></li>
+<li><p>Sayılar</p></li>
+<li><p>Karakter Dizileri</p></li>
+</ol>
+<p>Şu kodları dikkatlice inceleyin:</p>
+<p>Önce boş bir küme oluşturalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">küme</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Bu kümeye bir demet ekleyelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">küme</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">küme</span>
+
+<span class="go">{(1, 2, 3)}</span>
+</pre></div>
+</div>
+<p>Bir sayı ekleyelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="mi">45</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">küme</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">küme</span>
+
+<span class="go">{45, (1, 2, 3)}</span>
+</pre></div>
+</div>
+<p>Bir karakter dizisi ekleyelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="s1">&#39;Jacques Derrida&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">küme</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">küme</span>
+
+<span class="go">{&#39;Jacques Derrida&#39;, 45, (1, 2, 3)}</span>
+</pre></div>
+</div>
+<p>Yukarıdakiler, değiştirilemeyen veri tipleri olduğu için kümelere eklenebilir.</p>
+<p>Bir de şunlara bakalım:</p>
+<p>Kümemize bir liste eklemeye çalışalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">küme</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">TypeError</span>: <span class="n">unhashable type: &#39;list&#39;</span>
+</pre></div>
+</div>
+<p>Kümemize bir sözlük eklemeye çalışalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">küme</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">TypeError</span>: <span class="n">unhashable type: &#39;dict&#39;</span>
+</pre></div>
+</div>
+<p>Kümemize bir küme eklemeye çalışalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">küme</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">TypeError</span>: <span class="n">unhashable type: &#39;set&#39;</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, tıpkı sözlüklerde olduğu gibi, bir kümeye herhangi bir veri
+ekleyebilmemiz için o verinin ‘değiştirilemeyen’ bir veri tipi olması gerekiyor.</p>
+</section>
+<section id="difference">
+<h4>difference()</h4>
+<p>Bu metot iki kümenin farkını almamızı sağlar. Örneğin:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">k1</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">k2</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">k1</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">k2</span><span class="p">)</span>
+
+<span class="go">{1, 5}</span>
+</pre></div>
+</div>
+<p>Demek ki k1’in k2’den farkı buymuş. Peki k2’nin k1’den farkını bulmak istersek
+ne yapacağız?</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">k2</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">k1</span><span class="p">)</span>
+
+<span class="go">{10, 4}</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, birinci kullanımda, k1’de bulunup k2’de bulunmayan öğeleri elde
+ediyoruz. İkinci kullanımda ise bunun tam tersi. Yani ikinci kullanımda k2’de
+bulunup k1’de bulunmayan öğeleri alıyoruz.</p>
+<p>İsterseniz uzun uzun <cite>difference()</cite> metodunu kullanmak yerine sadece eksi (-)
+işaretini kullanarak da aynı sonucu elde edebilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">k1</span> <span class="o">-</span> <span class="n">k2</span>
+</pre></div>
+</div>
+<p>…veya…</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">k2</span> <span class="o">-</span> <span class="n">k1</span>
+</pre></div>
+</div>
+<p>Hayır, “<em>madem eksi işaretini kullanabiliyoruz, o halde artı işaretini de
+kullanabiliriz!</em>” gibi bir fikir doğru değildir.</p>
+</section>
+<section id="difference-update">
+<h4>difference_update()</h4>
+<p>Bu metot, <cite>difference()</cite> metodundan elde edilen sonuca göre bir kümenin
+güncellenmesini sağlar. Yani?
+Hemen bir örnek verelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">k1</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">k2</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">k1</span><span class="o">.</span><span class="n">difference_update</span><span class="p">(</span><span class="n">k2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">k1</span><span class="p">)</span>
+
+<span class="go">{2}</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">k2</span><span class="p">)</span>
+
+<span class="go">{1, 3, 5}</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, bu metot k1’in k2’den farkını aldı ve bu farkı kullanarak k1’i
+yeniden oluşturdu. k1 ile k2 arasındaki tek fark <cite>2</cite> adlı öğe idi. Dolayısıyla
+<cite>difference_update()</cite> metodunu uyguladığımızda k1’in öğelerinin silinip
+yerlerine <cite>2</cite> adlı öğenin geldiğini görüyoruz.</p>
+</section>
+<section id="discard">
+<h4>discard()</h4>
+<p>Bir önceki bölümde öğrendiğimiz <cite>add()</cite> metodu yardımıyla, önceden
+oluşturduğumuz bir kümeye yeni öğeler ekleyebiliyorduk. Bu bölümde öğreneceğimiz
+<cite>discard()</cite> metodu ise kümeden öğe silmemizi sağlayacak:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hayvanlar</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="s2">&quot;kedi&quot;</span><span class="p">,</span> <span class="s2">&quot;köpek&quot;</span><span class="p">,</span> <span class="s2">&quot;at&quot;</span><span class="p">,</span> <span class="s2">&quot;kuş&quot;</span><span class="p">,</span> <span class="s2">&quot;inek&quot;</span><span class="p">,</span> <span class="s2">&quot;deve&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hayvanlar</span><span class="o">.</span><span class="n">discard</span><span class="p">(</span><span class="s2">&quot;kedi&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">hayvanlar</span><span class="p">)</span>
+
+<span class="go">{&#39;kuş&#39;, &#39;inek&#39;, &#39;deve&#39;, &#39;köpek&#39;, &#39;at&#39;}</span>
+</pre></div>
+</div>
+<p>Eğer küme içinde bulunmayan bir öğe silmeye çalışırsak hiç bir şey olmaz. Yani
+hata mesajı almayız:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hayvanlar</span><span class="o">.</span><span class="n">discard</span><span class="p">(</span><span class="s2">&quot;yılan&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada etkileşimli kabuk sessizce bir alt satıra geçecektir. Bu metodun en
+önemli özelliği budur. Yani olmayan bir öğeyi silmeye çalıştığımızda hata
+vermemesi.</p>
+</section>
+<section id="remove">
+<h4>remove()</h4>
+<p>Bu metot da bir önceki bölümde gördüğümüz <cite>discard()</cite> metoduyla aynı işlevi
+yerine getirir. Eğer bir kümeden öğe silmek istersek <cite>remove()</cite> metodunu da
+kullanabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hayvanlar</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;köpek&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Peki <cite>discard()</cite> varken <cite>remove()</cite> metoduna ne gerek var? Ya da tersi.</p>
+<p>Bu iki metot aynı işlevi yerine getirse de aralarında önemli bir fark vardır.
+Hatırlarsanız <cite>discard()</cite> metoduyla, kümede olmayan bir öğeyi silmeye çalışırsak
+herhangi bir hata mesajı almayacağımızı söylemiştik. Eğer <cite>remove()</cite> metodunu
+kullanarak, kümede olmayan bir öğeyi silmeye çalışırsak, <cite>discard()</cite> metodunun
+aksine, hata mesajı alırız:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hayvanlar</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;fare&quot;</span><span class="p">)</span>
+
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">KeyError</span>: <span class="n">&#39;fare&#39;</span>
+</pre></div>
+</div>
+<p>Bu iki metot arasındaki bu fark önemli bir farktır. Bazen yazdığınız
+programlarda, duruma göre her iki özelliğe de ihtiyacınız olabilir.</p>
+</section>
+<section id="intersection">
+<h4>intersection()</h4>
+<p><em>intersection</em> kelimesi Türkçe’de “kesişim” anlamına gelir. Adından da
+anladığımız gibi, <cite>intersection()</cite> metodu bize iki kümenin kesişim kümesini
+verecektir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">k1</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">k2</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">k1</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">k2</span><span class="p">)</span>
+
+<span class="go">{1, 3}</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, bu metot bize k1 ve k2’nin kesişim kümesini veriyor.
+Dolayısıyla bu iki küme arasındaki ortak elemanları bulmuş oluyoruz.</p>
+<p>Hatırlarsanız, <cite>difference()</cite> metodunu anlatırken, <cite>difference()</cite> kelimesi
+yerine “-” işaretini de kullanabileceğimiz, söylemiştik. Benzer bir durum
+<cite>intersection()</cite> metodu için de geçerlidir. İki kümenin kesişimini bulmak için
+“&amp;” işaretinden yararlanabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">k1</span> <span class="o">&amp;</span> <span class="n">k2</span>
+
+<span class="go">{1, 3}</span>
+</pre></div>
+</div>
+<p>Python programcıları genellikle uzun uzun <em>intersection</em> yazmak yerine “&amp;”
+işaretini kullanırlar…</p>
+<p>İsterseniz bu metot için örnek bir program verelim. Böylece gerçek hayatta bu
+metodu nasıl kullanabileceğimizi görmüş oluruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">tr</span> <span class="o">=</span> <span class="s2">&quot;şçöğüıŞÇÖĞÜİ&quot;</span>
+
+<span class="n">parola</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Sisteme giriş için bir parola belirleyin: &quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="nb">set</span><span class="p">(</span><span class="n">tr</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">parola</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Parolanızda Türkçe harfler kullanmayın!&quot;</span><span class="p">)</span>
+
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Parolanız kabul edildi!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada eğer kullanıcı, parola belirlerken içinde Türkçe bir harf geçen bir
+kelime yazarsa programımız kendisini Türkçe harf kullanmaması konusunda
+uyaracaktır. Bu kodlarda kümeleri nasıl kullandığımıza dikkat edin. Programda
+asıl işi yapan kısım şu satırdır:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nb">set</span><span class="p">(</span><span class="n">tr</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">parola</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Parolanızda Türkçe harfler kullanmayın!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada aslında şöyle bir şey demiş oluyoruz:</p>
+<blockquote>
+<div><p><em>Eğer set(tr) ve set(parola) kümelerinin kesişim kümesi boş değilse,
+kullanıcıya “Parolanızda Türkçe harfler kullanmayın!” uyarısını göster!</em></p>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">set(tr)</span></code> ve <code class="docutils literal notranslate"><span class="pre">set(parola)</span></code> kümelerinin kesişim kümesinin boş olmaması,
+kullanıcının girdiği kelime içindeki harflerden en az birinin <code class="docutils literal notranslate"><span class="pre">tr</span></code> adlı
+değişken içinde geçtiği anlamına gelir. Burada basitçe, <code class="docutils literal notranslate"><span class="pre">tr</span></code> değişkeni ile
+<code class="docutils literal notranslate"><span class="pre">parola</span></code> değişkeni arasındaki ortak öğeleri sorguluyoruz. Eğer kullanıcı
+herhangi bir Türkçe harf içermeyen bir kelime girerse <code class="docutils literal notranslate"><span class="pre">set(tr)</span></code> ve
+<code class="docutils literal notranslate"><span class="pre">set(parola)</span></code> kümelerinin kesişim kümesi boş olacaktır. İsterseniz küçük bir
+deneme yapalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tr</span> <span class="o">=</span> <span class="s2">&quot;şçöğüıŞÇÖĞÜİ&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parola</span> <span class="o">=</span> <span class="s2">&quot;çilek&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">set</span><span class="p">(</span><span class="n">tr</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">parola</span><span class="p">)</span>
+
+<span class="go">{&#39;ç&#39;}</span>
+</pre></div>
+</div>
+<p>Burada kullanıcının “çilek” adlı kelimeyi girdiğini varsayıyoruz. Böyle bir
+durumda <code class="docutils literal notranslate"><span class="pre">set(tr)</span></code> ve <code class="docutils literal notranslate"><span class="pre">set(parola)</span></code> kümelerinin kesişim kümesi “ç” harfini
+içerecek, dolayısıyla da programımız kullanıcıya uyarı mesajı gösterecektir.
+Eğer kullanıcımız “kalem” gibi Türkçe harf içermeyen bir kelime girerse:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tr</span> <span class="o">=</span> <span class="s2">&quot;şçöğüıŞÇÖĞÜİ&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parola</span> <span class="o">=</span> <span class="s2">&quot;kalem&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">set</span><span class="p">(</span><span class="n">tr</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">parola</span><span class="p">)</span>
+
+<span class="go">set()</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, elde ettiğimiz küme boş. Dolayısıyla böyle bir durumda
+programımız kullanıcıya herhangi bir uyarı mesajı göstermeyecektir.</p>
+<p><cite>intersection()</cite> metodunu pek çok yerde kullanabilirsiniz. Hatta iki dosya
+arasındaki benzerlikleri bulmak için dahi bu metottan yararlanabilirsiniz.
+İlerde dosya işlemleri konusunu işlerken bu metottan nasıl yararlanabileceğimizi
+de anlatacağız.</p>
+</section>
+<section id="intersection-update">
+<h4>intersection_update()</h4>
+<p>Hatırlarsanız <cite>difference_update()</cite> metodunu işlerken şöyle bir şey demiştik:</p>
+<p><em>Bu metot, difference() metodundan elde edilen sonuca göre bir kümenin
+güncellenmesini sağlar.</em></p>
+<p>İşte <cite>intersection_update</cite> metodu da buna çok benzer bir işlevi yerine getirir.
+Bu metodun görevi, <cite>intersection()</cite> metodundan elde edilen sonuca göre bir
+kümenin güncellenmesini sağlamaktır:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">k1</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">k2</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">k1</span><span class="o">.</span><span class="n">intersection_update</span><span class="p">(</span><span class="n">k2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">k1</span><span class="p">)</span>
+
+<span class="go">{1, 3}</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">k2</span><span class="p">)</span>
+
+<span class="go">{1, 3, 5}</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, <cite>intersection_update()</cite> metodu k1’in bütün öğelerini sildi ve
+yerlerine k1 ve k2’nin kesişim kümesinin elemanlarını koydu.</p>
+</section>
+<section id="isdisjoint">
+<h4>isdisjoint()</h4>
+<p>Bu metodun çok basit bir görevi vardır. <cite>isdisjoint()</cite> metodunu kullanarak iki
+kümenin kesişim kümesinin boş olup olmadığı sorgulayabilirsiniz. Hatırlarsanız
+aynı işi bir önceki bölümde gördüğümüz <cite>intersection()</cite> metodunu kullanarak da
+yapabiliyorduk. Ama eğer hayattan tek beklentiniz iki kümenin kesişim kümesinin
+boş olup olmadığını, yani bu iki kümenin ortak eleman içerip içermediğini
+öğrenmekse, basitçe <cite>isdisjoint()</cite> metodundan yararlanabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">isdisjoint</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, <code class="docutils literal notranslate"><span class="pre">a</span></code> ve <code class="docutils literal notranslate"><span class="pre">b</span></code> kümesinin kesişimi boş olmadığı için, yani bu
+iki küme ortak en az bir öğe barındırdığı için, <cite>isdisjoint()</cite> metodu <code class="docutils literal notranslate"><span class="pre">False</span></code>
+çıktısı veriyor. Burada temel olarak şu soruyu sormuş oluyoruz:</p>
+<p><em>a ve b ayrık kümeler mi?</em></p>
+<p>Python da bize cevap olarak, “<em>Hayır değil,</em>” anlamına gelen <code class="docutils literal notranslate"><span class="pre">False</span></code> çıktısını
+veriyor… Çünkü <code class="docutils literal notranslate"><span class="pre">a</span></code> ve <code class="docutils literal notranslate"><span class="pre">b</span></code> kümelerinin ortak bir elemanı var (<cite>2</cite>).</p>
+<p>Bir de şuna bakalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">isdisjoint</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Burada <code class="docutils literal notranslate"><span class="pre">a</span></code> ve <code class="docutils literal notranslate"><span class="pre">b</span></code> kümeleri ortak hiç bir elemana sahip olmadığı için “Doğru”
+anlamına gelen <code class="docutils literal notranslate"><span class="pre">True</span></code> çıktısını elde ediyoruz.</p>
+</section>
+<section id="issubset">
+<h4>issubset()</h4>
+<p>Bu metot yardımıyla, bir kümenin bütün elemanlarının başka bir küme içinde yer
+alıp yer almadığını sorgulayabiliriz. Yani bir kümenin, başka bir kümenin alt
+kümesi olup olmadığını bu metot yardımıyla öğrenebiliriz. Eğer bir küme başka
+bir kümenin alt kümesi ise bu metot bize <code class="docutils literal notranslate"><span class="pre">True</span></code> değerini verecek; eğer değilse
+<code class="docutils literal notranslate"><span class="pre">False</span></code> çıktısını verecektir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Bu örnekte <code class="docutils literal notranslate"><span class="pre">True</span></code> çıktısını aldık, çünkü a kümesinin bütün öğeleri <code class="docutils literal notranslate"><span class="pre">b</span></code>
+kümesi içinde yer alıyor. Yani <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>’nin alt kümesidir.</p>
+</section>
+<section id="issuperset">
+<h4>issuperset()</h4>
+<p>Bu metot, bir önceki bölümde gördüğümüz <cite>issubset()</cite> metoduna benzer. Matematik
+derslerinde gördüğümüz “kümeler” konusunda hatırladığınız “b kümesi a kümesini
+kapsar” ifadesini bu metotla gösteriyoruz. Önce bir önceki derste gördüğümüz
+örneğe bakalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Buradan, “a kümesi b kümesinin alt kümesidir,” sonucuna ulaşıyoruz. Bir de şuna
+bakalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">issuperset</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Burada ise, “b kümesi a kümesini kapsar,” sonucunu elde ediyoruz. Yani <code class="docutils literal notranslate"><span class="pre">b</span></code>
+kümesi <code class="docutils literal notranslate"><span class="pre">a</span></code> kümesinin bütün elemanlarını içinde barındırıyor.</p>
+</section>
+<section id="union">
+<h4>union()</h4>
+<p><cite>union()</cite> metodu iki kümenin birleşimini almamızı sağlar. Hemen bir örnek
+verelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+<span class="go">{1, 2, 3, 4, 5, 6, 7, 8}</span>
+</pre></div>
+</div>
+<p>Önceki bölümlerde gördüğümüz bazı metotlarda olduğu gibi, <cite>union()</cite> metodu da
+bir kısayola sahiptir. <cite>union()</cite> metodu yerine “|” işaretini de kullanabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">|</span> <span class="n">b</span>
+</pre></div>
+</div>
+<p><cite>union()</cite> metodu yerine, bu metodun kısayolu olan “|” işareti Python
+programcıları tarafından daha sık kullanılır.</p>
+</section>
+<section id="update">
+<h4>update()</h4>
+<p>Hatırlarsanız <cite>add()</cite> metodunu anlatırken şöyle bir örnek vermiştik:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">küme</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="s2">&quot;elma&quot;</span><span class="p">,</span> <span class="s2">&quot;armut&quot;</span><span class="p">,</span> <span class="s2">&quot;kebap&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">yeni</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">yeni</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">küme</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">küme</span>
+
+<span class="go">{1, 2, 3, &#39;elma&#39;, &#39;armut&#39;, &#39;kebap&#39;}</span>
+</pre></div>
+</div>
+<p>Bu örneği verdikten sonra da şöyle bir şey demiştik:</p>
+<p>“Burada <code class="docutils literal notranslate"><span class="pre">yeni</span></code> adlı listeyi kümeye <cite>for</cite> döngüsü ile ekledik. Ama bu işlemi
+yapmanın başka bir yolu daha vardır. Bu işlem için Python’da ayrı bir metot
+bulunur.”</p>
+<p>İşte bu metodu öğrenmenin vakti geldi. Metodumuzun adı <cite>update()</cite>. Bu metot, bir
+kümeyi güncellememizi sağlar. İsterseniz yukarıdaki örneği, bu metodu kullanarak
+tekrar yazalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">küme</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="s2">&quot;elma&quot;</span><span class="p">,</span> <span class="s2">&quot;armut&quot;</span><span class="p">,</span> <span class="s2">&quot;kebap&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">yeni</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">küme</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">yeni</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">küme</span><span class="p">)</span>
+
+<span class="go">{1, 2, 3, &#39;elma&#39;, &#39;armut&#39;, &#39;kebap&#39;}</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, <cite>for</cite> döngüsünü kullanmaya gerek kalmadan aynı sonucu elde
+edebildik.</p>
+</section>
+<section id="symmetric-difference">
+<h4>symmetric_difference()</h4>
+<p>Daha önceki bölümlerde <cite>difference()</cite> metodunu kullanarak iki küme arasındaki
+farklı öğeleri bulmayı öğrenmiştik. Örneğin elimizde şöyle iki küme var
+diyelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Eğer <code class="docutils literal notranslate"><span class="pre">a</span></code> kümesinin <code class="docutils literal notranslate"><span class="pre">b</span></code> kümesinden farkını bulmak istersek şöyle yapıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+<span class="go">{2}</span>
+</pre></div>
+</div>
+<p>Demek ki <code class="docutils literal notranslate"><span class="pre">a</span></code> kümesinde bulunup <code class="docutils literal notranslate"><span class="pre">b</span></code> kümesinde bulunmayan öğe <cite>2</cite> imiş.</p>
+<p>Bir de <cite>b</cite> kümesinde bulunup <cite>a</cite> kümesinde bulunmayan öğelere bakalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="go">{4}</span>
+</pre></div>
+</div>
+<p>Bu da bize “4” çıktısını verdi. Demek ki bu öğe <code class="docutils literal notranslate"><span class="pre">b</span></code> kümesinde bulunuyor, ama
+<code class="docutils literal notranslate"><span class="pre">a</span></code> kümesinde bulunmuyormuş. Peki ya kümelerin sadece birinde bulunan öğeleri nasıl alacağız?
+İşte bu noktada yardımımıza <cite>symmetric_difference()</cite> adlı metot yetişecek:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">symmetric_difference</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+<span class="go">{2, 4}</span>
+</pre></div>
+</div>
+<p>Böylece iki kümenin ortak olarak sahip olmadığı öğeleri almış olduk.</p>
+</section>
+<section id="symmetric-difference-update">
+<h4>symmetric_difference_update()</h4>
+<p>Daha önce <cite>difference_update</cite> ve <cite>intersection_update</cite> gibi metotları
+öğrenmiştik. <cite>symmetric_difference_update()</cite> metodu da bunlara benzer bir işlevi
+yerine getirir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">symmetric_difference_update</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="go">{2, 4}</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, a kümesinin eski öğeleri gitti, yerlerine
+<cite>symmetric_difference()</cite> metoduyla elde edilen çıktı geldi. Yani <code class="docutils literal notranslate"><span class="pre">a</span></code> kümesi,
+<cite>symmetric_difference()</cite> metodunun sonucuna göre güncellenmiş oldu…</p>
+</section>
+<section id="pop">
+<h4>pop()</h4>
+<p>İnceleyeceğimiz son metot <cite>pop()</cite> metodu olacak. Gerçi bu metot bize hiç yabancı
+değil. Bu metodu listeler konusundan hatırlıyoruz. Orada öğrendiğimize göre, bu
+metot listenin bir öğesini silip ekrana basıyordu. Aslında buradaki fonksiyonu
+da farklı değil. Burada da kümelerin öğelerini silip ekrana basıyor:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="s2">&quot;elma&quot;</span><span class="p">,</span> <span class="s2">&quot;armut&quot;</span><span class="p">,</span> <span class="s2">&quot;kebap&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+<span class="go">&#39;elma&#39;</span>
+</pre></div>
+</div>
+<p>Peki bu metot hangi ölçüte göre kümeden öğe siliyor? Herhangi bir ölçüt yok. Bu
+metot, küme öğelerini tamamen rastgele siliyor.</p>
+<p>Böylelikle Python’da Listeler, Demetler, Sözlükler ve Kümeler konusunu bitirmiş
+olduk. Bu konuları sık sık tekrar etmek, hiç olmazsa arada sırada göz gezdirmek
+bazı şeylerin zihnimizde yer etmesi açısından oldukça önemlidir.</p>
+</section>
+</section>
+</section>
+<section id="dondurulmus-kumeler-frozenset">
+<h2>Dondurulmuş Kümeler (Frozenset)</h2>
+<p>Daha önce de söylediğimiz gibi, kümeler üzerinde değişiklik yapabiliyoruz. Zaten
+kümelerin <cite>add()</cite> ve <cite>remove()</cite> gibi metotlarının olması bu durumu teyit ediyor.
+Ancak kimi durumlarda, öğeleri üzerinde değişiklik yapılamayan kümelere de
+ihtiyaç duyabilirsiniz. Hatırlarsanız listeler ve demetler arasında da buna
+benzer bir ilişki var. Demetler çoğu zaman, üzerinde değişiklik yapılamayan bir
+liste gibi davranır. İşte Python aynı imkanı bize kümelerde de sağlar. Eğer
+öğeleri üzerinde değişiklik yapılamayan bir küme oluşturmak isterseniz <cite>set()</cite>
+yerine <cite>frozenset()</cite> fonksiyonunu kullanabilirsiniz. Dilerseniz hemen bununla
+ilgili bir örnek verelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dondurulmuş</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">([</span><span class="s2">&quot;elma&quot;</span><span class="p">,</span> <span class="s2">&quot;armut&quot;</span><span class="p">,</span> <span class="s2">&quot;ayva&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Dondurulmuş kümeleri bu şekilde oluşturuyoruz. Şimdi bu dondurulmuş kümenin
+metotlarına bakalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">dondurulmuş</span><span class="p">)</span>
+
+<span class="go">[&#39;__and__&#39;, &#39;__class__&#39;, &#39;__contains__&#39;, &#39;__delattr__&#39;, &#39;__doc__&#39;, &#39;__eq__&#39;,</span>
+<span class="go"> &#39;__format__&#39;, &#39;__ge__&#39;, &#39;__getattribute__&#39;, &#39;__gt__&#39;, &#39;__hash__&#39;,</span>
+<span class="go"> &#39;__init__&#39;, &#39;__iter__&#39;, &#39;__le__&#39;, &#39;__len__&#39;, &#39;__lt__&#39;, &#39;__ne__&#39;, &#39;__new__&#39;,</span>
+<span class="go"> &#39;__or__&#39;, &#39;__rand__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__ror__&#39;,</span>
+<span class="go"> &#39;__rsub__&#39;, &#39;__rxor__&#39;, &#39;__setattr__&#39;, &#39;__sizeof__&#39;, &#39;__str__&#39;, &#39;__sub__&#39;,</span>
+<span class="go"> &#39;__subclasshook__&#39;, &#39;__xor__&#39;, &#39;copy&#39;, &#39;difference&#39;, &#39;intersection&#39;,</span>
+<span class="go"> &#39;isdisjoint&#39;, &#39;issubset&#39;, &#39;issuperset&#39;, &#39;symmetric_difference&#39;, &#39;union&#39;]</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, <cite>add()</cite>, <cite>remove()</cite>, <cite>update()</cite> gibi, değişiklik yapmaya
+yönelik metotlar listede yok.</p>
+<p>Dondurulmuş kümeler ile normal kümeler arasında işlev olarak hiçbir fark yoktur.
+Bu ikisi arasındaki fark, listeler ile demetler arasındaki fark gibidir.</p>
+</section>
+</section>
+<p class="rubric">Footnotes</p>
+
+
+
+<div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
+<div class='extrarelbar'> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.xhtml" title="Genel Dizin"
+             accesskey="I">dizin</a></li>
+        <li class="right" >
+          <a href="fonksiyonlar.xhtml" title="Fonksiyonlar"
+             accesskey="N">sonraki</a> |</li>
+        <li class="right" >
+          <a href="sozluklerin_metotlari.xhtml" title="Sözlüklerin Metotları"
+             accesskey="P">önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+        <li class="nav-item nav-item-this"><a href="">Kümeler ve Dondurulmuş Kümeler</a></li> 
+      </ul>
+    </div> </div>
+
+<div class='addcomment'>Yorumlar</div>
+
+<div class='how-to-use'>
+<h3>Önemli Not</h3>
+Eğer yazdığınız yorum içinde kod kullanacaksanız kodlarınızı
+<span class='tag'>&lt;pre&gt;&lt;code&gt;</span> etiketleri içine alın. Örneğin:
+
+<pre>
+    <span class='tag'>&lt;pre&gt;&lt;code class="python"&gt;</span>
+    <span class='keyword'>print</span>(<span class='string'>"Merhaba Dünya!"</span>)
+    <span class='tag'>&lt;/code&gt;&lt;/pre&gt;</span>
+</pre>
+
+Sorularınızı yorumlarda dile getirmek yerine <a href="https://forum.yazbel.com/">Yazbel Forumu</a>nda sorarsanız çok daha hızlı cevap alabilirsiniz.
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'istihza';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+<noscript>
+<br>
+<a href="https://disqus.com/?ref_noscript" rel="nofollow">Disqus tarafından sağlanan yorumları</a> görmek için lütfen JavasScript'i etkinleştirin.
+<br>
+Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4eca48eb2d83faf9" async="async"></script>
+
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.xhtml" title="Genel Dizin"
+             >dizin</a></li>
+        <li class="right" >
+          <a href="fonksiyonlar.xhtml" title="Fonksiyonlar"
+             >sonraki</a> |</li>
+        <li class="right" >
+          <a href="sozluklerin_metotlari.xhtml" title="Sözlüklerin Metotları"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+        <li class="nav-item nav-item-this"><a href="">Kümeler ve Dondurulmuş Kümeler</a></li> 
+      </ul>
+    </div> 
+
+<div class="footer">
+		&copy; Copyright 2007-2021, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 06.10.2021.
+	<a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0 kullanılarak oluşturuldu.
+<br>
+<br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
+alt="Creative Commons License" style="border-width:0"
+src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a>
+<br>
+<br>
+</div>
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=10396326;
+var sc_invisible=1;
+var sc_security="fb5cd679";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="hit counter"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="http://c.statcounter.com/10396326/0/fb5cd679/1/"
+alt="hit counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+  </body>
+</html>

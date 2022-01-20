@@ -1,0 +1,1051 @@
+
+ <!DOCTYPE html>
+ <html lang="tr">
+
+
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta content="Python 3.x'te karakter dizileri" name="description" />
+<meta content="python, string, karakter dizisi, metotlar" name="keywords" />
+
+    <title>Karakter Dizilerinin Metotları (Devamı) &#8212; Yazbel Python Belgeleri</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pyramid.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="canonical" href="python-istihza.yazbel.com/karakter_dizilerinin_metotlari3.html" />
+    <link rel="index" title="Dizin" href="genindex.html" />
+    <link rel="search" title="Ara" href="search.html" />
+    <link rel="next" title="Karakter Dizilerini Biçimlendirmek" href="karakter_dizilerini_bicimlendirmek.html" />
+    <link rel="prev" title="Karakter Dizilerinin Metotları (Devamı)" href="karakter_dizilerinin_metotlari2.html" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+<div class='header'><a href='https://yazbel.com'><img src="_static/logo.png"></a></div>
+
+<ul class='navbar'>
+    <li><a href="http://forum.yazbel.com">forum</a></li>
+    <li><a href="https://github.com/yazbel/python-istihza">github</a></li>
+    <li><a href="YazbelPythonProgramlamaDiliBelgeleri.pdf">pdf</a></li>
+    <li><a href="YazbelPythonProgramlamaDiliBelgeleri.epub">epub</a></li>
+    <li><a href="YazbelPythonProgramlamaDiliBelgeleri.html">html</a></li>
+</ul>
+
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Genel Dizin"
+             accesskey="I">dizin</a></li>
+        <li class="right" >
+          <a href="karakter_dizilerini_bicimlendirmek.html" title="Karakter Dizilerini Biçimlendirmek"
+             accesskey="N">sonraki</a> |</li>
+        <li class="right" >
+          <a href="karakter_dizilerinin_metotlari2.html" title="Karakter Dizilerinin Metotları (Devamı)"
+             accesskey="P">önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+        <li class="nav-item nav-item-this"><a href="">Karakter Dizilerinin Metotları (Devamı)</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+
+  <section id="karakter-dizilerinin-metotlari-devami">
+<h1>Karakter Dizilerinin Metotları (Devamı)<a class="headerlink" href="#karakter-dizilerinin-metotlari-devami" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<p>Karakter dizileri konusunun 4. bölümüne geldik. Bu bölümde de karakter
+dizilerinin metotlarını incelemeye devam edeceğiz.</p>
+<section id="str-maketrans-translate">
+<h2>str.maketrans(), translate()<a class="headerlink" href="#str-maketrans-translate" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Bu iki metot birbiriyle bağlantılı olduğu ve genellikle birlikte kullanıldığı
+için, bunları bir arada göreceğiz.</p>
+<p>Dilerseniz bu iki metodun ne işe yaradığını anlatmaya çalışmak yerine bir örnek
+üzerinden bu metotların görevini anlamayı deneyelim.</p>
+<p>Şöyle bir vaka hayal edin: Bildiğiniz gibi, internet üzerinde bazen Türkçe
+karakterleri kullanamıyoruz. Böyle durumlarda, elimizdeki bir metni, cümleyi
+veya kelimeyi Türkçe karakter içermeyecek bir hale getirmemiz gerekebiliyor.
+Örneğin şu cümleyi ele alalım:</p>
+<blockquote>
+<div><p>Bildiğiniz gibi, internet üzerinde bazen Türkçe karakterleri kullanamıyoruz.</p>
+</div></blockquote>
+<p>İşte buna benzer bir cümleyi kimi zaman Türkçe karakterlerinden arındırmak
+zorunda kalabiliyoruz. Eğer elinizde Türkçe yazılmış bir metin varsa ve sizin
+amacınız bu metin içinde geçen Türkçeye özgü karakterleri noktasız benzerleriyle
+değiştirmek ise <code class="docutils literal notranslate"><span class="pre">str.maketrans()</span></code> ve <code class="docutils literal notranslate"><span class="pre">translate()</span></code> metotlarından
+yararlanabilirsiniz.</p>
+<p>Örneğimiz şu cümle idi:</p>
+<blockquote>
+<div><p>Bildiğiniz gibi, internet üzerinde bazen Türkçe karakterleri kullanamıyoruz.</p>
+</div></blockquote>
+<p>Amacımız bu cümleyi şu şekilde değiştirmek:</p>
+<blockquote>
+<div><p>Bildiginiz gibi, internet uzerinde bazen Turkce karakterleri kullanamiyoruz.</p>
+</div></blockquote>
+<p>Bunun için şöyle bir kod yazabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">kaynak</span> <span class="o">=</span> <span class="s2">&quot;şçöğüıŞÇÖĞÜİ&quot;</span>
+<span class="n">hedef</span>  <span class="o">=</span> <span class="s2">&quot;scoguiSCOGUI&quot;</span>
+
+<span class="n">çeviri_tablosu</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="n">kaynak</span><span class="p">,</span> <span class="n">hedef</span><span class="p">)</span>
+
+<span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;Bildiğiniz gibi, internet üzerinde bazen Türkçe karakterleri kullanamıyoruz.&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">metin</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">çeviri_tablosu</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Bu kodları çalıştırdığımızda şöyle bir çıktı elde ederiz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">Bildiginiz</span> <span class="n">gibi</span><span class="p">,</span> <span class="n">internet</span> <span class="n">uzerinde</span> <span class="n">bazen</span> <span class="n">Turkce</span> <span class="n">karakterleri</span> <span class="n">kullanamiyoruz</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, <cite>“kaynak”</cite> adlı karakter dizisi içinde belirttiğimiz bütün
+harfler <cite>“hedef”</cite> adlı karakter dizisi içindeki harflerle tek tek değiştirildi.
+Böylece Türkçeye özgü karakterleri (‘şçöğüıŞÇÖĞÜİ’) en yakın noktasız
+benzerleriyle (‘scoguiSCOGUI’) değiştirmiş olduk.</p>
+<p>Peki yukarıda nasıl bir süreç işledi de biz istediğimiz sonucu elde edebildik.
+Dilerseniz yukarıdaki kodlara biraz daha yakından bakalım. Mesela
+<cite>çeviri_tablosu</cite> adlı değişkenin çıktısına bakarak <code class="docutils literal notranslate"><span class="pre">str.maketrans()</span></code> metodunun
+alttan alta neler karıştırdığını görelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">kaynak</span> <span class="o">=</span> <span class="s2">&quot;şçöğüıŞÇÖĞÜİ&quot;</span>
+<span class="n">hedef</span>  <span class="o">=</span> <span class="s2">&quot;scoguiSCOGUI&quot;</span>
+
+<span class="n">çeviri_tablosu</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="n">kaynak</span><span class="p">,</span> <span class="n">hedef</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">çeviri_tablosu</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu kodları çalıştırdığımızda şöyle bir çıktı alıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="mi">214</span><span class="p">:</span> <span class="mi">79</span><span class="p">,</span> <span class="mi">231</span><span class="p">:</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">220</span><span class="p">:</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">199</span><span class="p">:</span> <span class="mi">67</span><span class="p">,</span> <span class="mi">304</span><span class="p">:</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">305</span><span class="p">:</span> <span class="mi">105</span><span class="p">,</span>
+<span class="mi">286</span><span class="p">:</span> <span class="mi">71</span><span class="p">,</span> <span class="mi">246</span><span class="p">:</span> <span class="mi">111</span><span class="p">,</span> <span class="mi">351</span><span class="p">:</span> <span class="mi">115</span><span class="p">,</span> <span class="mi">252</span><span class="p">:</span> <span class="mi">117</span><span class="p">,</span> <span class="mi">350</span><span class="p">:</span> <span class="mi">83</span><span class="p">,</span> <span class="mi">287</span><span class="p">:</span> <span class="mi">103</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Bu çıktı size tamamen anlamsız görünmüş olabilir. Ama aslında son derece anlamlı
+ve bir o kadar da önemli bir çıktıdır bu. Gelin isterseniz bu çıktının yapısını
+biraz inceleyelim. (Buna benzer bir çıktıyı <code class="docutils literal notranslate"><span class="pre">sorted()</span></code> metodunu incelerken de
+görmüştük)</p>
+<p>Gördüğünüz gibi, tamamen sayılardan oluşan bir çıktı bu. Burada birbirlerinden
+virgül ile ayrılmış sayı çiftleri görüyoruz. Bu sayı çiftlerini daha net
+görebilmek için bu çıktıyı derli toplu bir hale getirelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="mi">214</span><span class="p">:</span> <span class="mi">79</span><span class="p">,</span>
+ <span class="mi">231</span><span class="p">:</span> <span class="mi">99</span><span class="p">,</span>
+ <span class="mi">220</span><span class="p">:</span> <span class="mi">85</span><span class="p">,</span>
+ <span class="mi">199</span><span class="p">:</span> <span class="mi">67</span><span class="p">,</span>
+ <span class="mi">304</span><span class="p">:</span> <span class="mi">73</span><span class="p">,</span>
+ <span class="mi">305</span><span class="p">:</span> <span class="mi">105</span><span class="p">,</span>
+ <span class="mi">286</span><span class="p">:</span> <span class="mi">71</span><span class="p">,</span>
+ <span class="mi">246</span><span class="p">:</span> <span class="mi">111</span><span class="p">,</span>
+ <span class="mi">351</span><span class="p">:</span> <span class="mi">115</span><span class="p">,</span>
+ <span class="mi">252</span><span class="p">:</span> <span class="mi">117</span><span class="p">,</span>
+ <span class="mi">350</span><span class="p">:</span> <span class="mi">83</span><span class="p">,</span>
+ <span class="mi">287</span><span class="p">:</span> <span class="mi">103</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Bu şekilde sanırım çıktımız biraz daha anlam kazandı. Gördüğünüz gibi, iki nokta
+üst üste işaretinin solunda ve sağında bazı sayılar var. Tahmin edebileceğiniz
+gibi, soldaki sayılar sağdaki sayılarla ilişkili.</p>
+<p>Peki bütün bu sayılar ne anlama geliyor ve bu sayılar arasında ne tür bir ilişki
+var?</p>
+<p>Teknik olarak, bilgisayarların temelinde sayılar olduğunu duymuşsunuzdur.
+Bilgisayarınızda gördüğünüz her karakter aslında bir sayıya karşılık gelir.
+Zaten bilgisayarlar ‘a’, ‘b’, ‘c’, vb. kavramları anlayamaz. Bilgisayarların
+anlayabildiği tek şey sayılardır. Mesela siz klavyeden ‘a’ harfini girdiğinizde
+bilgisayar bunu <cite>97</cite> olarak algılar. Ya da siz ‘i’ harfi girdiğinizde,
+bilgisayarın gördüğü tek şey <cite>105</cite> sayısıdır… Bu durumu Python’daki <code class="docutils literal notranslate"><span class="pre">chr()</span></code>
+adlı özel bir fonksiyon yardımıyla teyit edebiliriz. Dikkatlice inceleyin:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">chr</span><span class="p">(</span><span class="mi">97</span><span class="p">)</span>
+
+<span class="go">&#39;a&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">chr</span><span class="p">(</span><span class="mi">105</span><span class="p">)</span>
+
+<span class="go">&#39;i&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">chr</span><span class="p">(</span><span class="mi">65</span><span class="p">)</span>
+
+<span class="go">&#39;A&#39;</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, gerçekten de her sayı bir karaktere karşılık geliyor.
+İsterseniz bir de yukarıdaki sayı grubundaki sayıları denetleyelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="mi">214</span><span class="p">,</span> <span class="mi">231</span><span class="p">,</span> <span class="mi">220</span><span class="p">,</span> <span class="mi">199</span><span class="p">,</span> <span class="mi">304</span><span class="p">,</span> <span class="mi">305</span><span class="p">,</span> <span class="mi">286</span><span class="p">,</span> <span class="mi">246</span><span class="p">,</span> <span class="mi">351</span><span class="p">,</span> <span class="mi">252</span><span class="p">,</span> <span class="mi">350</span><span class="p">,</span> <span class="mi">287</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="nb">chr</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Bu kodları çalıştırdığımızda şu çıktıyı elde ediyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="mi">214</span> <span class="n">Ö</span>
+<span class="mi">231</span> <span class="n">ç</span>
+<span class="mi">220</span> <span class="n">Ü</span>
+<span class="mi">199</span> <span class="n">Ç</span>
+<span class="mi">304</span> <span class="n">İ</span>
+<span class="mi">305</span> <span class="n">ı</span>
+<span class="mi">286</span> <span class="n">Ğ</span>
+<span class="mi">246</span> <span class="n">ö</span>
+<span class="mi">351</span> <span class="n">ş</span>
+<span class="mi">252</span> <span class="n">ü</span>
+<span class="mi">350</span> <span class="n">Ş</span>
+<span class="mi">287</span> <span class="n">ğ</span>
+</pre></div>
+</div>
+<p>Bu çıktı sayesinde bazı şeyler zihninizde yavaş yavaş açıklığa kavuşuyor olmalı.
+Bu çıktı mesela <cite>214</cite> sayısının ‘Ö’ harfine, <cite>220</cite> sayısının ‘Ü’ harfine, <cite>305</cite>
+sayısının da ‘ı’ harfine karşılık geldiğini gösteriyor.</p>
+<p>Burada iki nokta işaretinin sol tarafında kalan sayıların karakter
+karşılıklarını gördük. Bir de iki nokta işaretinin sağ tarafında kalan sayılara
+bakalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="mi">79</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">105</span><span class="p">,</span> <span class="mi">71</span><span class="p">,</span> <span class="mi">111</span><span class="p">,</span> <span class="mi">115</span><span class="p">,</span> <span class="mi">117</span><span class="p">,</span> <span class="mi">83</span><span class="p">,</span> <span class="mi">103</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="nb">chr</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Bu da şu çıktıyı verdi:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="mi">79</span>  <span class="n">O</span>
+<span class="mi">99</span>  <span class="n">c</span>
+<span class="mi">85</span>  <span class="n">U</span>
+<span class="mi">67</span>  <span class="n">C</span>
+<span class="mi">73</span>  <span class="n">I</span>
+<span class="mi">105</span> <span class="n">i</span>
+<span class="mi">71</span>  <span class="n">G</span>
+<span class="mi">111</span> <span class="n">o</span>
+<span class="mi">115</span> <span class="n">s</span>
+<span class="mi">117</span> <span class="n">u</span>
+<span class="mi">83</span>  <span class="n">S</span>
+<span class="mi">103</span> <span class="n">g</span>
+</pre></div>
+</div>
+<p>Burada da mesela <cite>79</cite> sayısının ‘O’ harfine, <cite>85</cite> sayısının ‘U’ harfine, <cite>105</cite>
+sayısının da ‘i’ harfine karşılık geldiğini görüyoruz.</p>
+<p>Yukarıdaki ve yukarıdan bir önceki kodların çıktılarını bir araya getirirseniz
+şöyle bir durumla karşı karşıya olduğunuzu görürsünüz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ö</span>   <span class="n">O</span>
+<span class="n">ç</span>   <span class="n">c</span>
+<span class="n">Ü</span>   <span class="n">U</span>
+<span class="n">Ç</span>   <span class="n">C</span>
+<span class="n">İ</span>   <span class="n">I</span>
+<span class="n">ı</span>   <span class="n">i</span>
+<span class="n">Ğ</span>   <span class="n">G</span>
+<span class="n">ö</span>   <span class="n">o</span>
+<span class="n">ş</span>   <span class="n">s</span>
+<span class="n">ü</span>   <span class="n">u</span>
+<span class="n">Ş</span>   <span class="n">S</span>
+<span class="n">ğ</span>   <span class="n">g</span>
+</pre></div>
+</div>
+<p>Bütün bu söylediklerimizden şu sonuç çıkıyor:</p>
+<p><code class="docutils literal notranslate"><span class="pre">çeviri_tablosu</span> <span class="pre">=</span> <span class="pre">str.maketrans(kaynak,</span> <span class="pre">hedef)</span></code> satırı, <cite>kaynak</cite> ve <cite>hedef</cite>
+olarak adlandırdığımız karakter dizilerini birleştirip, bu değişkenler içindeki
+herbir karakteri birbiriyle eşleştiriyor. Yani aşağıdaki gibi bir işlem
+yapıyor:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">çeviri_tablosu</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Ö&quot;</span><span class="p">:</span> <span class="s2">&quot;O&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;ç&quot;</span><span class="p">:</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;Ü&quot;</span><span class="p">:</span> <span class="s2">&quot;U&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;Ç&quot;</span><span class="p">:</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;İ&quot;</span><span class="p">:</span> <span class="s2">&quot;I&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;ı&quot;</span><span class="p">:</span> <span class="s2">&quot;i&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;Ğ&quot;</span><span class="p">:</span> <span class="s2">&quot;G&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;ö&quot;</span><span class="p">:</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;ş&quot;</span><span class="p">:</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;ü&quot;</span><span class="p">:</span> <span class="s2">&quot;u&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;Ş&quot;</span><span class="p">:</span> <span class="s2">&quot;S&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;ğ&quot;</span><span class="p">:</span> <span class="s2">&quot;g&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Burada <cite>çeviri_tablosu</cite> değişkeni içinde gösterdiğimiz biçimin Python’daki adı
+‘sözlük’tür. Sözlükler de tıpkı karakter dizileri gibi bir veri tipidir. Bunları
+da birkaç bölüm sonra ayrıntılı bir biçimde inceleyeceğiz. Biz burada, bazı
+şeyleri anlamamızı kolaylaştıracağı için sözlük adlı veri tipini oldukça genel
+bir biçimde sizlere tanıttık. Dediğim gibi, bu veri tipinin ayrıntılarını daha
+sonra inceleyeceğiz, ama yine de şu noktada sözlükleri kenarından köşesinden de
+olsa tanımamız bizim için faydalı olacaktır.</p>
+<p>Dediğim gibi, yukarıda <cite>çeviri_tablosu</cite> adıyla gösterdiğimiz şey bir sözlüktür.
+Bu sözlüğün nasıl çalıştığını görmek için şöyle bir kod yazalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">çeviri_tablosu</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Ö&quot;</span><span class="p">:</span> <span class="s2">&quot;O&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;ç&quot;</span><span class="p">:</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;Ü&quot;</span><span class="p">:</span> <span class="s2">&quot;U&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;Ç&quot;</span><span class="p">:</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;İ&quot;</span><span class="p">:</span> <span class="s2">&quot;I&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;ı&quot;</span><span class="p">:</span> <span class="s2">&quot;i&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;Ğ&quot;</span><span class="p">:</span> <span class="s2">&quot;G&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;ö&quot;</span><span class="p">:</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;ş&quot;</span><span class="p">:</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;ü&quot;</span><span class="p">:</span> <span class="s2">&quot;u&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;Ş&quot;</span><span class="p">:</span> <span class="s2">&quot;S&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;ğ&quot;</span><span class="p">:</span> <span class="s2">&quot;g&quot;</span><span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">çeviri_tablosu</span><span class="p">[</span><span class="s2">&quot;Ö&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Bu kodları bir dosyaya kaydedip çalıştırırsanız şöyle bir çıktı alırsınız:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">O</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, sözlük içinde geçen <cite>“Ö”</cite> adlı öğeyi parantez içinde
+belirttiğimiz zaman, Python bize bu öğenin karşısındaki değeri veriyor. Sözlük
+içinde <cite>“Ö”</cite> öğesinin karşılığı <cite>“O”</cite> harfi olduğu için de çıktımız <cite>“O”</cite>
+oluyor. Bir de şunlara bakalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">çeviri_tablosu</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Ö&quot;</span><span class="p">:</span> <span class="s2">&quot;O&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;ç&quot;</span><span class="p">:</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;Ü&quot;</span><span class="p">:</span> <span class="s2">&quot;U&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;Ç&quot;</span><span class="p">:</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;İ&quot;</span><span class="p">:</span> <span class="s2">&quot;I&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;ı&quot;</span><span class="p">:</span> <span class="s2">&quot;i&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;Ğ&quot;</span><span class="p">:</span> <span class="s2">&quot;G&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;ö&quot;</span><span class="p">:</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;ş&quot;</span><span class="p">:</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;ü&quot;</span><span class="p">:</span> <span class="s2">&quot;u&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;Ş&quot;</span><span class="p">:</span> <span class="s2">&quot;S&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;ğ&quot;</span><span class="p">:</span> <span class="s2">&quot;g&quot;</span><span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">çeviri_tablosu</span><span class="p">[</span><span class="s2">&quot;Ö&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">çeviri_tablosu</span><span class="p">[</span><span class="s2">&quot;ç&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">çeviri_tablosu</span><span class="p">[</span><span class="s2">&quot;Ü&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">çeviri_tablosu</span><span class="p">[</span><span class="s2">&quot;Ç&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">çeviri_tablosu</span><span class="p">[</span><span class="s2">&quot;İ&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">çeviri_tablosu</span><span class="p">[</span><span class="s2">&quot;ı&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">çeviri_tablosu</span><span class="p">[</span><span class="s2">&quot;Ğ&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">çeviri_tablosu</span><span class="p">[</span><span class="s2">&quot;ö&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">çeviri_tablosu</span><span class="p">[</span><span class="s2">&quot;Ş&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">çeviri_tablosu</span><span class="p">[</span><span class="s2">&quot;ğ&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Bu kodları çalıştırdığımızda ise şöyle bir çıktı alıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">O</span>
+<span class="n">c</span>
+<span class="n">U</span>
+<span class="n">C</span>
+<span class="n">I</span>
+<span class="n">i</span>
+<span class="n">G</span>
+<span class="n">o</span>
+<span class="n">S</span>
+<span class="n">g</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, sözlük içinde iki nokta üst üste işaretinin sol tarafında
+görünen öğeleri parantez içinde yazarak, iki nokta üst üste işaretinin sağ
+tarafındaki değerleri elde edebiliyoruz.</p>
+<p>Bütün bu anlattıklarımızdan sonra şu satırları gayet iyi anlamış olmalısınız:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">kaynak</span> <span class="o">=</span> <span class="s2">&quot;şçöğüıŞÇÖĞÜİ&quot;</span>
+<span class="n">hedef</span>  <span class="o">=</span> <span class="s2">&quot;scoguiSCOGUI&quot;</span>
+
+<span class="n">çeviri_tablosu</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="n">kaynak</span><span class="p">,</span> <span class="n">hedef</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada Python, <cite>kaynak</cite> ve <cite>hedef</cite> adlı değişkenler içindeki karakter dizilerini
+birer birer eşleştirerek bize bir sözlük veriyor. Bu sözlükte:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;ş&quot;</span> <span class="n">harfi</span> <span class="s2">&quot;s&quot;</span> <span class="n">harfine</span><span class="p">;</span>
+<span class="s2">&quot;ç&quot;</span> <span class="n">harfi</span> <span class="s2">&quot;c&quot;</span> <span class="n">harfine</span><span class="p">;</span>
+<span class="s2">&quot;ö&quot;</span> <span class="n">harfi</span> <span class="s2">&quot;o&quot;</span> <span class="n">harfine</span><span class="p">;</span>
+<span class="s2">&quot;ğ&quot;</span> <span class="n">harfi</span> <span class="s2">&quot;g&quot;</span> <span class="n">harfine</span><span class="p">;</span>
+<span class="s2">&quot;ü&quot;</span> <span class="n">harfi</span> <span class="s2">&quot;u&quot;</span> <span class="n">harfine</span><span class="p">;</span>
+<span class="s2">&quot;ı&quot;</span> <span class="n">harfi</span> <span class="s2">&quot;i&quot;</span> <span class="n">harfine</span><span class="p">;</span>
+<span class="s2">&quot;Ş&quot;</span> <span class="n">harfi</span> <span class="s2">&quot;S&quot;</span> <span class="n">harfine</span><span class="p">;</span>
+<span class="s2">&quot;Ç&quot;</span> <span class="n">harfi</span> <span class="s2">&quot;C&quot;</span> <span class="n">harfine</span><span class="p">;</span>
+<span class="s2">&quot;Ö&quot;</span> <span class="n">harfi</span> <span class="s2">&quot;O&quot;</span> <span class="n">harfine</span><span class="p">;</span>
+<span class="s2">&quot;Ğ&quot;</span> <span class="n">harfi</span> <span class="s2">&quot;G&quot;</span> <span class="n">harfine</span><span class="p">;</span>
+<span class="s2">&quot;Ü&quot;</span> <span class="n">harfi</span> <span class="s2">&quot;U&quot;</span> <span class="n">harfine</span><span class="p">;</span>
+<span class="s2">&quot;İ&quot;</span> <span class="n">harfi</span> <span class="s2">&quot;I&quot;</span> <span class="n">harfine</span>
+</pre></div>
+</div>
+<p>karşılık geliyor…</p>
+<p>Kodların geri kalanında ise şu satırları görmüştük:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;Bildiğiniz gibi, internet üzerinde bazen Türkçe karakterleri kullanamıyoruz.&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">metin</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">çeviri_tablosu</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Burada da orijinal metnimizi tanımladıktan sonra <code class="docutils literal notranslate"><span class="pre">translate()</span></code> adlı metot
+yardımıyla, çeviri tablosundaki öğe eşleşmesi doğrultusunda metnimizi tercüme
+ediyoruz. Bu kodlarda <code class="docutils literal notranslate"><span class="pre">metin.translate(çeviri_tablosu)</span></code> satırının yaptığı tek
+şey <cite>çeviri_tablosu</cite> adlı sözlükteki eşleşme kriterlerini <cite>metin</cite> adlı karakter
+dizisine uygulamaktan ibarettir.</p>
+<p>Karakter dizilerinin bu <code class="docutils literal notranslate"><span class="pre">maketrans()</span></code> adlı metodu kullanım olarak gözünüze
+öteki metotlardan farklı görünmüş olabilir. Daha açık bir dille ifade etmek
+gerekirse, bu metodu bir karakter dizisi üzerine değil de <cite>str</cite> üzerine
+uyguluyor olmamız, yani <code class="docutils literal notranslate"><span class="pre">str.maketrans()</span></code> yazıyor olmamız sizi şaşırtmış
+olabilir. Eğer anlamanızı kolaylaştıracaksa;</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">çeviri_tablosu</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="n">kaynak</span><span class="p">,</span> <span class="n">hedef</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>satırını şu şekilde de yazabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">çeviri_tablosu</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="n">kaynak</span><span class="p">,</span> <span class="n">hedef</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Yani <code class="docutils literal notranslate"><span class="pre">maketrans()</span></code> metodunu boş bir karakter dizisi üzerine de
+uygulayabilirsiniz. Neticede <code class="docutils literal notranslate"><span class="pre">maketrans()</span></code> karakter dizilerinin bir metodudur.
+Bu metot hangi karakter dizisi üzerine uygulandığıyla değil, parametre olarak
+hangi değerleri aldığıyla (bizim örneğimizde <cite>kaynak</cite> ve <cite>hedef</cite>) ilgilenir.
+Dolayısıyla bu metodu ilgili-ilgisiz her türlü karakter dizisine
+uygulayabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">çeviri_tablosu</span> <span class="o">=</span> <span class="s1">&#39;mahmut&#39;</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="n">kaynak</span><span class="p">,</span> <span class="n">hedef</span><span class="p">)</span>
+<span class="n">çeviri_tablosu</span> <span class="o">=</span> <span class="s1">&#39;zalim dünya!&#39;</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="n">kaynak</span><span class="p">,</span> <span class="n">hedef</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Ama tabii dikkat dağıtmamak açısından en uygun hareket, bu karakter dizisini
+<cite>str</cite> üzerine uygulamak olacaktır:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">çeviri_tablosu</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="n">kaynak</span><span class="p">,</span> <span class="n">hedef</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu küçük ayrıntıya da dikkati çektiğimize göre yolumuza devam edebiliriz…</p>
+<p>Yukarıda verdiğimiz örnek vasıtasıyla <code class="docutils literal notranslate"><span class="pre">str.maketrans()</span></code> ve <code class="docutils literal notranslate"><span class="pre">translate()</span></code>
+adlı metotları epey ayrıntılı bir şekilde incelemiş olduk. Dilerseniz pratik
+olması açısından bir örnek daha verelim:</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>istihza.com sitemizin forum üyelerinden Barbaros Akkurt
+<a class="reference external" href="https://web.archive.org/web/20150913015518/http://www.istihza.com/forum/viewtopic.php?f=25&amp;t=63">http://www.istihza.com/forum/viewtopic.php?f=25&amp;t=63</a> (arşiv linki)
+adresinde şöyle bir problemden bahsediyor:</p>
+<p>“Ben on parmak Türkçe F klavye kullanıyorum. Bunun için, bazı tuş
+kombinasyonları ile veya sistem tepsisi üzerindeki klavye simgesine
+tıklayarak Türkçe Q - Türkçe F değişimi yapıyorum. Bazen bunu yapmayı
+unutuyorum ve bir metne bakarak yazıyorsam gözüm ekranda olmuyor. Bir
+paragrafı yazıp bitirdikten sonra ekranda bir karakter salatası görünce çok
+bozuluyorum.”</p>
+</div>
+<p>İşte böyle bir durumda yukarıdaki iki metodu kullanarak o karakter salatasını
+düzeltebilirsiniz. Karakter salatamız şu olsun:</p>
+<blockquote>
+<div><p>Bfjflrk öa kdhsı yteua idjslyd bdcusldvdj ks?</p>
+</div></blockquote>
+<p>Buna göre kodlarımızı yazmaya başlayabiliriz. Öncelikle metnimizi tanımlayalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;Bfjflrk öa kdhsı yteua idjslyd bdcusldvdj ks?&quot;</span>
+</pre></div>
+</div>
+<p>Şimdi de sırasıyla q ve f klavye düzenlerini birer karakter dizisi haline getirelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">q_klavye_düzeni</span> <span class="o">=</span> <span class="s2">&quot;qwertyuıopğüasdfghjklşi,zxcvbnmöç.&quot;</span>
+<span class="n">f_klavye_düzeni</span> <span class="o">=</span> <span class="s2">&quot;fgğıodrnhpqwuieaütkmlyşxjövcçzsb.,&quot;</span>
+</pre></div>
+</div>
+<p>Burada amacımız yanlışlıkla q klavye düzeninde yazıldığı için karman çorman bir
+hale gelmiş metni düzgün bir şekilde f klavye düzenine dönüştürmek. Yani burada
+çıkış noktamız (kaynağımız) <cite>q_klavye_düzeni</cite> iken, varış noktamız (hedefimiz)
+<cite>f_klavye_düzeni</cite>. Buna göre çeviri tablomuzu oluşturabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">çeviri_tablosu</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="n">q_klavye_düzeni</span><span class="p">,</span> <span class="n">f_klavye_düzeni</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Tıpkı bir önceki örnekte olduğu gibi, burada da <cite>çeviri_tablosu</cite> adlı değişkeni
+<code class="docutils literal notranslate"><span class="pre">print()</span></code> fonksiyonunu kullanarak yazdırırsanız şöyle bir çıktıyla
+karşılaşırsınız:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="mi">231</span><span class="p">:</span> <span class="mi">46</span><span class="p">,</span>
+ <span class="mi">287</span><span class="p">:</span> <span class="mi">113</span><span class="p">,</span>
+ <span class="mi">44</span> <span class="p">:</span> <span class="mi">120</span><span class="p">,</span>
+ <span class="mi">46</span> <span class="p">:</span> <span class="mi">44</span><span class="p">,</span>
+ <span class="mi">305</span><span class="p">:</span> <span class="mi">110</span><span class="p">,</span>
+ <span class="mi">246</span><span class="p">:</span> <span class="mi">98</span><span class="p">,</span>
+ <span class="mi">351</span><span class="p">:</span> <span class="mi">121</span><span class="p">,</span>
+ <span class="mi">97</span> <span class="p">:</span> <span class="mi">117</span><span class="p">,</span>
+ <span class="mi">98</span> <span class="p">:</span> <span class="mi">231</span><span class="p">,</span>
+ <span class="mi">99</span> <span class="p">:</span> <span class="mi">118</span><span class="p">,</span>
+ <span class="mi">100</span><span class="p">:</span> <span class="mi">101</span><span class="p">,</span>
+ <span class="mi">101</span><span class="p">:</span> <span class="mi">287</span><span class="p">,</span>
+ <span class="mi">102</span><span class="p">:</span> <span class="mi">97</span><span class="p">,</span>
+ <span class="mi">103</span><span class="p">:</span> <span class="mi">252</span><span class="p">,</span>
+ <span class="mi">104</span><span class="p">:</span> <span class="mi">116</span><span class="p">,</span>
+ <span class="mi">105</span><span class="p">:</span> <span class="mi">351</span><span class="p">,</span>
+ <span class="mi">106</span><span class="p">:</span> <span class="mi">107</span><span class="p">,</span>
+ <span class="mi">107</span><span class="p">:</span> <span class="mi">109</span><span class="p">,</span>
+ <span class="mi">108</span><span class="p">:</span> <span class="mi">108</span><span class="p">,</span>
+ <span class="mi">109</span><span class="p">:</span> <span class="mi">115</span><span class="p">,</span>
+ <span class="mi">110</span><span class="p">:</span> <span class="mi">122</span><span class="p">,</span>
+ <span class="mi">111</span><span class="p">:</span> <span class="mi">104</span><span class="p">,</span>
+ <span class="mi">112</span><span class="p">:</span> <span class="mi">112</span><span class="p">,</span>
+ <span class="mi">113</span><span class="p">:</span> <span class="mi">102</span><span class="p">,</span>
+ <span class="mi">114</span><span class="p">:</span> <span class="mi">305</span><span class="p">,</span>
+ <span class="mi">115</span><span class="p">:</span> <span class="mi">105</span><span class="p">,</span>
+ <span class="mi">116</span><span class="p">:</span> <span class="mi">111</span><span class="p">,</span>
+ <span class="mi">117</span><span class="p">:</span> <span class="mi">114</span><span class="p">,</span>
+ <span class="mi">118</span><span class="p">:</span> <span class="mi">99</span><span class="p">,</span>
+ <span class="mi">119</span><span class="p">:</span> <span class="mi">103</span><span class="p">,</span>
+ <span class="mi">120</span><span class="p">:</span> <span class="mi">246</span><span class="p">,</span>
+ <span class="mi">121</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+ <span class="mi">122</span><span class="p">:</span> <span class="mi">106</span><span class="p">,</span>
+ <span class="mi">252</span><span class="p">:</span> <span class="mi">119</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Tahmin edebileceğiniz gibi, bu sözlükte iki nokta üst üste işaretinin solundaki
+sayılar <cite>q_klavye_düzeni</cite> adlı değişken içindeki karakterleri; sağındaki sayılar
+ise <cite>f_klavye_düzeni</cite> adlı değişken içindeki karakterleri temsil ediyor.</p>
+<p>Son olarak <code class="docutils literal notranslate"><span class="pre">translate()</span></code> metodu yardımıyla sözlükteki öğe eşleşmesini <cite>metin</cite>
+adlı değişkenin üzerine uyguluyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">metin</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">çeviri_tablosu</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Kodları topluca görelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;Bfjflrk öa kdhsı yteua idjslyd bdcusldvdj ks?&quot;</span>
+
+<span class="n">q_klavye_düzeni</span> <span class="o">=</span> <span class="s2">&quot;qwertyuıopğüasdfghjklşi,zxcvbnmöç.&quot;</span>
+<span class="n">f_klavye_düzeni</span> <span class="o">=</span> <span class="s2">&quot;fgğıodrnhpqwuieaütkmlyşxjövcçzsb.,&quot;</span>
+
+<span class="n">çeviri_tablosu</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="n">q_klavye_düzeni</span><span class="p">,</span> <span class="n">f_klavye_düzeni</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">metin</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">çeviri_tablosu</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Ne elde ettiniz?</p>
+<p>Yukarıdaki iki örnekte de gördüğümüz gibi, <code class="docutils literal notranslate"><span class="pre">str.maketrans()</span></code> metodu kaynak ve
+hedef karakter dizilerini alıp bunları birleştirerek bize bir sözlük veri
+tipinde bir nesne veriyor. Yani tıpkı <code class="docutils literal notranslate"><span class="pre">input()</span></code> fonksiyonunun bize bir
+karakter dizisi verdiği gibi, <code class="docutils literal notranslate"><span class="pre">str.maketrans()</span></code> metodu da bize bir sözlük
+veriyor.</p>
+<p>Eğer isterseniz, sözlüğü <code class="docutils literal notranslate"><span class="pre">str.maketrans()</span></code> metoduna oluşturtmak yerine,
+kendiniz de bir sözlük oluşturarak <code class="docutils literal notranslate"><span class="pre">str.maketrans()</span></code> metoduna parametre olarak
+atayabilirsiniz. Örneğin:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;Bfjflrk öa kdhsı yteua idjslyd bdcusldvdj ks?&quot;</span>
+
+<span class="n">sözlük</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;q&quot;</span><span class="p">:</span> <span class="s2">&quot;f&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;w&quot;</span><span class="p">:</span> <span class="s2">&quot;g&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;e&quot;</span><span class="p">:</span> <span class="s2">&quot;ğ&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;r&quot;</span><span class="p">:</span> <span class="s2">&quot;ı&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;t&quot;</span><span class="p">:</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;u&quot;</span><span class="p">:</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;ı&quot;</span><span class="p">:</span> <span class="s2">&quot;n&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;o&quot;</span><span class="p">:</span> <span class="s2">&quot;h&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;p&quot;</span><span class="p">:</span> <span class="s2">&quot;p&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;ğ&quot;</span><span class="p">:</span> <span class="s2">&quot;q&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;ü&quot;</span><span class="p">:</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="s2">&quot;u&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;s&quot;</span><span class="p">:</span> <span class="s2">&quot;i&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;d&quot;</span><span class="p">:</span> <span class="s2">&quot;e&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;f&quot;</span><span class="p">:</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;g&quot;</span><span class="p">:</span> <span class="s2">&quot;ü&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;h&quot;</span><span class="p">:</span> <span class="s2">&quot;t&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;j&quot;</span><span class="p">:</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;k&quot;</span><span class="p">:</span> <span class="s2">&quot;m&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;l&quot;</span><span class="p">:</span> <span class="s2">&quot;l&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;ş&quot;</span><span class="p">:</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;i&quot;</span><span class="p">:</span> <span class="s2">&quot;ş&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;,&quot;</span><span class="p">:</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;z&quot;</span><span class="p">:</span> <span class="s2">&quot;j&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="s2">&quot;ö&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="s2">&quot;v&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;v&quot;</span><span class="p">:</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="s2">&quot;ç&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;n&quot;</span><span class="p">:</span> <span class="s2">&quot;z&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;m&quot;</span><span class="p">:</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;ö&quot;</span><span class="p">:</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;ç&quot;</span><span class="p">:</span> <span class="s2">&quot;.&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;.&quot;</span><span class="p">:</span> <span class="s2">&quot;,&quot;</span><span class="p">}</span>
+
+<span class="n">çeviri_tablosu</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="n">sözlük</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">metin</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">çeviri_tablosu</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Burada birbiriyle eşleşecek karakterleri kendimiz yazıp bir sözlük oluşturduk ve
+bunu parametre olarak doğrudan <code class="docutils literal notranslate"><span class="pre">str.maketrans()</span></code> metoduna verdik. Bu kodlarda
+kaynak ve hedef diye iki ayrı karakter dizisi tanımlamak yerine tek bir sözlük
+oluşturduğumuz için, <code class="docutils literal notranslate"><span class="pre">str.maketrans()</span></code> metodunu iki parametreyle değil, tek
+parametreyle kullandığımıza dikkat edin. Ayrıca sözlüğü nasıl oluşturduğumuzu da
+dikkatlice inceleyin.</p>
+<p>Sözlükteki öğe çiftlerini böyle alt alta yazmamızın nedeni zorunluluk değil, bir
+tercihtir. İstersek bu sözlüğü şöyle de tanımlayabilirdik:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">sözlük</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;q&quot;</span><span class="p">:</span> <span class="s2">&quot;f&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">:</span> <span class="s2">&quot;g&quot;</span><span class="p">,</span> <span class="s2">&quot;e&quot;</span><span class="p">:</span> <span class="s2">&quot;ğ&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">:</span> <span class="s2">&quot;ı&quot;</span><span class="p">,</span> <span class="s2">&quot;t&quot;</span><span class="p">:</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="s2">&quot;u&quot;</span><span class="p">:</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;ı&quot;</span><span class="p">:</span> <span class="s2">&quot;n&quot;</span><span class="p">,</span> <span class="s2">&quot;o&quot;</span><span class="p">:</span> <span class="s2">&quot;h&quot;</span><span class="p">,</span> <span class="s2">&quot;p&quot;</span><span class="p">:</span> <span class="s2">&quot;p&quot;</span><span class="p">,</span> <span class="s2">&quot;ğ&quot;</span><span class="p">:</span> <span class="s2">&quot;q&quot;</span><span class="p">,</span> <span class="s2">&quot;ü&quot;</span><span class="p">:</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="s2">&quot;u&quot;</span><span class="p">,</span> <span class="s2">&quot;s&quot;</span><span class="p">:</span> <span class="s2">&quot;i&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;d&quot;</span><span class="p">:</span> <span class="s2">&quot;e&quot;</span><span class="p">,</span> <span class="s2">&quot;f&quot;</span><span class="p">:</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;g&quot;</span><span class="p">:</span> <span class="s2">&quot;ü&quot;</span><span class="p">,</span> <span class="s2">&quot;h&quot;</span><span class="p">:</span> <span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="s2">&quot;j&quot;</span><span class="p">:</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="s2">&quot;k&quot;</span><span class="p">:</span> <span class="s2">&quot;m&quot;</span><span class="p">,</span> <span class="s2">&quot;l&quot;</span><span class="p">:</span> <span class="s2">&quot;l&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;ş&quot;</span><span class="p">:</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;i&quot;</span><span class="p">:</span> <span class="s2">&quot;ş&quot;</span><span class="p">,</span> <span class="s2">&quot;,&quot;</span><span class="p">:</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;z&quot;</span><span class="p">:</span> <span class="s2">&quot;j&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="s2">&quot;ö&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="s2">&quot;v&quot;</span><span class="p">,</span> <span class="s2">&quot;v&quot;</span><span class="p">:</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="s2">&quot;ç&quot;</span><span class="p">,</span> <span class="s2">&quot;n&quot;</span><span class="p">:</span> <span class="s2">&quot;z&quot;</span><span class="p">,</span> <span class="s2">&quot;m&quot;</span><span class="p">:</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="s2">&quot;ö&quot;</span><span class="p">:</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;ç&quot;</span><span class="p">:</span> <span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">:</span> <span class="s2">&quot;,&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Burada da öğe çiftlerini yan yana yazdık. Bu iki yöntemden hangisi size daha
+okunaklı geliyorsa onu tercih edebilirsiniz.</p>
+<p>Şimdi size bir soru sormama izin verin. Acaba aşağıdaki metin içinde geçen bütün
+sesli harfleri silin desem, nasıl bir kod yazarsınız?</p>
+<blockquote>
+<div><p>Bu programlama dili Guido Van Rossum adlı Hollandalı bir programcı
+tarafından 90’lı yılların başında geliştirilmeye başlanmıştır. Çoğu insan,
+isminin Python olmasına bakarak, bu programlama dilinin, adını piton
+yılanından aldığını düşünür. Ancak zannedildiğinin aksine bu programlama
+dilinin adı piton yılanından gelmez. Guido Van Rossum bu programlama dilini,
+The Monty Python adlı bir İngiliz komedi grubunun, Monty Python’s Flying
+Circus adlı gösterisinden esinlenerek adlandırmıştır. Ancak her ne kadar
+gerçek böyle olsa da, Python programlama dilinin pek çok yerde bir yılan
+figürü ile temsil edilmesi neredeyse bir gelenek halini almıştır
+diyebiliriz.</p>
+</div></blockquote>
+<p>Aklınıza ilk olarak şöyle bir kod yazmak gelebilir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Bu programlama dili Guido Van Rossum adlı Hollandalı bir</span>
+<span class="s2">programcı tarafından 90&#39;lı yılların başında geliştirilmeye başlanmıştır.</span>
+<span class="s2">Çoğu insan, isminin Python olmasına bakarak, bu programlama dilinin, adını</span>
+<span class="s2">piton yılanından aldığını düşünür. Ancak zannedildiğinin aksine bu</span>
+<span class="s2">programlama dilinin adı piton yılanından gelmez. Guido Van Rossum bu</span>
+<span class="s2">programlama dilini, The Monty Python adlı bir İngiliz komedi grubunun, Monty</span>
+<span class="s2">Python&#39;s Flying Circus adlı gösterisinden esinlenerek adlandırmıştır. Ancak</span>
+<span class="s2">her ne kadar gerçek böyle olsa da, Python programlama dilinin pek çok yerde</span>
+<span class="s2">bir yılan figürü ile temsil edilmesi neredeyse bir gelenek halini almıştır</span>
+<span class="s2">diyebiliriz.&quot;&quot;&quot;</span>
+
+<span class="n">sesli_harfler</span> <span class="o">=</span> <span class="s2">&quot;aeıioöuüAEIİOÖUÜ&quot;</span>
+
+<span class="n">yeni_metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">metin</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sesli_harfler</span><span class="p">:</span>
+        <span class="n">yeni_metin</span> <span class="o">+=</span> <span class="n">i</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">yeni_metin</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Burada öncelikle <cite>metin</cite> adlı bir değişken tanımlayarak metnimizi bu değişken
+içine yerleştirdik. Ardından da Türkçedeki sesli harfleri içeren bir karakter
+dizisi tanımladık.</p>
+<p>Daha sonra da <cite>yeni_metin</cite> adlı boş bir karakter dizisi oluşturduk. Bu karakter
+dizisi, orijinal metnin, sesli harfler ayıklandıktan sonraki halini
+barındıracak. Biliyorsunuz, karakter dizileri değiştirilemeyen (<em>immutable</em>) bir
+veri tipidir. Dolayısıyla bir karakter dizisi içinde yaptığımız değişiklikleri
+koruyabilmek için bu değişiklikleri başka bir değişken içinde tutmamız
+gerekiyor.</p>
+<p>Bu kodların ardından bir <cite>for</cite> döngüsü tanımlıyoruz. Buna göre, metin içinde
+geçen her bir karaktere tek tek bakıyoruz (<code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">i</span> <span class="pre">in</span> <span class="pre">metin:</span></code>) ve bu
+karakterler arasında, <cite>sesli_harfler</cite> değişkeni içinde geçmeyenleri, yani bütün
+sessiz harfleri (<code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">not</span> <span class="pre">i</span> <span class="pre">in</span> <span class="pre">sesli_harfler:</span></code>) tek tek <cite>yeni_metin</cite> adlı
+değişkene yolluyoruz (<code class="docutils literal notranslate"><span class="pre">yeni_metin</span> <span class="pre">+=</span> <span class="pre">i</span></code>).</p>
+<p>Son olarak da <cite>yeni_metin</cite> adlı karakter dizisini ekrana basıyoruz. Böylece
+orijinal metin içindeki bütün sesli harfleri ayıklamış oluyoruz.</p>
+<p>Yukarıdaki, gayet doğru ve geçerli bir yöntemdir. Böyle bir kod yazmanızın
+hiçbir sakıncası yok. Ama eğer isterseniz aynı işi <code class="docutils literal notranslate"><span class="pre">str.maketrans()</span></code> ve
+<code class="docutils literal notranslate"><span class="pre">translate()</span></code> metotları yardımıyla da halledebilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Bu programlama dili Guido Van Rossum adlı Hollandalı bir</span>
+<span class="s2">programcı tarafından 90&#39;lı yılların başında geliştirilmeye başlanmıştır.</span>
+<span class="s2">Çoğu insan, isminin Python olmasına bakarak, bu programlama dilinin, adını</span>
+<span class="s2">piton yılanından aldığını düşünür. Ancak zannedildiğinin aksine bu</span>
+<span class="s2">programlama dilinin adı piton yılanından gelmez. Guido Van Rossum bu</span>
+<span class="s2">programlama dilini, The Monty Python adlı bir İngiliz komedi grubunun, Monty</span>
+<span class="s2">Python&#39;s Flying Circus adlı gösterisinden esinlenerek adlandırmıştır. Ancak</span>
+<span class="s2">her ne kadar gerçek böyle olsa da, Python programlama dilinin pek çok yerde</span>
+<span class="s2">bir yılan figürü ile temsil edilmesi neredeyse bir gelenek halini almıştır</span>
+<span class="s2">diyebiliriz.&quot;&quot;&quot;</span>
+
+<span class="n">silinecek</span> <span class="o">=</span> <span class="s2">&quot;aeıioöuüAEIİOÖUÜ&quot;</span>
+
+<span class="n">çeviri_tablosu</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">silinecek</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">metin</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">çeviri_tablosu</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Burada da öncelikle metnimizi bir karakter dizisi içine yerleştirdik. Daha sonra
+da şu kodu yazdık:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">silinecek</span> <span class="o">=</span> <span class="s2">&quot;aeıioöuüAEIİOÖUÜ&quot;</span>
+</pre></div>
+</div>
+<p>Bu kodlar yardımıyla, metin içinden çıkarmak istediğimiz harfleri tek tek
+belirledik.</p>
+<p>Ardından <code class="docutils literal notranslate"><span class="pre">str.maketrans()</span></code> fonksiyonumuzu yazarak çeviri tablosunu oluşturduk.
+Burada ilk iki parametrenin boş birer karakter dizisi olduğuna dikkat ediyoruz.
+İlk iki parametreyi bu şekilde yazmamızın nedeni şu: Biz orijinal metin içindeki
+herhangi bir şeyi değiştirmek istemiyoruz. Bizim amacımız orijinal metin
+içindeki sesli harfleri silmek. Tabii o iki parametreyi yazmasak da olmaz. O
+yüzden o iki parametrenin yerine birer tane boş karakter dizisi yerleştiriyoruz.</p>
+<p>Bu noktada <cite>çeviri_tablosu</cite> adlı değişkeni yazdırarak neler olup bittiğini daha
+net görebilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="mi">214</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="mi">97</span> <span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="mi">101</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="mi">65</span> <span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="mi">105</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="mi">111</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="mi">304</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="mi">305</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="mi">220</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="mi">117</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="mi">246</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="mi">73</span> <span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="mi">79</span> <span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="mi">252</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="mi">85</span> <span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="mi">69</span> <span class="p">:</span> <span class="kc">None</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, <cite>silinecek</cite> adlı değişken içindeki bütün karakterler <code class="docutils literal notranslate"><span class="pre">None</span></code>
+değeriyle eşleşiyor… <code class="docutils literal notranslate"><span class="pre">None</span></code> ‘hiç, sıfır, yokluk’ gibi anlamlara gelir.
+Dolayısıyla Python, iki nokta üst üste işaretinin sol tarafındaki karakterlerle
+karşılaştığında bunların yerine birer adet ‘yokluk’ koyuyor! Yani sonuç olarak
+bu karakterleri metinden silmiş oluyor…</p>
+<p>Bu kodlarda iki nokta üst üste işaretinin solundaki karakterlerin <code class="docutils literal notranslate"><span class="pre">None</span></code> ile
+eşleşmesini sağlayan şey, <code class="docutils literal notranslate"><span class="pre">str.maketrans()</span></code> metoduna verdiğimiz üçüncü
+parametredir. Eğer o parametreyi yazmazsak, yani kodlarımızı şu şekle getirirsek
+<cite>çeviri_tablosu</cite> değişkeninin çıktısı farklı olacaktır:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Bu programlama dili Guido Van Rossum adlı Hollandalı bir</span>
+<span class="s2">programcı tarafından 90&#39;lı yılların başında geliştirilmeye başlanmıştır.</span>
+<span class="s2">Çoğu insan, isminin Python olmasına bakarak, bu programlama dilinin, adını</span>
+<span class="s2">piton yılanından aldığını düşünür. Ancak zannedildiğinin aksine bu</span>
+<span class="s2">programlama dilinin adı piton yılanından gelmez. Guido Van Rossum bu</span>
+<span class="s2">programlama dilini, The Monty Python adlı bir İngiliz komedi grubunun, Monty</span>
+<span class="s2">Python&#39;s Flying Circus adlı gösterisinden esinlenerek adlandırmıştır. Ancak</span>
+<span class="s2">her ne kadar gerçek böyle olsa da, Python programlama dilinin pek çok yerde</span>
+<span class="s2">bir yılan figürü ile temsil edilmesi neredeyse bir gelenek halini almıştır</span>
+<span class="s2">diyebiliriz.&quot;&quot;&quot;</span>
+
+<span class="n">silinecek</span> <span class="o">=</span> <span class="s2">&quot;aeıioöuüAEIİOÖUÜ&quot;</span>
+
+<span class="n">çeviri_tablosu</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">çeviri_tablosu</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu kodları çalıştırdığımızda şöyle bir çıktı alırız:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="p">{}</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, elde ettiğimiz şey boş bir sözlüktür. Sözlük boş olduğu, yani
+değiştirilecek herhangi bir karakter olmadığı için bu kodlar orijinal metin
+üzerinde herhangi bir değişiklik yapmaz.</p>
+<p>İsterseniz üçüncü parametrenin ne işe yaradığını ve nasıl çalıştığını daha iyi
+anlayabilmek için daha basit bir örnek verelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;Cem Yılmaz&quot;</span>
+
+<span class="n">kaynak</span> <span class="o">=</span> <span class="s2">&quot;CY&quot;</span>
+<span class="n">hedef</span>  <span class="o">=</span> <span class="s2">&quot;cy&quot;</span>
+<span class="n">silinecek</span> <span class="o">=</span> <span class="s2">&quot;eıa &quot;</span>
+
+<span class="n">çeviri_tablosu</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="n">kaynak</span><span class="p">,</span> <span class="n">hedef</span><span class="p">,</span> <span class="n">silinecek</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">metin</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">çeviri_tablosu</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Burada ‘C’ ve ‘Y’ harflerini sırasıyla ‘c’ ve ‘y’ harfleriyle eşleştirdik. Bu
+nedenle orijinal metin içindeki ‘C’ ve ‘Y’ harfleri yerlerini sırasıyla ‘c’ ve
+‘y’ harflerine bıraktı. Silinecek karakterler olarak ise ‘e’, ‘ı’, ‘a’ ve boşluk
+karakterlerini seçtik. Böylece ‘Cem Yılmaz’ adlı orijinal metin içindeki boşluk
+karakteri de silinerek, bu metin ‘cmylmz’ karakter dizisine dönüştü.</p>
+</section>
+<section id="isalpha">
+<h2>isalpha()<a class="headerlink" href="#isalpha" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Bu metot yardımıyla bir karakter dizisinin ‘alfabetik’ olup olmadığını
+denetleyeceğiz. Peki ‘alfabetik’ ne demek?</p>
+<p>Eğer bir karakter dizisi içinde yalnızca alfabe harfleri (‘a’, ‘b’, ‘c’ gibi…)
+varsa o karakter dizisi için ‘alfabetik’ diyoruz. Bir örnekle bunu
+doğrulayalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;kezban&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">isalpha</span><span class="p">()</span>
+
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Ama:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="s2">&quot;k3zb6n&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">isalpha</span><span class="p">()</span>
+
+<span class="go">False</span>
+</pre></div>
+</div>
+</section>
+<section id="isdigit">
+<h2>isdigit()<a class="headerlink" href="#isdigit" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Bu metot da <code class="docutils literal notranslate"><span class="pre">isalpha()</span></code> metoduna benzer. Bunun yardımıyla bir karakter
+dizisinin sayısal olup olmadığını denetleyebiliriz. Sayılardan oluşan karakter
+dizilerine ‘sayı değerli karakter dizileri’ adı verilir. Örneğin şu bir ‘sayı
+değerli karakter dizisi’dir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;12345&quot;</span>
+</pre></div>
+</div>
+<p>Metodumuz yardımıyla bunu doğrulayabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span>
+
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Ama şu karakter dizisi sayısal değildir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="s2">&quot;123445b&quot;</span>
+</pre></div>
+</div>
+<p>Hemen kontrol edelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span>
+
+<span class="go">False</span>
+</pre></div>
+</div>
+</section>
+<section id="isalnum">
+<h2>isalnum()<a class="headerlink" href="#isalnum" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Bu metot, bir karakter dizisinin ‘alfanümerik’ olup olmadığını denetlememizi
+sağlar. Peki ‘alfanümerik’ nedir?</p>
+<p>Daha önce bahsettiğimiz metotlardan hatırlayacaksınız:</p>
+<p>Alfabetik karakter dizileri, alfabe harflerinden oluşan karakter dizileridir.</p>
+<p>Sayısal karakter dizileri, sayılardan oluşan karakter dizileridir.</p>
+<p>Alfanümerik karakter dizileri ise bunun birleşimidir. Yani sayı ve harflerden
+oluşan karakter dizilerine alfanümerik karakter dizileri adı verilir. Örneğin şu
+karakter dizisi alfanümerik bir karakter dizisidir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;123abc&quot;</span>
+</pre></div>
+</div>
+<p>İsterseniz hemen bu yeni metodumuz yardımıyla bunu doğrulayalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">isalnum</span><span class="p">()</span>
+
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Eğer denetleme sonucunda <cite>True</cite> alıyorsak, o karakter dizisi alfanümeriktir. Bir
+de şuna bakalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="s2">&quot;123abc&gt;&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">isalnum</span><span class="p">()</span>
+
+<span class="go">False</span>
+</pre></div>
+</div>
+<p><cite>b</cite> değişkeninin tuttuğu karakter dizisinde alfanümerik karakterlerin yanısıra
+(<cite>“123abc”</cite>), alfanümerik olmayan bir karakter dizisi de bulunduğu için (<cite>“&gt;”</cite>),
+<code class="docutils literal notranslate"><span class="pre">b.isalnum()</span></code> şeklinde gösterdiğimiz denetlemenin sonucu <cite>False</cite> (yanlış)
+olarak görünecektir.</p>
+<p>Dolayısıyla, bir karakter dizisi içinde en az bir adet alfanümerik olmayan bir
+karakter dizisi bulunursa (bizim örneğimizde <code class="docutils literal notranslate"><span class="pre">&quot;&gt;&quot;</span></code>), o karakter dizisi
+alfanümerik olmayacaktır.</p>
+</section>
+<section id="isdecimal">
+<h2>isdecimal()<a class="headerlink" href="#isdecimal" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Bu metot yardımıyla bir karakter dizisinin ondalık sayı cinsinden olup
+olmadığını denetliyoruz. Mesela aşağıdaki örnek ondalık sayı cinsinden bir
+karakter dizisidir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;123&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">isdecimal</span><span class="p">()</span>
+
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Ama şu ise kayan noktalı (<em>floating-point</em>) sayı cinsinden bir karakter dizisidir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;123.3&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">isdecimal</span><span class="p">()</span>
+
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>Dolayısıyla <code class="docutils literal notranslate"><span class="pre">a.isdecimal()</span></code> komutu <cite>False</cite> çıktısı verir…</p>
+</section>
+<section id="isidentifier">
+<h2>isidentifier()<a class="headerlink" href="#isidentifier" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p><em>Identifier</em> kelimesi Türkçede ‘tanımlayıcı’ anlamına gelir. Python’da
+değişkenler, fonksiyon ve modül adlarına ‘tanımlayıcı’ denir. İşte başlıkta
+gördüğümüz <code class="docutils literal notranslate"><span class="pre">isidentifier()</span></code> metodu, neyin tanımlayıcı olup neyin tanımlayıcı
+olamayacağını denetlememizi sağlar. Hatırlarsanız değişkenler konusundan
+bahsederken, değişken adı belirlemenin bazı kuralları olduğunu söylemiştik. Buna
+göre, örneğin, değişken adları bir sayı ile başlayamıyordu. Dolayısıyla şöyle
+bir değişken adı belirleyemiyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span><span class="n">a</span> <span class="o">=</span> <span class="mi">12</span>
+</pre></div>
+</div>
+<p>Dediğimiz gibi, değişkenler birer tanımlayıcıdır. Dolayısıyla bir değişken
+adının geçerli olup olmadığını <code class="docutils literal notranslate"><span class="pre">isidentifier()</span></code> metodu yardımıyla
+denetleyebiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;1a&quot;</span><span class="o">.</span><span class="n">isidentifier</span><span class="p">()</span>
+
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>Demek ki <code class="docutils literal notranslate"><span class="pre">&quot;1a&quot;</span></code> ifadesini herhangi bir tanımlayıcı adı olarak kullanamıyoruz.
+Yani bu ada sahip bir değişken, fonksiyon adı veya modül adı oluşturamıyoruz.
+Ama mesela <code class="docutils literal notranslate"><span class="pre">&quot;liste1&quot;</span></code> ifadesi geçerli bir tanımlayıcıdır. Hemen denetleyelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;liste1&quot;</span><span class="o">.</span><span class="n">isidentifier</span><span class="p">()</span>
+
+<span class="go">True</span>
+</pre></div>
+</div>
+</section>
+<section id="isnumeric">
+<h2>isnumeric()<a class="headerlink" href="#isnumeric" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Bu metot bir karakter dizisinin nümerik olup olmadığını denetler. Yani bu metot
+yardımıyla bir karakter dizisinin sayı değerli olup olmadığını
+denetleyebiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;12&quot;</span><span class="o">.</span><span class="n">isnumeric</span><span class="p">()</span>
+
+<span class="go">True</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;dasd&quot;</span><span class="o">.</span><span class="n">isnumeric</span><span class="p">()</span>
+
+<span class="go">False</span>
+</pre></div>
+</div>
+</section>
+<section id="isspace">
+<h2>isspace()<a class="headerlink" href="#isspace" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Bu metot yardımıyla bir karakter dizisinin tamamen boşluklardan oluşup
+oluşmadığını denetleyebiliriz. Eğer karakter dizimiz boşluklardan oluşuyorsa bu
+metot <cite>True</cite> çıktısı verecek, ama eğer karakter dizimizin içinde bir tane bile
+boşluk harici karakter varsa bu metot <cite>False</cite> çıktısı verecektir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">isspace</span><span class="p">()</span>
+
+<span class="go">True</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;              &quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">isspace</span><span class="p">()</span>
+
+<span class="go">True</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#karakter dizimiz tamamen boş. İçinde boşluk karakteri bile yok...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">isspace</span><span class="p">()</span>
+
+<span class="go">False</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;fd&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">isspace</span><span class="p">()</span>
+
+<span class="go">False</span>
+</pre></div>
+</div>
+</section>
+<section id="isprintable">
+<h2>isprintable()<a class="headerlink" href="#isprintable" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Hatırlarsanız önceki derslerimizde <cite>\n</cite>, <cite>\t</cite>, <cite>\r</cite> ve buna benzer
+karakterlerden söz etmiştik. Örneğin <cite>\n</cite> karakterinin ‘satır başı’ anlamına
+geldiğini ve bu karakterin görevinin karakter dizisini bir alt satıra almak
+olduğunu söylemiştik. Örnek verelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;birinci satır</span><span class="se">\n</span><span class="s2">ikinci satır&quot;</span><span class="p">)</span>
+
+<span class="go">birinci satır</span>
+<span class="go">ikinci satır</span>
+</pre></div>
+</div>
+<p>Bu örnekte <cite>\n</cite> karakterinin öteki karakterlerden farklı olduğunu görüyorsunuz.
+Mesela <cite>“b”</cite> karakteri komut çıktısında görünüyor. Ama <cite>\n</cite> karakteri çıktıda
+görünmüyor. <cite>\n</cite> karakteri elbette yukarıdaki kodlar içinde belli bir işleve
+sahip. Ancak karakter dizisindeki öteki karakterlerden farklı olarak <cite>\n</cite>
+karakteri ekranda görünmüyor. İşte Python’da bunun gibi, ekranda görünmeyen
+karakterlere ‘basılmayan karakterler’ (<em>non-printing characters</em>) adı verilir.
+‘b’, ‘c’, ‘z’, ‘x’, ‘=’, ‘?’, ‘!’ ve benzeri karakterler ise ‘basılabilen
+karakterler’ (<em>printable characters</em>) olarak adlandırılır. İşte başlıkta
+gördüğünüz <code class="docutils literal notranslate"><span class="pre">isprintable()</span></code> metodu da karakterlerin bu yönünü sorgular. Yani
+bir karakterin basılabilen bir karakter mi yoksa basılmayan bir karakter mi
+olduğunu söyler bize. Örneğin:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">karakter</span> <span class="o">=</span> <span class="s2">&quot;a&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">karakter</span><span class="o">.</span><span class="n">isprintable</span><span class="p">()</span>
+
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Demek ki <cite>“a”</cite> karakteri basılabilen bir karaktermiş. Bir de şuna bakalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">karakter</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">karakter</span><span class="o">.</span><span class="n">isprintable</span><span class="p">()</span>
+
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>Demek ki <cite>\n</cite> karakteri gerçekten de basılamayan bir karaktermiş.</p>
+<p>Basılamayan karakterlerin listesini görmek için <a class="reference external" href="https://www.asciitable.com/">https://www.asciitable.com/</a>
+adresini ziyaret edebilirsiniz. Listedeki ilk <cite>32</cite> karakter (<cite>0</cite>’dan başlayarak
+<cite>32</cite>’ye kadar olan karakterler) ve listedeki <cite>127.</cite> karakter basılamayan
+karakterlerdir.</p>
+</section>
+</section>
+
+
+
+<div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
+<div class='extrarelbar'> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Genel Dizin"
+             >dizin</a></li>
+        <li class="right" >
+          <a href="karakter_dizilerini_bicimlendirmek.html" title="Karakter Dizilerini Biçimlendirmek"
+             >sonraki</a> |</li>
+        <li class="right" >
+          <a href="karakter_dizilerinin_metotlari2.html" title="Karakter Dizilerinin Metotları (Devamı)"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+        <li class="nav-item nav-item-this"><a href="">Karakter Dizilerinin Metotları (Devamı)</a></li> 
+      </ul>
+    </div> </div>
+
+<div class='addcomment'>Yorumlar</div>
+
+<div class='how-to-use'>
+<h3>Önemli Not</h3>
+Eğer yazdığınız yorum içinde kod kullanacaksanız kodlarınızı
+<span class='tag'>&lt;pre&gt;&lt;code&gt;</span> etiketleri içine alın. Örneğin:
+
+<pre>
+    <span class='tag'>&lt;pre&gt;&lt;code class="python"&gt;</span>
+    <span class='keyword'>print</span>(<span class='string'>"Merhaba Dünya!"</span>)
+    <span class='tag'>&lt;/code&gt;&lt;/pre&gt;</span>
+</pre>
+
+Sorularınızı yorumlarda dile getirmek yerine <a href="https://forum.yazbel.com/">Yazbel Forumu</a>nda sorarsanız çok daha hızlı cevap alabilirsiniz.
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'istihza';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+<noscript>
+<br>
+<a href="https://disqus.com/?ref_noscript" rel="nofollow">Disqus tarafından sağlanan yorumları</a> görmek için lütfen JavasScript'i etkinleştirin.
+<br>
+Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4eca48eb2d83faf9" async="async"></script>
+
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Genel Dizin"
+             >dizin</a></li>
+        <li class="right" >
+          <a href="karakter_dizilerini_bicimlendirmek.html" title="Karakter Dizilerini Biçimlendirmek"
+             >sonraki</a> |</li>
+        <li class="right" >
+          <a href="karakter_dizilerinin_metotlari2.html" title="Karakter Dizilerinin Metotları (Devamı)"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+        <li class="nav-item nav-item-this"><a href="">Karakter Dizilerinin Metotları (Devamı)</a></li> 
+      </ul>
+    </div> 
+
+<div class="footer">
+		&copy; Copyright 2007-2021, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 13.10.2021.
+	<a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0 kullanılarak oluşturuldu.
+<br>
+<br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
+alt="Creative Commons License" style="border-width:0"
+src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a>
+<br>
+<br>
+</div>
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=10396326;
+var sc_invisible=1;
+var sc_security="fb5cd679";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="hit counter"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="http://c.statcounter.com/10396326/0/fb5cd679/1/"
+alt="hit counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+  </body>
+</html>

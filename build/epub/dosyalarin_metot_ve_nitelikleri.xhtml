@@ -1,0 +1,367 @@
+
+ <!DOCTYPE html>
+ <html lang="tr">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta content="Bu bölümde dosyaların metot ve niteliklerini inceleyeceğiz." name="description" />
+<meta content="python, python3, dosyalar" name="keywords" />
+
+    <title>Dosyaların Metot ve Nitelikleri</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/epub.css" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+<div class='header'><a href='https://yazbel.com'><img src="_static/logo.png"></a></div>
+
+<ul class='navbar'>
+    <li class="forum"><a href="http://forum.yazbel.com">forum</a></li>
+    <li><a href="YazbelPythonProgramlamaDiliBelgeleri.pdf">pdf</a></li>
+    <li><a href="YazbelPythonProgramlamaDiliBelgeleri.epub">epub</a></li>
+    <li><a href="YazbelPythonProgramlamaDiliBelgeleri.html">html</a></li>
+</ul>
+
+
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+
+  <section id="dosyalarin-metot-ve-nitelikleri">
+<h1>Dosyaların Metot ve Nitelikleri</h1>
+<p>Dosyalara ilişkin olarak bir önceki bölümde anlattığımız şeylerin kafanıza
+yatması açısından size şu bilgiyi de verelim: Dosyalar da, tıpkı karakter
+dizileri ve listeler gibi, Python programlama dilindeki veri tiplerinden
+biridir. Dolayısıyla tıpkı karakter dizileri ve listeler gibi, dosya (<em>file</em>)
+adlı bu veri tipinin de bazı metotları ve nitelikleri vardır. Gelin isterseniz
+bu metot ve niteliklerin neler olduğunu şöyle bir listeleyelim:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">dosya</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;falanca_dosya.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">metot</span> <span class="k">for</span> <span class="n">metot</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">dosya</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">metot</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)],</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu kodlar, dosya adlı veri tipinin bizi ilgilendiren bütün metotlarını alt alta
+ekrana basacaktır. Eğer yukarıdaki kodları anlamakta zorluk çektiyseniz, bunları
+şöyle de yazabilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">dosya</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;falanca_dosya.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">metot</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">dosya</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">metot</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">metot</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bildiğiniz gibi bu kodlar bir öncekiyle tamamen aynı anlama geliyor.</p>
+<p>Bu kodları çalıştırdığınızda karşınıza pek çok metot çıkacak. Biz buraya gelene
+kadar bu metotların en önemlilerini zaten inceledik. İncelemediğimiz yalnızca
+birkaç önemli metot (ve nitelik) kaldı. Gelin isterseniz henüz incelemediğimiz
+bu önemli metot ve nitelikleri gözden geçirelim.</p>
+<section id="closed-niteligi">
+<h2>closed Niteliği</h2>
+<p>Bu nitelik, bir dosyanın kapalı olup olmadığını sorgulamamızı sağlar. Dosya
+adının <cite>f</cite> olduğunu varsayarsak, bu niteliği şöyle kullanıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">closed</span>
+</pre></div>
+</div>
+<p>Eğer <cite>f</cite> adlı bu dosya kapalıysa <cite>True</cite> çıktısı, açıksa <cite>False</cite> çıktısı
+verilecektir.</p>
+</section>
+<section id="readable-metodu">
+<h2>readable() Metodu</h2>
+<p>Bu metot bir dosyanın okuma yetkisine sahip olup olmadığını sorgulamamızı
+sağlar. Eğer bir dosya <cite>“r”</cite> gibi bir kiple açılmışsa, yani o dosya ‘okunabilir’
+özellikle ise bu metot bize <cite>True</cite> çıktısı verir. Ama eğer dosya yazma kipinde
+açılmışsa bu metot bize <cite>False</cite> çıktısı verecektir.</p>
+</section>
+<section id="writable-metodu">
+<h2>writable() Metodu</h2>
+<p>Bu metot bir dosyanın yazma yetkisine sahip olup olmadığını sorgulamamızı
+sağlar. Eğer bir dosya <cite>“w”</cite> gibi bir kiple açılmışsa, yani o dosya
+‘yazılabilir’ özellikle ise bu metot bize <cite>True</cite> çıktısı verir. Ama eğer dosya
+okuma kipinde açılmışsa bu metot bize <cite>False</cite> çıktısı verecektir.</p>
+</section>
+<section id="truncate-metodu">
+<h2>truncate() Metodu</h2>
+<p>Bu metot, henüz işlemediğimiz metotlar arasında en önemlilerinden biridir. Bu
+metot yardımıyla dosyalarımızı istediğimiz boyuta getirebiliyoruz.</p>
+<p>İngilizcede <em>truncate</em> kelimesi ‘budamak, kırpmak’ gibi anlamlara gelir. Bu
+metodun yaptığı iş de bu anlamıyla uyumludur. Bu metodu temel olarak şöyle
+kullanıyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;falanca.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r+&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">f</span><span class="o">.</span><span class="n">truncate</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Bu komutu bu şekilde kullandığımızda dosyanın bütün içeriği silinecektir. Yani
+bu kodlar, sanki dosyayı <cite>“w”</cite> kipiyle açmışsınız gibi bir etki ortaya
+çıkaracaktır.</p>
+<p><code class="docutils literal notranslate"><span class="pre">truncate()</span></code> metodu yukarıda gördüğünüz şekilde parametresiz olarak
+kullanılabileceği gibi, parametreli olarak da kullanılabilir. Bu metodun
+parantezleri arasına, dosyanın kaç baytlık bir boyuta sahip olmasını
+istediğinizi yazabilirsiniz. Örneğin:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;falanca.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r+&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">f</span><span class="o">.</span><span class="n">truncate</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu kodlar, <cite>falanca.txt</cite> adlı dosyanın ilk <cite>10</cite> baytı dışındaki bütün verileri
+siler. Yani dosyayı yalnızca <cite>10</cite> baytlık bir boyuta sahip olacak şekilde
+kırpar.</p>
+<p>Gelin isterseniz bu metotla ilgili bir örnek verelim. Elimizdeki dosyanın şu
+içeriğe sahip olduğunu varsayalım:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ahmet</span> <span class="n">Özbudak</span> <span class="p">:</span> <span class="mi">0533</span> <span class="mi">123</span> <span class="mi">23</span> <span class="mi">34</span>
+<span class="n">Mehmet</span> <span class="n">Sülün</span>  <span class="p">:</span> <span class="mi">0532</span> <span class="mi">212</span> <span class="mi">22</span> <span class="mi">22</span>
+<span class="n">Sami</span> <span class="n">Sam</span>      <span class="p">:</span> <span class="mi">0542</span> <span class="mi">333</span> <span class="mi">34</span> <span class="mi">34</span>
+</pre></div>
+</div>
+<p>Amacımız dosyadaki şu iki satırı tamamen silmek:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">Mehmet</span> <span class="n">Sülün</span>  <span class="p">:</span> <span class="mi">0532</span> <span class="mi">212</span> <span class="mi">22</span> <span class="mi">22</span>
+<span class="n">Sami</span> <span class="n">Sam</span>      <span class="p">:</span> <span class="mi">0542</span> <span class="mi">333</span> <span class="mi">34</span> <span class="mi">34</span>
+</pre></div>
+</div>
+<p>Yani dosyanın yeni içeriğinin tam olarak şöyle olmasını istiyoruz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ahmet</span> <span class="n">Özbudak</span> <span class="p">:</span> <span class="mi">0533</span> <span class="mi">123</span> <span class="mi">23</span> <span class="mi">34</span>
+</pre></div>
+</div>
+<p>Bunun için <code class="docutils literal notranslate"><span class="pre">truncate()</span></code> metodundan yararlanarak şu kodları yazabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;fihrist.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r+&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">tell</span><span class="p">())</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">truncate</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Bu kodları bir dosyaya kaydedip çalıştırdığınızda, istediğiniz sonucu elde
+ettiğinizi göreceksiniz.</p>
+<p>Burada sırasıyla şu işlemleri gerçekleştirdik:</p>
+<ol class="arabic">
+<li><p>Önce dosyamızı hem okuma hem de yazma kipinde açtık. Çünkü aynı dosya
+üzerinde hem okuma hem de yazma işlemleri gerçekleştireceğiz:</p>
+<blockquote>
+<div><div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;fihrist.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r+&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Ardından dosyadan tek bir satır okuduk:</p>
+<blockquote>
+<div><div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Daha sonra, <code class="docutils literal notranslate"><span class="pre">truncate()</span></code> metodunun imleç konumundan itibaren kırpma işlemi
+gerçekleştirebilmesi için imleci dosya içinde o anda bulunduğumuz konuma, yani
+ikinci satırın başına getirdik. Bildiğiniz gibi dosyaların <code class="docutils literal notranslate"><span class="pre">tell()</span></code> metodu, o
+anda dosya içinde hangi konumda bulunduğumuzu bildiriyor. Biz biraz önce
+yazdığımız <code class="docutils literal notranslate"><span class="pre">readline()</span></code> komutu yardımıyla dosyadan bir satır okuduğumuz için,
+o anda ikinci satırın başında bulunuyoruz. İşte <code class="docutils literal notranslate"><span class="pre">seek()</span></code> metodunu ve
+<code class="docutils literal notranslate"><span class="pre">tell()</span></code> metodundan elde ettiğimiz bu konum bilgisini kullanarak imleci
+istediğimiz konuma getirdik:</p>
+<blockquote>
+<div><div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">tell</span><span class="p">())</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>İmleci istediğimiz konuma getirdiğimize göre artık kırpma işlemini
+gerçekleştirebiliriz:</p>
+<blockquote>
+<div><div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">truncate</span><span class="p">()</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+<p>Artık elimizde tek satırlık bir dosya var…</p>
+<p><code class="docutils literal notranslate"><span class="pre">truncate()</span></code> metodunun, yukarıda anlattığımızdan farklı bir özelliği daha
+var. Her ne kadar <em>truncate</em> kelimesi ‘kırpmak’ anlamına gelse ve bu metotla
+dosya boyutlarını küçültebilsek bile, bu metodu kullanarak aynı zamanda dosya
+boyutlarını artırabiliriz de. Örneğin boyutu <cite>1</cite> kilobayt olan bir dosyayı <cite>3</cite>
+kilobayta çıkarmak için bu metodu şöyle kullanabiliriz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;fihrist.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r+&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">truncate</span><span class="p">(</span><span class="mi">1024</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Dosyanın boyutunu kontrol edecek olursanız, dosyanın gerçekten de 3 kilobayt’a
+çıktığını göreceksiniz. Peki bu metot bu işi nasıl yapıyor? Aslında bunun cevabı
+çok basit: Dosyanın sonuna gereken miktarda <cite>0</cite> ekleyerek… Zaten eğer
+<cite>fihrist.txt</cite> adlı bu dosyayı tekrar açıp okursanız bu durumu kendiniz de
+görebilirsiniz:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;fihrist.txt&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi, dosya sıfırlarla dolu.</p>
+</section>
+<section id="mode-niteligi">
+<h2>mode Niteliği</h2>
+<p>Bu nitelik, bize bir dosyanın hangi kipte açıldığına dair bilgi verir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;falanca.txt&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">mode</span>
+
+<span class="go">&#39;r&#39;</span>
+</pre></div>
+</div>
+<p>Demek ki bu dosya <cite>“r”</cite> kipinde açılmış…</p>
+</section>
+<section id="name-niteligi">
+<h2>name Niteliği</h2>
+<p>Bu nitelik, bize bir dosyanın adını verir:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">name</span>
+
+<span class="go">&#39;falanca.txt&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="encoding-niteligi">
+<h2>encoding Niteliği</h2>
+<p>Bu nitelik, bize bir dosyanın hangi dil kodlaması ile kodlandığını söyler:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">encoding</span>
+
+<span class="go">&#39;utf-8&#39;</span>
+</pre></div>
+</div>
+<p>veya:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">encoding</span>
+
+<span class="go">&#39;cp1254&#39; #Windows</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Bu ‘dil kodlaması’ konusunu ilerleyen sayfalarda ayrıntılı olarak inceleyeceğiz.</p>
+</div>
+<p>Böylece dosyaların en önemli metot ve niteliklerini incelemiş olduk. Bu arada,
+gerek bu derste, gerekse önceki derslerde verdiğimiz örneklerden, ‘metot’ ile
+‘nitelik’ kavramları arasındaki farkı anladığınızı zannediyorum. Metotlar bir iş
+yaparken, nitelikler bir değer gösterir. Nitelikler basit birer değişkenden
+ibarettir. Metotlar ise bir işin nasıl yapılacağı ile ilgili süreci tanımlar.
+Esasında bu ikisi arasındaki farkları çok fazla kafaya takmanıza gerek yok.
+Zamanla (özellikle de başka programların kaynak kodlarını incelemeye
+başladığınızda) bu ikisi arasındaki farkı bariz bir biçimde göreceksiniz. O
+noktaya geldiğinizde, zaten kavramlar arasındaki farkları görmeniz konusunda biz
+de size yardımcı olmaya çalışacağız.</p>
+</section>
+</section>
+<p class="rubric">Footnotes</p>
+
+
+
+<div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
+<div class='extrarelbar'> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.xhtml" title="Genel Dizin"
+             accesskey="I">dizin</a></li>
+        <li class="right" >
+          <a href="ikili_dosyalar.xhtml" title="İkili (Binary) Dosyalar"
+             accesskey="N">sonraki</a> |</li>
+        <li class="right" >
+          <a href="temel_dosya_islemleri.xhtml" title="Temel Dosya İşlemleri"
+             accesskey="P">önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+        <li class="nav-item nav-item-this"><a href="">Dosyaların Metot ve Nitelikleri</a></li> 
+      </ul>
+    </div> </div>
+
+<div class='addcomment'>Yorumlar</div>
+
+<div class='how-to-use'>
+<h3>Önemli Not</h3>
+Eğer yazdığınız yorum içinde kod kullanacaksanız kodlarınızı
+<span class='tag'>&lt;pre&gt;&lt;code&gt;</span> etiketleri içine alın. Örneğin:
+
+<pre>
+    <span class='tag'>&lt;pre&gt;&lt;code class="python"&gt;</span>
+    <span class='keyword'>print</span>(<span class='string'>"Merhaba Dünya!"</span>)
+    <span class='tag'>&lt;/code&gt;&lt;/pre&gt;</span>
+</pre>
+
+Sorularınızı yorumlarda dile getirmek yerine <a href="https://forum.yazbel.com/">Yazbel Forumu</a>nda sorarsanız çok daha hızlı cevap alabilirsiniz.
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'istihza';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+<noscript>
+<br>
+<a href="https://disqus.com/?ref_noscript" rel="nofollow">Disqus tarafından sağlanan yorumları</a> görmek için lütfen JavasScript'i etkinleştirin.
+<br>
+Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4eca48eb2d83faf9" async="async"></script>
+
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div> 
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.xhtml" title="Genel Dizin"
+             >dizin</a></li>
+        <li class="right" >
+          <a href="ikili_dosyalar.xhtml" title="İkili (Binary) Dosyalar"
+             >sonraki</a> |</li>
+        <li class="right" >
+          <a href="temel_dosya_islemleri.xhtml" title="Temel Dosya İşlemleri"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+        <li class="nav-item nav-item-this"><a href="">Dosyaların Metot ve Nitelikleri</a></li> 
+      </ul>
+    </div> 
+
+<div class="footer">
+		&copy; Copyright 2007-2021, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 06.10.2021.
+	<a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0 kullanılarak oluşturuldu.
+<br>
+<br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
+alt="Creative Commons License" style="border-width:0"
+src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a>
+<br>
+<br>
+</div>
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=10396326;
+var sc_invisible=1;
+var sc_security="fb5cd679";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="hit counter"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="http://c.statcounter.com/10396326/0/fb5cd679/1/"
+alt="hit counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+  </body>
+</html>
