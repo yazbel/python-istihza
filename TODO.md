@@ -20,3 +20,9 @@ karakter dizisini bir sayıyla çarpmaya kalkarsak hata alıyoruz.` bölümü d�
 * `socket` modülünün anlatımı.
 * Metasınıfların anlatımı.
 * DataClass'ların anlatımı.
+
+
+# Belgelerin İnşası
+
+* build klasörünü silip github actions ile inşanın /docs klasörüne değil ayrı bir branch'ın root'una yapılmasını sağlamak.
+* README.md, CONTRIBUTING.md vs.'yi güncellemek.
