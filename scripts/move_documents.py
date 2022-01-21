@@ -17,8 +17,15 @@ html_file = join(build, 'singlehtml', f'index.html')
 
 output_name = 'YazbelPythonProgramlamaDiliBelgeleri'
 for file in [epub_file, pdf_file, html_file]:
-	target_name = output_name + "." + file.rsplit('.', 1)[1]
-	shutil.copy2(file, join(target, target_name))
+	ext = file.rsplit('.', 1)[1]
+	target_name = output_name + "." + ext
+	try:
+		shutil.copy2(file, join(target, target_name))
+	except FileNotFoundError:
+		print(f"Passing {ext.upper()} file since it is not found in build directory.")
+		# copy the old build so that they don't get deleted
+		shutil.copy2(join(docs, target_name), join(target, target_name))
+
 
 # fix this, we shouldn't be deleting it altogether
 if exists(docs):
