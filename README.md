@@ -20,43 +20,58 @@ Bu arada proje sonlandığında bu belgede istihza.com'a verilen bağlantıları
 
 ## Belgelerden çevrimdışı iken faydalanmak
 
-Belgeleri çevrimdışı iken de kullanabilmek için bu veri havuzunu cihazınıza indirebilir ve `/index.html` dosyasını tarayıcınız ile açabilirsiniz.
-Bu şekilde indirdip kullandığınız belgelerin zaman ile güncelliğini yitirip https://python-istihza.yazbel.com/ adresindeki belgelerin gerisinde kalabileceğini unutmayın.
+Çevrimdışı olarak kullandığınız belgelerin zaman ile güncelliğini yitirip https://python-istihza.yazbel.com/ adresindeki belgelerin gerisinde kalabileceğini unutmayın.
+
+### PDF olarak indirme
+
+[`/docs/YazbelPythonProgramlamaDiliBelgeleri.pdf`](/docs/YazbelPythonProgramlamaDiliBelgeleri.pdf) dosyasını [bu](https://python-istihza.yazbel.com/YazbelPythonProgramlamaDiliBelgeleri.pdf) link aracılığı ile indirip kullanabilirsiniz.
+
+### EPUB olarak indirme
+
+[`/docs/YazbelPythonProgramlamaDiliBelgeleri.epub`](/docs/YazbelPythonProgramlamaDiliBelgeleri.epub) dosyasını [bu](https://python-istihza.yazbel.com/YazbelPythonProgramlamaDiliBelgeleri.epub) link aracılığı ile indirip kullanabilirsiniz.
+
+### Tek parça HTML olarak indirme
+
+[`/docs/YazbelPythonProgramlamaDiliBelgeleri.html`](/docs/YazbelPythonProgramlamaDiliBelgeleri.html) dosyasını [bu](https://python-istihza.yazbel.com/YazbelPythonProgramlamaDiliBelgeleri.html) link aracılığı ile indirip kullanabilirsiniz.
+
+### Siteyi kaynaktan indirme
+
+Bu veri havuzunu cihazınıza indirebilir ve [`/docs/index.html`](/docs/index.html) dosyasını tarayıcınız ile açabilirsiniz. Bu size belgeleri çevrimiçi olarak kullanmak ile aynı deneyimi sunacaktır.  
 
 ## Belgeleri inşa etme
 
-Buradaki belgeler [reStructuredText] formatında yazılmış ve [Sphinx] kullanılarak derlenmiştir.
+Buradaki belgeler [reStructuredText](http://docutils.sourceforge.net/rst.html) formatında yazılmış ve [Sphinx](http://www.sphinx-doc.org/) kullanılarak derlenmiştir.
 Belgeleri derlemek için öncelikle Sphinx'i kurmalısınız. Sphinx, Python'un 3.6 ve daha yukarı versiyonlarını desteklemektedir.
 Belgelere katkıda bulunmayı planlıyorsanız önce [`CONTRIBUTING.md`](CONTRIBUTING.md) dosyasına başvurun.
 
 ### Debian/Ubuntu
 
-`make`'in sisteminizde kurulu olduğundan emin olduktan sonra Sphinx'i Debian veya Ubuntu'da şu komutla kurabilirsiniz:
+Bir Python3.6+ sürümünün, `pip`'in ve `make`'in sisteminizde kurulu olduğundan emin olduktan sonra projenin kök dizinine gidip bu komut ile gerekli kütüphaneleri kurabilirsiniz:
 
 ```shell
-$ apt install python3-sphinx
+$ python3 -m pip install -r requirements.txt
 ```
 
-Daha sonra projenin kök dizinine gidip bu komutla belgeleri inşa edebilirsiniz:
+Daha sonra yine projenin kök dizinde bu komutu çalıştırarak belgeleri inşa edebilirsiniz:
 
 ```shell
 $ make html
 ```
 
-Belgeleri inşa ettikten sonra `move.py` betiği `/build/html/` içindeki dosya ve klasörleri projenin kök dizinine kopyalayacaktır:
+Belgeleri inşa ettikten sonra `/scripts/move_documents.py` betiği `/build/` içindeki gerekli dosya ve klasörleri `/docs/` içine taşıyacaktır:
 
 ```shell
-$ python3 move.py
+$ python3 ./scripts/move_documents.py
 ```
 
-Bu şekilde inşa ettiğiniz dökümanı görüntülemek için `/index.html` dosyasını tarayıcınız ile açabilirsiniz.
+Bu şekilde inşa ettiğiniz dökümanı görüntülemek için `/docs/index.html` dosyasını tarayıcınız ile açabilirsiniz.
 
 ### Windows
 
-Python'un bilgisayarınızda kurulu olduğundan ve `python.exe`'nin PATH'da bulunduğundan emin olduktan sonra bu kodu ``cmd.exe``'de çalıştırarak Sphinx'i kurabilirsiniz:
+Python'un 3.6 veya daha yüksek bir sürümünün bilgisayarınızda kurulu olduğundan ve `python.exe`'nin PATH'da bulunduğundan emin olduktan sonra projenin kök dizinine gidip bu kodu ``cmd.exe``'de çalıştırarak gerekli kütüphaneleri kurabilirsiniz:
 
 ```shell
-> python -m pip install sphinx
+> python -m pip install -r requirements.txt
 ```
 
 Yükleme işlemi başarıyla gerçekleşmiş ise şu komut size Sphinx'in versiyonunu verecektir:
@@ -65,19 +80,19 @@ Yükleme işlemi başarıyla gerçekleşmiş ise şu komut size Sphinx'in versiy
 > sphinx-build --version
 ```
 
-Daha sonra projenin kök dizinine gidip bu komutla belgeleri inşa edebilirsiniz:
+Daha sonra yine projenin kök dizinde bu komutu çalıştırarak belgeleri inşa edebilirsiniz:
 
 ```shell
 > make.bat html
 ```
 
-Belgeleri inşa ettikten sonra `move.py` betiği `/build/html/` içindeki dosya ve klasörleri projenin kök dizinine kopyalayacaktır:
+Belgeleri inşa ettikten sonra `/scripts/move_documents.py` betiği `/build/` içindeki gerekli dosya ve klasörleri `/docs/` içine taşıyacaktır:
 
 ```shell
-> python move.py
+> python scripts/move_documents.py
 ```
 
-Bu şekilde inşa ettiğiniz dökümanı görüntülemek için `/index.html` dosyasını tarayıcınız ile açabilirsiniz.
+Bu şekilde inşa ettiğiniz dökümanı görüntülemek için `/docs/index.html` dosyasını tarayıcınız ile açabilirsiniz.
 
 ### Diğer işletim sistemleri
 
@@ -92,8 +107,8 @@ konu açarak aklınızdaki soruları sorabilirsiniz. Topluluk size yardım etmek
 
 Belgelere ekleme yaparak veya yazım ve bilgi yanlışlarını düzelterek yardım edebilirsiniz:
 
-- Topluluk tarafından eksikliği hissedilen bazı konular ve belgelerdeki düzeltilmesi gereken hatalar [TODO.md](TODO.md) 
-dosyasında listelenmiş halde bulunuyor. Bu konular üzerinde çalışma yapabilirsiniz.
+- Topluluk tarafından eksikliği hissedilen bazı konular ve belgelerdeki düzeltilmesi gereken hatalar [issues](https://github.com/yazbel/python-istihza/labels/help%20wanted) 
+sayfasında listelenmiş halde bulunuyor. Bu konular üzerinde çalışma yapabilirsiniz.
 
 - Belgelerde değişiklik yaparak çekme isteği (pull request) gönderebilirsiniz. Yazım yanlışları ve küçük hatalar için
 GitHub arayüzünü kullanabilirsiniz ancak daha büyük ve karmaşık düzeltmeler için veri havuzunu bilgisayarınıza çekmeli,
@@ -110,6 +125,3 @@ olmasına dikkat edin.
 [`LICENSE`](LICENSE) dosyasında da belirtildiği üzere bu
 belgelerin lisansı **Creative Commons Atıf-GayriTicari-AynıLisanslaPaylaş 3.0 Yerelleştirilmemiş (CC BY-NC-SA 3.0)**
 lisansıdır. Daha fazla bilgi için lütfen dosyanın içeriğine bakınız.
-
-[reStructuredText]: http://docutils.sourceforge.net/rst.html
-[Sphinx]: http://www.sphinx-doc.org/
