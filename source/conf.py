@@ -43,7 +43,7 @@ exclude_patterns = []
 language = 'tr'
 
 # githubpages extension
-html_baseurl = 'python-istihza.yazbel.com'
+html_baseurl = 'https://python-istihza.yazbel.com/'
 
 # html
 html_title = project
