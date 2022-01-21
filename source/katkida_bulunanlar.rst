@@ -508,3 +508,7 @@ Ali Sezişli
     - RHEL ve CentOS tarafında python3 kurulumu için komut eklendi.
     - pyenv bağımlılıklarının kurulumunda Fedora ve RHEL/CentOS ayrıldı.
 
+Ekrem Dinçel
+=============
+
+    - Belgelerin tekrardan PDF ve EPUB olarak inşa edilmesini sağladı.
