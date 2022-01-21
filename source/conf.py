@@ -51,6 +51,7 @@ html_theme = 'pyramid'
 html_last_updated_fmt = '%d.%m.%Y'
 html_show_sourcelink = False
 html_theme_options = {'nosidebar': True}
+html_favicon = 'favicon.ico'
 
 # epub
 epub_title = project
