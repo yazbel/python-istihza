@@ -42,7 +42,7 @@ extensions = ["sphinx.ext.githubpages"]
 exclude_patterns = []
 language = 'tr'
 
-# githubpages extension
+# this is required for githubpages extension to generate a CNAME file
 html_baseurl = 'https://python-istihza.yazbel.com/'
 
 # html
