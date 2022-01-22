@@ -62,6 +62,24 @@ Diğer işletim sistemlerinde Sphinx kurulumu ve ayrıntılı bilgi için [buray
 
 Önce yukarıdaki adımları takip edip Sphinx'in kurulumunu gerçekleştirin.
 
+Belgeleri diğer formatlarda inşa ettikten sonra da `/scripts/move_documents.py` betiğini çalıştırmayı unutmayın.
+
+### Tek parça HTML olarak inşa etme
+
+Windows'ta:
+
+```shell
+> make.bat singlehtml
+```
+
+Debian/Ubuntu'da:
+
+```shell
+$ make singlehtml
+```
+
+HTML dosyası `/build/singlehtml/` dizininde `index.html` adı ile oluşacaktır.
+
 ### EPUB olarak inşa etme
 
 Windows'ta:
@@ -76,6 +94,8 @@ Debian/Ubuntu'da:
 $ make epub
 ```
 
+EPUB dosyası `/build/epub/` dizininde `Yazbel Python Belgeleri.epub` adı ile oluşacaktır.
+
 ### PDF olarak inşa etme
 
 Belgeleri PDF olarak inşa edebilmek için ``pdflatex`` uygulamasına ihtiyacınız olacak. [MikTeX](https://miktex.org/) veya [TeX Live](https://www.tug.org/texlive/) gibi bir TeX dağıtımını indirerek bu uygulamayı edinebilirsiniz. Bu dağıtımların belgerin inşası için gerekli eklentiler ile birlikte 800 megabyge gibi bir disk alanı kaplayabileceğini unutmayın. TeX dağıtımının kurulumunda bir problem yaşarsanız [buraya](https://www.sphinx-doc.org/en/master/usage/builders/index.html#sphinx.builders.latex.LaTeXBuilder) başvurabilirsiniz.
@@ -85,11 +105,13 @@ Uygun bir TeX dağıtımını kurduktan sonra `pdflatex`'in bulunduğu dizinin P
 Windows'ta:
 
 ```shell
-> make.bat latexpdf
+> make.bat latexpdf > nul
 ```
 
 Debian/Ubuntu'da:
 
 ```shell
-$ make latexpdf
+$ make latexpdf > /dev/null
 ```
+
+Herhangi bir hata oluşmazsa PDF dosyası `/build/latex/` dizininde `yazbelpythonbelgeleri.pdf` adı ile oluşacaktır.
