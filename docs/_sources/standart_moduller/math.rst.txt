@@ -99,7 +99,7 @@ Verdiğiniz birinci parametrenin ikinci parametreye bölümünden kalanı buluyo
 math.frexp()
 ************
 
-Bu fonksiyon aşağıdaki işlemin `m` ve `e` parametrelerini 
+Bu fonksiyon `x` bilindiğinde aşağıdaki denklemin `m` ve `e` parametrelerini 
 bulmaya yarıyor. `m` değerinin mutlak değeri 0,5 ve 1 arasında
 bir değer alıyor.
 ::

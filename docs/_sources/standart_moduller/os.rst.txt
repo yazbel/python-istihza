@@ -819,7 +819,7 @@ Bu da bize 'anadizin' içindeki alt dizinlerin isimlerini veriyor.
 Bir de `kökdizin` değişkeninin ne olduğuna bakalım::
 
     >>> for kökdizin, altdizinler, dosyalar in os.walk('anadizin'):
-    ...     print(yol)
+    ...     print(kökdizin)
     ...
     anadizin
     anadizin\resimler
@@ -834,7 +834,7 @@ Dikkatlice bakın::
 
     >>> for kökdizin, altdizinler, dosyalar in os.walk('anadizin'):
     ...     for dosya in dosyalar:
-    ...             print(os.sep.join([yol, dosya]))
+    ...             print(os.sep.join([kökdizin, dosya]))
     ...
     anadizin\dosya.doc
     anadizin\dosya.jpeg

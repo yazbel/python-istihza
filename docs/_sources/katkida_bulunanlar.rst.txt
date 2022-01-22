@@ -511,5 +511,5 @@ Ali Sezişli
 Ekrem Dinçel
 =============
 
-    - Belgelerin tekrardan PDF ve EPUB olarak inşa edilmesini sağlandı.
-    - Bozuk linkleri düzeltildi.
+    - Belgelerin tekrardan PDF ve EPUB olarak inşa edilmesi sağlandı.
+    - Bozuk linkler düzeltildi.
