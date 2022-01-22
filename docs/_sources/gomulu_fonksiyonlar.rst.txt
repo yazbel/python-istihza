@@ -660,7 +660,7 @@ dönüştürebiliriz::
     >>> s = {'elma': 44, 'armut': 10, 'erik': 100}
     >>> list(s)
 
-    ['armut', 'erik', 'elma']
+    ['elma', 'armut', 'erik']
 
 Bir sözlük listeye dönüştürülürken, elbette sözlüğün anahtarları dikkate
 alınacaktır. Eğer siz sözlüğün anahtarlarından değil de değerlerinde bir liste
@@ -668,7 +668,7 @@ oluşturmak isterseniz şöyle bir kod yazabilirsiniz::
 
     >>> list(s.values())
 
-    [10, 100, 44]
+    [44, 10, 100]
 
 set()
 *******

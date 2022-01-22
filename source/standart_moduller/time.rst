@@ -68,7 +68,7 @@ Ancak bu çıktı, özellikle saat kısmı konusunda her zaman doğru olmayabili
 time()
 =======
 
-``time()`` fonksiyonu, zamanın başlangıcından, o anda içinde bulunduğumuz ana
+``time()`` fonksiyonu, `epok <https://docs.python.org/3/library/time.html#epoch>`_'tan itibaren, o anda içinde bulunduğumuz ana
 kadar geçen toplam saniye miktarını verir::
 
     >>> time.time()

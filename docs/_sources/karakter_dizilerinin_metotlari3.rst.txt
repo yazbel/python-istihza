@@ -753,7 +753,7 @@ Alfabetik karakter dizileri, alfabe harflerinden oluşan karakter dizileridir.
 
 Sayısal karakter dizileri, sayılardan oluşan karakter dizileridir.
 
-Alfanümerik karakter dizileri ise bunun birleşimidir. Yani sayı ve harflerden
+Alfanümerik karakter dizileri ise bunun birleşimidir. Yani sayı ve/veya harflerden
 oluşan karakter dizilerine alfanümerik karakter dizileri adı verilir. Örneğin şu
 karakter dizisi alfanümerik bir karakter dizisidir::
 
