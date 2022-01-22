@@ -1156,13 +1156,13 @@ noktada Python'daki küçük ama önemli bir konuya değinelim bu bölümü kapa
     :align: center
     :width: 75%
 
-Burada belli ki adres çubuğuna `fdkgd.com <http://www.fdkgd.com>`_ diye bir URL
+Burada belli ki adres çubuğuna ``fdkgd.com`` diye bir URL
 yazmışız, ama böyle bir internet adresi olmadığı için, kullandığımız internet
 tarayıcısı bize şöyle bir mesaj vermiş::
 
     Hata! Google Chrome fdkgd.com sitesini bulamadı
 
-Şimdi de `dadasdaf.com <http://dadasdaf.com/>`_ adresini arayalım...
+Şimdi de ``dadasdaf.com`` adresini arayalım...
 
 Yine böyle bir adres olmadığı için, bu defa tarayıcımız bize şöyle bir uyarı
 gösterecek::
