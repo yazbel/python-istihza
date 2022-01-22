@@ -2,9 +2,9 @@
 
 [https://python-istihza.yazbel.com](https://python-istihza.yazbel.com)
 
-Bu belgeler [Python](https://www.python.org/) programlama dilinin 3. sürümünü anlatmaktadır ve
+Bu belgeler [Python](https://www.python.org/) programlama dilinin 3. sürümünü anlatmaktadır. Aslen
 [istihza.com](http://www.istihza.com/)'da yer alan, [Fırat Özgül](http://www.kodlab.com/AuthorDetail.aspx?ID=50)'ün
-yazdığı [Python 3 belgeleri](http://belgeler.istihza.com/py3/)nden oluşturulmuştur.
+yazdığı [Python 3 belgeleri](http://belgeler.istihza.com/py3/)nden oluşturulmuştur ve şu anda topluluk tarafından geliştirilmektedir.
 
 ## Belgeler neden buraya kopyalandı?
 
@@ -17,6 +17,10 @@ Bu veri havuzu sayesinde belgeler, kaynak kodu ile birlikte, bulunabilir ve en �
 Hatta bu gelişime siz de dahil olabilirsiniz!
 
 Bu arada proje sonlandığında bu belgede istihza.com'a verilen bağlantıların çalışmayabileceğini de unutmamalısınız.
+
+## Belgeleri inşa etmek
+
+Belgelerde bir değişiklik yapmak ve belgeleri inşa etmek için [``BUILDING.md``](BUILDING.md) dosyasına başvurun.
 
 ## Belgelerden çevrimdışı iken faydalanmak
 
@@ -37,66 +41,6 @@ Bu arada proje sonlandığında bu belgede istihza.com'a verilen bağlantıları
 ### Siteyi kaynaktan indirme
 
 Bu veri havuzunu cihazınıza indirebilir ve [`/docs/index.html`](/docs/index.html) dosyasını tarayıcınız ile açabilirsiniz. Bu size belgeleri çevrimiçi olarak kullanmak ile aynı deneyimi sunacaktır.  
-
-## Belgeleri inşa etme
-
-Buradaki belgeler [reStructuredText](http://docutils.sourceforge.net/rst.html) formatında yazılmış ve [Sphinx](http://www.sphinx-doc.org/) kullanılarak derlenmiştir.
-Belgeleri derlemek için öncelikle Sphinx'i kurmalısınız. Sphinx, Python'un 3.6 ve daha yukarı versiyonlarını desteklemektedir.
-Belgelere katkıda bulunmayı planlıyorsanız önce [`CONTRIBUTING.md`](CONTRIBUTING.md) dosyasına başvurun.
-
-### Debian/Ubuntu
-
-Bir Python3.6+ sürümünün, `pip`'in ve `make`'in sisteminizde kurulu olduğundan emin olduktan sonra projenin kök dizinine gidip bu komut ile gerekli kütüphaneleri kurabilirsiniz:
-
-```shell
-$ python3 -m pip install -r requirements.txt
-```
-
-Daha sonra yine projenin kök dizinde bu komutu çalıştırarak belgeleri inşa edebilirsiniz:
-
-```shell
-$ make html
-```
-
-Belgeleri inşa ettikten sonra `/scripts/move_documents.py` betiği `/build/` içindeki gerekli dosya ve klasörleri `/docs/` içine taşıyacaktır:
-
-```shell
-$ python3 ./scripts/move_documents.py
-```
-
-Bu şekilde inşa ettiğiniz dökümanı görüntülemek için `/docs/index.html` dosyasını tarayıcınız ile açabilirsiniz.
-
-### Windows
-
-Python'un 3.6 veya daha yüksek bir sürümünün bilgisayarınızda kurulu olduğundan ve `python.exe`'nin PATH'da bulunduğundan emin olduktan sonra projenin kök dizinine gidip bu kodu ``cmd.exe``'de çalıştırarak gerekli kütüphaneleri kurabilirsiniz:
-
-```shell
-> python -m pip install -r requirements.txt
-```
-
-Yükleme işlemi başarıyla gerçekleşmiş ise şu komut size Sphinx'in versiyonunu verecektir:
-
-```shell
-> sphinx-build --version
-```
-
-Daha sonra yine projenin kök dizinde bu komutu çalıştırarak belgeleri inşa edebilirsiniz:
-
-```shell
-> make.bat html
-```
-
-Belgeleri inşa ettikten sonra `/scripts/move_documents.py` betiği `/build/` içindeki gerekli dosya ve klasörleri `/docs/` içine taşıyacaktır:
-
-```shell
-> python scripts/move_documents.py
-```
-
-Bu şekilde inşa ettiğiniz dökümanı görüntülemek için `/docs/index.html` dosyasını tarayıcınız ile açabilirsiniz.
-
-### Diğer işletim sistemleri
-
-Diğer işletim sistemlerinde Sphinx kurulumu ve ayrıntılı bilgi için [buraya](https://www.sphinx-doc.org/en/master/usage/installation.html) bakabilirsiniz.
 
 ## Nasıl yardım alabilirim?
 
