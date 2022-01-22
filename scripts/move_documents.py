@@ -13,7 +13,7 @@ project = 'Yazbel Python Belgeleri'
 
 epub_file = join(build, 'epub', '{}.epub'.format(project))
 pdf_file = join(build, 'latex', '{}.pdf'.format(project.replace(' ', '').lower()))
-html_file = join(build, 'singlehtml', f'index.html')
+html_file = join(build, 'singlehtml', 'index.html')
 
 output_name = 'YazbelPythonProgramlamaDiliBelgeleri'
 for file in [epub_file, pdf_file, html_file]:
