@@ -2,6 +2,7 @@ import os
 from os.path import join, dirname, realpath, exists
 import shutil
 
+# TODO: put these in a utils module or something
 file = realpath(__file__)
 script_dir = dirname(file)
 root = dirname(script_dir)
