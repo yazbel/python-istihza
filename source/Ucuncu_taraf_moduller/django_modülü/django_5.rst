@@ -88,7 +88,7 @@ Yeni hali aşağıdaki gibi olmalı.
 Bu şekilde ilk işlecimizi yazdık şimdi `isim` ve `ulke` adında iki tane anahtar değer döndürdük. Bu değerleri istediğimiz HTML sayfasında kullanabiliriz.
 Denemek için `templates` klasörü altında `index.html` oluşturalım ardından HTML dosyasmıza aşağıdaki kodu yazalım.
 
-.. code-block:: python
+.. code-block:: html
 
     <!DOCTYPE html>
     <html>
@@ -153,7 +153,9 @@ ana tema blogumuzu, tüm sayfalarda ortak olan diğer blok parçalarının yolla
             'search_not_found': search_not_found, 'social_account': social_account, 'tag_cloud': tag_cloud,
             'blockquote': blockquote}
 
-HTML Sayfamız::
+HTML Sayfamız:
+
+.. code-block:: django
 
     {% extends base_components %}
     {% block title %}İletişime Geç {% endblock %}

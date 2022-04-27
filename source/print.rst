@@ -222,7 +222,9 @@ yeri?
 Üç tırnak işaretlerini her türlü karakter dizisiyle birlikte kullanabiliyor
 olsak da, bu tırnak tipi çoğunlukla sadece birden fazla satıra yayılmış karakter
 dizilerini tanımlamada kullanılır. Örneğin şöyle bir ekran çıktısı vermek
-istediğinizi düşünün::
+istediğinizi düşünün:
+
+.. code-block:: pycon
 
     [H]=========HARMAN========[-][o][x]
     |                                 |

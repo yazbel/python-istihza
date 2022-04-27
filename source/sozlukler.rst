@@ -496,9 +496,9 @@ Sözlüklerin öteki veri tiplerinden önemli bir farkı, sözlük içinde yer
 alan öğelerin herhangi bir sıralama mantığına sahip olmamasıdır. Yani sözlükteki
 öğeler açısından 'sıra' diye bir kavram yoktur.
 
-.. note:: Python3.7'dan başlayarak sözlükler içerdikleri öğelerin eklenme sırasını korumaktadır. Python'un 3.7'den yüksek bir versiyonunda 
-oluşturduğunuz sözlükleri ekrana yazdırmayı denerseniz sözlüğü oluştururken elemanların içinde bulunduğu sıranın korunduğunu siz de görebilirsiniz.
-Ancak sözlüklerin elemanlarına listeler gibi bir sıra ile (``liste[sıra]`` gibi) erişelemez. Ayrıntılı bilgi için `buraya <https://stackoverflow.com/questions/39980323/are-dictionaries-ordered-in-python-3-6>`_ bakabilirsiniz.
+.. note:: Python3.7'dan başlayarak sözlükler içerdikleri öğelerin eklenme sırasını korumaktadır. Python'un 3.7'den yüksek bir versiyonunda
+    oluşturduğunuz sözlükleri ekrana yazdırmayı denerseniz sözlüğü oluştururken elemanların içinde bulunduğu sıranın korunduğunu siz de görebilirsiniz.
+    Ancak sözlüklerin elemanlarına listeler gibi bir sıra ile (``liste[sıra]`` gibi) erişelemez. Ayrıntılı bilgi için `buraya <https://stackoverflow.com/questions/39980323/are-dictionaries-ordered-in-python-3-6>`_ bakabilirsiniz.
 
 Örneğin bir liste, demet veya karakter dizisi içindeki öğelere; bu öğelerin o
 liste, demet veya karakter dizisi içindeki sıralarına göre erişebilirsiniz::
@@ -535,8 +535,8 @@ Dikkatlice bakın::
 
     {'a': '0', 'c': '2', 'b': '1'}
 
-.. note:: Yukarıda da dediğimiz gibi, Python3.7+ versiyonlarında buradaki örneğin aksine 
-elemanlar her zaman onları sözlüğe eklediğiniz sırada ekrana yazılacaktır.
+.. note:: Yukarıda da dediğimiz gibi, Python3.7+ versiyonlarında buradaki örneğin aksine
+    elemanlar her zaman onları sözlüğe eklediğiniz sırada ekrana yazılacaktır.
 
 Bu çıktıyı iyi inceleyin. Göreceğiniz gibi, çıktıda görünen öğeler bizim sözlüğü
 tanımladığımız sıradaki gibi değil. Biz sözlüğü 'a', 'b' ve 'c' şeklinde

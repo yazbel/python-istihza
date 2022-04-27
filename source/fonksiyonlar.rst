@@ -993,7 +993,9 @@ Kodlarımız dosya içinde tam olarak şöyle görünüyor::
 
     kopyala("deneme.txt", "/home/istihza/Desktop")
 
-Bu kodları bir dosyaya kaydedip çalıştırdığımızda şöyle bir çıktı alırız::
+Bu kodları bir dosyaya kaydedip çalıştırdığımızda şöyle bir çıktı alırız:
+
+.. code-block:: pycon
 
     deneme.txt adlı dosya /home/istihza/Desktop adlı dizin içine kopyalandı!
 
@@ -1136,7 +1138,9 @@ fonksiyonu şu şekilde çağırabiliriz::
 
     kur()
 
-Eğer ``kur()`` fonksiyonunu böyle çağırırsak bize şu çıktıyı verecektir::
+Eğer ``kur()`` fonksiyonunu böyle çağırırsak bize şu çıktıyı verecektir:
+
+.. code-block:: pycon
 
     Program /usr/bin/ dizinine kuruldu!
 
@@ -1150,7 +1154,9 @@ fonksiyonunu şöyle çağırmalıyız::
     kur("C:\\Users\\firat")
 
 ``kur()`` fonksiyonunu yukarıdaki gibi çağırdığımızda Python bize şöyle bir
-çıktı verir::
+çıktı verir:
+
+.. code-block:: pycon
 
     Program C:\Users\firat dizinine kuruldu!
 
@@ -1523,7 +1529,9 @@ ekrana basmak olmasını istemeyebilirsiniz.
 Örneğin yukarıdaki fonksiyon yardımıyla kullanıcıdan ismini aldıktan sonra, bu
 isim bilgisini başka bir karakter dizisi içinde kullanmak isteyebilirsiniz.
 Diyelim ki amacınız ``ismin_ne()`` fonksiyonuyla aldığınız ismi şu karakter
-dizisi içine aşağıdaki şekilde yerleştirmek::
+dizisi içine aşağıdaki şekilde yerleştirmek:
+
+.. code-block:: text
 
     Merhaba Fırat. Nasılsın?
 
@@ -1531,7 +1539,9 @@ Bildiğimiz yöntemi kullanarak bu amacımızı gerçekleştirmeye çalışalım
 
     print("Merhaba {}. Nasılsın?".format(ismin_ne()))
 
-Buradan şöyle bir çıktı alıyoruz::
+Buradan şöyle bir çıktı alıyoruz:
+
+.. code-block:: pycon
 
     ismin ne? Fırat
     Fırat
@@ -1547,7 +1557,9 @@ fonksiyonu şu şekilde çağırarak bunu daha net görebilirsiniz::
 
     print(ismin_ne())
 
-Buradan şu çıktıyı alıyoruz::
+Buradan şu çıktıyı alıyoruz:
+
+.. code-block:: pycon
 
     ismin ne? Fırat
     Fırat
@@ -1609,6 +1621,8 @@ döndürürsek işler değişir::
     print("Merhaba {}. Nasılsın?".format(ismin_ne()))
 
 Bu kodları çalıştırdığımızda şu çıktıyı alıyoruz::
+
+.. code-block:: pycon
 
     ismin ne? Fırat
     Merhaba Fırat. Nasılsın?

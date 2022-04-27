@@ -89,16 +89,16 @@ autoreset=False
 
 	from colorama import Fore, init
 	init(autoreset=False)
-	print(Fore.RED + “Bu kırmızı olur ama;”)
-	print(“Bunun rengi default’tur”)
+	print(Fore.RED + "Bu kırmızı olur ama;")
+	print("Bunun rengi default'tur")
 
 .. code-block:: python
 
 	from colorama import Fore, init
 	init(autoreset=False) #Böyle yapsak da değişmez: init()
 	#çünkü bu zaten öntanımlıdır
-	print(Fore.RED+”Artık bundan sonra yazdırılan her şey değiştirilmediği sürece kırmızıdır”)
-	print(“mesela bu kırmızı”)
+	print(Fore.RED+"Artık bundan sonra yazdırılan her şey değiştirilmediği sürece kırmızıdır")
+	print("mesela bu kırmızı")
 
 Diğerlerine ihtiyacınızın olmayacağını düşündüğümüz için buraya yazmadık.
 Diğer argümanları colorama PyPI sayfasında görebilirsiniz.
