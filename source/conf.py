@@ -22,7 +22,8 @@ needs_sphinx = '4.2'
 
 file = os.path.realpath(__file__)
 source_dir = os.path.dirname(file)
-config_dir = join(source_dir, "_configuration")
+
+config_dir = "_configuration"
 repl_file_path = join(config_dir, 'replacements.txt')
 rst_prolog = '.. include:: {}'.format(repl_file_path)
 
