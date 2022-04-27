@@ -630,7 +630,7 @@ Burada `darbelenen` parametresini iptal ettik. Kimin durumunun yenileceğini
 Gördüğünüz gibi, eğer rakibi darbeleyip onun can ve enerji durumunu yenilemek
 istiyorsak, ilgili fonksiyonu ``rakip.darbele()`` şeklinde çağırıyoruz.
 Kendimizin durumunu yenilemek istediğimizde ise ``self.darbele()`` komutunu
-kullanıyoruz. Tabii `darbele` fonksiyonunu bu şekilde tanımlayacaksak ismini `darbe_al` 
+kullanıyoruz. Tabii `darbele` fonksiyonunu bu şekilde tanımlayacaksak ismini `darbe_al`
 olarak belirlemek daha anlamlı olur.
 
 Sınıfımızı tanımladığımıza göre artık bu sınıfı nasıl kullanacağımızı incelemeye

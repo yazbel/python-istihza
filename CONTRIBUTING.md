@@ -14,4 +14,4 @@ Belgeleri inşa etmek ve pull request (çekme isteği) yapmaya hazır hale getir
 
 Belgeleri düzgün bir şekilde inşa ettikten sonra değiştirdiğiniz bütün HTML ve reStructuredText dosyalarını çekme isteğine dahil edin. Yaptığınız değişimler hakkında bilgi vermeyi de unutmayın.
 
-Katkılarınız için teşekkürler. 
+Katkılarınız için teşekkürler.

@@ -278,7 +278,7 @@ Bu durumda ``pyenv versions`` komutunun çıktısı şu şekilde olacaktır::
     3.6.9
     * 3.8.5 (set by /home/{kullanıcı-adınız}/.pyenv/version)
 
-`pyenv` ile kurulan sürümlerin kullanılabilmesi için 3 farklı komut bulunmaktadır. 
+`pyenv` ile kurulan sürümlerin kullanılabilmesi için 3 farklı komut bulunmaktadır.
 
 * ``pyenv local``::
 
@@ -295,10 +295,10 @@ Bu durumda `proje1` dizininde ``python`` komutu `3.6.9` sürümü, bunun dışı
 
 * ``pyenv global``::
 
-    pyenv global <python-sürümü> 
+    pyenv global <python-sürümü>
 
-Kurulum kısmında da bahsettiğimiz gibi aktif kullandığınız Python sürümünü ``global`` komutu ile etkinleştirerek sürekli olarak kullanabilirsiniz. Python2 yüklü sistemlerde ``python`` komutu Python2 sürümünü çalıştırırken, ``global`` komutu ile aktifleştirme sonrasında ``python`` yazdığınızda seçtiğiniz Python sürümü çalışacaktır. 
-    
+Kurulum kısmında da bahsettiğimiz gibi aktif kullandığınız Python sürümünü ``global`` komutu ile etkinleştirerek sürekli olarak kullanabilirsiniz. Python2 yüklü sistemlerde ``python`` komutu Python2 sürümünü çalıştırırken, ``global`` komutu ile aktifleştirme sonrasında ``python`` yazdığınızda seçtiğiniz Python sürümü çalışacaktır.
+
     ``pyenv global 3.8.5``
 
 * ``pyenv shell``::

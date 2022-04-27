@@ -2,7 +2,7 @@
 Pencere Araçları - 2
 ####################
 
-Pencere araçlarının birinci bölümünde, oldukça temel olan araçları inceledik. Bu bölümde, programın daha kullanışlı olmasını sağlayan, daha iyi bir görünüm imkanı veren, daha dinamik olan, daha ileri pencere araçlarını inceleyeceğiz. 
+Pencere araçlarının birinci bölümünde, oldukça temel olan araçları inceledik. Bu bölümde, programın daha kullanışlı olmasını sağlayan, daha iyi bir görünüm imkanı veren, daha dinamik olan, daha ileri pencere araçlarını inceleyeceğiz.
 
 Popup
 =====
@@ -63,7 +63,7 @@ Popup pencerelerini oluşturmak için öncelikle kivy.uix.popup.Popup sınıfın
 	                               markup = True,
 	                               size_hint_y = .2
 	                               ))
-	        
+
 	        govde.add_widget(Label(text = "Popup penceresi başarıyla oluşturuldu",
 	                               markup = True,
 	                               halign = "left"))
@@ -109,7 +109,7 @@ Bunun iki yolu var. Birincisi, Popup penceresi dışındaki bir alana basıldı�
 	                               markup = True,
 	                               size_hint_y = .2
 	                               ))
-	        
+
 	        govde.add_widget(Label(text = "Popup penceresi\nbaşarıyla oluşturuldu.\nPencereyi kapatmak için\nalan dışında bir\nyere tıklayın",
 	                               markup = True,
 	                               halign = "left"))
@@ -118,7 +118,7 @@ Bunun iki yolu var. Birincisi, Popup penceresi dışındaki bir alana basıldı�
 	        # size_hint = (None,None) yazmamızın sebebi
 	        # otomatik orantılı boyutlandırmayı kapatmak
 	        # ve pixel bazında boyutlandırmaya izin vermek içindir
-	        
+
 	        popup = Popup(title = "Mesajınız",
 	                      content = govde,
 	                      auto_dismiss = True,
@@ -130,7 +130,7 @@ Bunun iki yolu var. Birincisi, Popup penceresi dışındaki bir alana basıldı�
 
 	Yazbel().run()
 
-Programı çalıştırıp, Popup alanı dışındaki bir alana tıklarsanız Popup kapatılacaktır. Popup pencerelerini kapatmanın bir diğer yolu, dismiss() metodunu kullanmaktır. Bu sefer ki örneğimizde kullanıcı programdan çıkmak istesin ve biz de, evet - hayır dialog kutusu göstererek onaylayalım. Eğer kullanıcı hayır derse, Popup pencereyi kapatalım. Evet derse programdan çıkış yapalım. 
+Programı çalıştırıp, Popup alanı dışındaki bir alana tıklarsanız Popup kapatılacaktır. Popup pencerelerini kapatmanın bir diğer yolu, dismiss() metodunu kullanmaktır. Bu sefer ki örneğimizde kullanıcı programdan çıkmak istesin ve biz de, evet - hayır dialog kutusu göstererek onaylayalım. Eğer kullanıcı hayır derse, Popup pencereyi kapatalım. Evet derse programdan çıkış yapalım.
 
 .. code-block:: python
 
@@ -147,37 +147,37 @@ Programı çalıştırıp, Popup alanı dışındaki bir alana tıklarsanız Pop
 
 	class Yazbel(App):
 	    def build(self):
-	        
+
 	        self.buton = Button(text = "Çıkış Yap")
 	        self.buton.bind(on_release = self.cikis)
 
 	        return self.buton
 
 	    def cikis(self,instance = None):
-	        
+
 	        govde = GridLayout(cols = 1)
-	        
+
 	        govde.add_widget(Label(markup = True,text = "[color=#fff]Çıkmak istiyor musunuz?[/color]",size_hint_y = .1))
 	        govde.add_widget(Widget(size_hint_y = .1))
-	        
+
 	        buton = BoxLayout(size_hint_y = .2)
 	        buton.add_widget(Button(text = "Evet",markup = True,size_hint_y = .7,on_release = self.kontrol))
 	        buton.add_widget(Button(text = "Hayır",markup = True,size_hint_y = .7,on_release = self.kontrol))
-	        
+
 	        govde.add_widget(buton)
 
 	        # Penceremizin boyutlarını 200x200 olarak ayarladık
 	        # size_hint = (None,None) yazmamızın sebebi
 	        # otomatik orantılı boyutlandırmayı kapatmak
 	        # ve pixel bazında boyutlandırmaya izin vermek içindir
-	        
+
 	        self.popup = Popup(title = "Çıkış",
 	                      content = govde,
 	                      auto_dismiss = False,
 	                      size_hint = (None,None),
 	                      size = (200,200))
 
-	        
+
 
 	        self.popup.open()
 
@@ -191,11 +191,11 @@ Programı çalıştırıp, Popup alanı dışındaki bir alana tıklarsanız Pop
 
 	Yazbel().run()
 
-Şimdi örneğimizi biraz inceleyelim. İlk olarak bir buton tanımladık ve tıklanıp bırakıldığı zaman(on_release) cikis() metoduna geçiş yapmasını sağladık. Bu metod içerisinde kullanıcıya çıkış yapmak istediğinden emin olup olmadığını soracağımız bir Popup penceresi göstereceğiz. Ve bu Popup penceresi içerisinde yer alacak gövdemizi tanımladık. Gövdemiz bir GridLayout ve biz bunun içerisine yazımızı ve butonlarımızı koyarak rahatlıkla Popup üzerinde gösterebiliriz. 
+Şimdi örneğimizi biraz inceleyelim. İlk olarak bir buton tanımladık ve tıklanıp bırakıldığı zaman(on_release) cikis() metoduna geçiş yapmasını sağladık. Bu metod içerisinde kullanıcıya çıkış yapmak istediğinden emin olup olmadığını soracağımız bir Popup penceresi göstereceğiz. Ve bu Popup penceresi içerisinde yer alacak gövdemizi tanımladık. Gövdemiz bir GridLayout ve biz bunun içerisine yazımızı ve butonlarımızı koyarak rahatlıkla Popup üzerinde gösterebiliriz.
 
 İki adet buton ekledik. Evet ve Hayır butonları. Dikkat ederseniz ikisinin de olaylarına aynı metodu verdik. Yani iki butondan hangisi basılırsa basılsın kontrol() metoduna geçiş yapılacaktır. Biz de bu metod içerisinde tıklanan butonun yazısını ele aldık ve eğer "Evet" butonuna basıldıysa, Window sınıfının close() metodunu kullanarak programdan sağlıklı bir şekilde çıkış yaptık. Yazacağınız programlarda, programınızın içerisinde bir yerde programdan çıkış yapmak isterseniz, bu metodu kullanmanızı tavsiye ederim.
 
-Sonra, eğer "Hayır" butonuna basıldıysa popup penceremizi dismiss() metodu yardımıyla kapattık. Böylece kodumuzu tamamlamış olduk. 
+Sonra, eğer "Hayır" butonuna basıldıysa popup penceremizi dismiss() metodu yardımıyla kapattık. Böylece kodumuzu tamamlamış olduk.
 
 Popup penceresine ait bazı özellikleri inceleyelim
 

@@ -236,7 +236,7 @@ Sürüm Yöneticisi ile Kurulum (pyenv)
 
 Sisteminize bir veya birden fazla Python sürümü kurmak istiyorsunuz fakat root hakları, kaynaktan sürüm derlemeleri vb. işlemler gözünüzü mü korkutuyor? Bütün bu işlemleri çok daha hızlı, pratik ve güvenli bir şekilde `pyenv` ile gerçekleştirebilirsiniz. `pyenv` sisteminizde birden fazla Python sürümünü kullanabilmenizi sağlayan ve birçok kolaylığı da beraberinde getiren bir araçtır. Bunun için öncelikle `pyenv-installer` ile sistemimize `pyenv` kurmamız gerekmektedir. Kurulum için aşağıdaki komutu çalıştırmanız yeterlidir::
 
-    curl https://pyenv.run | bash 
+    curl https://pyenv.run | bash
 
 Kurulum tamamlandıktan sonra aşağıdaki şekilde bir mesaj çıkacaktır::
 
@@ -246,7 +246,7 @@ Kurulum tamamlandıktan sonra aşağıdaki şekilde bir mesaj çıkacaktır::
     export PATH="$HOME/.pyenv/bin:$PATH"
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
-    
+
 Buradaki son 3 satırı ana dizininizdeki ``.bashrc`` dosyanızın *(veya farklı bir shell kullanıyorsanız ilgili dosyanın)* sonuna eklemeniz gerekmektedir. Eklemeyi yapıp kaydettikten sonra `pyenv`'i kullanmaya başlamak için terminali yeniden başlatmanız veya terminale ``source ~/.bashrc`` yazmanız yeterlidir.
 
 `pyenv` ile yükleyebileceğiniz Python sürümlerini listeleyebilmek için tek yapmanız gereken şu komutu çalıştırmaktır::
@@ -292,7 +292,7 @@ Yeni Sürümlerin Kurulumu
 
 Bu komut ile ``3.8.5`` sürümü sisteminize yüklenecektir.
 
-Yüklenen Sürümün Kullanımı 
+Yüklenen Sürümün Kullanımı
 ---------------------------
 
 Yüklediğiniz sürümün doğrulamasını yapmak için ``pyenv versions`` komutunu çalıştırabilirsiniz. Eğer yükleme uygun bir şekilde tamamlandı ise komutu çalıştırdığınızda görmeniz gereken çıktı şu şekildedir::

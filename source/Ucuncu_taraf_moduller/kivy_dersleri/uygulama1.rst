@@ -3,7 +3,7 @@ Uygulama 1 - Resim Görüntüleyici
 
 Şimdiye kadar öğrendiklerimiz ile örnek bir uygulama yapma zamanı geldi. Çünkü uygulamadıkça öğrenmemiz eksik kalır. O yüzden bir örnek yapalım
 
-Örneğimiz bir resim görüntüleyici. Bir klasör içinde bulunan resimleri listeler, sonra bunları ileri ve geri butonlarına bastıkça görüntüler. Planımız ise şöyle. Girişte bir yazı ve bir progressbar olacak. Resimler yüklenirken progressbar üzerinde yüklenme durumu gösterilecek. Tabi, resimler az olduğunda çok hızlı bir şekilde yüklenecek. Ancak örnekte de bulunsun diye bir progressbar eklemek istedim. 
+Örneğimiz bir resim görüntüleyici. Bir klasör içinde bulunan resimleri listeler, sonra bunları ileri ve geri butonlarına bastıkça görüntüler. Planımız ise şöyle. Girişte bir yazı ve bir progressbar olacak. Resimler yüklenirken progressbar üzerinde yüklenme durumu gösterilecek. Tabi, resimler az olduğunda çok hızlı bir şekilde yüklenecek. Ancak örnekte de bulunsun diye bir progressbar eklemek istedim.
 
 Resimlerimiz yüklendikten sonra, ekrandaki yazıyı ve progressbar'ı kaldırıp yerine ana ekranımızı koyacağız. Bunu da ayrı bir fonksiyon içinde yaptık. O zaman şimdi kodumuzu görelim, sonra da incelemeye başlayalım
 
@@ -24,7 +24,7 @@ Resimlerimiz yüklendikten sonra, ekrandaki yazıyı ve progressbar'ı kaldırı
 	import os
 
 	class Program(App):
-	    
+
 	    def resimYukle(self,dosya_yolu):
 	        # Format listesi
 	        liste = ["png","gif","jpeg","jpg"]
@@ -34,12 +34,12 @@ Resimlerimiz yüklendikten sonra, ekrandaki yazıyı ve progressbar'ı kaldırı
 	        self.sayac = 0
 	        self.bar.max = len(dosyaListesi)
 	        self.bar.value = 0
-	        
+
 	        # Resim dosyalarını tespit etme
 	        for i in dosyaListesi:
 	            if(i.split(".")[-1] in liste):
 	                self.resimListesi.append(i)
-	                
+
 	            self.sayac += 1
 	            self.bar.value = self.sayac
 
@@ -52,17 +52,17 @@ Resimlerimiz yüklendikten sonra, ekrandaki yazıyı ve progressbar'ı kaldırı
 	        self.resimYolu = "resim/"
 	        self.resimListesi = list()
 	        self.resimSirasi = 0
-	        
+
 	        self.yukleniyor = Label(text = "Resimler yükleniyor...")
 	        self.bar = ProgressBar()
-	        
+
 	        self.govde = BoxLayout(orientation = "vertical")
 	        self.govde.add_widget(self.yukleniyor)
 	        self.govde.add_widget(self.bar)
-	        
+
 	        # Resimleri yüklemek üzere, self.resimYukle fonksiyonuna git
 	        Clock.schedule_once(lambda event = None:self.resimYukle(self.resimYolu),1)
-		
+
 	        return self.govde
 
 	    def basla(self,event = None):
@@ -80,12 +80,12 @@ Resimlerimiz yüklendikten sonra, ekrandaki yazıyı ve progressbar'ı kaldırı
 
 	        # Geri ve ileri butonlarını taşıyan BoxLayout
 	        self.butonBar = BoxLayout(size_hint_y = .15)
-	        
+
 	        self.ileri = Button(text = "ileri",
 	                            size_hint_x = .2,
 	                            on_release = self.ileriYukle
 	                            )
-	        
+
 	        self.geri = Button(text = "geri",
 	                           size_hint_x = .2,
 	                           on_release = self.geriYukle)
@@ -116,11 +116,11 @@ Resimlerimiz yüklendikten sonra, ekrandaki yazıyı ve progressbar'ı kaldırı
 	                self.resimSirasi = 0
 	                self.resim.source = self.resimYolu+self.resimListesi[self.resimSirasi]
 	                self.bilgi.text = self.resimListesi[self.resimSirasi]
-	                
+
 	            except Exception as e:
 	                self.bilgi.text = "Yuklenemedi: {}".format(self.resimListesi[self.resimSirasi])
 
-	    
+
 	    def geriYukle(self,event = None):
 	        self.resimSirasi -= 1
 
@@ -143,10 +143,10 @@ Resimlerimiz yüklendikten sonra, ekrandaki yazıyı ve progressbar'ı kaldırı
 	            except Exception as e:
 	                print(e)
 	                self.bilgi.text = "Yuklenemedi: {}".format(self.resimListesi[self.resimSirasi])
-	                
+
 	Program().run()
 
-Öncelikle, programımız başlar başlamaz yazıyı ve progressbar'ı ekliyoruz sonra da resimlerin yüklenmesi için self.resimYukle fonksiyonuna gidiyoruz. 
+Öncelikle, programımız başlar başlamaz yazıyı ve progressbar'ı ekliyoruz sonra da resimlerin yüklenmesi için self.resimYukle fonksiyonuna gidiyoruz.
 
 .. code-block:: python
 
@@ -159,12 +159,12 @@ Resimlerimiz yüklendikten sonra, ekrandaki yazıyı ve progressbar'ı kaldırı
         self.sayac = 0
         self.bar.max = len(dosyaListesi)
         self.bar.value = 0
-        
+
         # Resim dosyalarını tespit etme
         for i in dosyaListesi:
             if(i.split(".")[-1] in liste):
                 self.resimListesi.append(i)
-                
+
             self.sayac += 1
             self.bar.value = self.sayac
 
@@ -175,11 +175,11 @@ Resimlerimiz yüklendikten sonra, ekrandaki yazıyı ve progressbar'ı kaldırı
 
 Bu fonksiyonda ilk olarak, hangi resim formatlarını göstereceğimizi bir listede tuttuk. Farklı resim formatları da ekleyebilirsiniz. Biz şimdilik bu 4 formatı tercih ettik. Bu formatlar dışındaki resimleri dikkate almayacaktır.
 
-Formatlarımızı tanımladıktan sonra, os.listdir() yardımıyla hangi klasördeki resimleri göstermek istiyorsak, o klasördeki dosyaları liste olarak elde ediyoruz. Bakın resimleri değil, dosyaları diyorum. Çünkü os.listdir() sadece verilen dizindeki dosyaların listesini verir. Bu listeden resim dosyalarını, bizim belirlediğimiz formatta olanları, ayırt etmek bizim işimiz. 
+Formatlarımızı tanımladıktan sonra, os.listdir() yardımıyla hangi klasördeki resimleri göstermek istiyorsak, o klasördeki dosyaları liste olarak elde ediyoruz. Bakın resimleri değil, dosyaları diyorum. Çünkü os.listdir() sadece verilen dizindeki dosyaların listesini verir. Bu listeden resim dosyalarını, bizim belirlediğimiz formatta olanları, ayırt etmek bizim işimiz.
 
-Bu yüzden hemen aşağısında for döngüsü ile bu listenin elemanlarını tek tek kontrol ettik, ve uzantısı bizim belirttiğimiz uzantılardan biriyle eşleşiyorsa, self.resimListesi adlı listemize ekledik. 
+Bu yüzden hemen aşağısında for döngüsü ile bu listenin elemanlarını tek tek kontrol ettik, ve uzantısı bizim belirttiğimiz uzantılardan biriyle eşleşiyorsa, self.resimListesi adlı listemize ekledik.
 
-Tüm resimleri tespit ettikten sonra, 1 saniye sonra self.basla fonksiyonuna gidiyoruz. Bu fonksiyonda, ekrandaki tüm araçları self.govde.clear_widgets() ile temizledik ve yeni araçlarımızı ekledik. 
+Tüm resimleri tespit ettikten sonra, 1 saniye sonra self.basla fonksiyonuna gidiyoruz. Bu fonksiyonda, ekrandaki tüm araçları self.govde.clear_widgets() ile temizledik ve yeni araçlarımızı ekledik.
 
 .. code-block:: python
 
@@ -198,12 +198,12 @@ Tüm resimleri tespit ettikten sonra, 1 saniye sonra self.basla fonksiyonuna gid
 
         # Geri ve ileri butonlarını taşıyan BoxLayout
         self.butonBar = BoxLayout(size_hint_y = .15)
-        
+
         self.ileri = Button(text = "ileri",
                             size_hint_x = .2,
                             on_release = self.ileriYukle
                             )
-        
+
         self.geri = Button(text = "geri",
                            size_hint_x = .2,
                            on_release = self.geriYukle)
@@ -216,7 +216,7 @@ Tüm resimleri tespit ettikten sonra, 1 saniye sonra self.basla fonksiyonuna gid
 		self.govde.add_widget(self.resim)
 		self.govde.add_widget(self.butonBar)
 
-Bu fonksiyonda yabancı olduğumuz bir kod yok sanırım.Kullandığımız tüm pencere araçlarını daha önce gördük. Sadece butonBar içine eklediğimiz bir adet boş widget var. Onu da iki butonun arasını doldurmak için ekledik. Eklemeseydik de olurdu tabi. 
+Bu fonksiyonda yabancı olduğumuz bir kod yok sanırım.Kullandığımız tüm pencere araçlarını daha önce gördük. Sadece butonBar içine eklediğimiz bir adet boş widget var. Onu da iki butonun arasını doldurmak için ekledik. Eklemeseydik de olurdu tabi.
 
 Butonlarımızı ekledik ve ileri butonuna tıklandığı zaman, self.ileriYukle fonksiyonumuzun çalışmasını sağladık.
 
@@ -239,7 +239,7 @@ Butonlarımızı ekledik ve ileri butonuna tıklandığı zaman, self.ileriYukle
                 self.resimSirasi = 0
                 self.resim.source = self.resimYolu+os.sep+self.resimListesi[self.resimSirasi]
                 self.bilgi.text = self.resimListesi[self.resimSirasi]
-                
+
             except Exception as e:
                 self.bilgi.text = "Yuklenemedi: {}".format(self.resimListesi[self.resimSirasi])
 

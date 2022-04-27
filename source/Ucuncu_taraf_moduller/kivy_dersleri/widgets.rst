@@ -6,13 +6,13 @@ Temel Pencere Araçları
 
 Bu bölümde, Kivy içerisinde bulunan pencere araçlarından bahsedeceğiz. Bu bölüm, Kivy API kaynaklarından yardım alarak oluşturulmuştur. Kivy dökümanlarında `Widgets`_ sayfasına bakabilirsiniz
 
-Tüm pencere araçları Widget sınıfından türetilmiştir. Widget boş bir pencere aracıdır. Siz de isterseniz Widget sınıfını kullanarak kendi pencere aracınızı oluşturabilirsiniz. Biz de yeri geldiğinde burada Widget ile ilgili örnekler yapacağız. 
+Tüm pencere araçları Widget sınıfından türetilmiştir. Widget boş bir pencere aracıdır. Siz de isterseniz Widget sınıfını kullanarak kendi pencere aracınızı oluşturabilirsiniz. Biz de yeri geldiğinde burada Widget ile ilgili örnekler yapacağız.
 
-Pencere araçları kullanıcı ile iletişim imkanı verir, görsel arayüzü anlamlı kılar. Boş pencere hiçbir anlam ifade etmez, ancak pencere araçlarıyla anlamlı olur. Pencere araçlarını iki kısımda anlatmayı düşünüyoruz. Birinci kısımda buton,yazı,metin kutusu gibi temel pencere araçlarını anlatacağız. 
+Pencere araçları kullanıcı ile iletişim imkanı verir, görsel arayüzü anlamlı kılar. Boş pencere hiçbir anlam ifade etmez, ancak pencere araçlarıyla anlamlı olur. Pencere araçlarını iki kısımda anlatmayı düşünüyoruz. Birinci kısımda buton,yazı,metin kutusu gibi temel pencere araçlarını anlatacağız.
 
 İkinci kısımda ileri seviye pencere araçlarından bahsedeceğiz. Android tarzı menüler, slayt pencereleri, popup pencereleri gibi araçları ikinci kısımda anlatacağız
 
-Tabi ki bunlar Kivy dökümanlarında ikiye ayrılmış değil, sadece burada anlatım için benimsenmiştir. Amaç yazıların daha düzgün ve anlamlı bir şekilde sıralanmasıdır. 
+Tabi ki bunlar Kivy dökümanlarında ikiye ayrılmış değil, sadece burada anlatım için benimsenmiştir. Amaç yazıların daha düzgün ve anlamlı bir şekilde sıralanmasıdır.
 
 Öyleyse başlayalım
 
@@ -24,21 +24,21 @@ kivy.uix.label.Label
 Bildiğiniz gibi Label, ekranda yazı göstermeyi sağlayan bir pencere aracıdır. Nasıl import edeceğimizi ve nasıl kullanabileceğimizi bir örnekle görelim
 
 .. code-block:: python
-	
+
 	#!/usr/bin/env python
 	# -*- coding: utf-8 -*-
-	
+
 	from kivy.app import App
 	from kivy.uix.label import Label
-	
+
 	class Yazbel(App):
 	    def build(self):
-	
+
 	        yazi = Label(text = "Merhaba ben bir yazıyım :)")
-	
+
 	        return yazi
-	
-	    
+
+
 	Yazbel().run()
 
 Label sınıfıyla birlikte kullanabileceğimiz bazı özellikleri birer örnek ve kısa bir açıklama ile aşağıda belirteceğim.
@@ -49,24 +49,24 @@ font_size
 Yazının boyutunu pixel cinsinden ifade etmeyi sağlar. Varsayılan olarak 15 sp'dir
 
 .. code-block:: python
-	
+
 	#!/usr/bin/env python
 	# -*- coding: utf-8 -*-
-	
+
 	from kivy.app import App
 	from kivy.uix.label import Label
-	
+
 	class Yazbel(App):
 	    def build(self):
-	
+
 	        yazi = Label(text = "Merhaba ben bir yazıyım :)",
 	                     font_size = "25sp")
-	
+
 	        return yazi
-	
-	    
+
+
 	Yazbel().run()
-	
+
 
 halign
 ------
@@ -74,23 +74,23 @@ halign
 Yazıyı sağa,sola veya ortaya hizalamak için kullanılır. Varsayılan olarak "left" değerini alır. Verebilinecek değerler; left,right,center
 
 .. code-block:: python
-	
+
 	#!/usr/bin/env python
 	# -*- coding: utf-8 -*-
-	
+
 	from kivy.app import App
 	from kivy.uix.label import Label
-	
+
 	class Yazbel(App):
 	    def build(self):
-	
+
 	        yazi = Label(text = "Merhaba ben bir yazıyım :)\nSağa yaslı bir yazı...",
 	                     font_size = "25sp",
 	                     halign = "right")
-	
+
 	        return yazi
-	
-	    
+
+
 	Yazbel().run()
 
 
@@ -100,52 +100,52 @@ color
 Yazının rengini değiştirmek için kullanılır. Liste veya demet olarak değer alır. RGBA cinsinden değer alabilir. Varsayılan değer: [1,1,1,1]
 
 .. code-block:: python
-	
+
 	#!/usr/bin/env python
 	# -*- coding: utf-8 -*-
-	
+
 	from kivy.app import App
 	from kivy.uix.label import Label
-	
+
 	class Yazbel(App):
 	    def build(self):
-	
+
 	        yazi = Label(text = "Merhaba\nben bir yazıyım",
 	                     font_size = "25sp",
 	                     color = [0,.3,.9,1])
-	
+
 	        return yazi
-	
-	    
+
+
 	Yazbel().run()
 
 bold - italic
 -------------
 
-Yazıyı kalın ve eğik göstermek için kullanılır. 
+Yazıyı kalın ve eğik göstermek için kullanılır.
 
 .. code-block:: python
-	
+
 	#!/usr/bin/env python
 	# -*- coding: utf-8 -*-
-	
+
 	from kivy.app import App
 	from kivy.uix.label import Label
-	
+
 	class Yazbel(App):
 	    def build(self):
-	
+
 	        yazi = Label(text = "Merhaba\nben bir yazıyım",
 	                     font_size = "25sp",
 	                     color = [0,.3,.9,1],
 	                     bold = True,
 	                     italic = True)
-	
+
 	        return yazi
-	
-	    
+
+
 	Yazbel().run()
-	
+
 
 line_height
 -----------
@@ -153,26 +153,26 @@ line_height
 Satır arası genişliği ayarlamak için kullanılır. Varsayılan değeri 1'dir.
 
 .. code-block:: python
-	
+
 	#!/usr/bin/env python
 	# -*- coding: utf-8 -*-
-	
+
 	from kivy.app import App
 	from kivy.uix.label import Label
-	
+
 	class Yazbel(App):
 	    def build(self):
-	
+
 	        yazi = Label(text = "Merhaba\nben bir yazıyım",
 	                     font_size = "25sp",
 	                     color = [0,.3,.9,1],
 	                     line_height = 2)
-	
+
 	        return yazi
-	
-	    
+
+
 	Yazbel().run()
-	
+
 
 markup
 ------
@@ -194,9 +194,9 @@ Daha önce HTML tag'leri kullandıysanız markup kullanımını anlamanız gayet
 
 [color=#RGB][/color]: Renkli yazı
 
-[ref=deger][/ref]: Yazıya bir link ekler. Bu link'e tıklandığı zaman, belirlenen fonksiyona gönderilecektir. 
+[ref=deger][/ref]: Yazıya bir link ekler. Bu link'e tıklandığı zaman, belirlenen fonksiyona gönderilecektir.
 
-[anchor=name]: Yazıya ekleyerek, yazının sol üst köşesine göre koordinat bilgisi almayı sağlar. yazi.anchors ile erişilebilir. 
+[anchor=name]: Yazıya ekleyerek, yazının sol üst köşesine göre koordinat bilgisi almayı sağlar. yazi.anchors ile erişilebilir.
 
 [sub][/sub]: alt simge olarak yazmayı sağlar. Logaritmik gösterimlerde kullanılabilir.
 
@@ -206,16 +206,16 @@ Daha önce HTML tag'leri kullandıysanız markup kullanımını anlamanız gayet
 Şimdi bunları bir örnek içerisinde görelim.
 
 .. code-block:: python
-	
+
 	#!/usr/bin/env python
 	# -*- coding: utf-8 -*-
-	
+
 	from kivy.app import App
 	from kivy.uix.label import Label
-	
+
 	class Yazbel(App):
 	    def build(self):
-	
+
 	        string = """
 	[size=20]
 	[color=#090]Renkli[/color]
@@ -231,12 +231,12 @@ Daha önce HTML tag'leri kullandıysanız markup kullanımını anlamanız gayet
 	[/size]
 	"""
 	        # Tüm yazıyı [size=20] [/size] arasına alarak boyutunu arttırdım
-	        
+
 	        yazi = Label(text = string,markup = True)
 	        # markup = True değerini vermezseniz yazınız tag'lerle birlikte yorumlanmaz
 	        # yani tag'ler etkisiz hale gelir
 	        # kapatmak için, markup = False değerini vermelisiniz
-	
+
 	        yazi.bind(on_ref_press = self.tikla)
 	        # ref ile belirlediğimiz yazıya tıklandığı zaman
 	        # self.tikla metodumuz çalışacaktır
@@ -244,14 +244,14 @@ Daha önce HTML tag'leri kullandıysanız markup kullanımını anlamanız gayet
 	        # hangi metodun çalışacağını belirlemektir.
 	        # bu bir olaydır. Olayları ileride göreceğiz
 	        # şimdilik bu örneği anlamanız yeterli
-	        
+
 	        return yazi
-	
+
 	    def tikla(self,nesne,deger):
 	        print("Deger: {}".format(deger)) # [ref=deger] kısmındaki deger'i yazdırır
-	        
+
 	Yazbel().run()
-	
+
 
 
 Örnekte kullandığım Pacifico font'unu internet üzerinden kolaylıkla temin edebilirsiniz. İndirdikten sonra programın ana dosyasının yanına koymanız gerekiyor. Yoksa font dosyasının bulunamadığına dair hata mesajıyla karşılaşırsınız.
@@ -260,27 +260,27 @@ Daha önce HTML tag'leri kullandıysanız markup kullanımını anlamanız gayet
 Yazınızın özelliklerine sonradan erişebilir, isterseniz bunları değiştirebilirsiniz. yazi.ozellik şeklinde ilgili özelliğe erişebilir, yazi.ozellik = yeni_deger ile de yeni değerini verebilirsiniz. Örneğin, bir yazının içeriğini ve rengini değiştirelim
 
 .. code-block:: python
-	
+
 	#!/usr/bin/env python
 	# -*- coding: utf-8 -*-
-	
+
 	from kivy.app import App
 	from kivy.uix.label import Label
-	
+
 	class Yazbel(App):
 	    def build(self):
-	
+
 	        yazi = Label(text = "Eski değer..",
 	                     color = [0,.3,.9,1])
-	
+
 	        yazi.text = "Yeni değer.."
 	        yazi.color = [1,0,0,1]
-	
+
 	        return yazi
-	    
+
 	Yazbel().run()
-	
-	
+
+
 Label ile ilgili daha fazla bilgi için `Kivy Label`_ sayfasını ziyaret edebilirsiniz
 
 .. _Kivy Label: https://kivy.org/doc/stable/api-kivy.uix.label.html
@@ -290,7 +290,7 @@ Button
 
 kivy.uix.button.Button
 
-Button pencere aracı, butonlar oluşturmayı sağlar ve kivy.uix.button içerisinde bulunur. Bir butona tıklandığı zaman olaylar meydana gelir. Mesela butona tıklanma olayı, basılı tutulma olayı, butonu bırakma olayı vs hepsi birer olaydır ve event olarak adlandırılır. Event ingilizce olay,hareket demektir. Butonlar olaylarla anlam kazanır. Bir butonun tıklanma olayını fonksiyonlar yardımıyla dinleriz, olay gerçekleştiği zaman fonksiyonumuz da çalışmış olur. Biz de bu fonksiyon içerisinde yapılmasını istediğimiz işlemleri yazarız. 
+Button pencere aracı, butonlar oluşturmayı sağlar ve kivy.uix.button içerisinde bulunur. Bir butona tıklandığı zaman olaylar meydana gelir. Mesela butona tıklanma olayı, basılı tutulma olayı, butonu bırakma olayı vs hepsi birer olaydır ve event olarak adlandırılır. Event ingilizce olay,hareket demektir. Butonlar olaylarla anlam kazanır. Bir butonun tıklanma olayını fonksiyonlar yardımıyla dinleriz, olay gerçekleştiği zaman fonksiyonumuz da çalışmış olur. Biz de bu fonksiyon içerisinde yapılmasını istediğimiz işlemleri yazarız.
 
 Kivy içerisinde butonlar, birer Label sayılabilirler. Label'den farkı tıklanabilir araçlardır. Onun dışında Label ile birlikte kullanılan tüm özellikleri Button sınıfıyla birlikte kullanabiliriz. Elbette bir Label'den fazlasına sahiptir. Bunları da birazdan inceleyeceğiz. Öncelikle bir butonun nasıl oluşturulduğunu ve bu butonun olaylarını(örneğin butona tıklama) nasıl dinleyeceğimizi görelim.
 
@@ -311,7 +311,7 @@ Kivy içerisinde butonlar, birer Label sayılabilirler. Label'den farkı tıklan
 			self.yazi = Label(text = "Bildiri Ekranı")
 			self.buton = Button(text = "Tıkla",size_hint_y = .3)
 
-			self.buton.bind(on_press = self.press) 
+			self.buton.bind(on_press = self.press)
 			# Basılma olayını self.press fonksiyonuna bağladık
 			# Yani butona basıldığı anda self.press fonksiyonumuz çalışacaktır
 
@@ -330,7 +330,7 @@ Kivy içerisinde butonlar, birer Label sayılabilirler. Label'den farkı tıklan
 		def release(self,nesne):
 			self.yazi.text = "Buton bırakıldı"
 
-Şimdi kodu inceleyelim. İlk olarak gerekli sınıflarımızı import ettik. Bir tane BoxLayout pencere düzeni oluşturduk, içerisine de yazımızı ve butonumuzu ekledik. Butonumuzun yazımıza göre dikeyde daha az yer kaplaması için size_hint_y parametresine .3 değerini verdik. 
+Şimdi kodu inceleyelim. İlk olarak gerekli sınıflarımızı import ettik. Bir tane BoxLayout pencere düzeni oluşturduk, içerisine de yazımızı ve butonumuzu ekledik. Butonumuzun yazımıza göre dikeyde daha az yer kaplaması için size_hint_y parametresine .3 değerini verdik.
 
 Sonra, butonumuzun bind() metodu ile on_press olayını, self.press fonksiyonumuza bağladık. Fonksiyon ismini istediğiniz şekilde belirleyebilirsiniz. Ancak dikkat etmeniz gereken şey, fonksiyonun aldığı parametrelerdir. Fonksiyonumuz self hariç bir tane daha parametre alır. Bu parametre, olayın kaynağı olan pencere aracıdır. Dolayısıyla butona tıkladığımızda olayın kaynağı bu buton oluyor.
 
@@ -339,7 +339,7 @@ Button sınıfına dair bazı özellikleri tanımlamayalım
 background_color
 ----------------
 
-Butonumuzun arkaplan rengi. (r,g,b,a) formatında değer alır. 
+Butonumuzun arkaplan rengi. (r,g,b,a) formatında değer alır.
 
 .. code-block:: python
 
@@ -369,7 +369,7 @@ veya
 background_down
 ---------------
 
-Butona basılı haldeki arkaplan resmi. background_normal ile aynıdır. 
+Butona basılı haldeki arkaplan resmi. background_normal ile aynıdır.
 
 .. code-block:: python
 
@@ -453,12 +453,12 @@ kivy.uix.textinput.TextInput
 
 TextInput, kullanıcıdan girdi almayı sağlar, programlarda çok kullandığımız metin kutularıdır. Tek satırlı, çok satırlı, yıldızlı girdi alma ve daha birçok işlem için kullanılabilir. Aynı zamanda CTRL+C, CTRL+Z gibi kısayol tuşları da kullanılabilir.
 
-kivy.uix.textinput modülü içerisinde yer alır. Hatırlarsanız BoxLayout konusunda bir :ref:`örnek <kivy_layout_target>` yapmıştık. Bu örnek kullanıcıdan nick ve şifre almak üzere tasarlanmıştı ama henüz birşey yapamıyordu. İşte şimdi bu yazdığımız örneği kullanılabilir hale getireceğiz. 
+kivy.uix.textinput modülü içerisinde yer alır. Hatırlarsanız BoxLayout konusunda bir :ref:`örnek <kivy_layout_target>` yapmıştık. Bu örnek kullanıcıdan nick ve şifre almak üzere tasarlanmıştı ama henüz birşey yapamıyordu. İşte şimdi bu yazdığımız örneği kullanılabilir hale getireceğiz.
 
 Öncelikle örneğimizi tekrar yazalım
 
 .. code-block:: python
-	
+
 	from kivy.app import App
 	from kivy.uix.label import Label
 	from kivy.uix.boxlayout import BoxLayout
@@ -501,10 +501,10 @@ kivy.uix.textinput modülü içerisinde yer alır. Hatırlarsanız BoxLayout kon
 Nick aldığımız metin kutusunu tek satırlı hale getirmeliyiz. Yani kullanıcı Enter'a bastığı zaman alt satıra geçmemeli. Bunun için
 
 .. code-block:: python
-	
+
 	nickKutu = TextInput(multiline = False)
 
-yazmamız yeterli. Böylece artık alt satıra geçmeyecek, sağa doğru yazmaya devam edecektir. Bu arada eğer multiline değeri "False" ise, kullanıcı Enter'a bastığında metin kutusu odaktan çıkacaktır. 
+yazmamız yeterli. Böylece artık alt satıra geçmeyecek, sağa doğru yazmaya devam edecektir. Bu arada eğer multiline değeri "False" ise, kullanıcı Enter'a bastığında metin kutusu odaktan çıkacaktır.
 
 Şimdi de parolayı aldığımız kutucuğu tek satırlı hale getirelim ve yazılanların görünmemesi için parolayı yıldızlı hale getirelim.
 
@@ -578,11 +578,11 @@ Kodumuzu yeniden yazacak olursak
 
 	        else:
 	            print("Hatalı Giriş")
-	        
+
 
 	Program().run()
 
-Programı çalıştırıp kullanıcı adını "admin" ve parolayı "12345" olarak girerseniz "Giriş Başarılı" yazılacaktır. Ancak ikisinden herhangi birini yanlış yazarsanız "Hatalı Giriş" yazılacaktır. 
+Programı çalıştırıp kullanıcı adını "admin" ve parolayı "12345" olarak girerseniz "Giriş Başarılı" yazılacaktır. Ancak ikisinden herhangi birini yanlış yazarsanız "Hatalı Giriş" yazılacaktır.
 
 Kutulardaki metinleri kutu.text niteliği yardımıyla aldık. Bu bir String değerdir ve eğer kullanıcıdan sayı aldığımızda bunun String olarak bize verildiğini ve bunu Integer'a çevirmemiz gerektiğini unutmayalım.
 
@@ -604,7 +604,7 @@ TextInput aracımıza girilen girdileri kontrol etmek istersek, TextInput.insert
 	        s = substring.upper()
 	        return super(MyInput,self).insert_text(s,from_undo)
 
-	    
+
 
 	class Program(App):
 
@@ -613,9 +613,9 @@ TextInput aracımıza girilen girdileri kontrol etmek istersek, TextInput.insert
 
 	Program().run()
 
-Programımıza girilen karakter ister küçük ister büyük olsun, her zaman büyük olarak metin kutusuna eklenecektir. Peki bunu nasıl yaptık? Öncelikle TextInput() sınıfını miras aldık. Miras alma işlemini nesne yönelimli programlamadan biliyor olmanız gerekiyor. Kısaca miras alma, önceden yazılan bir sınıfı yeni yazılan sınıfa katma, onun özelliklerini de kullanmaktır. Biz burada kendimize ait bir metin kutusu yapmak istediğimiz için, ilk olarak TextInput sınıfını miras aldık. 
+Programımıza girilen karakter ister küçük ister büyük olsun, her zaman büyük olarak metin kutusuna eklenecektir. Peki bunu nasıl yaptık? Öncelikle TextInput() sınıfını miras aldık. Miras alma işlemini nesne yönelimli programlamadan biliyor olmanız gerekiyor. Kısaca miras alma, önceden yazılan bir sınıfı yeni yazılan sınıfa katma, onun özelliklerini de kullanmaktır. Biz burada kendimize ait bir metin kutusu yapmak istediğimiz için, ilk olarak TextInput sınıfını miras aldık.
 
-Bu sınıf, girilen yazıları inser_text() metoduyla işlediği için, biz de bu metodu yeniden yazdık. Böylece bir karakter girildiği zaman TextInput sınıfının insert_text() metodu değil, bizim yazdığımız sınıfın insert_tex() metodu çalışacaktır. Böylece biz de gelen karakterleri işleyebileceğiz. Girilen karakter "substring" argümanıyla gelir. Bunu işleyip üst sınıfa işlenmiş olarak göndereceğiz. Biz de burada gelen karakter upper() metoduyla büyük karaktere dönüştürdük ve üst sınıfın insert_text() metodunu değiştirilmiş karakterle birlikte çağırdık. Miras aldığımız sınıfın metodunu çağırmak için super() metodundan yararlanıyoruz. 
+Bu sınıf, girilen yazıları inser_text() metoduyla işlediği için, biz de bu metodu yeniden yazdık. Böylece bir karakter girildiği zaman TextInput sınıfının insert_text() metodu değil, bizim yazdığımız sınıfın insert_tex() metodu çalışacaktır. Böylece biz de gelen karakterleri işleyebileceğiz. Girilen karakter "substring" argümanıyla gelir. Bunu işleyip üst sınıfa işlenmiş olarak göndereceğiz. Biz de burada gelen karakter upper() metoduyla büyük karaktere dönüştürdük ve üst sınıfın insert_text() metodunu değiştirilmiş karakterle birlikte çağırdık. Miras aldığımız sınıfın metodunu çağırmak için super() metodundan yararlanıyoruz.
 
 Bir karakteri değiştirdiğimiz gibi, bu karakterin yazılmamasını da sağlayabiliriz. Diyelim ki "j" harfinin hiç girilmemesini istiyorsunuz, bu durumda "j" harfinin girilmesini şu şekilde engelleyebilirsiniz.
 
@@ -634,7 +634,7 @@ Bir karakteri değiştirdiğimiz gibi, bu karakterin yazılmamasını da sağlay
 	        else:
 	            return super(MyInput,self).insert_text(substring,from_undo)
 
-	    
+
 
 	class Program(App):
 
@@ -664,20 +664,20 @@ TextInput üzerine odaklanıldığı zaman veya odaktan ayrıldığı zaman meyd
 			print('Odaklanıldı', instance)
 		else:
 			print('Odaktan çıktı', instance)
-	
+
 	textinput = TextInput()
 	textinput.bind(focus=on_focus)
 
 copy(veri<str>)
 ---------------
 
-Copy fonksiyonu, kopyalama hafızasına verilen "veri" değerini kopyalar. "veri" argümanı String olmalıdır. Eğer "veri" argümanı verilmezse, o anda metin kutusu üzerinde seçili olan metni hafızaya kopyalar. 
+Copy fonksiyonu, kopyalama hafızasına verilen "veri" değerini kopyalar. "veri" argümanı String olmalıdır. Eğer "veri" argümanı verilmezse, o anda metin kutusu üzerinde seçili olan metni hafızaya kopyalar.
 
 .. code-block:: python
 
 	metinKutusu.copy()
 
-Ya da 
+Ya da
 
 .. code-block:: python
 
@@ -691,12 +691,12 @@ Copy ile aynı işi yapmakla beraber, kopyaladığı metni metin kutusundan sile
 paste()
 -------
 
-Kopyalama hafızasındaki metni, metin kutusuna o andaki cursor pozisyonuna yerleştirir. 
+Kopyalama hafızasındaki metni, metin kutusuna o andaki cursor pozisyonuna yerleştirir.
 
-readonly 
+readonly
 --------
 
-Eğer metin kutusundaki ifadenin kullanıcı tarafından değiştirilmesini istemiyorsanız, readonly niteliğine True değerini vermelisiniz. Böylece kullanıcılar metin kutusundaki metni değiştiremeyecek ancak okuyup kopyalayabilecektir. 
+Eğer metin kutusundaki ifadenin kullanıcı tarafından değiştirilmesini istemiyorsanız, readonly niteliğine True değerini vermelisiniz. Böylece kullanıcılar metin kutusundaki metni değiştiremeyecek ancak okuyup kopyalayabilecektir.
 
 .. code-block:: python
 
@@ -705,7 +705,7 @@ Eğer metin kutusundaki ifadenin kullanıcı tarafından değiştirilmesini iste
 tab_width
 ---------
 
-Tab tuşunun varsayılan değeri 4'tür. Eğer bu değeri değiştirmek isterseniz tab_width parametresine bu değeri sayı olarak vermelisiniz. 
+Tab tuşunun varsayılan değeri 4'tür. Eğer bu değeri değiştirmek isterseniz tab_width parametresine bu değeri sayı olarak vermelisiniz.
 
 text
 ----
@@ -778,7 +778,7 @@ Onay kutuları, genelde bir seçeneğin seçilip seçilmeyeceği veya birden faz
 	        self.onaySatir = BoxLayout(size_hint_y = .3)
 	        # onay kutumuzu ve yazımızı tutacak olan BoxLayout
 	        # Boyutunu biraz küçülttük :)
-	        
+
 	        self.onayYazi = Label(text = "Beni Hatırla")
 	        self.onayKutu = CheckBox()
 
@@ -822,7 +822,7 @@ CheckBox pencere aracını, RadioButton olarak kullanmak isterseniz elinizdeki o
 	kutu3 = CheckBox(group = 2)
 	kutu4 = CheckBox(group = 2)
 
-kutu1 ve kutu2 aynı grupta olduğu için, biri aktif olduğunda diğeri deaktif olacaktır. 
+kutu1 ve kutu2 aynı grupta olduğu için, biri aktif olduğunda diğeri deaktif olacaktır.
 
 .. image:: images/check.png
  :width: 300px
@@ -847,7 +847,7 @@ Eğer bir CheckBox'ın aktif olma olayını ele almak isterseniz, bind ile tanı
 			print('Checkbox', checkbox, 'aktif')
 		else:
 			print('Checkbox', checkbox, 'deaktif')
-	
+
 	checkbox = CheckBox()
 	checkbox.bind(active=on_checkbox_active)
 
@@ -871,12 +871,12 @@ Eğer uygulamamızda resim göstermek istersek, Image kullanabiliriz. Kivy ile r
 
 	    def build(self):
 	        resim = Image(source = "resim.png")
-	        
+
 	        return resim
-	    
+
 	Yazbel().run()
 
-resim.png dosyası, programınızın ana dosyası ile aynı dizinde olmalıdır. Aksi takdirde ekranda beyaz boş bir alan gösterilir. Resim gösterildiği zaman, boyutu neyse o şekilde yerleştirilir. Resmin boyutlandırılmasını birazdan nitelikleri incelediğimiz zaman göreceğiz. 
+resim.png dosyası, programınızın ana dosyası ile aynı dizinde olmalıdır. Aksi takdirde ekranda beyaz boş bir alan gösterilir. Resim gösterildiği zaman, boyutu neyse o şekilde yerleştirilir. Resmin boyutlandırılmasını birazdan nitelikleri incelediğimiz zaman göreceğiz.
 
 Resimleri sadece bilgisayarınızdaki bir dosyadan değil, aynı zamanda internet üzerinden gösterebilirsiniz. Bunun için AsyncImage kullanılır. Buyrun örnekle görelim :)
 
@@ -891,9 +891,9 @@ Resimleri sadece bilgisayarınızdaki bir dosyadan değil, aynı zamanda interne
 
 	    def build(self):
 	        resim = AsyncImage(source = "https://www.blogger.com/img/blogger-logotype-color-black-1x.png")
-	        
+
 	        return resim
-	    
+
 	Yazbel().run()
 
 Resim internet üzerinde yüklenirken, resmin halen yüklenmekte olduğunu gösteren bir "loading" gif'i resmin yerinde durur. Resim yüklenince "loading" gif'i kaldırılır. Eğer bu "loading" gif'ini değiştirmek isterseniz, Loader sınıfını import edip, varsayılanı değiştirmeniz gerekir.
@@ -908,7 +908,7 @@ Resim internet üzerinde yüklenirken, resmin halen yüklenmekte olduğunu göst
 Resmin Boyutlarını Değiştirme
 -----------------------------
 
-Bir resmin boyutlarını değiştirebiliriz. Bunun için kv dilinden yardım alabiliriz. 
+Bir resmin boyutlarını değiştirebiliriz. Bunun için kv dilinden yardım alabiliriz.
 
 .. code-block:: python
 
@@ -920,14 +920,14 @@ Bir resmin boyutlarını değiştirebiliriz. Bunun için kv dilinden yardım ala
 		size_hint_y:None
 		keep_ratio:False
 		allow_stretch:True
-		
+
 Resmin istenilen şekilde boyutlandırılabilmesi için, orantılı boyutlandırma özellikleri None yapılmalıdır. Ve resmin en-boy oranını koruma özelliği False, uzatılma özelliği True yapılmalıdır. Artık resmin boyutlarıyla istediğimiz gibi oynayabiliriz :)
 
 
 allow_stretch
 -------------
 
-Resmimizin bulunduğu alanı tam olarak doldurmasını istiyorsak kullanabiliriz. Değer olarak True veya False alabilir. True değeri verildiğinde, bulunduğu alana göre boyutu arttırılır. Ancak en-boy oranı korunur. Örneğin, eni boyundan büyük olan bir resim, boyutu arttığı zaman da eni boyundan büyük olacaktır. 
+Resmimizin bulunduğu alanı tam olarak doldurmasını istiyorsak kullanabiliriz. Değer olarak True veya False alabilir. True değeri verildiğinde, bulunduğu alana göre boyutu arttırılır. Ancak en-boy oranı korunur. Örneğin, eni boyundan büyük olan bir resim, boyutu arttığı zaman da eni boyundan büyük olacaktır.
 
 keep_ratio
 ----------
@@ -936,7 +936,7 @@ allow_stretch ile birlikte, en-boy oranını korumadan bulunduğu alanı tam ola
 
 anim_delay
 ----------
-Eğer yüklediğiniz resim bir gif ise(veya başka bir animasyon formatı), resim kareleri arasında geçiş süresini anim_delay ile ayarlayabilirsiniz. Varsayılan olarak 0.25'tir. Yani saniyede 4 kare. 
+Eğer yüklediğiniz resim bir gif ise(veya başka bir animasyon formatı), resim kareleri arasında geçiş süresini anim_delay ile ayarlayabilirsiniz. Varsayılan olarak 0.25'tir. Yani saniyede 4 kare.
 
 anim_loop
 ---------
@@ -987,7 +987,7 @@ ProgressBar ile bir işlemin ne kadarının tamamlandığını görsel olarak g�
 
 	            Clock.schedule_once(self.say,.5)
 
-	        
+
 	Yazbel().run()
 
 ProgressBar'mızı tanımladık ve max değerini 100 olarak verdik. Yani eğer barımızın değerini en fazla 100 olarak verebiliriz. Eğer 10 olarak belirleseydik, en fazla 10 değerini verebilirdik. Sonra Clock yardımıyla sayacımız 100 olana kadar döngüye girdik ve barımızın değerini değiştirdik.

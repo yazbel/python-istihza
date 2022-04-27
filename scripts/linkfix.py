@@ -9,7 +9,7 @@ linkcheck_build = join(base, "build", "linkcheck")
 output_file = join(linkcheck_build, "output.json")
 
 with open(output_file, 'r', encoding = 'utf-8') as f:
-	# sphinx produces multiple records instead of a list of records for broken links 
+	# sphinx produces multiple records instead of a list of records for broken links
 	records = [json.loads(i) for i in f.readlines()]
 
 line = lambda: print("-" * 30)
@@ -42,7 +42,7 @@ for record in records:
 				continue
 	else:
 		raise ValueError("ERROR: Unknown status: {!r}".format(status))
-	
+
 	# used for :target: special casing
 	if replace_with == '.':
 		replace_with = uri

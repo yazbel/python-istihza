@@ -1,4 +1,4 @@
-﻿.. meta:: :description: Bu bölümde, Python programlarını temel olarak nasıl
+.. meta:: :description: Bu bölümde, Python programlarını temel olarak nasıl
            kaydedeceğimizi ve bu programları nasıl çalıştıracağımızı öğreneceğiz.
           :keywords: Python, path, yol, Windows, GNU/Linux, Python programlarını
            çalıştırmak, kaydetmek

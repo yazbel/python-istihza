@@ -40,7 +40,7 @@ Belgelerde bir değişiklik yapmak ve belgeleri inşa etmek için [``BUILDING.md
 
 ### Siteyi kaynaktan indirme
 
-Bu veri havuzunu cihazınıza indirebilir ve [`/docs/index.html`](/docs/index.html) dosyasını tarayıcınız ile açabilirsiniz. Bu size belgeleri çevrimiçi olarak kullanmak ile aynı deneyimi sunacaktır.  
+Bu veri havuzunu cihazınıza indirebilir ve [`/docs/index.html`](/docs/index.html) dosyasını tarayıcınız ile açabilirsiniz. Bu size belgeleri çevrimiçi olarak kullanmak ile aynı deneyimi sunacaktır.
 
 ## Nasıl yardım alabilirim?
 
@@ -51,7 +51,7 @@ konu açarak aklınızdaki soruları sorabilirsiniz. Topluluk size yardım etmek
 
 Belgelere ekleme yaparak veya yazım ve bilgi yanlışlarını düzelterek yardım edebilirsiniz:
 
-- Topluluk tarafından eksikliği hissedilen bazı konular ve belgelerdeki düzeltilmesi gereken hatalar [issues](https://github.com/yazbel/python-istihza/labels/help%20wanted) 
+- Topluluk tarafından eksikliği hissedilen bazı konular ve belgelerdeki düzeltilmesi gereken hatalar [issues](https://github.com/yazbel/python-istihza/labels/help%20wanted)
 sayfasında listelenmiş halde bulunuyor. Bu konular üzerinde çalışma yapabilirsiniz.
 
 - Belgelerde değişiklik yaparak çekme isteği (pull request) gönderebilirsiniz. Yazım yanlışları ve küçük hatalar için

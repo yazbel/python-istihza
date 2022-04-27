@@ -22,26 +22,26 @@ kivy.uix.boxlayout.BoxLayout
 Bu pencere düzeni, içerisine yerleştirilen araçları yan yana veya alt alta yerleştirir. Hemen bir örnekle görelim.
 
 .. code-block:: python
-	
+
 	from kivy.app import App
 	from kivy.uix.label import Label
 	from kivy.uix.boxlayout import BoxLayout
-	
+
 	class Program(App):
 	    def build(self):
 	        duzen = BoxLayout()
-	
+
 	        yazi1 = Label(text = "Merhaba")
-	
+
 	        yazi2 = Label(text = "Dünya")
-	
+
 	        duzen.add_widget(yazi1)
 	        duzen.add_widget(yazi2)
-	
+
 	        return duzen
-	
+
 	Program().run()
-	
+
 Ekran görüntüsü
 
 .. image:: images/box1.png
@@ -58,26 +58,26 @@ Eğer BoxLayout pencere düzenini tanımlarken herhangi bir parametre vermezseni
 Örnek;
 
 .. code-block:: python
-	
+
 	from kivy.app import App
 	from kivy.uix.label import Label
 	from kivy.uix.boxlayout import BoxLayout
-	
+
 	class Program(App):
 	    def build(self):
 	        duzen = BoxLayout(orientation = "vertical")
-	
+
 	        yazi1 = Label(text = "Merhaba")
-	
+
 	        yazi2 = Label(text = "Dünya")
-	
+
 	        duzen.add_widget(yazi1)
 	        duzen.add_widget(yazi2)
-	
+
 	        return duzen
-	
+
 	Program().run()
-	
+
 
 Ekran görüntüsü
 
@@ -94,7 +94,7 @@ Amacımız şuna benzer bir pencere oluşturmak;
 Hem alt alta elemanlar var, hem de yan yana. Şimdi böyle bir pencereyi nasıl oluşturacağımızı görelim.
 
 .. code-block:: python
-	
+
 	from kivy.app import App
 	from kivy.uix.label import Label
 	from kivy.uix.boxlayout import BoxLayout
@@ -150,7 +150,7 @@ TextInput, kullanıcıdan girdi almayı sağlar. Böylece kullanıcı ile ileti�
 Peki bu örneğimizi kv dili ile yazsaydık nasıl olurdu? Hemen bakalım
 
 .. code-block:: python
-	
+
 	BoxLayout:
 	    orientation: "vertical"
 	    BoxLayout:
@@ -163,7 +163,7 @@ Peki bu örneğimizi kv dili ile yazsaydık nasıl olurdu? Hemen bakalım
 	        TextInput:
 	    Button:
 	        text:"Giriş Yap"
-	
+
 
 BoxLayout ile ilgili bu kadar örnek yeterli sanırım. Siz de kendinize göre örnekler yaparak veya verilen örnekleri inceleyip değiştirerek konuyu pekiştirebilirsiniz.
 
@@ -175,32 +175,32 @@ kivy.uix.floatlayout.FloatLayout
 FloatLayout pencere düzeni, araçları istediğimiz boyutta ve koordinatta yerleştirebileceğimiz bir pencere düzenidir. Her zaman olduğu gibi önce import etmeliyiz ve kullanmak üzere tanımlamalıyız. Bir örnek yapalım
 
 .. code-block:: python
-	
+
 	#!/usr/bin/env python
 	# -*- coding:utf-8 -*-
-	
+
 	from kivy.app import App
 	from kivy.uix.button import Button
 	from kivy.uix.floatlayout import FloatLayout
-	
+
 	# gerekli sınıfları import ettik
-	
+
 	class Program(App):
 	    def build(self):
-	        
+
 	        duzen = FloatLayout() # pencere düzenimizi tanımladık
-	
+
 	        buton = Button(text = "Merhaba",
 	                                size_hint = (.1,.1),
 	                                pos = (10,10))
-	
+
 	        duzen.add_widget(buton) # butonumuzu yerleştiriyoruz
-	
+
 	        return duzen
-	
-	
+
+
 	Program().run()
-	
+
 
 Ekran görüntüsü
 
@@ -225,28 +225,28 @@ FloatLayout pencere düzenimizin de boyutunu ayarlayabiliriz. Bunun için
 gibi bir tanımlama yapmamız yeterli. Aynı şekilde pencereye orantılı olmasını istersek, size_hint parametresini de verebiliriz. Bir örnekle beraber görelim
 
 .. code-block:: python
-	
+
 	#!/usr/bin/env python
 	# coding:utf-8
-	
+
 	from kivy.app import App
 	from kivy.uix.button import Button
 	from kivy.uix.floatlayout import FloatLayout
-	
+
 	# gerekli sınıfları import ettik
-	
+
 	class Program(App):
 	    def build(self):
-	        
+
 	        duzen = FloatLayout(size_hint = (.5,.5)) # pencere boyutunun yarısı kadar
-	
+
 	        buton = Button(text = "Merhaba") # FloatLayout pencere düzenimizi tam doldursun diye, parametre vermedik
-	
+
 	        duzen.add_widget(buton) # butonumuzu yerleştiriyoruz
-	
+
 	        return duzen
-	
-	
+
+
 	Program().run()
 
 Ekran görüntüsü
@@ -259,67 +259,67 @@ FloatLayout pencere düzenine eklenen araçların, ekrana orantılı bir şekild
 Kullanımı şu şekilde;
 
 .. code-block:: python
-	
+
 	#!/usr/bin/env python
 	# coding:utf-8
-	
+
 	from kivy.app import App
 	from kivy.uix.button import Button
 	from kivy.uix.floatlayout import FloatLayout
-	
+
 	# gerekli sınıfları import ettik
-	
+
 	class Program(App):
 	    def build(self):
-	        
+
 	        duzen = FloatLayout()
-	
+
 	        button = Button(text='Hello world', size_hint=(.2, .1),
 	                pos_hint={'x':.2, 'y':.2})
-	        
+
 	        duzen.add_widget(button) # butonumuzu yerleştiriyoruz
-	
+
 	        return duzen
-	
-	
+
+
 	Program().run()
 
 FloatLayout pencere düzeni ile ilgili anlatacaklarımız bu kadar. FloatLayout pencere düzeni, üzerinde serbest konumlandırma yapıldığı için animasyon için uygundur. Sadece örnek olması açısından, aşağıdaki kodu çalıştırın ve ne olduğunu görün. Kodu anlamanızı istemiyorum, ileride zaten anlatacağız, sadece kodun sonuçlarını görmeniz yeterli.
 
 .. code-block:: python
-	
+
 	#!/usr/bin/env python
 	# coding:utf-8
-	
+
 	from kivy.app import App
 	from kivy.uix.button import Button
 	from kivy.uix.floatlayout import FloatLayout
 	from kivy.clock import Clock
-	
+
 	# gerekli sınıfları import ettik
-	
+
 	class Program(App):
 	    def build(self):
 	        self.x = 0
 	        self.y = 2
-	        
+
 	        self.duzen = FloatLayout()
 	        self.buton = Button(text='Hello world',
 	                            size_hint=(.2, .1),
 	                            pos = (self.x,self.y))
-	
+
 	        self.duzen.add_widget(self.buton)
-	         
+
 	        Clock.schedule_interval(self.animasyon,0.1)
-	
+
 	        return self.duzen
-	
+
 	    def animasyon(self,event = None):
 	        self.x = self.x + 1
-	
+
 	        self.buton.pos = (self.x,self.y)
-	        
-	
+
+
 	Program().run()
 
 GridLayout
@@ -337,28 +337,28 @@ Bu bölümde GridLayout pencere düzenini inceleyeceğiz. GridLayout, ızgara ş
 GridLayout ile ilgili önemli iki kavram vardır. Birincisi rows, yani satır. GridLayout pencere düzeninin max kaç satırdan oluşmasını istiyorsak, rows parametresini kullanırız. Diğeri ise, cols yani sütun. GridLayout pencere düzenimizin max kaç sütundan oluşmasını istiyorsak, cols parametresini kullanabiliriz. Şimdi ayrı ayrı ikisiyle ilgili birer örnek yapalım ve nasıl kullanacağımızı görelim
 
 .. code-block:: python
-	
+
 	#!/usr/bin/env python
 	# -*- coding: utf-8 -*-
-	
+
 	from kivy.app import App
 	from kivy.uix.button import Button
 	from kivy.uix.gridlayout import GridLayout
-	
+
 	class Yazbel(App):
 	    def build(self):
-	
+
 	        govde = GridLayout(cols = 2)
 	        # Max 2 sütundan oluşmasını istedik
 	        # 2 sütundan sonra alta kayacaktır
-	
+
 	        # Birden fazla buton ekleyerek nasıl göründüğüne bakalım
 	        # for döngüsü ile ekleyelim
 	        for i in range(10):
 	            govde.add_widget(Button(text = "{}".format(i+1)))
-	
+
 	        return govde
-	
+
 	Yazbel().run()
 
 Bakalım nasıl görünüyor
@@ -368,21 +368,21 @@ Bakalım nasıl görünüyor
 Gördüğünüz gibi, ne kadar eleman eklersek ekleyelim her zaman 2 sütunu aşmayacak şekilde yerleştiriliyor. Eğer bir sütunun genişliğini biraz daraltmak istersek, aynı sütuna denk gelen elemanlara size_hint_x parametresini vermemiz gerekiyor. Bir örnek üzerinden görelim
 
 .. code-block:: python
-	
+
 	#!/usr/bin/env python
 	# -*- coding: utf-8 -*-
-	
+
 	from kivy.app import App
 	from kivy.uix.button import Button
 	from kivy.uix.gridlayout import GridLayout
-	
+
 	class Yazbel(App):
 	    def build(self):
-	
+
 	        govde = GridLayout(cols = 2)
 	        # Max 2 sütundan oluşmasını istedik
 	        # 2 sütundan sonra alta kayacaktır
-	
+
 	        # Birden fazla buton ekleyerek nasıl göründüğüne bakalım
 	        # for kullanarak ekleyelim
 	        for i in range(10):
@@ -392,31 +392,31 @@ Gördüğünüz gibi, ne kadar eleman eklersek ekleyelim her zaman 2 sütunu aş
 	                                        size_hint_x = .4))
 	            else:
 	                govde.add_widget(Button(text = "{}".format(i+1)))
-	
+
 	        return govde
-	
+
 	Yazbel().run()
-	
+
 .. image:: images/grid2.png
 
 width parametresini de kullanabiliriz
 
 .. code-block:: python
-	
+
 	#!/usr/bin/env python
 	# -*- coding: utf-8 -*-
-	
+
 	from kivy.app import App
 	from kivy.uix.button import Button
 	from kivy.uix.gridlayout import GridLayout
-	
+
 	class Yazbel(App):
 	    def build(self):
-	
+
 	        govde = GridLayout(cols = 2)
 	        # Max 2 sütundan oluşmasını istedik
 	        # 2 sütundan sonra alta kayacaktır
-	
+
 	        # Birden fazla buton ekleyerek nasıl göründüğüne bakalım
 	        # for kullanarak ekleyelim
 	        for i in range(10):
@@ -427,11 +427,11 @@ width parametresini de kullanabiliriz
 	                                        width = 200))
 	            else:
 	                govde.add_widget(Button(text = "{}".format(i+1)))
-	
+
 	        return govde
-	
+
 	Yazbel().run()
-	
+
 
 size_hint_x = None kısmını neden yazdığımıza gelirsek, eğer orantılı boyutlandırmaya None değeri vermezsek, width ile boyutu belirlememize izin vermeyecektir. O yüzden None değeri vererek boyutlandırmayı width ile yapabildik.
 
@@ -439,30 +439,30 @@ size_hint_x = None kısmını neden yazdığımıza gelirsek, eğer orantılı b
 Şimdi, rows kullanımıyla ile ilgili örnek yapalım.
 
 .. code-block:: python
-	
+
 	#!/usr/bin/env python
 	# -*- coding: utf-8 -*-
-	
+
 	from kivy.app import App
 	from kivy.uix.button import Button
 	from kivy.uix.gridlayout import GridLayout
-	
+
 	class Yazbel(App):
 	    def build(self):
-	
+
 	        govde = GridLayout(rows = 2)
 	        # Max 2 sütundan oluşmasını istedik
 	        # 2 sütundan sonra alta kayacaktır
-	
+
 	        # Birden fazla buton ekleyerek nasıl göründüğüne bakalım
 	        # for döngüsü ile ekleyelim
 	        for i in range(10):
 	            govde.add_widget(Button(text = "{}".format(i+1)))
-	
+
 	        return govde
-	
+
 	Yazbel().run()
-	
+
 .. image:: images/grid3.png
 
 Aynı şekilde görüldüğü gibi, ne kadar eleman eklersek ekleyelim, her zaman 2 satır olacak şekilde yerleştiriliyor. Boyutlandırmak için, GridLayout nesnemizi tanımlarken row_default_height parametresini vererek, varsayılan yüksekliğini ayarlayabiliriz.
@@ -516,7 +516,7 @@ Yerleştirdikten sonra, butonumuz AnchorLayout yardımıyla sol-ortada duracakt�
 	        anchor = AnchorLayout(anchor_x = "left",anchor_y = "center")
 	        buton = Button(text = "Sol Orta",size_hint = (.2,.2))
 	        anchor.add_widget(buton)
-	        
+
 	        self.govde.add_widget(anchor)
 
 	        return self.govde
@@ -578,7 +578,7 @@ bt-lr
 rl-bt
 bt-rl
 
-Ekranda birden fazla buton oluşturmak için for döngüsü kullandık ve bu butonların boyutunu belirttik. Boyutu sığmayan butonlar otomatik olarak bir alt satıra yerleştirilir, resimde de gördüğünüz gibi. 
+Ekranda birden fazla buton oluşturmak için for döngüsü kullandık ve bu butonların boyutunu belirttik. Boyutu sığmayan butonlar otomatik olarak bir alt satıra yerleştirilir, resimde de gördüğünüz gibi.
 
 padding
 -------
