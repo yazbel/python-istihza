@@ -134,7 +134,7 @@ Tek fark şablon adı. Bu gereksizliği daha sonra düzeltiriz.
 
 Şimdi **polls/results.html** şablonunu oluşturalım:
 
-.. code-block:: html
+.. code-block:: django
 
     <h1>{{ question.question_text }}</h1>
 
