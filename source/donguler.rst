@@ -1281,8 +1281,8 @@ continue Deyimi
 
         if len(s) <= 3:
             continue
-
-        print("En fazla üç haneli bir sayı girebilirsiniz.")
+        else:
+            print("En fazla üç haneli bir sayı girebilirsiniz.")
 
 Burada eğer kullanıcı klavyede `iptal` yazarsa programdan çıkılacaktır. Bunu; ::
 
