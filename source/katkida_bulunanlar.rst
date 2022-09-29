@@ -513,3 +513,9 @@ Ekrem Dinçel
 
     - Belgelerin tekrardan PDF ve EPUB olarak inşa edilmesi sağlandı.
     - Bozuk linkler düzeltildi.
+
+Ramazan Sancar
+=============
+
+    - "Koşul Deyimleri" içerisinde tanıma uygun açıklama düzeltildi. ()
+    - LISENCE içinde yer alan hatalı (bozuk) bağlantı düzeltildi.
