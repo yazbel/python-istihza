@@ -82,6 +82,8 @@ programınızda belirlediğiniz ölçütlere uyup uymadığını tespit etmek. E
 kullanıcı tarafından belirlenen parola uygunsa ona şu çıktıyı göstermek
 istiyorsunuz (parolanın `b5tY6g` olduğunu varsayalım)::
 
+.. code-block:: pycon
+
     Girdiğiniz parola (b5tY6g) kurallara uygun bir paroladır!
 
 Bu çıktıyı elde etmek için şöyle bir kod yazabilirsiniz::
@@ -387,7 +389,7 @@ kullanarak yapabileceklerimiz bunlarla da sınırlı değildir. Mesela size şö
 bir soru sorduğumu düşünün: Acaba aşağıdaki içeriğe sahip bir `HTML` şablonunu
 nasıl elde edebiliriz?
 
-::
+.. code-block:: html
 
     <html>
         <head>
@@ -402,7 +404,9 @@ nasıl elde edebiliriz?
 
 Burada bütün değişkenler tek bir değere sahip olacak. Örneğin değişkenimiz
 `Python Programlama Dili` ise yukarıdaki şablon şöyle bir `HTML` sayfası
-üretecek::
+üretecek:
+
+.. code-block:: html
 
     <html>
         <head>

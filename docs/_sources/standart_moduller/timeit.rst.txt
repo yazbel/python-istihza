@@ -112,7 +112,9 @@ Bir program olarak komut satırı arayüzünden çağrılırken şu yapı kullan
 
     python -m timeit [-n N] [-r N] [-u U] [-s S] [-t] [-c] [-h] [statement ...]
 
-Takip eden seçenekler::
+Takip eden seçenekler:
+
+.. code-block:: text
 
     -n N, --number=N
 

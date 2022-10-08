@@ -504,7 +504,9 @@ yerleştirerek arka planda hangi kodların hangi çıktıları verdiğini izleme
 ``bool(tekrar <= 3)`` ifadesinin çıktısını ekrana yazdırarak arka tarafta neler
 olup bittiğini canlı canlı görme imkanına kavuştuk.
 
-Yukarıdaki programı çalıştırdığımızda şuna benzer çıktılar görüyoruz::
+Yukarıdaki programı çalıştırdığımızda şuna benzer çıktılar görüyoruz:
+
+.. code-block:: pycon
 
     tekrar:  1
     Nasılsınız, iyi misiniz? evet
@@ -1260,7 +1262,9 @@ alması gerekiyor. Aksi halde Python bize şöyle bir hata verecektir::
 
     SyntaxError: 'break' outside loop
 
-Yani::
+Yani:
+
+.. code-block:: pycon
 
     SözDizimiHatası: ``break`` döngü dışında ..
 
@@ -1830,7 +1834,9 @@ Karakter Dizisindeki Karakterleri Sayma
 Yukarıdaki örneklerde içerik karşılaştırmaya ilişkin birkaç örnek verdik. Şimdi
 yine bilgilerimizi pekiştirmek için başka bir konuya ilişkin örnekler verelim.
 
-Mesela elimizde şöyle bir metin olduğunu varsayalım::
+Mesela elimizde şöyle bir metin olduğunu varsayalım:
+
+.. code-block:: text
 
     Bu programlama dili Guido Van Rossum adlı Hollandalı bir programcı
     tarafından 90’lı yılların başında geliştirilmeye başlanmıştır. Çoğu insan,
@@ -1971,7 +1977,9 @@ yerleştirerek bu döngünün verdiği çıktıları inceliyoruz. Bu arada, amac
 hizmet etmeyen satırları da yorum içine alarak etkisizleştirdiğimize dikkat
 edin.
 
-Çıktıya baktığımız zaman, şöyle bir durumla karşılaşıyoruz::
+Çıktıya baktığımız zaman, şöyle bir durumla karşılaşıyoruz:
+
+.. code-block:: pycon
 
     Bu programlama dili Guido Van Rossum adlı Hollandalı bir programcı
 

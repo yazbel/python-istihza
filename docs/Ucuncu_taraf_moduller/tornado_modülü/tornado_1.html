@@ -180,15 +180,15 @@ Daha sonra bu dosyaları <cite>Tornado</cite> ile çağırıp servis etmeliyiz.<
 <cite>Tornado</cite>’nun çağırıp değiştirmeden servis ettiği dosyalardır. Dinamik sayfalar
 ise <cite>Tornado</cite>’nun çağırdıktan sonra düzenleyip servis ettiği dosyalardır.</p>
 <p>Önce bir <cite>html</cite> dosyası oluşturalım, ardından bu dosyayı servis edelim.</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Merhaba Zalim Dünya&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1&gt;Merhaba Zalim Dünya&lt;/h1&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Merhaba Zalim Dünya<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Merhaba Zalim Dünya<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 <p>Bu dosyayı “<cite>index.html</cite>” ismiyle <cite>torn</cite> klasörüme kaydedeceğim. Siz başka bir
@@ -238,15 +238,15 @@ bir hale dönüştürdük. Daha sonra <cite>write</cite> fonksiyonuyla sayfamız
 Değişiklik yapmak istediğimiz yeri 2 tane küme parantezi içinde bir isimle
 `Html</cite> dosyamızda kullanıyoruz. Hemen bir <cite>index.html</cite> dosyasını düzenleyerek bir
 örnek verelim.</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Merhaba {{ yazbel }}&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1&gt;Merhaba {{ yazbel }}&lt;/h1&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Merhaba {{ yazbel }}<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Merhaba {{ yazbel }}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 <p>Burada <cite>{{ yazbel }}</cite> yazarak <cite>yazbel</cite> isimli bir değişken tanımladık. Tabi ki
@@ -298,18 +298,18 @@ verecek şekilde düzenleyelim:</p>
 </div>
 <p>Hemen bu sayıları listeleyecek bir <cite>Template</cite> (Şablon) yazalım. Bu listede
 çift sayılar büyük, tek sayılar küçük gözüksün.</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;body&gt;
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
     {% for sayı in yazbel %}
         {% if sayı%2==0 %}
-            &lt;h1&gt; {{ sayı }} &lt;/h1&gt;
+            <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span> {{ sayı }} <span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
         {% else %}
-            &lt;h4&gt; {{ sayı }} &lt;/h4&gt;
+            <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span> {{ sayı }} <span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
         {% end %}
     {% end %}
-&lt;/body&gt;
-&lt;/html&gt;
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi genel olarak <cite>python</cite> ile çok benzer bir yapıya sahip ancak
@@ -365,29 +365,29 @@ bir <cite>end</cite> ile bitiyor.</p>
 <div id="disqus_thread"></div>
 <script>
     /**
-     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT 
-     *  THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR 
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT
+     *  THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR
      *  PLATFORM OR CMS.
-     *  
-     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: 
+     *
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT:
      *  https://disqus.com/admin/universalcode/#configuration-variables
      */
     /*
     var disqus_config = function () {
         // Replace PAGE_URL with your page's canonical URL variable
-        this.page.url = PAGE_URL;  
-        
+        this.page.url = PAGE_URL;
+
         // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-        this.page.identifier = PAGE_IDENTIFIER; 
+        this.page.identifier = PAGE_IDENTIFIER;
     };
     */
-    
+
     (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
         var d = document, s = d.createElement('script');
-        
+
         // IMPORTANT: Replace EXAMPLE with your forum shortname!
         s.src = 'https://istihza.disqus.com/embed.js';
-        
+
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();
@@ -430,7 +430,7 @@ Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" 
 
 <div class="footer">
 		&copy; Copyright 2007-2022, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 21.01.2022.
+Son güncelleme: 08.10.2022.
 	<a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0 kullanılarak oluşturuldu.
 <br>
 <br>

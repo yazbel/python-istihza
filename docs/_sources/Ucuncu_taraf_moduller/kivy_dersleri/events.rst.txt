@@ -1,7 +1,7 @@
 Olaylar
 #######
 
-Olaylardan önceki bölümlerde bahsetmiştik, ancak detaylı olarak anlatmamıştık. Bu bölümde olaylardan biraz daha detaylı bir şekilde bahsedeceğiz. Öncelikle olay nedir tanımlamaya çalışalım. Bir olay, kullanıcı etkileşimi sonucu oluşabilen durumların tümüne denir. Örneğin kullanıcının bir butona tıklaması, bir pencere aracının üzerine mouse ile gelmesi, bir pencere aracından mouse tıklamasını kaldırması veya bir pencere aracını seçmesi(checkbox gibi araçlar) bütün hepsi birer olay olarak ele alınır. 
+Olaylardan önceki bölümlerde bahsetmiştik, ancak detaylı olarak anlatmamıştık. Bu bölümde olaylardan biraz daha detaylı bir şekilde bahsedeceğiz. Öncelikle olay nedir tanımlamaya çalışalım. Bir olay, kullanıcı etkileşimi sonucu oluşabilen durumların tümüne denir. Örneğin kullanıcının bir butona tıklaması, bir pencere aracının üzerine mouse ile gelmesi, bir pencere aracından mouse tıklamasını kaldırması veya bir pencere aracını seçmesi(checkbox gibi araçlar) bütün hepsi birer olay olarak ele alınır.
 
 Kullanıcı taraflı gerçekleşmeyen, ancak birer olay olarak ele alınan durumlar da vardır. Örneğin bir resmin yüklenmeye başlaması, yüklenmesinin bitmesi durumları da birer olaydır. Bunlara da yeri geldiğinde değineceğiz.
 
@@ -17,7 +17,7 @@ Clock ile ilgili daha önce bir örnek yapmıştık. Clock sınıfı, belirtilen
 Clock sınıfını iki şekilde kullanabiliriz. Birincisi, fonksiyonun sadece bir kez çağrılması. Yani belirtilen süre sonunda, fonksiyon çalıştırılır ve işlem tamamlanır. Bir örnekle görelim
 
 .. code-block:: python
-	
+
 	# coding: utf-8
 
 	from kivy.app import App
@@ -39,7 +39,7 @@ Clock sınıfını iki şekilde kullanabiliriz. Birincisi, fonksiyonun sadece bi
 
 	Program().run()
 
-Program başladıktan 3 saniye sonra, ekrandaki "Merhaba" yazısı, "Dünya" yazısıyla değiştirilecektir. Böylece işlem tamamlanmış olacaktır. 
+Program başladıktan 3 saniye sonra, ekrandaki "Merhaba" yazısı, "Dünya" yazısıyla değiştirilecektir. Böylece işlem tamamlanmış olacaktır.
 
 Clock sınıfının bir başka kullanımı ise, belli aralıklarla sürekli çalışmasıdır. Fonksiyonu çalıştırır, sonra belirtilen süre kadar bekler ve sonra tekrar çalıştırır. Bunu, siz sonlandırana kadar veya program kapanana kadar yapmaya devam eder. Saat örneği, bu kullanım için çok iyi bir örnektir.
 
@@ -68,7 +68,7 @@ Clock sınıfının bir başka kullanımı ise, belli aralıklarla sürekli çal
 
 	Program().run()
 
-Programda kullandığımız datetime modülü, zaman bilgisini elde etmek içindir. Dikkat ettiyseniz, sürekli çalışmasını istediğimizde Clock.schedule_interval() kullanıyoruz. Bir saniye aralıkla çalışmasını sağlayarak, ekranda zaman bilgisini göstermiş olduk. 
+Programda kullandığımız datetime modülü, zaman bilgisini elde etmek içindir. Dikkat ettiyseniz, sürekli çalışmasını istediğimizde Clock.schedule_interval() kullanıyoruz. Bir saniye aralıkla çalışmasını sağlayarak, ekranda zaman bilgisini göstermiş olduk.
 
 Her iki kullanım şeklinde dikkat etmemiz gereken şey, çalıştırılacak olan fonksiyonun mutlaka bir argüman almasıdır. Burda kullandığımız "self" dışında alması gereken bir argüman olduğunu görüyoruz. Bu argüman, belirlediğimiz zamanın kendisidir.
 
@@ -87,7 +87,7 @@ Eğer tanımladığınız bir Clock nesnesini kaldırmak isterseniz;
 Girdi Olayları
 ==============
 
-Kullanıcı girdisi sonucu oluşan olaylardır. Tıklama, basılı halde sürükleme, bırakma, mouse tekerleği hareketi gibi hareketler sonucu oluşan olaylardır. Daha önce buna benzer olayları bazı pencere araçlarımızda ele almıştık. Bunlardan birisi Button sınıfıydı. Bir butonun üzerine tıklanması on_press, bırakılma olayı da on_release ile dinleniyordu. 
+Kullanıcı girdisi sonucu oluşan olaylardır. Tıklama, basılı halde sürükleme, bırakma, mouse tekerleği hareketi gibi hareketler sonucu oluşan olaylardır. Daha önce buna benzer olayları bazı pencere araçlarımızda ele almıştık. Bunlardan birisi Button sınıfıydı. Bir butonun üzerine tıklanması on_press, bırakılma olayı da on_release ile dinleniyordu.
 
 Genelde bir pencere aracının sahip olduğu olaylar, ilgili `API <https://kivy.org/doc/stable/api-index.html>`_ kaynağında bulunur. Böylece kaynağa bakarak, ele almak istediğimiz olayları bind() yardımıyla bağlayabiliriz. Basit bir örnek yapalım isterseniz
 
@@ -110,10 +110,10 @@ Genelde bir pencere aracının sahip olduğu olaylar, ilgili `API <https://kivy.
 
 	    def kontrol(self,instance,value):
 	        print(value)
-	        
+
 	Program().run()
 
 TextInput pencere aracı üzerinde herhangi bir yazı yazıldığında çalışacak olan kontrol fonksiyonumuzu tanımladık. Bu fonksiyon iki adet parametre alıyor(self hariç). Bunlardan instance, pencere aracının kendisi, diğeri ise bunun içerdiği metindir. Herhangi bir karakter girişinde kontrol fonksiyonumuz çağrılacaktır. Bağlama işlemini de bind() ile yaptığımıza dikkat edin.
 
-Bunun gibi birçok pencere aracının sahip olduğu olayları API kaynağından inceleyebilirsiniz. Biz de yeri geldiğinde bunlara değineceğiz ve kullanacağız. 
+Bunun gibi birçok pencere aracının sahip olduğu olayları API kaynağından inceleyebilirsiniz. Biz de yeri geldiğinde bunlara değineceğiz ve kullanacağız.
 

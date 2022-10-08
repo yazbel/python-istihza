@@ -20,7 +20,9 @@ yazabildik::
 
     print("Merhaba", isim, end="!\n")
 
-Bu programı çalıştırdığımızda şöyle bir çıktı alacağımızı biliyorsunuz::
+Bu programı çalıştırdığımızda şöyle bir çıktı alacağımızı biliyorsunuz:
+
+.. code-block:: pycon
 
     Merhaba Mübeccel!
 
@@ -695,7 +697,7 @@ fonksiyonu yardımıyla kayan noktalı sayıya dönüştürebiliriz::
     >>> float("543.34")
 
 Ancak `"543.34"` karakter dizisini `int()` fonksiyonu ile birlikte kullanırsak hata alırız, çünkü
-`543.34` bir tamsayı olamaz. Eğer amacımız `"543.34"` karakter dizisini sayısal değer gibi düşünüp 
+`543.34` bir tamsayı olamaz. Eğer amacımız `"543.34"` karakter dizisini sayısal değer gibi düşünüp
 aşağı yuvarlamak olsaydı şöyle bir şey yapabilirdik::
 
     >>> x = float("543.34")
@@ -974,7 +976,9 @@ aslında durum hiç de öyle değil. Neden mi?
 
     print("Merhaba Python!")
 
-Bu komut şöyle bir çıktı vermiş olmalı::
+Bu komut şöyle bir çıktı vermiş olmalı:
+
+.. code-block:: pycon
 
     Merhaba Python!
     None
@@ -1158,19 +1162,25 @@ noktada Python'daki küçük ama önemli bir konuya değinelim bu bölümü kapa
 
 Burada belli ki adres çubuğuna ``fdkgd.com`` diye bir URL
 yazmışız, ama böyle bir internet adresi olmadığı için, kullandığımız internet
-tarayıcısı bize şöyle bir mesaj vermiş::
+tarayıcısı bize şöyle bir mesaj vermiş:
+
+.. code-block:: text
 
     Hata! Google Chrome fdkgd.com sitesini bulamadı
 
 Şimdi de ``dadasdaf.com`` adresini arayalım...
 
 Yine böyle bir adres olmadığı için, bu defa tarayıcımız bize şöyle bir uyarı
-gösterecek::
+gösterecek:
+
+.. code-block:: text
 
     Hata! Google Chrome dadasdaf.com sitesini bulamadı
 
 Gördüğünüz gibi, hata mesajlarında değişen tek yer, aradığımız sitenin adresi.
-Yani internet tarayıcımız bu hata için şöyle bir taslağa sahip::
+Yani internet tarayıcımız bu hata için şöyle bir taslağa sahip:
+
+.. code-block:: text
 
     Hata! Google Chrome ... sitesini bulamadı
 
@@ -1189,7 +1199,9 @@ Gördüğünüz gibi, şimdiye kadar öğrendiğimiz bilgileri kullanarak böyle
 programı rahatlıkla yazabiliyoruz.
 
 Peki ya biz kullanıcının girdiği internet adresini mesela tırnak içinde
-göstermek istersek ne olacak? Yani örneğin şöyle bir çıktı vermek istersek::
+göstermek istersek ne olacak? Yani örneğin şöyle bir çıktı vermek istersek:
+
+.. code-block:: text
 
     Hata! Google Chrome 'fdsfd.com' sitesini bulamadı
 

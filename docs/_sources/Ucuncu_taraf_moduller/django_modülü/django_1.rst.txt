@@ -1,4 +1,4 @@
-﻿.. meta::
+.. meta::
    :description: Bu bölümde django ile site yapmaya başlayacağız.
    :keywords: python, django, çeviri
 

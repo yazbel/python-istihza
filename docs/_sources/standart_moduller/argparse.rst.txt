@@ -335,7 +335,9 @@ new lines are replaced with one. If you wish to preserve multiple blank lines, a
     ayristirici.add_argument('ikinci_argüman', default=[1, 2, 3], help='İkinci argüman yardim mesajı!')
     ayristirici.print_help()
 
-Çıktımız::
+Çıktımız:
+
+.. code-block:: pycon
 
     usage: ilkprogram.py [-h] [--ilk_arguman ILK_ARGUMAN] ikinci_argüman
 
@@ -726,7 +728,9 @@ her şeyi yapabilir, ancak çoğu eylem yalnızca `parse_args()` fonksiyonunun d
     ayristirici.add_argument('--dict', dest='types', action='append_const', const=dict)
     print(ayristirici.parse_args('--str --dict'.split()))
 
-Çıktımız::
+Çıktımız:
+
+.. code-block:: pycon
 
     Namespace(types=[<class 'str'>, <class 'dict'>])
 

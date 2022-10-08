@@ -600,7 +600,9 @@ gören Python, doğrudan doğruya bu sembolle eşleşen bir karakter dizisi
 aramak yerine, özel bir işlem gerçekleştirecektir. Yani "[ ]" sembolü
 kendisiyle eşleşmeyecektir...
 
-Python'da bulunan temel metakarakterleri topluca görelim::
+Python'da bulunan temel metakarakterleri topluca görelim:
+
+.. code-block:: text
 
     [ ] . \* + ? { } ^ $ | ( )
 

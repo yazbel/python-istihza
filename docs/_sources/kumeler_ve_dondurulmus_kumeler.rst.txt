@@ -911,7 +911,7 @@ Bir de `b` kümesinde bulunup `a` kümesinde bulunmayan öğelere bakalım::
 	{4}
 
 Bu da bize "4" çıktısını verdi. Demek ki bu öğe ``b`` kümesinde bulunuyor, ama
-``a`` kümesinde bulunmuyormuş. Peki ya kümelerin sadece birinde bulunan öğeleri nasıl alacağız? 
+``a`` kümesinde bulunmuyormuş. Peki ya kümelerin sadece birinde bulunan öğeleri nasıl alacağız?
 İşte bu noktada yardımımıza `symmetric_difference()` adlı metot yetişecek::
 
 	>>> a.symmetric_difference(b)
