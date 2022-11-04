@@ -57,7 +57,7 @@ sayfasında listelenmiş halde bulunuyor. Bu konular üzerinde çalışma yapabi
 - Belgelerde değişiklik yaparak çekme isteği (pull request) gönderebilirsiniz. Yazım yanlışları ve küçük hatalar için
 GitHub arayüzünü kullanabilirsiniz ancak daha büyük ve karmaşık düzeltmeler için veri havuzunu bilgisayarınıza çekmeli,
 daha sonrasında düzeltmeleri yapmalı ve belgeleri inşa edip çekme isteği göndermelisiniz. Her iki durumda da kısa ve öz bir
-işleme mesajı (commit message) yazdığınıza emin olmalısınız.
+işleme mesajı (commit message) yazdığınıza emin olmalısınız. Belgelerde bir değişiklik yapıp çekme isteğinde bulunmadan önce [`CONTRIBUTING.md`](https://github.com/yazbel/python-istihza/blob/master/CONTRIBUTING.md) dosyasındaki adımları takip ettiğinizden de emin olun. 
 
 - Eğer bir yanlış gördünüz ancak bir sebepten ötürü düzeltmeyi kendiniz yapmak istemediyseniz, bu hatayı bildirerek de
 yardım edebilirsiniz. Bunun için veri havuzunun [konular (issues)](https://github.com/yazbel/python-istihza/issues)
