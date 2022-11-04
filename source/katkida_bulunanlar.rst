@@ -516,7 +516,7 @@ Ekrem Dinçel
     - Bozuk linkler düzeltildi.
 
 Ramazan Sancar
-=============
+===============
 
     - "Koşul Deyimleri" içerisinde tanıma uygun açıklama düzeltildi. ()
     - LISENCE içinde yer alan hatalı (bozuk) bağlantı düzeltildi.
