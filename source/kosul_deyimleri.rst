@@ -281,7 +281,7 @@ basıyoruz ve nihai olarak şöyle bir görüntü elde ediyoruz::
 	sayı 10'dan büyüktür!
 	>>>
 
-Demek ki `250` sayısı `10`'dan büyükmüş! Ne büyük bir buluş! Merak etmeyin, daha
+Demek ki `255` sayısı `10`'dan büyükmüş! Ne büyük bir buluş! Merak etmeyin, daha
 çok şey öğrendikçe daha mantıklı programlar yazacağız. Burada amacımız işin
 temelini kavramak. Bunu da en iyi, (çok mantıklı olmasa bile) basit programlar
 yazarak yapabiliriz.
