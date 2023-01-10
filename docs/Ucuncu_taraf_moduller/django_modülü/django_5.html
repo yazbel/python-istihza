@@ -131,17 +131,17 @@ Yeni hali aşağıdaki gibi olmalı.</p>
 </div>
 <p>Bu şekilde ilk işlecimizi yazdık şimdi <cite>isim</cite> ve <cite>ulke</cite> adında iki tane anahtar değer döndürdük. Bu değerleri istediğimiz HTML sayfasında kullanabiliriz.
 Denemek için <cite>templates</cite> klasörü altında <cite>index.html</cite> oluşturalım ardından HTML dosyasmıza aşağıdaki kodu yazalım.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Django - İçerik İşlemcileri&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
+<div class="highlight-django notranslate"><div class="highlight"><pre><span></span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;title&gt;Django - İçerik İşlemcileri&lt;/title&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
 
-&lt;p&gt;Merhaba, benim adım {{ isim }} ve şu an bu ülkedeyim: {{ ulke }} &lt;/p&gt;
+<span class="x">&lt;p&gt;Merhaba, benim adım </span><span class="cp">{{</span> <span class="nv">isim</span> <span class="cp">}}</span><span class="x"> ve şu an bu ülkedeyim: </span><span class="cp">{{</span> <span class="nv">ulke</span> <span class="cp">}}</span><span class="x"> &lt;/p&gt;</span>
 
-&lt;/body&gt;
-&lt;/html&gt;
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
 </pre></div>
 </div>
 <p>HTML sayfasımızı oluşturduktan
@@ -187,33 +187,33 @@ ana tema blogumuzu, tüm sayfalarda ortak olan diğer blok parçalarının yolla
 </pre></div>
 </div>
 <p>HTML Sayfamız:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span>{% extends base_components %}
-{% block title %}İletişime Geç {% endblock %}
-{% block s_content %}
-    &lt;!-- s-content
-    ================================================== --&gt;
-    &lt;section class=&quot;s-content s-content--narrow&quot;&gt;
-        &lt;div class=&quot;row&quot;&gt;
-            &lt;div class=&quot;s-content__header col-full&quot;&gt;
-                &lt;h1 class=&quot;s-content__header-title&quot;&gt;
-                    İletişime Geç &lt;/h1&gt;
-            &lt;/div&gt; &lt;!-- end s-content__header --&gt;
-            &lt;div class=&quot;col-full s-content__main&quot;&gt;
-                &lt;h3&gt;Merhaba De :)&lt;/h3&gt;
-                &lt;p class=&quot;lead&quot;&gt;Sosyal medya hesapları üzerinden bana ulaşabilirsin. &lt;/p&gt;
-                &lt;ul class=&quot;s-content__author-social&quot; style=&quot;display: flex; justify-content: center&quot;&gt;
-                    {% for i in social %}
-                        &lt;li&gt;
-                            &lt;a href=&quot;{{ i.sm_url }}&quot; target=&quot;_blank&quot;&gt;&lt;i class=&quot;{{ i.sm_icon_class }}&quot;
-                                                                        style=&quot;font-size: 48px&quot;
-                                                                        aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/a&gt;
-                        &lt;/li&gt;
-                    {% endfor %}
-                &lt;/ul&gt;
-            &lt;/div&gt; &lt;!-- end s-content__main --&gt;
-        &lt;/div&gt; &lt;!-- end row --&gt;
-    &lt;/section&gt; &lt;!-- s-content --&gt;
-    &lt;{% endblock %}
+<div class="highlight-django notranslate"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">extends</span> <span class="nv">base_components</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">title</span> <span class="cp">%}</span><span class="x">İletişime Geç </span><span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">s_content</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    &lt;!-- s-content</span>
+<span class="x">    ================================================== --&gt;</span>
+<span class="x">    &lt;section class=&quot;s-content s-content--narrow&quot;&gt;</span>
+<span class="x">        &lt;div class=&quot;row&quot;&gt;</span>
+<span class="x">            &lt;div class=&quot;s-content__header col-full&quot;&gt;</span>
+<span class="x">                &lt;h1 class=&quot;s-content__header-title&quot;&gt;</span>
+<span class="x">                    İletişime Geç &lt;/h1&gt;</span>
+<span class="x">            &lt;/div&gt; &lt;!-- end s-content__header --&gt;</span>
+<span class="x">            &lt;div class=&quot;col-full s-content__main&quot;&gt;</span>
+<span class="x">                &lt;h3&gt;Merhaba De :)&lt;/h3&gt;</span>
+<span class="x">                &lt;p class=&quot;lead&quot;&gt;Sosyal medya hesapları üzerinden bana ulaşabilirsin. &lt;/p&gt;</span>
+<span class="x">                &lt;ul class=&quot;s-content__author-social&quot; style=&quot;display: flex; justify-content: center&quot;&gt;</span>
+<span class="x">                    </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">i</span> <span class="k">in</span> <span class="nv">social</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">                        &lt;li&gt;</span>
+<span class="x">                            &lt;a href=&quot;</span><span class="cp">{{</span> <span class="nv">i.sm_url</span> <span class="cp">}}</span><span class="x">&quot; target=&quot;_blank&quot;&gt;&lt;i class=&quot;</span><span class="cp">{{</span> <span class="nv">i.sm_icon_class</span> <span class="cp">}}</span><span class="x">&quot;</span>
+<span class="x">                                                                        style=&quot;font-size: 48px&quot;</span>
+<span class="x">                                                                        aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/a&gt;</span>
+<span class="x">                        &lt;/li&gt;</span>
+<span class="x">                    </span><span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">                &lt;/ul&gt;</span>
+<span class="x">            &lt;/div&gt; &lt;!-- end s-content__main --&gt;</span>
+<span class="x">        &lt;/div&gt; &lt;!-- end row --&gt;</span>
+<span class="x">    &lt;/section&gt; &lt;!-- s-content --&gt;</span>
+<span class="x">    &lt;</span><span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
 </pre></div>
 </div>
 <p>Örnek HTML sayfamızda <cite>{% extends base_components %}</cite> ile <cite>base_components</cite> değişkenini içerik işlemcisinde tanımlamıştık, bu sayede bir daha
@@ -270,29 +270,29 @@ dosya yolunu değiştirmek zorunda kalacaktık.</p>
 <div id="disqus_thread"></div>
 <script>
     /**
-     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT 
-     *  THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR 
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT
+     *  THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR
      *  PLATFORM OR CMS.
-     *  
-     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: 
+     *
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT:
      *  https://disqus.com/admin/universalcode/#configuration-variables
      */
     /*
     var disqus_config = function () {
         // Replace PAGE_URL with your page's canonical URL variable
-        this.page.url = PAGE_URL;  
-        
+        this.page.url = PAGE_URL;
+
         // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-        this.page.identifier = PAGE_IDENTIFIER; 
+        this.page.identifier = PAGE_IDENTIFIER;
     };
     */
-    
+
     (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
         var d = document, s = d.createElement('script');
-        
+
         // IMPORTANT: Replace EXAMPLE with your forum shortname!
         s.src = 'https://istihza.disqus.com/embed.js';
-        
+
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();
@@ -334,8 +334,8 @@ Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" 
     </div> 
 
 <div class="footer">
-		&copy; Copyright 2007-2022, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 21.01.2022.
+		&copy; Copyright 2007-2023, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 10.01.2023.
 	<a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0 kullanılarak oluşturuldu.
 <br>
 <br>

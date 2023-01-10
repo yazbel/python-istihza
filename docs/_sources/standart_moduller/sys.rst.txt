@@ -165,7 +165,9 @@ parametrenin anlaşılamadığı konusunda kullanıcıyı bilgilendirip programd
 çıkıyoruz.
 
 Aşağıda, programımızın hangi komutlara hangi karşılıkları verdiğini
-görüyorsunuz::
+görüyorsunuz:
+
+.. code-block:: doscon
 
     C:\Users\fozgul\Belgelerim> python deneme.py
     Gerekli parametreleri girmediniz!

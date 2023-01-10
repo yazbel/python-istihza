@@ -134,7 +134,9 @@ Bir de şunu deneyelim::
     for öğe in liste:
         print("{} adlı öğenin veri tipi: {}".format(öğe, type(öğe)))
 
-Bu kodları çalıştırdığımızda da şöyle bir çıktı alıyoruz::
+Bu kodları çalıştırdığımızda da şöyle bir çıktı alıyoruz:
+
+.. code-block:: pycon
 
     Ali adlı öğenin veri tipi: <class 'str'>
     Veli adlı öğenin veri tipi: <class 'str'>

@@ -1068,7 +1068,9 @@ görmek için ``globals()`` adlı bir fonksiyonu kullanabilirsiniz::
 
     >>> globals()
 
-Bu fonksiyonu çalıştırdığımızda şuna benzer bir çıktı alırız::
+Bu fonksiyonu çalıştırdığımızda şuna benzer bir çıktı alırız:
+
+.. code-block:: pycon
 
     {'__doc__': None, '__loader__': <class '_frozen_importlib.BuiltinImporter'>,
     '__name__': '__main__', '__package__': None, '__builtins__': <module 'builtins'>}

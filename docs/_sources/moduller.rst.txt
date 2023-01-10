@@ -292,12 +292,16 @@ Bu programı yukarıdaki gibi bir dosyaya kaydettikten sonra bunu herhangi bir
 Python programı gibi çalıştırabilirsiniz.
 
 Eğer bu programı Windows dışındaki bir işletim sisteminde çalıştırırsanız şu
-çıktıyı alırsınız::
+çıktıyı alırsınız:
+
+.. code-block:: pycon
 
     Kusura bakmayın! Bu programı yalnızca
     Windows'ta kullanabilirsiniz!
 
-Ama eğer bu program Windows işletim sisteminde çalıştırılırsa şu çıktıyı verir::
+Ama eğer bu program Windows işletim sisteminde çalıştırılırsa şu çıktıyı verir:
+
+.. code-block:: pycon
 
     Hoşgeldin Windows kullanıcısı!
 

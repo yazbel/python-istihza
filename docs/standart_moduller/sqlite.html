@@ -772,25 +772,38 @@ adlı bir metottan yararlandık:</p>
 devreye soktuğu kaynakları serbest bırakmış oluyoruz. Esasında programımız
 kapandığında, açık olan bütün Sqlite veritabanları da otomatik olarak kapanır.
 Ama yine de bu işlemi elle yapmak her zaman iyi bir fikirdir.</p>
-<p>Eğer üzerinde işlem yaptığınız veritabanının her şey bittikten sonra otomatik
-olarak kapanmasını garantilemek isterseniz, daha önce öğrendiğimiz <cite>with</cite>
-sözcüğünü kullanabilirsiniz:</p>
+</section>
+<section id="baglam-yoneticisi-kullanimi">
+<h2>Bağlam Yöneticisi Kullanımı<a class="headerlink" href="#baglam-yoneticisi-kullanimi" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>Python’da bağlam yönetecisi oluşturmak için <cite>with</cite> deyimi kullanılır. Python <cite>with</cite>
+deyimini kullanarak Sqlite ile işlem yaparken bir istisna ile karşılaşırsa yapılan
+işlemlerin otomatik olarak geri alınmasını sağlar. Eğer işlem sorunsuz gerçekleşirse
+herhangi bir etki yaratmaz. Aşağıda örnek koda bakalım:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
 
-<span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;vt.sqlite&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">vt</span><span class="p">:</span>
-    <span class="n">im</span> <span class="o">=</span> <span class="n">vt</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<span class="n">con</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;:memory:&quot;</span><span class="p">)</span>
+<span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;CREATE TABLE personel(id INTEGER PRIMARY KEY, isim VARCHAR UNIQUE)&quot;</span><span class="p">)</span>
 
-    <span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;CREATE TABLE IF NOT EXISTS personel</span>
-<span class="s2">        (isim, soyisim, memleket)&quot;&quot;&quot;</span><span class="p">)</span>
-    <span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;INSERT INTO personel VALUES</span>
-<span class="s2">        (&#39;Fırat&#39;, &#39;Özgül&#39;, &#39;Adana&#39;)&quot;&quot;&quot;</span><span class="p">)</span>
+<span class="c1"># Başarılı şekilde, con.commit() çalıştırılır.</span>
+<span class="k">with</span> <span class="n">con</span><span class="p">:</span>
+    <span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO personel(isim) VALUES(?)&quot;</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;Fırat&quot;</span><span class="p">,))</span>
 
-    <span class="n">vt</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+<span class="c1"># Hata yakalanınca con.rollback() otomatik olarak çağırılır ve</span>
+<span class="c1"># işlemler geri alınır.</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">con</span><span class="p">:</span>
+        <span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO personel(isim) VALUES(?)&quot;</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;Fırat&quot;</span><span class="p">,))</span>
+<span class="k">except</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">IntegrityError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Aynı ismi iki defa ekleyemezsiniz!&quot;</span><span class="p">)</span>
+
+<span class="c1"># Bağlam yöneticisi olarak kullanılan bağlantı nesnesi yalnızca işlemleri</span>
+<span class="c1"># gerçekleştirir veya geri alır, bu nedenle bağlantı nesnesi manuel olarak</span>
+<span class="c1"># kapatılmalıdır.</span>
+<span class="n">con</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Bu şekilde <cite>with</cite> sözcüğünü kullanarak bir veritabanı bağlantısı açtığımızda,
-bütün işler bittikten sonra Python bizim için bağlantıyı otomatik olarak
-sonlandıracaktır.</p>
+<p>Not: Bağlam yöneticisi ne dolaylı olarak yeni bir işlem açar ne de
+bağlantıyı kapatır. Kısaca işlem sonunda bağlantıyı kapatmanız gerekir.</p>
 </section>
 <section id="parametreli-sorgular">
 <h2>Parametreli Sorgular<a class="headerlink" href="#parametreli-sorgular" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
@@ -1610,29 +1623,29 @@ yöntem hangi durumlarda işe yaramaz?</p></li>
 <div id="disqus_thread"></div>
 <script>
     /**
-     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT 
-     *  THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR 
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT
+     *  THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR
      *  PLATFORM OR CMS.
-     *  
-     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: 
+     *
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT:
      *  https://disqus.com/admin/universalcode/#configuration-variables
      */
     /*
     var disqus_config = function () {
         // Replace PAGE_URL with your page's canonical URL variable
-        this.page.url = PAGE_URL;  
-        
+        this.page.url = PAGE_URL;
+
         // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-        this.page.identifier = PAGE_IDENTIFIER; 
+        this.page.identifier = PAGE_IDENTIFIER;
     };
     */
-    
+
     (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
         var d = document, s = d.createElement('script');
-        
+
         // IMPORTANT: Replace EXAMPLE with your forum shortname!
         s.src = 'https://istihza.disqus.com/embed.js';
-        
+
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();
@@ -1673,8 +1686,8 @@ Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" 
     </div> 
 
 <div class="footer">
-		&copy; Copyright 2007-2022, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 21.01.2022.
+		&copy; Copyright 2007-2023, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 10.01.2023.
 	<a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0 kullanılarak oluşturuldu.
 <br>
 <br>

@@ -39,8 +39,8 @@ Aldığı iki parametreden ikincisinin işaretini birincisine verir.
 math.fabs()
 ************
 
-Verilen değerin mutlak değerini alır. Gömülü fonksiyonlardan 
-`abs`'den küçük bir farkı var. Çıktısını tam sayı olarak değil 
+Verilen değerin mutlak değerini alır. Gömülü fonksiyonlardan
+`abs`'den küçük bir farkı var. Çıktısını tam sayı olarak değil
 ondalıklı sayı olarak döndürüyor.
 ::
 
@@ -52,22 +52,23 @@ ondalıklı sayı olarak döndürüyor.
 math.factorial()
 ****************
 
-Verilen sayının faktoriyelini döndürüyor. Eğer verilen değer 
+Verilen sayının faktoriyelini döndürüyor. Eğer verilen değer
 pozitif tam sayı değilse `ValueError` hatası veriyor.
-::
+
+.. code-block:: pycon
 
     >>> math.factorial(5)
     120
     >>> math.factorial(-5)
     Traceback (most recent call last):
-    File "<pyshell#10>", line 1, in <module>
+      File "<pyshell#10>", line 1, in <module>
         math.factorial(-5)
     ValueError: factorial() not defined for negative values
 
 math.floor()
 *************
 
-`ceil` fonksiyonunun tam tersi bir işleve sahip. Verilen ondalıklı 
+`ceil` fonksiyonunun tam tersi bir işleve sahip. Verilen ondalıklı
 sayıyının bir altındaki tam sayıyı döndürür. Sayı eğer tam sayı ise
 `__floor__` fonksiyonundan faydalanır. `int` fonksiyonundan farkı
 negatif sayılarda ortaya çıkıyor.
@@ -99,7 +100,7 @@ Verdiğiniz birinci parametrenin ikinci parametreye bölümünden kalanı buluyo
 math.frexp()
 ************
 
-Bu fonksiyon `x` bilindiğinde aşağıdaki denklemin `m` ve `e` parametrelerini 
+Bu fonksiyon `x` bilindiğinde aşağıdaki denklemin `m` ve `e` parametrelerini
 bulmaya yarıyor. `m` değerinin mutlak değeri 0,5 ve 1 arasında
 bir değer alıyor.
 ::
@@ -117,7 +118,7 @@ math.fsum()
 ***********
 
 `sum` fonksiyonuna çok benziyor. `sum` fonksiyonundaki bir açığı
-kapatıyor. `sum` fonksiyonu ondalıklı sayılarla çalışırken 
+kapatıyor. `sum` fonksiyonu ondalıklı sayılarla çalışırken
 biraz sorun çıkarabiliyor.
 ::
 
@@ -211,7 +212,7 @@ Birinci değerin ikinci değere göre logaritmasını hesaplar.
 math.log1p()
 *************
 
-Verilen sayının bir fazlasının e tabanına göre logaritmasını 
+Verilen sayının bir fazlasının e tabanına göre logaritmasını
 hesaplar.
 ::
 
@@ -324,7 +325,7 @@ Verilen tanjant değerinden radyan cinsinde bir açı döndürür.
 math.atan2()
 ************
 
-İlk değere `y` ikinci değere `x` dersek şu işlemin 
+İlk değere `y` ikinci değere `x` dersek şu işlemin
 sonucunu döndürür: `atan(y/x)`
 
 math.hypot()
@@ -367,7 +368,7 @@ Verilen hiperbolik tanjant değerinin tersini döndürür.
 math.gamma()
 ************
 
-Bu fonksiyon `factorial` fonksiyonuna çok benziyor. Farklarından biri 
+Bu fonksiyon `factorial` fonksiyonuna çok benziyor. Farklarından biri
 verilen sayının bir azının faktoriyelini hesaplamasıdır.
 Ancak asıl fark sayı büyüdüğünde ortaya çıkıyor.
 ::

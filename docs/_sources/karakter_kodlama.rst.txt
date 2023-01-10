@@ -938,6 +938,8 @@ eşleştirilecektir. Bununla ilgili şöyle bir çalışma yapabiliriz::
 
 Bu programı çalıştırdığımızda şuna benzer bir çıktı alırız::
 
+.. code-block:: pycon
+
     'İ' karakteri UTF-8 ile b'\xc4\xb0' olarak ve 304 sayısıyla temsil edilir
     'İ' karakteri cp1254 ile b'\xdd' olarak ve 304 sayısıyla temsil edilir.
     'İ' karakteri latin-1 ile temsil edilemez!
