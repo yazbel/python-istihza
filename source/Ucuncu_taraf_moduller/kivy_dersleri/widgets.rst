@@ -741,13 +741,6 @@ Onay kutuları, genelde bir seçeneğin seçilip seçilmeyeceği veya birden faz
 	from kivy.uix.textinput import TextInput
 	from kivy.uix.checkbox import CheckBox
 
-	# coding: utf-8
-
-	from kivy.app import App
-	from kivy.uix.label import Label
-	from kivy.uix.boxlayout import BoxLayout
-	from kivy.uix.button import Button
-	from kivy.uix.textinput import TextInput
 
 	class Program(App):
 	    def build(self):
