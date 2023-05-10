@@ -286,7 +286,7 @@ pyenv Bağımlılıkların Kurulumu
 Yeni Sürümlerin Kurulumu
 -------------------------
 
-`pyenv` için gerekli ayarları yaptıktan sonra yeni bir Python sürümü kurabilmek için tek yapmanız gereken ``pyenv install <python-sürümü>`` şeklinde bir komut çalıştırmaktır. ``<python-sürümü>`` kısmına yazağımız sürüm bilgisi ``pyenv install --list`` sonuçları ile aynı isimde olmalıdır. Python 3.8.5 sürümünü kurmak için yapmanız gereken aşağıdaki komutu çalıştırmaktır::
+`pyenv` için gerekli ayarları yaptıktan sonra yeni bir Python sürümü kurabilmek için tek yapmanız gereken ``pyenv install <python-sürümü>`` şeklinde bir komut çalıştırmaktır. ``<python-sürümü>`` kısmına yazacağımız sürüm bilgisi ``pyenv install --list`` sonuçları ile aynı isimde olmalıdır. Python 3.8.5 sürümünü kurmak için yapmanız gereken aşağıdaki komutu çalıştırmaktır::
 
     pyenv install 3.8.5
 
