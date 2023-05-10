@@ -519,3 +519,10 @@ Ramazan Sancar
 
     - "Koşul Deyimleri" içerisinde tanıma uygun açıklama düzeltildi. ()
     - LISENCE içinde yer alan hatalı (bozuk) bağlantı düzeltildi.
+
+Beyazıt Uysal
+=============
+
+    - '/Ucuncu_taraf_moduller/kivy_dersleri/widgets.rst'  dosyası altında bulunan bir kod bloğunda iki kez kütüphane importu giderildi.
+    - islecler.rst dosyası içerisinde bulunan "görüntülecektir" kelimesi "görüntülenecektir" olarak düzeltildi.
+    - kurulum.rst dosyası içerisinde bulunan "yazağımız" kelimesi "yazacağımız" olarak düzeltildi.
