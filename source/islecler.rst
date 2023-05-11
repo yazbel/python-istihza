@@ -839,7 +839,7 @@ karşılıklarını gösteren bir uygulama yazabiliriz::
 
 Bu programda eğer kullanıcı `100`'den büyük ya da `0`'dan küçük bir sayı girerse
 `Böyle bir not yok` uyarısı alacaktır. 0-100 arası notlarda ise, her bir not
-aralığına karşılık gelen harf görüntülecektir. Eğer isterseniz yukarıdaki
+aralığına karşılık gelen harf görüntülenecektir. Eğer isterseniz yukarıdaki
 kodları şu şekilde de kısaltabilirsiniz::
 
     x = int(input("Notunuz: "))
