@@ -526,3 +526,7 @@ Beyazıt Uysal
     - '/Ucuncu_taraf_moduller/kivy_dersleri/widgets.rst'  dosyası altında bulunan bir kod bloğunda iki kez kütüphane importu giderildi.
     - islecler.rst dosyası içerisinde bulunan "görüntülecektir" kelimesi "görüntülenecektir" olarak düzeltildi.
     - kurulum.rst dosyası içerisinde bulunan "yazağımız" kelimesi "yazacağımız" olarak düzeltildi.
+    - donguler.rst altinda yer alan "Dosyaların İçeriğini Karşılaştırma basliginda" kod açıkklama hatası düzeltildi.
+    - sozlukler.rst dosyasında yer alan ve sözlüklerin sıraya sahip olması ile ilgili olan not, html dosyasında hatalı bir gorunume sahipti bu hata giderildi.
+
+
