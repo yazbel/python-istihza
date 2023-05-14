@@ -496,9 +496,7 @@ Sözlüklerin öteki veri tiplerinden önemli bir farkı, sözlük içinde yer
 alan öğelerin herhangi bir sıralama mantığına sahip olmamasıdır. Yani sözlükteki
 öğeler açısından 'sıra' diye bir kavram yoktur.
 
-.. note:: Python3.7'dan başlayarak sözlükler içerdikleri öğelerin eklenme sırasını korumaktadır. Python'un 3.7'den yüksek bir versiyonunda
-    oluşturduğunuz sözlükleri ekrana yazdırmayı denerseniz sözlüğü oluştururken elemanların içinde bulunduğu sıranın korunduğunu siz de görebilirsiniz.
-    Ancak sözlüklerin elemanlarına listeler gibi bir sıra ile (``liste[sıra]`` gibi) erişelemez. Ayrıntılı bilgi için `buraya <https://stackoverflow.com/questions/39980323/are-dictionaries-ordered-in-python-3-6>`_ bakabilirsiniz.
+.. note:: Python3.7'dan başlayarak sözlükler içerdikleri öğelerin eklenme sırasını korumaktadır. Python'un 3.7'den yüksek bir versiyonunda oluşturduğunuz sözlükleri ekrana yazdırmayı denerseniz sözlüğü oluştururken elemanların içinde bulunduğu sıranın korunduğunu siz de görebilirsiniz. Ancak sözlüklerin elemanlarına listeler gibi bir sıra ile (``liste[sıra]`` gibi) erişelemez. Ayrıntılı bilgi için `buraya <https://stackoverflow.com/questions/39980323/are-dictionaries-ordered-in-python-3-6>`_ bakabilirsiniz.
 
 Örneğin bir liste, demet veya karakter dizisi içindeki öğelere; bu öğelerin o
 liste, demet veya karakter dizisi içindeki sıralarına göre erişebilirsiniz::
@@ -846,10 +844,3 @@ Bildiğiniz gibi sözlükler, her biri birbirinden `:` işareti ile ayrılan bir
 anahtar-değer çiftlerinden oluşuyor. İşte yukarıdaki sözlük üreteci yapısında
 biz `:` işaretinin sol tarafına `isimler` adlı listedeki her bir öğeyi; sağ
 tarafına da bu öğelerin uzunluklarını bir çırpıda ekliyoruz.
-
-
-
-
-
-
-
