@@ -46,11 +46,11 @@ Kivy kütüphanesini kurduysanız, bir sorun olup olmadığını test etmek içi
 
 
    .. code-block:: python
-	
+
 	# -*- coding: utf-8 -*-
 
 	from kivy.app import App
-	
+
 	App().run()
 
 Kodu kaydedip çalıştırırsanız, ekrana boş bir siyah pencere çıkacaktır. Güzel, artık Kivy ile programlamaya başlayabiliriz :)

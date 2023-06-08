@@ -490,6 +490,7 @@ Ahmet Burak Özyurt
 
     - Birden fazla Python sürmümünün yönetilebilmesi için mevcut olan ``pyenv`` aracının kurulumu ve kullanımı hakkında rehber hazırlandı.
     - Python2 desteğinin sonlandırılmasıyla ilgili ekleme yapıldı.
+    - f-string kullanımı hakkında detaylar ve örnekler eklendi.
 
 Yunus Kale
 ===========
@@ -515,7 +516,7 @@ Ekrem Dinçel
     - Bozuk linkler düzeltildi.
 
 Ramazan Sancar
-=============
+===============
 
     - "Koşul Deyimleri" içerisinde tanıma uygun açıklama düzeltildi. ()
     - LISENCE içinde yer alan hatalı (bozuk) bağlantı düzeltildi.

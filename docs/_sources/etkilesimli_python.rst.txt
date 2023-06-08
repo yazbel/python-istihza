@@ -132,10 +132,11 @@ Biraz sonra başka veri tiplerini de inceleyeceğiz.
 
 Dikkat ederseniz `"Merhaba Zalim Dünya!"` adlı karakter dizisini tırnak içinde gösterdik.
 Bu da çok önemli bir bilgidir.
-Eğer bu cümleyi tırnak içine almazsak programımız hata verecektir::
+Eğer bu cümleyi tırnak içine almazsak programımız hata verecektir:
+
+.. code-block:: text
 
     >>> Merhaba Zalim Dünya!
-
       File "<stdin>", line 1
         Merhaba Zalim Dünya!
                     ^

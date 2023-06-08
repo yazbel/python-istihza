@@ -1,7 +1,7 @@
 .. meta::
    :description: Bu bölümde django API'ını öğreneceğiz.
    :keywords: python, django, çeviri
-   
+
 .. highlight:: python3
 
 *********************************
@@ -11,12 +11,12 @@
 Veritabanı Kurulumu
 ********************
 
-Şimdi **mysite/settings.py** dosyasını açın. Önce TIME_ZONE 
+Şimdi **mysite/settings.py** dosyasını açın. Önce TIME_ZONE
 değerini `Europe/Istanbul`  yaparak İstanbul'a ayarlayın.
 
 .. Note:: Dosyanın en başındaki INSTALLED_APPS ayarına dikkat edin.
-         Projenizde kullandığınız uygulamaları tutar. Yeni bir uygulama 
-         kullanacağınız zaman bu listeye eklemelisiniz. 
+         Projenizde kullandığınız uygulamaları tutar. Yeni bir uygulama
+         kullanacağınız zaman bu listeye eklemelisiniz.
 
 Varsayılan olarak gelen uygulamalar şunlardır::
 
@@ -27,8 +27,8 @@ Varsayılan olarak gelen uygulamalar şunlardır::
     django.contrib.messages --> Bir mesajlaşma frameworku
     django.contrib.staticfiles --> Statik dosyaları yönetmek için bir framework.
 
-Bu uygulamalardan bazıları en az bir veritabanı kullanıyor. 
-Ancak bu veritabanlarının kullanılabilmesi için bir 
+Bu uygulamalardan bazıları en az bir veritabanı kullanıyor.
+Ancak bu veritabanlarının kullanılabilmesi için bir
 tablo oluşturmalıyız. O tablo da şu komutla oluşuyor::
 
     python manage.py migrate
@@ -37,8 +37,8 @@ Model oluşturalım
 ******************
 
 Şimdi modellerimizi tanımlayacağız.
-Anket uygulamamızda iki tane model olacak: Question(Soru), Choice(Seçenek). 
-Question modeli bir soru ve yayınlama tarihi içerecek. Choice modeli ise iki alandan 
+Anket uygulamamızda iki tane model olacak: Question(Soru), Choice(Seçenek).
+Question modeli bir soru ve yayınlama tarihi içerecek. Choice modeli ise iki alandan
 oluşacak: Bir yazı alanı ve oy çetelesi. Her Choice bir Question ile ilişkili olacak.
 Şimdi **polls/models.py** dosyasını şu şekilde düzenleyin::
 
@@ -55,35 +55,35 @@ oluşacak: Bir yazı alanı ve oy çetelesi. Her Choice bir Question ile ilişki
         choice_text = models.CharField(max_length=200)
         votes = models.IntegerField(default=0)
 
-Burada iki model oluşturduk. Bu modeller django.db.models.Model 
-sınıfını miras alıyor ve veritabanı alanını temsil eden 
-değişkenlere sahip. Bu veritabanı alanlarının her biri bir 
-Field sınıfı ile ilişkili. Mesela CharField karakter 
-dizilerini , DateTimeField tarih ve zamanı veritabanına 
-eklemek için. Bu sistem Django'nun, her alanın hangi veri 
-tipini tuttuğunu anlamasını sağlar. Bazı Field sınıfları 
-zorunlu olarak parametreye ihtiyaç duyuyor. Buna en iyi 
-örnek olan CharField sınıfı max_length değeri olmadan 
-çalışmıyor.Field sınıfları isteğe bağlı parametrelere de 
-sahip.Mesela votes değerinin default parametresi-ki biz 
-bu örnekte 0 olarak ayarladık-buna bir örnek.Son olarak 
-ForeignKey kullanarak  her Choice  örneğini bir Question 
+Burada iki model oluşturduk. Bu modeller django.db.models.Model
+sınıfını miras alıyor ve veritabanı alanını temsil eden
+değişkenlere sahip. Bu veritabanı alanlarının her biri bir
+Field sınıfı ile ilişkili. Mesela CharField karakter
+dizilerini , DateTimeField tarih ve zamanı veritabanına
+eklemek için. Bu sistem Django'nun, her alanın hangi veri
+tipini tuttuğunu anlamasını sağlar. Bazı Field sınıfları
+zorunlu olarak parametreye ihtiyaç duyuyor. Buna en iyi
+örnek olan CharField sınıfı max_length değeri olmadan
+çalışmıyor.Field sınıfları isteğe bağlı parametrelere de
+sahip.Mesela votes değerinin default parametresi-ki biz
+bu örnekte 0 olarak ayarladık-buna bir örnek.Son olarak
+ForeignKey kullanarak  her Choice  örneğini bir Question
 örneği ile ilişkilendirdik.
 
 Modellerin Aktifleştirilmesi
 ****************************
 
-Model kodları Django'ya bazı bilgiler verir. 
+Model kodları Django'ya bazı bilgiler verir.
 Django bu bilgilerle şunları yapabilir:
 
-    #. Uygulama için bir veritabanı şeması oluşturmak. 
+    #. Uygulama için bir veritabanı şeması oluşturmak.
     #. Question ve Choice nesneleri için bir veritabanı erişim API'ı oluşturmak.
 
 Fakat önce polls uygulamasını projeye yüklemeliyiz.
-Projeye yüklemek için  **setting.py** dosyasını açıp 
-INSTALLED_APPS  ayarını düzenlemeliyiz. Bu listeye 
-**polls/apps.py** dosyasındaki PollsConfig sınıfını referans 
-olarak ekleyelim. **setting.py** dosyasındaki INSTALLED_APPS 
+Projeye yüklemek için  **setting.py** dosyasını açıp
+INSTALLED_APPS  ayarını düzenlemeliyiz. Bu listeye
+**polls/apps.py** dosyasındaki PollsConfig sınıfını referans
+olarak ekleyelim. **setting.py** dosyasındaki INSTALLED_APPS
 son hali şöyle olmalı::
 
     INSTALLED_APPS = [
@@ -96,7 +96,7 @@ son hali şöyle olmalı::
         'django.contrib.staticfiles',
     ]
 
-Artık Django, polls isimli uygulamamızı projeye eklediğimizi biliyor. 
+Artık Django, polls isimli uygulamamızı projeye eklediğimizi biliyor.
 Şimdi farklı bir komutu çalıştıralım::
 
     python manage.py makemigrations polls
@@ -109,18 +109,18 @@ Talimatlara benzer şeyler görmelisiniz::
         - Create model Question
         - Add field question to choice
 
-`makemigrations` komutu ile ürettiğimiz modellerde değişiklik 
-yaptığımızı (Aynı zamanda yeni modeller ürettiğimizi de) ve 
-değişikliklerin migration olarak depolanmasını istediğimizi 
-söyledik. Migrationlar senin modellerindeki değişiklerin 
-depolanma şeklidir(ve bu yüzden veritabanı şeması). 
-İstersen yeni modelinin migrationını okuyabilirsin. 
-Migration **polls/migrations/0001_inital.py** isimli dosyada. 
-Endişelenmeyin, bu dosyayı her zaman okumak zorunda değilsiniz.  
-"`migrate`" komutu, senin veritabanı 
+`makemigrations` komutu ile ürettiğimiz modellerde değişiklik
+yaptığımızı (Aynı zamanda yeni modeller ürettiğimizi de) ve
+değişikliklerin migration olarak depolanmasını istediğimizi
+söyledik. Migrationlar senin modellerindeki değişiklerin
+depolanma şeklidir(ve bu yüzden veritabanı şeması).
+İstersen yeni modelinin migrationını okuyabilirsin.
+Migration **polls/migrations/0001_inital.py** isimli dosyada.
+Endişelenmeyin, bu dosyayı her zaman okumak zorunda değilsiniz.
+"`migrate`" komutu, senin veritabanı
 şemanı otomatik olarak yönetmek için  migrationları çalıştırır.
-Birazdan bu konuya tekrar geleceğiz. Ama önce migrationın çalıştırdığı 
-SQL dosyasına bakalım. "`sqlmigrate`" komutuna migration adını 
+Birazdan bu konuya tekrar geleceğiz. Ama önce migrationın çalıştırdığı
+SQL dosyasına bakalım. "`sqlmigrate`" komutuna migration adını
 parametre olarak verin ve SQL çıktısını alın::
 
     python manage.py sqlmigrate polls 0001
@@ -159,42 +159,42 @@ parametre olarak verin ve SQL çıktısını alın::
     COMMIT;
 
 Aşağıdakilere dikkat et:
-    - Çıktı kullandığınız veritabanına göre değişir. 
+    - Çıktı kullandığınız veritabanına göre değişir.
       Yukarıdaki örnek PostgreSQL için yazılmıştır.
     - Tablo adı, uygulamanın adını ve modelin adını
       (küçük harflerle) kullanarak otomatik olarak oluşturulur .
       (Bu davranış geçersiz kılınabilir.)
     - Birincil anahtarlar(ID) otomatik olarak eklenir.
       (Bu da geçersiz kılınabilir.)
-    - Düzenlenirken  Django, foreign key alanının adına "_id" 
+    - Düzenlenirken  Django, foreign key alanının adına "_id"
       ekler.(Evet, bunu da geçersiz kılabilirsiniz.)
-    - Kullandığınız veritabanına göre düzenlenmiştir. Bu yüzden 
-      auto_increment(MySQL), serial(PostgreSQL) gibi veritabanına 
-      özgü alan türleri otomatik olarak ayarlanır. Aynı şey alan 
+    - Kullandığınız veritabanına göre düzenlenmiştir. Bu yüzden
+      auto_increment(MySQL), serial(PostgreSQL) gibi veritabanına
+      özgü alan türleri otomatik olarak ayarlanır. Aynı şey alan
       adlarının alıntılanması için de geçerlidir.
-    - `sqlmigrate` komutu aslında veritabanındaki migrationları 
-      çalıştırmaz. Sadece onları senin görebileceğin SQL kodları 
-      halinde ekrana yazdırır.  Bu Djangonun yaptıklarını 
+    - `sqlmigrate` komutu aslında veritabanındaki migrationları
+      çalıştırmaz. Sadece onları senin görebileceğin SQL kodları
+      halinde ekrana yazdırır.  Bu Djangonun yaptıklarını
       kontrol etmek veya SQL kodlarını düzenlemek için kullanışlıdır.
 
-Eğer bunu ilgi çekici bulduysan bir de şunu çalıştır:`python manage.py check`. 
-Bu kod projende herhangi bir problem olup olmadığını veritabanıyla 
-uğraşmadan kontrol eder. Şimdi `migrate` komutunu tekrar 
+Eğer bunu ilgi çekici bulduysan bir de şunu çalıştır:`python manage.py check`.
+Bu kod projende herhangi bir problem olup olmadığını veritabanıyla
+uğraşmadan kontrol eder. Şimdi `migrate` komutunu tekrar
 çalıştırıp modelleri veritabanında oluştur::
 
     python manage.py migrate
 
-`migrate` komutu daha önce uygulanmayan tüm migrationları alır 
-(Django, veritabanınızda django_migrations adlı özel bir tablo 
-kullanarak hangi uygulamaların uygulandığını izler) ve bunları 
-veritabanınıza karşı çalıştırır - temel olarak modelinize yaptığınız 
-değişiklikleri veritabanındaki şema ile senkronize eder. 
-Migrationlar çok güçlüdür ve zamanla, projenizi geliştirirken, veritabanınızı 
-veya tablolarınızı silmenize ve yenilerini oluşturmanıza gerek kalmadan 
-modellerinizi değiştirmenize izin verir - 
-veri kaybetmeden veritabanınızı canlı hale getirme konusunda 
-uzmanlaşmıştır. Eğiticinin daha sonraki bir bölümünde bunları 
-daha ayrıntılı bir şekilde ele alacağız, ancak şimdilik, model 
+`migrate` komutu daha önce uygulanmayan tüm migrationları alır
+(Django, veritabanınızda django_migrations adlı özel bir tablo
+kullanarak hangi uygulamaların uygulandığını izler) ve bunları
+veritabanınıza karşı çalıştırır - temel olarak modelinize yaptığınız
+değişiklikleri veritabanındaki şema ile senkronize eder.
+Migrationlar çok güçlüdür ve zamanla, projenizi geliştirirken, veritabanınızı
+veya tablolarınızı silmenize ve yenilerini oluşturmanıza gerek kalmadan
+modellerinizi değiştirmenize izin verir -
+veri kaybetmeden veritabanınızı canlı hale getirme konusunda
+uzmanlaşmıştır. Eğiticinin daha sonraki bir bölümünde bunları
+daha ayrıntılı bir şekilde ele alacağız, ancak şimdilik, model
 değişikliklerini yapmak için üç adımlı kılavuzu hatırlayın:
 
     - Modeli değiştirin (**models.py** de)
@@ -204,56 +204,56 @@ değişikliklerini yapmak için üç adımlı kılavuzu hatırlayın:
 API ile oynayalım
 *****************
 
-Şimdi etkileşimli kabuğa atlayıp Django'nun sunduğu API ile uğraşalım. 
+Şimdi etkileşimli kabuğa atlayıp Django'nun sunduğu API ile uğraşalım.
 Etkileşimli kabuğu çağırmak için şu komutu kullanın::
 
     python manage.py shell
 
-Basitçe `python` yazmak yerine bunu kullanıyoruz. 
+Basitçe `python` yazmak yerine bunu kullanıyoruz.
 Çünkü manage.py dosyası kullanacağımız django dosyalarını içe aktarıyor.
 Kabuğa girdikten sonra veritabanı API'ını keşfedin::
 
 
     >>> from polls.models import Choice, Question  # Az önce yazdığımız model sınıflarını içe aktar.
-     
+
     #Henüz sistemde Question nesnesi yok.
     >>> Question.objects.all()
     <QuerySet []>
-    
+
     # Yeni bir Question nesnesi oluştur.
     # Varsayılan ayarlar dosyasında saat dilimleri desteği etkinleştirilmiştir, bu nedenle
     # Django pub_date değişkeni için tzinfo ile bir tarih bekler. timezone.now()'ı kullanın.
     # datetime.datetime.now () yerine ve doğru olanı yapacağız.
     >>> from django.utils import timezone
     >>> q = Question(question_text="What's new?", pub_date=timezone.now())
-    
+
     # Oluşturduğumuz nesneyi veritabanına kaydedelim. Bunun için save() metodunu kullanmalısın.
     >>> q.save()
-    
+
     # Şimdi bir ID'ye sahip.
     >>> q.id
     1
-    
+
     # Python ile model alan değerlerine erişin.
     >>> q.question_text
     "What's new?"
     >>> q.pub_date
     datetime.datetime(2012, 2, 26, 13, 0, 0, 775217, tzinfo=<UTC>)
-    
+
     # Öznitelikleri değiştirip save() metodunu çağıralım.
     >>> q.question_text = "What's up?"
     >>> q.save()
-    
+
     # objects.all(), veritabanındaki tüm Questionları görüntüler.
     >>> Question.objects.all()
     <QuerySet [<Question: Question object (1)>]>
 
-Bir dakika! <Question: Question object (1)> bu nesne 
-ilişkisi hiç yararlı değil. Question modeline (**polls/models.py** dosyasında) 
+Bir dakika! <Question: Question object (1)> bu nesne
+ilişkisi hiç yararlı değil. Question modeline (**polls/models.py** dosyasında)
 __str__() metodunu ekleyelim(Choice modeline de)::
 
     from django.db import models
-    
+
     class Question(models.Model):
         # ...
         def __str__(self):
@@ -265,11 +265,11 @@ __str__() metodunu ekleyelim(Choice modeline de)::
             return self.choice_text
 
 
-Modellerinize, yalnızca etkileşimli komut istemiyle 
-çalışırken kendi rahatlığınız için değil, aynı zamanda nesnelerin 
-temsillerinin Django’nun otomatik olarak oluşturulan yöneticisi 
-boyunca kullanılmasından dolayı `__str__()` yöntemlerini eklemeniz 
-önemlidir. Bunların normal Python yöntemleri olduğunu unutmayın. 
+Modellerinize, yalnızca etkileşimli komut istemiyle
+çalışırken kendi rahatlığınız için değil, aynı zamanda nesnelerin
+temsillerinin Django’nun otomatik olarak oluşturulan yöneticisi
+boyunca kullanılmasından dolayı `__str__()` yöntemlerini eklemeniz
+önemlidir. Bunların normal Python yöntemleri olduğunu unutmayın.
 Bunu kanıtlamak için özel bir yöntem ekleyelim::
 
     #polls/models.py
@@ -277,18 +277,18 @@ Bunu kanıtlamak için özel bir yöntem ekleyelim::
 
     from django.db import models
     from django.utils import timezone
-    
-    
+
+
     class Question(models.Model):
         # ...
         def was_published_recently(self):
             return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
 
 Python standart kütüphanesinden datetime modülünü ve Django'nun
-saat dilimleri ile ilgili kütüphanesinden timezone modülünü içe 
+saat dilimleri ile ilgili kütüphanesinden timezone modülünü içe
 aktaralım.
 
-Bu yaptığımız değişiklikleri kaydetmek için şu komutla yeni bir 
+Bu yaptığımız değişiklikleri kaydetmek için şu komutla yeni bir
 kabuk açalım::
 `python manage.py shell`
 ::
@@ -384,7 +384,7 @@ Sizden email adresi istenecektir. Doldurmak istemezseniz boş bırakın::
 
     Email address: admin@example.com
 
-Son olarak şifrenizi girin. Sizden iki kere şifre isteyecek 
+Son olarak şifrenizi girin. Sizden iki kere şifre isteyecek
 (İkincisi doğrulama için).
 ::
 
@@ -415,8 +415,8 @@ Yönetici panelinin anasayfasını görüyor olmalısın:
 .. image:: https://docs.djangoproject.com/en/2.0/_images/admin02.png
 
 
-Birkaç düzenlenebilen içerik türü görmelisiniz: gruplar ve 
-kullanıcılar. Django tarafından gönderilen kimlik doğrulama 
+Birkaç düzenlenebilen içerik türü görmelisiniz: gruplar ve
+kullanıcılar. Django tarafından gönderilen kimlik doğrulama
 çerçevesi `django.contrib.auth` tarafından sağlanmıştır.
 
 Anket uygulamamızı yönetici panelinden kontrol edelim
@@ -426,7 +426,7 @@ Fakat bizim anket uygulamamız nerede? Yönetici panelinin
 anasayfasında gözükmüyor.
 
 Bu sorunu çözmek için yapmanız gereken tek şey:
-Yönetici paneline Question nesnelerimizin yönetici panelinden 
+Yönetici paneline Question nesnelerimizin yönetici panelinden
 düzenlenebildiğini söylemek. Bunu yapmak için **polls/admin.py**
 dosyasını açıp şu kodla düzenlemek::
 
@@ -444,7 +444,7 @@ anasayfası şu şekilde gözükmeli:
 
 `Question` yazısına tıkla. Şimdi Question nesnelerinin değiştirme
 sayfasındasın. Bu sayfa veritabanındaki tüm Question nesnelerini
-gösterir ve değiştirmek için birini seçmeni sağlar. Şu an daha 
+gösterir ve değiştirmek için birini seçmeni sağlar. Şu an daha
 önce oluşturduğumuz "What’s up?" nesnesi var:
 
 .. image:: https://docs.djangoproject.com/en/2.0/_images/admin04t.png
@@ -467,15 +467,15 @@ Alt tarafta birkaç ayar bulunuyor:
 - Delete – Gösterilen nesneyi siler.
 
 
-“Date Published” değeri, part 1'de oluşturduğunuz zamanla uyuşmuyorsa 
-muhtemelen TIME_ZONE ayarı için doğru değeri ayarlamamışsınız. 
-Değiştirin, sayfayı yeniden yükleyin ve doğru değerin görünüp görünmediğini 
+“Date Published” değeri, part 1'de oluşturduğunuz zamanla uyuşmuyorsa
+muhtemelen TIME_ZONE ayarı için doğru değeri ayarlamamışsınız.
+Değiştirin, sayfayı yeniden yükleyin ve doğru değerin görünüp görünmediğini
 kontrol edin.
 
 
-“Today” ve “Now” kısayollarını tıklayarak “Date Published” değerini değiştirin. 
-Ardından “Save and continue editing” i tıklayın. Daha sonra sağ üstteki 
-"History"yi tıklayın. Bu nesnede yapılan tüm değişiklikleri, değişikliği yapan 
+“Today” ve “Now” kısayollarını tıklayarak “Date Published” değerini değiştirin.
+Ardından “Save and continue editing” i tıklayın. Daha sonra sağ üstteki
+"History"yi tıklayın. Bu nesnede yapılan tüm değişiklikleri, değişikliği yapan
 kişinin değişiklik yaptığı zaman ve kullanıcı adıyla listeleyen bir sayfa görürsünüz:
 
 .. image:: https://docs.djangoproject.com/en/2.0/_images/admin06t.png

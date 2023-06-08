@@ -569,9 +569,10 @@ değil de en başına eklemek istersek ne yapacağız?
         f.write("Sedat Köz\t: 0322 234 45 45\n"+veri)
 
 Bu kodları bir dosyaya kaydedip çalıştırdığımızda Python bize şu hatayı
-verecektir::
+verecektir:
 
-    istihza@netbook:~/Desktop$ python3 deneme.py
+.. code-block:: pycon
+
     Traceback (most recent call last):
       File "deneme.py", line 4, in <module>
         f.write("Sedat Köz\t: 0322 234 45 45\n"+veri)
@@ -584,9 +585,10 @@ yetkisine sahip olduğu için, Python bize yukarıdaki hata mesajını verecek,
 dosyanın 'yazılamaz' olduğundan şikayet edecektir.
 
 Peki dosyayı `"w"` karakteri yardımıyla yazma kipinde açarsak ne olur? O zaman
-da şu meş'um hatayı alırız::
+da şu meş'um hatayı alırız:
 
-    istihza@netbook:~/Desktop$ python3 deneme.py
+.. code-block:: pycon
+
     Traceback (most recent call last):
       File "deneme.py", line 2, in <module>
         veri = f.read()

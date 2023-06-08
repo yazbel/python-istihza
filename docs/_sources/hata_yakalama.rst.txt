@@ -670,11 +670,11 @@ Dikkat ederseniz ``assert`` ifadesinin şu şekilde kullanıldığını görebil
 
 Burada ``ifade`` bir ``bool`` yani ``True`` veya ``False`` olabileceği gibi, (aynı ``if``'deki gibi)
 ``bool`` fonksiyonu ile birlikte kullanılabilecek bir nesne de olabilir. Sonuç olarak
-eğer ``ifade``'nin değeri ``True`` ise ``assert`` ifademiz çalışmayacak, ``False`` ise 
+eğer ``ifade``'nin değeri ``True`` ise ``assert`` ifademiz çalışmayacak, ``False`` ise
 çalışacaktır. Yani ``assert`` ifademizin içine doğru olmasını istediğimiz durumu yazmalıyız ki
 eğer yanlış olursa hata yükseltsin. Zaten ``assert`` kelimesi *“iddia etmek”* anlamına gelir. Yani biz ``assert`` ifadesini kullanarak bir ifadenin doğru olduğunu iddia ediyoruz, bu iddiamız yanlış ise Python bir hata yükseltiyor. Ayrıca ``assert`` ifademiz çalıştığında bir hata yükseleceği için program da sonlanacaktır, yani bu özelliği istemediğimiz bir durum gerçekleştiğinde
 programı sonlandırmak için de kullanabiliriz. ``mesaj`` ise hata verildiğinde ekrana yazılmasını
-istediğimiz mesajdır. Tabii ki ``raise`` ifadesinde olduğu gibi burada da bir mesaj vermek zorunda 
+istediğimiz mesajdır. Tabii ki ``raise`` ifadesinde olduğu gibi burada da bir mesaj vermek zorunda
 değiliz. Yani ``assert`` ifadesini şu şekilde de kullanabiliriz::
 
     assert ifade
@@ -685,7 +685,9 @@ değiliz. Yani ``assert`` ifadesini şu şekilde de kullanabiliriz::
     assert len(giriş) != 0 , "İsim bölümü boş."
     print("Hoşgeldiniz.")
 
-Bu kodumuzu çalıştırdığımızda::
+Bu kodumuzu çalıştırdığımızda:
+
+.. code-block:: pycon
 
     Merhaba! Adın ne? Ali
     Hoşgeldiniz.
@@ -694,7 +696,9 @@ Bu kodumuzu çalıştırdığımızda::
 ``giriş`` değişkenimizin uzunluğu ``0`` olmadığı için bir hata verilmedi. Şimdi
 aynı kodu çalıştırıp hiçbir şey yazmadan ``enter`` tuşuna basalım::
 
-    Merhaba! Adın ne? 
+.. code-block:: pycon
+
+    >>> Merhaba! Adın ne?
     Traceback (most recent call last):
       File "C:\Users\Kullanıcı\Desktop\assert_ifadesi.py", line 2, in <module>
         assert len(giriş) != 0 , "İsim bölümü boş."

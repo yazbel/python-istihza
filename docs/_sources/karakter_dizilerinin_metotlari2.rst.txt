@@ -265,11 +265,15 @@ Ama bir dakika! Burada bir sorun var!
 
 Bu kodlar 'i' harfinin karakter dizisinin yalnızca en başında yer aldığı
 durumlarda düzgün çalışacaktır. Bu kodlar mesela şu karakter dizisini düzgün
-büyütemez::
+büyütemez:
+
+.. code-block:: text
 
     on iki ada
 
-Aynı şekilde bu kodlar şu karakter dizisini de büyütemez::
+Aynı şekilde bu kodlar şu karakter dizisini de büyütemez:
+
+.. code-block:: text
 
     hükümet istifa!
 
@@ -772,11 +776,15 @@ değişkeninin değerini `False` yapıyoruz::
 
 Daha sonra da `kontrol` değişkeninin durumuna göre kullanıcıya parolanın
 onaylandığı veya onaylanmadığı bilgisini veriyoruz. Buna göre eğer `kontrol`
-değişkeninin değeri `True` ise şu çıktıyı veriyoruz::
+değişkeninin değeri `True` ise şu çıktıyı veriyoruz:
+
+.. code-block:: pycon
 
     Parolanız onaylandı!
 
-Aksi halde şu çıktıyı veriyoruz::
+Aksi halde şu çıktıyı veriyoruz:
+
+.. code-block:: pycon
 
     Parolanızda aynı harfi bir kez kullanabilirsiniz!
 
@@ -793,7 +801,9 @@ kullanabilirsiniz::
 Burada amacımız kullanıcının girdiği bir kelime içindeki bütün harflerin o
 kelime içinde kaç kez geçtiğini bulmak. ``count()`` metodunu kullanarak bu işi
 çok kolay bir şekilde halledebiliyoruz. Kullanıcının mesela 'adana' kelimesini
-girdiğini varsayarsak yukarıdaki program şöyle bir çıktı verecektir::
+girdiğini varsayarsak yukarıdaki program şöyle bir çıktı verecektir:
+
+.. code-block:: pycon
 
     a harfi adana kelimesinde 3 kez geçiyor!
     d harfi adana kelimesinde 1 kez geçiyor!
@@ -807,7 +817,9 @@ harfinin geçtiği her yerde programımız 'a' harfinin kelime içinde kaç kez
 geçtiğini rapor ediyor. İstediğiniz davranış bu olabilir. Ama bazı durumlarda
 her harfin kelime içinde kaç kez geçtiği bilgisinin yalnızca bir kez
 raporlanmasını isteyebilirsiniz. Yani siz yukarıdaki gibi bir çıktı yerine şöyle
-bir çıktı elde etmek istiyor olabilirsiniz::
+bir çıktı elde etmek istiyor olabilirsiniz:
+
+.. code-block:: pycon
 
     a harfi adana kelimesinde 3 kez geçiyor!
     d harfi adana kelimesinde 1 kez geçiyor!

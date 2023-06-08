@@ -1182,13 +1182,13 @@ Gördüğünüz gibi, ``a =- 5`` yazdığımızda, aslında yaptığımız şey 
           eklenmiştir. Bundan önceki versiyonlarda bulunmamaktadır ve çalışmayacaktır.
           ``SyntaxError`` hatası verecektir.
 
-Bu işleç biraz garip gözüküyor olabilir. Ne yaptığını bakarak kestirmek de biraz 
+Bu işleç biraz garip gözüküyor olabilir. Ne yaptığını bakarak kestirmek de biraz
 zor. En iyisi bir örnekle başlayalım::
 
     giriş = len(input("Adın ne? "))
 
     if giriş < 4:
-        print("Adın kısaymış.") 
+        print("Adın kısaymış.")
     elif giriş < 6:
         print("Adın biraz uzunmuş.")
     else:
@@ -1199,7 +1199,7 @@ Python3.8'e sahipseniz vereceğimiz örnekleri kendiniz de deneyebilirsiniz.
 Bir de ``:=`` işleci ile bu kodu nasıl yazabileceğimize bakalım::
 
     if ( giriş := len(input("Adın ne? ")) ) < 4:
-        print("Adın kısaymış.") 
+        print("Adın kısaymış.")
     elif giriş < 6:
         print("Adın biraz uzunmuş.")
     else:
@@ -1213,18 +1213,18 @@ Normalde böyle bir işlemi ``=`` ile yapamazdık::
 
     SyntaxError: invalid syntax
 
-Fark edebileceğiniz gibi walrus operatörü bizi bir satır fazladan yazmaktan 
+Fark edebileceğiniz gibi walrus operatörü bizi bir satır fazladan yazmaktan
 kurtardı. Kullanıcıdan alınan bilginin giriş değişkenine nasıl atandığına dikkat
 edin. ``giriş`` değişkeninden sonra ``:=`` işlecini kullanıyoruz ve aynı zamanda
-değişken atamasını yaptığımız bölümün tamamını parantez içine alıyoruz. Peki bu 
+değişken atamasını yaptığımız bölümün tamamını parantez içine alıyoruz. Peki bu
 parantezi koymaz isek ne olur? Gelin bir örnek ile de onu deneyelim::
 
     if  giriş := len(input("Adın ne? "))  < 4:
         print(giriş)
 
 Eğer bu kodu çalıştırsanız ekrana ``True`` yazıldığını veya hiçbir şey yazılmadığını
-görebilirsiniz. Oysa önceki parantez kullandığımız kodda ``giriş`` değişkeni bir 
-``int``'di. Bu örneğimizde ise ilk önce ``len(input("Adın ne? "))  < 4`` kısmı 
+görebilirsiniz. Oysa önceki parantez kullandığımız kodda ``giriş`` değişkeni bir
+``int``'di. Bu örneğimizde ise ilk önce ``len(input("Adın ne? "))  < 4`` kısmı
 çalışıyor ve bunun sonucu daha sonra ``giriş`` değişkenimize atanıyor. Bu yüzden ``giriş``
 değişkenimiz ``True`` veya ``False``, yani bir ``bool`` oluyor. Eğer ``giriş`` değişkeni
 ``True`` olursa ekrana yazılıyor, ancak eğer ``False`` olursa ekrana yazılmıyor. Çünkü
@@ -2002,7 +2002,9 @@ belirtiyoruz. Böylece programımızın Python'ın 2.x sürümlerinde Türkçe
 karakterler yüzünden çökmesini önlüyoruz.
 
 Ama burada bir problem daha var. Programımız Türkçe karakterler yüzünden
-çökmüyor çökmemesine ama, bu defa da Türkçe karakterleri düzgün göstermiyor::
+çökmüyor çökmemesine ama, bu defa da Türkçe karakterleri düzgün göstermiyor:
+
+.. code-block:: pycon
 
     Python'Ä±n 2.x sÃ¼rÃ¼mlerinden birini kullanÄ±yorsunuz.
     ProgramÄ± Ã§alÄ±ÅŸtÄ±rabilmek iÃ§in sisteminizde Python'Ä±n
