@@ -26,28 +26,28 @@ Bu sefer format() fonksiyonuna belirli bir yer göstermediğimiz için sırasıy
 Kullanım
 ********
 
-String nedir hepimiz biliyoruz, Türkçeye karakter dizisi olarak çeviriyoruz. Bu yapıya da f-string diyoruz çünkü bu yapıyı kullanmak istediğimiz stringin (karakter dizisinin) başına **f** veya **F** ekliyoruz. Yani bir ön ek ekleyerek Python'a artık onun normal, sıradan bir karakter dizisi olmadığını ve bir ön işlemden geçmesi gerektiğini belirtiyoruz. ::
+String nedir hepimiz biliyoruz, Türkçeye karakter dizisi olarak çeviriyoruz. Bu yapıya da f-string diyoruz çünkü bu yapıyı kullanmak istediğimiz stringin (karakter dizisinin) başına **f** veya **F** ekliyoruz. Yani bir ön ek ekleyerek Python'a artık onun normal, sıradan bir karakter dizisi olmadığını ve bir ön işlemden geçmesi gerektiğini belirtiyoruz::
 
         "Selam Dünya!" # Normal bir karakter dizisi
         f"Selam Dünya!" # Bu artık bir f-string
 
 .. note:: f-string'leri kullanabilmeniz için Python 3.6 ya da daha yeni bir sürüm kullanmamız gerektiğini unutmayalım!
 
-Bu örnekte f-string'imizin normal bir karakter dizisinden farkı yok gibi görünüyor. Aslında şuanlık bir farkı yok. Çünkü biz **f-string**'in özelliklerini henüz kullanmadık. Yukarıda format() fonksiyonu için yazdığımız örneği bir de f-string için yazalım. ::
+Bu örnekte f-string'imizin normal bir karakter dizisinden farkı yok gibi görünüyor. Aslında şuanlık bir farkı yok. Çünkü biz **f-string**'in özelliklerini henüz kullanmadık. Yukarıda format() fonksiyonu için yazdığımız örneği bir de f-string için yazalım::
 
         >>> isim = 'Buğra'
         >>> print(f'Selam {isim}!')
 
 Bu örneği de çalıştırdığınızda yukarıdaki örneklerin çıktılarıyla aynı çıktıyı verdiğini göreceksiniz. Ama çok daha düzenli bir görünümle elde ettik bu sefer aynı çıktıyı. format() fonksiyonuna ilgileneceği kısımları, işlem yapacağı kısımları, süslü parantezler ile belirttiğimizi biliyoruz. f-string için de aynı şey geçerli ancak ufak bir farkla. Artık harici bir işlem yapılıp karakter dizimiz düzenlenmiyor, işlemler doğrudan karakter dizimiz içinde gerçekleştirilip yerini kendi alıyor! 
 
-Bir örnek daha hazırlayalım ve üzerinde konuşalım. ::
+Bir örnek daha hazırlayalım ve üzerinde konuşalım::
 
         >>> isim = 'Buğra'
         >>> yas = 18
         >>> f'Onun adı {isim} ve o {yas} yaşında.'
         'Onun adı Buğra ve o 18 yaşında.'
 
-Aynı örneği format() fonksiyonu ile de yazıp arasındaki farka bakalım. ::
+Aynı örneği format() fonksiyonu ile de yazıp arasındaki farka bakalım::
 
         >>> isim = 'Buğra'
         >>> yas = 18
@@ -56,21 +56,21 @@ Aynı örneği format() fonksiyonu ile de yazıp arasındaki farka bakalım. ::
 
 Yukarıdaki kodu en basit haliyle değişken isimleri kullanmadan yazdım, yani değişkenleri sırasıyla ilgili yerlere yerleştirecek. Buna rağmen f-string örneğimizdekinden çok daha uzun oldu ve okunabilirlik azaldı.
 
-Aynı zamanda f-string'lerin içinde Python işlemleri de yapabiliriz. ::
+Aynı zamanda f-string'lerin içinde Python işlemleri de yapabiliriz::
 
         >>> birinci_rakam = 5
         >>> ikinci_rakam = 3
         >>> f'Rakamların toplamı {birinci_rakam + ikinci_rakam} eder.'
         'Rakamların toplamı 8 eder.'
 
-Hadi sadece toplama işlemi yapan bir hesap makinesi yapalım. ::
+Hadi sadece toplama işlemi yapan bir hesap makinesi yapalım::
 
         birinci_sayi = int(input('Birinci sayıyı girin: '))
         ikinci_sayi = int(input('İkinci sayıyı girin: '))
 
         print(f'Sayıların toplamı {birinci_sayi + ikinci_sayi} eder.')
 
-Kullanıcının girdiği sayıları toplayan bir hesap makinesi yaptık. Az önce f-string'lerin içinde Python kodu yazabildiğimizi öğrenmiştik. Bu bilgimizi de kullanıp bu basit programı daha güncel hale getirelim. ::
+Kullanıcının girdiği sayıları toplayan bir hesap makinesi yaptık. Az önce f-string'lerin içinde Python kodu yazabildiğimizi öğrenmiştik. Bu bilgimizi de kullanıp bu basit programı daha güncel hale getirelim::
 
         >>> f'Sayıların toplamı { int(input("Birinci sayıyı girin: ")) + int(input("İkinci sayıyı girin: ")) } eder.'
         Birinci sayıyı girin: 10
@@ -85,13 +85,15 @@ f-string Formatlama Özellikleri
 ********************************
 
 f-string ifadelerinde süslü parantezler (``{}``) yazılan ifadenin bir operatörüdür.
-f-string içerisinde süslü parantez yazabilmek için genel kaçış karakteri olan ters eğik çizgi (``\``) yerine ``{`` veya ``}`` parantezi 2 defa eklenir. ::
+f-string içerisinde süslü parantez yazabilmek için genel kaçış karakteri olan ters eğik çizgi (``\``) yerine ``{`` veya ``}`` parantezi 2 defa eklenir::
 
         >>> fstring = "f-string"
         >>> f"{{ {fstring}: f'{{ifade}}' şeklinde kullanılır. }}"
         "{ f-string: f'{ifade}' şeklinde kullanılır. }"
 
-Formatlanacak ifadeden sonra ``=`` işareti eklenerek değişken adı ile birlikte sahip olduğu değerin ``repr`` hali elde edilebilir. ``print`` ile debug edildiği durumlarda pratik bir şekilde kullanılabilir. ::
+Formatlanacak ifadeden sonra ``=`` işareti eklenerek değişken adı ile birlikte sahip olduğu değerin ``repr`` hali elde edilebilir. ``print`` ile debug edildiği durumlarda pratik bir şekilde kullanılabilir:
+
+.. code-block:: python
 
         >>> kaynak = "Python İstihza"
         >>> yıl = "2022"
@@ -101,7 +103,9 @@ Formatlanacak ifadeden sonra ``=`` işareti eklenerek değişken adı ile birlik
 
 ``f-string`` ile formatlama yapılırken yazılan ifadeden sonra eklenen ``:``'dan sonra ek formatlama işlemleri gerçekleştirilebilir.
 
-``string`` metodlarında anlatılan ``center``, ``ljust``, ``rjust``, ``zfill`` metodlarının f-string içerisinde ``:`` işaretinden sonra karakter uzunluğu yazılarak, belirtilen karakter alanında hizalama yapılabilir. ::
+``string`` metodlarında anlatılan ``center``, ``ljust``, ``rjust``, ``zfill`` metodlarının f-string içerisinde ``:`` işaretinden sonra karakter uzunluğu yazılarak, belirtilen karakter alanında hizalama yapılabilir:
+
+.. code-block:: python
 
         >>> istihza = "Python Istihza"
         >>> f"{istihza:^30}"   # "istihza".center(30)
