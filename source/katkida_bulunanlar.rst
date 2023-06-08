@@ -496,6 +496,7 @@ Yunus Kale
 ===========
 
     - Fonksiyonlar konusundaki kod hatası düzeltildi.
+    - Colorama Modülündeki bir kod hatası ve yazım yanlışı düzeltildi.
 
 Adem Kurtipek
 ==============
