@@ -515,7 +515,14 @@ Ekrem Dinçel
     - Bozuk linkler düzeltildi.
 
 Ramazan Sancar
-=============
+==============
 
     - "Koşul Deyimleri" içerisinde tanıma uygun açıklama düzeltildi. ()
     - LISENCE içinde yer alan hatalı (bozuk) bağlantı düzeltildi.
+
+Ramazan Emre Osmanoglu
+=======================
+
+    - Colorama dokumanlari eklendi.
+    - Pyperclip dokumanlari eklendi.
+    - Recursion dokumanindaki base case duzenlendi.
