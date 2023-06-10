@@ -12,8 +12,6 @@ with open(output_file, 'r', encoding = 'utf-8') as f:
 	# sphinx produces multiple records instead of a list of records for broken links
 	records = [json.loads(i) for i in f.readlines()]
 
-line = lambda: print("-" * 30)
-
 cached_replacements = {}
 replacements = []
 for record in records:
@@ -22,37 +20,38 @@ for record in records:
 	if status == "working":
 		continue
 	elif status == "unchecked":
-		print("INFO: Url {!r} is not checked.".format(uri))
+		#print("INFO: Url {!r} is not checked.".format(uri))
 		continue
 	elif status == "redirected":
 		# check whether the redirect is permanent
 		if record['code'] != 301:
-			print("INFO: Passing {!r} since the redirection is not permanent.".format(uri))
+			#print("INFO: Passing {!r} since the redirection is not permanent.".format(uri))
 			continue
 		replace_with = record['info']
 	elif status == "broken":
 		try:
 			replace_with = cached_replacements[uri]
 		except KeyError:
-			line()
-			replace_with = input("The URL {!r} is broken, what do you want to change it with? You can also pass this question if you want to do nothing.\n > ".format(uri))
-			line()
+			replace_with = input("\nThe URL {!r} is broken, what do you want to change it with? You can also pass this question if you want to do nothing.\n > ".format(uri))
 			if not replace_with:
-				print("INFO: passing the URL")
+				print("Passing.")
 				continue
+	elif status == "ignored":
+		continue
 	else:
-		raise ValueError("ERROR: Unknown status: {!r}".format(status))
+		raise ValueError("ERROR: Unknown status for URL {!r}: {!r}".format(uri, status))
 
 	# used for :target: special casing
 	if replace_with == '.':
-		replace_with = uri
+		continue
 
 	replacements.append((record, replace_with))
 
 if len(replacements) == 0:
-	print("All links are uptode, not any broken links.")
+	print("All links are uptodate, not any broken links.")
+else:
+	print(f"Changed {len(replacements)} links.")
 
-line()
 for record, replacement in replacements:
 	rst_file = join(source, record['filename'])
 	uri = record['uri']
