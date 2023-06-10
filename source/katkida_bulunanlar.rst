@@ -519,7 +519,7 @@ Ekrem Dinçel
 Ramazan Sancar
 ===============
 
-    - "Koşul Deyimleri" içerisinde tanıma uygun açıklama düzeltildi. ()
+    - "Koşul Deyimleri" içerisinde tanıma uygun açıklama düzeltildi.
     - LISENCE içinde yer alan hatalı (bozuk) bağlantı düzeltildi.
 
 Beyazıt Uysal
@@ -530,3 +530,10 @@ Beyazıt Uysal
     - kurulum.rst dosyası içerisinde bulunan "yazağımız" kelimesi "yazacağımız" olarak düzeltildi.
     - donguler.rst altında yer alan 'Dosyaların İçeriğini Karşılaştırma' başlığında kod açıklama hatası düzeltildi.
     - sozlukler.rst dosyasında yer alan ve sözlüklerin sıraya sahip olmasıyla ilgili not, HTML dosyasında hatalı bir görünüme sahipti, ancak bu sorun giderildi.
+    
+Ramazan Emre Osmanoglu
+=======================
+
+    - Colorama dokumanlari eklendi.
+    - Pyperclip dokumanlari eklendi.
+    - Recursion dokumanindaki base case duzenlendi.

@@ -341,7 +341,7 @@ yapılar yardımıyla rahatlıkla yazabilirsiniz. Ama isterseniz aynı işi
 Şimdi şu kodlara dikkatlice bakın::
 
     def azalt(s):
-        if len(s) < 1:
+        if len(s) == 0:
             return s
         else:
             print(s)
