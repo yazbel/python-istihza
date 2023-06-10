@@ -206,8 +206,8 @@ bir hata almadığımızı görüyorsunuz. Yukarıdaki kodlarda hata almamızı 
 <div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;İstanbul&#39;</span><span class="n">un</span> <span class="mi">5</span> <span class="n">günlük</span> <span class="n">hava</span> <span class="n">durumu</span> <span class="n">tahmini</span><span class="s1">&#39;)</span>
 
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;İstanbul&#39;</span><span class="n">un</span> <span class="mi">5</span> <span class="n">günlük</span> <span class="n">hava</span> <span class="n">durumu</span> <span class="n">tahmini</span><span class="s1">&#39;)</span>
-                      <span class="pm">^</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;İstanbul&#39;</span><span class="n">un</span> <span class="mi">5</span> <span class="n">günlük</span> <span class="n">hava</span> <span class="n">durumu</span> <span class="n">tahmini</span><span class="s1">&#39;)</span>
+<span class="w">                      </span><span class="pm">^</span>
 <span class="gr">SyntaxError</span>: <span class="n">invalid syntax</span>
 </pre></div>
 </div>
@@ -298,8 +298,8 @@ bastığımızda Python bize bir hata mesajı gösterir:</p>
 <div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Python 1990 yılında Guido Van Rossum</span>
 
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Python 1990 yılında Guido Van Rossum</span>
-                                                <span class="pm">^</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Python 1990 yılında Guido Van Rossum</span>
+<span class="w">                                                </span><span class="pm">^</span>
 <span class="gr">SyntaxError</span>: <span class="n">EOL while scanning string literal</span>
 </pre></div>
 </div>
@@ -705,7 +705,7 @@ gösterecektir:</p>
 
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>
 <span class="gr">SyntaxError</span>: <span class="n">(unicode error) &#39;unicodeescape&#39; codec can&#39;t decode bytes in</span>
-<span class="go">position 16-18: truncated \uXXXX escape</span>
+<span class="x">position 16-18: truncated \uXXXX escape</span>
 </pre></div>
 </div>
 <p>Belki sağda solda ‘UNICODE’ diye bir şey duymuşsunuzdur. Eğer şimdiye kadar
@@ -743,7 +743,7 @@ sağına ekliyor. Gelin kendi kendimize birkaç deneme çalışması yapalım:</
 
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>
 <span class="gr">SyntaxError</span>: <span class="n">(unicode error) &#39;unicodeescape&#39; codec can&#39;t decode bytes in</span>
-<span class="go">position 0-4: truncated \uXXXX escape</span>
+<span class="x">position 0-4: truncated \uXXXX escape</span>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi, eğer <cite>\u</cite> kaçış dizisinden sonra doğru bir kod konumu
@@ -845,7 +845,7 @@ bakın:</p>
 
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>
 <span class="gr">SyntaxError</span>: <span class="n">(unicode error) &#39;unicodeescape&#39; codec can&#39;t decode bytes in</span>
-<span class="go">position 0-1: malformed \N character escape</span>
+<span class="x">position 0-1: malformed \N character escape</span>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi, herhangi bir karşılığı olmayan bir uzun ad belirttiğimizde
@@ -906,7 +906,7 @@ olmamız gerektiğini bilelim yeter:</p>
 
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>
 <span class="gr">SyntaxError</span>: <span class="n">(unicode error) &#39;unicodeescape&#39; codec can&#39;t decode bytes in</span>
-<span class="go">position 2-4: truncated \UXXXXXXXX escape</span>
+<span class="x">position 2-4: truncated \UXXXXXXXX escape</span>
 </pre></div>
 </div>
 <p>Gördüğünüz gibi, Python <cite>\x</cite> ifadesinden sonra onaltılı bir sayı belirtmenizi
@@ -1010,16 +1010,16 @@ açarak bu tırnağı etkisizleştiriyor. Böylece sanki karakter dizisini tanı
 kapanış tırnağını hiç yazmamışız gibi bir sonuç ortaya çıkıyor:</p>
 <div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kaçış dizisi: </span><span class="se">\&quot;</span><span class="s2">)</span>
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kaçış dizisi: </span><span class="se">\&quot;</span><span class="s2">)</span>
-                              <span class="pm">^</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kaçış dizisi: </span><span class="se">\&quot;</span><span class="s2">)</span>
+<span class="w">                              </span><span class="pm">^</span>
 <span class="gr">SyntaxError</span>: <span class="n">EOL while scanning string literal</span>
 </pre></div>
 </div>
 <p>Üstelik bu durumu, <cite>r</cite> adlı kaçış dizisi de engelleyemiyor:</p>
 <div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Kaçış dizisi: </span><span class="se">\&quot;</span><span class="s2">)</span>
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Kaçış dizisi: </span><span class="se">\&quot;</span><span class="s2">)</span>
-                               <span class="pm">^</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Kaçış dizisi: </span><span class="se">\&quot;</span><span class="s2">)</span>
+<span class="w">                               </span><span class="pm">^</span>
 <span class="gr">SyntaxError</span>: <span class="n">EOL while scanning string literal</span>
 </pre></div>
 </div>
@@ -1280,8 +1280,8 @@ Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" 
     </div> 
 
 <div class="footer">
-		&copy; Copyright 2007-2022, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 04.11.2022.
+		&copy; Copyright 2007-2023, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 10.06.2023.
 	<a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0 kullanılarak oluşturuldu.
 <br>
 <br>

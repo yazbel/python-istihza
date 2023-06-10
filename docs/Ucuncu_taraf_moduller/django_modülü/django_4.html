@@ -191,9 +191,9 @@ Tek fark şablon adı. Bu gereksizliği daha sonra düzeltiriz.</p>
 <div class="highlight-django notranslate"><div class="highlight"><pre><span></span><span class="x">&lt;h1&gt;</span><span class="cp">{{</span> <span class="nv">question.question_text</span> <span class="cp">}}</span><span class="x">&lt;/h1&gt;</span>
 
 <span class="x">&lt;ul&gt;</span>
-<span class="cp">{%</span> <span class="k">for</span> <span class="nv">choice</span> <span class="k">in</span> <span class="nv">question.choice_set.all</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">for</span> <span class="nv">choice</span> <span class="k">in</span> <span class="nv">question.choice_set.all</span> <span class="cp">%}</span>
 <span class="x">    &lt;li&gt;</span><span class="cp">{{</span> <span class="nv">choice.choice_text</span> <span class="cp">}}</span><span class="x"> -- </span><span class="cp">{{</span> <span class="nv">choice.votes</span> <span class="cp">}}</span><span class="x"> vote</span><span class="cp">{{</span> <span class="nv">choice.votes</span><span class="o">|</span><span class="nf">pluralize</span> <span class="cp">}}</span><span class="x">&lt;/li&gt;</span>
-<span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
 <span class="x">&lt;/ul&gt;</span>
 
 <span class="x">&lt;a href=&quot;</span><span class="cp">{%</span> <span class="k">url</span> <span class="s1">&#39;polls:detail&#39;</span> <span class="nv">question.id</span> <span class="cp">%}</span><span class="x">&quot;&gt;Vote again?&lt;/a&gt;</span>
@@ -260,7 +260,7 @@ dosyasını aç ve buna benzer şekilde değiştir:</p>
     <span class="n">context_object_name</span> <span class="o">=</span> <span class="s1">&#39;latest_question_list&#39;</span>
 
     <span class="k">def</span> <span class="nf">get_queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return the last five published questions.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the last five published questions.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-pub_date&#39;</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
 
 
@@ -412,8 +412,8 @@ Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" 
     </div> 
 
 <div class="footer">
-		&copy; Copyright 2007-2022, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 04.11.2022.
+		&copy; Copyright 2007-2023, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 10.06.2023.
 	<a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0 kullanılarak oluşturuldu.
 <br>
 <br>

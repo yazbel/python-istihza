@@ -517,7 +517,7 @@ mesajı gösterir:</p>
 <span class="gt">Traceback (most recent call last):</span>
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
 <span class="gr">UnicodeEncodeError</span>: <span class="n">&#39;ascii&#39; codec can&#39;t encode character &#39;\u015f&#39; in position 0:</span>
-<span class="go"> ordinal not in range(128)</span>
+<span class="x"> ordinal not in range(128)</span>
 </pre></div>
 </div>
 <p>… veya:</p>
@@ -526,9 +526,9 @@ mesajı gösterir:</p>
 <span class="gt">Traceback (most recent call last):</span>
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
   File <span class="nb">&quot;C:\Python33\lib\encodings\cp857.py&quot;</span>, line <span class="m">12</span>, in <span class="n">encode</span>
-    <span class="k">return</span> <span class="n">codecs</span><span class="o">.</span><span class="n">charmap_encode</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span><span class="n">errors</span><span class="p">,</span><span class="n">encoding_map</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span> <span class="n">codecs</span><span class="o">.</span><span class="n">charmap_encode</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span><span class="n">errors</span><span class="p">,</span><span class="n">encoding_map</span><span class="p">)</span>
 <span class="gr">UnicodeEncodeError</span>: <span class="n">&#39;charmap&#39; codec can&#39;t encode character &#39;\u20ac&#39; in position</span>
-<span class="go">0: character maps to &lt;undefined&gt;</span>
+<span class="x">0: character maps to &lt;undefined&gt;</span>
 </pre></div>
 </div>
 <p>‘ş’ harfi ‘ASCII’ karakter kümesinde; ‘€’ işareti ise ‘CP857’ adlı karakter
@@ -842,7 +842,7 @@ olduğunu varsayalım:</p>
 <span class="gt">Traceback (most recent call last):</span>
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
 <span class="gr">UnicodeDecodeError</span>: <span class="n">&#39;ascii&#39; codec can&#39;t decode byte 0xc4 in position 3: ordinal</span>
-<span class="go">not in range(128)</span>
+<span class="x">not in range(128)</span>
 </pre></div>
 </div>
 <p>ASCII adlı kod çözücü, <code class="docutils literal notranslate"><span class="pre">b'kadın'</span></code> içindeki baytlardan birini tanıyamadığı için
@@ -888,7 +888,7 @@ vererek de sözlük üretebiliriz:</p>
 nesneler çağrılabilir özelliktedir. Mesela fonksiyonlar çağrılabilir
 nesnelerdir. Değişkenler ise çağrılabilir nesneler değildir.</p>
 <p>Birkaç örnek verelim bununla ilgili:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">callable</span><span class="p">(</span><span class="nb">open</span><span class="p">)</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">callable</span><span class="p">(</span><span class="nb">open</span><span class="p">)</span>
 
 <span class="go">True</span>
 </pre></div>
@@ -897,7 +897,7 @@ nesnelerdir. Değişkenler ise çağrılabilir nesneler değildir.</p>
 <code class="docutils literal notranslate"><span class="pre">callable()</span></code> fonksiyonu <cite>True</cite> çıktısı veriyor.</p>
 <p>Bir de şuna bakalım:</p>
 <div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">callable</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">callable</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
 
 <span class="go">False</span>
 </pre></div>
@@ -996,9 +996,11 @@ ifadeler verilebilir.</p>
 <p>Birkaç örnek verelim:</p>
 <div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">eval</span><span class="p">(</span><span class="s1">&#39;a = 5&#39;</span><span class="p">)</span>
 
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
   File <span class="nb">&quot;&lt;string&gt;&quot;</span>, line <span class="m">1</span>
-    <span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
-      <span class="pm">^</span>
+<span class="w">    </span><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="w">      </span><span class="pm">^</span>
 <span class="gr">SyntaxError</span>: <span class="n">invalid syntax</span>
 </pre></div>
 </div>
@@ -2931,8 +2933,8 @@ Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" 
     </div> 
 
 <div class="footer">
-		&copy; Copyright 2007-2022, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 04.11.2022.
+		&copy; Copyright 2007-2023, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 10.06.2023.
 	<a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0 kullanılarak oluşturuldu.
 <br>
 <br>

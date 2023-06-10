@@ -38,7 +38,7 @@ Gördüğünüz üzere colorama modülünün Fore, Back ve Style sınıflarını
 
 Peki neden init fonksiyonunu çağırdık?
 
-İnit bildiğiniz üzere “initalization” (ilklendirme) sözcüğünün kısaltılmışıdır. Buradaki kullanımı da sözcük anlamıyla uyumludur. Yani bizim renklendirme işlemimizde birtakım ayarları yapmamız için bir başlangıçtır. Bunu yapmamız zorunludur. Yapmazsak kodlarımız renklenmeyecek, sadece renk kodu sadece ekrana bastırılacaktır.
+İnit bildiğiniz üzere “initalization” (ilklendirme) sözcüğünün kısaltılmışıdır. Buradaki kullanımı da sözcük anlamıyla uyumludur. Yani bizim renklendirme işlemimizde birtakım ayarları yapmamız için bir başlangıçtır. Bunu yapmamız zorunludur. Yapmazsak kodlarımız renklenmeyecek, sadece renk kodu ekrana bastırılacaktır.
 
 Bu noktada bir detaya değinelim: Bu Fore, Back ve Style sınıflarının belirlenmiş nitelikleri aslında alelade bir karakter dizisidir:
 
@@ -88,7 +88,7 @@ autoreset=False
 .. code-block:: python
 
 	from colorama import Fore, init
-	init(autoreset=False)
+	init(autoreset=True)
 	print(Fore.RED + "Bu kırmızı olur ama;")
 	print("Bunun rengi default'tur")
 
