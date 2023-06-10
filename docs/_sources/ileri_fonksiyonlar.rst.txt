@@ -1893,7 +1893,9 @@ fonksiyonlar oluşturmak da dahildir.
     for i in y:
         print(i)
 
-Kodun çıktısı::
+Kodun çıktısı:
+
+.. code-block:: pycon
 
 	Merhaba Dünya!
 	Merhaba Dünya!

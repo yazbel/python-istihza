@@ -2,7 +2,7 @@
 Tornado paketi
 **************
 
-Bu belgeler eş-zamansız olarak çok sayıda bağlantı kurabilen bir web 
+Bu belgeler eş-zamansız olarak çok sayıda bağlantı kurabilen bir web
 frameworkünü anlatmaktadır.
 
 .. toctree::

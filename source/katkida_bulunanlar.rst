@@ -519,7 +519,7 @@ Ekrem Dinçel
 Ramazan Sancar
 ===============
 
-    - "Koşul Deyimleri" içerisinde tanıma uygun açıklama düzeltildi. ()
+    - "Koşul Deyimleri" içerisinde tanıma uygun açıklama düzeltildi.
     - LISENCE içinde yer alan hatalı (bozuk) bağlantı düzeltildi.
 
 Beyazıt Uysal

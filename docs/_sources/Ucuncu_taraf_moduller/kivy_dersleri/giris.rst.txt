@@ -7,7 +7,7 @@ Bu yazıyla Kivy derslerine giriş yapacağız. Önce klasik başlangıç olan "
 
 Bundan önceki yazılarda da bahsettiğimiz gibi, Kivy ile programlamadan verim almak istiyorsanız Python sınıflar konusunda temel bilginiz olmalıdır. Çünkü genelde sınıfları kullanacağım ve bu yüzden yazdığım kodları(her ne kadar açıklama yapsam da) anlayabilmek için, temel de olsa, bilgili olmanız gerekir. Burdan, "Kivy sınıflar ile kullanılmak zorundadır" anlamı çıkmasın. Zaten sınıf yapısı çok zor değil, biraz pratik yaparak mantığını kavrayabilirsiniz.
 
-Kivy kütüphanesini sıkıntısız bir şekilde kurduğunuzu varsayarak ilk örneğimize geçiş yapıyoruz. 
+Kivy kütüphanesini sıkıntısız bir şekilde kurduğunuzu varsayarak ilk örneğimize geçiş yapıyoruz.
 
 Herhangi bir açıklama yapmadan önce hemen kodları verelim
 
@@ -16,19 +16,19 @@ Herhangi bir açıklama yapmadan önce hemen kodları verelim
 
 	#!/usr/bin/env python
 	# -*- coding: utf-8 -*-
-	
+
 	from kivy.app import App
 	from kivy.uix.label import Label
-	
+
 	class Program(App):
 	    def build(self):
 	        yazi = Label(text = "Merhaba Dünya")
-	
+
 	        return yazi
-	
-	
+
+
 	Program().run()
-	
+
 
 Kodu kaydedip çalıştırdığınızda ekranda, karşınıza aşağıdaki gibi bir pencere çıkacaktır.
 
@@ -76,22 +76,22 @@ Kivy programlarını geliştirmek için geliştirilen bir dildir. Kullanımı ba
 
 	#!/usr/bin/env python
 	# -*- coding: utf-8 -*-
-	
+
 	from kivy.app import App
-	
+
 	class Program(App):
 	    pass
-	
+
 	Program().run()
 
 
 Şimdi program.kv dosyasının içerisine şunları yazalım. Amacımız ekranda merhaba dünya yazmak
 
 .. code-block:: python
-	
+
 	Label:
 	    text:"Merhaba Dünya"
-	
+
 
 Programımızın build tarafından geri döndürülecek olan pencere düzenini, kv dili yardımıyla oluşturduk. Yapmamız gereken main.py dosyamızı çalıştırmak ve sonucu görmek.
 
@@ -105,42 +105,42 @@ Uygulama Özellikleri
 Yazdığımız Kivy programının bazı niteliklerini değiştirebiliriz. Örneğin, siz yukarıda programı çalıştırdığınızda programın başlığını henüz tanımlamadığınız için pencerenin başlığı ana sınıfın adı ile aynıdır. İsterseniz bunu değiştirebilirsiniz.
 
 .. code-block:: python
-	
+
 	#!/usr/bin/env python
 	# -*- coding: utf-8 -*-
-	
+
 	from kivy.app import App
 	from kivy.uix.label import Label
-	
+
 	class Program(App):
 	    def build(self):
 	        self.title = "Yazbel"
-	        
+
 	        return Label(text = "Merhaba Dünya")
-	
+
 	Program().run()
-	
+
 Kivy'de bir program başlarken, ekrana pencere çizilmeden önce birtakım metotlar çalışır. Bunlardan birisi on_start() metodu. Bu metot içerisine, ekrana pencere çizilmeden önce yani programımız başlamadan yapmak istediğimiz tanımlamaları yazabiliriz. Örneğin başlığı burada tanımlayabiliriz, ya da veritabanımız varsa bağlantıları burada başlatabiliriz. Kullanımına dair basit bir örnek
 
 .. code-block:: python
-	
+
 	#!/usr/bin/env python
 	# -*- coding: utf-8 -*-
-	
+
 	from kivy.app import App
 	from kivy.uix.label import Label
-	
+
 	class Program(App):
 	    def on_start(self):
 	        self.title = "Yazbel"
-	
+
 	    def build(self):
 	        return Label(text = "Merhaba Dünya")
-	
-	Program().run()
-	
 
-Ancak dikkat edilmesi gereken bir durum var. on_start() metodu, build() metodu çalıştırıldıktan sonra çağrılır. 
+	Program().run()
+
+
+Ancak dikkat edilmesi gereken bir durum var. on_start() metodu, build() metodu çalıştırıldıktan sonra çağrılır.
 
 Kivy uygulamamızda belli olaylarda çalışan başka metotlar da var.
 
@@ -159,33 +159,33 @@ Kivy uygulamamızda belli olaylarda çalışan başka metotlar da var.
 Şimdi bunların hepsini birarada kullandığımız bir örnek görelim ve konuyu bitirelim
 
 .. code-block:: python
-	
+
 	#!/usr/bin/env python
 	# -*- coding: utf-8 -*-
-	
+
 	from kivy.app import App
 	from kivy.uix.label import Label
-	
+
 	class Program(App):
 	    def on_start(self):
 	        self.title = "Yazbel"
 	        # bir takım işlemler...
-	
+
 	    def on_stop(self):
 	        # Uygulama kapatılırken...
 	        pass
-	
+
 	    def on_pause(self):
 	        # Uygulama arkaplana alınırken...
 	        # Burda return True yapmanız gerekiyor
 	        return True
-	
+
 	    def on_resume(self):
 	        # Tekrar giriş yapıldığında yazımızı değiştiriyoruz
 	        self.yazi.text = "Programa tekrar hoşgeldiniz"
-	
+
 	    def build(self):
 	        self.yazi = Label(text = "Merhaba Dünya")
 	        return self.yazi
-	
+
 	Program().run()

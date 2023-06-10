@@ -201,8 +201,8 @@ uğrayıp yardım talebinde bulunabilirsiniz.
 
 Sqlite'ı öğrenirken, içinde örnek veriler barındıran bir veritabanının elimizin
 altında bulunması alıştırma yapabilmek açısından faydalı olacaktır. Bunun için
-https://web.archive.org/web/20170511004853/http://www.istihza.com/denemeler/kitaplar.sqlite 
-adresindeki örnek veritabanını bilgisayarınıza indirin. Veritabanı sorgu çalışmalarımızı 
+https://web.archive.org/web/20170511004853/http://www.istihza.com/denemeler/kitaplar.sqlite
+adresindeki örnek veritabanını bilgisayarınıza indirin. Veritabanı sorgu çalışmalarımızı
 bu örnek veritabanı üzerinde gerçekleştireceğiz.
 
 Şimdi mesela biraz önce indirip kurduğunuz Sqlitebrowser programını çalıştırın

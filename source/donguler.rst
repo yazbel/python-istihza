@@ -1819,8 +1819,8 @@ nasıl yapılacağını az çok tahmin ettiğinizi zannediyorum::
     d1.close()
     d2.close()
 
-Burada bir öncekinden farklı olarak ``if not i in d2_satırlar`` kodu yerine,
-doğal olarak, ``if i in d2_satırlar`` kodunu kullandığımıza dikkat edin.
+Burada bir öncekinden farklı olarak ``if not i in d1_satırlar`` kodu yerine,
+doğal olarak, ``if i in d1_satırlar`` kodunu kullandığımıza dikkat edin.
 
 Dosyalar üzerinde yaptığımız işlemleri tamamladıktan sonra ``close()`` metodu
 ile bunları kapatmayı unutmuyoruz::
@@ -2075,8 +2075,3 @@ Son olarak da, ilk başta açtığımız dosyayı kapatıyoruz::
 Nihayet bir konunun daha sonuna ulaştık. Döngüler ve döngülerle ilişkili
 araçları da epey ayrıntılı bir şekilde incelediğimize göre gönül rahatlığıyla
 bir sonraki konuya geçebiliriz.
-
-
-
-
-

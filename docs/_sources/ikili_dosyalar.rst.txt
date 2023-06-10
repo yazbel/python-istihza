@@ -282,12 +282,16 @@ JPEG
     #. http://www.faqs.org/faqs/jpeg-faq/part1/section-15.html
 
 Yukarıda verdiğimiz adreslerdeki bilgilere göre bir `JPEG` dosyasının en başında
-şu veriler bulunur::
+şu veriler bulunur:
+
+.. code-block:: text
 
     FF	D8	FF	E0	?   ?	4A	46	49	46	00
 
 Ancak eğer ilgili `JPEG` dosyası bir CANON fotograf makinesi ile oluşturulmuşsa
-bu veri dizisi şöyle de olabilir::
+bu veri dizisi şöyle de olabilir:
+
+.. code-block:: text
 
     FF	D8	FF	E0	?   ?	45  78  69  66	00
 
@@ -298,7 +302,9 @@ bakmamız, sonraki iki baytı atlamamız ve bunlardan sonra gelen beş baytı ko
 etmemiz yeterli olacaktır.
 
 Yukarıda gördükleriniz birer on altılı (*hex*) sayıdır. Bunlar onlu düzende
-sırasıyla şu sayılara karşılık gelir::
+sırasıyla şu sayılara karşılık gelir:
+
+.. code-block:: text
 
     255 216 255 224 ? ? 74 70 73 70 0
     255 216 255 224 ? ? 45 78 69 66 0 #canon

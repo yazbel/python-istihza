@@ -292,7 +292,9 @@ Dolayısıyla yukarıdaki ifadenin ekrana çıktı olarak verilebilmesi için o 
 
     print("Merhaba Zalim Dünya!")
 
-Programınızı bu şekilde tekrar çalıştırdığınızda şöyle bir çıktı alıyoruz::
+Programınızı bu şekilde tekrar çalıştırdığınızda şöyle bir çıktı alıyoruz:
+
+.. code-block:: pycon
 
     Merhaba Zalim Dünya!
 

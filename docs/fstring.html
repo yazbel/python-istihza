@@ -80,7 +80,7 @@
 <p>Bu sefer format() fonksiyonuna belirli bir yer göstermediğimiz için sırasıyla ilgili alanlara verdiğimiz parametreleri dolduracak. Zaten bir parametre ve bir alan olduğu için yukarıdaki örnekle aynı çıktıyı alacağız. format() fonksiyonunu bu kadar hatırlamak yeter, hadi f-string’lere geçelim!</p>
 <section id="kullanim">
 <h2>Kullanım<a class="headerlink" href="#kullanim" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
-<p>String nedir hepimiz biliyoruz, Türkçeye karakter dizisi olarak çeviriyoruz. Bu yapıya da f-string diyoruz çünkü bu yapıyı kullanmak istediğimiz stringin (karakter dizisinin) başına <strong>f</strong> veya <strong>F</strong> ekliyoruz. Yani bir ön ek ekleyerek Python’a artık onun normal, sıradan bir karakter dizisi olmadığını ve bir ön işlemden geçmesi gerektiğini belirtiyoruz.:</p>
+<p>String nedir hepimiz biliyoruz, Türkçeye karakter dizisi olarak çeviriyoruz. Bu yapıya da f-string diyoruz çünkü bu yapıyı kullanmak istediğimiz stringin (karakter dizisinin) başına <strong>f</strong> veya <strong>F</strong> ekliyoruz. Yani bir ön ek ekleyerek Python’a artık onun normal, sıradan bir karakter dizisi olmadığını ve bir ön işlemden geçmesi gerektiğini belirtiyoruz.</p>
 <div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Selam Dünya!&quot;</span> <span class="c1"># Normal bir karakter dizisi</span>
 <span class="sa">f</span><span class="s2">&quot;Selam Dünya!&quot;</span> <span class="c1"># Bu artık bir f-string</span>
 </pre></div>
@@ -89,48 +89,42 @@
 <p class="admonition-title">Not</p>
 <p>f-string’leri kullanabilmeniz için Python 3.6 ya da daha yeni bir sürüm kullanmamız gerektiğini unutmayalım!</p>
 </div>
-<p>Bu örnekte f-string’imizin normal bir karakter dizisinden farkı yok gibi görünüyor. Aslında şuanlık bir farkı yok. Çünkü biz <strong>f-string</strong>’in özelliklerini henüz kullanmadık. Yukarıda format() fonksiyonu için yazdığımız örneği bir de f-string için yazalım.:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">isim</span> <span class="o">=</span> <span class="s1">&#39;Buğra&#39;</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Selam </span><span class="si">{</span><span class="n">isim</span><span class="si">}</span><span class="s1">!&#39;</span><span class="p">)</span>
+<p>Bu örnekte f-string’imizin normal bir karakter dizisinden farkı yok gibi görünüyor. Aslında şuanlık bir farkı yok. Çünkü biz <strong>f-string</strong>’in özelliklerini henüz kullanmadık. Yukarıda format() fonksiyonu için yazdığımız örneği bir de f-string için yazalım.</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">isim</span> <span class="o">=</span> <span class="s1">&#39;Buğra&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Selam </span><span class="si">{</span><span class="n">isim</span><span class="si">}</span><span class="s1">!&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Bu örneği de çalıştırdığınızda yukarıdaki örneklerin çıktılarıyla aynı çıktıyı verdiğini göreceksiniz. Ama çok daha düzenli bir görünümle elde ettik bu sefer aynı çıktıyı. format() fonksiyonuna ilgileneceği kısımları, işlem yapacağı kısımları, süslü parantezler ile belirttiğimizi biliyoruz. f-string için de aynı şey geçerli ancak ufak bir farkla. Artık harici bir işlem yapılıp karakter dizimiz düzenlenmiyor, işlemler doğrudan karakter dizimiz içinde gerçekleştirilip yerini kendi alıyor!</p>
-<p>Bir örnek daha hazırlayalım ve üzerinde konuşalım.:</p>
+<p>Bir örnek daha hazırlayalım ve üzerinde konuşalım.</p>
 <div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">isim</span> <span class="o">=</span> <span class="s1">&#39;Buğra&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">yas</span> <span class="o">=</span> <span class="mi">18</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="sa">f</span><span class="s1">&#39;Onun adı </span><span class="si">{</span><span class="n">isim</span><span class="si">}</span><span class="s1"> ve o </span><span class="si">{</span><span class="n">yas</span><span class="si">}</span><span class="s1"> yaşında.&#39;</span>
 <span class="go">&#39;Onun adı Buğra ve o 18 yaşında.&#39;</span>
 </pre></div>
 </div>
-<dl>
-<dt>Aynı örneği format() fonksiyonu ile de yazıp arasındaki farka bakalım.::</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">isim</span> <span class="o">=</span> <span class="s1">&#39;Buğra&#39;</span>
+<p>Aynı örneği format() fonksiyonu ile de yazıp arasındaki farka bakalım.</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">isim</span> <span class="o">=</span> <span class="s1">&#39;Buğra&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">yas</span> <span class="o">=</span> <span class="mi">18</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;Onun adı </span><span class="si">{}</span><span class="s2"> ve o </span><span class="si">{}</span><span class="s2"> yaşında.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">isim</span><span class="p">,</span> <span class="n">yas</span><span class="p">)</span>
 <span class="go">&#39;Onun adı Buğra ve o 18 yaşında.&#39;</span>
 </pre></div>
 </div>
-</dd>
-</dl>
 <p>Yukarıdaki kodu en basit haliyle değişken isimleri kullanmadan yazdım, yani değişkenleri sırasıyla ilgili yerlere yerleştirecek. Buna rağmen f-string örneğimizdekinden çok daha uzun oldu ve okunabilirlik azaldı.</p>
-<dl>
-<dt>Aynı zamanda f-string’lerin içinde Python işlemleri de yapabiliriz.::</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">birinci_rakam</span> <span class="o">=</span> <span class="mi">5</span>
+<p>Aynı zamanda f-string’lerin içinde Python işlemleri de yapabiliriz.</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">birinci_rakam</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ikinci_rakam</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="sa">f</span><span class="s1">&#39;Rakamların toplamı </span><span class="si">{</span><span class="n">birinci_rakam</span> <span class="o">+</span> <span class="n">ikinci_rakam</span><span class="si">}</span><span class="s1"> eder.&#39;</span>
 <span class="go">&#39;Rakamların toplamı 8 eder.&#39;</span>
 </pre></div>
 </div>
-</dd>
-</dl>
-<p>Hadi sadece toplama işlemi yapan bir hesap makinesi yapalım.:</p>
+<p>Hadi sadece toplama işlemi yapan bir hesap makinesi yapalım.</p>
 <div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="n">birinci_sayi</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Birinci sayıyı girin: &#39;</span><span class="p">))</span>
 <span class="n">ikinci_sayi</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;İkinci sayıyı girin: &#39;</span><span class="p">))</span>
 
-<span class="nb">print</span><span class="p">(</span>
-        <span class="sa">f</span><span class="s1">&#39;Sayıların toplamı </span><span class="si">{</span><span class="n">birinci_sayi</span><span class="o">+</span><span class="n">ikinci_sayi</span><span class="si">}</span><span class="s1"> eder.&#39;</span>
-        <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Sayıların toplamı </span><span class="si">{</span><span class="n">birinci_sayi</span> <span class="o">+</span> <span class="n">ikinci_sayi</span><span class="si">}</span><span class="s1"> eder.&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Kullanıcının girdiği sayıları toplayan bir hesap makinesi yaptık. Az önce f-string’lerin içinde Python kodu yazabildiğimizi öğrenmiştik. Bu bilgimizi de kullanıp bu basit programı daha güncel hale getirelim.:</p>
+<p>Kullanıcının girdiği sayıları toplayan bir hesap makinesi yaptık. Az önce f-string’lerin içinde Python kodu yazabildiğimizi öğrenmiştik. Bu bilgimizi de kullanıp bu basit programı daha güncel hale getirelim.</p>
 <div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="sa">f</span><span class="s1">&#39;Sayıların toplamı </span><span class="si">{</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Birinci sayıyı girin: &quot;</span><span class="p">))</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;İkinci sayıyı girin: &quot;</span><span class="p">))</span> <span class="si">}</span><span class="s1"> eder.&#39;</span>
 <span class="go">Birinci sayıyı girin: 10</span>
 <span class="go">İkinci sayıyı girin: 7</span>
@@ -141,6 +135,107 @@
 <div class="admonition note">
 <p class="admonition-title">Not</p>
 <p>f-string’in içinde Python kodu yazmak her zaman en iyi yol olmayabilir.</p>
+</div>
+</section>
+<section id="f-string-formatlama-ozellikleri">
+<h2>f-string Formatlama Özellikleri<a class="headerlink" href="#f-string-formatlama-ozellikleri" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<p>f-string ifadelerinde süslü parantezler (<code class="docutils literal notranslate"><span class="pre">{}</span></code>) yazılan ifadenin bir operatörüdür.
+f-string içerisinde süslü parantez yazabilmek için genel kaçış karakteri olan ters eğik çizgi (<code class="docutils literal notranslate"><span class="pre">\</span></code>) yerine <code class="docutils literal notranslate"><span class="pre">{</span></code> veya <code class="docutils literal notranslate"><span class="pre">}</span></code> parantezi 2 defa eklenir.</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fstring</span> <span class="o">=</span> <span class="s2">&quot;f-string&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">{{</span><span class="s2"> </span><span class="si">{</span><span class="n">fstring</span><span class="si">}</span><span class="s2">: f&#39;</span><span class="se">{{</span><span class="s2">ifade</span><span class="se">}}</span><span class="s2">&#39; şeklinde kullanılır. </span><span class="se">}}</span><span class="s2">&quot;</span>
+<span class="go">&quot;{ f-string: f&#39;{ifade}&#39; şeklinde kullanılır. }&quot;</span>
+</pre></div>
+</div>
+<p>Formatlanacak ifadeden sonra <code class="docutils literal notranslate"><span class="pre">=</span></code> işareti eklenerek değişken adı ile birlikte sahip olduğu değerin <code class="docutils literal notranslate"><span class="pre">repr</span></code> hali elde edilebilir. <code class="docutils literal notranslate"><span class="pre">print</span></code> ile debug edildiği durumlarda pratik bir şekilde kullanılabilir.</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kaynak</span> <span class="o">=</span> <span class="s2">&quot;Python İstihza&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">yıl</span> <span class="o">=</span> <span class="s2">&quot;2022&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">kaynak</span><span class="si">=}</span><span class="s2"> </span><span class="si">{</span><span class="n">yıl</span><span class="si">=}</span><span class="s2">&quot;</span>
+<span class="go">kaynak=&#39;Python İstihza&#39; yıl=&#39;2022&#39;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">f-string</span></code> ile formatlama yapılırken yazılan ifadeden sonra eklenen <code class="docutils literal notranslate"><span class="pre">:</span></code>’dan sonra ek formatlama işlemleri gerçekleştirilebilir.</p>
+<p><code class="docutils literal notranslate"><span class="pre">string</span></code> metodlarında anlatılan <code class="docutils literal notranslate"><span class="pre">center</span></code>, <code class="docutils literal notranslate"><span class="pre">ljust</span></code>, <code class="docutils literal notranslate"><span class="pre">rjust</span></code>, <code class="docutils literal notranslate"><span class="pre">zfill</span></code> metodlarının f-string içerisinde <code class="docutils literal notranslate"><span class="pre">:</span></code> işaretinden sonra karakter uzunluğu yazılarak, belirtilen karakter alanında hizalama yapılabilir.:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">istihza</span> <span class="o">=</span> <span class="s2">&quot;Python Istihza&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">istihza</span><span class="si">:</span><span class="s2">^30</span><span class="si">}</span><span class="s2">&quot;</span>   <span class="c1"># &quot;istihza&quot;.center(30)</span>
+<span class="go">&#39;        Python Istihza        &#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">istihza</span><span class="si">:</span><span class="s2">-^30</span><span class="si">}</span><span class="s2">&quot;</span>  <span class="c1"># &quot;istihza&quot;.center(30, &#39;-&#39;)</span>
+<span class="go">&#39;--------Python Istihza--------&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">istihza</span><span class="si">:</span><span class="s2">30</span><span class="si">}</span><span class="s2">&quot;</span>    <span class="c1"># &quot;istihza&quot;.ljust(30)</span>
+<span class="go">&#39;Python Istihza                &#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">istihza</span><span class="si">:</span><span class="s2">&gt;30</span><span class="si">}</span><span class="s2">&quot;</span>   <span class="c1"># &quot;istihza&quot;.just(30)</span>
+<span class="go">&#39;                Python Istihza&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">istihza</span><span class="si">:</span><span class="s2">&gt;030</span><span class="si">}</span><span class="s2">&quot;</span>  <span class="c1"># &quot;istihza&quot;.zfill(30)</span>
+<span class="go">&#39;0000000000000000Python Istihza&#39;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Etkileşimli kabuk (interactive shell) içinde çıktıları elde etmek için print kullanımasına ihtiyaç yoktur.</p>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">f-string</span></code> ve <code class="docutils literal notranslate"><span class="pre">.format</span></code> için genel notasyon şu şekildedir:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[[dolgu_karakteri]hizalama][işaret][#][0][genişlik][grup_karakteri][.ondalık][veri_tıpı]
+
+dolgu_karakteri : &lt;her hangi bir karakter&gt;
+hizalama        : &quot;&lt;&quot; | &quot;&gt;&quot; | &quot;^&quot; | &quot;=&quot;
+işaret          : &quot;+&quot; | &quot;-&quot; | &quot; &quot; (yalnızca sayı tipi)
+genişlik        : pozitif sayı
+grup_karakteri  : &quot;_&quot; | &quot;,&quot; (yalnızca sayı tipi)
+ondalık         : pozitif sayı (yalnızca sayı tipi)
+veri_tıpı       : &quot;b&quot; | &quot;c&quot; | &quot;d&quot; | &quot;e&quot; | &quot;E&quot; | &quot;f&quot; | &quot;F&quot; | &quot;g&quot; | &quot;G&quot; | &quot;n&quot; | &quot;o&quot; | &quot;s&quot; | &quot;x&quot; | &quot;X&quot; | &quot;%&quot;
+</pre></div>
+</div>
+<p>Yukarıda verilen örneklerden birini kısaca açıklamak gerekirse:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>f&quot;{istihza:-^30}&quot;
+dolgu_karakteri : -
+hizalama        : ^
+genişlik        : 30
+</pre></div>
+</div>
+<p>Sayı formatlama örnekleri</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sayı</span> <span class="o">=</span> <span class="mi">123</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">sayı</span><span class="si">:</span><span class="s2">&gt;6</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="go">&#39;   123&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">sayı</span><span class="si">:</span><span class="s2">0&gt;+6</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="go">&#39;00+123&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">sayı</span><span class="si">:</span><span class="s2">0=+6</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="go">&#39;+00123&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sa">f</span><span class="s2">&quot;Binary: </span><span class="si">{</span><span class="n">sayı</span><span class="si">:</span><span class="s2">b</span><span class="si">}</span><span class="s2"> | Octal: </span><span class="si">{</span><span class="n">sayı</span><span class="si">:</span><span class="s2">o</span><span class="si">}</span><span class="s2"> | Hexadecimal: </span><span class="si">{</span><span class="n">sayı</span><span class="si">:</span><span class="s2">x</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="go">&#39;Binary: 1111011 | Octal: 173 | Hexadecimal: 7b&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sa">f</span><span class="s2">&quot;Binary: </span><span class="si">{</span><span class="n">sayı</span><span class="si">:</span><span class="s2">#b</span><span class="si">}</span><span class="s2"> | Octal: </span><span class="si">{</span><span class="n">sayı</span><span class="si">:</span><span class="s2">#o</span><span class="si">}</span><span class="s2"> | Hexadecimal: </span><span class="si">{</span><span class="n">sayı</span><span class="si">:</span><span class="s2">#x</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="go">&#39;Binary: 0b1111011 | Octal: 0o173 | Hexadecimal: 0x7b&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ondalık</span> <span class="o">=</span> <span class="mf">0.123</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ondalık</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span>  <span class="c1"># f | F ondalık formatlama</span>
+<span class="go">&#39;0.12&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ondalık</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="go">&#39;0.12300&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ondalık</span><span class="si">:</span><span class="s2">.5g</span><span class="si">}</span><span class="s2">&quot;</span>  <span class="c1"># g | G fazla sıfırlar dahil edilmez</span>
+<span class="go">&#39;0.123&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sayı</span> <span class="o">=</span> <span class="mi">123456</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">sayı</span><span class="si">:</span><span class="s2">_</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="go">&#39;123_456&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">sayı</span><span class="si">:</span><span class="s2">-^15_</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="go">&#39;----123_456----&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">sayı</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="go">&#39;123,456&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">işlem</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">12</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">işlem</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">&quot;</span>  <span class="c1"># Sonucun 100 ile çarpılmış halini yüzde olarak çıktı verir</span>
+<span class="go">&#39;8.33%&#39;</span>
+</pre></div>
+</div>
+<p>Formatlama için kullanılan operatörler değişken ile kullanılması durumunda değişkenlerin <code class="docutils literal notranslate"><span class="pre">{}</span></code> içine yazılması gerekmektedir.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">selam</span> <span class="o">=</span> <span class="s2">&quot;Hello, World!&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hizalama</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Sol&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;&quot;</span><span class="p">,</span> <span class="s2">&quot;Orta&quot;</span><span class="p">:</span> <span class="s2">&quot;^&quot;</span><span class="p">,</span> <span class="s2">&quot;Sağ&quot;</span><span class="p">:</span> <span class="s2">&quot;&gt;&quot;</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">genişlik</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">hiza</span><span class="p">,</span> <span class="n">operatör</span> <span class="ow">in</span> <span class="n">hizalama</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">hiza</span><span class="si">:</span><span class="s2">&gt;5</span><span class="si">}</span><span class="s2">: &#39;</span><span class="si">{</span><span class="n">selam</span><span class="si">:{</span><span class="n">operatör</span><span class="si">}{</span><span class="n">genişlik</span><span class="si">}}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go"> Sol: &#39;Hello, World!            &#39;</span>
+<span class="go">Orta: &#39;      Hello, World!      &#39;</span>
+<span class="go"> Sağ: &#39;            Hello, World!&#39;</span>
+</pre></div>
 </div>
 </section>
 </section>
@@ -189,29 +284,29 @@
 <div id="disqus_thread"></div>
 <script>
     /**
-     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT 
-     *  THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR 
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT
+     *  THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR
      *  PLATFORM OR CMS.
-     *  
-     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: 
+     *
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT:
      *  https://disqus.com/admin/universalcode/#configuration-variables
      */
     /*
     var disqus_config = function () {
         // Replace PAGE_URL with your page's canonical URL variable
-        this.page.url = PAGE_URL;  
-        
+        this.page.url = PAGE_URL;
+
         // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-        this.page.identifier = PAGE_IDENTIFIER; 
+        this.page.identifier = PAGE_IDENTIFIER;
     };
     */
-    
+
     (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
         var d = document, s = d.createElement('script');
-        
+
         // IMPORTANT: Replace EXAMPLE with your forum shortname!
         s.src = 'https://istihza.disqus.com/embed.js';
-        
+
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();
@@ -252,7 +347,7 @@ Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" 
 
 <div class="footer">
 		&copy; Copyright 2007-2022, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 21.01.2022.
+Son güncelleme: 04.11.2022.
 	<a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0 kullanılarak oluşturuldu.
 <br>
 <br>
