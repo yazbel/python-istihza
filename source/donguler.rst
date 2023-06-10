@@ -963,7 +963,7 @@ uzun parola belirlemesini engelleyen bir uygulama yazmıştık. O uygulamayı
         if not parola:
             print("parola bölümü boş geçilemez!")
 
-        elif len(parola) in range(3, 8): #eğer parolanın uzunluğu 3 ile 8 karakter
+        elif len(parola) in range(3, 9): #eğer parolanın uzunluğu 3 ile 8 karakter
             #aralığında ise...
             print("Yeni parolanız", parola)
             break
