@@ -18,7 +18,7 @@ basename = project
 # project structure
 root_doc = 'index'
 highlight_language = 'python3'
-needs_sphinx = '4.2'
+needs_sphinx = '7.2'
 
 file = os.path.realpath(__file__)
 source_dir = os.path.dirname(file)
@@ -36,7 +36,7 @@ html_static_path = [statics]
 logo = join(statics, 'logo.png')
 
 # the full version, including alpha/beta/rc tags
-release = '4.0.0'
+release = '4.1.0'
 
 # general configuration
 extensions = ["sphinx.ext.githubpages"]
