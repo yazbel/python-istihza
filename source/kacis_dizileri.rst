@@ -364,7 +364,7 @@ Burada ``len()`` fonksiyonunu nasıl kullandığımıza çok dikkat edin. Bu kod
 sayesinde `başlık` değişkeninin uzunluğu (``len(başlık)``) sayısınca `-`
 işaretini ekrana çıktı olarak verebiliyoruz.
 
-Yukarıdaki kodlarda ``print()`` fonksiyonunun son parametresi ise `sep=''`. Peki
+Yukarıdaki kodlarda ``print()`` fonksiyonunun son parametresi ise ``sep=''``. Peki
 bu ne işe yarıyor? Her zaman olduğu gibi, bu kod parçasının ne işe yaradığını
 anlamak için programı bir de o kodlar olmadan çalıştırmayı deneyebilirsiniz::
 
