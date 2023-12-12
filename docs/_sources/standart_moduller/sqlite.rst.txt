@@ -697,25 +697,36 @@ devreye soktuğu kaynakları serbest bırakmış oluyoruz. Esasında programım�
 kapandığında, açık olan bütün Sqlite veritabanları da otomatik olarak kapanır.
 Ama yine de bu işlemi elle yapmak her zaman iyi bir fikirdir.
 
-Eğer üzerinde işlem yaptığınız veritabanının her şey bittikten sonra otomatik
-olarak kapanmasını garantilemek isterseniz, daha önce öğrendiğimiz `with`
-sözcüğünü kullanabilirsiniz::
+Bağlam Yöneticisi Kullanımı
+****************************
+
+Python'da bağlam yönetecisi(context manager) oluşturmak için ``with`` deyimi kullanılır.
+Python `with` deyimini kullanarak Sqlite ile işlem yaparken bir istisna ile karşılaşırsa
+yapılan işlemlerin otomatik olarak geri alınmasını sağlar. Eğer işlem sorunsuz 
+gerçekleşirse herhangi bir etki yaratmaz. Aşağıda örnek koda bakalım::
 
     import sqlite3
 
-    with sqlite3.connect('vt.sqlite') as vt:
-        im = vt.cursor()
+    con = sqlite3.connect(":memory:")
+    con.execute("CREATE TABLE personel(id INTEGER PRIMARY KEY, isim VARCHAR UNIQUE)")
 
-        im.execute("""CREATE TABLE IF NOT EXISTS personel
-            (isim, soyisim, memleket)""")
-        im.execute("""INSERT INTO personel VALUES
-            ('Fırat', 'Özgül', 'Adana')""")
+    # Başarılı şekilde, con.commit() çalıştırılır.
+    with con:
+        con.execute("INSERT INTO personel(isim) VALUES(?)", ("Fırat",))
 
-        vt.commit()
+    # Hata yakalanınca con.rollback() otomatik olarak çağırılır ve işlemler geri alınır.
+    try:
+        with con:
+            con.execute("INSERT INTO personel(isim) VALUES(?)", ("Fırat",))
+    except sqlite3.IntegrityError:
+        print("Aynı ismi iki defa ekleyemezsiniz!")
 
-Bu şekilde `with` sözcüğünü kullanarak bir veritabanı bağlantısı açtığımızda,
-bütün işler bittikten sonra Python bizim için bağlantıyı otomatik olarak
-sonlandıracaktır.
+    # Bağlam yöneticisi olarak kullanılan bağlantı nesnesi yalnızca işlemleri gerçekleştirir 
+    # veya geri alır, bu nedenle bağlantı nesnesi manuel olarak kapatılmalıdır.
+    con.close()
+
+Not: Bağlam yöneticisi ne dolaylı olarak yeni bir işlem açar ne de
+bağlantıyı kapatır. Kısaca işlem sonunda bağlantıyı kapatmanız gerekir.
 
 Parametreli Sorgular
 *********************

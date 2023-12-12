@@ -3,23 +3,22 @@
  <html lang="tr">
 
 
-<html lang="tr">
+<html lang="tr" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta content="Bu bölümde timeit modülünü inceleyeceğiz." name="description" />
 <meta content="python, modül, import, timeit" name="keywords" />
 
     <title>timeit Modülü &#8212; Yazbel Python Belgeleri</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pyramid.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/translations.js"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=36871c9a" />
+    <link rel="stylesheet" type="text/css" href="../_static/pyramid.css?v=bd158598" />
+    <script src="../_static/documentation_options.js?v=0800bedb"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/translations.js?v=34f4c3a9"></script>
     <link rel="canonical" href="https://python-istihza.yazbel.com/standart_moduller/timeit.html" />
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Dizin" href="../genindex.html" />
     <link rel="search" title="Ara" href="../search.html" />
     <link rel="next" title="sys Modülü" href="sys.html" />
@@ -65,12 +64,12 @@
             
 
   <section id="timeit-modulu">
-<h1>timeit Modülü<a class="headerlink" href="#timeit-modulu" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<h1>timeit Modülü<a class="headerlink" href="#timeit-modulu" title="Link to this heading">¶</a></h1>
 <p><strong>Kaynak Kodu:</strong> <a class="reference external" href="https://github.com/python/cpython/blob/3.5/Lib/timeit.py">https://github.com/python/cpython/blob/3.5/Lib/timeit.py</a>
 <strong>Belge Kaynağı:</strong> <a class="reference external" href="https://docs.python.org/3.5/library/timeit.html">https://docs.python.org/3.5/library/timeit.html</a></p>
 <p>Bu modül küçük kod parçalarının çalışma sürelerini ölçmeyi sağlar. Hem komut satırı arayüzüne hem de çağrılabilir bir arayüze sahiptir. Çalışma sürelerini ölçmek için birçok ortak tuzaktan kaçınır. Tim Peters’in O’Reilly tarafından yayımlanan Python Cookbook kitabının “Algoritmalar” bölümünün girişine de göz atın.</p>
 <section id="temel-ornekler">
-<h2>Temel Örnekler<a class="headerlink" href="#temel-ornekler" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Temel Örnekler<a class="headerlink" href="#temel-ornekler" title="Link to this heading">¶</a></h2>
 <p>Takip eden örnek, komut satırı arayüzünün üç değişik deyimi nasıl karşılaştırdığını gösteriyor:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">timeit</span> <span class="s1">&#39;&quot;-&quot;.join(str(n) for n in range(100))&#39;</span>
 <span class="mi">10000</span> <span class="n">loops</span><span class="p">,</span> <span class="n">best</span> <span class="n">of</span> <span class="mi">3</span><span class="p">:</span> <span class="mi">29</span> <span class="n">usec</span> <span class="n">per</span> <span class="n">loop</span>
@@ -98,7 +97,7 @@
 <p>timeit sadece komut satırı arayüzü kullanıldığında yineleme sayısını otomatik olarak belirleyecektir. Örnekler bölümünde gelişmiş örnekler bulabilirsiniz.</p>
 </section>
 <section id="python-arayuzu">
-<h2>Python Arayüzü<a class="headerlink" href="#python-arayuzu" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Python Arayüzü<a class="headerlink" href="#python-arayuzu" title="Link to this heading">¶</a></h2>
 <p>Modül, üç kolaylık fonksiyonu ve bir topluluk sınıfı tanımlar:</p>
 <p><strong>timeit.timeit(stmt=’pass’, setup=’pass’, timer=&lt;default timer&gt;, number=1000000, globals=None)</strong></p>
 <blockquote>
@@ -152,7 +151,7 @@
 </div></blockquote>
 </section>
 <section id="komut-satiri-arayuzu">
-<h2>Komut Satırı Arayüzü<a class="headerlink" href="#komut-satiri-arayuzu" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Komut Satırı Arayüzü<a class="headerlink" href="#komut-satiri-arayuzu" title="Link to this heading">¶</a></h2>
 <p>Bir program olarak komut satırı arayüzünden çağrılırken şu yapı kullanılır:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">timeit</span> <span class="p">[</span><span class="o">-</span><span class="n">n</span> <span class="n">N</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">r</span> <span class="n">N</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">u</span> <span class="n">U</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">s</span> <span class="n">S</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">t</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">c</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="n">statement</span> <span class="o">...</span><span class="p">]</span>
 </pre></div>
@@ -205,7 +204,7 @@
 <p><strong>Not:</strong> Bir geçiş ifadesi çalıştırmakla ilgili belirli bir temel yük vardır. Buradaki kod bunu gizlemeye çalışmaz fakat siz bunun farkında olmalısınız. Temel yük, programı argümansız çağırarak ölçülebilir ve Python sürümleri arasında farklılıklar gösterir.</p>
 </section>
 <section id="ornekler">
-<h2>Örnekler<a class="headerlink" href="#ornekler" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Örnekler<a class="headerlink" href="#ornekler" title="Link to this heading">¶</a></h2>
 <p>Sadece başlangıçta bir kez çalıştırılmak üzere bir setup (kurulum) ifadesi kullanılabilir:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">timeit</span> <span class="o">-</span><span class="n">s</span> <span class="s1">&#39;text = &quot;sample string&quot;; char=&quot;g&quot;&#39;</span> <span class="s1">&#39;char in text&#39;</span>
 <span class="mi">10000000</span> <span class="n">loops</span><span class="p">,</span> <span class="n">best</span> <span class="n">of</span> <span class="mi">3</span><span class="p">:</span> <span class="mf">0.0482</span> <span class="n">usec</span> <span class="n">per</span> <span class="n">loop</span>
@@ -450,8 +449,8 @@ Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" 
 
 <div class="footer">
 		&copy; Copyright 2007-2023, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 10.06.2023.
-	<a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0 kullanılarak oluşturuldu.
+Son güncelleme: 12.12.2023.
+	<a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6 kullanılarak oluşturuldu.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img

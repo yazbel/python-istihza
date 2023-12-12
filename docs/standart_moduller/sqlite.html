@@ -3,23 +3,22 @@
  <html lang="tr">
 
 
-<html lang="tr">
+<html lang="tr" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta content="Python 2.x ve Veritabanı Programlama (Database Programming)" name="description" />
 <meta content="python, veritabanı, database, sqlite, SQL, SQL injection, sızma, güvenlik" name="keywords" />
 
     <title>Sqlite ile Veritabanı Programlama &#8212; Yazbel Python Belgeleri</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pyramid.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/translations.js"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=36871c9a" />
+    <link rel="stylesheet" type="text/css" href="../_static/pyramid.css?v=bd158598" />
+    <script src="../_static/documentation_options.js?v=0800bedb"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/translations.js?v=34f4c3a9"></script>
     <link rel="canonical" href="https://python-istihza.yazbel.com/standart_moduller/sqlite.html" />
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Dizin" href="../genindex.html" />
     <link rel="search" title="Ara" href="../search.html" />
     <link rel="next" title="os Modülü" href="os.html" />
@@ -65,9 +64,9 @@
             
 
   <section id="sqlite-ile-veritabani-programlama">
-<h1>Sqlite ile Veritabanı Programlama<a class="headerlink" href="#sqlite-ile-veritabani-programlama" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<h1>Sqlite ile Veritabanı Programlama<a class="headerlink" href="#sqlite-ile-veritabani-programlama" title="Link to this heading">¶</a></h1>
 <section id="giris">
-<h2>Giriş<a class="headerlink" href="#giris" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Giriş<a class="headerlink" href="#giris" title="Link to this heading">¶</a></h2>
 <p>Bu bölümde, Python’daki ileri düzey konulardan biri olan veritabanı
 programlamayı (<em>database programming</em>) inceleyeceğiz. Dilerseniz öncelikle
 ‘veritabanı’ denen şeyin ne olduğunu anlamaya çalışarak işe başlayalım.</p>
@@ -96,7 +95,7 @@ inceleyebilirsiniz. Biz bunlar içinde, sadeliği, basitliği ve kullanım kolay
 nedeniyle <strong>Sqlite</strong> adlı veritabanı yönetim sistemini ele alacağız.</p>
 </section>
 <section id="neden-sqlite">
-<h2>Neden Sqlite?<a class="headerlink" href="#neden-sqlite" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Neden Sqlite?<a class="headerlink" href="#neden-sqlite" title="Link to this heading">¶</a></h2>
 <p>Dediğimiz gibi, Python’da veritabanı işlemleri için kullanabileceğiniz pek çok
 alternatif bulunur. Ama biz bütün bu alternatifler içinde Sqlite’ı tercih
 edeceğiz. Peki neden Sqlite?</p>
@@ -130,7 +129,7 @@ söyleyelim.</p></li>
 O halde hemen yola koyulalım.</p>
 </section>
 <section id="sqlite-in-yapisi">
-<h2>Sqlite’ın Yapısı<a class="headerlink" href="#sqlite-in-yapisi" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Sqlite’ın Yapısı<a class="headerlink" href="#sqlite-in-yapisi" title="Link to this heading">¶</a></h2>
 <p>Bu bölümün en başında verdiğimiz veritabanı tanımından da anlaşılacağı gibi,
 veritabanları, verileri sonradan kullanılmak üzere içinde tutan bir sistemdir.
 Bütün <a class="reference external" href="https://tr.wikipedia.org/wiki/%C4%B0li%C5%9Fkisel_veri_taban%C4%B1_y%C3%B6netim_sistemi">ilişkisel veritabanları</a>nda
@@ -138,13 +137,6 @@ olduğu gibi, Sqlite da bu verileri tablo benzeri bir yapı içinde tutar. Yani
 aslında bir Sqlite veritabanı içindeki veriler şöyle bir yapıya sahiptir:</p>
 <blockquote>
 <div><table class="docutils align-default">
-<colgroup>
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 20%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Sütun 1</p></th>
 <th class="head"><p>Sütun 2</p></th>
@@ -191,12 +183,12 @@ yüzden Sqlite’ın yapısını anlamak büyük önem taşır. Gördüğünüz 
 veritabanı sisteminin yapısını anlamak da öyle zor bir iş değildir.</p>
 </section>
 <section id="yardimci-araclar">
-<h2>Yardımcı Araçlar<a class="headerlink" href="#yardimci-araclar" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Yardımcı Araçlar<a class="headerlink" href="#yardimci-araclar" title="Link to this heading">¶</a></h2>
 <p>Veritabanları üzerinde yapacağımız çalışmalar sırasında, işlerimizi
 kolaylaştırmak için bazı harici araçlara da ihtiyaç duyacağız. Gelin şimdi bu
 araçları tanıyalım.</p>
 <section id="sqlitebrowser">
-<h3>Sqlitebrowser<a class="headerlink" href="#sqlitebrowser" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Sqlitebrowser<a class="headerlink" href="#sqlitebrowser" title="Link to this heading">¶</a></h3>
 <p>Sqlitebrowser, Sqlite veritabanlarının içeriğini grafik bir arayüz aracılığıyla
 görüntüleyebilmemizi sağlayan bir program. Bu program sayesinde, veritabanı
 üzerinde yaptığınız çalışmanın doğru sonuç verip vermediğini teyit edebilir,
@@ -267,7 +259,7 @@ tavsiye ederim. Ya da eğer arzu ederseniz, <a class="reference external" href="
 uğrayıp yardım talebinde bulunabilirsiniz.</p>
 </section>
 <section id="ornek-veritabani">
-<h3>Örnek Veritabanı<a class="headerlink" href="#ornek-veritabani" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Örnek Veritabanı<a class="headerlink" href="#ornek-veritabani" title="Link to this heading">¶</a></h3>
 <p>Sqlite’ı öğrenirken, içinde örnek veriler barındıran bir veritabanının elimizin
 altında bulunması alıştırma yapabilmek açısından faydalı olacaktır. Bunun için
 <a class="reference external" href="https://web.archive.org/web/20170511004853/http://www.istihza.com/denemeler/kitaplar.sqlite">https://web.archive.org/web/20170511004853/http://www.istihza.com/denemeler/kitaplar.sqlite</a>
@@ -290,7 +282,7 @@ erişebileceğimizi de öğreneceğiz.</p>
 </section>
 </section>
 <section id="yeni-bir-veritabani-olusturmak">
-<h2>Yeni Bir Veritabanı Oluşturmak<a class="headerlink" href="#yeni-bir-veritabani-olusturmak" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Yeni Bir Veritabanı Oluşturmak<a class="headerlink" href="#yeni-bir-veritabani-olusturmak" title="Link to this heading">¶</a></h2>
 <p>Bu bölümde <cite>sqlite</cite> adlı bir modül aracılığıyla yeni bir veritabanını nasıl
 oluşturacağımızı öğreneceğiz.</p>
 <p>Yukarıda <cite>sqlite</cite> adlı bir modülden söz ettik. Dolayısıyla, tahmin
@@ -377,7 +369,7 @@ dizin içine atıldığını görecektiniz. Örneğin GNU/Linux sistemlerinde, M
 veritabanları <cite>/var/lib/mysql</cite> gibi bir dizinin içinde tutulur.</p>
 </section>
 <section id="varolan-bir-veritabaniyla-baglanti-kurmak">
-<h2>Varolan Bir Veritabanıyla Bağlantı Kurmak<a class="headerlink" href="#varolan-bir-veritabaniyla-baglanti-kurmak" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Varolan Bir Veritabanıyla Bağlantı Kurmak<a class="headerlink" href="#varolan-bir-veritabaniyla-baglanti-kurmak" title="Link to this heading">¶</a></h2>
 <p>Biraz önce, <cite>deneme.sqlite</cite> adlı yeni bir Sqlite veritabanı oluşturmak için
 şöyle bir komut kullanmıştık:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vt</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;deneme.sqlite&#39;</span><span class="p">)</span>
@@ -398,7 +390,7 @@ varsayarsak:</p>
 <p>komutunu kullanarak <cite>kitaplar.sqlite</cite> adlı veritabanıyla bağlantı kurabiliriz.</p>
 </section>
 <section id="imlec-olusturma">
-<h2>İmleç Oluşturma<a class="headerlink" href="#imlec-olusturma" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>İmleç Oluşturma<a class="headerlink" href="#imlec-olusturma" title="Link to this heading">¶</a></h2>
 <p>Yukarıda <code class="docutils literal notranslate"><span class="pre">connect()</span></code> metodunu kullanarak hem Sqlite ile nasıl veritabanı
 bağlantısı kuracağımızı hem de nasıl yeni bir veritabanı oluşturacağımızı
 öğrendik.</p>
@@ -415,7 +407,7 @@ oluşturduğumuz <code class="docutils literal notranslate"><span class="pre">im
 komutlarını çalıştırabileceğiz. Nasıl mı? Hemen bakalım.</p>
 </section>
 <section id="tablo-olusturma">
-<h2>Tablo Oluşturma<a class="headerlink" href="#tablo-olusturma" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Tablo Oluşturma<a class="headerlink" href="#tablo-olusturma" title="Link to this heading">¶</a></h2>
 <p>Önceki bölümün sonunda söylediğimiz gibi, bir imleç nesnesi oluşturduktan sonra
 bunun <code class="docutils literal notranslate"><span class="pre">execute()</span></code> metodunu kullanarak SQL komutlarını işletebiliyoruz.</p>
 <p>Dilerseniz şimdi basit bir örnek yaparak neyin ne olduğunu anlamaya çalışalım.</p>
@@ -444,10 +436,6 @@ olduğunu ve bu sistemdeki her tablonun da bir isminin bulunduğunu söylemişti
 şey oluşturmuş oluyoruz:</p>
 <blockquote>
 <div><table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>isim</p></th>
 <th class="head"><p>soyisim</p></th>
@@ -516,7 +504,7 @@ alacaksınız:</p>
 öğrenmek için okumaya devam edin…</p>
 </section>
 <section id="sartli-tablo-olusturma">
-<h2>Şartlı Tablo Oluşturma<a class="headerlink" href="#sartli-tablo-olusturma" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Şartlı Tablo Oluşturma<a class="headerlink" href="#sartli-tablo-olusturma" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span></code> komutunu kullanarak tablo oluştururken şöyle bir problemle
 karşılaşmış olabilirsiniz. Diyelim ki şu kodları yazdınız:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
@@ -559,7 +547,7 @@ işleyecek; eğer veritabanında ‘personel’ adlı bir tablo yoksa oluşturac
 bu adla zaten bir tablo varsa da sessizce yoluna devam edecektir.</p>
 </section>
 <section id="tabloya-veri-girme">
-<h2>Tabloya Veri Girme<a class="headerlink" href="#tabloya-veri-girme" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Tabloya Veri Girme<a class="headerlink" href="#tabloya-veri-girme" title="Link to this heading">¶</a></h2>
 <p>Buraya kadar, <cite>sqlite3</cite> modülünü kullanarak nasıl bir veritabanı
 oluşturacağımızı ve çeşitli sütünlardan oluşan bir tabloyu bu veritabanına nasıl
 yerleştireceğimizi öğrendik. Şimdi de oluşturduğumuz bu sütun başlıklarının
@@ -593,11 +581,6 @@ yukarıdaki karakter dizisi şu anlama gelir: “<em>personel İÇİNE ‘Fırat
 ‘Adana’ DEĞERLERİNİ YERLEŞTİR. Yani şöyle bir tablo oluştur</em>”:</p>
 <blockquote>
 <div><table class="docutils align-default">
-<colgroup>
-<col style="width: 32%" />
-<col style="width: 32%" />
-<col style="width: 36%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>isim</p></th>
 <th class="head"><p>soyisim</p></th>
@@ -667,7 +650,7 @@ içindeki tek ve çift tırnakları daha rahat bir şekilde kullanabilirsiniz. Y
 daha okunaklı kodlar da yazabileceğinizi biliyorsunuz.</p>
 </section>
 <section id="verilerin-veritabanina-islenmesi">
-<h2>Verilerin Veritabanına İşlenmesi<a class="headerlink" href="#verilerin-veritabanina-islenmesi" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Verilerin Veritabanına İşlenmesi<a class="headerlink" href="#verilerin-veritabanina-islenmesi" title="Link to this heading">¶</a></h2>
 <p>Bir önceki bölümde bir Sqlite veritabanına nasıl veri gireceğimizi öğrendik. Ama
 aslında iş sadece veri girmeyle bitmiyor. Verileri veritabanına “işleyebilmek”
 için bir adım daha atmamız gerekiyor. Mesela şu örneğe bir bakalım:</p>
@@ -719,12 +702,6 @@ metottan yararlanacağız:</p>
 oluşturmuş olduk:</p>
 <blockquote>
 <div><table class="docutils align-default">
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>isim</p></th>
 <th class="head"><p>soyisim</p></th>
@@ -745,7 +722,7 @@ oluşturmuş olduk:</p>
 oluşturulur, ama sütunların içeriği veritabanına işlenmez.</p>
 </section>
 <section id="veritabaninin-kapatilmasi">
-<h2>Veritabanının Kapatılması<a class="headerlink" href="#veritabaninin-kapatilmasi" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Veritabanının Kapatılması<a class="headerlink" href="#veritabaninin-kapatilmasi" title="Link to this heading">¶</a></h2>
 <p>Bir veritabanı üzerinde yapacağımız bütün işlemleri tamamladıktan sonra, prensip
 olarak, o veritabanını kapatmamız gerekir. Mesela şu kodları ele alalım:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
@@ -772,28 +749,39 @@ adlı bir metottan yararlandık:</p>
 devreye soktuğu kaynakları serbest bırakmış oluyoruz. Esasında programımız
 kapandığında, açık olan bütün Sqlite veritabanları da otomatik olarak kapanır.
 Ama yine de bu işlemi elle yapmak her zaman iyi bir fikirdir.</p>
-<p>Eğer üzerinde işlem yaptığınız veritabanının her şey bittikten sonra otomatik
-olarak kapanmasını garantilemek isterseniz, daha önce öğrendiğimiz <cite>with</cite>
-sözcüğünü kullanabilirsiniz:</p>
+</section>
+<section id="baglam-yoneticisi-kullanimi">
+<h2>Bağlam Yöneticisi Kullanımı<a class="headerlink" href="#baglam-yoneticisi-kullanimi" title="Link to this heading">¶</a></h2>
+<p>Python’da bağlam yönetecisi(context manager) oluşturmak için <code class="docutils literal notranslate"><span class="pre">with</span></code> deyimi kullanılır.
+Python <cite>with</cite> deyimini kullanarak Sqlite ile işlem yaparken bir istisna ile karşılaşırsa
+yapılan işlemlerin otomatik olarak geri alınmasını sağlar. Eğer işlem sorunsuz
+gerçekleşirse herhangi bir etki yaratmaz. Aşağıda örnek koda bakalım:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
 
-<span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;vt.sqlite&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">vt</span><span class="p">:</span>
-    <span class="n">im</span> <span class="o">=</span> <span class="n">vt</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<span class="n">con</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;:memory:&quot;</span><span class="p">)</span>
+<span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;CREATE TABLE personel(id INTEGER PRIMARY KEY, isim VARCHAR UNIQUE)&quot;</span><span class="p">)</span>
 
-    <span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;CREATE TABLE IF NOT EXISTS personel</span>
-<span class="s2">        (isim, soyisim, memleket)&quot;&quot;&quot;</span><span class="p">)</span>
-    <span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;INSERT INTO personel VALUES</span>
-<span class="s2">        (&#39;Fırat&#39;, &#39;Özgül&#39;, &#39;Adana&#39;)&quot;&quot;&quot;</span><span class="p">)</span>
+<span class="c1"># Başarılı şekilde, con.commit() çalıştırılır.</span>
+<span class="k">with</span> <span class="n">con</span><span class="p">:</span>
+    <span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO personel(isim) VALUES(?)&quot;</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;Fırat&quot;</span><span class="p">,))</span>
 
-    <span class="n">vt</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+<span class="c1"># Hata yakalanınca con.rollback() otomatik olarak çağırılır ve işlemler geri alınır.</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">con</span><span class="p">:</span>
+        <span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO personel(isim) VALUES(?)&quot;</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;Fırat&quot;</span><span class="p">,))</span>
+<span class="k">except</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">IntegrityError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Aynı ismi iki defa ekleyemezsiniz!&quot;</span><span class="p">)</span>
+
+<span class="c1"># Bağlam yöneticisi olarak kullanılan bağlantı nesnesi yalnızca işlemleri gerçekleştirir</span>
+<span class="c1"># veya geri alır, bu nedenle bağlantı nesnesi manuel olarak kapatılmalıdır.</span>
+<span class="n">con</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Bu şekilde <cite>with</cite> sözcüğünü kullanarak bir veritabanı bağlantısı açtığımızda,
-bütün işler bittikten sonra Python bizim için bağlantıyı otomatik olarak
-sonlandıracaktır.</p>
+<p>Not: Bağlam yöneticisi ne dolaylı olarak yeni bir işlem açar ne de
+bağlantıyı kapatır. Kısaca işlem sonunda bağlantıyı kapatmanız gerekir.</p>
 </section>
 <section id="parametreli-sorgular">
-<h2>Parametreli Sorgular<a class="headerlink" href="#parametreli-sorgular" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Parametreli Sorgular<a class="headerlink" href="#parametreli-sorgular" title="Link to this heading">¶</a></h2>
 <p>Şu ana kadar verdiğimiz örneklerde, veritabanına girilecek verileri tek tek elle
 yerine koyduk. Örneğin:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">im</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;INSERT INTO personel VALUES</span>
@@ -834,7 +822,7 @@ değer için (mesela sırasıyla ‘Fırat’, ‘Özgül’, ‘Adana’) bir a
 yerleştirdiğimizi de gözden kaçırmayın.</p>
 </section>
 <section id="tablodaki-verileri-secmek">
-<h2>Tablodaki Verileri Seçmek<a class="headerlink" href="#tablodaki-verileri-secmek" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Tablodaki Verileri Seçmek<a class="headerlink" href="#tablodaki-verileri-secmek" title="Link to this heading">¶</a></h2>
 <p>Yukarıda, bir veritabanına nasıl veri gireceğimizi ve bu verileri veritabanına
 nasıl işleyeceğimizi gördük. İşin asıl önemli kısmı, bu verileri daha sonra
 veritabanından (yani tablodan) geri alabilmektir. Şimdi bu işlemi nasıl
@@ -865,12 +853,6 @@ gerekiyor.</p>
 <p>Yukarıdaki kodlar bize şöyle bir tablo verdi:</p>
 <blockquote>
 <div><table class="docutils align-default">
-<colgroup>
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>fatura</p></th>
 <th class="head"><p>miktar</p></th>
@@ -906,11 +888,11 @@ bakabiliriz. Bunun için de <code class="docutils literal notranslate"><span cla
 adlı metotlardan ya da <cite>for</cite> döngüsünden yararlanacağız.</p>
 </section>
 <section id="secilen-verileri-almak">
-<h2>Seçilen Verileri Almak<a class="headerlink" href="#secilen-verileri-almak" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Seçilen Verileri Almak<a class="headerlink" href="#secilen-verileri-almak" title="Link to this heading">¶</a></h2>
 <p>Bu bölümde, <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> sorgusu ile veritabanından seçtiğimiz verileri farklı
 yollarla nasıl çekebileceğimizi/alabileceğimizi inceleyeceğiz.</p>
 <section id="fetchall-metodu">
-<h3>fetchall() Metodu<a class="headerlink" href="#fetchall-metodu" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>fetchall() Metodu<a class="headerlink" href="#fetchall-metodu" title="Link to this heading">¶</a></h3>
 <p>Biraz önce şöyle bir program yazmıştık:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
 
@@ -1097,7 +1079,7 @@ verilerin ne kadarını çekeceğimizi belirleyebilmemizi sağlayacak metotları
 inceleyelim.</p>
 </section>
 <section id="fetchone-metodu">
-<h3>fetchone() Metodu<a class="headerlink" href="#fetchone-metodu" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>fetchone() Metodu<a class="headerlink" href="#fetchone-metodu" title="Link to this heading">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">fetchone()</span></code> metodu, bir veritabanından seçilen verilerin tek tek
 alınabilmesine izin verir.</p>
 <p>Bu metodun nasıl kullanılacağını ‘kitaplar.sqlite’ adlı örnek veritabanımız
@@ -1139,7 +1121,7 @@ alınabilmesine izin verir.</p>
 <p><code class="docutils literal notranslate"><span class="pre">fetchone()</span></code>’ın gayet faydalı bir metot olduğu her halinden belli…</p>
 </section>
 <section id="fetchmany-metodu">
-<h3>fetchmany() Metodu<a class="headerlink" href="#fetchmany-metodu" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>fetchmany() Metodu<a class="headerlink" href="#fetchmany-metodu" title="Link to this heading">¶</a></h3>
 <p>Bu metot, bir veritabanından seçtiğiniz verilerin istediğiniz kadarını
 alabilmenize imkan tanır. Dikkatlice bakın:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="o">.</span><span class="n">fetchmany</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
@@ -1171,7 +1153,7 @@ daha verimli yollarını göreceğiz.</p>
 </section>
 </section>
 <section id="veri-suzme">
-<h2>Veri Süzme<a class="headerlink" href="#veri-suzme" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Veri Süzme<a class="headerlink" href="#veri-suzme" title="Link to this heading">¶</a></h2>
 <p>Daha önce bir Sqlite veritabanında belli bir tablo içindeki bütün verileri
 seçmek için şu SQL komutunu kullanmamız gerektiğini öğrenmiştik:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">tablo_adi</span>
@@ -1243,7 +1225,7 @@ yararlanabileceğimizi tahmin etmişsinizdir:</p>
 </div>
 </section>
 <section id="veritabani-guvenligi">
-<h2>Veritabanı Güvenliği<a class="headerlink" href="#veritabani-guvenligi" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Veritabanı Güvenliği<a class="headerlink" href="#veritabani-guvenligi" title="Link to this heading">¶</a></h2>
 <p>Python’da veritabanları ve Sqlite konusunda daha fazla ilerlemeden önce çok
 önemli bir konudan bahsetmemiz gerekiyor. Tahmin edebileceğiniz gibi, veritabanı
 denen şey oldukça hassas bir konudur. Bilgiyi bir araya toplayan bu sistem,
@@ -1515,7 +1497,7 @@ taramak ve herhangi bir açık ortaya çıktığında da bunu derhal kapatmaya
 çalışmaktır.</p>
 </section>
 <section id="bolum-sorulari">
-<h2>Bölüm Soruları<a class="headerlink" href="#bolum-sorulari" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Bölüm Soruları<a class="headerlink" href="#bolum-sorulari" title="Link to this heading">¶</a></h2>
 <ol class="arabic">
 <li><p>Bir veritabanı dosyasının var olup olmadığını nasıl tespit edersiniz?</p></li>
 <li><p>Bir veritabanı içinde belli bir tablonun var olup olmadığını tespit edin.
@@ -1674,8 +1656,8 @@ Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" 
 
 <div class="footer">
 		&copy; Copyright 2007-2023, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 10.06.2023.
-	<a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0 kullanılarak oluşturuldu.
+Son güncelleme: 12.12.2023.
+	<a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6 kullanılarak oluşturuldu.
 <br>
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img

@@ -461,7 +461,7 @@ içinde 'JFIF' veya 'Exif' baytları varsa o dosyanın bir `JPEG` olduğuna; ilk
 GIF
 ------
 
-GIF şartnamesine http://www.w3.org/Graphics/GIF/spec-gif89a.txt adresinden
+GIF şartnamesine https://www.w3.org/Graphics/GIF/spec-gif89a.txt adresinden
 ulaşabilirsiniz.
 
 Bir dosyanın `GIF` olup olmadığına karar verebilmek için ilk `3` baytını
@@ -494,7 +494,7 @@ Eğer bir dosyanın `GIF` olup olmadığını anlamak isterseniz dosyanın ilk `
 TIFF
 ------
 
-`TIFF` şartnamesine https://www.adobe.io/content/dam/udp/en/open/standards/tiff/TIFF6.pdf
+`TIFF` şartnamesine https://developer.adobe.com/content/dam/udp/en/open/standards/tiff/TIFF6.pdf
 adresinden ulaşabilirsiniz. Bu şartnameye göre bir `TIFF` dosyası şunlardan
 herhangi biri ile başlar:
 
