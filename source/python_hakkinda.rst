@@ -110,7 +110,7 @@ Farklı Python Sürümleri
 ***********************
 
 Eğer daha önce Python programlama dili ile ilgili araştırma yaptıysanız, şu anda piyasada iki farklı Python serisinin olduğu dikkatinizi çekmiş olmalı.
-|today| tarihi itibariyle piyasada olan en yeni Python sürümleri Python |version2| ve Python |version3|\ |suffix3|.
+|today| tarihi itibariyle piyasada olan en yeni Python sürümleri Python 2.7.18 ve Python 3.12.1'dir.
 
 Eğer bir Python sürümü 2 sayısı ile başlıyorsa (mesela |version2|), o sürüm Python 2.x serisine aittir.
 Yok eğer bir Python sürümü 3 sayısı ile başlıyorsa (mesela |version3|), o sürüm Python 3.x serisine aittir.
@@ -157,10 +157,11 @@ Ama her halükarda Python3'ün bu dilin geleceği olduğunu ve günün birinde P
 
 .. warning:: 1 Ocak 2020 itibarıyla Python2'ye verilen destek bitmiştir. Artık `Python Yazılım Vakfı
              <https://tr.wikipedia.org/wiki/Python_Yaz%C4%B1l%C4%B1m_Vakf%C4%B1>`_ Python2.x sürümlerini geliştirmemektedir.
-             Yukarıda yazarın yazdığı satırların günümüzde bir geçerliliği kalmamış, büyük Python kütüphanelerin neredeyse hepsi Python3'e
+             Yukarıda yazarın yazdığı satırların günümüzde bir geçerliliği kalmamış, önemli Python kütüphanelerinin neredeyse hepsi Python3'e
              geçmiş ve Python2 desteklerini 2021'de bırakacaklarını duyurmuştur. Python'u yeni öğrenen biri olarak Python2 yerine Python3'ü seçmeniz
              çok daha doğru olur.
              Ayrıntılı bilgi için bu linklere bakabilirsiniz:
-             https://www.python.org/doc/sunset-python-2/,
-             https://pythonclock.org/,
-             https://python3statement.org/
+
+             * https://www.python.org/doc/sunset-python-2/
+             * https://pythonclock.org/
+             * https://python3statement.org/

@@ -8,7 +8,7 @@
 Bu Kitap Hakkında
 *****************
 
-Elinizdeki kitap, Python programlama dili için kapsamlı bir Türkçe kaynak oluşturma projesi olan `yazbel.com <https://yazbel.com/>`__'un bir ürünüdür.
+Elinizdeki kitap, Python programlama dili için kapsamlı bir Türkçe kaynak oluşturma projesi olan `yazbel.com <https://yazbel.com/>`_'un bir ürünüdür.
 Bu kitabın amacı, herhangi bir sebeple Python programlama diline ilgi duyan, bu programlama dilini öğrenmek isteyen kişilere bu dili olabildiğince hızlı, ayrıntılı ve kolay bir şekilde öğretmektir.
 
 Bu kitabın hedef kitlesi, programlamayı hiç bilmeyen kişilerdir.
@@ -38,6 +38,8 @@ Elbette çok uğraştığınız konulara ilişkin ayrıntılar da daha kolay akl
 Eğer bir konuyu anlamadıysanız, okuyup geçin.
 Okuyup geçmek içinize sinmiyorsa, aşağıda belirttiğimiz şekilde yardım isteyin.
 
+Son olarak, bu kitaptan çevrimdışı olarak faydalanmak istiyorsanız `buradaki <https://github.com/yazbel/python-istihza#belgelerden-%C3%A7evrimd%C4%B1%C5%9F%C4%B1-iken-faydalanmak>`_ seçenekleri takip edebilirsiniz.
+
 Nereden Yardım Alabilirim?
 **************************
 
@@ -65,7 +67,7 @@ Bu şekilde hem projeye destek olmuş, hem başkalarına yardım etmiş, hem de 
 Kullanım Koşulları
 ******************
 
-Bu kitaptaki bilgiler `Creative Commons lisansı <https://creativecommons.org/licenses/by-nc-sa/3.0/>`__ altındadır.
+Bu kitaptaki bilgiler `Creative Commons lisansı <https://creativecommons.org/licenses/by-nc-sa/3.0/>`_ altındadır.
 Bu lisansa göre, bu kitaptaki bütün bilgilerden herkes ücretsiz olarak yararlanabilir.
 Eğer isterseniz burada gördüğünüz belgelerin çıktısını alabilir, tanıdığınız veya tanımadığınız herkesle gönül rahatlığıyla paylaşabilirsiniz.
 Ancak bu belgeleri başka bir yerde kullanacaksanız, yine bu lisans altında kullanmalı ve bu belgeleri kesinlikle satmamalısınız.
