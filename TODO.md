@@ -27,3 +27,4 @@ karakter dizisini bir sayıyla çarpmaya kalkarsak hata alıyoruz.` bölümü d�
 # Belgelerin İnşası
 
 * build klasörünü silip github actions ile inşanın /docs klasörüne değil ayrı bir branch'ın root'una yapılmasını sağlamak.
+* Template klasöründeki scriptlerin gözden geçirilip yenilenmesi lazım
