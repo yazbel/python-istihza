@@ -1,6 +1,7 @@
 import os
 from os.path import join, dirname, realpath, exists
 import shutil
+from sys import stderr
 
 # TODO: put these in a utils module or something
 file = realpath(__file__)
@@ -9,6 +10,15 @@ root = dirname(script_dir)
 build = join(root, 'build')
 target = join(build, 'html')
 docs = join(root, 'docs')
+
+def check_dir(d, hint = ""):
+	if not os.path.exists(d) or not os.path.isdir(d):
+		print(f"ERROR: '{d}' directory is not found. Can't copy files.\n" + hint, file = stderr)
+		exit()
+
+check_dir(build, "Hint: Are you sure you built the docs as described in BUILDING.md?")
+check_dir(target, "Hint: Are you sure you built the docs as described in BUILDING.md?")
+check_dir(docs, "Hint: Did you clone the repository succesfully?")
 
 project = 'Yazbel Python Belgeleri'
 
@@ -20,12 +30,19 @@ output_name = 'YazbelPythonProgramlamaDiliBelgeleri'
 for file in [epub_file, pdf_file, html_file]:
 	ext = file.rsplit('.', 1)[1]
 	target_name = output_name + "." + ext
+	file_type = "HTML (single file)" if ext == "html" else ext.upper()
 	try:
 		shutil.copy2(file, join(target, target_name))
 	except FileNotFoundError:
-		print(f"Passing {ext.upper()} file since it is not found in build directory.")
+		print(f"Passing {file_type} file since it is not found in the build directory. Preserving the old {file_type} file instead.")
 		# copy the old build so that they don't get deleted
-		shutil.copy2(join(docs, target_name), join(target, target_name))
+		try:
+			shutil.copy2(join(docs, target_name), join(target, target_name))
+		except FileNotFoundError:
+			print(f"ERROR: Couldn't find the old {file_type} file.\nHint: Did you perhaps delete the files that were in the docs directory?", file = stderr)
+			exit()
+	else:
+		print(f"Copied {file_type} file to the docs directory.")
 
 
 # fix this, we shouldn't be deleting it altogether
@@ -34,3 +51,5 @@ if exists(docs):
 
 
 shutil.copytree(target, docs, copy_function = shutil.copy2)
+print("Copied the hosted HTML files to the docs directory.")
+print("Succesfully copied the required files.")
