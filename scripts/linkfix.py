@@ -64,7 +64,11 @@ for record in records:
 
 if broken == 0:
 	success("All links are uptodate, not any broken links.")
+elif len(replacements) == 0:
+	success(f"Didn't change any links.")
 else:
+	warning("Make sure you made no mistake and press Enter to proceed.")
+	input()
 	success(f"Changed {len(replacements)}/{broken} broken links.")
 
 for record, replacement in replacements:

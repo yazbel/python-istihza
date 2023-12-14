@@ -22,7 +22,8 @@ def guard(f):
     def g(*args, **kwargs):
         try:
             f(*args, **kwargs)
-        except Exception as e:
+        # we want to catch SystemExit and KeyboardInterrupt too
+        except BaseException as e:
             print(Colors.END, end = "")
             raise e
     return g
