@@ -472,7 +472,7 @@ birbirinden farklı karakterleri gösteren çeşitli tabloların ortaya çıkmas
 sebep oldu. Bu birbirinden farklı tablolara genel olarak 'kod sayfası' adı
 verilir. Örneğin Microsoft şirketinin Türkiye'ye gönderdiği bilgisayarlarda
 tanımlı 'cp857' adlı kod sayfasında 128 ile 256 aralığında Türkçe karakterlere
-de yer verilmişti (bkz. https://docs.microsoft.com/en-us/previous-versions/cc195068(v=msdn.10)?redirectedfrom=MSDN)
+de yer verilmişti (`bkz <https://learn.microsoft.com/en-us/previous-versions/cc195068(v=msdn.10)>`_).
 
 Bu tabloya baktığınızda baştan 128'e kadar olan karakterlerin standart ASCII
 tablosu ile aynı olduğunu göreceksiniz. 128. karakterden itibaren ise Türkçeye
@@ -532,8 +532,8 @@ kod çözücüsü ile kodlanamamaktadır.
 
 Dediğimiz gibi, Microsoft Türkiye'ye gönderdiği bilgisayarlarda 857 numaralı kod
 sayfasını tanımlıyordu. Ama mesela Arapça konuşulan ülkelere gönderdiği
-bilgisayarlarda ise, https://docs.microsoft.com/en-us/previous-versions/cc195061(v=msdn.10)?redirectedfrom=MSDN
-adresinden görebileceğiniz 708 numaralı kod sayfasını tanımlıyordu. Bu kod
+bilgisayarlarda ise, `bu <https://learn.microsoft.com/en-us/previous-versions/cc195061(v=msdn.10)>`_
+adresten görebileceğiniz 708 numaralı kod sayfasını tanımlıyordu. Bu kod
 sayfasını incelediğinizde, 128 altı karakterlerin standart ASCII ile aynı
 olduğunu ancak 128 üstü karakterlerin Türkçe kod sayfasındaki karakterlerden
 farklı olduğunu göreceksiniz. İşte 128 üstü karakterler bütün dillerde
