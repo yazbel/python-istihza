@@ -64,6 +64,8 @@ Bu bakımdan, kitapta bulabileceğiniz kod hatalarıyla birlikte, kitaptaki anla
 Bunun dışında, projeye destek olmanın bir başka yolu, forum alanında sorulan soruları cevaplamaya çalışmaktır.
 Bu şekilde hem projeye destek olmuş, hem başkalarına yardım etmiş, hem de kendi bilginizi artırmış olursunuz.
 
+Python'da kendinizi belli bir seviyeye getirdikten sonra, eğer kaleminize de güveniyorsanız eksik konular hakkında yazıp kitaba katkıda bile bulunabilirsiniz.
+
 Kullanım Koşulları
 ******************
 
