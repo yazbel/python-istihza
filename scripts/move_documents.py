@@ -1,7 +1,7 @@
 import os
 from os.path import join, dirname, realpath, exists
 import shutil
-from sys import stderr
+from color import error, success, warning
 
 # TODO: put these in a utils module or something
 file = realpath(__file__)
@@ -13,7 +13,7 @@ docs = join(root, 'docs')
 
 def check_dir(d, hint = ""):
 	if not os.path.exists(d) or not os.path.isdir(d):
-		print(f"ERROR: '{d}' directory is not found. Can't copy files.\n" + hint, file = stderr)
+		error(f"ERROR: '{d}' directory is not found. Can't copy files.\n" + hint)
 		exit()
 
 check_dir(build, "Hint: Are you sure you built the docs as described in BUILDING.md?")
@@ -34,12 +34,12 @@ for file in [epub_file, pdf_file, html_file]:
 	try:
 		shutil.copy2(file, join(target, target_name))
 	except FileNotFoundError:
-		print(f"Passing {file_type} file since it is not found in the build directory. Preserving the old {file_type} file instead.")
+		warning(f"Passing {file_type} file since it is not found in the build directory. Preserving the old {file_type} file instead.")
 		# copy the old build so that they don't get deleted
 		try:
 			shutil.copy2(join(docs, target_name), join(target, target_name))
 		except FileNotFoundError:
-			print(f"ERROR: Couldn't find the old {file_type} file.\nHint: Did you perhaps delete the files that were in the docs directory?", file = stderr)
+			error(f"ERROR: Couldn't find the old {file_type} file.\nHint: Did you perhaps delete the files that were in the docs directory?")
 			exit()
 	else:
 		print(f"Copied {file_type} file to the docs directory.")
@@ -52,4 +52,4 @@ if exists(docs):
 
 shutil.copytree(target, docs, copy_function = shutil.copy2)
 print("Copied the hosted HTML files to the docs directory.")
-print("Succesfully copied the required files.")
+success("Successfully copied the required files.")
