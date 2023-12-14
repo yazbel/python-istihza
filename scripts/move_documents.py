@@ -46,6 +46,7 @@ for file in [epub_file, pdf_file, html_file]:
 
 
 # fix this, we shouldn't be deleting it altogether
+# also we might want to preserve the output files (PDF, EPUB) in a permanent directory in case the script gets killed just after deleting docs
 if exists(docs):
 	shutil.rmtree(docs)
 
