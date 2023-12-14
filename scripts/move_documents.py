@@ -17,7 +17,7 @@ def check_dir(d, hint = ""):
 		exit()
 
 check_dir(build, "Hint: Are you sure you built the docs as described in BUILDING.md?")
-check_dir(target, "Hint: Are you sure you built the docs as described in BUILDING.md?")
+check_dir(target, "Hint: Are you sure you built the HTML files as described in BUILDING.md?")
 check_dir(docs, "Hint: Did you clone the repository succesfully?")
 
 project = 'Yazbel Python Belgeleri'

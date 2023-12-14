@@ -27,16 +27,19 @@ def guard(f):
             raise e
     return g
 
+@guard
 def error(*args, **kwargs):
     print(Colors.FAIL, end = "")
     print(*args, **kwargs)
     print(Colors.END, end = "")
 
+@guard
 def success(*args, **kwargs):
     print(Colors.OKGREEN, end = "")
     print(*args, **kwargs)
     print(Colors.END, end = "")
 
+@guard
 def warning(*args, **kwargs):
     print(Colors.WARNING, end = "")
     print(*args, **kwargs)
