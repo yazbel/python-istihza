@@ -108,7 +108,7 @@ def build(app, job = None):
 		return
 
 	if job == "release":
-		app.version("patch")
+		app.procedures['version'](self, 'patch')
 		import move_documents
 
 
