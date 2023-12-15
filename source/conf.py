@@ -60,6 +60,7 @@ html_theme_options = {'nosidebar': True}
 html_favicon = 'favicon.ico'
 
 # epub
+suppress_warnings = ["epub.unknown_project_files"] # for suppressing meaningless unknown mimetype warnings
 epub_title = project
 epub_identifier = epub_publisher = 'yazbel.com'
 epub_basename = basename
