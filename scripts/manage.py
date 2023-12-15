@@ -108,10 +108,8 @@ def build(app, job = None):
 		return
 
 	if job == "release":
-		app.procedures['version'](self, 'patch')
+		version('patch')
 		import move_documents
-
-
 
 @app.command()
 def check_links(app):
