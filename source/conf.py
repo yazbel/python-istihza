@@ -7,6 +7,8 @@ import os
 from os.path import join
 import datetime
 
+_shared = join("..", "shared")
+
 year = datetime.datetime.now().year
 
 # project information
@@ -36,7 +38,10 @@ html_static_path = [statics]
 logo = join(statics, 'logo.png')
 
 # the full version, including alpha/beta/rc tags
-release = '4.1.0'
+with open(join(_shared, "project_version.txt"), "r") as f:
+	_versions = list(map(lambda x: x[:-1] if x.endswith("\n") else x, f))
+	_version = _versions[-1]
+	release = _version
 
 # general configuration
 extensions = ["sphinx.ext.githubpages"]
