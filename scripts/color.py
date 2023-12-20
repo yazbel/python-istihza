@@ -1,4 +1,5 @@
 # see https://stackoverflow.com/questions/287871/how-do-i-print-colored-text-to-the-terminal
+# and https://stackoverflow.com/questions/2048509/how-to-echo-with-different-colors-in-the-windows-command-line
 import os
 from functools import wraps
 
@@ -7,41 +8,75 @@ if os.name == "nt":
     os.system("")
 
 class Colors:
-    HEADER = '\033[95m'
-    OKBLUE = '\033[94m'
-    OKCYAN = '\033[96m'
-    OKGREEN = '\033[92m'
-    WARNING = '\033[93m'
-    FAIL = '\033[91m'
-    END = '\033[0m'
+    WHITE = '\033[97m'
+    CYAN = '\033[96m'
+    MAGENTA = '\033[95m'
+    BLUE = '\033[94m'
+    YELLOW = '\033[93m'
+    GREEN = '\033[92m'
+    RED = '\033[91m'
+    BLACK = '\033[90m'
+
+class Styles:
     BOLD = '\033[1m'
+    DIM = '\033[2m'
+    ITALIC = '\033[3m'
     UNDERLINE = '\033[4m'
+
+END = '\033[0m'
+
+class Modify:
+    def __init__(self, color = '', style = ''):
+        self.color = color
+        self.style = style
+
+    def __enter__(self):
+        print(self.color + self.style, end = "")
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        print(END, end = "")
+        return False
 
 def guard(f):
     @wraps(f)
     def g(*args, **kwargs):
         try:
             f(*args, **kwargs)
-        # we want to catch SystemExit and KeyboardInterrupt too
-        except BaseException as e:
-            print(Colors.END, end = "")
-            raise e
+        finally:
+            print(END, end = "")
     return g
 
-@guard
+def with_modifiers(*modifiers):
+    def util(f):
+        @wraps(f)
+        @guard
+        def g(*args, **kwargs):
+            print(*modifiers, sep = "", end = "")
+            f(*args, **kwargs)
+        return g
+    return util
+
+@with_modifiers(Colors.RED)
 def error(*args, **kwargs):
-    print(Colors.FAIL, end = "")
     print(*args, **kwargs)
-    print(Colors.END, end = "")
 
-@guard
+@with_modifiers(Colors.GREEN)
 def success(*args, **kwargs):
-    print(Colors.OKGREEN, end = "")
     print(*args, **kwargs)
-    print(Colors.END, end = "")
 
-@guard
+@with_modifiers(Colors.YELLOW)
 def warning(*args, **kwargs):
-    print(Colors.WARNING, end = "")
     print(*args, **kwargs)
-    print(Colors.END, end = "")
+
+@with_modifiers(Styles.BOLD)
+def bold(*args, **kwargs):
+    print(*args, **kwargs)
+
+@with_modifiers(Colors.MAGENTA)
+def header(*args, **kwargs):
+    print(*args, **kwargs)
+
+if __name__ == "__main__":
+    with Modify(Colors.CYAN, Styles.ITALIC):
+        print("asd")

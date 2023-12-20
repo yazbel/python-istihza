@@ -1,7 +1,7 @@
 import os
 from os.path import join
 from functools import wraps
-from color import error, warning, success, Colors
+from color import error, warning, success
 from difflib import SequenceMatcher
 import sys
 
@@ -120,10 +120,10 @@ def build(app, job = None):
 
 	import move_documents
 	if job == "dev":
-		open()
+		view()
 
 @app.command()
-def open(app):
+def view(app):
 	"Opens the docs/index.html in browser."
 	import webbrowser
 	webbrowser.open(index_file, new=0, autoraise=True)
