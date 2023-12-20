@@ -42,7 +42,9 @@ def guard(f):
     @wraps(f)
     def g(*args, **kwargs):
         try:
-            f(*args, **kwargs)
+            return f(*args, **kwargs)
+        except BaseException as e:
+            raise e
         finally:
             print(END, end = "")
     return g
@@ -77,6 +79,36 @@ def bold(*args, **kwargs):
 def header(*args, **kwargs):
     print(*args, **kwargs)
 
+def _split_without_removing(text, delimeter):
+    iterator = iter(text.split(delimeter))
+    try:
+        l = [next(iterator)]
+        while True:
+            i = next(iterator)
+            l.append(delimeter)
+            l.append(i)
+    except StopIteration:
+        pass
+    return l
+
+def _split_multiple_without_removing(text, delimeters):
+    text = [text]
+    for delimeter in delimeters:
+        temp = []
+        for t in text:
+            temp.extend(_split_without_removing(t, delimeter))
+        text = temp
+    return text
+
+@guard
+def modify_words(text, words, color = '', style = '', replacement_rule = lambda x: x):
+    t = ""
+    for word in _split_multiple_without_removing(text, words):
+        if word in words:
+            t += color + style + replacement_rule(word) + END
+        else:
+            t += word
+    return t
+
 if __name__ == "__main__":
-    with Modify(Colors.CYAN, Styles.ITALIC):
-        print("asd")
+    print(modify_words("Merhaba dünya haha", ["dünya"], Colors.RED))

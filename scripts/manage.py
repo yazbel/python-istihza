@@ -1,7 +1,7 @@
 import os
 from os.path import join
 from functools import wraps
-from color import error, warning, success
+from color import error, warning, success, Styles, modify_words
 from difflib import SequenceMatcher
 import sys
 
@@ -101,9 +101,9 @@ app = App()
 @app.command("release", "dev")
 def build(app, job = None):
 	"""Builds the docs. 
-	* Increases the project version if 'release' argument is given.
-	* Opens the docs/index.html in browser if 'dev' argument is given.
-	* Moves them to where they are needed if 'release' or 'dev' argument is given."""
+	* Increases the project version if [release] argument is given.
+	* Opens the docs/index.html in browser if [dev] argument is given.
+	* Moves them to where they are needed if [release] or [dev] argument is given."""
 
 	# should we do that at the start so that it affects this release or at the end so that it doesn't run if there is an exception?
 	if job == "release":
@@ -166,11 +166,11 @@ def version(app, field):
 def help(app, method = None):
 	"Displays a help message for the given argument."
 	if method is None:
-		print("Possible arguments for the application:\n")
+		print("Valid arguments for the application:\n")
 		for i in app.procedures:
-			print(f"- {i:<20}" + app.procedures[i][0].__doc__)
+			print(f"- {i:<20}" + modify_words(app.procedures[i][0].__doc__, words = tuple(map(lambda x: f"[{x}]", app.procedures[i][1])), style = Styles.BOLD, replacement_rule = lambda x: x[1:-1]))
 	else:
-		print(f"{method}:", app.procedures[method][0].__doc__)
+		print(f"{method}:", modify_words(app.procedures[method][0].__doc__, words = tuple(map(lambda x: f"[{x}]", app.procedures[method][1])), style = Styles.BOLD, replacement_rule = lambda x: x[1:-1]))
 
 if __name__ == "__main__":
 	import sys
