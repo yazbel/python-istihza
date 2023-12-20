@@ -5,8 +5,10 @@ from color import error, warning, success, Colors
 from difflib import SequenceMatcher
 import sys
 
-shared = join("..", "shared")
+root = os.path.abspath(".")
+shared = join(root, "shared")
 version_file = join("shared", "project_version.txt")
+index_file = join(root, "docs", "index.html")
 
 class App:
 	def __init__(self):
@@ -80,40 +82,60 @@ class App:
 				error(f"Did you perhaps meant {match!r}?")
 			raise ValueError()
 
-app = App()
-
-@app.command("release")
-def build(app, job = None):
-	"Builds the docs, moves them to where they are needed and upgrades the version."
-	import subprocess
-	from io import StringIO
-
-	def call(cmd, jobname):
+	@classmethod
+	def call(cls, cmd, jobname):
+		import subprocess
 		err = subprocess.PIPE
 		out = subprocess.PIPE
 		p = subprocess.run(cmd, shell=True, stdout=out, stderr=err)
 		error(p.stderr.decode(), end = "")
 		if not p.stderr:
 			success(f"Built {jobname}.")
+			return True
 		else:
 			warning(f"There were errors while building {jobname}.")
+			return False
+
+app = App()
+
+@app.command("release", "dev")
+def build(app, job = None):
+	"""Builds the docs. 
+	* Increases the project version if 'release' argument is given.
+	* Opens the docs/index.html in browser if 'dev' argument is given.
+	* Moves them to where they are needed if 'release' or 'dev' argument is given."""
+
+	# should we do that at the start so that it affects this release or at the end so that it doesn't run if there is an exception?
+	if job == "release":
+		version('patch')
 
 	print("Starting the build process.")
-	p = call("make html", "HTML")
-	p = call("make singlehtml", "HTML (single file)")
-	p = call("make latexpdf", "PDF")
-	p = call("make epub", "EPUB")
+	p = app.call("make html", "HTML")
+	p = app.call("make singlehtml", "HTML (single file)")
+	p = app.call("make latexpdf", "PDF")
+	p = app.call("make epub", "EPUB")
 
 	if job is None:
 		return
 
-	if job == "release":
-		version('patch')
-		import move_documents
+	import move_documents
+	if job == "dev":
+		open()
 
 @app.command()
-def check_links(app):
-	pass
+def open(app):
+	"Opens the docs/index.html in browser."
+	import webbrowser
+	webbrowser.open(index_file, new=0, autoraise=True)
+	success("Opened the docs/index.html in browser.")
+	
+@app.command()
+def checklinks(app):
+	"Check the links and fix them manually."
+	print("Checking the links.")
+	p = app.call("make linkcheck", "linkcheck")
+	if p:
+		import linkfix
 
 @app.command("major", "minor", "patch", "downgrade")
 def version(app, field):
@@ -154,3 +176,5 @@ if __name__ == "__main__":
 	import sys
 	args = sys.argv[1:]
 	app.run(args)
+else:
+	raise ImportError("This file is not supposed to be imported.")

@@ -65,7 +65,7 @@ for record in records:
 if broken == 0:
 	success("All links are uptodate, not any broken links.")
 elif len(replacements) == 0:
-	success(f"Didn't change any links.")
+	success(f"Didn't change any links out of {broken} broken ones.")
 else:
 	warning("Make sure you made no mistake and press Enter to proceed.")
 	input()
