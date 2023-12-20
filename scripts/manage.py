@@ -139,7 +139,7 @@ def checklinks(app):
 
 @app.command("major", "minor", "patch", "downgrade")
 def version(app, field):
-	"Upgrades or downgrades the project version with respect to the specified argument."
+	"Upgrades or downgrades the project version with respect to the specified argument ([major], [minor], [patch] or [downgrade])."
 	with open(version_file, "r") as f:
 		versions = list(map(lambda x: x[:-1] if x.endswith("\n") else x, f))
 	if field == "downgrade":
@@ -161,16 +161,19 @@ def version(app, field):
 
 	with open(version_file, "w") as f:
 		f.write("\n".join(versions))
-	
+
+def highlight_arguments(procedure):
+	return modify_words(procedure[0].__doc__, words = tuple(map(lambda x: f"[{x}]", procedure[1])), style = Styles.BOLD, replacement_rule = lambda x: x[1:-1])
+
 @app.command(*app.procedures, "help")
 def help(app, method = None):
 	"Displays a help message for the given argument."
 	if method is None:
 		print("Valid arguments for the application:\n")
 		for i in app.procedures:
-			print(f"- {i:<20}" + modify_words(app.procedures[i][0].__doc__, words = tuple(map(lambda x: f"[{x}]", app.procedures[i][1])), style = Styles.BOLD, replacement_rule = lambda x: x[1:-1]))
+			print(f"- {i:<20}" + highlight_arguments(app.procedures[i]))
 	else:
-		print(f"{method}:", modify_words(app.procedures[method][0].__doc__, words = tuple(map(lambda x: f"[{x}]", app.procedures[method][1])), style = Styles.BOLD, replacement_rule = lambda x: x[1:-1]))
+		print(f"{method}:", highlight_arguments(app.procedures[method]))
 
 if __name__ == "__main__":
 	import sys
