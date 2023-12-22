@@ -258,7 +258,7 @@ Ekranı tazeleyelim::
 
         ekran.refresh()
 
-Döngüyle birlikte *x* ve *y*'nin değerleri *dusey* ve *yatay* değişkenlerine göre arttırılır::
+Döngüyle birlikte *x* ve *y*'nin değerleri *dusey* ve *yatay* değişkenlerine göre artırılır::
 
         y += dusey
         x += yatay
@@ -387,7 +387,7 @@ Ekranı tazeleyelim::
         if q == ord("w") and y > 0:
             y -= 1
 
-Şayet kullanıcı *s* tuşuna basarsa ve *y*'nin değeri maksimum değerinden küçükse, *y*'nin değeri 1 birim arttırılsın::
+Şayet kullanıcı *s* tuşuna basarsa ve *y*'nin değeri maksimum değerinden küçükse, *y*'nin değeri 1 birim artırılsın::
 
         elif q == ord("s") and y < boyutlar[0] - 1:
             y += 1
@@ -397,7 +397,7 @@ Ekranı tazeleyelim::
         elif q == ord("a") and x > 0:
             x -= 1
 
-Şayet kulanıcı *d* tuşuna basarsa ve *x*'in değeri maksimum değerinden küçükse; *x*'in değeri 1 birim arttırılsın::
+Şayet kulanıcı *d* tuşuna basarsa ve *x*'in değeri maksimum değerinden küçükse; *x*'in değeri 1 birim artırılsın::
 
         elif q == ord("d") and x < boyutlar[1] - len("hello world!") - 1:
             x += 1
@@ -568,7 +568,7 @@ Aksi taktirde, *y* değişkeninin değeri 1 birim artsın::
             if y == boyutlar[0] - 1 and x == boyutlar[1] - len("hello world!") - 1:
                 pass
 
-Aksi taktirde, *x* değişkeninin değeri 1 birim arttırılsın::
+Aksi taktirde, *x* değişkeninin değeri 1 birim artırılsın::
 
             else:
                 x += 1
@@ -755,7 +755,7 @@ Yukarıdaki koşul altında, şayet *y*, maksimum değerinden 2 birim küçükse
             if y == boyutlar[0] - 2 and x == boyutlar[1] - len("hello world!"):
                 pass
 
-Aksi taktirde, *y* değişkeninin değeri 1 birim arttırılsın::
+Aksi taktirde, *y* değişkeninin değeri 1 birim artırılsın::
 
             else:
                 y += 1
@@ -774,7 +774,7 @@ Yukarıdaki koşul altında, şayet *y*'nin ve *x*'in değerleri maksimum değer
             if y == boyutlar[0] - 1 and x == boyutlar[1] - len("hello world!") - 1:
                 pass
 
-Aksi taktirde, *x* değişkeninin değeri 1 birim arttırılsın::
+Aksi taktirde, *x* değişkeninin değeri 1 birim artırılsın::
 
             else:
                 x += 1
@@ -967,7 +967,7 @@ Yukarıdaki koşul altında, şayet *y*, maksimum değerinden 2 birim küçükse
             if y == boyutlar[0] - 2 and x == boyutlar[1] - len("hello world!"):
                 pass
 
-Aksi taktirde; *y* değişkeninin değeri 1 birim arttırılsın::
+Aksi taktirde; *y* değişkeninin değeri 1 birim artırılsın::
 
             else:
                 y += 1
@@ -986,7 +986,7 @@ Yukarıdaki koşul altında, şayet *y*'nin ve *x*'in değerleri maksimum değer
             if y == boyutlar[0] - 1 and x == boyutlar[1] - len("hello world!") - 1:
                 pass
 
-Aksi taktirde *x* değişkeninin değeri 1 birim arttırılsın::
+Aksi taktirde *x* değişkeninin değeri 1 birim artırılsın::
 
             else:
                 x += 1
@@ -1183,7 +1183,7 @@ Global alandan aldığımız ekrana ait *y*, *x* konumuna karakteri ekleyelim::
 
         ekran.addstr(y, x, karakter, curses.color_pair(1))
 
-Her Türkçe karakteri ekledikten sonra, x'in konumunu 1 birim arttıralım ki yeni girilecek karakter için kullanılabilir yeni bir hücre oluşsun::
+Her Türkçe karakteri ekledikten sonra, x'in konumunu 1 birim artıralım ki yeni girilecek karakter için kullanılabilir yeni bir hücre oluşsun::
 
         x += 1
 
@@ -1255,7 +1255,7 @@ Her halükarda ekranın y, x konumundan bu karakter silinsin::
                 ekran.delch(y, x - 1)
                 x -= 1
 
-Eğer kullanıcı *enter* tuşuna basarsa: *xy* satır listesine o andaki *y*, *x* değerlerini ekleyelim, ekrana *"\n"* kaçış dizisi eklensin, *y* değikeninin değeri 1 birim arttırılsın ve *x* değişkeninin değeri 0'a eşitlensin yani yeni satırın başına geçilsin::
+Eğer kullanıcı *enter* tuşuna basarsa: *xy* satır listesine o andaki *y*, *x* değerlerini ekleyelim, ekrana *"\n"* kaçış dizisi eklensin, *y* değikeninin değeri 1 birim artırılsın ve *x* değişkeninin değeri 0'a eşitlensin yani yeni satırın başına geçilsin::
 
         elif q == 10:
             xy.append(curses.getsyx())
@@ -1263,7 +1263,7 @@ Eğer kullanıcı *enter* tuşuna basarsa: *xy* satır listesine o andaki *y*, *
             y += 1
             x = 0
 
-Eğer kullanıcı sağ ok tuşuna basarsa ve *x* değişkeni maksimum değerine ulaştıysa, *y* değişkenin değeri 1 birim arttırılsın ve *x* değişkeninin değeri 0'a eşitlensin. Yani yeni bir satıra geçilsin. Yok eğer *x* değişkeni maksimum değerine ulaşmadıysa, *x* değişkeninin değeri 1 birim arttırılsın ve ekrana boş bir string verisi eklensin::
+Eğer kullanıcı sağ ok tuşuna basarsa ve *x* değişkeni maksimum değerine ulaştıysa, *y* değişkenin değeri 1 birim artırılsın ve *x* değişkeninin değeri 0'a eşitlensin. Yani yeni bir satıra geçilsin. Yok eğer *x* değişkeni maksimum değerine ulaşmadıysa, *x* değişkeninin değeri 1 birim artırılsın ve ekrana boş bir string verisi eklensin::
 
         elif q == 261:
             if boyutlar[1] - x == 1:
@@ -1295,7 +1295,7 @@ Eğer kullanıcı yukarı ok tuşuna basarsa ve *y* değişkeninin değeri 0'a e
             else:
                 pass
 
-Eğer kullanıcı aşağı ok tuşuna basarsa ve *y* değişkeni maksimum değerine eşit değilse, *y* değişkeninin değeri 1 birim arttırılsın ve ekranın *yx* konumuna boş bir string yerleştirilsin. Eğer *y* değişkeni ekranın maksimum *y* değerine gelmişse, hiç bir işlem yapılmasın::
+Eğer kullanıcı aşağı ok tuşuna basarsa ve *y* değişkeni maksimum değerine eşit değilse, *y* değişkeninin değeri 1 birim artırılsın ve ekranın *yx* konumuna boş bir string yerleştirilsin. Eğer *y* değişkeni ekranın maksimum *y* değerine gelmişse, hiç bir işlem yapılmasın::
 
         elif q == 258:
             if y != boyutlar[0] - 1:
@@ -1371,7 +1371,7 @@ Büyük *"Ü"* harfinin eklenmesini sağlayan koşul::
         elif q == 156:
             karakter_ekle("\u00dc", 195, 156)
 
-Ve son koşulumuzda Türkçe karakterler haricinde herhangi bir karakterin ekrana nasıl eklenmesi gerektiği tanımlanmıştır. Bu koşulda karakter *yx* konumuna eklenir ve *x* değişkeninin değeri 1 birim arttırılır::
+Ve son koşulumuzda Türkçe karakterler haricinde herhangi bir karakterin ekrana nasıl eklenmesi gerektiği tanımlanmıştır. Bu koşulda karakter *yx* konumuna eklenir ve *x* değişkeninin değeri 1 birim artırılır::
 
         else:
             ekran.addstr(y, x, chr(q), curses.color_pair(1))
