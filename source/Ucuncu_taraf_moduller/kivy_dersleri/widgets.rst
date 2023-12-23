@@ -230,7 +230,7 @@ Daha önce HTML tag'leri kullandıysanız markup kullanımını anlamanız gayet
 	log[sub]2[/sub]10
 	[/size]
 	"""
-	        # Tüm yazıyı [size=20] [/size] arasına alarak boyutunu arttırdım
+	        # Tüm yazıyı [size=20] [/size] arasına alarak boyutunu artırdım
 
 	        yazi = Label(text = string,markup = True)
 	        # markup = True değerini vermezseniz yazınız tag'lerle birlikte yorumlanmaz
@@ -920,7 +920,7 @@ Resmin istenilen şekilde boyutlandırılabilmesi için, orantılı boyutlandır
 allow_stretch
 -------------
 
-Resmimizin bulunduğu alanı tam olarak doldurmasını istiyorsak kullanabiliriz. Değer olarak True veya False alabilir. True değeri verildiğinde, bulunduğu alana göre boyutu arttırılır. Ancak en-boy oranı korunur. Örneğin, eni boyundan büyük olan bir resim, boyutu arttığı zaman da eni boyundan büyük olacaktır.
+Resmimizin bulunduğu alanı tam olarak doldurmasını istiyorsak kullanabiliriz. Değer olarak True veya False alabilir. True değeri verildiğinde, bulunduğu alana göre boyutu artırılır. Ancak en-boy oranı korunur. Örneğin, eni boyundan büyük olan bir resim, boyutu arttığı zaman da eni boyundan büyük olacaktır.
 
 keep_ratio
 ----------

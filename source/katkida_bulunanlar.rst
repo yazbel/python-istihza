@@ -537,3 +537,8 @@ Ramazan Emre Osmanoglu
     - Colorama dokumanlari eklendi.
     - Pyperclip dokumanlari eklendi.
     - Recursion dokumanindaki base case duzenlendi.
+
+Zeki Akyol
+=======================
+
+    - Kod içermeyen düz metindeki tekrarlayan bir yazım hatası düzeltildi.
