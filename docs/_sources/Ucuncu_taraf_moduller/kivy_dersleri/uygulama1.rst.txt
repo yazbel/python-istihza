@@ -243,7 +243,7 @@ Butonlarımızı ekledik ve ileri butonuna tıklandığı zaman, self.ileriYukle
             except Exception as e:
                 self.bilgi.text = "Yuklenemedi: {}".format(self.resimListesi[self.resimSirasi])
 
-İlk olarak resimSirasi değişkenini 1 arttırıyoruz ve sonra da bu değerin listemizin boyutunu aşıp aşmadığını kontrol ediyoruz. Çünkü eğer boyutunu aşarsa, "liste boyutu aşıldı" hatası alabiliriz. Bu yüzden eğer boyutu aştıysa, değerini tekrardan 0 yapıyoruz
+İlk olarak resimSirasi değişkenini 1 artırıyoruz ve sonra da bu değerin listemizin boyutunu aşıp aşmadığını kontrol ediyoruz. Çünkü eğer boyutunu aşarsa, "liste boyutu aşıldı" hatası alabiliriz. Bu yüzden eğer boyutu aştıysa, değerini tekrardan 0 yapıyoruz
 
 Geri butonumuz için de benzer şeyleri yapıyoruz
 
