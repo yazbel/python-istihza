@@ -13,7 +13,15 @@ index_file = join(root, "docs", "index.html")
 class App:
 	def __init__(self):
 		self.procedures = {}
+		self.configurations = {
+			"default": None,
+		}
 
+	def configure(self, **kwargs):
+		invalid = set(kwargs) - set(self.configurations)
+		if invalid:
+			raise ValueError(f"The followings are not valid configuration keys: {', '.join(invalid)}.")
+		self.configurations.update(kwargs)
 
 	def command(self, *cli_args):
 		def util(f):
@@ -26,12 +34,17 @@ class App:
 
 	def run(self, args):
 		if len(args) == 0:
-			error(f"No argument is passed.")
-			return
-		if len(args) > 2:
+			if self.configurations["default"] is None:
+				error(f"No argument is passed.")
+				return
+			command = self.configurations["default"]
+			arg = ()
+		elif len(args) > 2:
 			error(f"No more than two args is required.")
 			return
-		command, *arg = args
+		else:
+			command, *arg = args
+
 		try:
 			procedure, expected_args = self.get_command(command)
 		except ValueError:
@@ -97,10 +110,11 @@ class App:
 			return False
 
 app = App()
+app.configure(default = "help")
 
 @app.command("release", "dev")
 def build(app, job = None):
-	"""Builds the docs. 
+	"""Builds the docs. Builds them in all available formats if [release] argument is given.
 	* Increases the project version if [release] argument is given.
 	* Opens the docs/index.html in browser if [dev] argument is given.
 	* Moves them to where they are needed if [release] or [dev] argument is given."""
@@ -111,9 +125,11 @@ def build(app, job = None):
 
 	print("Starting the build process.")
 	p = app.call("make html", "HTML")
-	p = app.call("make singlehtml", "HTML (single file)")
-	p = app.call("make latexpdf", "PDF")
-	p = app.call("make epub", "EPUB")
+
+	if job == "release":
+		p = app.call("make singlehtml", "HTML (single file)")
+		p = app.call("make latexpdf", "PDF")
+		p = app.call("make epub", "EPUB")
 
 	if job is None:
 		return
@@ -138,10 +154,16 @@ def checklinks(app):
 		import linkfix
 
 @app.command("major", "minor", "patch", "downgrade")
-def version(app, field):
-	"Upgrades or downgrades the project version with respect to the specified argument ([major], [minor], [patch] or [downgrade])."
+def version(app, field = "display"):
+	"""Upgrades or downgrades the project version with respect to the specified argument ([major], [minor], [patch] or [downgrade]).
+	* Displays the current version if no argument is passed.
+	"""
 	with open(version_file, "r") as f:
 		versions = list(map(lambda x: x[:-1] if x.endswith("\n") else x, f))
+
+	if field == "display":
+		return print("Project version:", versions[-1])
+
 	if field == "downgrade":
 		if len(versions) == 1:
 			error("Can't downgrade when there is a single recorded version.")
