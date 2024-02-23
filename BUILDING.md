@@ -18,12 +18,6 @@ Daha sonra yine projenin kök dizinde bu komutu çalıştırarak belgeleri inşa
 $ make html
 ```
 
-Belgeleri inşa ettikten sonra `/scripts/move_documents.py` betiği `/build/` içindeki gerekli dosya ve klasörleri `/docs/` içine taşıyacaktır:
-
-```shell
-$ python3 ./scripts/move_documents.py
-```
-
 Bu şekilde inşa ettiğiniz dökümanı görüntülemek için `/docs/index.html` dosyasını tarayıcınız ile açabilirsiniz.
 
 ## Windows
