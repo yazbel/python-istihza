@@ -86,6 +86,7 @@ tanık olabilirsiniz.</p>
 <li><p>Karşılaştırma İşleçleri</p></li>
 <li><p>Bool İşleçleri</p></li>
 <li><p>Değer Atama İşleçleri</p></li>
+<li><p>Bitwise (Bitsel) İşleçleri</p></li>
 <li><p>Aitlik İşleçleri</p></li>
 <li><p>Kimlik İşleçleri</p></li>
 </ol>
@@ -913,7 +914,7 @@ aynı anlamı yakalayabiliyoruz.</p>
 <p>Bu kodlar bir öncekiyle aynı işi yapar. Yorumlardan da göreceğiniz gibi, bu iki
 kod arasında sadece mantık farkı var.</p>
 <p>Hatta, daha da ileri giderek aynı kodu çok daha basit hale getirmek isterseniz,
-aşağıdaki koda bakabilirsiniz.:</p>
+aşağıdaki koda bakabilirsiniz.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Notunuz: &quot;</span><span class="p">))</span>
 
 <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">100</span> <span class="ow">or</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
@@ -962,7 +963,7 @@ olursa <cite>parola</cite> değişkeninin değeri boş bir karakter dizisi olaca
 Dolayısıyla, yukarıdaki gibi bir örnekte, kullanıcı parolayı boş geçtiğinde
 <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">parola</span></code> kodu <cite>True</cite> verecek ve böylece ekrana <cite>“Parola boş bırakılamaz!”</cite>
 karakter dizisi yazdırılacaktır. Eğer yukarıdaki örneğin mantığını kavramakta
-zorluk çekiyorsanız şu örnekleri incelemenizi öneririm:</p>
+zorluk çekiyorsanız şu örnekleri incelemenizi de öneririm:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parola</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">bool</span><span class="p">(</span><span class="n">parola</span><span class="p">)</span>
 
@@ -1230,6 +1231,374 @@ değişkenimiz <code class="docutils literal notranslate"><span class="pre">True
 <code class="docutils literal notranslate"><span class="pre">len(input(&quot;Adın</span> <span class="pre">ne?</span> <span class="pre">&quot;))</span>&#160; <span class="pre">&lt;</span> <span class="pre">4</span></code> kısmı olduğu için <code class="docutils literal notranslate"><span class="pre">if</span></code> deyiminin içine girilmiyor.</p>
 <p>Çok önemli bir işleç olmayabilir ama bazen aynı fonksiyonu iki defa çağırmak yerine
 bir defa çağırmak gibi kolaylıklar sağlamaktadır. Bu konu ile alakalı daha fazla örnek için <a class="reference external" href="https://forum.yazbel.com/t/walrus-operator/4612">buraya</a> bakabilirsiniz</p>
+</section>
+<section id="bitwise-bitsel-islecleri">
+<h2>Bitwise (Bitsel) İşleçleri<a class="headerlink" href="#bitwise-bitsel-islecleri" title="Link to this heading">¶</a></h2>
+<p>Bu bölümde bitwise işleçlerinden söz edeceğiz, ancak bitwise işleçlerini anlayabilmek
+için öncelikle ikili sayı sistemi hakkında bilgi sahibi olmanız gerekecek. Görüldüğü üzere,
+bitwise işleçleri ikili sayılar temelinde işlemler yapmamıza yarar sağlar.</p>
+<p>Peki, nedir bu ikili sayma sistemi?</p>
+<p>İkili sayı sistemi, bilgisayarların verileri temsil etmek için kullandığı temel sayı sistemidir.
+Her yerde duyduğunuz gibi, ekrandaki her şey size ne kadar karmaşık gelse de,
+bilgisayarlarımız bunları ikili (binary) tabanda temsil eder. Örneğin, “10” sayısının ikili
+tabanda gösterimi “1010” şeklindedir. İkili sayma sisteminde, bir sayıyı oluşturan rakamlar
+2’nin kuvvetleri olarak hesaplanır. Bu sayıyı 2’nin kuvvetlerini kullanarak şu şekilde hesaplayabiliriz:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mi">0</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">0</span><span class="p">))</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">1</span><span class="p">))</span> <span class="o">+</span> <span class="p">(</span><span class="mi">0</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="go">10</span>
+</pre></div>
+</div>
+<p>Tabii, daha fazlasını dokümanın <a class="reference external" href="https://python-istihza.yazbel.com/sayma_sistemleri.html#ikili-sayma-sistemi">ileri</a> bölümlerinde anlatacağız. Şimdilik bunları bilseniz yeterli.</p>
+<blockquote>
+<div><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>&amp;</p></td>
+<td><p>Mantıksal And</p></td>
+</tr>
+<tr class="row-even"><td><p>|</p></td>
+<td><p>Mantıksal Or</p></td>
+</tr>
+<tr class="row-odd"><td><p>&gt;&gt;</p></td>
+<td><p>Kaydırma</p></td>
+</tr>
+<tr class="row-even"><td><p>&lt;&lt;</p></td>
+<td><p>Kaydırma</p></td>
+</tr>
+<tr class="row-odd"><td><p>^</p></td>
+<td><p>Mantıksal XOR</p></td>
+</tr>
+<tr class="row-even"><td><p>~</p></td>
+<td><p>Tümleme</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>Şunu da söylemeden geçmeyelim, yukarıda gördüğünüz bu işleçler çoğumuzun lise matematik
+derslerinde gördüğü veya göreceği sembolik mantık (namıdeğer matematiksel mantık) ilkelerine
+dayandığından, her işleçte sembolik mantık derslerindeki karşılıklarını da göstereceğiz.
+Tabii, daha önce sembolik mantıktan haberdar olmayanlar için başlamadan önce ilerde
+işimize yarayacak olan önermelerin ne olduğuna bir bakalım. Eğer daha detaylı olarak öğrenmek
+isterseniz, Wikipedia’ya bakmanız yeterli.</p>
+<p><strong>Önermeler</strong></p>
+<p>Siz hiç farketmemiş olsanız da Python’da birçok kez önerme kullandınız. Hemen birini gösterelim:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
+       <span class="o">...</span>
+</pre></div>
+</div>
+<p>Yukarıda gördüğünüz kodda <cite>a == 10</cite> bir önermedir. Peki önerme dediğimiz şeyi tanımlasak
+nasıl olur? Mantıkta doğrulanabilir ya da yanlışlanabilir olmak zorunda olan ifadelere
+<cite>önerme</cite> denir. Bayağı hiçbir şey ifade etmeyen kelimeler grubu gibi duran bu cümleyi biraz
+açıklayalım. Demek istediğimiz şey şu: Herhangi bir cümlemiz olsun, doğru ya da yanlış
+olması umrumuzda bile değil ama yanlış ya da doğru olabilmesi onun bize bir önerme
+olabileceğini gösteriyor. Mesela Mertcan adında bir arkadaşımız olsun. Bu arkadaş Keloğlan
+izlemeyi seviyor olsun. Mertcan’ın bir arkadaşına şöyle bir şey diyelim:</p>
+<p><em>Mertcan Keloğlan izlemeyi sevmiyor.</em></p>
+<p>Bu cümle bir önermedir ancak bu önerme doğru değildir. Sembolik olarak değerini göstermek istersek,
+<cite>0</cite> ile göstermemiz gerekecektir.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>O zaman ilk örneğimize dönersek, gerçekten de <cite>a = 10</cite> olduğu için önerme doğrudur, yani if bloğumuz güzelce çalışır.
+Son olarak, neyin önerme olduğunu söylediğimiz gibi, neyin önerme olmadığını da belirtelim. Mesela:</p>
+<p><em>Bugün hava çok güzel.</em></p>
+<p><em>Bence en güzel şehir Erzincan’dır.</em></p>
+<p>Bu iki cümleyi inceleyelim. Bugün hava sana göre güzel olabilir ama bana göre olmayabilir.
+Ya da bir başkası en güzel şehrin İstanbul olduğunu düşünüyor olabilir. Yani bu cümlelerin
+doğruluğunu ya da yanlışlığını kesin olarak belirleyemeyiz. Demek ki bu iki örnekteki gibi öznel
+cümlelerden önerme olmaz.</p>
+<p>Bence önermeleri herkes anladı. Meraklısı için internet emrinize amade.</p>
+<p><strong>Mantiksal AND (ve) İşleci (&amp;)</strong></p>
+<p>Bu işleç her iki tarafındaki değişkenin bitleri üzerinde mantıksal <cite>and</cite> işlemi uygular.
+Aslında önceki bölümde gördüğünüz <cite>and</cite> işleci ile aynı işlemi karşılıklı bitler üzerinde
+yapar. Mesela buna bir örnek verelim.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="kc">True</span> <span class="ow">and</span> <span class="kc">False</span><span class="p">):</span>  <span class="c1"># 1 = True, 0 = False</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>Daha önceki örneklerimizde anlatıldığı üzere bu ifade False olacağından if bloğumuz
+çalışmayacaktır. Mantıksal And işlecimiz de aynı işlemi karşılıklı bitler üzerinde yapacak.</p>
+<blockquote>
+<div><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>1 &amp; 1</p></td>
+<td><p>= 1</p></td>
+</tr>
+<tr class="row-even"><td><p>1 &amp; 0</p></td>
+<td><p>= 0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0 &amp; 1</p></td>
+<td><p>= 0</p></td>
+</tr>
+<tr class="row-even"><td><p>0 &amp; 0</p></td>
+<td><p>= 0</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>Örnek üzerinden anlatmak bu tarz işleçlerin işlevini anlayabilmek için daha uygun olacaktır.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>          <span class="c1"># 0000 1010 = 10</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">20</span>          <span class="c1"># 0001 0100 = 20</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">&amp;</span> <span class="n">b</span><span class="p">)</span>    <span class="c1"># 0000 0000 = 0</span>
+
+<span class="mi">0</span>
+</pre></div>
+</div>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="mi">10</span>          <span class="c1"># 0000 1010 = 10</span>
+<span class="n">d</span> <span class="o">=</span> <span class="mi">22</span>          <span class="c1"># 0001 0110 = 22</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span> <span class="o">&amp;</span> <span class="n">d</span><span class="p">)</span>    <span class="c1"># 0000 0010 = 2</span>
+
+<span class="mi">2</span>
+</pre></div>
+</div>
+<p>Örneklerde de gördüğünüz gibi mantıksal And işleci karşılıklı bitlerde işlem yapar.
+And işlemi ile karşılaştırılmış iki bitten biri bile <cite>0</cite> olsa; <cite>0</cite> sonucunu alırsınız. <cite>1</cite> sonucu
+alabilmek için her iki bitin de <cite>1</cite> olması gerek.</p>
+<p><strong>Mantıksal OR (veya) İşleci (|)</strong></p>
+<p>Bu işleç, her iki tarafındaki değişkenin bitleri üzerinde mantıksal <cite>or</cite> (veya) işlemi yapar. Bu işleç,
+önceki bölümde gördüğünüz <cite>or</cite> işleci ile aynı işlemi karşılıklı bitler üzerinde yapar.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="kc">True</span> <span class="ow">or</span> <span class="kc">False</span><span class="p">):</span>  <span class="c1"># 1 = True, 0 = False</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>Bu örneğimizde parantez içi ifademiz True değerine eşit olacağından if bloğumuz çalışacaktır.
+Mantıksal or da aynı prensibe dayalıdır.</p>
+<blockquote>
+<div><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>1 | 1</p></td>
+<td><p>= 1</p></td>
+</tr>
+<tr class="row-even"><td><p>1 | 0</p></td>
+<td><p>= 1</p></td>
+</tr>
+<tr class="row-odd"><td><p>0 | 1</p></td>
+<td><p>= 1</p></td>
+</tr>
+<tr class="row-even"><td><p>0 | 0</p></td>
+<td><p>= 0</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>Hemen güzide örneğimizi getirelim.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>          <span class="c1"># 0000 1010 = 10</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">20</span>          <span class="c1"># 0001 0100 = 20</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">|</span> <span class="n">b</span><span class="p">)</span>    <span class="c1"># 0001 1110 = 30</span>
+
+<span class="mi">30</span>
+</pre></div>
+</div>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>          <span class="c1"># 0000 1010 = 10</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">22</span>          <span class="c1"># 0001 0110 = 22</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">|</span> <span class="n">b</span><span class="p">)</span>    <span class="c1"># 0001 1110 = 30</span>
+
+<span class="mi">30</span>
+</pre></div>
+</div>
+<p>Örneğimizi inceleyelim, alt alta bitlerde eğer sadece bir tane ‘1’ varsa, o bit karşılaştırma
+sonrasında <cite>1</cite>’e eşit olur. Zaten yukarıdaki tablomuzda belirtilmiş. Eğer karşılaştırma
+sonucunun <cite>0</cite> olmasını istiyor isek her iki bitinde <cite>0</cite> değerini alması lazım.</p>
+<p><strong>Mantıksal XOR (ya da) İşleci (^)</strong></p>
+<p>Bu işleçten önceki bütün işleçlerin adı sembolik mantıktaki karşılığı ile aynıydı ancak burada
+durum biraz farklı. Sembolik mantık derslerinde biz XOR işlecine ‘ya da’ deriz. Bu işleç de
+her iki tarafındaki değişkenin bitleri üzerinde ‘XOR’ işlemi yapar. Tabii bu derslerde “ya da”nın
+işlevini daha önce görmedik. O zaman “ya da”yı gösterelim</p>
+<blockquote>
+<div><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>1 ^ 1</p></td>
+<td><p>= 0</p></td>
+</tr>
+<tr class="row-even"><td><p>1 ^ 0</p></td>
+<td><p>= 1</p></td>
+</tr>
+<tr class="row-odd"><td><p>0 ^ 1</p></td>
+<td><p>= 1</p></td>
+</tr>
+<tr class="row-even"><td><p>0 ^ 0</p></td>
+<td><p>= 0</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>XOR (ya da) ile bağlanan iki basit önermenin doğru olabilmesi için iki önermenin de değerinin
+birbirinden farklı olması gerekmektedir. Yani XOR (ya da) ile karşılaştırma işleminin <cite>1</cite> (doğru)
+olabilmesi için önermelerin birbirinden farklı doğruluk değerlerine sahip olması gerekmektedir.
+Tabloyu güzelce incelerseniz aklınıza kazınacaktır.</p>
+<p>Örneğimiz üzerinden de bir görelim isterseniz.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>         <span class="c1"># 0000 1010 = 10</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">20</span>         <span class="c1"># 0001 0100 = 20</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">^</span><span class="n">b</span><span class="p">)</span>     <span class="c1"># 0001 1110 = 30</span>
+
+<span class="mi">30</span>
+</pre></div>
+</div>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>         <span class="c1"># 0000 1010 = 10</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">22</span>         <span class="c1"># 0001 0110 = 22</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">^</span><span class="n">b</span><span class="p">)</span>     <span class="c1"># 0001 1100 = 28</span>
+
+<span class="mi">28</span>
+</pre></div>
+</div>
+<p>Örnekte de görüldüğü gibi alt alta olan bitlerde eğer bit değeri aynı ise karşılaştırma
+sonrası o bitin değeri 0 olacaktır. Eğer bu durum gerçekleşmezse bitimizin değeri <cite>1</cite> olacaktır.</p>
+<p><strong>Tümleme (Invert) İşleci (~)</strong></p>
+<p>Tümleme işleci diğer işleçlerden farklı olarak 2 değer arasında karşılaştırma yapmaz.
+Bu işlece sembolik mantıkta “Değil” denir. Bu işlecin görevi aldığı değeri tersine çevirmektir.</p>
+<blockquote>
+<div><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>~1</p></td>
+<td><p>= 0</p></td>
+</tr>
+<tr class="row-even"><td><p>~0</p></td>
+<td><p>= 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>Tablodan da anlaşılacağı gibi tümleme işleci aldığını tersine çevirip bize veriyor.
+Bu işlevin aynısını verdiğimiz değere de yapacak.</p>
+<p>Hemen bir örnek getirelim:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>             <span class="c1">#  0000 0001 = 1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="o">~</span><span class="n">a</span><span class="p">)</span>         <span class="c1">#  1111 1110 = -2</span>
+
+<span class="o">-</span><span class="mi">2</span>
+</pre></div>
+</div>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="mi">19</span>            <span class="c1">#  0001 0011 = 19</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="o">~</span><span class="n">b</span><span class="p">)</span>         <span class="c1">#  1110 1100 = -20</span>
+
+<span class="o">-</span><span class="mi">20</span>
+</pre></div>
+</div>
+<p>Hay aksi sanki buradaki çıktılarda bir garipilik var değil mi? Evet var. Hemen
+açıklayalım. Şöyle ki bir bit dizisinde son bit karakterin (ya da sayının) işaretini
+temsil eder. Geçmiş örneklerimizde son bit hep <cite>0</cite> olduğu için sayımız pozitif değerdeydi.
+Bu örneğimizde ise ‘~’ işaretinin etkisiyle bu değerimiz <cite>1</cite> oldu yani negatif değerli
+tam sayıyı temsil etti. Ama iş burası ile de kalmıyor. Biz tümleme işlemi yaptığımız
+zaman aslında bitlerin değerini başka şekilde hesaplıyoruz. Bir kere <cite>1</cite> ile <cite>0</cite> değerlerinin
+işlevelemini değiştirmiş oluyoruz. Yani ikilinin katlarını artık <cite>0</cite>’a göre yazıyoruz.
+Bu değerleri en sonunda toplayıp -1’den çıkarıyoruz. İşte böylece tümleme işlemimiz
+sonucu çıkan bitin değerini hesaplayabiliriz. Ama bu kısım o kadar da önemli değil
+sadece formüle etmek de yeter.</p>
+<p><em>n - (2n + 1)</em></p>
+<p>İşte size tümleme işleminin sonucunu gösteren güzide formül.</p>
+<p><strong>Shifting (kaydırma) İşleçleri (`&gt;&gt;` `&lt;&lt;`)</strong></p>
+<p>Kaydırma işleçlerinin sembolik mantıkta bir karşılığı yoktur. Bunlar tamamen
+programlamaya özgüdür. Bu işleçler için bir tabloya da ihtiyaç duymayacağız. Hemen
+bir örnek verelim ve açıklamasını yapalım.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span> <span class="n">a</span> <span class="o">=</span> <span class="mi">64</span>              <span class="c1"># 0100 0000 = 64</span>
+
+ <span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">&gt;&gt;</span> <span class="mi">3</span><span class="p">)</span>       <span class="c1"># 0000 1000 = 8</span>
+
+<span class="mi">8</span>
+</pre></div>
+</div>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="mi">16</span>              <span class="c1"># 0001 0000 = 16</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span><span class="p">)</span>       <span class="c1"># 0100 0000 = 64</span>
+
+<span class="mi">64</span>
+</pre></div>
+</div>
+<p>Zaten az çok örneklerden ne olduğu ortaya çıkıyor. Okların solundaki sayının
+bitlerini okların sağındaki sayı kadar okların yönünde kaydırıyoruz. Ancak bu
+işleçte bazı püf noktalarımız var, onu hemen gösterelim.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">64</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">)</span>       <span class="c1"># ... 1000 0000 = 128</span>
+</pre></div>
+</div>
+<p>Evet, burada önceki işleçte gösterdiğimiz negatif-pozitif olayını yaşamadık.
+Peki neden? Şu ana kadar ki örneklerimizde hep 8 bit üzerinden örnekler yaptık
+ancak Python’da bu genellikle böyle olmuyor. Bunu şöyle kontrol edebiliriz.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">getsizeof</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>    <span class="c1"># 28</span>
+
+<span class="mi">28</span>
+</pre></div>
+</div>
+<p>Yukarıdaki kodda anlamadığınız yerler varsa takılmayın. Sadece şunu bilmeniz yeterli.
+Bu kod parçası size elinizdeki değişkenin boyutunu söyler. Gördüğünüz gibi ‘a’
+değişkenin boyutu 28miş. Demek ki bu değişken 28 bitten oluşuyormuş. Peki şöyle
+birşey yapsaydık.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">a</span> <span class="o">&lt;&lt;=</span> <span class="mi">30</span>
+
+<span class="n">sys</span><span class="o">.</span><span class="n">getsizeof</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>    <span class="c1"># 32</span>
+
+<span class="mi">32</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi değişkenimiz boyut değişikliğine uğradı. Yani bit kaydırma işleminde
+sola giderken değişkenimizin gidebileceği başka yeri kalmayınca boyutunu
+değiştirebiliyor. Ancak bunu tümeleme işleminde yapmıyor çünkü tümeleme işleminin
+amacına uygun değil. Bir başka püf nokta ise şöyle:</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Değer atama işleçleri bölümünde gördüğünüz “+=”, “-=” gibi ifadeleri bitsel
+işleçler ile de kullanabilirsiniz. (Yukarıda gördüğünüz gibi)</p>
+</div>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">15</span>      <span class="c1"># 0000 1111 = 15</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">&gt;&gt;</span> <span class="mi">3</span><span class="p">)</span>   <span class="c1"># 0000 0001 = 1</span>
+
+<span class="mi">1</span>
+</pre></div>
+</div>
+<p>Gördüğünüz gibi bit kaydırma işleminde eğer sağda yer yoksa o değer atılır. Çünkü
+bitlerde değer artırımı sol tarafa ekleme yaparak olur ki zaten mantıklısı da bu.</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Bu kısım eğer programlamaya yeni başlıyorsanız biraz zor gelebilir. Anlayamadığınız
+kısım olursa telaşlanmayın ve ilerlemeye devam edin. Biraz daha temelinizi sağlamlaştırınca
+tekrar buraya dönebilirsiniz. Emin olun, o zaman her şey daha güzelce oturur.</p>
+</div>
+<p><strong>Bitsel İşleçleri Kullanmanın Avantajları ve Dezavantajları</strong></p>
+<p>Şimdi bitsel işleçlerimizin avantajlarını ve dezavantajlarını görelim.</p>
+<p><strong>Avantajlar:</strong></p>
+<ol class="arabic simple">
+<li><p><em>Performans:</em> Bitsel işlemler genellikle daha hızlıdır çünkü bilgisayarlar üzerinde doğrudan
+donanım seviyesinde gerçekleştirilirler. Özellikle büyük veri setleri üzerinde çalışırken
+performansı artırabilirler.</p></li>
+<li><p><em>Bellek Kullanımı:</em> Bitsel işlemler genellikle daha az bellek kullanır. Bu, özellikle çok
+büyük veri yapıları üzerinde işlem yaparken bellek kullanımını azaltmaya yardımcı olabilir.</p></li>
+</ol>
+<p><strong>Dezavantajlar:</strong></p>
+<ol class="arabic simple">
+<li><p><em>Okunabilirlik:</em> Bitsel işlemler, genellikle kodun okunabilirliğini azaltabilir. Bit
+seviyesinde yapılan işlemler, kodun ne yaptığını anlamak için daha fazla çaba gerektirebilir.</p></li>
+<li><p><em>Hata Yapma Olasılığı:</em> Bitsel işlemlerle çalışırken, yanlış operatörler veya yanlış bit işlemleri
+yapma olasılığı daha yüksektir. Bu, hataların bulunması ve düzeltilmesi için daha fazla zaman
+harcanmasına neden olabilir.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Asıl dezavantajı görünür kılmak için buraya koydum. Bitwise ile yapılan işlemler Python
+dilinin amacına uygun değildir. Python yazılım dilinin amacı kullanıcı kolaylığıdır.
+Pythonda performans ve bellek kullanımı çok önemsenmez. Eğer böyle ihtiyaçlarınız
+varsa başka dillerle ilgilenmeniz daha doğru olacaktır. Ama bu söylediklerimden
+“Şimdi ben bu bölümü boşuna mı okudum?” diye bir sonuç çıkarmayın. Burada gösterdiğimiz
+şeyler neredeyse bütün programlama dillerinde mevcut. Ayrıca yaptığınız bütün işlemler
+dayanağını bu işleçlerden alıyor. Bu kısma özellikle dikkat etmenizi rica ediyorum.
+Emin olun bu yolculukta öğrendiğiniz hiçbir şey boşuna olmayacak.</p>
+</div>
 </section>
 <section id="aitlik-islecleri">
 <h2>Aitlik İşleçleri<a class="headerlink" href="#aitlik-islecleri" title="Link to this heading">¶</a></h2>
@@ -1838,7 +2207,7 @@ Python3 yerine Python2’de verseydik şöyle bir çıktı alacaktık:</p>
 <p><cite>version_info</cite> ve <cite>version</cite> değişkenlerinin verdikleri çıktının birbirlerinden
 farklı yapıda olduğuna dikkat edin. <cite>version</cite> değişkeni, <cite>version_info</cite>
 değişkeninden farklı olarak şöyle bir çıktı verir:</p>
-<pre class="literal-block">'3.7.0 (default, 15.12.2023, 12:24:55)
+<pre class="literal-block">'3.7.0 (default, 22.02.2024, 12:24:55)
 [GCC 4.4.7 20120313 (Red Hat 4.4.7-3)] on linux'</pre>
 <p><cite>version_info</cite> değişkeninin verdiği çıktı bizim şu anda yazmak istediğimiz
 programa daha uygun. Bunun neden böyle olduğunu biraz sonra siz de
@@ -1981,7 +2350,7 @@ denetlemeye yarayan iki farklı değişken var. Bunlardan biri <cite>version</ci
 <cite>version_info</cite>.</p>
 <p>Python3’te bu değişkenlerin şu çıktıları verdiğiniz biliyoruz:</p>
 <p><strong>version</strong>:</p>
-<pre class="literal-block">'3.7.0 (default, 15.12.2023, 12:24:55)
+<pre class="literal-block">'3.7.0 (default, 22.02.2024, 12:24:55)
 [GCC 4.4.7 20120313 (Red Hat 4.4.7-3)] on linux'</pre>
 <p><strong>version_info</strong>:</p>
 <pre class="literal-block">sys.version_info(major=|major3|, minor=|minor3|, micro=|micro3|, releaselevel='final', serial=0)</pre>
@@ -2023,7 +2392,7 @@ bakın:</p>
 </div>
 <p>Bildiğiniz gibi, <cite>version</cite> değişkeni Python’ın <cite>3.x</cite> sürümlerinde şuna benzer
 bir çıktı veriyor:</p>
-<pre class="literal-block">'3.7.0 (default, 15.12.2023, 12:24:55)
+<pre class="literal-block">'3.7.0 (default, 22.02.2024, 12:24:55)
 [GCC 4.4.7 20120313 (Red Hat 4.4.7-3)] on linux'</pre>
 <p>İşte biz burada <cite>in</cite> işlecini kullanarak, <cite>version</cite> değişkeninin verdiği
 karakter dizisi içinde ‘3.2’ diye bir ifade aradık.</p>
@@ -2139,8 +2508,8 @@ Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" 
     </div> 
 
 <div class="footer">
-		&copy; Copyright 2007-2023, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 15.12.2023.
+		&copy; Copyright 2007-2024, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 22.02.2024.
 	<a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6 kullanılarak oluşturuldu.
 
 	Yayım 4.1.1.

@@ -542,3 +542,8 @@ Zeki Akyol
 =======================
 
     - Kod içermeyen düz metindeki tekrarlayan bir yazım hatası düzeltildi.
+
+Mertcan Bilek
+================
+
+    - Bitwise (Bitsel) İşleçleri dokumanlari eklendi.

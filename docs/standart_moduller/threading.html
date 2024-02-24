@@ -246,7 +246,7 @@ Kilidi kilitlemek için, iş parçacığı bu kilidin <cite>acquire()</cite> met
 <p><strong>acquire(blocking=True, timeout=-1)</strong></p>
 <blockquote>
 <div><p>Bloklayan ve bloklamayan bir kilit edinin.</p>
-<p>Argümansız çağrıldığında: Eğer bu iş parçacığı zaten kilide sahipse, öz-yineleme seviyesini 1 derece arttırır ve ani bir şekilde geri döndürür. Diğer türlü, eğer başka bir iş parçacığı bu kilide sahipse, kilit çözülene kadar iş parçacığını engeller. Eğer bir kez -hiç bir iş parçacığının sahibi olmadığı- bir kilit açılmışsa, sahibini yakalar, öz-yineleme değerini 1 olarak ayarlar ve geri döndürülür. Eğer birden fazla iş parçacığı kilit açılana kadar engelleniyorsa, her seferinde sadece bir tane iş parçacığı bu kilide sahip olacaktır. Bu durumda geri dönen bir değer olmaz.</p>
+<p>Argümansız çağrıldığında: Eğer bu iş parçacığı zaten kilide sahipse, öz-yineleme seviyesini 1 derece artırır ve ani bir şekilde geri döndürür. Diğer türlü, eğer başka bir iş parçacığı bu kilide sahipse, kilit çözülene kadar iş parçacığını engeller. Eğer bir kez -hiç bir iş parçacığının sahibi olmadığı- bir kilit açılmışsa, sahibini yakalar, öz-yineleme değerini 1 olarak ayarlar ve geri döndürülür. Eğer birden fazla iş parçacığı kilit açılana kadar engelleniyorsa, her seferinde sadece bir tane iş parçacığı bu kilide sahip olacaktır. Bu durumda geri dönen bir değer olmaz.</p>
 <p><em>blocking</em> argümanı <cite>True</cite> olarak ayarlanıp çağrılırsa, argümansız çağrıldığında yaptıklarının aynısını yapar ve <cite>True</cite> değeri geri döndürülür.</p>
 <p><em>blocking</em> argümanı <cite>False</cite> olarak ayarlanıp çağrılırsa, iş parçacığını bloke etmez. Eğer argümanı olmayan bir çağrı engellenirse, hızlı bir şekilde <cite>False</cite> değeri geri döndürülür; diğer türlü, argümansız çağrıldığında yaptıklarının aynısını yapar ve <cite>True</cite> değeri geri döndürülür.</p>
 <p><em>timeout</em> argümanı pozitif bir kayan noktalı sayı olarak ayarlanıp çağrılırsa, iş parçacığı <em>timeout</em> argümanında belirlenen saniye kadar kilidi tekrar edinemediği sürece engellenir. Kilit edinilmişse <cite>True</cite> değerini geri döner, <em>timeout</em> zamanı dolmuşsa <cite>False</cite> değeri geri döner.</p>
@@ -339,7 +339,7 @@ güvenmek pek güvenilir değildir. İleride, iyileştirilmiş bir uygulama zama
 <section id="semaphore-nesneleri">
 <h2>Semaphore Nesneleri<a class="headerlink" href="#semaphore-nesneleri" title="Link to this heading">¶</a></h2>
 <p>Bu, bilgisayar bilimi tarihindedeki en eski senkronizasyon ilkellerinden biridir, Hollandalı bilgisayar bilimcisi Edsger W. Dijkstra tarafından icat edilmiştir (<cite>acquire()</cite> ve <cite>release()</cite> yerine <cite>P()</cite> ve <cite>V()</cite> isimlerini kullanıyordu.).</p>
-<p>Bir semafor, her <cite>acquire()</cite> çağrısında azaltılan ve her <cite>release()</cite> çağrısında arttırılan içsel bir sayacı yönetir. Sayaç sıfırın altına hiç
+<p>Bir semafor, her <cite>acquire()</cite> çağrısında azaltılan ve her <cite>release()</cite> çağrısında artırılan içsel bir sayacı yönetir. Sayaç sıfırın altına hiç
 bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, iş parçacığını başka bir iş parçacığı <cite>release()</cite>’i çağırana kadar engeller.</p>
 <p>Semaforlar ayrıca içerik yönetim protokülünü desteklerler.</p>
 <p><strong>class threading.Semaphore(value=1)</strong></p>
@@ -356,7 +356,7 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 </div></blockquote>
 <p><strong>release()</strong></p>
 <blockquote>
-<div><p>Bir semaforu serbest bırakır, iç sayacı bir birim arttırır. Girişte sıfır olduğunda ve diğer bir iş parçacığı, sayacın tekrar sıfırdan büyük bir sayı olmasını beklediğinde, bu iş parçacığını uyandırır.</p>
+<div><p>Bir semaforu serbest bırakır, iç sayacı bir birim artırır. Girişte sıfır olduğunda ve diğer bir iş parçacığı, sayacın tekrar sıfırdan büyük bir sayı olmasını beklediğinde, bu iş parçacığını uyandırır.</p>
 </div></blockquote>
 </div></blockquote>
 <p><strong>class threading.BoundedSemaphore(value=1)</strong></p>
@@ -970,7 +970,7 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 </pre></div>
 </div>
 </li>
-<li><p><em>count</em> değişkenini 1 birim arttıralım ve <cite>time.sleep(0.5)</cite> fonksiyonunu çağırarak işlemler arasında biraz zaman geçmesini bekleyelim:</p>
+<li><p><em>count</em> değişkenini 1 birim artıralım ve <cite>time.sleep(0.5)</cite> fonksiyonunu çağırarak işlemler arasında biraz zaman geçmesini bekleyelim:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
 <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
@@ -1486,8 +1486,8 @@ Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" 
     </div> 
 
 <div class="footer">
-		&copy; Copyright 2007-2023, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 15.12.2023.
+		&copy; Copyright 2007-2024, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 22.02.2024.
 	<a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6 kullanılarak oluşturuldu.
 
 	Yayım 4.1.1.

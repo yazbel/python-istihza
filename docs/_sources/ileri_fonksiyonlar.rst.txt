@@ -1324,7 +1324,7 @@ Bunu şu örnek üzerinden anlamaya çalışalım::
 
 Kodumuzu kısaca incelersek ``say`` fonksiyonunda ``sayı`` değişkenini ``nonlocal``
 hale getiriyoruz. Aynı zamanda ``say`` fonksiyonu her çağırıldığında ``sayı`` değiş-
-kenini de bir arttırıp değer olarak döndürüyoruz. Şimdi kodumuzu çalıştıralım::
+kenini de bir artırıp değer olarak döndürüyoruz. Şimdi kodumuzu çalıştıralım::
 
     >>> s = sayıcı()
     >>> type(s)
