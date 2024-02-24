@@ -249,7 +249,7 @@ Yeniden girilir kilitler ayrıca içerik yönetim protokolünü desteklerler.
 
         Bloklayan ve bloklamayan bir kilit edinin.
 
-        Argümansız çağrıldığında: Eğer bu iş parçacığı zaten kilide sahipse, öz-yineleme seviyesini 1 derece arttırır ve ani bir şekilde geri döndürür. Diğer türlü, eğer başka bir iş parçacığı bu kilide sahipse, kilit çözülene kadar iş parçacığını engeller. Eğer bir kez -hiç bir iş parçacığının sahibi olmadığı- bir kilit açılmışsa, sahibini yakalar, öz-yineleme değerini 1 olarak ayarlar ve geri döndürülür. Eğer birden fazla iş parçacığı kilit açılana kadar engelleniyorsa, her seferinde sadece bir tane iş parçacığı bu kilide sahip olacaktır. Bu durumda geri dönen bir değer olmaz.
+        Argümansız çağrıldığında: Eğer bu iş parçacığı zaten kilide sahipse, öz-yineleme seviyesini 1 derece artırır ve ani bir şekilde geri döndürür. Diğer türlü, eğer başka bir iş parçacığı bu kilide sahipse, kilit çözülene kadar iş parçacığını engeller. Eğer bir kez -hiç bir iş parçacığının sahibi olmadığı- bir kilit açılmışsa, sahibini yakalar, öz-yineleme değerini 1 olarak ayarlar ve geri döndürülür. Eğer birden fazla iş parçacığı kilit açılana kadar engelleniyorsa, her seferinde sadece bir tane iş parçacığı bu kilide sahip olacaktır. Bu durumda geri dönen bir değer olmaz.
 
         *blocking* argümanı `True` olarak ayarlanıp çağrılırsa, argümansız çağrıldığında yaptıklarının aynısını yapar ve `True` değeri geri döndürülür.
 
@@ -367,7 +367,7 @@ Semaphore Nesneleri
 
 Bu, bilgisayar bilimi tarihindedeki en eski senkronizasyon ilkellerinden biridir, Hollandalı bilgisayar bilimcisi Edsger W. Dijkstra tarafından icat edilmiştir (`acquire()` ve `release()` yerine `P()` ve `V()` isimlerini kullanıyordu.).
 
-Bir semafor, her `acquire()` çağrısında azaltılan ve her `release()` çağrısında arttırılan içsel bir sayacı yönetir. Sayaç sıfırın altına hiç
+Bir semafor, her `acquire()` çağrısında azaltılan ve her `release()` çağrısında artırılan içsel bir sayacı yönetir. Sayaç sıfırın altına hiç
 bir zaman inemez; `acquire()` bu sayacın sıfır olduğunu bulursa, iş parçacığını başka bir iş parçacığı `release()`'i çağırana kadar engeller.
 
 Semaforlar ayrıca içerik yönetim protokülünü desteklerler.
@@ -392,7 +392,7 @@ Semaforlar ayrıca içerik yönetim protokülünü desteklerler.
 
     **release()**
 
-        Bir semaforu serbest bırakır, iç sayacı bir birim arttırır. Girişte sıfır olduğunda ve diğer bir iş parçacığı, sayacın tekrar sıfırdan büyük bir sayı olmasını beklediğinde, bu iş parçacığını uyandırır.
+        Bir semaforu serbest bırakır, iç sayacı bir birim artırır. Girişte sıfır olduğunda ve diğer bir iş parçacığı, sayacın tekrar sıfırdan büyük bir sayı olmasını beklediğinde, bu iş parçacığını uyandırır.
 
 **class threading.BoundedSemaphore(value=1)**
 
@@ -1053,7 +1053,7 @@ Bu `run()` yönteminde aşağıdakiler yapılsın:
                 print("condition {} tarafından serbest bırakıldı."
                       .format(self.name))
 
-    7. *count* değişkenini 1 birim arttıralım ve `time.sleep(0.5)` fonksiyonunu çağırarak işlemler arasında biraz zaman geçmesini bekleyelim::
+    7. *count* değişkenini 1 birim artıralım ve `time.sleep(0.5)` fonksiyonunu çağırarak işlemler arasında biraz zaman geçmesini bekleyelim::
 
                 count += 1
                 time.sleep(0.5)

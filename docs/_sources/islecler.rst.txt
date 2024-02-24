@@ -36,6 +36,8 @@ Biz bu bölümde işleçleri altı başlık altında inceleyeceğiz:
     #. Bool İşleçleri
 
     #. Değer Atama İşleçleri
+           
+    #. Bitwise (Bitsel) İşleçleri
 
     #. Aitlik İşleçleri
 
@@ -897,7 +899,7 @@ Bu kodlar bir öncekiyle aynı işi yapar. Yorumlardan da göreceğiniz gibi, bu
 kod arasında sadece mantık farkı var.
 
 Hatta, daha da ileri giderek aynı kodu çok daha basit hale getirmek isterseniz,
-aşağıdaki koda bakabilirsiniz.::
+aşağıdaki koda bakabilirsiniz. ::
 
     x = int(input("Notunuz: "))
 
@@ -946,7 +948,7 @@ olursa `parola` değişkeninin değeri boş bir karakter dizisi olacaktır. Yani
 Dolayısıyla, yukarıdaki gibi bir örnekte, kullanıcı parolayı boş geçtiğinde
 ``not parola`` kodu `True` verecek ve böylece ekrana `"Parola boş bırakılamaz!"`
 karakter dizisi yazdırılacaktır. Eğer yukarıdaki örneğin mantığını kavramakta
-zorluk çekiyorsanız şu örnekleri incelemenizi öneririm::
+zorluk çekiyorsanız şu örnekleri incelemenizi de öneririm::
 
     >>> parola = ""
     >>> bool(parola)
@@ -1235,6 +1237,395 @@ değişkenimiz ``True`` veya ``False``, yani bir ``bool`` oluyor. Eğer ``giriş
 bir defa çağırmak gibi kolaylıklar sağlamaktadır. Bu konu ile alakalı daha fazla örnek için buraya_ bakabilirsiniz
 
 .. _buraya: https://forum.yazbel.com/t/walrus-operator/4612
+
+Bitwise (Bitsel) İşleçleri
+**************************
+
+Bu bölümde bitwise işleçlerinden söz edeceğiz, ancak bitwise işleçlerini anlayabilmek 
+için öncelikle ikili sayı sistemi hakkında bilgi sahibi olmanız gerekecek. Görüldüğü üzere, 
+bitwise işleçleri ikili sayılar temelinde işlemler yapmamıza yarar sağlar.
+
+Peki, nedir bu ikili sayma sistemi?
+
+İkili sayı sistemi, bilgisayarların verileri temsil etmek için kullandığı temel sayı sistemidir.
+Her yerde duyduğunuz gibi, ekrandaki her şey size ne kadar karmaşık gelse de, 
+bilgisayarlarımız bunları ikili (binary) tabanda temsil eder. Örneğin, "10" sayısının ikili 
+tabanda gösterimi "1010" şeklindedir. İkili sayma sisteminde, bir sayıyı oluşturan rakamlar 
+2’nin kuvvetleri olarak hesaplanır. Bu sayıyı 2’nin kuvvetlerini kullanarak şu şekilde hesaplayabiliriz::
+
+    >>> (0 * (2 ** 0)) + (1 * (2 ** 1)) + (0 * (2 ** 2)) + (1 * (2 ** 3))
+
+    10
+
+Tabii, daha fazlasını dokümanın ileri_ bölümlerinde anlatacağız. Şimdilik bunları bilseniz yeterli.
+
+.. _ileri: https://python-istihza.yazbel.com/sayma_sistemleri.html#ikili-sayma-sistemi
+
+    +----+---------------+
+    | &  | Mantıksal And |
+    +----+---------------+
+    | \| | Mantıksal Or  |
+    +----+---------------+
+    | >> | Kaydırma      |
+    +----+---------------+
+    | << | Kaydırma      |
+    +----+---------------+
+    | ^  | Mantıksal XOR |
+    +----+---------------+
+    | ~  | Tümleme       |
+    +----+---------------+
+
+Şunu da söylemeden geçmeyelim, yukarıda gördüğünüz bu işleçler çoğumuzun lise matematik 
+derslerinde gördüğü veya göreceği sembolik mantık (namıdeğer matematiksel mantık) ilkelerine 
+dayandığından, her işleçte sembolik mantık derslerindeki karşılıklarını da göstereceğiz. 
+Tabii, daha önce sembolik mantıktan haberdar olmayanlar için başlamadan önce ilerde 
+işimize yarayacak olan önermelerin ne olduğuna bir bakalım. Eğer daha detaylı olarak öğrenmek 
+isterseniz, Wikipedia'ya bakmanız yeterli.
+
+**Önermeler**
+
+Siz hiç farketmemiş olsanız da Python'da birçok kez önerme kullandınız. Hemen birini gösterelim::
+
+    a = 10
+
+    if a == 10:
+           ...
+
+Yukarıda gördüğünüz kodda `a == 10` bir önermedir. Peki önerme dediğimiz şeyi tanımlasak 
+nasıl olur? Mantıkta doğrulanabilir ya da yanlışlanabilir olmak zorunda olan ifadelere 
+`önerme` denir. Bayağı hiçbir şey ifade etmeyen kelimeler grubu gibi duran bu cümleyi biraz 
+açıklayalım. Demek istediğimiz şey şu: Herhangi bir cümlemiz olsun, doğru ya da yanlış 
+olması umrumuzda bile değil ama yanlış ya da doğru olabilmesi onun bize bir önerme 
+olabileceğini gösteriyor. Mesela Mertcan adında bir arkadaşımız olsun. Bu arkadaş Keloğlan 
+izlemeyi seviyor olsun. Mertcan'ın bir arkadaşına şöyle bir şey diyelim:
+
+*Mertcan Keloğlan izlemeyi sevmiyor.*
+
+Bu cümle bir önermedir ancak bu önerme doğru değildir. Sembolik olarak değerini göstermek istersek, 
+`0` ile göstermemiz gerekecektir. ::
+
+    if a == 10:
+        ...
+
+O zaman ilk örneğimize dönersek, gerçekten de `a = 10` olduğu için önerme doğrudur, yani if bloğumuz güzelce çalışır. 
+Son olarak, neyin önerme olduğunu söylediğimiz gibi, neyin önerme olmadığını da belirtelim. Mesela:
+
+*Bugün hava çok güzel.*
+
+*Bence en güzel şehir Erzincan'dır.*
+
+Bu iki cümleyi inceleyelim. Bugün hava sana göre güzel olabilir ama bana göre olmayabilir.  
+Ya da bir başkası en güzel şehrin İstanbul olduğunu düşünüyor olabilir. Yani bu cümlelerin 
+doğruluğunu ya da yanlışlığını kesin olarak belirleyemeyiz. Demek ki bu iki örnekteki gibi öznel 
+cümlelerden önerme olmaz.
+
+Bence önermeleri herkes anladı. Meraklısı için internet emrinize amade.
+
+**Mantiksal AND (ve) İşleci (&)**
+
+Bu işleç her iki tarafındaki değişkenin bitleri üzerinde mantıksal `and` işlemi uygular.
+Aslında önceki bölümde gördüğünüz `and` işleci ile aynı işlemi karşılıklı bitler üzerinde 
+yapar. Mesela buna bir örnek verelim. ::
+
+    if (True and False):  # 1 = True, 0 = False
+        ...
+
+Daha önceki örneklerimizde anlatıldığı üzere bu ifade False olacağından if bloğumuz 
+çalışmayacaktır. Mantıksal And işlecimiz de aynı işlemi karşılıklı bitler üzerinde yapacak.
+
+    +-------+-----+
+    | 1 & 1 | = 1 |
+    +-------+-----+
+    | 1 & 0 | = 0 |
+    +-------+-----+
+    | 0 & 1 | = 0 |
+    +-------+-----+
+    | 0 & 0 | = 0 |
+    +-------+-----+
+
+Örnek üzerinden anlatmak bu tarz işleçlerin işlevini anlayabilmek için daha uygun olacaktır. 
+
+::
+
+    a = 10          # 0000 1010 = 10
+    b = 20          # 0001 0100 = 20
+
+    print(a & b)    # 0000 0000 = 0
+
+    0
+
+::
+
+    c = 10          # 0000 1010 = 10
+    d = 22          # 0001 0110 = 22
+
+    print(c & d)    # 0000 0010 = 2
+
+    2
+
+Örneklerde de gördüğünüz gibi mantıksal And işleci karşılıklı bitlerde işlem yapar. 
+And işlemi ile karşılaştırılmış iki bitten biri bile `0` olsa; `0` sonucunu alırsınız. `1` sonucu 
+alabilmek için her iki bitin de `1` olması gerek.
+
+**Mantıksal OR (veya) İşleci (|)**
+
+Bu işleç, her iki tarafındaki değişkenin bitleri üzerinde mantıksal `or` (veya) işlemi yapar. Bu işleç,
+önceki bölümde gördüğünüz `or` işleci ile aynı işlemi karşılıklı bitler üzerinde yapar.
+
+::
+
+    if (True or False):  # 1 = True, 0 = False
+        ...
+
+Bu örneğimizde parantez içi ifademiz True değerine eşit olacağından if bloğumuz çalışacaktır. 
+Mantıksal or da aynı prensibe dayalıdır.
+
+    +-------+-----+
+    | 1 | 1 | = 1 |
+    +-------+-----+
+    | 1 | 0 | = 1 |
+    +-------+-----+
+    | 0 | 1 | = 1 |
+    +-------+-----+
+    | 0 | 0 | = 0 |
+    +-------+-----+
+
+Hemen güzide örneğimizi getirelim.
+
+::
+
+    a = 10          # 0000 1010 = 10 
+    b = 20          # 0001 0100 = 20 
+
+    print(a | b)    # 0001 1110 = 30 
+
+    30
+
+::
+
+    a = 10          # 0000 1010 = 10 
+    b = 22          # 0001 0110 = 22 
+
+    print(a | b)    # 0001 1110 = 30 
+
+    30
+
+Örneğimizi inceleyelim, alt alta bitlerde eğer sadece bir tane '1' varsa, o bit karşılaştırma 
+sonrasında `1`'e eşit olur. Zaten yukarıdaki tablomuzda belirtilmiş. Eğer karşılaştırma 
+sonucunun `0` olmasını istiyor isek her iki bitinde `0` değerini alması lazım.
+
+**Mantıksal XOR (ya da) İşleci (^)**
+
+Bu işleçten önceki bütün işleçlerin adı sembolik mantıktaki karşılığı ile aynıydı ancak burada 
+durum biraz farklı. Sembolik mantık derslerinde biz XOR işlecine 'ya da' deriz. Bu işleç de 
+her iki tarafındaki değişkenin bitleri üzerinde 'XOR' işlemi yapar. Tabii bu derslerde "ya da"nın 
+işlevini daha önce görmedik. O zaman "ya da"yı gösterelim
+
+
+    +-------+-----+
+    | 1 ^ 1 | = 0 |
+    +-------+-----+
+    | 1 ^ 0 | = 1 |
+    +-------+-----+
+    | 0 ^ 1 | = 1 |
+    +-------+-----+
+    | 0 ^ 0 | = 0 |
+    +-------+-----+
+
+XOR (ya da) ile bağlanan iki basit önermenin doğru olabilmesi için iki önermenin de değerinin 
+birbirinden farklı olması gerekmektedir. Yani XOR (ya da) ile karşılaştırma işleminin `1` (doğru) 
+olabilmesi için önermelerin birbirinden farklı doğruluk değerlerine sahip olması gerekmektedir. 
+Tabloyu güzelce incelerseniz aklınıza kazınacaktır.
+
+Örneğimiz üzerinden de bir görelim isterseniz.
+
+::
+
+    a = 10         # 0000 1010 = 10 
+    b = 20         # 0001 0100 = 20 
+
+    print(a^b)     # 0001 1110 = 30 
+
+    30
+
+::
+
+    a = 10         # 0000 1010 = 10 
+    b = 22         # 0001 0110 = 22 
+
+    print(a^b)     # 0001 1100 = 28 
+
+    28
+
+Örnekte de görüldüğü gibi alt alta olan bitlerde eğer bit değeri aynı ise karşılaştırma 
+sonrası o bitin değeri 0 olacaktır. Eğer bu durum gerçekleşmezse bitimizin değeri `1` olacaktır.
+
+**Tümleme (Invert) İşleci (~)**
+
+Tümleme işleci diğer işleçlerden farklı olarak 2 değer arasında karşılaştırma yapmaz.
+Bu işlece sembolik mantıkta "Değil" denir. Bu işlecin görevi aldığı değeri tersine çevirmektir.
+
+    +----+-----+
+    | ~1 | = 0 |
+    +----+-----+
+    | ~0 | = 1 |
+    +----+-----+
+
+Tablodan da anlaşılacağı gibi tümleme işleci aldığını tersine çevirip bize veriyor. 
+Bu işlevin aynısını verdiğimiz değere de yapacak.
+
+Hemen bir örnek getirelim:
+
+::
+
+    a = 1             #  0000 0001 = 1 
+
+    print(~a)         #  1111 1110 = -2 
+
+    -2
+
+::
+
+    b = 19            #  0001 0011 = 19 
+
+    print(~b)         #  1110 1100 = -20 
+
+    -20
+
+Hay aksi sanki buradaki çıktılarda bir garipilik var değil mi? Evet var. Hemen 
+açıklayalım. Şöyle ki bir bit dizisinde son bit karakterin (ya da sayının) işaretini 
+temsil eder. Geçmiş örneklerimizde son bit hep `0` olduğu için sayımız pozitif değerdeydi. 
+Bu örneğimizde ise '~' işaretinin etkisiyle bu değerimiz `1` oldu yani negatif değerli 
+tam sayıyı temsil etti. Ama iş burası ile de kalmıyor. Biz tümleme işlemi yaptığımız 
+zaman aslında bitlerin değerini başka şekilde hesaplıyoruz. Bir kere `1` ile `0` değerlerinin 
+işlevelemini değiştirmiş oluyoruz. Yani ikilinin katlarını artık `0`'a göre yazıyoruz. 
+Bu değerleri en sonunda toplayıp -1'den çıkarıyoruz. İşte böylece tümleme işlemimiz 
+sonucu çıkan bitin değerini hesaplayabiliriz. Ama bu kısım o kadar da önemli değil 
+sadece formüle etmek de yeter. 
+
+*n - (2n + 1)*
+
+İşte size tümleme işleminin sonucunu gösteren güzide formül.
+
+
+**Shifting (kaydırma) İşleçleri (`>>` `<<`)**
+
+
+Kaydırma işleçlerinin sembolik mantıkta bir karşılığı yoktur. Bunlar tamamen 
+programlamaya özgüdür. Bu işleçler için bir tabloya da ihtiyaç duymayacağız. Hemen 
+bir örnek verelim ve açıklamasını yapalım.
+
+::
+
+    a = 64              # 0100 0000 = 64 
+    
+    print(a >> 3)       # 0000 1000 = 8
+
+   8 
+
+::
+    
+    b = 16              # 0001 0000 = 16 
+    
+    print(b << 2)       # 0100 0000 = 64 
+
+    64
+
+Zaten az çok örneklerden ne olduğu ortaya çıkıyor. Okların solundaki sayının 
+bitlerini okların sağındaki sayı kadar okların yönünde kaydırıyoruz. Ancak bu 
+işleçte bazı püf noktalarımız var, onu hemen gösterelim.
+
+::
+
+    a = 64 
+    
+    print(a << 1)       # ... 1000 0000 = 128 
+
+Evet, burada önceki işleçte gösterdiğimiz negatif-pozitif olayını yaşamadık. 
+Peki neden? Şu ana kadar ki örneklerimizde hep 8 bit üzerinden örnekler yaptık 
+ancak Python'da bu genellikle böyle olmuyor. Bunu şöyle kontrol edebiliriz.
+
+::
+
+    import sys  
+    
+    a = 1
+    sys.getsizeof(a)    # 28 
+
+    28
+
+Yukarıdaki kodda anlamadığınız yerler varsa takılmayın. Sadece şunu bilmeniz yeterli. 
+Bu kod parçası size elinizdeki değişkenin boyutunu söyler. Gördüğünüz gibi 'a' 
+değişkenin boyutu 28miş. Demek ki bu değişken 28 bitten oluşuyormuş. Peki şöyle 
+birşey yapsaydık.
+
+::
+
+    import sys 
+
+    a = 1
+    a <<= 30
+
+    sys.getsizeof(a)    # 32
+
+    32
+
+Gördüğünüz gibi değişkenimiz boyut değişikliğine uğradı. Yani bit kaydırma işleminde 
+sola giderken değişkenimizin gidebileceği başka yeri kalmayınca boyutunu 
+değiştirebiliyor. Ancak bunu tümeleme işleminde yapmıyor çünkü tümeleme işleminin 
+amacına uygun değil. Bir başka püf nokta ise şöyle: 
+
+.. note:: Değer atama işleçleri bölümünde gördüğünüz "+=", "-=" gibi ifadeleri bitsel 
+   işleçler ile de kullanabilirsiniz. (Yukarıda gördüğünüz gibi)
+
+::
+
+    a = 15      # 0000 1111 = 15 
+    
+    print(a >> 3)   # 0000 0001 = 1
+
+    1
+
+Gördüğünüz gibi bit kaydırma işleminde eğer sağda yer yoksa o değer atılır. Çünkü 
+bitlerde değer artırımı sol tarafa ekleme yaparak olur ki zaten mantıklısı da bu. 
+
+.. note:: Bu kısım eğer programlamaya yeni başlıyorsanız biraz zor gelebilir. Anlayamadığınız
+   kısım olursa telaşlanmayın ve ilerlemeye devam edin. Biraz daha temelinizi sağlamlaştırınca
+   tekrar buraya dönebilirsiniz. Emin olun, o zaman her şey daha güzelce oturur.
+
+
+**Bitsel İşleçleri Kullanmanın Avantajları ve Dezavantajları**
+
+Şimdi bitsel işleçlerimizin avantajlarını ve dezavantajlarını görelim.
+
+**Avantajlar:**
+
+1. *Performans:* Bitsel işlemler genellikle daha hızlıdır çünkü bilgisayarlar üzerinde doğrudan 
+   donanım seviyesinde gerçekleştirilirler. Özellikle büyük veri setleri üzerinde çalışırken 
+   performansı artırabilirler.
+
+2. *Bellek Kullanımı:* Bitsel işlemler genellikle daha az bellek kullanır. Bu, özellikle çok 
+   büyük veri yapıları üzerinde işlem yaparken bellek kullanımını azaltmaya yardımcı olabilir.
+
+**Dezavantajlar:**
+
+1. *Okunabilirlik:* Bitsel işlemler, genellikle kodun okunabilirliğini azaltabilir. Bit 
+   seviyesinde yapılan işlemler, kodun ne yaptığını anlamak için daha fazla çaba gerektirebilir.
+
+2. *Hata Yapma Olasılığı:* Bitsel işlemlerle çalışırken, yanlış operatörler veya yanlış bit işlemleri 
+   yapma olasılığı daha yüksektir. Bu, hataların bulunması ve düzeltilmesi için daha fazla zaman 
+   harcanmasına neden olabilir.
+
+
+.. note:: Asıl dezavantajı görünür kılmak için buraya koydum. Bitwise ile yapılan işlemler Python 
+   dilinin amacına uygun değildir. Python yazılım dilinin amacı kullanıcı kolaylığıdır. 
+   Pythonda performans ve bellek kullanımı çok önemsenmez. Eğer böyle ihtiyaçlarınız 
+   varsa başka dillerle ilgilenmeniz daha doğru olacaktır. Ama bu söylediklerimden 
+   "Şimdi ben bu bölümü boşuna mı okudum?" diye bir sonuç çıkarmayın. Burada gösterdiğimiz 
+   şeyler neredeyse bütün programlama dillerinde mevcut. Ayrıca yaptığınız bütün işlemler 
+   dayanağını bu işleçlerden alıyor. Bu kısma özellikle dikkat etmenizi rica ediyorum. 
+   Emin olun bu yolculukta öğrendiğiniz hiçbir şey boşuna olmayacak.
+
 
 Aitlik İşleçleri
 ****************
