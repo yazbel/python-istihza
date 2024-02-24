@@ -96,11 +96,47 @@ class App:
 			raise ValueError()
 
 	@classmethod
+	def create_status_animation(cls, style, msg):
+		from threading import Thread, Event
+		from time import sleep
+
+		def status_animation():
+			style(msg, end="", flush = True)
+			dot = 1
+			while True:
+				if dot > 3:
+					style("\r" + msg + " " * dot + "\b" * dot, end="", flush = True)
+					dot = 1
+				style(".", end = "", flush = True)
+				dot += 1
+
+				if event.is_set():
+					style("\r" + " " * (len(msg) + dot-1) + "\r", end="")
+					break
+				sleep(0.5)
+
+		event = Event()
+		t = Thread(daemon = True, target=status_animation)
+		t.start()
+
+		def finish():
+			event.set()
+			t.join()
+
+		return finish
+
+	@classmethod
 	def call(cls, cmd, jobname):
 		import subprocess
+
+		stop_animation = cls.create_status_animation(print, f"Building {jobname}")
+
 		err = subprocess.PIPE
 		out = subprocess.PIPE
 		p = subprocess.run(cmd, shell=True, stdout=out, stderr=err)
+
+		stop_animation()
+
 		error(p.stderr.decode(), end = "")
 		if not p.stderr:
 			success(f"Built {jobname}.")
@@ -112,9 +148,9 @@ class App:
 app = App()
 app.configure(default = "help")
 
-@app.command("release", "dev")
-def build(app, job = None):
-	"""Builds the docs. Builds them in all available formats if [release] argument is given.
+@app.command("release", "dev", "all")
+def build(app, job = "debug"):
+	"""Builds the docs. Builds them in all available formats if [release] or [all] argument is given.
 	* Increases the project version if [release] argument is given.
 	* Opens the docs/index.html in browser if [dev] argument is given.
 	* Moves them to where they are needed if [release] or [dev] argument is given."""
@@ -126,12 +162,12 @@ def build(app, job = None):
 	print("Starting the build process.")
 	p = app.call("make html", "HTML")
 
-	if job == "release":
+	if job in ("release", "all"):
 		p = app.call("make singlehtml", "HTML (single file)")
 		p = app.call("make latexpdf", "PDF")
 		p = app.call("make epub", "EPUB")
 
-	if job is None:
+	if job in ("debug", "all"):
 		return
 
 	import move_documents
