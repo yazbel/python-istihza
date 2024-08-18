@@ -20,7 +20,7 @@ basename = project
 # project structure
 root_doc = 'index'
 highlight_language = 'python3'
-needs_sphinx = '7.2'
+needs_sphinx = '8.0'
 
 file = os.path.realpath(__file__)
 source_dir = os.path.dirname(file)
