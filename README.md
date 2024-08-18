@@ -24,22 +24,19 @@ Bu arada proje sonlandığında bu belgede istihza.com'a verilen bağlantıları
 
 Belgelerde bir değişiklik yapmak ve belgeleri inşa etmek için [``BUILDING.md``](BUILDING.md) dosyasına başvurun.
 
-<br>
+---
 
 ## Belgelerden çevrimdışı iken faydalanmak
 
 Çevrimdışı olarak kullandığınız belgelerin zaman ile güncelliğini yitirip https://python-istihza.yazbel.com/ adresindeki belgelerin gerisinde kalabileceğini unutmayın.
 
 <details>
-<summary>PDF olarak indirme</summary>
+<summary>
+
+###PDF olarak indirme
+</summary>
 
 [`/docs/YazbelPythonProgramlamaDiliBelgeleri.pdf`](/docs/YazbelPythonProgramlamaDiliBelgeleri.pdf) dosyasını [bu](https://python-istihza.yazbel.com/YazbelPythonProgramlamaDiliBelgeleri.pdf) link aracılığı ile indirip kullanabilirsiniz.
-</details>
-
-<details>
-<summary>### PDF olarak indirme</summary>
-
-[`/docs/YazbelPythonProgramlamaDiliBelgeleri.html`](/docs/YazbelPythonProgramlamaDiliBelgeleri.html) dosyasını [bu](https://python-istihza.yazbel.com/YazbelPythonProgramlamaDiliBelgeleri.html) link aracılığı ile indirip kullanabilirsiniz.
 </details>
 
 <details>
@@ -47,8 +44,6 @@ Belgelerde bir değişiklik yapmak ve belgeleri inşa etmek için [``BUILDING.md
 
 [`/docs/YazbelPythonProgramlamaDiliBelgeleri.pdf`](/docs/YazbelPythonProgramlamaDiliBelgeleri.pdf) dosyasını [bu](https://python-istihza.yazbel.com/YazbelPythonProgramlamaDiliBelgeleri.pdf) link aracılığı ile indirip kullanabilirsiniz.
 </details>
-
-<br>
 
 ### Siteyi kaynaktan indirme
 
@@ -60,8 +55,6 @@ Bu veri havuzunu cihazınıza indirebilir ve [`/docs/index.html`](/docs/index.ht
 
 Her zaman [YazBel forumu](https://forum.yazbel.com/)nun [Python kategorisi](https://forum.yazbel.com/c/python)nde bir
 konu açarak aklınızdaki soruları sorabilirsiniz. Topluluk size yardım etmekten mutluluk duyacaktır.
-
-<br>
 
 ## Nasıl yardım edebilirim?
 
