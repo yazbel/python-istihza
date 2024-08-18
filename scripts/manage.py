@@ -1,7 +1,7 @@
 import os
 from os.path import join
 from functools import wraps
-from color import error, warning, success, Styles, modify_words
+from color import error, warning, success, Styles, Colors, modify_text
 from difflib import SequenceMatcher
 import sys
 
@@ -221,7 +221,8 @@ def version(app, field = "display"):
 		f.write("\n".join(versions))
 
 def highlight_arguments(procedure):
-	return modify_words(procedure[0].__doc__, words = tuple(map(lambda x: f"[{x}]", procedure[1])), style = Styles.BOLD, replacement_rule = lambda x: x[1:-1])
+	doc = procedure[0].__doc__
+	return modify_text(doc, words = tuple(map(lambda x: f"[{x}]", procedure[1])), color = Styles.UNDERLINE + Colors.CYAN, replacement_rule = lambda x: x[1:-1])
 
 @app.command(*app.procedures, "help")
 def help(app, method = None):
