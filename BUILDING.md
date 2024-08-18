@@ -102,6 +102,13 @@ EPUB dosyası `/build/epub/` dizininde `Yazbel Python Belgeleri.epub` adı ile o
 
 Belgeleri PDF olarak inşa edebilmek için ``pdflatex`` uygulamasına ihtiyacınız olacak. [MikTeX](https://miktex.org/) veya [TeX Live](https://www.tug.org/texlive/) gibi bir TeX dağıtımını indirerek bu uygulamayı edinebilirsiniz. Bu dağıtımların belgerin inşası için gerekli eklentiler ile birlikte 800 Megabyte gibi bir disk alanı kaplayabileceğini unutmayın. TeX dağıtımının kurulumunda bir problem yaşarsanız [buraya](https://www.sphinx-doc.org/en/master/usage/builders/index.html#sphinx.builders.latex.LaTeXBuilder) başvurabilirsiniz.
 
+> Eğer Windows kullanıyorsanız ve [`winget`](https://github.com/microsoft/winget-cli) CLI uygulamasına sahipseniz MikTeX dağıtımını indirmek için bu yolu da izleyebilirsiniz:
+
+```shell
+winget install MiKTeX.MiKTeX
+winget install StrawberryPerl.StrawberryPerl # MiKTeX aynı zamanda bir Perl kurulumu gerektirir
+```
+
 Uygun bir TeX dağıtımını kurduktan sonra `pdflatex`'in bulunduğu dizinin PATH'de bulunduğundan emin olun.
 
 Debian/Ubuntu'da:
