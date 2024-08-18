@@ -76,6 +76,6 @@ olmasına dikkat edin.
 
 ## Lisans
 
-[`LICENSE`](LICENSE) dosyasında da belirtildiği üzere bu
+[`LICENSE`](LICENSE.md) dosyasında da belirtildiği üzere bu
 belgelerin lisansı **Creative Commons Atıf-GayriTicari-AynıLisanslaPaylaş 3.0 Yerelleştirilmemiş (CC BY-NC-SA 3.0)**
 lisansıdır. Daha fazla bilgi için lütfen dosyanın içeriğine bakınız.
