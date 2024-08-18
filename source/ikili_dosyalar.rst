@@ -494,7 +494,7 @@ Eğer bir dosyanın `GIF` olup olmadığını anlamak isterseniz dosyanın ilk `
 TIFF
 ------
 
-`TIFF` şartnamesine https://developer.adobe.com/content/dam/udp/en/open/standards/tiff/TIFF6.pdf
+`TIFF` şartnamesine https://www.itu.int/itudoc/itu-t/com16/tiff-fx/docs/tiff6.pdf
 adresinden ulaşabilirsiniz. Bu şartnameye göre bir `TIFF` dosyası şunlardan
 herhangi biri ile başlar:
 
