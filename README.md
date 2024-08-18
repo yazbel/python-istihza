@@ -39,7 +39,7 @@ Belgelerde bir değişiklik yapmak ve belgeleri inşa etmek için [``BUILDING.md
 <details>
 <summary>Tek parça HTML olarak indirme</summary>
 
-[`/docs/YazbelPythonProgramlamaDiliBelgeleri.pdf`](/docs/YazbelPythonProgramlamaDiliBelgeleri.pdf) dosyasını [bu](https://python-istihza.yazbel.com/YazbelPythonProgramlamaDiliBelgeleri.pdf) link aracılığı ile indirip kullanabilirsiniz.
+[`/docs/YazbelPythonProgramlamaDiliBelgeleri.html`](/docs/YazbelPythonProgramlamaDiliBelgeleri.html) dosyasını [bu](https://python-istihza.yazbel.com/YazbelPythonProgramlamaDiliBelgeleri.html) link aracılığı ile indirip kullanabilirsiniz.
 </details>
 
 <details>
