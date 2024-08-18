@@ -164,7 +164,7 @@ def build(app, job = "debug"):
 
 	if job in ("release", "all"):
 		p = app.call("make singlehtml", "HTML (single file)")
-		p = app.call("make latexpdf", "PDF")
+		p = app.call("make latexpdf", "PDF") # TODO: this job never finishes because latexpdf waits for input on syntax errors
 		p = app.call("make epub", "EPUB")
 
 	if job in ("debug", "all"):
