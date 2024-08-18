@@ -31,22 +31,24 @@ Belgelerde bir değişiklik yapmak ve belgeleri inşa etmek için [``BUILDING.md
 Çevrimdışı olarak kullandığınız belgelerin zaman ile güncelliğini yitirip https://python-istihza.yazbel.com/ adresindeki belgelerin gerisinde kalabileceğini unutmayın.
 
 <details>
-<summary>### PDF olarak indirme</summary>
+<summary>PDF olarak indirme</summary>
 
 [`/docs/YazbelPythonProgramlamaDiliBelgeleri.pdf`](/docs/YazbelPythonProgramlamaDiliBelgeleri.pdf) dosyasını [bu](https://python-istihza.yazbel.com/YazbelPythonProgramlamaDiliBelgeleri.pdf) link aracılığı ile indirip kullanabilirsiniz.
 </details>
 
-
-
-
-
-### EPUB olarak indirme
-
-[`/docs/YazbelPythonProgramlamaDiliBelgeleri.epub`](/docs/YazbelPythonProgramlamaDiliBelgeleri.epub) dosyasını [bu](https://python-istihza.yazbel.com/YazbelPythonProgramlamaDiliBelgeleri.epub) link aracılığı ile indirip kullanabilirsiniz.
-
-### Tek parça HTML olarak indirme
+<details>
+<summary>### PDF olarak indirme</summary>
 
 [`/docs/YazbelPythonProgramlamaDiliBelgeleri.html`](/docs/YazbelPythonProgramlamaDiliBelgeleri.html) dosyasını [bu](https://python-istihza.yazbel.com/YazbelPythonProgramlamaDiliBelgeleri.html) link aracılığı ile indirip kullanabilirsiniz.
+</details>
+
+<details>
+<summary>Tek parça HTML olarak indirme</summary>
+
+[`/docs/YazbelPythonProgramlamaDiliBelgeleri.pdf`](/docs/YazbelPythonProgramlamaDiliBelgeleri.pdf) dosyasını [bu](https://python-istihza.yazbel.com/YazbelPythonProgramlamaDiliBelgeleri.pdf) link aracılığı ile indirip kullanabilirsiniz.
+</details>
+
+<br>
 
 ### Siteyi kaynaktan indirme
 
