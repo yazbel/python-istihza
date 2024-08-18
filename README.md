@@ -40,14 +40,22 @@ Belgelerde bir değişiklik yapmak ve belgeleri inşa etmek için [``BUILDING.md
 </details>
 
 <details>
-<summary>Tek parça HTML olarak indirme</summary>
+<summary>
+
+### Tek parça HTML olarak indirme
+</summary>
 
 [`/docs/YazbelPythonProgramlamaDiliBelgeleri.pdf`](/docs/YazbelPythonProgramlamaDiliBelgeleri.pdf) dosyasını [bu](https://python-istihza.yazbel.com/YazbelPythonProgramlamaDiliBelgeleri.pdf) link aracılığı ile indirip kullanabilirsiniz.
 </details>
 
+<details>
+<summary>
+
 ### Siteyi kaynaktan indirme
+</summary>
 
 Bu veri havuzunu cihazınıza indirebilir ve [`/docs/index.html`](/docs/index.html) dosyasını tarayıcınız ile açabilirsiniz. Bu size belgeleri çevrimiçi olarak kullanmak ile aynı deneyimi sunacaktır.
+</details>
 
 ---
 
