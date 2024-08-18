@@ -68,32 +68,32 @@ Belgeleri diğer formatlarda inşa ettikten sonra da `/scripts/move_documents.py
 
 ### Tek parça HTML olarak inşa etme
 
-Windows'ta:
-
-```shell
-make.bat singlehtml
-```
-
 Debian/Ubuntu'da:
 
 ```shell
 make singlehtml
 ```
 
-HTML dosyası `/build/singlehtml/` dizininde `index.html` adı ile oluşacaktır.
-
-### EPUB olarak inşa etme
-
 Windows'ta:
 
 ```shell
-make.bat epub
+make.bat singlehtml
 ```
+
+HTML dosyası `/build/singlehtml/` dizininde `index.html` adı ile oluşacaktır.
+
+### EPUB olarak inşa etme
 
 Debian/Ubuntu'da:
 
 ```shell
 make epub
+```
+
+Windows'ta:
+
+```shell
+make.bat epub
 ```
 
 EPUB dosyası `/build/epub/` dizininde `Yazbel Python Belgeleri.epub` adı ile oluşacaktır.
@@ -104,16 +104,16 @@ Belgeleri PDF olarak inşa edebilmek için ``pdflatex`` uygulamasına ihtiyacın
 
 Uygun bir TeX dağıtımını kurduktan sonra `pdflatex`'in bulunduğu dizinin PATH'de bulunduğundan emin olun.
 
-Windows'ta:
-
-```shell
-make.bat latexpdf
-```
-
 Debian/Ubuntu'da:
 
 ```shell
 make latexpdf
+```
+
+Windows'ta:
+
+```shell
+make.bat latexpdf
 ```
 
 Herhangi bir hata oluşmazsa PDF dosyası `/build/latex/` dizininde `yazbelpythonbelgeleri.pdf` adı ile oluşacaktır.
