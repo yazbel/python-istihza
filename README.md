@@ -18,17 +18,26 @@ Hatta bu gelişime siz de dahil olabilirsiniz!
 
 Bu arada proje sonlandığında bu belgede istihza.com'a verilen bağlantıların çalışmayabileceğini de unutmamalısınız.
 
+---
+
 ## Belgeleri inşa etmek
 
 Belgelerde bir değişiklik yapmak ve belgeleri inşa etmek için [``BUILDING.md``](BUILDING.md) dosyasına başvurun.
+
+<br>
 
 ## Belgelerden çevrimdışı iken faydalanmak
 
 Çevrimdışı olarak kullandığınız belgelerin zaman ile güncelliğini yitirip https://python-istihza.yazbel.com/ adresindeki belgelerin gerisinde kalabileceğini unutmayın.
 
-### PDF olarak indirme
-
+<details>
+<summary>### PDF olarak indirme</summary>
 [`/docs/YazbelPythonProgramlamaDiliBelgeleri.pdf`](/docs/YazbelPythonProgramlamaDiliBelgeleri.pdf) dosyasını [bu](https://python-istihza.yazbel.com/YazbelPythonProgramlamaDiliBelgeleri.pdf) link aracılığı ile indirip kullanabilirsiniz.
+</details>
+
+
+
+
 
 ### EPUB olarak indirme
 
@@ -42,10 +51,14 @@ Belgelerde bir değişiklik yapmak ve belgeleri inşa etmek için [``BUILDING.md
 
 Bu veri havuzunu cihazınıza indirebilir ve [`/docs/index.html`](/docs/index.html) dosyasını tarayıcınız ile açabilirsiniz. Bu size belgeleri çevrimiçi olarak kullanmak ile aynı deneyimi sunacaktır.
 
+---
+
 ## Nasıl yardım alabilirim?
 
 Her zaman [YazBel forumu](https://forum.yazbel.com/)nun [Python kategorisi](https://forum.yazbel.com/c/python)nde bir
 konu açarak aklınızdaki soruları sorabilirsiniz. Topluluk size yardım etmekten mutluluk duyacaktır.
+
+<br>
 
 ## Nasıl yardım edebilirim?
 
@@ -63,6 +76,8 @@ işleme mesajı (commit message) yazdığınıza emin olmalısınız. Belgelerde
 yardım edebilirsiniz. Bunun için veri havuzunun [konular (issues)](https://github.com/yazbel/python-istihza/issues)
 dizininde bir konu açın, başlık ve açıklama kısmına ilgili metinleri yazın ve gönderin. Başlık kısmının kısa ve öz
 olmasına dikkat edin.
+
+---
 
 ## Lisans
 
