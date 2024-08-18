@@ -104,10 +104,10 @@ Belgeleri PDF olarak inşa edebilmek için ``pdflatex`` uygulamasına ihtiyacın
 
 > Eğer Windows kullanıyorsanız ve [`winget`](https://github.com/microsoft/winget-cli) CLI uygulamasına sahipseniz MikTeX dağıtımını indirmek için bu yolu da izleyebilirsiniz:
 
-```shell
-winget install MiKTeX.MiKTeX
-winget install StrawberryPerl.StrawberryPerl # MiKTeX aynı zamanda bir Perl kurulumu gerektirir
-```
+> ```shell
+> winget install MiKTeX.MiKTeX
+> winget install StrawberryPerl.StrawberryPerl # MiKTeX aynı zamanda bir Perl kurulumu gerektirir
+> ```
 
 Uygun bir TeX dağıtımını kurduktan sonra `pdflatex`'in bulunduğu dizinin PATH'de bulunduğundan emin olun.
 
