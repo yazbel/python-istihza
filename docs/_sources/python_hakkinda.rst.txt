@@ -167,4 +167,4 @@ Ama her halükarda Python3'ün bu dilin geleceği olduğunu ve günün birinde P
 
              * https://www.python.org/doc/sunset-python-2/
              * https://pythonclock.org/
-             * https://python3statement.org/
+             * https://python3statement.github.io

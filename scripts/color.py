@@ -59,6 +59,10 @@ def with_modifiers(*modifiers):
         return g
     return util
 
+@guard
+def guarded_print(*args, **kwargs):
+    print(*args, **kwargs)
+
 @with_modifiers(Colors.RED)
 def error(*args, **kwargs):
     print(*args, **kwargs)
@@ -100,15 +104,23 @@ def _split_multiple_without_removing(text, delimeters):
         text = temp
     return text
 
-@guard
-def modify_words(text, words, color = '', style = '', replacement_rule = lambda x: x):
+def modify_text(text, words, color = '', replacement_rule = lambda x: x):
     t = ""
     for word in _split_multiple_without_removing(text, words):
         if word in words:
-            t += color + style + replacement_rule(word) + END
+            t += color + replacement_rule(word) + END
         else:
             t += word
     return t
 
+def modified_print(text, color_mapping, replacement_rule = lambda x: x):
+    for words, color in color_mapping.items():
+        text = modify_text(text, words, color, replacement_rule = replacement_rule)
+    guarded_print(text)
+
 if __name__ == "__main__":
-    print(modify_words("Merhaba dünya haha", ["dünya"], Colors.RED))
+    guarded_print(modify_text(modify_text("Hello world!", ["world"], Colors.GREEN + Styles.UNDERLINE), ["Hello"], Colors.BLUE + Styles.ITALIC))
+    modified_print("Colors here!", {
+        ("lors", "he"): Colors.YELLOW,
+        ("Co", "re!"): Colors.RED,
+        })

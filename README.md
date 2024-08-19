@@ -18,29 +18,37 @@ Hatta bu gelişime siz de dahil olabilirsiniz!
 
 Bu arada proje sonlandığında bu belgede istihza.com'a verilen bağlantıların çalışmayabileceğini de unutmamalısınız.
 
+---
+
 ## Belgeleri inşa etmek
 
 Belgelerde bir değişiklik yapmak ve belgeleri inşa etmek için [``BUILDING.md``](BUILDING.md) dosyasına başvurun.
+
+---
 
 ## Belgelerden çevrimdışı iken faydalanmak
 
 Çevrimdışı olarak kullandığınız belgelerin zaman ile güncelliğini yitirip https://python-istihza.yazbel.com/ adresindeki belgelerin gerisinde kalabileceğini unutmayın.
 
-### PDF olarak indirme
+<details>
+<summary>PDF olarak indirme</summary>
 
 [`/docs/YazbelPythonProgramlamaDiliBelgeleri.pdf`](/docs/YazbelPythonProgramlamaDiliBelgeleri.pdf) dosyasını [bu](https://python-istihza.yazbel.com/YazbelPythonProgramlamaDiliBelgeleri.pdf) link aracılığı ile indirip kullanabilirsiniz.
+</details>
 
-### EPUB olarak indirme
-
-[`/docs/YazbelPythonProgramlamaDiliBelgeleri.epub`](/docs/YazbelPythonProgramlamaDiliBelgeleri.epub) dosyasını [bu](https://python-istihza.yazbel.com/YazbelPythonProgramlamaDiliBelgeleri.epub) link aracılığı ile indirip kullanabilirsiniz.
-
-### Tek parça HTML olarak indirme
+<details>
+<summary>Tek parça HTML olarak indirme</summary>
 
 [`/docs/YazbelPythonProgramlamaDiliBelgeleri.html`](/docs/YazbelPythonProgramlamaDiliBelgeleri.html) dosyasını [bu](https://python-istihza.yazbel.com/YazbelPythonProgramlamaDiliBelgeleri.html) link aracılığı ile indirip kullanabilirsiniz.
+</details>
 
-### Siteyi kaynaktan indirme
+<details>
+<summary>Siteyi kaynaktan indirme</summary>
 
 Bu veri havuzunu cihazınıza indirebilir ve [`/docs/index.html`](/docs/index.html) dosyasını tarayıcınız ile açabilirsiniz. Bu size belgeleri çevrimiçi olarak kullanmak ile aynı deneyimi sunacaktır.
+</details>
+
+---
 
 ## Nasıl yardım alabilirim?
 
@@ -64,8 +72,10 @@ yardım edebilirsiniz. Bunun için veri havuzunun [konular (issues)](https://git
 dizininde bir konu açın, başlık ve açıklama kısmına ilgili metinleri yazın ve gönderin. Başlık kısmının kısa ve öz
 olmasına dikkat edin.
 
+---
+
 ## Lisans
 
-[`LICENSE`](LICENSE) dosyasında da belirtildiği üzere bu
+[`LICENSE`](LICENSE.md) dosyasında da belirtildiği üzere bu
 belgelerin lisansı **Creative Commons Atıf-GayriTicari-AynıLisanslaPaylaş 3.0 Yerelleştirilmemiş (CC BY-NC-SA 3.0)**
 lisansıdır. Daha fazla bilgi için lütfen dosyanın içeriğine bakınız.

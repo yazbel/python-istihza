@@ -943,19 +943,18 @@ Yalnız hem ``oct()`` hem de ``hex()`` fonksiyonlarında dikkat etmemiz gereken
 şey, bu fonksiyonların parametre olarak bir sayı alıp, çıktı olarak bir karakter
 dizisi veriyor olmasıdır.
 
-eval(), exec(), globals(), locals(), compile()
+eval(), exec(), globals(), locals()
 *************************************************
 
-Bu bölümde beş farklı fonksiyonu bir arada inceleyeceğiz. Bu fonksiyonları
+Bu bölümde dört farklı fonksiyonu bir arada inceleyeceğiz. Bu fonksiyonları
 birlikte ele almamızın nedeni bunların birbiriyle yakından bağlantılı olması.
 
-Burada işleyeceğimiz bu beş fonksiyon şunlardan oluşuyor:
+Burada işleyeceğimiz bu dört fonksiyon şunlardan oluşuyor:
 
 #. ``eval()``
 #. ``exec()``
 #. ``globals()``
 #. ``locals()``
-#. ``compile()``
 
 Ancak bu fonksiyonlardan söz etmeye başlamadan önce Python'daki iki önemli
 kavramı açıklığa kavuşturmamız gerekiyor: Bu kavramlar şunlar:

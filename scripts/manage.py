@@ -1,7 +1,7 @@
 import os
 from os.path import join
 from functools import wraps
-from color import error, warning, success, Styles, modify_words
+from color import error, warning, success, Styles, Colors, modify_text
 from difflib import SequenceMatcher
 import sys
 
@@ -151,9 +151,9 @@ app.configure(default = "help")
 @app.command("release", "dev", "all")
 def build(app, job = "debug"):
 	"""Builds the docs. Builds them in all available formats if [release] or [all] argument is given.
-	* Increases the project version if [release] argument is given.
-	* Opens the docs/index.html in browser if [dev] argument is given.
-	* Moves them to where they are needed if [release] or [dev] argument is given."""
+			* Increases the project version if [release] argument is given.
+			* Opens the docs/index.html in browser if [dev] argument is given.
+			* Moves them to where they are needed if [release] or [dev] argument is given."""
 
 	# should we do that at the start so that it affects this release or at the end so that it doesn't run if there is an exception?
 	if job == "release":
@@ -164,7 +164,7 @@ def build(app, job = "debug"):
 
 	if job in ("release", "all"):
 		p = app.call("make singlehtml", "HTML (single file)")
-		p = app.call("make latexpdf", "PDF")
+		p = app.call("make latexpdf", "PDF") # TODO: this job never finishes because latexpdf waits for input on syntax errors
 		p = app.call("make epub", "EPUB")
 
 	if job in ("debug", "all"):
@@ -192,8 +192,7 @@ def checklinks(app):
 @app.command("major", "minor", "patch", "downgrade")
 def version(app, field = "display"):
 	"""Upgrades or downgrades the project version with respect to the specified argument ([major], [minor], [patch] or [downgrade]).
-	* Displays the current version if no argument is passed.
-	"""
+			* Displays the current version if no argument is passed."""
 	with open(version_file, "r") as f:
 		versions = list(map(lambda x: x[:-1] if x.endswith("\n") else x, f))
 
@@ -221,21 +220,28 @@ def version(app, field = "display"):
 		f.write("\n".join(versions))
 
 def highlight_arguments(procedure):
-	return modify_words(procedure[0].__doc__, words = tuple(map(lambda x: f"[{x}]", procedure[1])), style = Styles.BOLD, replacement_rule = lambda x: x[1:-1])
+	doc = procedure[0].__doc__
+	words = tuple(map(lambda x: f"[{x}]", procedure[1]))
+	return modify_text(doc, words = words, color = Styles.UNDERLINE + Colors.CYAN, replacement_rule = lambda x: x[1:-1])
 
 @app.command(*app.procedures, "help")
 def help(app, method = None):
-	"Displays a help message for the given argument."
+	"""Displays a help message for the given argument."""
 	if method is None:
 		print("Valid arguments for the application:\n")
 		for i in app.procedures:
 			print(f"- {i:<20}" + highlight_arguments(app.procedures[i]))
+			print()
 	else:
 		print(f"{method}:", highlight_arguments(app.procedures[method]))
 
 if __name__ == "__main__":
 	import sys
 	args = sys.argv[1:]
-	app.run(args)
+	try:
+		app.run(args)
+	except KeyboardInterrupt:
+		print()
+		warning("Received CTRL+C, shutting down.")
 else:
 	raise ImportError("This file is not supposed to be imported.")

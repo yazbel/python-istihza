@@ -1,12 +1,12 @@
-Creative Commons Atıf-GayriTicari-AynıLisanslaPaylaş 3.0 Yerelleştirilmemiş (CC BY-NC-SA 3.0)
+# Creative Commons Atıf-GayriTicari-AynıLisanslaPaylaş 3.0 Yerelleştirilmemiş (CC BY-NC-SA 3.0)
 
 Lisans ile ilgili bilgi için şu adrese bakabilirsiniz: https://creativecommons.org/licenses/by-nc-sa/3.0/deed.tr
 
 Lisansın aslını şu adreste okuyabilirsiniz: https://creativecommons.org/licenses/by-nc-sa/3.0/legalcode
 
-Bu belgeler https://yazbel.com/ adresindeki "Python Programlama Dili (Python 3 için Türkçe Kılavuz)" başlıklı
-belgelerden(https://python-istihza.yazbel.com/) oluşturulmuştur. Belgelerin yazarı
-Fırat Özgül(https://www.kodlab.com/141__firat-ozgul)'dür.
+Bu belgeler https://yazbel.com/ adresindeki "Python Programlama Dili (Python 3 için Türkçe Kaynak)" başlıklı
+belgelerden (https://python-istihza.yazbel.com/) oluşturulmuştur. Belgelerin yazarı
+Fırat Özgül'dür (https://www.kodlab.com/141__firat-ozgul).
 
 Bu lisans size şunları yapma özgürlüğünü verir:
 
@@ -18,7 +18,7 @@ Lisans sahibi, lisans şartlarını takip ettiğiniz sürece bu özgürlükleri 
 
 Ancak bu özgürlüklerin aşağıdaki şartlar dahilinde geçerli olduğunu unutmamalısınız:
 
-- Bu belgeleri kullandığınız herhangi bir yerde bu belgelere(https://python-istihza.yazbel.com/) atıfta
+- Bu belgeleri kullandığınız herhangi bir yerde bu belgelere (https://python-istihza.yazbel.com/) atıfta
 bulunmalı ve değişiklik yaptıysanız bundan bahsetmelisiniz. Ancak bunu yaparken lisans sahibinin sizi veya kullanımınızı
 onayladığına dair bir bilgi paylaşmamalısınız.
 
