@@ -2,7 +2,9 @@
 
 Bu belgeler [reStructuredText](http://docutils.sourceforge.net/rst.html) formatında yazılmış ve [Sphinx](http://www.sphinx-doc.org/) kullanılarak oluşturulmuştur. Belgeleri derlemek için öncelikle Sphinx'i kurmanız gerekmektedir. Sphinx, Python 3.10 ve üzeri sürümleri destekler.
 
-Belgelere katkıda bulunmayı düşünüyorsanız önce [`CONTRIBUTING.md`](CONTRIBUTING.md) dosyasını incelemenizi öneririz.
+Belgelere katkıda bulunmayı düşünüyorsanız, öncelikle [`CONTRIBUTING.md`](CONTRIBUTING.md) dosyasını incelemenizi öneririz.
+
+---
 
 ## Gereksinimler ve Kurulum
 
@@ -15,25 +17,25 @@ Belgelere katkıda bulunmayı düşünüyorsanız önce [`CONTRIBUTING.md`](CONT
 
 2. **Kurulum Adımları:**
 
-Projenin kök dizinine gidin ve gerekli kütüphaneleri şu komutla yükleyin:
+   Projenin kök dizinine gidin ve gerekli kütüphaneleri şu komutla yükleyin:
 
-```shell
-python3 -m pip install -r requirements.txt
-```
+   ```shell
+   python3 -m pip install -r requirements.txt
+   ```
 
-Daha sonra belgeleri derlemek için şu komutu çalıştırın:
+   Daha sonra belgeleri derlemek için şu komutu çalıştırın:
 
-```shell
-make html
-```
+   ```shell
+   make html
+   ```
 
-Belgeleri inşa ettikten sonra, `/scripts/move_documents.py` betiği, `/build/` dizinindeki gerekli dosyaları `/docs/` dizinine taşıyacaktır:
+   Belgeleri inşa ettikten sonra, `/scripts/move_documents.py` betiği, `/build/` dizinindeki gerekli dosyaları `/docs/` dizinine taşıyacaktır:
 
-```shell
-python3 ./scripts/move_documents.py
-```
+   ```shell
+   python3 ./scripts/move_documents.py
+   ```
 
-Sonuç olarak, oluşturulan belgeleri görüntülemek için `/docs/index.html` dosyasını tarayıcınızda açabilirsiniz.
+   Sonuç olarak, oluşturulan belgeleri görüntülemek için `/docs/index.html` dosyasını tarayıcınızda açabilirsiniz.
 
 ---
 
@@ -45,31 +47,31 @@ Sonuç olarak, oluşturulan belgeleri görüntülemek için `/docs/index.html` d
 
 2. **Kurulum Adımları:**
 
-Projenin kök dizinine gidin ve gerekli kütüphaneleri şu komutla yükleyin:
+   Projenin kök dizinine gidin ve gerekli kütüphaneleri şu komutla yükleyin:
 
-```shell
-python -m pip install -r requirements.txt
-```
+   ```shell
+   python -m pip install -r requirements.txt
+   ```
 
-Yüklemenin başarılı olduğunu doğrulamak için aşağıdaki komutu çalıştırarak Sphinx sürümünü kontrol edin:
+   Yüklemenin başarılı olduğunu doğrulamak için aşağıdaki komutu çalıştırarak Sphinx sürümünü kontrol edin:
 
-```shell
-sphinx-build --version
-```
+   ```shell
+   sphinx-build --version
+   ```
 
-Belgeleri inşa etmek için şu komutu çalıştırın:
+   Belgeleri inşa etmek için şu komutu çalıştırın:
 
-```shell
-make.bat html
-```
+   ```shell
+   make.bat html
+   ```
 
-Belgeler oluşturulduktan sonra, `/scripts/move_documents.py` betiği ile dosyaları taşıyın:
+   Belgeler oluşturulduktan sonra, `/scripts/move_documents.py` betiği ile dosyaları taşıyın:
 
-```shell
-python scripts/move_documents.py
-```
+   ```shell
+   python scripts/move_documents.py
+   ```
 
-Oluşturulan belgeleri görmek için `/docs/index.html` dosyasını tarayıcınızda açabilirsiniz.
+   Oluşturulan belgeleri görmek için `/docs/index.html` dosyasını tarayıcınızda açabilirsiniz.
 
 ---
 
@@ -85,37 +87,37 @@ Sphinx ile belgeleri farklı formatlarda oluşturabilirsiniz. Aşağıdaki adım
 
 ### Tek Parça HTML
 
-Debian/Ubuntu'da:
+- **Debian/Ubuntu:**
 
-```shell
-make singlehtml
-```
+  ```shell
+  make singlehtml
+  ```
 
-Windows'ta:
+- **Windows:**
 
-```shell
-make.bat singlehtml
-```
+  ```shell
+  make.bat singlehtml
+  ```
 
-Oluşturulan HTML dosyası `/build/singlehtml/index.html` yolunda bulunacaktır.
+  Oluşturulan HTML dosyası `/build/singlehtml/index.html` yolunda bulunacaktır.
 
 ---
 
 ### EPUB
 
-Debian/Ubuntu'da:
+- **Debian/Ubuntu:**
 
-```shell
-make epub
-```
+  ```shell
+  make epub
+  ```
 
-Windows'ta:
+- **Windows:**
 
-```shell
-make.bat epub
-```
+  ```shell
+  make.bat epub
+  ```
 
-EPUB dosyası `/build/epub/Yazbel Python Belgeleri.epub` olarak kaydedilecektir.
+  EPUB dosyası `/build/epub/Yazbel Python Belgeleri.epub` olarak kaydedilecektir.
 
 ---
 
@@ -124,7 +126,7 @@ EPUB dosyası `/build/epub/Yazbel Python Belgeleri.epub` olarak kaydedilecektir.
 PDF formatında belgeleri oluşturmak için bir TeX dağıtımı (ör. [MikTeX](https://miktex.org/) veya [TeX Live](https://www.tug.org/texlive/)) kurmanız gereklidir. Bu dağıtımlar genellikle ek eklentilerle birlikte kurulur ve yaklaşık 800 MB disk alanı gerektirir.
 
 > **Windows Kullanıcıları için:** Eğer [`winget`](https://github.com/microsoft/winget-cli) kuruluysa, MikTeX'i şu komutlarla yükleyebilirsiniz:
-> 
+>
 > ```shell
 > winget install MiKTeX.MiKTeX
 > winget install StrawberryPerl.StrawberryPerl # MikTeX ayrıca bir Perl kurulumu gerektirir
@@ -135,15 +137,16 @@ TeX dağıtımı kurulduktan sonra `pdflatex` uygulamasının PATH ortam değiş
 Belgeleri PDF formatında oluşturmak için:
 
 - **Debian/Ubuntu:**
+
   ```shell
   make latexpdf
   ```
 
 - **Windows:**
+
   ```shell
   make.bat latexpdf
   ```
 
-Oluşturulan PDF dosyası `/build/latex/yazbelpythonbelgeleri.pdf` yolunda bulunacaktır.
+  Oluşturulan PDF dosyası `/build/latex/yazbelpythonbelgeleri.pdf` yolunda bulunacaktır.
 
----
