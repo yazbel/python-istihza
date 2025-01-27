@@ -25,7 +25,7 @@ Yapabileceğiniz bazı örnek projeler
 5. **Eğitimde Kavram Görselleştirme:**
    - Matematiksel fonksiyonların grafiklerini çizme.
    - İstatistiksel dağılımları gösterme.
-
+   
 Kullanabileceğiniz grafik çeşitleri
 ------------------------------------------------
 
