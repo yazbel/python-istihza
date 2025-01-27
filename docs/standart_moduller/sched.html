@@ -70,7 +70,7 @@ Modülün içinde scheduler diye bir sınıf mevcut.
 (Sınıfın adı dikkat ettiyseniz küçük harfle başlıyor.)
 Bu modülü kullanmadan önce <cite>scheduler</cite> sınıfından bir örnek
 oluşturmalısınız:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sched</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sched</span>
 <span class="n">s</span><span class="o">=</span><span class="n">sched</span><span class="o">.</span><span class="n">scheduler</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -83,7 +83,7 @@ birazdan açıklayacağım. İkinci ve son parametre ise <cite>delayfunc</cite>.
 Bu parametrenin varsayılan değeri <cite>time.sleep</cite>. Bu parametreyi de
 kodun okunaklılığı açısından belirtelim. Sonuç olarak örneğimizi
 şu şekilde tanımlayalım:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sched</span><span class="o">,</span> <span class="nn">time</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sched</span><span class="o">,</span><span class="w"> </span><span class="nn">time</span>
 <span class="n">s</span><span class="o">=</span><span class="n">sched</span><span class="o">.</span><span class="n">scheduler</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -132,12 +132,12 @@ kullanabileceğimiz tek değişken. Daha önce sıraya eklenmiş
 <h2>Örnekler<a class="headerlink" href="#ornekler" title="Link to this heading">¶</a></h2>
 <p>Anlatım biraz kafa karıştırıcı oldu. Ancak şimdi birkaç
 Örnek yaparak mantığını kavramanızı sağlayalım.</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sched</span><span class="o">,</span><span class="nn">time</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">sched</span><span class="o">,</span><span class="nn">time</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">=</span><span class="n">sched</span><span class="o">.</span><span class="n">scheduler</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">,</span><span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">zamanı_yazdır</span><span class="p">(</span><span class="n">sıra</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">zamanı_yazdır</span><span class="p">(</span><span class="n">sıra</span><span class="p">):</span>
 <span class="go">    print(f&quot;Zaman: {time.time()} ,{sıra}&quot;)</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">farklı_zamanları_yazdır</span><span class="p">():</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">farklı_zamanları_yazdır</span><span class="p">():</span>
 <span class="go">    print(time.time())</span>
 <span class="go">    s.enter(10,1,zamanı_yazdır,argument=(&quot;Birinci&quot;,))</span>
 <span class="go">    s.enter(5,1,zamanı_yazdır,argument=(&quot;İkinci&quot;,))</span>
@@ -161,14 +161,14 @@ tanımlanma sıralarına bakıldı. “Üçüncü”nün öncelik sırası
 2 olduğu için onlardan daha sonra yazıldı. “Birinci” onlardan 5
 saniye sonra yani çalışmaya başladıktan 10 saniye sonra çalıştı.</p>
 <p>Bir başka örnek:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sched</span><span class="o">,</span><span class="nn">time</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sched</span><span class="o">,</span><span class="nn">time</span>
 <span class="n">s</span><span class="o">=</span><span class="n">sched</span><span class="o">.</span><span class="n">scheduler</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">,</span><span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">)</span>
 <span class="n">yazdırılacak_değer</span><span class="o">=</span><span class="s2">&quot;Merhaba Dünya&quot;</span>
-<span class="k">def</span> <span class="nf">değiştir</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">değiştir</span><span class="p">():</span>
     <span class="k">global</span> <span class="n">yazdırılacak_değer</span>
     <span class="n">yazdırılacak_değer</span><span class="o">=</span><span class="s2">&quot;Merhaba Zalim Dünya&quot;</span>
 
-<span class="k">def</span> <span class="nf">yazdır</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">yazdır</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">yazdırılacak_değer</span><span class="p">)</span>
 
 <span class="n">suan</span><span class="o">=</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
@@ -189,10 +189,10 @@ Ancak hemen sonra çalışan <cite>değiştir</cite> fonksiyonu ile <cite>yazdı
 değiştiği için 10. saniyede çalışan <cite>yazdır</cite> fonksiyonu
 farklı bir çıktı veriyor.</p>
 <p>Şu şekilde fantastik bir döngü oluşturulabilir:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sched</span><span class="o">,</span><span class="nn">time</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sched</span><span class="o">,</span><span class="nn">time</span>
 <span class="n">s</span><span class="o">=</span><span class="n">sched</span><span class="o">.</span><span class="n">scheduler</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">,</span><span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">)</span>
 <span class="n">suan</span><span class="o">=</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-<span class="k">def</span> <span class="nf">çıktı</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">çıktı</span><span class="p">():</span>
     <span class="k">global</span> <span class="n">suan</span>
     <span class="n">suan</span><span class="o">+=</span><span class="mi">2</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">suan</span><span class="p">)</span>
@@ -315,8 +315,8 @@ Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" 
     </div> 
 
 <div class="footer">
-		&copy; Copyright 2007-2024, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 19.08.2024.
+		&copy; Copyright 2007-2025, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 27.01.2025.
 	<a href="http://sphinx-doc.org/">Sphinx</a> 8.0.2 kullanılarak oluşturuldu.
 
 	Yayım 4.1.3.

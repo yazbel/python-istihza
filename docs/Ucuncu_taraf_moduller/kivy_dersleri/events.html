@@ -74,12 +74,12 @@
 <p>Clock sınıfını iki şekilde kullanabiliriz. Birincisi, fonksiyonun sadece bir kez çağrılması. Yani belirtilen süre sonunda, fonksiyon çalıştırılır ve işlem tamamlanır. Bir örnekle görelim</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># coding: utf-8</span>
 
-<span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
-<span class="kn">from</span> <span class="nn">kivy.clock</span> <span class="kn">import</span> <span class="n">Clock</span>
-<span class="kn">from</span> <span class="nn">kivy.uix.label</span> <span class="kn">import</span> <span class="n">Label</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kivy.app</span><span class="w"> </span><span class="kn">import</span> <span class="n">App</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kivy.clock</span><span class="w"> </span><span class="kn">import</span> <span class="n">Clock</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kivy.uix.label</span><span class="w"> </span><span class="kn">import</span> <span class="n">Label</span>
 
-<span class="k">class</span> <span class="nc">Program</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Program</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">yazi</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Merhaba&quot;</span><span class="p">)</span>
 
@@ -87,7 +87,7 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">yazi</span>
 
-    <span class="k">def</span> <span class="nf">degistir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">degistir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">yazi</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Dünya&quot;</span>
 
 
@@ -98,20 +98,20 @@
 <p>Clock sınıfının bir başka kullanımı ise, belli aralıklarla sürekli çalışmasıdır. Fonksiyonu çalıştırır, sonra belirtilen süre kadar bekler ve sonra tekrar çalıştırır. Bunu, siz sonlandırana kadar veya program kapanana kadar yapmaya devam eder. Saat örneği, bu kullanım için çok iyi bir örnektir.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># coding: utf-8</span>
 
-<span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
-<span class="kn">from</span> <span class="nn">kivy.clock</span> <span class="kn">import</span> <span class="n">Clock</span>
-<span class="kn">from</span> <span class="nn">kivy.uix.label</span> <span class="kn">import</span> <span class="n">Label</span>
-<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kivy.app</span><span class="w"> </span><span class="kn">import</span> <span class="n">App</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kivy.clock</span><span class="w"> </span><span class="kn">import</span> <span class="n">Clock</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kivy.uix.label</span><span class="w"> </span><span class="kn">import</span> <span class="n">Label</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span>
 
-<span class="k">class</span> <span class="nc">Program</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Program</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">yazi</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Merhaba&quot;</span><span class="p">,</span><span class="n">markup</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 
         <span class="n">Clock</span><span class="o">.</span><span class="n">schedule_interval</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">degistir</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># 1 saniye sonra, self.degistir adlı fonksiyonu çalıştır</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">yazi</span>
 
-    <span class="k">def</span> <span class="nf">degistir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">degistir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">):</span>
         <span class="n">zaman</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">saat</span> <span class="o">=</span> <span class="s2">&quot;[size=25sp]</span><span class="si">{}</span><span class="s2">:</span><span class="si">{}</span><span class="s2">:</span><span class="si">{}</span><span class="s2">[/size]&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">zaman</span><span class="o">.</span><span class="n">hour</span><span class="p">,</span><span class="n">zaman</span><span class="o">.</span><span class="n">minute</span><span class="p">,</span><span class="n">zaman</span><span class="o">.</span><span class="n">second</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">yazi</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">saat</span>
@@ -139,12 +139,12 @@
 <p>Genelde bir pencere aracının sahip olduğu olaylar, ilgili <a class="reference external" href="https://kivy.org/doc/stable/api-index.html">API</a> kaynağında bulunur. Böylece kaynağa bakarak, ele almak istediğimiz olayları bind() yardımıyla bağlayabiliriz. Basit bir örnek yapalım isterseniz</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># coding: utf-8</span>
 
-<span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
-<span class="kn">from</span> <span class="nn">kivy.uix.boxlayout</span> <span class="kn">import</span> <span class="n">BoxLayout</span>
-<span class="kn">from</span> <span class="nn">kivy.uix.textinput</span> <span class="kn">import</span> <span class="n">TextInput</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kivy.app</span><span class="w"> </span><span class="kn">import</span> <span class="n">App</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kivy.uix.boxlayout</span><span class="w"> </span><span class="kn">import</span> <span class="n">BoxLayout</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kivy.uix.textinput</span><span class="w"> </span><span class="kn">import</span> <span class="n">TextInput</span>
 
-<span class="k">class</span> <span class="nc">Program</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Program</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">metin_kutusu</span> <span class="o">=</span> <span class="n">TextInput</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">metin_kutusu</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">kontrol</span><span class="p">)</span>
@@ -152,7 +152,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">metin_kutusu</span>
 
 
-    <span class="k">def</span> <span class="nf">kontrol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">instance</span><span class="p">,</span><span class="n">value</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">kontrol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">instance</span><span class="p">,</span><span class="n">value</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 
 <span class="n">Program</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
@@ -273,8 +273,8 @@ Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" 
     </div> 
 
 <div class="footer">
-		&copy; Copyright 2007-2024, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 19.08.2024.
+		&copy; Copyright 2007-2025, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 27.01.2025.
 	<a href="http://sphinx-doc.org/">Sphinx</a> 8.0.2 kullanılarak oluşturuldu.
 
 	Yayım 4.1.3.

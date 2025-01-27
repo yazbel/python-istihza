@@ -71,19 +71,19 @@
 <p>Popup pencerelerini oluşturmak için öncelikle kivy.uix.popup.Popup sınıfını import etmeliyiz. Sonra da mutlaka içerisinde yer alacak başka bir pencere aracını belirtmeliyiz. Şimdi bir butona tıklandığı zaman ekranda beliren Popup penceresi örneğini yapalım</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#coding: utf-8</span>
 
-<span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
-<span class="kn">from</span> <span class="nn">kivy.uix.popup</span> <span class="kn">import</span> <span class="n">Popup</span>
-<span class="kn">from</span> <span class="nn">kivy.uix.button</span> <span class="kn">import</span> <span class="n">Button</span>
-<span class="kn">from</span> <span class="nn">kivy.uix.label</span> <span class="kn">import</span> <span class="n">Label</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kivy.app</span><span class="w"> </span><span class="kn">import</span> <span class="n">App</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kivy.uix.popup</span><span class="w"> </span><span class="kn">import</span> <span class="n">Popup</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kivy.uix.button</span><span class="w"> </span><span class="kn">import</span> <span class="n">Button</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kivy.uix.label</span><span class="w"> </span><span class="kn">import</span> <span class="n">Label</span>
 
-<span class="k">class</span> <span class="nc">Yazbel</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Yazbel</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">buton</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Bir Mesajınız Var!&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">buton</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">on_release</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mesaj</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">buton</span>
 
-    <span class="k">def</span> <span class="nf">mesaj</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">instance</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mesaj</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">instance</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="n">popup</span> <span class="o">=</span> <span class="n">Popup</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Mesajınız&quot;</span><span class="p">,</span>
                       <span class="n">content</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Tebrikler! İlk Popup pencereyi başarıyla</span><span class="se">\n</span><span class="s2">oluşturdunuz.&quot;</span><span class="p">)</span>
                       <span class="p">)</span>
@@ -97,20 +97,20 @@
 <p>Örneğimiz oldukça basit. Bir buton tanımladık ve tıklandığı zaman mesaj() metoduna geçiş yaptık. Bu metodumuzun içerisinde de bir tane Popup penceresi oluşturduk ve gerekli özelliklerini tanımladık. title, Popup penceresinin üst kısmında gösterilecek başlığını ifade eder. content ise, Popup penceresi içerisinde gösterilecek pencere aracını ifade eder. Bu pencere aracı sadece Label,Button gibi araçlar değil, bir pencere düzeni de olabilir.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#coding: utf-8</span>
 
-<span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
-<span class="kn">from</span> <span class="nn">kivy.uix.popup</span> <span class="kn">import</span> <span class="n">Popup</span>
-<span class="kn">from</span> <span class="nn">kivy.uix.button</span> <span class="kn">import</span> <span class="n">Button</span>
-<span class="kn">from</span> <span class="nn">kivy.uix.label</span> <span class="kn">import</span> <span class="n">Label</span>
-<span class="kn">from</span> <span class="nn">kivy.uix.gridlayout</span> <span class="kn">import</span> <span class="n">GridLayout</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kivy.app</span><span class="w"> </span><span class="kn">import</span> <span class="n">App</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kivy.uix.popup</span><span class="w"> </span><span class="kn">import</span> <span class="n">Popup</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kivy.uix.button</span><span class="w"> </span><span class="kn">import</span> <span class="n">Button</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kivy.uix.label</span><span class="w"> </span><span class="kn">import</span> <span class="n">Label</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kivy.uix.gridlayout</span><span class="w"> </span><span class="kn">import</span> <span class="n">GridLayout</span>
 
-<span class="k">class</span> <span class="nc">Yazbel</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Yazbel</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">buton</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Bir Mesajınız Var!&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">buton</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">on_release</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mesaj</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">buton</span>
 
-    <span class="k">def</span> <span class="nf">mesaj</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">instance</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mesaj</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">instance</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="n">govde</span> <span class="o">=</span> <span class="n">GridLayout</span><span class="p">(</span><span class="n">rows</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span><span class="n">column</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 
         <span class="n">govde</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="n">Label</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;[color=#0f0]Gönderen:[/color]Yazbel&quot;</span><span class="p">,</span>
@@ -137,20 +137,20 @@
 <p>Bunun iki yolu var. Birincisi, Popup penceresi dışındaki bir alana basıldığı zaman pencerenin kapatılmasıdır. Yukarıdaki örneğimizde Popup penceremiz tam ekran olarak açıldığı için Popup dışındaki bir alana basamıyoruz. Bu yüzden popup penceremizin boyutlarını değiştirelim ve Popup dışındaki bir alana basıldığı zaman kapanması için auto_dismiss özelliğini aktif edelim</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#coding: utf-8</span>
 
-<span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
-<span class="kn">from</span> <span class="nn">kivy.uix.popup</span> <span class="kn">import</span> <span class="n">Popup</span>
-<span class="kn">from</span> <span class="nn">kivy.uix.button</span> <span class="kn">import</span> <span class="n">Button</span>
-<span class="kn">from</span> <span class="nn">kivy.uix.label</span> <span class="kn">import</span> <span class="n">Label</span>
-<span class="kn">from</span> <span class="nn">kivy.uix.gridlayout</span> <span class="kn">import</span> <span class="n">GridLayout</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kivy.app</span><span class="w"> </span><span class="kn">import</span> <span class="n">App</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kivy.uix.popup</span><span class="w"> </span><span class="kn">import</span> <span class="n">Popup</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kivy.uix.button</span><span class="w"> </span><span class="kn">import</span> <span class="n">Button</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kivy.uix.label</span><span class="w"> </span><span class="kn">import</span> <span class="n">Label</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kivy.uix.gridlayout</span><span class="w"> </span><span class="kn">import</span> <span class="n">GridLayout</span>
 
-<span class="k">class</span> <span class="nc">Yazbel</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Yazbel</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">buton</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Bir Mesajınız Var!&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">buton</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">on_release</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">popAc</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">buton</span>
 
-    <span class="k">def</span> <span class="nf">popAc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">instance</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">popAc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">instance</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="n">govde</span> <span class="o">=</span> <span class="n">GridLayout</span><span class="p">(</span><span class="n">rows</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span><span class="n">column</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 
         <span class="n">govde</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="n">Label</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;[color=#0f0]Gönderen:[/color]Yazbel&quot;</span><span class="p">,</span>
@@ -182,24 +182,24 @@
 <p>Programı çalıştırıp, Popup alanı dışındaki bir alana tıklarsanız Popup kapatılacaktır. Popup pencerelerini kapatmanın bir diğer yolu, dismiss() metodunu kullanmaktır. Bu sefer ki örneğimizde kullanıcı programdan çıkmak istesin ve biz de, evet - hayır dialog kutusu göstererek onaylayalım. Eğer kullanıcı hayır derse, Popup pencereyi kapatalım. Evet derse programdan çıkış yapalım.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#coding: utf-8</span>
 
-<span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
-<span class="kn">from</span> <span class="nn">kivy.uix.popup</span> <span class="kn">import</span> <span class="n">Popup</span>
-<span class="kn">from</span> <span class="nn">kivy.uix.button</span> <span class="kn">import</span> <span class="n">Button</span>
-<span class="kn">from</span> <span class="nn">kivy.uix.label</span> <span class="kn">import</span> <span class="n">Label</span>
-<span class="kn">from</span> <span class="nn">kivy.uix.gridlayout</span> <span class="kn">import</span> <span class="n">GridLayout</span>
-<span class="kn">from</span> <span class="nn">kivy.uix.widget</span> <span class="kn">import</span> <span class="n">Widget</span>
-<span class="kn">from</span> <span class="nn">kivy.uix.boxlayout</span> <span class="kn">import</span> <span class="n">BoxLayout</span>
-<span class="kn">from</span> <span class="nn">kivy.core.window</span> <span class="kn">import</span> <span class="n">Window</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kivy.app</span><span class="w"> </span><span class="kn">import</span> <span class="n">App</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kivy.uix.popup</span><span class="w"> </span><span class="kn">import</span> <span class="n">Popup</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kivy.uix.button</span><span class="w"> </span><span class="kn">import</span> <span class="n">Button</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kivy.uix.label</span><span class="w"> </span><span class="kn">import</span> <span class="n">Label</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kivy.uix.gridlayout</span><span class="w"> </span><span class="kn">import</span> <span class="n">GridLayout</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kivy.uix.widget</span><span class="w"> </span><span class="kn">import</span> <span class="n">Widget</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kivy.uix.boxlayout</span><span class="w"> </span><span class="kn">import</span> <span class="n">BoxLayout</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kivy.core.window</span><span class="w"> </span><span class="kn">import</span> <span class="n">Window</span>
 
-<span class="k">class</span> <span class="nc">Yazbel</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Yazbel</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">buton</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Çıkış Yap&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">buton</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">on_release</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cikis</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">buton</span>
 
-    <span class="k">def</span> <span class="nf">cikis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">instance</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">cikis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">instance</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 
         <span class="n">govde</span> <span class="o">=</span> <span class="n">GridLayout</span><span class="p">(</span><span class="n">cols</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 
@@ -227,7 +227,7 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">popup</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">kontrol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">instance</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">kontrol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">instance</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="n">buton_yazisi</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="n">text</span>
 
         <span class="k">if</span><span class="p">(</span><span class="n">buton_yazisi</span> <span class="o">==</span> <span class="s2">&quot;Evet&quot;</span><span class="p">):</span>
@@ -379,8 +379,8 @@ Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" 
     </div> 
 
 <div class="footer">
-		&copy; Copyright 2007-2024, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 19.08.2024.
+		&copy; Copyright 2007-2025, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 27.01.2025.
 	<a href="http://sphinx-doc.org/">Sphinx</a> 8.0.2 kullanılarak oluşturuldu.
 
 	Yayım 4.1.3.

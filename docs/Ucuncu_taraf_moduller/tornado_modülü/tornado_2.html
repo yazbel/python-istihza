@@ -21,7 +21,7 @@
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Dizin" href="../../genindex.html" />
     <link rel="search" title="Ara" href="../../search.html" />
-    <link rel="next" title="Katkıda Bulunanlar" href="../../katkida_bulunanlar.html" />
+    <link rel="next" title="Matplotlib" href="../matplotlib_mod%C3%BCl%C3%BC/matplotlib.html" />
     <link rel="prev" title="Tornado" href="tornado_1.html" />
 <!--[if lte IE 6]>
 <link rel="stylesheet" href="../../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
@@ -46,7 +46,7 @@
           <a href="../../genindex.html" title="Genel Dizin"
              accesskey="I">dizin</a></li>
         <li class="right" >
-          <a href="../../katkida_bulunanlar.html" title="Katkıda Bulunanlar"
+          <a href="../matplotlib_mod%C3%BCl%C3%BC/matplotlib.html" title="Matplotlib"
              accesskey="N">sonraki</a> |</li>
         <li class="right" >
           <a href="tornado_1.html" title="Tornado"
@@ -87,21 +87,21 @@ metoda sahipler: <cite>on_open</cite>, <cite>on_message</cite>, <cite>on_close</
 <p>Biz <cite>view</cite> ile kullanıcıya veri yollarken <cite>write</cite> metodundan faydalanmıştık.
 Fakat <cite>websocket</cite>’ler bu iş için <cite>write_message</cite> metodunu kullanıyor.</p>
 <p>Şimdi gelen mesajları geri gönderen bir <cite>websocket</cite> yazalım:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tornado.web</span>
-<span class="kn">import</span> <span class="nn">tornado.ioloop</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">tornado.web</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tornado.ioloop</span>
 
-<span class="kn">import</span> <span class="nn">tornado.websocket</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tornado.websocket</span>
 
-<span class="k">class</span> <span class="nc">Geri</span><span class="p">(</span><span class="n">tornado</span><span class="o">.</span><span class="n">websocket</span><span class="o">.</span><span class="n">WebSocketHandler</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Geri</span><span class="p">(</span><span class="n">tornado</span><span class="o">.</span><span class="n">websocket</span><span class="o">.</span><span class="n">WebSocketHandler</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="nf">on_open</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_open</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bağlantı kuruldu&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">on_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mesaj</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mesaj</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">mesaj</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">write_message</span><span class="p">(</span><span class="n">mesaj</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">on_close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bağlantı kapandı&quot;</span><span class="p">)</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">Application</span><span class="p">([</span>
@@ -114,11 +114,11 @@ Fakat <cite>websocket</cite>’ler bu iş için <cite>write_message</cite> metod
 </div>
 <p>İlk işimiz yeni bir kütüphane eklemek oldu.Bu kütüphane bizim <cite>websocket</cite>
 yazmamız için gerekli sınıfı bulunduruyor.</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tornado.websocket</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">tornado.websocket</span>
 </pre></div>
 </div>
 <p>Yeni bir sınıf oluşturduk:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Geri</span><span class="p">(</span><span class="n">tornado</span><span class="o">.</span><span class="n">websocket</span><span class="o">.</span><span class="n">WebSocketHandler</span><span class="p">):</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Geri</span><span class="p">(</span><span class="n">tornado</span><span class="o">.</span><span class="n">websocket</span><span class="o">.</span><span class="n">WebSocketHandler</span><span class="p">):</span>
 </pre></div>
 </div>
 <p>Bu sınıf bizim <cite>websocket</cite>’imiz. Daha önce <cite>view</cite> yazarken
@@ -126,14 +126,14 @@ yazmamız için gerekli sınıfı bulunduruyor.</p>
 <cite>tornado.websocket.WebSocketHandler</cite> sınıfından faydalandık.</p>
 <p><cite>Websocket</cite> ile bağlantı kurulduğunda bize <cite>Bağlantı kuruldu</cite> yazması için
 <cite>on_open</cite> metodunu düzenledik:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">on_open</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">on_open</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bağlantı kuruldu&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><cite>Websocket</cite>’e mesaj geldiğinde onu yazdırıp geri yollaması için <cite>on_message</cite>
 metodunu düzenledik. Burada metodumuzun bir parametresi daha olduğuna dikkat
 edelim:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">on_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mesaj</span><span class="p">):</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">on_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mesaj</span><span class="p">):</span>
     <span class="c1"># Mesajı yazdır</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">mesaj</span><span class="p">)</span>
     <span class="c1"># Mesajı geri yolla</span>
@@ -141,7 +141,7 @@ edelim:</p>
 </pre></div>
 </div>
 <p><cite>Websocket</cite> kapandığında ekrana yazdırması için <cite>on_close</cite> metodunu düzenledik:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">on_close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">on_close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bağlantı kapandı&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -205,7 +205,7 @@ Javascript’te ise <cite>send</cite> metodunu kullanacağız.</p>
           <a href="../../genindex.html" title="Genel Dizin"
              >dizin</a></li>
         <li class="right" >
-          <a href="../../katkida_bulunanlar.html" title="Katkıda Bulunanlar"
+          <a href="../matplotlib_mod%C3%BCl%C3%BC/matplotlib.html" title="Matplotlib"
              >sonraki</a> |</li>
         <li class="right" >
           <a href="tornado_1.html" title="Tornado"
@@ -290,7 +290,7 @@ Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" 
           <a href="../../genindex.html" title="Genel Dizin"
              >dizin</a></li>
         <li class="right" >
-          <a href="../../katkida_bulunanlar.html" title="Katkıda Bulunanlar"
+          <a href="../matplotlib_mod%C3%BCl%C3%BC/matplotlib.html" title="Matplotlib"
              >sonraki</a> |</li>
         <li class="right" >
           <a href="tornado_1.html" title="Tornado"
@@ -304,8 +304,8 @@ Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" 
     </div> 
 
 <div class="footer">
-		&copy; Copyright 2007-2024, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 19.08.2024.
+		&copy; Copyright 2007-2025, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 27.01.2025.
 	<a href="http://sphinx-doc.org/">Sphinx</a> 8.0.2 kullanılarak oluşturuldu.
 
 	Yayım 4.1.3.

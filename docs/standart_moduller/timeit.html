@@ -82,7 +82,7 @@
 </pre></div>
 </div>
 <p>Bu, Python arayüzünden şu kodlarla gerçekleştirilebilir:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">timeit</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">timeit</span>
 
 <span class="n">timeit</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="s1">&#39;&quot;-&quot;.join(str(n) for n in range(100))&#39;</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
 <span class="mf">0.30339929000001575</span>
@@ -214,7 +214,7 @@
 </pre></div>
 </div>
 <p>Python arayüzü için:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">timeit</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">timeit</span>
 
 <span class="n">timeit</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="s1">&#39;char in text&#39;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="s1">&#39;text = &quot;sample string&quot;; char = &quot;g&quot;&#39;</span><span class="p">)</span>
 <span class="mf">0.048954748002870474</span>
@@ -224,7 +224,7 @@
 </pre></div>
 </div>
 <p>Aynı işlem timer() sınıfını ve metotlarını kullanarak da yapılabilir:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">timeit</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">timeit</span>
 
 <span class="n">t</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="s1">&#39;char in text&#39;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="s1">&#39;text = &quot;sample string&quot;; char = &quot;g&quot;&#39;</span><span class="p">)</span>
 <span class="n">t</span><span class="o">.</span><span class="n">timeit</span><span class="p">()</span>
@@ -248,7 +248,7 @@
 </pre></div>
 </div>
 <p>Python arayüzü için:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">timeit</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">timeit</span>
 
 <span class="c1"># özellik kayıp</span>
 <span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
@@ -282,27 +282,27 @@
 </pre></div>
 </div>
 <p><cite>timeit()</cite>’i tanımladığınız fonksiyonda kullanmak için önemli bir ifade içeren bir setup parametresi geçirebilirsiniz:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Test fonksiyonu&quot;&quot;&quot;</span>
     <span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)]</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="kn">import</span> <span class="nn">timeit</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">timeit</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">timeit</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="s2">&quot;test()&quot;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="s2">&quot;from __main__ import test&quot;</span><span class="p">))</span>
     <span class="mf">4.163065000997449</span>
 </pre></div>
 </div>
 <p>Bir diğer seçenek şimdiki global ad alanı içerisinde çalıştırılacak <cite>globals()</cite>’i genel alan parametrelerine geçirmektir. Bu bireysel olarak içe aktarmaları belirtmeye göre daha kolaydır:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
 
-<span class="k">def</span> <span class="nf">g</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">g</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">4</span>
 
-<span class="k">def</span> <span class="nf">h</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">h</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">8</span>
 
-<span class="kn">import</span> <span class="nn">timeit</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">timeit</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">timeit</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="s1">&#39;[func(42) for func in (f,g,h)]&#39;</span><span class="p">,</span> <span class="nb">globals</span><span class="o">=</span><span class="nb">globals</span><span class="p">()))</span>
 <span class="mf">1.632076413003233</span>
 </pre></div>
@@ -322,7 +322,7 @@
 </pre></div>
 </div>
 <p>Python arayüzü için:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">timeit</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">timeit</span>
 
 <span class="n">timeit</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="s1">&#39;&quot;a&quot; + &quot;b&quot;&#39;</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1000000</span><span class="p">)</span>
 <span class="mf">0.018340642998737167</span>
@@ -448,8 +448,8 @@ Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" 
     </div> 
 
 <div class="footer">
-		&copy; Copyright 2007-2024, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 19.08.2024.
+		&copy; Copyright 2007-2025, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 27.01.2025.
 	<a href="http://sphinx-doc.org/">Sphinx</a> 8.0.2 kullanılarak oluşturuldu.
 
 	Yayım 4.1.3.

@@ -416,7 +416,7 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 <p>Bu sınıf, sadece belirli bir zaman geçtikten sonra çalıştırılan bir eylemi, -bir zamanlayıcıyı- temsil eder. <cite>Timer</cite>, <cite>Thread</cite>’in bir alt sınıfı olup, ayrıca özel bir iş parçacığı oluşturma işlevi örneğidir.</p>
 <p>Zamanlayıcılar, tıpkı iş parçacıkları gibi <cite>start()</cite> yöntemi çağrılarak başlatılır. Zamanlayıcı (eylemi başlamadan önce) <cite>cancel()</cite> yöntemi çağrılarak durdurulabilir. Zamanlayıcının eyleminin gerçekleşmesininden önce bekleyeceği aralık, kullanıcının tanımladığı aralık olmayabilir.</p>
 <p>Örneğin:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello, world&quot;</span><span class="p">)</span>
 
 <span class="n">t</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">(</span><span class="mf">30.0</span><span class="p">,</span> <span class="n">hello</span><span class="p">)</span>
@@ -441,14 +441,14 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 <p>Aşağıdaki örnek, bir istemci ve sunucu iş parçacını senkronize etmek için basit bir yoldur:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="n">Barrier</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">server</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">server</span><span class="p">():</span>
     <span class="n">start_server</span><span class="p">()</span>
     <span class="n">b</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">connection</span> <span class="o">=</span> <span class="n">accept_connection</span><span class="p">()</span>
         <span class="n">process_server_connection</span><span class="p">(</span><span class="n">connection</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">client</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">client</span><span class="p">():</span>
     <span class="n">b</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">connection</span> <span class="o">=</span> <span class="n">make_connection</span><span class="p">()</span>
@@ -525,10 +525,10 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#/usr/bin/env python3</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 
-<span class="kn">import</span> <span class="nn">threading</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
 
 
-<span class="k">def</span> <span class="nf">f</span><span class="p">():</span>  <span class="c1"># Thread&#39;in iş fonksiyon.</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">():</span>  <span class="c1"># Thread&#39;in iş fonksiyon.</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;iş&quot;</span><span class="p">)</span>
 
 
@@ -545,10 +545,10 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#/usr/bin/env python3</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 
-<span class="kn">import</span> <span class="nn">threading</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
 
 
-<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">sayi</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">sayi</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;iş </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sayi</span><span class="p">))</span>
 
 
@@ -565,17 +565,17 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 
-<span class="kn">import</span> <span class="nn">threading</span>
-<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 
 
-<span class="k">def</span> <span class="nf">f</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">currentThread</span><span class="p">()</span><span class="o">.</span><span class="n">getName</span><span class="p">(),</span> <span class="s2">&quot;Başlıyor&quot;</span><span class="p">)</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">currentThread</span><span class="p">()</span><span class="o">.</span><span class="n">getName</span><span class="p">(),</span> <span class="s2">&quot;Bitiyor&quot;</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">g</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">g</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">currentThread</span><span class="p">()</span><span class="o">.</span><span class="n">getName</span><span class="p">(),</span> <span class="s2">&quot;Başlıyor&quot;</span><span class="p">)</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">currentThread</span><span class="p">()</span><span class="o">.</span><span class="n">getName</span><span class="p">(),</span> <span class="s2">&quot;Bitiyor&quot;</span><span class="p">)</span>
@@ -594,7 +594,7 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 </div>
 <p><strong>Kodların Açıklamaları:</strong></p>
 <p>Bu örnekteki şu kısma bir bakalım:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">():</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">currentThread</span><span class="p">()</span><span class="o">.</span><span class="n">getName</span><span class="p">(),</span> <span class="s2">&quot;Başlıyor&quot;</span><span class="p">)</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">currentThread</span><span class="p">()</span><span class="o">.</span><span class="n">getName</span><span class="p">(),</span> <span class="s2">&quot;Bitiyor&quot;</span><span class="p">)</span>
@@ -614,17 +614,17 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 <span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="k">try</span><span class="p">:</span>
-    <span class="kn">import</span> <span class="nn">Tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">Tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
-<span class="kn">import</span> <span class="nn">threading</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
 
 <span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
 <span class="n">entry</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">root</span><span class="p">)</span>
 <span class="n">entry</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">f</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">():</span>
     <span class="n">button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Button&quot;</span><span class="p">)</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">entry</span><span class="o">.</span><span class="n">get</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
@@ -648,18 +648,18 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 
-<span class="kn">import</span> <span class="nn">threading</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
 
 
-<span class="k">def</span> <span class="nf">f</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;f fonksiyonu&quot;</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">g</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">g</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;g fonksiyonu&quot;</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">h</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">h</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;h fonksiyonu&quot;</span><span class="p">)</span>
 
 
@@ -677,19 +677,19 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 </div>
 <p><strong>Kodların Açıklamaları:</strong></p>
 <p>Önce gerekli modülü programın içine aktardık:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">threading</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
 </pre></div>
 </div>
 <p>Sonra farklı iş parçacıklarının çağıracağı üç tane fonksiyon tanımladık:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">():</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;f fonksiyonu&quot;</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">g</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">g</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;g fonksiyonu&quot;</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">h</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">h</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;h fonksiyonu&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -731,15 +731,15 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 
-<span class="kn">import</span> <span class="nn">threading</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
 
 
-<span class="k">class</span> <span class="nc">Thread</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lock</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Thread</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lock</span><span class="p">):</span>
         <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lock</span> <span class="o">=</span> <span class="n">lock</span>
 
-    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lock</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> kilidi edindi.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
         <span class="c1"># self.lock.acquire(blocking=True, timeout=3)</span>
@@ -756,18 +756,18 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 </div>
 <p><strong>Kodların Açıklamaları:</strong></p>
 <p>Her zamanki gibi önce modülümüzü programın içine aktaralım:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">threading</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
 </pre></div>
 </div>
 <p>Şimdi de <cite>threading.Thread</cite>’i miras alan bir sınıf oluşturalım. Ve bu sınıfın <em>lock</em> isminde bir tane de özelliği olsun:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Thread</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lock</span><span class="p">):</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Thread</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lock</span><span class="p">):</span>
         <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lock</span> <span class="o">=</span> <span class="n">lock</span>
 </pre></div>
 </div>
 <p>Bildiğiniz gibi <cite>threading.Thread()</cite>’in <cite>run()</cite> isimli bir yöntemi var. Bu yöntemi <em>override</em> yapalım, yani modülün <cite>run()</cite> yöntemi yerine bizim yazacağımız <cite>run()</cite> yöntemi kullanılsın. Bu yöntem, ilk olarak <cite>self.lock.acquire()</cite> fonksiyonunu çağırsın. Hemen altında, iş parçacığının kilidi edindiğine dair mesajı ekrana yazdıran <cite>print()</cite> fonksiyonunu çağıralım. Bir altındaki yoruma alınmış <cite># self.lock.acquire(blocking=True, timeout=3)</cite> kısmı, yorumdan çıkarırsanız, alttaki işlemlerin çalışabilmesi için üç saniye beklemek zorunda kalırsınız. <cite>self.lock.release()</cite> ile de kilidi serbest bırakıyoruz. ve <cite>run()</cite> fonksiyonunun son satırında da kilidin serbest bırakıldığına dair mesajı ekrana bastıran bir print()` fonksiyonu çağıralım:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">lock</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> kilidi edindi.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
     <span class="c1"># self.lock.acquire(blocking=True, timeout=3)</span>
@@ -792,15 +792,15 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 
-<span class="kn">import</span> <span class="nn">threading</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
 
 
-<span class="k">class</span> <span class="nc">Thread</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lock</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Thread</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lock</span><span class="p">):</span>
         <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lock</span> <span class="o">=</span> <span class="n">lock</span>
 
-    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lock</span><span class="o">.</span><span class="n">acquire</span><span class="p">(</span><span class="n">blocking</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> çalışıyor.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lock</span><span class="o">.</span><span class="n">acquire</span><span class="p">(</span><span class="n">blocking</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -816,18 +816,18 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 </div>
 <p><strong>Kodların Açıklamaları:</strong></p>
 <p>Her zamanki gibi önce <cite>threadin</cite> modülünü programın içine aktarıyoruz:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">threading</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
 </pre></div>
 </div>
 <p><em>lock</em> parametresi olan ve <cite>threading.Thread()</cite> sınıfını miras alan bir sınıf oluşturuyoruz:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Thread</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lock</span><span class="p">):</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Thread</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lock</span><span class="p">):</span>
         <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lock</span> <span class="o">=</span> <span class="n">lock</span>
 </pre></div>
 </div>
 <p>Yine <cite>run()</cite> yöntemini <em>override</em> edelim. Bu <cite>run()</cite> fonksiyonu altında çağırdığımız ilk fonksiyon <cite>self.lock.acquire(blocking=True, timeout=3)</cite> fonksiyonudur. Bu fonksiyon kilidi edinecek olan ilk iş parçacığına uygulanmaz. Bir sonraki satırda, iş parçacığının çalıştığına dair ekrana bir yazı yazdırıyoruz (<cite>print(“{} çalışıyor.”.format(self.name))</cite>). Onun da altında kilidi <cite>self.lock.acquire(blocking=True, timeout=1)</cite> fonksiyonu ile bir daha ediniyoruz. Bir iş parçacığı RLock kilidini ikinci kez kendi işlemlerini engellemeden elde edebilir. Ve <cite>run()</cite> yönteminin son satırında da çalışmanın bittiğine dair ekrana bir yazı yazdırıyoruz (<cite>print(“{} çalışması bitti.”.format(self.name))</cite>):</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">lock</span><span class="o">.</span><span class="n">acquire</span><span class="p">(</span><span class="n">blocking</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> çalışıyor.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">lock</span><span class="o">.</span><span class="n">acquire</span><span class="p">(</span><span class="n">blocking</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -852,17 +852,17 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">threading</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
 
 
-<span class="k">class</span> <span class="nc">Uretici</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">condition</span><span class="p">,</span> <span class="n">liste</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Uretici</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">condition</span><span class="p">,</span> <span class="n">liste</span><span class="p">):</span>
         <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">condition</span> <span class="o">=</span> <span class="n">condition</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">liste</span> <span class="o">=</span> <span class="n">liste</span>
 
-    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">count</span> <span class="o">=</span> <span class="mi">1</span>
         <span class="k">while</span> <span class="n">count</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">condition</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
@@ -879,13 +879,13 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
 
 
-<span class="k">class</span> <span class="nc">Tuketici</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">condition</span><span class="p">,</span> <span class="n">liste</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Tuketici</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">condition</span><span class="p">,</span> <span class="n">liste</span><span class="p">):</span>
         <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">condition</span> <span class="o">=</span> <span class="n">condition</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">liste</span> <span class="o">=</span> <span class="n">liste</span>
 
-    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">condition</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> condition&#39;u edindi.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
@@ -915,20 +915,20 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 </div>
 <p><strong>Kodların Açıklamaları:</strong></p>
 <p>Her zamanki gibi önce gerekli modülleri programın içine aktarıyoruz:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">threading</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
 </pre></div>
 </div>
 <p>Şimdi, <cite>threading.Thread</cite> sınıfının özelliklerini miras alan bir üretici sınıf tanımlayalım; bu sınıftan bir örnek türetilmek istendiği zaman kullanıcı <em>condition</em> argümanını ve <em>liste</em> argümanını girmek zorunda kalsın:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Uretici</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">condition</span><span class="p">,</span> <span class="n">liste</span><span class="p">):</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Uretici</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">condition</span><span class="p">,</span> <span class="n">liste</span><span class="p">):</span>
         <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">condition</span> <span class="o">=</span> <span class="n">condition</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">liste</span> <span class="o">=</span> <span class="n">liste</span>
 </pre></div>
 </div>
 <p>Bu sınıfın bir tane <cite>run()</cite> metodu zaten mevcut ama biz bu <cite>run()</cite> metodunu değiştirelim:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </pre></div>
 </div>
 <p>Bu <cite>run()</cite> yönteminde aşağıdakiler yapılsın:</p>
@@ -979,15 +979,15 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 </ol>
 </div></blockquote>
 <p>Şimdi de, <cite>threading.Thread</cite> sınıfının özelliklerini miras alan bir tüketici sınıf tanımlayalım; yine bu sınıftan bir örnek türetilmek istendiği zaman kullanıcı <em>condition</em> argümanını ve <em>liste</em> argümanını girmek zorunda kalsın:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Tuketici</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">condition</span><span class="p">,</span> <span class="n">liste</span><span class="p">):</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Tuketici</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">condition</span><span class="p">,</span> <span class="n">liste</span><span class="p">):</span>
         <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">condition</span> <span class="o">=</span> <span class="n">condition</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">liste</span> <span class="o">=</span> <span class="n">liste</span>
 </pre></div>
 </div>
 <p>Bu sınıfın da bir tane <cite>run()</cite> metodu zaten mevcut ama biz bu <cite>run()</cite> metodunu değiştirelim:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </pre></div>
 </div>
 <p>Bu <cite>run()</cite> yönteminde aşağıdakiler yapılsın:</p>
@@ -1044,13 +1044,13 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">threading</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
 
 <span class="n">semaphore</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Semaphore</span><span class="p">()</span>
 
 
-<span class="k">def</span> <span class="nf">f</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;f fonksiyonu başlıyor.&quot;</span><span class="p">)</span>
     <span class="n">semaphore</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;f fonksiyonu semaforu edindi.&quot;</span><span class="p">)</span>
@@ -1062,7 +1062,7 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;f fonksiyonu bitiyor.&quot;</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">g</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">g</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;g fonksiyonu başlıyor&quot;</span><span class="p">)</span>
     <span class="k">while</span> <span class="ow">not</span> <span class="n">semaphore</span><span class="o">.</span><span class="n">acquire</span><span class="p">():</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Semafor henüz kullanılamıyor.&quot;</span><span class="p">)</span>
@@ -1085,8 +1085,8 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 <p><strong>Not:</strong> Bu örnekte kullanılan <cite>Semaphore()</cite> nesnesi yerine, <cite>Lock()</cite>, <cite>RLock</cite>, <cite>Condition()</cite> ve <cite>BoundedSemaphore()</cite> nesnelerini de kullanabilirsiniz. Bu örnek <cite>BoundedSemaphore()</cite> ve <cite>Condition()</cite> nesneleri için pek uygun bir örnek olmasa da, <cite>Lock()</cite>, <cite>RLock</cite> nesneleri için bu örneği kullanmakta bir sakınca yok.</p>
 <p><strong>Kodların Açıklamaları:</strong></p>
 <p>Önce modüllerimizi programın içine aktaralım:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">threading</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
 </pre></div>
 </div>
 <p>Şimdi <cite>Semaphore()</cite> nesnesinden bir tane örnek oluşturalım:</p>
@@ -1094,7 +1094,7 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 </pre></div>
 </div>
 <p>Bu örnekte <cite>f()</cite> ve <cite>g()</cite> isimli iki tane fonksiyon kullanacağız. Önce <cite>f()</cite> fonksiyonunu oluşturalım, fonksiyon çağrılır çağrılmaz, ekrana bir yazı yazdırılsın:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">():</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;f fonksiyonu başlıyor.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1116,7 +1116,7 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 </pre></div>
 </div>
 <p>Şimdi de <cite>g()</cite> fonksiyonunu oluşturalım. Fonksiyon çağrıldığında, fonksiyonun başladığına dair bir yazı ekrana yazdırılsın:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">g</span><span class="p">():</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">g</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;g fonksiyonu başlıyor&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1145,11 +1145,11 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 
-<span class="kn">import</span> <span class="nn">threading</span>
-<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 
 
-<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">bs</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">bs</span><span class="p">):</span>
     <span class="n">bs</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
@@ -1164,12 +1164,12 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 </div>
 <p><strong>Kodların Açıklamaları:</strong></p>
 <p>Yine her zamanki gibi önce modülleri programın içine aktaralım:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">threading</span>
-<span class="kn">import</span> <span class="nn">time</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 </pre></div>
 </div>
 <p>Şimdi de bir tane <cite>f()</cite> fonksiyonu tanımlayalım. Bu fonksiyonun <em>item</em> ve <em>bs</em> isminde iki tane argümanı olsun. <em>item</em> argümanını for listesindeki her bir eleman için, <em>bs</em> argümanını da semaphore için kullanacağız:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">bs</span><span class="p">):</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">bs</span><span class="p">):</span>
 </pre></div>
 </div>
 <p>Fonksiyonu çağıran iş parçacığı bağlanmış semaforu elde etsin, sonra 1 saniye bekleyelim ve <cite>for</cite> döngüsünün elemanını ekrana yazdıralım, son olarak da bağlanmış semaforu serbest bırakalım:</p>
@@ -1198,17 +1198,17 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">threading</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
 
 
-<span class="k">class</span> <span class="nc">Uretici</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">liste</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Uretici</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">liste</span><span class="p">):</span>
         <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">event</span> <span class="o">=</span> <span class="n">event</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">liste</span> <span class="o">=</span> <span class="n">liste</span>
 
-    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">count</span> <span class="o">=</span> <span class="mi">1</span>
         <span class="k">while</span> <span class="n">count</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">liste</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
@@ -1222,13 +1222,13 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
 
 
-<span class="k">class</span> <span class="nc">Tuketici</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">liste</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Tuketici</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">liste</span><span class="p">):</span>
         <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">event</span> <span class="o">=</span> <span class="n">event</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">liste</span> <span class="o">=</span> <span class="n">liste</span>
 
-    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">liste</span><span class="p">:</span>
                 <span class="n">sayi</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">liste</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
@@ -1247,20 +1247,20 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 </div>
 <p><strong>Kodların Açıklamaları:</strong></p>
 <p>Modüllerimi programın içine aktaralım:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">threading</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
 </pre></div>
 </div>
 <p>Şimdi <cite>Uretici</cite> isminde, <em>event</em> ve <em>liste</em> argümanlarına sahip, <cite>threading.Thread()</cite> sınıfından türetilmiş bir sınıf oluşturalım:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Uretici</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">liste</span><span class="p">):</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Uretici</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">liste</span><span class="p">):</span>
         <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">event</span> <span class="o">=</span> <span class="n">event</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">liste</span> <span class="o">=</span> <span class="n">liste</span>
 </pre></div>
 </div>
 <p>Bu sınıfa <cite>run()</cite> isminde bir tane fonksiyon ekleyelim. Bildiğiniz gibi bu fonksiyon <cite>threading.Thread()</cite> sınıfına ait olan bir fonksiyon, dolayısıyla burada yine yazacağımız fonksiyon, orjinal fonksiyonun üzerine yazılacak:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </pre></div>
 </div>
 <p>Fonksiyonda <em>count</em> isminde bir tane değişken kullanacağız. Bu değişken 10’dan küçük olduğu sürece <em>while</em> döngüsü çalışmaya devam edecek:</p>
@@ -1287,15 +1287,15 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 </pre></div>
 </div>
 <p>Şimdi de benzer şekilde <cite>Tuketici</cite> sınıfımızı oluşturalım:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Tuketici</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">liste</span><span class="p">):</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Tuketici</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">liste</span><span class="p">):</span>
         <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">event</span> <span class="o">=</span> <span class="n">event</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">liste</span> <span class="o">=</span> <span class="n">liste</span>
 </pre></div>
 </div>
 <p>Bu sınıfın <cite>run()</cite> metodunda da tanımlayalım:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </pre></div>
 </div>
 <p>Yine bir döngü oluşturalım ve <cite>self.liste</cite> mevcut olduğu sürece, listeden <em>sayi</em> ismindeki değişken düşürülsün ve ekrana bu sayının düşürüldüğüne dair bir yazı yazdırılsın:</p>
@@ -1326,12 +1326,12 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">random</span>
-<span class="kn">import</span> <span class="nn">threading</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
 
 
-<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> iş parçacığının uyandırıldığı tarih: </span><span class="si">{}</span><span class="s2">&quot;</span>
           <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">current_thread</span><span class="p">()</span><span class="o">.</span><span class="n">getName</span><span class="p">(),</span> <span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">()))</span>
@@ -1348,13 +1348,13 @@ bir zaman inemez; <cite>acquire()</cite> bu sayacın sıfır olduğunu bulursa, 
 </div>
 <p><strong>Kodların Açıklamaları:</strong></p>
 <p>Her zamanki gibi önce gerekli modülleri programın içine aktaralım:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">random</span>
-<span class="kn">import</span> <span class="nn">threading</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
 </pre></div>
 </div>
 <p>Şimdi <em>b</em> argümanına sahip, <em>f</em> isminde bir tane fonksiyon oluşturalım. Bu fonksiyonda önce <cite>time.sleep(random.randint(2, 10))</cite> fonksiyonunu çağırarak 2 ile 10 saniye arasında belirsiz bir süre bekleneceğini belirtelim. Daha sonra ekrana iş parçacığının uyandırıldığı tarih ekrana yazdırılsın, sonra da <cite>Barrier()</cite> nesnemizin <cite>wait()</cite> yöntemini çağıralım, son olarak da iş parçacığının engeli geçtiği tarih ekrana yazdırılsın:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> iş parçacığının uyandırıldığı tarih: </span><span class="si">{}</span><span class="s2">&quot;</span>
           <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">current_thread</span><span class="p">()</span><span class="o">.</span><span class="n">getName</span><span class="p">(),</span> <span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">()))</span>
@@ -1486,8 +1486,8 @@ Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" 
     </div> 
 
 <div class="footer">
-		&copy; Copyright 2007-2024, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 19.08.2024.
+		&copy; Copyright 2007-2025, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 27.01.2025.
 	<a href="http://sphinx-doc.org/">Sphinx</a> 8.0.2 kullanılarak oluşturuldu.
 
 	Yayım 4.1.3.
