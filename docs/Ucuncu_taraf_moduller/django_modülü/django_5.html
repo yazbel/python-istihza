@@ -121,7 +121,7 @@ Yeni hali aşağıdaki gibi olmalı.</p>
 </pre></div>
 </div>
 <p>İlk işlecimiz basit olması amacıyla isim ve ülke döndürsün. Bunun için <cite>context_processors.py</cite> ve ilk işlecimizi yazalım. Yazacağımız işleçler fonksiyon şeklinde olmalıdır ve bu fonksiyon <cite>request</cite> parametresini dışarıdan almalıdır.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ilk_islec</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">ilk_islec</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="n">isim</span> <span class="o">=</span> <span class="s2">&quot;Mehmet&quot;</span>
     <span class="n">ulke</span> <span class="o">=</span> <span class="s2">&quot;Türkiye&quot;</span>
 
@@ -145,15 +145,15 @@ Denemek için <cite>templates</cite> klasörü altında <cite>index.html</cite> 
 </div>
 <p>HTML sayfasımızı oluşturduktan
 sonra view oluşturacağız. Bunun için oluşturduğumuz uygulamanın alt dizininde bulunan <cite>views.py</cite> dosyasına</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">django.shortcuts</span><span class="w"> </span><span class="kn">import</span> <span class="n">render</span>
 
-<span class="k">def</span> <span class="nf">view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;index.html&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Şeklinde basit bir view fonksiyonu ekleyelim. Son olarak <cite>urls.py</cite> dosyasına yazdığımız view için URL yolu ekleyeceğiz.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
-<span class="kn">from</span> <span class="nn">deneme.views</span> <span class="kn">import</span> <span class="n">view</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">django.urls</span><span class="w"> </span><span class="kn">import</span> <span class="n">path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">deneme.views</span><span class="w"> </span><span class="kn">import</span> <span class="n">view</span>
 
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">path</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="n">view</span><span class="p">),</span>
@@ -168,7 +168,7 @@ sonra view oluşturacağız. Bunun için oluşturduğumuz uygulamanın alt dizin
 çekebiliriz. Böylece ortak bir blok değiştiği zaman tüm sayfaları tekrar düzeltmeye gerek kalmaz. Bunu yapmak için oluşturduğumuz tüm view’lere
 ana tema blogumuzu, tüm sayfalarda ortak olan diğer blok parçalarının yollarını içerik işlecinde tanımlayabiliriz.</p>
 <p>İçerik İşlemcimiz:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">template_path</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">template_path</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
 <span class="n">base_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
 <span class="n">components_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_dir</span><span class="p">,</span> <span class="s1">&#39;templates/components/&#39;</span><span class="p">)</span>
 <span class="n">base_component</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">components_dir</span><span class="p">,</span> <span class="s1">&#39;base_components/base.html&#39;</span><span class="p">)</span>
@@ -333,8 +333,8 @@ Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" 
     </div> 
 
 <div class="footer">
-		&copy; Copyright 2007-2024, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 19.08.2024.
+		&copy; Copyright 2007-2025, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 27.01.2025.
 	<a href="http://sphinx-doc.org/">Sphinx</a> 8.0.2 kullanılarak oluşturuldu.
 
 	Yayım 4.1.3.

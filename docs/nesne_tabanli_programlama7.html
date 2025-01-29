@@ -88,8 +88,8 @@ sorumlu metodun adı ise <code class="docutils literal notranslate"><span class=
 <section id="new-metodu">
 <h3>__new__() Metodu<a class="headerlink" href="#new-metodu" title="Link to this heading">¶</a></h3>
 <p>Bildiğiniz gibi, Python’da basit bir sınıfı şu şekilde tanımlıyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">():</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Sınıf</span><span class="p">():</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;merhaba sınıf!&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -98,7 +98,7 @@ yapılacağını gösteriyor. Yani mesela <code class="docutils literal notransl
 <code class="docutils literal notranslate"><span class="pre">Sınıf()</span></code> adlı sınıfı örneklediğimiz anda ne olacağını bu <code class="docutils literal notranslate"><span class="pre">__init__()</span></code>
 metodu içinde tanımlıyoruz:</p>
 <div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Yukarıdaki kodların `sınıf.py` adlı bir dosyada olduğunu varsayalım</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sınıf</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">sınıf</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">snf</span> <span class="o">=</span> <span class="n">sınıf</span><span class="o">.</span><span class="n">Sınıf</span><span class="p">()</span>
 
 <span class="go">merhaba sınıf!</span>
@@ -109,11 +109,11 @@ sınıfımızı örneklediğimiz anda ekrana ‘merhaba sınıf’ çıktısı v
 <p>Ancak yukarıda da belirttiğimiz gibi, bir sınıf örneklendiğinde çalışan ilk
 metot aslında <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> değildir. Python bu süreçte alttan alta
 <code class="docutils literal notranslate"><span class="pre">__new__()</span></code> adlı başka bir metodu çalıştırır. Gelin bunu kanıtlayalım:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">():</span>
-    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Sınıf</span><span class="p">():</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
         <span class="k">pass</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;merhaba sınıf&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -122,11 +122,11 @@ yazısı çıktı olarak verilmeyecektir. İşte bunun sebebi, Python’ın önt
 <code class="docutils literal notranslate"><span class="pre">__new__()</span></code> metodunun üzerine yazıp, o metodun işlevselliğini ortadan
 kaldırmış olmanızdır. Eğer <code class="docutils literal notranslate"><span class="pre">__new__()</span></code> metodunun öntanımlı davranışını taklit
 etmek isterseniz yukarıdaki kodları şu şekilde yazmalısınız:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">():</span>
-    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Sınıf</span><span class="p">():</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">object</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;merhaba sınıf&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -135,27 +135,27 @@ ibaret olduğunu görüyor olmalısınız. Bildiğiniz gibi, Python’daki büt�
 sınıflar, eğer başka bir sınıfı miras olarak almıyorlarsa, otomatik olarak
 <code class="docutils literal notranslate"><span class="pre">object</span></code> sınıfını miras alırlar. Yani aslında yukarıdaki sınıf tanımını Python
 şöyle görür:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Sınıf</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="o">...</span>
 </pre></div>
 </div>
 <p>Burada <code class="docutils literal notranslate"><span class="pre">object</span></code> taban sınıf olmuş oluyor. Bu taban sınıfın <code class="docutils literal notranslate"><span class="pre">__new__()</span></code>
 metodunun sahip olduğu işlevselliği <code class="docutils literal notranslate"><span class="pre">Sınıf</span></code> adlı alt sınıfa aktarabilmek için
 taban sınıfı kendi <code class="docutils literal notranslate"><span class="pre">__new__()</span></code> metodumuz içinde çağırıyoruz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">():</span>
-    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Sınıf</span><span class="p">():</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">object</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>İşte eğer bir sınıfın inşa edilme sürecinin nasıl işleyeceğini kontrol etmek
 isterseniz bu <code class="docutils literal notranslate"><span class="pre">__new__()</span></code> metodunun üzerine yazarak metodu değişikliğe
 uğratabilirsiniz:</p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sınıf</span><span class="p">():</span>
-    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Sınıf</span><span class="p">():</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Yeni sınıf inşa edilirken lütfen bekleyiniz...&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="nb">object</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;merhaba sınıf&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -273,8 +273,8 @@ Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" 
     </div> 
 
 <div class="footer">
-		&copy; Copyright 2007-2024, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 19.08.2024.
+		&copy; Copyright 2007-2025, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 27.01.2025.
 	<a href="http://sphinx-doc.org/">Sphinx</a> 8.0.2 kullanılarak oluşturuldu.
 
 	Yayım 4.1.3.

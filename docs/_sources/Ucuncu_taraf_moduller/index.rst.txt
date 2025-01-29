@@ -8,3 +8,4 @@
 	kivy_dersleri/index
 	pyperclip_modülü/index
 	tornado_modülü/index
+	matplotlib_modülü/matplotlib.rst

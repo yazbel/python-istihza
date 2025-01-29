@@ -151,21 +151,21 @@ Bu anahtarlardan <cite>Site Anahtarı</cite> olan sitemizin HTML tarafında <cit
 <p>Kendimize örnek bir proje ve bu proje için bir uygulama oluşturuyoruz. Gerekli anlatımlar önceki derslerde mevcuttur. Öncelikle örnek bir model oluşturuyoruz. Ben reCAPTCHA servisini yorum sisteminde kullanacağım içi yorumlar için bir model oluşturuyorum.</p>
 </dd>
 </dl>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">django.db</span><span class="w"> </span><span class="kn">import</span> <span class="n">models</span>
 
-<span class="k">class</span> <span class="nc">Comments</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Comments</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">AutoField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">55</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s1">&#39;Kullanıcı Adınız&#39;</span><span class="p">)</span>
     <span class="n">comment</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">verbose_name</span><span class="o">=</span><span class="s1">&#39;Yorumunuz&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Ardından yorum uygulamamızın içine <cite>forms.py</cite> adında bir dosya oluşturuyoruz.</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
-<span class="kn">from</span> <span class="nn">blog.models</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">django</span><span class="w"> </span><span class="kn">import</span> <span class="n">forms</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">blog.models</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 
 
-<span class="k">class</span> <span class="nc">CommentForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
-    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">CommentForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">Meta</span><span class="p">:</span>
         <span class="n">model</span> <span class="o">=</span> <span class="n">Comments</span>
         <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span>
             <span class="s1">&#39;name&#39;</span><span class="p">,</span>
@@ -202,13 +202,13 @@ Bu anahtarlardan <cite>Site Anahtarı</cite> olan sitemizin HTML tarafında <cit
 <p>Kısaca HTML kodlarımızdan bahsedersek <cite>POST</cite> yöntemiyle gönderilecek bir form hazırladık. Ardından <cite>{% csrf_token %}</cite> değişkenini ekledik. Böylece formumuz doğru şekilde çalışacak. Ardından <cite>forms.py`</cite> sayfasında hazırladığımız formu kullanıcıya gösteriyoruz. Son olarak da Google Belgelerinde aldığımız reCAPTCHA kodunu ekledik.
 Gelen yorumlar kısmında ise başarıyla kaydedilen yorumlar yer alacak.</p>
 <p>Sıra tüm işi yapacak <cite>views.py</cite> dosyasında.</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span> <span class="c1">#1</span>
-<span class="kn">from</span> <span class="nn">blog.models</span> <span class="kn">import</span> <span class="n">Comments</span>    <span class="c1">#2</span>
-<span class="kn">from</span> <span class="nn">recaptcha</span> <span class="kn">import</span> <span class="n">recaptcha_check</span> <span class="c1">#3</span>
-<span class="kn">from</span> <span class="nn">blog.forms</span> <span class="kn">import</span> <span class="n">CommentForm</span>  <span class="c1">#4</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">django.shortcuts</span><span class="w"> </span><span class="kn">import</span> <span class="n">render</span> <span class="c1">#1</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">blog.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Comments</span>    <span class="c1">#2</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">recaptcha</span><span class="w"> </span><span class="kn">import</span> <span class="n">recaptcha_check</span> <span class="c1">#3</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">blog.forms</span><span class="w"> </span><span class="kn">import</span> <span class="n">CommentForm</span>  <span class="c1">#4</span>
 
 
-<span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span> <span class="c1">#5</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span> <span class="c1">#5</span>
     <span class="n">comments</span> <span class="o">=</span> <span class="n">Comments</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span> <span class="c1">#6</span>
     <span class="n">comment_form</span> <span class="o">=</span> <span class="n">CommentForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span> <span class="ow">or</span> <span class="kc">None</span><span class="p">)</span> <span class="c1">#7</span>
     <span class="n">recaptcha_response</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;g-recaptcha-response&#39;</span><span class="p">)</span> <span class="c1">#8</span>
@@ -236,10 +236,10 @@ Gelen yorumlar kısmında ise başarıyla kaydedilen yorumlar yer alacak.</p>
 <li><p>#13 <cite>render</cite> fonksiyonu ile <cite>index.html</cite> dosyasını <cite>context</cite> değişkenini ekliyoruz.</p></li>
 </ul>
 <p><cite>recaptcha_check</cite> fonksiyonunu satır satır inceleyelim.</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span> <span class="c1">#1</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span> <span class="c1">#1</span>
 
 
-<span class="k">def</span> <span class="nf">recaptcha_check</span><span class="p">(</span><span class="n">recaptcha_response</span><span class="p">):</span> <span class="c1">#2</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">recaptcha_check</span><span class="p">(</span><span class="n">recaptcha_response</span><span class="p">):</span> <span class="c1">#2</span>
     <span class="n">verify_url</span> <span class="o">=</span> <span class="s1">&#39;https://www.google.com/recaptcha/api/siteverify&#39;</span> <span class="c1">#3</span>
     <span class="n">value</span> <span class="o">=</span> <span class="p">{</span> <span class="c1">#4</span>
         <span class="s1">&#39;secret&#39;</span><span class="p">:</span> <span class="s1">&#39;6LdBO6cZAAAAAAALlKFW656QWAPLOKasoPfLfYTVWV91Quo0H2tWBfRrc&#39;</span><span class="p">,</span>
@@ -375,8 +375,8 @@ Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" 
     </div> 
 
 <div class="footer">
-		&copy; Copyright 2007-2024, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
-Son güncelleme: 19.08.2024.
+		&copy; Copyright 2007-2025, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 27.01.2025.
 	<a href="http://sphinx-doc.org/">Sphinx</a> 8.0.2 kullanılarak oluşturuldu.
 
 	Yayım 4.1.3.

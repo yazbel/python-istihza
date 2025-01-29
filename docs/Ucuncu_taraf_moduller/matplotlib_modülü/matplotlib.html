@@ -1,0 +1,833 @@
+
+ <!DOCTYPE html>
+ <html lang="tr">
+
+
+<html lang="tr" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Matplotlib &#8212; Yazbel Python Belgeleri</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=36871c9a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pyramid.css?v=bd158598" />
+    <script src="../../_static/documentation_options.js?v=4e2d7ee8"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/translations.js?v=5dbee647"></script>
+    <link rel="canonical" href="https://python-istihza.yazbel.com/Ucuncu_taraf_moduller/matplotlib_modülü/matplotlib.html" />
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Dizin" href="../../genindex.html" />
+    <link rel="search" title="Ara" href="../../search.html" />
+    <link rel="next" title="Katkıda Bulunanlar" href="../../katkida_bulunanlar.html" />
+    <link rel="prev" title="Tornado(devamı)" href="../tornado_mod%C3%BCl%C3%BC/tornado_2.html" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+<div class='header'><a href='https://yazbel.com'><img src="../../_static/logo.png"></a></div>
+
+<ul class='navbar'>
+    <li><a href="http://forum.yazbel.com">forum</a></li>
+    <li><a href="https://github.com/yazbel/python-istihza">github</a></li>
+    <li><a href="YazbelPythonProgramlamaDiliBelgeleri.pdf">pdf</a></li>
+    <!-- <li><a href="YazbelPythonProgramlamaDiliBelgeleri.epub">epub</a></li> the file format is wrong so we are disabling it for now-->
+    <li><a href="YazbelPythonProgramlamaDiliBelgeleri.html">html</a></li>
+</ul>
+
+
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Genel Dizin"
+             accesskey="I">dizin</a></li>
+        <li class="right" >
+          <a href="../../katkida_bulunanlar.html" title="Katkıda Bulunanlar"
+             accesskey="N">sonraki</a> |</li>
+        <li class="right" >
+          <a href="../tornado_mod%C3%BCl%C3%BC/tornado_2.html" title="Tornado(devamı)"
+             accesskey="P">önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Üçüncü Taraf Modüller</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Matplotlib</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+
+  <section id="matplotlib">
+<h1>Matplotlib<a class="headerlink" href="#matplotlib" title="Link to this heading">¶</a></h1>
+<p>Matplotlib, Python ile kullanılan bir veri görselleştirme kütüphanesidir. Kısaca bu kütüphane grafik çizdirebilmemize yarayan bir kütüphanedir. Finans uygulamaları, veri analizi, matematiksel fonksiyonların grafiklerinin çizimi, yapay zeka ve kişisel projeler gibi birçok şeyde kullanılabilir.</p>
+<section id="yapabileceginiz-bazi-ornek-projeler">
+<h2>Yapabileceğiniz bazı örnek projeler<a class="headerlink" href="#yapabileceginiz-bazi-ornek-projeler" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Hisse Senedi Analizi:</strong>
+- Hisse senedi fiyatlarını çizgi grafikleriyle görselleştirme.
+- Hareketli ortalamaları hesaplayıp grafik üzerinde gösterme.</p></li>
+<li><p><strong>İklim Verisi Analizi:</strong>
+- Sıcaklık ve yağış verilerini zaman içinde grafikleme.
+- Farklı bölgelerin iklim verilerini karşılaştırma.</p></li>
+<li><p><strong>Makine Öğrenmesi Modeli Değerlendirme:</strong>
+- Modelin eğitim ve test performansını grafiklerle gösterme.
+- Sınıflandırma problemlerinde karar sınırlarını çizme.</p></li>
+<li><p><strong>Kişisel Bütçe Takibi:</strong>
+- Aylık harcamaları pasta grafikleriyle görselleştirme.
+- Gelir ve giderleri çubuk grafiklerle karşılaştırma.</p></li>
+<li><p><strong>Eğitimde Kavram Görselleştirme:</strong>
+- Matematiksel fonksiyonların grafiklerini çizme.
+- İstatistiksel dağılımları gösterme.</p></li>
+</ol>
+</section>
+<section id="kullanabileceginiz-grafik-cesitleri">
+<h2>Kullanabileceğiniz grafik çeşitleri<a class="headerlink" href="#kullanabileceginiz-grafik-cesitleri" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Çizgi Grafiği (Line Chart)</strong></p></li>
+<li><p><strong>Çubuk Grafiği (Bar Chart)</strong></p></li>
+<li><p><strong>Yığılmış Çubuk Grafiği (Stacked Bar Chart)</strong></p></li>
+<li><p><strong>Histogram (Histogram)</strong></p></li>
+<li><p><strong>Dağılım Grafiği (Scatter Plot)</strong></p></li>
+<li><p><strong>Pasta Grafiği (Pie Chart)</strong></p></li>
+<li><p><strong>Alan Grafiği (Area Chart)</strong></p></li>
+<li><p><strong>Kutu Grafiği (Box Plot)</strong></p></li>
+<li><p><strong>Isı Haritası (Heatmap)</strong></p></li>
+<li><p><strong>Kutup Grafiği (Polar Plot)</strong></p></li>
+<li><p><strong>Saplama Grafiği (Stem Plot)</strong></p></li>
+<li><p><strong>Adım Grafiği (Step Plot)</strong></p></li>
+<li><p><strong>Çizgi ve Çubuk Birleşimi (Combination of Line and Bar Chart)</strong></p></li>
+<li><p><strong>Hata Çubukları Grafiği (Error Bar Plot)</strong></p></li>
+<li><p><strong>Balon Grafiği (Bubble Chart)</strong></p></li>
+<li><p><strong>3D Çizgi Grafiği (3D Line Plot)</strong></p></li>
+<li><p><strong>3D Dağılım Grafiği (3D Scatter Plot)</strong></p></li>
+<li><p><strong>3D Yüzey Grafiği (3D Surface Plot)</strong></p></li>
+<li><p><strong>3D Çubuk Grafiği (3D Bar Chart)</strong></p></li>
+<li><p><strong>Dalgalı Çizgi Grafiği (Filled Line Plot)</strong></p></li>
+<li><p><strong>Likert Grafiği (Likert Chart)</strong></p></li>
+<li><p><strong>Paralel Koordinat Grafiği (Parallel Coordinates Plot)</strong></p></li>
+<li><p><strong>Çift Eksenli Grafik (Dual-Axis Plot)</strong></p></li>
+<li><p><strong>Yoğunluk Grafiği (Density Plot)</strong></p></li>
+<li><p><strong>Violin Grafiği (Violin Plot)</strong></p></li>
+<li><p><strong>Halka Grafiği (Donut Chart)</strong></p></li>
+<li><p><strong>Akış Grafiği (Streamgraph)</strong></p></li>
+<li><p><strong>Bölge Grafiği (Contour Plot)</strong></p></li>
+<li><p><strong>Vektör Alanı Grafiği (Quiver Plot)</strong></p></li>
+<li><p><strong>Ağaç Haritası (Treemap)</strong></p></li>
+</ul>
+</section>
+<section id="kurulum">
+<h2>Kurulum<a class="headerlink" href="#kurulum" title="Link to this heading">¶</a></h2>
+<div class="highlight-jsx notranslate"><div class="highlight"><pre><span></span><span class="nx">pip</span><span class="w"> </span><span class="nx">install</span><span class="w"> </span><span class="nx">matplotlib</span>
+</pre></div>
+</div>
+</section>
+<section id="matplotlib-kurulumunu-kontrol-etme">
+<h2>Matplotlib kurulumunu kontrol etme<a class="headerlink" href="#matplotlib-kurulumunu-kontrol-etme" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+
+<span class="c1"># Örneğin şu anki versiyon 3.9.2</span>
+</pre></div>
+</div>
+</section>
+<section id="kullanim">
+<h2>Kullanım<a class="headerlink" href="#kullanim" title="Link to this heading">¶</a></h2>
+<p>Önce kısa bir örnek yapalım, böylece aklımızda Matplotlib’in ne olduğu hakkında daha net bir şey oluşacak. Aşağıdaki kodu direkt olarak kopyalayıp çalıştırın, ardından pyplot’u ve diğerlerini öğrenmeye devam edelim.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Çalıştırdığınız zaman oluşan grafikte sol altta işaretler göreceksiniz. Kısaca bahsetmek gerekirse:</p>
+<ul class="simple">
+<li><p><strong>Ev (Home) İkonu</strong>: Grafiği başlangıç görünümüne sıfırlar. Eğer grafik üzerinde yakınlaştırma veya kaydırma yaptıysanız, bu düğme grafiği ilk haline geri döndürür.</p></li>
+<li><p><strong>Geri (Back) ve İleri (Forward) İkonları</strong>: Görünüm geçmişinde gezinmenizi sağlar. Örneğin, yakınlaştırma veya kaydırma işlemlerinden önceki bir görünüme dönmek için “Geri”, tekrar ilerlemek için “İleri” kullanılır.</p></li>
+<li><p><strong>Dörtlü Ok (Pan/Zoom) İkonu</strong>: Grafiği fare yardımıyla hareket ettirmenizi (pan) veya belirli bir bölgeyi yakınlaştırmanızı sağlar.</p></li>
+<li><p><strong>Zoom (Büyüteç İkonu)</strong>: Seçim yaparak belirli bir bölgeye yakınlaştırma yapar. Seçtiğiniz alan odaklanır.</p></li>
+<li><p><strong>Ayar Çubukları (Three Horizontal Bars)</strong>: Bu ikon, grafiğin <strong>yer kaplama düzenini</strong> ayarlamanızı sağlar. Bu ikon, grafik üzerinde alt grafiklerin (subplots) düzenini, özellikle <strong>grafiklerin boyutlarını</strong> değiştirmek için kullanılır. Grafiğin ve alt grafiklerin kenar boşluklarını ve boyutlarını ayarlamak için bu simgeye tıklayarak, etkileşimli olarak düzenleme yapabilirsiniz. İkinci grafikte gösterdiğim buydu.</p></li>
+<li><p><strong>Kaydet (Disket İkonu)</strong>: Grafiği bir görüntü dosyası (ör. PNG, JPG) olarak kaydetmenize olanak tanır.</p></li>
+</ul>
+</section>
+<section id="pyplot">
+<h2>Pyplot<a class="headerlink" href="#pyplot" title="Link to this heading">¶</a></h2>
+<p>Kullanıcıların grafikler oluşturmasını, düzenlemesini ve görüntülemesini kolaylaştırır. pyplot modülü, grafik oluşturma işlemlerini basit hale getirir. Örneğin ilk yaptığımız örnekte kullanmıştık.</p>
+<p><cite>plt.plot()</cite>, <cite>plt.show()</cite>, <cite>plt.title()</cite>, <cite>plt.xlabel()</cite>, <cite>plt.ylabel()</cite> gibi fonksiyonlar, grafiklerinizi oluşturmak ve özelleştirmek için kullanılır.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Basit bir çizgi grafiği oluşturma</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>  <span class="c1"># İlk değer x, ikinci değer ise y değeridir.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Basit Çizgi Grafiği&#39;</span><span class="p">)</span>  <span class="c1"># Başlık eklemek</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X Ekseni&#39;</span><span class="p">)</span>  <span class="c1"># X eksenine isim vermek. Örneğin yıllara göre araba sayısı üretimini anlatıyorsanız ona göre isimler verebilirsiniz.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Y Ekseni&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  <span class="c1"># Grafiğimizin gösterilmesini sağlar.</span>
+</pre></div>
+</div>
+</section>
+<section id="figure">
+<h2>Figure<a class="headerlink" href="#figure" title="Link to this heading">¶</a></h2>
+<p>Bir kağıt gibi düşünebilirsiniz; birden fazla grafik içerebilir ve ayrıca bu kağıdın büyüklüğünü ayarlayabilirsiniz.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>  <span class="c1"># 10x5 inç boyutunda bir kağıt oluştur</span>
+</pre></div>
+</div>
+</section>
+<section id="axes">
+<h2>Axes<a class="headerlink" href="#axes" title="Link to this heading">¶</a></h2>
+<p>Grafiğimizin ekrandaki hangi bölgede olacağını belirler.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>  <span class="c1"># 1---&gt; Satır Sayısı</span>
+                            <span class="c1"># 2---&gt; Sütun Sayısı</span>
+                            <span class="c1"># 3: Aşağıdaki hangi bölgede olacağını belirlediğimiz kısım burasıdır.</span>
+
+<span class="o">+-------+-------+</span>
+<span class="o">|</span>   <span class="mi">1</span>   <span class="o">|</span>   <span class="mi">2</span>   <span class="o">|</span>
+<span class="o">+-------+-------+</span>
+<span class="o">|</span>   <span class="mi">3</span>   <span class="o">|</span>   <span class="mi">4</span>   <span class="o">|</span>
+<span class="o">+-------+-------+</span>
+
+<span class="mf">1.</span> <span class="n">Alt</span> <span class="n">Grafik</span><span class="p">:</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">221</span><span class="p">)</span> <span class="n">ile</span> <span class="n">oluşturulur</span><span class="o">.</span> <span class="n">Bu</span><span class="p">,</span> <span class="n">yukarıdaki</span> <span class="n">sol</span> <span class="n">köşedeki</span> <span class="n">alanı</span> <span class="n">temsil</span> <span class="n">eder</span><span class="o">.</span>
+<span class="mf">2.</span> <span class="n">Alt</span> <span class="n">Grafik</span><span class="p">:</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">222</span><span class="p">)</span> <span class="n">ile</span> <span class="n">oluşturulur</span><span class="o">.</span> <span class="n">Bu</span><span class="p">,</span> <span class="n">yukarıdaki</span> <span class="n">sağ</span> <span class="n">köşedeki</span> <span class="n">alanı</span> <span class="n">temsil</span> <span class="n">eder</span><span class="o">.</span>
+<span class="mf">3.</span> <span class="n">Alt</span> <span class="n">Grafik</span><span class="p">:</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">223</span><span class="p">)</span> <span class="n">ile</span> <span class="n">oluşturulur</span><span class="o">.</span> <span class="n">Bu</span><span class="p">,</span> <span class="n">aşağıdaki</span> <span class="n">sol</span> <span class="n">köşedeki</span> <span class="n">alanı</span> <span class="n">temsil</span> <span class="n">eder</span><span class="o">.</span>
+<span class="mf">4.</span> <span class="n">Alt</span> <span class="n">Grafik</span><span class="p">:</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">224</span><span class="p">)</span> <span class="n">ile</span> <span class="n">oluşturulur</span><span class="o">.</span> <span class="n">Bu</span><span class="p">,</span> <span class="n">aşağıdaki</span> <span class="n">sağ</span> <span class="n">köşedeki</span> <span class="n">alanı</span> <span class="n">temsil</span> <span class="n">eder</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Aynı zamanda subplot oluşturmak için kullanılan bir yöntem daha var.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">rowspan</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">colspan</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="mf">1.</span> <span class="n">Toplam</span> <span class="mi">6</span> <span class="n">satır</span> <span class="n">ve</span> <span class="mi">1</span> <span class="n">sütunluk</span> <span class="n">bir</span> <span class="n">ızgara</span> <span class="n">tanımlanmış</span><span class="o">.</span>
+<span class="mf">2.</span> <span class="n">Bu</span> <span class="n">alt</span> <span class="n">grafik</span><span class="p">,</span> <span class="n">ızgaranın</span> <span class="n">ilk</span> <span class="n">satırında</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="n">konumunda</span> <span class="n">başlar</span><span class="o">.</span>
+<span class="mf">3.</span> <span class="n">rowspan</span><span class="p">:</span> <span class="n">Sadece</span> <span class="mi">1</span> <span class="n">satır</span> <span class="n">boyunca</span> <span class="n">yer</span> <span class="n">kaplar</span><span class="o">.</span>
+<span class="mf">4.</span> <span class="n">colspan</span><span class="p">:</span> <span class="n">Sadece</span> <span class="mi">1</span> <span class="n">sütun</span> <span class="n">boyunca</span> <span class="n">yer</span> <span class="n">kaplar</span><span class="o">.</span>
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li><p><strong>Yerleşim Esnekliği</strong>:
+- <cite>plt.subplot</cite>: Grafikler sabit ve eşit boyutlarda bölgelere yerleştirilir.
+- <cite>plt.subplot2grid</cite>: Grafiklerin boyutları ve yerleşimi (satır ve sütun kaplama) esnek şekilde tanımlanabilir.</p></li>
+<li><p><strong>Kullanım Amacı</strong>:
+- <cite>plt.subplot</cite>: Basit ve simetrik düzenler için uygundur.
+- <cite>plt.subplot2grid</cite>: Daha karmaşık ve özelleştirilmiş düzenler oluşturmak için uygundur.</p></li>
+<li><p><strong>Kod Karmaşıklığı</strong>:
+- <cite>plt.subplot</cite>: Daha basit ve hızlı.
+- <cite>plt.subplot2grid</cite>: Daha fazla kod yazımı gerektirir ama daha esnektir.</p></li>
+</ol>
+<p><strong>Ne zaman ne kullanılır?</strong></p>
+<ul class="simple">
+<li><p><strong>Basit bir ızgara düzeni gerekiyorsa</strong> → <cite>plt.subplot</cite></p></li>
+<li><p><strong>Farklı boyutlarda veya asimetrik düzenler gerekiyorsa</strong> → <cite>plt.subplot2grid</cite></p></li>
+</ul>
+<p>Bu subplotları hizalamak istersek bu kodu kullanmamız gerek:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.11</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.24</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.90</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.90</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>### Özet: Farklar ve İlişkiler</p>
+<ul class="simple">
+<li><p><strong>Figure</strong>: Büyük kağıt (tuval). Bir veya daha fazla resim yapabilirsin.</p></li>
+<li><p><strong>Axes</strong>: Kağıt üzerindeki belirli bir alan (kutu). Bu alanda resim yaparsın.</p></li>
+<li><p><strong>Plot</strong>: Gerçek resim. Bu alanda çizdiğin çizgi, nokta veya çubuk.</p></li>
+</ul>
+</section>
+<section id="cizgi-grafikleri-line-graphs">
+<h2>Çizgi Grafikleri (Line Graphs)<a class="headerlink" href="#cizgi-grafikleri-line-graphs" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># 1. Adım: Büyük Kağıt (Figure) Oluştur</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>  <span class="c1"># 10x5 inç boyutunda bir kağıt oluştur</span>
+
+<span class="c1"># 2. Adım: Kutu (Axes) Oluştur</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>  <span class="c1"># Kağıdın üzerinde bir kutu oluştur</span>
+
+<span class="c1"># 3. Adım: Veri Noktalarını Belirle</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>  <span class="c1"># Sınav numaraları (1. sınav, 2. sınav, vb.)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">75</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">95</span><span class="p">]</span>  <span class="c1"># Öğrencinin aldığı notlar</span>
+
+<span class="c1"># 4. Adım: Resmi (Plot) Çiz</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># Çizgi grafiği oluştur</span>
+
+<span class="c1"># 5. Adım: Başlık ve Etiketler Ekle</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Öğrencinin Sınav Notları&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>  <span class="c1"># Grafiğe başlık ekle</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Sınav Numarası&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>  <span class="c1"># X eksenine etiket ekle</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Not&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>  <span class="c1"># Y eksenine etiket ekle</span>
+
+<span class="c1"># 6. Adım: Grafiği Göster</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># Izgara çizgilerini ekle</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  <span class="c1"># Grafiği göster</span>
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li><p><strong>Büyük Kağıt (Figure)</strong>: <cite>fig = plt.figure(figsize=(10, 5))</cite> ile 10x5 inç boyutunda bir kağıt oluşturuyoruz. Bu, grafiğimizin tüm alanını temsil ediyor.</p></li>
+<li><p><strong>Kutu (Axes)</strong>: <cite>ax = fig.add_subplot(111)</cite> ile kağıdın üzerinde bir kutu oluşturuyoruz. Bu kutu, grafiğimizin çizileceği alanı belirliyor.</p></li>
+<li><p><strong>Veri Noktaları</strong>: <cite>x</cite> ve <cite>y</cite> listeleri, sınav numaralarını ve öğrencinin aldığı notları temsil ediyor. Bu veriler, grafiğimizde gösterilecek.</p></li>
+<li><p><strong>Resmi (Plot) Çiz</strong>: <cite>ax.plot(x, y, …)</cite> ile belirlediğimiz veri noktalarını bir çizgi ile birleştiriyoruz. <cite>marker=’o’</cite> ile her bir veri noktasını bir daire ile gösteriyoruz.</p></li>
+<li><p><strong>Başlık ve Etiketler</strong>: <cite>ax.set_title()</cite>, <cite>ax.set_xlabel()</cite>, ve <cite>ax.set_ylabel()</cite> ile grafiğimize başlık ve eksen etiketleri ekliyoruz. Bu, grafiğimizin neyi temsil ettiğini anlamamıza yardımcı oluyor.</p></li>
+<li><p><strong>Grafiği Göster</strong>: <cite>plt.show()</cite> ile grafiğimizi ekranda gösteriyoruz. <cite>plt.grid(True)</cite> ile ızgara çizgilerini ekleyerek grafiği daha okunabilir hale getiriyoruz.</p></li>
+</ol>
+<p>Dört Grafiğin Örneği</p>
+<hr class="docutils" />
+<p>Aşağıda, dört farklı grafiğin yer aldığı bir örnek bulunmaktadır. Buradaki <cite>marker</cite> ifadeleri, alttaki çıktıda gördüğünüz üzere üçgen, kare gibi işaretlemeler koyar.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>  <span class="c1"># Matplotlib kütüphanesinin pyplot modülünü içe aktarır. Grafik çizimi için gerekli fonksiyonları sağlar.</span>
+
+
+<span class="c1"># Manuel olarak oluşturulmuş diziler</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>  <span class="c1"># X eksenindeki değerler</span>
+
+<span class="n">y1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span>  <span class="c1"># İlk grafik için Y eksenindeki değerler (Veri 1)</span>
+
+<span class="n">y2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>  <span class="c1"># İkinci grafik için Y eksenindeki değerler (Veri 2)</span>
+
+<span class="n">y3</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># Üçüncü grafik için Y eksenindeki değerler (Veri 3)</span>
+
+<span class="n">y4</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>  <span class="c1"># Dördüncü grafik için Y eksenindeki değerler (Veri 4)</span>
+
+
+<span class="c1"># Grafiklerin oluşturulması</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>  <span class="c1"># 2 satır ve 2 sütundan oluşan bir grafik düzeni oluşturur. Boyutunu 10x8 inç olarak ayarlar.</span>
+
+
+<span class="c1"># İlk grafik</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Veri 1&#39;</span><span class="p">)</span>  <span class="c1"># x ve y1 dizileri ile kırmızı bir çizgi çizer. Veri noktalarını daire ile gösterir.</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Grafik 1&#39;</span><span class="p">)</span>  <span class="c1"># Grafiğin başlığını ayarlar.</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X Ekseni&#39;</span><span class="p">)</span>  <span class="c1"># X ekseninin etiketini ayarlar.</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y Ekseni&#39;</span><span class="p">)</span>  <span class="c1"># Y ekseninin etiketini ayarlar.</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>  <span class="c1"># Grafikteki veri serisini açıklayan bir gösterge ekler.</span>
+
+
+<span class="c1"># İkinci grafik</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="s1">&#39;g-&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Veri 2&#39;</span><span class="p">)</span>  <span class="c1"># x ve y2 dizileri ile yeşil bir çizgi çizer. Veri noktalarını kare ile gösterir.</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Grafik 2&#39;</span><span class="p">)</span>  <span class="c1"># Grafiğin başlığını ayarlar.</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X Ekseni&#39;</span><span class="p">)</span>  <span class="c1"># X ekseninin etiketini ayarlar.</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y Ekseni&#39;</span><span class="p">)</span>  <span class="c1"># Y ekseninin etiketini ayarlar.</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>  <span class="c1"># Grafikteki veri serisini açıklayan bir gösterge ekler.</span>
+
+
+<span class="c1"># Üçüncü grafik</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y3</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;^&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Veri 3&#39;</span><span class="p">)</span>  <span class="c1"># x ve y3 dizileri ile mavi bir çizgi çizer. Veri noktalarını üçgen ile gösterir.</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Grafik 3&#39;</span><span class="p">)</span>  <span class="c1"># Grafiğin başlığını ayarlar.</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X Ekseni&#39;</span><span class="p">)</span>  <span class="c1"># X ekseninin etiketini ayarlar.</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y Ekseni&#39;</span><span class="p">)</span>  <span class="c1"># Y ekseninin etiketini ayarlar.</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>  <span class="c1"># Grafikteki veri serisini açıklayan bir gösterge ekler.</span>
+
+ <span class="c1"># Dördüncü grafik</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y4</span><span class="p">,</span> <span class="s1">&#39;m-&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Veri 4&#39;</span><span class="p">)</span>  <span class="c1"># x ve y4 dizileri ile mor bir çizgi çizer. Veri noktalarını altıgen ile gösterir.</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Grafik 4&#39;</span><span class="p">)</span>  <span class="c1"># Grafiğin başlığını ayarlar.</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X Ekseni&#39;</span><span class="p">)</span>  <span class="c1"># X ekseninin etiketini ayarlar.</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y Ekseni&#39;</span><span class="p">)</span>  <span class="c1"># Y ekseninin etiketini ayarlar.</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>  <span class="c1"># Grafikteki veri serisini açıklayan bir gösterge ekler.</span>
+
+
+<span class="c1"># Grafiklerin düzenlenmesi</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>  <span class="c1"># Grafiklerin düzenini otomatik olarak ayarlar, böylece başlıklar ve etiketler çakışmaz.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  <span class="c1"># Tüm grafikleri ekranda gösterir.</span>
+</pre></div>
+</div>
+</section>
+<section id="sutun-grafikleri-bar-charts">
+<h2>Sütun Grafikleri (Bar Charts)<a class="headerlink" href="#sutun-grafikleri-bar-charts" title="Link to this heading">¶</a></h2>
+<p>Bu sefer <cite>plt.bar()</cite> kullanıyoruz.</p>
+<p><cite>plt.text()</cite> fonksiyonu ile çubukların üstüne değerler yazıyoruz.</p>
+<p>### Tek Kategorili Çubuk Grafiği</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Veriler</span>
+<span class="n">kategoriler</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">]</span>
+<span class="n">degerler</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
+
+<span class="c1"># Tek kategorili çubuk grafiği</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>  <span class="c1"># Grafik boyutunu ayarla</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">kategoriler</span><span class="p">,</span> <span class="n">degerler</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;skyblue&#39;</span><span class="p">)</span>  <span class="c1"># Çubuk grafiği oluştur</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Tek Kategorili Çubuk Grafiği&#39;</span><span class="p">)</span>  <span class="c1"># Başlık</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Kategoriler&#39;</span><span class="p">)</span>  <span class="c1"># X ekseni etiketi</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Değerler&#39;</span><span class="p">)</span>  <span class="c1"># Y ekseni etiketi</span>
+
+<span class="c1"># Değerleri çubukların üstüne yaz</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">degerler</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">),</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  <span class="c1"># Grafiği göster</span>
+</pre></div>
+</div>
+<p>### İki Kategorili Çubuk Grafiği</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Veriler</span>
+<span class="n">kategoriler</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">]</span>
+<span class="n">degerler</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
+
+<span class="c1"># İki kategorili çubuk grafiği</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>  <span class="c1"># Grafik boyutunu ayarla</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">kategoriler</span><span class="p">,</span> <span class="n">degerler</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;skyblue&#39;</span><span class="p">)</span>  <span class="c1"># Çubuk grafiği oluştur</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;İki Kategorili Çubuk Grafiği&#39;</span><span class="p">)</span>  <span class="c1"># Başlık</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Kategoriler&#39;</span><span class="p">)</span>  <span class="c1"># X ekseni etiketi</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Değerler&#39;</span><span class="p">)</span>  <span class="c1"># Y ekseni etiketi</span>
+
+<span class="c1"># Değerleri çubukların üstüne yaz</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">degerler</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">),</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  <span class="c1"># Grafiği göster</span>
+</pre></div>
+</div>
+</section>
+<section id="pasta-grafikleri-pie-charts">
+<h2>Pasta Grafikleri (Pie Charts)<a class="headerlink" href="#pasta-grafikleri-pie-charts" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Veriler</span>
+<span class="n">kategoriler</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Elma&#39;</span><span class="p">,</span> <span class="s1">&#39;Muz&#39;</span><span class="p">,</span> <span class="s1">&#39;Portakal&#39;</span><span class="p">,</span> <span class="s1">&#39;Çilek&#39;</span><span class="p">]</span>
+<span class="n">degerler</span> <span class="o">=</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>  <span class="c1"># Her bir kategorinin oranları</span>
+
+<span class="c1"># Pasta grafiği</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>  <span class="c1"># Grafik boyutunu ayarla</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">degerler</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">kategoriler</span><span class="p">,</span> <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;#ff9999&#39;</span><span class="p">,</span><span class="s1">&#39;#66b3ff&#39;</span><span class="p">,</span><span class="s1">&#39;#99ff99&#39;</span><span class="p">,</span><span class="s1">&#39;#ffcc99&#39;</span><span class="p">])</span>
+<span class="c1"># autopct: dilimlerin yüzdesini gösterir, colors: dilimlerin renklerini ayarlar</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Meyve Dağılımı&#39;</span><span class="p">)</span>  <span class="c1"># Başlık</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>  <span class="c1"># Pastanın elips görünmesini engellemek için x ve y değerlerini eşit tutar.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  <span class="c1"># Grafiği göster</span>
+</pre></div>
+</div>
+<p>Buradaki <cite>autopct</cite>, her dilimin yüzdesini gösterir. Örneğin <cite>%1.1f%%</cite> formatı, yüzdeleri bir ondalık basamakla gösterir. 25.0, 25.3 gibi yazılmasını sağlar.</p>
+</section>
+<section id="dagilim-grafigi-scatter-plots">
+<h2>Dağılım Grafiği (Scatter Plots)<a class="headerlink" href="#dagilim-grafigi-scatter-plots" title="Link to this heading">¶</a></h2>
+<p>Aşağıda, bir dağılım grafiği oluşturmak için kullanılan bir örnek bulunmaktadır:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Örnek veri</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>  <span class="c1"># X değerleri</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">29</span><span class="p">]</span>  <span class="c1"># Y değerleri</span>
+<span class="n">sizes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="mi">140</span><span class="p">]</span>  <span class="c1"># Nokta boyutları</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>  <span class="c1"># Nokta renkleri</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">sizes</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Dağılım Grafiği&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X Değeri&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Y Değeri&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Renk Değeri&#39;</span><span class="p">)</span>  <span class="c1"># Renk çubuğu</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="histogramlar">
+<h2>Histogramlar<a class="headerlink" href="#histogramlar" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Örnek veri</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>  <span class="c1"># Veriler</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;skyblue&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>  <span class="c1"># Histogram oluştur</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histogram&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Değerler&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frekans&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="grafiklerin-ozellestirilmesi">
+<h2>Grafiklerin Özelleştirilmesi<a class="headerlink" href="#grafiklerin-ozellestirilmesi" title="Link to this heading">¶</a></h2>
+<p>Aşağıda grafiklerinize kendi isteklerinize göre dizayn etmek isterseniz kullanabileceğiniz kodları açıklamaları ile birlikte sıraladım.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># 1. Grafik Elemanları</span>
+
+<span class="c1"># Başlık Ekleme</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Grafik Başlığı&#39;</span><span class="p">)</span>  <span class="c1"># Grafiğin üst kısmına başlık ekler.</span>
+
+<span class="c1"># Eksen Etiketleri Ekleme</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X Ekseni&#39;</span><span class="p">)</span>  <span class="c1"># X eksenine etiket ekler.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Y Ekseni&#39;</span><span class="p">)</span>  <span class="c1"># Y eksenine etiket ekler.</span>
+
+<span class="c1"># Lejant Ekleme</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Veri 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Veri 2&#39;</span><span class="p">])</span>  <span class="c1"># Grafikteki veri serilerini açıklayan bir gösterge ekler.</span>
+
+<span class="c1"># Yazı Tipi ve Boyut Ayarları</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Grafik Başlığı&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>  <span class="c1"># Başlık için yazı tipi boyutu ve kalınlık ayarı.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X Ekseni&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>  <span class="c1"># X ekseni etiketi için yazı tipi boyutu.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Y Ekseni&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>  <span class="c1"># Y ekseni etiketi için yazı tipi boyutu.</span>
+
+<span class="c1"># Renk Ayarları</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Grafik Başlığı&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>  <span class="c1"># Başlık rengini mavi yapar.</span>
+
+<span class="c1"># 2. Renkler ve Stiller</span>
+
+<span class="c1"># Yerleşik Renk Paletleri</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>    <span class="c1"># Kırmızı renk ile çizgi çizer.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>  <span class="c1"># Yeşil renk ile çizgi çizer.</span>
+
+<span class="c1"># Özel Renk Kullanımı</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#FF5733&#39;</span><span class="p">)</span>  <span class="c1"># Hex kodu ile özel bir renk kullanır.</span>
+
+<span class="c1"># Stil Ayarları</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;ggplot&#39;</span><span class="p">)</span>  <span class="c1"># ggplot stilini kullanarak grafiğin görünümünü değiştirir.</span>
+
+<span class="c1"># 3. Alt Grafikler (Subplots)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># 2x2 düzeninde alt grafikler oluşturur.</span>
+
+<span class="c1"># Grid Tabanlı Düzenlemeler</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>  <span class="c1"># 2x2 düzen ve boyut ayarı.</span>
+
+<span class="c1"># 4. Özel Şekiller ve Anotasyonlar</span>
+
+<span class="c1"># Ok Ekleme</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">),</span>  <span class="c1"># Okun uç noktaları</span>
+             <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s1">&#39;-&gt;&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">))</span>  <span class="c1"># Okun stili ve rengi.</span>
+
+<span class="c1"># Metin Kutusu Ekleme</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;Metin Kutusu&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>  <span class="c1"># Belirtilen noktaya metin kutusu ekler.</span>
+
+<span class="c1"># İşaretleme Ekleme</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;İşaretleme&#39;</span><span class="p">)</span>  <span class="c1"># Belirtilen noktalara işaretleme ekler.</span>
+</pre></div>
+</div>
+<p>Buradaki bazı değerleri kendi isteğinize göre değiştirebilirsiniz. Örneğin <cite>plt.style.use(‘ggplot’)</cite> kısmında ggplot yerine “<strong>fivethirtyeight</strong>”, “dark_background” gibi farklı değerler girebilirsiniz.</p>
+<p>Bu stiller arka plan rengi, çizgi rengi gibi değerleri değiştirerek farklı sonuçlar ortaya koyabilir. İyi bir görsellik isterseniz deneyerek kendinize uygun olanı seçebilirsiniz.</p>
+</section>
+<section id="canli-grafik-olusturmak">
+<h2>Canlı Grafik Oluşturmak<a class="headerlink" href="#canli-grafik-olusturmak" title="Link to this heading">¶</a></h2>
+<p>Öncelikle <cite>örnek.txt</cite> adlı bir dosya oluşturalım. Örnek olarak bunu kullanabilirsiniz:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1,1
+2,2
+3,3
+4,4
+5,5
+6,6
+7,7
+</pre></div>
+</div>
+<p>Ardından yazacağımız kod:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>  <span class="c1"># Grafik çizimi için matplotlib&#39;in pyplot modülü</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.animation</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">animation</span>  <span class="c1"># Animasyon oluşturmak için matplotlib&#39;in animation modülü</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.animation</span><span class="w"> </span><span class="kn">import</span> <span class="n">FuncAnimation</span>  <span class="c1"># FuncAnimation sınıfını içe aktar</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">style</span>  <span class="c1"># Grafik stillerini kullanmak için</span>
+
+<span class="c1"># Grafik stilini ayarla</span>
+<span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;fivethirtyeight&#39;</span><span class="p">)</span>  <span class="c1"># &#39;fivethirtyeight&#39; stilini kullanarak grafiğin görünümünü ayarlıyoruz</span>
+
+<span class="c1"># Yeni bir figür oluştur</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>  <span class="c1"># Grafik için bir figür nesnesi oluştur. fig değişkenini bize FuncAnimationa bir değer olarak gireceğimiz için gerekli.</span>
+<span class="c1"># Alt grafik (subplot) oluştur</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>  <span class="c1"># 1x1&#39;lik bir ızgarada 1. alt grafiği oluştur</span>
+
+<span class="c1"># Animasyon için güncelleme fonksiyonu</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">animate</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+    <span class="c1"># &#39;örnek.txt&#39; dosyasını oku</span>
+    <span class="n">graph_data</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;örnek.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>  <span class="c1"># Dosyayı okur ve içeriğini bir string olarak alır</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">graph_data</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># Satırları ayırarak bir liste oluşturur</span>
+    <span class="n">xs</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># X değerlerini saklamak için boş bir liste oluştur</span>
+    <span class="n">ys</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Y değerlerini saklamak için boş bir liste oluştur</span>
+
+    <span class="c1"># Her bir satırı işle</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># Satırın boş olmadığından emin ol</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>  <span class="c1"># Satırı virgüle göre ayırarak x ve y değerlerini al</span>
+            <span class="n">xs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>  <span class="c1"># X değerini float tipine çevirip listeye ekle</span>
+            <span class="n">ys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>  <span class="c1"># Y değerini float tipine çevirip listeye ekle</span>
+
+    <span class="n">ax1</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>  <span class="c1"># Önceki verileri sil</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">)</span>  <span class="c1"># Yeni X ve Y değerleri ile grafiği çiz</span>
+
+<span class="c1"># FuncAnimation ile animasyonu başlat</span>
+<span class="n">ani</span> <span class="o">=</span> <span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">animate</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>  <span class="c1"># Her 1000 milisaniyede bir &#39;animate&#39; fonksiyonunu çağırarak animasyonu oluştur</span>
+
+<span class="c1"># Grafiği göster</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  <span class="c1"># Grafiği ekranda göster</span>
+</pre></div>
+</div>
+<p>Grafiğimizin güncellendiğini görmek için <cite>örnek.txt</cite> dosyasına veri ekleyin. Örnek olarak <cite>8,8</cite> ekleyebilirsiniz. Ardından dosyayı kaydedin. Buradaki önemli nokta yeni veriyi bir alt satıra yazmanız çünkü yazdığımız kodda dosyadaki her satırı tek tek alıyoruz. Diğer dikkat etmeniz gereken ise virgül kullanmak; bu şekilde birinci veri x verisi, ikinci veri ise y verisi olarak algılanacak çünkü aynı satırdaki verileri virgüle göre ayırarak x ve y verisini alıyoruz. En son olarak dosyayı kaydetmeyi unutmayın.</p>
+</section>
+<section id="csv-dosyasindaki-verileri-gorsellestirme">
+<h2>CSV Dosyasındaki Verileri Görselleştirme<a class="headerlink" href="#csv-dosyasindaki-verileri-gorsellestirme" title="Link to this heading">¶</a></h2>
+<p>Aşağıda, <cite>örnek.txt</cite> dosyasındaki verileri okuyarak bir çizgi grafiği oluşturmak için kullanılan bir örnek bulunmaktadır:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>  <span class="c1"># CSV dosyalarını okumak için csv kütüphanesini içe aktar.</span>
+
+<span class="c1"># Boş listeler oluştur, verileri saklamak için kullanılacak.</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># &#39;örnek.txt&#39; dosyasını okuma modunda aç.</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;örnek.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
+    <span class="c1"># CSV dosyasını okuyacak bir nesne oluştur, virgül ile ayrılmış verileri işler.</span>
+    <span class="n">plots</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">csvfile</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Her bir satır için döngü başlat.</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">plots</span><span class="p">:</span>
+        <span class="c1"># Satırdaki ilk değeri (X) tam sayıya çevirip x listesine ekle.</span>
+        <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+        <span class="c1"># Satırdaki ikinci değeri (Y) tam sayıya çevirip y listesine ekle.</span>
+        <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+<span class="c1"># X ve Y değerlerini kullanarak bir çizgi grafiği çiz.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;CSV Dosyasından Gelen Veriler&#39;</span><span class="p">)</span>
+
+<span class="c1"># X eksenine &quot;x&quot; etiketi ekle.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="c1"># Y eksenine &quot;y&quot; etiketi ekle.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="c1"># Grafikteki etiketleri göster.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="c1"># Grafiği ekranda göster.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="internetten-veri-cekmek">
+<h2>İnternetten Veri Çekmek<a class="headerlink" href="#internetten-veri-cekmek" title="Link to this heading">¶</a></h2>
+<p>Ticker kelimesi şirketlerin borsadaki sembollerini belirtir. Örneğin bu Apple için ‘AAPL’, Tesla için ‘TSLA’ şeklindedir. Buradaki kullandığımız kütüphane yahoo finance tarafından geliştirlen yfinance kütüphanesi. Burada yahoo finance tarafından sağlanan API kullanılıyor bu bize hisseler ile alakalı sayısal değerleri verecek.</p>
+<p>API nedir: API (Application Programming Interface), yazılımlar arasında iletişim ve veri alışverişi sağlamak için kullanılan bir arayüzdür. API’ler, bir uygulamanın veya hizmetin belirli işlevlerine ve verilerine erişim sağlamak için standart bir yöntem sunar.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">yfinance</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">yf</span>  <span class="c1"># yfinance kütüphanesini içe aktar</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>  <span class="c1"># matplotlib kütüphanesini içe aktar</span>
+
+<span class="c1"># Apple hisselerini (AAPL) tanımla</span>
+<span class="n">apple</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">Ticker</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
+
+<span class="c1"># Hisse senedinin tarihsel verilerini al</span>
+<span class="n">historical_data</span> <span class="o">=</span> <span class="n">apple</span><span class="o">.</span><span class="n">history</span><span class="p">(</span><span class="n">period</span><span class="o">=</span><span class="s2">&quot;1mo&quot;</span><span class="p">)</span>  <span class="c1"># Son 1 ayın verilerini al</span>
+
+<span class="c1"># Kapanış fiyatlarını al</span>
+<span class="n">closing_prices</span> <span class="o">=</span> <span class="n">historical_data</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">]</span>
+
+<span class="c1"># Grafiği çiz</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>  <span class="c1"># Grafik boyutunu ayarla</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">closing_prices</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">closing_prices</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;AAPL Kapanış Fiyatı&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>  <span class="c1"># Kapanış fiyatlarını çiz</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Apple Hisseleri Kapanış Fiyatları (Son 1 Ay)&#39;</span><span class="p">)</span>  <span class="c1"># Başlık</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Tarih&#39;</span><span class="p">)</span>  <span class="c1"># X ekseni etiketi</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Kapanış Fiyatı (USD)&#39;</span><span class="p">)</span>  <span class="c1"># Y ekseni etiketi</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>  <span class="c1"># X eksenindeki tarih etiketlerini döndür</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>  <span class="c1"># Grafikteki etiketleri göster</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>  <span class="c1"># Izgara çizgilerini ekle</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>  <span class="c1"># Grafik düzenini ayarla</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  <span class="c1"># Grafiği göster</span>
+</pre></div>
+</div>
+</section>
+<section id="zamanin-uyarlanmasi">
+<h2>Zamanın Uyarlanması<a class="headerlink" href="#zamanin-uyarlanmasi" title="Link to this heading">¶</a></h2>
+<p><cite>time.time()</cite> Unix zaman damgası döndürür. Bu 1 Ocak 1970’den beri kaç saniye geçtiğini belirtir.</p>
+<p><cite>fromtimestamp</cite> metodu, bir zaman damgasını alarak ona karşılık gelen tarih ve saat bilgisini oluşturur. Yani, bir zaman damgasından (timestamp) tarih ve saat bilgisi elde etmek için kullanılır.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="n">example</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">example</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bu iki satır numpy kullanarak unix değerlerle dolu olan dizimizi vektörleme yaparak bu dizideki her unixi tarih ay gün saate çeviriyoruz. Numpy kullanmadan önce terminalde şu kodu çalıştırıp numpy kütüphanesini yüklemeniz gerek:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>numpy
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dateconv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">)</span>
+<span class="n">date</span> <span class="o">=</span> <span class="n">dateconv</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Numpy vektörleştirmeye bir örnek. Dizideki her sayının karesi alınır.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># Örnek bir fonksiyon</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">square</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="c1"># Bir dizi oluştur</span>
+<span class="n">array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+
+<span class="c1"># Fonksiyonu vektörleştir</span>
+<span class="n">vectorized_square</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">square</span><span class="p">)</span>
+
+<span class="c1"># Vektörleştirilmiş fonksiyonu diziye uygula</span>
+<span class="n">squared_array</span> <span class="o">=</span> <span class="n">vectorized_square</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">squared_array</span><span class="p">)</span>  <span class="c1"># Çıktı: [ 1  4  9 16 25]</span>
+</pre></div>
+</div>
+</section>
+<section id="mum-grafikleri">
+<h2>Mum Grafikleri<a class="headerlink" href="#mum-grafikleri" title="Link to this heading">¶</a></h2>
+<p>OHLC yani Open, High, Low, Close = Açılış, En Yüksek, En Düşük, Kapanış değerlerini kullanacağız. Genellikle finansal piyasalar için kullanılır.</p>
+<p>Öncelikle gerekli kütüphaneleri yükleyin:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>mplfinance
+pip<span class="w"> </span>install<span class="w"> </span>pandas
+</pre></div>
+</div>
+<p>Aşağıda, OHLC grafiği oluşturmak için kullanılacak bir örnek bulunmaktadır:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>  <span class="c1"># Pandas kütüphanesini veri analizi için içe aktar</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">mplfinance</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpf</span>  <span class="c1"># Mplfinance kütüphanesini finansal grafikler için içe aktar</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Date&#39;</span><span class="p">:</span> <span class="p">[</span>  <span class="c1"># Tarihleri içeren bir liste</span>
+        <span class="s1">&#39;2023-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2023-01-02&#39;</span><span class="p">,</span> <span class="s1">&#39;2023-01-03&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;2023-01-04&#39;</span><span class="p">,</span> <span class="s1">&#39;2023-01-05&#39;</span><span class="p">,</span> <span class="s1">&#39;2023-01-06&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;2023-01-07&#39;</span><span class="p">,</span> <span class="s1">&#39;2023-01-08&#39;</span><span class="p">,</span> <span class="s1">&#39;2023-01-09&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;2023-01-10&#39;</span>
+    <span class="p">],</span>
+    <span class="s1">&#39;Open&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">102</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">103</span><span class="p">,</span> <span class="mi">105</span><span class="p">,</span> <span class="mi">107</span><span class="p">,</span> <span class="mi">106</span><span class="p">,</span> <span class="mi">108</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="mi">109</span><span class="p">],</span>  <span class="c1"># Açılış fiyatları</span>
+    <span class="s1">&#39;High&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">102</span><span class="p">,</span> <span class="mi">103</span><span class="p">,</span> <span class="mi">102</span><span class="p">,</span> <span class="mi">104</span><span class="p">,</span> <span class="mi">106</span><span class="p">,</span> <span class="mi">108</span><span class="p">,</span> <span class="mi">107</span><span class="p">,</span> <span class="mi">109</span><span class="p">,</span> <span class="mi">111</span><span class="p">,</span> <span class="mi">110</span><span class="p">],</span>  <span class="c1"># En yüksek fiyatlar</span>
+    <span class="s1">&#39;Low&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">99</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">104</span><span class="p">,</span> <span class="mi">105</span><span class="p">,</span> <span class="mi">105</span><span class="p">,</span> <span class="mi">107</span><span class="p">,</span> <span class="mi">108</span><span class="p">,</span> <span class="mi">107</span><span class="p">],</span>  <span class="c1"># En düşük fiyatlar</span>
+    <span class="s1">&#39;Close&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">101</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">103</span><span class="p">,</span> <span class="mi">105</span><span class="p">,</span> <span class="mi">105</span><span class="p">,</span> <span class="mi">107</span><span class="p">,</span> <span class="mi">106</span><span class="p">,</span> <span class="mi">108</span><span class="p">,</span> <span class="mi">109</span><span class="p">,</span> <span class="mi">108</span><span class="p">],</span>  <span class="c1"># Kapanış fiyatları</span>
+    <span class="s1">&#39;Volume&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1500</span><span class="p">,</span> <span class="mi">1200</span><span class="p">,</span> <span class="mi">1300</span><span class="p">,</span> <span class="mi">1600</span><span class="p">,</span> <span class="mi">1700</span><span class="p">,</span> <span class="mi">1800</span><span class="p">,</span> <span class="mi">1900</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">2100</span><span class="p">]</span>  <span class="c1"># İşlem hacimleri</span>
+<span class="p">}</span>
+
+<span class="c1"># DataFrame oluşturma</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>  <span class="c1"># Sözlükten bir DataFrame oluştur</span>
+
+<span class="c1"># Tarih sütununu datetime formatına çevirme</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">])</span>  <span class="c1"># Tarihleri datetime formatına çevir</span>
+<span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># Tarih sütununu indeks olarak ayarla</span>
+
+<span class="c1"># OHLC grafiği çizme</span>
+<span class="n">mpf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;candle&#39;</span><span class="p">,</span> <span class="n">volume</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;OHLC Grafiği&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;charles&#39;</span><span class="p">)</span>  <span class="c1"># Mum çubuğu grafiği oluştur</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+
+<div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
+<div class='extrarelbar'> 
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Genel Dizin"
+             >dizin</a></li>
+        <li class="right" >
+          <a href="../../katkida_bulunanlar.html" title="Katkıda Bulunanlar"
+             >sonraki</a> |</li>
+        <li class="right" >
+          <a href="../tornado_mod%C3%BCl%C3%BC/tornado_2.html" title="Tornado(devamı)"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="../index.html" >Üçüncü Taraf Modüller</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Matplotlib</a></li> 
+      </ul>
+    </div> </div>
+
+<div class='addcomment'>Yorumlar</div>
+
+<div class='how-to-use'>
+    <h3>Önemli Not</h3>
+    Sorularınızı yorumlarda dile getirmek yerine <a href="https://forum.yazbel.com/">Yazbel Forumu</a>nda sorarsanız çok daha hızlı cevap alabilirsiniz.
+    <br>
+    Belgelerdeki bir hata veya eksiği dile getirecekseniz lütfen yorumları kullanmak yerine <a href="https://github.com/yazbel/python-istihza/issues">Github</a>'da bir konu (issue) açın.
+    <br>
+    Eğer yazdığınız yorum içinde kod kullanacaksanız kodlarınızı
+    <span class='tag'>&lt;pre&gt;&lt;code&gt;</span> etiketleri içine alın. Örneğin:
+
+    <pre>
+        <span class='tag'>&lt;pre&gt;&lt;code class="python"&gt;</span>
+        <span class='keyword'>print</span>(<span class='string'>"Merhaba Dünya!"</span>)
+        <span class='tag'>&lt;/code&gt;&lt;/pre&gt;</span>
+    </pre>
+</div>
+
+
+<div id="disqus_thread"></div>
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT
+     *  THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR
+     *  PLATFORM OR CMS.
+     *
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT:
+     *  https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    /*
+    var disqus_config = function () {
+        // Replace PAGE_URL with your page's canonical URL variable
+        this.page.url = PAGE_URL;
+
+        // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.identifier = PAGE_IDENTIFIER;
+    };
+    */
+
+    (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
+        var d = document, s = d.createElement('script');
+
+        // IMPORTANT: Replace EXAMPLE with your forum shortname!
+        s.src = 'https://istihza.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<noscript>
+<br>
+<a href="https://disqus.com/?ref_noscript" rel="nofollow">Disqus tarafından sağlanan yorumları</a> görmek için lütfen JavasScript'i etkinleştirin.
+<br>
+Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4eca48eb2d83faf9" async="async"></script>
+
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div> 
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Genel Dizin"
+             >dizin</a></li>
+        <li class="right" >
+          <a href="../../katkida_bulunanlar.html" title="Katkıda Bulunanlar"
+             >sonraki</a> |</li>
+        <li class="right" >
+          <a href="../tornado_mod%C3%BCl%C3%BC/tornado_2.html" title="Tornado(devamı)"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="../index.html" >Üçüncü Taraf Modüller</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Matplotlib</a></li> 
+      </ul>
+    </div> 
+
+<div class="footer">
+		&copy; Copyright 2007-2025, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 27.01.2025.
+	<a href="http://sphinx-doc.org/">Sphinx</a> 8.0.2 kullanılarak oluşturuldu.
+
+	Yayım 4.1.3.
+<br>
+<br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
+alt="Creative Commons License" style="border-width:0"
+src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a>
+<br>
+<br>
+</div>
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=10396326;
+var sc_invisible=1;
+var sc_security="fb5cd679";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="hit counter"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="http://c.statcounter.com/10396326/0/fb5cd679/1/"
+alt="hit counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+  </body>
+</html>

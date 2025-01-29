@@ -547,3 +547,8 @@ Mertcan Bilek
 ================
 
     - Bitwise (Bitsel) İşleçleri dokumanlari eklendi.
+
+Berkay Çalışkan
+================
+
+    - Matplotlib dokumanlari eklendi.
