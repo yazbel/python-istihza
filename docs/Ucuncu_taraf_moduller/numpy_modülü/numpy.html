@@ -86,6 +86,21 @@ NumPy, Python’un dinamik tip sisteminin getirdiği ek yükü azaltarak daha h�
 <li><p><strong>Matematiksel İşlemler</strong>: <cite>ndarray</cite>, vektör ve matris işlemleri gibi matematiksel işlemleri kolayca yapmanıza olanak tanır.</p></li>
 </ol>
 <p>Upcasting = Daha düşük olan bir verinin daha yükseğe çıkarılması. Örneğin int32’nin float64’e çıkarılması.</p>
+<p>Upcasting Neden Yapılır?</p>
+<blockquote>
+<div><blockquote>
+<div><dl class="simple">
+<dt>Veri Kaybını Önlemek:</dt><dd><p>Düşük veri tipleri (örneğin, int32) yüksek veri tiplerine (örneğin, float64) dönüştürülerek kesirli sayıların kaybolması engellenir.</p>
+</dd>
+<dt>İşlemlerin Doğruluğunu Sağlamak:</dt><dd><p>Farklı veri tipleri arasında işlem yaparken, sonucun doğru ve taşma (overflow) olmadan hesaplanması sağlanır.</p>
+</dd>
+<dt>Veri Tiplerinin Uyumlu Hale Getirilmesi:</dt><dd><p>Farklı veri tiplerine sahip dizilerle işlem yaparken, NumPy otomatik olarak daha yüksek veri tipine dönüşüm yapar.</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>Düşük veri tipinden yüksek veri tipine doğru:</p>
+<p>bool → int8 → int16 → int32 → int64 → float32 → float64 → complex64 → complex128</p>
+</div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="c1"># 1D ndarray oluşturma</span>
@@ -146,10 +161,10 @@ NumPy, Python’un dinamik tip sisteminin getirdiği ek yükü azaltarak daha h�
 <span class="c1"># 1. NumPy kütüphanesini içe aktarıyoruz.</span>
 
 <span class="c1"># 2. Bir NumPy dizisi oluşturuyoruz.</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>  <span class="c1"># [3.0, 4.0, 5.0] şeklinde bir dizi oluşturur.</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>  <span class="c1"># [3.0, 4.0, 5.0] şeklinde bir dizi oluşturur.</span>
 
 <span class="c1"># 3. Dizi elemanlarının veri tipini karmaşık sayılara dönüştürüyoruz.</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">complex</span><span class="p">)</span>  <span class="c1"># Dizi elemanları artık karmaşık sayılar olarak kabul edilir.</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">complex128</span><span class="p">)</span>  <span class="c1"># Dizi elemanları artık karmaşık sayılar olarak kabul edilir.</span>
 <span class="c1"># Örneğin: [3.0 + 0.0j, 4.0 + 0.0j, 5.0 + 0.0j]</span>
 </pre></div>
 </div>
@@ -159,8 +174,7 @@ NumPy, Python’un dinamik tip sisteminin getirdiği ek yükü azaltarak daha h�
 <span class="c1"># Sonuç: [1.732 + 0.0j, 2.0 + 0.0j, 2.236 + 0.0j]</span>
 
 <span class="c1"># 2. Karmaşık bir sayı oluşturuyoruz.</span>
-<span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">complex</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>  <span class="c1"># 3 + 4i şeklinde bir karmaşık sayı oluşturur.</span>
-<span class="c1"># NumPy&#39;de karmaşık sayılar genellikle &#39;j&#39; ile gösterilir, yani 3 + 4j.</span>
+<span class="n">z</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>  <span class="c1"># 3 + 4j şeklinde bir karmaşık sayı oluşturur.</span>
 
 <span class="c1"># 3. Reel ve sanal kısımları alıyoruz.</span>
 <span class="n">reel_kisim</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">real</span>  <span class="c1"># Karmaşık sayının reel kısmını alır. Sonuç: 3.0</span>
@@ -279,24 +293,33 @@ NumPy, Python’un dinamik tip sisteminin getirdiği ek yükü azaltarak daha h�
 <span class="c1"># 2x3 boyutunda 7 ile doldurulmuş bir dizi oluşturma</span>
 <span class="n">full_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="mi">7</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">full_array</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">[[7 7 7]</span>
+<span class="sd"> [7 7 7]]</span>
+<span class="sd">&#39;&#39;&#39;</span>
 </pre></div>
 </div>
 </section>
 <section id="empty-fill">
 <h1>Empty, Fill<a class="headerlink" href="#empty-fill" title="Link to this heading">¶</a></h1>
-<p>empty fonksiyonu rastgele değerler verir.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># 2 satır 2 sütundan oluşur, rastgele veriler kullanır.</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>  <span class="c1"># NumPy kütüphanesini içe aktar</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># 2 satır 2 sütundan oluşur, belirsiz veriler kullanır.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Boş Dizi (Empty):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>  <span class="c1"># Boş diziyi yazdırır.</span>
 
 <span class="n">x</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># Tüm diziyi 3 ile doldurur.</span>
-</pre></div>
-</div>
-</section>
-<section id="id1">
-<h1>Empty, Fill<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
-<p>empty fonksiyonu rastgele değerler verir.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># 2 satır 2 sütundan oluşur, rastgele veriler kullanır.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Doldurulmuş Dizi (Fill):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>  <span class="c1"># Doldurulmuş diziyi yazdırır.</span>
 
-<span class="n">x</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># Tüm diziyi 3 ile doldurur.</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Boş Dizi (Empty):</span>
+<span class="sd">[[1. 2.]</span>
+<span class="sd"> [3. 4.]]  # Bu değerler belirsizdir, her çalıştırmada farklı olabilir.</span>
+
+<span class="sd">Doldurulmuş Dizi (Fill):</span>
+<span class="sd">[[3. 3.]</span>
+<span class="sd"> [3. 3.]]</span>
+<span class="sd">&#39;&#39;&#39;</span>
 </pre></div>
 </div>
 </section>
@@ -354,7 +377,7 @@ NumPy, Python’un dinamik tip sisteminin getirdiği ek yükü azaltarak daha h�
 
 <span class="nb">print</span><span class="p">()</span>
 
-   <span class="c1"># Üst köşegen (k=1)</span>
+<span class="c1"># Üst köşegen (k=1)</span>
 <span class="n">upper_diagonal_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Üst Köşegen (k=1):&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">upper_diagonal_matrix</span><span class="p">)</span>
@@ -407,16 +430,47 @@ NumPy, Python’un dinamik tip sisteminin getirdiği ek yükü azaltarak daha h�
 </div>
 </section>
 <section id="alternatif-yontem">
-<h1>Alternatif yöntem<a class="headerlink" href="#alternatif-yontem" title="Link to this heading">¶</a></h1>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">numpy</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<h1>Alternatif Yöntem<a class="headerlink" href="#alternatif-yontem" title="Link to this heading">¶</a></h1>
+<ol class="arabic">
+<li><p><strong>`numpy.identity(n)`</strong>:
+- Bu fonksiyon, <cite>n</cite> boyutunda birim matris oluşturur. Birim matris, ana köşegenindeki tüm elemanların 1, diğer tüm elemanların ise 0 olduğu kare bir matristir. Lineer cebir uygulamalarında sıkça kullanılır.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>  <span class="c1"># NumPy kütüphanesini içe aktar</span>
+
+<span class="c1"># 3x3 boyutunda birim matris oluşturma</span>
+<span class="n">identity_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3x3 Birim Matris:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">identity_matrix</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">3x3 Birim Matris:</span>
+<span class="sd">[[1. 0. 0.]</span>
+<span class="sd"> [0. 1. 0.]</span>
+<span class="sd"> [0. 0. 1.]]</span>
+<span class="sd">&#39;&#39;&#39;</span>
 </pre></div>
 </div>
-<section id="kosegen-uzerindeki-sayilari-kontrol-etmek">
-<h2>Köşegen üzerindeki sayıları kontrol etmek:<a class="headerlink" href="#kosegen-uzerindeki-sayilari-kontrol-etmek" title="Link to this heading">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
-</pre></div>
-</div>
+</li>
+</ol>
 </section>
+<section id="kosegen-uzerindeki-sayilari-kontrol-etmek">
+<h1>Köşegen Üzerindeki Sayıları Kontrol Etmek<a class="headerlink" href="#kosegen-uzerindeki-sayilari-kontrol-etmek" title="Link to this heading">¶</a></h1>
+<ol class="arabic" start="2">
+<li><p><strong>`np.diag`</strong>:
+- <cite>np.diag</cite> fonksiyonu, verilen bir dizi veya matrisin köşegenini oluşturmak için kullanılır. Eğer bir dizi verilirse, bu dizi köşegen elemanları olarak atanır ve diğer elemanlar 0 olur. Eğer bir matris verilirse, bu matrisin köşegen elemanları döndürülür.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Köşegen elemanları 4, 7, 11 ve 3 olan bir matris oluşturma</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Köşegen Matris:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Köşegen Matris:</span>
+<span class="sd">[[ 4  0  0  0]</span>
+<span class="sd"> [ 0  7  0  0]</span>
+<span class="sd"> [ 0  0 11  0]</span>
+<span class="sd"> [ 0  0  0  3]]</span>
+<span class="sd">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+</li>
+</ol>
 </section>
 <section id="arrange">
 <h1>Arrange<a class="headerlink" href="#arrange" title="Link to this heading">¶</a></h1>
@@ -482,43 +536,115 @@ NumPy, Python’un dinamik tip sisteminin getirdiği ek yükü azaltarak daha h�
 <li><p><strong>newshape</strong>: (int veya tuple) Yeni şekil. Dizi boyutlarını belirtir. Dizi elemanlarının toplamı, yeni şeklin eleman sayısına eşit olmalıdır.</p></li>
 <li><p><strong>order</strong>: (str, isteğe bağlı) Dizi elemanlarının yeniden şekillendirilme sırasını belirler. ‘C’ (satır-major) veya ‘F’ (sütun-major) olarak ayarlanabilir. Varsayılan değer ‘C’dir.</p></li>
 </ul>
+<p>### Örnek Kullanım</p>
+<p>Aşağıda, bir 1D dizinin nasıl 2D bir diziye dönüştürüleceğine dair örnekler verilmiştir:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>  <span class="c1"># NumPy kütüphanesini içe aktar</span>
 
-<span class="c1"># 1. Adım: Bir dizi oluştur</span>
+<span class="c1"># 1D dizi oluşturma</span>
 <span class="n">original_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>  <span class="c1"># 0&#39;dan 11&#39;e kadar olan sayılardan oluşan bir dizi</span>
-
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Orijinal Dizi:&quot;</span><span class="p">,</span> <span class="n">original_array</span><span class="p">)</span>
 
-<span class="c1"># 2. Adım: Dizi boyutunu değiştirmek için reshape fonksiyonunu kullan</span>
-<span class="n">reshaped_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">original_array</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>  <span class="c1"># 3 satır ve 4 sütunlu bir diziye dönüştür</span>
+<span class="c1"># Dizi boyutunu değiştirmek için reshape fonksiyonunu kullan</span>
+<span class="n">reshaped_array_C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">original_array</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>  <span class="c1"># Satır-major düzen</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Yeniden Şekillendirilmiş Dizi (C düzeni):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">reshaped_array_C</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Yeniden Şekillendirilmiş Dizi:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">reshaped_array</span><span class="p">)</span>
+<span class="n">reshaped_array_F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">original_array</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>  <span class="c1"># Sütun-major düzen</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Yeniden Şekillendirilmiş Dizi (F düzeni):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">reshaped_array_F</span><span class="p">)</span>
 
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">Orijinal Dizi: [ 0  1  2  3  4  5  6  7  8  9 10 11]</span>
 
-<span class="sd">Yeniden Şekillendirilmiş Dizi:</span>
+<span class="sd">Yeniden Şekillendirilmiş Dizi (C düzeni):</span>
 
 <span class="sd">[[ 0  1  2  3]</span>
 <span class="sd"> [ 4  5  6  7]</span>
 <span class="sd"> [ 8  9 10 11]]</span>
+
+<span class="sd">Yeniden Şekillendirilmiş Dizi (F düzeni):</span>
+
+<span class="sd">[[ 0  4  8]</span>
+<span class="sd"> [ 1  5  9]</span>
+<span class="sd"> [ 2  6 10]</span>
+<span class="sd"> [ 3  7 11]]</span>
 <span class="sd">&#39;&#39;&#39;</span>
 </pre></div>
 </div>
+<p>### Açıklama</p>
+<ul class="simple">
+<li><p><strong>Orijinal Dizi</strong>: <cite>np.arange(12)</cite> fonksiyonu, 0’dan 11’e kadar olan sayılardan oluşan bir 1D dizi oluşturur.</p></li>
+<li><p><strong>Yeniden Şekillendirme</strong>:
+- <cite>order=’C’</cite>: Bu durumda, dizi elemanları satır-major (C dilinde olduğu gibi) düzenine göre yeniden şekillendirilir. Yani, önce satırları, sonra sütunları doldurur.
+- <cite>order=’F’</cite>: Bu durumda, dizi elemanları sütun-major (Fortran dilinde olduğu gibi) düzenine göre yeniden şekillendirilir. Yani, önce sütunları, sonra satırları doldurur.</p></li>
+<li><p><strong>Sonuç</strong>: Her iki durumda da yeniden şekillendirilmiş diziler, farklı düzenlemelerle görüntülenir.</p></li>
+</ul>
 </section>
 <section id="random">
 <h1>Random<a class="headerlink" href="#random" title="Link to this heading">¶</a></h1>
+<p>NumPy, rastgele sayı üretimi için çeşitli fonksiyonlar sunar. Bu fonksiyonlar, simülasyonlar, veri analizi, makine öğrenimi ve daha birçok alanda kullanılabilir.</p>
+<p>### Örnek Kullanımlar</p>
+<ol class="arabic">
+<li><p><strong>Rastgele Ondalık Sayılar Oluşturma</strong>:
+- <cite>np.random.random(size)</cite> fonksiyonu, belirtilen boyutta (örneğin, 3x4) rastgele ondalık sayılar üretir. Bu, simülasyonlarda veya veri analizi sırasında rastgele örnekler almak için kullanılabilir.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>  <span class="c1"># NumPy kütüphanesini içe aktar</span>
 
-<span class="c1"># 1. Rastgele ondalık sayılar oluştur (0 ile 1 arasında)</span>
-<span class="n">random_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>  <span class="c1"># 3x4 boyutunda rastgele sayılar</span>
+<span class="c1"># 3x4 boyutunda rastgele ondalık sayılar oluştur</span>
+<span class="n">random_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Rastgele Ondalık Sayılar (0-1):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">random_array</span><span class="p">)</span>
 
-<span class="c1"># 2. Rastgele tam sayılar oluştur (0 ile 10 arasında)</span>
-<span class="n">random_int_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>  <span class="c1"># 3x4 boyutunda tam sayılar</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Rastgele Tam Sayılar (0-10):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">random_int_array</span><span class="p">)</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Rastgele Ondalık Sayılar (0-1):</span>
+<span class="sd">[[0.123 0.456 0.789 0.012]</span>
+<span class="sd"> [0.345 0.678 0.901 0.234]</span>
+<span class="sd"> [0.567 0.890 0.123 0.456]]</span>
+<span class="sd">&#39;&#39;&#39;</span>
 </pre></div>
 </div>
+</li>
+<li><p><strong>Rastgele Tam Sayılar Oluşturma</strong>:
+- <cite>np.random.randint(low, high, size)</cite> fonksiyonu, belirtilen aralıkta rastgele tam sayılar üretir. Bu, oyun simülasyonları veya rastgele veri oluşturma gibi durumlarda faydalıdır.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 0 ile 10 arasında rastgele tam sayılar oluştur</span>
+<span class="n">random_int_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Rastgele Tam Sayılar (0-10):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">random_int_array</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Rastgele Tam Sayılar (0-10):</span>
+<span class="sd">[[1 3 5 7]</span>
+<span class="sd"> [2 8 0 4]</span>
+<span class="sd"> [6 9 1 3]]</span>
+<span class="sd">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Rastgele Dağılımlar</strong>:
+- NumPy, normal dağılım, uniform dağılım gibi çeşitli dağılımlardan rastgele sayılar üretmek için fonksiyonlar sunar. Örneğin, <cite>np.random.normal(loc, scale, size)</cite> fonksiyonu, normal dağılım ile rastgele sayılar üretir.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Normal dağılımdan rastgele sayılar oluştur</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">loc: Dağılımın ortalaması (mean).</span>
+<span class="sd">scale: Dağılımın standart sapması (standard deviation).</span>
+<span class="sd">size: Oluşturulacak dizinin boyutu (örneğin, (3, 4) gibi).</span>
+
+<span class="sd">loc (ortalama): Değeri artırmak, dağılımın merkezini sağa kaydırır; azaltmak, sola kaydırır. Yani, üretilen sayıların ortalaması bu değere yakın olur.</span>
+<span class="sd">scale (standart sapma): Değeri artırmak, dağılımın yayılmasını genişletir; azaltmak, sıkıştırır. Yani, üretilen sayıların birbirine olan uzaklıkları artar veya azalır.</span>
+<span class="sd">size (boyut): Bu değer, oluşturulacak rastgele sayıların sayısını belirler. Daha büyük bir boyut, daha fazla rastgele sayı üretir.</span>
+
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">normal_random_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Normal Dağılımdan Rastgele Sayılar:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">normal_random_array</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Normal Dağılımdan Rastgele Sayılar:</span>
+<span class="sd">[[-0.123  0.456 -0.789  1.012]</span>
+<span class="sd"> [ 0.345 -0.678  0.901 -0.234]</span>
+<span class="sd"> [-0.567  0.890 -1.123  0.456]]</span>
+<span class="sd">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>### Özet</p>
+<p>NumPy’nin <cite>np.random</cite> fonksiyonları, rastgele sayıların simülasyonlarda, veri analizi süreçlerinde ve makine öğrenimi uygulamalarında önemli bir rol oynar. Rastgele sayılar, belirsizlik ve çeşitlilik ekleyerek daha gerçekçi ve etkili modeller oluşturmanıza yardımcı olur.</p>
 </section>
 <section id="ndarray-degistirmek-insert-append-stack-delete">
 <h1>NdArray Değiştirmek (Insert, Append, Stack, Delete)<a class="headerlink" href="#ndarray-degistirmek-insert-append-stack-delete" title="Link to this heading">¶</a></h1>
@@ -615,7 +741,7 @@ NumPy, Python’un dinamik tip sisteminin getirdiği ek yükü azaltarak daha h�
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Yatay Yığma Sonucu (Farklı Boyutlar):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
 
-<span class="w">   </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">Çıktı:</span>
 
 <span class="sd">Yatay Yığma Sonucu (Farklı Boyutlar):</span>
@@ -623,7 +749,7 @@ NumPy, Python’un dinamik tip sisteminin getirdiği ek yükü azaltarak daha h�
 <span class="sd">[[ 1  2  9]</span>
 <span class="sd"> [ 3  4 10]]</span>
 
-<span class="sd">Açıklama: d dizisi, a dizisinin sütun sayısına uyacak şekilde yığılmıştır. Bu, farklı boyutlardaki dizileri birleştirmenin bir yoludur.</span>
+<span class="sd">   Açıklama: d dizisi, a dizisinin sütun sayısına uyacak şekilde yığılmıştır. Bu, farklı boyutlardaki dizileri birleştirmenin bir yoludur.</span>
 <span class="sd">Dikey Yığma (np.vstack)</span>
 
 <span class="sd">Dikey yığma, iki veya daha fazla diziyi üst üste birleştirir. Bu işlem, dizilerin sütun sayılarının eşit olması gerektiği anlamına gelir.</span>
@@ -729,7 +855,7 @@ NumPy, Python’un dinamik tip sisteminin getirdiği ek yükü azaltarak daha h�
 <span class="n">dilim8</span> <span class="o">=</span> <span class="n">x</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># Tüm satırları ve sütunları ters çevirir</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dilim 8 (Ters Çevirme):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">dilim8</span><span class="p">)</span>  <span class="c1"># Çıktı: [[16 15 14 13], [12 11 10 9], [8 7 6 5], [4 3 2 1]]</span>
 
-   <span class="c1"># 10. Örnek: Belirli bir aralıkta dilimleme</span>
+<span class="c1"># 10. Örnek: Belirli bir aralıkta dilimleme</span>
 <span class="c1"># 1. ve 2. satırlardan 0. ve 1. sütunları alma</span>
 <span class="n">dilim9</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>  <span class="c1"># 1. ve 2. satır, 0. ve 1. sütun</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dilim 9:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">dilim9</span><span class="p">)</span>  <span class="c1"># Çıktı: [[ 5  6], [ 9 10]]</span>

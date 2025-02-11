@@ -34,6 +34,21 @@ NDArray = N-dimensional array = Çok boyutlu dizi
 
 Upcasting = Daha düşük olan bir verinin daha yükseğe çıkarılması. Örneğin int32'nin float64'e çıkarılması.
 
+Upcasting Neden Yapılır? 
+
+    Veri Kaybını Önlemek:
+        Düşük veri tipleri (örneğin, int32) yüksek veri tiplerine (örneğin, float64) dönüştürülerek kesirli sayıların kaybolması engellenir.
+
+    İşlemlerin Doğruluğunu Sağlamak:
+        Farklı veri tipleri arasında işlem yaparken, sonucun doğru ve taşma (overflow) olmadan hesaplanması sağlanır.
+
+    Veri Tiplerinin Uyumlu Hale Getirilmesi:
+        Farklı veri tiplerine sahip dizilerle işlem yaparken, NumPy otomatik olarak daha yüksek veri tipine dönüşüm yapar.
+
+   Düşük veri tipinden yüksek veri tipine doğru:
+
+   bool → int8 → int16 → int32 → int64 → float32 → float64 → complex64 → complex128
+
 .. code-block:: python
 
    import numpy as np
@@ -83,27 +98,6 @@ Upcasting = Daha düşük olan bir verinin daha yükseğe çıkarılması. Örne
    İkinci Satır, Üçüncü Sütun Elemanı: 6
    Kareleri: [ 1  4  9 16 25]
 
-.. code-block:: python
-   import numpy as np  # NumPy kütüphanesini içe aktar
-
-   # 2x3 boyutunda bir NumPy dizisi oluştur
-   arr = np.array([[1, 2, 3], [4, 5, 6]])
-
-   # Dizi şekli (boyutları)
-   print("Dizi Şekli (Shape):", arr.shape)  # Çıktı: (2, 3) - 2 satır, 3 sütun
-
-   # Dizi boyutu (toplam eleman sayısı)
-   print("Dizi Boyutu (Size):", arr.size)  # Çıktı: 6 - Toplam 6 eleman var
-
-   # Dizi veri tipi
-   print("Dizi Veri Tipi (Dtype):", arr.dtype)  # Çıktı: int64 - Elemanların veri tipi
-
-   # Dizi boyut sayısı (kaç boyutlu)
-   print("Dizi Boyut Sayısı (Ndim):", arr.ndim)  # Çıktı: 2 - Dizi 2 boyutlu
-
-   # Her bir elemanın byte cinsinden boyutu
-   print("Eleman Boyutu (Itemsize):", arr.itemsize)  # Çıktı: 8 - Her bir int64 elemanı 8 byte
-
 Veri Tipleri
 ============
 
@@ -118,10 +112,10 @@ Veri tipleri ile alakalı dönüşümler:
    # 1. NumPy kütüphanesini içe aktarıyoruz.
 
    # 2. Bir NumPy dizisi oluşturuyoruz.
-   y = np.array([3, 4, 5], dtype=np.float)  # [3.0, 4.0, 5.0] şeklinde bir dizi oluşturur.
+   y = np.array([3, 4, 5], dtype=np.float64)  # [3.0, 4.0, 5.0] şeklinde bir dizi oluşturur.
 
    # 3. Dizi elemanlarının veri tipini karmaşık sayılara dönüştürüyoruz.
-   y = y.astype(np.complex)  # Dizi elemanları artık karmaşık sayılar olarak kabul edilir. 
+   y = y.astype(np.complex128)  # Dizi elemanları artık karmaşık sayılar olarak kabul edilir. 
    # Örneğin: [3.0 + 0.0j, 4.0 + 0.0j, 5.0 + 0.0j]
 
 Bazı matematiksel işlemler:
@@ -133,8 +127,7 @@ Bazı matematiksel işlemler:
    # Sonuç: [1.732 + 0.0j, 2.0 + 0.0j, 2.236 + 0.0j]
 
    # 2. Karmaşık bir sayı oluşturuyoruz.
-   z = np.complex(3, 4)  # 3 + 4i şeklinde bir karmaşık sayı oluşturur. 
-   # NumPy'de karmaşık sayılar genellikle 'j' ile gösterilir, yani 3 + 4j.
+   z = complex(3, 4)  # 3 + 4j şeklinde bir karmaşık sayı oluşturur. 
 
    # 3. Reel ve sanal kısımları alıyoruz.
    reel_kisim = z.real  # Karmaşık sayının reel kısmını alır. Sonuç: 3.0
@@ -264,27 +257,33 @@ Full
    full_array = np.full((2, 3), 7)
    print(full_array)
 
-Empty, Fill
-===========
-
-empty fonksiyonu rastgele değerler verir.
-
-.. code-block:: python
-
-   x = np.empty((2, 2))  # 2 satır 2 sütundan oluşur, rastgele veriler kullanır.
-
-   x.fill(3)  # Tüm diziyi 3 ile doldurur.
+   '''
+   [[7 7 7]
+    [7 7 7]]
+   '''
 
 Empty, Fill
 ===========
 
-empty fonksiyonu rastgele değerler verir.
-
 .. code-block:: python
 
-   x = np.empty((2, 2))  # 2 satır 2 sütundan oluşur, rastgele veriler kullanır.
+   import numpy as np  # NumPy kütüphanesini içe aktar
+
+   x = np.empty((2, 2))  # 2 satır 2 sütundan oluşur, belirsiz veriler kullanır.
+   print("Boş Dizi (Empty):\n", x)  # Boş diziyi yazdırır.
 
    x.fill(3)  # Tüm diziyi 3 ile doldurur.
+   print("Doldurulmuş Dizi (Fill):\n", x)  # Doldurulmuş diziyi yazdırır.
+
+   '''
+   Boş Dizi (Empty):
+   [[1. 2.]
+    [3. 4.]]  # Bu değerler belirsizdir, her çalıştırmada farklı olabilir.
+
+   Doldurulmuş Dizi (Fill):
+   [[3. 3.]
+    [3. 3.]]
+   '''
 
 Eye
 ====
@@ -347,7 +346,7 @@ Eye
 
    print()
 
-      # Üst köşegen (k=1)
+   # Üst köşegen (k=1)
    upper_diagonal_matrix = np.eye(4, k=1)
    print("Üst Köşegen (k=1):")
    print(upper_diagonal_matrix)
@@ -397,19 +396,46 @@ Eye
    #  [0. 0. 0. 0.]]
    # Açıklama: 4x4 boyutunda matris. Ana köşegenin iki altındaki köşegen (k=-2) elemanları 1, diğerleri 0.
 
-Alternatif yöntem
+Alternatif Yöntem
 =================
 
-.. code-block:: python
+1. **`numpy.identity(n)`**:
+   - Bu fonksiyon, `n` boyutunda birim matris oluşturur. Birim matris, ana köşegenindeki tüm elemanların 1, diğer tüm elemanların ise 0 olduğu kare bir matristir. Lineer cebir uygulamalarında sıkça kullanılır.
 
-   numpy.identity(n)
+   .. code-block:: python
 
-Köşegen üzerindeki sayıları kontrol etmek:
--------------------------------------------
+      import numpy as np  # NumPy kütüphanesini içe aktar
 
-.. code-block:: python
+      # 3x3 boyutunda birim matris oluşturma
+      identity_matrix = np.identity(3)
+      print("3x3 Birim Matris:\n", identity_matrix)
 
-   x = np.diag([4, 7, 11, 3])
+      '''
+      3x3 Birim Matris:
+      [[1. 0. 0.]
+       [0. 1. 0.]
+       [0. 0. 1.]]
+      '''
+
+Köşegen Üzerindeki Sayıları Kontrol Etmek
+=========================================
+
+2. **`np.diag`**:
+   - `np.diag` fonksiyonu, verilen bir dizi veya matrisin köşegenini oluşturmak için kullanılır. Eğer bir dizi verilirse, bu dizi köşegen elemanları olarak atanır ve diğer elemanlar 0 olur. Eğer bir matris verilirse, bu matrisin köşegen elemanları döndürülür.
+
+   .. code-block:: python
+
+      # Köşegen elemanları 4, 7, 11 ve 3 olan bir matris oluşturma
+      x = np.diag([4, 7, 11, 3])
+      print("Köşegen Matris:\n", x)
+
+      '''
+      Köşegen Matris:
+      [[ 4  0  0  0]
+       [ 0  7  0  0]
+       [ 0  0 11  0]
+       [ 0  0  0  3]]
+      '''
 
 
 Arrange
@@ -483,45 +509,128 @@ Parametreler
 - **newshape**: (int veya tuple) Yeni şekil. Dizi boyutlarını belirtir. Dizi elemanlarının toplamı, yeni şeklin eleman sayısına eşit olmalıdır.
 - **order**: (str, isteğe bağlı) Dizi elemanlarının yeniden şekillendirilme sırasını belirler. 'C' (satır-major) veya 'F' (sütun-major) olarak ayarlanabilir. Varsayılan değer 'C'dir.
 
+### Örnek Kullanım
+
+Aşağıda, bir 1D dizinin nasıl 2D bir diziye dönüştürüleceğine dair örnekler verilmiştir:
+
 .. code-block:: python
 
    import numpy as np  # NumPy kütüphanesini içe aktar
 
-   # 1. Adım: Bir dizi oluştur
+   # 1D dizi oluşturma
    original_array = np.arange(12)  # 0'dan 11'e kadar olan sayılardan oluşan bir dizi
-
    print("Orijinal Dizi:", original_array)
 
-   # 2. Adım: Dizi boyutunu değiştirmek için reshape fonksiyonunu kullan
-   reshaped_array = np.reshape(original_array, (3, 4))  # 3 satır ve 4 sütunlu bir diziye dönüştür
+   # Dizi boyutunu değiştirmek için reshape fonksiyonunu kullan
+   reshaped_array_C = np.reshape(original_array, (3, 4), order='C')  # Satır-major düzen
+   print("Yeniden Şekillendirilmiş Dizi (C düzeni):\n", reshaped_array_C)
 
-   print("Yeniden Şekillendirilmiş Dizi:\n", reshaped_array)
+   reshaped_array_F = np.reshape(original_array, (3, 4), order='F')  # Sütun-major düzen
+   print("Yeniden Şekillendirilmiş Dizi (F düzeni):\n", reshaped_array_F)
 
    '''
    Orijinal Dizi: [ 0  1  2  3  4  5  6  7  8  9 10 11]
 
-   Yeniden Şekillendirilmiş Dizi:
+   Yeniden Şekillendirilmiş Dizi (C düzeni):
 
    [[ 0  1  2  3]
     [ 4  5  6  7]
     [ 8  9 10 11]]
+
+   Yeniden Şekillendirilmiş Dizi (F düzeni):
+
+   [[ 0  4  8]
+    [ 1  5  9]
+    [ 2  6 10]
+    [ 3  7 11]]
    '''
+
+### Açıklama
+
+- **Orijinal Dizi**: `np.arange(12)` fonksiyonu, 0'dan 11'e kadar olan sayılardan oluşan bir 1D dizi oluşturur.
+- **Yeniden Şekillendirme**:
+  - `order='C'`: Bu durumda, dizi elemanları satır-major (C dilinde olduğu gibi) düzenine göre yeniden şekillendirilir. Yani, önce satırları, sonra sütunları doldurur.
+  - `order='F'`: Bu durumda, dizi elemanları sütun-major (Fortran dilinde olduğu gibi) düzenine göre yeniden şekillendirilir. Yani, önce sütunları, sonra satırları doldurur.
+- **Sonuç**: Her iki durumda da yeniden şekillendirilmiş diziler, farklı düzenlemelerle görüntülenir.
+
+
 
 Random
 =======
 
-.. code-block:: python
+NumPy, rastgele sayı üretimi için çeşitli fonksiyonlar sunar. Bu fonksiyonlar, simülasyonlar, veri analizi, makine öğrenimi ve daha birçok alanda kullanılabilir.
 
-   import numpy as np  # NumPy kütüphanesini içe aktar
+### Örnek Kullanımlar
 
-   # 1. Rastgele ondalık sayılar oluştur (0 ile 1 arasında)
-   random_array = np.random.random(size=(3, 4))  # 3x4 boyutunda rastgele sayılar
-   print("Rastgele Ondalık Sayılar (0-1):\n", random_array)
+1. **Rastgele Ondalık Sayılar Oluşturma**:
+   - `np.random.random(size)` fonksiyonu, belirtilen boyutta (örneğin, 3x4) rastgele ondalık sayılar üretir. Bu, simülasyonlarda veya veri analizi sırasında rastgele örnekler almak için kullanılabilir.
 
-   # 2. Rastgele tam sayılar oluştur (0 ile 10 arasında)
-   random_int_array = np.random.randint(low=0, high=10, size=(3, 4))  # 3x4 boyutunda tam sayılar
-   print("Rastgele Tam Sayılar (0-10):\n", random_int_array)
+   .. code-block:: python
 
+      import numpy as np  # NumPy kütüphanesini içe aktar
+
+      # 3x4 boyutunda rastgele ondalık sayılar oluştur
+      random_array = np.random.random(size=(3, 4))
+      print("Rastgele Ondalık Sayılar (0-1):\n", random_array)
+
+      '''
+      Rastgele Ondalık Sayılar (0-1):
+      [[0.123 0.456 0.789 0.012]
+       [0.345 0.678 0.901 0.234]
+       [0.567 0.890 0.123 0.456]]
+      '''
+
+
+2. **Rastgele Tam Sayılar Oluşturma**:
+   - `np.random.randint(low, high, size)` fonksiyonu, belirtilen aralıkta rastgele tam sayılar üretir. Bu, oyun simülasyonları veya rastgele veri oluşturma gibi durumlarda faydalıdır.
+
+   .. code-block:: python
+
+      # 0 ile 10 arasında rastgele tam sayılar oluştur
+      random_int_array = np.random.randint(low=0, high=10, size=(3, 4))
+      print("Rastgele Tam Sayılar (0-10):\n", random_int_array)
+
+      '''
+      Rastgele Tam Sayılar (0-10):
+      [[1 3 5 7]
+       [2 8 0 4]
+       [6 9 1 3]]
+      '''
+
+
+3. **Rastgele Dağılımlar**:
+   - NumPy, normal dağılım, uniform dağılım gibi çeşitli dağılımlardan rastgele sayılar üretmek için fonksiyonlar sunar. Örneğin, `np.random.normal(loc, scale, size)` fonksiyonu, normal dağılım ile rastgele sayılar üretir.
+
+   
+   .. code-block:: python
+
+      # Normal dağılımdan rastgele sayılar oluştur
+
+      '''
+      loc: Dağılımın ortalaması (mean).
+      scale: Dağılımın standart sapması (standard deviation).
+      size: Oluşturulacak dizinin boyutu (örneğin, (3, 4) gibi).
+
+      loc (ortalama): Değeri artırmak, dağılımın merkezini sağa kaydırır; azaltmak, sola kaydırır. Yani, üretilen sayıların ortalaması bu değere yakın olur.
+      scale (standart sapma): Değeri artırmak, dağılımın yayılmasını genişletir; azaltmak, sıkıştırır. Yani, üretilen sayıların birbirine olan uzaklıkları artar veya azalır.
+      size (boyut): Bu değer, oluşturulacak rastgele sayıların sayısını belirler. Daha büyük bir boyut, daha fazla rastgele sayı üretir.
+
+
+      '''
+      normal_random_array = np.random.normal(loc=0, scale=1, size=(3, 4))
+      print("Normal Dağılımdan Rastgele Sayılar:\n", normal_random_array)
+
+      '''
+      Normal Dağılımdan Rastgele Sayılar:
+      [[-0.123  0.456 -0.789  1.012]
+       [ 0.345 -0.678  0.901 -0.234]
+       [-0.567  0.890 -1.123  0.456]]
+      '''
+
+
+### Özet
+
+NumPy'nin `np.random` fonksiyonları, rastgele sayıların simülasyonlarda, veri analizi süreçlerinde ve makine öğrenimi uygulamalarında önemli bir rol oynar. Rastgele sayılar, belirsizlik ve çeşitlilik ekleyerek daha gerçekçi ve etkili modeller oluşturmanıza yardımcı olur.
 
 NdArray Değiştirmek (Insert, Append, Stack, Delete)
 ===================================================
@@ -621,7 +730,7 @@ NdArray Değiştirmek (Insert, Append, Stack, Delete)
 
    print("Yatay Yığma Sonucu (Farklı Boyutlar):\n", e)
 
-      '''
+   '''
    Çıktı:
 
    Yatay Yığma Sonucu (Farklı Boyutlar):
@@ -629,7 +738,7 @@ NdArray Değiştirmek (Insert, Append, Stack, Delete)
    [[ 1  2  9]
     [ 3  4 10]]
 
-   Açıklama: d dizisi, a dizisinin sütun sayısına uyacak şekilde yığılmıştır. Bu, farklı boyutlardaki dizileri birleştirmenin bir yoludur.
+      Açıklama: d dizisi, a dizisinin sütun sayısına uyacak şekilde yığılmıştır. Bu, farklı boyutlardaki dizileri birleştirmenin bir yoludur.
    Dikey Yığma (np.vstack)
 
    Dikey yığma, iki veya daha fazla diziyi üst üste birleştirir. Bu işlem, dizilerin sütun sayılarının eşit olması gerektiği anlamına gelir.
@@ -736,7 +845,7 @@ Slicing
    dilim8 = x[::-1, ::-1]  # Tüm satırları ve sütunları ters çevirir
    print("Dilim 8 (Ters Çevirme):\n", dilim8)  # Çıktı: [[16 15 14 13], [12 11 10 9], [8 7 6 5], [4 3 2 1]]
 
-      # 10. Örnek: Belirli bir aralıkta dilimleme
+   # 10. Örnek: Belirli bir aralıkta dilimleme
    # 1. ve 2. satırlardan 0. ve 1. sütunları alma
    dilim9 = x[1:3, 0:2]  # 1. ve 2. satır, 0. ve 1. sütun
    print("Dilim 9:\n", dilim9)  # Çıktı: [[ 5  6], [ 9 10]]
