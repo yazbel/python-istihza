@@ -9,3 +9,4 @@
 	pyperclip_modülü/index
 	tornado_modülü/index
 	matplotlib_modülü/matplotlib.rst
+	numpy_modülü/numpy.rst

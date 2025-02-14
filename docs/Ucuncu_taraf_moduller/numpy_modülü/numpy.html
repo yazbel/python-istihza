@@ -1,0 +1,1325 @@
+
+ <!DOCTYPE html>
+ <html lang="tr">
+
+
+<html lang="tr" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Numpy &#8212; Yazbel Python Belgeleri</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=36871c9a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pyramid.css?v=bd158598" />
+    <script src="../../_static/documentation_options.js?v=4e2d7ee8"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/translations.js?v=5dbee647"></script>
+    <link rel="canonical" href="https://python-istihza.yazbel.com/Ucuncu_taraf_moduller/numpy_modülü/numpy.html" />
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Dizin" href="../../genindex.html" />
+    <link rel="search" title="Ara" href="../../search.html" />
+    <link rel="next" title="Katkıda Bulunanlar" href="../../katkida_bulunanlar.html" />
+    <link rel="prev" title="Matplotlib" href="../matplotlib_mod%C3%BCl%C3%BC/matplotlib.html" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+<div class='header'><a href='https://yazbel.com'><img src="../../_static/logo.png"></a></div>
+
+<ul class='navbar'>
+    <li><a href="http://forum.yazbel.com">forum</a></li>
+    <li><a href="https://github.com/yazbel/python-istihza">github</a></li>
+    <li><a href="YazbelPythonProgramlamaDiliBelgeleri.pdf">pdf</a></li>
+    <!-- <li><a href="YazbelPythonProgramlamaDiliBelgeleri.epub">epub</a></li> the file format is wrong so we are disabling it for now-->
+    <li><a href="YazbelPythonProgramlamaDiliBelgeleri.html">html</a></li>
+</ul>
+
+
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Genel Dizin"
+             accesskey="I">dizin</a></li>
+        <li class="right" >
+          <a href="../../katkida_bulunanlar.html" title="Katkıda Bulunanlar"
+             accesskey="N">sonraki</a> |</li>
+        <li class="right" >
+          <a href="../matplotlib_mod%C3%BCl%C3%BC/matplotlib.html" title="Matplotlib"
+             accesskey="P">önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Üçüncü Taraf Modüller</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Numpy</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+
+  <section id="numpy">
+<h1>Numpy<a class="headerlink" href="#numpy" title="Link to this heading">¶</a></h1>
+<p>NumPy, Python programlama dilinde bilimsel hesaplamalar için kullanılan bir kütüphanedir. “Numerical Python” ifadesinin kısaltmasıdır. NumPy, büyük, çok boyutlu diziler ve matrisler oluşturmayı ve bu diziler üzerinde yüksek performanslı matematiksel işlemler yapmayı sağlar.</p>
+<p>NumPy, klasik Python’dan daha hızlıdır çünkü:</p>
+<ol class="arabic simple">
+<li><p><strong>Düşük Seviye Optimizasyon</strong>:
+NumPy, C ve Fortran gibi düşük seviyeli dillerde yazılmıştır. Bu, hesaplamaların daha verimli bir şekilde gerçekleştirilmesini sağlar.</p></li>
+<li><p><strong>Vektörleştirme</strong>:
+NumPy, döngüleri ve tekrarlayan işlemleri vektörleştirerek toplu işlemler yapar. Bu, işlemlerin daha hızlı ve daha az bellek kullanarak gerçekleştirilmesine olanak tanır.</p></li>
+<li><p><strong>Sabit Boyutlu Diziler</strong>:
+NumPy dizileri (ndarray), sabit boyutlu ve homojen veri tiplerine sahiptir. Bu, bellek yönetimini optimize eder ve işlem hızını artırır.</p></li>
+<li><p><strong>Daha Az Python Overhead’i</strong>:
+NumPy, Python’un dinamik tip sisteminin getirdiği ek yükü azaltarak daha hızlı çalışır. Python’da her bir öğe için tip kontrolü yapılırken, NumPy’de bu işlem daha az sıklıkla gerçekleşir.</p></li>
+</ol>
+<p>Bu nedenlerle, büyük veri setleri ve matematiksel hesaplamalarla çalışırken NumPy kullanmak, performans açısından büyük avantajlar sağlar.</p>
+<section id="ndarray-olusturmak-upcasting">
+<h2>NDArray Oluşturmak - Upcasting<a class="headerlink" href="#ndarray-olusturmak-upcasting" title="Link to this heading">¶</a></h2>
+<p>NDArray = N-dimensional array = Çok boyutlu dizi</p>
+<ol class="arabic simple">
+<li><p><strong>Çok Boyutluluk</strong>: <cite>ndarray</cite>, 1D (tek boyutlu), 2D (iki boyutlu), 3D (üç boyutlu) ve daha yüksek boyutlu dizileri temsil edebilir. Örneğin, bir 2D <cite>ndarray</cite>, matris olarak düşünülebilir.</p></li>
+<li><p><strong>Homojen Veri Tipi</strong>: Tüm elemanlar aynı veri tipine sahiptir. Bu, dizinin bellekte daha verimli bir şekilde saklanmasını sağlar.</p></li>
+<li><p><strong>Hız ve Verimlilik</strong>: NumPy, C dilinde yazıldığı için, <cite>ndarray</cite> üzerinde yapılan işlemler genellikle Python’un yerel veri yapılarıyla yapılan işlemlerden çok daha hızlıdır.</p></li>
+<li><p><strong>Matematiksel İşlemler</strong>: <cite>ndarray</cite>, vektör ve matris işlemleri gibi matematiksel işlemleri kolayca yapmanıza olanak tanır.</p></li>
+</ol>
+<p>Upcasting = Daha düşük olan bir verinin daha yükseğe çıkarılması. Örneğin int32’nin float64’e çıkarılması.</p>
+<p>Upcasting Neden Yapılır?</p>
+<blockquote>
+<div><blockquote>
+<div><dl class="simple">
+<dt>Veri Kaybını Önlemek:</dt><dd><p>Düşük veri tipleri (örneğin, int32) yüksek veri tiplerine (örneğin, float64) dönüştürülerek kesirli sayıların kaybolması engellenir.</p>
+</dd>
+<dt>İşlemlerin Doğruluğunu Sağlamak:</dt><dd><p>Farklı veri tipleri arasında işlem yaparken, sonucun doğru ve taşma (overflow) olmadan hesaplanması sağlanır.</p>
+</dd>
+<dt>Veri Tiplerinin Uyumlu Hale Getirilmesi:</dt><dd><p>Farklı veri tiplerine sahip dizilerle işlem yaparken, NumPy otomatik olarak daha yüksek veri tipine dönüşüm yapar.</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>Düşük veri tipinden yüksek veri tipine doğru:</p>
+<p>bool → int8 → int16 → int32 → int64 → float32 → float64 → complex64 → complex128</p>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># 1D ndarray oluşturma</span>
+<span class="n">arr_1d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1D Dizi:&quot;</span><span class="p">,</span> <span class="n">arr_1d</span><span class="p">)</span>
+
+<span class="c1"># 2D ndarray (matris) oluşturma</span>
+<span class="n">arr_2d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2D Dizi:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">arr_2d</span><span class="p">)</span>
+
+<span class="c1"># Dizi boyutunu öğrenme</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dizi Boyutu:&quot;</span><span class="p">,</span> <span class="n">arr_2d</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1"># Dizi elemanlarına erişim</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;İlk Eleman:&quot;</span><span class="p">,</span> <span class="n">arr_1d</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;İkinci Satır, Üçüncü Sütun Elemanı:&quot;</span><span class="p">,</span> <span class="n">arr_2d</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+
+<span class="c1"># Dizi üzerinde matematiksel işlemler</span>
+<span class="n">arr_squared</span> <span class="o">=</span> <span class="n">arr_1d</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kareleri:&quot;</span><span class="p">,</span> <span class="n">arr_squared</span><span class="p">)</span>
+
+<span class="c1"># 2 katman, 2 satır ve 3 sütundan oluşan 3D dizi oluştur</span>
+<span class="n">arr_3d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]],</span>  <span class="c1"># 1. katman</span>
+                   <span class="p">[[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]]])</span>  <span class="c1"># 2. katman</span>
+
+<span class="c1"># Dizi özelliklerini yazdır</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dizi Şekli (Shape):&quot;</span><span class="p">,</span> <span class="n">arr_3d</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># (2, 2, 3) - 2 katman, 2 satır, 3 sütun</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dizi Boyutu (Size):&quot;</span><span class="p">,</span> <span class="n">arr_3d</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>   <span class="c1"># 12 - Toplam 12 eleman</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dizi Veri Tipi (Dtype):&quot;</span><span class="p">,</span> <span class="n">arr_3d</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>  <span class="c1"># int64 - Elemanların veri tipi</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dizi Boyut Sayısı (Ndim):&quot;</span><span class="p">,</span> <span class="n">arr_3d</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span>  <span class="c1"># 3 - Dizi 3 boyutlu</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Eleman Boyutu (Itemsize):&quot;</span><span class="p">,</span> <span class="n">arr_3d</span><span class="o">.</span><span class="n">itemsize</span><span class="p">)</span>  <span class="c1"># 8 - Her bir int64 elemanı 8 byte</span>
+<span class="c1"># Shape: #(2, 2, 3) - Dizi 2 katman, 2 satır ve 3 sütun içerir.</span>
+</pre></div>
+</div>
+</section>
+<section id="ciktimiz">
+<h2>Çıktımız<a class="headerlink" href="#ciktimiz" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="n">D</span> <span class="n">Dizi</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">]</span>
+<span class="mi">2</span><span class="n">D</span> <span class="n">Dizi</span><span class="p">:</span>
+<span class="p">[[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">]]</span>
+<span class="n">Dizi</span> <span class="n">Boyutu</span><span class="p">:</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">İlk</span> <span class="n">Eleman</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">İkinci</span> <span class="n">Satır</span><span class="p">,</span> <span class="n">Üçüncü</span> <span class="n">Sütun</span> <span class="n">Elemanı</span><span class="p">:</span> <span class="mi">6</span>
+<span class="n">Kareleri</span><span class="p">:</span> <span class="p">[</span> <span class="mi">1</span>  <span class="mi">4</span>  <span class="mi">9</span> <span class="mi">16</span> <span class="mi">25</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="veri-tipleri">
+<h1>Veri Tipleri<a class="headerlink" href="#veri-tipleri" title="Link to this heading">¶</a></h1>
+<ul class="simple">
+<li><p><strong>Veri Tipleri</strong>: NumPy, çeşitli veri tiplerini destekler (int, float, complex, bool, str).</p></li>
+</ul>
+<p>Veri tipleri ile alakalı dönüşümler:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># 1. NumPy kütüphanesini içe aktarıyoruz.</span>
+
+<span class="c1"># 2. Bir NumPy dizisi oluşturuyoruz.</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>  <span class="c1"># [3.0, 4.0, 5.0] şeklinde bir dizi oluşturur.</span>
+
+<span class="c1"># 3. Dizi elemanlarının veri tipini karmaşık sayılara dönüştürüyoruz.</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">complex128</span><span class="p">)</span>  <span class="c1"># Dizi elemanları artık karmaşık sayılar olarak kabul edilir.</span>
+<span class="c1"># Örneğin: [3.0 + 0.0j, 4.0 + 0.0j, 5.0 + 0.0j]</span>
+</pre></div>
+</div>
+<p>Bazı matematiksel işlemler:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Dizi elemanlarının karekökünü alıyoruz.</span>
+<span class="n">karekök</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>  <span class="c1"># Her bir elemanın karekökünü alır.</span>
+<span class="c1"># Sonuç: [1.732 + 0.0j, 2.0 + 0.0j, 2.236 + 0.0j]</span>
+
+<span class="c1"># 2. Karmaşık bir sayı oluşturuyoruz.</span>
+<span class="n">z</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>  <span class="c1"># 3 + 4j şeklinde bir karmaşık sayı oluşturur.</span>
+
+<span class="c1"># 3. Reel ve sanal kısımları alıyoruz.</span>
+<span class="n">reel_kisim</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">real</span>  <span class="c1"># Karmaşık sayının reel kısmını alır. Sonuç: 3.0</span>
+<span class="n">sanal_kisim</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">imag</span>  <span class="c1"># Karmaşık sayının sanal kısmını alır. Sonuç: 4.0</span>
+
+<span class="c1"># 4. Sonuçları yazdırıyoruz.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Karmaşık sayı:&quot;</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>          <span class="c1"># Çıktı: (3+4j)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Reel kısım:&quot;</span><span class="p">,</span> <span class="n">reel_kisim</span><span class="p">)</span>    <span class="c1"># Çıktı: 3.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sanal kısım:&quot;</span><span class="p">,</span> <span class="n">sanal_kisim</span><span class="p">)</span>  <span class="c1"># Çıktı: 4.0</span>
+</pre></div>
+</div>
+</section>
+<section id="save-load">
+<h1>Save Load<a class="headerlink" href="#save-load" title="Link to this heading">¶</a></h1>
+<ul class="simple">
+<li><p><strong>Diziyi Kaydetme</strong>: <cite>np.save(‘dosya_adı.npy’, dizi)</cite> ile diziyi kaydedebilirsiniz.</p></li>
+<li><p><strong>Diziyi Yükleme</strong>: <cite>np.load(‘dosya_adı.npy’)</cite> ile kaydedilen diziyi yükleyebilirsiniz.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Bir NumPy dizisi oluşturma</span>
+<span class="n">dizi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+
+<span class="c1"># Diziyi kaydetme</span>
+<span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;dizi.npy&#39;</span><span class="p">,</span> <span class="n">dizi</span><span class="p">)</span>  <span class="c1"># &#39;dizi.npy&#39; adında bir dosya oluşturur.</span>
+
+<span class="c1"># Diziyi metin dosyası olarak kaydetme</span>
+<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s1">&#39;dizi.txt&#39;</span><span class="p">,</span> <span class="n">dizi</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># &#39;dizi.txt&#39; adında bir dosya oluşturur.</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd"># 1. Tam Sayı Formatları</span>
+<span class="sd"># %d: Tam sayıları kaydetmek için.</span>
+
+<span class="sd"># 2. Ondalık Sayı Formatları</span>
+<span class="sd"># %.nf: n ondalık basamakla ondalıklı sayıları kaydetmek için.</span>
+<span class="sd"># Örnek: %.2f (2 ondalık basamak)</span>
+<span class="sd"># Örnek: %.3f (3 ondalık basamak)</span>
+
+<span class="sd"># 3. Bilimsel Notasyon Formatları</span>
+<span class="sd"># %e: Sayıları bilimsel notasyonla kaydetmek için.</span>
+<span class="sd"># %g: Sayıları en uygun formatta (tam sayı, ondalıklı veya bilimsel notasyon) kaydetmek için.</span>
+
+<span class="sd"># 4. Diğer Formatlar</span>
+<span class="sd"># %s: String (metin) verileri kaydetmek için.</span>
+<span class="sd"># %o: Sayıları sekizli (octal) sistemde kaydetmek için.</span>
+<span class="sd"># %x: Sayıları onaltılı (hexadecimal) sistemde kaydetmek için.</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">yuklenen_dizi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;dizi.npy&#39;</span><span class="p">)</span>  <span class="c1"># &#39;dizi.npy&#39; dosyasından diziyi yükler.</span>
+
+<span class="n">yuklenen_dizi_txt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;dizi.txt&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>  <span class="c1"># &#39;dizi.txt&#39; dosyasından diziyi yükler.</span>
+</pre></div>
+</div>
+</section>
+<section id="fonksiyonlar">
+<h1>Fonksiyonlar<a class="headerlink" href="#fonksiyonlar" title="Link to this heading">¶</a></h1>
+<p>### Ones, Zero</p>
+<p>### Kullanım Amaçları</p>
+<ol class="arabic simple">
+<li><p><strong>Başlangıç Değerleri</strong>: Sıfır veya bir değerleri, genellikle bir algoritmanın başlangıç aşamasında başlangıç değerleri olarak kullanılır. Örneğin, bir matrisin veya vektörün başlangıç değerlerini belirlemek için kullanılabilir.</p></li>
+<li><p><strong>Dizi Oluşturma</strong>: Belirli boyutlarda ve belirli değerlerle (sıfır veya bir) diziler oluşturmak için kullanılır. Bu, daha sonra bu diziler üzerinde matematiksel işlemler yaparken veya veri analizi yaparken faydalıdır.</p></li>
+<li><p><strong>Yer Tutucu Olarak Kullanma</strong>: Sıfır veya bir değerleri, daha sonra doldurulacak yer tutucular olarak kullanılabilir. Örneğin, bir modelin çıktısını saklamak için bir dizi oluşturulabilir.</p></li>
+<li><p><strong>Matematiksel İşlemler</strong>: Bazı matematiksel işlemler veya algoritmalar, sıfır veya bir değerleri ile başlamak için gereklidir. Örneğin, bir matris çarpımı veya toplama işlemi yaparken başlangıç değerleri olarak kullanılabilir.</p></li>
+</ol>
+<p>### Örnek Kullanım Alanları</p>
+<ol class="arabic simple">
+<li><p><strong>Makine Öğrenimi</strong>: Modelin ağırlıklarını başlatmak için sıfır veya bir dizileri kullanılabilir. Örneğin, bir sinir ağı modelinin ağırlıklarını başlatmak için <cite>np.zeros</cite> veya <cite>np.ones</cite> kullanılabilir.</p></li>
+<li><p><strong>Veri Analizi</strong>: Veri analizi sırasında, belirli bir boyutta sıfır veya bir dizisi oluşturmak, veri toplama veya istatistiksel hesaplamalar için faydalı olabilir.</p></li>
+<li><p><strong>Simülasyonlar</strong>: Fiziksel veya matematiksel simülasyonlarda, başlangıç koşullarını belirlemek için sıfır veya bir dizileri kullanılabilir.</p></li>
+<li><p><strong>Görüntü İşleme</strong>: Görüntü işleme uygulamalarında, belirli bir boyutta boş (sıfır) bir görüntü oluşturmak için kullanılabilir.</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Birinci parametre satır, ikincisi sütun.</span>
+
+<span class="c1"># 2x3 boyutunda sıfırlardan oluşan bir dizi oluşturma</span>
+<span class="n">zero_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">[[0. 0. 0.]</span>
+<span class="sd"> [0. 0. 0.]]</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">ones_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">[[1. 1. 1.]</span>
+<span class="sd"> [1. 1. 1.]]</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="c1"># 2 tane 3x4 dizi oluşturma. Bu kod iki katmanlı bir çıktır verir.</span>
+<span class="n">zero_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">[[[0. 0. 0. 0.]</span>
+<span class="sd">  [0. 0. 0. 0.]</span>
+<span class="sd">  [0. 0. 0. 0.]]</span>
+
+<span class="sd"> [[0. 0. 0. 0.]</span>
+<span class="sd">  [0. 0. 0. 0.]</span>
+<span class="sd">  [0. 0. 0. 0.]]]</span>
+<span class="sd">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="full">
+<h1>Full<a class="headerlink" href="#full" title="Link to this heading">¶</a></h1>
+<p>### Kullanım Alanları</p>
+<ul class="simple">
+<li><p><strong>Başlangıç Değerleri</strong>: Belirli bir değeri başlangıç değeri olarak kullanmak istediğiniz durumlarda.</p></li>
+<li><p><strong>Yer Tutucu Olarak Kullanma</strong>: Daha sonra doldurulacak bir dizi oluşturmak için.</p></li>
+<li><p><strong>Matematiksel İşlemler</strong>: Belirli bir değeri kullanarak matematiksel işlemler yapmak için.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">numpy</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">fill_value</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="c1"># shape: Oluşturulacak dizinin boyutunu belirten bir tuple. Örneğin, (2, 3) ifadesi 2 satır ve 3 sütundan oluşan bir dizi oluşturur.</span>
+<span class="c1"># fill_value: Dizinin tüm elemanlarını doldurmak için kullanılacak değer.</span>
+<span class="c1"># dtype: (isteğe bağlı) Dizinin veri tipini belirler. Örneğin, dtype=int ile tam sayılardan oluşan bir dizi oluşturabilirsiniz.</span>
+
+<span class="c1"># 2x3 boyutunda 7 ile doldurulmuş bir dizi oluşturma</span>
+<span class="n">full_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="mi">7</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">full_array</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">[[7 7 7]</span>
+<span class="sd"> [7 7 7]]</span>
+<span class="sd">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="empty-fill">
+<h1>Empty, Fill<a class="headerlink" href="#empty-fill" title="Link to this heading">¶</a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>  <span class="c1"># NumPy kütüphanesini içe aktar</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># 2 satır 2 sütundan oluşur, belirsiz veriler kullanır.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Boş Dizi (Empty):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>  <span class="c1"># Boş diziyi yazdırır.</span>
+
+<span class="n">x</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># Tüm diziyi 3 ile doldurur.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Doldurulmuş Dizi (Fill):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>  <span class="c1"># Doldurulmuş diziyi yazdırır.</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Boş Dizi (Empty):</span>
+<span class="sd">[[1. 2.]</span>
+<span class="sd"> [3. 4.]]  # Bu değerler belirsizdir, her çalıştırmada farklı olabilir.</span>
+
+<span class="sd">Doldurulmuş Dizi (Fill):</span>
+<span class="sd">[[3. 3.]</span>
+<span class="sd"> [3. 3.]]</span>
+<span class="sd">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="eye">
+<h1>Eye<a class="headerlink" href="#eye" title="Link to this heading">¶</a></h1>
+<p>### Kullanım Alanları</p>
+<p><cite>numpy.eye</cite>, birim matris oluşturmak için kullanılan bir fonksiyondur. Kare veya dikdörtgen boyutlarda birim matrisler oluşturabilir ve köşegenin konumunu belirlemek için çeşitli parametreler alır. Bu fonksiyon, lineer cebir ve matris hesaplamalarında önemli bir araçtır.</p>
+<ul class="simple">
+<li><p><strong>Lineer Cebir</strong>: Birim matris, matris çarpımında etkisiz eleman olarak kullanılır. Yani, herhangi bir matris ile birim matris çarpıldığında, sonuç orijinal matris olur.</p></li>
+<li><p><strong>Matris Hesaplamaları</strong>: Çeşitli matematiksel ve istatistiksel hesaplamalarda birim matris kullanılır.</p></li>
+<li><p><strong>Algoritmalar</strong>: Bazı algoritmalar, başlangıç koşulları olarak birim matris kullanabilir.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">numpy</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">N: Matrisin satır sayısı.</span>
+<span class="sd">M: (isteğe bağlı) Matrisin sütun sayısı. Eğer belirtilmezse, M değeri N olarak varsayılır ve kare bir matris oluşturulur.</span>
+<span class="sd">k: (isteğe bağlı) Köşegenin konumunu belirler. k=0 ana köşegeni (sol üstten sağ alta), k&gt;0 üst köşegenleri, k&lt;0 ise alt köşegenleri ifade eder.</span>
+<span class="sd">dtype: (isteğe bağlı) Matrisin veri tipini belirler. Varsayılan olarak float türündedir.</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">lower_diagonal_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">lower_diagonal_matrix</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">[[1. 0. 0. 0.]</span>
+<span class="sd"> [0. 1. 0. 0.]</span>
+<span class="sd"> [0. 0. 1. 0.]</span>
+<span class="sd"> [0. 0. 0. 1.]]</span>
+<span class="sd">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+<p><cite>numpy.eye</cite> fonksiyonundaki <cite>k</cite> parametresi, oluşturulan birim matrisin köşegeninin konumunu belirlemek için kullanılır. Bu parametre, matrisin ana köşegeninin (sol üstten sağ alta) üstünde veya altında yer alan köşegenleri ifade eder.</p>
+<p>### <cite>k</cite> Parametresinin Anlamı</p>
+<ul class="simple">
+<li><p><cite>k</cite> parametresi, <cite>numpy.eye</cite> fonksiyonunda köşegenin konumunu belirler.</p></li>
+<li><p><cite>k = 0</cite> ana köşegeni, <cite>k &gt; 0</cite> üst köşegenleri, <cite>k &lt; 0</cite> ise alt köşegenleri ifade eder.</p></li>
+<li><p>Bu parametre, birim matrisin yapısını özelleştirmek için kullanılır ve matris hesaplamalarında esneklik sağlar.</p></li>
+<li><p><strong>`k = 0`</strong>: Ana köşegen. Bu durumda, matrisin köşegenindeki elemanlar 1 olur ve diğer tüm elemanlar 0 olur.</p></li>
+<li><p><strong>`k &gt; 0`</strong>: Üst köşegenler. <cite>k</cite> değeri pozitif olduğunda, köşegen, ana köşegenin üstünde yer alır. Örneğin, <cite>k = 1</cite> ana köşegenin hemen üstündeki köşegeni ifade eder.</p></li>
+<li><p><strong>`k &lt; 0`</strong>: Alt köşegenler. <cite>k</cite> değeri negatif olduğunda, köşegen, ana köşegenin altında yer alır. Örneğin, <cite>k = -1</cite> ana köşegenin hemen altındaki köşegeni ifade eder.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># Ana köşegen (k=0)</span>
+<span class="n">identity_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ana Köşegen (k=0):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">identity_matrix</span><span class="p">)</span>
+<span class="c1"># Çıktı:</span>
+<span class="c1"># [[1. 0. 0.]</span>
+<span class="c1">#  [0. 1. 0.]</span>
+<span class="c1">#  [0. 0. 1.]]</span>
+<span class="c1"># Açıklama: 3x3 boyutunda birim matris. Ana köşegen (k=0) elemanları 1, diğerleri 0.</span>
+
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1"># Üst köşegen (k=1)</span>
+<span class="n">upper_diagonal_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Üst Köşegen (k=1):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">upper_diagonal_matrix</span><span class="p">)</span>
+<span class="c1"># Çıktı:</span>
+<span class="c1"># [[0. 1. 0. 0.]</span>
+<span class="c1">#  [0. 0. 1. 0.]</span>
+<span class="c1">#  [0. 0. 0. 1.]</span>
+<span class="c1">#  [0. 0. 0. 0.]]</span>
+<span class="c1"># Açıklama: 4x4 boyutunda matris. Ana köşegenin hemen üstündeki köşegen (k=1) elemanları 1, diğerleri 0.</span>
+
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1"># Alt köşegen (k=-1)</span>
+<span class="n">lower_diagonal_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">k</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Alt Köşegen (k=-1):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lower_diagonal_matrix</span><span class="p">)</span>
+<span class="c1"># Çıktı:</span>
+<span class="c1"># [[0. 0. 0. 1.]</span>
+<span class="c1">#  [0. 0. 1. 0.]</span>
+<span class="c1">#  [0. 1. 0. 0.]</span>
+<span class="c1">#  [1. 0. 0. 0.]]</span>
+<span class="c1"># Açıklama: 4x4 boyutunda matris. Ana köşegenin hemen altındaki köşegen (k=-1) elemanları 1, diğerleri 0.</span>
+
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1"># Üst köşegen (k=2)</span>
+<span class="n">upper_diagonal_matrix_k2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Üst Köşegen (k=2):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">upper_diagonal_matrix_k2</span><span class="p">)</span>
+<span class="c1"># Çıktı:</span>
+<span class="c1"># [[0. 0. 1. 0.]</span>
+<span class="c1">#  [0. 0. 0. 1.]</span>
+<span class="c1">#  [0. 0. 0. 0.]</span>
+<span class="c1">#  [0. 0. 0. 0.]]</span>
+<span class="c1"># Açıklama: 4x4 boyutunda matris. Ana köşegenin iki üstündeki köşegen (k=2) elemanları 1, diğerleri 0.</span>
+
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1"># Alt köşegen (k=-2)</span>
+<span class="n">lower_diagonal_matrix_k_neg2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">k</span><span class="o">=-</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Alt Köşegen (k=-2):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lower_diagonal_matrix_k_neg2</span><span class="p">)</span>
+<span class="c1"># Çıktı:</span>
+<span class="c1"># [[0. 0. 0. 1.]</span>
+<span class="c1">#  [0. 0. 0. 0.]</span>
+<span class="c1">#  [0. 0. 0. 0.]</span>
+<span class="c1">#  [0. 0. 0. 0.]]</span>
+<span class="c1"># Açıklama: 4x4 boyutunda matris. Ana köşegenin iki altındaki köşegen (k=-2) elemanları 1, diğerleri 0.</span>
+</pre></div>
+</div>
+</section>
+<section id="alternatif-yontem">
+<h1>Alternatif Yöntem<a class="headerlink" href="#alternatif-yontem" title="Link to this heading">¶</a></h1>
+<ol class="arabic">
+<li><p><strong>`numpy.identity(n)`</strong>:
+- Bu fonksiyon, <cite>n</cite> boyutunda birim matris oluşturur. Birim matris, ana köşegenindeki tüm elemanların 1, diğer tüm elemanların ise 0 olduğu kare bir matristir. Lineer cebir uygulamalarında sıkça kullanılır.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>  <span class="c1"># NumPy kütüphanesini içe aktar</span>
+
+<span class="c1"># 3x3 boyutunda birim matris oluşturma</span>
+<span class="n">identity_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3x3 Birim Matris:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">identity_matrix</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">3x3 Birim Matris:</span>
+<span class="sd">[[1. 0. 0.]</span>
+<span class="sd"> [0. 1. 0.]</span>
+<span class="sd"> [0. 0. 1.]]</span>
+<span class="sd">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="kosegen-uzerindeki-sayilari-kontrol-etmek">
+<h1>Köşegen Üzerindeki Sayıları Kontrol Etmek<a class="headerlink" href="#kosegen-uzerindeki-sayilari-kontrol-etmek" title="Link to this heading">¶</a></h1>
+<ol class="arabic" start="2">
+<li><p><strong>`np.diag`</strong>:
+- <cite>np.diag</cite> fonksiyonu, verilen bir dizi veya matrisin köşegenini oluşturmak için kullanılır. Eğer bir dizi verilirse, bu dizi köşegen elemanları olarak atanır ve diğer elemanlar 0 olur. Eğer bir matris verilirse, bu matrisin köşegen elemanları döndürülür.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Köşegen elemanları 4, 7, 11 ve 3 olan bir matris oluşturma</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Köşegen Matris:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Köşegen Matris:</span>
+<span class="sd">[[ 4  0  0  0]</span>
+<span class="sd"> [ 0  7  0  0]</span>
+<span class="sd"> [ 0  0 11  0]</span>
+<span class="sd"> [ 0  0  0  3]]</span>
+<span class="sd">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="arrange">
+<h1>Arrange<a class="headerlink" href="#arrange" title="Link to this heading">¶</a></h1>
+<p><cite>numpy.arange</cite> fonksiyonu, belirli bir başlangıç değeri, bitiş değeri ve adım boyutu ile bir dizi oluşturur.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span>
+
+<span class="o">-</span> <span class="o">**</span><span class="n">start</span><span class="o">**</span><span class="p">:</span> <span class="p">(</span><span class="n">isteğe</span> <span class="n">bağlı</span><span class="p">)</span> <span class="n">Diziye</span> <span class="n">dahil</span> <span class="n">edilecek</span> <span class="n">başlangıç</span> <span class="n">değeri</span><span class="o">.</span> <span class="n">Varsayılan</span> <span class="n">değer</span> <span class="mi">0</span><span class="s1">&#39;dır.</span>
+<span class="o">-</span> <span class="o">**</span><span class="n">stop</span><span class="o">**</span><span class="p">:</span> <span class="n">Diziye</span> <span class="n">dahil</span> <span class="n">edilmeyecek</span> <span class="n">bitiş</span> <span class="n">değeri</span><span class="o">.</span>
+<span class="o">-</span> <span class="o">**</span><span class="n">step</span><span class="o">**</span><span class="p">:</span> <span class="p">(</span><span class="n">isteğe</span> <span class="n">bağlı</span><span class="p">)</span> <span class="n">Aradaki</span> <span class="n">adım</span> <span class="n">boyutu</span><span class="o">.</span> <span class="n">Varsayılan</span> <span class="n">değer</span> <span class="mi">1</span><span class="s1">&#39;dir.</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>  <span class="c1"># NumPy kütüphanesini içe aktar</span>
+
+<span class="c1"># 1. Adım: Başlangıç, bitiş ve adım değerlerini belirle</span>
+<span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Başlangıç değeri</span>
+<span class="n">stop</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># Bitiş değeri</span>
+<span class="n">step</span> <span class="o">=</span> <span class="mi">2</span>   <span class="c1"># Adım boyutu</span>
+
+<span class="c1"># 2. Adım: arange fonksiyonunu kullanarak dizi oluştur</span>
+<span class="c1"># arange(start, stop, step) -&gt; start ile stop arasında step kadar artan değerler döner</span>
+<span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span>
+
+<span class="c1"># 3. Adım: Oluşturulan değerleri yazdır</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dizi:&quot;</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Dizi: [0 2 4 6 8]</span>
+<span class="sd">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+<p><cite>numpy.linspace</cite> ise belirli bir aralıkta belirli sayıda eşit aralıklı değerler oluşturur.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>  <span class="c1"># NumPy kütüphanesini içe aktar</span>
+
+<span class="c1"># 1. Adım: Başlangıç ve bitiş değerlerini belirle</span>
+<span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Başlangıç değeri</span>
+<span class="n">end</span> <span class="o">=</span> <span class="mi">10</span>   <span class="c1"># Bitiş değeri</span>
+<span class="n">num_points</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># Oluşturulacak nokta sayısı</span>
+
+<span class="c1"># 2. Adım: linspace fonksiyonunu kullanarak eşit aralıklı sayılar oluştur</span>
+<span class="c1"># linspace(start, stop, num) -&gt; start ile stop arasında num kadar eşit aralıklı değer döner</span>
+<span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">num_points</span><span class="p">)</span>
+
+<span class="c1"># 3. Adım: Oluşturulan değerleri yazdır</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Eşit aralıklı değerler:&quot;</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Eşit aralıklı değerler: [ 0.   2.5  5.   7.5 10. ]</span>
+<span class="sd">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="reshape">
+<h1>Reshape<a class="headerlink" href="#reshape" title="Link to this heading">¶</a></h1>
+<p><cite>numpy.reshape</cite>, NumPy kütüphanesinde bulunan bir fonksiyondur ve bir dizinin boyutunu değiştirmek için kullanılır. Bu fonksiyon, mevcut bir diziyi farklı bir şekle (boyuta) dönüştürmenizi sağlar. Örneğin, bir 1D diziyi 2D veya 3D diziye dönüştürebilirsiniz.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">numpy</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">newshape</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="parametreler">
+<h1>Parametreler<a class="headerlink" href="#parametreler" title="Link to this heading">¶</a></h1>
+<ul class="simple">
+<li><p><strong>a</strong>: (array_like) Yeniden şekillendirilmek istenen dizi.</p></li>
+<li><p><strong>newshape</strong>: (int veya tuple) Yeni şekil. Dizi boyutlarını belirtir. Dizi elemanlarının toplamı, yeni şeklin eleman sayısına eşit olmalıdır.</p></li>
+<li><p><strong>order</strong>: (str, isteğe bağlı) Dizi elemanlarının yeniden şekillendirilme sırasını belirler. ‘C’ (satır-major) veya ‘F’ (sütun-major) olarak ayarlanabilir. Varsayılan değer ‘C’dir.</p></li>
+</ul>
+<p>### Örnek Kullanım</p>
+<p>Aşağıda, bir 1D dizinin nasıl 2D bir diziye dönüştürüleceğine dair örnekler verilmiştir:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>  <span class="c1"># NumPy kütüphanesini içe aktar</span>
+
+<span class="c1"># 1D dizi oluşturma</span>
+<span class="n">original_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>  <span class="c1"># 0&#39;dan 11&#39;e kadar olan sayılardan oluşan bir dizi</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Orijinal Dizi:&quot;</span><span class="p">,</span> <span class="n">original_array</span><span class="p">)</span>
+
+<span class="c1"># Dizi boyutunu değiştirmek için reshape fonksiyonunu kullan</span>
+<span class="n">reshaped_array_C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">original_array</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>  <span class="c1"># Satır-major düzen</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Yeniden Şekillendirilmiş Dizi (C düzeni):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">reshaped_array_C</span><span class="p">)</span>
+
+<span class="n">reshaped_array_F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">original_array</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>  <span class="c1"># Sütun-major düzen</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Yeniden Şekillendirilmiş Dizi (F düzeni):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">reshaped_array_F</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Orijinal Dizi: [ 0  1  2  3  4  5  6  7  8  9 10 11]</span>
+
+<span class="sd">Yeniden Şekillendirilmiş Dizi (C düzeni):</span>
+
+<span class="sd">[[ 0  1  2  3]</span>
+<span class="sd"> [ 4  5  6  7]</span>
+<span class="sd"> [ 8  9 10 11]]</span>
+
+<span class="sd">Yeniden Şekillendirilmiş Dizi (F düzeni):</span>
+
+<span class="sd">[[ 0  4  8]</span>
+<span class="sd"> [ 1  5  9]</span>
+<span class="sd"> [ 2  6 10]</span>
+<span class="sd"> [ 3  7 11]]</span>
+<span class="sd">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+<p>### Açıklama</p>
+<ul class="simple">
+<li><p><strong>Orijinal Dizi</strong>: <cite>np.arange(12)</cite> fonksiyonu, 0’dan 11’e kadar olan sayılardan oluşan bir 1D dizi oluşturur.</p></li>
+<li><p><strong>Yeniden Şekillendirme</strong>:
+- <cite>order=’C’</cite>: Bu durumda, dizi elemanları satır-major (C dilinde olduğu gibi) düzenine göre yeniden şekillendirilir. Yani, önce satırları, sonra sütunları doldurur.
+- <cite>order=’F’</cite>: Bu durumda, dizi elemanları sütun-major (Fortran dilinde olduğu gibi) düzenine göre yeniden şekillendirilir. Yani, önce sütunları, sonra satırları doldurur.</p></li>
+<li><p><strong>Sonuç</strong>: Her iki durumda da yeniden şekillendirilmiş diziler, farklı düzenlemelerle görüntülenir.</p></li>
+</ul>
+</section>
+<section id="random">
+<h1>Random<a class="headerlink" href="#random" title="Link to this heading">¶</a></h1>
+<p>NumPy, rastgele sayı üretimi için çeşitli fonksiyonlar sunar. Bu fonksiyonlar, simülasyonlar, veri analizi, makine öğrenimi ve daha birçok alanda kullanılabilir.</p>
+<p>### Örnek Kullanımlar</p>
+<ol class="arabic">
+<li><p><strong>Rastgele Ondalık Sayılar Oluşturma</strong>:
+- <cite>np.random.random(size)</cite> fonksiyonu, belirtilen boyutta (örneğin, 3x4) rastgele ondalık sayılar üretir. Bu, simülasyonlarda veya veri analizi sırasında rastgele örnekler almak için kullanılabilir.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>  <span class="c1"># NumPy kütüphanesini içe aktar</span>
+
+<span class="c1"># 3x4 boyutunda rastgele ondalık sayılar oluştur</span>
+<span class="n">random_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Rastgele Ondalık Sayılar (0-1):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">random_array</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Rastgele Ondalık Sayılar (0-1):</span>
+<span class="sd">[[0.123 0.456 0.789 0.012]</span>
+<span class="sd"> [0.345 0.678 0.901 0.234]</span>
+<span class="sd"> [0.567 0.890 0.123 0.456]]</span>
+<span class="sd">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Rastgele Tam Sayılar Oluşturma</strong>:
+- <cite>np.random.randint(low, high, size)</cite> fonksiyonu, belirtilen aralıkta rastgele tam sayılar üretir. Bu, oyun simülasyonları veya rastgele veri oluşturma gibi durumlarda faydalıdır.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 0 ile 10 arasında rastgele tam sayılar oluştur</span>
+<span class="n">random_int_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Rastgele Tam Sayılar (0-10):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">random_int_array</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Rastgele Tam Sayılar (0-10):</span>
+<span class="sd">[[1 3 5 7]</span>
+<span class="sd"> [2 8 0 4]</span>
+<span class="sd"> [6 9 1 3]]</span>
+<span class="sd">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Rastgele Dağılımlar</strong>:
+- NumPy, normal dağılım, uniform dağılım gibi çeşitli dağılımlardan rastgele sayılar üretmek için fonksiyonlar sunar. Örneğin, <cite>np.random.normal(loc, scale, size)</cite> fonksiyonu, normal dağılım ile rastgele sayılar üretir.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Normal dağılımdan rastgele sayılar oluştur</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">loc: Dağılımın ortalaması (mean).</span>
+<span class="sd">scale: Dağılımın standart sapması (standard deviation).</span>
+<span class="sd">size: Oluşturulacak dizinin boyutu (örneğin, (3, 4) gibi).</span>
+
+<span class="sd">loc (ortalama): Değeri artırmak, dağılımın merkezini sağa kaydırır; azaltmak, sola kaydırır. Yani, üretilen sayıların ortalaması bu değere yakın olur.</span>
+<span class="sd">scale (standart sapma): Değeri artırmak, dağılımın yayılmasını genişletir; azaltmak, sıkıştırır. Yani, üretilen sayıların birbirine olan uzaklıkları artar veya azalır.</span>
+<span class="sd">size (boyut): Bu değer, oluşturulacak rastgele sayıların sayısını belirler. Daha büyük bir boyut, daha fazla rastgele sayı üretir.</span>
+
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">normal_random_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Normal Dağılımdan Rastgele Sayılar:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">normal_random_array</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Normal Dağılımdan Rastgele Sayılar:</span>
+<span class="sd">[[-0.123  0.456 -0.789  1.012]</span>
+<span class="sd"> [ 0.345 -0.678  0.901 -0.234]</span>
+<span class="sd"> [-0.567  0.890 -1.123  0.456]]</span>
+<span class="sd">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>### Özet</p>
+<p>NumPy’nin <cite>np.random</cite> fonksiyonları, rastgele sayıların simülasyonlarda, veri analizi süreçlerinde ve makine öğrenimi uygulamalarında önemli bir rol oynar. Rastgele sayılar, belirsizlik ve çeşitlilik ekleyerek daha gerçekçi ve etkili modeller oluşturmanıza yardımcı olur.</p>
+</section>
+<section id="ndarray-degistirmek-insert-append-stack-delete">
+<h1>NdArray Değiştirmek (Insert, Append, Stack, Delete)<a class="headerlink" href="#ndarray-degistirmek-insert-append-stack-delete" title="Link to this heading">¶</a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># Örnek bir dizi oluşturma</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]])</span>
+
+<span class="c1"># İlk elemanı yazdırma</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># İlk satır: [1 2 3]</span>
+
+<span class="c1"># Son elemanı yazdırma</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># Sondan geriye doğru -1, -2 diye gider; Son satır: [7 8 9]</span>
+
+<span class="c1"># 3. elemanı 200 ile güncelleme</span>
+<span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">200</span>  <span class="c1"># 3. satırı 200 ile günceller</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># 0. satır ve 2. sütundaki elemanı yazdırma</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>  <span class="c1"># 0. satır, 2. sütun: 3</span>
+
+<span class="c1"># 1. satır ve 2. sütundaki elemanı 100 ile güncelleme</span>
+<span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># Belirli satırları silme</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># 0. ve 1. satırları siler</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># 1. satırı silme</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># 1. satırı siler</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># 0. ve 2. satırları silme</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># 0. ve 2. satırları siler</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># Diziye eleman ekleme</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>  <span class="c1"># 100&#39;ü diziye ekler</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># Birden fazla eleman ekleme</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">])</span>  <span class="c1"># 200 ve 300&#39;ü diziye ekler</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># Belirli bir eksende eleman ekleme</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[[</span><span class="mi">200</span><span class="p">],</span> <span class="p">[</span><span class="mi">300</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># 200 ve 300&#39;ü yeni satırlar olarak ekler</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># 2D diziye yeni sütun ekleme</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[[</span><span class="mi">400</span><span class="p">],</span> <span class="p">[</span><span class="mi">500</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># 400 ve 500&#39;ü yeni sütun olarak ekler</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># Belirli bir konuma eleman ekleme</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># 1. indekse 10 ekler</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># Dikey olarak yığma</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>  <span class="c1"># x ve y dizilerini dikey olarak birleştirir</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+
+<span class="c1"># Yatay olarak yığma</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>  <span class="c1"># x ve y dizilerini yatay olarak birleştirir</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+
+<span class="c1"># Yatay yığma, iki veya daha fazla diziyi yan yana birleştirir. Bu işlem, dizilerin sütun sayılarının eşit olması gerektiği anlamına gelir.</span>
+<span class="c1"># Örnek 1: Yatay Yığma</span>
+
+<span class="c1"># İki 2D dizi oluşturma</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]])</span>
+
+<span class="c1"># Yatay yığma</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Yatay Yığma Sonucu:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Çıktı:</span>
+
+<span class="sd">Yatay Yığma Sonucu:</span>
+
+<span class="sd">[[1 2 5 6]</span>
+<span class="sd"> [3 4 7 8]]</span>
+
+<span class="sd">Açıklama: a ve b dizileri yan yana birleştirilmiştir. Sonuçta, her iki dizinin satırları korunarak sütunlar birleştirilmiştir.</span>
+<span class="sd">Örnek 2: Yatay Yığma ile Farklı Boyutlar</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="c1"># Farklı boyutlarda diziler</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">]])</span>
+
+<span class="c1"># Yatay yığma</span>
+<span class="n">e</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">d</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Yatay Yığma Sonucu (Farklı Boyutlar):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Çıktı:</span>
+
+<span class="sd">Yatay Yığma Sonucu (Farklı Boyutlar):</span>
+
+<span class="sd">[[ 1  2  9]</span>
+<span class="sd"> [ 3  4 10]]</span>
+
+<span class="sd">   Açıklama: d dizisi, a dizisinin sütun sayısına uyacak şekilde yığılmıştır. Bu, farklı boyutlardaki dizileri birleştirmenin bir yoludur.</span>
+<span class="sd">Dikey Yığma (np.vstack)</span>
+
+<span class="sd">Dikey yığma, iki veya daha fazla diziyi üst üste birleştirir. Bu işlem, dizilerin sütun sayılarının eşit olması gerektiği anlamına gelir.</span>
+<span class="sd">Örnek 1: Dikey Yığma</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="c1"># İki 2D dizi oluşturma</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+
+<span class="c1"># Dikey yığma</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">f</span><span class="p">,</span> <span class="n">g</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dikey Yığma Sonucu:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Çıktı:</span>
+
+<span class="sd">Dikey Yığma Sonucu:</span>
+
+<span class="sd">[[1 2]</span>
+<span class="sd"> [3 4]]</span>
+
+<span class="sd">Açıklama: f ve g dizileri üst üste birleştirilmiştir. Sonuçta, her iki dizinin sütunları korunarak satırlar birleştirilmiştir.</span>
+<span class="sd">Örnek 2: Dikey Yığma ile Farklı Boyutlar</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="c1"># Farklı boyutlarda diziler</span>
+<span class="n">i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">]])</span>
+
+<span class="c1"># Dikey yığma</span>
+<span class="n">j</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">f</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dikey Yığma Sonucu (Farklı Boyutlar):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Çıktı:</span>
+
+<span class="sd">Dikey Yığma Sonucu (Farklı Boyutlar):</span>
+
+<span class="sd">[[1 2]</span>
+<span class="sd"> [5 6]]</span>
+
+<span class="sd">Açıklama: i dizisi, f dizisinin sütun sayısına uyacak şekilde yığılmıştır. Bu, farklı boyutlardaki dizileri birleştirmenin bir yoludur.</span>
+<span class="sd">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="slicing">
+<h1>Slicing<a class="headerlink" href="#slicing" title="Link to this heading">¶</a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># ndarray[start:end], ndarray[start:], ve ndarray[:end]</span>
+
+<span class="c1"># Örnek bir 2D NumPy dizisi oluşturma</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">]])</span>
+
+<span class="c1"># 1. Örnek: ndarray[start:end]</span>
+<span class="c1"># 0. ve 1. satırları ve 1. ve 2. sütunları alma</span>
+<span class="n">dilim1</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># 0. ve 1. satır, 1. ve 2. sütun</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dilim 1:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">dilim1</span><span class="p">)</span>  <span class="c1"># Çıktı: [[2 3], [6 7]]</span>
+
+<span class="c1"># 2. Örnek: ndarray[start:]</span>
+<span class="c1"># 1. satırdan itibaren tüm sütunları alma</span>
+<span class="n">dilim2</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>  <span class="c1"># 1. satır</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dilim 2:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">dilim2</span><span class="p">)</span>  <span class="c1"># Çıktı: [5 6 7 8]</span>
+
+<span class="c1"># 3. Örnek: ndarray[:end]</span>
+<span class="c1"># İlk 3 satırı alma</span>
+<span class="n">dilim3</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:</span><span class="mi">3</span><span class="p">,</span> <span class="p">:]</span>  <span class="c1"># İlk 3 satır</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dilim 3:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">dilim3</span><span class="p">)</span>  <span class="c1"># Çıktı: [[ 1  2  3  4], [ 5  6  7  8], [ 9 10 11 12]]</span>
+
+<span class="c1"># 4. Örnek: Sadece belirli bir sütunu alma</span>
+<span class="c1"># Tüm satırlardan 2. sütunu alma</span>
+<span class="n">dilim4</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>  <span class="c1"># 2. sütun</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dilim 4:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">dilim4</span><span class="p">)</span>  <span class="c1"># Çıktı: [ 3  7 11 15]</span>
+
+<span class="c1"># 5. Örnek: Negatif indeksleme ile dilimleme</span>
+<span class="c1"># Son 2 satırı alma</span>
+<span class="n">dilim5</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:,</span> <span class="p">:]</span>  <span class="c1"># Son 2 satır</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dilim 5:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">dilim5</span><span class="p">)</span>  <span class="c1"># Çıktı: [[ 9 10 11 12], [13 14 15 16]]</span>
+
+<span class="c1"># 6. Örnek: Copy ile dilimleme</span>
+<span class="c1"># İlk 3 satır ve 1. ve 2. sütunları kopyalama</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>  <span class="c1"># 0, 1, 2. satırlar ve 1, 2. sütunlar</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kopyalanan Dilim (y):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>  <span class="c1"># Çıktı: [[ 2  3], [ 6  7], [10 11]]</span>
+
+<span class="c1"># 7. Örnek: Adım kullanarak dilimleme</span>
+<span class="c1"># Her 2. satırı alma</span>
+<span class="n">dilim6</span> <span class="o">=</span> <span class="n">x</span><span class="p">[::</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span>  <span class="c1"># Her 2. satır</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dilim 6:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">dilim6</span><span class="p">)</span>  <span class="c1"># Çıktı: [[ 1  2  3  4], [ 9 10 11 12]]</span>
+
+<span class="c1"># 8. Örnek: Çok boyutlu dizilerde dilimleme</span>
+<span class="c1"># 1. satırdan 2. sütunu alma</span>
+<span class="n">dilim7</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># 1. ve 2. satır, 1. ve 2. sütun</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dilim 7:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">dilim7</span><span class="p">)</span>  <span class="c1"># Çıktı: [[ 6  7], [10 11]]</span>
+
+<span class="c1"># 9. Örnek: Tüm diziyi ters çevirme</span>
+<span class="c1"># Tüm diziyi ters çevirme</span>
+<span class="n">dilim8</span> <span class="o">=</span> <span class="n">x</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># Tüm satırları ve sütunları ters çevirir</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dilim 8 (Ters Çevirme):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">dilim8</span><span class="p">)</span>  <span class="c1"># Çıktı: [[16 15 14 13], [12 11 10 9], [8 7 6 5], [4 3 2 1]]</span>
+
+<span class="c1"># 10. Örnek: Belirli bir aralıkta dilimleme</span>
+<span class="c1"># 1. ve 2. satırlardan 0. ve 1. sütunları alma</span>
+<span class="n">dilim9</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>  <span class="c1"># 1. ve 2. satır, 0. ve 1. sütun</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dilim 9:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">dilim9</span><span class="p">)</span>  <span class="c1"># Çıktı: [[ 5  6], [ 9 10]]</span>
+
+<span class="c1"># 11. Örnek: Slicing ile belirli bir elemanı güncelleme</span>
+<span class="c1"># 0. satır ve 1. sütundaki elemanı güncelleme</span>
+<span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">20</span>  <span class="c1"># 0. satır, 1. sütun</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Güncellenmiş Dizi:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>  <span class="c1"># Çıktı: [[ 1 20  3  4], [ 5  6  7  8], [ 9 10 11 12], [13 14 15 16]]</span>
+
+<span class="c1"># 12. Örnek: Slicing ile belirli bir sütunu güncelleme</span>
+<span class="c1"># 2. sütundaki tüm elemanları 100 ile güncelleme</span>
+<span class="n">x</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># Tüm satırlardaki 2. sütun</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Güncellenmiş Dizi (2. Sütun):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>  <span class="c1"># Çıktı: [[  1  20 100  4], [  5  6 100  8], [  9 10 100 12], [13 14 100 16]]</span>
+
+<span class="c1"># 13. Örnek: Slicing ile belirli bir satırı güncelleme</span>
+<span class="c1"># 3. satırı [99, 98, 97, 96] ile güncelleme</span>
+<span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">99</span><span class="p">,</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">97</span><span class="p">,</span> <span class="mi">96</span><span class="p">]</span>  <span class="c1"># 3. satır</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Güncellenmiş Dizi (3. Satır):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>  <span class="c1"># Çıktı: [[  1  20 100  4], [  5  6 100  8], [  9 10 100 12], [99 98 97 96]]</span>
+
+<span class="c1"># 14. Örnek: Slicing ile belirli bir aralıkta elemanları alma</span>
+<span class="c1"># 0. ve 1. satırlardan 1. sütunu alma</span>
+<span class="n">dilim10</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># 0. ve 1. satır, 1. sütun</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dilim 10:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">dilim10</span><span class="p">)</span>  <span class="c1"># Çıktı: [20  6]</span>
+
+<span class="c1"># 15. Örnek: Slicing ile belirli bir aralıkta elemanları alma</span>
+<span class="c1"># 2. ve 3. satırlardan 0. sütunu alma</span>
+<span class="n">dilim11</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>  <span class="c1"># 2. ve 3. satır, 0. sütun</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dilim 11:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">dilim11</span><span class="p">)</span>  <span class="c1"># Çıktı: [ 9 99]</span>
+
+<span class="c1"># 16. Örnek: Slicing ile belirli bir aralıkta elemanları alma</span>
+<span class="c1"># 1. ve 2. satırlardan 0. ve 3. sütunları alma</span>
+<span class="n">dilim12</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>  <span class="c1"># 1. ve 2. satır, 0. ve 3. sütun</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dilim 12:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">dilim12</span><span class="p">)</span>  <span class="c1"># Çıktı: [[ 5  8], [ 9 12]]</span>
+
+<span class="c1"># 17. Örnek: Slicing ile belirli bir aralıkta elemanları alma</span>
+<span class="c1"># 0. ve 3. satırlardan tüm sütunları alma</span>
+<span class="n">dilim13</span> <span class="o">=</span> <span class="n">x</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">:]</span>  <span class="c1"># 0. ve 3. satır</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dilim 13:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">dilim13</span><span class="p">)</span>  <span class="c1"># Çıktı: [[  1  20 100  4], [99 98 97 96]]</span>
+
+<span class="c1"># 18. Örnek: Slicing ile belirli bir aralıkta elemanları alma</span>
+<span class="c1"># 1. ve 2. satırlardan 0. ve 3. sütunları alma</span>
+<span class="n">dilim14</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>  <span class="c1"># 1. ve 2. satır, 0. ve 3. sütun</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dilim 14:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">dilim14</span><span class="p">)</span>  <span class="c1"># Çıktı: [[ 5  8], [ 9 12]]</span>
+
+<span class="c1"># 19. Örnek: Slicing ile belirli bir aralıkta elemanları alma</span>
+<span class="c1"># 0. ve 3. satırlardan tüm sütunları alma</span>
+<span class="n">dilim15</span> <span class="o">=</span> <span class="n">x</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">:]</span>  <span class="c1"># 0. ve 3. satır</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dilim 15:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">dilim15</span><span class="p">)</span>  <span class="c1"># Çıktı: [[  1  20 100  4], [99 98 97 96]]</span>
+
+<span class="c1"># 20. Örnek: Slicing ile belirli bir aralıkta elemanları alma</span>
+<span class="c1"># 1. ve 2. satırlardan 1. sütunu alma</span>
+<span class="n">dilim16</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># 1. ve 2. satır, 1. sütun</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dilim 16:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">dilim16</span><span class="p">)</span>  <span class="c1"># Çıktı: [6 10]</span>
+
+<span class="c1"># 21. Örnek: Slicing ile belirli bir aralıkta elemanları alma</span>
+<span class="c1"># 0. ve 1. satırlardan 2. sütunu alma</span>
+<span class="n">dilim17</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>  <span class="c1"># 0. ve 1. satır, 2. sütun</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dilim 17:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">dilim17</span><span class="p">)</span>  <span class="c1"># Çıktı: [100  7]</span>
+</pre></div>
+</div>
+</section>
+<section id="fancy-boolean-indexing">
+<h1>Fancy, Boolean Indexing<a class="headerlink" href="#fancy-boolean-indexing" title="Link to this heading">¶</a></h1>
+<p>Fancy indexing, bir dizinin belirli elemanlarını seçmek için bir dizi veya liste kullanmanıza olanak tanır. Bu, dizinin belirli indekslerini seçmek için kullanılır.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># Örnek bir NumPy dizisi oluşturma</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">]])</span>
+
+<span class="c1"># Fancy indexing ile belirli elemanları alma</span>
+<span class="c1"># 0. satırdan 1. ve 3. sütunları, 2. satırdan 1. ve 3. sütunları alma</span>
+<span class="n">satirlar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>  <span class="c1"># Seçilecek satır indeksleri</span>
+<span class="n">sutunlar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>  <span class="c1"># Seçilecek sütun indeksleri</span>
+
+<span class="c1"># Fancy indexing ile elemanları alma</span>
+<span class="n">dilim_fancy</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">satirlar</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">],</span> <span class="n">sutunlar</span><span class="p">]</span>  <span class="c1"># Satır ve sütunları birleştirerek seçim yapma</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fancy Indexing Sonucu:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">dilim_fancy</span><span class="p">)</span>
+<span class="c1"># Çıktı:</span>
+<span class="c1"># [[ 2  4]</span>
+<span class="c1">#  [10 12]]</span>
+</pre></div>
+</div>
+<p>Boolean indexing, bir dizinin elemanlarını seçmek için bir boolean (True/False) dizisi kullanmanıza olanak tanır. Bu, belirli bir koşulu sağlayan elemanları seçmek için kullanılır.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Örnek bir NumPy dizisi oluşturma</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+
+<span class="c1"># Boolean indexing ile belirli koşulu sağlayan elemanları alma</span>
+<span class="c1"># 5&#39;ten büyük olan elemanları seçme</span>
+<span class="n">kosul</span> <span class="o">=</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">5</span>  <span class="c1"># Boolean dizisi</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Boolean Indexing Sonucu:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="n">kosul</span><span class="p">])</span>  <span class="c1"># Kosulu sağlayan elemanları alma</span>
+<span class="c1"># Çıktı: [ 6  7  8  9 10]</span>
+
+<span class="c1"># Boolean indexing ile başka bir örnek</span>
+<span class="c1"># 3 ile 7 arasındaki elemanları seçme</span>
+<span class="n">kosul2</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="mi">7</span><span class="p">)</span>  <span class="c1"># Boolean dizisi</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3 ile 7 arasındaki elemanlar:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="n">kosul2</span><span class="p">])</span>  <span class="c1"># Kosulu sağlayan elemanları alma</span>
+<span class="c1"># Çıktı: [3 4 5 6 7]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[(</span><span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">))</span>  <span class="c1"># x&#39;in her değeri y&#39;den büyükse.</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">))</span>  <span class="c1"># x&#39;in herhangi bir değeri y&#39;den büyükse.</span>
+
+<span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">mask</span><span class="p">))</span>  <span class="c1"># True veya False değeri döndürür.</span>
+<span class="n">x</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span>  <span class="c1"># True değeri olan hepsine -3 değeri verir.</span>
+</pre></div>
+</div>
+<section id="fancy-ve-boolean-indexing-in-kullanim-alanlari">
+<h2>Fancy ve Boolean Indexing’in Kullanım Alanları<a class="headerlink" href="#fancy-ve-boolean-indexing-in-kullanim-alanlari" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Veri Analizi</strong>: Belirli koşullara göre veri setlerinden alt küme almak için kullanılır.</p></li>
+<li><p><strong>Veri Manipülasyonu</strong>: Diziler üzerinde belirli elemanları güncellemek veya değiştirmek için kullanılır.</p></li>
+<li><p><strong>Görselleştirme</strong>: Belirli koşullara göre verileri seçerek daha anlamlı grafikler oluşturmak için kullanılır.</p></li>
+</ol>
+</section>
+</section>
+<section id="grup-islemleri-ve-siralama">
+<h1>Grup İşlemleri ve Sıralama<a class="headerlink" href="#grup-islemleri-ve-siralama" title="Link to this heading">¶</a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># İki örnek dizi oluşturma</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span>
+
+<span class="c1"># 1. Örnek: intersect1d</span>
+<span class="c1"># İki dizi arasındaki kesişimi bulma</span>
+<span class="n">kesisim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">intersect1d</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>  <span class="c1"># a ve b dizilerinin kesişimi</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kesişim (intersect1d):&quot;</span><span class="p">,</span> <span class="n">kesisim</span><span class="p">)</span>  <span class="c1"># Çıktı: [4 5]</span>
+
+<span class="c1"># 2. Örnek: setdiff1d</span>
+<span class="c1"># a dizisinde olup b dizisinde olmayan elemanları bulma</span>
+<span class="n">fark_a_b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">setdiff1d</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>  <span class="c1"># a dizisinde olup b dizisinde olmayan elemanlar</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a&#39;da olup b&#39;de olmayan (setdiff1d):&quot;</span><span class="p">,</span> <span class="n">fark_a_b</span><span class="p">)</span>  <span class="c1"># Çıktı: [1 2 3]</span>
+
+<span class="c1"># 3. Örnek: setdiff1d</span>
+<span class="c1"># b dizisinde olup a dizisinde olmayan elemanları bulma</span>
+<span class="n">fark_b_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">setdiff1d</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>  <span class="c1"># b dizisinde olup a dizisinde olmayan elemanlar</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;b&#39;de olup a&#39;da olmayan (setdiff1d):&quot;</span><span class="p">,</span> <span class="n">fark_b_a</span><span class="p">)</span>  <span class="c1"># Çıktı: [6 7 8]</span>
+
+<span class="c1"># 4. Örnek: union1d</span>
+<span class="c1"># İki dizi arasındaki birleşimi bulma</span>
+<span class="n">birlesim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">union1d</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>  <span class="c1"># a ve b dizilerinin birleşimi</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Birleşim (union1d):&quot;</span><span class="p">,</span> <span class="n">birlesim</span><span class="p">)</span>  <span class="c1"># Çıktı: [1 2 3 4 5 6 7 8]</span>
+
+<span class="c1"># 5. Örnek: unique</span>
+<span class="c1"># Tekrar eden elemanları kaldırarak benzersiz elemanları bulma</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">benzersiz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>  <span class="c1"># c dizisindeki benzersiz elemanlar</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Benzersiz Elemanlar (unique):&quot;</span><span class="p">,</span> <span class="n">benzersiz</span><span class="p">)</span>  <span class="c1"># Çıktı: [1 2 3 4 5]</span>
+
+<span class="c1"># 6. Örnek: in1d</span>
+<span class="c1"># a dizisinin elemanlarının b dizisinde bulunup bulunmadığını kontrol etme</span>
+<span class="n">bulundu_mu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">in1d</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>  <span class="c1"># a dizisindeki her elemanın b dizisinde olup olmadığını kontrol et</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a dizisinin elemanları b dizisinde bulunuyor mu?:&quot;</span><span class="p">,</span> <span class="n">bulundu_mu</span><span class="p">)</span>  <span class="c1"># Çıktı: [False False False  True  True]</span>
+
+<span class="c1"># 7. Örnek: in1d ile boolean dizisi kullanma</span>
+<span class="c1"># Boolean dizisini kullanarak a dizisinden b dizisinde bulunan elemanları alma</span>
+<span class="n">a_bulunan</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">bulundu_mu</span><span class="p">]</span>  <span class="c1"># a dizisindeki bulunan elemanları seçme</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;b dizisinde bulunan a dizisinin elemanları:&quot;</span><span class="p">,</span> <span class="n">a_bulunan</span><span class="p">)</span>  <span class="c1"># Çıktı: [4 5]</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># Örnek bir dizi oluşturma</span>
+<span class="n">dizi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+
+<span class="c1"># 1. Örnek: np.sort</span>
+<span class="c1"># Diziyi sıralama ve yeni bir sıralı dizi döndürme</span>
+<span class="n">sirali_dizi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">dizi</span><span class="p">)</span>  <span class="c1"># Sıralanmış yeni bir dizi döndürür</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sıralı Dizi (np.sort):&quot;</span><span class="p">,</span> <span class="n">sirali_dizi</span><span class="p">)</span>  <span class="c1"># Çıktı: [1 1 2 3 3 4 5 5 5 6 9]</span>
+
+<span class="c1"># 2. Örnek: np.argsort</span>
+<span class="c1"># Dizinin sıralı indekslerini alma</span>
+<span class="n">sirali_indeksler</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">dizi</span><span class="p">)</span>  <span class="c1"># Sıralı indeksleri döndürür</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sıralı İndeksler (np.argsort):&quot;</span><span class="p">,</span> <span class="n">sirali_indeksler</span><span class="p">)</span>  <span class="c1"># Çıktı: [1 3 4 0 5 2 8 6 9 7 10]</span>
+
+<span class="c1"># 3. Örnek: np.ndarray.sort</span>
+<span class="c1"># Diziyi yerinde sıralama (in-place sorting)</span>
+<span class="n">dizi_yerinde</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>  <span class="c1"># Yeni bir dizi oluşturma</span>
+<span class="n">dizi_yerinde</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>  <span class="c1"># Diziyi yerinde sıralar</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Yerinde Sıralı Dizi (ndarray.sort):&quot;</span><span class="p">,</span> <span class="n">dizi_yerinde</span><span class="p">)</span>  <span class="c1"># Çıktı: [1 1 2 3 3 4 5 5 5 6 9]</span>
+
+<span class="c1"># 4. Örnek: Sıralama ile çok boyutlu dizi</span>
+<span class="c1"># Çok boyutlu bir dizi oluşturma</span>
+<span class="n">cok_boyutlu_dizi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+                              <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span>
+                              <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>
+
+<span class="c1"># 4.1. Örnek: np.sort ile satır bazında sıralama</span>
+<span class="n">sirali_cok_boyutlu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">cok_boyutlu_dizi</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Her satırı sıralar</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Satır Bazında Sıralı Dizi (np.sort):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">sirali_cok_boyutlu</span><span class="p">)</span>
+<span class="c1"># Çıktı:</span>
+<span class="c1"># [[1 3 4]</span>
+<span class="c1">#  [1 5 9]</span>
+<span class="c1">#  [2 5 6]]</span>
+
+<span class="c1"># 4.2. Örnek: np.sort ile sütun bazında sıralama</span>
+<span class="n">sirali_cok_boyutlu_sutun</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">cok_boyutlu_dizi</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Her sütunu sıralar</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sütun Bazında Sıralı Dizi (np.sort):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">sirali_cok_boyutlu_sutun</span><span class="p">)</span>
+<span class="c1"># Çıktı:</span>
+<span class="c1"># [[1 1 4]</span>
+<span class="c1">#  [2 5 5]</span>
+<span class="c1">#  [3 6 9]]</span>
+
+<span class="c1"># 5. Örnek: np.lexsort</span>
+<span class="c1"># Birden fazla diziyi sıralamak için kullanılır</span>
+<span class="c1"># İki dizi oluşturma</span>
+<span class="n">dizi1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">])</span>
+<span class="n">dizi2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+
+<span class="c1"># İki diziye göre sıralama</span>
+<span class="n">sirali_indeksler_lex</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">lexsort</span><span class="p">((</span><span class="n">dizi2</span><span class="p">,</span> <span class="n">dizi1</span><span class="p">))</span>  <span class="c1"># dizi2&#39;ye göre önce, dizi1&#39;e göre sonra sıralar</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Lexicographic Sıralı İndeksler (np.lexsort):&quot;</span><span class="p">,</span> <span class="n">sirali_indeksler_lex</span><span class="p">)</span>  <span class="c1"># Çıktı: [1 2 0]</span>
+
+<span class="c1"># Sıralı diziyi elde etme</span>
+<span class="n">sirali_dizi_lex</span> <span class="o">=</span> <span class="n">dizi1</span><span class="p">[</span><span class="n">sirali_indeksler_lex</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Lexicographically Sıralı Dizi:&quot;</span><span class="p">,</span> <span class="n">sirali_dizi_lex</span><span class="p">)</span>  <span class="c1"># Çıktı: [&#39;a&#39; &#39;c&#39; &#39;b&#39;]</span>
+</pre></div>
+</div>
+</section>
+<section id="matematiksel-islemler">
+<h1>Matematiksel İşlemler<a class="headerlink" href="#matematiksel-islemler" title="Link to this heading">¶</a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># İki örnek dizi oluşturma</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span>
+
+<span class="c1"># Toplama</span>
+<span class="n">toplama</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Toplama:&quot;</span><span class="p">,</span> <span class="n">toplama</span><span class="p">)</span>  <span class="c1"># Çıktı: [ 6  8 10 12]</span>
+
+<span class="c1"># Çıkarma</span>
+<span class="n">cikarma</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Çıkarma:&quot;</span><span class="p">,</span> <span class="n">cikarma</span><span class="p">)</span>  <span class="c1"># Çıktı: [-4 -4 -4 -4]</span>
+
+<span class="c1"># Çarpma</span>
+<span class="n">carpma</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Çarpma:&quot;</span><span class="p">,</span> <span class="n">carpma</span><span class="p">)</span>  <span class="c1"># Çıktı: [ 5 12 21 32]</span>
+
+<span class="c1"># Bölme</span>
+<span class="n">bolme</span> <span class="o">=</span> <span class="n">a</span> <span class="o">/</span> <span class="n">b</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bölme:&quot;</span><span class="p">,</span> <span class="n">bolme</span><span class="p">)</span>  <span class="c1"># Çıktı: [0.2        0.33333333 0.42857143 0.5       ]</span>
+</pre></div>
+</div>
+</section>
+<section id="matematiksel-fonksiyonlar">
+<h1>Matematiksel Fonksiyonlar<a class="headerlink" href="#matematiksel-fonksiyonlar" title="Link to this heading">¶</a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Örnek bir dizi oluşturma</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">])</span>
+
+<span class="c1"># Sinüs hesaplama</span>
+<span class="n">sinus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sinüs:&quot;</span><span class="p">,</span> <span class="n">sinus</span><span class="p">)</span>  <span class="c1"># Çıktı: [0. 1. 0.]</span>
+
+<span class="c1"># Kosinüs hesaplama</span>
+<span class="n">kosinus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kosinüs:&quot;</span><span class="p">,</span> <span class="n">kosinus</span><span class="p">)</span>  <span class="c1"># Çıktı: [ 1. 0. -1.]</span>
+
+<span class="c1"># Logaritma hesaplama</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">])</span>
+<span class="n">logaritma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Logaritma (base 10):&quot;</span><span class="p">,</span> <span class="n">logaritma</span><span class="p">)</span>  <span class="c1"># Çıktı: [0. 1. 2.]</span>
+</pre></div>
+</div>
+</section>
+<section id="istatiksel-islemler">
+<h1>İstatiksel İşlemler<a class="headerlink" href="#istatiksel-islemler" title="Link to this heading">¶</a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Örnek bir dizi oluşturma</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+
+<span class="c1"># Ortalama hesaplama</span>
+<span class="n">ortalama</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ortalama:&quot;</span><span class="p">,</span> <span class="n">ortalama</span><span class="p">)</span>  <span class="c1"># Çıktı: 5.5</span>
+
+<span class="c1"># Medyan hesaplama</span>
+<span class="n">medyan</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Medyan:&quot;</span><span class="p">,</span> <span class="n">medyan</span><span class="p">)</span>  <span class="c1"># Çıktı: 5.5</span>
+
+<span class="c1"># Standart sapma hesaplama</span>
+<span class="n">std_sapma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Standart Sapma:&quot;</span><span class="p">,</span> <span class="n">std_sapma</span><span class="p">)</span>  <span class="c1"># Çıktı: 2.8722813232690143</span>
+</pre></div>
+</div>
+</section>
+<section id="matris-islemleri">
+<h1>Matris İşlemleri<a class="headerlink" href="#matris-islemleri" title="Link to this heading">¶</a></h1>
+<p>Matris, sayılardan veya matematiksel nesnelerden (örneğin, değişkenler veya semboller) oluşan dikdörtgen biçiminde bir düzenlemedir. Matematikte ve istatistikte yaygın olarak kullanılan matrisler, genellikle sayıları düzenlemek, hesaplamalar yapmak ve sistemleri temsil etmek için kullanılır. Matrisler, satırlar ve sütunlar halinde düzenlenmiş elemanlardan oluşur.</p>
+<ul class="simple">
+<li><p><strong>Tanım</strong>: Sayılardan veya matematiksel nesnelerden oluşan dikdörtgen biçiminde bir düzenleme.</p></li>
+<li><p><strong>Boyutlar</strong>: Matrisin boyutları, satır sayısı (m) ve sütun sayısı (n) ile tanımlanır (örneğin, (m × n)).</p></li>
+</ul>
+<section id="matris-turleri">
+<h2>Matris Türleri:<a class="headerlink" href="#matris-turleri" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Kare Matris</strong>: Satır ve sütun sayısı eşit olan matrislerdir.</p></li>
+<li><p><strong>Sıfır Matris</strong>: Tüm elemanları sıfır olan matrislerdir.</p></li>
+<li><p><strong>Birim Matris</strong>: Ana köşegen üzerindeki elemanları 1, diğerleri 0 olan kare matrislerdir.</p></li>
+<li><p><strong>Transpoze Matris</strong>: Bir matrisin satır ve sütunlarının yer değiştirmesiyle elde edilen matristir; bu işlem, matrisin boyutunu değiştirir.</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># İki matris oluşturma</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]])</span>
+
+<span class="c1"># Matris çarpımı</span>
+<span class="n">matris_carpimi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>  <span class="c1"># veya A @ B</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Matris Çarpımı:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">matris_carpimi</span><span class="p">)</span>
+<span class="c1"># Çıktı:</span>
+<span class="c1"># [[19 22]</span>
+<span class="c1">#  [43 50]]</span>
+
+<span class="c1"># Matrisin transpozu</span>
+<span class="n">transpoze</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Transpoze:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">transpoze</span><span class="p">)</span>
+<span class="c1"># Çıktı:</span>
+<span class="c1"># [[1 3]</span>
+<span class="c1">#  [2 4]]</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+
+<div class='glyph'><a href='https://yazbel.com'>&#x2663;</a></div>
+<div class='extrarelbar'> 
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Genel Dizin"
+             >dizin</a></li>
+        <li class="right" >
+          <a href="../../katkida_bulunanlar.html" title="Katkıda Bulunanlar"
+             >sonraki</a> |</li>
+        <li class="right" >
+          <a href="../matplotlib_mod%C3%BCl%C3%BC/matplotlib.html" title="Matplotlib"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="../index.html" >Üçüncü Taraf Modüller</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Numpy</a></li> 
+      </ul>
+    </div> </div>
+
+<div class='addcomment'>Yorumlar</div>
+
+<div class='how-to-use'>
+    <h3>Önemli Not</h3>
+    Sorularınızı yorumlarda dile getirmek yerine <a href="https://forum.yazbel.com/">Yazbel Forumu</a>nda sorarsanız çok daha hızlı cevap alabilirsiniz.
+    <br>
+    Belgelerdeki bir hata veya eksiği dile getirecekseniz lütfen yorumları kullanmak yerine <a href="https://github.com/yazbel/python-istihza/issues">Github</a>'da bir konu (issue) açın.
+    <br>
+    Eğer yazdığınız yorum içinde kod kullanacaksanız kodlarınızı
+    <span class='tag'>&lt;pre&gt;&lt;code&gt;</span> etiketleri içine alın. Örneğin:
+
+    <pre>
+        <span class='tag'>&lt;pre&gt;&lt;code class="python"&gt;</span>
+        <span class='keyword'>print</span>(<span class='string'>"Merhaba Dünya!"</span>)
+        <span class='tag'>&lt;/code&gt;&lt;/pre&gt;</span>
+    </pre>
+</div>
+
+
+<div id="disqus_thread"></div>
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT
+     *  THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR
+     *  PLATFORM OR CMS.
+     *
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT:
+     *  https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    /*
+    var disqus_config = function () {
+        // Replace PAGE_URL with your page's canonical URL variable
+        this.page.url = PAGE_URL;
+
+        // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.identifier = PAGE_IDENTIFIER;
+    };
+    */
+
+    (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
+        var d = document, s = d.createElement('script');
+
+        // IMPORTANT: Replace EXAMPLE with your forum shortname!
+        s.src = 'https://istihza.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<noscript>
+<br>
+<a href="https://disqus.com/?ref_noscript" rel="nofollow">Disqus tarafından sağlanan yorumları</a> görmek için lütfen JavasScript'i etkinleştirin.
+<br>
+Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4eca48eb2d83faf9" async="async"></script>
+
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div> 
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Gezinti</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Genel Dizin"
+             >dizin</a></li>
+        <li class="right" >
+          <a href="../../katkida_bulunanlar.html" title="Katkıda Bulunanlar"
+             >sonraki</a> |</li>
+        <li class="right" >
+          <a href="../matplotlib_mod%C3%BCl%C3%BC/matplotlib.html" title="Matplotlib"
+             >önceki</a> |</li>
+<li class="nav-item nav-item-0"><a href=".">&#x2302;</a></li>
+
+          <li class="nav-item nav-item-1"><a href="../index.html" >Üçüncü Taraf Modüller</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Numpy</a></li> 
+      </ul>
+    </div> 
+
+<div class="footer">
+		&copy; Copyright 2007-2025, Fırat Özgül | <a href="https://yazbel.com">yazbel.com</a>.
+Son güncelleme: 11.02.2025.
+	<a href="http://sphinx-doc.org/">Sphinx</a> 8.0.2 kullanılarak oluşturuldu.
+
+	Yayım 4.1.3.
+<br>
+<br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
+alt="Creative Commons License" style="border-width:0"
+src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a>
+<br>
+<br>
+</div>
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=10396326;
+var sc_invisible=1;
+var sc_security="fb5cd679";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="hit counter"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="http://c.statcounter.com/10396326/0/fb5cd679/1/"
+alt="hit counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+  </body>
+</html>

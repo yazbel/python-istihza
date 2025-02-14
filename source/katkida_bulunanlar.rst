@@ -552,3 +552,4 @@ Berkay Çalışkan
 ================
 
     - Matplotlib dokumanlari eklendi.
+    - Numpy dokumanlari eklendi.
